@@ -1,0 +1,80 @@
+<div style="position: relative;">
+  <div [ngBusy]="busy"></div>
+  <div class="home-header-wrapper">
+    <div class="home-margins">
+      <div class="row">
+
+        <div class="col-md-7 col-sm-12">
+          <div class="jumbotron home-header">
+            <h2>
+              Pill Press
+            </h2>
+            <p>
+              
+              To use the online application service, you must have a Business BCeID.
+            </p>
+            <div class="text-left">
+              <button style="margin-bottom: 10px;" class="btn btn-primary" (click)="window.location.href='https://www.bceid.ca/register/'"
+                tabindex="3">
+                <strong>REGISTER FOR A BUSINESS BCeID</strong>
+                <br>
+              </button>
+              <span style="padding: 10px;">OR</span>
+              <button style="margin-bottom: 10px;" class="btn btn-primary" (click)="window.location.href='login'"
+                tabindex="3">
+                <strong>LOG IN</strong>
+                <br>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-5 ">
+          <div class="side-box-wrapper" style="margin-left: -15px;">
+            <section class="side-box">
+              <section style="display: flex">
+                <button mat-fab class="fab-button mat-elevation-z0">
+                  <mat-icon class="icon" aria-label="description icon">description</mat-icon>
+                </button>
+                <h2>Application Statistics</h2>
+              </section>
+              <p style="padding-top: 30px;">
+                The number of applications received and where they are in the process. Updated weekly.
+              </p>
+              <div style="float: right;">
+                <button class="btn btn-primary" routerLink="/policy-document/application-stats"
+                  tabindex="3">See Application Statistics</button>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row home-margins">
+    <div class="col-md-7 col-sm-12">
+      <div class="home-body">
+        <app-accordion></app-accordion>
+      </div>
+    </div>
+    <div class="col-md-5 col-sm-12">
+      <div class="side-box-wrapper">
+        <section class="side-box" style="margin-top: 65px;">
+          <section style="display: flex;">
+            <button mat-fab class="fab-button mat-elevation-z0">
+              <mat-icon class="icon" aria-label="help icon">help</mat-icon>
+            </button>
+            <h2>What does an applicant need to apply for a cannabis licence?</h2>
+          </section>
+          <p>Answer questions about the proposed business to receive a customized to-do list to prepare an application.</p>
+          <div style="text-align: right">
+            <button class="btn btn-primary" routerLink="prv" tabindex="3">START</button>
+          </div>
+        </section>
+        <section class="side-box">
+          <app-newsletter-signup [slug]="'signupForUpdates'"></app-newsletter-signup>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
