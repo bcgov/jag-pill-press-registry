@@ -1,0 +1,65 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "pill-press-app", "pill-press-app.csproj", "{8FE0A3D0-B466-41E3-91A9-3AB6207C15E5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pill-press-interfaces", "pill-press-interfaces", "{0584B916-A0B9-44B4-97D3-1E9DBF16220E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharePoint", "..\pill-press-interfaces\SharePoint\SharePoint.csproj", "{27F1F3AB-9F73-414C-ADD2-3CE032C49978}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BCeID", "..\pill-press-interfaces\BCeID\BCeID.csproj", "{9B63A69E-E3C6-44BD-A24B-C6EC3A499E64}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DynamicsAutorest", "..\pill-press-interfaces\Dynamics-Autorest\DynamicsAutorest.csproj", "{309D775B-CF5B-4194-9E63-3410A95D20F4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8FE0A3D0-B466-41E3-91A9-3AB6207C15E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FE0A3D0-B466-41E3-91A9-3AB6207C15E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FE0A3D0-B466-41E3-91A9-3AB6207C15E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FE0A3D0-B466-41E3-91A9-3AB6207C15E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27F1F3AB-9F73-414C-ADD2-3CE032C49978}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27F1F3AB-9F73-414C-ADD2-3CE032C49978}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27F1F3AB-9F73-414C-ADD2-3CE032C49978}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27F1F3AB-9F73-414C-ADD2-3CE032C49978}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B63A69E-E3C6-44BD-A24B-C6EC3A499E64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B63A69E-E3C6-44BD-A24B-C6EC3A499E64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B63A69E-E3C6-44BD-A24B-C6EC3A499E64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B63A69E-E3C6-44BD-A24B-C6EC3A499E64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{309D775B-CF5B-4194-9E63-3410A95D20F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{309D775B-CF5B-4194-9E63-3410A95D20F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{309D775B-CF5B-4194-9E63-3410A95D20F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{309D775B-CF5B-4194-9E63-3410A95D20F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05301D75-ACF9-45D8-B572-AC052EAD4B54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05301D75-ACF9-45D8-B572-AC052EAD4B54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05301D75-ACF9-45D8-B572-AC052EAD4B54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05301D75-ACF9-45D8-B572-AC052EAD4B54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C4D7FD8-E491-427C-83EA-BE9AD181D727}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C4D7FD8-E491-427C-83EA-BE9AD181D727}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C4D7FD8-E491-427C-83EA-BE9AD181D727}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C4D7FD8-E491-427C-83EA-BE9AD181D727}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5874D71B-943E-40AC-A965-063F843FE34F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5874D71B-943E-40AC-A965-063F843FE34F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5874D71B-943E-40AC-A965-063F843FE34F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5874D71B-943E-40AC-A965-063F843FE34F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{27F1F3AB-9F73-414C-ADD2-3CE032C49978} = {0584B916-A0B9-44B4-97D3-1E9DBF16220E}
+		{9B63A69E-E3C6-44BD-A24B-C6EC3A499E64} = {0584B916-A0B9-44B4-97D3-1E9DBF16220E}
+		{309D775B-CF5B-4194-9E63-3410A95D20F4} = {0584B916-A0B9-44B4-97D3-1E9DBF16220E}
+		{05301D75-ACF9-45D8-B572-AC052EAD4B54} = {0584B916-A0B9-44B4-97D3-1E9DBF16220E}
+		{7C4D7FD8-E491-427C-83EA-BE9AD181D727} = {0584B916-A0B9-44B4-97D3-1E9DBF16220E}
+		{5874D71B-943E-40AC-A965-063F843FE34F} = {0584B916-A0B9-44B4-97D3-1E9DBF16220E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BF5C395A-DA58-4406-95D8-AAEBD4437D0A}
+	EndGlobalSection
+EndGlobal
