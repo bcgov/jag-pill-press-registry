@@ -1,0 +1,65 @@
+<div class="dashboard-spacing">
+  <!-- <div [ngBusy]="busy"></div> -->
+  <div class="row">
+    <div class="col-lg-7 col-sm-12">
+      <section style="margin-left: 15px;">
+        <app-policy-document [fullWidth]="true" #policyDocs></app-policy-document>
+      </section>
+      <p>Please select an option below:</p>
+
+      <p class="login-cont">
+        <strong style="margin-top: 10px">I’m a B.C. resident with a BC Services Card</strong>
+        <a  class="btn btn-primary" href="bcservice">Login</a>
+      </p>
+      <p class="login-cont">
+        <strong style="margin-top: 10px">I’m a B.C. resident but I don't have a BC Services Card</strong>
+        <a  class="btn btn-primary" href="https://www2.gov.bc.ca/gov/content/governments/government-id/bc-services-card/login-with-card">Get a BC Services Card</a>
+      </p>
+      <p class="login-cont">
+        <strong style="margin-top: 10px">I’m not a B.C. resident, send me a Pill Press Worker Qualification form.</strong>
+        <a  class="btn btn-primary" href="mailto:cannabis.worker@gov.bc.ca">Request Form</a>
+      </p>
+
+    </div>
+    <div class="col-lg-4 col-sm-12" style="position: relative">
+      <!-- <div [ngBusy]="busy"></div> -->
+      <p></p>
+      <section class="submit-container">
+        <table>
+          <tr>
+            <td>
+              <h2 class="round-icon-wrapper"><i class="fas fa-id-card"></i></h2>
+            </td>
+            <td style="padding-left: 10px">
+              <h2>Get a BC Services Card</h2>
+            </td>
+          </tr>
+        </table>
+        <div class="submit-content">
+          <p>B.C. residents who have lived in the province for at least six months must use a BC Services Card to log
+            in
+            to the Pill Press Worker Registry. Learn how to get a card.
+          </p>
+          <button style="background-color: #003366; border-color: #003366;" class="btn btn-primary">READ MORE</button>
+        </div>
+      </section>
+      <section class="submit-container">
+        <table>
+          <tr>
+            <td>
+              <h2 class="round-icon-wrapper"><i class="fas fa-question"></i></h2>
+            </td>
+            <td style="padding-left: 10px">
+              <h2>Applicants Without a BC Services Card</h2>
+            </td>
+          </tr>
+        </table>
+        <div class="submit-content">
+          <p>Applicants who haven’t lived in B.C. for at least six months or who live outside the province must email
+            the
+            Liquor and Pill Press Regulation Branch for a Worker Qualification Application Form.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
