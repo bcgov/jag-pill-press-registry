@@ -24,7 +24,7 @@ describe('Accordion component test', () => {
 
   // it('should display a title', async () => {
   //   let heading = await page.getAccordionHeading();
-  //   expect(heading).toEqual('Individuals (sole proprietors), partnerships, corporations and Indigenous nations may apply for a cannabis retail store licence.');
+  //   expect(heading).toEqual('Individuals (sole proprietors), partnerships, corporations and Indigenous nations may apply for a pill press retail store licence.');
   // });
 
 });

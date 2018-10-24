@@ -553,7 +553,7 @@
       "value": "pill-press-dev.pathfinder.gov.bc.ca"
     },
     {
-      "description": "Webname for Sharepoint, e.g., cannabisdev, if left blank a value will be defaulted.",
+      "description": "Webname for Sharepoint, e.g., pill pressdev, if left blank a value will be defaulted.",
       "displayName": "Sharepoint Webname",
       "name": "SHAREPOINT_WEBNAME",
       "required": false,
