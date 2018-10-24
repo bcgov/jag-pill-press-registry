@@ -574,7 +574,7 @@ namespace Gov.Lclb.Cllb.Public.Controllers
                     + "</p>"
                     + "<p>"
                     + "An application from " + "[TBD Company Name]"
-                    + " has been submitted for a non-medical retail cannabis licence in British Columbia. "
+                    + " has been submitted for a non-medical retail pill press licence in British Columbia. "
                     + "As a " + "[TBD Position]" + " of " + "[TBD Company Name]"
                     + " you are required to authorize a security screening — including criminal and police record checks—"
                     + "and financial integrity checks as part of the application process. "
