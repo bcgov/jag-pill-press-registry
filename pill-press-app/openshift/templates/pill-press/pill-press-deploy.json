@@ -486,21 +486,21 @@
       "displayName": "Name",
       "description": "The name assigned to all of the resources defined in this template.",
       "required": true,
-      "value": "cllc-public"
+      "value": "pill-press"
     },
     {
       "name": "SOURCE_IMAGE_NAME",
       "displayName": "Source Image Name",
       "description": "The name of the image to use for this resource.",
       "required": true,
-      "value": "cllc-public"
+      "value": "pill-press"
     },
     {
       "name": "IMAGE_NAMESPACE",
       "displayName": "Image Namespace",
       "description": "The namespace of the OpenShift project containing the imagestream for the application.",
       "required": true,
-      "value": "lclb-cllc-tools"
+      "value": "rqnyx8-dev"
     },
     {
       "name": "TAG_NAME",
@@ -544,20 +544,20 @@
       "description": "The endpoint used for SiteMinder routed access to the application.",
       "displayName": "SiteMinder Application Domain",
       "name": "SITEMINDER_APPLICATION_DOMAIN",
-      "value": "cannabis-licensing-dev.pathfinder.bcgov"
+      "value": "pill-press-dev.pathfinder.bcgov"
     },
     {
       "description": "The exposed hostname that will route to the service, e.g., myappname.pathfinder.gov.bc.ca, if left blank a value will be defaulted.",
       "displayName": "Application Domain",
       "name": "APPLICATION_DOMAIN",
-      "value": "lclb-cllc-dev.pathfinder.gov.bc.ca"
+      "value": "pill-press-dev.pathfinder.gov.bc.ca"
     },
     {
       "description": "Webname for Sharepoint, e.g., cannabisdev, if left blank a value will be defaulted.",
       "displayName": "Sharepoint Webname",
       "name": "SHAREPOINT_WEBNAME",
       "required": false,
-      "value": "cannabisdev"
+      "value": "pill-press"
     },
     {
       "description": "Sharepoint Tenant ID and Dynamics Tenant ID, e.g., bcgovtrial.onmicrosoft.com, if left blank a value will be defaulted.",
@@ -617,7 +617,7 @@
       "displayName": "Secret resource name",
       "description": "Secret resource name",
       "required": true,
-      "value": "cllc-public-preprod"
+      "value": "pill-press"
     },
     {
       "name": "SITEMINDER_LOGOUT_URL",
