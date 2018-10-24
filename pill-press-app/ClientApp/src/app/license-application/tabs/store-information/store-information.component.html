@@ -7,7 +7,7 @@
       <div [ngClass]="{'has-error': this.isFieldError('establishmentName')}">
         <label for="">Proposed Store Name</label>
         <br>
-        <p>Your store name must be approved, and cannot imply you are selling medical cannabis</p>
+        <p>Your store name must be approved, and cannot imply you are selling medical pill press</p>
         <input class="form-control" style="width: 500px;" type="text" id="establishmentName" formControlName="establishmentName">
         <div *ngIf="this.isFieldError('establishmentName')" class="alert alert-danger" style="width: 250px;">
           <div *ngIf="storeInformationForm.controls['establishmentName'].hasError('required') ">
@@ -48,9 +48,9 @@
         <ul>
           <li>Show the name of the store</li>
           <li>Show all words and images used in the signage</li>
-          <li>Not contain any pictures, images or symbols that imply that you sell medical cannabis. (for example, a green cross)</li>
+          <li>Not contain any pictures, images or symbols that imply that you sell medical pill press. (for example, a green cross)</li>
           <li>Not imply an association with a separate business. This applies to the store name, trademarks and any type of branding</li>
-          <li>Demonstrate that cannabis products are not visible from outside the store. (for example, tinted or covered windows)</li>
+          <li>Demonstrate that pill press products are not visible from outside the store. (for example, tinted or covered windows)</li>
         </ul>
       </section>
     </div>

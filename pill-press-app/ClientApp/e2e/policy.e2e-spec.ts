@@ -1,5 +1,5 @@
 import { browser, by, element } from 'protractor';
-import { Pill PressRetailLicensingPage } from './cannabis-retail-licensing.po';
+import { Pill PressRetailLicensingPage } from './pill press-retail-licensing.po';
 
 const VOTE_SLUG = 'initialNumberInterested';
 

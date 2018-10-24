@@ -2,7 +2,7 @@ import { browser, by, element } from 'protractor';
 
 export class Pill PressRetailLicensingPage {
     navigateTo() {
-      return browser.get('/pillpress/policy-document/cannabis-retail-licence');
+      return browser.get('/pillpress/policy-document/pill press-retail-licence');
     }
 
     getMainHeading() {

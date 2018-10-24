@@ -1,5 +1,5 @@
 {
-  "title": "What does an applicant need to apply for a cannabis licence?",
+  "title": "What does an applicant need to apply for a pill press licence?",
   "pages": [
     {
       "name": "p1",
@@ -22,7 +22,7 @@
         {
           "type": "radiogroup",
           "name": "licensedProducer",
-          "title": "Is the applicant a federally licensed producer of cannabis?",
+          "title": "Is the applicant a federally licensed producer of pill press?",
           "isRequired": true,
           "choices": [
             "Yes",
@@ -175,7 +175,7 @@
         {
           "type": "radiogroup",
           "name": "connectionToProducerCultivator",
-          "title": "Does the applicant have any beneficial interest in a cannabis producer’s voting shares or or does the licensee or an immediate family member have any financial interest in a federally licensed cannabis producer?",
+          "title": "Does the applicant have any beneficial interest in a pill press producer’s voting shares or or does the licensee or an immediate family member have any financial interest in a federally licensed pill press producer?",
           "isRequired": true,
           "choices": [
             "Yes",
