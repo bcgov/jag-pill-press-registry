@@ -53,7 +53,7 @@ namespace Gov.Lclb.Cllb.Public.Controllers
             string confirmationEmailLink = GetConfirmationLink(slug, email);
             string bclogo = Configuration["BASE_URI"] + Configuration["BASE_PATH"] + "/assets/bc-logo.svg";
             /* send the user an email confirmation. */
-            string body = "<img src='" + bclogo + "'/><br><h2>Confirm your email address</h2><p>Thank you for signing up to receive updates about cannabis stores in B.C. We’ll send you updates as new rules and regulations are released about selling cannabis.</p>"
+            string body = "<img src='" + bclogo + "'/><br><h2>Confirm your email address</h2><p>Thank you for signing up to receive updates about pill press stores in B.C. We’ll send you updates as new rules and regulations are released about selling pill press.</p>"
                 + "<p>To confirm your request and begin receiving updates by email, click here:</p>"
                 + "<a href='" + confirmationEmailLink + "'>" + confirmationEmailLink + "</a>";
 
