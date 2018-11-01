@@ -40,16 +40,7 @@ namespace Gov.Lclb.Cllb.Public
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
-            // add a singleton for data access.
-
-            string connectionString = DatabaseTools.GetConnectionString(Configuration);
-            string databaseName = DatabaseTools.GetDatabaseName(Configuration);
-
-            DatabaseTools.CreateDatabaseIfNotExists(Configuration);
-
-            services.AddDbContext<AppDbContext>(
-                options => options.UseSqlServer(connectionString));
+        {            
 
             // add singleton to allow Controllers to query the Request object
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
