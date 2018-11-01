@@ -54,21 +54,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="SeedData\PolicyDocuments.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Update="SeedData\Newsletters.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Update="SeedData\VoteQuestions.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Update="SeedData\Jurisdictions.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="ClientApp\src\app\bcsvcs-confirmation\bcsvcs-confirmation.component.html" />
     <None Remove="ClientApp\src\app\models\invoice.model.ts" />
   </ItemGroup>
@@ -100,6 +85,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ODataClient.tt</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+    <Folder Include="Seeders\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
