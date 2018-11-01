@@ -13,15 +13,13 @@ namespace Gov.Lclb.Cllb.Public.Controllers
     public class LogoutController : Controller
     {
         private readonly IConfiguration Configuration;
-        private readonly AppDbContext db;
         private readonly IHostingEnvironment _env;
         private readonly SiteMinderAuthOptions _options = new SiteMinderAuthOptions();
 
-        public LogoutController(AppDbContext db, IConfiguration configuration, IHostingEnvironment env)
+        public LogoutController( IConfiguration configuration, IHostingEnvironment env)
         {
             Configuration = configuration;
-            _env = env;
-            this.db = db;            
+            _env = env;      
         }
 
         [HttpGet]
