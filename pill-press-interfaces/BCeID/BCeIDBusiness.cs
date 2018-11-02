@@ -2,7 +2,7 @@ using System.Runtime.Serialization;
 using System;
 using System.Globalization;
 
-namespace Gov.Lclb.Cllb.Interfaces
+namespace Gov.Jag.PillPressRegistry.Interfaces
 {
     public class BCeIDBusiness
     {
