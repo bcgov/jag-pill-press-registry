@@ -4,7 +4,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Gov.Lclb.Cllb.Interfaces
+namespace Gov.Jag.PillPressRegistry.Interfaces
 {
     using Microsoft.Rest;
     using Models;
@@ -22,19 +22,14 @@ namespace Gov.Lclb.Cllb.Interfaces
         /// Get entities from accounts
         /// </summary>
         /// <param name='top'>
-        /// Show only the first n items
         /// </param>
         /// <param name='skip'>
-        /// Skip only the first n items
         /// </param>
         /// <param name='search'>
-        /// Search items by search phrases
         /// </param>
         /// <param name='filter'>
-        /// Filter items by property values
         /// </param>
         /// <param name='count'>
-        /// Include count of items
         /// </param>
         /// <param name='orderby'>
         /// Order items by property values
@@ -85,28 +80,6 @@ namespace Gov.Lclb.Cllb.Interfaces
         /// </exception>
         Task<HttpOperationResponse<MicrosoftDynamicsCRMaccount>> CreateWithHttpMessagesAsync(MicrosoftDynamicsCRMaccount body, string prefer = "return=representation", Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Delete entity from accounts
-        /// </summary>
-        /// <param name='accountid'>
-        /// key: accountid
-        /// </param>
-        /// <param name='ifMatch'>
-        /// ETag
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="OdataerrorException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<HttpOperationResponse> DeleteWithHttpMessagesAsync(string accountid, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
         /// Get entity from accounts by key
         /// </summary>
         /// <param name='accountid'>
@@ -134,6 +107,28 @@ namespace Gov.Lclb.Cllb.Interfaces
         /// Thrown when a required parameter is null
         /// </exception>
         Task<HttpOperationResponse<MicrosoftDynamicsCRMaccount>> GetByKeyWithHttpMessagesAsync(string accountid, IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Delete entity from accounts
+        /// </summary>
+        /// <param name='accountid'>
+        /// key: accountid
+        /// </param>
+        /// <param name='ifMatch'>
+        /// ETag
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="OdataerrorException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<HttpOperationResponse> DeleteWithHttpMessagesAsync(string accountid, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Update entity in accounts
         /// </summary>

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using System.Collections.Generic;
 
-namespace Gov.Lclb.Cllb.Public.Authorization
+namespace Gov.Jag.PillPressRegistry.Public.Authorization
 {
     /// <summary>
     /// Permission Requirements

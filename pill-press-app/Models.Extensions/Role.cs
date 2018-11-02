@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace Gov.Lclb.Cllb.Public.Models
+namespace Gov.Jag.PillPressRegistry.Public.Models
 {
     /// <summary>
     /// Role Database Model Extension

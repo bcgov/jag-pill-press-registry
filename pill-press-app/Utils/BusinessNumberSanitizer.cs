@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Gov.Lclb.Cllb.Public.Utils
+namespace Gov.Jag.PillPressRegistry.Public.Utils
 {
 	/// <summary>
 	/// Helper methods for working with <see cref="Guid"/>.

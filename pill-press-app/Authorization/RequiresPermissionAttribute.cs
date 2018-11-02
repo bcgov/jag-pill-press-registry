@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 
-namespace Gov.Lclb.Cllb.Public.Authorization
+namespace Gov.Jag.PillPressRegistry.Public.Authorization
 {
     /// <summary>
     /// Allows declarative claims based permissions to be applied to controller methods for authorization.
