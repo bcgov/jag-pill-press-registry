@@ -22,15 +22,13 @@ namespace Gov.Lclb.Cllb.Public.Controllers
     public class UserController : Controller
     {
         private readonly IConfiguration Configuration;
-        private readonly AppDbContext db;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
 
-        public UserController(AppDbContext db, IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
+        public UserController (IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
         {
             Configuration = configuration;
             _httpContextAccessor = httpContextAccessor;
-            this.db = db;
         }
         
         protected ClaimsPrincipal CurrentUser => _httpContextAccessor.HttpContext.User;
