@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Gov.Lclb.Cllb.Public.ViewModels
+namespace Gov.Jag.PillPressRegistry.Public.ViewModels
 {
     public class BusinessProfile
     {

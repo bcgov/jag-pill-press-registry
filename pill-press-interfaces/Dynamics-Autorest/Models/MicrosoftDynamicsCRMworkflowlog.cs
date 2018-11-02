@@ -4,7 +4,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Gov.Lclb.Cllb.Interfaces.Models
+namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 {
     using Newtonsoft.Json;
     using System.Linq;
@@ -27,7 +27,7 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
         /// Initializes a new instance of the MicrosoftDynamicsCRMworkflowlog
         /// class.
         /// </summary>
-        public MicrosoftDynamicsCRMworkflowlog(string stepname = default(string), string _childworkflowinstanceidValue = default(string), string _owneridValue = default(string), string message = default(string), int? duration = default(int?), string activityname = default(string), string _owningbusinessunitValue = default(string), string interactionactivityresult = default(string), string _owninguserValue = default(string), string _createdbyValue = default(string), System.DateTimeOffset? completedon = default(System.DateTimeOffset?), string workflowlogid = default(string), string stagename = default(string), string _modifiedbyValue = default(string), string _createdonbehalfbyValue = default(string), int? status = default(int?), string _modifiedonbehalfbyValue = default(string), string _owningteamValue = default(string), string description = default(string), string _regardingobjectidValue = default(string), System.DateTimeOffset? modifiedon = default(System.DateTimeOffset?), System.DateTimeOffset? startedon = default(System.DateTimeOffset?), System.DateTimeOffset? createdon = default(System.DateTimeOffset?), string _asyncoperationidValue = default(string), int? errorcode = default(int?), MicrosoftDynamicsCRMteam owningteam = default(MicrosoftDynamicsCRMteam), MicrosoftDynamicsCRMsystemuser createdonbehalfby = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMasyncoperation childworkflowinstanceidAsyncoperation = default(MicrosoftDynamicsCRMasyncoperation), MicrosoftDynamicsCRMleadtoopportunitysalesprocess leadToOpportunitySalesProcessAsyncoperationid = default(MicrosoftDynamicsCRMleadtoopportunitysalesprocess), MicrosoftDynamicsCRMexpiredprocess expiredProcessAsyncoperationid = default(MicrosoftDynamicsCRMexpiredprocess), MicrosoftDynamicsCRMtranslationprocess translationProcessAsyncoperationid = default(MicrosoftDynamicsCRMtranslationprocess), MicrosoftDynamicsCRMopportunitysalesprocess opportunitySalesProcessAsyncoperationid = default(MicrosoftDynamicsCRMopportunitysalesprocess), MicrosoftDynamicsCRMsystemuser modifiedonbehalfby = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedby = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMphonetocaseprocess phoneToCaseProcessAsyncoperationid = default(MicrosoftDynamicsCRMphonetocaseprocess), MicrosoftDynamicsCRMbusinessunit owningbusinessunit = default(MicrosoftDynamicsCRMbusinessunit), MicrosoftDynamicsCRMasyncoperation asyncoperationidAsyncoperation = default(MicrosoftDynamicsCRMasyncoperation), MicrosoftDynamicsCRMnewprocess newProcessAsyncoperationid = default(MicrosoftDynamicsCRMnewprocess), MicrosoftDynamicsCRMsystemuser createdby = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMadoxioApplicationbpfmvpv2 asyncoperationidAdoxioApplicationbpfmvpv2 = default(MicrosoftDynamicsCRMadoxioApplicationbpfmvpv2), MicrosoftDynamicsCRMadoxioComplaintpublicbpf asyncoperationidAdoxioComplaintpublicbpf = default(MicrosoftDynamicsCRMadoxioComplaintpublicbpf))
+        public MicrosoftDynamicsCRMworkflowlog(string stepname = default(string), string _childworkflowinstanceidValue = default(string), string _owneridValue = default(string), string message = default(string), int? duration = default(int?), string activityname = default(string), string _owningbusinessunitValue = default(string), string interactionactivityresult = default(string), string _owninguserValue = default(string), string _createdbyValue = default(string), System.DateTimeOffset? completedon = default(System.DateTimeOffset?), string workflowlogid = default(string), string stagename = default(string), string _modifiedbyValue = default(string), string _createdonbehalfbyValue = default(string), int? status = default(int?), string _modifiedonbehalfbyValue = default(string), string _owningteamValue = default(string), string description = default(string), string _regardingobjectidValue = default(string), System.DateTimeOffset? modifiedon = default(System.DateTimeOffset?), System.DateTimeOffset? startedon = default(System.DateTimeOffset?), System.DateTimeOffset? createdon = default(System.DateTimeOffset?), string _asyncoperationidValue = default(string), int? errorcode = default(int?), MicrosoftDynamicsCRMteam owningteam = default(MicrosoftDynamicsCRMteam), MicrosoftDynamicsCRMsystemuser createdonbehalfby = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMasyncoperation childworkflowinstanceidAsyncoperation = default(MicrosoftDynamicsCRMasyncoperation), MicrosoftDynamicsCRMleadtoopportunitysalesprocess leadToOpportunitySalesProcessAsyncoperationid = default(MicrosoftDynamicsCRMleadtoopportunitysalesprocess), MicrosoftDynamicsCRMexpiredprocess expiredProcessAsyncoperationid = default(MicrosoftDynamicsCRMexpiredprocess), MicrosoftDynamicsCRMtranslationprocess translationProcessAsyncoperationid = default(MicrosoftDynamicsCRMtranslationprocess), MicrosoftDynamicsCRMopportunitysalesprocess opportunitySalesProcessAsyncoperationid = default(MicrosoftDynamicsCRMopportunitysalesprocess), MicrosoftDynamicsCRMsystemuser modifiedonbehalfby = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedby = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMphonetocaseprocess phoneToCaseProcessAsyncoperationid = default(MicrosoftDynamicsCRMphonetocaseprocess), MicrosoftDynamicsCRMbusinessunit owningbusinessunit = default(MicrosoftDynamicsCRMbusinessunit), MicrosoftDynamicsCRMasyncoperation asyncoperationidAsyncoperation = default(MicrosoftDynamicsCRMasyncoperation), MicrosoftDynamicsCRMnewprocess newProcessAsyncoperationid = default(MicrosoftDynamicsCRMnewprocess), MicrosoftDynamicsCRMsystemuser createdby = default(MicrosoftDynamicsCRMsystemuser))
         {
             Stepname = stepname;
             this._childworkflowinstanceidValue = _childworkflowinstanceidValue;
@@ -68,8 +68,6 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
             AsyncoperationidAsyncoperation = asyncoperationidAsyncoperation;
             NewProcessAsyncoperationid = newProcessAsyncoperationid;
             Createdby = createdby;
-            AsyncoperationidAdoxioApplicationbpfmvpv2 = asyncoperationidAdoxioApplicationbpfmvpv2;
-            AsyncoperationidAdoxioComplaintpublicbpf = asyncoperationidAdoxioComplaintpublicbpf;
             CustomInit();
         }
 
@@ -272,16 +270,6 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "createdby")]
         public MicrosoftDynamicsCRMsystemuser Createdby { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "asyncoperationid_adoxio_applicationbpfmvpv2")]
-        public MicrosoftDynamicsCRMadoxioApplicationbpfmvpv2 AsyncoperationidAdoxioApplicationbpfmvpv2 { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "asyncoperationid_adoxio_complaintpublicbpf")]
-        public MicrosoftDynamicsCRMadoxioComplaintpublicbpf AsyncoperationidAdoxioComplaintpublicbpf { get; set; }
 
     }
 }

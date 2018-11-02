@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Gov.Lclb.Cllb.Interfaces
+namespace Gov.Jag.PillPressRegistry.Interfaces
 {
     using Microsoft.Rest;
 

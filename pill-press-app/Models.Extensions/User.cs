@@ -1,7 +1,7 @@
-﻿using Gov.Lclb.Cllb.Interfaces.Models;
+﻿using Gov.Jag.PillPressRegistry.Interfaces.Models;
 using System;
 
-namespace Gov.Lclb.Cllb.Public.Models
+namespace Gov.Jag.PillPressRegistry.Public.Models
 {
     /// <summary>
     /// ViewModel transforms.

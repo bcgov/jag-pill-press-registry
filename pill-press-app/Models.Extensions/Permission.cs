@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Gov.Lclb.Cllb.Public.Models
+namespace Gov.Jag.PillPressRegistry.Public.Models
 {
     /// <summary>
     /// Permission Database Model Extension
