@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Gov.Lclb.Cllb.Public
+namespace Gov.Jag.PillPressRegistry.Public
 {
     public static class DatabaseTools
     {

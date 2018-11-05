@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 
-namespace Gov.Lclb.Cllb.Public.Utility
+namespace Gov.Jag.PillPressRegistry.Public.Utility
 {
     /// <summary>
     /// Helper methods for working with encryption

@@ -1,8 +1,8 @@
 ﻿
-using Gov.Lclb.Cllb.Interfaces.Models;
-using Gov.Lclb.Cllb.Public.Authentication;
-using Gov.Lclb.Cllb.Public.Models;
-using Gov.Lclb.Cllb.Public.Utils;
+using Gov.Jag.PillPressRegistry.Interfaces.Models;
+using Gov.Jag.PillPressRegistry.Public.Authentication;
+using Gov.Jag.PillPressRegistry.Public.Models;
+using Gov.Jag.PillPressRegistry.Public.Utils;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -12,7 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace Gov.Lclb.Cllb.Interfaces
+namespace Gov.Jag.PillPressRegistry.Interfaces
 {
     public static class DynamicsExtensions
     {
@@ -211,7 +211,7 @@ namespace Gov.Lclb.Cllb.Interfaces
                 // fetch from Dynamics.
                 result = await system.Accounts.GetByKeyAsync(id.ToString());
             }
-            catch (Gov.Lclb.Cllb.Interfaces.Models.OdataerrorException)
+            catch (Gov.Jag.PillPressRegistry.Interfaces.Models.OdataerrorException)
             {
                 result = null;
             }
@@ -223,7 +223,7 @@ namespace Gov.Lclb.Cllb.Interfaces
                 {
                     result.Primarycontactid = await system.GetContactById(Guid.Parse(result._primarycontactidValue));
                 }
-                catch (Gov.Lclb.Cllb.Interfaces.Models.OdataerrorException)
+                catch (Gov.Jag.PillPressRegistry.Interfaces.Models.OdataerrorException)
                 {
                     result.Primarycontactid = null;
                 }
@@ -246,44 +246,14 @@ namespace Gov.Lclb.Cllb.Interfaces
                 // fetch from Dynamics.
                 result = await system.Invoices.GetByKeyAsync(id.ToString());
             }
-            catch (Gov.Lclb.Cllb.Interfaces.Models.OdataerrorException)
+            catch (Gov.Jag.PillPressRegistry.Interfaces.Models.OdataerrorException)
             {
                 result = null;
             }
             return result;
         }
 
-
-        public static async Task<MicrosoftDynamicsCRMadoxioLegalentity> GetLegalEntityById(this IDynamicsClient system, Guid id)
-        {
-            MicrosoftDynamicsCRMadoxioLegalentity result;
-            try
-            {
-                // fetch from Dynamics.
-                result = await system.Adoxiolegalentities.GetByKeyAsync(id.ToString());
-            }
-            catch (Gov.Lclb.Cllb.Interfaces.Models.OdataerrorException)
-            {
-                result = null;
-            }
-            return result;
-        }
-
-        public static async Task<MicrosoftDynamicsCRMadoxioTiedhouseconnection> GetTiedHouseConnectionById(this IDynamicsClient system, Guid id)
-        {
-            MicrosoftDynamicsCRMadoxioTiedhouseconnection result;
-            try
-            {
-                // fetch from Dynamics.
-                result = await system.AdoxioTiedhouseconnections.GetByKeyAsync(id.ToString());
-            }
-            catch (Gov.Lclb.Cllb.Interfaces.Models.OdataerrorException)
-            {
-                result = null;
-            }
-            return result;
-        }
-
+        
 
         public static async Task<MicrosoftDynamicsCRMcontact> GetContactById(this IDynamicsClient system, Guid id)
         {
@@ -293,67 +263,15 @@ namespace Gov.Lclb.Cllb.Interfaces
                 // fetch from Dynamics.
                 result = await system.Contacts.GetByKeyAsync(id.ToString());
             }
-            catch (Gov.Lclb.Cllb.Interfaces.Models.OdataerrorException)
+            catch (Gov.Jag.PillPressRegistry.Interfaces.Models.OdataerrorException)
             {
                 result = null;
             }
             return result;
         }
 
-        public static async Task<MicrosoftDynamicsCRMadoxioWorker> GetWorkerById(this IDynamicsClient system, Guid id)
-        {
-            MicrosoftDynamicsCRMadoxioWorker result;
-            try
-            {
-                // fetch from Dynamics.
-                result = await system.Workers.GetByKeyAsync(id.ToString());
-            }
-            catch (Gov.Lclb.Cllb.Interfaces.Models.OdataerrorException)
-            {
-                result = null;
-            }
-            return result;
-        }
-
-        public static async Task<MicrosoftDynamicsCRMadoxioAlias> GetAliasById(this IDynamicsClient system, Guid id)
-        {
-            MicrosoftDynamicsCRMadoxioAlias result;
-            try
-            {
-                // fetch from Dynamics.
-                result = await system.Aliases.GetByKeyAsync(id.ToString());
-            }
-            catch (Gov.Lclb.Cllb.Interfaces.Models.OdataerrorException)
-            {
-                result = null;
-            }
-            return result;
-        }
-
-        public static async Task<MicrosoftDynamicsCRMadoxioApplication> GetApplicationById(this IDynamicsClient system, Guid id)
-        {
-            MicrosoftDynamicsCRMadoxioApplication result;
-            try
-            {
-                // fetch from Dynamics.
-                result = await system.Applications.GetByKeyAsync(id.ToString());
-
-                if (result._adoxioLicencetypeValue != null)
-                {
-                    result.AdoxioLicenceType = system.GetAdoxioLicencetypeById(Guid.Parse(result._adoxioLicencetypeValue));
-                }
-
-                if (result._adoxioApplicantValue != null)
-                {
-                    result.AdoxioApplicant = await system.GetAccountById(Guid.Parse(result._adoxioApplicantValue));
-                }
-            }
-            catch (Gov.Lclb.Cllb.Interfaces.Models.OdataerrorException)
-            {
-                result = null;
-            }
-            return result;
-        }
+        
+        
 
         /// <summary>
         /// Get a contact by their Siteminder ID
@@ -370,61 +288,7 @@ namespace Gov.Lclb.Cllb.Interfaces
             return result;
         }
 
-        public static MicrosoftDynamicsCRMadoxioLegalentity GetAdoxioLegalentityByAccountId(this IDynamicsClient _dynamicsClient, Guid id)
-        {
-            MicrosoftDynamicsCRMadoxioLegalentity result = null;
-            string accountFilter = "_adoxio_account_value eq " + id.ToString();
-            IEnumerable<MicrosoftDynamicsCRMadoxioLegalentity> legalEntities = _dynamicsClient.Adoxiolegalentities.Get(filter: accountFilter).Value;
-            result = legalEntities.FirstOrDefault();
-            return result;
-        }
-
-
-        public static MicrosoftDynamicsCRMadoxioLicencetype GetAdoxioLicencetypeById(this IDynamicsClient _dynamicsClient, Guid id)
-        {
-            MicrosoftDynamicsCRMadoxioLicencetype result = null;
-
-            try
-            {
-                result = _dynamicsClient.AdoxioLicencetypes.GetByKey(id.ToString());
-            }
-            catch (OdataerrorException)
-            {
-                result = null;
-            }
-
-            return result;
-        }
-
-
-        public static MicrosoftDynamicsCRMadoxioEstablishment GetEstablishmentById(this IDynamicsClient _dynamicsClient, Guid id)
-        {
-            MicrosoftDynamicsCRMadoxioEstablishment result = null;
-
-            try
-            {
-                result = _dynamicsClient.Establishments.GetByKey(id.ToString());
-            }
-            catch (OdataerrorException)
-            {
-                result = null;
-            }
-
-            return result;
-        }
-
-
-        public static MicrosoftDynamicsCRMadoxioLicencetype GetAdoxioLicencetypeByName(this IDynamicsClient _dynamicsClient, string name)
-        {
-            MicrosoftDynamicsCRMadoxioLicencetype result = null;
-            string typeFilter = "adoxio_name eq '" + name + "'";
-
-            IEnumerable<MicrosoftDynamicsCRMadoxioLicencetype> licenceTypes = _dynamicsClient.AdoxioLicencetypes.Get(filter: typeFilter).Value;
-
-            result = licenceTypes.FirstOrDefault();
-
-            return result;
-        }
+        
 
         /// <summary>
         /// Convert a service card ID string into a format that is useful (and fits into Dynamics)
@@ -511,6 +375,8 @@ namespace Gov.Lclb.Cllb.Interfaces
                     if (contact != null)
                     {
                         _logger.LogInformation(">>>> LoadUser for BC Services Card: contact != null");
+
+                        /*
                         user = new User();
                         user.FromContact(contact);
 
@@ -544,6 +410,7 @@ namespace Gov.Lclb.Cllb.Interfaces
                             // fail if we can't create.
                             throw (odee);
                         }
+                        */
                     }
                 }
             }
@@ -607,49 +474,6 @@ namespace Gov.Lclb.Cllb.Interfaces
         }
 
         /// <summary>
-        /// Get an Invoice by the Id
-        /// </summary>
-        /// <param name="system">Re</param>
-        /// <param name="id"></param>
-        /// <returns>The Invoice, or null if it does not exist</returns>
-        public static List<MicrosoftDynamicsCRMadoxioPreviousaddress> GetPreviousAddressByContactId(this IDynamicsClient system, string guid)
-        {
-            List<MicrosoftDynamicsCRMadoxioPreviousaddress> result;
-            try
-            {
-                // fetch from Dynamics.
-                var filter = "_adoxio_contactid_value eq " + guid;
-                result = system.Previousaddresses.Get(filter: filter).Value.ToList();
-            }
-            catch (Gov.Lclb.Cllb.Interfaces.Models.OdataerrorException)
-            {
-                result = null;
-            }
-            return result;
-        }
-
-        /// <summary>
-        /// Get an Invoice by the Id
-        /// </summary>
-        /// <param name="system">Re</param>
-        /// <param name="id"></param>
-        /// <returns>The Invoice, or null if it does not exist</returns>
-        public static async Task<MicrosoftDynamicsCRMadoxioPreviousaddress> GetPreviousAddressById(this IDynamicsClient system, string guid)
-        {
-            MicrosoftDynamicsCRMadoxioPreviousaddress result;
-            try
-            {
-                // fetch from Dynamics.
-                result = await system.Previousaddresses.GetByKeyAsync(guid);
-            }
-            catch (Gov.Lclb.Cllb.Interfaces.Models.OdataerrorException)
-            {
-                result = null;
-            }
-            return result;
-        }
-
-        /// <summary>
         /// Verify whether currently logged in user has access to this account id
         /// </summary>
         /// <returns>boolean</returns>
@@ -661,37 +485,13 @@ namespace Gov.Lclb.Cllb.Interfaces
 
             if (userSettings.AccountId != null && userSettings.AccountId.Length > 0)
             {
-                return userSettings.AccountId == accountId.ToString() || IsChildAccount(userSettings.AccountId, accountId.ToString(), _dynamicsClient);
+                return userSettings.AccountId == accountId.ToString();
             }
 
             // if current user doesn't have an account they are probably not logged in
             return false;
         }
 
-        private static bool IsChildAccount(String parentAccountId, String childAccountId, IDynamicsClient _dynamicsClient)
-        {
-            var filter = $"_adoxio_account_value eq {parentAccountId}";
-            var result = false;
-
-            var legalEntities = _dynamicsClient.Adoxiolegalentities.Get(filter: filter).Value.ToList();
-            if (legalEntities.Any(e => e._adoxioShareholderaccountidValue == childAccountId))
-            {
-                result = true;
-            }
-            else
-            {
-                legalEntities = legalEntities.Where(e => !String.IsNullOrEmpty(e._adoxioShareholderaccountidValue)).ToList();
-                for (var i = 0; i < legalEntities.Count; i++)
-                {
-                    if (IsChildAccount(legalEntities[i]._adoxioShareholderaccountidValue, childAccountId, _dynamicsClient))
-                    {
-                        result = true;
-                        break;
-                    }
-                }
-            }
-            return result;
-        }
 
     }
 }

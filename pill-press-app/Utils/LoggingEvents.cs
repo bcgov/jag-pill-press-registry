@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Gov.Lclb.Cllb.Public.Utils
+namespace Gov.Jag.PillPressRegistry.Public.Utils
 {
     public static class LoggingEvents
     {

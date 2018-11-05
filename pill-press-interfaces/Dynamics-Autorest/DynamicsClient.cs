@@ -4,7 +4,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Gov.Lclb.Cllb.Interfaces
+namespace Gov.Jag.PillPressRegistry.Interfaces
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
@@ -16,7 +16,8 @@ namespace Gov.Lclb.Cllb.Interfaces
     using System.Net.Http;
 
     /// <summary>
-    /// Auto Generated
+    /// This OData service is located at
+    /// https://lclbcannabisdev.crm3.dynamics.com/api/data/v8.2/
     /// </summary>
     public partial class DynamicsClient : ServiceClient<DynamicsClient>, IDynamicsClient
     {
@@ -46,86 +47,6 @@ namespace Gov.Lclb.Cllb.Interfaces
         public virtual IAccounts Accounts { get; private set; }
 
         /// <summary>
-        /// Gets the IAliases.
-        /// </summary>
-        public virtual IAliases Aliases { get; private set; }
-
-        /// <summary>
-        /// Gets the IApplications.
-        /// </summary>
-        public virtual IApplications Applications { get; private set; }
-
-        /// <summary>
-        /// Gets the ICorporatehistorysummaries.
-        /// </summary>
-        public virtual ICorporatehistorysummaries Corporatehistorysummaries { get; private set; }
-
-        /// <summary>
-        /// Gets the ICorporateroles.
-        /// </summary>
-        public virtual ICorporateroles Corporateroles { get; private set; }
-
-        /// <summary>
-        /// Gets the IEstablishments.
-        /// </summary>
-        public virtual IEstablishments Establishments { get; private set; }
-
-        /// <summary>
-        /// Gets the IAdoxiolegalentities.
-        /// </summary>
-        public virtual IAdoxiolegalentities Adoxiolegalentities { get; private set; }
-
-        /// <summary>
-        /// Gets the IAdoxioLicencetypes.
-        /// </summary>
-        public virtual IAdoxioLicencetypes AdoxioLicencetypes { get; private set; }
-
-        /// <summary>
-        /// Gets the ILicenses.
-        /// </summary>
-        public virtual ILicenses Licenses { get; private set; }
-
-        /// <summary>
-        /// Gets the IPersonalhistorysummaries.
-        /// </summary>
-        public virtual IPersonalhistorysummaries Personalhistorysummaries { get; private set; }
-
-        /// <summary>
-        /// Gets the IPolicydocuments.
-        /// </summary>
-        public virtual IPolicydocuments Policydocuments { get; private set; }
-
-        /// <summary>
-        /// Gets the IPreviousaddresses.
-        /// </summary>
-        public virtual IPreviousaddresses Previousaddresses { get; private set; }
-
-        /// <summary>
-        /// Gets the ISpddatarows.
-        /// </summary>
-        public virtual ISpddatarows Spddatarows { get; private set; }
-
-        /// <summary>
-        /// Gets the ISpdexportses.
-        /// </summary>
-        public virtual ISpdexportses Spdexportses { get; private set; }
-
-        /// <summary>
-        /// Gets the IAdoxioTiedhouseassociations.
-        /// </summary>
-        public virtual IAdoxioTiedhouseassociations AdoxioTiedhouseassociations { get; private set; }
-
-        /// <summary>
-        /// Gets the IAdoxioTiedhouseconnections.
-        /// </summary>
-        public virtual IAdoxioTiedhouseconnections AdoxioTiedhouseconnections { get; private set; }
-
-        /// <summary>
-        /// Gets the IWorkers.
-        /// </summary>
-        public virtual IWorkers Workers { get; private set; }
-
-        /// <summary>
         /// Gets the IContacts.
         /// </summary>
         public virtual IContacts Contacts { get; private set; }
@@ -134,11 +55,6 @@ namespace Gov.Lclb.Cllb.Interfaces
         /// Gets the IInvoices.
         /// </summary>
         public virtual IInvoices Invoices { get; private set; }
-
-        /// <summary>
-        /// Gets the ISharepointDocumentLocations.
-        /// </summary>
-        public virtual ISharepointDocumentLocations SharepointDocumentLocations { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the DynamicsClient class.
@@ -382,26 +298,9 @@ namespace Gov.Lclb.Cllb.Interfaces
         private void Initialize()
         {
             Accounts = new Accounts(this);
-            Aliases = new Aliases(this);
-            Applications = new Applications(this);
-            Corporatehistorysummaries = new Corporatehistorysummaries(this);
-            Corporateroles = new Corporateroles(this);
-            Establishments = new Establishments(this);
-            Adoxiolegalentities = new Adoxiolegalentities(this);
-            AdoxioLicencetypes = new AdoxioLicencetypes(this);
-            Licenses = new Licenses(this);
-            Personalhistorysummaries = new Personalhistorysummaries(this);
-            Policydocuments = new Policydocuments(this);
-            Previousaddresses = new Previousaddresses(this);
-            Spddatarows = new Spddatarows(this);
-            Spdexportses = new Spdexportses(this);
-            AdoxioTiedhouseassociations = new AdoxioTiedhouseassociations(this);
-            AdoxioTiedhouseconnections = new AdoxioTiedhouseconnections(this);
-            Workers = new Workers(this);
             Contacts = new Contacts(this);
             Invoices = new Invoices(this);
-            SharepointDocumentLocations = new SharepointDocumentLocations(this);
-            BaseUri = new System.Uri("http://localhost");
+            BaseUri = new System.Uri("https://lclbcannabisdev.crm3.dynamics.com/api/data/v8.2");
             SerializationSettings = new JsonSerializerSettings
             {
                 Formatting = Newtonsoft.Json.Formatting.Indented,

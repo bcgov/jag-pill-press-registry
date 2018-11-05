@@ -7,7 +7,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
 
-namespace Gov.Lclb.Cllb.Public.ViewModels
+namespace Gov.Jag.PillPressRegistry.Public.ViewModels
 {
     public enum AdoxioApplicationStatusCodes
     {
