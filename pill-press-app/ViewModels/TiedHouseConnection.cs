@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace Gov.Lclb.Cllb.Public.ViewModels {
+namespace Gov.Jag.PillPressRegistry.Public.ViewModels {
     public class TiedHouseConnection {
         public string id { get; set; } //adoxio_tiedhouseconnectionId (primary key)
         public int? CorpConnectionFederalProducer { get; set; } //adoxio_corpconnectionfederalproducer (PicklistType)

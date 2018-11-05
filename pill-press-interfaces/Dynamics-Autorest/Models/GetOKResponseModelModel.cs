@@ -4,7 +4,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Gov.Lclb.Cllb.Interfaces.Models
+namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 {
     using Newtonsoft.Json;
     using System.Collections;
@@ -12,7 +12,7 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
     using System.Linq;
 
     /// <summary>
-    /// Collection of adoxio_applications
+    /// Collection of invoices
     /// </summary>
     public partial class GetOKResponseModelModel
     {
@@ -27,7 +27,7 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
         /// <summary>
         /// Initializes a new instance of the GetOKResponseModelModel class.
         /// </summary>
-        public GetOKResponseModelModel(IList<MicrosoftDynamicsCRMadoxioApplication> value = default(IList<MicrosoftDynamicsCRMadoxioApplication>))
+        public GetOKResponseModelModel(IList<MicrosoftDynamicsCRMinvoice> value = default(IList<MicrosoftDynamicsCRMinvoice>))
         {
             Value = value;
             CustomInit();
@@ -41,7 +41,7 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "value")]
-        public IList<MicrosoftDynamicsCRMadoxioApplication> Value { get; set; }
+        public IList<MicrosoftDynamicsCRMinvoice> Value { get; set; }
 
     }
 }
