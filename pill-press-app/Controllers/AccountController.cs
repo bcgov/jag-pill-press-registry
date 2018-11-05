@@ -25,17 +25,17 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         private readonly BCeIDBusinessQuery _bceid;
         private readonly IConfiguration Configuration;
         private readonly IDynamicsClient _dynamicsClient;
-        private readonly SharePointFileManager _sharePointFileManager;
+        //private readonly SharePointFileManager _sharePointFileManager;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ILogger _logger;
 
-        public AccountController(IConfiguration configuration, SharePointFileManager sharePointFileManager, IHttpContextAccessor httpContextAccessor, BCeIDBusinessQuery bceid, ILoggerFactory loggerFactory, IDynamicsClient dynamicsClient)
+        public AccountController(IConfiguration configuration, IHttpContextAccessor httpContextAccessor, BCeIDBusinessQuery bceid, ILoggerFactory loggerFactory, IDynamicsClient dynamicsClient)
         {
             Configuration = configuration;
             _bceid = bceid;
             _dynamicsClient = dynamicsClient;
             _httpContextAccessor = httpContextAccessor;
-            _sharePointFileManager = sharePointFileManager;
+            //_sharePointFileManager = sharePointFileManager;
             _logger = loggerFactory.CreateLogger(typeof(AccountController));
         }
 

@@ -16,7 +16,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonIgnore]
+        [JsonProperty(PropertyName = "bcgov_bceid")]
+
         public string ExternalId { get; set; }
 
     }
