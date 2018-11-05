@@ -1,4 +1,4 @@
-namespace Gov.Lclb.Cllb.Interfaces
+namespace Gov.Jag.PillPressRegistry.Interfaces
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;

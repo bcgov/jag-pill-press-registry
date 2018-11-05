@@ -1,8 +1,8 @@
-﻿using Gov.Lclb.Cllb.Interfaces;
-using Gov.Lclb.Cllb.Interfaces.Models;
-using Gov.Lclb.Cllb.Public.Authentication;
-using Gov.Lclb.Cllb.Public.Models;
-using Gov.Lclb.Cllb.Public.ViewModels;
+﻿using Gov.Jag.PillPressRegistry.Interfaces;
+using Gov.Jag.PillPressRegistry.Interfaces.Models;
+using Gov.Jag.PillPressRegistry.Public.Authentication;
+using Gov.Jag.PillPressRegistry.Public.Models;
+using Gov.Jag.PillPressRegistry.Public.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,9 +13,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using static Gov.Lclb.Cllb.Interfaces.SharePointFileManager;
+using static Gov.Jag.PillPressRegistry.Interfaces.SharePointFileManager;
 
-namespace Gov.Lclb.Cllb.Public.Controllers
+namespace Gov.Jag.PillPressRegistry.Public.Controllers
 {
     [Route("api/[controller]")]
     //[Authorize(Policy = "Business-User")]
@@ -36,12 +36,13 @@ namespace Gov.Lclb.Cllb.Public.Controllers
             _logger = loggerFactory.CreateLogger(typeof(FileController));
         }
 
-
-
         private string GetApplicationFolderName(MicrosoftDynamicsCRMadoxioApplication application)
         {
+            /*
             string applicationIdCleaned = application.AdoxioApplicationid.ToString().ToUpper().Replace("-", "");
             string folderName = $"{application.AdoxioJobnumber}_{applicationIdCleaned}";
+            */
+            string folderName = "";
             return folderName;
         }
 
@@ -54,8 +55,11 @@ namespace Gov.Lclb.Cllb.Public.Controllers
 
         private string GetWorkerFolderName(MicrosoftDynamicsCRMadoxioWorker worker)
         {
+            string folderName = "";
+            /*
             string applicationIdCleaned = worker.AdoxioWorkerid.ToString().ToUpper().Replace("-", "");
             string folderName = $"{worker.AdoxioName}_{applicationIdCleaned}";
+            */
             return folderName;
         }
 
@@ -66,6 +70,7 @@ namespace Gov.Lclb.Cllb.Public.Controllers
         /// <returns></returns>
         private string GetDocumentLocationReferenceByRelativeURL(string relativeUrl)
         {
+            /*
             string result = null;
             string sanitized = relativeUrl.Replace("'", "''");
             // first see if one exists.
@@ -98,8 +103,10 @@ namespace Gov.Lclb.Cllb.Public.Controllers
             {
                 result = location.Sharepointdocumentlocationid;
             }
-
+            */
+            string result = null;
             return result;
+            
         }
 
         [HttpPost("{entityId}/attachments/{entityName}")]
@@ -149,18 +156,10 @@ namespace Gov.Lclb.Cllb.Public.Controllers
             var id = Guid.Parse(entityId);
             switch (entityName.ToLower())
             {
-                case "application":
-                    var application = await _dynamicsClient.GetApplicationById(id);
-                    result = application != null && CurrentUserHasAccessToApplicationOwnedBy(application._adoxioApplicantValue);
-                    break;
                 case "contact":
                     var contact = await _dynamicsClient.GetContactById(id);
                     result = contact != null && CurrentUserHasAccessToContactOwnedBy(contact.Contactid);
-                    break;
-                case "worker":
-                    var worker = await _dynamicsClient.GetWorkerById(id);
-                    result = worker != null && CurrentUserHasAccessToContactOwnedBy(worker._adoxioContactidValue);
-                    break;
+                    break;             
                 default:
                     break;
             }
@@ -182,18 +181,11 @@ namespace Gov.Lclb.Cllb.Public.Controllers
             var folderName = "";
             switch (entityName.ToLower())
             {
-                case "application":
-                    var application = await _dynamicsClient.GetApplicationById(Guid.Parse(entityId));
-                    folderName = GetApplicationFolderName(application);
-                    break;
+
                 case "contact":
                     var contact = await _dynamicsClient.GetContactById(Guid.Parse(entityId));
                     folderName = GetContactFolderName(contact);
-                    break;
-                case "worker":
-                    var worker = await _dynamicsClient.GetWorkerById(Guid.Parse(entityId));
-                    folderName = GetWorkerFolderName(worker);
-                    break;
+                    break;                
                 default:
                     break;
             }
@@ -204,23 +196,7 @@ namespace Gov.Lclb.Cllb.Public.Controllers
         {
             switch (entityName.ToLower())
             {
-                case "application":
-                    var patchApplication = new MicrosoftDynamicsCRMadoxioApplication();
-                    try
-                    {
-                        _dynamicsClient.Applications.Update(entityId, patchApplication);
-                    }
-                    catch (OdataerrorException odee)
-                    {
-                        _logger.LogError("Error updating application");
-                        _logger.LogError("Request:");
-                        _logger.LogError(odee.Request.Content);
-                        _logger.LogError("Response:");
-                        _logger.LogError(odee.Response.Content);
-                        // fail if we can't create.
-                        throw (odee);
-                    }
-                    break;
+                
                 case "contact":
                     var patchContact = new MicrosoftDynamicsCRMcontact();
                     try
@@ -238,23 +214,7 @@ namespace Gov.Lclb.Cllb.Public.Controllers
                         throw (odee);
                     }
                     break;
-                case "worker":
-                    var patchWorker = new MicrosoftDynamicsCRMadoxioWorker();
-                    try
-                    {
-                        _dynamicsClient.Workers.Update(entityId, patchWorker);
-                    }
-                    catch (OdataerrorException odee)
-                    {
-                        _logger.LogError("Error updating Contact");
-                        _logger.LogError("Request:");
-                        _logger.LogError(odee.Request.Content);
-                        _logger.LogError("Response:");
-                        _logger.LogError(odee.Response.Content);
-                        // fail if we can't create.
-                        throw (odee);
-                    }
-                    break;
+                
 
                 default:
                     break;
