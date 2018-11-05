@@ -177,7 +177,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             MicrosoftDynamicsCRMaccount result = null;
             try
             {
-                var accountResponse = await system.Accounts.GetAsync(filter: "adoxio_externalid eq '" + sanitizedSiteminderId + "'");
+                var accountResponse = await system.Accounts.GetAsync(filter: "bcgov_bceid eq '" + sanitizedSiteminderId + "'");
                 result = accountResponse.Value.FirstOrDefault();
             }
             catch (Exception)
@@ -283,7 +283,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         {
             string sanitizedSiteminderId = GuidUtility.SanitizeGuidString(siteminderId);
             MicrosoftDynamicsCRMcontact result = null;
-            var contactsResponse = system.Contacts.Get(filter: "adoxio_externalid eq '" + sanitizedSiteminderId + "'");
+            var contactsResponse = system.Contacts.Get(filter: "externaluseridentifier eq '" + sanitizedSiteminderId + "'");
             result = contactsResponse.Value.FirstOrDefault();
             return result;
         }
