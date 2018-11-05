@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
-using Gov.Lclb.Cllb.Public.Models;
+using Gov.Jag.PillPressRegistry.Public.Models;
 
-namespace Gov.Lclb.Cllb.Public.Authorization
+namespace Gov.Jag.PillPressRegistry.Public.Authorization
 {
     /// <summary>
     /// MVC Options Extension

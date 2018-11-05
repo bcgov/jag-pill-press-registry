@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 using Microsoft.AspNetCore.Http;
-using Gov.Lclb.Cllb.Public.Models;
+using Gov.Jag.PillPressRegistry.Public.Models;
 using System;
 
-namespace Gov.Lclb.Cllb.Public.Authentication
+namespace Gov.Jag.PillPressRegistry.Public.Authentication
 {
     /// <summary>
     /// Object to track and manage the authenticated user session

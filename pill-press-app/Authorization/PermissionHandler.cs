@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 
-namespace Gov.Lclb.Cllb.Public.Authorization
+namespace Gov.Jag.PillPressRegistry.Public.Authorization
 {
     /// <summary>
     /// Permission Handler Extension

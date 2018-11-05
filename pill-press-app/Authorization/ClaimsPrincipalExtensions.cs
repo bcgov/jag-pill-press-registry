@@ -1,8 +1,8 @@
 ﻿using System;
-using Gov.Lclb.Cllb.Public.Models;
+using Gov.Jag.PillPressRegistry.Public.Models;
 using System.Security.Claims;
 
-namespace Gov.Lclb.Cllb.Public.Authorization
+namespace Gov.Jag.PillPressRegistry.Public.Authorization
 {
     /// <summary>
     /// Calaims Principal Extension

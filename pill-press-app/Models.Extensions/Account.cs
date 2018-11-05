@@ -1,8 +1,8 @@
 ﻿using System;
-using Gov.Lclb.Cllb.Interfaces.Models;
+using Gov.Jag.PillPressRegistry.Interfaces.Models;
 
 
-namespace Gov.Lclb.Cllb.Public.Models
+namespace Gov.Jag.PillPressRegistry.Public.Models
 {
     /// <summary>
     /// ViewModel transforms.
@@ -28,26 +28,20 @@ namespace Gov.Lclb.Cllb.Public.Models
             {
                 toDynamics.Description = fromVM.description;
             }
+
+            // copy the exernalId.
+
             if (copyIfNull || (!copyIfNull && fromVM.externalId != null))
             {
-                toDynamics.AdoxioExternalid = fromVM.externalId;
+                toDynamics.ExternalId = fromVM.externalId;
             }
-            if (copyIfNull || (!copyIfNull && fromVM.bcIncorporationNumber != null))
-            {
-                toDynamics.AdoxioBcincorporationnumber = fromVM.bcIncorporationNumber;
-            }
-            if (copyIfNull || (!copyIfNull && fromVM.dateOfIncorporationInBC != null))
-            {
-                toDynamics.AdoxioDateofincorporationinbc = fromVM.dateOfIncorporationInBC;
-            }
+            
+            
             if (copyIfNull || (!copyIfNull && fromVM.businessNumber != null))
             {
                 toDynamics.Accountnumber = fromVM.businessNumber;
             }
-            if (copyIfNull || (!copyIfNull && fromVM.pstNumber != null))
-            {
-                toDynamics.AdoxioPstnumber = fromVM.pstNumber;
-            }
+            
             if (copyIfNull || (!copyIfNull && fromVM.contactEmail != null))
             {
                 toDynamics.Emailaddress1 = fromVM.contactEmail;
@@ -116,11 +110,8 @@ namespace Gov.Lclb.Cllb.Public.Models
 
                 accountVM.name = account.Name;
                 accountVM.description = account.Description;
-                accountVM.externalId = account.AdoxioExternalid;
-                accountVM.bcIncorporationNumber = account.AdoxioBcincorporationnumber;
-                accountVM.dateOfIncorporationInBC = account.AdoxioDateofincorporationinbc;
+                accountVM.externalId = account.ExternalId;
                 accountVM.businessNumber = account.Accountnumber;
-                accountVM.pstNumber = account.AdoxioPstnumber;
                 accountVM.contactEmail = account.Emailaddress1;
                 accountVM.contactPhone = account.Telephone1;
                 accountVM.mailingAddressName = account.Address1Name;
@@ -138,10 +129,6 @@ namespace Gov.Lclb.Cllb.Public.Models
                     // TODO - load other fields (if necessary)
                 }
 
-                if (account.AdoxioBusinesstype != null)
-                {
-                    accountVM.businessType = Enum.ToObject(typeof(Gov.Lclb.Cllb.Public.ViewModels.AdoxioApplicantTypeCodes), account.AdoxioBusinesstype).ToString();
-                }
             }
             return accountVM;
         }

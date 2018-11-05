@@ -1,8 +1,7 @@
-using Gov.Lclb.Cllb.Interfaces;
-using Gov.Lclb.Cllb.Public.Authentication;
-using Gov.Lclb.Cllb.Public.Authorization;
-using Gov.Lclb.Cllb.Public.Contexts;
-using Gov.Lclb.Cllb.Public.Models;
+using Gov.Jag.PillPressRegistry.Interfaces;
+using Gov.Jag.PillPressRegistry.Public.Authentication;
+using Gov.Jag.PillPressRegistry.Public.Authorization;
+using Gov.Jag.PillPressRegistry.Public.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.DataProtection;
@@ -27,7 +26,7 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Gov.Lclb.Cllb.Public
+namespace Gov.Jag.PillPressRegistry.Public
 {
     public class Startup
     {
