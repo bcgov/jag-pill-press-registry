@@ -8,11 +8,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Gov.Lclb.Cllb.Public.Models;
-using Gov.Lclb.Cllb.Interfaces;
-using Gov.Lclb.Cllb.Public.Utils;
+using Gov.Jag.PillPressRegistry.Public.Models;
+using Gov.Jag.PillPressRegistry.Interfaces;
+using Gov.Jag.PillPressRegistry.Public.Utils;
 
-namespace Gov.Lclb.Cllb.Public.Authentication
+namespace Gov.Jag.PillPressRegistry.Public.Authentication
 {
     #region SiteMinder Authentication Options
     /// <summary>

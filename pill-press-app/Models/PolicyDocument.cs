@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Gov.Lclb.Cllb.Public.Models
+namespace Gov.Jag.PillPressRegistry.Public.Models
 {
     /// <summary>
     /// Policy Database Model

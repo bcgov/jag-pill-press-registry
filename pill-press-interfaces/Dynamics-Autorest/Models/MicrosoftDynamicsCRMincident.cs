@@ -4,7 +4,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Gov.Lclb.Cllb.Interfaces.Models
+namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 {
     using Newtonsoft.Json;
     using System.Collections;
@@ -29,170 +29,111 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
         /// Initializes a new instance of the MicrosoftDynamicsCRMincident
         /// class.
         /// </summary>
-        public MicrosoftDynamicsCRMincident(double? sentimentvalue = default(double?), int? onholdtime = default(int?), int? adoxioServicehourstuesdayopen = default(int?), string traversedpath = default(string), int? adoxioServicehoursthursdayopen = default(int?), int? adoxioAlcoholsensematerial = default(int?), int? adoxioInspectionsminors = default(int?), string _transactioncurrencyidValue = default(string), string adoxioEstablishmentaddress = default(string), System.DateTimeOffset? adoxioInspectiondate = default(System.DateTimeOffset?), string adoxioExternalinvestigationjobnumber = default(string), object exchangerate = default(object), int? adoxioMinorsserved = default(int?), int? adoxioServicehourssundayclose = default(int?), int? adoxioInspectiontimeouthh = default(int?), int? adoxioServicehourstuesdayclose = default(int?), string adoxioInspchecklistdepictsaipfloorplannotes = default(string), int? incidentstagecode = default(int?), string _createdbyValue = default(string), int? adoxioInspchecklisttakeandsendphotos = default(int?), int? adoxioInspectionservingitright = default(int?), int? casetypecode = default(int?), string title = default(string), int? numberofchildincidents = default(int?), string _owninguserValue = default(string), string _slainvokedidValue = default(string), int? adoxioInspectionentertainment = default(int?), int? adoxioInspectionintoxication = default(int?), string adoxioInspchecklistphototakennotes = default(string), bool? followuptaskcreated = default(bool?), int? adoxioCommunitydisturbance = default(int?), int? firstresponseslastatus = default(int?), int? adoxioServicehourssaturdayclose = default(int?), System.DateTimeOffset? modifiedon = default(System.DateTimeOffset?), string adoxioNoeanarrative = default(string), string _adoxioInvestigationValue = default(string), string _contactidValue = default(string), bool? adoxioServicehoursstandardhours = default(bool?), int? statecode = default(int?), int? messagetypecode = default(int?), bool? adoxioDisturbanceofpersonsinthevicinity = default(bool?), long? entityimageTimestamp = default(long?), bool? merged = default(bool?), System.DateTimeOffset? overriddencreatedon = default(System.DateTimeOffset?), string _createdbyexternalpartyValue = default(string), bool? customercontacted = default(bool?), System.DateTimeOffset? adoxioDateout = default(System.DateTimeOffset?), System.DateTimeOffset? createdon = default(System.DateTimeOffset?), string _resolvebykpiidValue = default(string), string _adoxioTerritoryValue = default(string), string adoxioInspectioncompleteddate = default(string), string _adoxioAdjudicatorValue = default(string), string _owningteamValue = default(string), string _existingcaseValue = default(string), string _adoxioInspectorValue = default(string), int? customersatisfactioncode = default(int?), int? adoxioContactedpolicereconcerns = default(int?), string _firstresponsebykpiidValue = default(string), int? adoxioOperatingcontrarytolicence = default(int?), string _primarycontactidValue = default(string), int? adoxioServicehoursmondayopen = default(int?), string _kbarticleidValue = default(string), int? adoxioInspectionliquorlicence = default(int?), string _subjectidValue = default(string), int? utcconversiontimezonecode = default(int?), bool? isdecrementing = default(bool?), int? adoxioServicehoursfridayopen = default(int?), string stageid = default(string), string adoxioNoeasection1penaltychoice = default(string), object entityimage = default(object), System.DateTimeOffset? followupby = default(System.DateTimeOffset?), int? statuscode = default(int?), string _accountidValue = default(string), int? actualserviceunits = default(int?), System.DateTimeOffset? escalatedon = default(System.DateTimeOffset?), bool? checkemail = default(bool?), System.DateTimeOffset? resolveby = default(System.DateTimeOffset?), string _masteridValue = default(string), string incidentid = default(string), string _entitlementidValue = default(string), int? importsequencenumber = default(int?), int? servicestage = default(int?), int? adoxioServicehourssundayopen = default(int?), string _adoxioLicenceValue = default(string), bool? decremententitlementterm = default(bool?), bool? routecase = default(bool?), double? influencescore = default(double?), System.DateTimeOffset? responseby = default(System.DateTimeOffset?), string adoxioNoeachoiceprocedure = default(string), string _modifiedbyexternalpartyValue = default(string), string _modifiedbyValue = default(string), int? adoxioServicehoursmondayclose = default(int?), string _modifiedonbehalfbyValue = default(string), string _productidValue = default(string), string _createdonbehalfbyValue = default(string), int? caseorigincode = default(int?), System.DateTimeOffset? adoxioDatein = default(System.DateTimeOffset?), int? adoxioServicehourswednesdayopen = default(int?), int? adoxioEmployeesconsumingliquor = default(int?), int? timezoneruleversionnumber = default(int?), string adoxioMapagentid2 = default(string), bool? firstresponsesent = default(bool?), int? adoxioInspchecklistdepictsaipfloorplan = default(int?), int? adoxioInspectionnumberofpatrons = default(int?), int? adoxioServicehoursfridayclose = default(int?), string adoxioMapagentid1 = default(string), string processid = default(string), int? adoxioInspectiontimeoutmm = default(int?), string productserialnumber = default(string), int? adoxioInspchecklistaccordancewithaipletter = default(int?), string entityimageid = default(string), string _contractidValue = default(string), int? contractservicelevelcode = default(int?), string _adoxioEstablishmentValue = default(string), int? adoxioInspectionliquorregister = default(int?), System.DateTimeOffset? adoxioInspectioncompletedate = default(System.DateTimeOffset?), int? adoxioInspectionoutcome = default(int?), bool? isescalated = default(bool?), string _adoxioRegionalmanagerValue = default(string), int? severitycode = default(int?), string _adoxioRegionValue = default(string), int? adoxioInspectiontype = default(int?), System.DateTimeOffset? lastonholdtime = default(System.DateTimeOffset?), string ticketnumber = default(string), int? adoxioInspectionviolationticketsissued = default(int?), int? adoxioServicehoursthursdayclose = default(int?), string _adoxioComplaintValue = default(string), int? adoxioPiecesofidchecked = default(int?), string _contractdetailidValue = default(string), int? adoxioInspectionredlinefloorplan = default(int?), string _parentcaseidValue = default(string), int? adoxioInspchecklistfollowupinspectionrequired = default(int?), bool? blockedprofile = default(bool?), int? billedserviceunits = default(int?), int? adoxioInspectiontimeinmm = default(int?), string _socialprofileidValue = default(string), string _owneridValue = default(string), string _owningbusinessunitValue = default(string), int? adoxioDrinksizesminpricing = default(int?), string adoxioExternalinvestigationfilenumber = default(string), string adoxioComments = default(string), string _adoxioLicenseeValue = default(string), System.DateTimeOffset? adoxioActualinspectiondate = default(System.DateTimeOffset?), int? adoxioInspectiontimeinhh = default(int?), string description = default(string), string _slaidValue = default(string), int? adoxioServicehourswednesdayclose = default(int?), System.DateTimeOffset? adoxioInspectionduedate = default(System.DateTimeOffset?), int? adoxioInspectionliquorservice = default(int?), bool? activitiescomplete = default(bool?), int? resolvebyslastatus = default(int?), int? adoxioInspectionovercrowding = default(int?), string _adoxioApplicationValue = default(string), int? adoxioServicehourssaturdayopen = default(int?), long? versionnumber = default(long?), System.DateTimeOffset? adoxioNoeasentdate = default(System.DateTimeOffset?), int? adoxioDiscussedmapprogram = default(int?), string _customeridValue = default(string), string entityimageUrl = default(string), int? prioritycode = default(int?), string adoxioInspchecklistaccordancewithaipletternotes = default(string), int? adoxioDisorderlyorunlawfulactivities = default(int?), IList<MicrosoftDynamicsCRMpostregarding> incidentPostRegardings = default(IList<MicrosoftDynamicsCRMpostregarding>), IList<MicrosoftDynamicsCRMpostfollow> incidentPostFollows = default(IList<MicrosoftDynamicsCRMpostfollow>), MicrosoftDynamicsCRMincident masterid = default(MicrosoftDynamicsCRMincident), IList<MicrosoftDynamicsCRMincident> incidentMasterIncident = default(IList<MicrosoftDynamicsCRMincident>), IList<MicrosoftDynamicsCRMlead> originatingCaseLead = default(IList<MicrosoftDynamicsCRMlead>), MicrosoftDynamicsCRMincident parentcaseid = default(MicrosoftDynamicsCRMincident), IList<MicrosoftDynamicsCRMincident> incidentParentIncident = default(IList<MicrosoftDynamicsCRMincident>), MicrosoftDynamicsCRMsystemuser modifiedonbehalfby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMactivityparty> incidentActivityParties = default(IList<MicrosoftDynamicsCRMactivityparty>), MicrosoftDynamicsCRMsla slainvokedidSla = default(MicrosoftDynamicsCRMsla), MicrosoftDynamicsCRMtransactioncurrency transactioncurrencyid = default(MicrosoftDynamicsCRMtransactioncurrency), IList<MicrosoftDynamicsCRMsocialactivity> incidentSocialActivities = default(IList<MicrosoftDynamicsCRMsocialactivity>), MicrosoftDynamicsCRMslakpiinstance firstresponsebykpiid = default(MicrosoftDynamicsCRMslakpiinstance), MicrosoftDynamicsCRMsla slaidSla = default(MicrosoftDynamicsCRMsla), MicrosoftDynamicsCRMproduct productid = default(MicrosoftDynamicsCRMproduct), IList<MicrosoftDynamicsCRMslakpiinstance> slakpiinstanceIncident = default(IList<MicrosoftDynamicsCRMslakpiinstance>), IList<MicrosoftDynamicsCRMactioncard> incidentActioncard = default(IList<MicrosoftDynamicsCRMactioncard>), IList<MicrosoftDynamicsCRMappointment> incidentAppointments = default(IList<MicrosoftDynamicsCRMappointment>), IList<MicrosoftDynamicsCRMconnection> incidentConnections2 = default(IList<MicrosoftDynamicsCRMconnection>), IList<MicrosoftDynamicsCRMserviceappointment> incidentServiceAppointments = default(IList<MicrosoftDynamicsCRMserviceappointment>), MicrosoftDynamicsCRMteam owningteam = default(MicrosoftDynamicsCRMteam), MicrosoftDynamicsCRMcontractdetail contractdetailid = default(MicrosoftDynamicsCRMcontractdetail), MicrosoftDynamicsCRMincident existingcase = default(MicrosoftDynamicsCRMincident), IList<MicrosoftDynamicsCRMincident> incidentExistingcase = default(IList<MicrosoftDynamicsCRMincident>), IList<MicrosoftDynamicsCRMqueueitem> incidentQueueItem = default(IList<MicrosoftDynamicsCRMqueueitem>), IList<MicrosoftDynamicsCRMknowledgebaserecord> knowledgeBaseRecordIncident = default(IList<MicrosoftDynamicsCRMknowledgebaserecord>), IList<MicrosoftDynamicsCRMphonetocaseprocess> incidentPhonetocaseprocess = default(IList<MicrosoftDynamicsCRMphonetocaseprocess>), IList<MicrosoftDynamicsCRMincidentresolution> incidentIncidentResolutions = default(IList<MicrosoftDynamicsCRMincidentresolution>), IList<MicrosoftDynamicsCRMemail> incidentEmails = default(IList<MicrosoftDynamicsCRMemail>), MicrosoftDynamicsCRMprocessstage stageidProcessstage = default(MicrosoftDynamicsCRMprocessstage), IList<MicrosoftDynamicsCRMasyncoperation> incidentAsyncOperations = default(IList<MicrosoftDynamicsCRMasyncoperation>), IList<MicrosoftDynamicsCRMduplicaterecord> incidentDuplicateMatchingRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMphonecall> incidentPhonecalls = default(IList<MicrosoftDynamicsCRMphonecall>), IList<MicrosoftDynamicsCRMconnection> incidentConnections1 = default(IList<MicrosoftDynamicsCRMconnection>), MicrosoftDynamicsCRMbusinessunit owningbusinessunit = default(MicrosoftDynamicsCRMbusinessunit), MicrosoftDynamicsCRMcontact customeridContact = default(MicrosoftDynamicsCRMcontact), MicrosoftDynamicsCRMsubject subjectid = default(MicrosoftDynamicsCRMsubject), MicrosoftDynamicsCRMentitlement entitlementid = default(MicrosoftDynamicsCRMentitlement), IList<MicrosoftDynamicsCRMannotation> incidentAnnotation = default(IList<MicrosoftDynamicsCRMannotation>), IList<MicrosoftDynamicsCRMrecurringappointmentmaster> incidentRecurringAppointmentMasters = default(IList<MicrosoftDynamicsCRMrecurringappointmentmaster>), MicrosoftDynamicsCRMsocialprofile socialprofileid = default(MicrosoftDynamicsCRMsocialprofile), MicrosoftDynamicsCRMsystemuser createdby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMactivitypointer> incidentActivityPointers = default(IList<MicrosoftDynamicsCRMactivitypointer>), IList<MicrosoftDynamicsCRMbulkdeletefailure> incidentBulkDeleteFailures = default(IList<MicrosoftDynamicsCRMbulkdeletefailure>), MicrosoftDynamicsCRMaccount customeridAccount = default(MicrosoftDynamicsCRMaccount), MicrosoftDynamicsCRMsystemuser owninguser = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMslakpiinstance resolvebykpiid = default(MicrosoftDynamicsCRMslakpiinstance), MicrosoftDynamicsCRMcontact primarycontactid = default(MicrosoftDynamicsCRMcontact), MicrosoftDynamicsCRMcontact responsiblecontactid = default(MicrosoftDynamicsCRMcontact), MicrosoftDynamicsCRMsystemuser createdonbehalfby = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMprincipal ownerid = default(MicrosoftDynamicsCRMprincipal), IList<MicrosoftDynamicsCRMletter> incidentLetters = default(IList<MicrosoftDynamicsCRMletter>), IList<MicrosoftDynamicsCRMsyncerror> incidentSyncErrors = default(IList<MicrosoftDynamicsCRMsyncerror>), MicrosoftDynamicsCRMsystemuser modifiedby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMfax> incidentFaxes = default(IList<MicrosoftDynamicsCRMfax>), MicrosoftDynamicsCRMcontract contractid = default(MicrosoftDynamicsCRMcontract), IList<MicrosoftDynamicsCRMknowledgearticleincident> knowledgearticleIncidents = default(IList<MicrosoftDynamicsCRMknowledgearticleincident>), IList<MicrosoftDynamicsCRMduplicaterecord> incidentDuplicateBaseRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMtask> incidentTasks = default(IList<MicrosoftDynamicsCRMtask>), MicrosoftDynamicsCRMkbarticle kbarticleid = default(MicrosoftDynamicsCRMkbarticle), IList<MicrosoftDynamicsCRMsharepointdocumentlocation> incidentSharePointDocumentLocations = default(IList<MicrosoftDynamicsCRMsharepointdocumentlocation>), MicrosoftDynamicsCRMaccount adoxioLicensee = default(MicrosoftDynamicsCRMaccount), MicrosoftDynamicsCRMadoxioApplication adoxioApplication = default(MicrosoftDynamicsCRMadoxioApplication), MicrosoftDynamicsCRMadoxioEstablishment adoxioEstablishment = default(MicrosoftDynamicsCRMadoxioEstablishment), MicrosoftDynamicsCRMadoxioLicences adoxioLicence = default(MicrosoftDynamicsCRMadoxioLicences), MicrosoftDynamicsCRMadoxioRegion adoxioRegion = default(MicrosoftDynamicsCRMadoxioRegion), MicrosoftDynamicsCRMadoxioTerritory adoxioTerritory = default(MicrosoftDynamicsCRMadoxioTerritory), IList<MicrosoftDynamicsCRMadoxioComplaincemeeting> adoxioIncidentAdoxioComplaincemeetingInspection = default(IList<MicrosoftDynamicsCRMadoxioComplaincemeeting>), IList<MicrosoftDynamicsCRMadoxioContravention> adoxioIncidentAdoxioContraventionInspection = default(IList<MicrosoftDynamicsCRMadoxioContravention>), IList<MicrosoftDynamicsCRMadoxioLicencetype> adoxioIncidentAdoxioLicencetype = default(IList<MicrosoftDynamicsCRMadoxioLicencetype>), MicrosoftDynamicsCRMsystemuser adoxioAdjudicator = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser adoxioInspector = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser adoxioRegionalManager = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMadoxioComplaint adoxioComplaint = default(MicrosoftDynamicsCRMadoxioComplaint), MicrosoftDynamicsCRMadoxioInvestigation adoxioInvestigation = default(MicrosoftDynamicsCRMadoxioInvestigation))
+        public MicrosoftDynamicsCRMincident(double? sentimentvalue = default(double?), int? onholdtime = default(int?), string traversedpath = default(string), int? bcgovApplicationtype = default(int?), bool? bcgovIntendtopurchaseequipment = default(bool?), string _transactioncurrencyidValue = default(string), object exchangerate = default(object), bool? bcgovCurrentlyownusepossessequipment = default(bool?), bool? bcgovDeclarationofcorrectinformation = default(bool?), int? incidentstagecode = default(int?), string _createdbyValue = default(string), int? casetypecode = default(int?), string title = default(string), int? numberofchildincidents = default(int?), string bcgovBceiduserguid = default(string), string _owninguserValue = default(string), string _slainvokedidValue = default(string), bool? followuptaskcreated = default(bool?), int? firstresponseslastatus = default(int?), bool? bcgovFoippaconsent = default(bool?), System.DateTimeOffset? modifiedon = default(System.DateTimeOffset?), string _contactidValue = default(string), bool? bcgovConsentforemailcorrespondence = default(bool?), int? statecode = default(int?), int? messagetypecode = default(int?), string bcgovManufacturingprocessdescription = default(string), long? entityimageTimestamp = default(long?), bool? merged = default(bool?), System.DateTimeOffset? overriddencreatedon = default(System.DateTimeOffset?), string _createdbyexternalpartyValue = default(string), string bcgovBceidemail = default(string), bool? bcgovProvidingmanufacturingtoothers = default(bool?), bool? customercontacted = default(bool?), System.DateTimeOffset? createdon = default(System.DateTimeOffset?), string _resolvebykpiidValue = default(string), string _owningteamValue = default(string), string _existingcaseValue = default(string), int? customersatisfactioncode = default(int?), string _firstresponsebykpiidValue = default(string), string _primarycontactidValue = default(string), string _kbarticleidValue = default(string), string _subjectidValue = default(string), int? utcconversiontimezonecode = default(int?), bool? isdecrementing = default(bool?), string stageid = default(string), object entityimage = default(object), System.DateTimeOffset? followupby = default(System.DateTimeOffset?), int? statuscode = default(int?), string _accountidValue = default(string), int? actualserviceunits = default(int?), System.DateTimeOffset? escalatedon = default(System.DateTimeOffset?), bool? bcgovBorrowrentleaseequipment = default(bool?), bool? checkemail = default(bool?), System.DateTimeOffset? resolveby = default(System.DateTimeOffset?), string _masteridValue = default(string), bool? bcgovProducingownproduct = default(bool?), string incidentid = default(string), string _entitlementidValue = default(string), int? importsequencenumber = default(int?), int? servicestage = default(int?), bool? decremententitlementterm = default(bool?), bool? routecase = default(bool?), string bcgovDetailsofproductsprovidedtoothers = default(string), string bcgovApplicationid = default(string), double? influencescore = default(double?), System.DateTimeOffset? responseby = default(System.DateTimeOffset?), string _modifiedbyexternalpartyValue = default(string), string _modifiedbyValue = default(string), bool? bcgovSellequipment = default(bool?), string _modifiedonbehalfbyValue = default(string), string _productidValue = default(string), string _createdonbehalfbyValue = default(string), int? caseorigincode = default(int?), int? timezoneruleversionnumber = default(int?), string bcgovBceid = default(string), bool? firstresponsesent = default(bool?), string processid = default(string), bool? bcgovOwnintendtoownequipmentforbusinessuse = default(bool?), string productserialnumber = default(string), string entityimageid = default(string), string _contractidValue = default(string), int? contractservicelevelcode = default(int?), bool? isescalated = default(bool?), int? severitycode = default(int?), System.DateTimeOffset? lastonholdtime = default(System.DateTimeOffset?), string ticketnumber = default(string), string _contractdetailidValue = default(string), string _parentcaseidValue = default(string), bool? blockedprofile = default(bool?), int? billedserviceunits = default(int?), string _socialprofileidValue = default(string), string _owneridValue = default(string), string _owningbusinessunitValue = default(string), string bcgovMainbusinessfocus = default(string), string description = default(string), string _slaidValue = default(string), bool? activitiescomplete = default(bool?), int? resolvebyslastatus = default(int?), long? versionnumber = default(long?), string _customeridValue = default(string), string entityimageUrl = default(string), int? prioritycode = default(int?), string bcgovDetailsofownproducts = default(string), IList<MicrosoftDynamicsCRMpostregarding> incidentPostRegardings = default(IList<MicrosoftDynamicsCRMpostregarding>), IList<MicrosoftDynamicsCRMpostfollow> incidentPostFollows = default(IList<MicrosoftDynamicsCRMpostfollow>), MicrosoftDynamicsCRMincident masterid = default(MicrosoftDynamicsCRMincident), IList<MicrosoftDynamicsCRMincident> incidentMasterIncident = default(IList<MicrosoftDynamicsCRMincident>), IList<MicrosoftDynamicsCRMlead> originatingCaseLead = default(IList<MicrosoftDynamicsCRMlead>), MicrosoftDynamicsCRMincident parentcaseid = default(MicrosoftDynamicsCRMincident), IList<MicrosoftDynamicsCRMincident> incidentParentIncident = default(IList<MicrosoftDynamicsCRMincident>), MicrosoftDynamicsCRMsystemuser modifiedonbehalfby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMactivityparty> incidentActivityParties = default(IList<MicrosoftDynamicsCRMactivityparty>), MicrosoftDynamicsCRMsla slainvokedidSla = default(MicrosoftDynamicsCRMsla), MicrosoftDynamicsCRMtransactioncurrency transactioncurrencyid = default(MicrosoftDynamicsCRMtransactioncurrency), IList<MicrosoftDynamicsCRMsocialactivity> incidentSocialActivities = default(IList<MicrosoftDynamicsCRMsocialactivity>), MicrosoftDynamicsCRMslakpiinstance firstresponsebykpiid = default(MicrosoftDynamicsCRMslakpiinstance), MicrosoftDynamicsCRMsla slaidSla = default(MicrosoftDynamicsCRMsla), MicrosoftDynamicsCRMproduct productid = default(MicrosoftDynamicsCRMproduct), IList<MicrosoftDynamicsCRMslakpiinstance> slakpiinstanceIncident = default(IList<MicrosoftDynamicsCRMslakpiinstance>), IList<MicrosoftDynamicsCRMactioncard> incidentActioncard = default(IList<MicrosoftDynamicsCRMactioncard>), IList<MicrosoftDynamicsCRMappointment> incidentAppointments = default(IList<MicrosoftDynamicsCRMappointment>), IList<MicrosoftDynamicsCRMconnection> incidentConnections2 = default(IList<MicrosoftDynamicsCRMconnection>), IList<MicrosoftDynamicsCRMserviceappointment> incidentServiceAppointments = default(IList<MicrosoftDynamicsCRMserviceappointment>), MicrosoftDynamicsCRMteam owningteam = default(MicrosoftDynamicsCRMteam), MicrosoftDynamicsCRMcontractdetail contractdetailid = default(MicrosoftDynamicsCRMcontractdetail), MicrosoftDynamicsCRMincident existingcase = default(MicrosoftDynamicsCRMincident), IList<MicrosoftDynamicsCRMincident> incidentExistingcase = default(IList<MicrosoftDynamicsCRMincident>), IList<MicrosoftDynamicsCRMqueueitem> incidentQueueItem = default(IList<MicrosoftDynamicsCRMqueueitem>), IList<MicrosoftDynamicsCRMknowledgebaserecord> knowledgeBaseRecordIncident = default(IList<MicrosoftDynamicsCRMknowledgebaserecord>), IList<MicrosoftDynamicsCRMphonetocaseprocess> incidentPhonetocaseprocess = default(IList<MicrosoftDynamicsCRMphonetocaseprocess>), IList<MicrosoftDynamicsCRMincidentresolution> incidentIncidentResolutions = default(IList<MicrosoftDynamicsCRMincidentresolution>), IList<MicrosoftDynamicsCRMemail> incidentEmails = default(IList<MicrosoftDynamicsCRMemail>), MicrosoftDynamicsCRMprocessstage stageidProcessstage = default(MicrosoftDynamicsCRMprocessstage), IList<MicrosoftDynamicsCRMasyncoperation> incidentAsyncOperations = default(IList<MicrosoftDynamicsCRMasyncoperation>), IList<MicrosoftDynamicsCRMduplicaterecord> incidentDuplicateMatchingRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMphonecall> incidentPhonecalls = default(IList<MicrosoftDynamicsCRMphonecall>), IList<MicrosoftDynamicsCRMconnection> incidentConnections1 = default(IList<MicrosoftDynamicsCRMconnection>), MicrosoftDynamicsCRMbusinessunit owningbusinessunit = default(MicrosoftDynamicsCRMbusinessunit), MicrosoftDynamicsCRMcontact customeridContact = default(MicrosoftDynamicsCRMcontact), MicrosoftDynamicsCRMsubject subjectid = default(MicrosoftDynamicsCRMsubject), MicrosoftDynamicsCRMentitlement entitlementid = default(MicrosoftDynamicsCRMentitlement), IList<MicrosoftDynamicsCRMannotation> incidentAnnotation = default(IList<MicrosoftDynamicsCRMannotation>), IList<MicrosoftDynamicsCRMrecurringappointmentmaster> incidentRecurringAppointmentMasters = default(IList<MicrosoftDynamicsCRMrecurringappointmentmaster>), MicrosoftDynamicsCRMsocialprofile socialprofileid = default(MicrosoftDynamicsCRMsocialprofile), MicrosoftDynamicsCRMsystemuser createdby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMactivitypointer> incidentActivityPointers = default(IList<MicrosoftDynamicsCRMactivitypointer>), IList<MicrosoftDynamicsCRMbulkdeletefailure> incidentBulkDeleteFailures = default(IList<MicrosoftDynamicsCRMbulkdeletefailure>), MicrosoftDynamicsCRMaccount customeridAccount = default(MicrosoftDynamicsCRMaccount), MicrosoftDynamicsCRMsystemuser owninguser = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMslakpiinstance resolvebykpiid = default(MicrosoftDynamicsCRMslakpiinstance), MicrosoftDynamicsCRMcontact primarycontactid = default(MicrosoftDynamicsCRMcontact), MicrosoftDynamicsCRMcontact responsiblecontactid = default(MicrosoftDynamicsCRMcontact), MicrosoftDynamicsCRMsystemuser createdonbehalfby = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMprincipal ownerid = default(MicrosoftDynamicsCRMprincipal), IList<MicrosoftDynamicsCRMletter> incidentLetters = default(IList<MicrosoftDynamicsCRMletter>), IList<MicrosoftDynamicsCRMsyncerror> incidentSyncErrors = default(IList<MicrosoftDynamicsCRMsyncerror>), MicrosoftDynamicsCRMsystemuser modifiedby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMfax> incidentFaxes = default(IList<MicrosoftDynamicsCRMfax>), MicrosoftDynamicsCRMcontract contractid = default(MicrosoftDynamicsCRMcontract), IList<MicrosoftDynamicsCRMknowledgearticleincident> knowledgearticleIncidents = default(IList<MicrosoftDynamicsCRMknowledgearticleincident>), IList<MicrosoftDynamicsCRMduplicaterecord> incidentDuplicateBaseRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMtask> incidentTasks = default(IList<MicrosoftDynamicsCRMtask>), MicrosoftDynamicsCRMkbarticle kbarticleid = default(MicrosoftDynamicsCRMkbarticle), IList<MicrosoftDynamicsCRMsharepointdocumentlocation> incidentSharePointDocumentLocations = default(IList<MicrosoftDynamicsCRMsharepointdocumentlocation>), IList<MicrosoftDynamicsCRMteam> incidentTeams = default(IList<MicrosoftDynamicsCRMteam>))
         {
             Sentimentvalue = sentimentvalue;
             Onholdtime = onholdtime;
-            AdoxioServicehourstuesdayopen = adoxioServicehourstuesdayopen;
             Traversedpath = traversedpath;
-            AdoxioServicehoursthursdayopen = adoxioServicehoursthursdayopen;
-            AdoxioAlcoholsensematerial = adoxioAlcoholsensematerial;
-            AdoxioInspectionsminors = adoxioInspectionsminors;
+            BcgovApplicationtype = bcgovApplicationtype;
+            BcgovIntendtopurchaseequipment = bcgovIntendtopurchaseequipment;
             this._transactioncurrencyidValue = _transactioncurrencyidValue;
-            AdoxioEstablishmentaddress = adoxioEstablishmentaddress;
-            AdoxioInspectiondate = adoxioInspectiondate;
-            AdoxioExternalinvestigationjobnumber = adoxioExternalinvestigationjobnumber;
             Exchangerate = exchangerate;
-            AdoxioMinorsserved = adoxioMinorsserved;
-            AdoxioServicehourssundayclose = adoxioServicehourssundayclose;
-            AdoxioInspectiontimeouthh = adoxioInspectiontimeouthh;
-            AdoxioServicehourstuesdayclose = adoxioServicehourstuesdayclose;
-            AdoxioInspchecklistdepictsaipfloorplannotes = adoxioInspchecklistdepictsaipfloorplannotes;
+            BcgovCurrentlyownusepossessequipment = bcgovCurrentlyownusepossessequipment;
+            BcgovDeclarationofcorrectinformation = bcgovDeclarationofcorrectinformation;
             Incidentstagecode = incidentstagecode;
             this._createdbyValue = _createdbyValue;
-            AdoxioInspchecklisttakeandsendphotos = adoxioInspchecklisttakeandsendphotos;
-            AdoxioInspectionservingitright = adoxioInspectionservingitright;
             Casetypecode = casetypecode;
             Title = title;
             Numberofchildincidents = numberofchildincidents;
+            BcgovBceiduserguid = bcgovBceiduserguid;
             this._owninguserValue = _owninguserValue;
             this._slainvokedidValue = _slainvokedidValue;
-            AdoxioInspectionentertainment = adoxioInspectionentertainment;
-            AdoxioInspectionintoxication = adoxioInspectionintoxication;
-            AdoxioInspchecklistphototakennotes = adoxioInspchecklistphototakennotes;
             Followuptaskcreated = followuptaskcreated;
-            AdoxioCommunitydisturbance = adoxioCommunitydisturbance;
             Firstresponseslastatus = firstresponseslastatus;
-            AdoxioServicehourssaturdayclose = adoxioServicehourssaturdayclose;
+            BcgovFoippaconsent = bcgovFoippaconsent;
             Modifiedon = modifiedon;
-            AdoxioNoeanarrative = adoxioNoeanarrative;
-            this._adoxioInvestigationValue = _adoxioInvestigationValue;
             this._contactidValue = _contactidValue;
-            AdoxioServicehoursstandardhours = adoxioServicehoursstandardhours;
+            BcgovConsentforemailcorrespondence = bcgovConsentforemailcorrespondence;
             Statecode = statecode;
             Messagetypecode = messagetypecode;
-            AdoxioDisturbanceofpersonsinthevicinity = adoxioDisturbanceofpersonsinthevicinity;
+            BcgovManufacturingprocessdescription = bcgovManufacturingprocessdescription;
             EntityimageTimestamp = entityimageTimestamp;
             Merged = merged;
             Overriddencreatedon = overriddencreatedon;
             this._createdbyexternalpartyValue = _createdbyexternalpartyValue;
+            BcgovBceidemail = bcgovBceidemail;
+            BcgovProvidingmanufacturingtoothers = bcgovProvidingmanufacturingtoothers;
             Customercontacted = customercontacted;
-            AdoxioDateout = adoxioDateout;
             Createdon = createdon;
             this._resolvebykpiidValue = _resolvebykpiidValue;
-            this._adoxioTerritoryValue = _adoxioTerritoryValue;
-            AdoxioInspectioncompleteddate = adoxioInspectioncompleteddate;
-            this._adoxioAdjudicatorValue = _adoxioAdjudicatorValue;
             this._owningteamValue = _owningteamValue;
             this._existingcaseValue = _existingcaseValue;
-            this._adoxioInspectorValue = _adoxioInspectorValue;
             Customersatisfactioncode = customersatisfactioncode;
-            AdoxioContactedpolicereconcerns = adoxioContactedpolicereconcerns;
             this._firstresponsebykpiidValue = _firstresponsebykpiidValue;
-            AdoxioOperatingcontrarytolicence = adoxioOperatingcontrarytolicence;
             this._primarycontactidValue = _primarycontactidValue;
-            AdoxioServicehoursmondayopen = adoxioServicehoursmondayopen;
             this._kbarticleidValue = _kbarticleidValue;
-            AdoxioInspectionliquorlicence = adoxioInspectionliquorlicence;
             this._subjectidValue = _subjectidValue;
             Utcconversiontimezonecode = utcconversiontimezonecode;
             Isdecrementing = isdecrementing;
-            AdoxioServicehoursfridayopen = adoxioServicehoursfridayopen;
             Stageid = stageid;
-            AdoxioNoeasection1penaltychoice = adoxioNoeasection1penaltychoice;
             Entityimage = entityimage;
             Followupby = followupby;
             Statuscode = statuscode;
             this._accountidValue = _accountidValue;
             Actualserviceunits = actualserviceunits;
             Escalatedon = escalatedon;
+            BcgovBorrowrentleaseequipment = bcgovBorrowrentleaseequipment;
             Checkemail = checkemail;
             Resolveby = resolveby;
             this._masteridValue = _masteridValue;
+            BcgovProducingownproduct = bcgovProducingownproduct;
             Incidentid = incidentid;
             this._entitlementidValue = _entitlementidValue;
             Importsequencenumber = importsequencenumber;
             Servicestage = servicestage;
-            AdoxioServicehourssundayopen = adoxioServicehourssundayopen;
-            this._adoxioLicenceValue = _adoxioLicenceValue;
             Decremententitlementterm = decremententitlementterm;
             Routecase = routecase;
+            BcgovDetailsofproductsprovidedtoothers = bcgovDetailsofproductsprovidedtoothers;
+            BcgovApplicationid = bcgovApplicationid;
             Influencescore = influencescore;
             Responseby = responseby;
-            AdoxioNoeachoiceprocedure = adoxioNoeachoiceprocedure;
             this._modifiedbyexternalpartyValue = _modifiedbyexternalpartyValue;
             this._modifiedbyValue = _modifiedbyValue;
-            AdoxioServicehoursmondayclose = adoxioServicehoursmondayclose;
+            BcgovSellequipment = bcgovSellequipment;
             this._modifiedonbehalfbyValue = _modifiedonbehalfbyValue;
             this._productidValue = _productidValue;
             this._createdonbehalfbyValue = _createdonbehalfbyValue;
             Caseorigincode = caseorigincode;
-            AdoxioDatein = adoxioDatein;
-            AdoxioServicehourswednesdayopen = adoxioServicehourswednesdayopen;
-            AdoxioEmployeesconsumingliquor = adoxioEmployeesconsumingliquor;
             Timezoneruleversionnumber = timezoneruleversionnumber;
-            AdoxioMapagentid2 = adoxioMapagentid2;
+            BcgovBceid = bcgovBceid;
             Firstresponsesent = firstresponsesent;
-            AdoxioInspchecklistdepictsaipfloorplan = adoxioInspchecklistdepictsaipfloorplan;
-            AdoxioInspectionnumberofpatrons = adoxioInspectionnumberofpatrons;
-            AdoxioServicehoursfridayclose = adoxioServicehoursfridayclose;
-            AdoxioMapagentid1 = adoxioMapagentid1;
             Processid = processid;
-            AdoxioInspectiontimeoutmm = adoxioInspectiontimeoutmm;
+            BcgovOwnintendtoownequipmentforbusinessuse = bcgovOwnintendtoownequipmentforbusinessuse;
             Productserialnumber = productserialnumber;
-            AdoxioInspchecklistaccordancewithaipletter = adoxioInspchecklistaccordancewithaipletter;
             Entityimageid = entityimageid;
             this._contractidValue = _contractidValue;
             Contractservicelevelcode = contractservicelevelcode;
-            this._adoxioEstablishmentValue = _adoxioEstablishmentValue;
-            AdoxioInspectionliquorregister = adoxioInspectionliquorregister;
-            AdoxioInspectioncompletedate = adoxioInspectioncompletedate;
-            AdoxioInspectionoutcome = adoxioInspectionoutcome;
             Isescalated = isescalated;
-            this._adoxioRegionalmanagerValue = _adoxioRegionalmanagerValue;
             Severitycode = severitycode;
-            this._adoxioRegionValue = _adoxioRegionValue;
-            AdoxioInspectiontype = adoxioInspectiontype;
             Lastonholdtime = lastonholdtime;
             Ticketnumber = ticketnumber;
-            AdoxioInspectionviolationticketsissued = adoxioInspectionviolationticketsissued;
-            AdoxioServicehoursthursdayclose = adoxioServicehoursthursdayclose;
-            this._adoxioComplaintValue = _adoxioComplaintValue;
-            AdoxioPiecesofidchecked = adoxioPiecesofidchecked;
             this._contractdetailidValue = _contractdetailidValue;
-            AdoxioInspectionredlinefloorplan = adoxioInspectionredlinefloorplan;
             this._parentcaseidValue = _parentcaseidValue;
-            AdoxioInspchecklistfollowupinspectionrequired = adoxioInspchecklistfollowupinspectionrequired;
             Blockedprofile = blockedprofile;
             Billedserviceunits = billedserviceunits;
-            AdoxioInspectiontimeinmm = adoxioInspectiontimeinmm;
             this._socialprofileidValue = _socialprofileidValue;
             this._owneridValue = _owneridValue;
             this._owningbusinessunitValue = _owningbusinessunitValue;
-            AdoxioDrinksizesminpricing = adoxioDrinksizesminpricing;
-            AdoxioExternalinvestigationfilenumber = adoxioExternalinvestigationfilenumber;
-            AdoxioComments = adoxioComments;
-            this._adoxioLicenseeValue = _adoxioLicenseeValue;
-            AdoxioActualinspectiondate = adoxioActualinspectiondate;
-            AdoxioInspectiontimeinhh = adoxioInspectiontimeinhh;
+            BcgovMainbusinessfocus = bcgovMainbusinessfocus;
             Description = description;
             this._slaidValue = _slaidValue;
-            AdoxioServicehourswednesdayclose = adoxioServicehourswednesdayclose;
-            AdoxioInspectionduedate = adoxioInspectionduedate;
-            AdoxioInspectionliquorservice = adoxioInspectionliquorservice;
             Activitiescomplete = activitiescomplete;
             Resolvebyslastatus = resolvebyslastatus;
-            AdoxioInspectionovercrowding = adoxioInspectionovercrowding;
-            this._adoxioApplicationValue = _adoxioApplicationValue;
-            AdoxioServicehourssaturdayopen = adoxioServicehourssaturdayopen;
             Versionnumber = versionnumber;
-            AdoxioNoeasentdate = adoxioNoeasentdate;
-            AdoxioDiscussedmapprogram = adoxioDiscussedmapprogram;
             this._customeridValue = _customeridValue;
             EntityimageUrl = entityimageUrl;
             Prioritycode = prioritycode;
-            AdoxioInspchecklistaccordancewithaipletternotes = adoxioInspchecklistaccordancewithaipletternotes;
-            AdoxioDisorderlyorunlawfulactivities = adoxioDisorderlyorunlawfulactivities;
+            BcgovDetailsofownproducts = bcgovDetailsofownproducts;
             IncidentPostRegardings = incidentPostRegardings;
             IncidentPostFollows = incidentPostFollows;
             Masterid = masterid;
@@ -254,20 +195,7 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
             IncidentTasks = incidentTasks;
             Kbarticleid = kbarticleid;
             IncidentSharePointDocumentLocations = incidentSharePointDocumentLocations;
-            AdoxioLicensee = adoxioLicensee;
-            AdoxioApplication = adoxioApplication;
-            AdoxioEstablishment = adoxioEstablishment;
-            AdoxioLicence = adoxioLicence;
-            AdoxioRegion = adoxioRegion;
-            AdoxioTerritory = adoxioTerritory;
-            AdoxioIncidentAdoxioComplaincemeetingInspection = adoxioIncidentAdoxioComplaincemeetingInspection;
-            AdoxioIncidentAdoxioContraventionInspection = adoxioIncidentAdoxioContraventionInspection;
-            AdoxioIncidentAdoxioLicencetype = adoxioIncidentAdoxioLicencetype;
-            AdoxioAdjudicator = adoxioAdjudicator;
-            AdoxioInspector = adoxioInspector;
-            AdoxioRegionalManager = adoxioRegionalManager;
-            AdoxioComplaint = adoxioComplaint;
-            AdoxioInvestigation = adoxioInvestigation;
+            IncidentTeams = incidentTeams;
             CustomInit();
         }
 
@@ -288,28 +216,18 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "adoxio_servicehourstuesdayopen")]
-        public int? AdoxioServicehourstuesdayopen { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "traversedpath")]
         public string Traversedpath { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "adoxio_servicehoursthursdayopen")]
-        public int? AdoxioServicehoursthursdayopen { get; set; }
+        [JsonProperty(PropertyName = "bcgov_applicationtype")]
+        public int? BcgovApplicationtype { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "adoxio_alcoholsensematerial")]
-        public int? AdoxioAlcoholsensematerial { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_inspectionsminors")]
-        public int? AdoxioInspectionsminors { get; set; }
+        [JsonProperty(PropertyName = "bcgov_intendtopurchaseequipment")]
+        public bool? BcgovIntendtopurchaseequipment { get; set; }
 
         /// <summary>
         /// </summary>
@@ -318,48 +236,18 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "adoxio_establishmentaddress")]
-        public string AdoxioEstablishmentaddress { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_inspectiondate")]
-        public System.DateTimeOffset? AdoxioInspectiondate { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_externalinvestigationjobnumber")]
-        public string AdoxioExternalinvestigationjobnumber { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "exchangerate")]
         public object Exchangerate { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "adoxio_minorsserved")]
-        public int? AdoxioMinorsserved { get; set; }
+        [JsonProperty(PropertyName = "bcgov_currentlyownusepossessequipment")]
+        public bool? BcgovCurrentlyownusepossessequipment { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "adoxio_servicehourssundayclose")]
-        public int? AdoxioServicehourssundayclose { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_inspectiontimeouthh")]
-        public int? AdoxioInspectiontimeouthh { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_servicehourstuesdayclose")]
-        public int? AdoxioServicehourstuesdayclose { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_inspchecklistdepictsaipfloorplannotes")]
-        public string AdoxioInspchecklistdepictsaipfloorplannotes { get; set; }
+        [JsonProperty(PropertyName = "bcgov_declarationofcorrectinformation")]
+        public bool? BcgovDeclarationofcorrectinformation { get; set; }
 
         /// <summary>
         /// </summary>
@@ -370,16 +258,6 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "_createdby_value")]
         public string _createdbyValue { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_inspchecklisttakeandsendphotos")]
-        public int? AdoxioInspchecklisttakeandsendphotos { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_inspectionservingitright")]
-        public int? AdoxioInspectionservingitright { get; set; }
 
         /// <summary>
         /// </summary>
@@ -398,6 +276,11 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "bcgov_bceiduserguid")]
+        public string BcgovBceiduserguid { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "_owninguser_value")]
         public string _owninguserValue { get; set; }
 
@@ -408,28 +291,8 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "adoxio_inspectionentertainment")]
-        public int? AdoxioInspectionentertainment { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_inspectionintoxication")]
-        public int? AdoxioInspectionintoxication { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_inspchecklistphototakennotes")]
-        public string AdoxioInspchecklistphototakennotes { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "followuptaskcreated")]
         public bool? Followuptaskcreated { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_communitydisturbance")]
-        public int? AdoxioCommunitydisturbance { get; set; }
 
         /// <summary>
         /// </summary>
@@ -438,8 +301,8 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "adoxio_servicehourssaturdayclose")]
-        public int? AdoxioServicehourssaturdayclose { get; set; }
+        [JsonProperty(PropertyName = "bcgov_foippaconsent")]
+        public bool? BcgovFoippaconsent { get; set; }
 
         /// <summary>
         /// </summary>
@@ -448,23 +311,13 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "adoxio_noeanarrative")]
-        public string AdoxioNoeanarrative { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "_adoxio_investigation_value")]
-        public string _adoxioInvestigationValue { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "_contactid_value")]
         public string _contactidValue { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "adoxio_servicehoursstandardhours")]
-        public bool? AdoxioServicehoursstandardhours { get; set; }
+        [JsonProperty(PropertyName = "bcgov_consentforemailcorrespondence")]
+        public bool? BcgovConsentforemailcorrespondence { get; set; }
 
         /// <summary>
         /// </summary>
@@ -478,8 +331,8 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "adoxio_disturbanceofpersonsinthevicinity")]
-        public bool? AdoxioDisturbanceofpersonsinthevicinity { get; set; }
+        [JsonProperty(PropertyName = "bcgov_manufacturingprocessdescription")]
+        public string BcgovManufacturingprocessdescription { get; set; }
 
         /// <summary>
         /// </summary>
@@ -503,13 +356,18 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "customercontacted")]
-        public bool? Customercontacted { get; set; }
+        [JsonProperty(PropertyName = "bcgov_bceidemail")]
+        public string BcgovBceidemail { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "adoxio_dateout")]
-        public System.DateTimeOffset? AdoxioDateout { get; set; }
+        [JsonProperty(PropertyName = "bcgov_providingmanufacturingtoothers")]
+        public bool? BcgovProvidingmanufacturingtoothers { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "customercontacted")]
+        public bool? Customercontacted { get; set; }
 
         /// <summary>
         /// </summary>
@@ -523,21 +381,6 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "_adoxio_territory_value")]
-        public string _adoxioTerritoryValue { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_inspectioncompleteddate")]
-        public string AdoxioInspectioncompleteddate { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "_adoxio_adjudicator_value")]
-        public string _adoxioAdjudicatorValue { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "_owningteam_value")]
         public string _owningteamValue { get; set; }
 
@@ -548,18 +391,8 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "_adoxio_inspector_value")]
-        public string _adoxioInspectorValue { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "customersatisfactioncode")]
         public int? Customersatisfactioncode { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_contactedpolicereconcerns")]
-        public int? AdoxioContactedpolicereconcerns { get; set; }
 
         /// <summary>
         /// </summary>
@@ -568,28 +401,13 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "adoxio_operatingcontrarytolicence")]
-        public int? AdoxioOperatingcontrarytolicence { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "_primarycontactid_value")]
         public string _primarycontactidValue { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "adoxio_servicehoursmondayopen")]
-        public int? AdoxioServicehoursmondayopen { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "_kbarticleid_value")]
         public string _kbarticleidValue { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_inspectionliquorlicence")]
-        public int? AdoxioInspectionliquorlicence { get; set; }
 
         /// <summary>
         /// </summary>
@@ -608,18 +426,8 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "adoxio_servicehoursfridayopen")]
-        public int? AdoxioServicehoursfridayopen { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "stageid")]
         public string Stageid { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_noeasection1penaltychoice")]
-        public string AdoxioNoeasection1penaltychoice { get; set; }
 
         /// <summary>
         /// </summary>
@@ -653,6 +461,11 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "bcgov_borrowrentleaseequipment")]
+        public bool? BcgovBorrowrentleaseequipment { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "checkemail")]
         public bool? Checkemail { get; set; }
 
@@ -665,6 +478,11 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "_masterid_value")]
         public string _masteridValue { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_producingownproduct")]
+        public bool? BcgovProducingownproduct { get; set; }
 
         /// <summary>
         /// </summary>
@@ -688,16 +506,6 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "adoxio_servicehourssundayopen")]
-        public int? AdoxioServicehourssundayopen { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "_adoxio_licence_value")]
-        public string _adoxioLicenceValue { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "decremententitlementterm")]
         public bool? Decremententitlementterm { get; set; }
 
@@ -705,6 +513,16 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "routecase")]
         public bool? Routecase { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_detailsofproductsprovidedtoothers")]
+        public string BcgovDetailsofproductsprovidedtoothers { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_applicationid")]
+        public string BcgovApplicationid { get; set; }
 
         /// <summary>
         /// </summary>
@@ -718,11 +536,6 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "adoxio_noeachoiceprocedure")]
-        public string AdoxioNoeachoiceprocedure { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "_modifiedbyexternalparty_value")]
         public string _modifiedbyexternalpartyValue { get; set; }
 
@@ -733,8 +546,8 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "adoxio_servicehoursmondayclose")]
-        public int? AdoxioServicehoursmondayclose { get; set; }
+        [JsonProperty(PropertyName = "bcgov_sellequipment")]
+        public bool? BcgovSellequipment { get; set; }
 
         /// <summary>
         /// </summary>
@@ -758,28 +571,13 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "adoxio_datein")]
-        public System.DateTimeOffset? AdoxioDatein { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_servicehourswednesdayopen")]
-        public int? AdoxioServicehourswednesdayopen { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_employeesconsumingliquor")]
-        public int? AdoxioEmployeesconsumingliquor { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "timezoneruleversionnumber")]
         public int? Timezoneruleversionnumber { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "adoxio_mapagentid2")]
-        public string AdoxioMapagentid2 { get; set; }
+        [JsonProperty(PropertyName = "bcgov_bceid")]
+        public string BcgovBceid { get; set; }
 
         /// <summary>
         /// </summary>
@@ -788,43 +586,18 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "adoxio_inspchecklistdepictsaipfloorplan")]
-        public int? AdoxioInspchecklistdepictsaipfloorplan { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_inspectionnumberofpatrons")]
-        public int? AdoxioInspectionnumberofpatrons { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_servicehoursfridayclose")]
-        public int? AdoxioServicehoursfridayclose { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_mapagentid1")]
-        public string AdoxioMapagentid1 { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "processid")]
         public string Processid { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "adoxio_inspectiontimeoutmm")]
-        public int? AdoxioInspectiontimeoutmm { get; set; }
+        [JsonProperty(PropertyName = "bcgov_ownintendtoownequipmentforbusinessuse")]
+        public bool? BcgovOwnintendtoownequipmentforbusinessuse { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "productserialnumber")]
         public string Productserialnumber { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_inspchecklistaccordancewithaipletter")]
-        public int? AdoxioInspchecklistaccordancewithaipletter { get; set; }
 
         /// <summary>
         /// </summary>
@@ -843,48 +616,13 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "_adoxio_establishment_value")]
-        public string _adoxioEstablishmentValue { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_inspectionliquorregister")]
-        public int? AdoxioInspectionliquorregister { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_inspectioncompletedate")]
-        public System.DateTimeOffset? AdoxioInspectioncompletedate { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_inspectionoutcome")]
-        public int? AdoxioInspectionoutcome { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "isescalated")]
         public bool? Isescalated { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "_adoxio_regionalmanager_value")]
-        public string _adoxioRegionalmanagerValue { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "severitycode")]
         public int? Severitycode { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "_adoxio_region_value")]
-        public string _adoxioRegionValue { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_inspectiontype")]
-        public int? AdoxioInspectiontype { get; set; }
 
         /// <summary>
         /// </summary>
@@ -898,43 +636,13 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "adoxio_inspectionviolationticketsissued")]
-        public int? AdoxioInspectionviolationticketsissued { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_servicehoursthursdayclose")]
-        public int? AdoxioServicehoursthursdayclose { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "_adoxio_complaint_value")]
-        public string _adoxioComplaintValue { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_piecesofidchecked")]
-        public int? AdoxioPiecesofidchecked { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "_contractdetailid_value")]
         public string _contractdetailidValue { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "adoxio_inspectionredlinefloorplan")]
-        public int? AdoxioInspectionredlinefloorplan { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "_parentcaseid_value")]
         public string _parentcaseidValue { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_inspchecklistfollowupinspectionrequired")]
-        public int? AdoxioInspchecklistfollowupinspectionrequired { get; set; }
 
         /// <summary>
         /// </summary>
@@ -945,11 +653,6 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "billedserviceunits")]
         public int? Billedserviceunits { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_inspectiontimeinmm")]
-        public int? AdoxioInspectiontimeinmm { get; set; }
 
         /// <summary>
         /// </summary>
@@ -968,33 +671,8 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "adoxio_drinksizesminpricing")]
-        public int? AdoxioDrinksizesminpricing { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_externalinvestigationfilenumber")]
-        public string AdoxioExternalinvestigationfilenumber { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_comments")]
-        public string AdoxioComments { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "_adoxio_licensee_value")]
-        public string _adoxioLicenseeValue { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_actualinspectiondate")]
-        public System.DateTimeOffset? AdoxioActualinspectiondate { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_inspectiontimeinhh")]
-        public int? AdoxioInspectiontimeinhh { get; set; }
+        [JsonProperty(PropertyName = "bcgov_mainbusinessfocus")]
+        public string BcgovMainbusinessfocus { get; set; }
 
         /// <summary>
         /// </summary>
@@ -1008,21 +686,6 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "adoxio_servicehourswednesdayclose")]
-        public int? AdoxioServicehourswednesdayclose { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_inspectionduedate")]
-        public System.DateTimeOffset? AdoxioInspectionduedate { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_inspectionliquorservice")]
-        public int? AdoxioInspectionliquorservice { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "activitiescomplete")]
         public bool? Activitiescomplete { get; set; }
 
@@ -1033,33 +696,8 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "adoxio_inspectionovercrowding")]
-        public int? AdoxioInspectionovercrowding { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "_adoxio_application_value")]
-        public string _adoxioApplicationValue { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_servicehourssaturdayopen")]
-        public int? AdoxioServicehourssaturdayopen { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "versionnumber")]
         public long? Versionnumber { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_noeasentdate")]
-        public System.DateTimeOffset? AdoxioNoeasentdate { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_discussedmapprogram")]
-        public int? AdoxioDiscussedmapprogram { get; set; }
 
         /// <summary>
         /// </summary>
@@ -1078,13 +716,8 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "adoxio_inspchecklistaccordancewithaipletternotes")]
-        public string AdoxioInspchecklistaccordancewithaipletternotes { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_disorderlyorunlawfulactivities")]
-        public int? AdoxioDisorderlyorunlawfulactivities { get; set; }
+        [JsonProperty(PropertyName = "bcgov_detailsofownproducts")]
+        public string BcgovDetailsofownproducts { get; set; }
 
         /// <summary>
         /// </summary>
@@ -1393,73 +1026,8 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "adoxio_Licensee")]
-        public MicrosoftDynamicsCRMaccount AdoxioLicensee { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_Application")]
-        public MicrosoftDynamicsCRMadoxioApplication AdoxioApplication { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_Establishment")]
-        public MicrosoftDynamicsCRMadoxioEstablishment AdoxioEstablishment { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_Licence")]
-        public MicrosoftDynamicsCRMadoxioLicences AdoxioLicence { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_Region")]
-        public MicrosoftDynamicsCRMadoxioRegion AdoxioRegion { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_Territory")]
-        public MicrosoftDynamicsCRMadoxioTerritory AdoxioTerritory { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_incident_adoxio_complaincemeeting_Inspection")]
-        public IList<MicrosoftDynamicsCRMadoxioComplaincemeeting> AdoxioIncidentAdoxioComplaincemeetingInspection { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_incident_adoxio_contravention_Inspection")]
-        public IList<MicrosoftDynamicsCRMadoxioContravention> AdoxioIncidentAdoxioContraventionInspection { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_incident_adoxio_licencetype")]
-        public IList<MicrosoftDynamicsCRMadoxioLicencetype> AdoxioIncidentAdoxioLicencetype { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_Adjudicator")]
-        public MicrosoftDynamicsCRMsystemuser AdoxioAdjudicator { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_Inspector")]
-        public MicrosoftDynamicsCRMsystemuser AdoxioInspector { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_RegionalManager")]
-        public MicrosoftDynamicsCRMsystemuser AdoxioRegionalManager { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_Complaint")]
-        public MicrosoftDynamicsCRMadoxioComplaint AdoxioComplaint { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_Investigation")]
-        public MicrosoftDynamicsCRMadoxioInvestigation AdoxioInvestigation { get; set; }
+        [JsonProperty(PropertyName = "incident_Teams")]
+        public IList<MicrosoftDynamicsCRMteam> IncidentTeams { get; set; }
 
     }
 }

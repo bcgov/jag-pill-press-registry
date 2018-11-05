@@ -4,13 +4,16 @@
 // regenerated.
 // </auto-generated>
 
-namespace Gov.Lclb.Cllb.Interfaces.Models
+namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 {
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// abs_autonumberingdefinition
+    /// </summary>
     public partial class MicrosoftDynamicsCRMabsAutonumberingdefinition
     {
         /// <summary>
@@ -26,43 +29,43 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
         /// Initializes a new instance of the
         /// MicrosoftDynamicsCRMabsAutonumberingdefinition class.
         /// </summary>
-        public MicrosoftDynamicsCRMabsAutonumberingdefinition(string _createdbyValue = default(string), string _createdonbehalfbyValue = default(string), string _modifiedbyValue = default(string), string _modifiedonbehalfbyValue = default(string), string _organizationidValue = default(string), IList<MicrosoftDynamicsCRMabsAutonumberedentity> absAutonumberedentityAutoNumberingDefinition = default(IList<MicrosoftDynamicsCRMabsAutonumberedentity>), IList<MicrosoftDynamicsCRMasyncoperation> absAutonumberingdefinitionAsyncOperations = default(IList<MicrosoftDynamicsCRMasyncoperation>), IList<MicrosoftDynamicsCRMbulkdeletefailure> absAutonumberingdefinitionBulkDeleteFailures = default(IList<MicrosoftDynamicsCRMbulkdeletefailure>), IList<MicrosoftDynamicsCRMduplicaterecord> absAutonumberingdefinitionDuplicateBaseRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMduplicaterecord> absAutonumberingdefinitionDuplicateMatchingRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMsyncerror> absAutonumberingdefinitionSyncErrors = default(IList<MicrosoftDynamicsCRMsyncerror>), string absAutonumberingdefinitionid = default(string), string absDatetimeformat = default(string), int? absDigits = default(int?), string absFormat = default(string), int? absIncrement = default(int?), int? absInitialvalue = default(int?), int? absLastnumberissued = default(int?), string absLock = default(string), string absName = default(string), int? absRandomsuffixlength = default(int?), MicrosoftDynamicsCRMsystemuser createdbyname = default(MicrosoftDynamicsCRMsystemuser), System.DateTimeOffset? createdon = default(System.DateTimeOffset?), MicrosoftDynamicsCRMsystemuser createdonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), int? importsequencenumber = default(int?), MicrosoftDynamicsCRMsystemuser modifiedbyname = default(MicrosoftDynamicsCRMsystemuser), System.DateTimeOffset? modifiedon = default(System.DateTimeOffset?), MicrosoftDynamicsCRMsystemuser modifiedonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMorganization organizationid = default(MicrosoftDynamicsCRMorganization), System.DateTimeOffset? overriddencreatedon = default(System.DateTimeOffset?), int? statecode = default(int?), int? statuscode = default(int?), int? timezoneruleversionnumber = default(int?), int? utcconversiontimezonecode = default(int?), object versionnumber = default(object))
+        public MicrosoftDynamicsCRMabsAutonumberingdefinition(int? importsequencenumber = default(int?), string absFormat = default(string), string _organizationidValue = default(string), string absName = default(string), int? statecode = default(int?), int? absRandomsuffixlength = default(int?), int? utcconversiontimezonecode = default(int?), int? absDigits = default(int?), int? timezoneruleversionnumber = default(int?), int? absIncrement = default(int?), int? absLastnumberissued = default(int?), System.DateTimeOffset? overriddencreatedon = default(System.DateTimeOffset?), long? versionnumber = default(long?), System.DateTimeOffset? createdon = default(System.DateTimeOffset?), string absLock = default(string), int? statuscode = default(int?), string _createdonbehalfbyValue = default(string), string _modifiedbyValue = default(string), string _createdbyValue = default(string), string _modifiedonbehalfbyValue = default(string), int? absInitialvalue = default(int?), System.DateTimeOffset? modifiedon = default(System.DateTimeOffset?), string absAutonumberingdefinitionid = default(string), string absDatetimeformat = default(string), MicrosoftDynamicsCRMsystemuser createdbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser createdonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMorganization organizationid = default(MicrosoftDynamicsCRMorganization), IList<MicrosoftDynamicsCRMsyncerror> absAutonumberingdefinitionSyncErrors = default(IList<MicrosoftDynamicsCRMsyncerror>), IList<MicrosoftDynamicsCRMduplicaterecord> absAutonumberingdefinitionDuplicateMatchingRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMduplicaterecord> absAutonumberingdefinitionDuplicateBaseRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMasyncoperation> absAutonumberingdefinitionAsyncOperations = default(IList<MicrosoftDynamicsCRMasyncoperation>), IList<MicrosoftDynamicsCRMbulkdeletefailure> absAutonumberingdefinitionBulkDeleteFailures = default(IList<MicrosoftDynamicsCRMbulkdeletefailure>), IList<MicrosoftDynamicsCRMabsAutonumberedentity> absAutonumberedentityAutoNumberingDefinition = default(IList<MicrosoftDynamicsCRMabsAutonumberedentity>))
         {
-            this._createdbyValue = _createdbyValue;
+            Importsequencenumber = importsequencenumber;
+            AbsFormat = absFormat;
+            this._organizationidValue = _organizationidValue;
+            AbsName = absName;
+            Statecode = statecode;
+            AbsRandomsuffixlength = absRandomsuffixlength;
+            Utcconversiontimezonecode = utcconversiontimezonecode;
+            AbsDigits = absDigits;
+            Timezoneruleversionnumber = timezoneruleversionnumber;
+            AbsIncrement = absIncrement;
+            AbsLastnumberissued = absLastnumberissued;
+            Overriddencreatedon = overriddencreatedon;
+            Versionnumber = versionnumber;
+            Createdon = createdon;
+            AbsLock = absLock;
+            Statuscode = statuscode;
             this._createdonbehalfbyValue = _createdonbehalfbyValue;
             this._modifiedbyValue = _modifiedbyValue;
+            this._createdbyValue = _createdbyValue;
             this._modifiedonbehalfbyValue = _modifiedonbehalfbyValue;
-            this._organizationidValue = _organizationidValue;
-            AbsAutonumberedentityAutoNumberingDefinition = absAutonumberedentityAutoNumberingDefinition;
-            AbsAutonumberingdefinitionAsyncOperations = absAutonumberingdefinitionAsyncOperations;
-            AbsAutonumberingdefinitionBulkDeleteFailures = absAutonumberingdefinitionBulkDeleteFailures;
-            AbsAutonumberingdefinitionDuplicateBaseRecord = absAutonumberingdefinitionDuplicateBaseRecord;
-            AbsAutonumberingdefinitionDuplicateMatchingRecord = absAutonumberingdefinitionDuplicateMatchingRecord;
-            AbsAutonumberingdefinitionSyncErrors = absAutonumberingdefinitionSyncErrors;
+            AbsInitialvalue = absInitialvalue;
+            Modifiedon = modifiedon;
             AbsAutonumberingdefinitionid = absAutonumberingdefinitionid;
             AbsDatetimeformat = absDatetimeformat;
-            AbsDigits = absDigits;
-            AbsFormat = absFormat;
-            AbsIncrement = absIncrement;
-            AbsInitialvalue = absInitialvalue;
-            AbsLastnumberissued = absLastnumberissued;
-            AbsLock = absLock;
-            AbsName = absName;
-            AbsRandomsuffixlength = absRandomsuffixlength;
             Createdbyname = createdbyname;
-            Createdon = createdon;
             Createdonbehalfbyname = createdonbehalfbyname;
-            Importsequencenumber = importsequencenumber;
             Modifiedbyname = modifiedbyname;
-            Modifiedon = modifiedon;
             Modifiedonbehalfbyname = modifiedonbehalfbyname;
             Organizationid = organizationid;
-            Overriddencreatedon = overriddencreatedon;
-            Statecode = statecode;
-            Statuscode = statuscode;
-            Timezoneruleversionnumber = timezoneruleversionnumber;
-            Utcconversiontimezonecode = utcconversiontimezonecode;
-            Versionnumber = versionnumber;
+            AbsAutonumberingdefinitionSyncErrors = absAutonumberingdefinitionSyncErrors;
+            AbsAutonumberingdefinitionDuplicateMatchingRecord = absAutonumberingdefinitionDuplicateMatchingRecord;
+            AbsAutonumberingdefinitionDuplicateBaseRecord = absAutonumberingdefinitionDuplicateBaseRecord;
+            AbsAutonumberingdefinitionAsyncOperations = absAutonumberingdefinitionAsyncOperations;
+            AbsAutonumberingdefinitionBulkDeleteFailures = absAutonumberingdefinitionBulkDeleteFailures;
+            AbsAutonumberedentityAutoNumberingDefinition = absAutonumberedentityAutoNumberingDefinition;
             CustomInit();
         }
 
@@ -73,8 +76,83 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "_createdby_value")]
-        public string _createdbyValue { get; set; }
+        [JsonProperty(PropertyName = "importsequencenumber")]
+        public int? Importsequencenumber { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "abs_format")]
+        public string AbsFormat { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "_organizationid_value")]
+        public string _organizationidValue { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "abs_name")]
+        public string AbsName { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "statecode")]
+        public int? Statecode { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "abs_randomsuffixlength")]
+        public int? AbsRandomsuffixlength { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "utcconversiontimezonecode")]
+        public int? Utcconversiontimezonecode { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "abs_digits")]
+        public int? AbsDigits { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "timezoneruleversionnumber")]
+        public int? Timezoneruleversionnumber { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "abs_increment")]
+        public int? AbsIncrement { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "abs_lastnumberissued")]
+        public int? AbsLastnumberissued { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "overriddencreatedon")]
+        public System.DateTimeOffset? Overriddencreatedon { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "versionnumber")]
+        public long? Versionnumber { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "createdon")]
+        public System.DateTimeOffset? Createdon { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "abs_lock")]
+        public string AbsLock { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "statuscode")]
+        public int? Statuscode { get; set; }
 
         /// <summary>
         /// </summary>
@@ -88,43 +166,23 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "_createdby_value")]
+        public string _createdbyValue { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "_modifiedonbehalfby_value")]
         public string _modifiedonbehalfbyValue { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "_organizationid_value")]
-        public string _organizationidValue { get; set; }
+        [JsonProperty(PropertyName = "abs_initialvalue")]
+        public int? AbsInitialvalue { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "abs_autonumberedentity_AutoNumberingDefinition")]
-        public IList<MicrosoftDynamicsCRMabsAutonumberedentity> AbsAutonumberedentityAutoNumberingDefinition { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "abs_autonumberingdefinition_AsyncOperations")]
-        public IList<MicrosoftDynamicsCRMasyncoperation> AbsAutonumberingdefinitionAsyncOperations { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "abs_autonumberingdefinition_BulkDeleteFailures")]
-        public IList<MicrosoftDynamicsCRMbulkdeletefailure> AbsAutonumberingdefinitionBulkDeleteFailures { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "abs_autonumberingdefinition_DuplicateBaseRecord")]
-        public IList<MicrosoftDynamicsCRMduplicaterecord> AbsAutonumberingdefinitionDuplicateBaseRecord { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "abs_autonumberingdefinition_DuplicateMatchingRecord")]
-        public IList<MicrosoftDynamicsCRMduplicaterecord> AbsAutonumberingdefinitionDuplicateMatchingRecord { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "abs_autonumberingdefinition_SyncErrors")]
-        public IList<MicrosoftDynamicsCRMsyncerror> AbsAutonumberingdefinitionSyncErrors { get; set; }
+        [JsonProperty(PropertyName = "modifiedon")]
+        public System.DateTimeOffset? Modifiedon { get; set; }
 
         /// <summary>
         /// </summary>
@@ -138,53 +196,8 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "abs_digits")]
-        public int? AbsDigits { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "abs_format")]
-        public string AbsFormat { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "abs_increment")]
-        public int? AbsIncrement { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "abs_initialvalue")]
-        public int? AbsInitialvalue { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "abs_lastnumberissued")]
-        public int? AbsLastnumberissued { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "abs_lock")]
-        public string AbsLock { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "abs_name")]
-        public string AbsName { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "abs_randomsuffixlength")]
-        public int? AbsRandomsuffixlength { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "createdbyname")]
         public MicrosoftDynamicsCRMsystemuser Createdbyname { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "createdon")]
-        public System.DateTimeOffset? Createdon { get; set; }
 
         /// <summary>
         /// </summary>
@@ -193,18 +206,8 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "importsequencenumber")]
-        public int? Importsequencenumber { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "modifiedbyname")]
         public MicrosoftDynamicsCRMsystemuser Modifiedbyname { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "modifiedon")]
-        public System.DateTimeOffset? Modifiedon { get; set; }
 
         /// <summary>
         /// </summary>
@@ -218,33 +221,33 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "overriddencreatedon")]
-        public System.DateTimeOffset? Overriddencreatedon { get; set; }
+        [JsonProperty(PropertyName = "abs_autonumberingdefinition_SyncErrors")]
+        public IList<MicrosoftDynamicsCRMsyncerror> AbsAutonumberingdefinitionSyncErrors { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "statecode")]
-        public int? Statecode { get; set; }
+        [JsonProperty(PropertyName = "abs_autonumberingdefinition_DuplicateMatchingRecord")]
+        public IList<MicrosoftDynamicsCRMduplicaterecord> AbsAutonumberingdefinitionDuplicateMatchingRecord { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "statuscode")]
-        public int? Statuscode { get; set; }
+        [JsonProperty(PropertyName = "abs_autonumberingdefinition_DuplicateBaseRecord")]
+        public IList<MicrosoftDynamicsCRMduplicaterecord> AbsAutonumberingdefinitionDuplicateBaseRecord { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "timezoneruleversionnumber")]
-        public int? Timezoneruleversionnumber { get; set; }
+        [JsonProperty(PropertyName = "abs_autonumberingdefinition_AsyncOperations")]
+        public IList<MicrosoftDynamicsCRMasyncoperation> AbsAutonumberingdefinitionAsyncOperations { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "utcconversiontimezonecode")]
-        public int? Utcconversiontimezonecode { get; set; }
+        [JsonProperty(PropertyName = "abs_autonumberingdefinition_BulkDeleteFailures")]
+        public IList<MicrosoftDynamicsCRMbulkdeletefailure> AbsAutonumberingdefinitionBulkDeleteFailures { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "versionnumber")]
-        public object Versionnumber { get; set; }
+        [JsonProperty(PropertyName = "abs_autonumberedentity_AutoNumberingDefinition")]
+        public IList<MicrosoftDynamicsCRMabsAutonumberedentity> AbsAutonumberedentityAutoNumberingDefinition { get; set; }
 
     }
 }

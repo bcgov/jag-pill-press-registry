@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace Gov.Lclb.Cllb.Public.Utils
+namespace Gov.Jag.PillPressRegistry.Public.Utils
 {
     public class TestUtility
     {

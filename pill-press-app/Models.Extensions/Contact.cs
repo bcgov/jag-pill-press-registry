@@ -1,11 +1,11 @@
-﻿using Gov.Lclb.Cllb.Interfaces.Models;
-using Gov.Lclb.Cllb.Public.ViewModels;
+﻿using Gov.Jag.PillPressRegistry.Interfaces.Models;
+using Gov.Jag.PillPressRegistry.Public.ViewModels;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Gov.Lclb.Cllb.Public.Models
+namespace Gov.Jag.PillPressRegistry.Public.Models
 {
     /// <summary>
     /// ViewModel transforms.
@@ -37,12 +37,6 @@ namespace Gov.Lclb.Cllb.Public.Models
                 result.address2_line1 = contact.Address2Line1;
                 result.address2_postalcode = contact.Address2Postalcode;
                 result.address2_stateorprovince = contact.Address2Stateorprovince;
-                result.adoxio_canattendcompliancemeetings = contact.AdoxioCanattendcompliancemeetings;
-                result.adoxio_canobtainlicenceinfofrombranch = contact.AdoxioCanobtainlicenceinfofrombranch;
-                result.adoxio_canrepresentlicenseeathearings = contact.AdoxioCanrepresentlicenseeathearings;
-                result.adoxio_cansigngrocerystoreproofofsalesrevenue = contact.AdoxioCansigngrocerystoreproofofsalesrevenue;
-                result.adoxio_cansignpermanentchangeapplications = contact.AdoxioCansignpermanentchangeapplications;
-                result.adoxio_cansigntemporarychangeapplications = contact.AdoxioCansigntemporarychangeapplications;
                 result.emailaddress1 = contact.Emailaddress1;
                 result.firstname = contact.Firstname;
                 result.middlename = contact.Middlename;
@@ -250,12 +244,6 @@ namespace Gov.Lclb.Cllb.Public.Models
             to.Address2Line1 = from.address2_line1;
             to.Address2Postalcode = from.address2_postalcode;
             to.Address2Stateorprovince = from.address2_stateorprovince;
-            to.AdoxioCanattendcompliancemeetings = from.adoxio_canattendcompliancemeetings;
-            to.AdoxioCanobtainlicenceinfofrombranch = from.adoxio_canobtainlicenceinfofrombranch;
-            to.AdoxioCanrepresentlicenseeathearings = from.adoxio_canrepresentlicenseeathearings;
-            to.AdoxioCansigngrocerystoreproofofsalesrevenue = from.adoxio_cansigngrocerystoreproofofsalesrevenue;
-            to.AdoxioCansignpermanentchangeapplications = from.adoxio_cansignpermanentchangeapplications;
-            to.AdoxioCansigntemporarychangeapplications = from.adoxio_cansigntemporarychangeapplications;
             to.Telephone1 = from.telephone1;
         }
 
@@ -280,12 +268,6 @@ namespace Gov.Lclb.Cllb.Public.Models
                 result.Address1Line1 = contact.address1_line1;
                 result.Address1Postalcode = contact.address1_postalcode;
                 result.Address1Stateorprovince = contact.address1_stateorprovince;
-                result.AdoxioCanattendcompliancemeetings = contact.adoxio_canattendcompliancemeetings;
-                result.AdoxioCanobtainlicenceinfofrombranch = contact.adoxio_canobtainlicenceinfofrombranch;
-                result.AdoxioCanrepresentlicenseeathearings = contact.adoxio_canrepresentlicenseeathearings;
-                result.AdoxioCansigngrocerystoreproofofsalesrevenue = contact.adoxio_cansigngrocerystoreproofofsalesrevenue;
-                result.AdoxioCansignpermanentchangeapplications = contact.adoxio_cansignpermanentchangeapplications;
-                result.AdoxioCansigntemporarychangeapplications = contact.adoxio_cansigntemporarychangeapplications;
                 result.Telephone1 = contact.telephone1;
 
 

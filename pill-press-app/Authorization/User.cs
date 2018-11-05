@@ -1,4 +1,4 @@
-﻿namespace Gov.Lclb.Cllb.Public.Models
+﻿namespace Gov.Jag.PillPressRegistry.Public.Models
 {
     /// <summary>
     /// User Extension (to support authorization)

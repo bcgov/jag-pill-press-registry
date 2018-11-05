@@ -1,8 +1,8 @@
-﻿using Gov.Lclb.Cllb.Interfaces;
-using Gov.Lclb.Cllb.Interfaces.Models;
-using Gov.Lclb.Cllb.Public.Authentication;
-using Gov.Lclb.Cllb.Public.Models;
-using Gov.Lclb.Cllb.Public.Utils;
+﻿using Gov.Jag.PillPressRegistry.Interfaces;
+using Gov.Jag.PillPressRegistry.Interfaces.Models;
+using Gov.Jag.PillPressRegistry.Public.Authentication;
+using Gov.Jag.PillPressRegistry.Public.Models;
+using Gov.Jag.PillPressRegistry.Public.Utils;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,7 +13,7 @@ using Newtonsoft.Json;
 using System;
 using System.Threading.Tasks;
 
-namespace Gov.Lclb.Cllb.Public.Controllers
+namespace Gov.Jag.PillPressRegistry.Public.Controllers
 {
     [Route("api/[controller]")]
     public class ContactController : Controller
@@ -163,7 +163,7 @@ namespace Gov.Lclb.Cllb.Public.Controllers
                 contact.CopyHeaderValues( _httpContextAccessor );
             }        
 
-            contact.AdoxioExternalid = DynamicsExtensions.GetServiceCardID(contactSiteminderGuid);
+            contact.Externaluseridentifier = DynamicsExtensions.GetServiceCardID(contactSiteminderGuid);
             try
             {
                 contact = await _dynamicsClient.Contacts.CreateAsync(contact);
@@ -255,38 +255,13 @@ namespace Gov.Lclb.Cllb.Public.Controllers
 
             // create a new contact.
             MicrosoftDynamicsCRMcontact contact = new MicrosoftDynamicsCRMcontact();
-            MicrosoftDynamicsCRMadoxioWorker worker = new MicrosoftDynamicsCRMadoxioWorker() {
-                AdoxioFirstname = item.firstname,
-                AdoxioMiddlename = item.middlename,
-                AdoxioLastname = item.lastname
-            };
+            
             contact.CopyValues(item);
 
-            if (userSettings.IsNewUserRegistration && userSettings.NewWorker != null && !_env.IsDevelopment())
-            {
-                // get additional information from the service card headers.
-                contact.CopyValues(userSettings.NewContact);
-                worker.CopyValues(userSettings.NewWorker);                
-            }
             
-            contact.AdoxioExternalid = DynamicsExtensions.GetServiceCardID(contactSiteminderGuid);
+            contact.Externaluseridentifier = DynamicsExtensions.GetServiceCardID(contactSiteminderGuid);
 
-            try
-            {
-                worker.AdoxioContactId = contact;
-
-                worker = await _dynamicsClient.Workers.CreateAsync(worker);
-                contact = await _dynamicsClient.GetContactById(Guid.Parse(worker._adoxioContactidValue));
-            }
-            catch (OdataerrorException odee)
-            {
-                _logger.LogError("Error updating contact");
-                _logger.LogError("Request:");
-                _logger.LogError(odee.Request.Content);
-                _logger.LogError("Response:");
-                _logger.LogError(odee.Response.Content);
-            }
-
+            
 
             // if we have not yet authenticated, then this is the new record for the user.
             if (userSettings.IsNewUserRegistration)
