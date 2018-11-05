@@ -1,13 +1,12 @@
 ﻿using System;
-using Gov.Lclb.Cllb.Public.Authentication;
-using Gov.Lclb.Cllb.Public.Contexts;
+using Gov.Jag.PillPressRegistry.Public.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
-namespace Gov.Lclb.Cllb.Public.Controllers
+namespace Gov.Jag.PillPressRegistry.Public.Controllers
 {
     [Route("[controller]")]
     public class LogoutController : Controller

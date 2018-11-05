@@ -4,14 +4,15 @@
 // regenerated.
 // </auto-generated>
 
-namespace Gov.Lclb.Cllb.Interfaces
+namespace Gov.Jag.PillPressRegistry.Interfaces
 {
     using Microsoft.Rest;
     using Models;
     using Newtonsoft.Json;
 
     /// <summary>
-    /// Auto Generated
+    /// This OData service is located at
+    /// https://lclbcannabisdev.crm3.dynamics.com/api/data/v8.2/
     /// </summary>
     public partial interface IDynamicsClient : System.IDisposable
     {
@@ -43,86 +44,6 @@ namespace Gov.Lclb.Cllb.Interfaces
         IAccounts Accounts { get; }
 
         /// <summary>
-        /// Gets the IAliases.
-        /// </summary>
-        IAliases Aliases { get; }
-
-        /// <summary>
-        /// Gets the IApplications.
-        /// </summary>
-        IApplications Applications { get; }
-
-        /// <summary>
-        /// Gets the ICorporatehistorysummaries.
-        /// </summary>
-        ICorporatehistorysummaries Corporatehistorysummaries { get; }
-
-        /// <summary>
-        /// Gets the ICorporateroles.
-        /// </summary>
-        ICorporateroles Corporateroles { get; }
-
-        /// <summary>
-        /// Gets the IEstablishments.
-        /// </summary>
-        IEstablishments Establishments { get; }
-
-        /// <summary>
-        /// Gets the IAdoxiolegalentities.
-        /// </summary>
-        IAdoxiolegalentities Adoxiolegalentities { get; }
-
-        /// <summary>
-        /// Gets the IAdoxioLicencetypes.
-        /// </summary>
-        IAdoxioLicencetypes AdoxioLicencetypes { get; }
-
-        /// <summary>
-        /// Gets the ILicenses.
-        /// </summary>
-        ILicenses Licenses { get; }
-
-        /// <summary>
-        /// Gets the IPersonalhistorysummaries.
-        /// </summary>
-        IPersonalhistorysummaries Personalhistorysummaries { get; }
-
-        /// <summary>
-        /// Gets the IPolicydocuments.
-        /// </summary>
-        IPolicydocuments Policydocuments { get; }
-
-        /// <summary>
-        /// Gets the IPreviousaddresses.
-        /// </summary>
-        IPreviousaddresses Previousaddresses { get; }
-
-        /// <summary>
-        /// Gets the ISpddatarows.
-        /// </summary>
-        ISpddatarows Spddatarows { get; }
-
-        /// <summary>
-        /// Gets the ISpdexportses.
-        /// </summary>
-        ISpdexportses Spdexportses { get; }
-
-        /// <summary>
-        /// Gets the IAdoxioTiedhouseassociations.
-        /// </summary>
-        IAdoxioTiedhouseassociations AdoxioTiedhouseassociations { get; }
-
-        /// <summary>
-        /// Gets the IAdoxioTiedhouseconnections.
-        /// </summary>
-        IAdoxioTiedhouseconnections AdoxioTiedhouseconnections { get; }
-
-        /// <summary>
-        /// Gets the IWorkers.
-        /// </summary>
-        IWorkers Workers { get; }
-
-        /// <summary>
         /// Gets the IContacts.
         /// </summary>
         IContacts Contacts { get; }
@@ -131,11 +52,6 @@ namespace Gov.Lclb.Cllb.Interfaces
         /// Gets the IInvoices.
         /// </summary>
         IInvoices Invoices { get; }
-
-        /// <summary>
-        /// Gets the ISharepointDocumentLocations.
-        /// </summary>
-        ISharepointDocumentLocations SharepointDocumentLocations { get; }
 
     }
 }

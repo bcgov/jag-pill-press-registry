@@ -1,11 +1,11 @@
-﻿using Gov.Lclb.Cllb.Public.ViewModels;
+﻿using Gov.Jag.PillPressRegistry.Public.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Diagnostics;
 using System.Reflection;
 
-namespace Gov.Lclb.Cllb.Public.Controllers
+namespace Gov.Jag.PillPressRegistry.Public.Controllers
 {
     [Route("api/[controller]")]
     public class ApplicationVersionInfoController : Controller

@@ -1,9 +1,9 @@
-﻿using Gov.Lclb.Cllb.Interfaces;
-using Gov.Lclb.Cllb.Interfaces.Models;
-using Gov.Lclb.Cllb.Public.Authentication;
-using Gov.Lclb.Cllb.Public.Models;
-using Gov.Lclb.Cllb.Public.Utils;
-using Gov.Lclb.Cllb.Public.ViewModels;
+﻿using Gov.Jag.PillPressRegistry.Interfaces;
+using Gov.Jag.PillPressRegistry.Interfaces.Models;
+using Gov.Jag.PillPressRegistry.Public.Authentication;
+using Gov.Jag.PillPressRegistry.Public.Models;
+using Gov.Jag.PillPressRegistry.Public.Utils;
+using Gov.Jag.PillPressRegistry.Public.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -16,7 +16,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace Gov.Lclb.Cllb.Public.Controllers
+namespace Gov.Jag.PillPressRegistry.Public.Controllers
 {
     [Route("api/[controller]")]
     [Authorize(Policy = "Business-User")]
@@ -170,148 +170,6 @@ namespace Gov.Lclb.Cllb.Public.Controllers
             return Json(result);
         }
 
-        [HttpGet("business-profile/{accountId}")]
-        public async Task<IActionResult> GetBusinessProfile(string accountId)
-        {
-            _logger.LogInformation(LoggingEvents.HttpGet, "Begin method " + this.GetType().Name + "." + MethodBase.GetCurrentMethod().ReflectedType.Name);
-            _logger.LogDebug(LoggingEvents.HttpGet, "accountId: {accountId}");
-
-            List<LegalEntity> legalEntities;
-
-            var account = (await _dynamicsClient.GetAccountById(new Guid(accountId))).ToViewModel();
-            _logger.LogDebug(LoggingEvents.HttpGet, "Account details: " + JsonConvert.SerializeObject(account));
-
-            // get legal entities
-            var entityFilter = $"_adoxio_account_value eq {accountId}";
-            var expandList = new List<string> { "adoxio_ShareholderAccountID" };
-            try
-            {
-                legalEntities = _dynamicsClient.Adoxiolegalentities.Get(filter: entityFilter, expand: expandList).Value
-                        .Select(le =>
-                        {
-                            var legalEntity = le.ToViewModel();
-                            var entity = new ViewModels.LegalEntity
-                            {
-                                AdoxioLegalEntity = legalEntity,
-                                Account = le.AdoxioShareholderAccountID == null ? account : le.AdoxioShareholderAccountID.ToViewModel(),
-                            };
-                            entity.corporateDetailsFilesExists = FileUploadExists(entity.Account.id, entity.Account.name, "Corporate Information").Result;
-                            entity.organizationStructureFilesExists = FileUploadExists(entity.Account.id, entity.Account.name, "Organization Structure").Result;
-                            entity.keyPersonnelFilesExists = FileUploadExists(entity.Account.id, entity.Account.name, "Key Personnel").Result;
-                            entity.financialInformationFilesExists = FileUploadExists(entity.Account.id, entity.Account.name, "Financial Information").Result;
-                            entity.shareholderFilesExists = FileUploadExists(entity.Account.id, entity.Account.name, "Central Securities Register").Result;
-                            var tiedHouse = _dynamicsClient.AdoxioTiedhouseconnections
-                                .Get(filter: $"_adoxio_accountid_value eq {entity.Account.id}")
-                                .Value.FirstOrDefault();
-                            if (tiedHouse != null)
-                            {
-                                entity.TiedHouse = tiedHouse.ToViewModel();
-                            }
-                            entity.ChildEntities = GetLegalEntityChildren(entity.AdoxioLegalEntity.id);
-                            return entity;
-                        })
-                        .ToList();
-            }
-            catch (OdataerrorException odee)
-            {
-                _logger.LogError(LoggingEvents.Error, "Error getting legal entities for the account {accountId}.");
-                _logger.LogError("Request:");
-                _logger.LogError(odee.Request.Content);
-                _logger.LogError("Response:");
-                _logger.LogError(odee.Response.Content);
-                return null;
-            }
-
-            var profile = new BusinessProfile
-            {
-                Account = account,
-                LegalEntities = legalEntities
-            };
-
-            var isComplete = legalEntities.Select(le =>
-            {
-                var valid = new ProfileValidation
-                {
-                    LegalEntityId = le.AdoxioLegalEntity.id,
-                    IsComplete = (le.IsComplete())
-                };
-                return valid;
-            }).ToList();
-
-            _logger.LogDebug(LoggingEvents.HttpGet, "BusinessProfile.isComplete: " +
-                JsonConvert.SerializeObject(isComplete, Formatting.Indented, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore }));
-            return Json(isComplete);
-        }
-
-        private List<ViewModels.LegalEntity> GetLegalEntityChildren(string parentLegalEntityId)
-        {
-            _logger.LogInformation(LoggingEvents.Get, "Begin method " + this.GetType().Name + "." + MethodBase.GetCurrentMethod().ReflectedType.Name);
-            _logger.LogDebug(LoggingEvents.Get, "parentLegalEntityId: {accouparentLegalEntityIdntId}");
-
-            List<ViewModels.LegalEntity> children = null;
-            var childEntitiesFilter = $"_adoxio_legalentityowned_value eq {parentLegalEntityId}";
-            var expandList = new List<string> { "adoxio_ShareholderAccountID", "adoxio_Account" };
-
-            try
-            {
-                children = _dynamicsClient.Adoxiolegalentities
-                        .Get(filter: childEntitiesFilter, expand: expandList).Value
-                        .Select(le =>
-                        {
-                            var legalEntity = le.ToViewModel();
-                            var entity = new ViewModels.LegalEntity
-                            {
-                                AdoxioLegalEntity = legalEntity,
-                                Account = le.AdoxioShareholderAccountID == null ? le.AdoxioAccount.ToViewModel() : le.AdoxioShareholderAccountID.ToViewModel()
-                            };
-                            var tiedHouse = _dynamicsClient.AdoxioTiedhouseconnections
-                                .Get(filter: $"_adoxio_accountid_value eq {entity.Account.id}")
-                                .Value.FirstOrDefault();
-                            if (tiedHouse != null)
-                            {
-                                entity.TiedHouse = tiedHouse.ToViewModel();
-                            }
-                            if (entity.AdoxioLegalEntity.isShareholder == true && entity.AdoxioLegalEntity.isindividual == false)
-                            {
-                                entity.ChildEntities = GetLegalEntityChildren(entity.AdoxioLegalEntity.id);
-                            }
-                            return entity;
-                        })
-                        .ToList();
-            }
-            catch (OdataerrorException odee)
-            {
-                _logger.LogError(LoggingEvents.Error, "Error getting legal entity children for parentLegalEntityId {parentLegalEntityId}.");
-                _logger.LogError("Request:");
-                _logger.LogError(odee.Request.Content);
-                _logger.LogError("Response:");
-                _logger.LogError(odee.Response.Content);
-                return null;
-            }
-
-            _logger.LogDebug(LoggingEvents.Get, "LegalEntityChildren: " +
-                JsonConvert.SerializeObject(children, Formatting.Indented, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore }));
-            return children;
-        }
-
-        private async Task<bool> FileUploadExists(string accountId, string accountName, string documentType)
-        {
-            _logger.LogInformation(LoggingEvents.Get, "Begin method " + this.GetType().Name + "." + MethodBase.GetCurrentMethod().ReflectedType.Name);
-            _logger.LogDebug(LoggingEvents.Get, "accountId: {accountId}, accountName: {accountName}, documentType: {documentType}");
-
-            var exists = false;
-            var accountIdCleaned = accountId.ToUpper().Replace("-", "");
-            var folderName = $"{accountName}_{accountIdCleaned}";
-            var fileDetailsList = await _sharePointFileManager.GetFileDetailsListInFolder(SharePointFileManager.DefaultDocumentListTitle, folderName, documentType);
-            if (fileDetailsList != null)
-            {
-                exists = fileDetailsList.Count() > 0;
-            }
-
-            _logger.LogDebug(LoggingEvents.Get, "FileUploadExists: " + exists);
-            return exists;
-        }
-
         [HttpPost()]
         public async Task<IActionResult> CreateDynamicsAccount([FromBody] ViewModels.Account item)
         {
@@ -344,7 +202,7 @@ namespace Gov.Lclb.Cllb.Public.Controllers
             }
 
             // get BCeID record for the current user
-            Gov.Lclb.Cllb.Interfaces.BCeIDBusiness bceidBusiness = await _bceid.ProcessBusinessQuery(userSettings.SiteMinderGuid);
+            Gov.Jag.PillPressRegistry.Interfaces.BCeIDBusiness bceidBusiness = await _bceid.ProcessBusinessQuery(userSettings.SiteMinderGuid);
              var cleanNumber = BusinessNumberSanitizer.SanitizeNumber(bceidBusiness?.businessNumber);
             if (cleanNumber != null)
             {
@@ -377,7 +235,7 @@ namespace Gov.Lclb.Cllb.Public.Controllers
                 userContact = new MicrosoftDynamicsCRMcontact();
                 // Adoxio_externalid is where we will store the guid from siteminder.
                 string sanitizedContactSiteminderId = GuidUtility.SanitizeGuidString(contactSiteminderGuid);
-                userContact.AdoxioExternalid = sanitizedContactSiteminderId;
+                userContact.Externaluseridentifier = sanitizedContactSiteminderId;
                 userContact.Fullname = userSettings.UserDisplayName;
                 userContact.Nickname = userSettings.UserDisplayName;
                 if (Guid.TryParse(userSettings.UserId, out tryParseOutGuid)) // BCeid id goes here
@@ -416,15 +274,12 @@ namespace Gov.Lclb.Cllb.Public.Controllers
                 account = new MicrosoftDynamicsCRMaccount();
                 account.CopyValues(item, updateIfNull);
                 // business type must be set only during creation, not in update (removed from copyValues() )
-                account.AdoxioBusinesstype = (int)Enum.Parse(typeof(ViewModels.AdoxioApplicantTypeCodes), item.businessType, true);
-                // ensure that we create an account for the current user.
-
+                
                 // by convention we strip out any dashes present in the guid, and force it to uppercase.
                 string sanitizedAccountSiteminderId = GuidUtility.SanitizeGuidString(accountSiteminderGuid);
 
-                account.AdoxioExternalid = sanitizedAccountSiteminderId;
-                account.Primarycontactid = userContact;
-                account.AdoxioAccounttype = (int)AdoxioAccountTypeCodes.Applicant;
+                account.ExternalId = sanitizedAccountSiteminderId;
+                account.Primarycontactid = userContact;                
 
                 if (bceidBusiness != null)
                 {
@@ -437,73 +292,32 @@ namespace Gov.Lclb.Cllb.Public.Controllers
                     account.Address1Postalcode = bceidBusiness.addressPostal;
                 }
 
-                // sets Business type with numerical value found in Adoxio_applicanttypecodes
-                // using account.businessType which is set in bceid-confirmation.component.ts
-                account.AdoxioBusinesstype = (int)Enum.Parse(typeof(AdoxioApplicantTypeCodes), item.businessType, true);
+                
 
-                var legalEntity = new MicrosoftDynamicsCRMadoxioLegalentity()
-                {
-                    AdoxioAccount = account,
-                    AdoxioName = item.name,
-                    AdoxioIsindividual = 0,
-                    AdoxioIsapplicant = true,
-                    AdoxioLegalentitytype = account.AdoxioBusinesstype
-                };
-
-                string legalEntityString = JsonConvert.SerializeObject(legalEntity);
-                _logger.LogDebug("Legal Entity before creation in dynamics --> " + legalEntityString);
+                string accountString = JsonConvert.SerializeObject(account);
+                _logger.LogDebug("Account before creation in dynamics --> " + accountString);
 
                 try
                 {
-                    legalEntity = await _dynamicsClient.Adoxiolegalentities.CreateAsync(legalEntity);
+                    account = await _dynamicsClient.Accounts.CreateAsync(account);
                 }
                 catch (OdataerrorException odee)
                 {
-                    _logger.LogError(LoggingEvents.Error, "Error creating legal entity.");
+                    _logger.LogError(LoggingEvents.Error, "Error creating Account.");
                     _logger.LogError("Request:");
                     _logger.LogError(odee.Request.Content);
                     _logger.LogError("Response:");
                     _logger.LogError(odee.Response.Content);
-                    throw new OdataerrorException("Error creating legal entity");
+                    throw new OdataerrorException("Error creating Account");
                 }
+                
 
-                account.Accountid = legalEntity._adoxioAccountValue;
 
-                // fetch the account and get the created contact.
-                if (legalEntity.AdoxioAccount == null)
-                {
-                    legalEntity.AdoxioAccount = await _dynamicsClient.GetAccountById(Guid.Parse(account.Accountid));
-                }
+                userContact.Contactid = account._primarycontactidValue;
 
-                if (legalEntity.AdoxioAccount.Primarycontactid == null)
-                {
-                    legalEntity.AdoxioAccount.Primarycontactid = await _dynamicsClient.GetContactById(Guid.Parse(legalEntity.AdoxioAccount._primarycontactidValue));
-                }
+                accountString = JsonConvert.SerializeObject(accountString);
+                _logger.LogDebug("Legal Entity after creation in dynamics --> " + accountString);
 
-                userContact.Contactid = legalEntity.AdoxioAccount._primarycontactidValue;
-
-                legalEntityString = JsonConvert.SerializeObject(legalEntity);
-                _logger.LogDebug("Legal Entity after creation in dynamics --> " + legalEntityString);
-
-                var tiedHouse = new MicrosoftDynamicsCRMadoxioTiedhouseconnection() { };
-                tiedHouse.AccountODataBind = _dynamicsClient.GetEntityURI("accounts", account.Accountid);
-
-                try
-                {
-                    var res = await _dynamicsClient.AdoxioTiedhouseconnections.CreateAsync(tiedHouse);
-                }
-                catch (OdataerrorException odee)
-                {
-                    _logger.LogError(LoggingEvents.Error, "Error creating Tied house connection.");
-                    _logger.LogError("Request:");
-                    _logger.LogError(odee.Request.Content);
-                    _logger.LogError("Response:");
-                    _logger.LogError(odee.Response.Content);
-                    throw new OdataerrorException("Error creating Tied house connection.");
-                }catch(Exception e)
-                {
-                    _logger.LogError(e.Message);
-                }
 
             }
             else // it is a new user only.
@@ -673,27 +487,7 @@ namespace Gov.Lclb.Cllb.Public.Controllers
                 return new NotFoundResult();
             }
 
-            // delete the associated LegalEntity
-            string accountFilter = "_adoxio_account_value eq " + id.ToString();
-            var legalEntities = _dynamicsClient.Adoxiolegalentities.Get(filter: accountFilter).Value.ToList();
-            legalEntities.ForEach(le =>
-            {
-                try
-                {
-                    _dynamicsClient.Adoxiolegalentities.Delete(le.AdoxioLegalentityid);
-                    _logger.LogDebug(LoggingEvents.HttpDelete, "Legal Entity deleted: " + le.AdoxioLegalentityid);
-                }
-                catch (OdataerrorException odee)
-                {
-                    _logger.LogError(LoggingEvents.Error, "Error deleting the Legal Entity: " + le.AdoxioLegalentityid);
-                    _logger.LogError("Request:");
-                    _logger.LogError(odee.Request.Content);
-                    _logger.LogError("Response:");
-                    _logger.LogError(odee.Response.Content);
-                    throw new OdataerrorException("Error deleting the Legal Entity: " + le.AdoxioLegalentityid);
-                }
-            });
-
+            
             try
             {
                 await _dynamicsClient.Accounts.DeleteAsync(accountId.ToString());

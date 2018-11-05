@@ -4,7 +4,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Gov.Lclb.Cllb.Interfaces.Models
+namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 {
     using Newtonsoft.Json;
     using System.Collections;
@@ -29,7 +29,7 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
         /// Initializes a new instance of the MicrosoftDynamicsCRMinvoice
         /// class.
         /// </summary>
-        public MicrosoftDynamicsCRMinvoice(string name = default(string), int? statuscode = default(int?), object totaltax = default(object), int? onholdtime = default(int?), bool? ispricelocked = default(bool?), object discountamountBase = default(object), string shiptoFax = default(string), string entityimageid = default(string), int? pricingerrorcode = default(int?), object discountpercentage = default(object), string _modifiedbyValue = default(string), string _createdbyValue = default(string), object freightamount = default(object), string shiptoCity = default(string), System.DateTimeOffset? createdon = default(System.DateTimeOffset?), string shiptoPostalcode = default(string), string shiptoLine2 = default(string), object totallineitemdiscountamount = default(object), string description = default(string), object totallineitemamountBase = default(object), int? statecode = default(int?), string _modifiedonbehalfbyValue = default(string), string billtoPostalcode = default(string), string shiptoComposite = default(string), string shiptoStateorprovince = default(string), int? importsequencenumber = default(int?), string shiptoLine1 = default(string), string processid = default(string), string entityimageUrl = default(string), string adoxioTransactionid = default(string), object totalamountBase = default(object), object exchangerate = default(object), string _opportunityidValue = default(string), string _accountidValue = default(string), string shiptoTelephone = default(string), string billtoLine3 = default(string), object discountamount = default(object), string billtoTelephone = default(string), int? prioritycode = default(int?), string billtoComposite = default(string), string _salesorderidValue = default(string), object freightamountBase = default(object), string traversedpath = default(string), string shiptoCountry = default(string), string _contactidValue = default(string), string _owningbusinessunitValue = default(string), string _slaidValue = default(string), string adoxioReturnedtransactionid = default(string), string _pricelevelidValue = default(string), System.DateTimeOffset? modifiedon = default(System.DateTimeOffset?), string billtoStateorprovince = default(string), string billtoLine2 = default(string), string shiptoLine3 = default(string), object totaldiscountamount = default(object), int? timezoneruleversionnumber = default(int?), object totallineitemdiscountamountBase = default(object), long? versionnumber = default(long?), int? paymenttermscode = default(int?), object totalamount = default(object), string _owningteamValue = default(string), System.DateTimeOffset? lastonholdtime = default(System.DateTimeOffset?), object totalamountlessfreight = default(object), string _slainvokedidValue = default(string), string shiptoName = default(string), bool? willcall = default(bool?), string invoicenumber = default(string), string billtoFax = default(string), string billtoCountry = default(string), string _createdonbehalfbyValue = default(string), string stageid = default(string), System.DateTimeOffset? overriddencreatedon = default(System.DateTimeOffset?), string _owneridValue = default(string), string invoiceid = default(string), int? utcconversiontimezonecode = default(int?), string _transactioncurrencyidValue = default(string), System.DateTimeOffset? datedelivered = default(System.DateTimeOffset?), string billtoName = default(string), object totalamountlessfreightBase = default(object), object entityimage = default(object), string _owninguserValue = default(string), System.DateTimeOffset? lastbackofficesubmit = default(System.DateTimeOffset?), string billtoCity = default(string), int? shiptoFreighttermscode = default(int?), object totaldiscountamountBase = default(object), int? shippingmethodcode = default(int?), object totallineitemamount = default(object), string _customeridValue = default(string), string billtoLine1 = default(string), long? entityimageTimestamp = default(long?), object totaltaxBase = default(object), System.DateTimeOffset? duedate = default(System.DateTimeOffset?), IList<MicrosoftDynamicsCRMcontact> contactinvoicesAssociation = default(IList<MicrosoftDynamicsCRMcontact>), MicrosoftDynamicsCRMsla slaInvoiceSla = default(MicrosoftDynamicsCRMsla), MicrosoftDynamicsCRMsystemuser modifiedby = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMcontact customeridContact = default(MicrosoftDynamicsCRMcontact), IList<MicrosoftDynamicsCRMappointment> invoiceAppointments = default(IList<MicrosoftDynamicsCRMappointment>), IList<MicrosoftDynamicsCRMconnection> invoiceConnections1 = default(IList<MicrosoftDynamicsCRMconnection>), MicrosoftDynamicsCRMbusinessunit owningbusinessunit = default(MicrosoftDynamicsCRMbusinessunit), MicrosoftDynamicsCRMtransactioncurrency transactioncurrencyid = default(MicrosoftDynamicsCRMtransactioncurrency), MicrosoftDynamicsCRMprocessstage stageidProcessstage = default(MicrosoftDynamicsCRMprocessstage), IList<MicrosoftDynamicsCRMactivityparty> invoiceActivityParties = default(IList<MicrosoftDynamicsCRMactivityparty>), IList<MicrosoftDynamicsCRMrecurringappointmentmaster> invoiceRecurringAppointmentMasters = default(IList<MicrosoftDynamicsCRMrecurringappointmentmaster>), IList<MicrosoftDynamicsCRMactivitypointer> invoiceActivityPointers = default(IList<MicrosoftDynamicsCRMactivitypointer>), IList<MicrosoftDynamicsCRMphonecall> invoicePhonecalls = default(IList<MicrosoftDynamicsCRMphonecall>), MicrosoftDynamicsCRMsystemuser owninguser = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMemail> invoiceEmails = default(IList<MicrosoftDynamicsCRMemail>), IList<MicrosoftDynamicsCRMbulkdeletefailure> invoiceBulkDeleteFailures = default(IList<MicrosoftDynamicsCRMbulkdeletefailure>), IList<MicrosoftDynamicsCRMletter> invoiceLetters = default(IList<MicrosoftDynamicsCRMletter>), MicrosoftDynamicsCRMsystemuser createdonbehalfby = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMprincipal ownerid = default(MicrosoftDynamicsCRMprincipal), IList<MicrosoftDynamicsCRMtask> invoiceTasks = default(IList<MicrosoftDynamicsCRMtask>), MicrosoftDynamicsCRMsystemuser modifiedonbehalfby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMsyncerror> invoiceSyncErrors = default(IList<MicrosoftDynamicsCRMsyncerror>), MicrosoftDynamicsCRMopportunity opportunityid = default(MicrosoftDynamicsCRMopportunity), IList<MicrosoftDynamicsCRMconnection> invoiceConnections2 = default(IList<MicrosoftDynamicsCRMconnection>), IList<MicrosoftDynamicsCRMinvoicedetail> invoiceDetails = default(IList<MicrosoftDynamicsCRMinvoicedetail>), IList<MicrosoftDynamicsCRMfax> invoiceFaxes = default(IList<MicrosoftDynamicsCRMfax>), MicrosoftDynamicsCRMteam owningteam = default(MicrosoftDynamicsCRMteam), MicrosoftDynamicsCRMaccount customeridAccount = default(MicrosoftDynamicsCRMaccount), MicrosoftDynamicsCRMpricelevel pricelevelid = default(MicrosoftDynamicsCRMpricelevel), IList<MicrosoftDynamicsCRMsocialactivity> invoiceSocialActivities = default(IList<MicrosoftDynamicsCRMsocialactivity>), IList<MicrosoftDynamicsCRMannotation> invoiceAnnotation = default(IList<MicrosoftDynamicsCRMannotation>), IList<MicrosoftDynamicsCRMasyncoperation> invoiceAsyncOperations = default(IList<MicrosoftDynamicsCRMasyncoperation>), MicrosoftDynamicsCRMsystemuser createdby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMslakpiinstance> slakpiinstanceInvoice = default(IList<MicrosoftDynamicsCRMslakpiinstance>), MicrosoftDynamicsCRMsla slainvokedidInvoiceSla = default(MicrosoftDynamicsCRMsla), IList<MicrosoftDynamicsCRMserviceappointment> invoiceServiceAppointments = default(IList<MicrosoftDynamicsCRMserviceappointment>), MicrosoftDynamicsCRMsalesorder salesorderid = default(MicrosoftDynamicsCRMsalesorder), IList<MicrosoftDynamicsCRMadoxioWorker> adoxioInvoiceAdoxioWorkerInvoice = default(IList<MicrosoftDynamicsCRMadoxioWorker>), IList<MicrosoftDynamicsCRMadoxioWorkerinvoicehistory> adoxioInvoiceAdoxioWorkerinvoicehistoryInvoice = default(IList<MicrosoftDynamicsCRMadoxioWorkerinvoicehistory>), IList<MicrosoftDynamicsCRMadoxioApplication> adoxioInvoiceAdoxioApplicationInvoice = default(IList<MicrosoftDynamicsCRMadoxioApplication>), IList<MicrosoftDynamicsCRMadoxioApplication> adoxioInvoiceAdoxioApplicationLicenceFeeInvoice = default(IList<MicrosoftDynamicsCRMadoxioApplication>), IList<MicrosoftDynamicsCRMadoxioViolationnotification> adoxioInvoiceAdoxioViolationnotificationInvoice = default(IList<MicrosoftDynamicsCRMadoxioViolationnotification>), IList<MicrosoftDynamicsCRMadoxioApplicationinvoicehistory> adoxioInvoiceAdoxioApplicationinvoicehistoryInvoice = default(IList<MicrosoftDynamicsCRMadoxioApplicationinvoicehistory>))
+        public MicrosoftDynamicsCRMinvoice(string name = default(string), int? statuscode = default(int?), object totaltax = default(object), int? onholdtime = default(int?), bool? ispricelocked = default(bool?), object discountamountBase = default(object), string shiptoFax = default(string), string entityimageid = default(string), int? pricingerrorcode = default(int?), object discountpercentage = default(object), string _modifiedbyValue = default(string), string _createdbyValue = default(string), object freightamount = default(object), string shiptoCity = default(string), System.DateTimeOffset? createdon = default(System.DateTimeOffset?), string shiptoPostalcode = default(string), string shiptoLine2 = default(string), object totallineitemdiscountamount = default(object), string description = default(string), object totallineitemamountBase = default(object), int? statecode = default(int?), string _modifiedonbehalfbyValue = default(string), string billtoPostalcode = default(string), string shiptoComposite = default(string), string shiptoStateorprovince = default(string), int? importsequencenumber = default(int?), string shiptoLine1 = default(string), string processid = default(string), string entityimageUrl = default(string), object totalamountBase = default(object), object exchangerate = default(object), string _opportunityidValue = default(string), string _accountidValue = default(string), string shiptoTelephone = default(string), string billtoLine3 = default(string), object discountamount = default(object), string billtoTelephone = default(string), int? prioritycode = default(int?), string billtoComposite = default(string), string _salesorderidValue = default(string), object freightamountBase = default(object), string traversedpath = default(string), string shiptoCountry = default(string), string _contactidValue = default(string), string _owningbusinessunitValue = default(string), string _slaidValue = default(string), string _pricelevelidValue = default(string), System.DateTimeOffset? modifiedon = default(System.DateTimeOffset?), string billtoStateorprovince = default(string), string billtoLine2 = default(string), string shiptoLine3 = default(string), object totaldiscountamount = default(object), int? timezoneruleversionnumber = default(int?), object totallineitemdiscountamountBase = default(object), long? versionnumber = default(long?), int? paymenttermscode = default(int?), object totalamount = default(object), string _owningteamValue = default(string), System.DateTimeOffset? lastonholdtime = default(System.DateTimeOffset?), object totalamountlessfreight = default(object), string _slainvokedidValue = default(string), string shiptoName = default(string), bool? willcall = default(bool?), string invoicenumber = default(string), string billtoFax = default(string), string billtoCountry = default(string), string _createdonbehalfbyValue = default(string), string stageid = default(string), System.DateTimeOffset? overriddencreatedon = default(System.DateTimeOffset?), string _owneridValue = default(string), string invoiceid = default(string), int? utcconversiontimezonecode = default(int?), string _transactioncurrencyidValue = default(string), System.DateTimeOffset? datedelivered = default(System.DateTimeOffset?), string billtoName = default(string), object totalamountlessfreightBase = default(object), object entityimage = default(object), string _owninguserValue = default(string), System.DateTimeOffset? lastbackofficesubmit = default(System.DateTimeOffset?), string billtoCity = default(string), int? shiptoFreighttermscode = default(int?), object totaldiscountamountBase = default(object), int? shippingmethodcode = default(int?), object totallineitemamount = default(object), string _customeridValue = default(string), string billtoLine1 = default(string), long? entityimageTimestamp = default(long?), object totaltaxBase = default(object), System.DateTimeOffset? duedate = default(System.DateTimeOffset?), IList<MicrosoftDynamicsCRMcontact> contactinvoicesAssociation = default(IList<MicrosoftDynamicsCRMcontact>), MicrosoftDynamicsCRMsla slaInvoiceSla = default(MicrosoftDynamicsCRMsla), MicrosoftDynamicsCRMsystemuser modifiedby = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMcontact customeridContact = default(MicrosoftDynamicsCRMcontact), IList<MicrosoftDynamicsCRMappointment> invoiceAppointments = default(IList<MicrosoftDynamicsCRMappointment>), IList<MicrosoftDynamicsCRMconnection> invoiceConnections1 = default(IList<MicrosoftDynamicsCRMconnection>), MicrosoftDynamicsCRMbusinessunit owningbusinessunit = default(MicrosoftDynamicsCRMbusinessunit), MicrosoftDynamicsCRMtransactioncurrency transactioncurrencyid = default(MicrosoftDynamicsCRMtransactioncurrency), MicrosoftDynamicsCRMprocessstage stageidProcessstage = default(MicrosoftDynamicsCRMprocessstage), IList<MicrosoftDynamicsCRMactivityparty> invoiceActivityParties = default(IList<MicrosoftDynamicsCRMactivityparty>), IList<MicrosoftDynamicsCRMrecurringappointmentmaster> invoiceRecurringAppointmentMasters = default(IList<MicrosoftDynamicsCRMrecurringappointmentmaster>), IList<MicrosoftDynamicsCRMactivitypointer> invoiceActivityPointers = default(IList<MicrosoftDynamicsCRMactivitypointer>), IList<MicrosoftDynamicsCRMphonecall> invoicePhonecalls = default(IList<MicrosoftDynamicsCRMphonecall>), MicrosoftDynamicsCRMsystemuser owninguser = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMemail> invoiceEmails = default(IList<MicrosoftDynamicsCRMemail>), IList<MicrosoftDynamicsCRMbulkdeletefailure> invoiceBulkDeleteFailures = default(IList<MicrosoftDynamicsCRMbulkdeletefailure>), IList<MicrosoftDynamicsCRMletter> invoiceLetters = default(IList<MicrosoftDynamicsCRMletter>), MicrosoftDynamicsCRMsystemuser createdonbehalfby = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMprincipal ownerid = default(MicrosoftDynamicsCRMprincipal), IList<MicrosoftDynamicsCRMtask> invoiceTasks = default(IList<MicrosoftDynamicsCRMtask>), MicrosoftDynamicsCRMsystemuser modifiedonbehalfby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMsyncerror> invoiceSyncErrors = default(IList<MicrosoftDynamicsCRMsyncerror>), MicrosoftDynamicsCRMopportunity opportunityid = default(MicrosoftDynamicsCRMopportunity), IList<MicrosoftDynamicsCRMconnection> invoiceConnections2 = default(IList<MicrosoftDynamicsCRMconnection>), IList<MicrosoftDynamicsCRMinvoicedetail> invoiceDetails = default(IList<MicrosoftDynamicsCRMinvoicedetail>), IList<MicrosoftDynamicsCRMfax> invoiceFaxes = default(IList<MicrosoftDynamicsCRMfax>), MicrosoftDynamicsCRMteam owningteam = default(MicrosoftDynamicsCRMteam), MicrosoftDynamicsCRMaccount customeridAccount = default(MicrosoftDynamicsCRMaccount), MicrosoftDynamicsCRMpricelevel pricelevelid = default(MicrosoftDynamicsCRMpricelevel), IList<MicrosoftDynamicsCRMsocialactivity> invoiceSocialActivities = default(IList<MicrosoftDynamicsCRMsocialactivity>), IList<MicrosoftDynamicsCRMannotation> invoiceAnnotation = default(IList<MicrosoftDynamicsCRMannotation>), IList<MicrosoftDynamicsCRMasyncoperation> invoiceAsyncOperations = default(IList<MicrosoftDynamicsCRMasyncoperation>), MicrosoftDynamicsCRMsystemuser createdby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMslakpiinstance> slakpiinstanceInvoice = default(IList<MicrosoftDynamicsCRMslakpiinstance>), MicrosoftDynamicsCRMsla slainvokedidInvoiceSla = default(MicrosoftDynamicsCRMsla), IList<MicrosoftDynamicsCRMserviceappointment> invoiceServiceAppointments = default(IList<MicrosoftDynamicsCRMserviceappointment>), MicrosoftDynamicsCRMsalesorder salesorderid = default(MicrosoftDynamicsCRMsalesorder))
         {
             Name = name;
             Statuscode = statuscode;
@@ -60,7 +60,6 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
             ShiptoLine1 = shiptoLine1;
             Processid = processid;
             EntityimageUrl = entityimageUrl;
-            AdoxioTransactionid = adoxioTransactionid;
             TotalamountBase = totalamountBase;
             Exchangerate = exchangerate;
             this._opportunityidValue = _opportunityidValue;
@@ -78,7 +77,6 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
             this._contactidValue = _contactidValue;
             this._owningbusinessunitValue = _owningbusinessunitValue;
             this._slaidValue = _slaidValue;
-            AdoxioReturnedtransactionid = adoxioReturnedtransactionid;
             this._pricelevelidValue = _pricelevelidValue;
             Modifiedon = modifiedon;
             BilltoStateorprovince = billtoStateorprovince;
@@ -159,12 +157,6 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
             SlainvokedidInvoiceSla = slainvokedidInvoiceSla;
             InvoiceServiceAppointments = invoiceServiceAppointments;
             Salesorderid = salesorderid;
-            AdoxioInvoiceAdoxioWorkerInvoice = adoxioInvoiceAdoxioWorkerInvoice;
-            AdoxioInvoiceAdoxioWorkerinvoicehistoryInvoice = adoxioInvoiceAdoxioWorkerinvoicehistoryInvoice;
-            AdoxioInvoiceAdoxioApplicationInvoice = adoxioInvoiceAdoxioApplicationInvoice;
-            AdoxioInvoiceAdoxioApplicationLicenceFeeInvoice = adoxioInvoiceAdoxioApplicationLicenceFeeInvoice;
-            AdoxioInvoiceAdoxioViolationnotificationInvoice = adoxioInvoiceAdoxioViolationnotificationInvoice;
-            AdoxioInvoiceAdoxioApplicationinvoicehistoryInvoice = adoxioInvoiceAdoxioApplicationinvoicehistoryInvoice;
             CustomInit();
         }
 
@@ -320,11 +312,6 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "adoxio_transactionid")]
-        public string AdoxioTransactionid { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "totalamount_base")]
         public object TotalamountBase { get; set; }
 
@@ -407,11 +394,6 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "_slaid_value")]
         public string _slaidValue { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_returnedtransactionid")]
-        public string AdoxioReturnedtransactionid { get; set; }
 
         /// <summary>
         /// </summary>
@@ -812,36 +794,6 @@ namespace Gov.Lclb.Cllb.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "salesorderid")]
         public MicrosoftDynamicsCRMsalesorder Salesorderid { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_invoice_adoxio_worker_Invoice")]
-        public IList<MicrosoftDynamicsCRMadoxioWorker> AdoxioInvoiceAdoxioWorkerInvoice { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_invoice_adoxio_workerinvoicehistory_Invoice")]
-        public IList<MicrosoftDynamicsCRMadoxioWorkerinvoicehistory> AdoxioInvoiceAdoxioWorkerinvoicehistoryInvoice { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_invoice_adoxio_application_Invoice")]
-        public IList<MicrosoftDynamicsCRMadoxioApplication> AdoxioInvoiceAdoxioApplicationInvoice { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_invoice_adoxio_application_LicenceFeeInvoice")]
-        public IList<MicrosoftDynamicsCRMadoxioApplication> AdoxioInvoiceAdoxioApplicationLicenceFeeInvoice { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_invoice_adoxio_violationnotification_Invoice")]
-        public IList<MicrosoftDynamicsCRMadoxioViolationnotification> AdoxioInvoiceAdoxioViolationnotificationInvoice { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "adoxio_invoice_adoxio_applicationinvoicehistory_Invoice")]
-        public IList<MicrosoftDynamicsCRMadoxioApplicationinvoicehistory> AdoxioInvoiceAdoxioApplicationinvoicehistoryInvoice { get; set; }
 
     }
 }
