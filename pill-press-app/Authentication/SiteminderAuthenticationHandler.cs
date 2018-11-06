@@ -253,8 +253,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Authentication
                 // **************************************************
                 // Check if we have a Dev Environment Cookie
                 // **************************************************
-                if (!hostingEnv.IsProduction())
-                {
+                //if (!hostingEnv.IsProduction())
+                //{
                     // check for a fake BCeID login in dev mode
                     string temp = context.Request.Cookies[options.DevAuthenticationTokenKey];
 
@@ -301,7 +301,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Authentication
                             _logger.LogDebug("Got user from dev cookie = " + userId);
                         }
                     }
-                }
+                //}
 
                 // **************************************************
                 // Check if the user session is already created
