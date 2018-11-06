@@ -206,8 +206,11 @@ namespace Gov.Jag.PillPressRegistry.Public
             string sharePointCertFileName = Configuration["SHAREPOINT_CERTIFICATE_FILENAME"];
             string sharePointCertPassword = Configuration["SHAREPOINT_CERTIFICATE_PASSWORD"];
             string sharePointNativeBaseURI = Configuration["SHAREPOINT_NATIVE_BASE_URI"];
-
-            services.AddTransient<SharePointFileManager>(_ => new SharePointFileManager(sharePointServerAppIdUri, sharePointOdataUri, sharePointWebname, sharePointAadTenantId, sharePointClientId, sharePointCertFileName, sharePointCertPassword, ssgUsername, ssgPassword, sharePointNativeBaseURI));
+            if (! string.IsNullOrEmpty(sharePointOdataUri))
+            {
+                services.AddTransient<SharePointFileManager>(_ => new SharePointFileManager(sharePointServerAppIdUri, sharePointOdataUri, sharePointWebname, sharePointAadTenantId, sharePointClientId, sharePointCertFileName, sharePointCertPassword, ssgUsername, ssgPassword, sharePointNativeBaseURI));
+            }
+            
 
             // add BCeID Web Services
 

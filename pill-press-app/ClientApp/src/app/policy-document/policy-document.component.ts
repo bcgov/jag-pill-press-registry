@@ -43,7 +43,7 @@ export class PolicyDocumentComponent implements OnInit {
       this.title = this.policyDocument.title;
       this.body = this.sanitizer.bypassSecurityTrustHtml(this.policyDocument.body);
       this.category = this.policyDocument.category;
-      this.titleService.setTitle(`${this.title} - Liquor and Pill Press Regulation Branch`);
+      this.titleService.setTitle(`${this.title} - Pill Press Regulation Branch`);
     }).catch(error => this.dataLoaded = true);
   }
 
