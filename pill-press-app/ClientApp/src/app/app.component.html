@@ -11,7 +11,8 @@
           <img class="header-logo" alt="B.C. Government Logo" src="assets/bc-logo.svg">
         </a>
         <span class="title" role="banner">
-          Pill Press Registration
+          Pill Press Registration&nbsp;
+          <!-- <span class="label label-beta">Beta</span> -->
         </span>
       </section>
       <section class="col-md-4 col-xs-12 sign-container">
@@ -41,6 +42,7 @@
 
   <div *ngIf="!currentUser || (currentUser && !currentUser.isNewUser == true) || (currentUser && !currentUser.businessname)">
     <!-- /NAVBAR -->
+    <!--
     <div class="navigationRibbon" *ngIf="!currentUser">
       <div class="level2Navigation">
         <div class="">
@@ -84,28 +86,29 @@
 
     </div>
 
-    <section *ngIf="currentUser && !isAssociate" class="navigationRibbon">
-      <div class="level2Navigation ">
-        <div class="">
-          <nav class="navbar navbar-expand-md navbar-light justify-content-end" style="margin-bottom: 0;  width: 100%;">
-            <button class="navbar-toggler btn-mobile" type="button" data-toggle="collapse" style="float: right" data-target="#loggedInMenu"
-              aria-controls="loggedInMenu" aria-expanded="false" aria-label="Toggle navigation" #toggleButtonLoggedIn>
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="loggedInMenu">
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                  <a *ngIf="currentUser.userType == 'Business'" (click)="toggleButtonLoggedIn.click()" class="nav-link" routerLink="/dashboard-lite">Dashboard</a>
-                  <a *ngIf="currentUser.userType == 'VerifiedIndividual'" (click)="toggleButtonLoggedIn.click()" class="nav-link" routerLink="/worker-qualification/dashboard">Dashboard</a>
-                </li>
-              </ul>
-            </div>
-          </nav>
-        </div>
+  <section *ngIf="currentUser && !isAssociate" class="navigationRibbon">
+    <div class="level2Navigation ">
+      <div class="">
+        <nav class="navbar navbar-expand-md navbar-light justify-content-end" style="margin-bottom: 0;  width: 100%;">
+          <button class="navbar-toggler btn-mobile" type="button" data-toggle="collapse" style="float: right" data-target="#loggedInMenu"
+                  aria-controls="loggedInMenu" aria-expanded="false" aria-label="Toggle navigation" #toggleButtonLoggedIn>
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="loggedInMenu">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a *ngIf="currentUser.userType == 'Business'" (click)="toggleButtonLoggedIn.click()" class="nav-link" routerLink="/dashboard-lite">Dashboard</a>
+                <a *ngIf="currentUser.userType == 'VerifiedIndividual'" (click)="toggleButtonLoggedIn.click()" class="nav-link" routerLink="/worker-qualification/dashboard">Dashboard</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
       </div>
-    </section>
+    </div>
+  </section>
+          -->
     <!-- /NAVBAR END -->
-
+    
     <main class="app-content">
       <app-insert id="sidebar-left" class="sidebar-left"></app-insert>
 
