@@ -2,10 +2,10 @@
   "swagger": "2.0",
   "info": {
     "title": "OData Service for namespace Microsoft.Dynamics.CRM",
-    "description": "This OData service is located at https://lclbcannabisdev.crm3.dynamics.com/api/data/v8.2/",
+    "description": "This OData service is located at https://pillspressdev.api.crm3.dynamics.com/api/data/v8.2/",
     "version": "1.0.1"
   },
-  "host": "lclbcannabisdev.crm3.dynamics.com",
+  "host": "pillspressdev.api.crm3.dynamics.com",
   "basePath": "/api/data/v8.2/",
   "schemes": [
     "https"
@@ -240,6 +240,8 @@
                 "address2_country desc",
                 "address1_line2",
                 "address1_line2 desc",
+                "bcgov_bceid",
+                "bcgov_bceid desc",
                 "donotsendmm",
                 "donotsendmm desc",
                 "address1_postalcode",
@@ -485,6 +487,7 @@
                 "yominame",
                 "address2_country",
                 "address1_line2",
+                "bcgov_bceid",
                 "donotsendmm",
                 "address1_postalcode",
                 "traversedpath",
@@ -829,6 +832,7 @@
                 "yominame",
                 "address2_country",
                 "address1_line2",
+                "bcgov_bceid",
                 "donotsendmm",
                 "address1_postalcode",
                 "traversedpath",
@@ -3670,6 +3674,10 @@
           "type": "string",
           "x-nullable": true
         },
+        "bcgov_bceid": {
+          "type": "string",
+          "x-nullable": true
+        },
         "donotsendmm": {
           "type": "boolean",
           "x-nullable": true
@@ -4934,6 +4942,9 @@
         },
         "partyid_bcgov_customaddress": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customaddress"
+        },
+        "partyid_bcgov_customproduct": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
         }
       }
     },
@@ -5423,6 +5434,9 @@
         },
         "regardingobjectid_bcgov_customaddress": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customaddress"
+        },
+        "regardingobjectid_bcgov_customproduct": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
         }
       }
     },
@@ -6128,6 +6142,9 @@
         },
         "regardingobjectid_bcgov_customaddress_appointment": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customaddress"
+        },
+        "regardingobjectid_bcgov_customproduct_appointment": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
         }
       }
     },
@@ -6750,6 +6767,9 @@
         "regardingobjectid_bcgov_customaddress": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customaddress"
         },
+        "regardingobjectid_bcgov_customproduct": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
+        },
         "regardingobjectid_abs_autonumberedentity": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.abs_autonumberedentity"
         },
@@ -7156,6 +7176,269 @@
           "items": {
             "$ref": "#/definitions/Microsoft.Dynamics.CRM.account"
           }
+        }
+      }
+    },
+    "Microsoft.Dynamics.CRM.bcgov_customproduct": {
+      "title": "bcgov_customproduct",
+      "type": "object",
+      "properties": {
+        "modifiedon": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "emailaddress": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "bcgov_customproductid": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "createdon": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "timezoneruleversionnumber": {
+          "type": "integer",
+          "x-nullable": true
+        },
+        "overriddencreatedon": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "statecode": {
+          "type": "integer",
+          "x-nullable": true
+        },
+        "_createdby_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "_owningbusinessunit_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "importsequencenumber": {
+          "type": "integer",
+          "x-nullable": true
+        },
+        "_stageid_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "_modifiedonbehalfby_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "_modifiedby_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "utcconversiontimezonecode": {
+          "type": "integer",
+          "x-nullable": true
+        },
+        "statuscode": {
+          "type": "integer",
+          "x-nullable": true
+        },
+        "bcgov_name": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "_owninguser_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "_bcgov_relatedapplication_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "_owningteam_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "_ownerid_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "processid": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "_createdonbehalfby_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "traversedpath": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "bcgov_productdescriptionandintendeduse": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "versionnumber": {
+          "type": "integer",
+          "format": "int64",
+          "x-nullable": true
+        },
+        "createdbyname": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.systemuser"
+        },
+        "createdonbehalfbyname": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.systemuser"
+        },
+        "modifiedbyname": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.systemuser"
+        },
+        "modifiedonbehalfbyname": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.systemuser"
+        },
+        "owninguser": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.systemuser"
+        },
+        "owningteam": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.team"
+        },
+        "ownerid": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.principal"
+        },
+        "owningbusinessunit": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.businessunit"
+        },
+        "bcgov_customproduct_ActivityPointers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.activitypointer"
+          }
+        },
+        "bcgov_customproduct_Appointments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.appointment"
+          }
+        },
+        "bcgov_customproduct_Emails": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.email"
+          }
+        },
+        "bcgov_customproduct_Faxes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.fax"
+          }
+        },
+        "bcgov_customproduct_Letters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.letter"
+          }
+        },
+        "bcgov_customproduct_PhoneCalls": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.phonecall"
+          }
+        },
+        "bcgov_customproduct_ServiceAppointments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.serviceappointment"
+          }
+        },
+        "bcgov_customproduct_Tasks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.task"
+          }
+        },
+        "bcgov_customproduct_RecurringAppointmentMasters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.recurringappointmentmaster"
+          }
+        },
+        "bcgov_customproduct_SocialActivities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.socialactivity"
+          }
+        },
+        "bcgov_customproduct_SyncErrors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.syncerror"
+          }
+        },
+        "bcgov_customproduct_ActivityParties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.activityparty"
+          }
+        },
+        "bcgov_customproduct_connections1": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.connection"
+          }
+        },
+        "bcgov_customproduct_connections2": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.connection"
+          }
+        },
+        "bcgov_customproduct_DuplicateMatchingRecord": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.duplicaterecord"
+          }
+        },
+        "bcgov_customproduct_DuplicateBaseRecord": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.duplicaterecord"
+          }
+        },
+        "bcgov_customproduct_SharePointDocumentLocations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.sharepointdocumentlocation"
+          }
+        },
+        "bcgov_customproduct_QueueItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.queueitem"
+          }
+        },
+        "bcgov_customproduct_Teams": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.team"
+          }
+        },
+        "bcgov_customproduct_AsyncOperations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.asyncoperation"
+          }
+        },
+        "bcgov_customproduct_BulkDeleteFailures": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bulkdeletefailure"
+          }
+        },
+        "stageid": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.processstage"
+        },
+        "bcgov_RelatedApplication": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.incident"
         }
       }
     },
@@ -9109,6 +9392,9 @@
         "regardingobjectid_bcgov_customaddress": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customaddress"
         },
+        "regardingobjectid_bcgov_customproduct": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
+        },
         "regardingobjectid_abs_autonumberedentity": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.abs_autonumberedentity"
         },
@@ -10487,6 +10773,12 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customaddress"
+          }
+        },
+        "business_unit_bcgov_customproduct": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
           }
         },
         "business_unit_abs_autonumberedentity": {
@@ -13331,6 +13623,12 @@
         },
         "record2id_bcgov_customaddress": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customaddress"
+        },
+        "record1id_bcgov_customproduct": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
+        },
+        "record2id_bcgov_customproduct": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
         }
       }
     },
@@ -16941,6 +17239,12 @@
         "baserecordid_bcgov_customaddress": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customaddress"
         },
+        "duplicaterecordid_bcgov_customproduct": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
+        },
+        "baserecordid_bcgov_customproduct": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
+        },
         "duplicaterecordid_abs_autonumberedentity": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.abs_autonumberedentity"
         },
@@ -18142,6 +18446,9 @@
         },
         "regardingobjectid_bcgov_customaddress_email": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customaddress"
+        },
+        "regardingobjectid_bcgov_customproduct_email": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
         }
       }
     },
@@ -20072,6 +20379,9 @@
         },
         "regardingobjectid_bcgov_customaddress_fax": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customaddress"
+        },
+        "regardingobjectid_bcgov_customproduct_fax": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
         }
       }
     },
@@ -22571,10 +22881,6 @@
           "type": "boolean",
           "x-nullable": true
         },
-        "bcgov_detailsofproductsprovidedtoothers": {
-          "type": "string",
-          "x-nullable": true
-        },
         "bcgov_applicationid": {
           "type": "string",
           "x-nullable": true
@@ -22730,10 +23036,6 @@
         },
         "prioritycode": {
           "type": "integer",
-          "x-nullable": true
-        },
-        "bcgov_detailsofownproducts": {
-          "type": "string",
           "x-nullable": true
         },
         "incident_PostRegardings": {
@@ -23022,6 +23324,12 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/Microsoft.Dynamics.CRM.team"
+          }
+        },
+        "bcgov_incident_customproduct_RelatedApplication": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
           }
         }
       }
@@ -26974,6 +27282,9 @@
         },
         "regardingobjectid_bcgov_customaddress_letter": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customaddress"
+        },
+        "regardingobjectid_bcgov_customproduct_letter": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
         }
       }
     },
@@ -32482,6 +32793,12 @@
             "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customaddress"
           }
         },
+        "owner_bcgov_customproduct": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
+          }
+        },
         "owner_abs_autonumberedentity": {
           "type": "array",
           "items": {
@@ -32812,6 +33129,9 @@
         },
         "regardingobjectid_bcgov_customaddress_phonecall": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customaddress"
+        },
+        "regardingobjectid_bcgov_customproduct_phonecall": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
         }
       }
     },
@@ -34543,6 +34863,12 @@
           "items": {
             "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customaddress"
           }
+        },
+        "processstage_bcgov_customproduct": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
+          }
         }
       }
     },
@@ -36273,6 +36599,9 @@
         },
         "objectid_account": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.account"
+        },
+        "objectid_bcgov_customproduct": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
         }
       }
     },
@@ -38321,6 +38650,9 @@
         },
         "regardingobjectid_bcgov_customaddress_recurringappointmentmaster": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customaddress"
+        },
+        "regardingobjectid_bcgov_customproduct_recurringappointmentmaster": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
         }
       }
     },
@@ -41759,6 +42091,9 @@
         },
         "regardingobjectid_bcgov_customaddress_serviceappointment": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customaddress"
+        },
+        "regardingobjectid_bcgov_customproduct_serviceappointment": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
         }
       }
     },
@@ -42416,6 +42751,9 @@
         },
         "regardingobjectid_incident": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.incident"
+        },
+        "regardingobjectid_bcgov_customproduct": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
         }
       }
     },
@@ -44078,6 +44416,9 @@
         },
         "regardingobjectid_bcgov_customaddress_socialactivity": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customaddress"
+        },
+        "regardingobjectid_bcgov_customproduct_socialactivity": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
         }
       }
     },
@@ -45289,6 +45630,9 @@
         },
         "regardingobjectid_bcgov_customaddress": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customaddress"
+        },
+        "regardingobjectid_bcgov_customproduct": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
         },
         "regardingobjectid_abs_autonumberedentity": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.abs_autonumberedentity"
@@ -51067,6 +51411,36 @@
             "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customaddress"
           }
         },
+        "lk_bcgov_customproduct_createdby": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
+          }
+        },
+        "lk_bcgov_customproduct_createdonbehalfby": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
+          }
+        },
+        "lk_bcgov_customproduct_modifiedby": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
+          }
+        },
+        "lk_bcgov_customproduct_modifiedonbehalfby": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
+          }
+        },
+        "user_bcgov_customproduct": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
+          }
+        },
         "lk_abs_autonumberedentity_createdby": {
           "type": "array",
           "items": {
@@ -51354,6 +51728,9 @@
         },
         "regardingobjectid_bcgov_customaddress_task": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customaddress"
+        },
+        "regardingobjectid_bcgov_customproduct_task": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
         }
       }
     },
@@ -52093,6 +52470,15 @@
         },
         "regardingobjectid_incident": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.incident"
+        },
+        "team_bcgov_customproduct": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
+          }
+        },
+        "regardingobjectid_bcgov_customproduct": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
         },
         "team_abs_autonumberedentity": {
           "type": "array",
@@ -60581,6 +60967,9 @@
     },
     {
       "name": "bcgov_customaddresses"
+    },
+    {
+      "name": "bcgov_customproducts"
     },
     {
       "name": "bookableresourcebookingheaders"
