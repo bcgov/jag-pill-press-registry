@@ -17,7 +17,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
 
     /// <summary>
     /// This OData service is located at
-    /// https://lclbcannabisdev.crm3.dynamics.com/api/data/v8.2/
+    /// https://pillspressdev.api.crm3.dynamics.com/api/data/v8.2/
     /// </summary>
     public partial class DynamicsClient : ServiceClient<DynamicsClient>, IDynamicsClient
     {
@@ -300,7 +300,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             Accounts = new Accounts(this);
             Contacts = new Contacts(this);
             Invoices = new Invoices(this);
-            BaseUri = new System.Uri("https://lclbcannabisdev.crm3.dynamics.com/api/data/v8.2");
+            BaseUri = new System.Uri("https://pillspressdev.api.crm3.dynamics.com/api/data/v8.2");
             SerializationSettings = new JsonSerializerSettings
             {
                 Formatting = Newtonsoft.Json.Formatting.Indented,

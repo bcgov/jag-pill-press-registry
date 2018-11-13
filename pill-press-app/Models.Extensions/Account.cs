@@ -20,10 +20,26 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
         /// <param name="copyIfNull"></param>
         public static void CopyValues(this MicrosoftDynamicsCRMaccount toDynamics, ViewModels.Account fromVM, Boolean copyIfNull)
         {
-            if (copyIfNull || (!copyIfNull && fromVM.name != null))
+            if (copyIfNull || (!copyIfNull && fromVM.businessLegalName != null))
             {
-                toDynamics.Name = fromVM.name;
+                toDynamics.Name = fromVM.businessLegalName;
             }
+
+            if (copyIfNull || (!copyIfNull && fromVM.doingBusinessAs != null))
+            {
+                toDynamics.BcgovDoingbusinessasname = fromVM.doingBusinessAs;
+            }
+
+            if (copyIfNull || (!copyIfNull && fromVM.businessNumber != null))
+            {
+                toDynamics.Accountnumber = fromVM.businessNumber;
+            }
+
+            if (copyIfNull || (!copyIfNull && fromVM.businessType != null))
+            {
+                toDynamics.Businesstypecode = (int)Enum.Parse(typeof(ViewModels.BusinessTypeEnum), fromVM.businessType, true);
+            }
+
             if (copyIfNull || (!copyIfNull && fromVM.description != null))
             {
                 toDynamics.Description = fromVM.description;
@@ -33,22 +49,18 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
 
             if (copyIfNull || (!copyIfNull && fromVM.externalId != null))
             {
-                toDynamics.ExternalId = fromVM.externalId;
+                toDynamics.BcgovBceid = fromVM.externalId;
             }
-            
-            
-            if (copyIfNull || (!copyIfNull && fromVM.businessNumber != null))
+
+
+
+            if (copyIfNull || (!copyIfNull && fromVM.businessEmail != null))
             {
-                toDynamics.Accountnumber = fromVM.businessNumber;
+                toDynamics.Emailaddress1 = fromVM.businessEmail;
             }
-            
-            if (copyIfNull || (!copyIfNull && fromVM.contactEmail != null))
+            if (copyIfNull || (!copyIfNull && fromVM.businessPhone != null))
             {
-                toDynamics.Emailaddress1 = fromVM.contactEmail;
-            }
-            if (copyIfNull || (!copyIfNull && fromVM.contactPhone != null))
-            {
-                toDynamics.Telephone1 = fromVM.contactPhone;
+                toDynamics.Telephone1 = fromVM.businessPhone;
             }
             if (copyIfNull || (!copyIfNull && fromVM.mailingAddressName != null))
             {
@@ -102,24 +114,35 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             ViewModels.Account accountVM = null;
             if (account != null)
             {
-                accountVM = new ViewModels.Account();
+                accountVM = new ViewModels.Account()
+                {
+                    clientId = account.Accountnumber,
+                    businessLegalName = account.Name,
+                    doingBusinessAs = account.BcgovDoingbusinessasname,
+                    businessNumber = account.BcgovBusinessnumber,
+                    businessEmail = account.Emailaddress1,
+                    businessPhone = account.Telephone1,
+                    mailingAddressName = account.Address1Name,
+                    mailingAddressStreet = account.Address1Line1,
+                    mailingAddressCity = account.Address1City,
+                    mailingAddressCountry = account.Address1County,
+                    mailingAddressProvince = account.Address1Stateorprovince,
+                    mailingAddresPostalCode = account.Address1Postalcode
+
+                };
                 if (account.Accountid != null)
                 {
                     accountVM.id = account.Accountid.ToString();
                 }
 
-                accountVM.name = account.Name;
-                accountVM.description = account.Description;
-                accountVM.externalId = account.ExternalId;
-                accountVM.businessNumber = account.Accountnumber;
-                accountVM.contactEmail = account.Emailaddress1;
-                accountVM.contactPhone = account.Telephone1;
-                accountVM.mailingAddressName = account.Address1Name;
-                accountVM.mailingAddressStreet = account.Address1Line1;
-                accountVM.mailingAddressCity = account.Address1City;
-                accountVM.mailingAddressCountry = account.Address1County;
-                accountVM.mailingAddressProvince = account.Address1Stateorprovince;
-                accountVM.mailingAddresPostalCode = account.Address1Postalcode;
+                // logic for businessType.
+                if (account.Businesstypecode != null)
+                {
+                    // get the business type as a string.
+                    ViewModels.BusinessTypeEnum bte = (ViewModels.BusinessTypeEnum)account.Businesstypecode;
+                    accountVM.businessType = bte.ToString();
+                }
+
 
                 if (account.Primarycontactid != null)
                 {
@@ -128,8 +151,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     accountVM.primarycontact.id = account.Primarycontactid.Contactid.ToString();
                     // TODO - load other fields (if necessary)
                 }
-
             }
+
             return accountVM;
         }
 

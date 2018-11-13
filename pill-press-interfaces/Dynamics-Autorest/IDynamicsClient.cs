@@ -12,7 +12,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
 
     /// <summary>
     /// This OData service is located at
-    /// https://lclbcannabisdev.crm3.dynamics.com/api/data/v8.2/
+    /// https://pillspressdev.api.crm3.dynamics.com/api/data/v8.2/
     /// </summary>
     public partial interface IDynamicsClient : System.IDisposable
     {
