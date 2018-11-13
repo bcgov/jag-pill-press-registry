@@ -278,7 +278,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 // by convention we strip out any dashes present in the guid, and force it to uppercase.
                 string sanitizedAccountSiteminderId = GuidUtility.SanitizeGuidString(accountSiteminderGuid);
 
-                account.ExternalId = sanitizedAccountSiteminderId;
+                account.BcgovBceid = sanitizedAccountSiteminderId;
                 account.Primarycontactid = userContact;                
 
                 if (bceidBusiness != null)
