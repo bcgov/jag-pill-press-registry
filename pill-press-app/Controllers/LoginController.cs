@@ -97,7 +97,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         [AllowAnonymous]
         public virtual IActionResult GetDevAuthenticationCookie(string userId)
         {
-            if (_env.IsProduction()) return BadRequest("This API is not available outside a development environment.");
+            // if (_env.IsProduction()) return BadRequest("This API is not available outside a development environment.");
 
             if (string.IsNullOrEmpty(userId)) return BadRequest("Missing required userid query parameter.");
 
