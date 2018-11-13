@@ -1,6 +1,6 @@
 import { browser, by, element } from 'protractor';
 
-export class Pill PressRetailLicensingPage {
+export class PillPressRetailLicensingPage {
     navigateTo() {
       return browser.get('/pillpress/policy-document/pill press-retail-licence');
     }
