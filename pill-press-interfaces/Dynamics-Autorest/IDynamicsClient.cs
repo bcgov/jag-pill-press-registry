@@ -44,14 +44,44 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         IAccounts Accounts { get; }
 
         /// <summary>
+        /// Gets the ICustomaddresses.
+        /// </summary>
+        ICustomaddresses Customaddresses { get; }
+
+        /// <summary>
+        /// Gets the ICustomproducts.
+        /// </summary>
+        ICustomproducts Customproducts { get; }
+
+        /// <summary>
         /// Gets the IContacts.
         /// </summary>
         IContacts Contacts { get; }
 
         /// <summary>
+        /// Gets the IIncidents.
+        /// </summary>
+        IIncidents Incidents { get; }
+
+        /// <summary>
         /// Gets the IInvoices.
         /// </summary>
         IInvoices Invoices { get; }
+
+        /// <summary>
+        /// Gets the IMsdyncustomaddressknowledgearticlset.
+        /// </summary>
+        IMsdyncustomaddressknowledgearticlset Msdyncustomaddressknowledgearticlset { get; }
+
+        /// <summary>
+        /// Gets the IMsdyncustomaddressknowledgebasereset.
+        /// </summary>
+        IMsdyncustomaddressknowledgebasereset Msdyncustomaddressknowledgebasereset { get; }
+
+        /// <summary>
+        /// Gets the ISharepointsites.
+        /// </summary>
+        ISharepointsites Sharepointsites { get; }
 
     }
 }
