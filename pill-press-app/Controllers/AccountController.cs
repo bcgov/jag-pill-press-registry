@@ -262,6 +262,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     userContact.Lastname = userSettings.UserDisplayName.GetLastName();
                 }
                 userContact.Statuscode = 1;
+                userContact.BcgovContacttype = 931490002; // BCeID contact type
             }
             // this may be an existing account, as this service is used during the account confirmation process.
             MicrosoftDynamicsCRMaccount account = await _dynamicsClient.GetAccountBySiteminderBusinessGuid(accountSiteminderGuid);

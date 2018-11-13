@@ -13,12 +13,12 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Extension methods for Invoices.
+    /// Extension methods for Incidents.
     /// </summary>
-    public static partial class InvoicesExtensions
+    public static partial class IncidentsExtensions
     {
             /// <summary>
-            /// Get entities from invoices
+            /// Get entities from incidents
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -42,13 +42,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// <param name='expand'>
             /// Expand related entities
             /// </param>
-            public static GetOKResponseModelModelModelModelModel Get(this IInvoices operations, int? top = default(int?), int? skip = default(int?), string search = default(string), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>))
+            public static GetOKResponseModelModelModelModel Get(this IIncidents operations, int? top = default(int?), int? skip = default(int?), string search = default(string), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>))
             {
                 return operations.GetAsync(top, skip, search, filter, count, orderby, select, expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Get entities from invoices
+            /// Get entities from incidents
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -75,7 +75,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<GetOKResponseModelModelModelModelModel> GetAsync(this IInvoices operations, int? top = default(int?), int? skip = default(int?), string search = default(string), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<GetOKResponseModelModelModelModel> GetAsync(this IIncidents operations, int? top = default(int?), int? skip = default(int?), string search = default(string), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetWithHttpMessagesAsync(top, skip, search, filter, count, orderby, select, expand, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -84,7 +84,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             }
 
             /// <summary>
-            /// Add new entity to invoices
+            /// Add new entity to incidents
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -96,13 +96,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// Required in order for the service to return a JSON representation of the
             /// object.
             /// </param>
-            public static MicrosoftDynamicsCRMinvoice Create(this IInvoices operations, MicrosoftDynamicsCRMinvoice body, string prefer = "return=representation")
+            public static MicrosoftDynamicsCRMincident Create(this IIncidents operations, MicrosoftDynamicsCRMincident body, string prefer = "return=representation")
             {
                 return operations.CreateAsync(body, prefer).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Add new entity to invoices
+            /// Add new entity to incidents
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -117,7 +117,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<MicrosoftDynamicsCRMinvoice> CreateAsync(this IInvoices operations, MicrosoftDynamicsCRMinvoice body, string prefer = "return=representation", CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<MicrosoftDynamicsCRMincident> CreateAsync(this IIncidents operations, MicrosoftDynamicsCRMincident body, string prefer = "return=representation", CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateWithHttpMessagesAsync(body, prefer, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -126,13 +126,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             }
 
             /// <summary>
-            /// Get entity from invoices by key
+            /// Get entity from incidents by key
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='invoiceid'>
-            /// key: invoiceid
+            /// <param name='incidentid'>
+            /// key: incidentid
             /// </param>
             /// <param name='select'>
             /// Select properties to be returned
@@ -140,19 +140,19 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// <param name='expand'>
             /// Expand related entities
             /// </param>
-            public static MicrosoftDynamicsCRMinvoice GetByKey(this IInvoices operations, string invoiceid, IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>))
+            public static MicrosoftDynamicsCRMincident GetByKey(this IIncidents operations, string incidentid, IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>))
             {
-                return operations.GetByKeyAsync(invoiceid, select, expand).GetAwaiter().GetResult();
+                return operations.GetByKeyAsync(incidentid, select, expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Get entity from invoices by key
+            /// Get entity from incidents by key
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='invoiceid'>
-            /// key: invoiceid
+            /// <param name='incidentid'>
+            /// key: incidentid
             /// </param>
             /// <param name='select'>
             /// Select properties to be returned
@@ -163,39 +163,39 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<MicrosoftDynamicsCRMinvoice> GetByKeyAsync(this IInvoices operations, string invoiceid, IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<MicrosoftDynamicsCRMincident> GetByKeyAsync(this IIncidents operations, string incidentid, IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetByKeyWithHttpMessagesAsync(invoiceid, select, expand, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetByKeyWithHttpMessagesAsync(incidentid, select, expand, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Delete entity from invoices
+            /// Delete entity from incidents
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='invoiceid'>
-            /// key: invoiceid
+            /// <param name='incidentid'>
+            /// key: incidentid
             /// </param>
             /// <param name='ifMatch'>
             /// ETag
             /// </param>
-            public static void Delete(this IInvoices operations, string invoiceid, string ifMatch = default(string))
+            public static void Delete(this IIncidents operations, string incidentid, string ifMatch = default(string))
             {
-                operations.DeleteAsync(invoiceid, ifMatch).GetAwaiter().GetResult();
+                operations.DeleteAsync(incidentid, ifMatch).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Delete entity from invoices
+            /// Delete entity from incidents
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='invoiceid'>
-            /// key: invoiceid
+            /// <param name='incidentid'>
+            /// key: incidentid
             /// </param>
             /// <param name='ifMatch'>
             /// ETag
@@ -203,36 +203,36 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this IInvoices operations, string invoiceid, string ifMatch = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAsync(this IIncidents operations, string incidentid, string ifMatch = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(invoiceid, ifMatch, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DeleteWithHttpMessagesAsync(incidentid, ifMatch, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
-            /// Update entity in invoices
+            /// Update entity in incidents
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='invoiceid'>
-            /// key: invoiceid
+            /// <param name='incidentid'>
+            /// key: incidentid
             /// </param>
             /// <param name='body'>
             /// New property values
             /// </param>
-            public static void Update(this IInvoices operations, string invoiceid, MicrosoftDynamicsCRMinvoice body)
+            public static void Update(this IIncidents operations, string incidentid, MicrosoftDynamicsCRMincident body)
             {
-                operations.UpdateAsync(invoiceid, body).GetAwaiter().GetResult();
+                operations.UpdateAsync(incidentid, body).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Update entity in invoices
+            /// Update entity in incidents
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='invoiceid'>
-            /// key: invoiceid
+            /// <param name='incidentid'>
+            /// key: incidentid
             /// </param>
             /// <param name='body'>
             /// New property values
@@ -240,9 +240,9 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task UpdateAsync(this IInvoices operations, string invoiceid, MicrosoftDynamicsCRMinvoice body, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task UpdateAsync(this IIncidents operations, string incidentid, MicrosoftDynamicsCRMincident body, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.UpdateWithHttpMessagesAsync(invoiceid, body, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.UpdateWithHttpMessagesAsync(incidentid, body, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
     }
