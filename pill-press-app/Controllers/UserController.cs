@@ -32,24 +32,27 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         
         protected ClaimsPrincipal CurrentUser => _httpContextAccessor.HttpContext.User;
 
-        [HttpGet("current")]        
+        [HttpGet("current")]
         //[RequiresPermission(Permission.Login, Permission.NewUserRegistration)]
 
 
         public virtual IActionResult UsersCurrentGet()
         {
             SiteMinderAuthOptions siteMinderAuthOptions = new SiteMinderAuthOptions();
-            ViewModels.User user = new ViewModels.User();
 
             // determine if we are a new registrant.
             string temp = _httpContextAccessor.HttpContext.Session.GetString("UserSettings");
             UserSettings userSettings = JsonConvert.DeserializeObject<UserSettings>(temp);
-            user.id = userSettings.UserId;
-            user.contactid = userSettings.ContactId;
-            user.accountid = userSettings.AccountId;
-            user.businessname = userSettings.BusinessLegalName;
-            user.name = userSettings.UserDisplayName;
-            user.UserType = userSettings.UserType;
+            ViewModels.User user = new ViewModels.User()
+            {
+                id = userSettings.UserId,
+                contactid = userSettings.ContactId,
+                accountid = userSettings.AccountId,
+                businessname = userSettings.BusinessLegalName,
+                name = userSettings.UserDisplayName,
+                UserType = userSettings.UserType                
+            };
+            
 
             if (userSettings.IsNewUserRegistration)
             {

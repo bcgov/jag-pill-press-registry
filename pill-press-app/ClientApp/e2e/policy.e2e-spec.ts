@@ -1,13 +1,13 @@
 import { browser, by, element } from 'protractor';
-import { Pill PressRetailLicensingPage } from './pill press-retail-licensing.po';
+import { PillPressRetailLicensingPage } from './pillpress-retail-licensing.po';
 
 const VOTE_SLUG = 'initialNumberInterested';
 
 describe('Policy Content feature test', () => {
-  let page: Pill PressRetailLicensingPage;
+  let page: PillPressRetailLicensingPage;
 
   beforeEach(() => {
-    page = new Pill PressRetailLicensingPage();
+    page = new PillPressRetailLicensingPage();
   });
 
   it('Pill Press Retail Licence', () => {
