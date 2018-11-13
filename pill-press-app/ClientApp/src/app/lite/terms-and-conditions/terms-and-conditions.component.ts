@@ -15,4 +15,5 @@ export class TermsAndConditionsComponent implements OnInit {
 
   ngOnInit() {
   }
+  
 }
