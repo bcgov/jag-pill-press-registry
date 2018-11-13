@@ -387,8 +387,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Authentication
                     if (isDeveloperLogin)
                     {
                         _logger.LogError("Generating a Development user");
-                        userSettings.BusinessLegalName = devCompanyId + " TestBusiness";
-                        userSettings.UserDisplayName = userId + " TestUser";
+                        userSettings.BusinessLegalName = devCompanyId + " BusinessProfileName";
+                        userSettings.UserDisplayName = userId + " BCeIDContactType";
                         siteMinderGuid = GuidUtility.CreateIdForDynamics("contact", userSettings.UserDisplayName).ToString();
                         siteMinderBusinessGuid = GuidUtility.CreateIdForDynamics("account", userSettings.BusinessLegalName).ToString();
                         siteMinderUserType = "Business";
@@ -481,8 +481,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Authentication
 
                     if (isDeveloperLogin)
                     {
-                        userSettings.BusinessLegalName = devCompanyId + " TestBusiness";
-                        userSettings.UserDisplayName = userId + " TestUser";
+                        userSettings.BusinessLegalName = devCompanyId + " BusinessProfileName";
+                        userSettings.UserDisplayName = userId + " BCeIDContactType";
 
                         // add generated guids
                         userSettings.SiteMinderBusinessGuid = GuidUtility.CreateIdForDynamics("account", userSettings.BusinessLegalName).ToString();
