@@ -47,14 +47,44 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual IAccounts Accounts { get; private set; }
 
         /// <summary>
+        /// Gets the ICustomaddresses.
+        /// </summary>
+        public virtual ICustomaddresses Customaddresses { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomproducts.
+        /// </summary>
+        public virtual ICustomproducts Customproducts { get; private set; }
+
+        /// <summary>
         /// Gets the IContacts.
         /// </summary>
         public virtual IContacts Contacts { get; private set; }
 
         /// <summary>
+        /// Gets the IIncidents.
+        /// </summary>
+        public virtual IIncidents Incidents { get; private set; }
+
+        /// <summary>
         /// Gets the IInvoices.
         /// </summary>
         public virtual IInvoices Invoices { get; private set; }
+
+        /// <summary>
+        /// Gets the IMsdyncustomaddressknowledgearticlset.
+        /// </summary>
+        public virtual IMsdyncustomaddressknowledgearticlset Msdyncustomaddressknowledgearticlset { get; private set; }
+
+        /// <summary>
+        /// Gets the IMsdyncustomaddressknowledgebasereset.
+        /// </summary>
+        public virtual IMsdyncustomaddressknowledgebasereset Msdyncustomaddressknowledgebasereset { get; private set; }
+
+        /// <summary>
+        /// Gets the ISharepointsites.
+        /// </summary>
+        public virtual ISharepointsites Sharepointsites { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the DynamicsClient class.
@@ -298,8 +328,14 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         private void Initialize()
         {
             Accounts = new Accounts(this);
+            Customaddresses = new Customaddresses(this);
+            Customproducts = new Customproducts(this);
             Contacts = new Contacts(this);
+            Incidents = new Incidents(this);
             Invoices = new Invoices(this);
+            Msdyncustomaddressknowledgearticlset = new Msdyncustomaddressknowledgearticlset(this);
+            Msdyncustomaddressknowledgebasereset = new Msdyncustomaddressknowledgebasereset(this);
+            Sharepointsites = new Sharepointsites(this);
             BaseUri = new System.Uri("https://pillspressdev.api.crm3.dynamics.com/api/data/v8.2");
             SerializationSettings = new JsonSerializerSettings
             {

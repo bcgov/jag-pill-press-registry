@@ -43,25 +43,7 @@ export class BceidConfirmationComponent {
 
   }
 
-  confirmBceidAccountYes() {
-    this.bceidConfirmAccount = false;
-    this.bceidConfirmBusinessType = true;
-  }
-
-  confirmBceidAccountNo() {
-    // confirm BCeID
-    this.showBceidCorrection = true;
-  }
-
-  confirmBceidUser() {
-    // confirm BCeID
-    this.bceidConfirmContact = true;
-  }
-
-  confirmCorpType() {
-    this.bceidConfirmBusinessType = false;
-    this.bceidConfirmContact = true;
-  }
+  
 
   confirmContactYes() {
     let account = new DynamicsAccount();
