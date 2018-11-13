@@ -1079,6 +1079,880 @@
         }
       }
     },
+    "/bcgov_customaddresses": {
+      "get": {
+        "tags": [
+          "customaddresses"
+        ],
+        "summary": "Get entities from bcgov_customaddresses",
+        "operationId": "Customaddresses_Get",
+        "parameters": [
+          {
+            "name": "$top",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "$skip",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "$search",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "$count",
+            "in": "query",
+            "type": "boolean"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "bcgov_streetline3",
+                "bcgov_streetline3 desc",
+                "_modifiedonbehalfby_value",
+                "_modifiedonbehalfby_value desc",
+                "bcgov_province",
+                "bcgov_province desc",
+                "_ownerid_value",
+                "_ownerid_value desc",
+                "bcgov_country",
+                "bcgov_country desc",
+                "_createdonbehalfby_value",
+                "_createdonbehalfby_value desc",
+                "bcgov_postalcode",
+                "bcgov_postalcode desc",
+                "_slaid_value",
+                "_slaid_value desc",
+                "utcconversiontimezonecode",
+                "utcconversiontimezonecode desc",
+                "emailaddress",
+                "emailaddress desc",
+                "_slainvokedid_value",
+                "_slainvokedid_value desc",
+                "timezoneruleversionnumber",
+                "timezoneruleversionnumber desc",
+                "lastonholdtime",
+                "lastonholdtime desc",
+                "versionnumber",
+                "versionnumber desc",
+                "_bcgov_businessprofile_value",
+                "_bcgov_businessprofile_value desc",
+                "statecode",
+                "statecode desc",
+                "modifiedon",
+                "modifiedon desc",
+                "bcgov_customaddressid",
+                "bcgov_customaddressid desc",
+                "processid",
+                "processid desc",
+                "importsequencenumber",
+                "importsequencenumber desc",
+                "onholdtime",
+                "onholdtime desc",
+                "_modifiedby_value",
+                "_modifiedby_value desc",
+                "_owningteam_value",
+                "_owningteam_value desc",
+                "overriddencreatedon",
+                "overriddencreatedon desc",
+                "_owninguser_value",
+                "_owninguser_value desc",
+                "bcgov_addresstype",
+                "bcgov_addresstype desc",
+                "statuscode",
+                "statuscode desc",
+                "_stageid_value",
+                "_stageid_value desc",
+                "traversedpath",
+                "traversedpath desc",
+                "bcgov_name",
+                "bcgov_name desc",
+                "bcgov_streetline2",
+                "bcgov_streetline2 desc",
+                "_owningbusinessunit_value",
+                "_owningbusinessunit_value desc",
+                "_createdby_value",
+                "_createdby_value desc",
+                "createdon",
+                "createdon desc",
+                "bcgov_city",
+                "bcgov_city desc"
+              ]
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "bcgov_streetline3",
+                "_modifiedonbehalfby_value",
+                "bcgov_province",
+                "_ownerid_value",
+                "bcgov_country",
+                "_createdonbehalfby_value",
+                "bcgov_postalcode",
+                "_slaid_value",
+                "utcconversiontimezonecode",
+                "emailaddress",
+                "_slainvokedid_value",
+                "timezoneruleversionnumber",
+                "lastonholdtime",
+                "versionnumber",
+                "_bcgov_businessprofile_value",
+                "statecode",
+                "modifiedon",
+                "bcgov_customaddressid",
+                "processid",
+                "importsequencenumber",
+                "onholdtime",
+                "_modifiedby_value",
+                "_owningteam_value",
+                "overriddencreatedon",
+                "_owninguser_value",
+                "bcgov_addresstype",
+                "statuscode",
+                "_stageid_value",
+                "traversedpath",
+                "bcgov_name",
+                "bcgov_streetline2",
+                "_owningbusinessunit_value",
+                "_createdby_value",
+                "createdon",
+                "bcgov_city"
+              ]
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "*",
+                "createdbyname",
+                "createdonbehalfbyname",
+                "modifiedbyname",
+                "modifiedonbehalfbyname",
+                "owninguser",
+                "owningteam",
+                "ownerid",
+                "owningbusinessunit",
+                "bcgov_customaddress_ActivityPointers",
+                "bcgov_customaddress_Appointments",
+                "bcgov_customaddress_Emails",
+                "bcgov_customaddress_Faxes",
+                "bcgov_customaddress_Letters",
+                "bcgov_customaddress_PhoneCalls",
+                "bcgov_customaddress_ServiceAppointments",
+                "bcgov_customaddress_Tasks",
+                "bcgov_customaddress_RecurringAppointmentMasters",
+                "bcgov_customaddress_SocialActivities",
+                "bcgov_customaddress_SyncErrors",
+                "bcgov_customaddress_ActivityParties",
+                "bcgov_customaddress_connections1",
+                "bcgov_customaddress_connections2",
+                "bcgov_customaddress_DuplicateMatchingRecord",
+                "bcgov_customaddress_DuplicateBaseRecord",
+                "bcgov_customaddress_SharePointDocumentLocations",
+                "bcgov_customaddress_QueueItems",
+                "bcgov_customaddress_Annotations",
+                "bcgov_customaddress_Feedback",
+                "bcgov_customaddress_Teams",
+                "bcgov_customaddress_AsyncOperations",
+                "bcgov_customaddress_BulkDeleteFailures",
+                "stageid",
+                "bcgov_customaddress_knowledgebaserecord",
+                "msdyn_bcgov_customaddress_knowledgearticle",
+                "slaid",
+                "slainvokedid",
+                "bcgov_customaddress_SLAKPIInstances",
+                "bcgov_BusinessProfile",
+                "bcgov_bcgov_customaddress_account_CurrentBusinessPhysicalAddress",
+                "bcgov_bcgov_customaddress_account_CurrentBusinessMailingAddress"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "schema": {
+              "title": "Collection of bcgov_customaddresses",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customaddress"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "customaddresses"
+        ],
+        "summary": "Add new entity to bcgov_customaddresses",
+        "operationId": "Customaddresses_Create",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customaddress"
+            },
+            "description": "New entity"
+          },
+          {
+            "name": "Prefer",
+            "in": "header",
+            "description": "Required in order for the service to return a JSON representation of the object.",
+            "type": "string",
+            "default": "return=representation"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customaddress"
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      }
+    },
+    "/bcgov_customaddresses({bcgov_customaddressid})": {
+      "get": {
+        "tags": [
+          "customaddresses"
+        ],
+        "summary": "Get entity from bcgov_customaddresses by key",
+        "operationId": "Customaddresses_GetByKey",
+        "parameters": [
+          {
+            "name": "bcgov_customaddressid",
+            "in": "path",
+            "required": true,
+            "description": "key: bcgov_customaddressid",
+            "type": "string"
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "bcgov_streetline3",
+                "_modifiedonbehalfby_value",
+                "bcgov_province",
+                "_ownerid_value",
+                "bcgov_country",
+                "_createdonbehalfby_value",
+                "bcgov_postalcode",
+                "_slaid_value",
+                "utcconversiontimezonecode",
+                "emailaddress",
+                "_slainvokedid_value",
+                "timezoneruleversionnumber",
+                "lastonholdtime",
+                "versionnumber",
+                "_bcgov_businessprofile_value",
+                "statecode",
+                "modifiedon",
+                "bcgov_customaddressid",
+                "processid",
+                "importsequencenumber",
+                "onholdtime",
+                "_modifiedby_value",
+                "_owningteam_value",
+                "overriddencreatedon",
+                "_owninguser_value",
+                "bcgov_addresstype",
+                "statuscode",
+                "_stageid_value",
+                "traversedpath",
+                "bcgov_name",
+                "bcgov_streetline2",
+                "_owningbusinessunit_value",
+                "_createdby_value",
+                "createdon",
+                "bcgov_city"
+              ]
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "*",
+                "createdbyname",
+                "createdonbehalfbyname",
+                "modifiedbyname",
+                "modifiedonbehalfbyname",
+                "owninguser",
+                "owningteam",
+                "ownerid",
+                "owningbusinessunit",
+                "bcgov_customaddress_ActivityPointers",
+                "bcgov_customaddress_Appointments",
+                "bcgov_customaddress_Emails",
+                "bcgov_customaddress_Faxes",
+                "bcgov_customaddress_Letters",
+                "bcgov_customaddress_PhoneCalls",
+                "bcgov_customaddress_ServiceAppointments",
+                "bcgov_customaddress_Tasks",
+                "bcgov_customaddress_RecurringAppointmentMasters",
+                "bcgov_customaddress_SocialActivities",
+                "bcgov_customaddress_SyncErrors",
+                "bcgov_customaddress_ActivityParties",
+                "bcgov_customaddress_connections1",
+                "bcgov_customaddress_connections2",
+                "bcgov_customaddress_DuplicateMatchingRecord",
+                "bcgov_customaddress_DuplicateBaseRecord",
+                "bcgov_customaddress_SharePointDocumentLocations",
+                "bcgov_customaddress_QueueItems",
+                "bcgov_customaddress_Annotations",
+                "bcgov_customaddress_Feedback",
+                "bcgov_customaddress_Teams",
+                "bcgov_customaddress_AsyncOperations",
+                "bcgov_customaddress_BulkDeleteFailures",
+                "stageid",
+                "bcgov_customaddress_knowledgebaserecord",
+                "msdyn_bcgov_customaddress_knowledgearticle",
+                "slaid",
+                "slainvokedid",
+                "bcgov_customaddress_SLAKPIInstances",
+                "bcgov_BusinessProfile",
+                "bcgov_bcgov_customaddress_account_CurrentBusinessPhysicalAddress",
+                "bcgov_bcgov_customaddress_account_CurrentBusinessMailingAddress"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customaddress"
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "customaddresses"
+        ],
+        "summary": "Delete entity from bcgov_customaddresses",
+        "operationId": "Customaddresses_Delete",
+        "parameters": [
+          {
+            "name": "bcgov_customaddressid",
+            "in": "path",
+            "required": true,
+            "description": "key: bcgov_customaddressid",
+            "type": "string"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "customaddresses"
+        ],
+        "summary": "Update entity in bcgov_customaddresses",
+        "operationId": "Customaddresses_Update",
+        "parameters": [
+          {
+            "name": "bcgov_customaddressid",
+            "in": "path",
+            "required": true,
+            "description": "key: bcgov_customaddressid",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customaddress"
+            },
+            "description": "New property values"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      }
+    },
+    "/bcgov_customproducts": {
+      "get": {
+        "tags": [
+          "customproducts"
+        ],
+        "summary": "Get entities from bcgov_customproducts",
+        "operationId": "Customproducts_Get",
+        "parameters": [
+          {
+            "name": "$top",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "$skip",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "$search",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "$count",
+            "in": "query",
+            "type": "boolean"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "modifiedon",
+                "modifiedon desc",
+                "emailaddress",
+                "emailaddress desc",
+                "bcgov_customproductid",
+                "bcgov_customproductid desc",
+                "createdon",
+                "createdon desc",
+                "timezoneruleversionnumber",
+                "timezoneruleversionnumber desc",
+                "overriddencreatedon",
+                "overriddencreatedon desc",
+                "statecode",
+                "statecode desc",
+                "_createdby_value",
+                "_createdby_value desc",
+                "_owningbusinessunit_value",
+                "_owningbusinessunit_value desc",
+                "importsequencenumber",
+                "importsequencenumber desc",
+                "_stageid_value",
+                "_stageid_value desc",
+                "_modifiedonbehalfby_value",
+                "_modifiedonbehalfby_value desc",
+                "_modifiedby_value",
+                "_modifiedby_value desc",
+                "utcconversiontimezonecode",
+                "utcconversiontimezonecode desc",
+                "statuscode",
+                "statuscode desc",
+                "bcgov_name",
+                "bcgov_name desc",
+                "_owninguser_value",
+                "_owninguser_value desc",
+                "_bcgov_relatedapplication_value",
+                "_bcgov_relatedapplication_value desc",
+                "_owningteam_value",
+                "_owningteam_value desc",
+                "_ownerid_value",
+                "_ownerid_value desc",
+                "processid",
+                "processid desc",
+                "_createdonbehalfby_value",
+                "_createdonbehalfby_value desc",
+                "traversedpath",
+                "traversedpath desc",
+                "bcgov_productdescriptionandintendeduse",
+                "bcgov_productdescriptionandintendeduse desc",
+                "versionnumber",
+                "versionnumber desc"
+              ]
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "modifiedon",
+                "emailaddress",
+                "bcgov_customproductid",
+                "createdon",
+                "timezoneruleversionnumber",
+                "overriddencreatedon",
+                "statecode",
+                "_createdby_value",
+                "_owningbusinessunit_value",
+                "importsequencenumber",
+                "_stageid_value",
+                "_modifiedonbehalfby_value",
+                "_modifiedby_value",
+                "utcconversiontimezonecode",
+                "statuscode",
+                "bcgov_name",
+                "_owninguser_value",
+                "_bcgov_relatedapplication_value",
+                "_owningteam_value",
+                "_ownerid_value",
+                "processid",
+                "_createdonbehalfby_value",
+                "traversedpath",
+                "bcgov_productdescriptionandintendeduse",
+                "versionnumber"
+              ]
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "*",
+                "createdbyname",
+                "createdonbehalfbyname",
+                "modifiedbyname",
+                "modifiedonbehalfbyname",
+                "owninguser",
+                "owningteam",
+                "ownerid",
+                "owningbusinessunit",
+                "bcgov_customproduct_ActivityPointers",
+                "bcgov_customproduct_Appointments",
+                "bcgov_customproduct_Emails",
+                "bcgov_customproduct_Faxes",
+                "bcgov_customproduct_Letters",
+                "bcgov_customproduct_PhoneCalls",
+                "bcgov_customproduct_ServiceAppointments",
+                "bcgov_customproduct_Tasks",
+                "bcgov_customproduct_RecurringAppointmentMasters",
+                "bcgov_customproduct_SocialActivities",
+                "bcgov_customproduct_SyncErrors",
+                "bcgov_customproduct_ActivityParties",
+                "bcgov_customproduct_connections1",
+                "bcgov_customproduct_connections2",
+                "bcgov_customproduct_DuplicateMatchingRecord",
+                "bcgov_customproduct_DuplicateBaseRecord",
+                "bcgov_customproduct_SharePointDocumentLocations",
+                "bcgov_customproduct_QueueItems",
+                "bcgov_customproduct_Teams",
+                "bcgov_customproduct_AsyncOperations",
+                "bcgov_customproduct_BulkDeleteFailures",
+                "stageid",
+                "bcgov_RelatedApplication"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "schema": {
+              "title": "Collection of bcgov_customproducts",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "customproducts"
+        ],
+        "summary": "Add new entity to bcgov_customproducts",
+        "operationId": "Customproducts_Create",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
+            },
+            "description": "New entity"
+          },
+          {
+            "name": "Prefer",
+            "in": "header",
+            "description": "Required in order for the service to return a JSON representation of the object.",
+            "type": "string",
+            "default": "return=representation"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      }
+    },
+    "/bcgov_customproducts({bcgov_customproductid})": {
+      "get": {
+        "tags": [
+          "customproducts"
+        ],
+        "summary": "Get entity from bcgov_customproducts by key",
+        "operationId": "Customproducts_GetByKey",
+        "parameters": [
+          {
+            "name": "bcgov_customproductid",
+            "in": "path",
+            "required": true,
+            "description": "key: bcgov_customproductid",
+            "type": "string"
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "modifiedon",
+                "emailaddress",
+                "bcgov_customproductid",
+                "createdon",
+                "timezoneruleversionnumber",
+                "overriddencreatedon",
+                "statecode",
+                "_createdby_value",
+                "_owningbusinessunit_value",
+                "importsequencenumber",
+                "_stageid_value",
+                "_modifiedonbehalfby_value",
+                "_modifiedby_value",
+                "utcconversiontimezonecode",
+                "statuscode",
+                "bcgov_name",
+                "_owninguser_value",
+                "_bcgov_relatedapplication_value",
+                "_owningteam_value",
+                "_ownerid_value",
+                "processid",
+                "_createdonbehalfby_value",
+                "traversedpath",
+                "bcgov_productdescriptionandintendeduse",
+                "versionnumber"
+              ]
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "*",
+                "createdbyname",
+                "createdonbehalfbyname",
+                "modifiedbyname",
+                "modifiedonbehalfbyname",
+                "owninguser",
+                "owningteam",
+                "ownerid",
+                "owningbusinessunit",
+                "bcgov_customproduct_ActivityPointers",
+                "bcgov_customproduct_Appointments",
+                "bcgov_customproduct_Emails",
+                "bcgov_customproduct_Faxes",
+                "bcgov_customproduct_Letters",
+                "bcgov_customproduct_PhoneCalls",
+                "bcgov_customproduct_ServiceAppointments",
+                "bcgov_customproduct_Tasks",
+                "bcgov_customproduct_RecurringAppointmentMasters",
+                "bcgov_customproduct_SocialActivities",
+                "bcgov_customproduct_SyncErrors",
+                "bcgov_customproduct_ActivityParties",
+                "bcgov_customproduct_connections1",
+                "bcgov_customproduct_connections2",
+                "bcgov_customproduct_DuplicateMatchingRecord",
+                "bcgov_customproduct_DuplicateBaseRecord",
+                "bcgov_customproduct_SharePointDocumentLocations",
+                "bcgov_customproduct_QueueItems",
+                "bcgov_customproduct_Teams",
+                "bcgov_customproduct_AsyncOperations",
+                "bcgov_customproduct_BulkDeleteFailures",
+                "stageid",
+                "bcgov_RelatedApplication"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "customproducts"
+        ],
+        "summary": "Delete entity from bcgov_customproducts",
+        "operationId": "Customproducts_Delete",
+        "parameters": [
+          {
+            "name": "bcgov_customproductid",
+            "in": "path",
+            "required": true,
+            "description": "key: bcgov_customproductid",
+            "type": "string"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "customproducts"
+        ],
+        "summary": "Update entity in bcgov_customproducts",
+        "operationId": "Customproducts_Update",
+        "parameters": [
+          {
+            "name": "bcgov_customproductid",
+            "in": "path",
+            "required": true,
+            "description": "key: bcgov_customproductid",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
+            },
+            "description": "New property values"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      }
+    },
     "/contacts": {
       "get": {
         "tags": [
@@ -2279,6 +3153,782 @@
         }
       }
     },
+    "/incidents": {
+      "get": {
+        "tags": [
+          "incidents"
+        ],
+        "summary": "Get entities from incidents",
+        "operationId": "Incidents_Get",
+        "parameters": [
+          {
+            "name": "$top",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "$skip",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "$search",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "$count",
+            "in": "query",
+            "type": "boolean"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "sentimentvalue",
+                "sentimentvalue desc",
+                "onholdtime",
+                "onholdtime desc",
+                "traversedpath",
+                "traversedpath desc",
+                "bcgov_applicationtype",
+                "bcgov_applicationtype desc",
+                "bcgov_intendtopurchaseequipment",
+                "bcgov_intendtopurchaseequipment desc",
+                "_transactioncurrencyid_value",
+                "_transactioncurrencyid_value desc",
+                "exchangerate",
+                "exchangerate desc",
+                "bcgov_currentlyownusepossessequipment",
+                "bcgov_currentlyownusepossessequipment desc",
+                "bcgov_declarationofcorrectinformation",
+                "bcgov_declarationofcorrectinformation desc",
+                "incidentstagecode",
+                "incidentstagecode desc",
+                "_createdby_value",
+                "_createdby_value desc",
+                "casetypecode",
+                "casetypecode desc",
+                "title",
+                "title desc",
+                "numberofchildincidents",
+                "numberofchildincidents desc",
+                "bcgov_bceiduserguid",
+                "bcgov_bceiduserguid desc",
+                "_owninguser_value",
+                "_owninguser_value desc",
+                "_slainvokedid_value",
+                "_slainvokedid_value desc",
+                "followuptaskcreated",
+                "followuptaskcreated desc",
+                "firstresponseslastatus",
+                "firstresponseslastatus desc",
+                "bcgov_foippaconsent",
+                "bcgov_foippaconsent desc",
+                "modifiedon",
+                "modifiedon desc",
+                "_contactid_value",
+                "_contactid_value desc",
+                "bcgov_consentforemailcorrespondence",
+                "bcgov_consentforemailcorrespondence desc",
+                "statecode",
+                "statecode desc",
+                "messagetypecode",
+                "messagetypecode desc",
+                "bcgov_manufacturingprocessdescription",
+                "bcgov_manufacturingprocessdescription desc",
+                "entityimage_timestamp",
+                "entityimage_timestamp desc",
+                "merged",
+                "merged desc",
+                "overriddencreatedon",
+                "overriddencreatedon desc",
+                "_createdbyexternalparty_value",
+                "_createdbyexternalparty_value desc",
+                "bcgov_bceidemail",
+                "bcgov_bceidemail desc",
+                "bcgov_providingmanufacturingtoothers",
+                "bcgov_providingmanufacturingtoothers desc",
+                "customercontacted",
+                "customercontacted desc",
+                "createdon",
+                "createdon desc",
+                "_resolvebykpiid_value",
+                "_resolvebykpiid_value desc",
+                "_owningteam_value",
+                "_owningteam_value desc",
+                "_existingcase_value",
+                "_existingcase_value desc",
+                "customersatisfactioncode",
+                "customersatisfactioncode desc",
+                "_firstresponsebykpiid_value",
+                "_firstresponsebykpiid_value desc",
+                "_primarycontactid_value",
+                "_primarycontactid_value desc",
+                "_kbarticleid_value",
+                "_kbarticleid_value desc",
+                "_subjectid_value",
+                "_subjectid_value desc",
+                "utcconversiontimezonecode",
+                "utcconversiontimezonecode desc",
+                "isdecrementing",
+                "isdecrementing desc",
+                "stageid",
+                "stageid desc",
+                "entityimage",
+                "entityimage desc",
+                "followupby",
+                "followupby desc",
+                "statuscode",
+                "statuscode desc",
+                "_accountid_value",
+                "_accountid_value desc",
+                "actualserviceunits",
+                "actualserviceunits desc",
+                "escalatedon",
+                "escalatedon desc",
+                "bcgov_borrowrentleaseequipment",
+                "bcgov_borrowrentleaseequipment desc",
+                "checkemail",
+                "checkemail desc",
+                "resolveby",
+                "resolveby desc",
+                "_masterid_value",
+                "_masterid_value desc",
+                "bcgov_producingownproduct",
+                "bcgov_producingownproduct desc",
+                "incidentid",
+                "incidentid desc",
+                "_entitlementid_value",
+                "_entitlementid_value desc",
+                "importsequencenumber",
+                "importsequencenumber desc",
+                "servicestage",
+                "servicestage desc",
+                "decremententitlementterm",
+                "decremententitlementterm desc",
+                "routecase",
+                "routecase desc",
+                "bcgov_applicationid",
+                "bcgov_applicationid desc",
+                "influencescore",
+                "influencescore desc",
+                "responseby",
+                "responseby desc",
+                "_modifiedbyexternalparty_value",
+                "_modifiedbyexternalparty_value desc",
+                "_modifiedby_value",
+                "_modifiedby_value desc",
+                "bcgov_sellequipment",
+                "bcgov_sellequipment desc",
+                "_modifiedonbehalfby_value",
+                "_modifiedonbehalfby_value desc",
+                "_productid_value",
+                "_productid_value desc",
+                "_createdonbehalfby_value",
+                "_createdonbehalfby_value desc",
+                "caseorigincode",
+                "caseorigincode desc",
+                "timezoneruleversionnumber",
+                "timezoneruleversionnumber desc",
+                "bcgov_bceid",
+                "bcgov_bceid desc",
+                "firstresponsesent",
+                "firstresponsesent desc",
+                "processid",
+                "processid desc",
+                "bcgov_ownintendtoownequipmentforbusinessuse",
+                "bcgov_ownintendtoownequipmentforbusinessuse desc",
+                "productserialnumber",
+                "productserialnumber desc",
+                "entityimageid",
+                "entityimageid desc",
+                "_contractid_value",
+                "_contractid_value desc",
+                "contractservicelevelcode",
+                "contractservicelevelcode desc",
+                "isescalated",
+                "isescalated desc",
+                "severitycode",
+                "severitycode desc",
+                "lastonholdtime",
+                "lastonholdtime desc",
+                "ticketnumber",
+                "ticketnumber desc",
+                "_contractdetailid_value",
+                "_contractdetailid_value desc",
+                "_parentcaseid_value",
+                "_parentcaseid_value desc",
+                "blockedprofile",
+                "blockedprofile desc",
+                "billedserviceunits",
+                "billedserviceunits desc",
+                "_socialprofileid_value",
+                "_socialprofileid_value desc",
+                "_ownerid_value",
+                "_ownerid_value desc",
+                "_owningbusinessunit_value",
+                "_owningbusinessunit_value desc",
+                "bcgov_mainbusinessfocus",
+                "bcgov_mainbusinessfocus desc",
+                "description",
+                "description desc",
+                "_slaid_value",
+                "_slaid_value desc",
+                "activitiescomplete",
+                "activitiescomplete desc",
+                "resolvebyslastatus",
+                "resolvebyslastatus desc",
+                "versionnumber",
+                "versionnumber desc",
+                "_customerid_value",
+                "_customerid_value desc",
+                "entityimage_url",
+                "entityimage_url desc",
+                "prioritycode",
+                "prioritycode desc"
+              ]
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "sentimentvalue",
+                "onholdtime",
+                "traversedpath",
+                "bcgov_applicationtype",
+                "bcgov_intendtopurchaseequipment",
+                "_transactioncurrencyid_value",
+                "exchangerate",
+                "bcgov_currentlyownusepossessequipment",
+                "bcgov_declarationofcorrectinformation",
+                "incidentstagecode",
+                "_createdby_value",
+                "casetypecode",
+                "title",
+                "numberofchildincidents",
+                "bcgov_bceiduserguid",
+                "_owninguser_value",
+                "_slainvokedid_value",
+                "followuptaskcreated",
+                "firstresponseslastatus",
+                "bcgov_foippaconsent",
+                "modifiedon",
+                "_contactid_value",
+                "bcgov_consentforemailcorrespondence",
+                "statecode",
+                "messagetypecode",
+                "bcgov_manufacturingprocessdescription",
+                "entityimage_timestamp",
+                "merged",
+                "overriddencreatedon",
+                "_createdbyexternalparty_value",
+                "bcgov_bceidemail",
+                "bcgov_providingmanufacturingtoothers",
+                "customercontacted",
+                "createdon",
+                "_resolvebykpiid_value",
+                "_owningteam_value",
+                "_existingcase_value",
+                "customersatisfactioncode",
+                "_firstresponsebykpiid_value",
+                "_primarycontactid_value",
+                "_kbarticleid_value",
+                "_subjectid_value",
+                "utcconversiontimezonecode",
+                "isdecrementing",
+                "stageid",
+                "entityimage",
+                "followupby",
+                "statuscode",
+                "_accountid_value",
+                "actualserviceunits",
+                "escalatedon",
+                "bcgov_borrowrentleaseequipment",
+                "checkemail",
+                "resolveby",
+                "_masterid_value",
+                "bcgov_producingownproduct",
+                "incidentid",
+                "_entitlementid_value",
+                "importsequencenumber",
+                "servicestage",
+                "decremententitlementterm",
+                "routecase",
+                "bcgov_applicationid",
+                "influencescore",
+                "responseby",
+                "_modifiedbyexternalparty_value",
+                "_modifiedby_value",
+                "bcgov_sellequipment",
+                "_modifiedonbehalfby_value",
+                "_productid_value",
+                "_createdonbehalfby_value",
+                "caseorigincode",
+                "timezoneruleversionnumber",
+                "bcgov_bceid",
+                "firstresponsesent",
+                "processid",
+                "bcgov_ownintendtoownequipmentforbusinessuse",
+                "productserialnumber",
+                "entityimageid",
+                "_contractid_value",
+                "contractservicelevelcode",
+                "isescalated",
+                "severitycode",
+                "lastonholdtime",
+                "ticketnumber",
+                "_contractdetailid_value",
+                "_parentcaseid_value",
+                "blockedprofile",
+                "billedserviceunits",
+                "_socialprofileid_value",
+                "_ownerid_value",
+                "_owningbusinessunit_value",
+                "bcgov_mainbusinessfocus",
+                "description",
+                "_slaid_value",
+                "activitiescomplete",
+                "resolvebyslastatus",
+                "versionnumber",
+                "_customerid_value",
+                "entityimage_url",
+                "prioritycode"
+              ]
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "*",
+                "incident_PostRegardings",
+                "incident_PostFollows",
+                "masterid",
+                "incident_master_incident",
+                "OriginatingCase_Lead",
+                "parentcaseid",
+                "incident_parent_incident",
+                "modifiedonbehalfby",
+                "incident_activity_parties",
+                "slainvokedid_sla",
+                "transactioncurrencyid",
+                "Incident_SocialActivities",
+                "firstresponsebykpiid",
+                "slaid_sla",
+                "productid",
+                "slakpiinstance_incident",
+                "incident_actioncard",
+                "Incident_Appointments",
+                "incident_connections2",
+                "Incident_ServiceAppointments",
+                "owningteam",
+                "contractdetailid",
+                "existingcase",
+                "incident_existingcase",
+                "Incident_QueueItem",
+                "KnowledgeBaseRecord_Incident",
+                "incident_phonetocaseprocess",
+                "Incident_IncidentResolutions",
+                "Incident_Emails",
+                "stageid_processstage",
+                "Incident_AsyncOperations",
+                "Incident_DuplicateMatchingRecord",
+                "Incident_Phonecalls",
+                "incident_connections1",
+                "owningbusinessunit",
+                "customerid_contact",
+                "subjectid",
+                "entitlementid",
+                "Incident_Annotation",
+                "Incident_RecurringAppointmentMasters",
+                "socialprofileid",
+                "createdby",
+                "Incident_ActivityPointers",
+                "Incident_BulkDeleteFailures",
+                "customerid_account",
+                "owninguser",
+                "resolvebykpiid",
+                "primarycontactid",
+                "responsiblecontactid",
+                "createdonbehalfby",
+                "ownerid",
+                "Incident_Letters",
+                "Incident_SyncErrors",
+                "modifiedby",
+                "Incident_Faxes",
+                "contractid",
+                "knowledgearticle_incidents",
+                "Incident_DuplicateBaseRecord",
+                "Incident_Tasks",
+                "kbarticleid",
+                "incident_SharePointDocumentLocations",
+                "incident_Teams",
+                "bcgov_incident_customproduct_RelatedApplication"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "schema": {
+              "title": "Collection of incidents",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.Dynamics.CRM.incident"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "incidents"
+        ],
+        "summary": "Add new entity to incidents",
+        "operationId": "Incidents_Create",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.incident"
+            },
+            "description": "New entity"
+          },
+          {
+            "name": "Prefer",
+            "in": "header",
+            "description": "Required in order for the service to return a JSON representation of the object.",
+            "type": "string",
+            "default": "return=representation"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.incident"
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      }
+    },
+    "/incidents({incidentid})": {
+      "get": {
+        "tags": [
+          "incidents"
+        ],
+        "summary": "Get entity from incidents by key",
+        "operationId": "Incidents_GetByKey",
+        "parameters": [
+          {
+            "name": "incidentid",
+            "in": "path",
+            "required": true,
+            "description": "key: incidentid",
+            "type": "string"
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "sentimentvalue",
+                "onholdtime",
+                "traversedpath",
+                "bcgov_applicationtype",
+                "bcgov_intendtopurchaseequipment",
+                "_transactioncurrencyid_value",
+                "exchangerate",
+                "bcgov_currentlyownusepossessequipment",
+                "bcgov_declarationofcorrectinformation",
+                "incidentstagecode",
+                "_createdby_value",
+                "casetypecode",
+                "title",
+                "numberofchildincidents",
+                "bcgov_bceiduserguid",
+                "_owninguser_value",
+                "_slainvokedid_value",
+                "followuptaskcreated",
+                "firstresponseslastatus",
+                "bcgov_foippaconsent",
+                "modifiedon",
+                "_contactid_value",
+                "bcgov_consentforemailcorrespondence",
+                "statecode",
+                "messagetypecode",
+                "bcgov_manufacturingprocessdescription",
+                "entityimage_timestamp",
+                "merged",
+                "overriddencreatedon",
+                "_createdbyexternalparty_value",
+                "bcgov_bceidemail",
+                "bcgov_providingmanufacturingtoothers",
+                "customercontacted",
+                "createdon",
+                "_resolvebykpiid_value",
+                "_owningteam_value",
+                "_existingcase_value",
+                "customersatisfactioncode",
+                "_firstresponsebykpiid_value",
+                "_primarycontactid_value",
+                "_kbarticleid_value",
+                "_subjectid_value",
+                "utcconversiontimezonecode",
+                "isdecrementing",
+                "stageid",
+                "entityimage",
+                "followupby",
+                "statuscode",
+                "_accountid_value",
+                "actualserviceunits",
+                "escalatedon",
+                "bcgov_borrowrentleaseequipment",
+                "checkemail",
+                "resolveby",
+                "_masterid_value",
+                "bcgov_producingownproduct",
+                "incidentid",
+                "_entitlementid_value",
+                "importsequencenumber",
+                "servicestage",
+                "decremententitlementterm",
+                "routecase",
+                "bcgov_applicationid",
+                "influencescore",
+                "responseby",
+                "_modifiedbyexternalparty_value",
+                "_modifiedby_value",
+                "bcgov_sellequipment",
+                "_modifiedonbehalfby_value",
+                "_productid_value",
+                "_createdonbehalfby_value",
+                "caseorigincode",
+                "timezoneruleversionnumber",
+                "bcgov_bceid",
+                "firstresponsesent",
+                "processid",
+                "bcgov_ownintendtoownequipmentforbusinessuse",
+                "productserialnumber",
+                "entityimageid",
+                "_contractid_value",
+                "contractservicelevelcode",
+                "isescalated",
+                "severitycode",
+                "lastonholdtime",
+                "ticketnumber",
+                "_contractdetailid_value",
+                "_parentcaseid_value",
+                "blockedprofile",
+                "billedserviceunits",
+                "_socialprofileid_value",
+                "_ownerid_value",
+                "_owningbusinessunit_value",
+                "bcgov_mainbusinessfocus",
+                "description",
+                "_slaid_value",
+                "activitiescomplete",
+                "resolvebyslastatus",
+                "versionnumber",
+                "_customerid_value",
+                "entityimage_url",
+                "prioritycode"
+              ]
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "*",
+                "incident_PostRegardings",
+                "incident_PostFollows",
+                "masterid",
+                "incident_master_incident",
+                "OriginatingCase_Lead",
+                "parentcaseid",
+                "incident_parent_incident",
+                "modifiedonbehalfby",
+                "incident_activity_parties",
+                "slainvokedid_sla",
+                "transactioncurrencyid",
+                "Incident_SocialActivities",
+                "firstresponsebykpiid",
+                "slaid_sla",
+                "productid",
+                "slakpiinstance_incident",
+                "incident_actioncard",
+                "Incident_Appointments",
+                "incident_connections2",
+                "Incident_ServiceAppointments",
+                "owningteam",
+                "contractdetailid",
+                "existingcase",
+                "incident_existingcase",
+                "Incident_QueueItem",
+                "KnowledgeBaseRecord_Incident",
+                "incident_phonetocaseprocess",
+                "Incident_IncidentResolutions",
+                "Incident_Emails",
+                "stageid_processstage",
+                "Incident_AsyncOperations",
+                "Incident_DuplicateMatchingRecord",
+                "Incident_Phonecalls",
+                "incident_connections1",
+                "owningbusinessunit",
+                "customerid_contact",
+                "subjectid",
+                "entitlementid",
+                "Incident_Annotation",
+                "Incident_RecurringAppointmentMasters",
+                "socialprofileid",
+                "createdby",
+                "Incident_ActivityPointers",
+                "Incident_BulkDeleteFailures",
+                "customerid_account",
+                "owninguser",
+                "resolvebykpiid",
+                "primarycontactid",
+                "responsiblecontactid",
+                "createdonbehalfby",
+                "ownerid",
+                "Incident_Letters",
+                "Incident_SyncErrors",
+                "modifiedby",
+                "Incident_Faxes",
+                "contractid",
+                "knowledgearticle_incidents",
+                "Incident_DuplicateBaseRecord",
+                "Incident_Tasks",
+                "kbarticleid",
+                "incident_SharePointDocumentLocations",
+                "incident_Teams",
+                "bcgov_incident_customproduct_RelatedApplication"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.incident"
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "incidents"
+        ],
+        "summary": "Delete entity from incidents",
+        "operationId": "Incidents_Delete",
+        "parameters": [
+          {
+            "name": "incidentid",
+            "in": "path",
+            "required": true,
+            "description": "key: incidentid",
+            "type": "string"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "incidents"
+        ],
+        "summary": "Update entity in incidents",
+        "operationId": "Incidents_Update",
+        "parameters": [
+          {
+            "name": "incidentid",
+            "in": "path",
+            "required": true,
+            "description": "key: incidentid",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.incident"
+            },
+            "description": "New property values"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      }
+    },
     "/invoices": {
       "get": {
         "tags": [
@@ -2940,6 +4590,948 @@
             "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.Dynamics.CRM.invoice"
+            },
+            "description": "New property values"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      }
+    },
+    "/msdyn_bcgov_customaddress_knowledgearticlset": {
+      "get": {
+        "tags": [
+          "msdyn_customaddress_knowledgearticlset"
+        ],
+        "summary": "Get entities from msdyn_bcgov_customaddress_knowledgearticlset",
+        "operationId": "Msdyncustomaddressknowledgearticlset_Get",
+        "parameters": [
+          {
+            "name": "$top",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "$skip",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "$search",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "$count",
+            "in": "query",
+            "type": "boolean"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "bcgov_customaddressid",
+                "bcgov_customaddressid desc",
+                "msdyn_bcgov_customaddress_knowledgearticlid",
+                "msdyn_bcgov_customaddress_knowledgearticlid desc",
+                "versionnumber",
+                "versionnumber desc",
+                "knowledgearticleid",
+                "knowledgearticleid desc"
+              ]
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "bcgov_customaddressid",
+                "msdyn_bcgov_customaddress_knowledgearticlid",
+                "versionnumber",
+                "knowledgearticleid"
+              ]
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "*"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "schema": {
+              "title": "Collection of msdyn_bcgov_customaddress_knowledgearticlset",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.Dynamics.CRM.msdyn_bcgov_customaddress_knowledgearticl"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "msdyn_customaddress_knowledgearticlset"
+        ],
+        "summary": "Add new entity to msdyn_bcgov_customaddress_knowledgearticlset",
+        "operationId": "Msdyncustomaddressknowledgearticlset_Create",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.msdyn_bcgov_customaddress_knowledgearticl"
+            },
+            "description": "New entity"
+          },
+          {
+            "name": "Prefer",
+            "in": "header",
+            "description": "Required in order for the service to return a JSON representation of the object.",
+            "type": "string",
+            "default": "return=representation"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.msdyn_bcgov_customaddress_knowledgearticl"
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      }
+    },
+    "/msdyn_bcgov_customaddress_knowledgearticlset({msdyn_bcgov_customaddress_knowledgearticlid})": {
+      "get": {
+        "tags": [
+          "msdyn_customaddress_knowledgearticlset"
+        ],
+        "summary": "Get entity from msdyn_bcgov_customaddress_knowledgearticlset by key",
+        "operationId": "Msdyncustomaddressknowledgearticlset_GetByKey",
+        "parameters": [
+          {
+            "name": "msdyn_bcgov_customaddress_knowledgearticlid",
+            "in": "path",
+            "required": true,
+            "description": "key: msdyn_bcgov_customaddress_knowledgearticlid",
+            "type": "string"
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "bcgov_customaddressid",
+                "msdyn_bcgov_customaddress_knowledgearticlid",
+                "versionnumber",
+                "knowledgearticleid"
+              ]
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "*"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.msdyn_bcgov_customaddress_knowledgearticl"
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "msdyn_customaddress_knowledgearticlset"
+        ],
+        "summary": "Delete entity from msdyn_bcgov_customaddress_knowledgearticlset",
+        "operationId": "Msdyncustomaddressknowledgearticlset_Delete",
+        "parameters": [
+          {
+            "name": "msdyn_bcgov_customaddress_knowledgearticlid",
+            "in": "path",
+            "required": true,
+            "description": "key: msdyn_bcgov_customaddress_knowledgearticlid",
+            "type": "string"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "msdyn_customaddress_knowledgearticlset"
+        ],
+        "summary": "Update entity in msdyn_bcgov_customaddress_knowledgearticlset",
+        "operationId": "Msdyncustomaddressknowledgearticlset_Update",
+        "parameters": [
+          {
+            "name": "msdyn_bcgov_customaddress_knowledgearticlid",
+            "in": "path",
+            "required": true,
+            "description": "key: msdyn_bcgov_customaddress_knowledgearticlid",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.msdyn_bcgov_customaddress_knowledgearticl"
+            },
+            "description": "New property values"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      }
+    },
+    "/msdyn_bcgov_customaddress_knowledgebasereset": {
+      "get": {
+        "tags": [
+          "msdyn_customaddress_knowledgebasereset"
+        ],
+        "summary": "Get entities from msdyn_bcgov_customaddress_knowledgebasereset",
+        "operationId": "Msdyncustomaddressknowledgebasereset_Get",
+        "parameters": [
+          {
+            "name": "$top",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "$skip",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "$search",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "$count",
+            "in": "query",
+            "type": "boolean"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "bcgov_customaddressid",
+                "bcgov_customaddressid desc",
+                "versionnumber",
+                "versionnumber desc",
+                "msdyn_bcgov_customaddress_knowledgebasereid",
+                "msdyn_bcgov_customaddress_knowledgebasereid desc",
+                "knowledgebaserecordid",
+                "knowledgebaserecordid desc"
+              ]
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "bcgov_customaddressid",
+                "versionnumber",
+                "msdyn_bcgov_customaddress_knowledgebasereid",
+                "knowledgebaserecordid"
+              ]
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "*"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "schema": {
+              "title": "Collection of msdyn_bcgov_customaddress_knowledgebasereset",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.Dynamics.CRM.msdyn_bcgov_customaddress_knowledgebasere"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "msdyn_customaddress_knowledgebasereset"
+        ],
+        "summary": "Add new entity to msdyn_bcgov_customaddress_knowledgebasereset",
+        "operationId": "Msdyncustomaddressknowledgebasereset_Create",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.msdyn_bcgov_customaddress_knowledgebasere"
+            },
+            "description": "New entity"
+          },
+          {
+            "name": "Prefer",
+            "in": "header",
+            "description": "Required in order for the service to return a JSON representation of the object.",
+            "type": "string",
+            "default": "return=representation"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.msdyn_bcgov_customaddress_knowledgebasere"
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      }
+    },
+    "/msdyn_bcgov_customaddress_knowledgebasereset({msdyn_bcgov_customaddress_knowledgebasereid})": {
+      "get": {
+        "tags": [
+          "msdyn_customaddress_knowledgebasereset"
+        ],
+        "summary": "Get entity from msdyn_bcgov_customaddress_knowledgebasereset by key",
+        "operationId": "Msdyncustomaddressknowledgebasereset_GetByKey",
+        "parameters": [
+          {
+            "name": "msdyn_bcgov_customaddress_knowledgebasereid",
+            "in": "path",
+            "required": true,
+            "description": "key: msdyn_bcgov_customaddress_knowledgebasereid",
+            "type": "string"
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "bcgov_customaddressid",
+                "versionnumber",
+                "msdyn_bcgov_customaddress_knowledgebasereid",
+                "knowledgebaserecordid"
+              ]
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "*"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.msdyn_bcgov_customaddress_knowledgebasere"
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "msdyn_customaddress_knowledgebasereset"
+        ],
+        "summary": "Delete entity from msdyn_bcgov_customaddress_knowledgebasereset",
+        "operationId": "Msdyncustomaddressknowledgebasereset_Delete",
+        "parameters": [
+          {
+            "name": "msdyn_bcgov_customaddress_knowledgebasereid",
+            "in": "path",
+            "required": true,
+            "description": "key: msdyn_bcgov_customaddress_knowledgebasereid",
+            "type": "string"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "msdyn_customaddress_knowledgebasereset"
+        ],
+        "summary": "Update entity in msdyn_bcgov_customaddress_knowledgebasereset",
+        "operationId": "Msdyncustomaddressknowledgebasereset_Update",
+        "parameters": [
+          {
+            "name": "msdyn_bcgov_customaddress_knowledgebasereid",
+            "in": "path",
+            "required": true,
+            "description": "key: msdyn_bcgov_customaddress_knowledgebasereid",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.msdyn_bcgov_customaddress_knowledgebasere"
+            },
+            "description": "New property values"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      }
+    },
+    "/sharepointsites": {
+      "get": {
+        "tags": [
+          "sharepointsites"
+        ],
+        "summary": "Get entities from sharepointsites",
+        "operationId": "Sharepointsites_Get",
+        "parameters": [
+          {
+            "name": "$top",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "$skip",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "$search",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "$count",
+            "in": "query",
+            "type": "boolean"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "userid",
+                "userid desc",
+                "statecode",
+                "statecode desc",
+                "validationstatus",
+                "validationstatus desc",
+                "_modifiedonbehalfby_value",
+                "_modifiedonbehalfby_value desc",
+                "absoluteurl",
+                "absoluteurl desc",
+                "modifiedon",
+                "modifiedon desc",
+                "sitecollectionid",
+                "sitecollectionid desc",
+                "_modifiedby_value",
+                "_modifiedby_value desc",
+                "exchangerate",
+                "exchangerate desc",
+                "_createdonbehalfby_value",
+                "_createdonbehalfby_value desc",
+                "statuscode",
+                "statuscode desc",
+                "isgridpresent",
+                "isgridpresent desc",
+                "_parentsite_value",
+                "_parentsite_value desc",
+                "validationstatuserrorcode",
+                "validationstatuserrorcode desc",
+                "servicetype",
+                "servicetype desc",
+                "_createdby_value",
+                "_createdby_value desc",
+                "_owningteam_value",
+                "_owningteam_value desc",
+                "_transactioncurrencyid_value",
+                "_transactioncurrencyid_value desc",
+                "timezoneruleversionnumber",
+                "timezoneruleversionnumber desc",
+                "relativeurl",
+                "relativeurl desc",
+                "createdon",
+                "createdon desc",
+                "_owningbusinessunit_value",
+                "_owningbusinessunit_value desc",
+                "description",
+                "description desc",
+                "lastvalidated",
+                "lastvalidated desc",
+                "isdefault",
+                "isdefault desc",
+                "utcconversiontimezonecode",
+                "utcconversiontimezonecode desc",
+                "ispowerbisite",
+                "ispowerbisite desc",
+                "overriddencreatedon",
+                "overriddencreatedon desc",
+                "versionnumber",
+                "versionnumber desc",
+                "sharepointsiteid",
+                "sharepointsiteid desc",
+                "importsequencenumber",
+                "importsequencenumber desc",
+                "folderstructureentity",
+                "folderstructureentity desc",
+                "name",
+                "name desc",
+                "_owninguser_value",
+                "_owninguser_value desc",
+                "_ownerid_value",
+                "_ownerid_value desc"
+              ]
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "userid",
+                "statecode",
+                "validationstatus",
+                "_modifiedonbehalfby_value",
+                "absoluteurl",
+                "modifiedon",
+                "sitecollectionid",
+                "_modifiedby_value",
+                "exchangerate",
+                "_createdonbehalfby_value",
+                "statuscode",
+                "isgridpresent",
+                "_parentsite_value",
+                "validationstatuserrorcode",
+                "servicetype",
+                "_createdby_value",
+                "_owningteam_value",
+                "_transactioncurrencyid_value",
+                "timezoneruleversionnumber",
+                "relativeurl",
+                "createdon",
+                "_owningbusinessunit_value",
+                "description",
+                "lastvalidated",
+                "isdefault",
+                "utcconversiontimezonecode",
+                "ispowerbisite",
+                "overriddencreatedon",
+                "versionnumber",
+                "sharepointsiteid",
+                "importsequencenumber",
+                "folderstructureentity",
+                "name",
+                "_owninguser_value",
+                "_ownerid_value"
+              ]
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "*",
+                "owninguser",
+                "owningteam",
+                "ownerid",
+                "modifiedby",
+                "createdby",
+                "createdonbehalfby",
+                "SharePointSite_DuplicateMatchingRecord",
+                "parentsite",
+                "sharepointsite_parentsite_sharepointsite",
+                "owningbusinessunit",
+                "SharePointSite_DuplicateBaseRecord",
+                "sharepointdocumentlocation_parent_sharepointsite",
+                "modifiedonbehalfby",
+                "SharePointSite_AsyncOperations",
+                "transactioncurrencyid",
+                "SharePointSite_SyncErrors"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "schema": {
+              "title": "Collection of sharepointsites",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.Dynamics.CRM.sharepointsite"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "sharepointsites"
+        ],
+        "summary": "Add new entity to sharepointsites",
+        "operationId": "Sharepointsites_Create",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.sharepointsite"
+            },
+            "description": "New entity"
+          },
+          {
+            "name": "Prefer",
+            "in": "header",
+            "description": "Required in order for the service to return a JSON representation of the object.",
+            "type": "string",
+            "default": "return=representation"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.sharepointsite"
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      }
+    },
+    "/sharepointsites({sharepointsiteid})": {
+      "get": {
+        "tags": [
+          "sharepointsites"
+        ],
+        "summary": "Get entity from sharepointsites by key",
+        "operationId": "Sharepointsites_GetByKey",
+        "parameters": [
+          {
+            "name": "sharepointsiteid",
+            "in": "path",
+            "required": true,
+            "description": "key: sharepointsiteid",
+            "type": "string"
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "userid",
+                "statecode",
+                "validationstatus",
+                "_modifiedonbehalfby_value",
+                "absoluteurl",
+                "modifiedon",
+                "sitecollectionid",
+                "_modifiedby_value",
+                "exchangerate",
+                "_createdonbehalfby_value",
+                "statuscode",
+                "isgridpresent",
+                "_parentsite_value",
+                "validationstatuserrorcode",
+                "servicetype",
+                "_createdby_value",
+                "_owningteam_value",
+                "_transactioncurrencyid_value",
+                "timezoneruleversionnumber",
+                "relativeurl",
+                "createdon",
+                "_owningbusinessunit_value",
+                "description",
+                "lastvalidated",
+                "isdefault",
+                "utcconversiontimezonecode",
+                "ispowerbisite",
+                "overriddencreatedon",
+                "versionnumber",
+                "sharepointsiteid",
+                "importsequencenumber",
+                "folderstructureentity",
+                "name",
+                "_owninguser_value",
+                "_ownerid_value"
+              ]
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "*",
+                "owninguser",
+                "owningteam",
+                "ownerid",
+                "modifiedby",
+                "createdby",
+                "createdonbehalfby",
+                "SharePointSite_DuplicateMatchingRecord",
+                "parentsite",
+                "sharepointsite_parentsite_sharepointsite",
+                "owningbusinessunit",
+                "SharePointSite_DuplicateBaseRecord",
+                "sharepointdocumentlocation_parent_sharepointsite",
+                "modifiedonbehalfby",
+                "SharePointSite_AsyncOperations",
+                "transactioncurrencyid",
+                "SharePointSite_SyncErrors"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.sharepointsite"
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "sharepointsites"
+        ],
+        "summary": "Delete entity from sharepointsites",
+        "operationId": "Sharepointsites_Delete",
+        "parameters": [
+          {
+            "name": "sharepointsiteid",
+            "in": "path",
+            "required": true,
+            "description": "key: sharepointsiteid",
+            "type": "string"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "sharepointsites"
+        ],
+        "summary": "Update entity in sharepointsites",
+        "operationId": "Sharepointsites_Update",
+        "parameters": [
+          {
+            "name": "sharepointsiteid",
+            "in": "path",
+            "required": true,
+            "description": "key: sharepointsiteid",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.sharepointsite"
             },
             "description": "New property values"
           }
