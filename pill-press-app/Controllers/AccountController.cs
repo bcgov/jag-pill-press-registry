@@ -150,8 +150,9 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     _logger.LogWarning(LoggingEvents.NotFound, "Current user has NO access to account.");
                     return new NotFoundResult();
                 }
-
-                MicrosoftDynamicsCRMaccount account = await _dynamicsClient.GetAccountById(accountId);
+                List<string> expand = new List<string> { "bcgov_CurrentBusinessPhysicalAddress",
+                    "bcgov_CurrentBusinessMailingAddress", "bcgov_AdditionalContact", "primarycontactid" };
+                MicrosoftDynamicsCRMaccount account = _dynamicsClient.Accounts.GetByKey(accountId.ToString(), expand: expand);
                 if (account == null)
                 {
                     _logger.LogWarning(LoggingEvents.NotFound, "Account NOT found.");

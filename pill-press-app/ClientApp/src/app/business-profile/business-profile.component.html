@@ -1,117 +1,374 @@
-<div class="col-md-12" *ngIf="componentLoaded && businessType">
-  <h1>Business Profile</h1>
-  <h2>{{ businessName }}</h2>
-  <section *ngIf="['Coop', 'Estate', 'Trust'].indexOf(businessType) == -1">
-    <div class="col-sm-3 col-md-2" style="padding-left: 0">
-      <!-- required for floating -->
-      <!-- Nav tabs -->
-      <ul class="nav nav-tabs">
-        <li *ngIf="tabStructure.indexOf('before-you-start') !== -1" [ngClass]="{'active': view_tab == 'before-you-start'}">
-          <a (click)="changeTab('before-you-start')">Before You Start</a>
-        </li>
-        <li *ngIf="tabStructure.indexOf('corporate-details') !== -1" [ngClass]="{'active': view_tab == 'corporate-details'}">
-          <a (click)="changeTab('corporate-details')">
-            <span *ngIf="['PrivateCorporation', 'UnlimitedLiabilityCorporation', 'LimitedLiabilityCorporation', 'PublicCorporation'].indexOf(businessType) !== -1">Corporate Details</span>
-            <span *ngIf="businessType == 'Society'">Society Details</span>
-            <span *ngIf="['GeneralPartnership', 'LimitedPartnership', 'LimitedLiabilityPartnership'].indexOf(businessType) !== -1">Partnership Details</span>
-            <span *ngIf="businessType == 'SoleProprietor'">Sole Proprietorship Details</span>
-          </a>
-        </li>
-        <li *ngIf="tabStructure.indexOf('organization-structure') !== -1" [ngClass]="{'active': view_tab == 'organization-structure'}">
-          <a (click)="changeTab('organization-structure')">
-            <span>Organization Structure</span>
-          </a>
-        </li>
-        <li *ngIf="tabStructure.indexOf('directors-and-officers') !== -1" [ngClass]="{'active': view_tab == 'directors-and-officers'}">
-          <a (click)="changeTab('directors-and-officers')">
-            <span *ngIf="['Society', 'SoleProprietor'].indexOf(businessType) == -1">Directors &amp; Officers</span>
-            <span *ngIf="['Society'].indexOf(businessType) !== -1">Directors &amp; Senior Managers</span>
-            <span *ngIf="['SoleProprietor'].indexOf(businessType) !== -1">Owner</span>
-          </a>
-        </li>
-        <li *ngIf="tabStructure.indexOf('key-personnel') !== -1" [ngClass]="{'active': view_tab == 'key-personnel'}">
-          <a (click)="changeTab('key-personnel')">
-            <span>Key Personnel</span>
-          </a>
-        </li>
-        <li *ngIf="tabStructure.indexOf('shareholders') !== -1" [ngClass]="{'active': view_tab == 'shareholders'}">
-          <a (click)="changeTab('shareholders')">
-            <span *ngIf="['PrivateCorporation', 'UnlimitedLiabilityCorporation', 'LimitedLiabilityCorporation', 'PublicCorporation'].indexOf(businessType) !== -1">Shareholders</span>
-            <span *ngIf="['GeneralPartnership','LimitedPartnership', 'LimitedLiabilityPartnership'].indexOf(businessType) !== -1">Partners</span>
-          </a>
-        </li>
-        <li *ngIf="tabStructure.indexOf('connections-to-producers') !== -1" [ngClass]="{'active': view_tab == 'connections-to-producers'}">
-          <a (click)="changeTab('connections-to-producers')">
-            <span>Connections to Producers</span>
-          </a>
-        </li>
-        <li *ngIf="tabStructure.indexOf('finance-integrity') !== -1" [ngClass]="{'active': view_tab == 'finance-integrity'}">
-          <a (click)="changeTab('finance-integrity')">
-            <span>Financial Information</span>
-          </a>
-        </li>
-        <li *ngIf="tabStructure.indexOf('security-assessment') !== -1" [ngClass]="{'active': view_tab == 'security-assessment'}">
-          <a (click)="changeTab('security-assessment')">
-            <span>Authorizations</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-    <div class="col-md-9 col-sm-9">
-      <!-- 
-      <select name="" id="" [(ngModel)]="businessType">
-        <option value="PrivateCorporation">PrivateCorporation</option>
-        <option value="GeneralPartnership">GeneralPartnership</option>
-        <option value="Society">Society</option>
-        <option value="SoleProprietor">SoleProprietor</option>
-        <option value="UnlimitedLiabilityCorporation">UnlimitedLiabilityCorporation</option>
-        <option value="LimitedLiabilityCorporation">LimitedLiabilityCorporation</option>
-        <option value="PublicCorporation">PublicCorporation</option>
-        <option value="LimitedPartnership">LimitedPartnership</option>
-        <option value="LimitedLiabilityPartnership">LimitedLiabilityPartnershipy</option>
-      </select> 
-      <br>
-    -->
+<div class="dashboard-spacing" style="position: relative;">
+  <div [ngBusy]="[busy, busy2]"></div>
+  <div class="row">
+    <div class="col-lg-7 col-sm-12">
+      <div class="wrapper" [formGroup]="form">
+        <div *ngIf="dataLoaded || true">
+          <section>
+            <h1>
+              Business Profile
+            </h1>
+            <p>
+              Please complete your business profile below. Your information will only be saved once you click the Save
+              button at the end of the page.
+            </p>
+          </section>
 
-      <!-- Tab panes -->
-      <div>
-        <router-outlet></router-outlet>
-      </div>
-      <p>&nbsp;</p>
-      <div class="col-md-10 row">
-        <a class="globalButton" *ngIf="view_tab != 'before-you-start'" class="btn btn-secondary" tabindex="1" (click)="back()">
-          <strong>Back</strong>
-          <br>
-        </a>
-        &nbsp;
-        <a *ngIf="!isOnLastTab()" class="globalButton" class="btn btn-primary" tabindex="2" (click)="next()">
-          <strong *ngIf="view_tab != 'before-you-start'">Save and Continue</strong>
-          <strong *ngIf="view_tab == 'before-you-start'">Start</strong>
-          <strong *ngIf="view_tab == 'Authorizations'">Done</strong>
-          <br>
-        </a>
-        <a *ngIf="isOnLastTab()" class="globalButton" class="btn btn-primary" tabindex="2" routerLink="/dashboard">
-          <strong>Go To Dashboard</strong>
-          <br>
-        </a>
+          <h3 class="blue-header">BUSINESS INFORMATION</h3>
+
+
+          <div formGroupName="businessProfile">
+            <!-- <h2>Worker</h2> -->
+            <!-- <section>
+                    <div [ngClass]="{'has-error': !this.form.get('worker.isldbworker').valid && this.form.get('worker.isldbworker').touched}">
+                      <label>Is LDB Worker?</label>
+                      <br />
+                      <input type="checkbox" formControlName="isldbworker">
+                      <div *ngIf="!this.form.get('worker.isldbworker').valid && this.form.get('worker.isldbworker').touched" class="alert alert-danger"
+                        style="width: 250px;">
+                        <div *ngIf="!this.form.get('worker.isldbworker').valid && this.form.get('worker.isldbworker').touched ">
+                          This is required
+                        </div>
+                      </div>
+                    </div>
+                  </section> -->
+            <section>
+              <div>
+                <label>Business - Legal Name </label>
+                <br />
+                <input class="form-control" style="max-width: 450px; min-width: 250px;" type="text" formControlName="firstname">
+              </div>
+            </section>
+            <section>
+              <div>
+                <label>
+                  Business - Doing Business As (DBA) Name</label>
+                <br />
+                <input class="form-control" style="max-width: 450px; min-width: 250px;" type="text" formControlName="middlename">
+              </div>
+            </section>
+            <section>
+              <div>
+                <label>Business Number (BC Corporate Registry Number) <span style="color: red;">*</span></label>
+                <br />
+                <input class="form-control" style="max-width: 450px; min-width: 250px;" type="text" formControlName="lastname">
+              </div>
+            </section>
+            <section>
+              <div [ngClass]="{'has-error': !this.form.get('contact.address1_country').valid && this.form.get('contact.address1_country').touched}">
+                <label>Business Type <span style="color: red;">*</span></label>
+                <br />
+                <select class="form-control" style="width: 250px;" formControlName="address2_country" (change)="form.get('contact.address2_postalcode').updateValueAndValidity()">
+                  <option value="Canada">Canada</option>
+                  <option value="United States of America">United States of America</option>
+                  <hr>
+                  <option *ngFor="let c of countryList" value="{{c}}">{{c}}</option>
+                </select>
+                <div *ngIf="!this.form.get('contact.address1_country').valid && this.form.get('contact.address1_country').touched"
+                  class="alert alert-danger" style="width: 250px;">
+                  <div *ngIf="!this.form.get('contact.address1_country').valid && this.form.get('contact.address1_country').touched ">
+                    This is required.
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <h3 class="blue-header">BUSINESS ADDRESSES</h3>
+          <p></p>
+          <div formGroupName="businessProfile">
+            <h3>Physical Address</h3>
+            <section>
+              <label>Street Address 1</label>
+              <br />
+              <input class="form-control" style="min-width: 450px; max-width: 450px;"  type="text" formControlName="address1_line1">
+            </section>
+            <section>
+              <label>Street Address 2 <span style="color: red;">*</span></label>
+              <br />
+              <input class="form-control" style="min-width: 450px; max-width: 450px;"  type="text" formControlName="address1_line1">
+            </section>
+            <section>
+              <label>City <span style="color: red;">*</span></label>
+              <br />
+              <input class="form-control" style="min-width: 350px; max-width: 350px;" type="text" formControlName="address1_city">
+            </section>
+            <section>
+              <label>Province</label>
+              <br />
+              <input class="form-control" style="width: 200px;" readonly type="text" formControlName="address1_stateorprovince">
+            </section>
+            <section>
+              <label>Postal Code <span style="color: red;">*</span></label>
+              <br />
+              <input class="form-control" style="width: 200px;" type="text" formControlName="address1_postalcode">
+            </section>
+            <section>
+              <label>Country</label>
+              <br />
+              <input class="form-control" style="width: 350px;" readonly type="text" formControlName="address1_country">
+            </section>
+            <section>
+              <div [ngClass]="{'has-error': !this.form.get('contact.telephone1').valid && this.form.get('contact.telephone1').touched}">
+                <label>Business Phone Number</label>
+                <br />
+                <input class="form-control" style="width: 250px;" type="text" formControlName="telephone1">
+                <div *ngIf="!this.form.get('contact.telephone1').valid && this.form.get('contact.telephone1').touched"
+                  class="alert alert-danger" style="width: 250px;">
+                  <div *ngIf="!this.form.get('contact.telephone1').valid && this.form.get('contact.telephone1').touched ">
+                    This is required
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section>
+              <label>Business Email</label>
+              <br />
+              <input class="form-control" style="width: 350px;" type="text" formControlName="address1_country">
+            </section>
+            <section>
+              <label>Website Address</label>
+              <br />
+              <input class="form-control" style="width: 350px;" type="text" formControlName="address1_country">
+            </section>
+          </div>
+
+
+
+
+
+
+          <h3 class="blue-header">BUSINESS CONTACT</h3>
+          <div formGroupName="primaryContact">
+            <h2>Primary Contact</h2>
+            <section>
+              <div [ngClass]="{'has-error': !this.form.get('contact.firstname').valid && this.form.get('contact.firstname').touched}">
+                <label>First Name <span style="color: red;">*</span></label>
+                <br />
+                <input class="form-control" style="width: 350px;" type="text" formControlName="firstname">
+                <div *ngIf="!this.form.get('contact.firstname').valid && this.form.get('contact.firstname').touched"
+                  class="alert alert-danger" style="width: 350px;">
+                  <div *ngIf="!this.form.get('contact.firstname').valid && this.form.get('contact.firstname').touched ">
+                    This is required
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section>
+              <div [ngClass]="{'has-error': !this.form.get('contact.lastname').valid && this.form.get('contact.lastname').touched}">
+                <label>Last Name <span style="color: red;">*</span></label>
+                <br />
+                <input class="form-control" style="width: 350px;" type="text" formControlName="lastname">
+                <div *ngIf="!this.form.get('contact.lastname').valid && this.form.get('contact.lastname').touched"
+                  class="alert alert-danger" style="width: 350px;">
+                  <div *ngIf="!this.form.get('contact.lastname').valid && this.form.get('contact.lastname').touched ">
+                    This is required
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section>
+              <div [ngClass]="{'has-error': !this.form.get('contact.middlename').valid && this.form.get('contact.middlename').touched}">
+                <label>Title/ Position</label>
+                <br />
+                <input class="form-control" style="width: 350px;" type="text" formControlName="middlename">
+                <div *ngIf="!this.form.get('contact.middlename').valid && this.form.get('contact.middlename').touched"
+                  class="alert alert-danger" style="width: 350px;">
+                  <div *ngIf="!this.form.get('contact.middlename').valid && this.form.get('contact.middlename').touched ">
+                    This is required
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section>
+              <div [ngClass]="{'has-error': !this.form.get('contact.telephone1').valid && this.form.get('contact.telephone1').touched}">
+                <label>Phone Number (main) <span style="color: red;">*</span></label>
+                <br />
+                <input class="form-control" style="width: 250px;" type="text" formControlName="telephone1">
+                <div *ngIf="!this.form.get('contact.telephone1').valid && this.form.get('contact.telephone1').touched"
+                  class="alert alert-danger" style="width: 250px;">
+                  <div *ngIf="!this.form.get('contact.telephone1').valid && this.form.get('contact.telephone1').touched ">
+                    This is required
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section>
+              <div [ngClass]="{'has-error': !this.form.get('contact.telephone1').valid && this.form.get('contact.telephone1').touched}">
+                <label>Phone Number (alternate)</label>
+                <br />
+                <input class="form-control" style="width: 250px;" type="text" formControlName="telephone1">
+                <div *ngIf="!this.form.get('contact.telephone1').valid && this.form.get('contact.telephone1').touched"
+                  class="alert alert-danger" style="width: 250px;">
+                  <div *ngIf="!this.form.get('contact.telephone1').valid && this.form.get('contact.telephone1').touched ">
+                    This is required
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section>
+              <div [ngClass]="{'has-error': !this.form.get('contact.emailaddress1').valid && this.form.get('contact.emailaddress1').touched}">
+                <label>Email <span style="color: red;">*</span></label>
+                <br />
+                <input class="form-control" style="width: 350px;" type="text" formControlName="emailaddress1" (blur)="trimValue(this.form.get('contact.emailaddress1'));">
+                <div *ngIf="!this.form.get('contact.emailaddress1').valid && this.form.get('contact.emailaddress1').touched"
+                  class="alert alert-danger" style="width: 350px;">
+                  <div *ngIf="!this.form.get('contact.emailaddress1').valid && this.form.get('contact.emailaddress1').touched ">
+                    This is required
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <hr>
+          <div formGroupName="additionalContact">
+            <h2>Primary Contact</h2>
+            <section>
+              <div [ngClass]="{'has-error': !this.form.get('contact.firstname').valid && this.form.get('contact.firstname').touched}">
+                <label>First Name <span style="color: red;">*</span></label>
+                <br />
+                <input class="form-control" style="width: 350px;" type="text" formControlName="firstname">
+                <div *ngIf="!this.form.get('contact.firstname').valid && this.form.get('contact.firstname').touched"
+                  class="alert alert-danger" style="width: 350px;">
+                  <div *ngIf="!this.form.get('contact.firstname').valid && this.form.get('contact.firstname').touched ">
+                    This is required
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section>
+              <div [ngClass]="{'has-error': !this.form.get('contact.lastname').valid && this.form.get('contact.lastname').touched}">
+                <label>Last Name <span style="color: red;">*</span></label>
+                <br />
+                <input class="form-control" style="width: 350px;" type="text" formControlName="lastname">
+                <div *ngIf="!this.form.get('contact.lastname').valid && this.form.get('contact.lastname').touched"
+                  class="alert alert-danger" style="width: 350px;">
+                  <div *ngIf="!this.form.get('contact.lastname').valid && this.form.get('contact.lastname').touched ">
+                    This is required
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section>
+              <div [ngClass]="{'has-error': !this.form.get('contact.middlename').valid && this.form.get('contact.middlename').touched}">
+                <label>Title/ Position</label>
+                <br />
+                <input class="form-control" style="width: 350px;" type="text" formControlName="middlename">
+                <div *ngIf="!this.form.get('contact.middlename').valid && this.form.get('contact.middlename').touched"
+                  class="alert alert-danger" style="width: 350px;">
+                  <div *ngIf="!this.form.get('contact.middlename').valid && this.form.get('contact.middlename').touched ">
+                    This is required
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section>
+              <div [ngClass]="{'has-error': !this.form.get('contact.telephone1').valid && this.form.get('contact.telephone1').touched}">
+                <label>Phone Number (main) <span style="color: red;">*</span></label>
+                <br />
+                <input class="form-control" style="width: 250px;" type="text" formControlName="telephone1">
+                <div *ngIf="!this.form.get('contact.telephone1').valid && this.form.get('contact.telephone1').touched"
+                  class="alert alert-danger" style="width: 250px;">
+                  <div *ngIf="!this.form.get('contact.telephone1').valid && this.form.get('contact.telephone1').touched ">
+                    This is required
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section>
+              <div [ngClass]="{'has-error': !this.form.get('contact.telephone1').valid && this.form.get('contact.telephone1').touched}">
+                <label>Phone Number (alternate)</label>
+                <br />
+                <input class="form-control" style="width: 250px;" type="text" formControlName="telephone1">
+                <div *ngIf="!this.form.get('contact.telephone1').valid && this.form.get('contact.telephone1').touched"
+                  class="alert alert-danger" style="width: 250px;">
+                  <div *ngIf="!this.form.get('contact.telephone1').valid && this.form.get('contact.telephone1').touched ">
+                    This is required
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section>
+              <div [ngClass]="{'has-error': !this.form.get('contact.emailaddress1').valid && this.form.get('contact.emailaddress1').touched}">
+                <label>Email <span style="color: red;">*</span></label>
+                <br />
+                <input class="form-control" style="width: 350px;" type="text" formControlName="emailaddress1" (blur)="trimValue(this.form.get('contact.emailaddress1'));">
+                <div *ngIf="!this.form.get('contact.emailaddress1').valid && this.form.get('contact.emailaddress1').touched"
+                  class="alert alert-danger" style="width: 350px;">
+                  <div *ngIf="!this.form.get('contact.emailaddress1').valid && this.form.get('contact.emailaddress1').touched ">
+                    This is required
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          
+          <section *ngIf="!(form.valid && isBCIDValid()) && form.touched" style="color: #A12622">
+            <i class="fas fa-exclamation-triangle"></i> Some required fields have not been completed.
+          </section>
+          <section style="position: relative;">
+            <div [ngBusy]="[busy, busy2]"></div>
+            <span style="float: right;">
+              <button class="btn btn-secondary" routerLink="/worker-qualification/dashboard">
+                <i class="fa fa-save"></i>
+                SAVE FOR LATER</button>
+              <button style="margin-left: 10px" (click)="gotoStep2()" class="btn btn-primary">SAVE & CONTINUE
+                TO STEP 2 <i class="fas fa-chevron-right"></i></button>
+            </span>
+          </section>
+        </div>
       </div>
     </div>
-  </section>
-  <section class="container" *ngIf="['Coop', 'Estate', 'Trust'].indexOf(businessType) !== -1">
-    <h2>Before You Start</h2>
-    <p>
-      This organization type is not available on the beta version of the Pill Press Licensing application.
-      <br> Please contact the Attorney General for assistance in completing this business profile
-    </p>
-    <br>
-    <span>Contact Phone #:</span>
-    <br>
-    <span>Victoria 250 952-5787</span>
-    <br>
-    <span>Toll Free 1 866 209-2111</span>
-    <br>
-    <br>
-    <span>Email:</span>
-    <span class="email">LCLBHelpDesk@gov.bc.ca</span>
-  </section>
+    <div class="col-lg-4 col-sm-12" style="position: relative">
+      <!-- <div [ngBusy]="busy"></div> -->
+      <p></p>
+      <section class="submit-container">
+        <table>
+          <tr>
+            <td>
+              <h2 class="round-icon-wrapper"><i class="fas fa-question"></i></h2>
+            </td>
+            <td style="padding-left: 10px">
+              <h2>Update your personal information</h2>
+            </td>
+          </tr>
+        </table>
+        <div class="submit-content">
+          <p>If you find an error in your personal information, please contact Service BC, ICBC or AddressChangeBC to
+            correct
+            it.
+          </p>
+          <ul>
+            <li>
+              <a style="color: #fff;" href="https://www2.gov.bc.ca/gov/content/governments/government-id/bc-services-card/change-personal-information">BC
+                Service Card</a>
+            </li>
+            <li>
+              <a style="color: #fff;" href="https://www.icbc.com/driver-licensing/getting-licensed/Pages/Change-your-address-or-name.aspx">ICBC</a>
+            </li>
+            <li>
+              <a style="color: #fff;" href="https://www.addresschange.gov.bc.ca/">AddressChangeBC</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section class="submit-container" style="background-color: #F2F2F2; color:#000; border: none;">
+        <h2 style="color: #000">Collection Notice:</h2>
+        <div class="submit-content">
+          <p>
+            The Security Programs Division (SPD) will collect your personal information for the purpose of fulfilling
+            the requirements
+            of the Cannabis Control and Licensing Act (CCLA) and associated regulations in accordance with Sections 26
+            (a)
+            and (c) of the Freedom of Information and Protection of Privacy Act. Should you have any questions about
+            the
+            collection, use, or disclosure of personal information, please contact the Senior Policy Analyst, Security
+            Programs
+            Division via mail to PO Box 9217 Stn Prov Govt Victoria, BC V8W 9J1; email to
+            <a href="mailto:cannabissecurityscreening@gov.bc.ca">cannabissecurityscreening@gov.bc.ca</a>;
+            or by telephone at 1-855-587-0185.</p>
+        </div>
+      </section>
+    </div>
+  </div>
 </div>

@@ -11,7 +11,7 @@
     <!-- Set this to true if you enable server-side prerendering -->
     <BuildServerSideRenderer>false</BuildServerSideRenderer>
     <RootNamespace>Gov.Jag.PillPressRegistry.Public</RootNamespace>
-    <UserSecretsId>39a46bda-223e-4ee4-9dbc-2b7c477888c7</UserSecretsId>
+    <UserSecretsId>32B88E49-FD2E-425C-97D9-CE0C2057407D</UserSecretsId>
     <StartupObject>Gov.Jag.PillPressRegistry.Public.Program</StartupObject>
 	<ProjectGuid>{8FE0A3D0-B466-41E3-91A9-3AB6207C15E5}</ProjectGuid>
   </PropertyGroup>
