@@ -35,7 +35,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                 toDynamics.Accountnumber = fromVM.businessNumber;
             }
 
-            if (copyIfNull || (!copyIfNull && fromVM.businessType != null))
+            if (!string.IsNullOrEmpty(fromVM.businessType))
             {
                 toDynamics.Businesstypecode = (int)Enum.Parse(typeof(ViewModels.BusinessTypeEnum), fromVM.businessType, true);
             }
@@ -146,10 +146,12 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
 
                 if (account.Primarycontactid != null)
                 {
-                    // add the primary contact.
-                    accountVM.primarycontact = new ViewModels.Contact();
-                    accountVM.primarycontact.id = account.Primarycontactid.Contactid.ToString();
-                    // TODO - load other fields (if necessary)
+                    accountVM.primaryContact = account.Primarycontactid.ToViewModel();
+                }
+
+                if(account.BcgovAdditionalContact != null)
+                {
+                    accountVM.additionalContact = account.BcgovAdditionalContact.ToViewModel();
                 }
             }
 

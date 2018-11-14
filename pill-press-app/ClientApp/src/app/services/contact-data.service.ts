@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
 import { DynamicsContact } from '../models/dynamics-contact.model';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ContactDataService {
@@ -16,6 +17,9 @@ export class ContactDataService {
 
   public getContact(contactId: string) {
     return this.http.get<DynamicsContact>(this.apiPath + contactId, { headers: this.headers });
+  }
+  public getContactsByAccountId(accountId: string): Observable<DynamicsContact[]> {
+    return this.http.get<DynamicsContact[]>(`${this.apiPath}account/${accountId}`, { headers: this.headers });
   }
 
   public createContact(contact: DynamicsContact) {

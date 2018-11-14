@@ -18,7 +18,7 @@ export class AssociatesDashboardComponent implements OnInit {
   isNewUser: boolean;
   dataLoaded = false;
   contact: DynamicsContact;
-  busy:  Subscription;
+  busy: Subscription;
 
   constructor(private userDataService: UserDataService,
     private store: Store<AppState>,
@@ -47,12 +47,12 @@ export class AssociatesDashboardComponent implements OnInit {
 
   confirmContact(confirm: boolean) {
     if (confirm) {
-      //create contact here
-      let contact = new DynamicsContact();
-      contact.fullname = this.currentUser.name;
-      contact.firstname = this.currentUser.firstname;
-      contact.lastname = this.currentUser.lastname;
-      contact.emailaddress1 = this.currentUser.email;
+      // create contact here
+      const contact = new DynamicsContact();
+      // contact.fullname = this.currentUser.name;
+      contact.firstName = this.currentUser.firstname;
+      contact.lastName = this.currentUser.lastname;
+      contact.email = this.currentUser.email;
       this.busy = this.contactDataService.createContact(contact).subscribe(res => {
         this.reloadUser();
       }, error => alert('Failed to create contact'));
