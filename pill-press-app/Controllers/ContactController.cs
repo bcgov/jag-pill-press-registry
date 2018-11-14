@@ -163,7 +163,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 contact.CopyHeaderValues( _httpContextAccessor );
             }        
 
-            contact.Externaluseridentifier = DynamicsExtensions.GetServiceCardID(contactSiteminderGuid);
+            contact.Externaluseridentifier = UserDynamicsExtensions.GetServiceCardID(contactSiteminderGuid);
             try
             {
                 contact = await _dynamicsClient.Contacts.CreateAsync(contact);
@@ -217,7 +217,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         /// <param name="viewModel"></param>
         /// <returns></returns>
         [HttpPost("worker")]
-        public async Task<IActionResult> CreateWorkerContact([FromBody] ViewModels.Contact item)
+        public IActionResult CreateWorkerContact([FromBody] ViewModels.Contact item)
         {
             // get UserSettings from the session
             string temp = _httpContextAccessor.HttpContext.Session.GetString("UserSettings");
@@ -259,9 +259,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             contact.CopyValues(item);
 
             
-            contact.Externaluseridentifier = DynamicsExtensions.GetServiceCardID(contactSiteminderGuid);
-
-            
+            contact.Externaluseridentifier = UserDynamicsExtensions.GetServiceCardID(contactSiteminderGuid);
 
             // if we have not yet authenticated, then this is the new record for the user.
             if (userSettings.IsNewUserRegistration)
