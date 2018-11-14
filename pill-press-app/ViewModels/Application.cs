@@ -88,7 +88,7 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         ///  provide detailed information on the types of products you produce for others and their intended uses.
         /// </summary>
 
-        public List<CustomProduct> customProducts {get; set;}
+        public List<CustomProduct> CustomProducts {get; set;}
 
         // ### BUSINESS DETAILS ###
 

@@ -41,7 +41,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetApplication(string id)
+        public IActionResult GetApplication(string id)
         {
             ViewModels.Application result = null;
 
@@ -163,7 +163,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
 
             // verify the currently logged in user has access to this account
             Guid applicationId = new Guid(id);
-            if (!DynamicsExtensions.CurrentUserHasAccessToApplication(applicationId, _httpContextAccessor, _dynamicsClient))
+            if (!UserDynamicsExtensions.CurrentUserHasAccessToApplication(applicationId, _httpContextAccessor, _dynamicsClient))
             {
                 _logger.LogWarning(LoggingEvents.NotFound, "Current user has NO access to the application.");
                 return new NotFoundResult();
