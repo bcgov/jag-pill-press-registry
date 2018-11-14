@@ -1,152 +1,371 @@
-import { Component, ViewChild, Input, OnInit } from '@angular/core';
-import { DynamicsFormComponent } from '../dynamics-form/dynamics-form.component';
-import { User } from '../models/user.model';
+import { Component, OnInit } from '@angular/core';
 import { UserDataService } from '../services/user-data.service';
-import { DynamicsDataService } from '../services/dynamics-data.service';
-import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
-import { Store } from '@ngrx/store';
+import { User } from '../models/user.model';
+import { ContactDataService } from '../services/contact-data.service';
+import { DynamicsContact } from '../models/dynamics-contact.model';
 import { AppState } from '../app-state/models/app-state';
-import * as CurrenAccountActions from '../app-state/actions/current-account.action';
+import * as CurrentUserActions from '../app-state/actions/current-user.action';
+import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs/Subscription';
+import { FormBuilder, FormGroup, Validators, FormArray, ValidatorFn, AbstractControl, FormControl } from '@angular/forms';
+import { AliasDataService } from '../services/alias-data.service';
+import { PreviousAddressDataService } from '../services/previous-address-data.service';
+import { Observable, Subject } from 'rxjs';
+import { WorkerDataService } from '../services/worker-data.service.';
+import { Alias } from '../models/alias.model';
+import { PreviousAddress } from '../models/previous-address.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { forkJoin } from 'rxjs/observable/forkJoin';
+import { COUNTRIES } from './country-list';
+
+import { MomentDateAdapter } from '@angular/material-moment-adapter';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import * as _moment from 'moment';
+// tslint:disable-next-line:no-duplicate-imports
+import { defaultFormat as _rollupMoment } from 'moment';
+import { zip } from 'rxjs/operators';
+import { AccountDataService } from '../services/account-data.service';
+const moment = _rollupMoment || _moment;
+
+// See the Moment.js docs for the meaning of these formats:
+// https://momentjs.com/docs/#/displaying/format/
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'LL',
+  },
+  display: {
+    dateInput: 'YYYY-MM-DD',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'YYYY-MM-DD',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
+
+
+const postalRegex = '(^\\d{5}([\-]\\d{4})?$)|(^[A-Za-z][0-9][A-Za-z]\\s?[0-9][A-Za-z][0-9]$)';
 
 @Component({
   selector: 'app-business-profile',
   templateUrl: './business-profile.component.html',
-  styleUrls: ['./business-profile.component.scss']
+  styleUrls: ['./business-profile.component.scss'],
+  providers: [
+    // `MomentDateAdapter` can be automatically provided by importing `MomentDateModule` in your
+    // application's root module. We provide it at the component level here, due to limitations of
+    // our example generation script.
+    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
+  ],
 })
-/** BusinessProfile component*/
 export class BusinessProfileComponent implements OnInit {
-  @ViewChild(DynamicsFormComponent) dynamicsFormComponent: DynamicsFormComponent;
-  @Input() currentUser: User;
-  // GUID for the account we want to edit the profile for.  If blank then it will be the current user's account.
-  legalEntityId: string;
+  currentUser: User;
+  dataLoaded = false;
+  busy: Subscription;
+  busy2: Promise<any>;
+  form: FormGroup;
+  countryList = COUNTRIES;
 
-  public view_tab: string;
-  public contactId: string;
-  public componentLoaded: boolean;
-
-  tabs: any = {
-    privateCorportation: ['before-you-start', 'corporate-details', 'organization-structure', 'directors-and-officers', 'key-personnel',
-      'shareholders', 'connections-to-producers', 'finance-integrity', 'security-assessment'],
-    society: ['before-you-start', 'corporate-details', 'organization-structure', 'directors-and-officers', 'key-personnel',
-      'connections-to-producers', 'finance-integrity', 'security-assessment'],
-    partnership: ['before-you-start', 'corporate-details', 'organization-structure', 'key-personnel', 'shareholders',
-      'connections-to-producers', 'finance-integrity', 'security-assessment'],
-    soleProprietor: ['before-you-start', 'corporate-details', 'directors-and-officers', 'key-personnel',
-      'finance-integrity', 'security-assessment']
-  };
-
-  tabStructure: any[] = this.tabs.privateCorportation;
-
-  number_tabs = 7;
-  _businessType: string;
+  contactsToDelete: PreviousAddress[] = [];
   accountId: string;
-  businessName: string;
-  get businessType(): string {
-    return this._businessType;
+  saveFormData: any;
+
+  currentDate: Date = new Date();
+  minDate: Date;
+  bsConfig: any = { locale: 'en', dateInputFormat: 'YYYY-MM-DD', containerClass: 'theme-dark-blue' };
+
+  public get contacts(): FormArray {
+    return this.form.get('otherContacts') as FormArray;
   }
-  set businessType(value: string) {
-    this._businessType = value;
-    this.onBusinessTypeChange(value);
-    //console.log(`Business Type: ${value}`);
-  }
-  /** BusinessProfile ctor */
+
+
   constructor(private userDataService: UserDataService,
     private store: Store<AppState>,
+    private accountDataService: AccountDataService,
+    private previousAddressDataService: PreviousAddressDataService,
+    private contactDataService: ContactDataService,
+    private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private dynamicsDataService: DynamicsDataService) {
-    const urlParts = this.router.url.split('/');
-    this.view_tab = urlParts[urlParts.length - 1];
+
+  ) {
+    // minDate is a 100 year ago
+    this.minDate = new Date();
+    this.minDate.setFullYear(this.minDate.getFullYear() - 100);
+
+    // this.route.params.subscribe(params => {
+    //   this.accountId = params.id;
+    // });
   }
 
-  ngOnInit(): void {
-    this.router.events
-      .subscribe((event) => {
-        if (event instanceof NavigationEnd) {
-          const urlParts = this.router.url.split('/');
-          this.view_tab = urlParts[urlParts.length - 1];
+  ngOnInit() {
+    this.form = this.fb.group({
+      businessProfile: this.fb.group({
+        id: [''],
+        businessLegalname: [''],
+        businessDBAName: [''],
+        businessNumber: [''],
+        businessType: [''],
+        address1Line1: [''],
+        address1Line2: [''],
+        address1City: [''],
+        address1PostalCode: [''],
+        address1StateOrProvince: [''],
+        address1Country: [''],
+        address2Line1: [''],
+        address2Line2: [''],
+        address2City: [''],
+        address2PostalCode: [''],
+        address2StateOrProvince: [''],
+        address2Country: [''],
+        businessPhoneNumber: [''],
+        businessEmail: [''],
+        websiteAddress: [''],
+
+      }),
+      primaryContact: this.fb.group({
+        id: [],
+        firstName: [''],
+        lastName: [''],
+        title: [''],
+        phoneNumber: [''],
+        phoneNumberAlt: [''],
+        email: ['']
+      }),
+      additionalContact: this.fb.group({
+        id: [],
+        firstName: [''],
+        lastName: [''],
+        title: [''],
+        phoneNumber: [''],
+        phoneNumberAlt: [''],
+        email: ['']
+      }),
+    });
+    this.reloadUser();
+  }
+
+  reloadUser() {
+    this.busy = this.userDataService.getCurrentUser()
+      .subscribe((data: User) => {
+        this.currentUser = data;
+        debugger;
+        this.store.dispatch(new CurrentUserActions.SetCurrentUserAction(data));
+        this.dataLoaded = true;
+        if (this.currentUser && this.currentUser.accountid) {
+          this.busy2 = forkJoin(
+            this.accountDataService.getAccount( this.currentUser.accountid),
+            this.contactDataService.getContactsByAccountId( this.currentUser.accountid),
+          ).toPromise().then(res => {
+            const account = res[0];
+            let contacts = res[1];
+
+            let primaryContact = null;
+            if (account && contacts && contacts.length > 0) {
+              const filtered = contacts.filter(i => i.id === account.primaryContact.id);
+              if (filtered.length > 0) {
+                primaryContact = filtered[0];
+              }
+            }
+
+            this.form.patchValue({
+              businessProfile: account,
+              contact: primaryContact,
+            });
+
+            contacts = contacts.filter(i => i.id !== account.primaryContact.id);
+
+
+            this.clearContacts();
+            contacts.forEach(contact => {
+              this.addContact(contact);
+            });
+
+
+
+            this.saveFormData = this.form.value;
+            // this.workerStatus = worker.status;
+            // if (worker.status !== 'Application Incomplete') {
+            //   this.form.disable();
+            // }
+          });
         }
       });
+  }
 
-    this.route.params.subscribe(p => {
-      this.legalEntityId = p.legalEntityId;
-      this.accountId = p.accountId;
-      this.dynamicsDataService.getRecord('account', this.accountId)
-        .then((data) => {
-          this.store.dispatch(new CurrenAccountActions.SetCurrentAccountAction(data));
-          if (data.primarycontact) {
-            this.contactId = data.primarycontact.id;
-          }
-          this.businessType = data.businessType;
-          this.componentLoaded = true;
-          this.businessName = data.name;
-        });
+  confirmContact(confirm: boolean) {
+    if (confirm) {
+      // create contact here
+      const contact = new DynamicsContact();
+      contact.firstName = this.currentUser.firstname;
+      contact.lastName = this.currentUser.lastname;
+      contact.email = this.currentUser.email;
+      this.busy = this.contactDataService.createWorkerContact(contact).subscribe(res => {
+        this.reloadUser();
+      }, error => alert('Failed to create contact'));
+    } else {
+      window.location.href = 'logout';
+    }
+  }
+
+  createContact(contact: DynamicsContact = null) {
+    contact = contact || <DynamicsContact>{
+      id: undefined,
+      firstName: '',
+      lastName: '',
+      title: '',
+      phoneNumber: '',
+      phoneNumberAlt: '',
+      email: ''
+    };
+    return this.fb.group({
+      id: [contact.id],
+      firstName: [contact.firstName],
+      lastName: [contact.lastName],
+      title: [contact.title],
+      phoneNumber: [contact.phoneNumber],
+      phoneNumberAlt: [contact.phoneNumberAlt],
+      email: [contact.email]
     });
   }
 
-  getTab() {
-    const result = this.tabStructure.indexOf(this.view_tab);
-    return result;
+  addContact(contact: DynamicsContact = null) {
+    this.contacts.push(this.createContact(contact));
   }
 
-  saveApplicantInformation() {
-    this.dynamicsFormComponent.onSubmit();
+  copyPhysicalAddressToMailingAddress(): void {
+    let contact = this.form.get('contact').value;
+    contact = {
+      address2_line1: contact.address1_line1,
+      address2_city: contact.address1_city,
+      address2_stateorprovince: contact.address1_stateorprovince,
+      address2_country: contact.address1_country,
+      address2_postalcode: contact.address1_postalcode,
+    };
+    this.form.get('contact').patchValue(contact);
   }
 
-  isOnLastTab(): boolean {
-    const isLast = (this.tabStructure.indexOf(this.view_tab)  === (this.tabStructure.length - 1));
-    return isLast;
-
-  }
-
-  changeTab(tab) {
-    this.view_tab = tab;
-    this.router.navigate([`/business-profile/${this.accountId}/${this.legalEntityId}/${tab}`]);
-  }
-
-  back() {
-    let currentTab = this.getTab();
-    currentTab--;
-    if (currentTab < 0) {
-      currentTab = this.tabStructure.length - 1;
+  deleteContact(index: number) {
+    const contact = this.contacts.controls[index];
+    if (contact.value.id) {
+      this.contactsToDelete.push(contact.value);
     }
-    this.view_tab = this.tabStructure[currentTab];
-    this.router.navigate([`/business-profile/${this.accountId}/${this.legalEntityId}/${this.view_tab}`]);
+    this.contacts.removeAt(index);
   }
 
-  next() {
-    let currentTab = this.getTab();
-    currentTab++;
-    if (currentTab >= this.tabStructure.length) {
-      currentTab = 0;
+  clearContacts() {
+    for (let i = this.contacts.controls.length; i > 0; i--) {
+      this.contacts.removeAt(0);
     }
-    this.view_tab = this.tabStructure[currentTab];
-    this.router.navigate([`/business-profile/${this.accountId}/${this.legalEntityId}/${this.view_tab}`]);
   }
 
-  onBusinessTypeChange(value: string) {
-    switch (value) {
-      case 'PrivateCorporation':
-      case 'PublicCorporation':
-      case 'LimitedLiabilityCorporation':
-      case 'UnlimitedLiabilityCorporation':
-        this.tabStructure = this.tabs.privateCorportation;
-        break;
-      case 'SoleProprietor':
-        this.tabStructure = this.tabs.soleProprietor;
-        break;
-      case 'LimitedPartnership':
-      case 'LimitedLiabilityPartnership':
-      case 'GeneralPartnership':
-        this.tabStructure = this.tabs.partnership;
-        break;
-        
-      case 'Society':
-        this.tabStructure = this.tabs.society;
-        break;
-      default:
-        break;
+
+
+
+
+  canDeactivate(): Observable<boolean> | boolean {
+    if (// this.workerStatus !== 'Application Incomplete' ||
+      JSON.stringify(this.saveFormData) === JSON.stringify(this.form.value)) {
+      return true;
+    } else {
+      return this.save();
     }
+  }
+
+  save(): Subject<boolean> {
+    const subResult = new Subject<boolean>();
+    const value = { ...this.form.value };
+    // Make sure the contact email and phone number are in sync with worker
+    value.contact.emailaddress1 = value.worker.email;
+    value.contact.telephone1 = value.worker.phonenumber;
+
+    const saves = [
+      // this.contactDataService.updateContact(value.contact),
+      // this.workerDataService.updateWorker(value.worker, value.worker.id)
+    ];
+
+    this.contactsToDelete.forEach(a => {
+      // const save = this.previousAddressDataService.deletePreviousAddress(a.id);
+      // saves.push(save);
+    });
+
+    const contactControls = this.contacts.controls;
+    for (let i = 0; i < contactControls.length; i++) {
+      if (contactControls[i].value.id) {
+        // const save = this.previousAddressDataService.updatePreviousAdderess(contactControls[i].value, contactControls[i].value.id);
+        // saves.push(save);
+      } else {
+        // const newAddress = contactControls[i].value;
+        // newAddress.contactId = value.contact.id;
+        // newAddress.workerId = value.worker.id;
+        // const save = this.previousAddressDataService.createPreviousAdderess(newAddress);
+        // saves.push(save);
+      }
+    }
+
+
+
+
+    this.busy2 = Observable.zip(...saves).toPromise().then(res => {
+      subResult.next(true);
+      this.reloadUser();
+    }, err => subResult.next(false));
+
+    return subResult;
+  }
+
+
+  // marking the form as touched makes the validation messages show
+  markAsTouched() {
+    this.form.markAsTouched();
+
+    const workerControls = (<FormGroup>(this.form.get('worker'))).controls;
+    for (const c in workerControls) {
+      if (typeof (workerControls[c].markAsTouched) === 'function') {
+        workerControls[c].markAsTouched();
+      }
+    }
+
+    const contactControls = (<FormGroup>(this.form.get('contact'))).controls;
+    for (const c in contactControls) {
+      if (typeof (contactControls[c].markAsTouched) === 'function') {
+        contactControls[c].markAsTouched();
+      }
+    }
+
+    (<FormGroup[]>this.contacts.controls).forEach(address => {
+      for (const c in address.controls) {
+        if (typeof (address.controls[c].markAsTouched) === 'function') {
+          address.controls[c].markAsTouched();
+        }
+      }
+    });
+  }
+
+  rejectIfNotDigitOrBackSpace(event) {
+    const acceptedKeys = ['Backspace', 'Tab', 'End', 'Home', 'ArrowLeft', 'ArrowRight', 'Control',
+      '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+    if (acceptedKeys.indexOf(event.key) === -1) {
+      event.preventDefault();
+    }
+  }
+
+  customZipCodeValidator(pattern: RegExp, countryField: string): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      if (!control.parent) {
+        return null;
+      }
+      const country = control.parent.get(countryField).value;
+      if (country !== 'Canada' && country !== 'United States of America') {
+        return null;
+      }
+      const valueMatchesPattern = pattern.test(control.value);
+      return valueMatchesPattern ? null : { 'regex-missmatch': { value: control.value } };
+    };
+  }
+
+  trimValue(control: FormControl) {
+    const value = control.value;
+    control.setValue('');
+    control.setValue(value.trim());
   }
 }

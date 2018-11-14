@@ -42,7 +42,6 @@
 
   <div *ngIf="!currentUser || (currentUser && !currentUser.isNewUser == true) || (currentUser && !currentUser.businessname)">
     <!-- /NAVBAR -->
-    <!--
     <div class="navigationRibbon" *ngIf="!currentUser">
       <div class="level2Navigation">
         <div class="">
@@ -57,6 +56,9 @@
                   <a (click)="toggleButton.click()" tabindex="2" routerLink="/" title="Home">Home</a>
                 </li>
                 <li class="nav-item">
+                  <a (click)="toggleButton.click()" tabindex="2" routerLink="/business-profile" title="Home">Business Profile</a>
+                </li>
+                <!-- <li class="nav-item">
                   <a (click)="toggleButton.click()" tabindex="2" routerLink="/policy-document/pill press-retail-licence">Licence
                     Types
                   </a>
@@ -77,7 +79,7 @@
                 </li>
                 <li class="nav-item">
                   <a (click)="toggleButton.click()" tabindex="2" routerLink="/policy-document/application-stats">Application Statistics</a>
-                </li>
+                </li> -->
               </ul>
             </div>
           </nav>
@@ -85,7 +87,7 @@
       </div>
 
     </div>
-
+<!--
   <section *ngIf="currentUser && !isAssociate" class="navigationRibbon">
     <div class="level2Navigation ">
       <div class="">

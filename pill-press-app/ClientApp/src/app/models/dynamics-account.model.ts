@@ -1,25 +1,24 @@
-import { DynamicsContact } from "./dynamics-contact.model";
+import { DynamicsContact } from './dynamics-contact.model';
 
 export class DynamicsAccount {
   id: string;
-  name: string;
-  description: string;
   bcIncorporationNumber: string;
-  dateOfIncorporationInBC: Date;
   businessNumber: string;
-  pstNumber: string;
+  businessType: string;
   contactEmail: string;
   contactPhone: string;
-  mailingAddressName: string;
-  mailingAddressStreet: string;
-  mailingAddressCity: string;
-  mailingAddressProvince: string;
-  mailingAddressCountry: string;
+  dateOfIncorporationInBC: Date;
+  description: string;
   mailingAddresPostalCode: string;
+  mailingAddressCity: string;
+  mailingAddressCountry: string;
+  mailingAddressName: string;
+  mailingAddressProvince: string;
+  mailingAddressStreet: string;
+  name: string;
+  pstNumber: string;
 
-  primarycontact: DynamicsContact;
-
-  businessType: string;
-  
-  constructor() { }
+  // related entities
+  additionalContact: DynamicsContact;
+  primaryContact: DynamicsContact;
 }
