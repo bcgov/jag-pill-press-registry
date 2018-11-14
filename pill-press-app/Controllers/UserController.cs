@@ -60,8 +60,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 // get details from the headers.
             
                 
-                user.lastname = DynamicsExtensions.GetLastName(user.name);
-                user.firstname = DynamicsExtensions.GetFirstName(user.name);
+                user.lastname = CommonDynamicsExtensions.GetLastName(user.name);
+                user.firstname = CommonDynamicsExtensions.GetFirstName(user.name);
                 user.accountid = userSettings.AccountId;
 
                 string siteminderBusinessGuid = _httpContextAccessor.HttpContext.Request.Headers[siteMinderAuthOptions.SiteMinderBusinessGuidKey];
