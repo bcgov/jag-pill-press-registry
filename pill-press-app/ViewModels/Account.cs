@@ -74,7 +74,8 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public string mailingAddressProvince { get; set; } //dynamics = address1_stateorprovince
         public string mailingAddresPostalCode { get; set; } //dynamics = address1_postalcode
 
-        public ViewModels.Contact primarycontact { get; set; }
+        public ViewModels.Contact primaryContact { get; set; }
+        public ViewModels.Contact additionalContact { get; set; }
 
     }
 }

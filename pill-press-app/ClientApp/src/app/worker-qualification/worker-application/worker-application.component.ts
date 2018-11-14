@@ -147,10 +147,10 @@ export class WorkerApplicationComponent implements OnInit {
     if (confirm) {
       // create contact here
       const contact = new DynamicsContact();
-      contact.fullname = this.currentUser.name;
-      contact.firstname = this.currentUser.firstname;
-      contact.lastname = this.currentUser.lastname;
-      contact.emailaddress1 = this.currentUser.email;
+      // contact.fullname = this.currentUser.name;
+      contact.firstName = this.currentUser.firstname;
+      contact.lastName = this.currentUser.lastname;
+      contact.email = this.currentUser.email;
       this.busy = this.contactDataService.createWorkerContact(contact).subscribe(res => {
         this.reloadUser();
       }, error => alert('Failed to create contact'));

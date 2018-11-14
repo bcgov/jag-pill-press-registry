@@ -17,7 +17,7 @@
           <h3 class="blue-header">BUSINESS INFORMATION</h3>
 
 
-          <div formGroupName="worker">
+          <div formGroupName="businessProfile">
             <!-- <h2>Worker</h2> -->
             <!-- <section>
                     <div [ngClass]="{'has-error': !this.form.get('worker.isldbworker').valid && this.form.get('worker.isldbworker').touched}">
@@ -76,7 +76,7 @@
 
           <h3 class="blue-header">BUSINESS ADDRESSES</h3>
           <p></p>
-          <div formGroupName="contact">
+          <div formGroupName="businessProfile">
             <h3>Physical Address</h3>
             <section>
               <label>Street Address 1</label>
@@ -139,7 +139,89 @@
 
 
           <h3 class="blue-header">BUSINESS CONTACT</h3>
-          <div formGroupName="contact" *ngIf="true">
+          <div formGroupName="primaryContact">
+            <h2>Primary Contact</h2>
+            <section>
+              <div [ngClass]="{'has-error': !this.form.get('contact.firstname').valid && this.form.get('contact.firstname').touched}">
+                <label>First Name <span style="color: red;">*</span></label>
+                <br />
+                <input class="form-control" style="width: 350px;" type="text" formControlName="firstname">
+                <div *ngIf="!this.form.get('contact.firstname').valid && this.form.get('contact.firstname').touched"
+                  class="alert alert-danger" style="width: 350px;">
+                  <div *ngIf="!this.form.get('contact.firstname').valid && this.form.get('contact.firstname').touched ">
+                    This is required
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section>
+              <div [ngClass]="{'has-error': !this.form.get('contact.lastname').valid && this.form.get('contact.lastname').touched}">
+                <label>Last Name <span style="color: red;">*</span></label>
+                <br />
+                <input class="form-control" style="width: 350px;" type="text" formControlName="lastname">
+                <div *ngIf="!this.form.get('contact.lastname').valid && this.form.get('contact.lastname').touched"
+                  class="alert alert-danger" style="width: 350px;">
+                  <div *ngIf="!this.form.get('contact.lastname').valid && this.form.get('contact.lastname').touched ">
+                    This is required
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section>
+              <div [ngClass]="{'has-error': !this.form.get('contact.middlename').valid && this.form.get('contact.middlename').touched}">
+                <label>Title/ Position</label>
+                <br />
+                <input class="form-control" style="width: 350px;" type="text" formControlName="middlename">
+                <div *ngIf="!this.form.get('contact.middlename').valid && this.form.get('contact.middlename').touched"
+                  class="alert alert-danger" style="width: 350px;">
+                  <div *ngIf="!this.form.get('contact.middlename').valid && this.form.get('contact.middlename').touched ">
+                    This is required
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section>
+              <div [ngClass]="{'has-error': !this.form.get('contact.telephone1').valid && this.form.get('contact.telephone1').touched}">
+                <label>Phone Number (main) <span style="color: red;">*</span></label>
+                <br />
+                <input class="form-control" style="width: 250px;" type="text" formControlName="telephone1">
+                <div *ngIf="!this.form.get('contact.telephone1').valid && this.form.get('contact.telephone1').touched"
+                  class="alert alert-danger" style="width: 250px;">
+                  <div *ngIf="!this.form.get('contact.telephone1').valid && this.form.get('contact.telephone1').touched ">
+                    This is required
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section>
+              <div [ngClass]="{'has-error': !this.form.get('contact.telephone1').valid && this.form.get('contact.telephone1').touched}">
+                <label>Phone Number (alternate)</label>
+                <br />
+                <input class="form-control" style="width: 250px;" type="text" formControlName="telephone1">
+                <div *ngIf="!this.form.get('contact.telephone1').valid && this.form.get('contact.telephone1').touched"
+                  class="alert alert-danger" style="width: 250px;">
+                  <div *ngIf="!this.form.get('contact.telephone1').valid && this.form.get('contact.telephone1').touched ">
+                    This is required
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section>
+              <div [ngClass]="{'has-error': !this.form.get('contact.emailaddress1').valid && this.form.get('contact.emailaddress1').touched}">
+                <label>Email <span style="color: red;">*</span></label>
+                <br />
+                <input class="form-control" style="width: 350px;" type="text" formControlName="emailaddress1" (blur)="trimValue(this.form.get('contact.emailaddress1'));">
+                <div *ngIf="!this.form.get('contact.emailaddress1').valid && this.form.get('contact.emailaddress1').touched"
+                  class="alert alert-danger" style="width: 350px;">
+                  <div *ngIf="!this.form.get('contact.emailaddress1').valid && this.form.get('contact.emailaddress1').touched ">
+                    This is required
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <hr>
+          <div formGroupName="additionalContact">
             <h2>Primary Contact</h2>
             <section>
               <div [ngClass]="{'has-error': !this.form.get('contact.firstname').valid && this.form.get('contact.firstname').touched}">
