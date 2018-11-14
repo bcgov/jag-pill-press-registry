@@ -24,6 +24,7 @@ import * as _moment from 'moment';
 // tslint:disable-next-line:no-duplicate-imports
 import { defaultFormat as _rollupMoment } from 'moment';
 import { zip } from 'rxjs/operators';
+import { AccountDataService } from '../services/account-data.service';
 const moment = _rollupMoment || _moment;
 
 // See the Moment.js docs for the meaning of these formats:
@@ -64,30 +65,24 @@ export class BusinessProfileComponent implements OnInit {
   form: FormGroup;
   countryList = COUNTRIES;
 
-  addressesToDelete: PreviousAddress[] = [];
-  aliasesToDelete: Alias[] = [];
-  workerId: string;
+  contactsToDelete: PreviousAddress[] = [];
+  accountId: string;
   saveFormData: any;
-  workerStatus: string;
 
   currentDate: Date = new Date();
   minDate: Date;
   bsConfig: any = { locale: 'en', dateInputFormat: 'YYYY-MM-DD', containerClass: 'theme-dark-blue' };
 
-  public get addresses(): FormArray {
-    return this.form.get('addresses') as FormArray;
+  public get contacts(): FormArray {
+    return this.form.get('otherContacts') as FormArray;
   }
 
-  public get aliases(): FormArray {
-    return this.form.get('worker.aliases') as FormArray;
-  }
 
   constructor(private userDataService: UserDataService,
     private store: Store<AppState>,
-    private aliasDataService: AliasDataService,
+    private accountDataService: AccountDataService,
     private previousAddressDataService: PreviousAddressDataService,
     private contactDataService: ContactDataService,
-    private workerDataService: WorkerDataService,
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
@@ -97,87 +92,95 @@ export class BusinessProfileComponent implements OnInit {
     this.minDate = new Date();
     this.minDate.setFullYear(this.minDate.getFullYear() - 100);
 
-    this.route.params.subscribe(params => {
-      this.workerId = params.id;
-    });
+    // this.route.params.subscribe(params => {
+    //   this.accountId = params.id;
+    // });
   }
 
   ngOnInit() {
     this.form = this.fb.group({
-      contact: this.fb.group({
-        id: [],
-        firstname: [''],
-        middlename: [''],
-        lastname: [''],
-        emailaddress1: [''],
-        telephone1: [''],
-        address1_line1: [''],
-        address1_city: [''],
-        address1_stateorprovince: [''],
-        address1_country: [''],
-        address1_postalcode: [''],
-        address2_line1: ['', Validators.required],
-        address2_city: ['', Validators.required],
-        address2_stateorprovince: ['', Validators.required],
-        address2_country: ['', Validators.required],
-        address2_postalcode: ['', [Validators.required, this.customZipCodeValidator(new RegExp(postalRegex), 'address2_country')]]
+      businessProfile: this.fb.group({
+        id: [''],
+        businessLegalname: [''],
+        businessDBAName: [''],
+        businessNumber: [''],
+        businessType: [''],
+        address1Line1: [''],
+        address1Line2: [''],
+        address1City: [''],
+        address1PostalCode: [''],
+        address1StateOrProvince: [''],
+        address1Country: [''],
+        address2Line1: [''],
+        address2Line2: [''],
+        address2City: [''],
+        address2PostalCode: [''],
+        address2StateOrProvince: [''],
+        address2Country: [''],
+        businessPhoneNumber: [''],
+        businessEmail: [''],
+        websiteAddress: [''],
+
       }),
-      worker: this.fb.group({
+      primaryContact: this.fb.group({
         id: [],
-        isldbworker: [false],
-        firstname: [''],
-        middlename: [''],
-        lastname: [''],
-        dateofbirth: [''],
-        gender: [''],
-        birthplace: ['', Validators.required],
-        driverslicencenumber: [''],
-        bcidcardnumber: [''],
-        phonenumber: ['', Validators.required],
-        email: ['', [Validators.required, Validators.email]],
-        selfdisclosure: [''],
-        fromdate: ['', Validators.required],
-        todate: [{ value: new Date(), disabled: true }],
-        aliases: this.fb.array([
-        ]),
+        firstName: [''],
+        lastName: [''],
+        title: [''],
+        phoneNumber: [''],
+        phoneNumberAlt: [''],
+        email: ['']
       }),
-      addresses: this.fb.array([
-      ])
+      additionalContact: this.fb.group({
+        id: [],
+        firstName: [''],
+        lastName: [''],
+        title: [''],
+        phoneNumber: [''],
+        phoneNumberAlt: [''],
+        email: ['']
+      }),
     });
-    //this.reloadUser();
+    this.reloadUser();
   }
 
   reloadUser() {
     this.busy = this.userDataService.getCurrentUser()
       .subscribe((data: User) => {
         this.currentUser = data;
+        debugger;
         this.store.dispatch(new CurrentUserActions.SetCurrentUserAction(data));
         this.dataLoaded = true;
-        if (this.currentUser && this.currentUser.contactid) {
+        if (this.currentUser && this.currentUser.accountid) {
           this.busy2 = forkJoin(
-            this.workerDataService.getWorker(this.workerId),
-            this.aliasDataService.getAliases(this.currentUser.contactid),
-            this.previousAddressDataService.getPreviousAdderesses(this.currentUser.contactid)
+            this.accountDataService.getAccount( this.currentUser.accountid),
+            this.contactDataService.getContactsByAccountId( this.currentUser.accountid),
           ).toPromise().then(res => {
-            const worker = res[0];
-            const contact = worker.contact;
-            delete worker.contact;
-            const aliases = res[1];
-            const addresses = res[2];
+            const account = res[0];
+            let contacts = res[1];
+
+            let primaryContact = null;
+            if (account && contacts && contacts.length > 0) {
+              const filtered = contacts.filter(i => i.id === account.primaryContact.id);
+              if (filtered.length > 0) {
+                primaryContact = filtered[0];
+              }
+            }
+
             this.form.patchValue({
-              worker: worker,
-              contact: contact,
+              businessProfile: account,
+              contact: primaryContact,
             });
 
-            this.clearAliases();
-            aliases.forEach(alias => {
-              this.addAlias(alias);
+            contacts = contacts.filter(i => i.id !== account.primaryContact.id);
+
+
+            this.clearContacts();
+            contacts.forEach(contact => {
+              this.addContact(contact);
             });
 
-            this.clearAddresses();
-            addresses.forEach(address => {
-              this.addAddress(address);
-            });
+
 
             this.saveFormData = this.form.value;
             // this.workerStatus = worker.status;
@@ -193,10 +196,9 @@ export class BusinessProfileComponent implements OnInit {
     if (confirm) {
       // create contact here
       const contact = new DynamicsContact();
-      contact.fullname = this.currentUser.name;
-      contact.firstname = this.currentUser.firstname;
-      contact.lastname = this.currentUser.lastname;
-      contact.emailaddress1 = this.currentUser.email;
+      contact.firstName = this.currentUser.firstname;
+      contact.lastName = this.currentUser.lastname;
+      contact.email = this.currentUser.email;
       this.busy = this.contactDataService.createWorkerContact(contact).subscribe(res => {
         this.reloadUser();
       }, error => alert('Failed to create contact'));
@@ -205,31 +207,29 @@ export class BusinessProfileComponent implements OnInit {
     }
   }
 
-  createAddress(address: PreviousAddress = null) {
-    address = address || <PreviousAddress>{
+  createContact(contact: DynamicsContact = null) {
+    contact = contact || <DynamicsContact>{
       id: undefined,
-      streetaddress: '',
-      city: '',
-      provstate: '',
-      country: 'Canada',
-      postalcode: '',
-      fromdate: '',
-      todate: ''
+      firstName: '',
+      lastName: '',
+      title: '',
+      phoneNumber: '',
+      phoneNumberAlt: '',
+      email: ''
     };
     return this.fb.group({
-      id: [address.id],
-      streetaddress: [address.streetaddress, Validators.required],
-      city: [address.city, Validators.required],
-      provstate: [address.provstate, Validators.required],
-      country: [address.country, Validators.required],
-      postalcode: [address.postalcode, [Validators.required, this.customZipCodeValidator(new RegExp(postalRegex), 'country')]],
-      fromdate: [address.fromdate, Validators.required],
-      todate: [address.todate, Validators.required]
+      id: [contact.id],
+      firstName: [contact.firstName],
+      lastName: [contact.lastName],
+      title: [contact.title],
+      phoneNumber: [contact.phoneNumber],
+      phoneNumberAlt: [contact.phoneNumberAlt],
+      email: [contact.email]
     });
   }
 
-  addAddress(address: PreviousAddress = null) {
-    this.addresses.push(this.createAddress(address));
+  addContact(contact: DynamicsContact = null) {
+    this.contacts.push(this.createContact(contact));
   }
 
   copyPhysicalAddressToMailingAddress(): void {
@@ -244,54 +244,26 @@ export class BusinessProfileComponent implements OnInit {
     this.form.get('contact').patchValue(contact);
   }
 
-  deleteAddress(index: number) {
-    const address = this.addresses.controls[index];
-    if (address.value.id) {
-      this.addressesToDelete.push(address.value);
+  deleteContact(index: number) {
+    const contact = this.contacts.controls[index];
+    if (contact.value.id) {
+      this.contactsToDelete.push(contact.value);
     }
-    this.addresses.removeAt(index);
+    this.contacts.removeAt(index);
   }
 
-  clearAddresses() {
-    for (let i = this.addresses.controls.length; i > 0; i--) {
-      this.addresses.removeAt(0);
-    }
-  }
-
-  addAlias(alias: Alias = null) {
-    this.aliases.push(this.createAlias(alias));
-  }
-
-  deleteAlias(index: number) {
-    const alias = this.aliases.controls[index];
-    if (alias.value.id) {
-      this.aliasesToDelete.push(alias.value);
-    }
-    this.aliases.removeAt(index);
-  }
-
-  clearAliases() {
-    for (let i = this.aliases.controls.length; i > 0; i--) {
-      this.aliases.removeAt(0);
+  clearContacts() {
+    for (let i = this.contacts.controls.length; i > 0; i--) {
+      this.contacts.removeAt(0);
     }
   }
 
-  createAlias(alias: Alias = null) {
-    alias = alias || <Alias>{
-      firstname: '',
-      middlename: '',
-      lastname: ''
-    };
-    return this.fb.group({
-      id: [alias.id],
-      firstname: [alias.firstname, Validators.required],
-      middlename: [alias.middlename],
-      lastname: [alias.lastname, Validators.required],
-    });
-  }
+
+
+
 
   canDeactivate(): Observable<boolean> | boolean {
-    if (this.workerStatus !== 'Application Incomplete' ||
+    if (// this.workerStatus !== 'Application Incomplete' ||
       JSON.stringify(this.saveFormData) === JSON.stringify(this.form.value)) {
       return true;
     } else {
@@ -307,47 +279,31 @@ export class BusinessProfileComponent implements OnInit {
     value.contact.telephone1 = value.worker.phonenumber;
 
     const saves = [
-      this.contactDataService.updateContact(value.contact),
-      this.workerDataService.updateWorker(value.worker, value.worker.id)
+      // this.contactDataService.updateContact(value.contact),
+      // this.workerDataService.updateWorker(value.worker, value.worker.id)
     ];
 
-    // this.addressesToDelete.forEach(a => {
-    //   const save = this.previousAddressDataService.deletePreviousAddress(a.id);
-    //   saves.push(save);
-    // });
-
-    const addressControls = this.addresses.controls;
-    for (let i = 0; i < addressControls.length; i++) {
-      if (addressControls[i].value.id) {
-        const save = this.previousAddressDataService.updatePreviousAdderess(addressControls[i].value, addressControls[i].value.id);
-        saves.push(save);
-      } else {
-        const newAddress = addressControls[i].value;
-        newAddress.contactId = value.contact.id;
-        newAddress.workerId = value.worker.id;
-        const save = this.previousAddressDataService.createPreviousAdderess(newAddress);
-        saves.push(save);
-      }
-    }
-
-    this.aliasesToDelete.forEach(a => {
-      const save = this.aliasDataService.deleteAlias(a.id);
-      saves.push(save);
+    this.contactsToDelete.forEach(a => {
+      // const save = this.previousAddressDataService.deletePreviousAddress(a.id);
+      // saves.push(save);
     });
 
-    const aliasControls = this.aliases.controls;
-    for (let j = 0; j < aliasControls.length; j++) {
-      if (aliasControls[j].value.id) {
-        const save = this.aliasDataService.updateAlias(aliasControls[j].value, aliasControls[j].value.id);
-        saves.push(save);
+    const contactControls = this.contacts.controls;
+    for (let i = 0; i < contactControls.length; i++) {
+      if (contactControls[i].value.id) {
+        // const save = this.previousAddressDataService.updatePreviousAdderess(contactControls[i].value, contactControls[i].value.id);
+        // saves.push(save);
       } else {
-        const alias = aliasControls[j].value;
-        alias.contact = { id: value.contact.id };
-        alias.worker = { id: value.worker.id };
-        const save = this.aliasDataService.createAlias(alias);
-        saves.push(save);
+        // const newAddress = contactControls[i].value;
+        // newAddress.contactId = value.contact.id;
+        // newAddress.workerId = value.worker.id;
+        // const save = this.previousAddressDataService.createPreviousAdderess(newAddress);
+        // saves.push(save);
       }
     }
+
+
+
 
     this.busy2 = Observable.zip(...saves).toPromise().then(res => {
       subResult.next(true);
@@ -357,81 +313,6 @@ export class BusinessProfileComponent implements OnInit {
     return subResult;
   }
 
-  pastAddressesAreValid() {
-    let valid = true;
-    // add current address range
-    let dateRanges = [
-      {
-        fd: new Date(this.form.get('worker.fromdate').value),
-        td: new Date(this.form.get('worker.todate').value)
-      }
-    ];
-
-    // extract date ranges
-    const addressControls = this.addresses.controls;
-    for (let i = 0; i < addressControls.length; i++) {
-      const fromDate = new Date(addressControls[i].value.fromdate);
-      const toDate = new Date(addressControls[i].value.todate);
-      dateRanges.push({ fd: fromDate, td: toDate });
-      if (fromDate > toDate) {
-        valid = false;
-      }
-    }
-
-    if (dateRanges.length < 1) {
-      return false;
-    }
-
-    dateRanges = dateRanges.sort((a, b) => {
-      let res = 0;
-      if (a.fd < b.fd) {
-        res = -1;
-      }
-      if (a.fd > b.fd) {
-        res = 1;
-      }
-      return res;
-    });
-
-    // The commented out code makes sure there are no gaps in the address dates
-    // verify there is no gap between dates
-    // let isContinuous = true;
-    // for (let i = 1; i < dateRanges.length; i++) {
-    //   const element = dateRanges[i];
-    //   if (element.fd >= dateRanges[i - 1].td && this.daysBetween(element.fd, dateRanges[i - 1].td) > 1) {
-    //     isContinuous = false;
-    //     valid = false;
-    //     break;
-    //   }
-    // }
-
-    // if (isContinuous) {
-    const daysIn5years = 365 * 5 + 1;
-    // verify that the dates form a range >=  5 years
-    if (this.daysBetween(dateRanges[0].fd, dateRanges[dateRanges.length - 1].td) < daysIn5years) {
-      valid = false;
-    }
-    // }
-    return valid;
-  }
-
-  private daysBetween(firstDate: Date, secondDate: Date) {
-    const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-    const diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime()) / (oneDay)));
-    return diffDays;
-  }
-
-  isAscending(fromDate: string, toDate: string) {
-    return new Date(toDate) >= new Date(fromDate);
-  }
-
-  gotoStep2() {
-    if (this.form.valid && this.isBCIDValid() && this.pastAddressesAreValid()) {
-      this.router.navigate([`/worker-qualification/spd-consent/${this.workerId}`]);
-    } else {
-      this.markAsTouched();
-    }
-  }
 
   // marking the form as touched makes the validation messages show
   markAsTouched() {
@@ -451,27 +332,13 @@ export class BusinessProfileComponent implements OnInit {
       }
     }
 
-    (<FormGroup[]>this.addresses.controls).forEach(address => {
+    (<FormGroup[]>this.contacts.controls).forEach(address => {
       for (const c in address.controls) {
         if (typeof (address.controls[c].markAsTouched) === 'function') {
           address.controls[c].markAsTouched();
         }
       }
     });
-    (<FormGroup[]>this.aliases.controls).forEach(alias => {
-      for (const c in alias.controls) {
-        if (typeof (alias.controls[c].markAsTouched) === 'function') {
-          alias.controls[c].markAsTouched();
-        }
-      }
-    });
-  }
-
-  isBCIDValid(): boolean {
-    const validDriver = !!(this.form.get('worker.driverslicencenumber').value
-      && (this.form.get('worker.driverslicencenumber').value + '').length === 7);
-    const validBceid = !!(this.form.get('worker.bcidcardnumber').value && (this.form.get('worker.bcidcardnumber').value + '').length === 7);
-    return validDriver || validBceid;
   }
 
   rejectIfNotDigitOrBackSpace(event) {
