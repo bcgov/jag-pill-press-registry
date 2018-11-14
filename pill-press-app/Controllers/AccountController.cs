@@ -118,7 +118,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetAccount(string id)
+        public IActionResult GetAccount(string id)
         {
             _logger.LogInformation(LoggingEvents.HttpGet, "Begin method " + this.GetType().Name + "." + MethodBase.GetCurrentMethod().ReflectedType.Name);
             _logger.LogDebug(LoggingEvents.HttpGet, "id: " + id);
@@ -134,7 +134,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
 
                 try
                 {
-                    userAccessToAccount = DynamicsExtensions.CurrentUserHasAccessToAccount(accountId, _httpContextAccessor, _dynamicsClient);
+                    userAccessToAccount = UserDynamicsExtensions.CurrentUserHasAccessToAccount(accountId, _httpContextAccessor, _dynamicsClient);
                 }
                 catch (OdataerrorException odee)
                 {
@@ -423,7 +423,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             // get the legal entity.
             Guid accountId = new Guid(id);
 
-            if (!DynamicsExtensions.CurrentUserHasAccessToAccount(accountId, _httpContextAccessor, _dynamicsClient))
+            if (!UserDynamicsExtensions.CurrentUserHasAccessToAccount(accountId, _httpContextAccessor, _dynamicsClient))
             {
                 _logger.LogWarning(LoggingEvents.NotFound, "Current user has NO access to the account.");
                 return NotFound();
@@ -475,7 +475,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
 
             // verify the currently logged in user has access to this account
             Guid accountId = new Guid(id);
-            if (!DynamicsExtensions.CurrentUserHasAccessToAccount(accountId, _httpContextAccessor, _dynamicsClient))
+            if (!UserDynamicsExtensions.CurrentUserHasAccessToAccount(accountId, _httpContextAccessor, _dynamicsClient))
             {
                 _logger.LogWarning(LoggingEvents.NotFound, "Current user has NO access to the account.");
                 return new NotFoundResult();
