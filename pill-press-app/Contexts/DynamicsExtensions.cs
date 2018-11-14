@@ -316,6 +316,21 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             return result;
         }
 
+        public static MicrosoftDynamicsCRMincident GetApplicationById(this IDynamicsClient system, Guid id)
+        {
+            MicrosoftDynamicsCRMincident result;
+            try
+            {
+                // fetch from Dynamics.
+                result = system.Incidents.GetByKey(id.ToString());
+            }
+            catch (Gov.Jag.PillPressRegistry.Interfaces.Models.OdataerrorException)
+            {
+                result = null;
+            }
+            return result;
+        }
+
         /// <summary>
         /// Load User from database using their userId and guid
         /// </summary>
@@ -492,6 +507,27 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             return false;
         }
 
+        /// <summary>
+        /// Verify whether currently logged in user has access to this account id
+        /// </summary>
+        /// <returns>boolean</returns>
+        public static bool CurrentUserHasAccessToApplication(Guid applicationId, IHttpContextAccessor _httpContextAccessor, IDynamicsClient _dynamicsClient)
+        {
+            var application = _dynamicsClient.GetApplicationById(applicationId);
+            
+            var accountId = application._accountidValue;
 
+            // get the current user.
+            string temp = _httpContextAccessor.HttpContext.Session.GetString("UserSettings");
+            UserSettings userSettings = JsonConvert.DeserializeObject<UserSettings>(temp);
+
+            if (userSettings.AccountId != null && userSettings.AccountId.Length > 0)
+            {
+                return userSettings.AccountId == accountId.ToString();
+            }
+
+            // if current user doesn't have an account they are probably not logged in
+            return false;
+        }
     }
 }
