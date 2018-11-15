@@ -1,14 +1,14 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { User } from '../models/user.model';
 import { UserDataService } from '../services/user-data.service';
-import { AdoxioApplicationDataService } from '../services/adoxio-application-data.service';
+import { ApplicationDataService } from '../services/adoxio-application-data.service';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import * as currentApplicatioActions from '../app-state/actions/current-application.action';
 import { Store } from '@ngrx/store';
 import { AppState } from '../app-state/models/app-state';
-import { AdoxioApplication } from '../models/adoxio-application.model';
+import { Application } from '../models/adoxio-application.model';
 
 @Component({
   selector: 'app-license-application',
@@ -32,7 +32,7 @@ export class LicenseApplicationComponent implements OnInit {
   };
   tabStructure: any[] = this.tabs.application;
 
-  constructor(private applicationDataService: AdoxioApplicationDataService,
+  constructor(private applicationDataService: ApplicationDataService,
     private store: Store<AppState>,
     private userDataService: UserDataService,
     private router: Router,
@@ -66,7 +66,7 @@ export class LicenseApplicationComponent implements OnInit {
     // get application name
     if (!this.applicationName) {
       this.busy = this.applicationDataService.getApplicationById(this.applicationId).subscribe(
-        (data: AdoxioApplication) => {
+        (data: Application) => {
           this.applicationName = data.name;
           this.store.dispatch(new currentApplicatioActions.SetCurrentApplicationAction(data));
         },

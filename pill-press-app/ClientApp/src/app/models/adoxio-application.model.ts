@@ -2,7 +2,7 @@ import { DynamicsAccount } from './dynamics-account.model';
 import { AdoxioLicense } from './adoxio-license.model';
 import { Invoice } from './invoice.model';
 
-export class AdoxioApplication {
+export class Application {
   id: string;
   account: DynamicsAccount;
   applicantType: string;

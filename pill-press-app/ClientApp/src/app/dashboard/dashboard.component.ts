@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { DynamicsDataService } from '../services/dynamics-data.service';
 import { User } from '../models/user.model';
 import { UserDataService } from '../services/user-data.service';
-import { AdoxioApplicationDataService } from '../services/adoxio-application-data.service';
+import { ApplicationDataService } from '../services/adoxio-application-data.service';
 import { Subscription } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
-import { AdoxioApplication } from '../models/adoxio-application.model';
+import { Application } from '../models/adoxio-application.model';
 import { DynamicsAccount } from '../models/dynamics-account.model';
 import { Router } from '@angular/router';
 
@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
   busy: Subscription;
 
   constructor(private userDataService: UserDataService, private dynamicsDataService: DynamicsDataService,
-    private applicationDataService: AdoxioApplicationDataService, public snackBar: MatSnackBar,
+    private applicationDataService: ApplicationDataService, public snackBar: MatSnackBar,
     private router: Router) {
 }
 
@@ -61,13 +61,13 @@ ngOnInit(): void {
    * Start a new Dynamics License Application
    * */
   startNewLicenceApplication() {
-    const newLicenceApplicationData: AdoxioApplication = new AdoxioApplication();
+    const newLicenceApplicationData: Application = new Application();
     newLicenceApplicationData.licenseType = 'Pill Press Retail Store';
     newLicenceApplicationData.applicantType = this.account.businessType;
     newLicenceApplicationData.account = this.account;
     // newLicenceApplicationData. = this.account.businessType;
     this.busy = this.applicationDataService.createApplication(newLicenceApplicationData).subscribe(
-      (data: AdoxioApplication) => {
+      (data: Application) => {
         this.router.navigateByUrl(`/license-application/${data.id}/contact-details`);
       },
       err => {
