@@ -5,7 +5,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    public partial class MicrosoftDynamicsCRMadoxioApplication
+    public partial class MicrosoftDynamicsCRMApplication
     {
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public string AdoxioLicenceFeeInvoiceODataBind { get; set; }
 
         [JsonProperty(PropertyName = "adoxio_application_SharePointDocumentLocations@odata.bind")]
-        public string[] AdoxioApplicationSharePointDocumentLocationsODataBind { get; set; }
+        public string[] ApplicationSharePointDocumentLocationsODataBind { get; set; }
 
     }
 }

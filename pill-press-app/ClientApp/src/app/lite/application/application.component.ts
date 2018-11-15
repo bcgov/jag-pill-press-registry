@@ -8,11 +8,11 @@ import { Observable } from 'rxjs/Observable';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import * as currentApplicationActions from '../../app-state/actions/current-application.action';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AdoxioApplicationDataService } from '../../services/adoxio-application-data.service';
+import { ApplicationDataService } from '../../services/adoxio-application-data.service';
 import { PaymentDataService } from '../../services/payment-data.service';
 import { FileUploaderComponent } from '../../file-uploader/file-uploader.component';
 import { ConfirmationDialogComponent } from '../../lite-application-dashboard/lite-application-dashboard.component';
-import { AdoxioApplication } from '../../models/adoxio-application.model';
+import { Application } from '../../models/adoxio-application.model';
 import { debug } from 'util';
 
 @Component({
@@ -21,7 +21,7 @@ import { debug } from 'util';
   styleUrls: ['./application.component.scss']
 })
 export class ApplicationComponent implements OnInit, OnDestroy {
-  application: AdoxioApplication;
+  application: Application;
   @ViewChild('mainForm') mainForm: FileUploaderComponent;
   @ViewChild('financialIntegrityDocuments') financialIntegrityDocuments: FileUploaderComponent;
   @ViewChild('supportingDocuments') supportingDocuments: FileUploaderComponent;
@@ -40,7 +40,7 @@ export class ApplicationComponent implements OnInit, OnDestroy {
     private paymentDataService: PaymentDataService,
     public snackBar: MatSnackBar,
     public router: Router,
-    private applicationDataService: AdoxioApplicationDataService,
+    private applicationDataService: ApplicationDataService,
     private route: ActivatedRoute,
     private fb: FormBuilder,
     public dialog: MatDialog) {
@@ -57,7 +57,7 @@ export class ApplicationComponent implements OnInit, OnDestroy {
       .subscribe(value => this.submittedApplications = value);
 
     this.busy = this.applicationDataService.getApplicationById(this.applicationId).subscribe(
-      (data: AdoxioApplication) => {
+      (data: Application) => {
         this.application = data;
         this.form.patchValue(data);
         if (data.isPaid) {
@@ -125,7 +125,7 @@ export class ApplicationComponent implements OnInit, OnDestroy {
 
   updateApplicationInStore() {
     this.applicationDataService.getApplicationById(this.applicationId).subscribe(
-      (data: AdoxioApplication) => {
+      (data: Application) => {
         this.store.dispatch(new currentApplicationActions.SetCurrentApplicationAction(data));
       }
     );

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Gov.Jag.PillPressRegistry.Public.ViewModels
 {
-    public enum AdoxioApplicationStatusCodes
+    public enum ApplicationStatusCodes
     {
         Active = 1,
         [EnumMember(Value = "In Progress")]
