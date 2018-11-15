@@ -322,7 +322,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 userContact.Contactid = account._primarycontactidValue;
 
                 accountString = JsonConvert.SerializeObject(accountString);
-                _logger.LogDebug("Legal Entity after creation in dynamics --> " + accountString);
+                _logger.LogDebug("Account Entity after creation in dynamics --> " + accountString);
 
 
             }
