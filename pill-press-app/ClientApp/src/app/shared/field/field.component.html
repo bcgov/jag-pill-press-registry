@@ -1,0 +1,14 @@
+<section class="app-field">
+  <label>{{label}} <span *ngIf="required" class="error-states">*</span></label>
+  <br />
+  <ng-content></ng-content>
+  <span *ngIf="!valid">
+    <i class="fas fa-chevron-left error-states"></i>
+    <i class="fas fa-chevron-left error-states" style="margin-left: -7px"></i>
+  </span>
+  <div *ngIf="!valid" class="error-states error-container">
+    <div *ngIf="!valid ">
+      {{errorMessage}}
+    </div>
+  </div>
+</section>

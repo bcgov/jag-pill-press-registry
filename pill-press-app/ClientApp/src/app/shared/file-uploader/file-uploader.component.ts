@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UploadEvent, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
 import { Http, Headers, Response } from '@angular/http';
-import { FileSystemItem } from '../models/file-system-item.model';
+import { FileSystemItem } from '../../models/file-system-item.model';
 import { Subscription } from 'rxjs';
-import { ApplicationDataService } from '../services/adoxio-application-data.service';
+import { ApplicationDataService } from '../../services/adoxio-application-data.service';
 
 export interface DropdownOption {
   id: string;
@@ -23,14 +23,14 @@ export class FileUploaderComponent implements OnInit {
   @Input() entityId: string;
   @Input() multipleFiles = true;
   @Input() extensions: string[] = ['pdf'];
-  @Input() uploadHeader: string = 'TO UPLOAD DOCUMENTS, DRAG FILES HERE OR';
+  @Input() uploadHeader = 'TO UPLOAD DOCUMENTS, DRAG FILES HERE OR';
   busy: Subscription;
   attachmentURL: string;
   Math = Math;
   public files: FileSystemItem[] = [];
 
   // TODO: move http call to a service
-  constructor(private http: Http, private ApplicationDataService: ApplicationDataService) {
+  constructor(private http: Http) {
   }
 
   ngOnInit(): void {
@@ -65,7 +65,7 @@ export class FileUploaderComponent implements OnInit {
       this.uploadFile(file);
     }
 
-    input.value = "";
+    input.value = '';
   }
 
   private uploadFile(file) {
@@ -75,7 +75,7 @@ export class FileUploaderComponent implements OnInit {
       return;
     }
 
-    if(file && file.name && file.name.length > 128){
+    if (file && file.name && file.name.length > 128) {
       alert('File name must be 128 characters or less.');
       return;
     }
