@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AdoxioApplicationDataService } from '../../../services/adoxio-application-data.service';
+import { ApplicationDataService } from '../../../services/adoxio-application-data.service';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../app-state/models/app-state';
 import * as currentApplicationActions from '../../../app-state/actions/current-application.action';
-import { AdoxioApplication } from '../../../models/adoxio-application.model';
+import { Application } from '../../../models/adoxio-application.model';
 
 @Component({
   selector: 'app-declaration',
@@ -25,7 +25,7 @@ export class DeclarationComponent implements OnInit {
   savedFormData: any = {};
   isReadOnly = false;
 
-  constructor(private applicationDataService: AdoxioApplicationDataService,
+  constructor(private applicationDataService: ApplicationDataService,
     private store: Store<AppState>,
     private route: ActivatedRoute,
     public snackBar: MatSnackBar) {
@@ -90,7 +90,7 @@ export class DeclarationComponent implements OnInit {
 
   updateApplicationInStore() {
     this.applicationDataService.getApplicationById(this.applicationId).subscribe(
-      (data: AdoxioApplication) => {
+      (data: Application) => {
         this.store.dispatch(new currentApplicationActions.SetCurrentApplicationAction(data));
       }
     );

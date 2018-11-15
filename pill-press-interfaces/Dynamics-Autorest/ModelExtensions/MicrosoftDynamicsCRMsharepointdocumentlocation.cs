@@ -11,7 +11,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "regardingobjectid_adoxio_application@odata.bind")]
-        public string RegardingobjectidAdoxioApplicationODataBind { get; set; }
+        public string RegardingobjectidApplicationODataBind { get; set; }
 
         [JsonProperty(PropertyName = "parentsiteorlocation_sharepointdocumentlocation@odata.bind")]        
         public string ParentsiteorlocationSharepointdocumentlocationODataBind { get; set; }

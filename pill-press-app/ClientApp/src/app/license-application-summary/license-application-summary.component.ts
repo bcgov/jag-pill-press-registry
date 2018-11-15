@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
-import { AdoxioApplicationDataService } from '../services/adoxio-application-data.service';
+import { ApplicationDataService } from '../services/adoxio-application-data.service';
 import { AdoxioLicenseDataService } from '../services/adoxio-license-data.service';
 import { LicenseApplicationSummary } from '../models/license-application-summary.model';
-import { AdoxioApplication } from '../models/adoxio-application.model';
+import { Application } from '../models/adoxio-application.model';
 import { AdoxioLicense } from '../models/adoxio-license.model';
 import { Observable, Subscription } from 'rxjs';
 import { PaymentDataService } from '../services/payment-data.service';
@@ -35,7 +35,7 @@ export class LicenseApplicationSummaryComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
 
-  constructor(private adoxioApplicationDataService: AdoxioApplicationDataService,
+  constructor(private ApplicationDataService: ApplicationDataService,
     private adoxioLicenseDataService: AdoxioLicenseDataService,
     private paymentService: PaymentDataService,
     private route: ActivatedRoute) {
@@ -44,7 +44,7 @@ export class LicenseApplicationSummaryComponent implements OnInit {
   ngOnInit() {
     const licenseApplicationSummary: LicenseApplicationSummary[] = [];
 
-    this.busy = this.adoxioApplicationDataService.getAdoxioApplications()
+    this.busy = this.ApplicationDataService.getApplications()
       .subscribe(applications => {
         applications.forEach((entry) => {
           if (entry.assignedLicence) {
@@ -70,7 +70,7 @@ export class LicenseApplicationSummaryComponent implements OnInit {
       });
   }
 
-  getLicenceStatus(application: AdoxioApplication): string {
+  getLicenceStatus(application: Application): string {
     let status = ACTIVE;
     if (application.licenceFeeInvoicePaid !== true) {
       status = PAYMENT_REQUIRED;

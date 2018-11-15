@@ -1,12 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AdoxioApplicationDataService } from '../../../services/adoxio-application-data.service';
+import { ApplicationDataService } from '../../../services/adoxio-application-data.service';
 import { PaymentDataService } from '../../../services/payment-data.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription, Subject } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import { zip } from 'rxjs/observable/zip';
-import { AdoxioApplication } from '../../../models/adoxio-application.model';
+import { Application } from '../../../models/adoxio-application.model';
 
 
 @Component({
@@ -28,7 +28,7 @@ export class SubmitPayComponent implements OnInit {
   displayValidationMessages = false;
 
   constructor(private paymentDataService: PaymentDataService,
-    private applicationDataService: AdoxioApplicationDataService,
+    private applicationDataService: ApplicationDataService,
     public snackBar: MatSnackBar,
     private route: ActivatedRoute,
     private router: Router) {
@@ -38,7 +38,7 @@ export class SubmitPayComponent implements OnInit {
   ngOnInit() {
     // get application data, display form
     this.busy = this.applicationDataService.getApplicationById(this.applicationId).subscribe(
-      (data: AdoxioApplication) => {
+      (data: Application) => {
         this.isSubmitted = data.isSubmitted;
         this.isPaid = data.isPaid;
         this.prevPaymentFailed = data.prevPaymentFailed;
@@ -59,7 +59,7 @@ export class SubmitPayComponent implements OnInit {
     const result = new Subject<boolean>();
     // get application data and validate all required fields are entered
     this.busy = this.applicationDataService.getApplicationById(this.applicationId).subscribe(
-      (data: AdoxioApplication) => {
+      (data: Application) => {
         // validate contact details
         if (this.isNullOrEmpty(data.contactpersonfirstname)
           || this.isNullOrEmpty(data.contactpersonlastname)

@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { UserDataService } from '../services/user-data.service';
 import { User } from '../models/user.model';
 import { Router } from '@angular/router';
-import { AdoxioApplication } from '../models/adoxio-application.model';
+import { Application } from '../models/adoxio-application.model';
 import { DynamicsDataService } from '../services/dynamics-data.service';
-import { AdoxioApplicationDataService } from '../services/adoxio-application-data.service';
+import { ApplicationDataService } from '../services/adoxio-application-data.service';
 import { DynamicsAccount } from '../models/dynamics-account.model';
 import { Subscription } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
@@ -29,7 +29,7 @@ export class DashboardLiteComponent implements OnInit {
   constructor(private paymentDataService: PaymentDataService,
     private userDataService: UserDataService, private router: Router,
     private dynamicsDataService: DynamicsDataService,
-    private applicationDataService: AdoxioApplicationDataService,
+    private applicationDataService: ApplicationDataService,
     public snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
@@ -54,7 +54,7 @@ export class DashboardLiteComponent implements OnInit {
   }
 
   verify_payment() {
-    const newLicenceApplicationData: AdoxioApplication = new AdoxioApplication();
+    const newLicenceApplicationData: Application = new Application();
     newLicenceApplicationData.licenseType = 'Pill Press Retail Store';
     newLicenceApplicationData.applicantType = this.account.businessType;
     newLicenceApplicationData.account = this.account;
@@ -85,7 +85,7 @@ export class DashboardLiteComponent implements OnInit {
   }
 
   startNewLicenceApplication() {
-    const newLicenceApplicationData: AdoxioApplication = new AdoxioApplication();
+    const newLicenceApplicationData: Application = new Application();
     newLicenceApplicationData.licenseType = 'Pill Press Retail Store';
     newLicenceApplicationData.applicantType = this.account.businessType;
     newLicenceApplicationData.account = this.account;
