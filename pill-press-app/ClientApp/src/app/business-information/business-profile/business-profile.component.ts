@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { UserDataService } from '../services/user-data.service';
-import { User } from '../models/user.model';
-import { ContactDataService } from '../services/contact-data.service';
-import { DynamicsContact } from '../models/dynamics-contact.model';
-import { AppState } from '../app-state/models/app-state';
-import * as CurrentUserActions from '../app-state/actions/current-user.action';
+import { UserDataService } from '../../services/user-data.service';
+import { User } from '../../models/user.model';
+import { ContactDataService } from '../../services/contact-data.service';
+import { DynamicsContact } from '../../models/dynamics-contact.model';
+import { AppState } from '../../app-state/models/app-state';
+import * as CurrentUserActions from '../../app-state/actions/current-user.action';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';
 import { FormBuilder, FormGroup, Validators, FormArray, ValidatorFn, AbstractControl, FormControl } from '@angular/forms';
-import { AliasDataService } from '../services/alias-data.service';
-import { PreviousAddressDataService } from '../services/previous-address-data.service';
+import { AliasDataService } from '../../services/alias-data.service';
+import { PreviousAddressDataService } from '../../services/previous-address-data.service';
 import { Observable, Subject } from 'rxjs';
-import { WorkerDataService } from '../services/worker-data.service.';
-import { Alias } from '../models/alias.model';
-import { PreviousAddress } from '../models/previous-address.model';
+import { WorkerDataService } from '../../services/worker-data.service.';
+import { Alias } from '../../models/alias.model';
+import { PreviousAddress } from '../../models/previous-address.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { forkJoin } from 'rxjs/observable/forkJoin';
 import { COUNTRIES } from './country-list';
@@ -24,7 +24,7 @@ import * as _moment from 'moment';
 // tslint:disable-next-line:no-duplicate-imports
 import { defaultFormat as _rollupMoment } from 'moment';
 import { zip } from 'rxjs/operators';
-import { AccountDataService } from '../services/account-data.service';
+import { AccountDataService } from '../../services/account-data.service';
 const moment = _rollupMoment || _moment;
 
 // See the Moment.js docs for the meaning of these formats:
