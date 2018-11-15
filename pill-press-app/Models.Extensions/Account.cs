@@ -153,6 +153,16 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                 {
                     accountVM.additionalContact = account.BcgovAdditionalContact.ToViewModel();
                 }
+
+                if (account.BcgovCurrentBusinessPhysicalAddress != null)
+                {
+                    accountVM.physicalAddress = account.BcgovCurrentBusinessPhysicalAddress.ToViewModel();
+                }
+
+                if (account.BcgovCurrentBusinessMailingAddress != null)
+                {
+                    accountVM.mailingAddress = account.BcgovCurrentBusinessMailingAddress.ToViewModel();
+                }
             }
 
             return accountVM;

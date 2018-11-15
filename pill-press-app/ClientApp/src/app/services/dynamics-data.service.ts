@@ -23,61 +23,8 @@ export class DynamicsDataService {
       headers: this.headers
     })
       .toPromise()
-      .then((res: Response) => {
-        const data = res.json();
-        const dynamicsForm = new DynamicsForm();
-        dynamicsForm.id = data.id;
-        dynamicsForm.name = data.name;
-        dynamicsForm.displayname = data.displayname;
-        dynamicsForm.entity = data.entity;
-
-        // process the form tabs.
-        dynamicsForm.tabs = [];
-        data.tabs.forEach((tab) => {
-          const newTab = new DynamicsFormTab();
-          newTab.id = tab.id;
-          newTab.name = tab.name;
-          newTab.visible = tab.visible;
-          newTab.showlabel = tab.showlabel;
-          newTab.sections = [];
-          tab.sections.forEach((section) => {
-            const newSection = new DynamicsFormSection();
-            newSection.id = section.id;
-            newSection.name = section.name;
-            newSection.visible = section.visible;
-            newSection.showlabel = section.showlabel;
-            newSection.fields = [];
-            section.fields.forEach((field) => {
-              const newField = new DynamicsFormField();
-              newField.name = field.name;
-              newField.datafieldname = field.datafieldname;
-              newField.showlabel = field.showlabel;
-              newField.visible = field.visible;
-              newField.classid = field.classid;
-              newField.controltype = field.controltype;
-              newField.required = field.required;
-
-              newField.options = [];
-              if (field.options) {
-                field.options.forEach((option) => {
-                  const newFieldOption = new DynamicsFormFieldOption();
-                  newFieldOption.description = option.description;
-                  newFieldOption.label = option.label;
-                  newFieldOption.value = option.value;
-                  newField.options.push(newFieldOption);
-                });
-              }
-              newSection.fields.push(newField);
-            });
-            newTab.sections.push(newSection);
-          });
-
-
-          dynamicsForm.tabs.push(newTab);
-        });
-
-
-        return dynamicsForm;
+      .then((data: DynamicsForm) => {
+        return data;
       })
       .catch(this.handleError);
   }
@@ -88,8 +35,8 @@ export class DynamicsDataService {
       headers: this.headers
     })
       .toPromise()
-      .then((res: Response) => {
-        return res.json();
+      .then((res: any) => {
+        return res;
       })
       .catch(this.handleError);
   }
@@ -99,8 +46,8 @@ export class DynamicsDataService {
       headers: this.headers
     })
       .toPromise()
-      .then((res: Response) => {
-        return res.json();
+      .then((res: any) => {
+        return res;
       })
       .catch(this.handleError);
   }
@@ -111,8 +58,8 @@ export class DynamicsDataService {
       headers: this.headers
     })
       .toPromise()
-      .then((res: Response) => {
-        return res.json();
+      .then((res: any) => {
+        return res;
       })
       .catch(this.handleError);
   }
