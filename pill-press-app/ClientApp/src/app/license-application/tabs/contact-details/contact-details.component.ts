@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { AdoxioApplicationDataService } from '../../../services/adoxio-application-data.service';
+import { ApplicationDataService } from '../../../services/adoxio-application-data.service';
 import { FormBuilder, FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { Subscription } from 'rxjs/Subscription';
@@ -10,7 +10,7 @@ import { Subject } from 'rxjs/Subject';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../app-state/models/app-state';
 import * as currentApplicationActions from '../../../app-state/actions/current-application.action';
-import { AdoxioApplication } from '../../../models/adoxio-application.model';
+import { Application } from '../../../models/adoxio-application.model';
 
 @Component({
   selector: 'app-contact-details',
@@ -24,7 +24,7 @@ export class ContactDetailsComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   saveFormData: any = {};
 
-  constructor(private applicationDataService: AdoxioApplicationDataService,
+  constructor(private applicationDataService: ApplicationDataService,
     private store: Store<AppState>,
     private route: ActivatedRoute,
     private fb: FormBuilder, public snackBar: MatSnackBar) {
@@ -111,7 +111,7 @@ export class ContactDetailsComponent implements OnInit, OnDestroy {
 
   updateApplicationInStore() {
     this.applicationDataService.getApplicationById(this.applicationId).subscribe(
-      (data: AdoxioApplication) => {
+      (data: Application) => {
         this.store.dispatch(new currentApplicationActions.SetCurrentApplicationAction(data));
       }
     );
