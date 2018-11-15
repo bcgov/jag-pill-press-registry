@@ -10,7 +10,7 @@ import * as currentApplicationActions from '../../app-state/actions/current-appl
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApplicationDataService } from '../../services/adoxio-application-data.service';
 import { PaymentDataService } from '../../services/payment-data.service';
-import { FileUploaderComponent } from '../../file-uploader/file-uploader.component';
+import { FileUploaderComponent } from '../../shared/file-uploader/file-uploader.component';
 import { ConfirmationDialogComponent } from '../../lite-application-dashboard/lite-application-dashboard.component';
 import { Application } from '../../models/adoxio-application.model';
 import { debug } from 'util';

@@ -59,10 +59,6 @@ import { AdminModule } from './admin/admin.module';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { DynamicsDataService } from './services/dynamics-data.service';
 import { DynamicsFormComponent } from './dynamics-form/dynamics-form.component';
-import {
-  EditShareholdersComponent,
-  ShareholderPersonDialogComponent,
-  ShareholderOrganizationDialogComponent } from './business-profile/tabs/edit-shareholders/edit-shareholders.component';
 import { FormViewerComponent } from './form-viewer/form-viewer.component';
 import { InsertComponent } from './insert/insert.component';
 import { InsertService } from './insert/insert.service';
@@ -87,24 +83,17 @@ import { NewsletterDataService } from './services/newsletter-data.service';
 import { UserDataService } from './services/user-data.service';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ApplicationsListComponent } from './applications-list/applications-list.component';
-import { BusinessProfileComponent } from './business-profile/business-profile.component';
+import { BusinessProfileComponent } from './business-information/business-profile/business-profile.component';
 import { LicenseApplicationSummaryComponent } from './license-application-summary/license-application-summary.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FileDropModule } from 'ngx-file-drop';
-import { FileUploaderComponent } from './file-uploader/file-uploader.component';
-import { CorporateDetailsComponent } from './business-profile/tabs/corporate-details/corporate-details.component';
-import {
-  DirectorsAndOfficersComponent,
-  DirectorAndOfficerPersonDialogComponent } from './business-profile/tabs/directors-and-officers/directors-and-officers.component';
-import { SecurityAssessmentsComponent } from './business-profile/tabs/security-assessments/security-assessments.component';
-import { OrganizationStructureComponent } from './business-profile/tabs/organization-structure/organization-structure.component';
-import { BeforeYouStartComponent } from './business-profile/tabs/before-you-start/before-you-start.component';
-import { FinancialInformationComponent } from './business-profile/tabs/financial-information/financial-information.component';
+import { FileUploaderComponent } from './shared/file-uploader/file-uploader.component';
+
+
 import { BusinessProfileSummaryComponent } from './business-profile-summary/business-profile-summary.component';
 
 import {NgBusyModule} from 'ng-busy';
-import { KeyPersonnelComponent } from './business-profile/tabs/key-personnel/key-personnel.component';
-import { ConnectionToProducersComponent } from './business-profile/tabs/connection-to-producers/connection-to-producers.component';
+
 import { LicenseApplicationComponent } from './license-application/license-application.component';
 import { PaymentConfirmationComponent } from './payment-confirmation/payment-confirmation.component';
 import { LicenceFeePaymentConfirmationComponent } from './licence-fee-payment-confirmation/licence-fee-payment-confirmation.component';
@@ -141,7 +130,8 @@ import { PrePaymentComponent } from './worker-qualification/pre-payment/pre-paym
 import { UserConfirmationComponent } from './worker-qualification/user-confirmation/user-confirmation.component';
 import { WorkerQualificationComponent } from './worker-qualification/worker-qualification.component';
 import { WorkerPaymentConfirmationComponent } from './worker-qualification/payment-confirmation/payment-confirmation.component';
-import { WorkerTermsAndConditionsComponent } from './worker-qualification/worker-terms-and-conditions/worker-terms-and-conditions.component';
+import {
+  WorkerTermsAndConditionsComponent } from './worker-qualification/worker-terms-and-conditions/worker-terms-and-conditions.component';
 import { WorkerHomeComponent, WorkerHomeDialogComponent } from './worker-qualification/worker-home/worker-home.component';
 import { WorkerInformationComponent } from './worker-qualification/worker-information/worker-information.component';
 import { FieldComponent } from './shared/field/field.component';
@@ -155,9 +145,6 @@ import { FieldComponent } from './shared/field/field.component';
     BusinessProfileComponent,
     BreadcrumbComponent,
     DynamicsFormComponent,
-    EditShareholdersComponent,
-    ShareholderPersonDialogComponent,
-    ShareholderOrganizationDialogComponent,
     FormViewerComponent,
     HomeComponent,
     InsertComponent,
@@ -178,16 +165,7 @@ import { FieldComponent } from './shared/field/field.component';
     LicenseApplicationSummaryComponent,
     DashboardComponent,
     FileUploaderComponent,
-    CorporateDetailsComponent,
-    OrganizationStructureComponent,
-    DirectorsAndOfficersComponent,
-    DirectorAndOfficerPersonDialogComponent,
-    SecurityAssessmentsComponent,
-    BeforeYouStartComponent,
-    FinancialInformationComponent,
     BusinessProfileSummaryComponent,
-    KeyPersonnelComponent,
-    ConnectionToProducersComponent,
     LicenseApplicationComponent,
     PaymentConfirmationComponent,
     ContactDetailsComponent,
@@ -339,9 +317,6 @@ import { FieldComponent } from './shared/field/field.component';
     ServiceCardAuthGuard,
   ],
   entryComponents: [
-    ShareholderPersonDialogComponent,
-    ShareholderOrganizationDialogComponent,
-    DirectorAndOfficerPersonDialogComponent,
     ConfirmationDialogComponent,
     WorkerHomeDialogComponent
   ],
