@@ -243,14 +243,14 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 userContact.Externaluseridentifier = sanitizedContactSiteminderId;
                 userContact.Fullname = userSettings.UserDisplayName;
                 userContact.Nickname = userSettings.UserDisplayName;
-                if (Guid.TryParse(userSettings.UserId, out tryParseOutGuid)) // BCeid id goes here
-                {
-                    userContact.Employeeid = userSettings.UserId;
-                }
-                else // Store the BC service card id here
-                {
+
+                // ENABLE FOR BC SERVICE CARD SUPPORT
+                /*
+                if (! Guid.TryParse(userSettings.UserId, out tryParseOutGuid)) 
+                {                    
                     userContact.Externaluseridentifier = userSettings.UserId;
                 }
+                */
 
                 if (bceidBusiness != null)
                 {
