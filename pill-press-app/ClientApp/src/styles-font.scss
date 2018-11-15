@@ -150,3 +150,30 @@ select.form-control:not([size]):not([multiple]) {
     text-align: center;
     display: inline-block;
 }
+
+.table-row {
+    background-color: #e1e8f2;
+}
+
+.table-row-alt {
+    background-color: #f1f4fa;
+}
+
+.blue-header {
+    background-color: #38598A;
+    color: #fff;
+    padding: 7px 7px 7px 15px;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+.error-states {
+    color: #d8292f
+}
