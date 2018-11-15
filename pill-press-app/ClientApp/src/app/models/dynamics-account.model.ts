@@ -1,4 +1,5 @@
 import { DynamicsContact } from './dynamics-contact.model';
+import { CustomAddress } from './custom-address.model';
 
 export class DynamicsAccount {
   id: string;
@@ -20,5 +21,7 @@ export class DynamicsAccount {
 
   // related entities
   additionalContact: DynamicsContact;
+  mailingAddress: CustomAddress;
+  physicalAddress: CustomAddress;
   primaryContact: DynamicsContact;
 }

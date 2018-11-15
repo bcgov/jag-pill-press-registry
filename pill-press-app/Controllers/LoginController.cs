@@ -61,8 +61,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             {
                 string basePath = string.IsNullOrEmpty(Configuration["BASE_PATH"]) ? "/" : Configuration["BASE_PATH"];
                 // we want to redirect to the dashboard.
-                // string dashboard = !String.IsNullOrEmpty(Configuration["IS_LITE_VERSION"]) ? "dashboard" : "dashboard-lite";
-                string dashboard = "dashboard-lite";
+                string dashboard = "dashboard";
 
                 return Redirect(basePath + "/" + dashboard);
             }
@@ -136,10 +135,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             );
 
             string basePath = string.IsNullOrEmpty(Configuration["BASE_PATH"]) ? "" : Configuration["BASE_PATH"];
-
-            // string dashboard = !String.IsNullOrEmpty(Configuration["IS_LITE_VERSION"])? "dashboard" : "dashboard-lite";
-            string dashboard = "dashboard-lite";
-
+            string dashboard = "dashboard";
             basePath += "/" + dashboard;
 
             return Redirect(basePath);

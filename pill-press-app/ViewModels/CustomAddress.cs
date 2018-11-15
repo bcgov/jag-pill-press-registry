@@ -15,7 +15,7 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
 
-        [JsonProperty(PropertyName = "emailaddress")]
+        [JsonProperty(PropertyName = "email")]
         public string Emailaddress { get; set; }
 
         [JsonProperty(PropertyName = "addresstype")]
@@ -24,13 +24,13 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
-        [JsonProperty(PropertyName = "streetline1")]
+        [JsonProperty(PropertyName = "streetLine1")]
         public string Streetline1 { get; set; }
 
-        [JsonProperty(PropertyName = "streetline2")]
+        [JsonProperty(PropertyName = "streetLine2")]
         public string Streetline2 { get; set; }
 
-        [JsonProperty(PropertyName = "streetline3")]
+        [JsonProperty(PropertyName = "streetLine3")]
         public string Streetline3 { get; set; }
 
         [JsonProperty(PropertyName = "city")]
@@ -39,7 +39,7 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         [JsonProperty(PropertyName = "province")]
         public string Province { get; set; }
 
-        [JsonProperty(PropertyName = "postalcode")]
+        [JsonProperty(PropertyName = "postalCode")]
         public string Postalcode { get; set; }
 
         [JsonProperty(PropertyName = "country")]
