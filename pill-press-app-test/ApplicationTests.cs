@@ -123,7 +123,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
 
             // logout and cleanup (deletes the account and contact created above ^^^)
-            await LogoutAndCleanupTestUser(strId);
+            await LogoutAndCleanupTestUser(loginUser1);
         }
 
         [Fact]
