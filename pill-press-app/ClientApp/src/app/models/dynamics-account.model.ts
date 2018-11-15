@@ -3,8 +3,13 @@ import { CustomAddress } from './custom-address.model';
 
 export class DynamicsAccount {
   id: string;
+
   bcIncorporationNumber: string;
+  businessDBAName: string;
+  businessEmail: string;
+  businessLegalname: string;
   businessNumber: string;
+  businessPhoneNumber: string;
   businessType: string;
   contactEmail: string;
   contactPhone: string;
@@ -18,6 +23,7 @@ export class DynamicsAccount {
   mailingAddressStreet: string;
   name: string;
   pstNumber: string;
+  websiteAddress: string;
 
   // related entities
   additionalContact: DynamicsContact;
