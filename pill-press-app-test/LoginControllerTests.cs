@@ -23,7 +23,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             ViewModels.User user = await GetCurrentUser();
 
             // Verify the Default development user.
-            Assert.Equal(user.name, loginUser + " TestUser");
+            Assert.Equal(user.name, loginUser + " BCeIDContactType");
 
             await LogoutAndCleanupTestUser(strId);
 
@@ -42,8 +42,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
 
             // verify the current user represents our new user
             ViewModels.User user = await GetCurrentUser();
-            Assert.Equal(user.name, loginUser + " TestUser");
-            Assert.Equal(user.businessname, loginUser + " TestBusiness");
+            Assert.Equal(user.name, loginUser + " BCeIDContactType");
+            Assert.Equal(user.businessname, loginUser + " BusinessProfileName");
 
             // fetch our current account
             ViewModels.Account account = await GetAccountForCurrentUser();
@@ -55,8 +55,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             // login again as the same user as above ^^^
             await Login(loginUser);
             user = await GetCurrentUser();
-            Assert.Equal(user.name, loginUser + " TestUser");
-            Assert.Equal(user.businessname, loginUser + " TestBusiness");
+            Assert.Equal(user.name, loginUser + " BCeIDContactType");
+            Assert.Equal(user.businessname, loginUser + " BusinessProfileName");
             account = await GetAccountForCurrentUser();
 
             // logout and cleanup (deletes the account and contact created above ^^^)
@@ -79,8 +79,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
 
             // verify the current user represents our new user
             ViewModels.User user = await GetCurrentUser();
-            Assert.Equal(user.name, loginUser + " TestUser");
-			Assert.Equal(user.businessname, businessName + " TestBusiness");
+            Assert.Equal(user.name, loginUser + " BCeIDContactType");
+			Assert.Equal(user.businessname, businessName + " BusinessProfileName");
 
             // fetch our current account
             ViewModels.Account account = await GetAccountForCurrentUser();
@@ -92,8 +92,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             // login again as the same user as above ^^^
 			await Login(loginUser, businessName);
             user = await GetCurrentUser();
-            Assert.Equal(user.name, loginUser + " TestUser");
-			Assert.Equal(user.businessname, businessName + " TestBusiness");
+            Assert.Equal(user.name, loginUser + " BCeIDContactType");
+			Assert.Equal(user.businessname, businessName + " BusinessProfileName");
             account = await GetAccountForCurrentUser();
 
             // logout and cleanup (deletes the account and contact created above ^^^)
@@ -117,8 +117,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
 
             // verify the current user represents our new user
             ViewModels.User user = await GetCurrentUser();
-            Assert.Equal(user.name, loginUser1 + " TestUser");
-            Assert.Equal(user.businessname, businessName + " TestBusiness");
+            Assert.Equal(user.name, loginUser1 + " BCeIDContactType");
+            Assert.Equal(user.businessname, businessName + " BusinessProfileName");
 
             // fetch our current account
             ViewModels.Account account1 = await GetAccountForCurrentUser();
@@ -131,8 +131,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
 			var loginUser2 = temp + "-2";
 			var strId2 = await LoginAndRegisterAsNewUser(loginUser2, businessName);
             user = await GetCurrentUser();
-            Assert.Equal(user.name, loginUser2 + " TestUser");
-            Assert.Equal(user.businessname, businessName + " TestBusiness");
+            Assert.Equal(user.name, loginUser2 + " BCeIDContactType");
+            Assert.Equal(user.businessname, businessName + " BusinessProfileName");
             var account2 = await GetAccountForCurrentUser();
 			Assert.Equal(account1.id, account2.id);
 

@@ -34,11 +34,12 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             {
                 toDynamics.Accountnumber = fromVM.businessNumber;
             }
-
+            /*
             if (!string.IsNullOrEmpty(fromVM.businessType))
             {
                 toDynamics.Businesstypecode = (int)Enum.Parse(typeof(ViewModels.BusinessTypeEnum), fromVM.businessType, true);
             }
+            */
 
             if (copyIfNull || (!copyIfNull && fromVM.description != null))
             {
@@ -127,7 +128,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     mailingAddressCity = account.Address1City,
                     mailingAddressCountry = account.Address1County,
                     mailingAddressProvince = account.Address1Stateorprovince,
-                    mailingAddresPostalCode = account.Address1Postalcode
+                    mailingAddresPostalCode = account.Address1Postalcode,
+                    externalId = account.BcgovBceid
 
                 };
                 if (account.Accountid != null)
