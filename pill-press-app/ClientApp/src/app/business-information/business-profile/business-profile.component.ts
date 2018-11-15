@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { UserDataService } from '../services/user-data.service';
-import { User } from '../models/user.model';
-import { ContactDataService } from '../services/contact-data.service';
-import { DynamicsContact } from '../models/dynamics-contact.model';
-import { AppState } from '../app-state/models/app-state';
-import * as CurrentUserActions from '../app-state/actions/current-user.action';
+import { UserDataService } from '../../services/user-data.service';
+import { User } from '../../models/user.model';
+import { ContactDataService } from '../../services/contact-data.service';
+import { DynamicsContact } from '../../models/dynamics-contact.model';
+import { AppState } from '../../app-state/models/app-state';
+import * as CurrentUserActions from '../../app-state/actions/current-user.action';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';
 import { FormBuilder, FormGroup, Validators, FormArray, ValidatorFn, AbstractControl, FormControl } from '@angular/forms';
-import { AliasDataService } from '../services/alias-data.service';
-import { PreviousAddressDataService } from '../services/previous-address-data.service';
+import { AliasDataService } from '../../services/alias-data.service';
+import { PreviousAddressDataService } from '../../services/previous-address-data.service';
 import { Observable, Subject } from 'rxjs';
-import { WorkerDataService } from '../services/worker-data.service.';
-import { Alias } from '../models/alias.model';
-import { PreviousAddress } from '../models/previous-address.model';
+import { WorkerDataService } from '../../services/worker-data.service.';
+import { Alias } from '../../models/alias.model';
+import { PreviousAddress } from '../../models/previous-address.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { forkJoin } from 'rxjs/observable/forkJoin';
 import { COUNTRIES } from './country-list';
@@ -24,7 +24,7 @@ import * as _moment from 'moment';
 // tslint:disable-next-line:no-duplicate-imports
 import { defaultFormat as _rollupMoment } from 'moment';
 import { zip } from 'rxjs/operators';
-import { AccountDataService } from '../services/account-data.service';
+import { AccountDataService } from '../../services/account-data.service';
 const moment = _rollupMoment || _moment;
 
 // See the Moment.js docs for the meaning of these formats:
@@ -68,6 +68,8 @@ export class BusinessProfileComponent implements OnInit {
   contactsToDelete: PreviousAddress[] = [];
   accountId: string;
   saveFormData: any;
+  _mailingDifferentFromPhysicalAddress: boolean;
+  _showAdditionalAddress: boolean;
 
   currentDate: Date = new Date();
   minDate: Date;
@@ -76,7 +78,6 @@ export class BusinessProfileComponent implements OnInit {
   public get contacts(): FormArray {
     return this.form.get('otherContacts') as FormArray;
   }
-
 
   constructor(private userDataService: UserDataService,
     private store: Store<AppState>,
@@ -101,49 +102,49 @@ export class BusinessProfileComponent implements OnInit {
     this.form = this.fb.group({
       businessProfile: this.fb.group({
         id: [''],
-        businessLegalname: [''],
-        businessDBAName: [''],
-        businessNumber: [''],
-        businessType: [''],
-        businessPhoneNumber: [''],
-        businessEmail: [''],
+        businessLegalname: [{ value: '', disabled: true }],
+        businessDBAName: [{ value: '', disabled: true }],
+        businessNumber: ['', Validators.required],
+        businessType: ['', Validators.required],
+        businessPhoneNumber: ['', Validators.required],
+        businessEmail: ['', [Validators.required, Validators.email]],
         websiteAddress: [''],
       }),
       physicalAddress: this.fb.group({
         id: [],
-        streetLine1: [''],
+        streetLine1: ['', Validators.required],
         streetLine2: [''],
-        city: [''],
-        postalCode: [''],
-        province: ['British Columbia'],
-        country: ['Canada'],
+        city: ['', Validators.required],
+        postalCode: ['', Validators.required],
+        province: [{ value: 'British Columbia', disabled: true }],
+        country: [{ value: 'Canada', disabled: true }],
       }),
       mailingAddress: this.fb.group({
         id: [],
-        streetLine1: [''],
+        streetLine1: ['', Validators.required],
         streetLine2: [''],
-        city: [''],
-        postalCode: [''],
-        province: ['British Columbia'],
-        country: ['Canada'],
+        city: ['', Validators.required],
+        postalCode: ['', Validators.required],
+        province: ['British Columbia', Validators.required],
+        country: ['Canada', Validators.required],
       }),
       primaryContact: this.fb.group({
         id: [],
-        firstName: [''],
-        lastName: [''],
+        firstName: ['', Validators.required],
+        lastName: ['', Validators.required],
         title: [''],
-        phoneNumber: [''],
+        phoneNumber: ['', Validators.required],
         phoneNumberAlt: [''],
-        email: ['']
+        email: ['', [Validators.required, Validators.email]],
       }),
       additionalContact: this.fb.group({
         id: [],
-        firstName: [''],
-        lastName: [''],
+        firstName: ['', Validators.required],
+        lastName: ['', Validators.required],
         title: [''],
-        phoneNumber: [''],
+        phoneNumber: ['', Validators.required],
         phoneNumberAlt: [''],
-        email: ['']
+        email: ['', [Validators.required, Validators.email]],
       }),
     });
     this.reloadUser();
@@ -158,7 +159,7 @@ export class BusinessProfileComponent implements OnInit {
         this.dataLoaded = true;
         if (this.currentUser && this.currentUser.accountid) {
           this.busy2 = forkJoin(
-            this.accountDataService.getAccount( this.currentUser.accountid)
+            this.accountDataService.getAccount(this.currentUser.accountid)
           ).toPromise().then(res => {
             const account = res[0];
 
