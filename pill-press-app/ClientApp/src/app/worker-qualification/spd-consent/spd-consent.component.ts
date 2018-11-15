@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { FileUploaderComponent } from '../../file-uploader/file-uploader.component';
+import { FileUploaderComponent } from '../../shared/file-uploader/file-uploader.component';
 
 @Component({
   selector: 'app-spd-consent',
