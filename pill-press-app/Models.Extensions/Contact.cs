@@ -37,11 +37,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                 result.address2_line1 = contact.Address2Line1;
                 result.address2_postalcode = contact.Address2Postalcode;
                 result.address2_stateorprovince = contact.Address2Stateorprovince;
-                result.emailaddress1 = contact.Emailaddress1;
-                result.firstname = contact.Firstname;
+                result.email = contact.Emailaddress1;
+                result.firstName = contact.Firstname;
                 result.middlename = contact.Middlename;
-                result.lastname = contact.Lastname;
-                result.telephone1 = contact.Telephone1;
+                result.lastName = contact.Lastname;
+                result.phoneNumber = contact.Telephone1;
             }
             return result;
         }
@@ -206,7 +206,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
 
             if (!string.IsNullOrEmpty(smgov_givenname))
             {
-                to.firstname = smgov_givenname;
+                to.firstName = smgov_givenname;
             }
 
             if (!string.IsNullOrEmpty(smgov_givennames))
@@ -216,11 +216,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
 
             if (!string.IsNullOrEmpty(smgov_surname))
             {
-                to.lastname = smgov_surname;
+                to.lastName = smgov_surname;
             }
             if (!string.IsNullOrEmpty(smgov_useremail))
             {
-                to.emailaddress1 = smgov_useremail;
+                to.email = smgov_useremail;
             }
 
         }
@@ -230,10 +230,10 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
         public static void CopyValues(this MicrosoftDynamicsCRMcontact to, ViewModels.Contact from)
         {
             to.Fullname = from.name;
-            to.Emailaddress1 = from.emailaddress1;
-            to.Firstname = from.firstname;
+            to.Emailaddress1 = from.email;
+            to.Firstname = from.firstName;
             to.Middlename = from.middlename;
-            to.Lastname = from.lastname;
+            to.Lastname = from.lastName;
             to.Address1City = from.address1_city;
             to.Address1Country = from.address1_country;
             to.Address1Line1 = from.address1_line1;
@@ -244,7 +244,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             to.Address2Line1 = from.address2_line1;
             to.Address2Postalcode = from.address2_postalcode;
             to.Address2Stateorprovince = from.address2_stateorprovince;
-            to.Telephone1 = from.telephone1;
+            to.Telephone1 = from.phoneNumber;
         }
 
         public static MicrosoftDynamicsCRMcontact ToModel(this ViewModels.Contact contact)
@@ -258,9 +258,9 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     result.Contactid = contact.id;
                 }
                 result.Fullname = contact.name;
-                result.Emailaddress1 = contact.emailaddress1;
-                result.Firstname = contact.firstname;
-                result.Lastname = contact.lastname;
+                result.Emailaddress1 = contact.email;
+                result.Firstname = contact.firstName;
+                result.Lastname = contact.lastName;
                 result.Middlename = contact.middlename;
 
                 result.Address1City = contact.address1_city;
@@ -268,7 +268,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                 result.Address1Line1 = contact.address1_line1;
                 result.Address1Postalcode = contact.address1_postalcode;
                 result.Address1Stateorprovince = contact.address1_stateorprovince;
-                result.Telephone1 = contact.telephone1;
+                result.Telephone1 = contact.phoneNumber;
 
 
                 if (string.IsNullOrEmpty(result.Fullname) && (!string.IsNullOrEmpty(result.Firstname) || !string.IsNullOrEmpty(result.Lastname)))

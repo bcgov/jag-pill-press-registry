@@ -77,5 +77,8 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public ViewModels.Contact primaryContact { get; set; }
         public ViewModels.Contact additionalContact { get; set; }
 
+        public ViewModels.CustomAddress physicalAddress { get; set; }
+        public ViewModels.CustomAddress mailingAddress { get; set; }
+
     }
 }
