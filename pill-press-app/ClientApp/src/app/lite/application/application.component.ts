@@ -218,7 +218,7 @@ export class ApplicationComponent implements OnInit, OnDestroy {
           this.busy = this.applicationDataService.cancelApplication(this.applicationId).subscribe(
             res => {
               this.savedFormData = this.form.value;
-              this.router.navigate(['/dashboard-lite']);
+              this.router.navigate(['/dashboard']);
             },
             err => {
               this.snackBar.open('Error cancelling the application', 'Fail', { duration: 3500, extraClasses: ['red-snackbar'] });

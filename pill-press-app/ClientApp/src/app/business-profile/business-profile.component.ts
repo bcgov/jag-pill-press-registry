@@ -105,22 +105,27 @@ export class BusinessProfileComponent implements OnInit {
         businessDBAName: [''],
         businessNumber: [''],
         businessType: [''],
-        address1Line1: [''],
-        address1Line2: [''],
-        address1City: [''],
-        address1PostalCode: [''],
-        address1StateOrProvince: [''],
-        address1Country: [''],
-        address2Line1: [''],
-        address2Line2: [''],
-        address2City: [''],
-        address2PostalCode: [''],
-        address2StateOrProvince: [''],
-        address2Country: [''],
         businessPhoneNumber: [''],
         businessEmail: [''],
         websiteAddress: [''],
-
+      }),
+      physicalAddress: this.fb.group({
+        id: [],
+        streetLine1: [''],
+        streetLine2: [''],
+        city: [''],
+        postalCode: [''],
+        province: ['British Columbia'],
+        country: ['Canada'],
+      }),
+      mailingAddress: this.fb.group({
+        id: [],
+        streetLine1: [''],
+        streetLine2: [''],
+        city: [''],
+        postalCode: [''],
+        province: ['British Columbia'],
+        country: ['Canada'],
       }),
       primaryContact: this.fb.group({
         id: [],
@@ -148,36 +153,18 @@ export class BusinessProfileComponent implements OnInit {
     this.busy = this.userDataService.getCurrentUser()
       .subscribe((data: User) => {
         this.currentUser = data;
-        debugger;
+
         this.store.dispatch(new CurrentUserActions.SetCurrentUserAction(data));
         this.dataLoaded = true;
         if (this.currentUser && this.currentUser.accountid) {
           this.busy2 = forkJoin(
-            this.accountDataService.getAccount( this.currentUser.accountid),
-            this.contactDataService.getContactsByAccountId( this.currentUser.accountid),
+            this.accountDataService.getAccount( this.currentUser.accountid)
           ).toPromise().then(res => {
             const account = res[0];
-            let contacts = res[1];
-
-            let primaryContact = null;
-            if (account && contacts && contacts.length > 0) {
-              const filtered = contacts.filter(i => i.id === account.primaryContact.id);
-              if (filtered.length > 0) {
-                primaryContact = filtered[0];
-              }
-            }
 
             this.form.patchValue({
               businessProfile: account,
-              contact: primaryContact,
-            });
-
-            contacts = contacts.filter(i => i.id !== account.primaryContact.id);
-
-
-            this.clearContacts();
-            contacts.forEach(contact => {
-              this.addContact(contact);
+              primaryContact: account.primaryContact
             });
 
 
