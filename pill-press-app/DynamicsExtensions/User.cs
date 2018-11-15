@@ -224,7 +224,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         {
             var application = _dynamicsClient.GetApplicationById(applicationId);
             
-            var accountId = application._accountidValue;
+            var accountId = application._customeridValue;
 
             // get the current user.
             string temp = _httpContextAccessor.HttpContext.Session.GetString("UserSettings");
