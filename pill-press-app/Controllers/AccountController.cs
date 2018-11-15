@@ -60,7 +60,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
 
                 if (account == null)
                 {
-                    // Sometimes we receive the siteminderbusienssguid instead of the account id. 
+                    // Sometimes we receive the siteminderbusinessguid instead of the account id. 
                     account = await _dynamicsClient.GetAccountBySiteminderBusinessGuid(accountId);
                     if (account == null)
                     {
@@ -152,13 +152,17 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 }
                 List<string> expand = new List<string> { "bcgov_CurrentBusinessPhysicalAddress",
                     "bcgov_CurrentBusinessMailingAddress", "bcgov_AdditionalContact", "primarycontactid" };
-                MicrosoftDynamicsCRMaccount account = _dynamicsClient.Accounts.GetByKey(accountId.ToString(), expand: expand);
-                if (account == null)
+                try
                 {
-                    _logger.LogWarning(LoggingEvents.NotFound, "Account NOT found.");
+                    MicrosoftDynamicsCRMaccount account = _dynamicsClient.Accounts.GetByKey(accountId.ToString(), expand: expand);                    
+                    result = account.ToViewModel();
+                }
+                catch (OdataerrorException odee)
+                {
                     return new NotFoundResult();
                 }
-                result = account.ToViewModel();
+
+
             }
             else
             {
@@ -393,7 +397,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 throw new Exception("Invalid user registration.");
             }
 
-            //account.accountId = id;
+            //account.Accountid = id;
             result = account.ToViewModel();
 
             _logger.LogDebug(LoggingEvents.HttpPost, "result: " +
@@ -413,14 +417,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             _logger.LogInformation(LoggingEvents.HttpPut, "Begin method " + this.GetType().Name + "." + MethodBase.GetCurrentMethod().ReflectedType.Name);
             _logger.LogDebug(LoggingEvents.HttpPut, "Account parameter: " + JsonConvert.SerializeObject(item));
             _logger.LogDebug(LoggingEvents.HttpPut, "id parameter: " + id);
-
-            if (id != item.id)
-            {
-                _logger.LogWarning(LoggingEvents.BadRequest, "Bad Request. Id doesn't match the account id.");
-                return BadRequest();
-            }
-
-            // get the legal entity.
+            
             Guid accountId = new Guid(id);
 
             if (!UserDynamicsExtensions.CurrentUserHasAccessToAccount(accountId, _httpContextAccessor, _dynamicsClient))
