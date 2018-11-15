@@ -8,17 +8,18 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
     public class Contact
     {
         public string id { get; set; }
+
         public string name { get; set; }
 
-        public string firstname { get; set; }
+        public string firstName { get; set; }
 
         public string middlename { get; set; }
 
-        public string lastname { get; set; }
+        public string lastName { get; set; }
 
-        public string emailaddress1 { get; set; }
+        public string email { get; set; }
 
-        public string telephone1 { get; set; }
+        public string phoneNumber { get; set; }
 
         public string address1_line1 { get; set; }
 
