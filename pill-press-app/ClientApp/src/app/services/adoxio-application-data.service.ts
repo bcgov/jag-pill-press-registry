@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 import { Headers, Response, ResponseContentType } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { FileSystemItem } from '../models/file-system-item.model';
-import { AdoxioApplication } from '../models/adoxio-application.model';
+import { Application } from '../models/adoxio-application.model';
 import { catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable()
-export class AdoxioApplicationDataService {
+export class ApplicationDataService {
 
-  apiPath = 'api/adoxioapplication/';
+  apiPath = 'api/Application/';
   jsonHeaders: HttpHeaders = new HttpHeaders({
     'Content-Type': 'application/json'
   });
@@ -21,8 +21,8 @@ export class AdoxioApplicationDataService {
   /**
    * Get all Dynamics Applications for the current user
    * */
-  getAdoxioApplications(): Observable<AdoxioApplication[]> {
-    return this.http.get<AdoxioApplication[]>(this.apiPath + 'current', { headers: this.jsonHeaders })
+  getApplications(): Observable<Application[]> {
+    return this.http.get<Application[]>(this.apiPath + 'current', { headers: this.jsonHeaders })
       .pipe(catchError(this.handleError));
   }
 
@@ -34,8 +34,8 @@ export class AdoxioApplicationDataService {
       .pipe(catchError(this.handleError));
   }
 
-  getAllCurrentApplications(): Observable<AdoxioApplication[]> {
-    return this.http.get<AdoxioApplication[]>(this.apiPath + 'current', { headers: this.jsonHeaders })
+  getAllCurrentApplications(): Observable<Application[]> {
+    return this.http.get<Application[]>(this.apiPath + 'current', { headers: this.jsonHeaders })
       .pipe(catchError(this.handleError));
   }
 
@@ -43,8 +43,8 @@ export class AdoxioApplicationDataService {
    * Get a Dynamics Application by application ID
    * @param applicationId
    */
-  getApplicationById(applicationId: string): Observable<AdoxioApplication> {
-    return this.http.get<AdoxioApplication>(this.apiPath + applicationId, { headers: this.jsonHeaders })
+  getApplicationById(applicationId: string): Observable<Application> {
+    return this.http.get<Application>(this.apiPath + applicationId, { headers: this.jsonHeaders })
       .pipe(catchError(this.handleError));
   }
 
@@ -76,7 +76,7 @@ export class AdoxioApplicationDataService {
    */
   updateApplication(applicationData: any) {
     // call API
-    // console.log("===== AdoxioApplicationDataService.updateApplication: ", applicationData);
+    // console.log("===== ApplicationDataService.updateApplication: ", applicationData);
     return this.http.put(this.apiPath + applicationData.id, applicationData, { headers: this.jsonHeaders })
       .pipe(catchError(this.handleError));
   }
@@ -85,10 +85,10 @@ export class AdoxioApplicationDataService {
    * Create a Dynamics Application
    * @param applicationData
    */
-  createApplication(applicationData: any): Observable<AdoxioApplication> {
+  createApplication(applicationData: any): Observable<Application> {
     // call API
-    // console.log("===== AdoxioApplicationDataService.createApplication: ", applicationData);
-    return this.http.post<AdoxioApplication>(this.apiPath, applicationData, { headers: this.jsonHeaders })
+    // console.log("===== ApplicationDataService.createApplication: ", applicationData);
+    return this.http.post<Application>(this.apiPath, applicationData, { headers: this.jsonHeaders })
       .pipe(catchError(this.handleError));
   }
 
@@ -112,7 +112,7 @@ export class AdoxioApplicationDataService {
    */
   getFileListAttachedToApplication(applicationId: string, documentType: string): Observable<FileSystemItem[]> {
     const headers = new HttpHeaders({});
-    const attachmentURL = 'api/adoxioapplication/' + applicationId + '/attachments';
+    const attachmentURL = 'api/Application/' + applicationId + '/attachments';
     const getFileURL = attachmentURL + '/' + documentType;
     return this.http.get<FileSystemItem[]>(getFileURL, { headers: headers })
       .pipe(catchError(this.handleError));

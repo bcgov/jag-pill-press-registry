@@ -2,7 +2,7 @@
 import { Http, Headers, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
-import { AdoxioApplication } from '../models/adoxio-application.model';
+import { Application } from '../models/adoxio-application.model';
 
 @Injectable()
 export class PaymentDataService {
