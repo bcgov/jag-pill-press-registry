@@ -47,7 +47,7 @@ import { CdkTableModule } from '@angular/cdk/table';
 
 import { AccountDataService } from './services/account-data.service';
 import { ContactDataService } from './services/contact-data.service';
-import { AdoxioApplicationDataService } from './services/adoxio-application-data.service';
+import { ApplicationDataService } from './services/adoxio-application-data.service';
 import { AdoxioLegalEntityDataService } from './services/adoxio-legal-entity-data.service';
 import { AdoxioLicenseDataService } from './services/adoxio-license-data.service';
 import { PaymentDataService } from './services/payment-data.service';
@@ -323,7 +323,7 @@ import { FieldComponent } from './shared/field/field.component';
     VoteDataService,
     UserDataService,
     AliasDataService,
-    AdoxioApplicationDataService,
+    ApplicationDataService,
     AdoxioLegalEntityDataService,
     AdoxioLicenseDataService,
     AccountDataService,

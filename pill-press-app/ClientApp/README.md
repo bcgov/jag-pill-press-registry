@@ -59,7 +59,7 @@ The payload is a parameter usually used to pass in the new value to update the s
 **Example 1**
 ```ts
 import { Action } from '@ngrx/store';
-import { AdoxioApplication } from '../../models/adoxio-application.model';
+import { Application } from '../../models/adoxio-application.model';
 
 export const APPLICATION = 'APPLICATION';
 export const SET_APPLICATION = 'SET_APPLICATION';
@@ -71,7 +71,7 @@ export class ApplicationsAction implements Action {
 export class SetApplicationsAction implements Action {
     readonly type = SET_APPLICATION;
 
-  constructor(public payload: AdoxioApplication[]) { }
+  constructor(public payload: Application[]) { }
 }
 
 export type Actions =
@@ -88,7 +88,7 @@ It also allows components and service to only subscribe to a portion of the AppS
 ```ts
 import { AdoxioLegalEntity } from '../../models/adoxio-legalentities.model';
 import { DynamicsAccount } from '../../models/dynamics-account.model';
-import { AdoxioApplication } from '../../models/adoxio-application.model';
+import { Application } from '../../models/adoxio-application.model';
 
 export interface AppState {
     legalEntitiesState: LegalEntitiesState;
@@ -103,14 +103,14 @@ export interface LegalEntitiesState {
 }
 
 export interface ApplicationsState {
-    applications: AdoxioApplication[];
+    applications: Application[];
 }
 
 export interface CurrentAccountState {
     currentAccount: DynamicsAccount;
 }
 export interface CurrentApplicationState {
-    currentApplication: AdoxioApplication;
+    currentApplication: Application;
 }
 
 export interface CurrentLegalEntityState {
