@@ -45,6 +45,12 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                 result.declarationofcorrectinformation = incident.BcgovDeclarationofcorrectinformation;
                 result.foippaconsent = incident.BcgovFoippaconsent;
 
+                // CustomerID
+
+                if (incident.CustomeridAccount != null)
+                {
+                    result.applicant = incident.CustomeridAccount.ToViewModel();
+                }
             }
             return result;
         }
