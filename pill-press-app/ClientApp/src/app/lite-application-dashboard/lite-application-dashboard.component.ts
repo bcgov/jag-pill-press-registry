@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, ViewChild, Inject } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MatPaginator, MatTableDataSource, MatSort, MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { AdoxioApplicationDataService } from '../services/adoxio-application-data.service';
+import { ApplicationDataService } from '../services/adoxio-application-data.service';
 import { LicenseApplicationSummary } from '../models/license-application-summary.model';
 import { FileSystemItem } from '../models/file-system-item.model';
 import { saveAs } from 'file-saver';
-import { AdoxioApplication } from '../models/adoxio-application.model';
+import { Application } from '../models/adoxio-application.model';
 
 
 
@@ -26,7 +26,7 @@ export class LiteApplicationDashboardComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   // @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private adoxioApplicationDataService: AdoxioApplicationDataService, public dialog: MatDialog) { }
+  constructor(private ApplicationDataService: ApplicationDataService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.displayApplications();
@@ -37,7 +37,7 @@ export class LiteApplicationDashboardComponent implements OnInit {
    * */
   private displayApplications() {
     const licenseApplicationSummary: LicenseApplicationSummary[] = [];
-    this.busy = this.adoxioApplicationDataService.getAllCurrentApplications().subscribe((adoxioApplications: AdoxioApplication[]) => {
+    this.busy = this.ApplicationDataService.getAllCurrentApplications().subscribe((Applications: Application[]) => {
 
       // for Applications in progress display the ones not paid
       // for Applications submitted display the ones paid
@@ -47,7 +47,7 @@ export class LiteApplicationDashboardComponent implements OnInit {
         this.displayedColumns = ['name'];
       }
 
-      adoxioApplications.forEach((entry) => {
+      Applications.forEach((entry) => {
         const licAppSum = new LicenseApplicationSummary();
         licAppSum.id = entry.id;
         licAppSum.name = entry.name;
@@ -66,7 +66,7 @@ export class LiteApplicationDashboardComponent implements OnInit {
           }
         } else {
           if (licAppSum.isPaid && !entry.assignedLicence) {
-            this.busy = this.adoxioApplicationDataService.getFileListAttachedToApplication(entry.id, 'Licence Application Main')
+            this.busy = this.ApplicationDataService.getFileListAttachedToApplication(entry.id, 'Licence Application Main')
               .subscribe((files: FileSystemItem[]) => {
                 if (files && files.length) {
                   licAppSum.applicationFormFileUrl = files[0].serverrelativeurl;
@@ -111,7 +111,7 @@ export class LiteApplicationDashboardComponent implements OnInit {
       cancelApplication => {
         if (cancelApplication) {
           // delete the application.
-          this.busy = this.adoxioApplicationDataService.cancelApplication(applicationId).subscribe(
+          this.busy = this.ApplicationDataService.cancelApplication(applicationId).subscribe(
             res => {
               this.displayApplications();
             });

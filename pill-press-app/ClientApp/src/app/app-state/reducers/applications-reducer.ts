@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import * as ApplicationActions from '../actions/applications.action';
-import { AdoxioApplication } from '../../models/adoxio-application.model';
+import { Application } from '../../models/adoxio-application.model';
 import { ApplicationsState } from '../models/app-state';
 
 // Section 1

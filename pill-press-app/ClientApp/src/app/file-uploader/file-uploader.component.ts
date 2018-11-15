@@ -3,7 +3,7 @@ import { UploadEvent, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-
 import { Http, Headers, Response } from '@angular/http';
 import { FileSystemItem } from '../models/file-system-item.model';
 import { Subscription } from 'rxjs';
-import { AdoxioApplicationDataService } from '../services/adoxio-application-data.service';
+import { ApplicationDataService } from '../services/adoxio-application-data.service';
 
 export interface DropdownOption {
   id: string;
@@ -30,7 +30,7 @@ export class FileUploaderComponent implements OnInit {
   public files: FileSystemItem[] = [];
 
   // TODO: move http call to a service
-  constructor(private http: Http, private adoxioApplicationDataService: AdoxioApplicationDataService) {
+  constructor(private http: Http, private ApplicationDataService: ApplicationDataService) {
   }
 
   ngOnInit(): void {

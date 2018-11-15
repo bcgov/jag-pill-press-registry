@@ -36,10 +36,10 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             _logger = loggerFactory.CreateLogger(typeof(FileController));
         }
 
-        private string GetApplicationFolderName(MicrosoftDynamicsCRMadoxioApplication application)
+        private string GetApplicationFolderName(MicrosoftDynamicsCRMApplication application)
         {
             /*
-            string applicationIdCleaned = application.AdoxioApplicationid.ToString().ToUpper().Replace("-", "");
+            string applicationIdCleaned = application.Applicationid.ToString().ToUpper().Replace("-", "");
             string folderName = $"{application.AdoxioJobnumber}_{applicationIdCleaned}";
             */
             string folderName = "";
