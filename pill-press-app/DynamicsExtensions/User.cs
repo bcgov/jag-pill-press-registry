@@ -43,7 +43,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                         // Update the contact with info from Siteminder
                         var contactVM = new Public.ViewModels.Contact();
                         contactVM.CopyHeaderValues(Headers);
-                        _logger.LogInformation(">>>> After reading hearders: " + Newtonsoft.Json.JsonConvert.SerializeObject(contactVM));
+                        _logger.LogInformation(">>>> After reading headers: " + Newtonsoft.Json.JsonConvert.SerializeObject(contactVM));
                         MicrosoftDynamicsCRMcontact patchContact = new MicrosoftDynamicsCRMcontact();
                         patchContact.CopyValues(contactVM);
                         try
@@ -224,7 +224,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         {
             var application = _dynamicsClient.GetApplicationById(applicationId);
             
-            var accountId = application._accountidValue;
+            var accountId = application._customeridValue;
 
             // get the current user.
             string temp = _httpContextAccessor.HttpContext.Session.GetString("UserSettings");

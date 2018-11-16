@@ -40,8 +40,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             string service = "Application";
 
             // login as default and get account for current user
-            string loginUser = randomNewUserName("TestAppUser_", 6);
-            var strId = await LoginAndRegisterAsNewUser(loginUser);
+            var loginUser1 = randomNewUserName("TestAccountUser", 6);
+            var strId = await LoginAndRegisterAsNewUser(loginUser1);
 
             User user = await GetCurrentUser();
             Account currentAccount = await GetAccountForCurrentUser();
@@ -123,7 +123,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
 
             // logout and cleanup (deletes the account and contact created above ^^^)
-            await LogoutAndCleanupTestUser(strId);
+            await LogoutAndCleanupTestUser(loginUser1);
         }
 
         [Fact]
