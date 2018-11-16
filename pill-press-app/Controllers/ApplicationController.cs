@@ -49,11 +49,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             {
                 Guid ApplicationId = Guid.Parse(id);
                 // query the Dynamics system to get the Application record.
-                MicrosoftDynamicsCRMincident Application = _dynamicsClient.GetApplicationById(ApplicationId);
-
-                if (Application != null)
+                MicrosoftDynamicsCRMincident application = _dynamicsClient.GetApplicationByIdWithChildren(ApplicationId);
+                
+                if (application != null)
                 {
-                    result = Application.ToViewModel();
+                    result = application.ToViewModel();
                 }
                 else
                 {
@@ -130,25 +130,35 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 _logger.LogError(LoggingEvents.Error, "No Application Siteminder Guid exernal id");
                 throw new Exception("Error. No ApplicationSiteminderGuid exernal id");
             }
-
             
             // create a new Application.
-            MicrosoftDynamicsCRMincident Application = new MicrosoftDynamicsCRMincident();
-            Application.CopyValues(item);
-            
+            MicrosoftDynamicsCRMincident application = new MicrosoftDynamicsCRMincident();
+            application.CopyValues(item);
+
+            // set the author based on the current user.
+            application.BcgovBceid = userSettings.SiteMinderBusinessGuid;
+            application.BcgovBceiduserguid = userSettings.SiteMinderGuid;
+            application.BcgovBceidemail = userSettings.AuthenticatedUser.Email;
+
+            // Also setup the customer.
+            var account = await _dynamicsClient.GetAccountById(Guid.Parse(userSettings.AccountId));
+            //application.CustomeridAccount = account;
+            application.CustomerIdAccountODataBind = _dynamicsClient.GetEntityURI("accounts", userSettings.AccountId);
+
             try
             {
-                Application = await _dynamicsClient.Incidents.CreateAsync(Application);
+                application = await _dynamicsClient.Incidents.CreateAsync(application);
             }
             catch (OdataerrorException odee)
             {
-                _logger.LogError("Error updating Application");
+                _logger.LogError("Error creating Application");
                 _logger.LogError("Request:");
                 _logger.LogError(odee.Request.Content);
                 _logger.LogError("Response:");
                 _logger.LogError(odee.Response.Content);
+                throw new OdataerrorException("Error creating Application");
             }           
-            return Json(Application.ToViewModel());
+            return Json(application.ToViewModel());
         }
 
         /// <summary>
@@ -163,13 +173,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
 
             // verify the currently logged in user has access to this account
             Guid applicationId = new Guid(id);
-            if (!UserDynamicsExtensions.CurrentUserHasAccessToApplication(applicationId, _httpContextAccessor, _dynamicsClient))
-            {
-                _logger.LogWarning(LoggingEvents.NotFound, "Current user has NO access to the application.");
-                return new NotFoundResult();
-            }
 
-            // get the account
             MicrosoftDynamicsCRMincident application = _dynamicsClient.GetApplicationById(applicationId);
             if (application == null)
             {
@@ -177,6 +181,13 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 return new NotFoundResult();
             }
 
+            if (!UserDynamicsExtensions.CurrentUserHasAccessToApplication(applicationId, _httpContextAccessor, _dynamicsClient))
+            {
+                _logger.LogWarning(LoggingEvents.NotFound, "Current user has NO access to the application.");
+                return new NotFoundResult();
+            }
+
+            // get the account            
             try
             {
                 await _dynamicsClient.Incidents.DeleteAsync(applicationId.ToString());

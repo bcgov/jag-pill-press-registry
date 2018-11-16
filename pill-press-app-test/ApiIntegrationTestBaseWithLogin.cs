@@ -78,8 +78,9 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
 			await Login(loginUser + "::" + businessName);
 
 			ViewModels.User user = await GetCurrentUser();
-            Assert.Equal(user.name, loginUser + " TestUser");
-			Assert.Equal(user.businessname, businessName + " TestBusiness");
+
+            Assert.Equal(user.name, loginUser + " BCeIDContactType");
+			Assert.Equal(user.businessname, businessName + " BusinessProfileName");
             Assert.True(user.isNewUser);
 
             // create a new account and contact in Dynamics
@@ -88,7 +89,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             MicrosoftDynamicsCRMaccount account = new MicrosoftDynamicsCRMaccount()
             {
                 Name = user.businessname,
-                BcgovBceid = user.accountid
+                BcgovBceid = user.accountid,
+                BcgovDoingbusinessasname = user.businessname
             };
 
             ViewModels.Account viewmodel_account = account.ToViewModel();
