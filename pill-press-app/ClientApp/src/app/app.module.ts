@@ -135,6 +135,7 @@ import {
 import { WorkerHomeComponent, WorkerHomeDialogComponent } from './worker-qualification/worker-home/worker-home.component';
 import { WorkerInformationComponent } from './worker-qualification/worker-information/worker-information.component';
 import { FieldComponent } from './shared/field/field.component';
+import { ProfileSummaryComponent } from './business-information/profile-summary/profile-summary.component';
 
 @NgModule({
   declarations: [
@@ -193,7 +194,8 @@ import { FieldComponent } from './shared/field/field.component';
     WorkerHomeDialogComponent,
     LicenceFeePaymentConfirmationComponent,
     WorkerInformationComponent,
-    FieldComponent
+    FieldComponent,
+    ProfileSummaryComponent
   ],
   imports: [
     BrowserModule,

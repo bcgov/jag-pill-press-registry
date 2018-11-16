@@ -12,6 +12,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { CanDeactivateGuard } from './services/can-deactivate-guard.service';
 import { BCeidAuthGuard } from './services/bceid-auth-guard.service';
 import { DashboardLiteComponent } from './dashboard-lite/dashboard-lite.component';
+import { ProfileSummaryComponent } from './business-information/profile-summary/profile-summary.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,12 @@ const routes: Routes = [
   {
     path: 'business-profile',
     component: BusinessProfileComponent,
+    // canDeactivate: [CanDeactivateGuard],
+    canActivate: [BCeidAuthGuard]
+  },
+  {
+    path: 'business-profile-review',
+    component: ProfileSummaryComponent,
     // canDeactivate: [CanDeactivateGuard],
     canActivate: [BCeidAuthGuard]
   },
