@@ -36,7 +36,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             _logger = loggerFactory.CreateLogger(typeof(FileController));
         }
 
-        private string GetApplicationFolderName(MicrosoftDynamicsCRMApplication application)
+        private string GetApplicationFolderName(MicrosoftDynamicsCRMincident application)
         {
             /*
             string applicationIdCleaned = application.Applicationid.ToString().ToUpper().Replace("-", "");
