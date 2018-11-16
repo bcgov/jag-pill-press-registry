@@ -19,7 +19,7 @@
             <app-field label="Business - Legal Name">
               <input class="form-control" style="max-width: 450px; min-width: 250px;" type="text" formControlName="businessLegalname">
             </app-field>
-            
+
             <app-field label="Business - Doing Business As (DBA) Name">
               <input class="form-control" style="max-width: 450px; min-width: 250px;" type="text" formControlName="businessDBAName">
             </app-field>
@@ -32,10 +32,13 @@
             <app-field label="Business Type" [required]="true" [valid]="form.get('businessProfile.businessType').valid || !form.get('businessProfile.businessType').touched"
               errorMessage="Please select a business type from the dropdown list">
               <select class="form-control" style="width: 250px;" formControlName="businessType">
-                <option value="Canada">Canada</option>
-                <option value="United States of America">United States of America</option>
-                <hr>
-                <option *ngFor="let c of countryList" value="{{c}}">{{c}}</option>
+                <option value="Private Corporation">Private Corporation</option>
+                <option value="Public Corporation">Public Corporation</option>
+                <option value="Unlimited Liability Corporation">Unlimited Liability Corporation</option>
+                <option value="Limited Liability Corporation">Limited Liability Corporation</option>
+                <option value="Partnership">Partnership</option>
+                <option value="Sole Proprietorship">Sole Proprietorship</option>
+                <option value="Society">Society</option>
               </select>
             </app-field>
           </div>
@@ -108,7 +111,8 @@
           <div formGroupName="businessProfile">
             <app-field label="Business Phone Numbe" [required]="true" [valid]="form.get('businessProfile.businessPhoneNumber').valid || !form.get('businessProfile.businessPhoneNumber').touched"
               errorMessage="Please enter your 10-digit business phone number, without including any spaces">
-              <input class="form-control" style="width: 250px;" type="text" formControlName="businessPhoneNumber">
+              <input class="form-control" style="width: 250px;" maxlength="10" (keydown)="rejectIfNotDigitOrBackSpace($event)"
+                type="text" formControlName="businessPhoneNumber">
             </app-field>
             <app-field label="Business Email" [required]="true" [valid]="form.get('businessProfile.businessEmail').valid || !form.get('businessProfile.businessEmail').touched"
               errorMessage="Please enter a valid email address">
@@ -147,11 +151,13 @@
 
             <app-field label="Phone Number (main)" [required]="true" [valid]="form.get('primaryContact.phoneNumber').valid || !form.get('primaryContact.phoneNumber').touched"
               errorMessage="Please enter your business contact's phone number">
-              <input class="form-control" style="width: 250px;" type="text" formControlName="phoneNumber">
+              <input class="form-control" style="width: 250px;" maxlength="10" (keydown)="rejectIfNotDigitOrBackSpace($event)"
+                type="text" formControlName="phoneNumber">
             </app-field>
 
             <app-field label="Phone Number (alternate)" [required]="false">
-              <input class="form-control" style="width: 250px;" type="text" formControlName="phoneNumberAlt">
+              <input class="form-control" style="width: 250px;" maxlength="10" (keydown)="rejectIfNotDigitOrBackSpace($event)"
+                type="text" formControlName="phoneNumberAlt">
             </app-field>
 
             <app-field label="Email" [required]="true" [valid]="form.get('primaryContact.email').valid || !form.get('primaryContact.email').touched"
@@ -185,11 +191,13 @@
 
             <app-field label="Phone Number (main)" [required]="true" [valid]="form.get('additionalContact.phoneNumber').valid || !form.get('additionalContact.phoneNumber').touched"
               errorMessage="Please enter your business contact's phone number">
-              <input class="form-control" style="width: 250px;" type="text" formControlName="phoneNumber">
+              <input class="form-control" style="width: 250px;" maxlength="10" (keydown)="rejectIfNotDigitOrBackSpace($event)"
+                type="text" formControlName="phoneNumber">
             </app-field>
 
             <app-field label="Phone Number (alternate)" [required]="false">
-              <input class="form-control" style="width: 250px;" type="text" formControlName="phoneNumberAlt">
+              <input class="form-control" style="width: 250px;" maxlength="10" (keydown)="rejectIfNotDigitOrBackSpace($event)"
+                type="text" formControlName="phoneNumberAlt">
             </app-field>
 
             <app-field label="Email" [required]="true" [valid]="form.get('additionalContact.email').valid || !form.get('additionalContact.email').touched"
@@ -215,7 +223,8 @@
               <button class="btn btn-secondary" routerLink="/worker-qualification/dashboard">
                 <i class="fa fa-save"></i>
                 SAVE FOR LATER</button>
-              <button style="margin-left: 10px" routerLink="/business-profile-review" class="btn btn-primary">SAVE & CONTINUE
+              <button style="margin-left: 10px" routerLink="/business-profile-review" class="btn btn-primary">SAVE &
+                CONTINUE
                 <i class="fas fa-chevron-right"></i></button>
             </span>
           </section>
@@ -229,30 +238,36 @@
         <table>
           <tr>
             <td>
-              <h2 class="round-icon-wrapper"><i class="fas fa-question"></i></h2>
+              <h2 class="round-icon-wrapper"><i class="fas fa-address-card"></i></h2>
             </td>
             <td style="padding-left: 10px">
-              <h2>Update your personal information</h2>
+              <h2>Update your BCeID information</h2>
             </td>
           </tr>
         </table>
         <div class="submit-content">
-          <p>If you find an error in your personal information, please contact Service BC, ICBC or AddressChangeBC to
-            correct
-            it.
+          <p>
+            Your Legal Business Name and Business Number are imported from BCeID. If there is an error or change in
+            this information, you must contact BCeID to correct it.
           </p>
-          <ul>
-            <li>
-              <a style="color: #fff;" href="https://www2.gov.bc.ca/gov/content/governments/government-id/bc-services-card/change-personal-information">BC
-                Service Card</a>
-            </li>
-            <li>
-              <a style="color: #fff;" href="https://www.icbc.com/driver-licensing/getting-licensed/Pages/Change-your-address-or-name.aspx">ICBC</a>
-            </li>
-            <li>
-              <a style="color: #fff;" href="https://www.addresschange.gov.bc.ca/">AddressChangeBC</a>
-            </li>
-          </ul>
+          <div>
+            <i class="fas fa-phone"></i>
+            <strong>Phone</strong>
+            <br>
+            <span>1 888 356-2741 (Canada and USA toll free)</span>
+            <br>
+            <span>604 660-2355 (Within lower mainland or outside Canada and USA)</span>
+          </div>
+          <div>
+            <i class="fas fa-envelope"></i>
+            <strong>Email</strong>
+            <br>
+            <span>Contact us using our online form</span>
+          </div>
+          <p>
+            All other information can be changed on this Business Profile page.
+          </p>
+
         </div>
       </section>
       <section class="submit-container" style="background-color: #F2F2F2; color:#000; border: none;">

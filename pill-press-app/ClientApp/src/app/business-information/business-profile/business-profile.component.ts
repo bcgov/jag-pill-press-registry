@@ -65,15 +65,11 @@ export class BusinessProfileComponent implements OnInit {
   form: FormGroup;
   countryList = COUNTRIES;
 
-  contactsToDelete: PreviousAddress[] = [];
   accountId: string;
   saveFormData: any;
   _mailingDifferentFromPhysicalAddress: boolean;
   _showAdditionalAddress: boolean;
 
-  currentDate: Date = new Date();
-  minDate: Date;
-  bsConfig: any = { locale: 'en', dateInputFormat: 'YYYY-MM-DD', containerClass: 'theme-dark-blue' };
 
   public get contacts(): FormArray {
     return this.form.get('otherContacts') as FormArray;
@@ -89,10 +85,6 @@ export class BusinessProfileComponent implements OnInit {
     private route: ActivatedRoute,
 
   ) {
-    // minDate is a 100 year ago
-    this.minDate = new Date();
-    this.minDate.setFullYear(this.minDate.getFullYear() - 100);
-
     // this.route.params.subscribe(params => {
     //   this.accountId = params.id;
     // });
@@ -195,61 +187,6 @@ export class BusinessProfileComponent implements OnInit {
     }
   }
 
-  createContact(contact: DynamicsContact = null) {
-    contact = contact || <DynamicsContact>{
-      id: undefined,
-      firstName: '',
-      lastName: '',
-      title: '',
-      phoneNumber: '',
-      phoneNumberAlt: '',
-      email: ''
-    };
-    return this.fb.group({
-      id: [contact.id],
-      firstName: [contact.firstName],
-      lastName: [contact.lastName],
-      title: [contact.title],
-      phoneNumber: [contact.phoneNumber],
-      phoneNumberAlt: [contact.phoneNumberAlt],
-      email: [contact.email]
-    });
-  }
-
-  addContact(contact: DynamicsContact = null) {
-    this.contacts.push(this.createContact(contact));
-  }
-
-  copyPhysicalAddressToMailingAddress(): void {
-    let contact = this.form.get('contact').value;
-    contact = {
-      address2_line1: contact.address1_line1,
-      address2_city: contact.address1_city,
-      address2_stateorprovince: contact.address1_stateorprovince,
-      address2_country: contact.address1_country,
-      address2_postalcode: contact.address1_postalcode,
-    };
-    this.form.get('contact').patchValue(contact);
-  }
-
-  deleteContact(index: number) {
-    const contact = this.contacts.controls[index];
-    if (contact.value.id) {
-      this.contactsToDelete.push(contact.value);
-    }
-    this.contacts.removeAt(index);
-  }
-
-  clearContacts() {
-    for (let i = this.contacts.controls.length; i > 0; i--) {
-      this.contacts.removeAt(0);
-    }
-  }
-
-
-
-
-
   canDeactivate(): Observable<boolean> | boolean {
     if (// this.workerStatus !== 'Application Incomplete' ||
       JSON.stringify(this.saveFormData) === JSON.stringify(this.form.value)) {
@@ -270,27 +207,6 @@ export class BusinessProfileComponent implements OnInit {
       // this.contactDataService.updateContact(value.contact),
       // this.workerDataService.updateWorker(value.worker, value.worker.id)
     ];
-
-    this.contactsToDelete.forEach(a => {
-      // const save = this.previousAddressDataService.deletePreviousAddress(a.id);
-      // saves.push(save);
-    });
-
-    const contactControls = this.contacts.controls;
-    for (let i = 0; i < contactControls.length; i++) {
-      if (contactControls[i].value.id) {
-        // const save = this.previousAddressDataService.updatePreviousAdderess(contactControls[i].value, contactControls[i].value.id);
-        // saves.push(save);
-      } else {
-        // const newAddress = contactControls[i].value;
-        // newAddress.contactId = value.contact.id;
-        // newAddress.workerId = value.worker.id;
-        // const save = this.previousAddressDataService.createPreviousAdderess(newAddress);
-        // saves.push(save);
-      }
-    }
-
-
 
 
     this.busy2 = Observable.zip(...saves).toPromise().then(res => {
