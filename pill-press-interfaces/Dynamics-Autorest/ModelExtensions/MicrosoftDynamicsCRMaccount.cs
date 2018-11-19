@@ -14,7 +14,9 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         [JsonProperty(PropertyName = "adoxio_account_adoxio_legalentity_Account@odata.bind")]
         public string AdoxioAccountAdoxioLegalentityAccountODataBind { get; set; }
 
-
+        
+        [JsonProperty(PropertyName = "primarycontactid@odata.bind")]
+        public string PrimaryContactidODataBind { get; set; }
 
     }
 }

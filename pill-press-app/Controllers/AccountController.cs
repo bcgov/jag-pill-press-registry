@@ -268,6 +268,23 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 }
                 userContact.Statuscode = 1;
                 userContact.BcgovContacttype = 931490002; // BCeID contact type
+
+                
+                _logger.LogDebug(LoggingEvents.HttpGet, "Account is NOT null. Only a new user.");
+                try
+                {
+                    userContact = await _dynamicsClient.Contacts.CreateAsync(userContact);
+                }
+                catch (OdataerrorException odee)
+                {
+                    _logger.LogError(LoggingEvents.Error, "Error creating user contact.");
+                    _logger.LogError("Request:");
+                    _logger.LogError(odee.Request.Content);
+                    _logger.LogError("Response:");
+                    _logger.LogError(odee.Response.Content);
+                    throw new OdataerrorException("Error creating user contact.");
+                }
+            
             }
             // this may be an existing account, as this service is used during the account confirmation process.
             MicrosoftDynamicsCRMaccount account = await _dynamicsClient.GetAccountBySiteminderBusinessGuid(accountSiteminderGuid);
@@ -285,8 +302,21 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 string sanitizedAccountSiteminderId = GuidUtility.SanitizeGuidString(accountSiteminderGuid);
 
                 account.BcgovBceid = sanitizedAccountSiteminderId;
-                account.Primarycontactid = userContact;                
 
+                // For Pill Press the Primary Contact is not set to default to the first user.  
+                if (item.primaryContact != null)
+                {
+                    if (string.IsNullOrEmpty(item.primaryContact.id))
+                    {
+                        account.Primarycontactid = item.primaryContact.ToModel();
+                    }
+                    else
+                    {
+                        // add as a reference.
+                        account.PrimaryContactidODataBind = _dynamicsClient.GetEntityURI("contacts", item.primaryContact.id);
+                    }
+                }
+           
                 if (bceidBusiness != null)
                 {
                     account.Emailaddress1 = bceidBusiness.contactEmail;
@@ -298,8 +328,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     account.Address1Postalcode = bceidBusiness.addressPostal;
                 }
 
-                
-
+               
                 string accountString = JsonConvert.SerializeObject(account);
                 _logger.LogDebug("Account before creation in dynamics --> " + accountString);
 
@@ -316,33 +345,16 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     _logger.LogError(odee.Response.Content);
                     throw new OdataerrorException("Error creating Account");
                 }
+
+                // populate child elements.
+                account = await _dynamicsClient.GetAccountById(Guid.Parse(account.Accountid));
                 
-
-
-                userContact.Contactid = account._primarycontactidValue;
-
                 accountString = JsonConvert.SerializeObject(accountString);
                 _logger.LogDebug("Account Entity after creation in dynamics --> " + accountString);
 
 
             }
-            else // it is a new user only.
-            {
-                _logger.LogDebug(LoggingEvents.HttpGet, "Account is NOT null. Only a new user.");
-                try
-                {
-                    userContact = await _dynamicsClient.Contacts.CreateAsync(userContact);
-                }
-                catch (OdataerrorException odee)
-                {
-                    _logger.LogError(LoggingEvents.Error, "Error creating user contact.");
-                    _logger.LogError("Request:");
-                    _logger.LogError(odee.Request.Content);
-                    _logger.LogError("Response:");
-                    _logger.LogError(odee.Response.Content);
-                    throw new OdataerrorException("Error creating user contact.");
-                }
-            }
+           
 
             // always patch the userContact so it relates to the account.
             _logger.LogDebug(LoggingEvents.Save, "Patching the userContact so it relates to the account.");
@@ -399,6 +411,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
 
             //account.Accountid = id;
             result = account.ToViewModel();
+            
 
             _logger.LogDebug(LoggingEvents.HttpPost, "result: " +
                 JsonConvert.SerializeObject(result, Formatting.Indented, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore }));
@@ -439,6 +452,18 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             // copy values over from the data provided
             adoxioAccount.CopyValues(item);
 
+            // Primary Contact
+            if (item.primaryContact != null)
+            {
+                // determine if this is a new 
+            }
+
+            // Mailing Address
+            if (item.mailingAddress != null)
+            {
+                // remove the current 
+            }
+
             try
             {
                 await _dynamicsClient.Accounts.UpdateAsync(accountId.ToString(), adoxioAccount);
@@ -452,6 +477,12 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 _logger.LogError(odee.Response.Content);
                 throw new OdataerrorException("Error updating the account.");
             }
+
+
+
+            
+
+
 
             var updatedAccount = adoxioAccount.ToViewModel();
             _logger.LogDebug(LoggingEvents.HttpPut, "updatedAccount: " +
@@ -486,6 +517,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 return new NotFoundResult();
             }
 
+            
             
             try
             {

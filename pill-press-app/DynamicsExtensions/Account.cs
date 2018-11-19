@@ -2,6 +2,7 @@
 using Gov.Jag.PillPressRegistry.Interfaces.Models;
 using Gov.Jag.PillPressRegistry.Public.Utils;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -52,11 +53,19 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <returns></returns>
         public static async Task<MicrosoftDynamicsCRMaccount> GetAccountById(this IDynamicsClient system, Guid id)
         {
+            List<string> expand = new List<string>()
+            {
+                "primarycontactid",
+                "bcgov_AdditionalContact",
+                "bcgov_CurrentBusinessPhysicalAddress",
+                "bcgov_CurrentBusinessMailingAddress"
+            };
+
             MicrosoftDynamicsCRMaccount result;
             try
             {
                 // fetch from Dynamics.
-                result = await system.Accounts.GetByKeyAsync(id.ToString());
+                result = await system.Accounts.GetByKeyAsync(accountid: id.ToString(), expand: expand);
             }
             catch (OdataerrorException)
             {
