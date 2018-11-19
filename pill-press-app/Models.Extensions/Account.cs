@@ -59,6 +59,10 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             {
                 toDynamics.Emailaddress1 = fromVM.businessEmail;
             }
+            if (copyIfNull || (!copyIfNull && fromVM.consentForEmailCommunication != null))
+            {
+                toDynamics.ConsentForEmailCommunication = fromVM.consentForEmailCommunication;
+            }
             if (copyIfNull || (!copyIfNull && fromVM.businessPhone != null))
             {
                 toDynamics.Telephone1 = fromVM.businessPhone;
@@ -123,6 +127,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     businessNumber = account.BcgovBusinessnumber,
                     businessEmail = account.Emailaddress1,
                     businessPhone = account.Telephone1,
+                    consentForEmailCommunication = account.ConsentForEmailCommunication,
                     mailingAddressName = account.Address1Name,
                     mailingAddressStreet = account.Address1Line1,
                     mailingAddressCity = account.Address1City,
