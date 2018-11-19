@@ -25,7 +25,7 @@
             </app-field>
 
             <app-field label="Business Number (BC Corporate Registry Number)" [required]="true" [valid]="form.get('businessProfile.businessNumber').valid || !form.get('businessProfile.businessNumber').touched"
-              errorMessage="Please enter your city">
+              errorMessage="Please enter your business number">
               <input class="form-control" style="max-width: 450px; min-width: 250px;" type="text" formControlName="businessNumber">
             </app-field>
 
@@ -109,7 +109,7 @@
           </div>
           <hr>
           <div formGroupName="businessProfile">
-            <app-field label="Business Phone Numbe" [required]="true" [valid]="form.get('businessProfile.businessPhoneNumber').valid || !form.get('businessProfile.businessPhoneNumber').touched"
+            <app-field label="Business Phone Number" [required]="true" [valid]="form.get('businessProfile.businessPhoneNumber').valid || !form.get('businessProfile.businessPhoneNumber').touched"
               errorMessage="Please enter your 10-digit business phone number, without including any spaces">
               <input class="form-control" style="width: 250px;" maxlength="10" (keydown)="rejectIfNotDigitOrBackSpace($event)"
                 type="text" formControlName="businessPhoneNumber">
@@ -119,12 +119,14 @@
               <div>
                 By submitting your business email address, you agree that the Security Programs Division can use it to
                 communicate with you about your application.</div>
-              <input class="form-control" style="width: 350px;" type="text" formControlName="businessEmail">
+              <input class="form-control" style="width: 350px;" type="text" formControlName="businessEmail" (blur)="trimValue(form.get('businessProfile.businessEmail'))">
             </app-field>
             <section>
-              <input type="checkbox" #emailConsent>
+              <input type="checkbox" formControlName="consentForEmailCommunication" #emailConsent>
               <span> I authorize the Security Programs Division to use my email address to communicate with me.</span>
-              <p></p>
+              <p class="error-states" *ngIf="form.get('businessProfile.consentForEmailCommunication').touched && !form.get('businessProfile.consentForEmailCommunication').valid">
+                Please confirm consent for SPD to contact you at the provided email address</p>
+          <p></p>
             </section>
             <app-field label="Website Address">
               <input class="form-control" style="width: 350px;" type="text" formControlName="websiteAddress">
@@ -150,7 +152,7 @@
             </app-field>
 
             <app-field label="Phone Number (main)" [required]="true" [valid]="form.get('primaryContact.phoneNumber').valid || !form.get('primaryContact.phoneNumber').touched"
-              errorMessage="Please enter your business contact's phone number">
+              errorMessage="Please enter your business contact's 10-digit phone number">
               <input class="form-control" style="width: 250px;" maxlength="10" (keydown)="rejectIfNotDigitOrBackSpace($event)"
                 type="text" formControlName="phoneNumber">
             </app-field>
@@ -162,7 +164,7 @@
 
             <app-field label="Email" [required]="true" [valid]="form.get('primaryContact.email').valid || !form.get('primaryContact.email').touched"
               errorMessage="Please enter your business contact's email address">
-              <input class="form-control" style="width: 350px;" type="text" formControlName="email">
+              <input class="form-control" style="width: 350px;" type="text" formControlName="email" (blur)="trimValue(form.get('primaryContact.email'))">
             </app-field>
           </div>
 
@@ -190,7 +192,7 @@
             </app-field>
 
             <app-field label="Phone Number (main)" [required]="true" [valid]="form.get('additionalContact.phoneNumber').valid || !form.get('additionalContact.phoneNumber').touched"
-              errorMessage="Please enter your business contact's phone number">
+              errorMessage="Please enter your business contact's 10-digit phone number">
               <input class="form-control" style="width: 250px;" maxlength="10" (keydown)="rejectIfNotDigitOrBackSpace($event)"
                 type="text" formControlName="phoneNumber">
             </app-field>
@@ -202,7 +204,7 @@
 
             <app-field label="Email" [required]="true" [valid]="form.get('additionalContact.email').valid || !form.get('additionalContact.email').touched"
               errorMessage="Please enter your business contact's email address">
-              <input class="form-control" style="width: 350px;" type="text" formControlName="email">
+              <input class="form-control" style="width: 350px;" type="text" formControlName="email" (blur)="trimValue(form.get('additionalContact.email'))">
             </app-field>
 
             <section>
@@ -223,7 +225,7 @@
               <button class="btn btn-secondary" routerLink="/worker-qualification/dashboard">
                 <i class="fa fa-save"></i>
                 SAVE FOR LATER</button>
-              <button style="margin-left: 10px" routerLink="/business-profile-review" class="btn btn-primary">SAVE &
+              <button style="margin-left: 10px" (click)="gotoReview()" class="btn btn-primary">SAVE &
                 CONTINUE
                 <i class="fas fa-chevron-right"></i></button>
             </span>
