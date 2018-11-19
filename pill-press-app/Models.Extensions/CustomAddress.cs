@@ -12,6 +12,33 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
     /// </summary>
     public static class CustomAddressExtensions
     {
+        public static MicrosoftDynamicsCRMbcgovCustomaddress ToModel(this ViewModels.CustomAddress customAddress)
+        {
+            MicrosoftDynamicsCRMbcgovCustomaddress result = null;
+            if (customAddress != null)
+            {
+                result = new MicrosoftDynamicsCRMbcgovCustomaddress()
+                {
+                    Emailaddress = customAddress.Emailaddress,
+                    BcgovAddresstype = customAddress.BcgovAddresstype,
+                    BcgovName = customAddress.Streetline1,
+                    BcgovStreetline2 = customAddress.Streetline2,
+                    BcgovStreetline3 = customAddress.Streetline3,
+                    BcgovCity = customAddress.City,
+                    BcgovProvince = customAddress.Province,
+                    BcgovPostalcode = customAddress.Postalcode,
+                    BcgovCountry = customAddress.Country
+                };
+
+                if (customAddress.Id != null)
+                {
+                    result.BcgovCustomaddressid = customAddress.Id;
+                }
+
+            }
+            return result;
+        }
+
         /// <summary>
         /// Convert a given voteQuestion to a ViewModel
         /// </summary>        
@@ -24,7 +51,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                 {
                     Emailaddress = customAddress.Emailaddress,
                     BcgovAddresstype = customAddress.BcgovAddresstype,
-                    Name = customAddress.BcgovName,
+                    Streetline1 = customAddress.BcgovName,
                     Streetline2 = customAddress.BcgovStreetline2,
                     Streetline3 = customAddress.BcgovStreetline3,
                     City = customAddress.BcgovCity,
@@ -46,7 +73,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
         {
             to.Emailaddress = from.Emailaddress;
             to.BcgovAddresstype = from.BcgovAddresstype;
-            to.BcgovName = from.Name;
+            to.BcgovName = from.Streetline1;
             to.BcgovStreetline2 = from.Streetline2;
             to.BcgovStreetline3 = from.Streetline3;
             to.BcgovCity = from.City;

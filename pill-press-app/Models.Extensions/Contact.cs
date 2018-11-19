@@ -25,11 +25,12 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                 {
                     result.id = contact.Contactid;
                 }
-                
+                result.title = contact.Jobtitle;
                 result.email = contact.Emailaddress1;
                 result.firstName = contact.Firstname;
                 result.lastName = contact.Lastname;
                 result.phoneNumber = contact.Telephone1;
+                result.phoneNumberAlt = contact.Telephone2;
             }
             return result;
         }
@@ -239,7 +240,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                 result.Firstname = contact.firstName;
                 result.Lastname = contact.lastName;
                 result.Telephone1 = contact.phoneNumber;
-
+                result.Telephone2 = contact.phoneNumberAlt;
+                result.Jobtitle = contact.title;
 
                 if (string.IsNullOrEmpty(result.Fullname) && (!string.IsNullOrEmpty(result.Firstname) || !string.IsNullOrEmpty(result.Lastname)))
                 {
