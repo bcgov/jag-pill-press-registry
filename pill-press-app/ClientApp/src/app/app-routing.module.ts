@@ -22,7 +22,7 @@ const routes: Routes = [
   {
     path: 'business-profile',
     component: BusinessProfileComponent,
-    // canDeactivate: [CanDeactivateGuard],
+    canDeactivate: [CanDeactivateGuard],
     canActivate: [BCeidAuthGuard]
   },
   {
