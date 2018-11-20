@@ -66,6 +66,8 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public string externalId { get; set; }
                 
         public string businessEmail { get; set; } //dynamics = emailaddress1
+
+        public bool? consentForEmailCommunication { get; set; }
         public string businessPhone { get; set; } //dynamics = telephone1
         public string mailingAddressName { get; set; } //dynamics = address1_name
         public string mailingAddressStreet { get; set; } //dynamics = address1_line1
