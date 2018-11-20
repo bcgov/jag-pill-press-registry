@@ -1,0 +1,159 @@
+<div class="dashboard-spacing" style="position: relative;">
+  <div [ngBusy]="[busy]"></div>
+  <div class="row" [formGroup]="form">
+    <div class="col-lg-7 col-sm-12">
+      <div>
+        <h1>Waiver Application</h1>
+        <p>Please complete your waiver application below. Your information will only be saved once you click the Save &
+          Continue button at the end of the page.</p>
+
+        <section>
+          <h3 class="blue-header">EQUIPMENT INFORMATION</h3>
+          <app-field label="Do you currently own, use, or possess Controlled Equipment?" [required]="true">
+            <input type="radio" [value]="true" name="currentlyownusepossessequipment" formControlName="currentlyownusepossessequipment">
+            <span style="padding-right: 10px;">Yes</span>
+            <input type="radio" [value]="false" name="currentlyownusepossessequipment" formControlName="currentlyownusepossessequipment">
+            <span>No</span>
+          </app-field>
+          <app-field *ngIf="form.get('currentlyownusepossessequipment').value === false" label="If no, do you intend on purchasing Controlled Equipment in the future?"
+            [required]="true">
+            <input type="radio" [value]="true" name="intendtopurchaseequipment" formControlName="intendtopurchaseequipment">
+            <span style="padding-right: 10px;">Yes</span>
+            <input type="radio" [value]="false" name="intendtopurchaseequipment" formControlName="intendtopurchaseequipment">
+            <span>No</span>
+          </app-field>
+          <app-field label="Do you own or intend to own Controlled Equipment for the sole use of your business?"
+            [required]="true">
+            <input type="radio" [value]="true" name=""> <span style="padding-right: 10px;">Yes</span>
+            <input type="radio" [value]="false" name=""> <span>No</span>
+          </app-field>
+          <app-field label="Do you currently own, use, or possess Controlled Equipment?" [required]="true">
+            <input type="radio" [value]="true" name="ownintendtoownequipmentforbusinessuse" formControlName="ownintendtoownequipmentforbusinessuse">
+            <span style="padding-right: 10px;">Yes</span>
+            <input type="radio" [value]="false" name="ownintendtoownequipmentforbusinessuse" formControlName="ownintendtoownequipmentforbusinessuse">
+            <span>No</span>
+          </app-field>
+          <app-field label="Do you borrow, rent, or lease Controlled Equipment from someone else?" [required]="true">
+            <input type="radio" [value]="true" name="borrowrentleaseequipment" formControlName="borrowrentleaseequipment">
+            <span style="padding-right: 10px;">Yes</span>
+            <input type="radio" [value]="false" name="borrowrentleaseequipment" formControlName="borrowrentleaseequipment">
+            <span>No</span>
+          </app-field>
+          <app-field label="Do you sell Controlled Equipment to others?" [required]="true">
+            <input type="radio" [value]="true" name="sellequipment" formControlName="sellequipment"> <span style="padding-right: 10px;">Yes</span>
+            <input type="radio" [value]="false" name="sellequipment" formControlName="sellequipment"> <span>No</span>
+          </app-field>
+        </section>
+
+        <section>
+          <h3 class="blue-header">PURPOSE OF CONTROLLED EQUIPMENT</h3>
+          <app-field label="Do you own, use, or possess (or intend to own) Controlled Equipment for the purposes of producing your own products?"
+            [required]="true">
+            <input type="radio" [value]="true" name="producingownproduct" formControlName="producingownproduct">
+            <span style="padding-right: 10px;">Yes</span>
+            <input type="radio" [value]="false" name="producingownproduct" formControlName="producingownproduct">
+            <span>No</span>
+          </app-field>
+          <app-field [required]="true" label="If so, please provide detailed information on the types of products you produce and their intended uses.">
+            <textarea name="" id="" style="width: 100%" rows="5"></textarea>
+          </app-field>
+          <app-field label="Do you own, use, or possess (or intend to own) Controlled Equipment for the purposes of providing manufacturing services to others?"
+            [required]="true">
+            <input type="radio" [value]="true" name="providingmanufacturingtoothers" formControlName="providingmanufacturingtoothers">
+            <span style="padding-right: 10px;">Yes</span>
+            <input type="radio" [value]="false" name="providingmanufacturingtoothers" formControlName="providingmanufacturingtoothers">
+            <span>No</span>
+          </app-field>
+          <app-field [required]="true" label="If so, please provide detailed information on the types of products you produce for others and their intended uses.">
+            <textarea name="" id="" style="width: 100%" rows="5"></textarea>
+          </app-field>
+        </section>
+
+        <section>
+          <h3 class="blue-header">BUSINESS DETAILS</h3>
+          <app-field label="Please explain the main focus of your business and why that requires Controlled Equipment." [required]="true">
+            <textarea name="" id="" style="width: 100%" rows="5"></textarea>
+          </app-field>
+          <app-field [required]="true" label="Please describe the manufacturing process you use to produce the above-noted products. Please include specific information on how you utilize the Controlled Equipment throughout the manufacturing process.">
+            <textarea name="" id="" style="width: 100%" rows="5"></textarea>
+          </app-field>
+        </section>
+
+        <section>
+          <h3 class="blue-header">BUSINESS DETAILS</h3>
+          <div style="display: flex;">
+            <input type="checkbox" style="flex: 0 0 30px;">
+            <p>Declaration that all information provided is correct, including the information on the Client Profile -
+              Business Information page (which is incorporated into this application)</p>
+          </div>
+          <div style="display: flex;">
+            <input type="checkbox" style="flex: 0 0 30px;">
+            <p>Consent that by submitting the application the applicant understands their information is being
+              collected for FOIPPA purposes and may be released as per FOIPPA.</p>
+          </div>
+          <div style="display: flex;">
+            <input type="checkbox" style="flex: 0 0 30px;">
+            <p>Consent to correspond via the business email indicated on the Client Profile - Business Information page</p>
+          </div>
+        </section>
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-12" style="position: relative">
+      <!-- <div [ngBusy]="busy"></div> -->
+      <p></p>
+      <section class="submit-container">
+        <table>
+          <tr>
+            <td>
+              <h2 class="round-icon-wrapper"><i class="fas fa-address-card"></i></h2>
+            </td>
+            <td style="padding-left: 10px">
+              <h2>Update your BCeID information</h2>
+            </td>
+          </tr>
+        </table>
+        <div class="submit-content">
+          <p>
+            Your Legal Business Name and Business Number are imported from BCeID. If there is an error or change in
+            this information, you must contact BCeID to correct it.
+          </p>
+          <div>
+            <i class="fas fa-phone"></i>
+            <strong>Phone</strong>
+            <br>
+            <span>1 888 356-2741 (Canada and USA toll free)</span>
+            <br>
+            <span>604 660-2355 (Within lower mainland or outside Canada and USA)</span>
+          </div>
+          <div>
+            <i class="fas fa-envelope"></i>
+            <strong>Email</strong>
+            <br>
+            <span>Contact us using our online form</span>
+          </div>
+          <p>
+            All other information can be changed on this Business Profile page.
+          </p>
+
+        </div>
+      </section>
+      <section class="submit-container" style="background-color: #F2F2F2; color:#000; border: none;">
+        <h2 style="color: #000">Collection Notice:</h2>
+        <div class="submit-content">
+          <p>
+            The Security Programs Division (SPD) will collect your personal information for the purpose of fulfilling
+            the requirements
+            of the Cannabis Control and Licensing Act (CCLA) and associated regulations in accordance with Sections 26
+            (a)
+            and (c) of the Freedom of Information and Protection of Privacy Act. Should you have any questions about
+            the
+            collection, use, or disclosure of personal information, please contact the Senior Policy Analyst, Security
+            Programs
+            Division via mail to PO Box 9217 Stn Prov Govt Victoria, BC V8W 9J1; email to
+            <a href="mailto:cannabissecurityscreening@gov.bc.ca">cannabissecurityscreening@gov.bc.ca</a>;
+            or by telephone at 1-855-587-0185.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
