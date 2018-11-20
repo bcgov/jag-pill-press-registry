@@ -12,6 +12,18 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
     /// </summary>
     public static class ContactExtensions
     {
+        public static bool HasValue (this ViewModels.Contact contact)
+        {
+            bool result = contact != null &&
+                !(string.IsNullOrEmpty(contact.email) &&
+                 string.IsNullOrEmpty(contact.firstName) &&
+                 string.IsNullOrEmpty(contact.lastName) &&
+                 string.IsNullOrEmpty(contact.id) &&
+                 string.IsNullOrEmpty(contact.phoneNumber) &&
+                 string.IsNullOrEmpty(contact.phoneNumberAlt) &&
+                 string.IsNullOrEmpty(contact.title));
+            return result;
+        }
         /// <summary>
         /// Convert a given voteQuestion to a ViewModel
         /// </summary>        
@@ -25,23 +37,12 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                 {
                     result.id = contact.Contactid;
                 }
-
-                result.name = contact.Fullname;
-                result.address1_city = contact.Address1City;
-                result.address1_country = contact.Address1Country;
-                result.address1_line1 = contact.Address1Line1;
-                result.address1_postalcode = contact.Address1Postalcode;
-                result.address1_stateorprovince = contact.Address1Stateorprovince;
-                result.address2_city = contact.Address2City;
-                result.address2_country = contact.Address2Country;
-                result.address2_line1 = contact.Address2Line1;
-                result.address2_postalcode = contact.Address2Postalcode;
-                result.address2_stateorprovince = contact.Address2Stateorprovince;
+                result.title = contact.Jobtitle;
                 result.email = contact.Emailaddress1;
                 result.firstName = contact.Firstname;
-                result.middlename = contact.Middlename;
                 result.lastName = contact.Lastname;
                 result.phoneNumber = contact.Telephone1;
+                result.phoneNumberAlt = contact.Telephone2;
             }
             return result;
         }
@@ -198,20 +199,18 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             string smgov_givennames = headers["smgov_givennames"];
             string smgov_surname = headers["smgov_surname"];
 
+            // TODO add address support.
+            /*
             to.address1_line1 = smgov_streetaddress;
             to.address1_postalcode = smgov_postalcode;
             to.address1_city = smgov_city;
             to.address1_stateorprovince = smgov_stateorprovince;
             to.address1_country = smgov_country;
+            */
 
             if (!string.IsNullOrEmpty(smgov_givenname))
             {
                 to.firstName = smgov_givenname;
-            }
-
-            if (!string.IsNullOrEmpty(smgov_givennames))
-            {
-                to.middlename = smgov_givennames;
             }
 
             if (!string.IsNullOrEmpty(smgov_surname))
@@ -229,21 +228,12 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
 
         public static void CopyValues(this MicrosoftDynamicsCRMcontact to, ViewModels.Contact from)
         {
-            to.Fullname = from.name;
+            
             to.Emailaddress1 = from.email;
             to.Firstname = from.firstName;
-            to.Middlename = from.middlename;
+
             to.Lastname = from.lastName;
-            to.Address1City = from.address1_city;
-            to.Address1Country = from.address1_country;
-            to.Address1Line1 = from.address1_line1;
-            to.Address1Postalcode = from.address1_postalcode;
-            to.Address1Stateorprovince = from.address1_stateorprovince;
-            to.Address2City = from.address2_city;
-            to.Address2Country = from.address2_country;
-            to.Address2Line1 = from.address2_line1;
-            to.Address2Postalcode = from.address2_postalcode;
-            to.Address2Stateorprovince = from.address2_stateorprovince;
+           
             to.Telephone1 = from.phoneNumber;
         }
 
@@ -257,19 +247,13 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                 {
                     result.Contactid = contact.id;
                 }
-                result.Fullname = contact.name;
+                
                 result.Emailaddress1 = contact.email;
                 result.Firstname = contact.firstName;
                 result.Lastname = contact.lastName;
-                result.Middlename = contact.middlename;
-
-                result.Address1City = contact.address1_city;
-                result.Address1Country = contact.address1_country;
-                result.Address1Line1 = contact.address1_line1;
-                result.Address1Postalcode = contact.address1_postalcode;
-                result.Address1Stateorprovince = contact.address1_stateorprovince;
                 result.Telephone1 = contact.phoneNumber;
-
+                result.Telephone2 = contact.phoneNumberAlt;
+                result.Jobtitle = contact.title;
 
                 if (string.IsNullOrEmpty(result.Fullname) && (!string.IsNullOrEmpty(result.Firstname) || !string.IsNullOrEmpty(result.Lastname)))
                 {

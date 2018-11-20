@@ -16,6 +16,18 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         [JsonProperty(PropertyName = "bcgov_consentforemailcommunication")]
         public bool? ConsentForEmailCommunication { get; set; }
+       
+        [JsonProperty(PropertyName = "primarycontactid@odata.bind")]
+        public string PrimaryContactidODataBind { get; set; }
+
+        [JsonProperty(PropertyName = "bcgov_AdditionalContact@odata.bind")]
+        public string AdditionalContactODataBind { get; set; }
+
+        [JsonProperty(PropertyName = "bcgov_CurrentBusinessMailingAddress@odata.bind")]
+        public string CurrentBusinessMailingAddressODataBind { get; set; }
+
+        [JsonProperty(PropertyName = "bcgov_CurrentBusinessPhysicalAddress@odata.bind")]
+        public string CurrentBusinessPhysicalAddressODataBind { get; set; }
 
     }
 }

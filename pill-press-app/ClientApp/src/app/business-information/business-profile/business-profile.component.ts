@@ -8,12 +8,8 @@ import * as CurrentUserActions from '../../app-state/actions/current-user.action
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';
 import { FormBuilder, FormGroup, Validators, FormArray, ValidatorFn, AbstractControl, FormControl } from '@angular/forms';
-import { AliasDataService } from '../../services/alias-data.service';
 import { PreviousAddressDataService } from '../../services/previous-address-data.service';
 import { Observable, Subject } from 'rxjs';
-import { WorkerDataService } from '../../services/worker-data.service.';
-import { Alias } from '../../models/alias.model';
-import { PreviousAddress } from '../../models/previous-address.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { forkJoin } from 'rxjs/observable/forkJoin';
 import { COUNTRIES } from './country-list';
@@ -79,7 +75,6 @@ export class BusinessProfileComponent implements OnInit {
   constructor(private userDataService: UserDataService,
     private store: Store<AppState>,
     private accountDataService: AccountDataService,
-    private previousAddressDataService: PreviousAddressDataService,
     private contactDataService: ContactDataService,
     private fb: FormBuilder,
     private router: Router,
@@ -95,7 +90,7 @@ export class BusinessProfileComponent implements OnInit {
     this.form = this.fb.group({
       businessProfile: this.fb.group({
         id: [''],
-        businessLegalname: [{ value: '', disabled: true }],
+        businessLegalName: [{ value: '', disabled: true }],
         businessDBAName: [{ value: '', disabled: true }],
         businessNumber: ['', Validators.required],
         businessType: ['', Validators.required],
@@ -161,7 +156,6 @@ export class BusinessProfileComponent implements OnInit {
               businessProfile: account,
               primaryContact: account.primaryContact
             });
-
 
 
             this.saveFormData = this.form.value;

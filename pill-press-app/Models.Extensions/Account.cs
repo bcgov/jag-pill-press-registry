@@ -18,82 +18,10 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
         /// <param name="toDynamics"></param>
         /// <param name="fromVM"></param>
         /// <param name="copyIfNull"></param>
-        public static void CopyValues(this MicrosoftDynamicsCRMaccount toDynamics, ViewModels.Account fromVM, Boolean copyIfNull)
+        public static void CopyValues(this MicrosoftDynamicsCRMaccount toDynamics, ViewModels.Account fromVM)
         {
-            if (copyIfNull || (!copyIfNull && fromVM.businessLegalName != null))
-            {
-                toDynamics.Name = fromVM.businessLegalName;
-            }
-
-            if (copyIfNull || (!copyIfNull && fromVM.doingBusinessAs != null))
-            {
-                toDynamics.BcgovDoingbusinessasname = fromVM.doingBusinessAs;
-            }
-
-            if (copyIfNull || (!copyIfNull && fromVM.businessNumber != null))
-            {
-                toDynamics.Accountnumber = fromVM.businessNumber;
-            }
-            /*
-            if (!string.IsNullOrEmpty(fromVM.businessType))
-            {
-                toDynamics.Businesstypecode = (int)Enum.Parse(typeof(ViewModels.BusinessTypeEnum), fromVM.businessType, true);
-            }
-            */
-
-            if (copyIfNull || (!copyIfNull && fromVM.description != null))
-            {
-                toDynamics.Description = fromVM.description;
-            }
-
-            // copy the exernalId.
-
-            if (copyIfNull || (!copyIfNull && fromVM.externalId != null))
-            {
-                toDynamics.BcgovBceid = fromVM.externalId;
-            }
-
-
-
-            if (copyIfNull || (!copyIfNull && fromVM.businessEmail != null))
-            {
-                toDynamics.Emailaddress1 = fromVM.businessEmail;
-            }
-            if (copyIfNull || (!copyIfNull && fromVM.consentForEmailCommunication != null))
-            {
-                toDynamics.ConsentForEmailCommunication = fromVM.consentForEmailCommunication;
-            }
-            if (copyIfNull || (!copyIfNull && fromVM.businessPhone != null))
-            {
-                toDynamics.Telephone1 = fromVM.businessPhone;
-            }
-            if (copyIfNull || (!copyIfNull && fromVM.mailingAddressName != null))
-            {
-                toDynamics.Address1Name = fromVM.mailingAddressName;
-            }
-            if (copyIfNull || (!copyIfNull && fromVM.mailingAddressStreet != null))
-            {
-                toDynamics.Address1Line1 = fromVM.mailingAddressStreet;
-            }
-            if (copyIfNull || (!copyIfNull && fromVM.mailingAddressCity != null))
-            {
-                toDynamics.Address1City = fromVM.mailingAddressCity;
-            }
-            if (copyIfNull || (!copyIfNull && fromVM.mailingAddressCountry != null))
-            {
-                toDynamics.Address1County = fromVM.mailingAddressCountry;
-            }
-            if (copyIfNull || (!copyIfNull && fromVM.mailingAddressCountry != null))
-            {
-                toDynamics.Address1Stateorprovince = fromVM.mailingAddressProvince;
-            }
-            if (copyIfNull || (!copyIfNull && fromVM.mailingAddresPostalCode != null))
-            {
-                toDynamics.Address1Postalcode = fromVM.mailingAddresPostalCode;
-            }
-
-            // business type must be set only during creation, not in update (removed from copyValues() )
-            //	toDynamics.AdoxioBusinesstype = (int)Enum.Parse(typeof(ViewModels.Adoxio_applicanttypecodes), fromVM.businessType, true);
+            bool copyIfNull = true;
+            toDynamics.CopyValues(fromVM, copyIfNull);
         }
 
         /// <summary>
@@ -104,11 +32,86 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
         /// <param name="toDynamics"></param>
         /// <param name="fromVM"></param>
         /// <param name="copyIfNull"></param>
-        public static void CopyValues(this MicrosoftDynamicsCRMaccount toDynamics, ViewModels.Account fromVM)
+        public static void CopyValues(this MicrosoftDynamicsCRMaccount toDynamics, ViewModels.Account fromVM, Boolean copyIfNull)
         {
-            bool copyIfNull = true;
-            toDynamics.CopyValues(fromVM, copyIfNull);
+            if (copyIfNull || fromVM.businessLegalName != null)
+            {
+                toDynamics.Name = fromVM.businessLegalName;
+            }
+
+            if (copyIfNull || fromVM.businessDBAName != null)
+            {
+                toDynamics.BcgovDoingbusinessasname = fromVM.businessDBAName;
+            }
+
+            if (copyIfNull || fromVM.businessNumber != null)
+            {
+                toDynamics.BcgovBusinessnumber = fromVM.businessNumber;
+            }
+            /*
+            if (!string.IsNullOrEmpty(fromVM.businessType))
+            {
+                toDynamics.Businesstypecode = (int)Enum.Parse(typeof(ViewModels.BusinessTypeEnum), fromVM.businessType, true);
+            }
+            */
+
+            if (copyIfNull || fromVM.description != null)
+            {
+                toDynamics.Description = fromVM.description;
+            }
+
+            // copy the exernalId.
+            if (copyIfNull || fromVM.externalId != null)
+            {
+                toDynamics.BcgovBceid = fromVM.externalId;
+            }
+
+            if (copyIfNull || fromVM.businessEmail != null)
+            {
+                toDynamics.Emailaddress1 = fromVM.businessEmail;
+            }
+            if (copyIfNull || fromVM.consentForEmailCommunication != null)
+            {
+                toDynamics.ConsentForEmailCommunication = fromVM.consentForEmailCommunication;
+            }
+            if (copyIfNull || fromVM.businessPhoneNumber != null)
+            {
+                toDynamics.Telephone1 = fromVM.businessPhoneNumber;
+            }
+
+            if (copyIfNull || fromVM.mailingAddressName != null)
+            {
+                toDynamics.Address1Name = fromVM.mailingAddressName;
+            }
+
+            if (copyIfNull || fromVM.mailingAddressStreet != null)
+            {
+                toDynamics.Address1Line1 = fromVM.mailingAddressStreet;
+            }
+            if (copyIfNull || fromVM.mailingAddressCity != null)
+            {
+                toDynamics.Address1City = fromVM.mailingAddressCity;
+            }
+
+            if (copyIfNull || fromVM.mailingAddressCountry != null)
+            {
+                toDynamics.Address1County = fromVM.mailingAddressCountry;
+            }
+
+            if (copyIfNull || fromVM.mailingAddressCountry != null)
+            {
+                toDynamics.Address1Stateorprovince = fromVM.mailingAddressProvince;
+            }
+
+            if (copyIfNull || fromVM.mailingAddresPostalCode != null)
+            {
+                toDynamics.Address1Postalcode = fromVM.mailingAddresPostalCode;
+            }
+
+            // business type must be set only during creation, not in update (removed from copyValues() )
+            //	toDynamics.AdoxioBusinesstype = (int)Enum.Parse(typeof(ViewModels.Adoxio_applicanttypecodes), fromVM.businessType, true);
         }
+
 
         /// <summary>
         /// Create a new ViewModel from a Dynamics Account
@@ -121,20 +124,20 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             {
                 accountVM = new ViewModels.Account()
                 {
-                    clientId = account.Accountnumber,
+                    description = account.Description,
                     businessLegalName = account.Name,
-                    doingBusinessAs = account.BcgovDoingbusinessasname,
+                    businessDBAName = account.BcgovDoingbusinessasname,
                     businessNumber = account.BcgovBusinessnumber,
                     businessEmail = account.Emailaddress1,
-                    businessPhone = account.Telephone1,
+                    businessPhoneNumber = account.Telephone1,
                     consentForEmailCommunication = account.ConsentForEmailCommunication,
+                    externalId = account.BcgovBceid,
                     mailingAddressName = account.Address1Name,
                     mailingAddressStreet = account.Address1Line1,
                     mailingAddressCity = account.Address1City,
                     mailingAddressCountry = account.Address1County,
                     mailingAddressProvince = account.Address1Stateorprovince,
-                    mailingAddresPostalCode = account.Address1Postalcode,
-                    externalId = account.BcgovBceid
+                    mailingAddresPostalCode = account.Address1Postalcode
 
                 };
                 if (account.Accountid != null)

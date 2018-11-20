@@ -45,7 +45,7 @@ export class ProfileSummaryComponent implements OnInit {
 
   setSummaryTables() {
     this.businessInfoData = [
-      { label: 'Business - Legal Name:', value: this.account.businessLegalname },
+      { label: 'Business - Legal Name:', value: this.account.businessLegalName },
       { label: 'Business - Doing Business As Name:', value: this.account.businessDBAName },
       { label: 'Business Number :', value: this.account.businessNumber },
       { label: 'Business Type:', value: this.account.businessType }

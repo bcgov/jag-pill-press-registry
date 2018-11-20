@@ -268,6 +268,23 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 }
                 userContact.Statuscode = 1;
                 userContact.BcgovContacttype = 931490002; // BCeID contact type
+
+                
+                _logger.LogDebug(LoggingEvents.HttpGet, "Account is NOT null. Only a new user.");
+                try
+                {
+                    userContact = await _dynamicsClient.Contacts.CreateAsync(userContact);
+                }
+                catch (OdataerrorException odee)
+                {
+                    _logger.LogError(LoggingEvents.Error, "Error creating user contact.");
+                    _logger.LogError("Request:");
+                    _logger.LogError(odee.Request.Content);
+                    _logger.LogError("Response:");
+                    _logger.LogError(odee.Response.Content);
+                    throw new OdataerrorException("Error creating user contact.");
+                }
+            
             }
             // this may be an existing account, as this service is used during the account confirmation process.
             MicrosoftDynamicsCRMaccount account = await _dynamicsClient.GetAccountBySiteminderBusinessGuid(accountSiteminderGuid);
@@ -285,10 +302,67 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 string sanitizedAccountSiteminderId = GuidUtility.SanitizeGuidString(accountSiteminderGuid);
 
                 account.BcgovBceid = sanitizedAccountSiteminderId;
-                account.Primarycontactid = userContact;                
+
+                // For Pill Press the Primary Contact is not set to default to the first user.  
+                if (item.primaryContact != null)
+                {
+                    if (string.IsNullOrEmpty(item.primaryContact.id))
+                    {
+                        account.Primarycontactid = item.primaryContact.ToModel();
+                    }
+                    else
+                    {
+                        // add as a reference.
+                        account.PrimaryContactidODataBind = _dynamicsClient.GetEntityURI("contacts", item.primaryContact.id);
+                    }
+                }
+
+                // Additional Contact 
+                if (item.additionalContact != null)
+                {
+                    if (string.IsNullOrEmpty(item.additionalContact.id))
+                    {
+                        account.BcgovAdditionalContact = item.additionalContact.ToModel();
+                    }
+                    else
+                    {
+                        // add as a reference.
+                        account.AdditionalContactODataBind = _dynamicsClient.GetEntityURI("contacts", item.additionalContact.id);
+                    }
+                }
+
+                // Mailing Address
+                if (item.mailingAddress != null)
+                {
+                    if (string.IsNullOrEmpty(item.mailingAddress.Id))
+                    {
+                        account.BcgovCurrentBusinessMailingAddress = item.mailingAddress.ToModel();
+                    }
+                    else
+                    {
+                        // add as a reference.
+                        account.CurrentBusinessMailingAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", item.mailingAddress.Id);
+                    }
+                }
+
+                // Physical Address
+                if (item.physicalAddress != null)
+                {
+                    if (string.IsNullOrEmpty(item.physicalAddress.Id))
+                    {
+                        account.BcgovCurrentBusinessPhysicalAddress = item.physicalAddress.ToModel();
+                    }
+                    else
+                    {
+                        // add as a reference.
+                        account.CurrentBusinessPhysicalAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", item.physicalAddress.Id);
+                    }
+                }
 
                 if (bceidBusiness != null)
                 {
+                    account.Name = bceidBusiness.legalName;
+                    account.BcgovDoingbusinessasname = bceidBusiness.legalName;
                     account.Emailaddress1 = bceidBusiness.contactEmail;
                     account.Telephone1 = bceidBusiness.contactPhone;
                     account.Address1City = bceidBusiness.addressCity;
@@ -297,9 +371,13 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     account.Address1Line2 = bceidBusiness.addressLine2;
                     account.Address1Postalcode = bceidBusiness.addressPostal;
                 }
+                else // likely a dev login.
+                {
+                    account.Name = userSettings.BusinessLegalName;
+                    account.BcgovDoingbusinessasname = userSettings.BusinessLegalName;
+                }
 
-                
-
+               
                 string accountString = JsonConvert.SerializeObject(account);
                 _logger.LogDebug("Account before creation in dynamics --> " + accountString);
 
@@ -316,33 +394,16 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     _logger.LogError(odee.Response.Content);
                     throw new OdataerrorException("Error creating Account");
                 }
+
+                // populate child elements.
+                account = await _dynamicsClient.GetAccountById(Guid.Parse(account.Accountid));
                 
-
-
-                userContact.Contactid = account._primarycontactidValue;
-
                 accountString = JsonConvert.SerializeObject(accountString);
                 _logger.LogDebug("Account Entity after creation in dynamics --> " + accountString);
 
 
             }
-            else // it is a new user only.
-            {
-                _logger.LogDebug(LoggingEvents.HttpGet, "Account is NOT null. Only a new user.");
-                try
-                {
-                    userContact = await _dynamicsClient.Contacts.CreateAsync(userContact);
-                }
-                catch (OdataerrorException odee)
-                {
-                    _logger.LogError(LoggingEvents.Error, "Error creating user contact.");
-                    _logger.LogError("Request:");
-                    _logger.LogError(odee.Request.Content);
-                    _logger.LogError("Response:");
-                    _logger.LogError(odee.Response.Content);
-                    throw new OdataerrorException("Error creating user contact.");
-                }
-            }
+           
 
             // always patch the userContact so it relates to the account.
             _logger.LogDebug(LoggingEvents.Save, "Patching the userContact so it relates to the account.");
@@ -399,6 +460,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
 
             //account.Accountid = id;
             result = account.ToViewModel();
+            
 
             _logger.LogDebug(LoggingEvents.HttpPost, "result: " +
                 JsonConvert.SerializeObject(result, Formatting.Indented, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore }));
@@ -414,50 +476,196 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateDynamicsAccount([FromBody] ViewModels.Account item, string id)
         {
-            _logger.LogInformation(LoggingEvents.HttpPut, "Begin method " + this.GetType().Name + "." + MethodBase.GetCurrentMethod().ReflectedType.Name);
-            _logger.LogDebug(LoggingEvents.HttpPut, "Account parameter: " + JsonConvert.SerializeObject(item));
-            _logger.LogDebug(LoggingEvents.HttpPut, "id parameter: " + id);
+            // check for null.
+            if (item == null)
+            {
+                return new BadRequestResult();
+            }
+            else
+            {
+                _logger.LogInformation(LoggingEvents.HttpPut, "Begin method " + this.GetType().Name + "." + MethodBase.GetCurrentMethod().ReflectedType.Name);
+                _logger.LogDebug(LoggingEvents.HttpPut, "Account parameter: " + JsonConvert.SerializeObject(item));
+                _logger.LogDebug(LoggingEvents.HttpPut, "id parameter: " + id);
+
+                Guid accountId = new Guid(id);
+
+                if (!UserDynamicsExtensions.CurrentUserHasAccessToAccount(accountId, _httpContextAccessor, _dynamicsClient))
+                {
+                    _logger.LogWarning(LoggingEvents.NotFound, "Current user has NO access to the account.");
+                    return NotFound();
+                }
+
+                MicrosoftDynamicsCRMaccount account = await _dynamicsClient.GetAccountById(accountId);
+                if (account == null)
+                {
+                    _logger.LogWarning(LoggingEvents.NotFound, "Account NOT found.");
+                    return new NotFoundResult();
+                }
+
+                // we are doing a patch, so wipe out the record.
+                account = new MicrosoftDynamicsCRMaccount();
+
+                // copy values over from the data provided
+                account.CopyValues(item);
+
+                // Primary Contact
+                if (item.primaryContact.HasValue())
+                {
+                    if (string.IsNullOrEmpty(item.primaryContact.id))
+                    {
+                        account.Primarycontactid = item.primaryContact.ToModel();
+                    }
+                    else
+                    {
+                        // add as a reference.
+                        account.PrimaryContactidODataBind = _dynamicsClient.GetEntityURI("contacts", item.primaryContact.id);
+                    }
+                }
+
+                // Additional Contact 
+                if (item.additionalContact.HasValue())
+                {
+                    if (string.IsNullOrEmpty(item.additionalContact.id))
+                    {
+                        account.BcgovAdditionalContact = item.additionalContact.ToModel();
+                    }
+                    else
+                    {
+
+                        // add as a reference.
+                        account.AdditionalContactODataBind = _dynamicsClient.GetEntityURI("contacts", item.additionalContact.id);
+                    }
+                }
+
+                // Mailing Address
+                if (item.mailingAddress.HasValue())
+                {
+                    if (string.IsNullOrEmpty(item.mailingAddress.Id))
+                    {
+                        account.BcgovCurrentBusinessMailingAddress = item.mailingAddress.ToModel();
+                    }
+                    else
+                    {
+                        // add as a reference.
+                        account.CurrentBusinessMailingAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", item.mailingAddress.Id);
+                    }
+                }
+
+                // Physical Address
+                if (item.physicalAddress.HasValue())
+                {
+                    if (string.IsNullOrEmpty(item.physicalAddress.Id))
+                    {
+                        account.BcgovCurrentBusinessPhysicalAddress = item.physicalAddress.ToModel();
+                    }
+                    else
+                    {
+                        // add as a reference.
+                        account.CurrentBusinessPhysicalAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", item.physicalAddress.Id);
+                    }
+                }
+
+
+                try
+                {
+                    await _dynamicsClient.Accounts.UpdateAsync(accountId.ToString(), account);
+                }
+                catch (OdataerrorException odee)
+                {
+                    _logger.LogError(LoggingEvents.Error, "Error updating the account.");
+                    _logger.LogError("Request:");
+                    _logger.LogError(odee.Request.Content);
+                    _logger.LogError("Response:");
+                    _logger.LogError(odee.Response.Content);
+                    throw new OdataerrorException("Error updating the account.");
+                }
+
+                // determine if we need to update the primary contact.
+                if (!string.IsNullOrEmpty(item.primaryContact?.id))
+                {
+                    MicrosoftDynamicsCRMcontact primaryContactUpdate = item.primaryContact.ToModel();
+                    try
+                    {
+                        await _dynamicsClient.Contacts.UpdateAsync(item.primaryContact.id, primaryContactUpdate);
+                    }
+                    catch (OdataerrorException odee)
+                    {
+                        _logger.LogError(LoggingEvents.Error, "Error updating the primary account");
+                        _logger.LogError("Request:");
+                        _logger.LogError(odee.Request.Content);
+                        _logger.LogError("Response:");
+                        _logger.LogError(odee.Response.Content);
+                        throw new OdataerrorException("Error updating the account.");
+                    }
+                }
+
+                // determine if we need to update the additional contact.
+                if (!string.IsNullOrEmpty(item.additionalContact?.id))
+                {
+                    MicrosoftDynamicsCRMcontact additionalContactUpdate = item.additionalContact.ToModel();
+                    try
+                    {
+                        await _dynamicsClient.Contacts.UpdateAsync(item.additionalContact.id, additionalContactUpdate);
+                    }
+                    catch (OdataerrorException odee)
+                    {
+                        _logger.LogError(LoggingEvents.Error, "Error updating the account.");
+                        _logger.LogError("Request:");
+                        _logger.LogError(odee.Request.Content);
+                        _logger.LogError("Response:");
+                        _logger.LogError(odee.Response.Content);
+                        throw new OdataerrorException("Error updating the account.");
+                    }
+                }
+
+                // determine if we need to update the additional contact.
+                if (!string.IsNullOrEmpty(item.mailingAddress?.Id))
+                {
+                    MicrosoftDynamicsCRMbcgovCustomaddress mailingAddress = item.mailingAddress.ToModel();
+                    try
+                    {
+                        await _dynamicsClient.Customaddresses.UpdateAsync(item.mailingAddress.Id, mailingAddress);
+                    }
+                    catch (OdataerrorException odee)
+                    {
+                        _logger.LogError(LoggingEvents.Error, "Error updating the account.");
+                        _logger.LogError("Request:");
+                        _logger.LogError(odee.Request.Content);
+                        _logger.LogError("Response:");
+                        _logger.LogError(odee.Response.Content);
+                        throw new OdataerrorException("Error updating the account.");
+                    }
+                }
+
+                // determine if we need to update the additional contact.
+                if (!string.IsNullOrEmpty(item.physicalAddress?.Id))
+                {
+                    MicrosoftDynamicsCRMbcgovCustomaddress physicalAddress = item.physicalAddress.ToModel();
+                    try
+                    {
+                        await _dynamicsClient.Customaddresses.UpdateAsync(item.physicalAddress.Id, physicalAddress);
+                    }
+                    catch (OdataerrorException odee)
+                    {
+                        _logger.LogError(LoggingEvents.Error, "Error updating the account.");
+                        _logger.LogError("Request:");
+                        _logger.LogError(odee.Request.Content);
+                        _logger.LogError("Response:");
+                        _logger.LogError(odee.Response.Content);
+                        throw new OdataerrorException("Error updating the account.");
+                    }
+                }
+
+                // populate child items in the account.
+                account = await _dynamicsClient.GetAccountById(accountId);
+
+                var updatedAccount = account.ToViewModel();
+                _logger.LogDebug(LoggingEvents.HttpPut, "updatedAccount: " +
+                    JsonConvert.SerializeObject(updatedAccount, Formatting.Indented, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore }));
+
+                return Json(updatedAccount);
+            }
             
-            Guid accountId = new Guid(id);
-
-            if (!UserDynamicsExtensions.CurrentUserHasAccessToAccount(accountId, _httpContextAccessor, _dynamicsClient))
-            {
-                _logger.LogWarning(LoggingEvents.NotFound, "Current user has NO access to the account.");
-                return NotFound();
-            }
-
-            MicrosoftDynamicsCRMaccount adoxioAccount = await _dynamicsClient.GetAccountById(accountId);
-            if (adoxioAccount == null)
-            {
-                _logger.LogWarning(LoggingEvents.NotFound, "Account NOT found.");
-                return new NotFoundResult();
-            }
-
-            // we are doing a patch, so wipe out the record.
-            adoxioAccount = new MicrosoftDynamicsCRMaccount();
-
-            // copy values over from the data provided
-            adoxioAccount.CopyValues(item);
-
-            try
-            {
-                await _dynamicsClient.Accounts.UpdateAsync(accountId.ToString(), adoxioAccount);
-            }
-            catch (OdataerrorException odee)
-            {
-                _logger.LogError(LoggingEvents.Error, "Error updating the account.");
-                _logger.LogError("Request:");
-                _logger.LogError(odee.Request.Content);
-                _logger.LogError("Response:");
-                _logger.LogError(odee.Response.Content);
-                throw new OdataerrorException("Error updating the account.");
-            }
-
-            var updatedAccount = adoxioAccount.ToViewModel();
-            _logger.LogDebug(LoggingEvents.HttpPut, "updatedAccount: " +
-                JsonConvert.SerializeObject(updatedAccount, Formatting.Indented, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore }));
-
-            return Json(updatedAccount);
         }
 
         /// <summary>
@@ -486,6 +694,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 return new NotFoundResult();
             }
 
+            
             
             try
             {
