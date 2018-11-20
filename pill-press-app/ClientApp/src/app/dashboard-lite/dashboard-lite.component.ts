@@ -49,8 +49,7 @@ export class DashboardLiteComponent implements OnInit {
 
       });
 
-    this.applicationDataService.getSubmittedApplicationCount()
-      .subscribe(value => this.submittedApplications = value);
+    
   }
 
   verify_payment() {

@@ -108,7 +108,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
 			ViewModels.Account responseViewModel = JsonConvert.DeserializeObject<ViewModels.Account>(jsonString);
 
             // name should match.
-            Assert.Equal(user.businessname, responseViewModel.doingBusinessAs);
+            Assert.Equal(user.businessname, responseViewModel.businessDBAName);
             string strId = responseViewModel.externalId;
             string id = responseViewModel.id;
 			Assert.Equal(strId, responseViewModel.externalId);

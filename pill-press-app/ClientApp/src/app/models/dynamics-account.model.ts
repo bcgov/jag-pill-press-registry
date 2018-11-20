@@ -7,7 +7,8 @@ export class DynamicsAccount {
   bcIncorporationNumber: string;
   businessDBAName: string;
   businessEmail: string;
-  businessLegalname: string;
+  consentForEmailCommunication: boolean;
+  businessLegalName: string;
   businessNumber: string;
   businessPhoneNumber: string;
   businessType: string;

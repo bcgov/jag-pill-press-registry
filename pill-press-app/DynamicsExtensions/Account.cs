@@ -2,6 +2,7 @@
 using Gov.Jag.PillPressRegistry.Interfaces.Models;
 using Gov.Jag.PillPressRegistry.Public.Utils;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -43,6 +44,32 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
 
         }
 
+        public static async Task<MicrosoftDynamicsCRMaccount> GetAccountByLegalName(this IDynamicsClient system, string legalName)
+        {
+            legalName = legalName.Replace("'", "''");
+
+            MicrosoftDynamicsCRMaccount result = null;
+            try
+            {
+                var accountResponse = await system.Accounts.GetAsync(filter: $"name eq '{legalName}'");
+                result = accountResponse.Value.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+
+                result = null;
+            }
+
+            // get the primary contact.
+            if (result != null && result.Primarycontactid == null && result._primarycontactidValue != null)
+            {
+                result.Primarycontactid = await system.GetContactById(Guid.Parse(result._primarycontactidValue));
+            }
+
+            return result;
+
+        }
+
 
         /// <summary>
         /// Get a Account by their Guid
@@ -52,11 +79,19 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <returns></returns>
         public static async Task<MicrosoftDynamicsCRMaccount> GetAccountById(this IDynamicsClient system, Guid id)
         {
+            List<string> expand = new List<string>()
+            {
+                "primarycontactid",
+                "bcgov_AdditionalContact",
+                "bcgov_CurrentBusinessPhysicalAddress",
+                "bcgov_CurrentBusinessMailingAddress"
+            };
+
             MicrosoftDynamicsCRMaccount result;
             try
             {
                 // fetch from Dynamics.
-                result = await system.Accounts.GetByKeyAsync(id.ToString());
+                result = await system.Accounts.GetByKeyAsync(accountid: id.ToString(), expand: expand);
             }
             catch (OdataerrorException)
             {
