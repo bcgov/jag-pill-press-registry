@@ -53,8 +53,6 @@ export class ApplicationComponent implements OnInit, OnDestroy {
       establishmentName: [''], // Validators.required
     });
 
-    this.applicationDataService.getSubmittedApplicationCount()
-      .subscribe(value => this.submittedApplications = value);
 
     this.busy = this.applicationDataService.getApplicationById(this.applicationId).subscribe(
       (data: Application) => {

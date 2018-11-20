@@ -57,8 +57,8 @@ export class BceidConfirmationComponent {
   createContact(account) {
     const contact = new DynamicsContact();
     // contact.fullname = this.currentUser.name;
-    contact.id = this.currentUser.contactid;
-    account.primarycontact = contact;
+    //contact.id = this.currentUser.contactid;
+    account.primarycontact = null; // Pill Press does not set the primary contact to the logged in user.
 
     // Submit selected company type and sub-type to the account service
     account.businessType = this.businessType;
