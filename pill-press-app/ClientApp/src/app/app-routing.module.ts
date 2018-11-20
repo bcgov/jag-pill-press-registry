@@ -13,6 +13,7 @@ import { CanDeactivateGuard } from './services/can-deactivate-guard.service';
 import { BCeidAuthGuard } from './services/bceid-auth-guard.service';
 import { DashboardLiteComponent } from './dashboard-lite/dashboard-lite.component';
 import { ProfileSummaryComponent } from './business-information/profile-summary/profile-summary.component';
+import { WaiverApplicationComponent } from './owner-applications/waiver/waiver-application/waiver-application.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,12 @@ const routes: Routes = [
   {
     path: 'business-profile-review',
     component: ProfileSummaryComponent,
+    // canDeactivate: [CanDeactivateGuard],
+    canActivate: [BCeidAuthGuard]
+  },
+  {
+    path: 'waiver-application/:id',
+    component: WaiverApplicationComponent,
     // canDeactivate: [CanDeactivateGuard],
     canActivate: [BCeidAuthGuard]
   },
