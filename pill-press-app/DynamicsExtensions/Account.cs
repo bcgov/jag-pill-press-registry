@@ -44,6 +44,32 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
 
         }
 
+        public static async Task<MicrosoftDynamicsCRMaccount> GetAccountByLegalName(this IDynamicsClient system, string legalName)
+        {
+            legalName = legalName.Replace("'", "''");
+
+            MicrosoftDynamicsCRMaccount result = null;
+            try
+            {
+                var accountResponse = await system.Accounts.GetAsync(filter: $"name eq '{legalName}'");
+                result = accountResponse.Value.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+
+                result = null;
+            }
+
+            // get the primary contact.
+            if (result != null && result.Primarycontactid == null && result._primarycontactidValue != null)
+            {
+                result.Primarycontactid = await system.GetContactById(Guid.Parse(result._primarycontactidValue));
+            }
+
+            return result;
+
+        }
+
 
         /// <summary>
         /// Get a Account by their Guid

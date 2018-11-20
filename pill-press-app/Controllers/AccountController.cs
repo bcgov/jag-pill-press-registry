@@ -361,6 +361,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
 
                 if (bceidBusiness != null)
                 {
+                    account.Name = bceidBusiness.legalName;
+                    account.BcgovDoingbusinessasname = bceidBusiness.legalName;
                     account.Emailaddress1 = bceidBusiness.contactEmail;
                     account.Telephone1 = bceidBusiness.contactPhone;
                     account.Address1City = bceidBusiness.addressCity;
@@ -368,6 +370,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     account.Address1Line1 = bceidBusiness.addressLine1;
                     account.Address1Line2 = bceidBusiness.addressLine2;
                     account.Address1Postalcode = bceidBusiness.addressPostal;
+                }
+                else // likely a dev login.
+                {
+                    account.Name = userSettings.BusinessLegalName;
+                    account.BcgovDoingbusinessasname = userSettings.BusinessLegalName;
                 }
 
                
