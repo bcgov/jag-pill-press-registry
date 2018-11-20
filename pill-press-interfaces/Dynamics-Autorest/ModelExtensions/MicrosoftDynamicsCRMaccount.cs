@@ -13,6 +13,9 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "adoxio_account_adoxio_legalentity_Account@odata.bind")]
         public string AdoxioAccountAdoxioLegalentityAccountODataBind { get; set; }
+
+        [JsonProperty(PropertyName = "bcgov_consentforemailcommunication")]
+        public bool? ConsentForEmailCommunication { get; set; }
        
         [JsonProperty(PropertyName = "primarycontactid@odata.bind")]
         public string PrimaryContactidODataBind { get; set; }

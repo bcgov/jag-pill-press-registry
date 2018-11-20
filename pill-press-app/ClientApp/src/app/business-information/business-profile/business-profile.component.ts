@@ -25,6 +25,7 @@ import * as _moment from 'moment';
 import { defaultFormat as _rollupMoment } from 'moment';
 import { zip } from 'rxjs/operators';
 import { AccountDataService } from '../../services/account-data.service';
+import { DynamicsAccount } from '../../models/dynamics-account.model';
 const moment = _rollupMoment || _moment;
 
 // See the Moment.js docs for the meaning of these formats:
@@ -98,8 +99,9 @@ export class BusinessProfileComponent implements OnInit {
         businessDBAName: [{ value: '', disabled: true }],
         businessNumber: ['', Validators.required],
         businessType: ['', Validators.required],
-        businessPhoneNumber: ['', Validators.required],
+        businessPhoneNumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
         businessEmail: ['', [Validators.required, Validators.email]],
+        consentForEmailCommunication: [false, this.customRequiredCheckboxValidator()],
         websiteAddress: [''],
       }),
       physicalAddress: this.fb.group({
@@ -107,7 +109,7 @@ export class BusinessProfileComponent implements OnInit {
         streetLine1: ['', Validators.required],
         streetLine2: [''],
         city: ['', Validators.required],
-        postalCode: ['', Validators.required],
+        postalCode: ['', [Validators.required, Validators.pattern(postalRegex)]],
         province: [{ value: 'British Columbia', disabled: true }],
         country: [{ value: 'Canada', disabled: true }],
       }),
@@ -116,7 +118,7 @@ export class BusinessProfileComponent implements OnInit {
         streetLine1: ['', Validators.required],
         streetLine2: [''],
         city: ['', Validators.required],
-        postalCode: ['', Validators.required],
+        postalCode: ['', [Validators.required, this.customZipCodeValidator(new RegExp(postalRegex), 'country')]],
         province: ['British Columbia', Validators.required],
         country: ['Canada', Validators.required],
       }),
@@ -125,7 +127,7 @@ export class BusinessProfileComponent implements OnInit {
         firstName: ['', Validators.required],
         lastName: ['', Validators.required],
         title: [''],
-        phoneNumber: ['', Validators.required],
+        phoneNumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
         phoneNumberAlt: [''],
         email: ['', [Validators.required, Validators.email]],
       }),
@@ -134,10 +136,10 @@ export class BusinessProfileComponent implements OnInit {
         firstName: ['', Validators.required],
         lastName: ['', Validators.required],
         title: [''],
-        phoneNumber: ['', Validators.required],
+        phoneNumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
         phoneNumberAlt: [''],
         email: ['', [Validators.required, Validators.email]],
-      }),
+      })
     });
     this.reloadUser();
   }
@@ -198,18 +200,15 @@ export class BusinessProfileComponent implements OnInit {
 
   save(): Subject<boolean> {
     const subResult = new Subject<boolean>();
-    const value = { ...this.form.value };
-    // Make sure the contact email and phone number are in sync with worker
-    value.contact.emailaddress1 = value.worker.email;
-    value.contact.telephone1 = value.worker.phonenumber;
+    const value = <DynamicsAccount>{
+      ...this.form.get('businessProfile').value,
+      primaryContact: this.form.get('primaryContact').value,
+      additionalContact: this.form.get('additionalContact').value,
+      physicalAddress: this.form.get('physicalAddress').value,
+      mailingAddress: this.form.get('mailingAddress').value
+    };
 
-    const saves = [
-      // this.contactDataService.updateContact(value.contact),
-      // this.workerDataService.updateWorker(value.worker, value.worker.id)
-    ];
-
-
-    this.busy2 = Observable.zip(...saves).toPromise().then(res => {
+    this.accountDataService.updateAccount(value).subscribe(res => {
       subResult.next(true);
       this.reloadUser();
     }, err => subResult.next(false));
@@ -217,32 +216,52 @@ export class BusinessProfileComponent implements OnInit {
     return subResult;
   }
 
+  gotoReview() {
+    if (this.form.valid) {
+      this.router.navigate(['/business-profile-review']);
+    } else {
+      this.markAsTouched();
+    }
+  }
 
   // marking the form as touched makes the validation messages show
   markAsTouched() {
     this.form.markAsTouched();
 
-    const workerControls = (<FormGroup>(this.form.get('worker'))).controls;
-    for (const c in workerControls) {
-      if (typeof (workerControls[c].markAsTouched) === 'function') {
-        workerControls[c].markAsTouched();
+    const businessProfileControls = (<FormGroup>(this.form.get('businessProfile'))).controls;
+    for (const c in businessProfileControls) {
+      if (typeof (businessProfileControls[c].markAsTouched) === 'function') {
+        businessProfileControls[c].markAsTouched();
       }
     }
 
-    const contactControls = (<FormGroup>(this.form.get('contact'))).controls;
-    for (const c in contactControls) {
-      if (typeof (contactControls[c].markAsTouched) === 'function') {
-        contactControls[c].markAsTouched();
+    const additionalContactControls = (<FormGroup>(this.form.get('additionalContact'))).controls;
+    for (const c in additionalContactControls) {
+      if (typeof (additionalContactControls[c].markAsTouched) === 'function') {
+        additionalContactControls[c].markAsTouched();
       }
     }
 
-    (<FormGroup[]>this.contacts.controls).forEach(address => {
-      for (const c in address.controls) {
-        if (typeof (address.controls[c].markAsTouched) === 'function') {
-          address.controls[c].markAsTouched();
-        }
+    const primaryContactControls = (<FormGroup>(this.form.get('primaryContact'))).controls;
+    for (const c in primaryContactControls) {
+      if (typeof (primaryContactControls[c].markAsTouched) === 'function') {
+        primaryContactControls[c].markAsTouched();
       }
-    });
+    }
+
+    const mailingAddressControls = (<FormGroup>(this.form.get('mailingAddress'))).controls;
+    for (const c in mailingAddressControls) {
+      if (typeof (mailingAddressControls[c].markAsTouched) === 'function') {
+        mailingAddressControls[c].markAsTouched();
+      }
+    }
+
+    const physicalAddressControls = (<FormGroup>(this.form.get('physicalAddress'))).controls;
+    for (const c in physicalAddressControls) {
+      if (typeof (physicalAddressControls[c].markAsTouched) === 'function') {
+        physicalAddressControls[c].markAsTouched();
+      }
+    }
   }
 
   rejectIfNotDigitOrBackSpace(event) {
@@ -251,6 +270,16 @@ export class BusinessProfileComponent implements OnInit {
     if (acceptedKeys.indexOf(event.key) === -1) {
       event.preventDefault();
     }
+  }
+
+  customRequiredCheckboxValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      if (control.value === true) {
+        return null;
+      } else {
+        return { 'shouldBeTrue': 'But value is false' };
+      }
+    };
   }
 
   customZipCodeValidator(pattern: RegExp, countryField: string): ValidatorFn {
