@@ -12,6 +12,31 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
     /// </summary>
     public static class CustomAddressExtensions
     {
+        public static int? GetCountry (string data)
+        {
+            return 0;
+        }
+
+        public static string GetCountryText(int? data)
+        {
+            return "Canada";
+        }
+
+        public static bool HasValue(this ViewModels.CustomAddress customAddress)
+        {
+            bool result = customAddress != null &&
+                !(string.IsNullOrEmpty(customAddress.City) &&
+                 // Do not check 
+                 string.IsNullOrEmpty(customAddress.Emailaddress) &&
+                 string.IsNullOrEmpty(customAddress.Id) &&
+                 string.IsNullOrEmpty(customAddress.Postalcode) &&
+                 string.IsNullOrEmpty(customAddress.Streetline1) &&
+                 string.IsNullOrEmpty(customAddress.Streetline2) &&
+                 string.IsNullOrEmpty(customAddress.Streetline3)
+                 );
+            return result;
+        }
+
         public static MicrosoftDynamicsCRMbcgovCustomaddress ToModel(this ViewModels.CustomAddress customAddress)
         {
             MicrosoftDynamicsCRMbcgovCustomaddress result = null;
@@ -27,7 +52,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     BcgovCity = customAddress.City,
                     BcgovProvince = customAddress.Province,
                     BcgovPostalcode = customAddress.Postalcode,
-                    BcgovCountry = customAddress.Country
+                    BcgovCountry = CustomAddressExtensions.GetCountry(customAddress.Country)
                 };
 
                 if (customAddress.Id != null)
@@ -57,7 +82,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     City = customAddress.BcgovCity,
                     Province = customAddress.BcgovProvince,
                     Postalcode = customAddress.BcgovPostalcode,
-                    Country = customAddress.BcgovCountry
+                    Country = CustomAddressExtensions.GetCountryText(customAddress.BcgovCountry)
                 };
 
                 if (customAddress.BcgovCustomaddressid != null)
@@ -79,7 +104,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             to.BcgovCity = from.City;
             to.BcgovProvince = from.Province;
             to.BcgovPostalcode = from.Postalcode;
-            to.BcgovCountry = from.Country;  
+            to.BcgovCountry = CustomAddressExtensions.GetCountry(from.Country);  
         }
     }
 }

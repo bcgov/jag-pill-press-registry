@@ -8,7 +8,7 @@ export class DynamicsAccount {
   businessDBAName: string;
   businessEmail: string;
   consentForEmailCommunication: boolean;
-  businessLegalname: string;
+  businessLegalName: string;
   businessNumber: string;
   businessPhoneNumber: string;
   businessType: string;

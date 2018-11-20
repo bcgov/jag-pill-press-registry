@@ -389,8 +389,27 @@ namespace Gov.Jag.PillPressRegistry.Public.Authentication
                         _logger.LogError("Generating a Development user");
                         userSettings.BusinessLegalName = devCompanyId + " BusinessProfileName";
                         userSettings.UserDisplayName = userId + " BCeIDContactType";
-                        siteMinderGuid = GuidUtility.CreateIdForDynamics("contact", userSettings.UserDisplayName).ToString();
-                        siteMinderBusinessGuid = GuidUtility.CreateIdForDynamics("account", userSettings.BusinessLegalName).ToString();
+
+                        // search for a matching user.
+                        var existingContact = _dynamicsClient.GetContactByName(userId, "BCeIDContactType");
+
+                        if (existingContact != null)
+                        {
+                            siteMinderGuid = existingContact.Externaluseridentifier;
+                        }
+                        else
+                        {
+                            siteMinderGuid = GuidUtility.CreateIdForDynamics("contact", userSettings.UserDisplayName).ToString();
+                        }
+
+                        var existingBusiness = await _dynamicsClient.GetAccountByLegalName(userSettings.BusinessLegalName);
+                        if (existingBusiness != null)
+                        {
+                            siteMinderBusinessGuid = existingBusiness.BcgovBceid;
+                        }
+                        {
+                            siteMinderBusinessGuid = GuidUtility.CreateIdForDynamics("account", userSettings.BusinessLegalName).ToString();
+                        }
                         siteMinderUserType = "Business";
                     }
                     else if (isBCSCDeveloperLogin)

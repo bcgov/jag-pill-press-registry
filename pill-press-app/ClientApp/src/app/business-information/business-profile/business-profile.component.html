@@ -17,7 +17,7 @@
           <h3 class="blue-header">BUSINESS INFORMATION</h3>
           <div formGroupName="businessProfile">
             <app-field label="Business - Legal Name">
-              <input class="form-control" style="max-width: 450px; min-width: 250px;" type="text" formControlName="businessLegalname">
+              <input class="form-control" style="max-width: 450px; min-width: 250px;" type="text" formControlName="businessLegalName">
             </app-field>
 
             <app-field label="Business - Doing Business As (DBA) Name">
@@ -222,7 +222,7 @@
           <section style="position: relative;">
             <div [ngBusy]="[busy, busy2]"></div>
             <span style="float: right;">
-              <button class="btn btn-secondary" routerLink="/worker-qualification/dashboard">
+              <button class="btn btn-secondary" routerLink="/dashboard">
                 <i class="fa fa-save"></i>
                 SAVE FOR LATER</button>
               <button style="margin-left: 10px" (click)="gotoReview()" class="btn btn-primary">SAVE &

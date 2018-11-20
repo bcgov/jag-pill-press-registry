@@ -12,6 +12,18 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
     /// </summary>
     public static class ContactExtensions
     {
+        public static bool HasValue (this ViewModels.Contact contact)
+        {
+            bool result = contact != null &&
+                !(string.IsNullOrEmpty(contact.email) &&
+                 string.IsNullOrEmpty(contact.firstName) &&
+                 string.IsNullOrEmpty(contact.lastName) &&
+                 string.IsNullOrEmpty(contact.id) &&
+                 string.IsNullOrEmpty(contact.phoneNumber) &&
+                 string.IsNullOrEmpty(contact.phoneNumberAlt) &&
+                 string.IsNullOrEmpty(contact.title));
+            return result;
+        }
         /// <summary>
         /// Convert a given voteQuestion to a ViewModel
         /// </summary>        

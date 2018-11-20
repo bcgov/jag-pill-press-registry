@@ -39,9 +39,9 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                 toDynamics.Name = fromVM.businessLegalName;
             }
 
-            if (copyIfNull || fromVM.doingBusinessAs != null)
+            if (copyIfNull || fromVM.businessDBAName != null)
             {
-                toDynamics.BcgovDoingbusinessasname = fromVM.doingBusinessAs;
+                toDynamics.BcgovDoingbusinessasname = fromVM.businessDBAName;
             }
 
             if (copyIfNull || fromVM.businessNumber != null)
@@ -74,9 +74,9 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             {
                 toDynamics.ConsentForEmailCommunication = fromVM.consentForEmailCommunication;
             }
-            if (copyIfNull || fromVM.businessPhone != null)
+            if (copyIfNull || fromVM.businessPhoneNumber != null)
             {
-                toDynamics.Telephone1 = fromVM.businessPhone;
+                toDynamics.Telephone1 = fromVM.businessPhoneNumber;
             }
 
             if (copyIfNull || fromVM.mailingAddressName != null)
@@ -124,13 +124,12 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             {
                 accountVM = new ViewModels.Account()
                 {
-                    clientId = account.Accountnumber,
                     description = account.Description,
                     businessLegalName = account.Name,
-                    doingBusinessAs = account.BcgovDoingbusinessasname,
+                    businessDBAName = account.BcgovDoingbusinessasname,
                     businessNumber = account.BcgovBusinessnumber,
                     businessEmail = account.Emailaddress1,
-                    businessPhone = account.Telephone1,
+                    businessPhoneNumber = account.Telephone1,
                     consentForEmailCommunication = account.ConsentForEmailCommunication,
                     externalId = account.BcgovBceid,
                     mailingAddressName = account.Address1Name,

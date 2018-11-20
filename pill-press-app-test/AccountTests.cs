@@ -53,11 +53,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             {
                 businessType = "PublicCorporation",
                 businessLegalName = initialName,
-                doingBusinessAs = initialName,
+                businessDBAName = initialName,
                 businessNumber = initialBusinessNumber,
                 description = initialName,
                 businessEmail = initialName,
-                businessPhone = initialName,
+                businessPhoneNumber = initialName,
                 mailingAddressName = initialName,
                 mailingAddressStreet = initialName,
                 mailingAddressCity = initialName,
@@ -79,11 +79,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
 
             // verify the record.
             Assert.Equal(initialName, responseViewModel.businessLegalName);
-            Assert.Equal(initialName, responseViewModel.doingBusinessAs);
+            Assert.Equal(initialName, responseViewModel.businessDBAName);
             Assert.Equal(initialBusinessNumber, responseViewModel.businessNumber);
             Assert.Equal(initialName, responseViewModel.description);
             Assert.Equal(initialName, responseViewModel.businessEmail);
-            Assert.Equal(initialName, responseViewModel.businessPhone);
+            Assert.Equal(initialName, responseViewModel.businessPhoneNumber);
             Assert.Equal(initialName, responseViewModel.mailingAddressName);
             Assert.Equal(initialName, responseViewModel.mailingAddressStreet);
             Assert.Equal(initialName, responseViewModel.mailingAddressCity);
@@ -106,11 +106,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
 
             // verify the record.
             Assert.Equal(initialName, responseViewModel.businessLegalName);
-            Assert.Equal(initialName, responseViewModel.doingBusinessAs);
+            Assert.Equal(initialName, responseViewModel.businessDBAName);
             Assert.Equal(initialBusinessNumber, responseViewModel.businessNumber);
             Assert.Equal(initialName, responseViewModel.description);
             Assert.Equal(initialName, responseViewModel.businessEmail);
-            Assert.Equal(initialName, responseViewModel.businessPhone);
+            Assert.Equal(initialName, responseViewModel.businessPhoneNumber);
             Assert.Equal(initialName, responseViewModel.mailingAddressName);
             Assert.Equal(initialName, responseViewModel.mailingAddressStreet);
             Assert.Equal(initialName, responseViewModel.mailingAddressCity);
@@ -123,11 +123,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             {
                 businessType = "PublicCorporation",
                 businessLegalName = changedName,
-                doingBusinessAs = changedName,
+                businessDBAName = changedName,
                 businessNumber = changedBusinessNumber,
                 description = changedName,             
                 businessEmail = changedName,
-                businessPhone = changedName,
+                businessPhoneNumber = changedName,
                 mailingAddressName = changedName,
                 mailingAddressStreet = changedName,
                 mailingAddressCity = changedName,
@@ -148,11 +148,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             responseViewModel = JsonConvert.DeserializeObject<ViewModels.Account>(jsonString);
             // verify the record.
             Assert.Equal(changedName, responseViewModel.businessLegalName);
-            Assert.Equal(changedName, responseViewModel.doingBusinessAs);
+            Assert.Equal(changedName, responseViewModel.businessDBAName);
             Assert.Equal(changedBusinessNumber, responseViewModel.businessNumber);
             Assert.Equal(changedName, responseViewModel.description);
             Assert.Equal(changedName, responseViewModel.businessEmail);
-            Assert.Equal(changedName, responseViewModel.businessPhone);
+            Assert.Equal(changedName, responseViewModel.businessPhoneNumber);
             Assert.Equal(changedName, responseViewModel.mailingAddressName);
             Assert.Equal(changedName, responseViewModel.mailingAddressStreet);
             Assert.Equal(changedName, responseViewModel.mailingAddressCity);
@@ -167,7 +167,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             jsonString = await response.Content.ReadAsStringAsync();
 
             responseViewModel = JsonConvert.DeserializeObject<ViewModels.Account>(jsonString);
-            Assert.Equal(changedName, responseViewModel.doingBusinessAs);
+            Assert.Equal(changedName, responseViewModel.businessDBAName);
 
             // D - Delete
 
@@ -223,11 +223,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             {
                 businessType = "PublicCorporation",
                 businessLegalName = initialName,
-                doingBusinessAs = initialName,
+                businessDBAName = initialName,
                 businessNumber = initialBusinessNumber,
                 description = initialName,
                 businessEmail = initialName,
-                businessPhone = initialName,
+                businessPhoneNumber = initialName,
                 mailingAddressName = initialName,
                 mailingAddressStreet = initialName,
                 mailingAddressCity = initialName,
@@ -290,11 +290,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             {
                 businessType = "PublicCorporation",
                 businessLegalName = changedName,
-                doingBusinessAs = changedName,
+                businessDBAName = changedName,
                 businessNumber = changedBusinessNumber,
                 description = changedName,
                 businessEmail = changedName,
-                businessPhone = changedName,
+                businessPhoneNumber = changedName,
                 mailingAddressName = changedName,
                 mailingAddressStreet = changedName,
                 mailingAddressCity = changedName,
@@ -316,11 +316,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             responseViewModel = JsonConvert.DeserializeObject<ViewModels.Account>(jsonString);
             // verify the record.
             Assert.Equal(changedName, responseViewModel.businessLegalName);
-            Assert.Equal(changedName, responseViewModel.doingBusinessAs);
+            Assert.Equal(changedName, responseViewModel.businessDBAName);
             Assert.Equal(changedBusinessNumber, responseViewModel.businessNumber);
             Assert.Equal(changedName, responseViewModel.description);
             Assert.Equal(changedName, responseViewModel.businessEmail);
-            Assert.Equal(changedName, responseViewModel.businessPhone);
+            Assert.Equal(changedName, responseViewModel.businessPhoneNumber);
             Assert.Equal(changedName, responseViewModel.mailingAddressName);
             Assert.Equal(changedName, responseViewModel.mailingAddressStreet);
             Assert.Equal(changedName, responseViewModel.mailingAddressCity);
@@ -344,7 +344,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             jsonString = await response.Content.ReadAsStringAsync();
 
             responseViewModel = JsonConvert.DeserializeObject<ViewModels.Account>(jsonString);
-            Assert.Equal(changedName, responseViewModel.doingBusinessAs);
+            Assert.Equal(changedName, responseViewModel.businessDBAName);
 
             // D - Delete
 
@@ -401,11 +401,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             {
                 businessType = "PublicCorporation",
                 businessLegalName = initialName,
-                doingBusinessAs = initialName,
+                businessDBAName = initialName,
                 businessNumber = initialBusinessNumber,
                 description = initialName,
                 businessEmail = initialName,
-                businessPhone = initialName,
+                businessPhoneNumber = initialName,
                 mailingAddressName = initialName,
                 mailingAddressStreet = initialName,
                 mailingAddressCity = initialName,
@@ -468,11 +468,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             {
                 businessType = "PublicCorporation",
                 businessLegalName = changedName,
-                doingBusinessAs = changedName,
+                businessDBAName = changedName,
                 businessNumber = changedBusinessNumber,
                 description = changedName,
                 businessEmail = changedName,
-                businessPhone = changedName,
+                businessPhoneNumber = changedName,
                 mailingAddressName = changedName,
                 mailingAddressStreet = changedName,
                 mailingAddressCity = changedName,
@@ -494,11 +494,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             responseViewModel = JsonConvert.DeserializeObject<ViewModels.Account>(jsonString);
             // verify the record.
             Assert.Equal(changedName, responseViewModel.businessLegalName);
-            Assert.Equal(changedName, responseViewModel.doingBusinessAs);
+            Assert.Equal(changedName, responseViewModel.businessDBAName);
             Assert.Equal(changedBusinessNumber, responseViewModel.businessNumber);
             Assert.Equal(changedName, responseViewModel.description);
             Assert.Equal(changedName, responseViewModel.businessEmail);
-            Assert.Equal(changedName, responseViewModel.businessPhone);
+            Assert.Equal(changedName, responseViewModel.businessPhoneNumber);
             Assert.Equal(changedName, responseViewModel.mailingAddressName);
             Assert.Equal(changedName, responseViewModel.mailingAddressStreet);
             Assert.Equal(changedName, responseViewModel.mailingAddressCity);
@@ -521,7 +521,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             jsonString = await response.Content.ReadAsStringAsync();
 
             responseViewModel = JsonConvert.DeserializeObject<ViewModels.Account>(jsonString);
-            Assert.Equal(changedName, responseViewModel.doingBusinessAs);
+            Assert.Equal(changedName, responseViewModel.businessDBAName);
 
             // D - Delete
 
@@ -580,11 +580,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             {
                 businessType = "PublicCorporation",
                 businessLegalName = initialName,
-                doingBusinessAs = initialName,
+                businessDBAName = initialName,
                 businessNumber = initialBusinessNumber,
                 description = initialName,
                 businessEmail = initialName,
-                businessPhone = initialPhoneNumber,
+                businessPhoneNumber = initialPhoneNumber,
                 mailingAddressName = initialName,
                 mailingAddressStreet = initialName,
                 mailingAddressCity = initialName,
@@ -650,11 +650,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             {
                 businessType = "PublicCorporation",
                 businessLegalName = changedName,
-                doingBusinessAs = changedName,
+                businessDBAName = changedName,
                 businessNumber = changedBusinessNumber,
                 description = changedName,
                 businessEmail = changedName,
-                businessPhone = changedPhoneNumber,
+                businessPhoneNumber = changedPhoneNumber,
                 mailingAddressName = changedName,
                 mailingAddressStreet = changedName,
                 mailingAddressCity = changedName,
@@ -676,11 +676,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             responseViewModel = JsonConvert.DeserializeObject<ViewModels.Account>(jsonString);
             // verify the record.
             Assert.Equal(changedName, responseViewModel.businessLegalName);
-            Assert.Equal(changedName, responseViewModel.doingBusinessAs);
+            Assert.Equal(changedName, responseViewModel.businessDBAName);
             Assert.Equal(changedBusinessNumber, responseViewModel.businessNumber);
             Assert.Equal(changedName, responseViewModel.description);
             Assert.Equal(changedName, responseViewModel.businessEmail);
-            Assert.Equal(changedPhoneNumber, responseViewModel.businessPhone);
+            Assert.Equal(changedPhoneNumber, responseViewModel.businessPhoneNumber);
             Assert.Equal(changedName, responseViewModel.mailingAddressName);
             Assert.Equal(changedName, responseViewModel.mailingAddressStreet);
             Assert.Equal(changedName, responseViewModel.mailingAddressCity);
@@ -704,7 +704,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             jsonString = await response.Content.ReadAsStringAsync();
 
             responseViewModel = JsonConvert.DeserializeObject<ViewModels.Account>(jsonString);
-            Assert.Equal(changedName, responseViewModel.doingBusinessAs);
+            Assert.Equal(changedName, responseViewModel.businessDBAName);
 
             // D - Delete
 
@@ -762,11 +762,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             {
                 businessType = "PublicCorporation",
                 businessLegalName = initialName,
-                doingBusinessAs = initialName,
+                businessDBAName = initialName,
                 businessNumber = initialBusinessNumber,
                 description = initialName,
                 businessEmail = initialName,
-                businessPhone = initialPhoneNumber,
+                businessPhoneNumber = initialPhoneNumber,
                 mailingAddressName = initialName,
                 mailingAddressStreet = initialName,
                 mailingAddressCity = initialName,
@@ -832,11 +832,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             {
                 businessType = "PublicCorporation",
                 businessLegalName = changedName,
-                doingBusinessAs = changedName,
+                businessDBAName = changedName,
                 businessNumber = changedBusinessNumber,
                 description = changedName,
                 businessEmail = changedName,
-                businessPhone = changedPhoneNumber,
+                businessPhoneNumber = changedPhoneNumber,
                 mailingAddressName = changedName,
                 mailingAddressStreet = changedName,
                 mailingAddressCity = changedName,
@@ -858,11 +858,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             responseViewModel = JsonConvert.DeserializeObject<ViewModels.Account>(jsonString);
             // verify the record.
             Assert.Equal(changedName, responseViewModel.businessLegalName);
-            Assert.Equal(changedName, responseViewModel.doingBusinessAs);
+            Assert.Equal(changedName, responseViewModel.businessDBAName);
             Assert.Equal(changedBusinessNumber, responseViewModel.businessNumber);
             Assert.Equal(changedName, responseViewModel.description);
             Assert.Equal(changedName, responseViewModel.businessEmail);
-            Assert.Equal(changedPhoneNumber, responseViewModel.businessPhone);
+            Assert.Equal(changedPhoneNumber, responseViewModel.businessPhoneNumber);
             Assert.Equal(changedName, responseViewModel.mailingAddressName);
             Assert.Equal(changedName, responseViewModel.mailingAddressStreet);
             Assert.Equal(changedName, responseViewModel.mailingAddressCity);
@@ -886,7 +886,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             jsonString = await response.Content.ReadAsStringAsync();
 
             responseViewModel = JsonConvert.DeserializeObject<ViewModels.Account>(jsonString);
-            Assert.Equal(changedName, responseViewModel.doingBusinessAs);
+            Assert.Equal(changedName, responseViewModel.businessDBAName);
 
             // D - Delete
 
@@ -931,7 +931,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             };
 
             ViewModels.Account viewmodel_account = account.ToViewModel();
-            viewmodel_account.doingBusinessAs = initialName;
+            viewmodel_account.businessDBAName = initialName;
             viewmodel_account.businessType = "PublicCorporation";
 
             string jsonString = JsonConvert.SerializeObject(viewmodel_account);
@@ -946,7 +946,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             ViewModels.Account responseViewModel = JsonConvert.DeserializeObject<ViewModels.Account>(jsonString);
 
             // name should match.
-            Assert.Equal(initialName, responseViewModel.doingBusinessAs);
+            Assert.Equal(initialName, responseViewModel.businessDBAName);
             Guid id = new Guid(responseViewModel.id);
             //String strid = responseViewModel.externalId;
             //Assert.Equal(strid, viewmodel_account.externalId);
@@ -959,14 +959,14 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
 
             jsonString = await response.Content.ReadAsStringAsync();
             responseViewModel = JsonConvert.DeserializeObject<ViewModels.Account>(jsonString);
-            Assert.Equal(initialName, responseViewModel.doingBusinessAs);
+            Assert.Equal(initialName, responseViewModel.businessDBAName);
 
             account.Accountid = id.ToString();
 
 
             ViewModels.Account changedAccount = new ViewModels.Account()
             {
-                doingBusinessAs = changedName
+                businessDBAName = changedName
             };
             // U - Update            
             
@@ -987,7 +987,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             jsonString = await response.Content.ReadAsStringAsync();
 
             responseViewModel = JsonConvert.DeserializeObject<ViewModels.Account>(jsonString);
-            Assert.Equal(changedName, responseViewModel.doingBusinessAs);
+            Assert.Equal(changedName, responseViewModel.businessDBAName);
 
             // D - Delete
 

@@ -90,7 +90,7 @@ export class BusinessProfileComponent implements OnInit {
     this.form = this.fb.group({
       businessProfile: this.fb.group({
         id: [''],
-        businessLegalname: [{ value: '', disabled: true }],
+        businessLegalName: [{ value: '', disabled: true }],
         businessDBAName: [{ value: '', disabled: true }],
         businessNumber: ['', Validators.required],
         businessType: ['', Validators.required],

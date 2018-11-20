@@ -40,7 +40,7 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public string Postalcode { get; set; }
 
         [JsonProperty(PropertyName = "country")]
-        public int? Country { get; set; }
+        public string Country { get; set; }
 
     }
 }
