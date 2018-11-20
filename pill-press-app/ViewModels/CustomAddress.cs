@@ -21,9 +21,6 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         [JsonProperty(PropertyName = "addresstype")]
         public int? BcgovAddresstype { get; set; }
 
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
-
         [JsonProperty(PropertyName = "streetLine1")]
         public string Streetline1 { get; set; }
 
@@ -43,7 +40,7 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public string Postalcode { get; set; }
 
         [JsonProperty(PropertyName = "country")]
-        public int? Country { get; set; }
+        public string Country { get; set; }
 
     }
 }

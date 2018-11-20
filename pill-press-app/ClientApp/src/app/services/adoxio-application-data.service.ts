@@ -26,13 +26,7 @@ export class ApplicationDataService {
       .pipe(catchError(this.handleError));
   }
 
-  /**
-   * Gets the number of submitted Applications for the current user
-   * */
-  getSubmittedApplicationCount(): Observable<number> {
-    return this.http.get<number>(this.apiPath + 'current/submitted-count', { headers: this.jsonHeaders })
-      .pipe(catchError(this.handleError));
-  }
+
 
   getAllCurrentApplications(): Observable<Application[]> {
     return this.http.get<Application[]>(this.apiPath + 'current', { headers: this.jsonHeaders })
