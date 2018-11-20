@@ -14,7 +14,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
     {
         public static int? GetCountry (string data)
         {
-            return 0;
+            return 931490000;
         }
 
         public static string GetCountryText(int? data)

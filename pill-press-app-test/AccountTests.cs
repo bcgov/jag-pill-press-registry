@@ -78,8 +78,9 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             ViewModels.Account responseViewModel = JsonConvert.DeserializeObject<ViewModels.Account>(jsonString);
 
             // verify the record.
-            Assert.Equal(initialName, responseViewModel.businessLegalName);
-            Assert.Equal(initialName, responseViewModel.businessDBAName);
+            Assert.Equal($"{loginUser1} BusinessProfileName", responseViewModel.businessLegalName);
+            Assert.Equal($"{loginUser1} BusinessProfileName", responseViewModel.businessDBAName);
+
             Assert.Equal(initialBusinessNumber, responseViewModel.businessNumber);
             Assert.Equal(initialName, responseViewModel.description);
             Assert.Equal(initialName, responseViewModel.businessEmail);
@@ -105,8 +106,9 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             responseViewModel = JsonConvert.DeserializeObject<ViewModels.Account>(jsonString);
 
             // verify the record.
-            Assert.Equal(initialName, responseViewModel.businessLegalName);
-            Assert.Equal(initialName, responseViewModel.businessDBAName);
+            Assert.Equal($"{loginUser1} BusinessProfileName", responseViewModel.businessLegalName);
+            Assert.Equal($"{loginUser1} BusinessProfileName", responseViewModel.businessDBAName);
+
             Assert.Equal(initialBusinessNumber, responseViewModel.businessNumber);
             Assert.Equal(initialName, responseViewModel.description);
             Assert.Equal(initialName, responseViewModel.businessEmail);
@@ -572,8 +574,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
                 Streetline3 = initialName,
                 City = initialName,
                 Province = initialName,
-                Postalcode = initialName
-                // Country
+                Postalcode = initialName,
+                Country = initialName
             };
 
             ViewModels.Account viewmodel_account = new ViewModels.Account()
@@ -946,7 +948,9 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             ViewModels.Account responseViewModel = JsonConvert.DeserializeObject<ViewModels.Account>(jsonString);
 
             // name should match.
-            Assert.Equal(initialName, responseViewModel.businessDBAName);
+            Assert.Equal($"{loginUser1} BusinessProfileName", responseViewModel.businessLegalName);
+            Assert.Equal($"{loginUser1} BusinessProfileName", responseViewModel.businessDBAName);
+
             Guid id = new Guid(responseViewModel.id);
             //String strid = responseViewModel.externalId;
             //Assert.Equal(strid, viewmodel_account.externalId);
@@ -959,7 +963,9 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
 
             jsonString = await response.Content.ReadAsStringAsync();
             responseViewModel = JsonConvert.DeserializeObject<ViewModels.Account>(jsonString);
-            Assert.Equal(initialName, responseViewModel.businessDBAName);
+            Assert.Equal($"{loginUser1} BusinessProfileName", responseViewModel.businessLegalName);
+            Assert.Equal($"{loginUser1} BusinessProfileName", responseViewModel.businessDBAName);
+
 
             account.Accountid = id.ToString();
 

@@ -158,7 +158,6 @@ export class BusinessProfileComponent implements OnInit {
             });
 
 
-
             this.saveFormData = this.form.value;
             // this.workerStatus = worker.status;
             // if (worker.status !== 'Application Incomplete') {
