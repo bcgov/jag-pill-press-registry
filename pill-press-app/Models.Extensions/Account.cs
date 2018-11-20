@@ -70,11 +70,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             {
                 toDynamics.Emailaddress1 = fromVM.businessEmail;
             }
-            if (copyIfNull || fromVM.consentForEmailCommunication != null))
+            if (copyIfNull || fromVM.consentForEmailCommunication != null)
             {
                 toDynamics.ConsentForEmailCommunication = fromVM.consentForEmailCommunication;
             }
-            if (copyIfNull || fromVM.businessPhone != null))
+            if (copyIfNull || fromVM.businessPhone != null)
             {
                 toDynamics.Telephone1 = fromVM.businessPhone;
             }
