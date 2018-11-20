@@ -41,5 +41,16 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             return result;
         }
 
+
+        public static MicrosoftDynamicsCRMcontact GetContactByName(this IDynamicsClient system, string firstname, string lastname)
+        {
+            firstname = firstname.Replace("'", "''");
+            lastname = lastname.Replace("'", "''");
+            MicrosoftDynamicsCRMcontact result = null;
+            var contactsResponse = system.Contacts.Get(filter: $"firstname eq '{firstname}' and lastname eq '{lastname}'");
+            result = contactsResponse.Value.FirstOrDefault();
+            return result;
+        }
+
     }
 }

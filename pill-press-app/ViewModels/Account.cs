@@ -55,30 +55,40 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
     {
         public string id { get; set; } // Guid
 
-        public string clientId { get; set; } // dynamics = accountnumber
+        //public string clientId { get; set; } // dynamics = accountnumber
+        public string bcIncorporationNumber { get; set; }
+        public string businessDBAName { get; set; } // dynamics = bcgov_doingbusinessasdbaname
+        public string businessEmail { get; set; } //dynamics = emailaddress1
+        public bool? consentForEmailCommunication { get; set; }
 
-        public string businessLegalName { get; set; } // dynamics = name
-        public string doingBusinessAs { get; set; } // dynamics = bcgov_doingbusinessasdbaname
+        public string businessLegalName { get; set; } // dynamics = name        
         public string businessNumber { get; set; } // dynamics = bcgov_businessnumber
         public string businessType { get; set; } // dynamics = businesstypecode
 
-        public string description { get; set; } //dynamics = description
+        public DateTimeOffset? dateOfIncorporationInBC { get; set; }
+
         public string externalId { get; set; }
                 
-        public string businessEmail { get; set; } //dynamics = emailaddress1
-        public string businessPhone { get; set; } //dynamics = telephone1
+        
+        public string businessPhoneNumber { get; set; } //dynamics = telephone1
+        public string description { get; set; } //dynamics = description
+
+
         public string mailingAddressName { get; set; } //dynamics = address1_name
         public string mailingAddressStreet { get; set; } //dynamics = address1_line1
         public string mailingAddressCity { get; set; } //dynamics = address1_city
         public string mailingAddressCountry { get; set; } //dynamics = address1_country
         public string mailingAddressProvince { get; set; } //dynamics = address1_stateorprovince
         public string mailingAddresPostalCode { get; set; } //dynamics = address1_postalcode
-
-        public ViewModels.Contact primaryContact { get; set; }
+        
         public ViewModels.Contact additionalContact { get; set; }
+        public ViewModels.Contact primaryContact { get; set; }
 
         public ViewModels.CustomAddress physicalAddress { get; set; }
         public ViewModels.CustomAddress mailingAddress { get; set; }
 
+        public string name { get; set; }
+        public string pstNumber { get; set; }
+        public string websiteAddress { get; set; }
     }
 }

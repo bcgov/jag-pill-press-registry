@@ -136,6 +136,9 @@ import { WorkerHomeComponent, WorkerHomeDialogComponent } from './worker-qualifi
 import { WorkerInformationComponent } from './worker-qualification/worker-information/worker-information.component';
 import { FieldComponent } from './shared/field/field.component';
 import { ProfileSummaryComponent } from './business-information/profile-summary/profile-summary.component';
+import { WaiverApplicationComponent } from './owner-applications/waiver/waiver-application/waiver-application.component';
+import { WaiverReviewComponent } from './owner-applications/waiver/waiver-review/waiver-review.component';
+import { ThankYouComponent } from './owner-applications/waiver/thank-you/thank-you.component';
 
 @NgModule({
   declarations: [
@@ -195,7 +198,10 @@ import { ProfileSummaryComponent } from './business-information/profile-summary/
     LicenceFeePaymentConfirmationComponent,
     WorkerInformationComponent,
     FieldComponent,
-    ProfileSummaryComponent
+    ProfileSummaryComponent,
+    WaiverApplicationComponent,
+    WaiverReviewComponent,
+    ThankYouComponent
   ],
   imports: [
     BrowserModule,
