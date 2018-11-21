@@ -41,14 +41,16 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
 
     public enum BusinessTypeEnum
     {
-        [Display(Name = "Sole Proprietor")]
-        SoleProprietor = 1,
+        [Display(Name = "Sole Proprietorship")]
+        SoleProprietorship = 1,
         [Display(Name = "Society")]
         Society = 931490000,
         [Display(Name = "Partnership")]
         Partnership = 931490001,
-        [Display(Name = "Company")]
-        Company = 931490002
+        [Display(Name = "Private Corporation")]
+        PrivateCorporation = 931490002,
+        [Display(Name = "Public Corporation")]
+        PublicCorporation = 931490003
     }
 
     public class Account
