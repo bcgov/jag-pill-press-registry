@@ -12,10 +12,10 @@ exports.config = {
   ],
   capabilities: {
     'browserName': 'chrome',
-	 chromeOptions: {
+    chromeOptions: {
        args: ["--headless", "--disable-gpu", "--no-zygote", "--no-sandbox", "--window-size=1024x768"]
        //args: ["--disable-gpu", "--no-zygote", "--no-sandbox", "--window-size=1024x768"]
-	 },
+    },
     'loggingPrefs': {
       'driver': 'INFO',
       'server': 'INFO',
@@ -51,7 +51,7 @@ exports.config = {
 
     jasmine.getEnv().addReporter({
       specDone: function (result) {
-        if (result.status == 'failed') {
+        if (result.status === 'failed') {
           browser.getCapabilities().then(function (caps) {
             var browserName = caps.get('browserName');
 
