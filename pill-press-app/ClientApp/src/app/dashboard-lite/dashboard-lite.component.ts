@@ -48,10 +48,11 @@ export class DashboardLiteComponent implements OnInit {
         }
 
       });
-
-    
   }
 
+  applyForWaiver() {
+
+  }
   verify_payment() {
     const newLicenceApplicationData: Application = new Application();
     newLicenceApplicationData.licenseType = 'Pill Press Retail Store';
@@ -91,7 +92,7 @@ export class DashboardLiteComponent implements OnInit {
     // newLicenceApplicationData. = this.account.businessType;
     this.busy = this.applicationDataService.createApplication(newLicenceApplicationData).subscribe(
       data => {
-        this.router.navigateByUrl(`/application-lite/${data.id}`);
+      this.router.navigateByUrl(`/waiver-application/${data.id}`);
       },
       err => {
         this.snackBar.open('Error starting a New Licence Application', 'Fail', { duration: 3500, extraClasses: ['red-snackbar'] });

@@ -67,3 +67,22 @@ li {
         padding-right: 10px;
     }
 }
+
+.waiver {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icon-wrapper {
+    background-color: #ccc;
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+    padding: 10px;
+    width: 54px;
+    height: 54px;
+}
