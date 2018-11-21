@@ -16,12 +16,20 @@ export class DynamicsAccount {
   contactPhone: string;
   dateOfIncorporationInBC: Date;
   description: string;
-  mailingAddresPostalCode: string;
+
+  physicalAddressLine1: string;
+  physicalAddressLine2: string;
+  physicalAddressCity: string;
+  physicalAddressPostalCode: string;
+  physicalAddressProvince: string;
+  physicalAddressCountry: string;
+  mailingAddressLine1: string;
+  mailingAddressLine2: string;
   mailingAddressCity: string;
-  mailingAddressCountry: string;
-  mailingAddressName: string;
+  mailingAddressPostalCode: string;
   mailingAddressProvince: string;
-  mailingAddressStreet: string;
+  mailingAddressCountry: string;
+
   name: string;
   pstNumber: string;
   websiteAddress: string;
