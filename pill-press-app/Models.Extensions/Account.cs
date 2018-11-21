@@ -72,7 +72,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             }
             if (copyIfNull || fromVM.consentForEmailCommunication != null)
             {
-                toDynamics.ConsentForEmailCommunication = fromVM.consentForEmailCommunication;
+                toDynamics.BcgovConsentforemailcommunication = fromVM.consentForEmailCommunication;
             }
             if (copyIfNull || fromVM.businessPhoneNumber != null)
             {
@@ -130,7 +130,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     businessNumber = account.BcgovBusinessnumber,
                     businessEmail = account.Emailaddress1,
                     businessPhoneNumber = account.Telephone1,
-                    consentForEmailCommunication = account.ConsentForEmailCommunication,
+                    consentForEmailCommunication = account.BcgovConsentforemailcommunication,
                     externalId = account.BcgovBceid,
                     mailingAddressName = account.Address1Name,
                     mailingAddressStreet = account.Address1Line1,
