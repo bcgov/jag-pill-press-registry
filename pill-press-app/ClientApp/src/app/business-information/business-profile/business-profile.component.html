@@ -25,19 +25,17 @@
             </app-field>
 
             <app-field label="Business Number (BC Corporate Registry Number)" [required]="true" [valid]="form.get('businessProfile.businessNumber').valid || !form.get('businessProfile.businessNumber').touched"
-                       errorMessage="Please enter your business number">
-              <input class="form-control" style="max-width: 450px; min-width: 250px;" type="text" formControlName="businessNumber">
+                       errorMessage="Please enter your business number" >
+              <input class="form-control" style="max-width: 450px; min-width: 250px;" type="text" maxlength="9" formControlName="businessNumber">
             </app-field>
 
             <app-field label="Business Type" [required]="true" [valid]="form.get('businessProfile.businessType').valid || !form.get('businessProfile.businessType').touched"
                        errorMessage="Please select a business type from the dropdown list">
               <select class="form-control" style="width: 250px;" formControlName="businessType">
-                <option value="Private Corporation">Private Corporation</option>
-                <option value="Public Corporation">Public Corporation</option>
-                <option value="Unlimited Liability Corporation">Unlimited Liability Corporation</option>
-                <option value="Limited Liability Corporation">Limited Liability Corporation</option>
+                <option value="PrivateCorporation">Private Corporation</option>
+                <option value="PublicCorporation">Public Corporation</option>
                 <option value="Partnership">Partnership</option>
-                <option value="Sole Proprietorship">Sole Proprietorship</option>
+                <option value="SoleProprietorship">Sole Proprietorship</option>
                 <option value="Society">Society</option>
               </select>
             </app-field>
@@ -59,14 +57,14 @@
                 <input class="form-control" style="width: 350px;" type="text" formControlName="physicalAddressCity">
               </app-field>
               <app-field label="Province">
-                <input class="form-control" style="width: 200px;" readonly type="text" formControlName="physicalAddressProvince">
+                <input class="form-control" style="width: 200px;" readonly type="text" value="British Columbia" formControlName="physicalAddressProvince">
               </app-field>
               <app-field label="Postal Code" [required]="true" [valid]="form.get('businessProfile.physicalAddressPostalCode').valid || !form.get('businessProfile.physicalAddressPostalCode').touched"
                          errorMessage="Please enter your postal code">
                 <input class="form-control" style="width: 200px;" type="text" formControlName="physicalAddressPostalCode">
               </app-field>
               <app-field label="Country">
-                <input class="form-control" style="width: 350px;" readonly type="text" formControlName="physicalAddressCountry">
+                <input class="form-control" style="width: 350px;" readonly value="Canada" type="text" formControlName="physicalAddressCountry">
               </app-field>
             </div>
             <p></p>
