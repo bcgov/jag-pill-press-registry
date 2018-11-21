@@ -136,9 +136,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             application.CopyValues(item);
 
             // set the author based on the current user.
-            application.BcgovBceid = userSettings.SiteMinderBusinessGuid;
-            application.BcgovBceiduserguid = userSettings.SiteMinderGuid;
-            application.BcgovBceidemail = userSettings.AuthenticatedUser.Email;
+            application.SubmitterODataBind = _dynamicsClient.GetEntityURI("contacts", userSettings.ContactId);
 
             // Also setup the customer.
             var account = await _dynamicsClient.GetAccountById(Guid.Parse(userSettings.AccountId));

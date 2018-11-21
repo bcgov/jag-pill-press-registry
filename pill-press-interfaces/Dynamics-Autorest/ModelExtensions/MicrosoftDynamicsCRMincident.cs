@@ -13,5 +13,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         [JsonProperty(PropertyName = "customerid_account@odata.bind")]
         public string CustomerIdAccountODataBind { get; set; }
 
+        
+        [JsonProperty(PropertyName = "bcgov_Submitter@odata.bind")]
+        public string SubmitterODataBind { get; set; }
     }
 }

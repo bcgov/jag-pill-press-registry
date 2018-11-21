@@ -52,7 +52,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     BcgovCity = customAddress.City,
                     BcgovProvince = customAddress.Province,
                     BcgovPostalcode = customAddress.Postalcode,
-                    BcgovCountry = customAddress.Country
+                    BcgovCountrytxt = customAddress.Country
                 };
 
                 if (customAddress.Id != null)
@@ -82,7 +82,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     City = customAddress.BcgovCity,
                     Province = customAddress.BcgovProvince,
                     Postalcode = customAddress.BcgovPostalcode,
-                    Country = customAddress.BcgovCountry
+                    Country = customAddress.BcgovCountrytxt
                 };
 
                 if (customAddress.BcgovCustomaddressid != null)
@@ -104,7 +104,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             to.BcgovCity = from.City;
             to.BcgovProvince = from.Province;
             to.BcgovPostalcode = from.Postalcode;
-            to.BcgovCountry = from.Country;  
+            to.BcgovCountrytxt = from.Country;  
         }
     }
 }

@@ -47,6 +47,21 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual IAccounts Accounts { get; private set; }
 
         /// <summary>
+        /// Gets the IApplicationtermses.
+        /// </summary>
+        public virtual IApplicationtermses Applicationtermses { get; private set; }
+
+        /// <summary>
+        /// Gets the IApplicationtypes.
+        /// </summary>
+        public virtual IApplicationtypes Applicationtypes { get; private set; }
+
+        /// <summary>
+        /// Gets the IBusinesscontacts.
+        /// </summary>
+        public virtual IBusinesscontacts Businesscontacts { get; private set; }
+
+        /// <summary>
         /// Gets the ICustomaddresses.
         /// </summary>
         public virtual ICustomaddresses Customaddresses { get; private set; }
@@ -55,6 +70,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// Gets the ICustomproducts.
         /// </summary>
         public virtual ICustomproducts Customproducts { get; private set; }
+
+        /// <summary>
+        /// Gets the ITermsconditionspresets.
+        /// </summary>
+        public virtual ITermsconditionspresets Termsconditionspresets { get; private set; }
 
         /// <summary>
         /// Gets the IContacts.
@@ -328,8 +348,12 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         private void Initialize()
         {
             Accounts = new Accounts(this);
+            Applicationtermses = new Applicationtermses(this);
+            Applicationtypes = new Applicationtypes(this);
+            Businesscontacts = new Businesscontacts(this);
             Customaddresses = new Customaddresses(this);
             Customproducts = new Customproducts(this);
+            Termsconditionspresets = new Termsconditionspresets(this);
             Contacts = new Contacts(this);
             Incidents = new Incidents(this);
             Invoices = new Invoices(this);

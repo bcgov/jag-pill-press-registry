@@ -29,43 +29,53 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// Initializes a new instance of the MicrosoftDynamicsCRMincident
         /// class.
         /// </summary>
-        public MicrosoftDynamicsCRMincident(double? sentimentvalue = default(double?), int? onholdtime = default(int?), string traversedpath = default(string), int? bcgovApplicationtype = default(int?), bool? bcgovIntendtopurchaseequipment = default(bool?), string _transactioncurrencyidValue = default(string), object exchangerate = default(object), bool? bcgovCurrentlyownusepossessequipment = default(bool?), bool? bcgovDeclarationofcorrectinformation = default(bool?), int? incidentstagecode = default(int?), string _createdbyValue = default(string), int? casetypecode = default(int?), string title = default(string), int? numberofchildincidents = default(int?), string bcgovBceiduserguid = default(string), string _owninguserValue = default(string), string _slainvokedidValue = default(string), bool? followuptaskcreated = default(bool?), int? firstresponseslastatus = default(int?), bool? bcgovFoippaconsent = default(bool?), System.DateTimeOffset? modifiedon = default(System.DateTimeOffset?), string _contactidValue = default(string), bool? bcgovConsentforemailcorrespondence = default(bool?), int? statecode = default(int?), int? messagetypecode = default(int?), string bcgovManufacturingprocessdescription = default(string), long? entityimageTimestamp = default(long?), bool? merged = default(bool?), System.DateTimeOffset? overriddencreatedon = default(System.DateTimeOffset?), string _createdbyexternalpartyValue = default(string), string bcgovBceidemail = default(string), bool? bcgovProvidingmanufacturingtoothers = default(bool?), bool? customercontacted = default(bool?), System.DateTimeOffset? createdon = default(System.DateTimeOffset?), string _resolvebykpiidValue = default(string), string _owningteamValue = default(string), string _existingcaseValue = default(string), int? customersatisfactioncode = default(int?), string _firstresponsebykpiidValue = default(string), string _primarycontactidValue = default(string), string _kbarticleidValue = default(string), string _subjectidValue = default(string), int? utcconversiontimezonecode = default(int?), bool? isdecrementing = default(bool?), string stageid = default(string), object entityimage = default(object), System.DateTimeOffset? followupby = default(System.DateTimeOffset?), int? statuscode = default(int?), string _accountidValue = default(string), int? actualserviceunits = default(int?), System.DateTimeOffset? escalatedon = default(System.DateTimeOffset?), bool? bcgovBorrowrentleaseequipment = default(bool?), bool? checkemail = default(bool?), System.DateTimeOffset? resolveby = default(System.DateTimeOffset?), string _masteridValue = default(string), bool? bcgovProducingownproduct = default(bool?), string incidentid = default(string), string _entitlementidValue = default(string), int? importsequencenumber = default(int?), int? servicestage = default(int?), bool? decremententitlementterm = default(bool?), bool? routecase = default(bool?), string bcgovApplicationid = default(string), double? influencescore = default(double?), System.DateTimeOffset? responseby = default(System.DateTimeOffset?), string _modifiedbyexternalpartyValue = default(string), string _modifiedbyValue = default(string), bool? bcgovSellequipment = default(bool?), string _modifiedonbehalfbyValue = default(string), string _productidValue = default(string), string _createdonbehalfbyValue = default(string), int? caseorigincode = default(int?), int? timezoneruleversionnumber = default(int?), string bcgovBceid = default(string), bool? firstresponsesent = default(bool?), string processid = default(string), bool? bcgovOwnintendtoownequipmentforbusinessuse = default(bool?), string productserialnumber = default(string), string entityimageid = default(string), string _contractidValue = default(string), int? contractservicelevelcode = default(int?), bool? isescalated = default(bool?), int? severitycode = default(int?), System.DateTimeOffset? lastonholdtime = default(System.DateTimeOffset?), string ticketnumber = default(string), string _contractdetailidValue = default(string), string _parentcaseidValue = default(string), bool? blockedprofile = default(bool?), int? billedserviceunits = default(int?), string _socialprofileidValue = default(string), string _owneridValue = default(string), string _owningbusinessunitValue = default(string), string bcgovMainbusinessfocus = default(string), string description = default(string), string _slaidValue = default(string), bool? activitiescomplete = default(bool?), int? resolvebyslastatus = default(int?), long? versionnumber = default(long?), string _customeridValue = default(string), string entityimageUrl = default(string), int? prioritycode = default(int?), IList<MicrosoftDynamicsCRMpostregarding> incidentPostRegardings = default(IList<MicrosoftDynamicsCRMpostregarding>), IList<MicrosoftDynamicsCRMpostfollow> incidentPostFollows = default(IList<MicrosoftDynamicsCRMpostfollow>), MicrosoftDynamicsCRMincident masterid = default(MicrosoftDynamicsCRMincident), IList<MicrosoftDynamicsCRMincident> incidentMasterIncident = default(IList<MicrosoftDynamicsCRMincident>), IList<MicrosoftDynamicsCRMlead> originatingCaseLead = default(IList<MicrosoftDynamicsCRMlead>), MicrosoftDynamicsCRMincident parentcaseid = default(MicrosoftDynamicsCRMincident), IList<MicrosoftDynamicsCRMincident> incidentParentIncident = default(IList<MicrosoftDynamicsCRMincident>), MicrosoftDynamicsCRMsystemuser modifiedonbehalfby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMactivityparty> incidentActivityParties = default(IList<MicrosoftDynamicsCRMactivityparty>), MicrosoftDynamicsCRMsla slainvokedidSla = default(MicrosoftDynamicsCRMsla), MicrosoftDynamicsCRMtransactioncurrency transactioncurrencyid = default(MicrosoftDynamicsCRMtransactioncurrency), IList<MicrosoftDynamicsCRMsocialactivity> incidentSocialActivities = default(IList<MicrosoftDynamicsCRMsocialactivity>), MicrosoftDynamicsCRMslakpiinstance firstresponsebykpiid = default(MicrosoftDynamicsCRMslakpiinstance), MicrosoftDynamicsCRMsla slaidSla = default(MicrosoftDynamicsCRMsla), MicrosoftDynamicsCRMproduct productid = default(MicrosoftDynamicsCRMproduct), IList<MicrosoftDynamicsCRMslakpiinstance> slakpiinstanceIncident = default(IList<MicrosoftDynamicsCRMslakpiinstance>), IList<MicrosoftDynamicsCRMactioncard> incidentActioncard = default(IList<MicrosoftDynamicsCRMactioncard>), IList<MicrosoftDynamicsCRMappointment> incidentAppointments = default(IList<MicrosoftDynamicsCRMappointment>), IList<MicrosoftDynamicsCRMconnection> incidentConnections2 = default(IList<MicrosoftDynamicsCRMconnection>), IList<MicrosoftDynamicsCRMserviceappointment> incidentServiceAppointments = default(IList<MicrosoftDynamicsCRMserviceappointment>), MicrosoftDynamicsCRMteam owningteam = default(MicrosoftDynamicsCRMteam), MicrosoftDynamicsCRMcontractdetail contractdetailid = default(MicrosoftDynamicsCRMcontractdetail), MicrosoftDynamicsCRMincident existingcase = default(MicrosoftDynamicsCRMincident), IList<MicrosoftDynamicsCRMincident> incidentExistingcase = default(IList<MicrosoftDynamicsCRMincident>), IList<MicrosoftDynamicsCRMqueueitem> incidentQueueItem = default(IList<MicrosoftDynamicsCRMqueueitem>), IList<MicrosoftDynamicsCRMknowledgebaserecord> knowledgeBaseRecordIncident = default(IList<MicrosoftDynamicsCRMknowledgebaserecord>), IList<MicrosoftDynamicsCRMphonetocaseprocess> incidentPhonetocaseprocess = default(IList<MicrosoftDynamicsCRMphonetocaseprocess>), IList<MicrosoftDynamicsCRMincidentresolution> incidentIncidentResolutions = default(IList<MicrosoftDynamicsCRMincidentresolution>), IList<MicrosoftDynamicsCRMemail> incidentEmails = default(IList<MicrosoftDynamicsCRMemail>), MicrosoftDynamicsCRMprocessstage stageidProcessstage = default(MicrosoftDynamicsCRMprocessstage), IList<MicrosoftDynamicsCRMasyncoperation> incidentAsyncOperations = default(IList<MicrosoftDynamicsCRMasyncoperation>), IList<MicrosoftDynamicsCRMduplicaterecord> incidentDuplicateMatchingRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMphonecall> incidentPhonecalls = default(IList<MicrosoftDynamicsCRMphonecall>), IList<MicrosoftDynamicsCRMconnection> incidentConnections1 = default(IList<MicrosoftDynamicsCRMconnection>), MicrosoftDynamicsCRMbusinessunit owningbusinessunit = default(MicrosoftDynamicsCRMbusinessunit), MicrosoftDynamicsCRMcontact customeridContact = default(MicrosoftDynamicsCRMcontact), MicrosoftDynamicsCRMsubject subjectid = default(MicrosoftDynamicsCRMsubject), MicrosoftDynamicsCRMentitlement entitlementid = default(MicrosoftDynamicsCRMentitlement), IList<MicrosoftDynamicsCRMannotation> incidentAnnotation = default(IList<MicrosoftDynamicsCRMannotation>), IList<MicrosoftDynamicsCRMrecurringappointmentmaster> incidentRecurringAppointmentMasters = default(IList<MicrosoftDynamicsCRMrecurringappointmentmaster>), MicrosoftDynamicsCRMsocialprofile socialprofileid = default(MicrosoftDynamicsCRMsocialprofile), MicrosoftDynamicsCRMsystemuser createdby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMactivitypointer> incidentActivityPointers = default(IList<MicrosoftDynamicsCRMactivitypointer>), IList<MicrosoftDynamicsCRMbulkdeletefailure> incidentBulkDeleteFailures = default(IList<MicrosoftDynamicsCRMbulkdeletefailure>), MicrosoftDynamicsCRMaccount customeridAccount = default(MicrosoftDynamicsCRMaccount), MicrosoftDynamicsCRMsystemuser owninguser = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMslakpiinstance resolvebykpiid = default(MicrosoftDynamicsCRMslakpiinstance), MicrosoftDynamicsCRMcontact primarycontactid = default(MicrosoftDynamicsCRMcontact), MicrosoftDynamicsCRMcontact responsiblecontactid = default(MicrosoftDynamicsCRMcontact), MicrosoftDynamicsCRMsystemuser createdonbehalfby = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMprincipal ownerid = default(MicrosoftDynamicsCRMprincipal), IList<MicrosoftDynamicsCRMletter> incidentLetters = default(IList<MicrosoftDynamicsCRMletter>), IList<MicrosoftDynamicsCRMsyncerror> incidentSyncErrors = default(IList<MicrosoftDynamicsCRMsyncerror>), MicrosoftDynamicsCRMsystemuser modifiedby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMfax> incidentFaxes = default(IList<MicrosoftDynamicsCRMfax>), MicrosoftDynamicsCRMcontract contractid = default(MicrosoftDynamicsCRMcontract), IList<MicrosoftDynamicsCRMknowledgearticleincident> knowledgearticleIncidents = default(IList<MicrosoftDynamicsCRMknowledgearticleincident>), IList<MicrosoftDynamicsCRMduplicaterecord> incidentDuplicateBaseRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMtask> incidentTasks = default(IList<MicrosoftDynamicsCRMtask>), MicrosoftDynamicsCRMkbarticle kbarticleid = default(MicrosoftDynamicsCRMkbarticle), IList<MicrosoftDynamicsCRMsharepointdocumentlocation> incidentSharePointDocumentLocations = default(IList<MicrosoftDynamicsCRMsharepointdocumentlocation>), IList<MicrosoftDynamicsCRMteam> incidentTeams = default(IList<MicrosoftDynamicsCRMteam>), IList<MicrosoftDynamicsCRMbcgovCustomproduct> bcgovIncidentCustomproductRelatedApplication = default(IList<MicrosoftDynamicsCRMbcgovCustomproduct>))
+        public MicrosoftDynamicsCRMincident(double? sentimentvalue = default(double?), int? onholdtime = default(int?), string traversedpath = default(string), bool? bcgovIncompletecycle3 = default(bool?), bool? bcgovIntendtopurchaseequipment = default(bool?), string _transactioncurrencyidValue = default(string), object exchangerate = default(object), bool? bcgovCurrentlyownusepossessequipment = default(bool?), bool? bcgovDeclarationofcorrectinformation = default(bool?), int? incidentstagecode = default(int?), string bcgovDrugestablishmentlicencenumber = default(string), bool? bcgovFoodanddrugact = default(bool?), string _createdbyValue = default(string), int? casetypecode = default(int?), string title = default(string), int? numberofchildincidents = default(int?), string bcgovSitelicencenumber = default(string), string _owninguserValue = default(string), System.DateTimeOffset? bcgovDrugestablishmentlicenceexpirydate = default(System.DateTimeOffset?), string _slainvokedidValue = default(string), bool? followuptaskcreated = default(bool?), string _bcgovSubmitterValue = default(string), int? firstresponseslastatus = default(int?), bool? bcgovFoippaconsent = default(bool?), System.DateTimeOffset? modifiedon = default(System.DateTimeOffset?), bool? bcgovIncompletecycle2 = default(bool?), string _contactidValue = default(string), bool? bcgovConsentforemailcorrespondence = default(bool?), bool? bcgovDrugestablishmentlicence = default(bool?), int? statecode = default(int?), int? messagetypecode = default(int?), string bcgovAdditionalbusinessinformationaboutseller = default(string), bool? bcgovIntendtosellpharmaceuticalmixerorblender = default(bool?), string bcgovManufacturingprocessdescription = default(string), long? entityimageTimestamp = default(long?), bool? merged = default(bool?), System.DateTimeOffset? overriddencreatedon = default(System.DateTimeOffset?), string _createdbyexternalpartyValue = default(string), string bcgovOtherlicencenumber = default(string), bool? bcgovProvidingmanufacturingtoothers = default(bool?), bool? customercontacted = default(bool?), System.DateTimeOffset? createdon = default(System.DateTimeOffset?), string _resolvebykpiidValue = default(string), int? bcgovApplicationtype = default(int?), bool? bcgovIntendonrentingleasingtoothers = default(bool?), string _owningteamValue = default(string), string _existingcaseValue = default(string), int? customersatisfactioncode = default(int?), string _firstresponsebykpiidValue = default(string), string _primarycontactidValue = default(string), string _kbarticleidValue = default(string), string _subjectidValue = default(string), string bcgovIntendtosellother = default(string), int? utcconversiontimezonecode = default(int?), bool? isdecrementing = default(bool?), string stageid = default(string), object entityimage = default(object), System.DateTimeOffset? followupby = default(System.DateTimeOffset?), int? statuscode = default(int?), string _accountidValue = default(string), int? actualserviceunits = default(int?), System.DateTimeOffset? escalatedon = default(System.DateTimeOffset?), bool? bcgovBorrowrentleaseequipment = default(bool?), bool? checkemail = default(bool?), System.DateTimeOffset? resolveby = default(System.DateTimeOffset?), string _masteridValue = default(string), bool? bcgovAllownermanagerscreeningconsentsreceived = default(bool?), bool? bcgovProducingownproduct = default(bool?), string incidentid = default(string), string _entitlementidValue = default(string), int? importsequencenumber = default(int?), int? servicestage = default(int?), string _bcgovApplicationtypeidValue = default(string), string bcgovTypeofsellerother = default(string), bool? decremententitlementterm = default(bool?), bool? routecase = default(bool?), bool? bcgovOwnusepossesstoproduceaproduct = default(bool?), double? influencescore = default(double?), System.DateTimeOffset? responseby = default(System.DateTimeOffset?), string _modifiedbyexternalpartyValue = default(string), bool? bcgovIncomplete = default(bool?), bool? bcgovOnetimesellerofowncontrolledequipment = default(bool?), string _modifiedbyValue = default(string), bool? bcgovSellequipment = default(bool?), string _modifiedonbehalfbyValue = default(string), string _productidValue = default(string), string _createdonbehalfbyValue = default(string), int? caseorigincode = default(int?), int? timezoneruleversionnumber = default(int?), bool? bcgovManufacturerofcontrolledequipment = default(bool?), bool? firstresponsesent = default(bool?), string bcgovOtherlicence = default(string), string bcgovKindsofproductsother = default(string), string processid = default(string), bool? bcgovOwnintendtoownequipmentforbusinessuse = default(bool?), string productserialnumber = default(string), System.DateTimeOffset? bcgovSitelicenceexpirydate = default(System.DateTimeOffset?), string entityimageid = default(string), string _contractidValue = default(string), bool? bcgovIntendonsellingequipmenttoothers = default(bool?), int? contractservicelevelcode = default(int?), bool? isescalated = default(bool?), int? severitycode = default(int?), System.DateTimeOffset? lastonholdtime = default(System.DateTimeOffset?), string ticketnumber = default(string), bool? bcgovIntendtosellpillpress = default(bool?), string _contractdetailidValue = default(string), System.DateTimeOffset? bcgovOtherlicenceexpirydate = default(System.DateTimeOffset?), string _parentcaseidValue = default(string), bool? blockedprofile = default(bool?), int? billedserviceunits = default(int?), string bcgovLegislativeauthorityother = default(string), string _socialprofileidValue = default(string), string _owneridValue = default(string), string _owningbusinessunitValue = default(string), bool? bcgovSitelicence = default(bool?), string bcgovMainbusinessfocus = default(string), bool? bcgovKindsofproductsnaturalhealthproducts = default(bool?), string description = default(string), string _slaidValue = default(string), bool? activitiescomplete = default(bool?), bool? bcgovIntendtosellencapsulator = default(bool?), int? resolvebyslastatus = default(int?), bool? bcgovIntendtoselldiemouldorpunch = default(bool?), bool? bcgovRetailerofcontrolledequipment = default(bool?), long? versionnumber = default(long?), string _customeridValue = default(string), string entityimageUrl = default(string), int? prioritycode = default(int?), bool? bcgovKindsofproductsdrugs = default(bool?), IList<MicrosoftDynamicsCRMpostregarding> incidentPostRegardings = default(IList<MicrosoftDynamicsCRMpostregarding>), IList<MicrosoftDynamicsCRMpostfollow> incidentPostFollows = default(IList<MicrosoftDynamicsCRMpostfollow>), MicrosoftDynamicsCRMincident masterid = default(MicrosoftDynamicsCRMincident), IList<MicrosoftDynamicsCRMincident> incidentMasterIncident = default(IList<MicrosoftDynamicsCRMincident>), IList<MicrosoftDynamicsCRMlead> originatingCaseLead = default(IList<MicrosoftDynamicsCRMlead>), MicrosoftDynamicsCRMincident parentcaseid = default(MicrosoftDynamicsCRMincident), IList<MicrosoftDynamicsCRMincident> incidentParentIncident = default(IList<MicrosoftDynamicsCRMincident>), MicrosoftDynamicsCRMsystemuser modifiedonbehalfby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMactivityparty> incidentActivityParties = default(IList<MicrosoftDynamicsCRMactivityparty>), MicrosoftDynamicsCRMsla slainvokedidSla = default(MicrosoftDynamicsCRMsla), MicrosoftDynamicsCRMtransactioncurrency transactioncurrencyid = default(MicrosoftDynamicsCRMtransactioncurrency), IList<MicrosoftDynamicsCRMsocialactivity> incidentSocialActivities = default(IList<MicrosoftDynamicsCRMsocialactivity>), MicrosoftDynamicsCRMslakpiinstance firstresponsebykpiid = default(MicrosoftDynamicsCRMslakpiinstance), MicrosoftDynamicsCRMsla slaidSla = default(MicrosoftDynamicsCRMsla), MicrosoftDynamicsCRMproduct productid = default(MicrosoftDynamicsCRMproduct), IList<MicrosoftDynamicsCRMslakpiinstance> slakpiinstanceIncident = default(IList<MicrosoftDynamicsCRMslakpiinstance>), IList<MicrosoftDynamicsCRMactioncard> incidentActioncard = default(IList<MicrosoftDynamicsCRMactioncard>), IList<MicrosoftDynamicsCRMappointment> incidentAppointments = default(IList<MicrosoftDynamicsCRMappointment>), IList<MicrosoftDynamicsCRMconnection> incidentConnections2 = default(IList<MicrosoftDynamicsCRMconnection>), IList<MicrosoftDynamicsCRMserviceappointment> incidentServiceAppointments = default(IList<MicrosoftDynamicsCRMserviceappointment>), MicrosoftDynamicsCRMteam owningteam = default(MicrosoftDynamicsCRMteam), MicrosoftDynamicsCRMcontractdetail contractdetailid = default(MicrosoftDynamicsCRMcontractdetail), MicrosoftDynamicsCRMincident existingcase = default(MicrosoftDynamicsCRMincident), IList<MicrosoftDynamicsCRMincident> incidentExistingcase = default(IList<MicrosoftDynamicsCRMincident>), IList<MicrosoftDynamicsCRMqueueitem> incidentQueueItem = default(IList<MicrosoftDynamicsCRMqueueitem>), IList<MicrosoftDynamicsCRMknowledgebaserecord> knowledgeBaseRecordIncident = default(IList<MicrosoftDynamicsCRMknowledgebaserecord>), IList<MicrosoftDynamicsCRMphonetocaseprocess> incidentPhonetocaseprocess = default(IList<MicrosoftDynamicsCRMphonetocaseprocess>), IList<MicrosoftDynamicsCRMincidentresolution> incidentIncidentResolutions = default(IList<MicrosoftDynamicsCRMincidentresolution>), IList<MicrosoftDynamicsCRMemail> incidentEmails = default(IList<MicrosoftDynamicsCRMemail>), MicrosoftDynamicsCRMprocessstage stageidProcessstage = default(MicrosoftDynamicsCRMprocessstage), IList<MicrosoftDynamicsCRMasyncoperation> incidentAsyncOperations = default(IList<MicrosoftDynamicsCRMasyncoperation>), IList<MicrosoftDynamicsCRMduplicaterecord> incidentDuplicateMatchingRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMphonecall> incidentPhonecalls = default(IList<MicrosoftDynamicsCRMphonecall>), IList<MicrosoftDynamicsCRMconnection> incidentConnections1 = default(IList<MicrosoftDynamicsCRMconnection>), MicrosoftDynamicsCRMbusinessunit owningbusinessunit = default(MicrosoftDynamicsCRMbusinessunit), MicrosoftDynamicsCRMcontact customeridContact = default(MicrosoftDynamicsCRMcontact), MicrosoftDynamicsCRMsubject subjectid = default(MicrosoftDynamicsCRMsubject), MicrosoftDynamicsCRMentitlement entitlementid = default(MicrosoftDynamicsCRMentitlement), IList<MicrosoftDynamicsCRMannotation> incidentAnnotation = default(IList<MicrosoftDynamicsCRMannotation>), IList<MicrosoftDynamicsCRMrecurringappointmentmaster> incidentRecurringAppointmentMasters = default(IList<MicrosoftDynamicsCRMrecurringappointmentmaster>), MicrosoftDynamicsCRMsocialprofile socialprofileid = default(MicrosoftDynamicsCRMsocialprofile), MicrosoftDynamicsCRMsystemuser createdby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMactivitypointer> incidentActivityPointers = default(IList<MicrosoftDynamicsCRMactivitypointer>), IList<MicrosoftDynamicsCRMbulkdeletefailure> incidentBulkDeleteFailures = default(IList<MicrosoftDynamicsCRMbulkdeletefailure>), MicrosoftDynamicsCRMaccount customeridAccount = default(MicrosoftDynamicsCRMaccount), MicrosoftDynamicsCRMsystemuser owninguser = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMslakpiinstance resolvebykpiid = default(MicrosoftDynamicsCRMslakpiinstance), MicrosoftDynamicsCRMcontact primarycontactid = default(MicrosoftDynamicsCRMcontact), MicrosoftDynamicsCRMcontact responsiblecontactid = default(MicrosoftDynamicsCRMcontact), MicrosoftDynamicsCRMsystemuser createdonbehalfby = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMprincipal ownerid = default(MicrosoftDynamicsCRMprincipal), IList<MicrosoftDynamicsCRMletter> incidentLetters = default(IList<MicrosoftDynamicsCRMletter>), IList<MicrosoftDynamicsCRMsyncerror> incidentSyncErrors = default(IList<MicrosoftDynamicsCRMsyncerror>), MicrosoftDynamicsCRMsystemuser modifiedby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMfax> incidentFaxes = default(IList<MicrosoftDynamicsCRMfax>), MicrosoftDynamicsCRMcontract contractid = default(MicrosoftDynamicsCRMcontract), IList<MicrosoftDynamicsCRMknowledgearticleincident> knowledgearticleIncidents = default(IList<MicrosoftDynamicsCRMknowledgearticleincident>), IList<MicrosoftDynamicsCRMduplicaterecord> incidentDuplicateBaseRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMtask> incidentTasks = default(IList<MicrosoftDynamicsCRMtask>), MicrosoftDynamicsCRMkbarticle kbarticleid = default(MicrosoftDynamicsCRMkbarticle), IList<MicrosoftDynamicsCRMsharepointdocumentlocation> incidentSharePointDocumentLocations = default(IList<MicrosoftDynamicsCRMsharepointdocumentlocation>), IList<MicrosoftDynamicsCRMteam> incidentTeams = default(IList<MicrosoftDynamicsCRMteam>), IList<MicrosoftDynamicsCRMbcgovApplicationterms> bcgovIncidentBcgovApplicationtermsApplication = default(IList<MicrosoftDynamicsCRMbcgovApplicationterms>), MicrosoftDynamicsCRMbcgovApplicationtype bcgovApplicationTypeId = default(MicrosoftDynamicsCRMbcgovApplicationtype), MicrosoftDynamicsCRMcontact bcgovSubmitter = default(MicrosoftDynamicsCRMcontact), IList<MicrosoftDynamicsCRMbcgovCustomproduct> bcgovIncidentCustomproductRelatedApplication = default(IList<MicrosoftDynamicsCRMbcgovCustomproduct>))
         {
             Sentimentvalue = sentimentvalue;
             Onholdtime = onholdtime;
             Traversedpath = traversedpath;
-            BcgovApplicationtype = bcgovApplicationtype;
+            BcgovIncompletecycle3 = bcgovIncompletecycle3;
             BcgovIntendtopurchaseequipment = bcgovIntendtopurchaseequipment;
             this._transactioncurrencyidValue = _transactioncurrencyidValue;
             Exchangerate = exchangerate;
             BcgovCurrentlyownusepossessequipment = bcgovCurrentlyownusepossessequipment;
             BcgovDeclarationofcorrectinformation = bcgovDeclarationofcorrectinformation;
             Incidentstagecode = incidentstagecode;
+            BcgovDrugestablishmentlicencenumber = bcgovDrugestablishmentlicencenumber;
+            BcgovFoodanddrugact = bcgovFoodanddrugact;
             this._createdbyValue = _createdbyValue;
             Casetypecode = casetypecode;
             Title = title;
             Numberofchildincidents = numberofchildincidents;
-            BcgovBceiduserguid = bcgovBceiduserguid;
+            BcgovSitelicencenumber = bcgovSitelicencenumber;
             this._owninguserValue = _owninguserValue;
+            BcgovDrugestablishmentlicenceexpirydate = bcgovDrugestablishmentlicenceexpirydate;
             this._slainvokedidValue = _slainvokedidValue;
             Followuptaskcreated = followuptaskcreated;
+            this._bcgovSubmitterValue = _bcgovSubmitterValue;
             Firstresponseslastatus = firstresponseslastatus;
             BcgovFoippaconsent = bcgovFoippaconsent;
             Modifiedon = modifiedon;
+            BcgovIncompletecycle2 = bcgovIncompletecycle2;
             this._contactidValue = _contactidValue;
             BcgovConsentforemailcorrespondence = bcgovConsentforemailcorrespondence;
+            BcgovDrugestablishmentlicence = bcgovDrugestablishmentlicence;
             Statecode = statecode;
             Messagetypecode = messagetypecode;
+            BcgovAdditionalbusinessinformationaboutseller = bcgovAdditionalbusinessinformationaboutseller;
+            BcgovIntendtosellpharmaceuticalmixerorblender = bcgovIntendtosellpharmaceuticalmixerorblender;
             BcgovManufacturingprocessdescription = bcgovManufacturingprocessdescription;
             EntityimageTimestamp = entityimageTimestamp;
             Merged = merged;
             Overriddencreatedon = overriddencreatedon;
             this._createdbyexternalpartyValue = _createdbyexternalpartyValue;
-            BcgovBceidemail = bcgovBceidemail;
+            BcgovOtherlicencenumber = bcgovOtherlicencenumber;
             BcgovProvidingmanufacturingtoothers = bcgovProvidingmanufacturingtoothers;
             Customercontacted = customercontacted;
             Createdon = createdon;
             this._resolvebykpiidValue = _resolvebykpiidValue;
+            BcgovApplicationtype = bcgovApplicationtype;
+            BcgovIntendonrentingleasingtoothers = bcgovIntendonrentingleasingtoothers;
             this._owningteamValue = _owningteamValue;
             this._existingcaseValue = _existingcaseValue;
             Customersatisfactioncode = customersatisfactioncode;
@@ -73,6 +83,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
             this._primarycontactidValue = _primarycontactidValue;
             this._kbarticleidValue = _kbarticleidValue;
             this._subjectidValue = _subjectidValue;
+            BcgovIntendtosellother = bcgovIntendtosellother;
             Utcconversiontimezonecode = utcconversiontimezonecode;
             Isdecrementing = isdecrementing;
             Stageid = stageid;
@@ -86,17 +97,22 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
             Checkemail = checkemail;
             Resolveby = resolveby;
             this._masteridValue = _masteridValue;
+            BcgovAllownermanagerscreeningconsentsreceived = bcgovAllownermanagerscreeningconsentsreceived;
             BcgovProducingownproduct = bcgovProducingownproduct;
             Incidentid = incidentid;
             this._entitlementidValue = _entitlementidValue;
             Importsequencenumber = importsequencenumber;
             Servicestage = servicestage;
+            this._bcgovApplicationtypeidValue = _bcgovApplicationtypeidValue;
+            BcgovTypeofsellerother = bcgovTypeofsellerother;
             Decremententitlementterm = decremententitlementterm;
             Routecase = routecase;
-            BcgovApplicationid = bcgovApplicationid;
+            BcgovOwnusepossesstoproduceaproduct = bcgovOwnusepossesstoproduceaproduct;
             Influencescore = influencescore;
             Responseby = responseby;
             this._modifiedbyexternalpartyValue = _modifiedbyexternalpartyValue;
+            BcgovIncomplete = bcgovIncomplete;
+            BcgovOnetimesellerofowncontrolledequipment = bcgovOnetimesellerofowncontrolledequipment;
             this._modifiedbyValue = _modifiedbyValue;
             BcgovSellequipment = bcgovSellequipment;
             this._modifiedonbehalfbyValue = _modifiedonbehalfbyValue;
@@ -104,34 +120,47 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
             this._createdonbehalfbyValue = _createdonbehalfbyValue;
             Caseorigincode = caseorigincode;
             Timezoneruleversionnumber = timezoneruleversionnumber;
-            BcgovBceid = bcgovBceid;
+            BcgovManufacturerofcontrolledequipment = bcgovManufacturerofcontrolledequipment;
             Firstresponsesent = firstresponsesent;
+            BcgovOtherlicence = bcgovOtherlicence;
+            BcgovKindsofproductsother = bcgovKindsofproductsother;
             Processid = processid;
             BcgovOwnintendtoownequipmentforbusinessuse = bcgovOwnintendtoownequipmentforbusinessuse;
             Productserialnumber = productserialnumber;
+            BcgovSitelicenceexpirydate = bcgovSitelicenceexpirydate;
             Entityimageid = entityimageid;
             this._contractidValue = _contractidValue;
+            BcgovIntendonsellingequipmenttoothers = bcgovIntendonsellingequipmenttoothers;
             Contractservicelevelcode = contractservicelevelcode;
             Isescalated = isescalated;
             Severitycode = severitycode;
             Lastonholdtime = lastonholdtime;
             Ticketnumber = ticketnumber;
+            BcgovIntendtosellpillpress = bcgovIntendtosellpillpress;
             this._contractdetailidValue = _contractdetailidValue;
+            BcgovOtherlicenceexpirydate = bcgovOtherlicenceexpirydate;
             this._parentcaseidValue = _parentcaseidValue;
             Blockedprofile = blockedprofile;
             Billedserviceunits = billedserviceunits;
+            BcgovLegislativeauthorityother = bcgovLegislativeauthorityother;
             this._socialprofileidValue = _socialprofileidValue;
             this._owneridValue = _owneridValue;
             this._owningbusinessunitValue = _owningbusinessunitValue;
+            BcgovSitelicence = bcgovSitelicence;
             BcgovMainbusinessfocus = bcgovMainbusinessfocus;
+            BcgovKindsofproductsnaturalhealthproducts = bcgovKindsofproductsnaturalhealthproducts;
             Description = description;
             this._slaidValue = _slaidValue;
             Activitiescomplete = activitiescomplete;
+            BcgovIntendtosellencapsulator = bcgovIntendtosellencapsulator;
             Resolvebyslastatus = resolvebyslastatus;
+            BcgovIntendtoselldiemouldorpunch = bcgovIntendtoselldiemouldorpunch;
+            BcgovRetailerofcontrolledequipment = bcgovRetailerofcontrolledequipment;
             Versionnumber = versionnumber;
             this._customeridValue = _customeridValue;
             EntityimageUrl = entityimageUrl;
             Prioritycode = prioritycode;
+            BcgovKindsofproductsdrugs = bcgovKindsofproductsdrugs;
             IncidentPostRegardings = incidentPostRegardings;
             IncidentPostFollows = incidentPostFollows;
             Masterid = masterid;
@@ -194,6 +223,9 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
             Kbarticleid = kbarticleid;
             IncidentSharePointDocumentLocations = incidentSharePointDocumentLocations;
             IncidentTeams = incidentTeams;
+            BcgovIncidentBcgovApplicationtermsApplication = bcgovIncidentBcgovApplicationtermsApplication;
+            BcgovApplicationTypeId = bcgovApplicationTypeId;
+            BcgovSubmitter = bcgovSubmitter;
             BcgovIncidentCustomproductRelatedApplication = bcgovIncidentCustomproductRelatedApplication;
             CustomInit();
         }
@@ -220,8 +252,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "bcgov_applicationtype")]
-        public int? BcgovApplicationtype { get; set; }
+        [JsonProperty(PropertyName = "bcgov_incompletecycle3")]
+        public bool? BcgovIncompletecycle3 { get; set; }
 
         /// <summary>
         /// </summary>
@@ -255,6 +287,16 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "bcgov_drugestablishmentlicencenumber")]
+        public string BcgovDrugestablishmentlicencenumber { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_foodanddrugact")]
+        public bool? BcgovFoodanddrugact { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "_createdby_value")]
         public string _createdbyValue { get; set; }
 
@@ -275,13 +317,18 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "bcgov_bceiduserguid")]
-        public string BcgovBceiduserguid { get; set; }
+        [JsonProperty(PropertyName = "bcgov_sitelicencenumber")]
+        public string BcgovSitelicencenumber { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "_owninguser_value")]
         public string _owninguserValue { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_drugestablishmentlicenceexpirydate")]
+        public System.DateTimeOffset? BcgovDrugestablishmentlicenceexpirydate { get; set; }
 
         /// <summary>
         /// </summary>
@@ -292,6 +339,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "followuptaskcreated")]
         public bool? Followuptaskcreated { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "_bcgov_submitter_value")]
+        public string _bcgovSubmitterValue { get; set; }
 
         /// <summary>
         /// </summary>
@@ -310,6 +362,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "bcgov_incompletecycle2")]
+        public bool? BcgovIncompletecycle2 { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "_contactid_value")]
         public string _contactidValue { get; set; }
 
@@ -320,6 +377,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "bcgov_drugestablishmentlicence")]
+        public bool? BcgovDrugestablishmentlicence { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "statecode")]
         public int? Statecode { get; set; }
 
@@ -327,6 +389,16 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "messagetypecode")]
         public int? Messagetypecode { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_additionalbusinessinformationaboutseller")]
+        public string BcgovAdditionalbusinessinformationaboutseller { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_intendtosellpharmaceuticalmixerorblender")]
+        public bool? BcgovIntendtosellpharmaceuticalmixerorblender { get; set; }
 
         /// <summary>
         /// </summary>
@@ -355,8 +427,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "bcgov_bceidemail")]
-        public string BcgovBceidemail { get; set; }
+        [JsonProperty(PropertyName = "bcgov_otherlicencenumber")]
+        public string BcgovOtherlicencenumber { get; set; }
 
         /// <summary>
         /// </summary>
@@ -377,6 +449,16 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "_resolvebykpiid_value")]
         public string _resolvebykpiidValue { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_applicationtype")]
+        public int? BcgovApplicationtype { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_intendonrentingleasingtoothers")]
+        public bool? BcgovIntendonrentingleasingtoothers { get; set; }
 
         /// <summary>
         /// </summary>
@@ -412,6 +494,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "_subjectid_value")]
         public string _subjectidValue { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_intendtosellother")]
+        public string BcgovIntendtosellother { get; set; }
 
         /// <summary>
         /// </summary>
@@ -480,6 +567,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "bcgov_allownermanagerscreeningconsentsreceived")]
+        public bool? BcgovAllownermanagerscreeningconsentsreceived { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "bcgov_producingownproduct")]
         public bool? BcgovProducingownproduct { get; set; }
 
@@ -505,6 +597,16 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "_bcgov_applicationtypeid_value")]
+        public string _bcgovApplicationtypeidValue { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_typeofsellerother")]
+        public string BcgovTypeofsellerother { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "decremententitlementterm")]
         public bool? Decremententitlementterm { get; set; }
 
@@ -515,8 +617,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "bcgov_applicationid")]
-        public string BcgovApplicationid { get; set; }
+        [JsonProperty(PropertyName = "bcgov_ownusepossesstoproduceaproduct")]
+        public bool? BcgovOwnusepossesstoproduceaproduct { get; set; }
 
         /// <summary>
         /// </summary>
@@ -532,6 +634,16 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "_modifiedbyexternalparty_value")]
         public string _modifiedbyexternalpartyValue { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_incomplete")]
+        public bool? BcgovIncomplete { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_onetimesellerofowncontrolledequipment")]
+        public bool? BcgovOnetimesellerofowncontrolledequipment { get; set; }
 
         /// <summary>
         /// </summary>
@@ -570,13 +682,23 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "bcgov_bceid")]
-        public string BcgovBceid { get; set; }
+        [JsonProperty(PropertyName = "bcgov_manufacturerofcontrolledequipment")]
+        public bool? BcgovManufacturerofcontrolledequipment { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "firstresponsesent")]
         public bool? Firstresponsesent { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_otherlicence")]
+        public string BcgovOtherlicence { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_kindsofproductsother")]
+        public string BcgovKindsofproductsother { get; set; }
 
         /// <summary>
         /// </summary>
@@ -595,6 +717,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "bcgov_sitelicenceexpirydate")]
+        public System.DateTimeOffset? BcgovSitelicenceexpirydate { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "entityimageid")]
         public string Entityimageid { get; set; }
 
@@ -602,6 +729,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "_contractid_value")]
         public string _contractidValue { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_intendonsellingequipmenttoothers")]
+        public bool? BcgovIntendonsellingequipmenttoothers { get; set; }
 
         /// <summary>
         /// </summary>
@@ -630,8 +762,18 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "bcgov_intendtosellpillpress")]
+        public bool? BcgovIntendtosellpillpress { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "_contractdetailid_value")]
         public string _contractdetailidValue { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_otherlicenceexpirydate")]
+        public System.DateTimeOffset? BcgovOtherlicenceexpirydate { get; set; }
 
         /// <summary>
         /// </summary>
@@ -650,6 +792,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "bcgov_legislativeauthorityother")]
+        public string BcgovLegislativeauthorityother { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "_socialprofileid_value")]
         public string _socialprofileidValue { get; set; }
 
@@ -665,8 +812,18 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "bcgov_sitelicence")]
+        public bool? BcgovSitelicence { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "bcgov_mainbusinessfocus")]
         public string BcgovMainbusinessfocus { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_kindsofproductsnaturalhealthproducts")]
+        public bool? BcgovKindsofproductsnaturalhealthproducts { get; set; }
 
         /// <summary>
         /// </summary>
@@ -685,8 +842,23 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "bcgov_intendtosellencapsulator")]
+        public bool? BcgovIntendtosellencapsulator { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "resolvebyslastatus")]
         public int? Resolvebyslastatus { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_intendtoselldiemouldorpunch")]
+        public bool? BcgovIntendtoselldiemouldorpunch { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_retailerofcontrolledequipment")]
+        public bool? BcgovRetailerofcontrolledequipment { get; set; }
 
         /// <summary>
         /// </summary>
@@ -707,6 +879,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "prioritycode")]
         public int? Prioritycode { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_kindsofproductsdrugs")]
+        public bool? BcgovKindsofproductsdrugs { get; set; }
 
         /// <summary>
         /// </summary>
@@ -1017,6 +1194,21 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "incident_Teams")]
         public IList<MicrosoftDynamicsCRMteam> IncidentTeams { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_incident_bcgov_applicationterms_Application")]
+        public IList<MicrosoftDynamicsCRMbcgovApplicationterms> BcgovIncidentBcgovApplicationtermsApplication { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_ApplicationTypeId")]
+        public MicrosoftDynamicsCRMbcgovApplicationtype BcgovApplicationTypeId { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_Submitter")]
+        public MicrosoftDynamicsCRMcontact BcgovSubmitter { get; set; }
 
         /// <summary>
         /// </summary>
