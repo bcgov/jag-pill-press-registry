@@ -98,24 +98,18 @@ export class BusinessProfileComponent implements OnInit {
         businessEmail: ['', [Validators.required, Validators.email]],
         consentForEmailCommunication: [false, this.customRequiredCheckboxValidator()],
         websiteAddress: [''],
-      }),
-      physicalAddress: this.fb.group({
-        id: [],
-        streetLine1: ['', Validators.required],
-        streetLine2: [''],
-        city: ['', Validators.required],
-        postalCode: ['', [Validators.required, Validators.pattern(postalRegex)]],
-        province: [{ value: 'British Columbia', disabled: true }],
-        country: [{ value: 'Canada', disabled: true }],
-      }),
-      mailingAddress: this.fb.group({
-        id: [],
-        streetLine1: ['', Validators.required],
-        streetLine2: [''],
-        city: ['', Validators.required],
-        postalCode: ['', [Validators.required, this.customZipCodeValidator(new RegExp(postalRegex), 'country')]],
-        province: ['British Columbia', Validators.required],
-        country: ['Canada', Validators.required],
+        physicalAddressLine1: ['', Validators.required],
+        physicalAddressLine2: [''],
+        physicalAddressCity: ['', Validators.required],
+        physicalAddressPostalCode: ['', [Validators.required, Validators.pattern(postalRegex)]],
+        physicalAddressProvince: [{ value: 'British Columbia', disabled: true }],
+        physicalAddressCountry: [{ value: 'Canada', disabled: true }],
+        mailingAddressLine1: ['', Validators.required],
+        mailingAddressLine2: [''],
+        mailingAddressCity: ['', Validators.required],
+        mailingAddressPostalCode: ['', [Validators.required, this.customZipCodeValidator(new RegExp(postalRegex), 'mailingAddressCountry')]],
+        mailingAddressProvince: ['British Columbia', Validators.required],
+        mailingAddressCountry: ['Canada', Validators.required],
       }),
       primaryContact: this.fb.group({
         id: [],
@@ -197,9 +191,7 @@ export class BusinessProfileComponent implements OnInit {
     const value = <DynamicsAccount>{
       ...this.form.get('businessProfile').value,
       primaryContact: this.form.get('primaryContact').value,
-      additionalContact: this.form.get('additionalContact').value,
-      physicalAddress: this.form.get('physicalAddress').value,
-      mailingAddress: this.form.get('mailingAddress').value
+      additionalContact: this.form.get('additionalContact').value
     };
 
     this.accountDataService.updateAccount(value).subscribe(res => {
@@ -243,19 +235,6 @@ export class BusinessProfileComponent implements OnInit {
       }
     }
 
-    const mailingAddressControls = (<FormGroup>(this.form.get('mailingAddress'))).controls;
-    for (const c in mailingAddressControls) {
-      if (typeof (mailingAddressControls[c].markAsTouched) === 'function') {
-        mailingAddressControls[c].markAsTouched();
-      }
-    }
-
-    const physicalAddressControls = (<FormGroup>(this.form.get('physicalAddress'))).controls;
-    for (const c in physicalAddressControls) {
-      if (typeof (physicalAddressControls[c].markAsTouched) === 'function') {
-        physicalAddressControls[c].markAsTouched();
-      }
-    }
   }
 
   rejectIfNotDigitOrBackSpace(event) {

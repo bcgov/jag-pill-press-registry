@@ -79,33 +79,74 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                 toDynamics.Telephone1 = fromVM.businessPhoneNumber;
             }
 
+            if (copyIfNull || fromVM.physicalAddressName != null)
+            {
+                toDynamics.Address1Name = fromVM.physicalAddressName;
+            }
+
+            if (copyIfNull || fromVM.physicalAddressLine1 != null)
+            {
+                toDynamics.Address1Line1 = fromVM.physicalAddressLine1;
+            }
+
+            if (copyIfNull || fromVM.physicalAddressLine2 != null)
+            {
+                toDynamics.Address1Line2 = fromVM.physicalAddressLine2;
+            }
+
+            if (copyIfNull || fromVM.physicalAddressCity != null)
+            {
+                toDynamics.Address1City = fromVM.physicalAddressCity;
+            }
+
+            if (copyIfNull || fromVM.physicalAddressCountry != null)
+            {
+                toDynamics.Address1County = fromVM.physicalAddressCountry;
+            }
+
+            if (copyIfNull || fromVM.physicalAddressProvince != null)
+            {
+                toDynamics.Address1Stateorprovince = fromVM.physicalAddressProvince;
+            }
+
+            if (copyIfNull || fromVM.physicalAddressPostalCode != null)
+            {
+                toDynamics.Address1Postalcode = fromVM.physicalAddressPostalCode;
+            }
+
             if (copyIfNull || fromVM.mailingAddressName != null)
             {
-                toDynamics.Address1Name = fromVM.mailingAddressName;
+                toDynamics.Address2Name = fromVM.mailingAddressName;
             }
 
-            if (copyIfNull || fromVM.mailingAddressStreet != null)
+            if (copyIfNull || fromVM.mailingAddressLine1 != null)
             {
-                toDynamics.Address1Line1 = fromVM.mailingAddressStreet;
+                toDynamics.Address2Line1 = fromVM.mailingAddressLine1;
             }
+
+            if (copyIfNull || fromVM.mailingAddressLine2 != null)
+            {
+                toDynamics.Address2Line1 = fromVM.mailingAddressLine2;
+            }
+
             if (copyIfNull || fromVM.mailingAddressCity != null)
             {
-                toDynamics.Address1City = fromVM.mailingAddressCity;
+                toDynamics.Address2City = fromVM.mailingAddressCity;
             }
 
             if (copyIfNull || fromVM.mailingAddressCountry != null)
             {
-                toDynamics.Address1County = fromVM.mailingAddressCountry;
+                toDynamics.Address2County = fromVM.mailingAddressCountry;
             }
 
-            if (copyIfNull || fromVM.mailingAddressCountry != null)
+            if (copyIfNull || fromVM.mailingAddressProvince != null)
             {
-                toDynamics.Address1Stateorprovince = fromVM.mailingAddressProvince;
+                toDynamics.Address2Stateorprovince = fromVM.mailingAddressProvince;
             }
 
-            if (copyIfNull || fromVM.mailingAddresPostalCode != null)
+            if (copyIfNull || fromVM.mailingAddressPostalCode != null)
             {
-                toDynamics.Address1Postalcode = fromVM.mailingAddresPostalCode;
+                toDynamics.Address2Postalcode = fromVM.mailingAddressPostalCode;
             }
 
             // business type must be set only during creation, not in update (removed from copyValues() )
@@ -132,12 +173,21 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     businessPhoneNumber = account.Telephone1,
                     consentForEmailCommunication = account.BcgovConsentforemailcommunication,
                     externalId = account.BcgovBceid,
+                    physicalAddressName = account.Address2Name,
+                    physicalAddressLine1 = account.Address2Line1,
+                    physicalAddressLine2 = account.Address2Line2,
+                    physicalAddressCity = account.Address2City,
+                    physicalAddressCountry = account.Address2County,
+                    physicalAddressProvince = account.Address2Stateorprovince,
+                    physicalAddressPostalCode = account.Address2Postalcode,
                     mailingAddressName = account.Address1Name,
-                    mailingAddressStreet = account.Address1Line1,
+                    mailingAddressLine1 = account.Address1Line1,
+                    mailingAddressLine2 = account.Address1Line2,
                     mailingAddressCity = account.Address1City,
                     mailingAddressCountry = account.Address1County,
                     mailingAddressProvince = account.Address1Stateorprovince,
-                    mailingAddresPostalCode = account.Address1Postalcode
+                    mailingAddressPostalCode = account.Address1Postalcode
+                    
 
                 };
                 if (account.Accountid != null)
@@ -164,15 +214,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     accountVM.additionalContact = account.BcgovAdditionalContact.ToViewModel();
                 }
 
-                if (account.BcgovCurrentBusinessPhysicalAddress != null)
-                {
-                    accountVM.physicalAddress = account.BcgovCurrentBusinessPhysicalAddress.ToViewModel();
-                }
-
-                if (account.BcgovCurrentBusinessMailingAddress != null)
-                {
-                    accountVM.mailingAddress = account.BcgovCurrentBusinessMailingAddress.ToViewModel();
-                }
+                
             }
 
             return accountVM;

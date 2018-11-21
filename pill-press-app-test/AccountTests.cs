@@ -59,11 +59,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
                 businessEmail = initialName,
                 businessPhoneNumber = initialName,
                 mailingAddressName = initialName,
-                mailingAddressStreet = initialName,
+                mailingAddressLine1 = initialName,
                 mailingAddressCity = initialName,
                 mailingAddressCountry = initialName,
                 mailingAddressProvince = initialName,
-                mailingAddresPostalCode = initialName
+                mailingAddressPostalCode = initialName
             };
 
             string jsonString = JsonConvert.SerializeObject(viewmodel_account);
@@ -86,11 +86,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             Assert.Equal(initialName, responseViewModel.businessEmail);
             Assert.Equal(initialName, responseViewModel.businessPhoneNumber);
             Assert.Equal(initialName, responseViewModel.mailingAddressName);
-            Assert.Equal(initialName, responseViewModel.mailingAddressStreet);
+            Assert.Equal(initialName, responseViewModel.mailingAddressLine1);
             Assert.Equal(initialName, responseViewModel.mailingAddressCity);
             Assert.Equal(initialName, responseViewModel.mailingAddressCountry);
             Assert.Equal(initialName, responseViewModel.mailingAddressProvince);
-            Assert.Equal(initialName, responseViewModel.mailingAddresPostalCode);
+            Assert.Equal(initialName, responseViewModel.mailingAddressPostalCode);
 
             Guid id = new Guid(responseViewModel.id);
             //String strid = responseViewModel.externalId;
@@ -114,11 +114,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             Assert.Equal(initialName, responseViewModel.businessEmail);
             Assert.Equal(initialName, responseViewModel.businessPhoneNumber);
             Assert.Equal(initialName, responseViewModel.mailingAddressName);
-            Assert.Equal(initialName, responseViewModel.mailingAddressStreet);
+            Assert.Equal(initialName, responseViewModel.mailingAddressLine1);
             Assert.Equal(initialName, responseViewModel.mailingAddressCity);
             Assert.Equal(initialName, responseViewModel.mailingAddressCountry);
             Assert.Equal(initialName, responseViewModel.mailingAddressProvince);
-            Assert.Equal(initialName, responseViewModel.mailingAddresPostalCode);
+            Assert.Equal(initialName, responseViewModel.mailingAddressPostalCode);
 
             // U - Update 
             ViewModels.Account changedAccount = new ViewModels.Account()
@@ -131,11 +131,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
                 businessEmail = changedName,
                 businessPhoneNumber = changedName,
                 mailingAddressName = changedName,
-                mailingAddressStreet = changedName,
+                mailingAddressLine1 = changedName,
                 mailingAddressCity = changedName,
                 mailingAddressCountry = changedName,
                 mailingAddressProvince = changedName,
-                mailingAddresPostalCode = changedName
+                mailingAddressPostalCode = changedName
             };
            
             request = new HttpRequestMessage(HttpMethod.Put, "/api/" + service + "/" + id)
@@ -156,11 +156,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             Assert.Equal(changedName, responseViewModel.businessEmail);
             Assert.Equal(changedName, responseViewModel.businessPhoneNumber);
             Assert.Equal(changedName, responseViewModel.mailingAddressName);
-            Assert.Equal(changedName, responseViewModel.mailingAddressStreet);
+            Assert.Equal(changedName, responseViewModel.mailingAddressLine1);
             Assert.Equal(changedName, responseViewModel.mailingAddressCity);
             Assert.Equal(changedName, responseViewModel.mailingAddressCountry);
             Assert.Equal(changedName, responseViewModel.mailingAddressProvince);
-            Assert.Equal(changedName, responseViewModel.mailingAddresPostalCode);
+            Assert.Equal(changedName, responseViewModel.mailingAddressPostalCode);
 
             request = new HttpRequestMessage(HttpMethod.Get, "/api/" + service + "/" + id);
             response = await _client.SendAsync(request);
@@ -231,11 +231,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
                 businessEmail = initialName,
                 businessPhoneNumber = initialName,
                 mailingAddressName = initialName,
-                mailingAddressStreet = initialName,
+                mailingAddressLine1 = initialName,
                 mailingAddressCity = initialName,
                 mailingAddressCountry = initialName,
                 mailingAddressProvince = initialName,
-                mailingAddresPostalCode = initialName,
+                mailingAddressPostalCode = initialName,
                 primaryContact = contact
             };
 
@@ -298,11 +298,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
                 businessEmail = changedName,
                 businessPhoneNumber = changedName,
                 mailingAddressName = changedName,
-                mailingAddressStreet = changedName,
+                mailingAddressLine1 = changedName,
                 mailingAddressCity = changedName,
                 mailingAddressCountry = changedName,
                 mailingAddressProvince = changedName,
-                mailingAddresPostalCode = changedName,
+                mailingAddressPostalCode = changedName,
                 primaryContact = changedContact
             };
 
@@ -324,11 +324,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             Assert.Equal(changedName, responseViewModel.businessEmail);
             Assert.Equal(changedName, responseViewModel.businessPhoneNumber);
             Assert.Equal(changedName, responseViewModel.mailingAddressName);
-            Assert.Equal(changedName, responseViewModel.mailingAddressStreet);
+            Assert.Equal(changedName, responseViewModel.mailingAddressLine1);
             Assert.Equal(changedName, responseViewModel.mailingAddressCity);
             Assert.Equal(changedName, responseViewModel.mailingAddressCountry);
             Assert.Equal(changedName, responseViewModel.mailingAddressProvince);
-            Assert.Equal(changedName, responseViewModel.mailingAddresPostalCode);
+            Assert.Equal(changedName, responseViewModel.mailingAddressPostalCode);
 
             Assert.NotNull(responseViewModel.primaryContact);
             Assert.Equal(changedName, responseViewModel.primaryContact.firstName);
@@ -409,11 +409,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
                 businessEmail = initialName,
                 businessPhoneNumber = initialName,
                 mailingAddressName = initialName,
-                mailingAddressStreet = initialName,
+                mailingAddressLine1 = initialName,
                 mailingAddressCity = initialName,
                 mailingAddressCountry = initialName,
                 mailingAddressProvince = initialName,
-                mailingAddresPostalCode = initialName,
+                mailingAddressPostalCode = initialName,
                 additionalContact = contact
             };
 
@@ -476,11 +476,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
                 businessEmail = changedName,
                 businessPhoneNumber = changedName,
                 mailingAddressName = changedName,
-                mailingAddressStreet = changedName,
+                mailingAddressLine1 = changedName,
                 mailingAddressCity = changedName,
                 mailingAddressCountry = changedName,
                 mailingAddressProvince = changedName,
-                mailingAddresPostalCode = changedName,
+                mailingAddressPostalCode = changedName,
                 additionalContact = changedContact
             };
 
@@ -502,11 +502,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             Assert.Equal(changedName, responseViewModel.businessEmail);
             Assert.Equal(changedName, responseViewModel.businessPhoneNumber);
             Assert.Equal(changedName, responseViewModel.mailingAddressName);
-            Assert.Equal(changedName, responseViewModel.mailingAddressStreet);
+            Assert.Equal(changedName, responseViewModel.mailingAddressLine1);
             Assert.Equal(changedName, responseViewModel.mailingAddressCity);
             Assert.Equal(changedName, responseViewModel.mailingAddressCountry);
             Assert.Equal(changedName, responseViewModel.mailingAddressProvince);
-            Assert.Equal(changedName, responseViewModel.mailingAddresPostalCode);
+            Assert.Equal(changedName, responseViewModel.mailingAddressPostalCode);
 
             Assert.NotNull(responseViewModel.additionalContact);
             Assert.Equal(changedName, responseViewModel.additionalContact.firstName);
@@ -588,12 +588,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
                 businessEmail = initialName,
                 businessPhoneNumber = initialPhoneNumber,
                 mailingAddressName = initialName,
-                mailingAddressStreet = initialName,
+                mailingAddressLine1 = initialName,
                 mailingAddressCity = initialName,
                 mailingAddressCountry = initialName,
                 mailingAddressProvince = initialName,
-                mailingAddresPostalCode = initialName,
-                mailingAddress = customAddress
+                mailingAddressPostalCode = initialName
             };
 
             string jsonString = JsonConvert.SerializeObject(viewmodel_account);
@@ -608,7 +607,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             ViewModels.Account responseViewModel = JsonConvert.DeserializeObject<ViewModels.Account>(jsonString);
 
             // verify the record.
-            Assert.NotNull(responseViewModel.mailingAddress);
+            Assert.NotNull(responseViewModel);
 
             Guid id = new Guid(responseViewModel.id);
             //String strid = responseViewModel.externalId;
@@ -623,30 +622,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             jsonString = await response.Content.ReadAsStringAsync();
             responseViewModel = JsonConvert.DeserializeObject<ViewModels.Account>(jsonString);
 
-            // verify the record.
-
-            Assert.NotNull(responseViewModel.mailingAddress);
-            Assert.Equal(initialName, responseViewModel.mailingAddress.Emailaddress);
-            Assert.Equal(initialName, responseViewModel.mailingAddress.Streetline1);
-            Assert.Equal(initialName, responseViewModel.mailingAddress.Streetline2);
-            Assert.Equal(initialName, responseViewModel.mailingAddress.Streetline3);
-            Assert.Equal(initialName, responseViewModel.mailingAddress.City);
-            Assert.Equal(initialName, responseViewModel.mailingAddress.Province);
-            Assert.Equal(initialName, responseViewModel.mailingAddress.Postalcode);
-
-            // U - Update 
-            ViewModels.CustomAddress changedAddress = new ViewModels.CustomAddress()
-            {
-                Id = responseViewModel.mailingAddress.Id,
-                Emailaddress = changedName,
-                Streetline1 = changedName,
-                Streetline2 = changedName,
-                Streetline3 = changedName,
-                City = changedName,
-                Province = changedName,
-                Postalcode = changedName
-                // Country
-            };
+            // U - Update             
 
             ViewModels.Account changedAccount = new ViewModels.Account()
             {
@@ -658,12 +634,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
                 businessEmail = changedName,
                 businessPhoneNumber = changedPhoneNumber,
                 mailingAddressName = changedName,
-                mailingAddressStreet = changedName,
+                mailingAddressLine1 = changedName,
                 mailingAddressCity = changedName,
                 mailingAddressCountry = changedName,
                 mailingAddressProvince = changedName,
-                mailingAddresPostalCode = changedName,
-                mailingAddress = changedAddress
+                mailingAddressPostalCode = changedName
             };
 
             request = new HttpRequestMessage(HttpMethod.Put, "/api/" + service + "/" + id)
@@ -684,20 +659,13 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             Assert.Equal(changedName, responseViewModel.businessEmail);
             Assert.Equal(changedPhoneNumber, responseViewModel.businessPhoneNumber);
             Assert.Equal(changedName, responseViewModel.mailingAddressName);
-            Assert.Equal(changedName, responseViewModel.mailingAddressStreet);
+            Assert.Equal(changedName, responseViewModel.mailingAddressLine1);
             Assert.Equal(changedName, responseViewModel.mailingAddressCity);
             Assert.Equal(changedName, responseViewModel.mailingAddressCountry);
             Assert.Equal(changedName, responseViewModel.mailingAddressProvince);
-            Assert.Equal(changedName, responseViewModel.mailingAddresPostalCode);
+            Assert.Equal(changedName, responseViewModel.mailingAddressPostalCode);
 
-            Assert.NotNull(responseViewModel.mailingAddress);
-            Assert.Equal(changedName, responseViewModel.mailingAddress.Emailaddress);
-            Assert.Equal(changedName, responseViewModel.mailingAddress.Streetline1);
-            Assert.Equal(changedName, responseViewModel.mailingAddress.Streetline2);
-            Assert.Equal(changedName, responseViewModel.mailingAddress.Streetline3);
-            Assert.Equal(changedName, responseViewModel.mailingAddress.City);
-            Assert.Equal(changedName, responseViewModel.mailingAddress.Province);
-            Assert.Equal(changedName, responseViewModel.mailingAddress.Postalcode);
+           
 
             request = new HttpRequestMessage(HttpMethod.Get, "/api/" + service + "/" + id);
             response = await _client.SendAsync(request);
@@ -770,12 +738,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
                 businessEmail = initialName,
                 businessPhoneNumber = initialPhoneNumber,
                 mailingAddressName = initialName,
-                mailingAddressStreet = initialName,
+                mailingAddressLine1 = initialName,
                 mailingAddressCity = initialName,
                 mailingAddressCountry = initialName,
                 mailingAddressProvince = initialName,
-                mailingAddresPostalCode = initialName,
-                physicalAddress = customAddress
+                mailingAddressPostalCode = initialName
             };
 
             string jsonString = JsonConvert.SerializeObject(viewmodel_account);
@@ -790,7 +757,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             ViewModels.Account responseViewModel = JsonConvert.DeserializeObject<ViewModels.Account>(jsonString);
 
             // verify the record.
-            Assert.NotNull(responseViewModel.physicalAddress);
+            Assert.NotNull(responseViewModel);
 
             Guid id = new Guid(responseViewModel.id);
             //String strid = responseViewModel.externalId;
@@ -807,28 +774,16 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
 
             // verify the record.
 
-            Assert.NotNull(responseViewModel.physicalAddress);
-            Assert.Equal(initialName, responseViewModel.physicalAddress.Emailaddress);
-            Assert.Equal(initialName, responseViewModel.physicalAddress.Streetline1);
-            Assert.Equal(initialName, responseViewModel.physicalAddress.Streetline2);
-            Assert.Equal(initialName, responseViewModel.physicalAddress.Streetline3);
-            Assert.Equal(initialName, responseViewModel.physicalAddress.City);
-            Assert.Equal(initialName, responseViewModel.physicalAddress.Province);
-            Assert.Equal(initialName, responseViewModel.physicalAddress.Postalcode);
+            Assert.NotNull(responseViewModel);
+            Assert.Equal(initialName, responseViewModel.physicalAddressCity);
+            Assert.Equal(initialName, responseViewModel.physicalAddressCountry);
+            Assert.Equal(initialName, responseViewModel.physicalAddressName);
+            Assert.Equal(initialName, responseViewModel.physicalAddressPostalCode);
+            Assert.Equal(initialName, responseViewModel.physicalAddressProvince);
+            Assert.Equal(initialName, responseViewModel.physicalAddressLine1);
 
             // U - Update 
-            ViewModels.CustomAddress changedAddress = new ViewModels.CustomAddress()
-            {
-                Id = responseViewModel.physicalAddress.Id,
-                Emailaddress = changedName,
-                Streetline1 = changedName,
-                Streetline2 = changedName,
-                Streetline3 = changedName,
-                City = changedName,
-                Province = changedName,
-                Postalcode = changedName
-                // Country
-            };
+
 
             ViewModels.Account changedAccount = new ViewModels.Account()
             {
@@ -840,12 +795,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
                 businessEmail = changedName,
                 businessPhoneNumber = changedPhoneNumber,
                 mailingAddressName = changedName,
-                mailingAddressStreet = changedName,
+                mailingAddressLine1 = changedName,
                 mailingAddressCity = changedName,
                 mailingAddressCountry = changedName,
                 mailingAddressProvince = changedName,
-                mailingAddresPostalCode = changedName,
-                physicalAddress = changedAddress
+                mailingAddressPostalCode = changedName
             };
 
             request = new HttpRequestMessage(HttpMethod.Put, "/api/" + service + "/" + id)
@@ -866,20 +820,12 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             Assert.Equal(changedName, responseViewModel.businessEmail);
             Assert.Equal(changedPhoneNumber, responseViewModel.businessPhoneNumber);
             Assert.Equal(changedName, responseViewModel.mailingAddressName);
-            Assert.Equal(changedName, responseViewModel.mailingAddressStreet);
+            Assert.Equal(changedName, responseViewModel.mailingAddressLine1);
             Assert.Equal(changedName, responseViewModel.mailingAddressCity);
             Assert.Equal(changedName, responseViewModel.mailingAddressCountry);
             Assert.Equal(changedName, responseViewModel.mailingAddressProvince);
-            Assert.Equal(changedName, responseViewModel.mailingAddresPostalCode);
+            Assert.Equal(changedName, responseViewModel.mailingAddressPostalCode);
 
-            Assert.NotNull(responseViewModel.physicalAddress);
-            Assert.Equal(changedName, responseViewModel.physicalAddress.Emailaddress);
-            Assert.Equal(changedName, responseViewModel.physicalAddress.Streetline1);
-            Assert.Equal(changedName, responseViewModel.physicalAddress.Streetline2);
-            Assert.Equal(changedName, responseViewModel.physicalAddress.Streetline3);
-            Assert.Equal(changedName, responseViewModel.physicalAddress.City);
-            Assert.Equal(changedName, responseViewModel.physicalAddress.Province);
-            Assert.Equal(changedName, responseViewModel.physicalAddress.Postalcode);
 
             request = new HttpRequestMessage(HttpMethod.Get, "/api/" + service + "/" + id);
             response = await _client.SendAsync(request);
