@@ -41,8 +41,11 @@
   </div>
 
   <div *ngIf="!currentUser || (currentUser && !currentUser.isNewUser == true) || (currentUser && !currentUser.businessname)">
-    <!-- /NAVBAR -->
-    <div class="navigationRibbon" *ngIf="!currentUser">
+
+    <!-- /NAVBAR START -->
+    <!-- ********* No Navbar for pill press ************ -->
+
+    <!--<div class="navigationRibbon" *ngIf="!currentUser">
       <div class="level2Navigation">
         <div class="">
           <nav class="navbar navbar-expand-md navbar-light justify-content-end" style="margin-bottom: 0; width: 100%;">
@@ -58,7 +61,7 @@
                 <li class="nav-item">
                   <a (click)="toggleButton.click()" tabindex="2" routerLink="/business-profile" title="Home">Business Profile</a>
                 </li>
-                <!-- <li class="nav-item">
+                 <li class="nav-item">
                   <a (click)="toggleButton.click()" tabindex="2" routerLink="/policy-document/pill press-retail-licence">Licence
                     Types
                   </a>
@@ -79,36 +82,35 @@
                 </li>
                 <li class="nav-item">
                   <a (click)="toggleButton.click()" tabindex="2" routerLink="/policy-document/application-stats">Application Statistics</a>
-                </li> -->
+                </li> 
               </ul>
             </div>
           </nav>
         </div>
       </div>
+    </div>
 
-    </div>
-<!--
-  <section *ngIf="currentUser && !isAssociate" class="navigationRibbon">
-    <div class="level2Navigation ">
-      <div class="">
-        <nav class="navbar navbar-expand-md navbar-light justify-content-end" style="margin-bottom: 0;  width: 100%;">
-          <button class="navbar-toggler btn-mobile" type="button" data-toggle="collapse" style="float: right" data-target="#loggedInMenu"
-                  aria-controls="loggedInMenu" aria-expanded="false" aria-label="Toggle navigation" #toggleButtonLoggedIn>
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="loggedInMenu">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <a *ngIf="currentUser.userType == 'Business'" (click)="toggleButtonLoggedIn.click()" class="nav-link" routerLink="/dashboard">Dashboard</a>
-                <a *ngIf="currentUser.userType == 'VerifiedIndividual'" (click)="toggleButtonLoggedIn.click()" class="nav-link" routerLink="/worker-qualification/dashboard">Dashboard</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
+    <section *ngIf="currentUser && !isAssociate" class="navigationRibbon">
+      <div class="level2Navigation ">
+        <div class="">
+          <nav class="navbar navbar-expand-md navbar-light justify-content-end" style="margin-bottom: 0;  width: 100%;">
+            <button class="navbar-toggler btn-mobile" type="button" data-toggle="collapse" style="float: right" data-target="#loggedInMenu"
+                    aria-controls="loggedInMenu" aria-expanded="false" aria-label="Toggle navigation" #toggleButtonLoggedIn>
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="loggedInMenu">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a *ngIf="currentUser.userType == 'Business'" (click)="toggleButtonLoggedIn.click()" class="nav-link" routerLink="/dashboard">Dashboard</a>
+                  <a *ngIf="currentUser.userType == 'VerifiedIndividual'" (click)="toggleButtonLoggedIn.click()" class="nav-link" routerLink="/worker-qualification/dashboard">Dashboard</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
       </div>
-    </div>
-  </section>
-          -->
+    </section>-->
+          
     <!-- /NAVBAR END -->
     
     <main class="app-content">

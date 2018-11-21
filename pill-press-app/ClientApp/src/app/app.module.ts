@@ -55,11 +55,11 @@ import { AppComponent } from './app.component';
 import { BceidConfirmationComponent } from './bceid-confirmation/bceid-confirmation.component';
 import { SearchBoxDirective } from './search-box/search-box.directive';
 import { GeneralDataService } from './general-data.service';
-import { AdminModule } from './admin/admin.module';
+//import { AdminModule } from './admin/admin.module';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { DynamicsDataService } from './services/dynamics-data.service';
-import { DynamicsFormComponent } from './dynamics-form/dynamics-form.component';
-import { FormViewerComponent } from './form-viewer/form-viewer.component';
+//import { DynamicsFormComponent } from './dynamics-form/dynamics-form.component';
+//import { FormViewerComponent } from './form-viewer/form-viewer.component';
 import { InsertComponent } from './insert/insert.component';
 import { InsertService } from './insert/insert.service';
 import { StaticComponent } from './static/static.component';
@@ -73,13 +73,13 @@ import { SurveyPrimaryComponent } from './survey/primary.component';
 import { SurveyTestComponent } from './survey/test.component';
 import { SurveySidebarComponent } from './survey/sidebar.component';
 import { SurveyDataService } from './services/survey-data.service';
-import { ResultComponent } from './result/result.component';
-import { AccordionComponent } from './accordion/accordion.component';
-import { VoteComponent } from './vote/vote.component';
-import { VoteDataService } from './services/vote-data.service';
-import { NewsletterSignupComponent } from './newsletter-signup/newsletter-signup.component';
-import { NewsletterConfirmationComponent } from './newsletter-confirmation/newsletter-confirmation.component';
-import { NewsletterDataService } from './services/newsletter-data.service';
+//import { ResultComponent } from './result/result.component';
+//import { AccordionComponent } from './accordion/accordion.component';
+//import { VoteComponent } from './vote/vote.component';
+//import { VoteDataService } from './services/vote-data.service';
+//import { NewsletterSignupComponent } from './newsletter-signup/newsletter-signup.component';
+//import { NewsletterConfirmationComponent } from './newsletter-confirmation/newsletter-confirmation.component';
+//import { NewsletterDataService } from './services/newsletter-data.service';
 import { UserDataService } from './services/user-data.service';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ApplicationsListComponent } from './applications-list/applications-list.component';
@@ -106,7 +106,7 @@ import { DeclarationComponent } from './license-application/tabs/declaration/dec
 import { SubmitPayComponent } from './license-application/tabs/submit-pay/submit-pay.component';
 
 import { BsDatepickerModule, AlertModule } from 'ngx-bootstrap';
-import { TiedHouseConnectionsDataService } from './services/tied-house-connections-data.service';
+//import { TiedHouseConnectionsDataService } from './services/tied-house-connections-data.service';
 import { CanDeactivateGuard } from './services/can-deactivate-guard.service';
 import { BCeidAuthGuard } from './services/bceid-auth-guard.service';
 import { ServiceCardAuthGuard } from './services/service-card-auth-guard.service';
@@ -142,22 +142,22 @@ import { ThankYouComponent } from './owner-applications/waiver/thank-you/thank-y
 
 @NgModule({
   declarations: [
-    AccordionComponent,
+    //AccordionComponent,
     AppComponent,
     ApplicationsListComponent,
     BceidConfirmationComponent,
     BusinessProfileComponent,
     BreadcrumbComponent,
-    DynamicsFormComponent,
-    FormViewerComponent,
+    //DynamicsFormComponent,
+    //FormViewerComponent,
     HomeComponent,
     InsertComponent,
-    NewsletterConfirmationComponent,
-    NewsletterSignupComponent,
+    //NewsletterConfirmationComponent,
+    //NewsletterSignupComponent,
     NotFoundComponent,
     PolicyDocumentComponent,
     PolicyDocumentSidebarComponent,
-    ResultComponent,
+    //ResultComponent,
     SearchBoxDirective,
     StaticComponent,
     StatusBadgeComponent,
@@ -165,7 +165,7 @@ import { ThankYouComponent } from './owner-applications/waiver/thank-you/thank-y
     SurveyPrimaryComponent,
     SurveySidebarComponent,
     SurveyTestComponent,
-    VoteComponent,
+    //VoteComponent,
     LicenseApplicationSummaryComponent,
     DashboardComponent,
     FileUploaderComponent,
@@ -211,7 +211,7 @@ import { ThankYouComponent } from './owner-applications/waiver/thank-you/thank-y
     HttpClientModule,
     AppRoutingModule,
     NgbModule.forRoot(),
-    AdminModule,
+    //AdminModule,
     BrowserAnimationsModule,
     NgBusyModule,
     CdkTableModule,
@@ -261,7 +261,7 @@ import { ThankYouComponent } from './owner-applications/waiver/thank-you/thank-y
     HttpClientModule,
     AppRoutingModule,
     NgbModule,
-    AdminModule,
+    //AdminModule,
     BrowserAnimationsModule,
     CdkTableModule,
     MatAutocompleteModule,
@@ -303,10 +303,10 @@ import { ThankYouComponent } from './owner-applications/waiver/thank-you/thank-y
     DynamicsDataService,
     InsertService,
     GeneralDataService,
-    NewsletterDataService,
+    //NewsletterDataService,
     PolicyDocumentDataService,
     SurveyDataService,
-    VoteDataService,
+    //VoteDataService,
     UserDataService,
     AliasDataService,
     ApplicationDataService,
@@ -315,7 +315,7 @@ import { ThankYouComponent } from './owner-applications/waiver/thank-you/thank-y
     AccountDataService,
     ContactDataService,
     PaymentDataService,
-    TiedHouseConnectionsDataService,
+    //TiedHouseConnectionsDataService,
     PreviousAddressDataService,
     WorkerDataService,
     NgbDropdown,
