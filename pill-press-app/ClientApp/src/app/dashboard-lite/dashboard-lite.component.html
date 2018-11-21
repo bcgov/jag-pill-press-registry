@@ -5,9 +5,45 @@
     <div class="col-lg-7 col-sm-12">
       <p>
 
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempus metus sit amet vulputate porta. Morbi nulla massa, interdum a tempor eget, venenatis et est.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempus metus sit amet vulputate porta. Morbi
+        nulla massa, interdum a tempor eget, venenatis et est.
       </p>
       <br />
+      <div style="display: flex; justify-content: space-between">
+        <section class="waiver">
+          <div class="icon-wrapper">
+            <i class="fas fa-user fa-2x" style="color: #38598A; margin-left: 5px;"></i>
+          </div>
+          <h3 style="text-align: center">Waiver Holder</h3>
+          <p style="text-align: center">
+            Short definition of what qualifies as a waiver holder. Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </p>
+          <button class="btn btn-primary" (click)="startNewLicenceApplication()">APPLY TO BE A WAIVER HOLDER</button>
+        </section>
+        <section class="waiver">
+          <div class="icon-wrapper">
+            <i class="fas fa-user fa-2x" style="color: #38598A; margin-left: 5px;"></i>
+          </div>
+          <h3 style="text-align: center">Authorized Owner</h3>
+          <p style="text-align: center">
+            Short definition of what qualifies as a waiver holder. Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </p>
+          <button class="btn btn-primary" disabled>REGISTER AS AN <br> AUTHORIZED OWNER</button>
+        </section>
+        <section class="waiver">
+          <div class="icon-wrapper">
+            <i class="fas fa-user fa-2x" style="color: #38598A; margin-left: 5px;"></i>
+          </div>
+          <h3 style="text-align: center">Seller</h3>
+          <p style="text-align: center">
+            Short definition of what qualifies as a waiver holder. Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </p>
+          <button class="btn btn-primary" disabled>REGISTER AS SELLER</button>
+        </section>
+      </div>
     </div>
     <div class="col-lg-4 col-sm-12" style="position: relative">
       <div [ngBusy]="busy"></div>
@@ -28,12 +64,13 @@
         <div class="submit-content">
           <p>
 
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
           </p>
-          
+
         </div>
       </section>
     </div>
   </div>
-  
+
 </div>
