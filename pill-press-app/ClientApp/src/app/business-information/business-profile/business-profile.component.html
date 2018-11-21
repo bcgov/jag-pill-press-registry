@@ -25,12 +25,12 @@
             </app-field>
 
             <app-field label="Business Number (BC Corporate Registry Number)" [required]="true" [valid]="form.get('businessProfile.businessNumber').valid || !form.get('businessProfile.businessNumber').touched"
-              errorMessage="Please enter your business number">
+                       errorMessage="Please enter your business number">
               <input class="form-control" style="max-width: 450px; min-width: 250px;" type="text" formControlName="businessNumber">
             </app-field>
 
             <app-field label="Business Type" [required]="true" [valid]="form.get('businessProfile.businessType').valid || !form.get('businessProfile.businessType').touched"
-              errorMessage="Please select a business type from the dropdown list">
+                       errorMessage="Please select a business type from the dropdown list">
               <select class="form-control" style="width: 250px;" formControlName="businessType">
                 <option value="Private Corporation">Private Corporation</option>
                 <option value="Public Corporation">Public Corporation</option>
@@ -41,74 +41,75 @@
                 <option value="Society">Society</option>
               </select>
             </app-field>
-          </div>
 
-          <h3 class="blue-header">BUSINESS ADDRESSES</h3>
-          <p></p>
-          <div formGroupName="physicalAddress">
-            <h3>Physical Address</h3>
-            <app-field label="Street Address 1" [required]="true" [valid]="form.get('physicalAddress.streetLine1').valid || !form.get('physicalAddress.streetLine1').touched"
-              errorMessage="Please enter your street address">
-              <input class="form-control" style="width: 400px;" type="text" formControlName="streetLine1">
-            </app-field>
-            <app-field label="Street Address 2">
-              <input class="form-control" style="width: 450px;" type="text" formControlName="streetLine2">
-            </app-field>
-            <app-field label="City" [required]="true" [valid]="form.get('physicalAddress.city').valid || !form.get('physicalAddress.city').touched"
-              errorMessage="Please enter your city">
-              <input class="form-control" style="width: 350px;" type="text" formControlName="city">
-            </app-field>
-            <app-field label="Province">
-              <input class="form-control" style="width: 200px;" readonly type="text" formControlName="province">
-            </app-field>
-            <app-field label="Postal Code" [required]="true" [valid]="form.get('physicalAddress.postalCode').valid || !form.get('physicalAddress.postalCode').touched"
-              errorMessage="Please enter your postal code">
-              <input class="form-control" style="width: 200px;" type="text" formControlName="postalCode">
-            </app-field>
-            <app-field label="Country">
-              <input class="form-control" style="width: 350px;" readonly type="text" formControlName="country">
-            </app-field>
-          </div>
-          <p></p>
-          <section>
-            <label>Is your mailing address different from your physical address?</label>
-            <br>
-            <input type="radio" name="sameAddress" [(ngModel)]="_mailingDifferentFromPhysicalAddress" [value]="true"
-              [ngModelOptions]="{standalone: true}"> Yes
-            <input type="radio" name="sameAddress" [(ngModel)]="_mailingDifferentFromPhysicalAddress" [value]="false"
-              [ngModelOptions]="{standalone: true}"> No
-          </section>
-          <div *ngIf="_mailingDifferentFromPhysicalAddress" formGroupName="mailingAddress">
-            <hr>
-            <h3>Mailing Address</h3>
 
-            <app-field label="Street Address 1" [required]="true" [valid]="form.get('mailingAddress.streetLine1').valid || !form.get('mailingAddress.streetLine1').touched"
-              errorMessage="Please enter your PO box or street address">
-              <input class="form-control" style="width: 400px;" type="text" formControlName="streetLine1">
-            </app-field>
-            <app-field label="Street Address 2">
-              <input class="form-control" style="width: 450px;" type="text" formControlName="streetLine2">
-            </app-field>
-            <app-field label="City" [required]="true" [valid]="form.get('mailingAddress.city').valid || !form.get('mailingAddress.city').touched"
-              errorMessage="Please enter your city">
-              <input class="form-control" style="width: 350px;" type="text" formControlName="city">
-            </app-field>
-            <app-field label="Province/ State" [required]="true" [valid]="form.get('mailingAddress.province').valid || !form.get('mailingAddress.province').touched"
-              errorMessage="Please enter your province or state">
-              <input class="form-control" style="width: 200px;" type="text" formControlName="province">
-            </app-field>
-            <app-field label="Postal/ Zip Code" [required]="true" [valid]="form.get('mailingAddress.postalCode').valid || !form.get('mailingAddress.postalCode').touched"
-              errorMessage="Please enter your postal or zip code">
-              <input class="form-control" style="width: 200px;" type="text" formControlName="postalCode">
-            </app-field>
-            <app-field label="Country" [required]="true" [valid]="form.get('mailingAddress.country').valid || !form.get('mailingAddress.country').touched"
-              errorMessage="Please enter your country">
-              <input class="form-control" style="width: 350px;" type="text" formControlName="country">
-            </app-field>
+            <h3 class="blue-header">BUSINESS ADDRESSES</h3>
+            <p></p>
+            <div>
+              <h3>Physical Address</h3>
+              <app-field label="Street Address 1" [required]="true" [valid]="form.get('businessProfile.physicalAddressLine1').valid || !form.get('businessProfile.physicalAddressLine1').touched"
+                         errorMessage="Please enter your street address">
+                <input class="form-control" style="width: 400px;" type="text" formControlName="physicalAddressLine1">
+              </app-field>
+              <app-field label="Street Address 2">
+                <input class="form-control" style="width: 450px;" type="text" formControlName="physicalAddressLine2">
+              </app-field>
+              <app-field label="City" [required]="true" [valid]="form.get('businessProfile.physicalAddressCity').valid || !form.get('businessProfile.physicalAddressCity').touched"
+                         errorMessage="Please enter your city">
+                <input class="form-control" style="width: 350px;" type="text" formControlName="physicalAddressCity">
+              </app-field>
+              <app-field label="Province">
+                <input class="form-control" style="width: 200px;" readonly type="text" formControlName="physicalAddressProvince">
+              </app-field>
+              <app-field label="Postal Code" [required]="true" [valid]="form.get('businessProfile.physicalAddressPostalCode').valid || !form.get('businessProfile.physicalAddressPostalCode').touched"
+                         errorMessage="Please enter your postal code">
+                <input class="form-control" style="width: 200px;" type="text" formControlName="physicalAddressPostalCode">
+              </app-field>
+              <app-field label="Country">
+                <input class="form-control" style="width: 350px;" readonly type="text" formControlName="physicalAddressCountry">
+              </app-field>
+            </div>
+            <p></p>
+            <section>
+              <label>Is your mailing address different from your physical address?</label>
+              <br>
+              <input type="radio" name="sameAddress" [(ngModel)]="_mailingDifferentFromPhysicalAddress" [value]="true"
+                     [ngModelOptions]="{standalone: true}"> Yes
+              <input type="radio" name="sameAddress" [(ngModel)]="_mailingDifferentFromPhysicalAddress" [value]="false"
+                     [ngModelOptions]="{standalone: true}"> No
+            </section>
+            <div *ngIf="_mailingDifferentFromPhysicalAddress">
+              <hr>
+              <h3>Mailing Address</h3>
 
-          </div>
+              <app-field label="Street Address 1" [required]="true" [valid]="form.get('businessProfile.mailingAddressLine1').valid || !form.get('businessProfile.mailingAddressLine1').touched"
+                         errorMessage="Please enter your PO box or street address">
+                <input class="form-control" style="width: 400px;" type="text" formControlName="mailingAddressLine1">
+              </app-field>
+              <app-field label="Street Address 2">
+                <input class="form-control" style="width: 450px;" type="text" formControlName="mailingAddressLine2">
+              </app-field>
+              <app-field label="City" [required]="true" [valid]="form.get('businessProfile.mailingAddressCity').valid || !form.get('businessProfile.mailingAddressCity').touched"
+                         errorMessage="Please enter your city">
+                <input class="form-control" style="width: 350px;" type="text" formControlName="mailingAddressCity">
+              </app-field>
+              <app-field label="Province/ State" [required]="true" [valid]="form.get('businessProfile.mailingAddressProvince').valid || !form.get('businessProfile.mailingAddressProvince').touched"
+                         errorMessage="Please enter your province or state">
+                <input class="form-control" style="width: 200px;" type="text" formControlName="mailingAddressProvince">
+              </app-field>
+              <app-field label="Postal/ Zip Code" [required]="true" [valid]="form.get('businessProfile.mailingAddressPostalCode').valid || !form.get('businessProfile.mailingAddressPostalCode').touched"
+                         errorMessage="Please enter your postal or zip code">
+                <input class="form-control" style="width: 200px;" type="text" formControlName="mailingAddressPostalCode">
+              </app-field>
+              <app-field label="Country" [required]="true" [valid]="form.get('businessProfile.mailingAddressCountry').valid || !form.get('businessProfile.mailingAddressCountry').touched"
+                         errorMessage="Please enter your country">
+                <input class="form-control" style="width: 350px;" type="text" formControlName="mailingAddressCountry">
+              </app-field>
+
+            </div>
+          
           <hr>
-          <div formGroupName="businessProfile">
+          
             <app-field label="Business Phone Number" [required]="true" [valid]="form.get('businessProfile.businessPhoneNumber').valid || !form.get('businessProfile.businessPhoneNumber').touched"
               errorMessage="Please enter your 10-digit business phone number, without including any spaces">
               <input class="form-control" style="width: 250px;" maxlength="10" (keydown)="rejectIfNotDigitOrBackSpace($event)"

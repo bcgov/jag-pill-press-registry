@@ -331,34 +331,6 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     }
                 }
 
-                // Mailing Address
-                if (item.mailingAddress != null)
-                {
-                    if (string.IsNullOrEmpty(item.mailingAddress.Id))
-                    {
-                        account.BcgovCurrentBusinessMailingAddress = item.mailingAddress.ToModel();
-                    }
-                    else
-                    {
-                        // add as a reference.
-                        account.CurrentBusinessMailingAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", item.mailingAddress.Id);
-                    }
-                }
-
-                // Physical Address
-                if (item.physicalAddress != null)
-                {
-                    if (string.IsNullOrEmpty(item.physicalAddress.Id))
-                    {
-                        account.BcgovCurrentBusinessPhysicalAddress = item.physicalAddress.ToModel();
-                    }
-                    else
-                    {
-                        // add as a reference.
-                        account.CurrentBusinessPhysicalAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", item.physicalAddress.Id);
-                    }
-                }
-
                 if (bceidBusiness != null)
                 {
                     account.Name = bceidBusiness.legalName;
@@ -537,35 +509,6 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     }
                 }
 
-                // Mailing Address
-                if (item.mailingAddress.HasValue())
-                {
-                    if (string.IsNullOrEmpty(item.mailingAddress.Id))
-                    {
-                        account.BcgovCurrentBusinessMailingAddress = item.mailingAddress.ToModel();
-                    }
-                    else
-                    {
-                        // add as a reference.
-                        account.CurrentBusinessMailingAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", item.mailingAddress.Id);
-                    }
-                }
-
-                // Physical Address
-                if (item.physicalAddress.HasValue())
-                {
-                    if (string.IsNullOrEmpty(item.physicalAddress.Id))
-                    {
-                        account.BcgovCurrentBusinessPhysicalAddress = item.physicalAddress.ToModel();
-                    }
-                    else
-                    {
-                        // add as a reference.
-                        account.CurrentBusinessPhysicalAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", item.physicalAddress.Id);
-                    }
-                }
-
-
                 try
                 {
                     await _dynamicsClient.Accounts.UpdateAsync(accountId.ToString(), account);
@@ -617,44 +560,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                         throw new OdataerrorException("Error updating the account.");
                     }
                 }
-
-                // determine if we need to update the additional contact.
-                if (!string.IsNullOrEmpty(item.mailingAddress?.Id))
-                {
-                    MicrosoftDynamicsCRMbcgovCustomaddress mailingAddress = item.mailingAddress.ToModel();
-                    try
-                    {
-                        await _dynamicsClient.Customaddresses.UpdateAsync(item.mailingAddress.Id, mailingAddress);
-                    }
-                    catch (OdataerrorException odee)
-                    {
-                        _logger.LogError(LoggingEvents.Error, "Error updating the account.");
-                        _logger.LogError("Request:");
-                        _logger.LogError(odee.Request.Content);
-                        _logger.LogError("Response:");
-                        _logger.LogError(odee.Response.Content);
-                        throw new OdataerrorException("Error updating the account.");
-                    }
-                }
-
-                // determine if we need to update the additional contact.
-                if (!string.IsNullOrEmpty(item.physicalAddress?.Id))
-                {
-                    MicrosoftDynamicsCRMbcgovCustomaddress physicalAddress = item.physicalAddress.ToModel();
-                    try
-                    {
-                        await _dynamicsClient.Customaddresses.UpdateAsync(item.physicalAddress.Id, physicalAddress);
-                    }
-                    catch (OdataerrorException odee)
-                    {
-                        _logger.LogError(LoggingEvents.Error, "Error updating the account.");
-                        _logger.LogError("Request:");
-                        _logger.LogError(odee.Request.Content);
-                        _logger.LogError("Response:");
-                        _logger.LogError(odee.Response.Content);
-                        throw new OdataerrorException("Error updating the account.");
-                    }
-                }
+               
 
                 // populate child items in the account.
                 account = await _dynamicsClient.GetAccountById(accountId);
