@@ -3,11 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { BusinessProfileComponent } from './business-information/business-profile/business-profile.component';
 import { HomeComponent } from './home/home.component';
 import { PolicyDocumentComponent } from './policy-document/policy-document.component';
-import { ResultComponent } from './result/result.component';
+//import { ResultComponent } from './result/result.component';
 import { SurveyPrimaryComponent } from './survey/primary.component';
 import { SurveyTestComponent } from './survey/test.component';
 import { SurveyResolver } from './services/survey-resolver.service';
-import { NewsletterConfirmationComponent } from './newsletter-confirmation/newsletter-confirmation.component';
+//import { NewsletterConfirmationComponent } from './newsletter-confirmation/newsletter-confirmation.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CanDeactivateGuard } from './services/can-deactivate-guard.service';
 import { BCeidAuthGuard } from './services/bceid-auth-guard.service';
@@ -49,10 +49,6 @@ const routes: Routes = [
     component: PolicyDocumentComponent
   },
   {
-    path: 'newsletter-confirm/:slug',
-    component: NewsletterConfirmationComponent
-  },
-  {
     path: 'prv/survey',
     component: SurveyPrimaryComponent,
     resolve: {
@@ -68,12 +64,12 @@ const routes: Routes = [
     path: 'prv',
     redirectTo: 'prv/survey'
   },
-  {
-    path: 'result/:data',
-    component: ResultComponent,
-    data: {
-    }
-  },
+  //{
+  //  path: 'result/:data',
+  //  component: ResultComponent,
+  //  data: {
+  //  }
+  //},
   {
     path: 'survey-test',
     component: SurveyTestComponent,
