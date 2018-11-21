@@ -44,6 +44,21 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         IAccounts Accounts { get; }
 
         /// <summary>
+        /// Gets the IApplicationtermses.
+        /// </summary>
+        IApplicationtermses Applicationtermses { get; }
+
+        /// <summary>
+        /// Gets the IApplicationtypes.
+        /// </summary>
+        IApplicationtypes Applicationtypes { get; }
+
+        /// <summary>
+        /// Gets the IBusinesscontacts.
+        /// </summary>
+        IBusinesscontacts Businesscontacts { get; }
+
+        /// <summary>
         /// Gets the ICustomaddresses.
         /// </summary>
         ICustomaddresses Customaddresses { get; }
@@ -52,6 +67,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// Gets the ICustomproducts.
         /// </summary>
         ICustomproducts Customproducts { get; }
+
+        /// <summary>
+        /// Gets the ITermsconditionspresets.
+        /// </summary>
+        ITermsconditionspresets Termsconditionspresets { get; }
 
         /// <summary>
         /// Gets the IContacts.
