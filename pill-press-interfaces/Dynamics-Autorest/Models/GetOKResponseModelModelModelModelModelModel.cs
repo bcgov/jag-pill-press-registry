@@ -12,7 +12,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
     using System.Linq;
 
     /// <summary>
-    /// Collection of msdyn_bcgov_customaddress_knowledgearticlset
+    /// Collection of bcgov_termsconditionspresets
     /// </summary>
     public partial class GetOKResponseModelModelModelModelModelModel
     {
@@ -29,7 +29,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// Initializes a new instance of the
         /// GetOKResponseModelModelModelModelModelModel class.
         /// </summary>
-        public GetOKResponseModelModelModelModelModelModel(IList<MicrosoftDynamicsCRMmsdynBcgovCustomaddressKnowledgearticl> value = default(IList<MicrosoftDynamicsCRMmsdynBcgovCustomaddressKnowledgearticl>))
+        public GetOKResponseModelModelModelModelModelModel(IList<MicrosoftDynamicsCRMbcgovTermsconditionspreset> value = default(IList<MicrosoftDynamicsCRMbcgovTermsconditionspreset>))
         {
             Value = value;
             CustomInit();
@@ -43,7 +43,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "value")]
-        public IList<MicrosoftDynamicsCRMmsdynBcgovCustomaddressKnowledgearticl> Value { get; set; }
+        public IList<MicrosoftDynamicsCRMbcgovTermsconditionspreset> Value { get; set; }
 
     }
 }

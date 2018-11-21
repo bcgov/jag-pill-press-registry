@@ -29,19 +29,20 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// Initializes a new instance of the
         /// MicrosoftDynamicsCRMbcgovCustomaddress class.
         /// </summary>
-        public MicrosoftDynamicsCRMbcgovCustomaddress(string bcgovStreetline3 = default(string), string _modifiedonbehalfbyValue = default(string), string bcgovProvince = default(string), string _owneridValue = default(string), int? bcgovCountry = default(int?), string _createdonbehalfbyValue = default(string), string bcgovPostalcode = default(string), string _slaidValue = default(string), int? utcconversiontimezonecode = default(int?), string emailaddress = default(string), string _slainvokedidValue = default(string), int? timezoneruleversionnumber = default(int?), System.DateTimeOffset? lastonholdtime = default(System.DateTimeOffset?), long? versionnumber = default(long?), string _bcgovBusinessprofileValue = default(string), int? statecode = default(int?), System.DateTimeOffset? modifiedon = default(System.DateTimeOffset?), string bcgovCustomaddressid = default(string), string processid = default(string), int? importsequencenumber = default(int?), int? onholdtime = default(int?), string _modifiedbyValue = default(string), string _owningteamValue = default(string), System.DateTimeOffset? overriddencreatedon = default(System.DateTimeOffset?), string _owninguserValue = default(string), int? bcgovAddresstype = default(int?), int? statuscode = default(int?), string _stageidValue = default(string), string traversedpath = default(string), string bcgovName = default(string), string bcgovStreetline2 = default(string), string _owningbusinessunitValue = default(string), string _createdbyValue = default(string), System.DateTimeOffset? createdon = default(System.DateTimeOffset?), string bcgovCity = default(string), MicrosoftDynamicsCRMsystemuser createdbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser createdonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser owninguser = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMteam owningteam = default(MicrosoftDynamicsCRMteam), MicrosoftDynamicsCRMprincipal ownerid = default(MicrosoftDynamicsCRMprincipal), MicrosoftDynamicsCRMbusinessunit owningbusinessunit = default(MicrosoftDynamicsCRMbusinessunit), IList<MicrosoftDynamicsCRMactivitypointer> bcgovCustomaddressActivityPointers = default(IList<MicrosoftDynamicsCRMactivitypointer>), IList<MicrosoftDynamicsCRMappointment> bcgovCustomaddressAppointments = default(IList<MicrosoftDynamicsCRMappointment>), IList<MicrosoftDynamicsCRMemail> bcgovCustomaddressEmails = default(IList<MicrosoftDynamicsCRMemail>), IList<MicrosoftDynamicsCRMfax> bcgovCustomaddressFaxes = default(IList<MicrosoftDynamicsCRMfax>), IList<MicrosoftDynamicsCRMletter> bcgovCustomaddressLetters = default(IList<MicrosoftDynamicsCRMletter>), IList<MicrosoftDynamicsCRMphonecall> bcgovCustomaddressPhoneCalls = default(IList<MicrosoftDynamicsCRMphonecall>), IList<MicrosoftDynamicsCRMserviceappointment> bcgovCustomaddressServiceAppointments = default(IList<MicrosoftDynamicsCRMserviceappointment>), IList<MicrosoftDynamicsCRMtask> bcgovCustomaddressTasks = default(IList<MicrosoftDynamicsCRMtask>), IList<MicrosoftDynamicsCRMrecurringappointmentmaster> bcgovCustomaddressRecurringAppointmentMasters = default(IList<MicrosoftDynamicsCRMrecurringappointmentmaster>), IList<MicrosoftDynamicsCRMsocialactivity> bcgovCustomaddressSocialActivities = default(IList<MicrosoftDynamicsCRMsocialactivity>), IList<MicrosoftDynamicsCRMsyncerror> bcgovCustomaddressSyncErrors = default(IList<MicrosoftDynamicsCRMsyncerror>), IList<MicrosoftDynamicsCRMactivityparty> bcgovCustomaddressActivityParties = default(IList<MicrosoftDynamicsCRMactivityparty>), IList<MicrosoftDynamicsCRMconnection> bcgovCustomaddressConnections1 = default(IList<MicrosoftDynamicsCRMconnection>), IList<MicrosoftDynamicsCRMconnection> bcgovCustomaddressConnections2 = default(IList<MicrosoftDynamicsCRMconnection>), IList<MicrosoftDynamicsCRMduplicaterecord> bcgovCustomaddressDuplicateMatchingRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMduplicaterecord> bcgovCustomaddressDuplicateBaseRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMsharepointdocumentlocation> bcgovCustomaddressSharePointDocumentLocations = default(IList<MicrosoftDynamicsCRMsharepointdocumentlocation>), IList<MicrosoftDynamicsCRMqueueitem> bcgovCustomaddressQueueItems = default(IList<MicrosoftDynamicsCRMqueueitem>), IList<MicrosoftDynamicsCRMannotation> bcgovCustomaddressAnnotations = default(IList<MicrosoftDynamicsCRMannotation>), IList<MicrosoftDynamicsCRMfeedback> bcgovCustomaddressFeedback = default(IList<MicrosoftDynamicsCRMfeedback>), IList<MicrosoftDynamicsCRMteam> bcgovCustomaddressTeams = default(IList<MicrosoftDynamicsCRMteam>), IList<MicrosoftDynamicsCRMasyncoperation> bcgovCustomaddressAsyncOperations = default(IList<MicrosoftDynamicsCRMasyncoperation>), IList<MicrosoftDynamicsCRMbulkdeletefailure> bcgovCustomaddressBulkDeleteFailures = default(IList<MicrosoftDynamicsCRMbulkdeletefailure>), MicrosoftDynamicsCRMprocessstage stageid = default(MicrosoftDynamicsCRMprocessstage), IList<MicrosoftDynamicsCRMknowledgebaserecord> bcgovCustomaddressKnowledgebaserecord = default(IList<MicrosoftDynamicsCRMknowledgebaserecord>), IList<MicrosoftDynamicsCRMknowledgearticle> msdynBcgovCustomaddressKnowledgearticle = default(IList<MicrosoftDynamicsCRMknowledgearticle>), MicrosoftDynamicsCRMsla slaid = default(MicrosoftDynamicsCRMsla), MicrosoftDynamicsCRMsla slainvokedid = default(MicrosoftDynamicsCRMsla), IList<MicrosoftDynamicsCRMslakpiinstance> bcgovCustomaddressSLAKPIInstances = default(IList<MicrosoftDynamicsCRMslakpiinstance>), MicrosoftDynamicsCRMaccount bcgovBusinessProfile = default(MicrosoftDynamicsCRMaccount), IList<MicrosoftDynamicsCRMaccount> bcgovBcgovCustomaddressAccountCurrentBusinessPhysicalAddress = default(IList<MicrosoftDynamicsCRMaccount>), IList<MicrosoftDynamicsCRMaccount> bcgovBcgovCustomaddressAccountCurrentBusinessMailingAddress = default(IList<MicrosoftDynamicsCRMaccount>))
+        public MicrosoftDynamicsCRMbcgovCustomaddress(string bcgovStreetline3 = default(string), string _modifiedonbehalfbyValue = default(string), string processid = default(string), string _bcgovAddressesidValue = default(string), string bcgovProvince = default(string), string _owneridValue = default(string), System.DateTimeOffset? overriddencreatedon = default(System.DateTimeOffset?), string _createdonbehalfbyValue = default(string), string bcgovPostalcode = default(string), string _slaidValue = default(string), int? utcconversiontimezonecode = default(int?), string emailaddress = default(string), int? timezoneruleversionnumber = default(int?), System.DateTimeOffset? lastonholdtime = default(System.DateTimeOffset?), long? versionnumber = default(long?), string _bcgovBusinessprofileValue = default(string), int? statecode = default(int?), System.DateTimeOffset? modifiedon = default(System.DateTimeOffset?), string bcgovCustomaddressid = default(string), int? importsequencenumber = default(int?), int? onholdtime = default(int?), string _modifiedbyValue = default(string), string _owningteamValue = default(string), string _owninguserValue = default(string), int? bcgovAddresstype = default(int?), int? statuscode = default(int?), string bcgovCountrytxt = default(string), string _stageidValue = default(string), string _slainvokedidValue = default(string), string traversedpath = default(string), string bcgovName = default(string), string bcgovStreetline2 = default(string), string _owningbusinessunitValue = default(string), string _createdbyValue = default(string), System.DateTimeOffset? createdon = default(System.DateTimeOffset?), string bcgovCity = default(string), MicrosoftDynamicsCRMsystemuser createdbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser createdonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser owninguser = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMteam owningteam = default(MicrosoftDynamicsCRMteam), MicrosoftDynamicsCRMprincipal ownerid = default(MicrosoftDynamicsCRMprincipal), MicrosoftDynamicsCRMbusinessunit owningbusinessunit = default(MicrosoftDynamicsCRMbusinessunit), IList<MicrosoftDynamicsCRMactivitypointer> bcgovCustomaddressActivityPointers = default(IList<MicrosoftDynamicsCRMactivitypointer>), IList<MicrosoftDynamicsCRMappointment> bcgovCustomaddressAppointments = default(IList<MicrosoftDynamicsCRMappointment>), IList<MicrosoftDynamicsCRMemail> bcgovCustomaddressEmails = default(IList<MicrosoftDynamicsCRMemail>), IList<MicrosoftDynamicsCRMfax> bcgovCustomaddressFaxes = default(IList<MicrosoftDynamicsCRMfax>), IList<MicrosoftDynamicsCRMletter> bcgovCustomaddressLetters = default(IList<MicrosoftDynamicsCRMletter>), IList<MicrosoftDynamicsCRMphonecall> bcgovCustomaddressPhoneCalls = default(IList<MicrosoftDynamicsCRMphonecall>), IList<MicrosoftDynamicsCRMserviceappointment> bcgovCustomaddressServiceAppointments = default(IList<MicrosoftDynamicsCRMserviceappointment>), IList<MicrosoftDynamicsCRMtask> bcgovCustomaddressTasks = default(IList<MicrosoftDynamicsCRMtask>), IList<MicrosoftDynamicsCRMrecurringappointmentmaster> bcgovCustomaddressRecurringAppointmentMasters = default(IList<MicrosoftDynamicsCRMrecurringappointmentmaster>), IList<MicrosoftDynamicsCRMsocialactivity> bcgovCustomaddressSocialActivities = default(IList<MicrosoftDynamicsCRMsocialactivity>), IList<MicrosoftDynamicsCRMsyncerror> bcgovCustomaddressSyncErrors = default(IList<MicrosoftDynamicsCRMsyncerror>), IList<MicrosoftDynamicsCRMactivityparty> bcgovCustomaddressActivityParties = default(IList<MicrosoftDynamicsCRMactivityparty>), IList<MicrosoftDynamicsCRMconnection> bcgovCustomaddressConnections1 = default(IList<MicrosoftDynamicsCRMconnection>), IList<MicrosoftDynamicsCRMconnection> bcgovCustomaddressConnections2 = default(IList<MicrosoftDynamicsCRMconnection>), IList<MicrosoftDynamicsCRMduplicaterecord> bcgovCustomaddressDuplicateMatchingRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMduplicaterecord> bcgovCustomaddressDuplicateBaseRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMsharepointdocumentlocation> bcgovCustomaddressSharePointDocumentLocations = default(IList<MicrosoftDynamicsCRMsharepointdocumentlocation>), IList<MicrosoftDynamicsCRMqueueitem> bcgovCustomaddressQueueItems = default(IList<MicrosoftDynamicsCRMqueueitem>), IList<MicrosoftDynamicsCRMannotation> bcgovCustomaddressAnnotations = default(IList<MicrosoftDynamicsCRMannotation>), IList<MicrosoftDynamicsCRMfeedback> bcgovCustomaddressFeedback = default(IList<MicrosoftDynamicsCRMfeedback>), IList<MicrosoftDynamicsCRMteam> bcgovCustomaddressTeams = default(IList<MicrosoftDynamicsCRMteam>), IList<MicrosoftDynamicsCRMasyncoperation> bcgovCustomaddressAsyncOperations = default(IList<MicrosoftDynamicsCRMasyncoperation>), IList<MicrosoftDynamicsCRMbulkdeletefailure> bcgovCustomaddressBulkDeleteFailures = default(IList<MicrosoftDynamicsCRMbulkdeletefailure>), MicrosoftDynamicsCRMprocessstage stageid = default(MicrosoftDynamicsCRMprocessstage), IList<MicrosoftDynamicsCRMknowledgebaserecord> bcgovCustomaddressKnowledgebaserecord = default(IList<MicrosoftDynamicsCRMknowledgebaserecord>), IList<MicrosoftDynamicsCRMknowledgearticle> msdynBcgovCustomaddressKnowledgearticle = default(IList<MicrosoftDynamicsCRMknowledgearticle>), MicrosoftDynamicsCRMsla slaid = default(MicrosoftDynamicsCRMsla), MicrosoftDynamicsCRMsla slainvokedid = default(MicrosoftDynamicsCRMsla), IList<MicrosoftDynamicsCRMslakpiinstance> bcgovCustomaddressSLAKPIInstances = default(IList<MicrosoftDynamicsCRMslakpiinstance>), MicrosoftDynamicsCRMaccount bcgovAddressesId = default(MicrosoftDynamicsCRMaccount), IList<MicrosoftDynamicsCRMaccount> bcgovBcgovCustomaddressAccountCurrentBusinessPhysicalAddress = default(IList<MicrosoftDynamicsCRMaccount>), IList<MicrosoftDynamicsCRMaccount> bcgovBcgovCustomaddressAccountCurrentBusinessMailingAddress = default(IList<MicrosoftDynamicsCRMaccount>), MicrosoftDynamicsCRMaccount bcgovBusinessProfile = default(MicrosoftDynamicsCRMaccount))
         {
             BcgovStreetline3 = bcgovStreetline3;
             this._modifiedonbehalfbyValue = _modifiedonbehalfbyValue;
+            Processid = processid;
+            this._bcgovAddressesidValue = _bcgovAddressesidValue;
             BcgovProvince = bcgovProvince;
             this._owneridValue = _owneridValue;
-            BcgovCountry = bcgovCountry;
+            Overriddencreatedon = overriddencreatedon;
             this._createdonbehalfbyValue = _createdonbehalfbyValue;
             BcgovPostalcode = bcgovPostalcode;
             this._slaidValue = _slaidValue;
             Utcconversiontimezonecode = utcconversiontimezonecode;
             Emailaddress = emailaddress;
-            this._slainvokedidValue = _slainvokedidValue;
             Timezoneruleversionnumber = timezoneruleversionnumber;
             Lastonholdtime = lastonholdtime;
             Versionnumber = versionnumber;
@@ -49,16 +50,16 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
             Statecode = statecode;
             Modifiedon = modifiedon;
             BcgovCustomaddressid = bcgovCustomaddressid;
-            Processid = processid;
             Importsequencenumber = importsequencenumber;
             Onholdtime = onholdtime;
             this._modifiedbyValue = _modifiedbyValue;
             this._owningteamValue = _owningteamValue;
-            Overriddencreatedon = overriddencreatedon;
             this._owninguserValue = _owninguserValue;
             BcgovAddresstype = bcgovAddresstype;
             Statuscode = statuscode;
+            BcgovCountrytxt = bcgovCountrytxt;
             this._stageidValue = _stageidValue;
+            this._slainvokedidValue = _slainvokedidValue;
             Traversedpath = traversedpath;
             BcgovName = bcgovName;
             BcgovStreetline2 = bcgovStreetline2;
@@ -103,9 +104,10 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
             Slaid = slaid;
             Slainvokedid = slainvokedid;
             BcgovCustomaddressSLAKPIInstances = bcgovCustomaddressSLAKPIInstances;
-            BcgovBusinessProfile = bcgovBusinessProfile;
+            BcgovAddressesId = bcgovAddressesId;
             BcgovBcgovCustomaddressAccountCurrentBusinessPhysicalAddress = bcgovBcgovCustomaddressAccountCurrentBusinessPhysicalAddress;
             BcgovBcgovCustomaddressAccountCurrentBusinessMailingAddress = bcgovBcgovCustomaddressAccountCurrentBusinessMailingAddress;
+            BcgovBusinessProfile = bcgovBusinessProfile;
             CustomInit();
         }
 
@@ -126,6 +128,16 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "processid")]
+        public string Processid { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "_bcgov_addressesid_value")]
+        public string _bcgovAddressesidValue { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "bcgov_province")]
         public string BcgovProvince { get; set; }
 
@@ -136,8 +148,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "bcgov_country")]
-        public int? BcgovCountry { get; set; }
+        [JsonProperty(PropertyName = "overriddencreatedon")]
+        public System.DateTimeOffset? Overriddencreatedon { get; set; }
 
         /// <summary>
         /// </summary>
@@ -163,11 +175,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "emailaddress")]
         public string Emailaddress { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "_slainvokedid_value")]
-        public string _slainvokedidValue { get; set; }
 
         /// <summary>
         /// </summary>
@@ -206,11 +213,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "processid")]
-        public string Processid { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "importsequencenumber")]
         public int? Importsequencenumber { get; set; }
 
@@ -231,11 +233,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "overriddencreatedon")]
-        public System.DateTimeOffset? Overriddencreatedon { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "_owninguser_value")]
         public string _owninguserValue { get; set; }
 
@@ -251,8 +248,18 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "bcgov_countrytxt")]
+        public string BcgovCountrytxt { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "_stageid_value")]
         public string _stageidValue { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "_slainvokedid_value")]
+        public string _slainvokedidValue { get; set; }
 
         /// <summary>
         /// </summary>
@@ -476,8 +483,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "bcgov_BusinessProfile")]
-        public MicrosoftDynamicsCRMaccount BcgovBusinessProfile { get; set; }
+        [JsonProperty(PropertyName = "bcgov_AddressesId")]
+        public MicrosoftDynamicsCRMaccount BcgovAddressesId { get; set; }
 
         /// <summary>
         /// </summary>
@@ -488,6 +495,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "bcgov_bcgov_customaddress_account_CurrentBusinessMailingAddress")]
         public IList<MicrosoftDynamicsCRMaccount> BcgovBcgovCustomaddressAccountCurrentBusinessMailingAddress { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_BusinessProfile")]
+        public MicrosoftDynamicsCRMaccount BcgovBusinessProfile { get; set; }
 
     }
 }
