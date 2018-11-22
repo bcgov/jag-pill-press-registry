@@ -15,7 +15,7 @@
             <input type="radio" [value]="false" name="currentlyownusepossessequipment" formControlName="currentlyownusepossessequipment">
             <span>No</span>
           </app-field>
-          <app-field *ngIf="form.get('currentlyownusepossessequipment').value === false" label="If no, do you intend on purchasing Controlled Equipment in the future?"
+          <app-field *ngIf="form.get('currentlyownusepossessequipment').value === false" label="Do you intend on purchasing Controlled Equipment in the future?"
             [required]="true">
             <input type="radio" [value]="true" name="intendtopurchaseequipment" formControlName="intendtopurchaseequipment">
             <span style="padding-right: 10px;">Yes</span>
@@ -26,12 +26,6 @@
             [required]="true">
             <input type="radio" [value]="true" name=""> <span style="padding-right: 10px;">Yes</span>
             <input type="radio" [value]="false" name=""> <span>No</span>
-          </app-field>
-          <app-field label="Do you currently own, use, or possess Controlled Equipment?" [required]="true">
-            <input type="radio" [value]="true" name="ownintendtoownequipmentforbusinessuse" formControlName="ownintendtoownequipmentforbusinessuse">
-            <span style="padding-right: 10px;">Yes</span>
-            <input type="radio" [value]="false" name="ownintendtoownequipmentforbusinessuse" formControlName="ownintendtoownequipmentforbusinessuse">
-            <span>No</span>
           </app-field>
           <app-field label="Do you borrow, rent, or lease Controlled Equipment from someone else?" [required]="true">
             <input type="radio" [value]="true" name="borrowrentleaseequipment" formControlName="borrowrentleaseequipment">
@@ -54,8 +48,11 @@
             <input type="radio" [value]="false" name="producingownproduct" formControlName="producingownproduct">
             <span>No</span>
           </app-field>
-          <app-field [required]="true" label="If so, please provide detailed information on the types of products you produce and their intended uses.">
-            <textarea name="" id="" style="width: 100%" rows="5"></textarea>
+          <app-field *ngIf="form.get('producingownproduct').value === true" [required]="true" leadingText=" Please provide detailed information on the type of product you produce and its intended use. If you produce multiple products, please describe all of them by clicking on the 'Add another product' link below."
+            label="Product Description and Intended Use">
+            <textarea *ngFor="let item of ownProducts.controls" name="" id="" style="width: 100%" rows="5"></textarea>
+            <br>
+            <button (click)="addCustomProduct('ownProducts')">Add Product</button>
           </app-field>
           <app-field label="Do you own, use, or possess (or intend to own) Controlled Equipment for the purposes of providing manufacturing services to others?"
             [required]="true">
@@ -71,7 +68,8 @@
 
         <section>
           <h3 class="blue-header">BUSINESS DETAILS</h3>
-          <app-field label="Please explain the main focus of your business and why that requires Controlled Equipment." [required]="true">
+          <app-field label="Please explain the main focus of your business and why that requires Controlled Equipment."
+            [required]="true">
             <textarea name="" id="" style="width: 100%" rows="5"></textarea>
           </app-field>
           <app-field [required]="true" label="Please describe the manufacturing process you use to produce the above-noted products. Please include specific information on how you utilize the Controlled Equipment throughout the manufacturing process.">
@@ -80,21 +78,8 @@
         </section>
 
         <section>
-          <h3 class="blue-header">BUSINESS DETAILS</h3>
-          <div style="display: flex;">
-            <input type="checkbox" style="flex: 0 0 30px;">
-            <p>Declaration that all information provided is correct, including the information on the Client Profile -
-              Business Information page (which is incorporated into this application)</p>
-          </div>
-          <div style="display: flex;">
-            <input type="checkbox" style="flex: 0 0 30px;">
-            <p>Consent that by submitting the application the applicant understands their information is being
-              collected for FOIPPA purposes and may be released as per FOIPPA.</p>
-          </div>
-          <div style="display: flex;">
-            <input type="checkbox" style="flex: 0 0 30px;">
-            <p>Consent to correspond via the business email indicated on the Client Profile - Business Information page</p>
-          </div>
+          <label for="">If you have additional supporting documents, please upload them below.</label>
+          <app-file-uploader></app-file-uploader>
         </section>
       </div>
     </div>
