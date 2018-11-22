@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -11,6 +11,12 @@ export class WaiverApplicationComponent implements OnInit {
   form: FormGroup;
   busy: Subscription;
 
+  get ownProducts() {
+    return <FormArray>this.form.get('ownProducts');
+  }
+  get productsForOthers() {
+    return <FormArray>this.form.get('productsForOthers p');
+  }
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -23,7 +29,9 @@ export class WaiverApplicationComponent implements OnInit {
       borrowrentleaseequipment: [],
       sellequipment: [],
       producingownproduct: [],
+      ownProducts: this.fb.array([]),
       providingmanufacturingtoothers: [],
+      productsForOthers: this.fb.array([]),
       mainbusinessfocus: [],
       manufacturingprocessdescription: [],
       declarationofcorrectinformation: [],
@@ -32,6 +40,29 @@ export class WaiverApplicationComponent implements OnInit {
       bceiduserguid: [],
       bceidemail: [],
     });
+  }
+
+  createCustomProduct(product: any) {
+    return this.fb.group({
+      id: [],
+      type: [product.type],
+      text: []
+    });
+  }
+
+  addCustomProduct(type: string) {
+    if (type === 'ownProducts') {
+      const product = this.createCustomProduct({ type });
+      (<FormArray>this.form.get('ownProducts')).push(product);
+    } else {
+      const product = this.createCustomProduct({ type });
+      (<FormArray>this.form.get('productsForOthers')).push(product);
+    }
+
+  }
+
+  deleteCustomProduct() {
+
   }
 
 }
