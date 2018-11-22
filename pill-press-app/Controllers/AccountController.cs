@@ -348,6 +348,10 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     account.Name = userSettings.BusinessLegalName;
                     account.BcgovDoingbusinessasname = userSettings.BusinessLegalName;
                 }
+
+                // set the Province and Country.
+                account.Address1Stateorprovince = "British Columbia";
+                account.Address1Country = "Canada";
                
                 string accountString = JsonConvert.SerializeObject(account);
                 _logger.LogDebug("Account before creation in dynamics --> " + accountString);
