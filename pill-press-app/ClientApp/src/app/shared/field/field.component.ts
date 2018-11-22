@@ -9,6 +9,7 @@ export class FieldComponent implements OnInit {
   @Input() required = false;
   @Input() valid = true;
   @Input() label: string;
+  @Input() leadingText: string;
   @Input() errorMessage: string;
 
   constructor() { }

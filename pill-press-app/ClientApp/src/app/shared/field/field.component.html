@@ -1,4 +1,5 @@
 <section class="app-field">
+  <span *ngIf="leadingText">{{leadingText}} <p></p> </span>
   <label>{{label}} <span *ngIf="required" class="error-states">*</span></label>
   <br />
   <ng-content></ng-content>
