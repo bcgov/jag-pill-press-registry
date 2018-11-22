@@ -48,12 +48,12 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             {
                 toDynamics.BcgovBusinessnumber = fromVM.businessNumber;
             }
-            /*
+            
             if (!string.IsNullOrEmpty(fromVM.businessType))
             {
                 toDynamics.Businesstypecode = (int)Enum.Parse(typeof(ViewModels.BusinessTypeEnum), fromVM.businessType, true);
             }
-            */
+            
 
             if (copyIfNull || fromVM.description != null)
             {
@@ -149,6 +149,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                 toDynamics.Address2Postalcode = fromVM.mailingAddressPostalCode;
             }
 
+            if (copyIfNull || fromVM.websiteAddress != null)
+            {
+                toDynamics.Websiteurl = fromVM.websiteAddress;
+            }
+
             // business type must be set only during creation, not in update (removed from copyValues() )
             //	toDynamics.AdoxioBusinesstype = (int)Enum.Parse(typeof(ViewModels.Adoxio_applicanttypecodes), fromVM.businessType, true);
         }
@@ -173,21 +178,21 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     businessPhoneNumber = account.Telephone1,
                     consentForEmailCommunication = account.BcgovConsentforemailcommunication,
                     externalId = account.BcgovBceid,
-                    physicalAddressName = account.Address2Name,
-                    physicalAddressLine1 = account.Address2Line1,
-                    physicalAddressLine2 = account.Address2Line2,
-                    physicalAddressCity = account.Address2City,
-                    physicalAddressCountry = account.Address2County,
-                    physicalAddressProvince = account.Address2Stateorprovince,
-                    physicalAddressPostalCode = account.Address2Postalcode,
-                    mailingAddressName = account.Address1Name,
-                    mailingAddressLine1 = account.Address1Line1,
-                    mailingAddressLine2 = account.Address1Line2,
-                    mailingAddressCity = account.Address1City,
-                    mailingAddressCountry = account.Address1County,
-                    mailingAddressProvince = account.Address1Stateorprovince,
-                    mailingAddressPostalCode = account.Address1Postalcode
-                    
+                    physicalAddressName = account.Address1Name,
+                    physicalAddressLine1 = account.Address1Line1,
+                    physicalAddressLine2 = account.Address1Line2,
+                    physicalAddressCity = account.Address1City,
+                    physicalAddressCountry = account.Address1Country,
+                    physicalAddressProvince = account.Address1Stateorprovince,
+                    physicalAddressPostalCode = account.Address1Postalcode,
+                    mailingAddressName = account.Address2Name,
+                    mailingAddressLine1 = account.Address2Line1,
+                    mailingAddressLine2 = account.Address2Line2,
+                    mailingAddressCity = account.Address2City,
+                    mailingAddressCountry = account.Address2Country,
+                    mailingAddressProvince = account.Address2Stateorprovince,
+                    mailingAddressPostalCode = account.Address2Postalcode,
+                    websiteAddress = account.Websiteurl
 
                 };
                 if (account.Accountid != null)
