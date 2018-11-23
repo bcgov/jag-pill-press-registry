@@ -13,12 +13,12 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Extension methods for Termsconditionspresets.
+    /// Extension methods for Incidentbusinesscontactset.
     /// </summary>
-    public static partial class TermsconditionspresetsExtensions
+    public static partial class IncidentbusinesscontactsetExtensions
     {
             /// <summary>
-            /// Get entities from bcgov_termsconditionspresets
+            /// Get entities from bcgov_incident_businesscontactset
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -42,13 +42,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// <param name='expand'>
             /// Expand related entities
             /// </param>
-            public static GetOKResponseModelModelModelModelModelModelModel Get(this ITermsconditionspresets operations, int? top = default(int?), int? skip = default(int?), string search = default(string), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>))
+            public static GetOKResponseModelModelModelModelModelModel Get(this IIncidentbusinesscontactset operations, int? top = default(int?), int? skip = default(int?), string search = default(string), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>))
             {
                 return operations.GetAsync(top, skip, search, filter, count, orderby, select, expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Get entities from bcgov_termsconditionspresets
+            /// Get entities from bcgov_incident_businesscontactset
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -75,7 +75,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<GetOKResponseModelModelModelModelModelModelModel> GetAsync(this ITermsconditionspresets operations, int? top = default(int?), int? skip = default(int?), string search = default(string), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<GetOKResponseModelModelModelModelModelModel> GetAsync(this IIncidentbusinesscontactset operations, int? top = default(int?), int? skip = default(int?), string search = default(string), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetWithHttpMessagesAsync(top, skip, search, filter, count, orderby, select, expand, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -84,7 +84,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             }
 
             /// <summary>
-            /// Add new entity to bcgov_termsconditionspresets
+            /// Add new entity to bcgov_incident_businesscontactset
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -96,13 +96,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// Required in order for the service to return a JSON representation of the
             /// object.
             /// </param>
-            public static MicrosoftDynamicsCRMbcgovTermsconditionspreset Create(this ITermsconditionspresets operations, MicrosoftDynamicsCRMbcgovTermsconditionspreset body, string prefer = "return=representation")
+            public static MicrosoftDynamicsCRMbcgovIncidentBusinesscontact Create(this IIncidentbusinesscontactset operations, MicrosoftDynamicsCRMbcgovIncidentBusinesscontact body, string prefer = "return=representation")
             {
                 return operations.CreateAsync(body, prefer).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Add new entity to bcgov_termsconditionspresets
+            /// Add new entity to bcgov_incident_businesscontactset
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -117,7 +117,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<MicrosoftDynamicsCRMbcgovTermsconditionspreset> CreateAsync(this ITermsconditionspresets operations, MicrosoftDynamicsCRMbcgovTermsconditionspreset body, string prefer = "return=representation", CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<MicrosoftDynamicsCRMbcgovIncidentBusinesscontact> CreateAsync(this IIncidentbusinesscontactset operations, MicrosoftDynamicsCRMbcgovIncidentBusinesscontact body, string prefer = "return=representation", CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateWithHttpMessagesAsync(body, prefer, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -126,13 +126,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             }
 
             /// <summary>
-            /// Get entity from bcgov_termsconditionspresets by key
+            /// Get entity from bcgov_incident_businesscontactset by key
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='bcgovTermsconditionspresetid'>
-            /// key: bcgov_termsconditionspresetid
+            /// <param name='bcgovIncidentBusinesscontactid'>
+            /// key: bcgov_incident_businesscontactid
             /// </param>
             /// <param name='select'>
             /// Select properties to be returned
@@ -140,19 +140,19 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// <param name='expand'>
             /// Expand related entities
             /// </param>
-            public static MicrosoftDynamicsCRMbcgovTermsconditionspreset GetByKey(this ITermsconditionspresets operations, string bcgovTermsconditionspresetid, IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>))
+            public static MicrosoftDynamicsCRMbcgovIncidentBusinesscontact GetByKey(this IIncidentbusinesscontactset operations, string bcgovIncidentBusinesscontactid, IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>))
             {
-                return operations.GetByKeyAsync(bcgovTermsconditionspresetid, select, expand).GetAwaiter().GetResult();
+                return operations.GetByKeyAsync(bcgovIncidentBusinesscontactid, select, expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Get entity from bcgov_termsconditionspresets by key
+            /// Get entity from bcgov_incident_businesscontactset by key
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='bcgovTermsconditionspresetid'>
-            /// key: bcgov_termsconditionspresetid
+            /// <param name='bcgovIncidentBusinesscontactid'>
+            /// key: bcgov_incident_businesscontactid
             /// </param>
             /// <param name='select'>
             /// Select properties to be returned
@@ -163,39 +163,39 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<MicrosoftDynamicsCRMbcgovTermsconditionspreset> GetByKeyAsync(this ITermsconditionspresets operations, string bcgovTermsconditionspresetid, IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<MicrosoftDynamicsCRMbcgovIncidentBusinesscontact> GetByKeyAsync(this IIncidentbusinesscontactset operations, string bcgovIncidentBusinesscontactid, IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetByKeyWithHttpMessagesAsync(bcgovTermsconditionspresetid, select, expand, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetByKeyWithHttpMessagesAsync(bcgovIncidentBusinesscontactid, select, expand, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Delete entity from bcgov_termsconditionspresets
+            /// Delete entity from bcgov_incident_businesscontactset
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='bcgovTermsconditionspresetid'>
-            /// key: bcgov_termsconditionspresetid
+            /// <param name='bcgovIncidentBusinesscontactid'>
+            /// key: bcgov_incident_businesscontactid
             /// </param>
             /// <param name='ifMatch'>
             /// ETag
             /// </param>
-            public static void Delete(this ITermsconditionspresets operations, string bcgovTermsconditionspresetid, string ifMatch = default(string))
+            public static void Delete(this IIncidentbusinesscontactset operations, string bcgovIncidentBusinesscontactid, string ifMatch = default(string))
             {
-                operations.DeleteAsync(bcgovTermsconditionspresetid, ifMatch).GetAwaiter().GetResult();
+                operations.DeleteAsync(bcgovIncidentBusinesscontactid, ifMatch).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Delete entity from bcgov_termsconditionspresets
+            /// Delete entity from bcgov_incident_businesscontactset
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='bcgovTermsconditionspresetid'>
-            /// key: bcgov_termsconditionspresetid
+            /// <param name='bcgovIncidentBusinesscontactid'>
+            /// key: bcgov_incident_businesscontactid
             /// </param>
             /// <param name='ifMatch'>
             /// ETag
@@ -203,36 +203,36 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this ITermsconditionspresets operations, string bcgovTermsconditionspresetid, string ifMatch = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAsync(this IIncidentbusinesscontactset operations, string bcgovIncidentBusinesscontactid, string ifMatch = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(bcgovTermsconditionspresetid, ifMatch, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DeleteWithHttpMessagesAsync(bcgovIncidentBusinesscontactid, ifMatch, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
-            /// Update entity in bcgov_termsconditionspresets
+            /// Update entity in bcgov_incident_businesscontactset
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='bcgovTermsconditionspresetid'>
-            /// key: bcgov_termsconditionspresetid
+            /// <param name='bcgovIncidentBusinesscontactid'>
+            /// key: bcgov_incident_businesscontactid
             /// </param>
             /// <param name='body'>
             /// New property values
             /// </param>
-            public static void Update(this ITermsconditionspresets operations, string bcgovTermsconditionspresetid, MicrosoftDynamicsCRMbcgovTermsconditionspreset body)
+            public static void Update(this IIncidentbusinesscontactset operations, string bcgovIncidentBusinesscontactid, MicrosoftDynamicsCRMbcgovIncidentBusinesscontact body)
             {
-                operations.UpdateAsync(bcgovTermsconditionspresetid, body).GetAwaiter().GetResult();
+                operations.UpdateAsync(bcgovIncidentBusinesscontactid, body).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Update entity in bcgov_termsconditionspresets
+            /// Update entity in bcgov_incident_businesscontactset
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='bcgovTermsconditionspresetid'>
-            /// key: bcgov_termsconditionspresetid
+            /// <param name='bcgovIncidentBusinesscontactid'>
+            /// key: bcgov_incident_businesscontactid
             /// </param>
             /// <param name='body'>
             /// New property values
@@ -240,9 +240,9 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task UpdateAsync(this ITermsconditionspresets operations, string bcgovTermsconditionspresetid, MicrosoftDynamicsCRMbcgovTermsconditionspreset body, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task UpdateAsync(this IIncidentbusinesscontactset operations, string bcgovIncidentBusinesscontactid, MicrosoftDynamicsCRMbcgovIncidentBusinesscontact body, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.UpdateWithHttpMessagesAsync(bcgovTermsconditionspresetid, body, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.UpdateWithHttpMessagesAsync(bcgovIncidentBusinesscontactid, body, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
     }

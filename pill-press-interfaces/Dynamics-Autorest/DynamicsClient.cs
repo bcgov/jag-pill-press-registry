@@ -72,6 +72,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual ICustomproducts Customproducts { get; private set; }
 
         /// <summary>
+        /// Gets the IIncidentbusinesscontactset.
+        /// </summary>
+        public virtual IIncidentbusinesscontactset Incidentbusinesscontactset { get; private set; }
+
+        /// <summary>
         /// Gets the ITermsconditionspresets.
         /// </summary>
         public virtual ITermsconditionspresets Termsconditionspresets { get; private set; }
@@ -353,6 +358,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             Businesscontacts = new Businesscontacts(this);
             Customaddresses = new Customaddresses(this);
             Customproducts = new Customproducts(this);
+            Incidentbusinesscontactset = new Incidentbusinesscontactset(this);
             Termsconditionspresets = new Termsconditionspresets(this);
             Contacts = new Contacts(this);
             Incidents = new Incidents(this);

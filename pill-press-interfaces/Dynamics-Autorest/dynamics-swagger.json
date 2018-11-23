@@ -124,6 +124,8 @@
                 "address2_composite desc",
                 "creditlimit_base",
                 "creditlimit_base desc",
+                "bcgov_mailaddressdiffromphysaddress",
+                "bcgov_mailaddressdiffromphysaddress desc",
                 "aging90_base",
                 "aging90_base desc",
                 "address2_postalcode",
@@ -431,6 +433,7 @@
                 "address2_latitude",
                 "address2_composite",
                 "creditlimit_base",
+                "bcgov_mailaddressdiffromphysaddress",
                 "aging90_base",
                 "address2_postalcode",
                 "address2_name",
@@ -779,6 +782,7 @@
                 "address2_latitude",
                 "address2_composite",
                 "creditlimit_base",
+                "bcgov_mailaddressdiffromphysaddress",
                 "aging90_base",
                 "address2_postalcode",
                 "address2_name",
@@ -1962,7 +1966,8 @@
                 "bcgov_businesscontact_AsyncOperations",
                 "bcgov_businesscontact_BulkDeleteFailures",
                 "bcgov_BusinessProfile",
-                "bcgov_Contact"
+                "bcgov_Contact",
+                "bcgov_incident_businesscontact"
               ]
             }
           }
@@ -2099,7 +2104,8 @@
                 "bcgov_businesscontact_AsyncOperations",
                 "bcgov_businesscontact_BulkDeleteFailures",
                 "bcgov_BusinessProfile",
-                "bcgov_Contact"
+                "bcgov_Contact",
+                "bcgov_incident_businesscontact"
               ]
             }
           }
@@ -2744,6 +2750,8 @@
                 "traversedpath desc",
                 "bcgov_productdescriptionandintendeduse",
                 "bcgov_productdescriptionandintendeduse desc",
+                "bcgov_purpose",
+                "bcgov_purpose desc",
                 "versionnumber",
                 "versionnumber desc"
               ]
@@ -2781,6 +2789,7 @@
                 "_createdonbehalfby_value",
                 "traversedpath",
                 "bcgov_productdescriptionandintendeduse",
+                "bcgov_purpose",
                 "versionnumber"
               ]
             }
@@ -2936,6 +2945,7 @@
                 "_createdonbehalfby_value",
                 "traversedpath",
                 "bcgov_productdescriptionandintendeduse",
+                "bcgov_purpose",
                 "versionnumber"
               ]
             }
@@ -3048,6 +3058,268 @@
             "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
+            },
+            "description": "New property values"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      }
+    },
+    "/bcgov_incident_businesscontactset": {
+      "get": {
+        "tags": [
+          "incident_businesscontactset"
+        ],
+        "summary": "Get entities from bcgov_incident_businesscontactset",
+        "operationId": "Incidentbusinesscontactset_Get",
+        "parameters": [
+          {
+            "name": "$top",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "$skip",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "$search",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "$count",
+            "in": "query",
+            "type": "boolean"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "bcgov_businesscontactid",
+                "bcgov_businesscontactid desc",
+                "bcgov_incident_businesscontactid",
+                "bcgov_incident_businesscontactid desc",
+                "incidentid",
+                "incidentid desc",
+                "versionnumber",
+                "versionnumber desc"
+              ]
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "bcgov_businesscontactid",
+                "bcgov_incident_businesscontactid",
+                "incidentid",
+                "versionnumber"
+              ]
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "*"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "schema": {
+              "title": "Collection of bcgov_incident_businesscontactset",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_incident_businesscontact"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "incident_businesscontactset"
+        ],
+        "summary": "Add new entity to bcgov_incident_businesscontactset",
+        "operationId": "Incidentbusinesscontactset_Create",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_incident_businesscontact"
+            },
+            "description": "New entity"
+          },
+          {
+            "name": "Prefer",
+            "in": "header",
+            "description": "Required in order for the service to return a JSON representation of the object.",
+            "type": "string",
+            "default": "return=representation"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_incident_businesscontact"
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      }
+    },
+    "/bcgov_incident_businesscontactset({bcgov_incident_businesscontactid})": {
+      "get": {
+        "tags": [
+          "incident_businesscontactset"
+        ],
+        "summary": "Get entity from bcgov_incident_businesscontactset by key",
+        "operationId": "Incidentbusinesscontactset_GetByKey",
+        "parameters": [
+          {
+            "name": "bcgov_incident_businesscontactid",
+            "in": "path",
+            "required": true,
+            "description": "key: bcgov_incident_businesscontactid",
+            "type": "string"
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "bcgov_businesscontactid",
+                "bcgov_incident_businesscontactid",
+                "incidentid",
+                "versionnumber"
+              ]
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "*"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_incident_businesscontact"
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "incident_businesscontactset"
+        ],
+        "summary": "Delete entity from bcgov_incident_businesscontactset",
+        "operationId": "Incidentbusinesscontactset_Delete",
+        "parameters": [
+          {
+            "name": "bcgov_incident_businesscontactid",
+            "in": "path",
+            "required": true,
+            "description": "key: bcgov_incident_businesscontactid",
+            "type": "string"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "incident_businesscontactset"
+        ],
+        "summary": "Update entity in bcgov_incident_businesscontactset",
+        "operationId": "Incidentbusinesscontactset_Update",
+        "parameters": [
+          {
+            "name": "bcgov_incident_businesscontactid",
+            "in": "path",
+            "required": true,
+            "description": "key: bcgov_incident_businesscontactid",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_incident_businesscontact"
             },
             "description": "New property values"
           }
@@ -4782,8 +5054,6 @@
                 "createdon desc",
                 "_resolvebykpiid_value",
                 "_resolvebykpiid_value desc",
-                "bcgov_applicationtype",
-                "bcgov_applicationtype desc",
                 "bcgov_intendonrentingleasingtoothers",
                 "bcgov_intendonrentingleasingtoothers desc",
                 "_owningteam_value",
@@ -4818,6 +5088,8 @@
                 "_accountid_value desc",
                 "actualserviceunits",
                 "actualserviceunits desc",
+                "bcgov_otherlicencebusinessname",
+                "bcgov_otherlicencebusinessname desc",
                 "escalatedon",
                 "escalatedon desc",
                 "bcgov_borrowrentleaseequipment",
@@ -4942,6 +5214,8 @@
                 "bcgov_intendtosellencapsulator desc",
                 "resolvebyslastatus",
                 "resolvebyslastatus desc",
+                "bcgov_delbusinessname",
+                "bcgov_delbusinessname desc",
                 "bcgov_intendtoselldiemouldorpunch",
                 "bcgov_intendtoselldiemouldorpunch desc",
                 "bcgov_retailerofcontrolledequipment",
@@ -4954,6 +5228,8 @@
                 "entityimage_url desc",
                 "prioritycode",
                 "prioritycode desc",
+                "bcgov_sitelicencebusinessname",
+                "bcgov_sitelicencebusinessname desc",
                 "bcgov_kindsofproductsdrugs",
                 "bcgov_kindsofproductsdrugs desc"
               ]
@@ -5010,7 +5286,6 @@
                 "customercontacted",
                 "createdon",
                 "_resolvebykpiid_value",
-                "bcgov_applicationtype",
                 "bcgov_intendonrentingleasingtoothers",
                 "_owningteam_value",
                 "_existingcase_value",
@@ -5028,6 +5303,7 @@
                 "statuscode",
                 "_accountid_value",
                 "actualserviceunits",
+                "bcgov_otherlicencebusinessname",
                 "escalatedon",
                 "bcgov_borrowrentleaseequipment",
                 "checkemail",
@@ -5090,12 +5366,14 @@
                 "activitiescomplete",
                 "bcgov_intendtosellencapsulator",
                 "resolvebyslastatus",
+                "bcgov_delbusinessname",
                 "bcgov_intendtoselldiemouldorpunch",
                 "bcgov_retailerofcontrolledequipment",
                 "versionnumber",
                 "_customerid_value",
                 "entityimage_url",
                 "prioritycode",
+                "bcgov_sitelicencebusinessname",
                 "bcgov_kindsofproductsdrugs"
               ]
             }
@@ -5174,7 +5452,8 @@
                 "bcgov_incident_bcgov_applicationterms_Application",
                 "bcgov_ApplicationTypeId",
                 "bcgov_Submitter",
-                "bcgov_incident_customproduct_RelatedApplication"
+                "bcgov_incident_customproduct_RelatedApplication",
+                "bcgov_incident_businesscontact"
               ]
             }
           }
@@ -5305,7 +5584,6 @@
                 "customercontacted",
                 "createdon",
                 "_resolvebykpiid_value",
-                "bcgov_applicationtype",
                 "bcgov_intendonrentingleasingtoothers",
                 "_owningteam_value",
                 "_existingcase_value",
@@ -5323,6 +5601,7 @@
                 "statuscode",
                 "_accountid_value",
                 "actualserviceunits",
+                "bcgov_otherlicencebusinessname",
                 "escalatedon",
                 "bcgov_borrowrentleaseequipment",
                 "checkemail",
@@ -5385,12 +5664,14 @@
                 "activitiescomplete",
                 "bcgov_intendtosellencapsulator",
                 "resolvebyslastatus",
+                "bcgov_delbusinessname",
                 "bcgov_intendtoselldiemouldorpunch",
                 "bcgov_retailerofcontrolledequipment",
                 "versionnumber",
                 "_customerid_value",
                 "entityimage_url",
                 "prioritycode",
+                "bcgov_sitelicencebusinessname",
                 "bcgov_kindsofproductsdrugs"
               ]
             }
@@ -5469,7 +5750,8 @@
                 "bcgov_incident_bcgov_applicationterms_Application",
                 "bcgov_ApplicationTypeId",
                 "bcgov_Submitter",
-                "bcgov_incident_customproduct_RelatedApplication"
+                "bcgov_incident_customproduct_RelatedApplication",
+                "bcgov_incident_businesscontact"
               ]
             }
           }
@@ -7663,6 +7945,10 @@
           "x-nullable": true
         },
         "creditlimit_base": {
+          "x-nullable": true
+        },
+        "bcgov_mailaddressdiffromphysaddress": {
+          "type": "boolean",
           "x-nullable": true
         },
         "aging90_base": {
@@ -11549,6 +11835,12 @@
         },
         "bcgov_Contact": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.contact"
+        },
+        "bcgov_incident_businesscontact": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.incident"
+          }
         }
       }
     },
@@ -12010,6 +12302,10 @@
           "type": "string",
           "x-nullable": true
         },
+        "bcgov_purpose": {
+          "type": "integer",
+          "x-nullable": true
+        },
         "versionnumber": {
           "type": "integer",
           "format": "int64",
@@ -12170,6 +12466,29 @@
         },
         "bcgov_RelatedApplication": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.incident"
+        }
+      }
+    },
+    "Microsoft.Dynamics.CRM.bcgov_incident_businesscontact": {
+      "title": "bcgov_incident_businesscontact",
+      "type": "object",
+      "properties": {
+        "bcgov_businesscontactid": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "bcgov_incident_businesscontactid": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "incidentid": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "versionnumber": {
+          "type": "integer",
+          "format": "int64",
+          "x-nullable": true
         }
       }
     },
@@ -27809,10 +28128,6 @@
           "type": "string",
           "x-nullable": true
         },
-        "bcgov_applicationtype": {
-          "type": "integer",
-          "x-nullable": true
-        },
         "bcgov_intendonrentingleasingtoothers": {
           "type": "boolean",
           "x-nullable": true
@@ -27878,6 +28193,10 @@
         },
         "actualserviceunits": {
           "type": "integer",
+          "x-nullable": true
+        },
+        "bcgov_otherlicencebusinessname": {
+          "type": "string",
           "x-nullable": true
         },
         "escalatedon": {
@@ -28128,6 +28447,10 @@
           "type": "integer",
           "x-nullable": true
         },
+        "bcgov_delbusinessname": {
+          "type": "string",
+          "x-nullable": true
+        },
         "bcgov_intendtoselldiemouldorpunch": {
           "type": "boolean",
           "x-nullable": true
@@ -28151,6 +28474,10 @@
         },
         "prioritycode": {
           "type": "integer",
+          "x-nullable": true
+        },
+        "bcgov_sitelicencebusinessname": {
+          "type": "string",
           "x-nullable": true
         },
         "bcgov_kindsofproductsdrugs": {
@@ -28461,6 +28788,12 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
+          }
+        },
+        "bcgov_incident_businesscontact": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_businesscontact"
           }
         }
       }
@@ -66290,6 +66623,9 @@
     },
     {
       "name": "bcgov_customproducts"
+    },
+    {
+      "name": "bcgov_incident_businesscontactset"
     },
     {
       "name": "bcgov_termsconditionspresets"
