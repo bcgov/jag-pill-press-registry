@@ -6,7 +6,6 @@ import { PolicyDocumentComponent } from './policy-document/policy-document.compo
 //import { ResultComponent } from './result/result.component';
 import { SurveyPrimaryComponent } from './survey/primary.component';
 import { SurveyTestComponent } from './survey/test.component';
-import { SurveyResolver } from './services/survey-resolver.service';
 //import { NewsletterConfirmationComponent } from './newsletter-confirmation/newsletter-confirmation.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CanDeactivateGuard } from './services/can-deactivate-guard.service';
@@ -49,27 +48,9 @@ const routes: Routes = [
     component: PolicyDocumentComponent
   },
   {
-    path: 'prv/survey',
-    component: SurveyPrimaryComponent,
-    resolve: {
-      survey: SurveyResolver,
-    },
-    data: {
-      // do not show breadcrumb
-      // breadcrumb: 'Potential Applicant Survey',
-      survey_path: 'assets/survey-primary.json',
-    }
-  },
-  {
     path: 'prv',
     redirectTo: 'prv/survey'
   },
-  //{
-  //  path: 'result/:data',
-  //  component: ResultComponent,
-  //  data: {
-  //  }
-  //},
   {
     path: 'survey-test',
     component: SurveyTestComponent,
@@ -83,6 +64,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [SurveyResolver]
+  providers: []
 })
 export class AppRoutingModule { }
