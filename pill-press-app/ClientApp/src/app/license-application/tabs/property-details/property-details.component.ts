@@ -2,11 +2,10 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { ApplicationDataService } from '../../../services/adoxio-application-data.service';
 import { FormBuilder, FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription ,  Subject } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { auditTime } from 'rxjs/operators';
 import { Observable } from '../../../../../node_modules/rxjs/Observable';
-import { Subject } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../app-state/models/app-state';
 import * as currentApplicationActions from '../../../app-state/actions/current-application.action';
@@ -106,12 +105,12 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
         this.updateApplicationInStore();
         this.saveFormData = saveData;
         if (showProgress === true) {
-          this.snackBar.open('Property Details have been saved', 'Success', { duration: 2500, extraClasses: ['red-snackbar'] });
+          this.snackBar.open('Property Details have been saved', 'Success', { duration: 2500, panelClass: ['red-snackbar'] });
         }
       },
       err => {
         saveResult.next(false);
-        this.snackBar.open('Error saving Property Details', 'Fail', { duration: 3500, extraClasses: ['red-snackbar'] });
+        this.snackBar.open('Error saving Property Details', 'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
         console.log('Error occured saving Property Details');
       });
 
