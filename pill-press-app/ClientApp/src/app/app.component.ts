@@ -11,6 +11,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from './app-state/models/app-state';
 import { Observable } from '../../node_modules/rxjs';
 import * as CurrentUserActions from './app-state/actions/current-user.action';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -55,7 +56,7 @@ export class AppComponent implements OnInit {
     this.reloadUser();
 
     this.store.select(state => state.legalEntitiesState)
-      .filter(state => !!state)
+      .pipe(filter(state => !!state))
       .subscribe(state => {
         this.businessProfiles = state.legalEntities;
       });
