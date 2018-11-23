@@ -6,12 +6,10 @@ import { DynamicsContact } from '../../models/dynamics-contact.model';
 import { AppState } from '../../app-state/models/app-state';
 import * as CurrentUserActions from '../../app-state/actions/current-user.action';
 import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription ,  Observable, Subject ,  forkJoin } from 'rxjs';
 import { FormBuilder, FormGroup, Validators, FormArray, ValidatorFn, AbstractControl, FormControl } from '@angular/forms';
 import { PreviousAddressDataService } from '../../services/previous-address-data.service';
-import { Observable, Subject } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { forkJoin } from 'rxjs/observable/forkJoin';
 import { COUNTRIES } from './country-list';
 
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
