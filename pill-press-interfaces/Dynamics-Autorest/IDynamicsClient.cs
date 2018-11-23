@@ -69,6 +69,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         ICustomproducts Customproducts { get; }
 
         /// <summary>
+        /// Gets the IIncidentbusinesscontactset.
+        /// </summary>
+        IIncidentbusinesscontactset Incidentbusinesscontactset { get; }
+
+        /// <summary>
         /// Gets the ITermsconditionspresets.
         /// </summary>
         ITermsconditionspresets Termsconditionspresets { get; }
