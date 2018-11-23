@@ -2,9 +2,7 @@ import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../app-state/models/app-state';
-import { Subscription } from 'rxjs/Subscription';
-import { Subject } from 'rxjs/Subject';
-import { Observable } from 'rxjs/Observable';
+import { Subscription ,  Subject ,  Observable } from 'rxjs';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import * as currentApplicationActions from '../../app-state/actions/current-application.action';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -105,12 +103,12 @@ export class ApplicationComponent implements OnInit, OnDestroy {
         this.savedFormData = saveData;
         this.updateApplicationInStore();
         if (showProgress === true) {
-          this.snackBar.open('Application has been saved', 'Success', { duration: 2500, extraClasses: ['red-snackbar'] });
+          this.snackBar.open('Application has been saved', 'Success', { duration: 2500, panelClass: ['red-snackbar'] });
         }
       },
       err => {
         saveResult.next(false);
-        this.snackBar.open('Error saving Application', 'Fail', { duration: 3500, extraClasses: ['red-snackbar'] });
+        this.snackBar.open('Error saving Application', 'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
         console.log('Error occured');
       });
 
@@ -219,7 +217,7 @@ export class ApplicationComponent implements OnInit, OnDestroy {
               this.router.navigate(['/dashboard']);
             },
             err => {
-              this.snackBar.open('Error cancelling the application', 'Fail', { duration: 3500, extraClasses: ['red-snackbar'] });
+              this.snackBar.open('Error cancelling the application', 'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
               console.error('Error cancelling the application');
             });
         }

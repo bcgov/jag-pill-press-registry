@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
-import 'rxjs/add/operator/toPromise';
+
 
 import { DynamicsForm } from '../models/dynamics-form.model';
 import { DynamicsFormTab } from '../models/dynamics-form-tab.model';
