@@ -12,24 +12,26 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
     using System.Linq;
 
     /// <summary>
-    /// Collection of contacts
+    /// Collection of sharepointsites
     /// </summary>
-    public partial class GetOKResponseModelModelModelModelModelModelModelModel
+    public partial class GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModelModel
     {
         /// <summary>
         /// Initializes a new instance of the
-        /// GetOKResponseModelModelModelModelModelModelModelModel class.
+        /// GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModelModel
+        /// class.
         /// </summary>
-        public GetOKResponseModelModelModelModelModelModelModelModel()
+        public GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModelModel()
         {
             CustomInit();
         }
 
         /// <summary>
         /// Initializes a new instance of the
-        /// GetOKResponseModelModelModelModelModelModelModelModel class.
+        /// GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModelModel
+        /// class.
         /// </summary>
-        public GetOKResponseModelModelModelModelModelModelModelModel(IList<MicrosoftDynamicsCRMcontact> value = default(IList<MicrosoftDynamicsCRMcontact>))
+        public GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModelModel(IList<MicrosoftDynamicsCRMsharepointsite> value = default(IList<MicrosoftDynamicsCRMsharepointsite>))
         {
             Value = value;
             CustomInit();
@@ -43,7 +45,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "value")]
-        public IList<MicrosoftDynamicsCRMcontact> Value { get; set; }
+        public IList<MicrosoftDynamicsCRMsharepointsite> Value { get; set; }
 
     }
 }
