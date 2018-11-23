@@ -1,8 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ApplicationDataService } from '../../../services/adoxio-application-data.service';
-import { Subscription } from 'rxjs/Subscription';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
+import { Subscription ,  Observable ,  Subject } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -74,12 +72,12 @@ export class DeclarationComponent implements OnInit {
           signatureagreement: declarationValues.signatureagreement,
         };
         if (showProgress === true) {
-          this.snackBar.open('Declaration Details have been saved', 'Success', { duration: 2500, extraClasses: ['red-snackbar'] });
+          this.snackBar.open('Declaration Details have been saved', 'Success', { duration: 2500, panelClass: ['red-snackbar'] });
         }
       },
       err => {
         saveResult.next(false);
-        this.snackBar.open('Error saving Declaration Details', 'Fail', { duration: 3500, extraClasses: ['red-snackbar'] });
+        this.snackBar.open('Error saving Declaration Details', 'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
         console.log('Error occured saving Declaration Details');
       });
     if (showProgress === true) {

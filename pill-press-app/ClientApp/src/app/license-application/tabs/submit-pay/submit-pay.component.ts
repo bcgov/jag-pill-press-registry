@@ -2,10 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ApplicationDataService } from '../../../services/adoxio-application-data.service';
 import { PaymentDataService } from '../../../services/payment-data.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Subscription, Subject } from 'rxjs';
+import { Subscription, Subject ,  Observable ,  zip } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
-import { Observable } from 'rxjs/Observable';
-import { zip } from 'rxjs/observable/zip';
 import { Application } from '../../../models/adoxio-application.model';
 
 
@@ -45,7 +43,7 @@ export class SubmitPayComponent implements OnInit {
         this.isLoaded = true;
       },
       err => {
-        this.snackBar.open('Error getting Application Details', 'Fail', { duration: 3500, extraClasses: ['red-snackbar'] });
+        this.snackBar.open('Error getting Application Details', 'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
         console.log('Error occured getting Application Details');
       }
     );
@@ -113,7 +111,7 @@ export class SubmitPayComponent implements OnInit {
           });
       },
       err => {
-        this.snackBar.open('Error getting Application Details for validation', 'Fail', { duration: 3500, extraClasses: ['red-snackbar'] });
+        this.snackBar.open('Error getting Application Details for validation', 'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
         console.log('Error occured getting Application Details for validation');
         result.next(false);
       }
