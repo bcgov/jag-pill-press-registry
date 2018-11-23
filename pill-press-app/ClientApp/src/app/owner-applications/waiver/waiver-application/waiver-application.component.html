@@ -48,12 +48,17 @@
             <input type="radio" [value]="false" name="producingownproduct" formControlName="producingownproduct">
             <span>No</span>
           </app-field>
-          <app-field *ngIf="form.get('producingownproduct').value === true" [required]="true" leadingText=" Please provide detailed information on the type of product you produce and its intended use. If you produce multiple products, please describe all of them by clicking on the 'Add another product' link below."
-            label="Product Description and Intended Use">
-            <textarea *ngFor="let item of ownProducts.controls" name="" id="" style="width: 100%" rows="5"></textarea>
-            <br>
+          <section *ngIf="form.get('producingownproduct').value === true">
+            <p>
+              Please provide detailed information on the type of product you produce and its intended use. If you
+              produce multiple products, please describe all of them by clicking on the 'Add another product' link
+              below.
+            </p>
+            <app-field *ngFor="let item of ownProducts.controls; let i = index;" [required]="true" label="Product Description and Intended Use">
+              <textarea name="" id="" style="width: 100%" rows="5"></textarea>
+            </app-field>
             <button (click)="addCustomProduct('ownProducts')">Add Product</button>
-          </app-field>
+          </section>
           <app-field label="Do you own, use, or possess (or intend to own) Controlled Equipment for the purposes of providing manufacturing services to others?"
             [required]="true">
             <input type="radio" [value]="true" name="providingmanufacturingtoothers" formControlName="providingmanufacturingtoothers">
