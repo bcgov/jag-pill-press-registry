@@ -65,9 +65,8 @@
             </p>
             <div style="display: flex;" *ngFor="let item of ownProducts.controls; let i = index;">
               <section style="flex: 10" [formGroupName]="i">
-                <app-field [required]="true"
-                [showChevrons]="false" errorMessage="Please provide the product description and its intended use" [valid]="item.get('purpose').valid || !item.get('purpose').touched"
-                label="Product {{i === 0 ? '': i +1}} Description and Intended Use">
+                <app-field [required]="true" [showChevrons]="false" errorMessage="Please provide the product description and its intended use"
+                  [valid]="item.get('purpose').valid || !item.get('purpose').touched" label="Product {{i === 0 ? '': i +1}} Description and Intended Use">
                   <textarea class="form-control" formControlName="purpose" maxlength="1000" rows="5"></textarea>
                 </app-field>
               </section>
@@ -100,9 +99,8 @@
             </p>
             <div style="display: flex;" *ngFor="let item of productsForOthers.controls; let i = index;">
               <section style="flex: 10" [formGroupName]="i">
-                <app-field [required]="true"
-                [showChevrons]="false" errorMessage="Please provide the product description and its intended use" [valid]="item.get('purpose').valid || !item.get('purpose').touched"
-                label="Product {{i === 0 ? '': i +1}} Description and Intended Use">
+                <app-field [required]="true" [showChevrons]="false" errorMessage="Please provide the product description and its intended use"
+                  [valid]="item.get('purpose').valid || !item.get('purpose').touched" label="Product {{i === 0 ? '': i +1}} Description and Intended Use">
                   <textarea class="form-control" formControlName="purpose" maxlength="1000" rows="5"></textarea>
                 </app-field>
               </section>
@@ -124,13 +122,13 @@
         <section>
           <h3 class="blue-header">BUSINESS DETAILS</h3>
           <app-field label="Please explain the main focus of your business and why that requires Controlled Equipment."
-          [showChevrons]="false" errorMessage="Please provide an answer to the above question" [valid]="form.get('mainbusinessfocus').valid || !form.get('mainbusinessfocus').touched"
+            [showChevrons]="false" errorMessage="Please provide an answer to the above question" [valid]="form.get('mainbusinessfocus').valid || !form.get('mainbusinessfocus').touched"
             [required]="true">
             <textarea maxlength="2000" formControlName="mainbusinessfocus" class="form-control" rows="5"></textarea>
           </app-field>
-          <app-field [required]="true" 
-          [showChevrons]="false" errorMessage="Please provide an answer to the above question" [valid]="form.get('manufacturingprocessdescription').valid || !form.get('manufacturingprocessdescription').touched"
-          label="Please describe the manufacturing process you use to produce the above-noted products. Please include specific information on how you utilize the Controlled Equipment throughout the manufacturing process.">
+          <app-field [required]="true" [showChevrons]="false" errorMessage="Please provide an answer to the above question"
+            [valid]="form.get('manufacturingprocessdescription').valid || !form.get('manufacturingprocessdescription').touched"
+            label="Please describe the manufacturing process you use to produce the above-noted products. Please include specific information on how you utilize the Controlled Equipment throughout the manufacturing process.">
             <textarea maxlength="2000" formControlName="manufacturingprocessdescription" class="form-control" rows="5"></textarea>
           </app-field>
         </section>
