@@ -11,11 +11,11 @@ export class WaiverApplicationComponent implements OnInit {
   form: FormGroup;
   busy: Subscription;
 
-  get ownProducts() {
+  get ownProducts(): FormArray {
     return <FormArray>this.form.get('ownProducts');
   }
-  get productsForOthers() {
-    return <FormArray>this.form.get('productsForOthers p');
+  get productsForOthers(): FormArray {
+    return <FormArray>this.form.get('productsForOthers');
   }
   constructor(private fb: FormBuilder) { }
 
@@ -46,23 +46,27 @@ export class WaiverApplicationComponent implements OnInit {
     return this.fb.group({
       id: [],
       type: [product.type],
-      text: []
+      purpose: []
     });
   }
 
   addCustomProduct(type: string) {
     if (type === 'ownProducts') {
       const product = this.createCustomProduct({ type });
-      (<FormArray>this.form.get('ownProducts')).push(product);
+      this.ownProducts.push(product);
     } else {
       const product = this.createCustomProduct({ type });
-      (<FormArray>this.form.get('productsForOthers')).push(product);
+      this.productsForOthers.push(product);
     }
 
   }
 
-  deleteCustomProduct() {
-
+  deleteCustomProduct(index: number, type: string) {
+    if (type === 'ownProducts') {
+      this.ownProducts.removeAt(index);
+    } else {
+      this.productsForOthers.removeAt(index);
+    }
   }
 
 }
