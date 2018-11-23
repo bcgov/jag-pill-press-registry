@@ -19,12 +19,12 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Msdyncustomaddressknowledgearticlset operations.
+    /// Incidentbusinesscontactset operations.
     /// </summary>
-    public partial class Msdyncustomaddressknowledgearticlset : IServiceOperations<DynamicsClient>, IMsdyncustomaddressknowledgearticlset
+    public partial class Incidentbusinesscontactset : IServiceOperations<DynamicsClient>, IIncidentbusinesscontactset
     {
         /// <summary>
-        /// Initializes a new instance of the Msdyncustomaddressknowledgearticlset class.
+        /// Initializes a new instance of the Incidentbusinesscontactset class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -32,7 +32,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public Msdyncustomaddressknowledgearticlset(DynamicsClient client)
+        public Incidentbusinesscontactset(DynamicsClient client)
         {
             if (client == null)
             {
@@ -47,7 +47,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public DynamicsClient Client { get; private set; }
 
         /// <summary>
-        /// Get entities from msdyn_bcgov_customaddress_knowledgearticlset
+        /// Get entities from bcgov_incident_businesscontactset
         /// </summary>
         /// <param name='top'>
         /// </param>
@@ -83,7 +83,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse<GetOKResponseModelModelModelModelModelModelModelModelModelModelModel>> GetWithHttpMessagesAsync(int? top = default(int?), int? skip = default(int?), string search = default(string), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<GetOKResponseModelModelModelModelModelModel>> GetWithHttpMessagesAsync(int? top = default(int?), int? skip = default(int?), string search = default(string), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -105,7 +105,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "msdyn_bcgov_customaddress_knowledgearticlset").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "bcgov_incident_businesscontactset").ToString();
             List<string> _queryParameters = new List<string>();
             if (top != null)
             {
@@ -215,7 +215,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                 throw ex;
             }
             // Create Result
-            var _result = new HttpOperationResponse<GetOKResponseModelModelModelModelModelModelModelModelModelModelModel>();
+            var _result = new HttpOperationResponse<GetOKResponseModelModelModelModelModelModel>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             // Deserialize Response
@@ -224,7 +224,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<GetOKResponseModelModelModelModelModelModelModelModelModelModelModel>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<GetOKResponseModelModelModelModelModelModel>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -244,7 +244,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         }
 
         /// <summary>
-        /// Add new entity to msdyn_bcgov_customaddress_knowledgearticlset
+        /// Add new entity to bcgov_incident_businesscontactset
         /// </summary>
         /// <param name='body'>
         /// New entity
@@ -274,7 +274,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse<MicrosoftDynamicsCRMmsdynBcgovCustomaddressKnowledgearticl>> CreateWithHttpMessagesAsync(MicrosoftDynamicsCRMmsdynBcgovCustomaddressKnowledgearticl body, string prefer = "return=representation", Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<MicrosoftDynamicsCRMbcgovIncidentBusinesscontact>> CreateWithHttpMessagesAsync(MicrosoftDynamicsCRMbcgovIncidentBusinesscontact body, string prefer = "return=representation", Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (body == null)
             {
@@ -294,7 +294,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "msdyn_bcgov_customaddress_knowledgearticlset").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "bcgov_incident_businesscontactset").ToString();
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
             HttpResponseMessage _httpResponse = null;
@@ -381,7 +381,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                 throw ex;
             }
             // Create Result
-            var _result = new HttpOperationResponse<MicrosoftDynamicsCRMmsdynBcgovCustomaddressKnowledgearticl>();
+            var _result = new HttpOperationResponse<MicrosoftDynamicsCRMbcgovIncidentBusinesscontact>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             // Deserialize Response
@@ -390,7 +390,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<MicrosoftDynamicsCRMmsdynBcgovCustomaddressKnowledgearticl>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<MicrosoftDynamicsCRMbcgovIncidentBusinesscontact>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -410,10 +410,10 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         }
 
         /// <summary>
-        /// Get entity from msdyn_bcgov_customaddress_knowledgearticlset by key
+        /// Get entity from bcgov_incident_businesscontactset by key
         /// </summary>
-        /// <param name='msdynBcgovCustomaddressKnowledgearticlid'>
-        /// key: msdyn_bcgov_customaddress_knowledgearticlid
+        /// <param name='bcgovIncidentBusinesscontactid'>
+        /// key: bcgov_incident_businesscontactid
         /// </param>
         /// <param name='select'>
         /// Select properties to be returned
@@ -442,11 +442,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse<MicrosoftDynamicsCRMmsdynBcgovCustomaddressKnowledgearticl>> GetByKeyWithHttpMessagesAsync(string msdynBcgovCustomaddressKnowledgearticlid, IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<MicrosoftDynamicsCRMbcgovIncidentBusinesscontact>> GetByKeyWithHttpMessagesAsync(string bcgovIncidentBusinesscontactid, IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (msdynBcgovCustomaddressKnowledgearticlid == null)
+            if (bcgovIncidentBusinesscontactid == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "msdynBcgovCustomaddressKnowledgearticlid");
+                throw new ValidationException(ValidationRules.CannotBeNull, "bcgovIncidentBusinesscontactid");
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -455,7 +455,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("msdynBcgovCustomaddressKnowledgearticlid", msdynBcgovCustomaddressKnowledgearticlid);
+                tracingParameters.Add("bcgovIncidentBusinesscontactid", bcgovIncidentBusinesscontactid);
                 tracingParameters.Add("select", select);
                 tracingParameters.Add("expand", expand);
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -463,8 +463,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "msdyn_bcgov_customaddress_knowledgearticlset({msdyn_bcgov_customaddress_knowledgearticlid})").ToString();
-            _url = _url.Replace("{msdyn_bcgov_customaddress_knowledgearticlid}", System.Uri.EscapeDataString(msdynBcgovCustomaddressKnowledgearticlid));
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "bcgov_incident_businesscontactset({bcgov_incident_businesscontactid})").ToString();
+            _url = _url.Replace("{bcgov_incident_businesscontactid}", System.Uri.EscapeDataString(bcgovIncidentBusinesscontactid));
             List<string> _queryParameters = new List<string>();
             if (select != null)
             {
@@ -550,7 +550,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                 throw ex;
             }
             // Create Result
-            var _result = new HttpOperationResponse<MicrosoftDynamicsCRMmsdynBcgovCustomaddressKnowledgearticl>();
+            var _result = new HttpOperationResponse<MicrosoftDynamicsCRMbcgovIncidentBusinesscontact>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             // Deserialize Response
@@ -559,7 +559,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<MicrosoftDynamicsCRMmsdynBcgovCustomaddressKnowledgearticl>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<MicrosoftDynamicsCRMbcgovIncidentBusinesscontact>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -579,10 +579,10 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         }
 
         /// <summary>
-        /// Delete entity from msdyn_bcgov_customaddress_knowledgearticlset
+        /// Delete entity from bcgov_incident_businesscontactset
         /// </summary>
-        /// <param name='msdynBcgovCustomaddressKnowledgearticlid'>
-        /// key: msdyn_bcgov_customaddress_knowledgearticlid
+        /// <param name='bcgovIncidentBusinesscontactid'>
+        /// key: bcgov_incident_businesscontactid
         /// </param>
         /// <param name='ifMatch'>
         /// ETag
@@ -605,11 +605,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse> DeleteWithHttpMessagesAsync(string msdynBcgovCustomaddressKnowledgearticlid, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse> DeleteWithHttpMessagesAsync(string bcgovIncidentBusinesscontactid, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (msdynBcgovCustomaddressKnowledgearticlid == null)
+            if (bcgovIncidentBusinesscontactid == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "msdynBcgovCustomaddressKnowledgearticlid");
+                throw new ValidationException(ValidationRules.CannotBeNull, "bcgovIncidentBusinesscontactid");
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -618,15 +618,15 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("msdynBcgovCustomaddressKnowledgearticlid", msdynBcgovCustomaddressKnowledgearticlid);
+                tracingParameters.Add("bcgovIncidentBusinesscontactid", bcgovIncidentBusinesscontactid);
                 tracingParameters.Add("ifMatch", ifMatch);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Delete", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "msdyn_bcgov_customaddress_knowledgearticlset({msdyn_bcgov_customaddress_knowledgearticlid})").ToString();
-            _url = _url.Replace("{msdyn_bcgov_customaddress_knowledgearticlid}", System.Uri.EscapeDataString(msdynBcgovCustomaddressKnowledgearticlid));
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "bcgov_incident_businesscontactset({bcgov_incident_businesscontactid})").ToString();
+            _url = _url.Replace("{bcgov_incident_businesscontactid}", System.Uri.EscapeDataString(bcgovIncidentBusinesscontactid));
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
             HttpResponseMessage _httpResponse = null;
@@ -718,10 +718,10 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         }
 
         /// <summary>
-        /// Update entity in msdyn_bcgov_customaddress_knowledgearticlset
+        /// Update entity in bcgov_incident_businesscontactset
         /// </summary>
-        /// <param name='msdynBcgovCustomaddressKnowledgearticlid'>
-        /// key: msdyn_bcgov_customaddress_knowledgearticlid
+        /// <param name='bcgovIncidentBusinesscontactid'>
+        /// key: bcgov_incident_businesscontactid
         /// </param>
         /// <param name='body'>
         /// New property values
@@ -744,11 +744,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse> UpdateWithHttpMessagesAsync(string msdynBcgovCustomaddressKnowledgearticlid, MicrosoftDynamicsCRMmsdynBcgovCustomaddressKnowledgearticl body, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse> UpdateWithHttpMessagesAsync(string bcgovIncidentBusinesscontactid, MicrosoftDynamicsCRMbcgovIncidentBusinesscontact body, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (msdynBcgovCustomaddressKnowledgearticlid == null)
+            if (bcgovIncidentBusinesscontactid == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "msdynBcgovCustomaddressKnowledgearticlid");
+                throw new ValidationException(ValidationRules.CannotBeNull, "bcgovIncidentBusinesscontactid");
             }
             if (body == null)
             {
@@ -761,15 +761,15 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("msdynBcgovCustomaddressKnowledgearticlid", msdynBcgovCustomaddressKnowledgearticlid);
+                tracingParameters.Add("bcgovIncidentBusinesscontactid", bcgovIncidentBusinesscontactid);
                 tracingParameters.Add("body", body);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Update", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "msdyn_bcgov_customaddress_knowledgearticlset({msdyn_bcgov_customaddress_knowledgearticlid})").ToString();
-            _url = _url.Replace("{msdyn_bcgov_customaddress_knowledgearticlid}", System.Uri.EscapeDataString(msdynBcgovCustomaddressKnowledgearticlid));
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "bcgov_incident_businesscontactset({bcgov_incident_businesscontactid})").ToString();
+            _url = _url.Replace("{bcgov_incident_businesscontactid}", System.Uri.EscapeDataString(bcgovIncidentBusinesscontactid));
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
             HttpResponseMessage _httpResponse = null;

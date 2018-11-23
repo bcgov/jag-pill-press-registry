@@ -12,7 +12,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
     using System.Linq;
 
     /// <summary>
-    /// Collection of bcgov_termsconditionspresets
+    /// Collection of bcgov_incident_businesscontactset
     /// </summary>
     public partial class GetOKResponseModelModelModelModelModelModel
     {
@@ -29,7 +29,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// Initializes a new instance of the
         /// GetOKResponseModelModelModelModelModelModel class.
         /// </summary>
-        public GetOKResponseModelModelModelModelModelModel(IList<MicrosoftDynamicsCRMbcgovTermsconditionspreset> value = default(IList<MicrosoftDynamicsCRMbcgovTermsconditionspreset>))
+        public GetOKResponseModelModelModelModelModelModel(IList<MicrosoftDynamicsCRMbcgovIncidentBusinesscontact> value = default(IList<MicrosoftDynamicsCRMbcgovIncidentBusinesscontact>))
         {
             Value = value;
             CustomInit();
@@ -43,7 +43,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "value")]
-        public IList<MicrosoftDynamicsCRMbcgovTermsconditionspreset> Value { get; set; }
+        public IList<MicrosoftDynamicsCRMbcgovIncidentBusinesscontact> Value { get; set; }
 
     }
 }
