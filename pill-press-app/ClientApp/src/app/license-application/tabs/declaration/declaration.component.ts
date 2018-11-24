@@ -7,6 +7,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../../../app-state/models/app-state';
 import * as currentApplicationActions from '../../../app-state/actions/current-application.action';
 import { Application } from '../../../models/adoxio-application.model';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-declaration',
@@ -32,7 +33,7 @@ export class DeclarationComponent implements OnInit {
 
   ngOnInit() {
     const sub = this.store.select(state => state.currentApplicaitonState.currentApplication)
-      .filter(state => !!state)
+      .pipe(filter(state => !!state))
       .subscribe(currentApplication => {
         this.signatureagreement = currentApplication.signatureagreement;
         this.authorizedtosubmit = currentApplication.authorizedtosubmit;

@@ -3,7 +3,7 @@ import { ApplicationDataService } from '../../../services/adoxio-application-dat
 import { FormBuilder, FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { Subscription ,  Observable ,  Subject } from 'rxjs';
-import { auditTime } from 'rxjs/operators';
+import { auditTime, filter } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../app-state/models/app-state';
@@ -34,7 +34,7 @@ export class ContactDetailsComponent implements OnInit, OnDestroy {
     this.createForm();
 
     const sub = this.store.select(state => state.currentApplicaitonState.currentApplication)
-      .filter(state => !!state)
+      .pipe(filter(state => !!state))
       .subscribe(currentApplication => {
         this.contactDetailsForm.patchValue(currentApplication);
         if (currentApplication.isPaid) {
