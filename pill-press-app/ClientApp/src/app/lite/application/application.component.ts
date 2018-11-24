@@ -12,6 +12,7 @@ import { FileUploaderComponent } from '../../shared/file-uploader/file-uploader.
 import { ConfirmationDialogComponent } from '../../lite-application-dashboard/lite-application-dashboard.component';
 import { Application } from '../../models/adoxio-application.model';
 import { debug } from 'util';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-application',
@@ -67,7 +68,7 @@ export class ApplicationComponent implements OnInit, OnDestroy {
     );
 
     const sub = this.store.select(state => state.currentApplicaitonState.currentApplication)
-      .filter(state => !!state)
+      .pipe(filter(state => !!state))
       .subscribe(currentApplication => {
         this.form.patchValue(currentApplication);
         if (currentApplication.isPaid) {

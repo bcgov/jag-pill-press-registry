@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, FormControl, Validators, NgForm } from '@angula
 import { MatSnackBar } from '@angular/material';
 import { Subscription ,  Subject } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { auditTime } from 'rxjs/operators';
+import { auditTime, filter } from 'rxjs/operators';
 import { UserDataService } from '../../../services/user-data.service';
 import { Observable } from '../../../../../node_modules/rxjs/Observable';
 import * as currentApplicationActions from '../../../app-state/actions/current-application.action';
@@ -37,7 +37,7 @@ export class StoreInformationComponent implements OnInit, OnDestroy {
     this.createForm();
 
     const sub = this.store.select(state => state.currentApplicaitonState.currentApplication)
-      .filter(state => !!state)
+      .pipe(filter(state => !!state))
       .subscribe(currentApplication => {
         this.storeInformationForm.patchValue(currentApplication);
         if (currentApplication.isPaid) {
