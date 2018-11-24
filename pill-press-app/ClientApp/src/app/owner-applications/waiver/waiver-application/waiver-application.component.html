@@ -9,44 +9,53 @@
 
         <section>
           <h3 class="blue-header">EQUIPMENT INFORMATION</h3>
-          <app-field label="Do you currently own, use, or possess Controlled Equipment?" [required]="true">
+          <app-field label="Do you currently own, use, or possess Controlled Equipment?" [required]="true"
+            [showChevrons]="false" errorMessage="Please select yes or no" [valid]="form.get('currentlyownusepossessequipment').valid || !form.get('currentlyownusepossessequipment').touched">
             <input type="radio" [value]="true" name="currentlyownusepossessequipment" formControlName="currentlyownusepossessequipment">
-            <span style="padding-right: 10px;">Yes</span>
+            <span style="padding-right: 10px;">&nbsp;Yes</span>
             <input type="radio" [value]="false" name="currentlyownusepossessequipment" formControlName="currentlyownusepossessequipment">
-            <span>No</span>
+            <span>&nbsp;No</span>
           </app-field>
           <app-field *ngIf="form.get('currentlyownusepossessequipment').value === false" label="Do you intend on purchasing Controlled Equipment in the future?"
+            [showChevrons]="false" errorMessage="Please select yes or no" [valid]="form.get('intendtopurchaseequipment').valid || !form.get('intendtopurchaseequipment').touched"
             [required]="true">
             <input type="radio" [value]="true" name="intendtopurchaseequipment" formControlName="intendtopurchaseequipment">
-            <span style="padding-right: 10px;">Yes</span>
+            <span style="padding-right: 10px;">&nbsp;Yes</span>
             <input type="radio" [value]="false" name="intendtopurchaseequipment" formControlName="intendtopurchaseequipment">
-            <span>No</span>
+            <span>&nbsp;No</span>
           </app-field>
           <app-field label="Do you own or intend to own Controlled Equipment for the sole use of your business?"
+            [showChevrons]="false" errorMessage="Please select yes or no" [valid]="form.get('ownintendtoownequipmentforbusinessuse').valid || !form.get('ownintendtoownequipmentforbusinessuse').touched"
             [required]="true">
-            <input type="radio" [value]="true" name=""> <span style="padding-right: 10px;">Yes</span>
-            <input type="radio" [value]="false" name=""> <span>No</span>
+            <input type="radio" [value]="true" name="ownintendtoownequipmentforbusinessuse" formControlName="ownintendtoownequipmentforbusinessuse">
+            <span style="padding-right: 10px;">&nbsp;Yes</span>
+            <input type="radio" [value]="false" name="ownintendtoownequipmentforbusinessuse" formControlName="ownintendtoownequipmentforbusinessuse">
+            <span>&nbsp;No</span>
           </app-field>
-          <app-field label="Do you borrow, rent, or lease Controlled Equipment from someone else?" [required]="true">
+          <app-field label="Do you borrow, rent, or lease Controlled Equipment from someone else?" [showChevrons]="false"
+            errorMessage="Please select yes or no" [valid]="form.get('borrowrentleaseequipment').valid || !form.get('borrowrentleaseequipment').touched"
+            [required]="true">
             <input type="radio" [value]="true" name="borrowrentleaseequipment" formControlName="borrowrentleaseequipment">
-            <span style="padding-right: 10px;">Yes</span>
+            <span style="padding-right: 10px;">&nbsp;Yes</span>
             <input type="radio" [value]="false" name="borrowrentleaseequipment" formControlName="borrowrentleaseequipment">
-            <span>No</span>
+            <span>&nbsp;No</span>
           </app-field>
-          <app-field label="Do you sell Controlled Equipment to others?" [required]="true">
-            <input type="radio" [value]="true" name="sellequipment" formControlName="sellequipment"> <span style="padding-right: 10px;">Yes</span>
-            <input type="radio" [value]="false" name="sellequipment" formControlName="sellequipment"> <span>No</span>
+          <app-field label="Do you sell Controlled Equipment to others?" [showChevrons]="false" errorMessage="Please select yes or no"
+            [valid]="form.get('sellequipment').valid || !form.get('sellequipment').touched" [required]="true">
+            <input type="radio" [value]="true" name="sellequipment" formControlName="sellequipment"> <span style="padding-right: 10px;">&nbsp;Yes</span>
+            <input type="radio" [value]="false" name="sellequipment" formControlName="sellequipment"> <span>&nbsp;No</span>
           </app-field>
         </section>
 
         <section>
           <h3 class="blue-header">PURPOSE OF CONTROLLED EQUIPMENT</h3>
           <app-field label="Do you own, use, or possess (or intend to own) Controlled Equipment for the purposes of producing your own products?"
+            [showChevrons]="false" errorMessage="Please select yes or no" [valid]="form.get('producingownproduct').valid || !form.get('producingownproduct').touched"
             [required]="true">
             <input type="radio" [value]="true" name="producingownproduct" formControlName="producingownproduct">
-            <span style="padding-right: 10px;">Yes</span>
+            <span style="padding-right: 10px;">&nbsp;Yes</span>
             <input type="radio" [value]="false" name="producingownproduct" formControlName="producingownproduct">
-            <span>No</span>
+            <span>&nbsp;No</span>
           </app-field>
           <section *ngIf="form.get('producingownproduct').value === true" formArrayName="ownProducts">
             <p>
@@ -56,12 +65,12 @@
             </p>
             <div style="display: flex;" *ngFor="let item of ownProducts.controls; let i = index;">
               <section style="flex: 10" [formGroupName]="i">
-                <app-field [required]="true" label="Product {{i === 0 ? '': i +1}} Description and Intended Use">
+                <app-field [required]="true" [showChevrons]="false" errorMessage="Please provide the product description and its intended use"
+                  [valid]="item.get('purpose').valid || !item.get('purpose').touched" label="Product {{i === 0 ? '': i +1}} Description and Intended Use">
                   <textarea class="form-control" formControlName="purpose" maxlength="1000" rows="5"></textarea>
                 </app-field>
               </section>
               <section style="padding-left: 10px; padding-top: 30px;">
-
                 <a href="javascript:void(0);" *ngIf="ownProducts.controls.length > 1" (click)="deleteCustomProduct(i, item.get('type').value)"><i
                     class="fas fa-trash-alt"></i>Delete Product</a>
               </section>
@@ -75,11 +84,12 @@
             <div style="clear: both;"></div>
           </section>
           <app-field label="Do you own, use, or possess (or intend to own) Controlled Equipment for the purposes of providing manufacturing services to others?"
+            [showChevrons]="false" errorMessage="Please select yes or no" [valid]="form.get('providingmanufacturingtoothers').valid || !form.get('providingmanufacturingtoothers').touched"
             [required]="true">
             <input type="radio" [value]="true" name="providingmanufacturingtoothers" formControlName="providingmanufacturingtoothers">
-            <span style="padding-right: 10px;">Yes</span>
+            <span style="padding-right: 10px;">&nbsp;Yes</span>
             <input type="radio" [value]="false" name="providingmanufacturingtoothers" formControlName="providingmanufacturingtoothers">
-            <span>No</span>
+            <span>&nbsp;No</span>
           </app-field>
           <section *ngIf="form.get('providingmanufacturingtoothers').value === true" formArrayName="productsForOthers">
             <p>
@@ -89,12 +99,12 @@
             </p>
             <div style="display: flex;" *ngFor="let item of productsForOthers.controls; let i = index;">
               <section style="flex: 10" [formGroupName]="i">
-                <app-field [required]="true" label="Product {{i === 0 ? '': i +1}} Description and Intended Use">
+                <app-field [required]="true" [showChevrons]="false" errorMessage="Please provide the product description and its intended use"
+                  [valid]="item.get('purpose').valid || !item.get('purpose').touched" label="Product {{i === 0 ? '': i +1}} Description and Intended Use">
                   <textarea class="form-control" formControlName="purpose" maxlength="1000" rows="5"></textarea>
                 </app-field>
               </section>
               <section style="padding-left: 10px; padding-top: 30px;">
-
                 <a href="javascript:void(0);" *ngIf="productsForOthers.controls.length > 1" (click)="deleteCustomProduct(i, item.get('type').value)"><i
                     class="fas fa-trash-alt"></i>Delete Product</a>
               </section>
@@ -112,17 +122,27 @@
         <section>
           <h3 class="blue-header">BUSINESS DETAILS</h3>
           <app-field label="Please explain the main focus of your business and why that requires Controlled Equipment."
+            [showChevrons]="false" errorMessage="Please provide an answer to the above question" [valid]="form.get('mainbusinessfocus').valid || !form.get('mainbusinessfocus').touched"
             [required]="true">
-            <textarea  maxlength="2000" formControlName="mainbusinessfocus" class="form-control" rows="5"></textarea>
+            <textarea maxlength="2000" formControlName="mainbusinessfocus" class="form-control" rows="5"></textarea>
           </app-field>
-          <app-field [required]="true" label="Please describe the manufacturing process you use to produce the above-noted products. Please include specific information on how you utilize the Controlled Equipment throughout the manufacturing process.">
-            <textarea  maxlength="2000" formControlName="manufacturingprocessdescription" class="form-control" rows="5"></textarea>
+          <app-field [required]="true" [showChevrons]="false" errorMessage="Please provide an answer to the above question"
+            [valid]="form.get('manufacturingprocessdescription').valid || !form.get('manufacturingprocessdescription').touched"
+            label="Please describe the manufacturing process you use to produce the above-noted products. Please include specific information on how you utilize the Controlled Equipment throughout the manufacturing process.">
+            <textarea maxlength="2000" formControlName="manufacturingprocessdescription" class="form-control" rows="5"></textarea>
           </app-field>
         </section>
 
         <section>
           <label for="">If you have additional supporting documents, please upload them below.</label>
           <app-file-uploader></app-file-uploader>
+        </section>
+
+        <section style="display: flex; justify-content: space-between; padding-top: 30px;">
+          <div><span class="error-states">*</span> <i>Required field</i></div>
+          <div>
+            <button class="btn btn-primary" (click)="markAsTouched()">SAVE & CONTINUE</button>
+          </div>
         </section>
       </div>
     </div>
