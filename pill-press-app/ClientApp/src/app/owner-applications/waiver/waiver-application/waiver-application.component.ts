@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
+import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -11,11 +11,11 @@ export class WaiverApplicationComponent implements OnInit {
   form: FormGroup;
   busy: Subscription;
 
-  get ownProducts() {
+  get ownProducts(): FormArray {
     return <FormArray>this.form.get('ownProducts');
   }
-  get productsForOthers() {
-    return <FormArray>this.form.get('productsForOthers p');
+  get productsForOthers(): FormArray {
+    return <FormArray>this.form.get('productsForOthers');
   }
   constructor(private fb: FormBuilder) { }
 
@@ -23,46 +23,71 @@ export class WaiverApplicationComponent implements OnInit {
 
     this.form = this.fb.group({
       id: [],
-      currentlyownusepossessequipment: [],
-      intendtopurchaseequipment: [],
-      ownintendtoownequipmentforbusinessuse: [],
-      borrowrentleaseequipment: [],
-      sellequipment: [],
-      producingownproduct: [],
-      ownProducts: this.fb.array([this.createCustomProduct({type: 'ownProducts'})]),
-      providingmanufacturingtoothers: [],
-      productsForOthers: this.fb.array([this.createCustomProduct({type: 'productsForOthers'})]),
-      mainbusinessfocus: [],
-      manufacturingprocessdescription: [],
-      declarationofcorrectinformation: [],
-      foippaconsent: [],
-      bceid: [],
-      bceiduserguid: [],
-      bceidemail: [],
+      currentlyownusepossessequipment: ['', Validators.required],
+      intendtopurchaseequipment: ['', Validators.required],
+      ownintendtoownequipmentforbusinessuse: ['', Validators.required],
+      borrowrentleaseequipment: ['', Validators.required],
+      sellequipment: ['', Validators.required],
+      producingownproduct: ['', Validators.required],
+      ownProducts: this.fb.array([this.createCustomProduct({ type: 'ownProducts' })]),
+      providingmanufacturingtoothers: ['', Validators.required],
+      productsForOthers: this.fb.array([this.createCustomProduct({ type: 'productsForOthers' })]),
+      mainbusinessfocus: ['', Validators.required],
+      manufacturingprocessdescription: ['', Validators.required],
+      declarationofcorrectinformation: ['', Validators.required],
+      foippaconsent: ['', Validators.required],
+      bceid: ['', Validators.required],
+      bceiduserguid: ['', Validators.required],
+      bceidemail: ['', Validators.required],
     });
+  }
+
+  markAsTouched() {
+    this.form.markAsTouched();
+    const controls = this.form.controls;
+    for (const c in controls) {
+      if (typeof (controls[c].markAsTouched) === 'function') {
+        controls[c].markAsTouched();
+      }
+    }
+
+    this.productsForOthers.controls
+      .concat(this.ownProducts.controls)
+      .forEach((fa: FormGroup) => {
+        const arrayControls = fa.controls;
+        for (const c in arrayControls) {
+          if (typeof (arrayControls[c].markAsTouched) === 'function') {
+            arrayControls[c].markAsTouched();
+          }
+        }
+      });
   }
 
   createCustomProduct(product: any) {
     return this.fb.group({
       id: [],
       type: [product.type],
-      text: []
+      purpose: ['', Validators.required]
     });
   }
 
   addCustomProduct(type: string) {
     if (type === 'ownProducts') {
       const product = this.createCustomProduct({ type });
-      (<FormArray>this.form.get('ownProducts')).push(product);
+      this.ownProducts.push(product);
     } else {
       const product = this.createCustomProduct({ type });
-      (<FormArray>this.form.get('productsForOthers')).push(product);
+      this.productsForOthers.push(product);
     }
 
   }
 
-  deleteCustomProduct() {
-
+  deleteCustomProduct(index: number, type: string) {
+    if (type === 'ownProducts') {
+      this.ownProducts.removeAt(index);
+    } else {
+      this.productsForOthers.removeAt(index);
+    }
   }
 
 }
