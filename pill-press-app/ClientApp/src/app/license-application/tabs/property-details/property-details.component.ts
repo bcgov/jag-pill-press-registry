@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, FormControl, Validators, NgForm } from '@angula
 import { MatSnackBar } from '@angular/material';
 import { Subscription ,  Subject } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { auditTime } from 'rxjs/operators';
+import { auditTime, filter } from 'rxjs/operators';
 import { Observable } from '../../../../../node_modules/rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../app-state/models/app-state';
@@ -37,7 +37,7 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
     // create entry form
     this.createForm();
     const sub = this.store.select(state => state.currentApplicaitonState.currentApplication)
-      .filter(state => !!state)
+      .pipe(filter(state => !!state))
       .subscribe(currentApplication => {
         this.propertyDetailsForm.patchValue(currentApplication);
         if (currentApplication.isPaid) {
