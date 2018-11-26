@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { PolicyDocument } from '../models/policy-document.model';
 import { PolicyDocumentDataService } from '../services/policy-document-data.service';
 import { Title, DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-policy-document',
@@ -30,7 +31,7 @@ export class PolicyDocumentComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params
-      .filter(data => !!data && !!data.slug)
+      .pipe(filter(data => !!data && !!data.slug))
       .subscribe((data: any) => {
         this.setSlug(data.slug);
       });
