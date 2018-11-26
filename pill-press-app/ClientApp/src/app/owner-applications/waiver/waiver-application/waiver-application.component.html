@@ -66,8 +66,10 @@
             <div style="display: flex;" *ngFor="let item of ownProducts.controls; let i = index;">
               <section style="flex: 10" [formGroupName]="i">
                 <app-field [required]="true" [showChevrons]="false" errorMessage="Please provide the product description and its intended use"
-                  [valid]="item.get('purpose').valid || !item.get('purpose').touched" label="Product {{i === 0 ? '': i +1}} Description and Intended Use">
-                  <textarea class="form-control" formControlName="purpose" maxlength="1000" rows="5"></textarea>
+                  [valid]="item.get('productdescriptionandintendeduse').valid || !item.get('productdescriptionandintendeduse').touched"
+                  label="Product {{i === 0 ? '': i +1}} Description and Intended Use">
+                  <textarea class="form-control" formControlName="productdescriptionandintendeduse" maxlength="1000"
+                    rows="5"></textarea>
                 </app-field>
               </section>
               <section style="padding-left: 10px; padding-top: 30px;">
@@ -79,7 +81,7 @@
               <i class="fas fa-info-circle" style="color: #38598A; margin-right: 10px;"></i>
               <span>A waiver will only be granted for the intended products and uses disclosed in this application.</span>
             </div>
-            <a href="javascript:void(0);" (click)="addCustomProduct('ownProducts')" style="float: right">
+            <a href="javascript:void(0);" (click)="addCustomProduct({purpose: PRODUCTING_OWN_PRODUCT})" style="float: right">
               <i class="fas fa-plus-circle" style="color: #669900;"></i>Add another product</a>
             <div style="clear: both;"></div>
           </section>
@@ -100,12 +102,14 @@
             <div style="display: flex;" *ngFor="let item of productsForOthers.controls; let i = index;">
               <section style="flex: 10" [formGroupName]="i">
                 <app-field [required]="true" [showChevrons]="false" errorMessage="Please provide the product description and its intended use"
-                  [valid]="item.get('purpose').valid || !item.get('purpose').touched" label="Product {{i === 0 ? '': i +1}} Description and Intended Use">
-                  <textarea class="form-control" formControlName="purpose" maxlength="1000" rows="5"></textarea>
+                  [valid]="item.get('productdescriptionandintendeduse').valid || !item.get('productdescriptionandintendeduse').touched"
+                  label="Product {{i === 0 ? '': i +1}} Description and Intended Use">
+                  <textarea class="form-control" formControlName="productdescriptionandintendeduse" maxlength="1000"
+                    rows="5"></textarea>
                 </app-field>
               </section>
               <section style="padding-left: 10px; padding-top: 30px;">
-                <a href="javascript:void(0);" *ngIf="productsForOthers.controls.length > 1" (click)="deleteCustomProduct(i, item.get('type').value)"><i
+                <a href="javascript:void(0);" *ngIf="productsForOthers.controls.length > 1" (click)="deleteCustomProduct(i, item.get('purpose').value)"><i
                     class="fas fa-trash-alt"></i>Delete Product</a>
               </section>
             </div>
@@ -113,7 +117,7 @@
               <i class="fas fa-info-circle" style="color: #38598A; margin-right: 10px;"></i>
               <span>A waiver will only be granted for the intended products and uses disclosed in this application.</span>
             </div>
-            <a href="javascript:void(0);" (click)="addCustomProduct('productsForOthers')" style="float: right">
+            <a href="javascript:void(0);" (click)="addCustomProduct({purpose: MANUFACTURING_FOR_OTHERS})" style="float: right">
               <i class="fas fa-plus-circle" style="color: #669900;"></i>Add another product</a>
             <div style="clear: both;"></div>
           </section>
@@ -135,13 +139,13 @@
 
         <section>
           <label for="">If you have additional supporting documents, please upload them below.</label>
-          <app-file-uploader></app-file-uploader>
+          <app-file-uploader fileTypes="FILE MUST BE IN DOC, XLS, PDF, JPG OR PNG"></app-file-uploader>
         </section>
 
         <section style="display: flex; justify-content: space-between; padding-top: 30px;">
           <div><span class="error-states">*</span> <i>Required field</i></div>
           <div>
-            <button class="btn btn-primary" (click)="markAsTouched()">SAVE & CONTINUE</button>
+            <button class="btn btn-primary" (click)="markAsTouched(); save();">SAVE & CONTINUE</button>
           </div>
         </section>
       </div>
@@ -167,7 +171,7 @@
           </p>
           <div>
             <i class="fas fa-phone"></i>
-            <strong>Phone</strong>
+            <strong> Phone</strong>
             <br>
             <span>1 888 356-2741 (Canada and USA toll free)</span>
             <br>
@@ -175,7 +179,7 @@
           </div>
           <div>
             <i class="fas fa-envelope"></i>
-            <strong>Email</strong>
+            <strong> Email</strong>
             <br>
             <span>Contact us using our online form</span>
           </div>

@@ -39,10 +39,10 @@ export class DashboardLiteComponent implements OnInit {
         if (this.currentUser.accountid != null) {
           // fetch the account to get the primary contact.
           this.dynamicsDataService.getRecord('account', this.currentUser.accountid)
-            .then((result) => {
+            .subscribe((result: DynamicsAccount) => {
               this.account = result;
-              if (result.primarycontact) {
-                this.contactId = result.primarycontact.id;
+              if (result.primaryContact) {
+                this.contactId = result.primaryContact.id;
               }
             });
         }
@@ -53,46 +53,12 @@ export class DashboardLiteComponent implements OnInit {
   applyForWaiver() {
 
   }
-  verify_payment() {
-    const newLicenceApplicationData: Application = new Application();
-    newLicenceApplicationData.licenseType = 'Pill Press Retail Store';
-    newLicenceApplicationData.applicantType = this.account.businessType;
-    newLicenceApplicationData.account = this.account;
-    // newLicenceApplicationData. = this.account.businessType;
-    this.busy = this.applicationDataService.createApplication(newLicenceApplicationData).subscribe(
-      data => {
-        this.busy = this.paymentDataService.getPaymentSubmissionUrl(data.id).subscribe(
-          res2 => {
-            // console.log("applicationVM: ", res.json());
-            const jsonUrl = res2.json();
-            // window.alert(jsonUrl['url']);
-            window.location.href = jsonUrl['url'];
-            return jsonUrl['url'];
-          },
-          err => {
-            console.log('Error occured');
-          }
-        );
-
-        // this.router.navigate(['./payment-confirmation'], { queryParams: { trnId: '0', SessionKey: data.id } });
-      },
-      err => {
-        this.snackBar.open('Error starting a New Licence Application', 'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
-        console.log('Error starting a New Licence Application');
-      }
-    );
-
-  }
 
   startNewLicenceApplication() {
     const newLicenceApplicationData: Application = new Application();
-    newLicenceApplicationData.licenseType = 'Pill Press Retail Store';
-    newLicenceApplicationData.applicantType = this.account.businessType;
-    newLicenceApplicationData.account = this.account;
-    // newLicenceApplicationData. = this.account.businessType;
     this.busy = this.applicationDataService.createApplication(newLicenceApplicationData).subscribe(
       data => {
-      this.router.navigateByUrl(`/waiver-application/${data.id}`);
+        this.router.navigateByUrl(`/waiver-application/${data.id}`);
       },
       err => {
         this.snackBar.open('Error starting a New Licence Application', 'Fail', { duration: 3500, panelClass: ['red-snackbar'] });

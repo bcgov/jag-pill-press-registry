@@ -119,6 +119,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         public async Task<IActionResult> CreateCustomProduct([FromBody] ViewModels.CustomProduct item)
         {
 
+            if (string.IsNullOrEmpty(item.incidentId))
+            {
+                return BadRequest("IncidentId missing");
+            }
+
             // get UserSettings from the session
             string temp = _httpContextAccessor.HttpContext.Session.GetString("UserSettings");
             UserSettings userSettings = JsonConvert.DeserializeObject<UserSettings>(temp);
@@ -127,7 +132,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             // create a new custom product.
             MicrosoftDynamicsCRMbcgovCustomproduct customProduct = new MicrosoftDynamicsCRMbcgovCustomproduct();
             customProduct.CopyValues(item);
-            
+            customProduct.RelatedApplicationODataBind = _dynamicsClient.GetEntityURI("incidents", item.incidentId);
+
             try
             {
                 customProduct = await _dynamicsClient.Customproducts.CreateAsync(customProduct);
