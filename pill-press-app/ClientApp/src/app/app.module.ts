@@ -71,19 +71,10 @@ import { SurveyPrimaryComponent } from './survey/primary.component';
 import { SurveyTestComponent } from './survey/test.component';
 import { SurveySidebarComponent } from './survey/sidebar.component';
 import { SurveyDataService } from './services/survey-data.service';
-// import { ResultComponent } from './result/result.component';
-// import { AccordionComponent } from './accordion/accordion.component';
-// import { VoteComponent } from './vote/vote.component';
-// import { VoteDataService } from './services/vote-data.service';
-// import { NewsletterSignupComponent } from './newsletter-signup/newsletter-signup.component';
-// import { NewsletterConfirmationComponent } from './newsletter-confirmation/newsletter-confirmation.component';
-// import { NewsletterDataService } from './services/newsletter-data.service';
 import { UserDataService } from './services/user-data.service';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ApplicationsListComponent } from './applications-list/applications-list.component';
 import { BusinessProfileComponent } from './business-information/business-profile/business-profile.component';
-import { LicenseApplicationSummaryComponent } from './license-application-summary/license-application-summary.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { FileDropModule } from 'ngx-file-drop';
 import { FileUploaderComponent } from './shared/file-uploader/file-uploader.component';
 
@@ -92,32 +83,19 @@ import { BusinessProfileSummaryComponent } from './business-profile-summary/busi
 
 import {NgBusyModule} from 'ng-busy';
 
-import { LicenseApplicationComponent } from './license-application/license-application.component';
+
 import { PaymentConfirmationComponent } from './payment-confirmation/payment-confirmation.component';
 import { LicenceFeePaymentConfirmationComponent } from './licence-fee-payment-confirmation/licence-fee-payment-confirmation.component';
-import { ContactDetailsComponent } from './license-application/tabs/contact-details/contact-details.component';
-import { PropertyDetailsComponent } from './license-application/tabs/property-details/property-details.component';
-import { StoreInformationComponent } from './license-application/tabs/store-information/store-information.component';
-import { FloorPlanComponent } from './license-application/tabs/floor-plan/floor-plan.component';
-import { SiteMapComponent } from './license-application/tabs/site-map/site-map.component';
-import { DeclarationComponent } from './license-application/tabs/declaration/declaration.component';
-import { SubmitPayComponent } from './license-application/tabs/submit-pay/submit-pay.component';
+
 
 import { BsDatepickerModule, AlertModule } from 'ngx-bootstrap';
-// import { TiedHouseConnectionsDataService } from './services/tied-house-connections-data.service';
 import { CanDeactivateGuard } from './services/can-deactivate-guard.service';
 import { BCeidAuthGuard } from './services/bceid-auth-guard.service';
 import { ServiceCardAuthGuard } from './services/service-card-auth-guard.service';
 import { metaReducers, reducers } from './app-state/reducers/reducers';
 import { StoreModule } from '@ngrx/store';
 import { DashboardLiteComponent } from './dashboard-lite/dashboard-lite.component';
-import { ApplicationComponent } from './lite/application/application.component';
-import {
-  LiteApplicationDashboardComponent,
-  ConfirmationDialogComponent
-} from './lite-application-dashboard/lite-application-dashboard.component';
 import { TermsAndConditionsComponent } from './lite/terms-and-conditions/terms-and-conditions.component';
-import { AssociatesDashboardComponent } from './lite/associates-dashboard/associates-dashboard.component';
 import { AliasDataService } from './services/alias-data.service';
 import { PreviousAddressDataService } from './services/previous-address-data.service';
 import { WorkerDataService } from './services/worker-data.service.';
@@ -152,32 +130,17 @@ import { ThankYouComponent } from './owner-applications/waiver/thank-you/thank-y
     SurveyPrimaryComponent,
     SurveySidebarComponent,
     SurveyTestComponent,
-    // VoteComponent,
-    LicenseApplicationSummaryComponent,
-    DashboardComponent,
     FileUploaderComponent,
     BusinessProfileSummaryComponent,
-    LicenseApplicationComponent,
     PaymentConfirmationComponent,
-    ContactDetailsComponent,
-    PropertyDetailsComponent,
-    StoreInformationComponent,
-    FloorPlanComponent,
-    SiteMapComponent,
-    DeclarationComponent,
-    SubmitPayComponent,
     DashboardLiteComponent,
-    ApplicationComponent,
-    LiteApplicationDashboardComponent,
-    ConfirmationDialogComponent,
-    TermsAndConditionsComponent,
-    AssociatesDashboardComponent,
     LicenceFeePaymentConfirmationComponent,
     FieldComponent,
     ProfileSummaryComponent,
     WaiverApplicationComponent,
     WaiverReviewComponent,
-    ThankYouComponent
+    ThankYouComponent,
+    TermsAndConditionsComponent
   ],
   imports: [
     BrowserModule,
@@ -297,7 +260,6 @@ import { ThankYouComponent } from './owner-applications/waiver/thank-you/thank-y
     ServiceCardAuthGuard,
   ],
   entryComponents: [
-    ConfirmationDialogComponent,
   ],
   bootstrap: [AppComponent]
 })
