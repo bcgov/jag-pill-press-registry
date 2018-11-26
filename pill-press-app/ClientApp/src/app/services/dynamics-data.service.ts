@@ -18,7 +18,6 @@ export class DynamicsDataService {
   constructor(private http: HttpClient) { }
 
   getForm(id: string) {
-
     return this.http.get('api/systemform/' + id, {
       headers: this.headers
     })
@@ -33,35 +32,26 @@ export class DynamicsDataService {
   getRecord(entity: string, recordId: string) {
     return this.http.get('api/' + entity + '/' + recordId, {
       headers: this.headers
-    })
-      .toPromise()
-      .then((res: any) => {
-        return res;
-      })
-      .catch(this.handleError);
+    });
   }
 
   createRecord(entity: string, data: any) {
     return this.http.post('api/' + entity, data, {
       headers: this.headers
-    })
-      .toPromise()
-      .then((res: any) => {
-        return res;
-      })
-      .catch(this.handleError);
+    });
   }
 
 
   updateRecord(entity: string, id: string, data: any) {
     return this.http.put('api/' + entity + '/' + id, data, {
       headers: this.headers
-    })
-      .toPromise()
-      .then((res: any) => {
-        return res;
-      })
-      .catch(this.handleError);
+    });
+  }
+
+  deleteRecord(entity: string, id: string) {
+    return this.http.post(`api/${entity}/${id}/delete`, {
+      headers: this.headers
+    });
   }
 
 
