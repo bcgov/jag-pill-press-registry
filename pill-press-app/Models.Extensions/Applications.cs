@@ -46,10 +46,20 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                 result.foippaconsent = incident.BcgovFoippaconsent;
 
                 // CustomerID
-
                 if (incident.CustomeridAccount != null)
                 {
                     result.applicant = incident.CustomeridAccount.ToViewModel();
+                }
+
+                // Custom Products
+                if(incident?.BcgovIncidentCustomproductRelatedApplication?.Count > 0)
+                {
+                    result.CustomProducts = new List<CustomProduct>();
+                    foreach (var product in incident.BcgovIncidentCustomproductRelatedApplication)
+                    {
+                        result.CustomProducts.Add(product.ToViewModel());
+                    }
+
                 }
             }
             return result;
