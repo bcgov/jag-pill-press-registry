@@ -25,7 +25,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                 {
                     result.id = customProduct.BcgovCustomproductid;
                 }
-                result.productdescriptionandintendeduse = customProduct.BcgovProductdescriptionandintendeduse;                
+                result.productdescriptionandintendeduse = customProduct.BcgovProductdescriptionandintendeduse;
+                if (customProduct.BcgovPurpose != null && customProduct.BcgovPurpose != 0)
+                {
+                    result.Purpose = (ProductPurpose)customProduct.BcgovPurpose;
+                }
             }
             return result;
         }
@@ -33,6 +37,10 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
         public static void CopyValues(this MicrosoftDynamicsCRMbcgovCustomproduct to, ViewModels.CustomProduct from)
         {
             to.BcgovProductdescriptionandintendeduse = from.productdescriptionandintendeduse;
+            if (from.Purpose != 0)
+            {
+                to.BcgovPurpose = (int)from.Purpose;
+            }
         }
 
     }
