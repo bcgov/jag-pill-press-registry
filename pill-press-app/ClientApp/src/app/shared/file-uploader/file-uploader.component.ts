@@ -4,6 +4,7 @@ import { Http, Headers, Response } from '@angular/http';
 import { FileSystemItem } from '../../models/file-system-item.model';
 import { Subscription } from 'rxjs';
 import { ApplicationDataService } from '../../services/adoxio-application-data.service';
+import { map } from 'rxjs/operators';
 
 export interface DropdownOption {
   id: string;
@@ -98,7 +99,7 @@ export class FileUploaderComponent implements OnInit {
     });
     const getFileURL = this.attachmentURL + '/' + this.documentType;
     this.busy = this.http.get(getFileURL, { headers: headers })
-      .map((data: Response) => <FileSystemItem[]>data.json())
+      .pipe(map((data: Response) => <FileSystemItem[]>data.json()))
       .subscribe((data) => {
         // convert bytes to KB
         data.forEach((entry) => {
