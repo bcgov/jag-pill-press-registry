@@ -13,12 +13,12 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Extension methods for Contacts.
+    /// Extension methods for Certificates.
     /// </summary>
-    public static partial class ContactsExtensions
+    public static partial class CertificatesExtensions
     {
             /// <summary>
-            /// Get entities from contacts
+            /// Get entities from bcgov_certificates
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -42,13 +42,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// <param name='expand'>
             /// Expand related entities
             /// </param>
-            public static GetOKResponseModelModelModelModelModelModelModelModelModel Get(this IContacts operations, int? top = default(int?), int? skip = default(int?), string search = default(string), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>))
+            public static GetOKResponseModelModelModelModel Get(this ICertificates operations, int? top = default(int?), int? skip = default(int?), string search = default(string), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>))
             {
                 return operations.GetAsync(top, skip, search, filter, count, orderby, select, expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Get entities from contacts
+            /// Get entities from bcgov_certificates
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -75,7 +75,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<GetOKResponseModelModelModelModelModelModelModelModelModel> GetAsync(this IContacts operations, int? top = default(int?), int? skip = default(int?), string search = default(string), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<GetOKResponseModelModelModelModel> GetAsync(this ICertificates operations, int? top = default(int?), int? skip = default(int?), string search = default(string), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetWithHttpMessagesAsync(top, skip, search, filter, count, orderby, select, expand, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -84,7 +84,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             }
 
             /// <summary>
-            /// Add new entity to contacts
+            /// Add new entity to bcgov_certificates
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -96,13 +96,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// Required in order for the service to return a JSON representation of the
             /// object.
             /// </param>
-            public static MicrosoftDynamicsCRMcontact Create(this IContacts operations, MicrosoftDynamicsCRMcontact body, string prefer = "return=representation")
+            public static MicrosoftDynamicsCRMbcgovCertificate Create(this ICertificates operations, MicrosoftDynamicsCRMbcgovCertificate body, string prefer = "return=representation")
             {
                 return operations.CreateAsync(body, prefer).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Add new entity to contacts
+            /// Add new entity to bcgov_certificates
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -117,7 +117,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<MicrosoftDynamicsCRMcontact> CreateAsync(this IContacts operations, MicrosoftDynamicsCRMcontact body, string prefer = "return=representation", CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<MicrosoftDynamicsCRMbcgovCertificate> CreateAsync(this ICertificates operations, MicrosoftDynamicsCRMbcgovCertificate body, string prefer = "return=representation", CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateWithHttpMessagesAsync(body, prefer, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -126,13 +126,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             }
 
             /// <summary>
-            /// Get entity from contacts by key
+            /// Get entity from bcgov_certificates by key
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='contactid'>
-            /// key: contactid
+            /// <param name='bcgovCertificateid'>
+            /// key: bcgov_certificateid
             /// </param>
             /// <param name='select'>
             /// Select properties to be returned
@@ -140,19 +140,19 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// <param name='expand'>
             /// Expand related entities
             /// </param>
-            public static MicrosoftDynamicsCRMcontact GetByKey(this IContacts operations, string contactid, IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>))
+            public static MicrosoftDynamicsCRMbcgovCertificate GetByKey(this ICertificates operations, string bcgovCertificateid, IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>))
             {
-                return operations.GetByKeyAsync(contactid, select, expand).GetAwaiter().GetResult();
+                return operations.GetByKeyAsync(bcgovCertificateid, select, expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Get entity from contacts by key
+            /// Get entity from bcgov_certificates by key
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='contactid'>
-            /// key: contactid
+            /// <param name='bcgovCertificateid'>
+            /// key: bcgov_certificateid
             /// </param>
             /// <param name='select'>
             /// Select properties to be returned
@@ -163,39 +163,39 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<MicrosoftDynamicsCRMcontact> GetByKeyAsync(this IContacts operations, string contactid, IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<MicrosoftDynamicsCRMbcgovCertificate> GetByKeyAsync(this ICertificates operations, string bcgovCertificateid, IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetByKeyWithHttpMessagesAsync(contactid, select, expand, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetByKeyWithHttpMessagesAsync(bcgovCertificateid, select, expand, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Delete entity from contacts
+            /// Delete entity from bcgov_certificates
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='contactid'>
-            /// key: contactid
+            /// <param name='bcgovCertificateid'>
+            /// key: bcgov_certificateid
             /// </param>
             /// <param name='ifMatch'>
             /// ETag
             /// </param>
-            public static void Delete(this IContacts operations, string contactid, string ifMatch = default(string))
+            public static void Delete(this ICertificates operations, string bcgovCertificateid, string ifMatch = default(string))
             {
-                operations.DeleteAsync(contactid, ifMatch).GetAwaiter().GetResult();
+                operations.DeleteAsync(bcgovCertificateid, ifMatch).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Delete entity from contacts
+            /// Delete entity from bcgov_certificates
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='contactid'>
-            /// key: contactid
+            /// <param name='bcgovCertificateid'>
+            /// key: bcgov_certificateid
             /// </param>
             /// <param name='ifMatch'>
             /// ETag
@@ -203,36 +203,36 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this IContacts operations, string contactid, string ifMatch = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAsync(this ICertificates operations, string bcgovCertificateid, string ifMatch = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(contactid, ifMatch, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DeleteWithHttpMessagesAsync(bcgovCertificateid, ifMatch, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
-            /// Update entity in contacts
+            /// Update entity in bcgov_certificates
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='contactid'>
-            /// key: contactid
+            /// <param name='bcgovCertificateid'>
+            /// key: bcgov_certificateid
             /// </param>
             /// <param name='body'>
             /// New property values
             /// </param>
-            public static void Update(this IContacts operations, string contactid, MicrosoftDynamicsCRMcontact body)
+            public static void Update(this ICertificates operations, string bcgovCertificateid, MicrosoftDynamicsCRMbcgovCertificate body)
             {
-                operations.UpdateAsync(contactid, body).GetAwaiter().GetResult();
+                operations.UpdateAsync(bcgovCertificateid, body).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Update entity in contacts
+            /// Update entity in bcgov_certificates
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='contactid'>
-            /// key: contactid
+            /// <param name='bcgovCertificateid'>
+            /// key: bcgov_certificateid
             /// </param>
             /// <param name='body'>
             /// New property values
@@ -240,9 +240,9 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task UpdateAsync(this IContacts operations, string contactid, MicrosoftDynamicsCRMcontact body, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task UpdateAsync(this ICertificates operations, string bcgovCertificateid, MicrosoftDynamicsCRMbcgovCertificate body, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.UpdateWithHttpMessagesAsync(contactid, body, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.UpdateWithHttpMessagesAsync(bcgovCertificateid, body, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
     }
