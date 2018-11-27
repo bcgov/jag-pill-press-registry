@@ -12,24 +12,26 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
     using System.Linq;
 
     /// <summary>
-    /// Collection of bcgov_certificates
+    /// Collection of sharepointsites
     /// </summary>
-    public partial class GetOKResponseModelModelModelModel
+    public partial class GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModelModelModel
     {
         /// <summary>
-        /// Initializes a new instance of the GetOKResponseModelModelModelModel
+        /// Initializes a new instance of the
+        /// GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModelModelModel
         /// class.
         /// </summary>
-        public GetOKResponseModelModelModelModel()
+        public GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModelModelModel()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the GetOKResponseModelModelModelModel
+        /// Initializes a new instance of the
+        /// GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModelModelModel
         /// class.
         /// </summary>
-        public GetOKResponseModelModelModelModel(IList<MicrosoftDynamicsCRMbcgovCertificate> value = default(IList<MicrosoftDynamicsCRMbcgovCertificate>))
+        public GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModelModelModel(IList<MicrosoftDynamicsCRMsharepointsite> value = default(IList<MicrosoftDynamicsCRMsharepointsite>))
         {
             Value = value;
             CustomInit();
@@ -43,7 +45,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "value")]
-        public IList<MicrosoftDynamicsCRMbcgovCertificate> Value { get; set; }
+        public IList<MicrosoftDynamicsCRMsharepointsite> Value { get; set; }
 
     }
 }
