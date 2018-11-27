@@ -82,9 +82,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             List<string> expand = new List<string>()
             {
                 "primarycontactid",
-                "bcgov_AdditionalContact",
-                "bcgov_CurrentBusinessPhysicalAddress",
-                "bcgov_CurrentBusinessMailingAddress"
+                "bcgov_AdditionalContact"
             };
 
             MicrosoftDynamicsCRMaccount result;
