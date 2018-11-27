@@ -59,6 +59,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         IBusinesscontacts Businesscontacts { get; }
 
         /// <summary>
+        /// Gets the ICertificates.
+        /// </summary>
+        ICertificates Certificates { get; }
+
+        /// <summary>
         /// Gets the ICustomaddresses.
         /// </summary>
         ICustomaddresses Customaddresses { get; }

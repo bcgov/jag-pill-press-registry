@@ -292,7 +292,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
 
             if (account == null) // do a deep create.  create 3 objects at once.
             {
-                _logger.LogDebug(LoggingEvents.HttpGet, "Account is null. Do a deep create of 3 objects at once.");
+                _logger.LogDebug(LoggingEvents.HttpGet, "Creating account");
                 // create a new account
                 account = new MicrosoftDynamicsCRMaccount();
                 account.CopyValues(item, updateIfNull);
@@ -349,10 +349,16 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     account.BcgovDoingbusinessasname = userSettings.BusinessLegalName;
                 }
 
-                // set the Province and Country.
-                account.Address1Stateorprovince = "British Columbia";
-                account.Address1Country = "Canada";
-               
+                // set the Province and Country if they are not set.
+                if (string.IsNullOrEmpty(account.Address1Stateorprovince))
+                {
+                    account.Address1Stateorprovince = "British Columbia";
+                }
+                if (string.IsNullOrEmpty(account.Address1Country))
+                {
+                    account.Address1Country = "Canada";
+                }
+
                 string accountString = JsonConvert.SerializeObject(account);
                 _logger.LogDebug("Account before creation in dynamics --> " + accountString);
 
