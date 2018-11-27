@@ -101,7 +101,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
 
             if (copyIfNull || fromVM.physicalAddressCountry != null)
             {
-                toDynamics.Address1County = fromVM.physicalAddressCountry;
+                toDynamics.Address1Country = fromVM.physicalAddressCountry;
             }
 
             if (copyIfNull || fromVM.physicalAddressProvince != null)
@@ -126,7 +126,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
 
             if (copyIfNull || fromVM.mailingAddressLine2 != null)
             {
-                toDynamics.Address2Line1 = fromVM.mailingAddressLine2;
+                toDynamics.Address2Line2 = fromVM.mailingAddressLine2;
             }
 
             if (copyIfNull || fromVM.mailingAddressCity != null)
@@ -136,7 +136,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
 
             if (copyIfNull || fromVM.mailingAddressCountry != null)
             {
-                toDynamics.Address2County = fromVM.mailingAddressCountry;
+                toDynamics.Address2Country = fromVM.mailingAddressCountry;
             }
 
             if (copyIfNull || fromVM.mailingAddressProvince != null)
