@@ -19,12 +19,12 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Sharepointsites operations.
+    /// Certificates operations.
     /// </summary>
-    public partial class Sharepointsites : IServiceOperations<DynamicsClient>, ISharepointsites
+    public partial class Certificates : IServiceOperations<DynamicsClient>, ICertificates
     {
         /// <summary>
-        /// Initializes a new instance of the Sharepointsites class.
+        /// Initializes a new instance of the Certificates class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -32,7 +32,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public Sharepointsites(DynamicsClient client)
+        public Certificates(DynamicsClient client)
         {
             if (client == null)
             {
@@ -47,7 +47,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public DynamicsClient Client { get; private set; }
 
         /// <summary>
-        /// Get entities from sharepointsites
+        /// Get entities from bcgov_certificates
         /// </summary>
         /// <param name='top'>
         /// </param>
@@ -83,7 +83,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse<GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModelModelModel>> GetWithHttpMessagesAsync(int? top = default(int?), int? skip = default(int?), string search = default(string), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<GetOKResponseModelModelModelModel>> GetWithHttpMessagesAsync(int? top = default(int?), int? skip = default(int?), string search = default(string), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -105,7 +105,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "sharepointsites").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "bcgov_certificates").ToString();
             List<string> _queryParameters = new List<string>();
             if (top != null)
             {
@@ -215,7 +215,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                 throw ex;
             }
             // Create Result
-            var _result = new HttpOperationResponse<GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModelModelModel>();
+            var _result = new HttpOperationResponse<GetOKResponseModelModelModelModel>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             // Deserialize Response
@@ -224,7 +224,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModelModelModel>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<GetOKResponseModelModelModelModel>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -244,7 +244,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         }
 
         /// <summary>
-        /// Add new entity to sharepointsites
+        /// Add new entity to bcgov_certificates
         /// </summary>
         /// <param name='body'>
         /// New entity
@@ -274,7 +274,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse<MicrosoftDynamicsCRMsharepointsite>> CreateWithHttpMessagesAsync(MicrosoftDynamicsCRMsharepointsite body, string prefer = "return=representation", Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<MicrosoftDynamicsCRMbcgovCertificate>> CreateWithHttpMessagesAsync(MicrosoftDynamicsCRMbcgovCertificate body, string prefer = "return=representation", Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (body == null)
             {
@@ -294,7 +294,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "sharepointsites").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "bcgov_certificates").ToString();
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
             HttpResponseMessage _httpResponse = null;
@@ -381,7 +381,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                 throw ex;
             }
             // Create Result
-            var _result = new HttpOperationResponse<MicrosoftDynamicsCRMsharepointsite>();
+            var _result = new HttpOperationResponse<MicrosoftDynamicsCRMbcgovCertificate>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             // Deserialize Response
@@ -390,7 +390,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<MicrosoftDynamicsCRMsharepointsite>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<MicrosoftDynamicsCRMbcgovCertificate>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -410,10 +410,10 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         }
 
         /// <summary>
-        /// Get entity from sharepointsites by key
+        /// Get entity from bcgov_certificates by key
         /// </summary>
-        /// <param name='sharepointsiteid'>
-        /// key: sharepointsiteid
+        /// <param name='bcgovCertificateid'>
+        /// key: bcgov_certificateid
         /// </param>
         /// <param name='select'>
         /// Select properties to be returned
@@ -442,11 +442,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse<MicrosoftDynamicsCRMsharepointsite>> GetByKeyWithHttpMessagesAsync(string sharepointsiteid, IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<MicrosoftDynamicsCRMbcgovCertificate>> GetByKeyWithHttpMessagesAsync(string bcgovCertificateid, IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (sharepointsiteid == null)
+            if (bcgovCertificateid == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "sharepointsiteid");
+                throw new ValidationException(ValidationRules.CannotBeNull, "bcgovCertificateid");
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -455,7 +455,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("sharepointsiteid", sharepointsiteid);
+                tracingParameters.Add("bcgovCertificateid", bcgovCertificateid);
                 tracingParameters.Add("select", select);
                 tracingParameters.Add("expand", expand);
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -463,8 +463,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "sharepointsites({sharepointsiteid})").ToString();
-            _url = _url.Replace("{sharepointsiteid}", System.Uri.EscapeDataString(sharepointsiteid));
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "bcgov_certificates({bcgov_certificateid})").ToString();
+            _url = _url.Replace("{bcgov_certificateid}", System.Uri.EscapeDataString(bcgovCertificateid));
             List<string> _queryParameters = new List<string>();
             if (select != null)
             {
@@ -550,7 +550,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                 throw ex;
             }
             // Create Result
-            var _result = new HttpOperationResponse<MicrosoftDynamicsCRMsharepointsite>();
+            var _result = new HttpOperationResponse<MicrosoftDynamicsCRMbcgovCertificate>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             // Deserialize Response
@@ -559,7 +559,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<MicrosoftDynamicsCRMsharepointsite>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<MicrosoftDynamicsCRMbcgovCertificate>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -579,10 +579,10 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         }
 
         /// <summary>
-        /// Delete entity from sharepointsites
+        /// Delete entity from bcgov_certificates
         /// </summary>
-        /// <param name='sharepointsiteid'>
-        /// key: sharepointsiteid
+        /// <param name='bcgovCertificateid'>
+        /// key: bcgov_certificateid
         /// </param>
         /// <param name='ifMatch'>
         /// ETag
@@ -605,11 +605,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse> DeleteWithHttpMessagesAsync(string sharepointsiteid, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse> DeleteWithHttpMessagesAsync(string bcgovCertificateid, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (sharepointsiteid == null)
+            if (bcgovCertificateid == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "sharepointsiteid");
+                throw new ValidationException(ValidationRules.CannotBeNull, "bcgovCertificateid");
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -618,15 +618,15 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("sharepointsiteid", sharepointsiteid);
+                tracingParameters.Add("bcgovCertificateid", bcgovCertificateid);
                 tracingParameters.Add("ifMatch", ifMatch);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Delete", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "sharepointsites({sharepointsiteid})").ToString();
-            _url = _url.Replace("{sharepointsiteid}", System.Uri.EscapeDataString(sharepointsiteid));
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "bcgov_certificates({bcgov_certificateid})").ToString();
+            _url = _url.Replace("{bcgov_certificateid}", System.Uri.EscapeDataString(bcgovCertificateid));
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
             HttpResponseMessage _httpResponse = null;
@@ -718,10 +718,10 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         }
 
         /// <summary>
-        /// Update entity in sharepointsites
+        /// Update entity in bcgov_certificates
         /// </summary>
-        /// <param name='sharepointsiteid'>
-        /// key: sharepointsiteid
+        /// <param name='bcgovCertificateid'>
+        /// key: bcgov_certificateid
         /// </param>
         /// <param name='body'>
         /// New property values
@@ -744,11 +744,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse> UpdateWithHttpMessagesAsync(string sharepointsiteid, MicrosoftDynamicsCRMsharepointsite body, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse> UpdateWithHttpMessagesAsync(string bcgovCertificateid, MicrosoftDynamicsCRMbcgovCertificate body, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (sharepointsiteid == null)
+            if (bcgovCertificateid == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "sharepointsiteid");
+                throw new ValidationException(ValidationRules.CannotBeNull, "bcgovCertificateid");
             }
             if (body == null)
             {
@@ -761,15 +761,15 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("sharepointsiteid", sharepointsiteid);
+                tracingParameters.Add("bcgovCertificateid", bcgovCertificateid);
                 tracingParameters.Add("body", body);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Update", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "sharepointsites({sharepointsiteid})").ToString();
-            _url = _url.Replace("{sharepointsiteid}", System.Uri.EscapeDataString(sharepointsiteid));
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "bcgov_certificates({bcgov_certificateid})").ToString();
+            _url = _url.Replace("{bcgov_certificateid}", System.Uri.EscapeDataString(bcgovCertificateid));
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
             HttpResponseMessage _httpResponse = null;

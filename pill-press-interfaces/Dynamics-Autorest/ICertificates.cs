@@ -14,12 +14,12 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Incidentbusinesscontactset operations.
+    /// Certificates operations.
     /// </summary>
-    public partial interface IIncidentbusinesscontactset
+    public partial interface ICertificates
     {
         /// <summary>
-        /// Get entities from bcgov_incident_businesscontactset
+        /// Get entities from bcgov_certificates
         /// </summary>
         /// <param name='top'>
         /// </param>
@@ -52,9 +52,9 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        Task<HttpOperationResponse<GetOKResponseModelModelModelModelModelModelModel>> GetWithHttpMessagesAsync(int? top = default(int?), int? skip = default(int?), string search = default(string), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<GetOKResponseModelModelModelModel>> GetWithHttpMessagesAsync(int? top = default(int?), int? skip = default(int?), string search = default(string), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Add new entity to bcgov_incident_businesscontactset
+        /// Add new entity to bcgov_certificates
         /// </summary>
         /// <param name='body'>
         /// New entity
@@ -78,12 +78,12 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<HttpOperationResponse<MicrosoftDynamicsCRMbcgovIncidentBusinesscontact>> CreateWithHttpMessagesAsync(MicrosoftDynamicsCRMbcgovIncidentBusinesscontact body, string prefer = "return=representation", Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<MicrosoftDynamicsCRMbcgovCertificate>> CreateWithHttpMessagesAsync(MicrosoftDynamicsCRMbcgovCertificate body, string prefer = "return=representation", Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get entity from bcgov_incident_businesscontactset by key
+        /// Get entity from bcgov_certificates by key
         /// </summary>
-        /// <param name='bcgovIncidentBusinesscontactid'>
-        /// key: bcgov_incident_businesscontactid
+        /// <param name='bcgovCertificateid'>
+        /// key: bcgov_certificateid
         /// </param>
         /// <param name='select'>
         /// Select properties to be returned
@@ -106,12 +106,12 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<HttpOperationResponse<MicrosoftDynamicsCRMbcgovIncidentBusinesscontact>> GetByKeyWithHttpMessagesAsync(string bcgovIncidentBusinesscontactid, IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<MicrosoftDynamicsCRMbcgovCertificate>> GetByKeyWithHttpMessagesAsync(string bcgovCertificateid, IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Delete entity from bcgov_incident_businesscontactset
+        /// Delete entity from bcgov_certificates
         /// </summary>
-        /// <param name='bcgovIncidentBusinesscontactid'>
-        /// key: bcgov_incident_businesscontactid
+        /// <param name='bcgovCertificateid'>
+        /// key: bcgov_certificateid
         /// </param>
         /// <param name='ifMatch'>
         /// ETag
@@ -128,12 +128,12 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<HttpOperationResponse> DeleteWithHttpMessagesAsync(string bcgovIncidentBusinesscontactid, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse> DeleteWithHttpMessagesAsync(string bcgovCertificateid, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Update entity in bcgov_incident_businesscontactset
+        /// Update entity in bcgov_certificates
         /// </summary>
-        /// <param name='bcgovIncidentBusinesscontactid'>
-        /// key: bcgov_incident_businesscontactid
+        /// <param name='bcgovCertificateid'>
+        /// key: bcgov_certificateid
         /// </param>
         /// <param name='body'>
         /// New property values
@@ -150,6 +150,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<HttpOperationResponse> UpdateWithHttpMessagesAsync(string bcgovIncidentBusinesscontactid, MicrosoftDynamicsCRMbcgovIncidentBusinesscontact body, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse> UpdateWithHttpMessagesAsync(string bcgovCertificateid, MicrosoftDynamicsCRMbcgovCertificate body, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
