@@ -1,7 +1,7 @@
 <div class="dashboard-spacing" style="position: relative;">
   <div [ngBusy]="[busy]"></div>
   <div class="row" [formGroup]="form">
-    <div class="col-lg-7 col-sm-12">
+    <div class="col-lg-8 col-sm-12">
       <div>
         <h1>Waiver Application</h1>
         <p>Please complete your waiver application below. Your information will only be saved once you click the Save &
@@ -73,7 +73,7 @@
                 </app-field>
               </section>
               <section style="padding-left: 10px; padding-top: 30px;">
-                <a href="javascript:void(0);" *ngIf="ownProducts.controls.length > 1" (click)="deleteCustomProduct(i, item.get('type').value)"><i
+                <a href="javascript:void(0);" *ngIf="ownProducts.controls.length > 1" (click)="deleteCustomProduct(i, item.get('purpose').value)"><i
                     class="fas fa-trash-alt"></i>Delete Product</a>
               </section>
             </div>
@@ -139,7 +139,8 @@
 
         <section>
           <label for="">If you have additional supporting documents, please upload them below.</label>
-          <app-file-uploader fileTypes="FILE MUST BE IN DOC, XLS, PDF, JPG OR PNG"></app-file-uploader>
+          <app-file-uploader documentType="Waiver Documents" entityName="application" [entityId]="waiverId" fileTypes="FILE MUST BE IN DOC, XLS, PDF, JPG OR PNG"
+            [extensions]="['pdf', 'jpg', 'jpeg', 'png', 'xls', 'doc']"></app-file-uploader>
         </section>
 
         <section style="display: flex; justify-content: space-between; padding-top: 30px;">
