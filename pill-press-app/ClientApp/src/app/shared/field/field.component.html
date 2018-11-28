@@ -1,7 +1,7 @@
 <section class="app-field">
   <span *ngIf="leadingText">{{leadingText}} <p></p> </span>
-  <label>{{label}} <span *ngIf="required" class="error-states">*</span></label>
-  <br />
+  <label *ngIf="label">{{label}} <span *ngIf="required" class="error-states">*</span></label>
+  <br *ngIf="label">
   <ng-content></ng-content>
   <span *ngIf="!valid && showChevrons">
     <i class="fas fa-chevron-left error-states"></i>
