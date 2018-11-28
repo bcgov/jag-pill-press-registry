@@ -1,7 +1,7 @@
 <div class="dashboard-spacing" style="position: relative;">
   <div [ngBusy]="[busy]"></div>
   <div class="row" [formGroup]="form">
-    <div class="col-lg-7 col-sm-12">
+    <div class="col-lg-8 col-sm-12">
       <div>
         <h1>Waiver Application</h1>
         <p>Please complete your waiver application below. Your information will only be saved once you click the Save &
@@ -67,14 +67,18 @@
               <section style="flex: 10" [formGroupName]="i">
                 <app-field [required]="true" [showChevrons]="false" errorMessage="Please provide the product description and its intended use"
                   [valid]="item.get('productdescriptionandintendeduse').valid || !item.get('productdescriptionandintendeduse').touched"
-                  label="Product {{i === 0 ? '': i +1}} Description and Intended Use">
+                  >
+                  <div style="display: flex; justify-content: space-between">
+                      <section>
+                        <label>Product {{i === 0 ? '': i +1}} Description and Intended Use</label>
+                        <span class="error-states">*</span>
+                      </section> 
+                      <a href="javascript:void(0);" *ngIf="ownProducts.controls.length > 1" (click)="deleteCustomProduct(i, item.get('purpose').value)"><i
+                          class="fas fa-trash-alt"></i>Delete Product</a>
+                    </div>
                   <textarea class="form-control" formControlName="productdescriptionandintendeduse" maxlength="1000"
                     rows="5"></textarea>
                 </app-field>
-              </section>
-              <section style="padding-left: 10px; padding-top: 30px;">
-                <a href="javascript:void(0);" *ngIf="ownProducts.controls.length > 1" (click)="deleteCustomProduct(i, item.get('type').value)"><i
-                    class="fas fa-trash-alt"></i>Delete Product</a>
               </section>
             </div>
             <div style="background-color: #F2F2F2; border: solid 1px transparent; border-radius: 5px; padding: 10px; margin-bottom: 10px;">
@@ -102,15 +106,18 @@
             <div style="display: flex;" *ngFor="let item of productsForOthers.controls; let i = index;">
               <section style="flex: 10" [formGroupName]="i">
                 <app-field [required]="true" [showChevrons]="false" errorMessage="Please provide the product description and its intended use"
-                  [valid]="item.get('productdescriptionandintendeduse').valid || !item.get('productdescriptionandintendeduse').touched"
-                  label="Product {{i === 0 ? '': i +1}} Description and Intended Use">
+                  [valid]="item.get('productdescriptionandintendeduse').valid || !item.get('productdescriptionandintendeduse').touched">
+                  <div style="display: flex; justify-content: space-between">
+                    <section>
+                      <label>Product {{i === 0 ? '': i +1}} Description and Intended Use</label>
+                      <span class="error-states">*</span>
+                    </section> 
+                    <a href="javascript:void(0);" *ngIf="productsForOthers.controls.length > 1" (click)="deleteCustomProduct(i, item.get('purpose').value)"><i
+                        class="fas fa-trash-alt"></i>Delete Product</a>
+                  </div>
                   <textarea class="form-control" formControlName="productdescriptionandintendeduse" maxlength="1000"
                     rows="5"></textarea>
                 </app-field>
-              </section>
-              <section style="padding-left: 10px; padding-top: 30px;">
-                <a href="javascript:void(0);" *ngIf="productsForOthers.controls.length > 1" (click)="deleteCustomProduct(i, item.get('purpose').value)"><i
-                    class="fas fa-trash-alt"></i>Delete Product</a>
               </section>
             </div>
             <div style="background-color: #F2F2F2; border: solid 1px transparent; border-radius: 5px; padding: 10px; margin-bottom: 10px;">
@@ -139,7 +146,8 @@
 
         <section>
           <label for="">If you have additional supporting documents, please upload them below.</label>
-          <app-file-uploader fileTypes="FILE MUST BE IN DOC, XLS, PDF, JPG OR PNG"></app-file-uploader>
+          <app-file-uploader documentType="Waiver Documents" entityName="application" [entityId]="waiverId" fileTypes="FILE MUST BE IN DOC, XLS, PDF, JPG OR PNG"
+            [extensions]="['pdf', 'jpg', 'jpeg', 'png', 'xls', 'doc']"></app-file-uploader>
         </section>
 
         <section style="display: flex; justify-content: space-between; padding-top: 30px;">
@@ -171,7 +179,7 @@
           </p>
           <div>
             <i class="fas fa-phone"></i>
-            <strong> Phone</strong>
+            <strong style="padding-left: 10px;">Phone</strong>
             <br>
             <span>1 888 356-2741 (Canada and USA toll free)</span>
             <br>
@@ -179,7 +187,7 @@
           </div>
           <div>
             <i class="fas fa-envelope"></i>
-            <strong> Email</strong>
+            <strong style="padding-left: 10px;">Email</strong>
             <br>
             <span>Contact us using our online form</span>
           </div>
