@@ -67,14 +67,18 @@
               <section style="flex: 10" [formGroupName]="i">
                 <app-field [required]="true" [showChevrons]="false" errorMessage="Please provide the product description and its intended use"
                   [valid]="item.get('productdescriptionandintendeduse').valid || !item.get('productdescriptionandintendeduse').touched"
-                  label="Product {{i === 0 ? '': i +1}} Description and Intended Use">
+                  >
+                  <div style="display: flex; justify-content: space-between">
+                      <section>
+                        <label>Product {{i === 0 ? '': i +1}} Description and Intended Use</label>
+                        <span class="error-states">*</span>
+                      </section> 
+                      <a href="javascript:void(0);" *ngIf="ownProducts.controls.length > 1" (click)="deleteCustomProduct(i, item.get('purpose').value)"><i
+                          class="fas fa-trash-alt"></i>Delete Product</a>
+                    </div>
                   <textarea class="form-control" formControlName="productdescriptionandintendeduse" maxlength="1000"
                     rows="5"></textarea>
                 </app-field>
-              </section>
-              <section style="padding-left: 10px; padding-top: 30px;">
-                <a href="javascript:void(0);" *ngIf="ownProducts.controls.length > 1" (click)="deleteCustomProduct(i, item.get('purpose').value)"><i
-                    class="fas fa-trash-alt"></i>Delete Product</a>
               </section>
             </div>
             <div style="background-color: #F2F2F2; border: solid 1px transparent; border-radius: 5px; padding: 10px; margin-bottom: 10px;">
@@ -102,15 +106,18 @@
             <div style="display: flex;" *ngFor="let item of productsForOthers.controls; let i = index;">
               <section style="flex: 10" [formGroupName]="i">
                 <app-field [required]="true" [showChevrons]="false" errorMessage="Please provide the product description and its intended use"
-                  [valid]="item.get('productdescriptionandintendeduse').valid || !item.get('productdescriptionandintendeduse').touched"
-                  label="Product {{i === 0 ? '': i +1}} Description and Intended Use">
+                  [valid]="item.get('productdescriptionandintendeduse').valid || !item.get('productdescriptionandintendeduse').touched">
+                  <div style="display: flex; justify-content: space-between">
+                    <section>
+                      <label>Product {{i === 0 ? '': i +1}} Description and Intended Use</label>
+                      <span class="error-states">*</span>
+                    </section> 
+                    <a href="javascript:void(0);" *ngIf="productsForOthers.controls.length > 1" (click)="deleteCustomProduct(i, item.get('purpose').value)"><i
+                        class="fas fa-trash-alt"></i>Delete Product</a>
+                  </div>
                   <textarea class="form-control" formControlName="productdescriptionandintendeduse" maxlength="1000"
                     rows="5"></textarea>
                 </app-field>
-              </section>
-              <section style="padding-left: 10px; padding-top: 30px;">
-                <a href="javascript:void(0);" *ngIf="productsForOthers.controls.length > 1" (click)="deleteCustomProduct(i, item.get('purpose').value)"><i
-                    class="fas fa-trash-alt"></i>Delete Product</a>
               </section>
             </div>
             <div style="background-color: #F2F2F2; border: solid 1px transparent; border-radius: 5px; padding: 10px; margin-bottom: 10px;">
@@ -172,7 +179,7 @@
           </p>
           <div>
             <i class="fas fa-phone"></i>
-            <strong> Phone</strong>
+            <strong style="padding-left: 10px;">Phone</strong>
             <br>
             <span>1 888 356-2741 (Canada and USA toll free)</span>
             <br>
@@ -180,7 +187,7 @@
           </div>
           <div>
             <i class="fas fa-envelope"></i>
-            <strong> Email</strong>
+            <strong style="padding-left: 10px;">Email</strong>
             <br>
             <span>Contact us using our online form</span>
           </div>
