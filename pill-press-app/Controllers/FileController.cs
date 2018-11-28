@@ -38,11 +38,9 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
 
         private string GetApplicationFolderName(MicrosoftDynamicsCRMincident application)
         {
-            /*
-            string applicationIdCleaned = application.Applicationid.ToString().ToUpper().Replace("-", "");
-            string folderName = $"{application.AdoxioJobnumber}_{applicationIdCleaned}";
-            */
-            string folderName = "";
+
+            string applicationIdCleaned = application.Incidentid.ToString().ToUpper().Replace("-", "");
+            string folderName = $"{application.Title}_{applicationIdCleaned}";
             return folderName;
         }
 
@@ -156,6 +154,10 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             var id = Guid.Parse(entityId);
             switch (entityName.ToLower())
             {
+                case "application":
+                    var application =  _dynamicsClient.GetApplicationById(id);
+                    result = application != null && CurrentUserHasAccessToApplicationOwnedBy(application._customeridValue);
+                    break;
                 case "contact":
                     var contact = await _dynamicsClient.GetContactById(id);
                     result = contact != null && CurrentUserHasAccessToContactOwnedBy(contact.Contactid);
@@ -165,6 +167,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             }
             return result;
         }
+
         private async Task<bool> CanAccessEntityFile(string entityName, string entityId, string documentType, string serverRelativeUrl)
         {
             var result = await CanAccessEntity(entityName, entityId);
@@ -185,7 +188,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 case "contact":
                     var contact = await _dynamicsClient.GetContactById(Guid.Parse(entityId));
                     folderName = GetContactFolderName(contact);
-                    break;                
+                    break;
+                case "application":
+                    var incident =  _dynamicsClient.GetApplicationById(Guid.Parse(entityId));
+                    folderName = GetApplicationFolderName(incident);
+                    break;
                 default:
                     break;
             }
@@ -196,7 +203,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         {
             switch (entityName.ToLower())
             {
-                
+
                 case "contact":
                     var patchContact = new MicrosoftDynamicsCRMcontact();
                     try
@@ -214,7 +221,24 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                         throw (odee);
                     }
                     break;
-                
+                case "application":
+                    var patchIncident = new MicrosoftDynamicsCRMincident();
+                    try
+                    {
+                        _dynamicsClient.Incidents.Update(entityId, patchIncident);
+                    }
+                    catch (OdataerrorException odee)
+                    {
+                        _logger.LogError("Error updating Incident");
+                        _logger.LogError("Request:");
+                        _logger.LogError(odee.Request.Content);
+                        _logger.LogError("Response:");
+                        _logger.LogError(odee.Response.Content);
+                        // fail if we can't create.
+                        throw (odee);
+                    }
+                    break;
+
 
                 default:
                     break;
@@ -361,13 +385,10 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             switch (entityName.ToLower())
             {
                 case "application":
-                    listTitle = "adoxio_application";
+                    listTitle = SharePointFileManager.ApplicationDocumentListTitle;
                     break;
                 case "contact":
                     listTitle = SharePointFileManager.ContactDocumentListTitle;
-                    break;
-                case "worker":
-                    listTitle = "adoxio_worker";
                     break;
                 default:
                     break;
