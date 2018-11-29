@@ -33,11 +33,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                 errorMessage += "AccountId is null. ";
                 valid = false;
             }
-            if (string.IsNullOrEmpty(jobtitle))
-            {
-                errorMessage += "JobTitle is null. ";
-                valid = false;
-            }
+            
             if (contactType == null)
             {
                 errorMessage += "ContactType is null. ";
@@ -55,11 +51,15 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                     {
                         result = new MicrosoftDynamicsCRMbcgovBusinesscontact()
                         {
-                            BcgovJobtitle = jobtitle,
+                            
                             BcgovContacttype = contactType,
                             ContactODataBind = system.GetEntityURI("contacts", contactId),
                             AccountODataBind = system.GetEntityURI("accounts", accountId),
                         };
+                        if (!string.IsNullOrEmpty(jobtitle))
+                        {
+                            result.BcgovJobtitle = jobtitle;
+                        }
                         system.Businesscontacts.Create(result);
                     }
                     catch (OdataerrorException odee)
