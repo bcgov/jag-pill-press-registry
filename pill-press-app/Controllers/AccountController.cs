@@ -267,8 +267,6 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     userContact.Lastname = userSettings.UserDisplayName.GetLastName();
                 }
                 userContact.Statuscode = 1;
-                userContact.BcgovContacttype = 931490002; // BCeID contact type
-
                 
                 _logger.LogDebug(LoggingEvents.HttpGet, "Account is NOT null. Only a new user.");
                 try
@@ -427,6 +425,9 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     userSettings.AuthenticatedUser = user;
                 }
 
+                // create the bridge entity for the BCeID user
+                _dynamicsClient.CreateBusinessContactLink(_logger, userSettings.ContactId, userSettings.AccountId, null, (int?)ContactTypeEnum.BCeID);
+
                 userSettings.IsNewUserRegistration = false;
 
                 string userSettingsString = JsonConvert.SerializeObject(userSettings);
@@ -451,12 +452,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             {
                 _dynamicsClient.CreateBusinessContactLink(_logger, item.additionalContact.id, account.Accountid, null, (int?)ContactTypeEnum.Additional);
             }
-            if (userSettings.IsNewUserRegistration)
-            {
-                _dynamicsClient.CreateBusinessContactLink(_logger, userSettings.ContactId, userSettings.AccountId, null, (int?)ContactTypeEnum.BCeID);
-            }
-
-
+            
 
             //account.Accountid = id;
             result = account.ToViewModel();
