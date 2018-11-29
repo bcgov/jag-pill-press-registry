@@ -337,11 +337,15 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     account.BcgovDoingbusinessasname = bceidBusiness.legalName;
                     account.Emailaddress1 = bceidBusiness.contactEmail;
                     account.Telephone1 = bceidBusiness.contactPhone;
+
+                    // do not set the address from BCeID for Pill Press.
+                    /*
                     account.Address1City = bceidBusiness.addressCity;
                     account.Address1Postalcode = bceidBusiness.addressPostal;
                     account.Address1Line1 = bceidBusiness.addressLine1;
                     account.Address1Line2 = bceidBusiness.addressLine2;
                     account.Address1Postalcode = bceidBusiness.addressPostal;
+                    */
                 }
                 else // likely a dev login.
                 {
@@ -438,6 +442,22 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 throw new Exception("Invalid user registration.");
             }
 
+            // create the business contact links.
+            if (item.primaryContact != null)
+            {
+                _dynamicsClient.CreateBusinessContactLink(_logger, item.primaryContact.id, account.Accountid, null, (int?)ContactTypeEnum.Primary);
+            }
+            if (item.additionalContact != null)
+            {
+                _dynamicsClient.CreateBusinessContactLink(_logger, item.additionalContact.id, account.Accountid, null, (int?)ContactTypeEnum.Additional);
+            }
+            if (userSettings.IsNewUserRegistration)
+            {
+                _dynamicsClient.CreateBusinessContactLink(_logger, userSettings.ContactId, userSettings.AccountId, null, (int?)ContactTypeEnum.BCeID);
+            }
+
+
+
             //account.Accountid = id;
             result = account.ToViewModel();
             
@@ -448,7 +468,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         }
 
         /// <summary>
-        /// Update a legal entity
+        /// Update an account
         /// </summary>
         /// <param name="item"></param>
         /// <param name="id"></param>
@@ -535,7 +555,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                         try
                         {
                             additionalContact = _dynamicsClient.Contacts.Create(additionalContact);
-                            item.primaryContact.id = additionalContact.Contactid;
+                            item.additionalContact.id = additionalContact.Contactid;
                         }
                         catch (OdataerrorException odee)
                         {
@@ -596,6 +616,21 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     throw new OdataerrorException("Error updating the account.");
                 }
 
+                // purge any existing non bceid accounts.
+                _dynamicsClient.DeleteNonBceidBusinessContactLinkForAccount(_logger, accountId.ToString());
+
+                // create the business contact links.
+                if (item.primaryContact != null)
+                {
+                    _dynamicsClient.CreateBusinessContactLink(_logger, item.primaryContact.id, account.Accountid, null, (int?)ContactTypeEnum.Primary);
+                }
+                if (item.additionalContact != null)
+                {
+                    _dynamicsClient.CreateBusinessContactLink(_logger, item.additionalContact.id, account.Accountid, null, (int?)ContactTypeEnum.Additional);
+                }
+                
+
+
                 // populate child items in the account.
                 account = await _dynamicsClient.GetAccountById(accountId);
 
@@ -633,8 +668,6 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 _logger.LogWarning(LoggingEvents.NotFound, "Account NOT found.");
                 return new NotFoundResult();
             }
-
-            
             
             try
             {
