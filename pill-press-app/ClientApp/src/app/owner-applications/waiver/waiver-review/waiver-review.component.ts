@@ -97,7 +97,10 @@ export class WaiverReviewComponent implements OnInit {
           { text: 'Do you own, use, or possess (or intend to own) Controlled Equipment for the purposes of producing your own product?' },
           { text: waiver.producingownproduct ? 'Yes' : 'No' },
           ...productsForSelfProcessed,
-          { text: 'Do you own, use, or possess (or intend to own) Controlled Equipment for the purposes of providing manufacturing services to others?' },
+          {
+            text: 'Do you own, use, or possess (or intend to own) Controlled ' +
+              'Equipment for the purposes of providing manufacturing services to others?'
+          },
           { text: waiver.providingmanufacturingtoothers ? 'Yes' : 'No' },
           ...productsForOthersProcessed
         ];
@@ -105,12 +108,13 @@ export class WaiverReviewComponent implements OnInit {
         this.purposeExplanation = [
           'Please explain the main focus of your business and why that requires Controlled Equipment.',
           waiver.mainbusinessfocus,
-          'Please describe the manufacturing process you use to produce the above-noted products. Please include specific information on how you utilize the Controlled Equipment throughout the manufacturing process.',
+          'Please describe the manufacturing process you use to produce the above-noted products.' +
+          ' Please include specific information on how you utilize the Controlled Equipment throughout the manufacturing process.',
           waiver.manufacturingprocessdescription
         ];
 
       }, error => {
-        debugger;
+        // todo: show errors;
       });
   }
 
@@ -142,7 +146,7 @@ export class WaiverReviewComponent implements OnInit {
         .subscribe(res => {
           this.router.navigateByUrl(`/waiver-thank-you/${this.waiverId}`);
         }, err => {
-          debugger;
+         // todo: show errors;
         });
     }
   }
