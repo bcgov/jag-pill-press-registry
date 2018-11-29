@@ -49,6 +49,24 @@ export class AuthorizedApplicationComponent implements OnInit {
       productsForOthers: this.fb.array([this.createCustomProduct(<CustomProduct>{ purpose: MANUFACTURING_FOR_OTHERS })]),
       providingmanufacturingtoothers: ['', Validators.required],
       sellequipment: ['', Validators.required],
+      foodanddrugact: ['', Validators.required],
+      legislativeauthorityother: ['', Validators.required],
+      kindsofproductsdrugs: ['', Validators.required],
+      kindsofproductsnaturalhealthproducts: ['', Validators.required],
+      kindsofproductsother: ['', Validators.required],
+      drugestablishmentlicence: ['', Validators.required],
+      sitelicence: ['', Validators.required],
+      otherlicence: ['', Validators.required],
+      delbusinessname: ['', Validators.required],
+      drugestablishmentlicencenumber: ['', Validators.required],
+      drugestablishmentlicenceexpirydate: ['', Validators.required],
+      sitelicencebusinessname: ['', Validators.required],
+      sitelicencenumber: ['', Validators.required],
+      sitelicenceexpirydate: ['', Validators.required],
+      otherlicencebusinessname: ['', Validators.required],
+      otherlicencenumber: ['', Validators.required],
+      otherlicenceexpirydate: ['', Validators.required],
+
     });
 
     this.form.get('producingownproduct').valueChanges
