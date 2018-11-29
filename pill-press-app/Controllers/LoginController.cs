@@ -12,6 +12,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Caching.Redis;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace Gov.Jag.PillPressRegistry.Public.Controllers
 {
@@ -21,11 +23,17 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         private readonly IConfiguration Configuration;
         private readonly IHostingEnvironment _env;
         private readonly SiteMinderAuthOptions _options = new SiteMinderAuthOptions();
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly ILogger _logger;
 
-        public LoginController(IConfiguration configuration, IHostingEnvironment env)
+        const string BUSINESS_PROFILE_PAGE = "business-profile";
+
+        public LoginController(IConfiguration configuration, IHostingEnvironment env, IHttpContextAccessor httpContextAccessor, ILoggerFactory loggerFactory)
         {
             Configuration = configuration;
-            _env = env;         
+            _env = env;
+            _httpContextAccessor = httpContextAccessor;
+            _logger = loggerFactory.CreateLogger(typeof(LoginController));
         }
 
         [HttpGet]
@@ -60,8 +68,25 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             else
             {
                 string basePath = string.IsNullOrEmpty(Configuration["BASE_PATH"]) ? "/" : Configuration["BASE_PATH"];
-                // we want to redirect to the dashboard.
+                // we want to redirect to the dashboard if the user is a returning user.
+
+                // get UserSettings from the session
+                string temp = _httpContextAccessor.HttpContext.Session.GetString("UserSettings");
                 string dashboard = "dashboard";
+
+                if (string.IsNullOrEmpty(temp))
+                {
+                    dashboard = BUSINESS_PROFILE_PAGE;
+                }
+                else
+                {
+                    UserSettings userSettings = JsonConvert.DeserializeObject<UserSettings>(temp);
+                    if (userSettings.IsNewUserRegistration)
+                    {
+                        dashboard = BUSINESS_PROFILE_PAGE;
+                    }
+                }
+                
 
                 return Redirect(basePath + "/" + dashboard);
             }
@@ -96,6 +121,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         [AllowAnonymous]
         public virtual IActionResult GetDevAuthenticationCookie(string userId)
         {
+
             // if (_env.IsProduction()) return BadRequest("This API is not available outside a development environment.");
 
             if (string.IsNullOrEmpty(userId)) return BadRequest("Missing required userid query parameter.");
@@ -135,8 +161,9 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             );
 
             string basePath = string.IsNullOrEmpty(Configuration["BASE_PATH"]) ? "" : Configuration["BASE_PATH"];
-            string dashboard = "dashboard";
-            basePath += "/" + dashboard;
+            // always send the user to the business profile.
+            string businessprofile = "business-profile";
+            basePath += "/" + businessprofile;
 
             return Redirect(basePath);
         }

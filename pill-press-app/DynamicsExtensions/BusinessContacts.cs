@@ -21,32 +21,68 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <returns></returns>
         public static void CreateBusinessContactLink(this IDynamicsClient system, ILogger _logger, string contactId, string accountId, string jobtitle, int? contactType)
         {
-
-            MicrosoftDynamicsCRMbcgovBusinesscontact result = system.GetBusinessContactLink(contactId, accountId);
-
-            if (result == null)
+            bool valid = true;
+            string errorMessage = "";
+            if (string.IsNullOrEmpty(contactId))
             {
-                // create it.
-                try
+                errorMessage += "ContactId is null. ";
+                valid = false;
+            }
+            if (string.IsNullOrEmpty(accountId))
+            {
+                errorMessage += "AccountId is null. ";
+                valid = false;
+            }
+            
+            if (contactType == null)
+            {
+                errorMessage += "ContactType is null. ";
+                valid = false;
+            }
+
+            if (valid)
+            {
+                MicrosoftDynamicsCRMbcgovBusinesscontact result = system.GetBusinessContactLink(contactId, accountId);
+
+                if (result == null)
                 {
-                    result = new MicrosoftDynamicsCRMbcgovBusinesscontact()
+                    // create it.
+                    try
                     {
-                        BcgovJobtitle = jobtitle,
-                        BcgovContacttype = contactType,
-                        ContactODataBind = system.GetEntityURI("contacts", contactId),
-                        AccountODataBind = system.GetEntityURI("accounts", accountId),
-                    };
-                    system.Businesscontacts.Create(result);
-                }
-                catch (OdataerrorException odee)
-                {
-                    _logger.LogError(LoggingEvents.Error, "Error while creating a business contact.");
-                    _logger.LogError("Request:");
-                    _logger.LogError(odee.Request.Content);
-                    _logger.LogError("Response:");
-                    _logger.LogError(odee.Response.Content);
+                        result = new MicrosoftDynamicsCRMbcgovBusinesscontact()
+                        {
+                            
+                            BcgovContacttype = contactType,
+                            ContactODataBind = system.GetEntityURI("contacts", contactId),
+                            AccountODataBind = system.GetEntityURI("accounts", accountId),
+                        };
+                        if (!string.IsNullOrEmpty(jobtitle))
+                        {
+                            result.BcgovJobtitle = jobtitle;
+                        }
+                        system.Businesscontacts.Create(result);
+                    }
+                    catch (OdataerrorException odee)
+                    {
+                        if (_logger != null)
+                        {
+                            _logger.LogError(LoggingEvents.Error, "Error while creating a business contact.");
+                            _logger.LogError("Request:");
+                            _logger.LogError(odee.Request.Content);
+                            _logger.LogError("Response:");
+                            _logger.LogError(odee.Response.Content);
+                        }                        
+                    }
                 }
             }
+            else
+            {
+                if (_logger != null)
+                {
+                    _logger.LogError(LoggingEvents.Error, "Invalid parameters passed.");
+                    _logger.LogError(errorMessage);                    
+                }
+            }            
         }
 
         public static MicrosoftDynamicsCRMbcgovBusinesscontact GetBusinessContactLink(this IDynamicsClient system, string contactId, string accountId)
