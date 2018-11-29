@@ -1,3 +1,281 @@
-<p>
-  authorized-application-review works!
-</p>
+<div class="dashboard-spacing row">
+  <div class="col-lg-8 col-sm-12" style="position: relative;">
+      <div [ngBusy]="busy"></div>
+    <h2 class="step">STEP 3</h2>
+    <h1>Authorized Owner Confirmation Review</h1>
+
+    <p>
+      You have provided the following information in your Authorized Owner confirmation. In order to proceed, please
+      confirm that
+      these details are correct. If they are not, please <a routerLink="/application/authorized-owner/{{waiverId}}">amend
+        your
+        answers</a>
+      before submitting the application.
+    </p>
+
+    <h2>Equipment Information</h2>
+    <table class="summary-table">
+      <tr *ngFor="let item of equipmentInformation; let i = index;">
+        <td [ngClass]="{'table-row': i%2==0, 'table-row-alt': i%2==1 }">{{ item}}</td>
+      </tr>
+    </table>
+
+    <h2>Purpose of Controlled Equipment</h2>
+    <table class="summary-table">
+      <tr *ngFor="let item of purposeOfEquipment; let i = index;">
+        <td [ngClass]="{'table-row': i%2==0, 'table-row-alt': i%2==1 }">{{ item.text}}</td>
+      </tr>
+    </table>
+
+    <h2>Legislative Authorization</h2>
+    <table class="summary-table">
+      <tr>
+        <td class="table-row">
+          <strong>Legislative Authority</strong> <br>
+          <span>What enactment authorizes you to manufacture these products? Please select all the options that apply.</span>
+        </td>
+      </tr>
+      <tr>
+        <td class="table-row-alt">
+          <div *ngIf="formData?.foodanddrugact">Food and Drug Act</div>
+          <div *ngIf="formData?.legislativeauthorityother">Other: {{formData?.legislativeauthorityother}}</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="table-row">
+          <strong>Type of Authorization</strong> <br>
+          <span>What kind of products are manufactured by your business? Please select all the options that apply.</span>
+        </td>
+      </tr>
+      <tr>
+        <td class="table-row-alt">
+          <div *ngIf="formData?.kindsofproductsdrugs">Drugs</div>
+          <div *ngIf="formData?.kindsofproductsnaturalhealthproducts">Natural Health Products</div>
+          <div *ngIf="formData?.kindsofproductsother">Other: {{formData?.kindsofproductsother}}</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="table-row">
+          <strong>
+            BC or Canada Issued - Licence Type
+            <br>
+            What kind of licence do you possess that authorizes you to manufacture a drug or natural health product?
+            Please select all the options that apply.</strong>
+        </td>
+      </tr>
+      <tr *ngIf="formData?.drugestablishmentlicence">
+        <td class="table-row-alt">
+          <ul style="margin-bottom: 0; padding-left: 15px;">
+            <li>Drug Establishment Licence</li>
+          </ul>
+        </td>
+      </tr>
+      <tr *ngIf="formData?.drugestablishmentlicence">
+        <td style="padding-left: 30px;">
+          <table class="summary-table" style="margin-top: -10px">
+            <tr>
+              <td class="table-row">
+                <strong>What is the name of the business that appears on your Drug Establishment Licence (i.e. issued to name).</strong>
+              </td>
+            </tr>
+            <tr>
+              <td class="table-row-alt">
+                {{formData?.delbusinessname}}
+              </td>
+            </tr>
+            <tr>
+              <td class="table-row">
+                <strong>Drug Establishment Licence - Number</strong>
+              </td>
+            </tr>
+            <tr>
+              <td class="table-row-alt">
+                {{formData?.drugestablishmentlicencenumber}}
+              </td>
+            </tr>
+            <tr>
+              <td class="table-row">
+                <strong>Drug Establishment Licence - Expiry Date</strong>
+              </td>
+            </tr>
+            <tr>
+              <td class="table-row-alt">
+                {{formData?.drugestablishmentlicenceexpirydate}}
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr *ngIf="formData?.sitelicence">
+        <td class="table-row-alt">
+          <ul style="margin-bottom: 0; padding-left: 15px;">
+            <li>Site Licence</li>
+          </ul>
+        </td>
+      </tr>
+      <tr *ngIf="formData?.sitelicence">
+        <td style="padding-left: 30px;">
+          <table class="summary-table" style="margin-top: -10px">
+            <tr>
+              <td class="table-row">
+                <strong>What is the name of the business that appears on your Site Licence (i.e. issued to name).</strong>
+              </td>
+            </tr>
+            <tr>
+              <td class="table-row-alt">
+                {{formData?.sitelicencebusinessname}}
+              </td>
+            </tr>
+            <tr>
+              <td class="table-row">
+                <strong>Site Licence - Number</strong>
+              </td>
+            </tr>
+            <tr>
+              <td class="table-row-alt">
+                {{formData?.sitelicencenumber}}
+              </td>
+            </tr>
+            <tr>
+              <td class="table-row">
+                <strong>Site Licence - Expiry Date</strong>
+              </td>
+            </tr>
+            <tr>
+              <td class="table-row-alt">
+                {{formData?.sitelicenceexpirydate}}
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr *ngIf="formData?.otherlicencebusinessname">
+        <td class="table-row-alt">
+          <ul style="margin-bottom: 0; padding-left: 15px;">
+            <li>Other: {{formData?.otherlicence}}</li>
+          </ul>
+        </td>
+      </tr>
+      <tr *ngIf="formData?.otherlicencebusinessname">
+        <td style="padding-left: 30px;">
+          <table class="summary-table" style="margin-top: -10px">
+            <tr>
+              <td class="table-row">
+                <strong>What is the name of the business that appears on this Other Licence (i.e. issued to name)</strong>
+              </td>
+            </tr>
+            <tr>
+              <td class="table-row-alt">
+                {{formData?.otherlicencebusinessname}}
+              </td>
+            </tr>
+            <tr>
+              <td class="table-row">
+                <strong>Other Licence - Number</strong>
+              </td>
+            </tr>
+            <tr>
+              <td class="table-row-alt">
+                {{formData?.otherlicencenumber}}
+              </td>
+            </tr>
+            <tr>
+              <td class="table-row">
+                <strong>Other Licence - Expiry Date</strong>
+              </td>
+            </tr>
+            <tr>
+              <td class="table-row-alt">
+                {{formData?.otherlicenceexpirydate}}
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <!-- <td [ngClass]="{'table-row': i%2==0, 'table-row-alt': i%2==1 }">{{ item}}</td> -->
+    </table>
+
+    <h3 class="blue-header">DECLARATION AND CONSENT</h3>
+    <div [formGroup]="form">
+      <section style="display: flex">
+        <input type="checkbox" style="flex: 0 0 20px" formControlName="declarationofcorrectinformation">
+        <span>
+          I certify that, to the best of my knowledge, the information I have provided on my Waiver application and
+          will
+          provide as necessary is complete, honest, and accurate. I understand that a false statement or omission of
+          facts herein may lead to the a denial of a Waiver being granted. I am also aware that later discovery of an
+          omission or misrepresentation may be grounds for suspension or cancellation of a waiver or for being
+          prosecuted
+          under provincial law. <span class="error-states">*</span>
+        </span>
+      </section>
+      <div *ngIf="form.get('declarationofcorrectinformation').value !== true && form.touched" style="background-color: #F2F2F2; margin-top: 10px; border-radius: 5px; padding: 10px; font: 15px Myriad Pro Regular #494949;">
+        <i class="fas fa-exclamation-triangle error-states" style="margin-right: 10px;"></i>
+        <span class="error-states">Please complete the declarations and consent section.</span>
+      </div>
+    </div>
+
+    <div style="margin-top: 30px; display: flex; justify-content: space-between">
+      <section>
+        <span class="error-states">*</span> <i>Required field</i>
+      </section>
+      <section>
+        <a href="javascript: void(0);" style="margin-right: 10px"><i class="fas fa-save"></i>Save & Close</a>
+        <button class="btn btn-secondary" style="margin-right: 10px" routerLink="/application/authorized-owner/{{waiverId}}">EDIT
+          APPLICATION</button>
+        <button class="btn btn-primary" (click)="save()">SUBMIT</button>
+      </section>
+    </div>
+  </div>
+
+  <div class="col-lg-4 col-sm-12" style="position: relative">
+    <p></p>
+    <section class="submit-container">
+      <table>
+        <tr>
+          <td>
+            <h2 class="round-icon-wrapper"><i class="fas fa-question"></i></h2>
+          </td>
+          <td style="padding-left: 10px">
+            <h2>Update your personal information</h2>
+          </td>
+        </tr>
+      </table>
+      <div class="submit-content">
+        <p>If you find an error in your personal information, please contact Service BC, ICBC or AddressChangeBC to
+          correct
+          it.
+        </p>
+        <ul>
+          <li>
+            <a style="color: #fff;" href="https://www2.gov.bc.ca/gov/content/governments/government-id/bc-services-card/change-personal-information">BC
+              Service Card</a>
+          </li>
+          <li>
+            <a style="color: #fff;" href="https://www.icbc.com/driver-licensing/getting-licensed/Pages/Change-your-address-or-name.aspx">ICBC</a>
+          </li>
+          <li>
+            <a style="color: #fff;" href="https://www.addresschange.gov.bc.ca/">AddressChangeBC</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="submit-container" style="background-color: #F2F2F2; color:#000; border: none;">
+      <h2 style="color: #000">Collection Notice:</h2>
+      <div class="submit-content">
+        <p>
+          The Security Programs Division (SPD) will collect your personal information for the purpose of fulfilling
+          the requirements
+          of the Cannabis Control and Licensing Act (CCLA) and associated regulations in accordance with Sections 26
+          (a)
+          and (c) of the Freedom of Information and Protection of Privacy Act. Should you have any questions about
+          the
+          collection, use, or disclosure of personal information, please contact the Senior Policy Analyst, Security
+          Programs
+          Division via mail to PO Box 9217 Stn Prov Govt Victoria, BC V8W 9J1; email to
+          <a href="mailto:cannabissecurityscreening@gov.bc.ca">cannabissecurityscreening@gov.bc.ca</a>;
+          or by telephone at 1-855-587-0185.</p>
+      </div>
+    </section>
+  </div>
+</div>
