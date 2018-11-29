@@ -135,6 +135,15 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             MicrosoftDynamicsCRMincident application = new MicrosoftDynamicsCRMincident();
             application.CopyValues(item);
 
+            if (string.IsNullOrEmpty(application._bcgovApplicationtypeidValue) || string.IsNullOrEmpty(application.ApplicationTypeIdODataBind)) // set to Waiver if it is blank.
+            {
+                string waiverTypeId = _dynamicsClient.GetApplicationTypeIdByName("Waiver");
+                if (waiverTypeId != null)
+                {
+                    application.ApplicationTypeIdODataBind = _dynamicsClient.GetEntityURI("bcgov_applicationtypes", waiverTypeId);
+                }                
+            }
+
             // set the author based on the current user.
             application.SubmitterODataBind = _dynamicsClient.GetEntityURI("contacts", userSettings.ContactId);
 
