@@ -103,12 +103,12 @@ namespace DemoTool
                 {
                     try
                     {
-                        _dynamicsClient.Businesscontacts.Delete(incident.Incidentid);
-                        Console.Out.WriteLine("Deleted BusinessProfile " + incident.Incidentid);
+                        _dynamicsClient.Incidents.Delete(incident.Incidentid);
+                        Console.Out.WriteLine("Deleted Incident " + incident.Incidentid);
                     }
                     catch (OdataerrorException odee)
                     {
-                        Console.Out.WriteLine("Error deleting business profile");
+                        Console.Out.WriteLine("Error deleting incident");
                         Console.Out.WriteLine("Request:");
                         Console.Out.WriteLine(odee.Request.Content);
                         Console.Out.WriteLine("Response:");
@@ -124,7 +124,7 @@ namespace DemoTool
                 {
                     try
                     {
-                        _dynamicsClient.Businesscontacts.Delete(businessProfile.Accountid);
+                        _dynamicsClient.Accounts.Delete(businessProfile.Accountid);
                         Console.Out.WriteLine("Deleted BusinessProfile " + businessProfile.Accountid);
                     }
                     catch (OdataerrorException odee)
@@ -145,7 +145,7 @@ namespace DemoTool
                 {
                     try
                     {
-                        _dynamicsClient.Businesscontacts.Delete(contact.Contactid);
+                        _dynamicsClient.Contacts.Delete(contact.Contactid);
                         Console.Out.WriteLine("Deleted Contact " + contact.Contactid);
                     }
                     catch (OdataerrorException odee)
