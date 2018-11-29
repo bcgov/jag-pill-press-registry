@@ -20,7 +20,7 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         [EnumMember(Value = "Under Review")]
         UnderReview = 845280003,
         [EnumMember(Value = "Pending for Licence Fee")]
-        PendingForLicenceFee = 845280007,        
+        PendingForLicenceFee = 845280007,
         Approved = 845280004,
         Denied = 845280005,
         [EnumMember(Value = "Approved in Principle")]
@@ -88,7 +88,7 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         ///  provide detailed information on the types of products you produce for others and their intended uses.
         /// </summary>
 
-        public List<CustomProduct> CustomProducts {get; set;}
+        public List<CustomProduct> CustomProducts { get; set; }
 
         // ### BUSINESS DETAILS ###
 
@@ -112,6 +112,26 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         /// Consent that by submitting the application the applicant understands their information is being collected for FOIPPA purposes and may be released as per FOIPPA.
         /// </summary>
         public bool? foippaconsent { get; set; }
+
+
+
+        public bool? foodanddrugact { get; set; }
+        public string legislativeauthorityother { get; set; }
+        public bool? kindsofproductsdrugs { get; set; }
+        public bool? kindsofproductsnaturalhealthproducts { get; set; }
+        public string kindsofproductsother { get; set; }
+        public bool? drugestablishmentlicence { get; set; }
+        public bool? sitelicence { get; set; }
+        public string otherlicence { get; set; }
+        public string delbusinessname { get; set; }
+        public string drugestablishmentlicencenumber { get; set; }
+        public DateTimeOffset? drugestablishmentlicenceexpirydate { get; set; }
+        public string sitelicencebusinessname { get; set; }
+        public string sitelicencenumber { get; set; }
+        public DateTimeOffset? sitelicenceexpirydate { get; set; }
+        public string otherlicencebusinessname { get; set; }
+        public string otherlicencenumber { get; set; }
+        public DateTimeOffset? otherlicenceexpirydate { get; set; }
 
     }
 }
