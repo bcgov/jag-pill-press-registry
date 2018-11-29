@@ -80,13 +80,13 @@ const routes: Routes = [
     canActivate: [BCeidAuthGuard]
   },
   {
-    path: 'application/authorized-owner-review/:id',
+    path: 'application/authorized-owner/review/:id',
     component: AuthorizedApplicationReviewComponent,
     // canDeactivate: [CanDeactivateGuard],
     canActivate: [BCeidAuthGuard]
   },
   {
-    path: 'application/authorized-ownerthank-you/:id',
+    path: 'application/authorized-owner/thank-you/:id',
     component: AuthorizedApplicationThanksComponent,
     // canDeactivate: [CanDeactivateGuard],
     canActivate: [BCeidAuthGuard]
