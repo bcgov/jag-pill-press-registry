@@ -48,11 +48,11 @@ export class WaiverReviewComponent implements OnInit {
   }
 
   reloadData() {
-    zip(this.applicationDataService.getApplicationById(this.waiverId),
-      this.getUploadedFileData())
+    zip(this.applicationDataService.getApplicationById(this.waiverId))
+      //this.getUploadedFileData())
       .subscribe(data => {
         const waiver = data[0];
-        const files = data[1];
+        //const files = data[1];
 
         this.form.patchValue(waiver);
 

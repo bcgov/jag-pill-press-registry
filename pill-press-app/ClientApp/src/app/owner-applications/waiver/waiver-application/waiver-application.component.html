@@ -153,7 +153,8 @@
         <section style="display: flex; justify-content: space-between; padding-top: 30px;">
           <div><span class="error-states">*</span> <i>Required field</i></div>
           <div>
-            <button class="btn btn-primary" (click)="markAsTouched(); save();">SAVE & CONTINUE</button>
+            <a href="javascript: void(0);" (click)="save();" style="margin-right: 10px"><i class="fas fa-save"></i>Save & Close</a>
+            <button class="btn btn-primary" (click)="markAsTouched(); save(true);">SAVE & CONTINUE</button>
           </div>
         </section>
       </div>
