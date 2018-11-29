@@ -57,23 +57,23 @@ export class ProfileSummaryComponent implements OnInit {
       {
         label: 'Physical Address:',
         value: <any>this.sanitizer.bypassSecurityTrustHtml(`
-            <div>${this.account.physicalAddress.streetLine1 || ''}</div>
-            <div>${this.account.physicalAddress.streetLine2 || ''}</div>
-            <div>${this.account.physicalAddress.city || ''}</div>
-            <div>${this.account.physicalAddress.province || ''}</div>
-            <div>${this.account.physicalAddress.postalCode || ''}</div>
-            <div>${this.account.physicalAddress.country || ''}</div>
+            <div>${this.account.physicalAddressLine1 || ''}</div>
+            <div>${this.account.physicalAddressLine2 || ''}</div>
+            <div>${this.account.physicalAddressCity || ''}</div>
+            <div>${this.account.physicalAddressProvince || ''}</div>
+            <div>${this.account.physicalAddressPostalCode || ''}</div>
+            <div>${this.account.physicalAddressCountry || ''}</div>
           `)
       },
       {
         label: 'Mailing Address:',
         value: <any>this.sanitizer.bypassSecurityTrustHtml(`
-            <div>${this.account.mailingAddress.streetLine1 || ''}</div>
-            <div>${this.account.mailingAddress.streetLine2 || ''}</div>
-            <div>${this.account.mailingAddress.city || ''}</div>
-            <div>${this.account.mailingAddress.province || ''}</div>
-            <div>${this.account.mailingAddress.postalCode || ''}</div>
-            <div>${this.account.mailingAddress.country || ''}</div>
+            <div>${this.account.mailingAddressLine1 || ''}</div>
+            <div>${this.account.mailingAddressLine2 || ''}</div>
+            <div>${this.account.mailingAddressCity || ''}</div>
+            <div>${this.account.mailingAddressProvince || ''}</div>
+            <div>${this.account.mailingAddressPostalCode || ''}</div>
+            <div>${this.account.mailingAddressCountry || ''}</div>
           `)
       },
       { label: 'Business Phone Number:', value: this.account.businessPhoneNumber },
