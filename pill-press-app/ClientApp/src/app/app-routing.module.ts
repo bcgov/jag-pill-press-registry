@@ -3,10 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { BusinessProfileComponent } from './business-information/business-profile/business-profile.component';
 import { HomeComponent } from './home/home.component';
 import { PolicyDocumentComponent } from './policy-document/policy-document.component';
-//import { ResultComponent } from './result/result.component';
 import { SurveyPrimaryComponent } from './survey/primary.component';
 import { SurveyTestComponent } from './survey/test.component';
-//import { NewsletterConfirmationComponent } from './newsletter-confirmation/newsletter-confirmation.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CanDeactivateGuard } from './services/can-deactivate-guard.service';
 import { BCeidAuthGuard } from './services/bceid-auth-guard.service';
@@ -15,6 +13,12 @@ import { ProfileSummaryComponent } from './business-information/profile-summary/
 import { WaiverApplicationComponent } from './owner-applications/waiver/waiver-application/waiver-application.component';
 import { WaiverReviewComponent } from './owner-applications/waiver/waiver-review/waiver-review.component';
 import { ThankYouComponent } from './owner-applications/waiver/thank-you/thank-you.component';
+import { SellerApplicationComponent } from './owner-applications/registered-seller/seller-application/seller-application.component';
+import { SellerApplicationReviewComponent } from './owner-applications/registered-seller/seller-application-review/seller-application-review.component';
+import { SellerApplicationThanksComponent } from './owner-applications/registered-seller/seller-application-thanks/seller-application-thanks.component';
+import { AuthorizedApplicationComponent } from './owner-applications/authorized-owner/authorized-application/authorized-application.component';
+import { AuthorizedApplicationReviewComponent } from './owner-applications/authorized-owner/authorized-application-review/authorized-application-review.component';
+import { AuthorizedApplicationThanksComponent } from './owner-applications/authorized-owner/authorized-application-thanks/authorized-application-thanks.component';
 
 const routes: Routes = [
   {
@@ -48,6 +52,42 @@ const routes: Routes = [
   {
     path: 'waiver-thank-you/:id',
     component: ThankYouComponent,
+    // canDeactivate: [CanDeactivateGuard],
+    canActivate: [BCeidAuthGuard]
+  },
+  {
+    path: 'application/registered-seller/:id',
+    component: SellerApplicationComponent,
+    // canDeactivate: [CanDeactivateGuard],
+    canActivate: [BCeidAuthGuard]
+  },
+  {
+    path: 'application/registered-seller-review/:id',
+    component: SellerApplicationReviewComponent,
+    // canDeactivate: [CanDeactivateGuard],
+    canActivate: [BCeidAuthGuard]
+  },
+  {
+    path: 'application/registered-seller-thank-you/:id',
+    component: SellerApplicationThanksComponent,
+    // canDeactivate: [CanDeactivateGuard],
+    canActivate: [BCeidAuthGuard]
+  },
+  {
+    path: 'application/authorized-owner:id',
+    component: AuthorizedApplicationComponent,
+    // canDeactivate: [CanDeactivateGuard],
+    canActivate: [BCeidAuthGuard]
+  },
+  {
+    path: 'application/authorized-owner-review/:id',
+    component: AuthorizedApplicationReviewComponent,
+    // canDeactivate: [CanDeactivateGuard],
+    canActivate: [BCeidAuthGuard]
+  },
+  {
+    path: 'application/authorized-ownerthank-you/:id',
+    component: AuthorizedApplicationThanksComponent,
     // canDeactivate: [CanDeactivateGuard],
     canActivate: [BCeidAuthGuard]
   },
