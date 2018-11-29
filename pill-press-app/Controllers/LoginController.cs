@@ -26,6 +26,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ILogger _logger;
 
+        const string BUSINESS_PROFILE_PAGE = "business-profile";
+
         public LoginController(IConfiguration configuration, IHostingEnvironment env, IHttpContextAccessor httpContextAccessor, ILoggerFactory loggerFactory)
         {
             Configuration = configuration;
@@ -70,20 +72,21 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
 
                 // get UserSettings from the session
                 string temp = _httpContextAccessor.HttpContext.Session.GetString("UserSettings");
+                string dashboard = "dashboard";
+
                 if (string.IsNullOrEmpty(temp))
                 {
-                    _logger.LogError("UserSettings is null.");
+                    dashboard = BUSINESS_PROFILE_PAGE;
                 }
                 else
                 {
-                    _logger.LogError($"UserSettings is {temp}");
+                    UserSettings userSettings = JsonConvert.DeserializeObject<UserSettings>(temp);
+                    if (userSettings.IsNewUserRegistration)
+                    {
+                        dashboard = BUSINESS_PROFILE_PAGE;
+                    }
                 }
-
-                UserSettings userSettings = JsonConvert.DeserializeObject<UserSettings>(temp);
-
-
-
-                string dashboard = "dashboard";
+                
 
                 return Redirect(basePath + "/" + dashboard);
             }
