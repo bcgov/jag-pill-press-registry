@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 import { Subscription, Observable, zip } from 'rxjs';
 import { PRODUCTING_OWN_PRODUCT, MANUFACTURING_FOR_OTHERS } from '../../waiver/waiver-application/waiver-application.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DynamicsDataService } from '../../../services/dynamics-data.service';
 import { ApplicationDataService } from '../../../services/adoxio-application-data.service';
 
@@ -28,6 +28,7 @@ export class AuthorizedApplicationComponent implements OnInit {
   }
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,
+    private router: Router,
     private dynamicsDataService: DynamicsDataService,
     private applicationDataService: ApplicationDataService) {
     this.waiverId = this.route.snapshot.params.id;
@@ -182,12 +183,17 @@ export class AuthorizedApplicationComponent implements OnInit {
     }
   }
 
-  save() {
+  save(gotToReview: boolean) {
     const value = this.form.value;
     const saveList = [this.applicationDataService.updateApplication(value), ...this.saveCustomProducts()];
     zip(...saveList)
       .subscribe(res => {
-        this.reloadData();
+        if (gotToReview) {
+          this.router.navigateByUrl(`/application/authorized-owner/review/${this.waiverId}`);
+        } else {
+          this.router.navigateByUrl(`/dashboard`);
+          // this.reloadData();
+        }
       }, err => {
         // todo: show errors;
       });
