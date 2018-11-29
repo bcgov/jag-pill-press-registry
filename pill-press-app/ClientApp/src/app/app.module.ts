@@ -104,25 +104,25 @@ import { ProfileSummaryComponent } from './business-information/profile-summary/
 import { WaiverApplicationComponent } from './owner-applications/waiver/waiver-application/waiver-application.component';
 import { WaiverReviewComponent } from './owner-applications/waiver/waiver-review/waiver-review.component';
 import { ThankYouComponent } from './owner-applications/waiver/thank-you/thank-you.component';
+import { SellerApplicationComponent } from './owner-applications/registered-seller/seller-application/seller-application.component';
+import { SellerApplicationReviewComponent } from './owner-applications/registered-seller/seller-application-review/seller-application-review.component';
+import { SellerApplicationThanksComponent } from './owner-applications/registered-seller/seller-application-thanks/seller-application-thanks.component';
+import { AuthorizedApplicationComponent } from './owner-applications/authorized-owner/authorized-application/authorized-application.component';
+import { AuthorizedApplicationReviewComponent } from './owner-applications/authorized-owner/authorized-application-review/authorized-application-review.component';
+import { AuthorizedApplicationThanksComponent } from './owner-applications/authorized-owner/authorized-application-thanks/authorized-application-thanks.component';
 
 @NgModule({
   declarations: [
-    // AccordionComponent,
     AppComponent,
     ApplicationsListComponent,
     BceidConfirmationComponent,
     BusinessProfileComponent,
     BreadcrumbComponent,
-    // DynamicsFormComponent,
-    // FormViewerComponent,
     HomeComponent,
     InsertComponent,
-    // NewsletterConfirmationComponent,
-    // NewsletterSignupComponent,
     NotFoundComponent,
     PolicyDocumentComponent,
     PolicyDocumentSidebarComponent,
-    // ResultComponent,
     SearchBoxDirective,
     StaticComponent,
     StatusBadgeComponent,
@@ -140,7 +140,13 @@ import { ThankYouComponent } from './owner-applications/waiver/thank-you/thank-y
     WaiverApplicationComponent,
     WaiverReviewComponent,
     ThankYouComponent,
-    TermsAndConditionsComponent
+    TermsAndConditionsComponent,
+    SellerApplicationComponent,
+    SellerApplicationReviewComponent,
+    SellerApplicationThanksComponent,
+    AuthorizedApplicationComponent,
+    AuthorizedApplicationReviewComponent,
+    AuthorizedApplicationThanksComponent
   ],
   imports: [
     BrowserModule,
@@ -149,7 +155,6 @@ import { ThankYouComponent } from './owner-applications/waiver/thank-you/thank-y
     HttpModule,
     HttpClientModule,
     AppRoutingModule,
-    // AdminModule,
     BrowserAnimationsModule,
     NgBusyModule,
     CdkTableModule,
@@ -197,7 +202,6 @@ import { ThankYouComponent } from './owner-applications/waiver/thank-you/thank-y
     HttpModule,
     HttpClientModule,
     AppRoutingModule,
-    // AdminModule,
     BrowserAnimationsModule,
     CdkTableModule,
     MatAutocompleteModule,
@@ -239,10 +243,8 @@ import { ThankYouComponent } from './owner-applications/waiver/thank-you/thank-y
     DynamicsDataService,
     InsertService,
     GeneralDataService,
-    // NewsletterDataService,
     PolicyDocumentDataService,
     SurveyDataService,
-    // VoteDataService,
     UserDataService,
     AliasDataService,
     ApplicationDataService,
@@ -251,7 +253,6 @@ import { ThankYouComponent } from './owner-applications/waiver/thank-you/thank-y
     AccountDataService,
     ContactDataService,
     PaymentDataService,
-    // TiedHouseConnectionsDataService,
     PreviousAddressDataService,
     WorkerDataService,
     Title,
