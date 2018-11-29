@@ -15,6 +15,23 @@ export class Application {
   producingownproduct: boolean;
   providingmanufacturingtoothers: boolean;
   sellequipment: boolean;
+  foodanddrugact: boolean;
+  legislativeauthorityother: string;
+  kindsofproductsdrugs: boolean;
+  kindsofproductsnaturalhealthproducts: boolean;
+  kindsofproductsother: string;
+  drugestablishmentlicence: boolean;
+  sitelicence: boolean;
+  otherlicence: string;
+  delbusinessname: string;
+  drugestablishmentlicencenumber: string;
+  drugestablishmentlicenceexpirydate: Date;
+  sitelicencebusinessname: string;
+  sitelicencenumber: string;
+  sitelicenceexpirydate: Date;
+  otherlicencebusinessname: string;
+  otherlicencenumber: string;
+  otherlicenceexpirydate: Date;
 
   // related entities
   applicant: Account;

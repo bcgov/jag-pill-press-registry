@@ -1,0 +1,291 @@
+<div class="dashboard-spacing" style="position: relative;">
+  <div [ngBusy]="[busy]"></div>
+  <div class="row" [formGroup]="form">
+    <div class="col-lg-8 col-sm-12">
+      <div>
+        <h2 class="step">STEP 2</h2>
+        <h1>Authorized Owner Application</h1>
+        <p>Please complete your waiver application below. Your information will only be saved once you click the Save &
+          Continue button at the end of the page.</p>
+
+        <section>
+          <h3 class="blue-header">EQUIPMENT INFORMATION</h3>
+          <app-field label="Do you currently own, use, or possess Controlled Equipment?" [required]="true"
+            [showChevrons]="false" errorMessage="Please select yes or no" [valid]="form.get('currentlyownusepossessequipment').valid || !form.get('currentlyownusepossessequipment').touched">
+            <input type="radio" [value]="true" name="currentlyownusepossessequipment" formControlName="currentlyownusepossessequipment">
+            <span style="padding-right: 10px;">&nbsp;Yes</span>
+            <input type="radio" [value]="false" name="currentlyownusepossessequipment" formControlName="currentlyownusepossessequipment">
+            <span>&nbsp;No</span>
+          </app-field>
+          <app-field *ngIf="form.get('currentlyownusepossessequipment').value === false" label="Do you intend on purchasing Controlled Equipment in the future?"
+            [showChevrons]="false" errorMessage="Please select yes or no" [valid]="form.get('intendtopurchaseequipment').valid || !form.get('intendtopurchaseequipment').touched"
+            [required]="true">
+            <input type="radio" [value]="true" name="intendtopurchaseequipment" formControlName="intendtopurchaseequipment">
+            <span style="padding-right: 10px;">&nbsp;Yes</span>
+            <input type="radio" [value]="false" name="intendtopurchaseequipment" formControlName="intendtopurchaseequipment">
+            <span>&nbsp;No</span>
+          </app-field>
+          <app-field label="Do you own or intend to own Controlled Equipment for the sole use of your business?"
+            [showChevrons]="false" errorMessage="Please select yes or no" [valid]="form.get('ownintendtoownequipmentforbusinessuse').valid || !form.get('ownintendtoownequipmentforbusinessuse').touched"
+            [required]="true">
+            <input type="radio" [value]="true" name="ownintendtoownequipmentforbusinessuse" formControlName="ownintendtoownequipmentforbusinessuse">
+            <span style="padding-right: 10px;">&nbsp;Yes</span>
+            <input type="radio" [value]="false" name="ownintendtoownequipmentforbusinessuse" formControlName="ownintendtoownequipmentforbusinessuse">
+            <span>&nbsp;No</span>
+          </app-field>
+          <app-field label="Do you borrow, rent, or lease Controlled Equipment from someone else?" [showChevrons]="false"
+            errorMessage="Please select yes or no" [valid]="form.get('borrowrentleaseequipment').valid || !form.get('borrowrentleaseequipment').touched"
+            [required]="true">
+            <input type="radio" [value]="true" name="borrowrentleaseequipment" formControlName="borrowrentleaseequipment">
+            <span style="padding-right: 10px;">&nbsp;Yes</span>
+            <input type="radio" [value]="false" name="borrowrentleaseequipment" formControlName="borrowrentleaseequipment">
+            <span>&nbsp;No</span>
+          </app-field>
+          <app-field label="Do you sell Controlled Equipment to others?" [showChevrons]="false" errorMessage="Please select yes or no"
+            [valid]="form.get('sellequipment').valid || !form.get('sellequipment').touched" [required]="true">
+            <input type="radio" [value]="true" name="sellequipment" formControlName="sellequipment"> <span style="padding-right: 10px;">&nbsp;Yes</span>
+            <input type="radio" [value]="false" name="sellequipment" formControlName="sellequipment"> <span>&nbsp;No</span>
+          </app-field>
+        </section>
+
+        <section>
+          <h3 class="blue-header">PURPOSE OF CONTROLLED EQUIPMENT</h3>
+          <app-field label="Do you own, use, or possess (or intend to own) Controlled Equipment for the purposes of producing your own products?"
+            [showChevrons]="false" errorMessage="Please select yes or no" [valid]="form.get('producingownproduct').valid || !form.get('producingownproduct').touched"
+            [required]="true">
+            <input type="radio" [value]="true" name="producingownproduct" formControlName="producingownproduct">
+            <span style="padding-right: 10px;">&nbsp;Yes</span>
+            <input type="radio" [value]="false" name="producingownproduct" formControlName="producingownproduct">
+            <span>&nbsp;No</span>
+          </app-field>
+          <section *ngIf="form.get('producingownproduct').value === true" formArrayName="ownProducts">
+            <p>
+              Please provide detailed information on the type of product you produce and its intended use. If you
+              produce multiple products, please describe all of them by clicking on the 'Add another product' link
+              below.
+            </p>
+            <div style="display: flex;" *ngFor="let item of ownProducts.controls; let i = index;">
+              <section style="flex: 10" [formGroupName]="i">
+                <app-field [required]="true" [showChevrons]="false" errorMessage="Please provide the product description and its intended use"
+                  [valid]="item.get('productdescriptionandintendeduse').valid || !item.get('productdescriptionandintendeduse').touched">
+                  <div style="display: flex; justify-content: space-between">
+                    <section>
+                      <label>Product {{i === 0 ? '': i +1}} Description and Intended Use</label>
+                      <span class="error-states">*</span>
+                    </section>
+                    <a href="javascript:void(0);" *ngIf="ownProducts.controls.length > 1" (click)="deleteCustomProduct(i, item.get('purpose').value)"><i
+                        class="fas fa-trash-alt"></i>Delete Product</a>
+                  </div>
+                  <textarea class="form-control" formControlName="productdescriptionandintendeduse" maxlength="1000"
+                    rows="5"></textarea>
+                </app-field>
+              </section>
+            </div>
+            <div style="background-color: #F2F2F2; border: solid 1px transparent; border-radius: 5px; padding: 10px; margin-bottom: 10px;">
+              <i class="fas fa-info-circle" style="color: #38598A; margin-right: 10px;"></i>
+              <span>A waiver will only be granted for the intended products and uses disclosed in this application.</span>
+            </div>
+            <a href="javascript:void(0);" (click)="addCustomProduct({purpose: PRODUCTING_OWN_PRODUCT})" style="float: right">
+              <i class="fas fa-plus-circle" style="color: #669900;"></i>Add another product</a>
+            <div style="clear: both;"></div>
+          </section>
+          <app-field label="Do you own, use, or possess (or intend to own) Controlled Equipment for the purposes of providing manufacturing services to others?"
+            [showChevrons]="false" errorMessage="Please select yes or no" [valid]="form.get('providingmanufacturingtoothers').valid || !form.get('providingmanufacturingtoothers').touched"
+            [required]="true">
+            <input type="radio" [value]="true" name="providingmanufacturingtoothers" formControlName="providingmanufacturingtoothers">
+            <span style="padding-right: 10px;">&nbsp;Yes</span>
+            <input type="radio" [value]="false" name="providingmanufacturingtoothers" formControlName="providingmanufacturingtoothers">
+            <span>&nbsp;No</span>
+          </app-field>
+          <section *ngIf="form.get('providingmanufacturingtoothers').value === true" formArrayName="productsForOthers">
+            <p>
+              Please provide detailed information on the type of product you produce for others and its intended use.
+              If you produce multiple products, please describe all of them by clicking on the "Add another product"
+              link below.
+            </p>
+            <div style="display: flex;" *ngFor="let item of productsForOthers.controls; let i = index;">
+              <section style="flex: 10" [formGroupName]="i">
+                <app-field [required]="true" [showChevrons]="false" errorMessage="Please provide the product description and its intended use"
+                  [valid]="item.get('productdescriptionandintendeduse').valid || !item.get('productdescriptionandintendeduse').touched">
+                  <div style="display: flex; justify-content: space-between">
+                    <section>
+                      <label>Product {{i === 0 ? '': i +1}} Description and Intended Use</label>
+                      <span class="error-states">*</span>
+                    </section>
+                    <a href="javascript:void(0);" *ngIf="productsForOthers.controls.length > 1" (click)="deleteCustomProduct(i, item.get('purpose').value)"><i
+                        class="fas fa-trash-alt"></i>Delete Product</a>
+                  </div>
+                  <textarea class="form-control" formControlName="productdescriptionandintendeduse" maxlength="1000"
+                    rows="5"></textarea>
+                </app-field>
+              </section>
+            </div>
+            <div style="background-color: #F2F2F2; border: solid 1px transparent; border-radius: 5px; padding: 10px; margin-bottom: 10px;">
+              <i class="fas fa-info-circle" style="color: #38598A; margin-right: 10px;"></i>
+              <span>A waiver will only be granted for the intended products and uses disclosed in this application.</span>
+            </div>
+            <a href="javascript:void(0);" (click)="addCustomProduct({purpose: MANUFACTURING_FOR_OTHERS})" style="float: right">
+              <i class="fas fa-plus-circle" style="color: #669900;"></i>Add another product</a>
+            <div style="clear: both;"></div>
+          </section>
+        </section>
+
+        <section>
+          <h3 class="blue-header">LEGISLATIVE AUTHORIZATION</h3>
+          <p></p>
+          <p>An Authorized Owner of Controlled Equipment includes a person who is authorized under an enactment of BC
+            or Canada to manufacture a drug or natural health product.</p>
+
+          <app-field label="Legislative Authority" [showChevrons]="false" errorMessage="Please select all the applicable legislative authorities"
+            [valid]="form.get('mainbusinessfocus').valid || !form.get('mainbusinessfocus').touched" [required]="true">
+            <p>What enactment authorizes you to manufacture these products? Please select all the options that apply.</p>
+            <input type="checkbox" style="margin-right: 10px;" formControlName="foodanddrugact"> <span>Food and Drug Act</span> <br>
+            <input type="checkbox" style="margin-right: 10px;"> <span>Other</span> <br>
+            <section style="padding-left: 20px">
+              <app-field>
+                <i>If Other, Please specify</i>
+                <br>
+                <input type="text" class="form-control" formControlName="legislativeauthorityother" style="width: 340px">
+              </app-field>
+            </section>
+          </app-field>
+          <app-field label="Type of Authorization" [showChevrons]="false" errorMessage="Please select all the applicable legislative authorities"
+            [valid]="form.get('mainbusinessfocus').valid || !form.get('mainbusinessfocus').touched" [required]="true">
+            <p>What kind of licence do you possess that authorizes you to manufacture a drug or natural health product?
+              Please select all the options that apply.</p>
+            <input type="checkbox" style="margin-right: 10px;" formControlName="kindsofproductsdrugs"> <span>Drugs</span> <br>
+            <input type="checkbox" style="margin-right: 10px;" formControlName="kindsofproductsnaturalhealthproducts"> <span>Natural Health Products</span> <br>
+            <input type="checkbox" style="margin-right: 10px;"> <span>Other</span> <br>
+            <section style="padding-left: 20px">
+              <app-field>
+                <i>If Other, Please specify</i>
+                <br>
+                <input type="text" class="form-control" formControlName="kindsofproductsother" style="width: 340px">
+              </app-field>
+            </section>
+          </app-field>
+          <app-field label="BC or Canada Issued - Licence Type" [showChevrons]="false" errorMessage="Please select all the applicable legislative authorities"
+            [valid]="form.get('mainbusinessfocus').valid || !form.get('mainbusinessfocus').touched" [required]="true">
+            <p>What kind of licence do you possess that authorizes you to manufacture a drug or natural health product?
+              Please select all the options that apply.
+            </p>
+            <input type="checkbox" style="margin-right: 10px;" formControlName="drugestablishmentlicence"> <span>Drug Establishment Licence</span> <br>
+            <section style="padding-left: 20px"  *ngIf="form.get('drugestablishmentlicence').value === true">
+              <app-field label="What is the name of the business that appears on your Drug Establishment Licence (i.e. issued to name)"
+                [required]="true">
+                <input type="text" class="form-control" formControlName="delbusinessname" style="width: 500px">
+              </app-field>
+              <app-field label="Drug Establishment Licence - Number" [required]="true">
+                <input type="text" class="form-control" formControlName="drugestablishmentlicencenumber" style="width: 340px">
+              </app-field>
+              <app-field label="Drug Establishment Licence - Expiry Date">
+                <input type="text" class="form-control" formControlName="drugestablishmentlicenceexpirydate" style="width: 250px">
+              </app-field>
+
+            </section>
+            <input type="checkbox" style="margin-right: 10px;"  formControlName="sitelicence"> <span>Site Licence</span> <br>
+            <section style="padding-left: 20px" *ngIf="form.get('sitelicence').value === true">
+              <app-field label="What is the name of the business that appears on your Drug Establishment Licence (i.e. issued to name)"
+                [required]="true">
+                <input type="text" class="form-control"  formControlName="sitelicencebusinessname" style="width: 500px">
+              </app-field>
+              <app-field label="Drug Establishment Licence - Number" [required]="true">
+                <input type="text" class="form-control" formControlName="sitelicencenumber" style="width: 340px">
+              </app-field>
+              <app-field label="Drug Establishment Licence - Expiry Date">
+                <input type="text" class="form-control" formControlName="sitelicenceexpirydate" style="width: 250px">
+              </app-field>
+            </section>
+            <input type="checkbox" style="margin-right: 10px;"> <span>Other</span> <br>
+            <section style="padding-left: 20px">
+              <app-field>
+                <i>If Other, Please specify</i>
+                <br>
+                <input type="text" class="form-control" style="width: 340px">
+              </app-field>
+              <app-field label="What is the name of the business that appears on your Drug Establishment Licence (i.e. issued to name)"
+                [required]="true">
+                <input type="text" class="form-control" formControlName="otherlicencebusinessname" style="width: 500px">
+              </app-field>
+              <app-field label="Drug Establishment Licence - Number" [required]="true">
+                <input type="text" class="form-control" formControlName="otherlicencenumber" style="width: 340px">
+              </app-field>
+              <app-field label="Drug Establishment Licence - Expiry Date">
+                <input type="text" class="form-control" formControlName="otherlicenceexpirydate" style="width: 250px">
+              </app-field>
+            </section>
+          </app-field>
+        </section>
+
+        <div style="background-color: #F2F2F2; border: solid 1px transparent; border-radius: 5px; padding: 10px; margin-bottom: 10px;">
+            <i class="fas fa-exclamation-triangle" style="color: #fcba19; margin-right: 10px;"></i>
+            <span>You are required to notify the Registrar if your BC or Canada Issued Licence is suspended, cancelled, or replaced</span>
+          </div>
+
+        <section style="display: flex; justify-content: space-between; padding-top: 30px;">
+          <div><span class="error-states">*</span> <i>Required field</i></div>
+          <div>
+            <button class="btn btn-primary" (click)="markAsTouched(); save();">SAVE & CONTINUE</button>
+          </div>
+        </section>
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-12" style="position: relative">
+      <!-- <div [ngBusy]="busy"></div> -->
+      <p></p>
+      <section class="submit-container">
+        <table>
+          <tr>
+            <td>
+              <h2 class="round-icon-wrapper"><i class="fas fa-address-card"></i></h2>
+            </td>
+            <td style="padding-left: 10px">
+              <h2>Update your BCeID information</h2>
+            </td>
+          </tr>
+        </table>
+        <div class="submit-content">
+          <p>
+            Your Legal Business Name and Business Number are imported from BCeID. If there is an error or change in
+            this information, you must contact BCeID to correct it.
+          </p>
+          <div>
+            <i class="fas fa-phone"></i>
+            <strong style="padding-left: 10px;">Phone</strong>
+            <br>
+            <span>1 888 356-2741 (Canada and USA toll free)</span>
+            <br>
+            <span>604 660-2355 (Within lower mainland or outside Canada and USA)</span>
+          </div>
+          <div>
+            <i class="fas fa-envelope"></i>
+            <strong style="padding-left: 10px;">Email</strong>
+            <br>
+            <span>Contact us using our online form</span>
+          </div>
+          <p>
+            All other information can be changed on this Business Profile page.
+          </p>
+
+        </div>
+      </section>
+      <section class="submit-container" style="background-color: #F2F2F2; color:#000; border: none;">
+        <h2 style="color: #000">Collection Notice:</h2>
+        <div class="submit-content">
+          <p>
+            The Security Programs Division (SPD) will collect your personal information for the purpose of fulfilling
+            the requirements
+            of the Cannabis Control and Licensing Act (CCLA) and associated regulations in accordance with Sections 26
+            (a)
+            and (c) of the Freedom of Information and Protection of Privacy Act. Should you have any questions about
+            the
+            collection, use, or disclosure of personal information, please contact the Senior Policy Analyst, Security
+            Programs
+            Division via mail to PO Box 9217 Stn Prov Govt Victoria, BC V8W 9J1; email to
+            <a href="mailto:cannabissecurityscreening@gov.bc.ca">cannabissecurityscreening@gov.bc.ca</a>;
+            or by telephone at 1-855-587-0185.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
