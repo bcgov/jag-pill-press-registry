@@ -6,17 +6,16 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    
 
     public partial class MicrosoftDynamicsCRMbcgovBusinesscontact
     {
         
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "bcgov_contact@odata.bind")]
+        [JsonProperty(PropertyName = "bcgov_Contact@odata.bind")]
         public string ContactODataBind { get; set; }
 
-        [JsonProperty(PropertyName = "bcgov_businessprofile@odata.bind")]
+        [JsonProperty(PropertyName = "bcgov_BusinessProfile@odata.bind")]
         public string AccountODataBind { get; set; }
 
     }
