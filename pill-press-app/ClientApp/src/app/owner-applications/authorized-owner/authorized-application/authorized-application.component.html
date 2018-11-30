@@ -139,7 +139,8 @@
           <app-field label="Legislative Authority" [showChevrons]="false" errorMessage="Please select all the applicable legislative authorities"
             [valid]="form.get('mainbusinessfocus').valid || !form.get('mainbusinessfocus').touched" [required]="true">
             <p>What enactment authorizes you to manufacture these products? Please select all the options that apply.</p>
-            <input type="checkbox" style="margin-right: 10px;" formControlName="foodanddrugact"> <span>Food and Drug Act</span> <br>
+            <input type="checkbox" style="margin-right: 10px;" formControlName="foodanddrugact"> <span>Food and Drug
+              Act</span> <br>
             <input type="checkbox" style="margin-right: 10px;"> <span>Other</span> <br>
             <section style="padding-left: 20px">
               <app-field>
@@ -153,8 +154,10 @@
             [valid]="form.get('mainbusinessfocus').valid || !form.get('mainbusinessfocus').touched" [required]="true">
             <p>What kind of licence do you possess that authorizes you to manufacture a drug or natural health product?
               Please select all the options that apply.</p>
-            <input type="checkbox" style="margin-right: 10px;" formControlName="kindsofproductsdrugs"> <span>Drugs</span> <br>
-            <input type="checkbox" style="margin-right: 10px;" formControlName="kindsofproductsnaturalhealthproducts"> <span>Natural Health Products</span> <br>
+            <input type="checkbox" style="margin-right: 10px;" formControlName="kindsofproductsdrugs"> <span>Drugs</span>
+            <br>
+            <input type="checkbox" style="margin-right: 10px;" formControlName="kindsofproductsnaturalhealthproducts">
+            <span>Natural Health Products</span> <br>
             <input type="checkbox" style="margin-right: 10px;"> <span>Other</span> <br>
             <section style="padding-left: 20px">
               <app-field>
@@ -169,8 +172,9 @@
             <p>What kind of licence do you possess that authorizes you to manufacture a drug or natural health product?
               Please select all the options that apply.
             </p>
-            <input type="checkbox" style="margin-right: 10px;" formControlName="drugestablishmentlicence"> <span>Drug Establishment Licence</span> <br>
-            <section style="padding-left: 20px"  *ngIf="form.get('drugestablishmentlicence').value === true">
+            <input type="checkbox" style="margin-right: 10px;" formControlName="drugestablishmentlicence"> <span>Drug
+              Establishment Licence</span> <br>
+            <section style="padding-left: 20px" *ngIf="form.get('drugestablishmentlicence').value === true">
               <app-field label="What is the name of the business that appears on your Drug Establishment Licence (i.e. issued to name)"
                 [required]="true">
                 <input type="text" class="form-control" formControlName="delbusinessname" style="width: 500px">
@@ -179,21 +183,28 @@
                 <input type="text" class="form-control" formControlName="drugestablishmentlicencenumber" style="width: 340px">
               </app-field>
               <app-field label="Drug Establishment Licence - Expiry Date">
-                <input type="text" class="form-control" formControlName="drugestablishmentlicenceexpirydate" style="width: 250px">
+                <input type="text" class="form-control" formControlName="drugestablishmentlicenceexpirydate"
+                  placeholder="yyyy-mm-dd" [matDatepicker]="picker" (focus)="picker.open()" (click)="picker.open()"
+                  readonly style="width: 200px; background-color: #fff;">
+                <mat-datepicker #picker></mat-datepicker>
               </app-field>
 
             </section>
-            <input type="checkbox" style="margin-right: 10px;"  formControlName="sitelicence"> <span>Site Licence</span> <br>
+            <input type="checkbox" style="margin-right: 10px;" formControlName="sitelicence"> <span>Site Licence</span>
+            <br>
             <section style="padding-left: 20px" *ngIf="form.get('sitelicence').value === true">
               <app-field label="What is the name of the business that appears on your Drug Establishment Licence (i.e. issued to name)"
                 [required]="true">
-                <input type="text" class="form-control"  formControlName="sitelicencebusinessname" style="width: 500px">
+                <input type="text" class="form-control" formControlName="sitelicencebusinessname" style="width: 500px">
               </app-field>
               <app-field label="Drug Establishment Licence - Number" [required]="true">
                 <input type="text" class="form-control" formControlName="sitelicencenumber" style="width: 340px">
               </app-field>
               <app-field label="Drug Establishment Licence - Expiry Date">
-                <input type="text" class="form-control" formControlName="sitelicenceexpirydate" style="width: 250px">
+                <input type="text" class="form-control" formControlName="sitelicenceexpirydate"
+                  placeholder="yyyy-mm-dd" [matDatepicker]="picker2" (focus)="picker2.open()" (click)="picker2.open()"
+                  readonly style="width: 200px; background-color: #fff;">
+                <mat-datepicker #picker2></mat-datepicker>
               </app-field>
             </section>
             <input type="checkbox" style="margin-right: 10px;"> <span>Other</span> <br>
@@ -211,21 +222,26 @@
                 <input type="text" class="form-control" formControlName="otherlicencenumber" style="width: 340px">
               </app-field>
               <app-field label="Drug Establishment Licence - Expiry Date">
-                <input type="text" class="form-control" formControlName="otherlicenceexpirydate" style="width: 250px">
+                <input type="text" class="form-control" formControlName="otherlicenceexpirydate"
+                  placeholder="yyyy-mm-dd" [matDatepicker]="picker3" (focus)="picker3.open()" (click)="picker3.open()"
+                  readonly style="width: 200px; background-color: #fff;">
+                <mat-datepicker #picker3></mat-datepicker>
               </app-field>
             </section>
           </app-field>
         </section>
 
         <div style="background-color: #F2F2F2; border: solid 1px transparent; border-radius: 5px; padding: 10px; margin-bottom: 10px;">
-            <i class="fas fa-exclamation-triangle" style="color: #fcba19; margin-right: 10px;"></i>
-            <span>You are required to notify the Registrar if your BC or Canada Issued Licence is suspended, cancelled, or replaced</span>
-          </div>
+          <i class="fas fa-exclamation-triangle" style="color: #fcba19; margin-right: 10px;"></i>
+          <span>You are required to notify the Registrar if your BC or Canada Issued Licence is suspended, cancelled,
+            or replaced</span>
+        </div>
 
         <section style="display: flex; justify-content: space-between; padding-top: 30px;">
           <div><span class="error-states">*</span> <i>Required field</i></div>
           <div>
-              <a href="javascript: void(0);" (click)="save(false);" style="margin-right: 10px"><i class="fas fa-save"></i>Save & Close</a>
+            <a href="javascript: void(0);" (click)="save(false);" style="margin-right: 10px"><i class="fas fa-save"></i>Save
+              & Close</a>
             <button class="btn btn-primary" (click)="markAsTouched(); save(true);">SAVE & CONTINUE</button>
           </div>
         </section>

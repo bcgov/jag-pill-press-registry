@@ -4,11 +4,11 @@
   <br *ngIf="label">
   <ng-content></ng-content>
   <span *ngIf="!valid && showChevrons">
-    <i class="fas fa-chevron-left error-states"></i>
-    <i class="fas fa-chevron-left error-states" style="margin-left: -7px"></i>
+    <i class="fas fa-chevron-left error-states" style="margin-left: 3px"></i>
+    <i class="fas fa-chevron-left error-states" style="margin-left: -5px"></i>
   </span>
   <div *ngIf="!valid" class="error-states error-container">
-    <div *ngIf="!valid" style="padding-top: 5px;">
+    <div *ngIf="!valid">
       {{errorMessage}}
     </div>
   </div>
