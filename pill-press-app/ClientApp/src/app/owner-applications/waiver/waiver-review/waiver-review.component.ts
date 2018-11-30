@@ -138,9 +138,11 @@ export class WaiverReviewComponent implements OnInit {
   }
 
   save() {
-    const value = this.form.value;
+    var value = this.form.value;
     this.form.markAsTouched();
     if (value.declarationofcorrectinformation !== false) {
+      // set the status to pending.
+      value.statuscode = "Pending";
       const saveList = [this.applicationDataService.updateApplication(value)];
       zip(...saveList)
         .subscribe(res => {
