@@ -5,6 +5,8 @@ import { UserDataService } from '../../services/user-data.service';
 import { AccountDataService } from '../../services/account-data.service';
 import { DynamicsAccount } from '../../models/dynamics-account.model';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ValidatorFn, AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile-summary',
@@ -19,12 +21,18 @@ export class ProfileSummaryComponent implements OnInit {
   businessAddressData: { label: string; value: string; }[];
   primaryContactData: { label: string; value: string; }[];
   additionalContactData: { label: string; value: string; }[];
+  form: FormGroup;
 
   constructor(private userDataService: UserDataService,
     private sanitizer: DomSanitizer,
+    private router: Router,
+    private fb: FormBuilder,
     private accountDataService: AccountDataService) { }
 
   ngOnInit() {
+    this.form = this.fb.group({
+      id: [],
+    });
     this.reloadUser();
   }
 
@@ -104,6 +112,20 @@ export class ProfileSummaryComponent implements OnInit {
       { label: 'Phone Number (alternate):', value: this.account.additionalContact.phoneNumberAlt },
       { label: 'Email', value: this.account.additionalContact.email }
     ];
+  }
+
+  save() {
+    this.router.navigateByUrl('/dashboard');
+  }
+
+  customRequiredCheckboxValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      if (control.value === true) {
+        return null;
+      } else {
+        return { 'shouldBeTrue': 'But value is false' };
+      }
+    };
   }
 
 }
