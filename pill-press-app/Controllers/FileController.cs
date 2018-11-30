@@ -293,9 +293,20 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 return BadRequest();
             }
 
-            ValidateSession();
+            List<ViewModels.FileSystemItem> fileSystemItemVMList = new List<ViewModels.FileSystemItem>();
 
-            List<ViewModels.FileSystemItem> fileSystemItemVMList = await getFileDetailsListInFolder(entityId, entityName, documentType);
+            ValidateSession();
+            try
+            {
+                fileSystemItemVMList = await getFileDetailsListInFolder(entityId, entityName, documentType);
+            }
+            catch(Exception e)
+            {
+                _logger.LogError("Error getting files ");
+                _logger.LogError($"{entityId}/attachments/{entityName}/{documentType}");
+                _logger.LogError(e.ToString());
+            }
+            
 
             var hasAccess = await CanAccessEntity(entityName, entityId);
             if (!hasAccess)
