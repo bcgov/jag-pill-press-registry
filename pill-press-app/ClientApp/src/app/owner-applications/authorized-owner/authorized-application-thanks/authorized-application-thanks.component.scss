@@ -80,17 +80,6 @@ hr {
     }
 }
 
-.dashboard-spacing {
-    padding-left: 50px;
-    padding-right: 50px;
-}
-
-@media (max-width: 575.98px) {
-    .dashboard-spacing {
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-}
 
 ::ng-deep .mat-calendar-body-selected {
     background-color: #337AB7;
