@@ -166,14 +166,19 @@ export class WaiverApplicationComponent implements OnInit {
     }
   }
 
-  save() {
+  save(gotToReview: boolean) {
     const value = this.form.value;
     const saveList = [this.applicationDataService.updateApplication(value), ...this.saveCustomProducts()];
     zip(...saveList)
       .subscribe(res => {
-        this.reloadData();
+        if (gotToReview) {
+          this.router.navigateByUrl(`/waiver-application-review/${this.waiverId}`);
+        } else {
+          this.router.navigateByUrl(`/dashboard`);
+          // this.reloadData();
+        }
       }, err => {
-        debugger;
+        // todo: show errors;
       });
   }
 

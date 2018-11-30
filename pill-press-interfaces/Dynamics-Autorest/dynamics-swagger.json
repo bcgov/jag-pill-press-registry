@@ -176,6 +176,8 @@
                 "bcgov_businesstype desc",
                 "lastonholdtime",
                 "lastonholdtime desc",
+                "bcgov_businessprofileupdate",
+                "bcgov_businessprofileupdate desc",
                 "statuscode",
                 "statuscode desc",
                 "marketcap",
@@ -308,6 +310,8 @@
                 "_slaid_value desc",
                 "address2_county",
                 "address2_county desc",
+                "bcgov_declarationofcorrectinformation",
+                "bcgov_declarationofcorrectinformation desc",
                 "followemail",
                 "followemail desc",
                 "donotphone",
@@ -348,6 +352,8 @@
                 "_createdby_value desc",
                 "address1_line3",
                 "address1_line3 desc",
+                "bcgov_foippaconsent",
+                "bcgov_foippaconsent desc",
                 "aging30_base",
                 "aging30_base desc",
                 "openrevenue_base",
@@ -459,6 +465,7 @@
                 "tickersymbol",
                 "bcgov_businesstype",
                 "lastonholdtime",
+                "bcgov_businessprofileupdate",
                 "statuscode",
                 "marketcap",
                 "_parentaccountid_value",
@@ -525,6 +532,7 @@
                 "address1_composite",
                 "_slaid_value",
                 "address2_county",
+                "bcgov_declarationofcorrectinformation",
                 "followemail",
                 "donotphone",
                 "accountclassificationcode",
@@ -545,6 +553,7 @@
                 "stockexchange",
                 "_createdby_value",
                 "address1_line3",
+                "bcgov_foippaconsent",
                 "aging30_base",
                 "openrevenue_base",
                 "sharesoutstanding",
@@ -809,6 +818,7 @@
                 "tickersymbol",
                 "bcgov_businesstype",
                 "lastonholdtime",
+                "bcgov_businessprofileupdate",
                 "statuscode",
                 "marketcap",
                 "_parentaccountid_value",
@@ -875,6 +885,7 @@
                 "address1_composite",
                 "_slaid_value",
                 "address2_county",
+                "bcgov_declarationofcorrectinformation",
                 "followemail",
                 "donotphone",
                 "accountclassificationcode",
@@ -895,6 +906,7 @@
                 "stockexchange",
                 "_createdby_value",
                 "address1_line3",
+                "bcgov_foippaconsent",
                 "aging30_base",
                 "openrevenue_base",
                 "sharesoutstanding",
@@ -5408,6 +5420,8 @@
                 "bcgov_foippaconsent desc",
                 "modifiedon",
                 "modifiedon desc",
+                "bcgov_bcgov_legislativeauthorityothercheck",
+                "bcgov_bcgov_legislativeauthorityothercheck desc",
                 "bcgov_incompletecycle2",
                 "bcgov_incompletecycle2 desc",
                 "_contactid_value",
@@ -5582,6 +5596,8 @@
                 "severitycode desc",
                 "lastonholdtime",
                 "lastonholdtime desc",
+                "bcgov_kindsofproductothercheck",
+                "bcgov_kindsofproductothercheck desc",
                 "ticketnumber",
                 "ticketnumber desc",
                 "bcgov_intendtosellpillpress",
@@ -5592,6 +5608,8 @@
                 "bcgov_pillpressmaxcapacity desc",
                 "_parentcaseid_value",
                 "_parentcaseid_value desc",
+                "bcgov_otherlicencecheck",
+                "bcgov_otherlicencecheck desc",
                 "blockedprofile",
                 "blockedprofile desc",
                 "billedserviceunits",
@@ -5685,6 +5703,7 @@
                 "firstresponseslastatus",
                 "bcgov_foippaconsent",
                 "modifiedon",
+                "bcgov_bcgov_legislativeauthorityothercheck",
                 "bcgov_incompletecycle2",
                 "_contactid_value",
                 "bcgov_consentforemailcorrespondence",
@@ -5772,11 +5791,13 @@
                 "isescalated",
                 "severitycode",
                 "lastonholdtime",
+                "bcgov_kindsofproductothercheck",
                 "ticketnumber",
                 "bcgov_intendtosellpillpress",
                 "_contractdetailid_value",
                 "bcgov_pillpressmaxcapacity",
                 "_parentcaseid_value",
+                "bcgov_otherlicencecheck",
                 "blockedprofile",
                 "billedserviceunits",
                 "bcgov_legislativeauthorityother",
@@ -5999,6 +6020,7 @@
                 "firstresponseslastatus",
                 "bcgov_foippaconsent",
                 "modifiedon",
+                "bcgov_bcgov_legislativeauthorityothercheck",
                 "bcgov_incompletecycle2",
                 "_contactid_value",
                 "bcgov_consentforemailcorrespondence",
@@ -6086,11 +6108,13 @@
                 "isescalated",
                 "severitycode",
                 "lastonholdtime",
+                "bcgov_kindsofproductothercheck",
                 "ticketnumber",
                 "bcgov_intendtosellpillpress",
                 "_contractdetailid_value",
                 "bcgov_pillpressmaxcapacity",
                 "_parentcaseid_value",
+                "bcgov_otherlicencecheck",
                 "blockedprofile",
                 "billedserviceunits",
                 "bcgov_legislativeauthorityother",
@@ -8491,6 +8515,10 @@
           "type": "string",
           "format": "date-time"
         },
+        "bcgov_businessprofileupdate": {
+          "type": "boolean",
+          "x-nullable": true
+        },
         "statuscode": {
           "type": "integer",
           "x-nullable": true
@@ -8749,6 +8777,10 @@
           "type": "string",
           "x-nullable": true
         },
+        "bcgov_declarationofcorrectinformation": {
+          "type": "boolean",
+          "x-nullable": true
+        },
         "followemail": {
           "type": "boolean",
           "x-nullable": true
@@ -8826,6 +8858,10 @@
         },
         "address1_line3": {
           "type": "string",
+          "x-nullable": true
+        },
+        "bcgov_foippaconsent": {
+          "type": "boolean",
           "x-nullable": true
         },
         "aging30_base": {
@@ -28721,6 +28757,10 @@
           "type": "string",
           "format": "date-time"
         },
+        "bcgov_bcgov_legislativeauthorityothercheck": {
+          "type": "boolean",
+          "x-nullable": true
+        },
         "bcgov_incompletecycle2": {
           "type": "boolean",
           "x-nullable": true
@@ -29069,6 +29109,10 @@
           "type": "string",
           "format": "date-time"
         },
+        "bcgov_kindsofproductothercheck": {
+          "type": "boolean",
+          "x-nullable": true
+        },
         "ticketnumber": {
           "type": "string",
           "x-nullable": true
@@ -29087,6 +29131,10 @@
         },
         "_parentcaseid_value": {
           "type": "string",
+          "x-nullable": true
+        },
+        "bcgov_otherlicencecheck": {
+          "type": "boolean",
           "x-nullable": true
         },
         "blockedprofile": {
