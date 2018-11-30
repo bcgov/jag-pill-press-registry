@@ -26,7 +26,7 @@
 
             <app-field label="Business Number (BC Corporate Registry Number)" [required]="true" [valid]="form.get('businessProfile.businessNumber').valid || !form.get('businessProfile.businessNumber').touched"
                        errorMessage="Please enter your business number" >
-              <input class="form-control" style="max-width: 450px; min-width: 250px;" type="text" maxlength="9" formControlName="businessNumber">
+              <input class="form-control" style="width: 150px;" type="text" maxlength="9" formControlName="businessNumber" (keydown)="rejectIfNotDigitOrBackSpace($event)">
             </app-field>
 
             <app-field label="Business Type" [required]="true" [valid]="form.get('businessProfile.businessType').valid || !form.get('businessProfile.businessType').touched"
@@ -121,7 +121,7 @@
               <input class="form-control" style="width: 350px;" type="text" formControlName="businessEmail" (blur)="trimValue(form.get('businessProfile.businessEmail'))">
             </app-field>
             <section>
-              <input type="checkbox" [required]="true" formControlName="consentForEmailCommunication" #emailConsent>
+              <input type="checkbox" [required]="true" formControlName="consentForEmailCommunication" #emailConsent> <strong class="error-states"> *</strong>
               <span> I authorize the Security Programs Division to use my email address to communicate with me. </span>
               <p class="error-states" *ngIf="form.get('businessProfile.consentForEmailCommunication').touched && !form.get('businessProfile.consentForEmailCommunication').valid">
                 Please confirm consent for SPD to contact you at the provided email address 
