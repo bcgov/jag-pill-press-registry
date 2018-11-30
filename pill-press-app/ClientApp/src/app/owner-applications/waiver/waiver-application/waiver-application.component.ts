@@ -30,8 +30,8 @@ export class WaiverApplicationComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,
     private dynamicsDataService: DynamicsDataService,
-    private applicationDataService: ApplicationDataService,
-    private router: Router) {
+    private router: Router,
+    private applicationDataService: ApplicationDataService) {
     this.waiverId = this.route.snapshot.params.id;
   }
 
@@ -207,6 +207,11 @@ export class WaiverApplicationComponent implements OnInit {
     });
 
     return saveList;
+  }
+
+
+  gotoReview() {
+    this.router.navigate(['/waiver-application-review/' + this.waiverId]);    
   }
 
 }
