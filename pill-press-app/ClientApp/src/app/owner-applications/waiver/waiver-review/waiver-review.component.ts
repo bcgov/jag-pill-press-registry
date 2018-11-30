@@ -21,6 +21,7 @@ export class WaiverReviewComponent implements OnInit {
   purposeOfEquipment: any[] = [];
   purposeExplanation: any[] = [];
   attachmentURL: string;
+  busyPromise: Promise<any>;
 
   get ownProducts(): FormArray {
     return <FormArray>this.form.get('ownProducts');
@@ -48,11 +49,12 @@ export class WaiverReviewComponent implements OnInit {
   }
 
   reloadData() {
-    zip(this.applicationDataService.getApplicationById(this.waiverId))
-      //this.getUploadedFileData())
-      .subscribe(data => {
+    this.busyPromise = zip(this.applicationDataService.getApplicationById(this.waiverId))
+    // this.getUploadedFileData())
+    .toPromise()
+      .then(data => {
         const waiver = data[0];
-        //const files = data[1];
+        // const files = data[1];
 
         this.form.patchValue(waiver);
 
@@ -138,17 +140,18 @@ export class WaiverReviewComponent implements OnInit {
   }
 
   save() {
-    var value = this.form.value;
+    const value = this.form.value;
     this.form.markAsTouched();
     if (value.declarationofcorrectinformation !== false) {
       // set the status to pending.
-      value.statuscode = "Pending";
+      value.statuscode = 'Pending';
       const saveList = [this.applicationDataService.updateApplication(value)];
-      zip(...saveList)
-        .subscribe(res => {
+      this.busyPromise = zip(...saveList)
+        .toPromise()
+        .then(res => {
           this.router.navigateByUrl(`/waiver-thank-you/${this.waiverId}`);
         }, err => {
-         // todo: show errors;
+          // todo: show errors;
         });
     }
   }

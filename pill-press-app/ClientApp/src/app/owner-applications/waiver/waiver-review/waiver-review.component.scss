@@ -8,18 +8,6 @@
     padding: 5px;
 }
 
-.dashboard-spacing {
-    padding-left: 50px;
-    padding-right: 50px;
-}
-
-@media (max-width: 575.98px) {
-    .dashboard-spacing {
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-}
-
 .submitted-header {
     background-color: rgba(56, 89, 138, 1);
     border: 1px solid transparent;
