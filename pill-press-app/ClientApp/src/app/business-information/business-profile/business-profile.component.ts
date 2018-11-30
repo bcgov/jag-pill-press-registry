@@ -6,7 +6,7 @@ import { DynamicsContact } from '../../models/dynamics-contact.model';
 import { AppState } from '../../app-state/models/app-state';
 import * as CurrentUserActions from '../../app-state/actions/current-user.action';
 import { Store } from '@ngrx/store';
-import { Subscription ,  Observable, Subject ,  forkJoin } from 'rxjs';
+import { Subscription, Observable, Subject, forkJoin } from 'rxjs';
 import { FormBuilder, FormGroup, Validators, FormArray, ValidatorFn, AbstractControl, FormControl } from '@angular/forms';
 import { PreviousAddressDataService } from '../../services/previous-address-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -157,13 +157,17 @@ export class BusinessProfileComponent implements OnInit {
               account.mailingAddressLine2 ||
               account.mailingAddressCity ||
               account.mailingAddressPostalCode ||
-                account.mailingAddressProvince)
-            {
+              account.mailingAddressProvince) {
               this._mailingDifferentFromPhysicalAddress = true;
             }
 
-            if (account.additionalContact && (account.additionalContact.email || account.additionalContact.firstName || account.additionalContact.lastName || account.additionalContact.phoneNumber || account.additionalContact.phoneNumberAlt || account.additionalContact.title))
-            {
+            if (account.additionalContact && (
+              account.additionalContact.email
+              || account.additionalContact.firstName
+              || account.additionalContact.lastName
+              || account.additionalContact.phoneNumber
+              || account.additionalContact.phoneNumberAlt
+              || account.additionalContact.title)) {
               this._showAdditionalContact = true;
             }
 
@@ -209,7 +213,7 @@ export class BusinessProfileComponent implements OnInit {
       additionalContact: this.form.get('additionalContact').value
     };
 
-    this.accountDataService.updateAccount(value).subscribe(res => {
+    this.busy = this.accountDataService.updateAccount(value).subscribe(res => {
       subResult.next(true);
       this.reloadUser();
     }, err => subResult.next(false));
@@ -289,6 +293,6 @@ export class BusinessProfileComponent implements OnInit {
     control.setValue('');
     control.setValue(value.trim());
 
-    
+
   }
 }
