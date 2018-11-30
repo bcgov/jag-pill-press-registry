@@ -86,13 +86,20 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             // get the Application
             Guid ApplicationId = Guid.Parse(id);
 
-            MicrosoftDynamicsCRMincident Application = _dynamicsClient.GetApplicationById(ApplicationId);
-            if (Application == null)
+            MicrosoftDynamicsCRMincident application = _dynamicsClient.GetApplicationById(ApplicationId);
+            if (application == null)
             {
                 return new NotFoundResult();
             }
             MicrosoftDynamicsCRMincident patchApplication = new MicrosoftDynamicsCRMincident();
             patchApplication.CopyValues(item);
+
+            // allow the user to change the status to Pending if it is Draft.
+            if (application.Statuscode != null && application.Statuscode == (int?) ViewModels.ApplicationStatusCodes.Draft && item.statuscode == ViewModels.ApplicationStatusCodes.Pending)
+            {
+                patchApplication.Statuscode = (int?)ViewModels.ApplicationStatusCodes.Pending;
+            }
+
             try
             {
                 await _dynamicsClient.Incidents.UpdateAsync(ApplicationId.ToString(), patchApplication);
@@ -106,8 +113,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 _logger.LogError(odee.Response.Content);
             }
 
-            Application = _dynamicsClient.GetApplicationById(ApplicationId);
-            return Json(Application.ToViewModel());
+            application = _dynamicsClient.GetApplicationById(ApplicationId);
+            return Json(application.ToViewModel());
         }
 
         /// <summary>
@@ -151,7 +158,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             var account = await _dynamicsClient.GetAccountById(Guid.Parse(userSettings.AccountId));
             //application.CustomeridAccount = account;
             application.CustomerIdAccountODataBind = _dynamicsClient.GetEntityURI("accounts", userSettings.AccountId);
-
+            application.Statuscode = (int?) ViewModels.ApplicationStatusCodes.Draft;
             try
             {
                 application = await _dynamicsClient.Incidents.CreateAsync(application);
