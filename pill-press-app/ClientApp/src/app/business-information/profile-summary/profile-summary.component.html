@@ -1,4 +1,5 @@
-<div class="dashboard-spacing row">
+<div class="dashboard-spacing row" style="position: relative">
+   <div [ngBusy]="busy"></div>
   <div class="col-lg-8 col-sm-12">
     <h1>Business Profile Review</h1>
 
@@ -73,14 +74,13 @@
         <span class="error-states">*</span> <i>Required field</i>
       </section>
       <section>
-        <button class="btn btn-secondary" routerLink="/business-profile">EDIT PROFILE</button>
-        <button class="btn btn-primary">SAVE</button>
+        <button class="btn btn-secondary" style="margin-right: 10px;" routerLink="/business-profile">EDIT PROFILE</button>
+        <button class="btn btn-primary" (click)="save()">SAVE</button>
       </section>
     </div>
   </div>
 
   <div class="col-lg-4 col-sm-12" style="position: relative">
-    <!-- <div [ngBusy]="busy"></div> -->
     <p></p>
     <section class="submit-container">
       <table>
