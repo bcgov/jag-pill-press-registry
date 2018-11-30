@@ -1,8 +1,8 @@
-<div class="dashboard-spacing" style="position: relative;">
+<div class="form-wrapper" style="position: relative;">
   <div [ngBusy]="[busy, busy2]"></div>
   <div class="row" [formGroup]="form">
     <div class="col-lg-7 col-sm-12">
-      <div class="wrapper" [formGroup]="form">
+      <div [formGroup]="form">
         <div *ngIf="dataLoaded || true">
           <section>
             <h1>
@@ -25,12 +25,13 @@
             </app-field>
 
             <app-field label="Business Number (BC Corporate Registry Number)" [required]="true" [valid]="form.get('businessProfile.businessNumber').valid || !form.get('businessProfile.businessNumber').touched"
-                       errorMessage="Please enter your business number" >
-              <input class="form-control" style="width: 150px;" type="text" maxlength="9" formControlName="businessNumber" (keydown)="rejectIfNotDigitOrBackSpace($event)">
+              errorMessage="Please enter your business number">
+              <input class="form-control" style="width: 150px;" type="text" maxlength="9" formControlName="businessNumber"
+                (keydown)="rejectIfNotDigitOrBackSpace($event)">
             </app-field>
 
             <app-field label="Business Type" [required]="true" [valid]="form.get('businessProfile.businessType').valid || !form.get('businessProfile.businessType').touched"
-                       errorMessage="Please select a business type from the dropdown list">
+              errorMessage="Please select a business type from the dropdown list">
               <select class="form-control" style="width: 250px;" formControlName="businessType">
                 <option value="PrivateCorporation">Private Corporation</option>
                 <option value="PublicCorporation">Public Corporation</option>
@@ -46,21 +47,21 @@
             <div>
               <h3>Physical Address</h3>
               <app-field label="Street Address 1" [required]="true" [valid]="form.get('businessProfile.physicalAddressLine1').valid || !form.get('businessProfile.physicalAddressLine1').touched"
-                         errorMessage="Please enter your street address">
+                errorMessage="Please enter your street address">
                 <input class="form-control" style="width: 400px;" type="text" formControlName="physicalAddressLine1">
               </app-field>
               <app-field label="Street Address 2">
                 <input class="form-control" style="width: 450px;" type="text" formControlName="physicalAddressLine2">
               </app-field>
               <app-field label="City" [required]="true" [valid]="form.get('businessProfile.physicalAddressCity').valid || !form.get('businessProfile.physicalAddressCity').touched"
-                         errorMessage="Please enter your city">
+                errorMessage="Please enter your city">
                 <input class="form-control" style="width: 350px;" type="text" formControlName="physicalAddressCity">
               </app-field>
               <app-field label="Province">
                 <input class="form-control" style="width: 200px;" readonly type="text" formControlName="physicalAddressProvince">
               </app-field>
               <app-field label="Postal Code" [required]="true" [valid]="form.get('businessProfile.physicalAddressPostalCode').valid || !form.get('businessProfile.physicalAddressPostalCode').touched"
-                         errorMessage="Please enter your postal code">
+                errorMessage="Please enter your postal code">
                 <input class="form-control" style="width: 200px;" type="text" formControlName="physicalAddressPostalCode">
               </app-field>
               <app-field label="Country">
@@ -72,42 +73,47 @@
               <label>Is your mailing address different from your physical address?</label>
               <br>
               <input type="radio" name="sameAddress" [(ngModel)]="_mailingDifferentFromPhysicalAddress" [value]="true"
-                     [ngModelOptions]="{standalone: true}"> Yes
+                [ngModelOptions]="{standalone: true}"> Yes
               <input type="radio" name="sameAddress" [(ngModel)]="_mailingDifferentFromPhysicalAddress" [value]="false"
-                     [ngModelOptions]="{standalone: true}"> No
+                [ngModelOptions]="{standalone: true}"> No
             </section>
             <div *ngIf="_mailingDifferentFromPhysicalAddress">
               <hr>
               <h3>Mailing Address</h3>
 
               <app-field label="Street Address 1" [required]="true" [valid]="form.get('businessProfile.mailingAddressLine1').valid || !form.get('businessProfile.mailingAddressLine1').touched"
-                         errorMessage="Please enter your PO box or street address">
-                <input class="form-control" [required]="_mailingDifferentFromPhysicalAddress" style="width: 400px;" type="text" formControlName="mailingAddressLine1">
+                errorMessage="Please enter your PO box or street address">
+                <input class="form-control" [required]="_mailingDifferentFromPhysicalAddress" style="width: 400px;"
+                  type="text" formControlName="mailingAddressLine1">
               </app-field>
               <app-field label="Street Address 2">
                 <input class="form-control" style="width: 450px;" type="text" formControlName="mailingAddressLine2">
               </app-field>
               <app-field label="City" [required]="true" [valid]="form.get('businessProfile.mailingAddressCity').valid || !form.get('businessProfile.mailingAddressCity').touched"
-                         errorMessage="Please enter your city">
-                <input class="form-control" [required]="_mailingDifferentFromPhysicalAddress" style="width: 350px;" type="text" formControlName="mailingAddressCity">
+                errorMessage="Please enter your city">
+                <input class="form-control" [required]="_mailingDifferentFromPhysicalAddress" style="width: 350px;"
+                  type="text" formControlName="mailingAddressCity">
               </app-field>
               <app-field label="Province/ State" [required]="true" [valid]="form.get('businessProfile.mailingAddressProvince').valid || !form.get('businessProfile.mailingAddressProvince').touched"
-                         errorMessage="Please enter your province or state">
-                <input class="form-control" [required]="_mailingDifferentFromPhysicalAddress" style="width: 200px;" type="text" formControlName="mailingAddressProvince">
+                errorMessage="Please enter your province or state">
+                <input class="form-control" [required]="_mailingDifferentFromPhysicalAddress" style="width: 200px;"
+                  type="text" formControlName="mailingAddressProvince">
               </app-field>
               <app-field label="Postal/ Zip Code" [required]="true" [valid]="form.get('businessProfile.mailingAddressPostalCode').valid || !form.get('businessProfile.mailingAddressPostalCode').touched"
-                         errorMessage="Please enter your postal or zip code">
-                <input class="form-control" [required]="_mailingDifferentFromPhysicalAddress" style="width: 200px;" type="text" formControlName="mailingAddressPostalCode">
+                errorMessage="Please enter your postal or zip code">
+                <input class="form-control" [required]="_mailingDifferentFromPhysicalAddress" style="width: 200px;"
+                  type="text" formControlName="mailingAddressPostalCode">
               </app-field>
               <app-field label="Country" [required]="true" [valid]="form.get('businessProfile.mailingAddressCountry').valid || !form.get('businessProfile.mailingAddressCountry').touched"
-                         errorMessage="Please enter your country">
-                <input class="form-control" [required]="_mailingDifferentFromPhysicalAddress" style="width: 350px;" type="text" formControlName="mailingAddressCountry">
+                errorMessage="Please enter your country">
+                <input class="form-control" [required]="_mailingDifferentFromPhysicalAddress" style="width: 350px;"
+                  type="text" formControlName="mailingAddressCountry">
               </app-field>
 
             </div>
-          
-          <hr>
-          
+
+            <hr>
+
             <app-field label="Business Phone Number" [required]="true" [valid]="form.get('businessProfile.businessPhoneNumber').valid || !form.get('businessProfile.businessPhoneNumber').touched"
               errorMessage="Please enter your 10-digit business phone number, without including any spaces">
               <input class="form-control" style="width: 250px;" maxlength="10" (keydown)="rejectIfNotDigitOrBackSpace($event)"
@@ -121,12 +127,13 @@
               <input class="form-control" style="width: 350px;" type="text" formControlName="businessEmail" (blur)="trimValue(form.get('businessProfile.businessEmail'))">
             </app-field>
             <section>
-              <input type="checkbox" [required]="true" formControlName="consentForEmailCommunication" #emailConsent> <strong class="error-states"> *</strong>
+              <input type="checkbox" [required]="true" formControlName="consentForEmailCommunication" #emailConsent>
+              <strong class="error-states"> *</strong>
               <span> I authorize the Security Programs Division to use my email address to communicate with me. </span>
               <p class="error-states" *ngIf="form.get('businessProfile.consentForEmailCommunication').touched && !form.get('businessProfile.consentForEmailCommunication').valid">
-                Please confirm consent for SPD to contact you at the provided email address 
+                Please confirm consent for SPD to contact you at the provided email address
               </p>
-          <p></p>
+              <p></p>
             </section>
             <app-field label="Website Address">
               <input class="form-control" style="width: 350px;" type="text" formControlName="websiteAddress">
@@ -179,12 +186,14 @@
 
             <app-field label="First Name" [required]="true" [valid]="form.get('additionalContact.firstName').valid || !form.get('additionalContact.firstName').touched"
               errorMessage="Please enter your business contact's first name">
-              <input class="form-control" [required]="_showAdditionalContact" style="width: 350px;" type="text" formControlName="firstName">
+              <input class="form-control" [required]="_showAdditionalContact" style="width: 350px;" type="text"
+                formControlName="firstName">
             </app-field>
 
             <app-field label="Last Name" [required]="true" [valid]="form.get('additionalContact.lastName').valid || !form.get('additionalContact.lastName').touched"
               errorMessage="Please enter your business contact's last name">
-              <input class="form-control" [required]="_showAdditionalContact" style="width: 350px;" type="text" formControlName="lastName">
+              <input class="form-control" [required]="_showAdditionalContact" style="width: 350px;" type="text"
+                formControlName="lastName">
             </app-field>
 
             <app-field label="Title/ Position" [required]="false" [valid]="true">
@@ -193,8 +202,8 @@
 
             <app-field label="Phone Number (main)" [required]="true" [valid]="form.get('additionalContact.phoneNumber').valid || !form.get('additionalContact.phoneNumber').touched"
               errorMessage="Please enter your business contact's 10-digit phone number">
-              <input class="form-control" [required]="_showAdditionalContact" style="width: 250px;" maxlength="10" (keydown)="rejectIfNotDigitOrBackSpace($event)"
-                type="text" formControlName="phoneNumber">
+              <input class="form-control" [required]="_showAdditionalContact" style="width: 250px;" maxlength="10"
+                (keydown)="rejectIfNotDigitOrBackSpace($event)" type="text" formControlName="phoneNumber">
             </app-field>
 
             <app-field label="Phone Number (alternate)" [required]="false">
@@ -204,7 +213,8 @@
 
             <app-field label="Email" [required]="true" [valid]="form.get('additionalContact.email').valid || !form.get('additionalContact.email').touched"
               errorMessage="Please enter your business contact's email address">
-              <input class="form-control" [required]="_showAdditionalContact" style="width: 350px;" type="text" formControlName="email" (blur)="trimValue(form.get('additionalContact.email'))">
+              <input class="form-control" [required]="_showAdditionalContact" style="width: 350px;" type="text"
+                formControlName="email" (blur)="trimValue(form.get('additionalContact.email'))">
             </app-field>
 
             <section>
@@ -216,9 +226,11 @@
           <div style="clear: both;"></div>
           <p></p>
 
-          <section *ngIf="!form.valid && form.touched" style="color: #A12622">
-            <i class="fas fa-exclamation-triangle"></i> Some required fields have not been completed.
-          </section>
+          <div *ngIf="!form.valid && form.touched" class="error-summary">
+            <i class="fas fa-exclamation-triangle" style="margin-right: 10px;"></i>
+            <span>Some required fields have not been completed</span>
+          </div>
+
           <section style="position: relative;">
             <div [ngBusy]="[busy, busy2]"></div>
             <span style="float: right;">
@@ -233,7 +245,7 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-4 col-sm-12" style="position: relative">
+    <div class="col-lg-4 col-sm-12" style="position: relative; padding-left: 50px;">
       <!-- <div [ngBusy]="busy"></div> -->
       <p></p>
       <section class="submit-container">
@@ -253,7 +265,7 @@
             this information, you must contact BCeID to correct it.
           </p>
           <div>
-            <i class="fas fa-phone"></i>
+            <i class="fas fa-phone" style="margin-right: 10px"></i>
             <strong>Phone</strong>
             <br>
             <span>1 888 356-2741 (Canada and USA toll free)</span>
@@ -261,7 +273,7 @@
             <span>604 660-2355 (Within lower mainland or outside Canada and USA)</span>
           </div>
           <div>
-            <i class="fas fa-envelope"></i>
+            <i class="fas fa-envelope" style="margin-right: 10px"></i>
             <strong>Email</strong>
             <br>
             <span>Contact us using our online form</span>
