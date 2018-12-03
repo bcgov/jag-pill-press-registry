@@ -111,7 +111,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         }
 
         /// <summary>
-        /// Create a contact
+        /// Create a Custom Product
         /// </summary>
         /// <param name="viewModel"></param>
         /// <returns></returns>
