@@ -543,7 +543,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateDynamicsAccount([FromBody] ViewModels.Account item, string id)
+        public async Task<IActionResult> UpdateAccount([FromBody] ViewModels.Account item, string id)
         {
             // check for null.
             if (item == null)
@@ -611,14 +611,13 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 // create the business contact links.
                 if (item.primaryContact != null)
                 {
-                    _dynamicsClient.CreateBusinessContactLink(_logger, item.primaryContact.id, account.Accountid, null, (int?)ContactTypeEnum.Primary);
+                    _dynamicsClient.CreateBusinessContactLink(_logger, item.primaryContact.id, accountId.ToString(), null, (int?)ContactTypeEnum.Primary);
                 }
                 if (item.additionalContact != null)
                 {
-                    _dynamicsClient.CreateBusinessContactLink(_logger, item.additionalContact.id, account.Accountid, null, (int?)ContactTypeEnum.Additional);
+                    _dynamicsClient.CreateBusinessContactLink(_logger, item.additionalContact.id, accountId.ToString(), null, (int?)ContactTypeEnum.Additional);
                 }
                 
-
 
                 // populate child items in the account.
                 account = await _dynamicsClient.GetAccountById(accountId);
