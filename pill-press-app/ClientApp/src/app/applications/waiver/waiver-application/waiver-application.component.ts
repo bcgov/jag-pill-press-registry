@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { Subscription, Observable, zip } from 'rxjs';
 import { ApplicationDataService } from '../../../services/adoxio-application-data.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DynamicsDataService } from '../../../services/dynamics-data.service';
 
 export const PRODUCTING_OWN_PRODUCT = 'Producing Own Product';
@@ -30,6 +30,7 @@ export class WaiverApplicationComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,
     private dynamicsDataService: DynamicsDataService,
+    private router: Router,
     private applicationDataService: ApplicationDataService) {
     this.waiverId = this.route.snapshot.params.id;
   }
@@ -165,14 +166,19 @@ export class WaiverApplicationComponent implements OnInit {
     }
   }
 
-  save() {
+  save(gotToReview: boolean) {
     const value = this.form.value;
     const saveList = [this.applicationDataService.updateApplication(value), ...this.saveCustomProducts()];
     zip(...saveList)
       .subscribe(res => {
-        this.reloadData();
+        if (gotToReview) {
+          this.router.navigateByUrl(`/waiver-application-review/${this.waiverId}`);
+        } else {
+          this.router.navigateByUrl(`/dashboard`);
+          // this.reloadData();
+        }
       }, err => {
-        debugger;
+        // todo: show errors;
       });
   }
 
@@ -201,6 +207,11 @@ export class WaiverApplicationComponent implements OnInit {
     });
 
     return saveList;
+  }
+
+
+  gotoReview() {
+    this.router.navigate(['/waiver-application-review/' + this.waiverId]);    
   }
 
 }

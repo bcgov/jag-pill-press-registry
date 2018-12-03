@@ -181,9 +181,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             _logger.LogInformation(LoggingEvents.HttpPost, "Begin method " + this.GetType().Name + "." + MethodBase.GetCurrentMethod().ReflectedType.Name);
             _logger.LogDebug(LoggingEvents.HttpPost, "Account parameters: " + JsonConvert.SerializeObject(item));
 
-            ViewModels.Account result = null;
-            Boolean updateIfNull = true;
-            Guid tryParseOutGuid;
+            ViewModels.Account result = null;            
 
             // get UserSettings from the session
             string temp = _httpContextAccessor.HttpContext.Session.GetString("UserSettings");
@@ -198,7 +196,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 throw new Exception("Error. No accountSiteminderGuid exernal id");
             }
 
-            // first check to see that a contact exists.
+            // validate contact Siteminder GUID
             string contactSiteminderGuid = userSettings.SiteMinderGuid;
             if (contactSiteminderGuid == null || contactSiteminderGuid.Length == 0)
             {
@@ -215,8 +213,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             }
             
             _logger.LogDebug(LoggingEvents.HttpGet, "BCeId business: " + JsonConvert.SerializeObject(bceidBusiness));
-
-            // get the contact record.
+            
             MicrosoftDynamicsCRMcontact userContact = null;
 
             // see if the contact exists.
@@ -266,6 +263,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     userContact.Firstname = userSettings.UserDisplayName.GetFirstName();
                     userContact.Lastname = userSettings.UserDisplayName.GetLastName();
                 }
+
                 userContact.Statuscode = 1;
                 
                 _logger.LogDebug(LoggingEvents.HttpGet, "Account is NOT null. Only a new user.");
@@ -288,12 +286,12 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             MicrosoftDynamicsCRMaccount account = await _dynamicsClient.GetAccountBySiteminderBusinessGuid(accountSiteminderGuid);
             _logger.LogDebug(LoggingEvents.HttpGet, "Account by siteminder business guid: " + JsonConvert.SerializeObject(account));
 
-            if (account == null) // do a deep create.  create 3 objects at once.
+            if (account == null) 
             {
                 _logger.LogDebug(LoggingEvents.HttpGet, "Creating account");
                 // create a new account
                 account = new MicrosoftDynamicsCRMaccount();
-                account.CopyValues(item, updateIfNull);
+                account.CopyValues(item);
                 // business type must be set only during creation, not in update (removed from copyValues() )
                 
                 // by convention we strip out any dashes present in the guid, and force it to uppercase.
@@ -301,32 +299,20 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
 
                 account.BcgovBceid = sanitizedAccountSiteminderId;
 
+                UpdateContacts(item);
+
                 // For Pill Press the Primary Contact is not set to default to the first user.  
-                if (item.primaryContact != null)
+                if (item.primaryContact != null && !(string.IsNullOrEmpty(item.primaryContact.id)))
                 {
-                    if (string.IsNullOrEmpty(item.primaryContact.id))
-                    {
-                        account.Primarycontactid = item.primaryContact.ToModel();
-                    }
-                    else
-                    {
-                        // add as a reference.
-                        account.PrimaryContactidODataBind = _dynamicsClient.GetEntityURI("contacts", item.primaryContact.id);
-                    }
+                    // add as a reference.
+                    account.PrimaryContactidODataBind = _dynamicsClient.GetEntityURI("contacts", item.primaryContact.id);                    
                 }
 
                 // Additional Contact 
-                if (item.additionalContact != null)
-                {
-                    if (string.IsNullOrEmpty(item.additionalContact.id))
-                    {
-                        account.BcgovAdditionalContact = item.additionalContact.ToModel();
-                    }
-                    else
-                    {
-                        // add as a reference.
-                        account.AdditionalContactODataBind = _dynamicsClient.GetEntityURI("contacts", item.additionalContact.id);
-                    }
+                if (item.additionalContact != null && !(string.IsNullOrEmpty(item.additionalContact.id)))
+                {                    
+                    // add as a reference.
+                    account.AdditionalContactODataBind = _dynamicsClient.GetEntityURI("contacts", item.additionalContact.id);                    
                 }
 
                 if (bceidBusiness != null)
@@ -453,14 +439,101 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 _dynamicsClient.CreateBusinessContactLink(_logger, item.additionalContact.id, account.Accountid, null, (int?)ContactTypeEnum.Additional);
             }
             
-
             //account.Accountid = id;
             result = account.ToViewModel();
             
-
             _logger.LogDebug(LoggingEvents.HttpPost, "result: " +
                 JsonConvert.SerializeObject(result, Formatting.Indented, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore }));
             return Json(result);
+        }
+
+        /// <summary>
+        /// Update contacts
+        /// </summary>
+        /// <param name="item"></param>
+        private void UpdateContacts (ViewModels.Account item)
+        {
+            // Primary Contact
+            if (item.primaryContact.HasValue())
+            {
+                var primaryContact = item.primaryContact.ToModel();
+                if (string.IsNullOrEmpty(item.primaryContact.id))
+                {
+                    // create an account.                        
+                    try
+                    {
+                        primaryContact = _dynamicsClient.Contacts.Create(primaryContact);
+                        item.primaryContact.id = primaryContact.Contactid;
+                    }
+                    catch (OdataerrorException odee)
+                    {
+                        _logger.LogError(LoggingEvents.Error, "Error creating primary contact");
+                        _logger.LogError("Request:");
+                        _logger.LogError(odee.Request.Content);
+                        _logger.LogError("Response:");
+                        _logger.LogError(odee.Response.Content);
+                        throw new OdataerrorException("Error updating the account.");
+                    }
+                }
+                else
+                {
+                    // update
+                    try
+                    {
+                        _dynamicsClient.Contacts.Update(item.primaryContact.id, primaryContact);
+                    }
+                    catch (OdataerrorException odee)
+                    {
+                        _logger.LogError(LoggingEvents.Error, "Error updating primary contact");
+                        _logger.LogError("Request:");
+                        _logger.LogError(odee.Request.Content);
+                        _logger.LogError("Response:");
+                        _logger.LogError(odee.Response.Content);
+                        throw new OdataerrorException("Error updating the account.");
+                    }
+                }
+            }
+
+            // Additional Contact 
+            if (item.additionalContact.HasValue())
+            {
+                var additionalContact = item.additionalContact.ToModel();
+                if (string.IsNullOrEmpty(item.additionalContact.id))
+                {
+                    // create an account.                        
+                    try
+                    {
+                        additionalContact = _dynamicsClient.Contacts.Create(additionalContact);
+                        item.additionalContact.id = additionalContact.Contactid;
+                    }
+                    catch (OdataerrorException odee)
+                    {
+                        _logger.LogError(LoggingEvents.Error, "Error creating additional contact");
+                        _logger.LogError("Request:");
+                        _logger.LogError(odee.Request.Content);
+                        _logger.LogError("Response:");
+                        _logger.LogError(odee.Response.Content);
+                        throw new OdataerrorException("Error updating the account.");
+                    }
+                }
+                else
+                {
+                    // update
+                    try
+                    {
+                        _dynamicsClient.Contacts.Update(item.additionalContact.id, additionalContact);
+                    }
+                    catch (OdataerrorException odee)
+                    {
+                        _logger.LogError(LoggingEvents.Error, "Error updating additional contact");
+                        _logger.LogError("Request:");
+                        _logger.LogError(odee.Request.Content);
+                        _logger.LogError("Response:");
+                        _logger.LogError(odee.Response.Content);
+                        throw new OdataerrorException("Error updating the account.");
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -470,7 +543,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateDynamicsAccount([FromBody] ViewModels.Account item, string id)
+        public async Task<IActionResult> UpdateAccount([FromBody] ViewModels.Account item, string id)
         {
             // check for null.
             if (item == null)
@@ -500,87 +573,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
 
                 // handle the contacts.
 
-                // Primary Contact
-                if (item.primaryContact.HasValue())
-                {
-                    var primaryContact = item.primaryContact.ToModel();
-                    if (string.IsNullOrEmpty(item.primaryContact.id))
-                    {
-                        // create an account.                        
-                        try
-                        {
-                            primaryContact = _dynamicsClient.Contacts.Create(primaryContact);
-                            item.primaryContact.id = primaryContact.Contactid;
-                        }
-                        catch (OdataerrorException odee)
-                        {
-                            _logger.LogError(LoggingEvents.Error, "Error creating primary contact");
-                            _logger.LogError("Request:");
-                            _logger.LogError(odee.Request.Content);
-                            _logger.LogError("Response:");
-                            _logger.LogError(odee.Response.Content);
-                            throw new OdataerrorException("Error updating the account.");
-                        }
-                    }
-                    else
-                    {
-                        // update
-                        try
-                        {
-                            _dynamicsClient.Contacts.Update(item.primaryContact.id,primaryContact);
-                        }
-                        catch (OdataerrorException odee)
-                        {
-                            _logger.LogError(LoggingEvents.Error, "Error updating primary contact");
-                            _logger.LogError("Request:");
-                            _logger.LogError(odee.Request.Content);
-                            _logger.LogError("Response:");
-                            _logger.LogError(odee.Response.Content);
-                            throw new OdataerrorException("Error updating the account.");
-                        }
-                    }
-                }
-
-                // Additional Contact 
-                if (item.additionalContact.HasValue())
-                {
-                    var additionalContact = item.additionalContact.ToModel();
-                    if (string.IsNullOrEmpty(item.additionalContact.id))
-                    {
-                        // create an account.                        
-                        try
-                        {
-                            additionalContact = _dynamicsClient.Contacts.Create(additionalContact);
-                            item.additionalContact.id = additionalContact.Contactid;
-                        }
-                        catch (OdataerrorException odee)
-                        {
-                            _logger.LogError(LoggingEvents.Error, "Error creating additional contact");
-                            _logger.LogError("Request:");
-                            _logger.LogError(odee.Request.Content);
-                            _logger.LogError("Response:");
-                            _logger.LogError(odee.Response.Content);
-                            throw new OdataerrorException("Error updating the account.");
-                        }
-                    }
-                    else
-                    {
-                        // update
-                        try
-                        {
-                            _dynamicsClient.Contacts.Update(item.additionalContact.id, additionalContact);
-                        }
-                        catch (OdataerrorException odee)
-                        {
-                            _logger.LogError(LoggingEvents.Error, "Error updating additional contact");
-                            _logger.LogError("Request:");
-                            _logger.LogError(odee.Request.Content);
-                            _logger.LogError("Response:");
-                            _logger.LogError(odee.Response.Content);
-                            throw new OdataerrorException("Error updating the account.");
-                        }
-                    }
-                }
+                UpdateContacts(item);
 
                 // we are doing a patch, so wipe out the record.
                 account = new MicrosoftDynamicsCRMaccount();
@@ -618,14 +611,13 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 // create the business contact links.
                 if (item.primaryContact != null)
                 {
-                    _dynamicsClient.CreateBusinessContactLink(_logger, item.primaryContact.id, account.Accountid, null, (int?)ContactTypeEnum.Primary);
+                    _dynamicsClient.CreateBusinessContactLink(_logger, item.primaryContact.id, accountId.ToString(), null, (int?)ContactTypeEnum.Primary);
                 }
                 if (item.additionalContact != null)
                 {
-                    _dynamicsClient.CreateBusinessContactLink(_logger, item.additionalContact.id, account.Accountid, null, (int?)ContactTypeEnum.Additional);
+                    _dynamicsClient.CreateBusinessContactLink(_logger, item.additionalContact.id, accountId.ToString(), null, (int?)ContactTypeEnum.Additional);
                 }
                 
-
 
                 // populate child items in the account.
                 account = await _dynamicsClient.GetAccountById(accountId);

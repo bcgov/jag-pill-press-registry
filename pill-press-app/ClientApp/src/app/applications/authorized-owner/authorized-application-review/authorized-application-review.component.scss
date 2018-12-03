@@ -8,16 +8,9 @@
     padding: 5px;
 }
 
-.dashboard-spacing {
-    padding-left: 50px;
-    padding-right: 50px;
-}
-
-@media (max-width: 575.98px) {
-    .dashboard-spacing {
-        padding-left: 10px;
-        padding-right: 10px;
-    }
+.step {
+    border-bottom: 2px solid #FCBA19;
+    display: inline-block;
 }
 
 .submitted-header {

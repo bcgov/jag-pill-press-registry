@@ -6,7 +6,7 @@ import { DynamicsContact } from '../../models/dynamics-contact.model';
 import { AppState } from '../../app-state/models/app-state';
 import * as CurrentUserActions from '../../app-state/actions/current-user.action';
 import { Store } from '@ngrx/store';
-import { Subscription ,  Observable, Subject ,  forkJoin } from 'rxjs';
+import { Subscription, Observable, Subject, forkJoin } from 'rxjs';
 import { FormBuilder, FormGroup, Validators, FormArray, ValidatorFn, AbstractControl, FormControl } from '@angular/forms';
 import { PreviousAddressDataService } from '../../services/previous-address-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -64,6 +64,7 @@ export class BusinessProfileComponent implements OnInit {
   saveFormData: any;
   _mailingDifferentFromPhysicalAddress: boolean;
   _showAdditionalAddress: boolean;
+  _showAdditionalContact: boolean;
 
 
   public get contacts(): FormArray {
@@ -102,12 +103,12 @@ export class BusinessProfileComponent implements OnInit {
         physicalAddressPostalCode: ['', [Validators.required, Validators.pattern(postalRegex)]],
         physicalAddressProvince: [{ value: 'British Columbia', disabled: true }],
         physicalAddressCountry: [{ value: 'Canada', disabled: true }],
-        mailingAddressLine1: ['', Validators.required],
+        mailingAddressLine1: [''],
         mailingAddressLine2: [''],
-        mailingAddressCity: ['', Validators.required],
-        mailingAddressPostalCode: ['', [Validators.required, this.customZipCodeValidator(new RegExp(postalRegex), 'mailingAddressCountry')]],
-        mailingAddressProvince: ['British Columbia', Validators.required],
-        mailingAddressCountry: ['Canada', Validators.required],
+        mailingAddressCity: [''],
+        mailingAddressPostalCode: ['', [this.customZipCodeValidator(new RegExp(postalRegex), 'mailingAddressCountry')]],
+        mailingAddressProvince: ['British Columbia'],
+        mailingAddressCountry: ['Canada'],
       }),
       primaryContact: this.fb.group({
         id: [],
@@ -120,12 +121,12 @@ export class BusinessProfileComponent implements OnInit {
       }),
       additionalContact: this.fb.group({
         id: [],
-        firstName: ['', Validators.required],
-        lastName: ['', Validators.required],
+        firstName: [''],
+        lastName: [''],
         title: [''],
-        phoneNumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+        phoneNumber: [''],
         phoneNumberAlt: [''],
-        email: ['', [Validators.required, Validators.email]],
+        email: [''],
       })
     });
     this.reloadUser();
@@ -146,9 +147,29 @@ export class BusinessProfileComponent implements OnInit {
 
             this.form.patchValue({
               businessProfile: account,
-              primaryContact: account.primaryContact
+              primaryContact: account.primaryContact || {},
+              additionalContact: account.additionalContact || {}
             });
 
+            // set the mailing address differnt value if there is a value for the mailing address.
+
+            if (account.mailingAddressLine1 ||
+              account.mailingAddressLine2 ||
+              account.mailingAddressCity ||
+              account.mailingAddressPostalCode ||
+              account.mailingAddressProvince) {
+              this._mailingDifferentFromPhysicalAddress = true;
+            }
+
+            if (account.additionalContact && (
+              account.additionalContact.email
+              || account.additionalContact.firstName
+              || account.additionalContact.lastName
+              || account.additionalContact.phoneNumber
+              || account.additionalContact.phoneNumberAlt
+              || account.additionalContact.title)) {
+              this._showAdditionalContact = true;
+            }
 
             this.saveFormData = this.form.value;
             // this.workerStatus = worker.status;
@@ -192,7 +213,7 @@ export class BusinessProfileComponent implements OnInit {
       additionalContact: this.form.get('additionalContact').value
     };
 
-    this.accountDataService.updateAccount(value).subscribe(res => {
+    this.busy = this.accountDataService.updateAccount(value).subscribe(res => {
       subResult.next(true);
       this.reloadUser();
     }, err => subResult.next(false));
@@ -271,5 +292,7 @@ export class BusinessProfileComponent implements OnInit {
     const value = control.value;
     control.setValue('');
     control.setValue(value.trim());
+
+
   }
 }
