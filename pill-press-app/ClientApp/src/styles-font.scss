@@ -151,11 +151,24 @@ select.form-control:not([size]):not([multiple]) {
     display: inline-block;
 }
 
-.table-row {
+table {
+    border-spacing: 5px;
+    border-collapse: separate;
+    width: 100%;
+}
+
+th {
+    background-color: #38598a;
+    color: #fff;
+    padding: 5px 5px 3px 10px;
+}
+
+td {
+    padding: 5px;
     background-color: #e1e8f2;
 }
 
-.table-row-alt {
+.row-alt {
     background-color: #f1f4fa;
 }
 
@@ -198,3 +211,17 @@ hr {
         padding-right: 10px;
     }
 }
+
+.red-snackbar {
+    background: #F44336;
+}
+
+.green-snackbar {
+    background: #00ff21;
+}
+
+.step {
+    border-bottom: 2px solid #FCBA19;
+    display: inline-block;
+}
+
