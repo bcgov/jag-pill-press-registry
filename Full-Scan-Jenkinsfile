@@ -222,7 +222,7 @@ node('nodejs') {
                 // sh 'export DISPLAY=:1'
                 sh 'npm install -g @angular/cli'
                 sh 'npm install'
-                sh 'ng e2e --no-serve --base-href=http://pill-press-dev.pathfinder.bcgov'
+				sh 'ng e2e --project=pill-press-app-e2e --base-url=http://pill-press-dev.pathfinder.bcgov'                
             } finally {
                 archiveArtifacts allowEmptyArchive: true, artifacts: 'e2e-reports/**/*'
                 junit 'junitresults.xml'
