@@ -177,3 +177,24 @@ hr {
 .error-states {
     color: #d8292f
 }
+
+.error-summary {
+    background-color: #F2F2F2;
+    border: solid 1px transparent;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    color: #d8292f
+}
+
+.form-wrapper {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+@media (max-width: 575.98px) {
+    .form-wrapper {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
