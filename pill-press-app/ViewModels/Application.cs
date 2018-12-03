@@ -11,22 +11,32 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
 {
     public enum ApplicationStatusCodes
     {
-        Active = 1,
-        [EnumMember(Value = "In Progress")]
-        InProgress = 845280000,
-        Intake = 845280001,
-        [EnumMember(Value = "Pending for LG/FN/Police Feedback")]
-        PendingForLGFNPFeedback = 845280006,
+        Draft = 931490005,        
+        Pending = 931490000,
         [EnumMember(Value = "Under Review")]
-        UnderReview = 845280003,
-        [EnumMember(Value = "Pending for Licence Fee")]
-        PendingForLicenceFee = 845280007,
-        Approved = 845280004,
-        Denied = 845280005,
-        [EnumMember(Value = "Approved in Principle")]
-        ApprovedInPrinciple = 845280008,
-        Terminated = 845280009
+        UnderReview = 931490001,
+        Incomplete = 931490002,
+        [EnumMember(Value = "With Risk Assessment")]
+        WithRiskAssessment = 931490007,
+        [EnumMember(Value = "With Deputy Registrar")]
+        WithDeputyRegistrar = 931490008,
+        [EnumMember(Value = "With C&E Investigations")]
+        WithCEInvestigations = 931490009,
+        Approved = 931490010,
+        Hearing = 931490011,
+        Denied = 931490012,
+        Withdrawn = 931490013,
+        Cancelled = 931490014,
+        Expired = 931490015
     }
+
+    public enum UserApplicationStatusCodes
+    {
+        Draft = 931490005,
+        Pending = 931490000
+    }
+
+
 
     public enum AdoxioFinalDecisionCodes
     {
@@ -35,7 +45,8 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
     }
 
     public class Application
-    {
+    {     
+
         public string id { get; set; } //adoxio_applicationid
 
         /// <summary>
@@ -132,6 +143,10 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public string otherlicencebusinessname { get; set; }
         public string otherlicencenumber { get; set; }
         public DateTimeOffset? otherlicenceexpirydate { get; set; }
+
+        [JsonConverter(typeof(StringEnumConverter))]
+        public ApplicationStatusCodes statuscode { get; set; }
+        public string applicationtype { get; set; }
 
     }
 }
