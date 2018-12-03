@@ -1,4 +1,4 @@
-<div class="dashboard-spacing" style="position: relative;">
+<div class="form-wrapper" style="position: relative;">
   <div [ngBusy]="[busy]"></div>
   <div class="row" [formGroup]="form">
     <div class="col-lg-8 col-sm-12">
@@ -141,8 +141,8 @@
             <p>What enactment authorizes you to manufacture these products? Please select all the options that apply.</p>
             <input type="checkbox" style="margin-right: 10px;" formControlName="foodanddrugact"> <span>Food and Drug
               Act</span> <br>
-            <input type="checkbox" style="margin-right: 10px;"> <span>Other</span> <br>
-            <section style="padding-left: 20px">
+            <input type="checkbox" formControlName="legislativeauthorityothercheck" style="margin-right: 10px;"> <span>Other</span> <br>
+            <section style="padding-left: 20px" *ngIf="form.get('legislativeauthorityothercheck').value === true">
               <app-field>
                 <i>If Other, Please specify</i>
                 <br>
@@ -158,8 +158,8 @@
             <br>
             <input type="checkbox" style="margin-right: 10px;" formControlName="kindsofproductsnaturalhealthproducts">
             <span>Natural Health Products</span> <br>
-            <input type="checkbox" style="margin-right: 10px;"> <span>Other</span> <br>
-            <section style="padding-left: 20px">
+            <input type="checkbox" style="margin-right: 10px;" formControlName="kindsofproductsothercheck"> <span>Other</span> <br>
+            <section style="padding-left: 20px" *ngIf="form.get('kindsofproductsothercheck').value === true">
               <app-field>
                 <i>If Other, Please specify</i>
                 <br>
@@ -207,8 +207,8 @@
                 <mat-datepicker #picker2></mat-datepicker>
               </app-field>
             </section>
-            <input type="checkbox" style="margin-right: 10px;"> <span>Other</span> <br>
-            <section style="padding-left: 20px">
+            <input type="checkbox" style="margin-right: 10px;" formControlName="otherlicencecheck"> <span>Other</span> <br>
+            <section style="padding-left: 20px" *ngIf="form.get('otherlicencecheck').value === true">
               <app-field>
                 <i>If Other, Please specify</i>
                 <br>
