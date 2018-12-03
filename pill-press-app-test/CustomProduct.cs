@@ -3,21 +3,50 @@ using System;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Gov.Jag.PillPressRegistry.Public.Test
 {
-    public class CustomProductTests : ApiIntegrationTestBaseWithLogin
+    public class CustomProductTests : ApiIntegrationTestBaseWithLogin, IAsyncLifetime
     {
         public CustomProductTests(CustomWebApplicationFactory<Startup> factory)
           : base(factory)
         { }
 
         const string service = "customproduct";
+        const string FRENCH_CHARACTERS = "ÀàÂâÆæÈèÉéÊêËëÎîÏïÔôŒœÙùÛûÜüŸÿÇç";
+        const int MAX_CHAR_LENGTH_PRODUCT_DESCRIPTION_AND_INTENDED_USE = 1000;
+
+        /// <summary>
+        /// Log in a random user. This is required by most tests. Tests that do not require a user should call Logout().
+        /// </summary>
+        /// <returns></returns>
+        public async Task InitializeAsync()
+        {
+            var loginUser = randomNewUserName("NewLoginUser", 6);
+            await LoginAndRegisterAsNewUser(loginUser);
+        }
+
+        public async Task DisposeAsync()
+        {
+            try
+            {
+                ViewModels.Account currentAccount = await GetAccountForCurrentUser();
+                await LogoutAndCleanupTestUser(currentAccount.id);
+            }
+            catch (HttpRequestException requestException)
+            {
+                // Ignore any failures to clean up the test user.
+                Console.WriteLine(requestException.ToString());
+            }
+        }
+
         [Fact]
         public async System.Threading.Tasks.Task TestNoAccessToAnonymousUser()
         {
             string id = "SomeRandomId";
+            await Logout();
 
             // first confirm we are not logged in
             await GetCurrentUserIsUnauthorized();
@@ -30,20 +59,76 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
         }
 
         [Fact]
+        public async System.Threading.Tasks.Task TestNullIncidentId()
+        {
+            string initialName = "InitialName";
+
+            // Create a custom product with a null incidentId.
+            var response = await CreateNewCustomProduct(initialName, null);
+
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+            var responseMessage = response.Content.ReadAsStringAsync().Result;
+            Assert.Equal("IncidentId missing", responseMessage);
+        }
+
+        [Fact]
+        public async System.Threading.Tasks.Task TestMaxCharacterLength()
+        {
+            var incidentGuid = await CreateNewApplicationGuid(await GetAccountForCurrentUser());
+            // Create a custom product max number of characters in the product description and intended use string.
+            string maxString = TestUtilities.RandomANString(MAX_CHAR_LENGTH_PRODUCT_DESCRIPTION_AND_INTENDED_USE);
+            var response = await CreateNewCustomProduct(maxString, incidentGuid.ToString());
+            response.EnsureSuccessStatusCode();
+
+            // parse as JSON.
+            var jsonString = await response.Content.ReadAsStringAsync();
+            ViewModels.CustomProduct responseViewModel = JsonConvert.DeserializeObject<ViewModels.CustomProduct>(jsonString);
+
+            // productdescriptionandintendeduse should match.
+            Assert.Equal(maxString, responseViewModel.productdescriptionandintendeduse);
+        }
+
+        [Fact]
+        public async System.Threading.Tasks.Task TestMaxCharacterLengthExceeded()
+        {
+            var incidentGuid = await CreateNewApplicationGuid(await GetAccountForCurrentUser());
+            // Create a custom product max number of characters in the product description and intended use string.
+            string maxStringExceeded = TestUtilities.RandomANString(MAX_CHAR_LENGTH_PRODUCT_DESCRIPTION_AND_INTENDED_USE + 1);
+            var response = await CreateNewCustomProduct(maxStringExceeded, incidentGuid.ToString());
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+            // TODO: assert against returned error message when above assertion is fixed.
+        }
+
+        [Fact]
+        public async System.Threading.Tasks.Task TestUnicodeSupport()
+        {
+            var incidentGuid = await CreateNewApplicationGuid(await GetAccountForCurrentUser());
+            // Create a custom product with French Unicode characters in the product description and intended use string.
+            var response = await CreateNewCustomProduct(FRENCH_CHARACTERS, incidentGuid.ToString());
+            response.EnsureSuccessStatusCode();
+
+            // parse as JSON.
+            var jsonString = await response.Content.ReadAsStringAsync();
+            ViewModels.CustomProduct responseViewModel = JsonConvert.DeserializeObject<ViewModels.CustomProduct>(jsonString);
+
+            // productdescriptionandintendeduse should match.
+            Assert.Equal(FRENCH_CHARACTERS, responseViewModel.productdescriptionandintendeduse);
+        }
+
+        [Fact]
         public async System.Threading.Tasks.Task TestCRUD()
         {
             string initialName = "InitialName";
             string changedName = "ChangedName";
 
-            var loginUser = randomNewUserName("NewLoginUser", 6);
-            var strId = await LoginAndRegisterAsNewUser(loginUser);
-
             // C - Create
             var request = new HttpRequestMessage(HttpMethod.Post, "/api/" + service);
+            var incidentId = await CreateNewApplicationGuid(await GetAccountForCurrentUser());
 
             ViewModels.CustomProduct viewmodel_customproduct = new ViewModels.CustomProduct()
             {
-                productdescriptionandintendeduse = initialName
+                productdescriptionandintendeduse = initialName,
+                incidentId = incidentId.ToString()
             };
 
             string jsonString = JsonConvert.SerializeObject(viewmodel_customproduct);
@@ -111,9 +196,50 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             request = new HttpRequestMessage(HttpMethod.Get, "/api/" + service + "/" + id);
             response = await _client.SendAsync(request);
             Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
+        }
 
-            await LogoutAndCleanupTestUser(strId);
+        /// <summary>
+        /// Create a new Application for testing, using the passed account.
+        /// </summary>
+        /// <param name="currentAccount">Non-null account to use when creating the Application</param>
+        /// <returns>The GUID of the created Application</returns>
+        private async Task<Guid> CreateNewApplicationGuid(ViewModels.Account currentAccount)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Post, "/api/Application");
 
+            ViewModels.Application viewmodel_application = SecurityHelper.CreateNewApplication(currentAccount);
+
+            var jsonString = JsonConvert.SerializeObject(viewmodel_application);
+            request.Content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+
+            var response = await _client.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+
+            // parse as JSON.
+            jsonString = await response.Content.ReadAsStringAsync();
+            ViewModels.Application responseViewModel = JsonConvert.DeserializeObject<ViewModels.Application>(jsonString);
+
+            return new Guid(responseViewModel.id);
+        }
+
+        /// <summary>
+        /// Create a new custom product, using the passed parameters to create the custom product view model.
+        /// </summary>
+        /// <param name="productDescriptionAndIntendedUse"></param>
+        /// <param name="incidentId"></param>
+        /// <returns>The http response of the creation request.</returns>
+        private async Task<HttpResponseMessage> CreateNewCustomProduct(String productDescriptionAndIntendedUse, String incidentId)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Post, "/api/" + service);
+            ViewModels.CustomProduct viewmodel_customproduct = new ViewModels.CustomProduct()
+            {
+                productdescriptionandintendeduse = productDescriptionAndIntendedUse,
+                incidentId = incidentId
+            };
+            string jsonString = JsonConvert.SerializeObject(viewmodel_customproduct);
+
+            request.Content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+            return await _client.SendAsync(request);
         }
     }
 }
