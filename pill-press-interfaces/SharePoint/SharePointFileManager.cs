@@ -50,10 +50,10 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             WebName = webname;
 
             // ensure the webname has a slash.
-            if (!string.IsNullOrEmpty(WebName) && WebName[0] != '/')
-            {
-                WebName = "/" + WebName;
-            }
+            // if (!string.IsNullOrEmpty(WebName) && WebName[0] != '/')
+            // {
+            //     WebName = "/" + WebName;
+            // }
 
             string listDataEndpoint = odataUri + "/_vti_bin/listdata.svc/";
             ApiEndpoint = odataUri + "/_api/";
