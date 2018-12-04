@@ -56,7 +56,7 @@ export class DashboardLiteComponent implements OnInit {
 
   startNewWaiverApplication() {
     const newLicenceApplicationData: Application = new Application();
-    this.busy = this.applicationDataService.createApplication(newLicenceApplicationData).subscribe(
+    this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Waiver').subscribe(
       data => {
         this.router.navigateByUrl(`/application/profile-review/waiver/${data.id}`);
       },
@@ -69,7 +69,7 @@ export class DashboardLiteComponent implements OnInit {
 
   startNewAuthorizedOwnerApplication() {
     const newLicenceApplicationData: Application = new Application();
-    this.busy = this.applicationDataService.createApplication(newLicenceApplicationData).subscribe(
+    this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Authorized Owner').subscribe(
       data => {
         this.router.navigateByUrl(`/application/profile-review/authorized-owner/${data.id}`);
       },
@@ -82,7 +82,7 @@ export class DashboardLiteComponent implements OnInit {
 
   startNewASellerApplication() {
     const newLicenceApplicationData: Application = new Application();
-    this.busy = this.applicationDataService.createApplication(newLicenceApplicationData).subscribe(
+    this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Registered Seller').subscribe(
       data => {
         this.router.navigateByUrl(`/application/profile-review/registered-seller/${data.id}`);
       },
