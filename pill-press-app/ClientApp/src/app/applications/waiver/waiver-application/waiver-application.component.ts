@@ -172,7 +172,7 @@ export class WaiverApplicationComponent implements OnInit {
     zip(...saveList)
       .subscribe(res => {
         if (gotToReview) {
-          this.router.navigateByUrl(`/waiver-application-review/${this.waiverId}`);
+          this.router.navigateByUrl(`/application/waiver/review/${this.waiverId}`);
         } else {
           this.router.navigateByUrl(`/dashboard`);
           // this.reloadData();
@@ -211,7 +211,7 @@ export class WaiverApplicationComponent implements OnInit {
 
 
   gotoReview() {
-    this.router.navigate(['/waiver-application-review/' + this.waiverId]);    
+    this.router.navigate(['/application/waiver/review/' + this.waiverId]);    
   }
 
 }
