@@ -164,5 +164,8 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public string intendtosellother { get; set; }
         public string additionalbusinessinformationaboutseller { get; set; }
 
+
+        List<Contact> OwnersAndManagers { get; set; }
+
     }
 }

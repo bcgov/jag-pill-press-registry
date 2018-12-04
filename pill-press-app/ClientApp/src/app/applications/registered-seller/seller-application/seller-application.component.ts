@@ -12,7 +12,7 @@ import * as _moment from 'moment';
 // tslint:disable-next-line:no-duplicate-imports
 import { defaultFormat as _rollupMoment } from 'moment';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
-import { DynamicsContact } from 'src/app/models/dynamics-contact.model';
+import { DynamicsContact } from '../../../models/dynamics-contact.model';
 const moment = _rollupMoment || _moment;
 
 // See the Moment.js docs for the meaning of these formats:
@@ -42,7 +42,7 @@ export class SellerApplicationComponent implements OnInit {
   deletedProducts: any[] = [];
   PRODUCTING_OWN_PRODUCT = PRODUCTING_OWN_PRODUCT;
   MANUFACTURING_FOR_OTHERS = MANUFACTURING_FOR_OTHERS;
-  ownerList: any[];
+  ownerList: any[] = [];
 
   get ownProducts(): FormArray {
     return <FormArray>this.form.get('ownProducts');
@@ -86,27 +86,6 @@ export class SellerApplicationComponent implements OnInit {
       registeredsellerownermanager: ['', Validators.required],
     });
 
-    this.form.get('producingownproduct').valueChanges
-      .subscribe(value => {
-        if (value === false) {
-          while (this.ownProducts.controls.length > 0) {
-            this.deleteCustomProduct(0, this.ownProducts.controls[0].value.purpose);
-          }
-        } else {
-          this.addCustomProduct(<CustomProduct>{ purpose: PRODUCTING_OWN_PRODUCT });
-        }
-      });
-
-    this.form.get('providingmanufacturingtoothers').valueChanges
-      .subscribe(value => {
-        if (value === false) {
-          while (this.productsForOthers.controls.length > 0) {
-            this.deleteCustomProduct(0, this.productsForOthers.controls[0].value.purpose);
-          }
-        } else {
-          this.addCustomProduct(<CustomProduct>{ purpose: MANUFACTURING_FOR_OTHERS });
-        }
-      });
 
     this.reloadData();
   }
@@ -114,19 +93,6 @@ export class SellerApplicationComponent implements OnInit {
   reloadData() {
     this.applicationDataService.getApplicationById(this.waiverId).subscribe(data => {
       this.form.patchValue(data);
-
-      // process custom products
-      data.customProducts = data.customProducts || [];
-      this.clearCustomProducts();
-      const ownProducts = data.customProducts.filter(p => p.purpose === PRODUCTING_OWN_PRODUCT);
-      ownProducts.forEach(p => {
-        this.addCustomProduct(p);
-      });
-
-      const productsForOthers = data.customProducts.filter(p => p.purpose === MANUFACTURING_FOR_OTHERS);
-      productsForOthers.forEach(p => {
-        this.addCustomProduct(p);
-      });
     }, error => {
       // todo: show errors;
     });
@@ -140,68 +106,12 @@ export class SellerApplicationComponent implements OnInit {
         controls[c].markAsTouched();
       }
     }
-
-    this.productsForOthers.controls
-      .concat(this.ownProducts.controls)
-      .forEach((fa: FormGroup) => {
-        const arrayControls = fa.controls;
-        for (const c in arrayControls) {
-          if (typeof (arrayControls[c].markAsTouched) === 'function') {
-            arrayControls[c].markAsTouched();
-          }
-        }
-      });
   }
 
-  clearCustomProducts() {
-    while (this.ownProducts.controls.length > 0) {
-      this.ownProducts.removeAt(0);
-    }
-
-    while (this.productsForOthers.controls.length > 0) {
-      this.productsForOthers.removeAt(0);
-    }
-  }
-
-  createCustomProduct(product: CustomProduct) {
-    return this.fb.group({
-      id: [product.id],
-      purpose: [product.purpose],
-      incidentId: [this.waiverId],
-      productdescriptionandintendeduse: [product.productdescriptionandintendeduse, Validators.required]
-    });
-  }
-
-  addCustomProduct(product: CustomProduct) {
-    if (product.purpose === PRODUCTING_OWN_PRODUCT) {
-      const control = this.createCustomProduct(product);
-      this.ownProducts.push(control);
-    } else if (product.purpose === MANUFACTURING_FOR_OTHERS) {
-      const control = this.createCustomProduct(product);
-      this.productsForOthers.push(control);
-    }
-
-  }
-
-  deleteCustomProduct(index: number, type: string) {
-    if (type === PRODUCTING_OWN_PRODUCT) {
-      const product = this.ownProducts.at(index).value;
-      if (product.id) {
-        this.deletedProducts.push(product);
-      }
-      this.ownProducts.removeAt(index);
-    } else if (type === MANUFACTURING_FOR_OTHERS) {
-      const product = this.productsForOthers.at(index).value;
-      if (product.id) {
-        this.deletedProducts.push(product);
-      }
-      this.productsForOthers.removeAt(index);
-    }
-  }
 
   save(gotToReview: boolean) {
     const value = this.form.value;
-    const saveList = [this.applicationDataService.updateApplication(value), ...this.saveCustomProducts()];
+    const saveList = [this.applicationDataService.updateApplication(value)];
     zip(...saveList)
       .subscribe(res => {
         if (gotToReview) {
@@ -215,34 +125,7 @@ export class SellerApplicationComponent implements OnInit {
       });
   }
 
-  saveCustomProducts(): Observable<any>[] {
-    const saveList: Observable<any>[] = [];
-    const products: any[] = [...this.form.value.ownProducts, ...this.form.value.productsForOthers];
-    const existingProducts = products.filter(i => !!i.id);
-    const newProducts = products.filter(i => !i.id);
-
-    // save observables for updates
-    existingProducts.forEach(p => {
-      const save = this.dynamicsDataService.updateRecord('customProduct', p.id, p);
-      saveList.push(save);
-    });
-
-    // save observables for creates
-    newProducts.forEach(p => {
-      const save = this.dynamicsDataService.createRecord('customProduct', p);
-      saveList.push(save);
-    });
-
-    // save observables for deletes
-    this.deletedProducts.forEach(p => {
-      const save = this.dynamicsDataService.deleteRecord('customProduct', p.id);
-      saveList.push(save);
-    });
-
-    return saveList;
-  }
-
-  addOwner(owner: any) {
+  addEditOwner(owner: any) {
     // set dialogConfig settings
     const dialogConfig: any = {
       disableClose: true,
@@ -257,20 +140,12 @@ export class SellerApplicationComponent implements OnInit {
     dialogRef.afterClosed().subscribe(
       formData => {
         if (formData) {
-          let save = this.dynamicsDataService.createRecord('contact', formData);
-          if (formData.id) {
-            save = this.dynamicsDataService.updateRecord('contact', formData.id, formData);
+          const i = this.ownerList.indexOf(formData);
+          if (i === -1) {
+            this.ownerList.push(formData);
+          } else {
+            this.ownerList[i] = formData;
           }
-          this.busy = save.subscribe(
-            res => {
-              // this.snackBar.open('Shareholder Details have been saved', 'Success', { duration: 2500, panelClass: ['green-snackbar'] });
-              this.getOwnersAndManagers();
-            },
-            err => {
-              // this.snackBar.open('Error saving Shareholder Details', 'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
-              // this.handleError(err);
-            }
-          );
         }
       }
     );
@@ -295,18 +170,19 @@ export class SellerOwnerDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: { owner: DynamicsContact }) { }
 
   ngOnInit(): void {
+    const owner = this.data.owner;
     this.form = this.fb.group({
-      id: [],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      title: [''],
-      phoneNumber: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]]
+      id: [owner.id || null],
+      firstName: [owner.firstName || '', Validators.required],
+      lastName: [owner.lastName || '', Validators.required],
+      title: [owner.title || ''],
+      phoneNumber: [owner.phoneNumber || '', Validators.required],
+      email: [owner.email || '', [Validators.required, Validators.email]],
+      isOwner: [owner.isOwner, Validators.required],
     });
   }
 
   save() {
-    // console.log('shareholderForm', this.shareholderForm.value, this.shareholderForm.valid);
     if (!this.form.valid) {
       Object.keys(this.form.controls).forEach(field => {
         const control = this.form.get(field);

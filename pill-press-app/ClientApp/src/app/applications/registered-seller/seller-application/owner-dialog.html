@@ -2,8 +2,8 @@
     <h2>Add Owner or Manager</h2>
     <section>
         <app-field label="Type of management role" [required]="true">
-            <input type="radio" style="margin-right: 5px;" ><span style="margin-right: 20px;">Owner</span>
-            <input type="radio" style="margin-right: 5px;" ><span>Manager</span>
+            <input type="radio" formControlName="isOwner" name="isOwner" [value]="true" style="margin-right: 5px;" ><span style="margin-right: 20px;">Owner</span>
+            <input type="radio" formControlName="isOwner" name="isOwner" [value]="false" style="margin-right: 5px;" ><span>Manager</span>
         </app-field>
 
         <app-field label="First Name" [required]="true" errorMessage="Please enter your owner/manager's first name"

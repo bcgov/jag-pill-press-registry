@@ -1,6 +1,7 @@
 import { DynamicsAccount } from './dynamics-account.model';
 import { AdoxioLicense } from './adoxio-license.model';
 import { Invoice } from './invoice.model';
+import { DynamicsContact } from './dynamics-contact.model';
 
 export class Application {
   id: string;
@@ -54,4 +55,5 @@ export class Application {
   // related entities
   applicant: Account;
   customProducts: CustomProduct[];
+  ownersAndManagers: DynamicsContact[];
 }
