@@ -18,7 +18,6 @@ environments = [
 ARTIFACT_BUILD = APP_NAME
 RUNTIME_CHAINED_BUILD = "${APP_NAME}-static"
 
-/ EDIT LINE BELOW (Change `IMAGESTREAM_NAME` so it matches the name of your *output*/deployable image stream.)
 IMAGESTREAM_NAME = "${APP_NAME}-static"
 
 PATHFINDER_URL = "pathfinder.gov.bc.ca"
