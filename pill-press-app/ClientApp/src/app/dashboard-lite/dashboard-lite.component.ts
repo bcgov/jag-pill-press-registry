@@ -56,9 +56,9 @@ export class DashboardLiteComponent implements OnInit {
 
   startNewWaiverApplication() {
     const newLicenceApplicationData: Application = new Application();
-    this.busy = this.applicationDataService.createApplication(newLicenceApplicationData).subscribe(
+    this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Waiver').subscribe(
       data => {
-        this.router.navigateByUrl(`/waiver-application/${data.id}`);
+        this.router.navigateByUrl(`/application/profile-review/waiver/${data.id}`);
       },
       err => {
         this.snackBar.open('Error starting a New Licence Application', 'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
@@ -69,9 +69,9 @@ export class DashboardLiteComponent implements OnInit {
 
   startNewAuthorizedOwnerApplication() {
     const newLicenceApplicationData: Application = new Application();
-    this.busy = this.applicationDataService.createApplication(newLicenceApplicationData).subscribe(
+    this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Authorized Owner').subscribe(
       data => {
-        this.router.navigateByUrl(`/application/authorized-owner/${data.id}`);
+        this.router.navigateByUrl(`/application/profile-review/authorized-owner/${data.id}`);
       },
       err => {
         this.snackBar.open('Error starting a New Authorized Owner Application', 'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
@@ -82,9 +82,9 @@ export class DashboardLiteComponent implements OnInit {
 
   startNewASellerApplication() {
     const newLicenceApplicationData: Application = new Application();
-    this.busy = this.applicationDataService.createApplication(newLicenceApplicationData).subscribe(
+    this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Registered Seller').subscribe(
       data => {
-        this.router.navigateByUrl(`/application/registered-seller/${data.id}`);
+        this.router.navigateByUrl(`/application/profile-review/registered-seller/${data.id}`);
       },
       err => {
         this.snackBar.open('Error starting a New Registered Seller Application', 'Fail', { duration: 3500, panelClass: ['red-snackbar'] });

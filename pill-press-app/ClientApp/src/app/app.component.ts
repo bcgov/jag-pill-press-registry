@@ -3,8 +3,11 @@ import { NavigationEnd, Router } from '@angular/router';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { InsertService } from './insert/insert.service';
 import { UserDataService } from './services/user-data.service';
+import { VersionInfoDataService } from './services/version-info-data.service';
 import { User } from './models/user.model';
+import { VersionInfo } from './models/version-info.model';
 import { isDevMode } from '@angular/core';
+import { MatDialog } from '@angular/material';
 import { AdoxioLegalEntityDataService } from './services/adoxio-legal-entity-data.service';
 import { AdoxioLegalEntity } from './models/adoxio-legalentities.model';
 import { Store } from '@ngrx/store';
@@ -12,6 +15,7 @@ import { AppState } from './app-state/models/app-state';
 import { Observable } from '../../node_modules/rxjs';
 import * as CurrentUserActions from './app-state/actions/current-user.action';
 import { filter } from 'rxjs/operators';
+import { VersionInfoDialog } from './version-info/version-info.component';
 
 @Component({
   selector: 'app-root',
@@ -23,6 +27,7 @@ export class AppComponent implements OnInit {
   title = '';
   previousUrl: string;
   public currentUser: User;
+  public versionInfo: VersionInfo;
   public isNewUser: boolean;
   public isDevMode: boolean;
   isAssociate = false;
@@ -32,8 +37,10 @@ export class AppComponent implements OnInit {
     private renderer: Renderer2,
     private router: Router,
     private userDataService: UserDataService,
+    private versionInfoDataService: VersionInfoDataService,
     private store: Store<AppState>,
-    private adoxioLegalEntityDataService: AdoxioLegalEntityDataService
+    private adoxioLegalEntityDataService: AdoxioLegalEntityDataService,
+    private dialog: MatDialog
   ) {
     this.isDevMode = isDevMode();
     this.router.events.subscribe((event) => {
@@ -54,6 +61,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.reloadUser();
+    this.loadVersionInfo();
 
     this.store.select(state => state.legalEntitiesState)
       .pipe(filter(state => !!state))
@@ -61,6 +69,13 @@ export class AppComponent implements OnInit {
         this.businessProfiles = state.legalEntities;
       });
 
+  }
+
+  loadVersionInfo() {
+    this.versionInfoDataService.getVersionInfo()
+      .subscribe((versionInfo: VersionInfo) => {
+        this.versionInfo = versionInfo;
+      });
   }
 
   reloadUser() {
@@ -90,5 +105,11 @@ export class AppComponent implements OnInit {
       result = true;
     }
     return result;
+  }
+
+  showVersionInfo(): void {
+    this.dialog.open(VersionInfoDialog, {
+      data: this.versionInfo
+    });
   }
 }

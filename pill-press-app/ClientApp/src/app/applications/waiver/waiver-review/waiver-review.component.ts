@@ -149,7 +149,7 @@ export class WaiverReviewComponent implements OnInit {
       this.busyPromise = zip(...saveList)
         .toPromise()
         .then(res => {
-          this.router.navigateByUrl(`/waiver-thank-you/${this.waiverId}`);
+          this.router.navigateByUrl(`/application/waiver/thank-you/${this.waiverId}`);
         }, err => {
           // todo: show errors;
         });

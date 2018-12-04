@@ -79,10 +79,10 @@ export class ApplicationDataService {
    * Create a Dynamics Application
    * @param applicationData
    */
-  createApplication(applicationData: any): Observable<Application> {
+  createApplication(applicationData: any, applicationType: string): Observable<Application> {
     // call API
     // console.log("===== ApplicationDataService.createApplication: ", applicationData);
-    return this.http.post<Application>(this.apiPath, applicationData, { headers: this.jsonHeaders })
+    return this.http.post<Application>( `${this.apiPath}/${applicationType}`, applicationData, { headers: this.jsonHeaders })
       .pipe(catchError(this.handleError));
   }
 
