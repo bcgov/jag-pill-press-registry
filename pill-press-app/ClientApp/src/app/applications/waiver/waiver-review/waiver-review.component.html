@@ -13,21 +13,21 @@
     <h2>Equipment Information</h2>
     <table class="summary-table">
       <tr *ngFor="let item of equipmentInformation; let i = index;">
-        <td [ngClass]="{'table-row': i%2==0, 'table-row-alt': i%2==1 }">{{ item}}</td>
+        <td [ngClass]="{'row-alt': i%2==1 }">{{ item}}</td>
       </tr>
     </table>
 
     <h2>Purpose of Controlled Equipment</h2>
     <table class="summary-table">
       <tr *ngFor="let item of purposeOfEquipment; let i = index;">
-        <td [ngClass]="{'table-row': i%2==0, 'table-row-alt': i%2==1 }">{{ item.text}}</td>
+        <td [ngClass]="{'row-alt': i%2==1 }">{{ item.text}}</td>
       </tr>
     </table>
 
     <h2>Purpose of Controlled Equipment</h2>
     <table class="summary-table">
       <tr *ngFor="let item of purposeExplanation; let i = index;">
-        <td [ngClass]="{'table-row': i%2==0, 'table-row-alt': i%2==1 }">{{ item}}</td>
+        <td [ngClass]="{'row-alt': i%2==1 }">{{ item}}</td>
       </tr>
     </table>
 

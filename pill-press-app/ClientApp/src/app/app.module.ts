@@ -104,7 +104,7 @@ import { ProfileSummaryComponent } from './business-information/profile-summary/
 import { WaiverApplicationComponent } from './applications/waiver/waiver-application/waiver-application.component';
 import { WaiverReviewComponent } from './applications/waiver/waiver-review/waiver-review.component';
 import { ThankYouComponent } from './applications/waiver/thank-you/thank-you.component';
-import { SellerApplicationComponent } from './applications/registered-seller/seller-application/seller-application.component';
+import { SellerApplicationComponent, SellerOwnerDialogComponent } from './applications/registered-seller/seller-application/seller-application.component';
 import { SellerApplicationReviewComponent } from './applications/registered-seller/seller-application-review/seller-application-review.component';
 import { SellerApplicationThanksComponent } from './applications/registered-seller/seller-application-thanks/seller-application-thanks.component';
 import { AuthorizedApplicationComponent } from './applications/authorized-owner/authorized-application/authorized-application.component';
@@ -146,7 +146,8 @@ import { AuthorizedApplicationThanksComponent } from './applications/authorized-
     SellerApplicationThanksComponent,
     AuthorizedApplicationComponent,
     AuthorizedApplicationReviewComponent,
-    AuthorizedApplicationThanksComponent
+    AuthorizedApplicationThanksComponent,
+    SellerOwnerDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -261,6 +262,7 @@ import { AuthorizedApplicationThanksComponent } from './applications/authorized-
     ServiceCardAuthGuard,
   ],
   entryComponents: [
+    SellerOwnerDialogComponent
   ],
   bootstrap: [AppComponent]
 })
