@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 import { Subscription, Observable, zip } from 'rxjs';
-import { PRODUCTING_OWN_PRODUCT, MANUFACTURING_FOR_OTHERS } from '../../waiver/waiver-application/waiver-application.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DynamicsDataService } from '../../../services/dynamics-data.service';
 import { ApplicationDataService } from '../../../services/adoxio-application-data.service';
@@ -39,17 +38,7 @@ export class SellerApplicationComponent implements OnInit {
   busy: Subscription;
   waiverId: string;
 
-  deletedProducts: any[] = [];
-  PRODUCTING_OWN_PRODUCT = PRODUCTING_OWN_PRODUCT;
-  MANUFACTURING_FOR_OTHERS = MANUFACTURING_FOR_OTHERS;
   ownerList: any[] = [];
-
-  get ownProducts(): FormArray {
-    return <FormArray>this.form.get('ownProducts');
-  }
-  get productsForOthers(): FormArray {
-    return <FormArray>this.form.get('productsForOthers');
-  }
 
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -82,8 +71,8 @@ export class SellerApplicationComponent implements OnInit {
       intendtosellothercheck: [],
       intendtosellother: [],
 
-      additionalbusinessinformationaboutseller: [],
-      registeredsellerownermanager: ['', Validators.required],
+      additionalbusinessinformationaboutseller: ['', Validators.required],
+      registeredsellerownermanager: [],
     });
 
 
@@ -115,10 +104,9 @@ export class SellerApplicationComponent implements OnInit {
     zip(...saveList)
       .subscribe(res => {
         if (gotToReview) {
-          this.router.navigateByUrl(`/application/authorized-owner/review/${this.waiverId}`);
+          this.router.navigateByUrl(`/application/registered-seller/review/${this.waiverId}`);
         } else {
           this.router.navigateByUrl(`/dashboard`);
-          // this.reloadData();
         }
       }, err => {
         // todo: show errors;
@@ -133,7 +121,6 @@ export class SellerApplicationComponent implements OnInit {
       width: '470px',
       data: { owner }
     };
-
 
     // open dialog, get reference and process returned data from dialog
     const dialogRef = this.dialog.open(SellerOwnerDialogComponent, dialogConfig);
@@ -151,8 +138,11 @@ export class SellerApplicationComponent implements OnInit {
     );
   }
 
-  getOwnersAndManagers() {
-
+  isSellerTypeValid() {
+    return this.form.get('manufacturerofcontrolledequipment').value === true
+      || this.form.get('onetimesellerofowncontrolledequipment').value === true
+      || this.form.get('retailerofcontrolledequipment').value === true
+      || this.form.get('typeofsellerothercheck').value === true;
   }
 
 }

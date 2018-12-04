@@ -79,7 +79,7 @@
             <span>&nbsp;No</span>
           </app-field>
 
-          <app-field label="What type of seller are you?" [showChevrons]="false" errorMessage="" [valid]="true"
+          <app-field label="What type of seller are you?" [showChevrons]="false" errorMessage="" [valid]="isSellerTypeValid()"
             [required]="true">
             <p>Please select all the options that apply.</p>
             <input type="checkbox" style="margin-right: 10px;" formControlName="manufacturerofcontrolledequipment">
@@ -91,7 +91,7 @@
             <input type="checkbox" formControlName="typeofsellerothercheck" style="margin-right: 10px;">
             <span>Other</span> <br>
             <section style="padding-left: 20px" *ngIf="form.get('typeofsellerothercheck').value === true">
-              <app-field>
+              <app-field >
                 <i>If Other, Please specify</i>
                 <br>
                 <input type="text" class="form-control" formControlName="typeofsellerother" style="width: 340px">
