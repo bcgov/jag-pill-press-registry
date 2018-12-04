@@ -4186,8 +4186,6 @@
                 "_parentcustomerid_value desc",
                 "birthdate",
                 "birthdate desc",
-                "bcgov_contacttype",
-                "bcgov_contacttype desc",
                 "numberofchildren",
                 "numberofchildren desc",
                 "address2_latitude",
@@ -4578,7 +4576,6 @@
                 "territorycode",
                 "_parentcustomerid_value",
                 "birthdate",
-                "bcgov_contacttype",
                 "numberofchildren",
                 "address2_latitude",
                 "address2_postalcode",
@@ -4963,7 +4960,6 @@
                 "territorycode",
                 "_parentcustomerid_value",
                 "birthdate",
-                "bcgov_contacttype",
                 "numberofchildren",
                 "address2_latitude",
                 "address2_postalcode",
@@ -5368,6 +5364,8 @@
                 "traversedpath desc",
                 "bcgov_incompletecycle3",
                 "bcgov_incompletecycle3 desc",
+                "bcgov_intendtosellothercheck",
+                "bcgov_intendtosellothercheck desc",
                 "bcgov_serialnumber",
                 "bcgov_serialnumber desc",
                 "bcgov_pillpressencapsulatorsizeother",
@@ -5490,6 +5488,8 @@
                 "utcconversiontimezonecode desc",
                 "isdecrementing",
                 "isdecrementing desc",
+                "bcgov_complete",
+                "bcgov_complete desc",
                 "stageid",
                 "stageid desc",
                 "entityimage",
@@ -5558,6 +5558,8 @@
                 "_createdonbehalfby_value desc",
                 "caseorigincode",
                 "caseorigincode desc",
+                "bcgov_typeofsellerothercheck",
+                "bcgov_typeofsellerothercheck desc",
                 "timezoneruleversionnumber",
                 "timezoneruleversionnumber desc",
                 "bcgov_manufacturerofcontrolledequipment",
@@ -5677,6 +5679,7 @@
                 "onholdtime",
                 "traversedpath",
                 "bcgov_incompletecycle3",
+                "bcgov_intendtosellothercheck",
                 "bcgov_serialnumber",
                 "bcgov_pillpressencapsulatorsizeother",
                 "bcgov_intendtopurchaseequipment",
@@ -5738,6 +5741,7 @@
                 "bcgov_intendtosellother",
                 "utcconversiontimezonecode",
                 "isdecrementing",
+                "bcgov_complete",
                 "stageid",
                 "entityimage",
                 "followupby",
@@ -5772,6 +5776,7 @@
                 "_productid_value",
                 "_createdonbehalfby_value",
                 "caseorigincode",
+                "bcgov_typeofsellerothercheck",
                 "timezoneruleversionnumber",
                 "bcgov_manufacturerofcontrolledequipment",
                 "firstresponsesent",
@@ -5994,6 +5999,7 @@
                 "onholdtime",
                 "traversedpath",
                 "bcgov_incompletecycle3",
+                "bcgov_intendtosellothercheck",
                 "bcgov_serialnumber",
                 "bcgov_pillpressencapsulatorsizeother",
                 "bcgov_intendtopurchaseequipment",
@@ -6055,6 +6061,7 @@
                 "bcgov_intendtosellother",
                 "utcconversiontimezonecode",
                 "isdecrementing",
+                "bcgov_complete",
                 "stageid",
                 "entityimage",
                 "followupby",
@@ -6089,6 +6096,7 @@
                 "_productid_value",
                 "_createdonbehalfby_value",
                 "caseorigincode",
+                "bcgov_typeofsellerothercheck",
                 "timezoneruleversionnumber",
                 "bcgov_manufacturerofcontrolledequipment",
                 "firstresponsesent",
@@ -7906,6 +7914,614 @@
             "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.Dynamics.CRM.sharepointsite"
+            },
+            "description": "New property values"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      }
+    },
+    "/EntityDefinitions": {
+      "get": {
+        "tags": [
+          "EntityDefinitions"
+        ],
+        "summary": "Get entities from EntityDefinitions",
+        "operationId": "Entitydefinitions_Get",
+        "parameters": [
+          {
+            "name": "$top",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "$skip",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "$search",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "$count",
+            "in": "query",
+            "type": "boolean"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "MetadataId",
+                "MetadataId desc",
+                "HasChanged",
+                "HasChanged desc",
+                "ActivityTypeMask",
+                "ActivityTypeMask desc",
+                "AutoRouteToOwnerQueue",
+                "AutoRouteToOwnerQueue desc",
+                "CanTriggerWorkflow",
+                "CanTriggerWorkflow desc",
+                "Description",
+                "Description desc",
+                "DisplayCollectionName",
+                "DisplayCollectionName desc",
+                "DisplayName",
+                "DisplayName desc",
+                "EntityHelpUrlEnabled",
+                "EntityHelpUrlEnabled desc",
+                "EntityHelpUrl",
+                "EntityHelpUrl desc",
+                "IsDocumentManagementEnabled",
+                "IsDocumentManagementEnabled desc",
+                "IsOneNoteIntegrationEnabled",
+                "IsOneNoteIntegrationEnabled desc",
+                "IsInteractionCentricEnabled",
+                "IsInteractionCentricEnabled desc",
+                "IsKnowledgeManagementEnabled",
+                "IsKnowledgeManagementEnabled desc",
+                "IsSLAEnabled",
+                "IsSLAEnabled desc",
+                "IsBPFEntity",
+                "IsBPFEntity desc",
+                "IsDocumentRecommendationsEnabled",
+                "IsDocumentRecommendationsEnabled desc",
+                "AutoCreateAccessTeams",
+                "AutoCreateAccessTeams desc",
+                "IsActivity",
+                "IsActivity desc",
+                "IsActivityParty",
+                "IsActivityParty desc",
+                "IsAuditEnabled",
+                "IsAuditEnabled desc",
+                "IsAvailableOffline",
+                "IsAvailableOffline desc",
+                "IsChildEntity",
+                "IsChildEntity desc",
+                "IsAIRUpdated",
+                "IsAIRUpdated desc",
+                "IsValidForQueue",
+                "IsValidForQueue desc",
+                "IsConnectionsEnabled",
+                "IsConnectionsEnabled desc",
+                "IconLargeName",
+                "IconLargeName desc",
+                "IconMediumName",
+                "IconMediumName desc",
+                "IconSmallName",
+                "IconSmallName desc",
+                "IsCustomEntity",
+                "IsCustomEntity desc",
+                "IsBusinessProcessEnabled",
+                "IsBusinessProcessEnabled desc",
+                "IsCustomizable",
+                "IsCustomizable desc",
+                "IsRenameable",
+                "IsRenameable desc",
+                "IsMappable",
+                "IsMappable desc",
+                "IsDuplicateDetectionEnabled",
+                "IsDuplicateDetectionEnabled desc",
+                "CanCreateAttributes",
+                "CanCreateAttributes desc",
+                "CanCreateForms",
+                "CanCreateForms desc",
+                "CanCreateViews",
+                "CanCreateViews desc",
+                "CanCreateCharts",
+                "CanCreateCharts desc",
+                "CanBeRelatedEntityInRelationship",
+                "CanBeRelatedEntityInRelationship desc",
+                "CanBePrimaryEntityInRelationship",
+                "CanBePrimaryEntityInRelationship desc",
+                "CanBeInManyToMany",
+                "CanBeInManyToMany desc",
+                "CanEnableSyncToExternalSearchIndex",
+                "CanEnableSyncToExternalSearchIndex desc",
+                "SyncToExternalSearchIndex",
+                "SyncToExternalSearchIndex desc",
+                "CanModifyAdditionalSettings",
+                "CanModifyAdditionalSettings desc",
+                "CanChangeHierarchicalRelationship",
+                "CanChangeHierarchicalRelationship desc",
+                "IsOptimisticConcurrencyEnabled",
+                "IsOptimisticConcurrencyEnabled desc",
+                "ChangeTrackingEnabled",
+                "ChangeTrackingEnabled desc",
+                "CanChangeTrackingBeEnabled",
+                "CanChangeTrackingBeEnabled desc",
+                "IsImportable",
+                "IsImportable desc",
+                "IsIntersect",
+                "IsIntersect desc",
+                "IsMailMergeEnabled",
+                "IsMailMergeEnabled desc",
+                "IsManaged",
+                "IsManaged desc",
+                "IsEnabledForCharts",
+                "IsEnabledForCharts desc",
+                "IsEnabledForTrace",
+                "IsEnabledForTrace desc",
+                "IsValidForAdvancedFind",
+                "IsValidForAdvancedFind desc",
+                "IsVisibleInMobile",
+                "IsVisibleInMobile desc",
+                "IsVisibleInMobileClient",
+                "IsVisibleInMobileClient desc",
+                "IsReadOnlyInMobileClient",
+                "IsReadOnlyInMobileClient desc",
+                "IsOfflineInMobileClient",
+                "IsOfflineInMobileClient desc",
+                "DaysSinceRecordLastModified",
+                "DaysSinceRecordLastModified desc",
+                "MobileOfflineFilters",
+                "MobileOfflineFilters desc",
+                "IsReadingPaneEnabled",
+                "IsReadingPaneEnabled desc",
+                "IsQuickCreateEnabled",
+                "IsQuickCreateEnabled desc",
+                "LogicalName",
+                "LogicalName desc",
+                "ObjectTypeCode",
+                "ObjectTypeCode desc",
+                "OwnershipType",
+                "OwnershipType desc",
+                "PrimaryNameAttribute",
+                "PrimaryNameAttribute desc",
+                "PrimaryImageAttribute",
+                "PrimaryImageAttribute desc",
+                "PrimaryIdAttribute",
+                "PrimaryIdAttribute desc",
+                "Privileges",
+                "Privileges desc",
+                "RecurrenceBaseEntityLogicalName",
+                "RecurrenceBaseEntityLogicalName desc",
+                "ReportViewName",
+                "ReportViewName desc",
+                "SchemaName",
+                "SchemaName desc",
+                "IntroducedVersion",
+                "IntroducedVersion desc",
+                "IsStateModelAware",
+                "IsStateModelAware desc",
+                "EnforceStateTransitions",
+                "EnforceStateTransitions desc",
+                "EntityColor",
+                "EntityColor desc",
+                "LogicalCollectionName",
+                "LogicalCollectionName desc",
+                "CollectionSchemaName",
+                "CollectionSchemaName desc",
+                "EntitySetName",
+                "EntitySetName desc",
+                "IsEnabledForExternalChannels",
+                "IsEnabledForExternalChannels desc",
+                "IsPrivate",
+                "IsPrivate desc",
+                "UsesBusinessDataLabelTable",
+                "UsesBusinessDataLabelTable desc",
+                "IsLogicalEntity",
+                "IsLogicalEntity desc",
+                "HasActivities",
+                "HasActivities desc",
+                "HasNotes",
+                "HasNotes desc",
+                "HasFeedback",
+                "HasFeedback desc"
+              ]
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "MetadataId",
+                "HasChanged",
+                "ActivityTypeMask",
+                "AutoRouteToOwnerQueue",
+                "CanTriggerWorkflow",
+                "Description",
+                "DisplayCollectionName",
+                "DisplayName",
+                "EntityHelpUrlEnabled",
+                "EntityHelpUrl",
+                "IsDocumentManagementEnabled",
+                "IsOneNoteIntegrationEnabled",
+                "IsInteractionCentricEnabled",
+                "IsKnowledgeManagementEnabled",
+                "IsSLAEnabled",
+                "IsBPFEntity",
+                "IsDocumentRecommendationsEnabled",
+                "AutoCreateAccessTeams",
+                "IsActivity",
+                "IsActivityParty",
+                "IsAuditEnabled",
+                "IsAvailableOffline",
+                "IsChildEntity",
+                "IsAIRUpdated",
+                "IsValidForQueue",
+                "IsConnectionsEnabled",
+                "IconLargeName",
+                "IconMediumName",
+                "IconSmallName",
+                "IsCustomEntity",
+                "IsBusinessProcessEnabled",
+                "IsCustomizable",
+                "IsRenameable",
+                "IsMappable",
+                "IsDuplicateDetectionEnabled",
+                "CanCreateAttributes",
+                "CanCreateForms",
+                "CanCreateViews",
+                "CanCreateCharts",
+                "CanBeRelatedEntityInRelationship",
+                "CanBePrimaryEntityInRelationship",
+                "CanBeInManyToMany",
+                "CanEnableSyncToExternalSearchIndex",
+                "SyncToExternalSearchIndex",
+                "CanModifyAdditionalSettings",
+                "CanChangeHierarchicalRelationship",
+                "IsOptimisticConcurrencyEnabled",
+                "ChangeTrackingEnabled",
+                "CanChangeTrackingBeEnabled",
+                "IsImportable",
+                "IsIntersect",
+                "IsMailMergeEnabled",
+                "IsManaged",
+                "IsEnabledForCharts",
+                "IsEnabledForTrace",
+                "IsValidForAdvancedFind",
+                "IsVisibleInMobile",
+                "IsVisibleInMobileClient",
+                "IsReadOnlyInMobileClient",
+                "IsOfflineInMobileClient",
+                "DaysSinceRecordLastModified",
+                "MobileOfflineFilters",
+                "IsReadingPaneEnabled",
+                "IsQuickCreateEnabled",
+                "LogicalName",
+                "ObjectTypeCode",
+                "OwnershipType",
+                "PrimaryNameAttribute",
+                "PrimaryImageAttribute",
+                "PrimaryIdAttribute",
+                "Privileges",
+                "RecurrenceBaseEntityLogicalName",
+                "ReportViewName",
+                "SchemaName",
+                "IntroducedVersion",
+                "IsStateModelAware",
+                "EnforceStateTransitions",
+                "EntityColor",
+                "LogicalCollectionName",
+                "CollectionSchemaName",
+                "EntitySetName",
+                "IsEnabledForExternalChannels",
+                "IsPrivate",
+                "UsesBusinessDataLabelTable",
+                "IsLogicalEntity",
+                "HasActivities",
+                "HasNotes",
+                "HasFeedback"
+              ]
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "*",
+                "Attributes",
+                "ManyToManyRelationships",
+                "ManyToOneRelationships",
+                "OneToManyRelationships",
+                "Keys"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "schema": {
+              "title": "Collection of EntityDefinitions",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.Dynamics.CRM.EntityMetadata"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "EntityDefinitions"
+        ],
+        "summary": "Add new entity to EntityDefinitions",
+        "operationId": "Entitydefinitions_Create",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.EntityMetadata"
+            },
+            "description": "New entity"
+          },
+          {
+            "name": "Prefer",
+            "in": "header",
+            "description": "Required in order for the service to return a JSON representation of the object.",
+            "type": "string",
+            "default": "return=representation"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.EntityMetadata"
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      }
+    },
+    "/EntityDefinitions({MetadataId})": {
+      "get": {
+        "tags": [
+          "EntityDefinitions"
+        ],
+        "summary": "Get entity from EntityDefinitions by key",
+        "operationId": "Entitydefinitions_GetByKey",
+        "parameters": [
+          {
+            "name": "MetadataId",
+            "in": "path",
+            "required": true,
+            "description": "key: MetadataId",
+            "type": "string"
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "MetadataId",
+                "HasChanged",
+                "ActivityTypeMask",
+                "AutoRouteToOwnerQueue",
+                "CanTriggerWorkflow",
+                "Description",
+                "DisplayCollectionName",
+                "DisplayName",
+                "EntityHelpUrlEnabled",
+                "EntityHelpUrl",
+                "IsDocumentManagementEnabled",
+                "IsOneNoteIntegrationEnabled",
+                "IsInteractionCentricEnabled",
+                "IsKnowledgeManagementEnabled",
+                "IsSLAEnabled",
+                "IsBPFEntity",
+                "IsDocumentRecommendationsEnabled",
+                "AutoCreateAccessTeams",
+                "IsActivity",
+                "IsActivityParty",
+                "IsAuditEnabled",
+                "IsAvailableOffline",
+                "IsChildEntity",
+                "IsAIRUpdated",
+                "IsValidForQueue",
+                "IsConnectionsEnabled",
+                "IconLargeName",
+                "IconMediumName",
+                "IconSmallName",
+                "IsCustomEntity",
+                "IsBusinessProcessEnabled",
+                "IsCustomizable",
+                "IsRenameable",
+                "IsMappable",
+                "IsDuplicateDetectionEnabled",
+                "CanCreateAttributes",
+                "CanCreateForms",
+                "CanCreateViews",
+                "CanCreateCharts",
+                "CanBeRelatedEntityInRelationship",
+                "CanBePrimaryEntityInRelationship",
+                "CanBeInManyToMany",
+                "CanEnableSyncToExternalSearchIndex",
+                "SyncToExternalSearchIndex",
+                "CanModifyAdditionalSettings",
+                "CanChangeHierarchicalRelationship",
+                "IsOptimisticConcurrencyEnabled",
+                "ChangeTrackingEnabled",
+                "CanChangeTrackingBeEnabled",
+                "IsImportable",
+                "IsIntersect",
+                "IsMailMergeEnabled",
+                "IsManaged",
+                "IsEnabledForCharts",
+                "IsEnabledForTrace",
+                "IsValidForAdvancedFind",
+                "IsVisibleInMobile",
+                "IsVisibleInMobileClient",
+                "IsReadOnlyInMobileClient",
+                "IsOfflineInMobileClient",
+                "DaysSinceRecordLastModified",
+                "MobileOfflineFilters",
+                "IsReadingPaneEnabled",
+                "IsQuickCreateEnabled",
+                "LogicalName",
+                "ObjectTypeCode",
+                "OwnershipType",
+                "PrimaryNameAttribute",
+                "PrimaryImageAttribute",
+                "PrimaryIdAttribute",
+                "Privileges",
+                "RecurrenceBaseEntityLogicalName",
+                "ReportViewName",
+                "SchemaName",
+                "IntroducedVersion",
+                "IsStateModelAware",
+                "EnforceStateTransitions",
+                "EntityColor",
+                "LogicalCollectionName",
+                "CollectionSchemaName",
+                "EntitySetName",
+                "IsEnabledForExternalChannels",
+                "IsPrivate",
+                "UsesBusinessDataLabelTable",
+                "IsLogicalEntity",
+                "HasActivities",
+                "HasNotes",
+                "HasFeedback"
+              ]
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "*",
+                "Attributes",
+                "ManyToManyRelationships",
+                "ManyToOneRelationships",
+                "OneToManyRelationships",
+                "Keys"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.EntityMetadata"
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "EntityDefinitions"
+        ],
+        "summary": "Delete entity from EntityDefinitions",
+        "operationId": "Entitydefinitions_Delete",
+        "parameters": [
+          {
+            "name": "MetadataId",
+            "in": "path",
+            "required": true,
+            "description": "key: MetadataId",
+            "type": "string"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "EntityDefinitions"
+        ],
+        "summary": "Update entity in EntityDefinitions",
+        "operationId": "Entitydefinitions_Update",
+        "parameters": [
+          {
+            "name": "MetadataId",
+            "in": "path",
+            "required": true,
+            "description": "key: MetadataId",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.EntityMetadata"
             },
             "description": "New property values"
           }
@@ -19885,10 +20501,6 @@
           "type": "string",
           "format": "date-time"
         },
-        "bcgov_contacttype": {
-          "type": "integer",
-          "x-nullable": true
-        },
         "numberofchildren": {
           "type": "integer",
           "x-nullable": true
@@ -28654,6 +29266,10 @@
           "type": "boolean",
           "x-nullable": true
         },
+        "bcgov_intendtosellothercheck": {
+          "type": "boolean",
+          "x-nullable": true
+        },
         "bcgov_serialnumber": {
           "type": "string",
           "x-nullable": true
@@ -28898,6 +29514,10 @@
           "type": "boolean",
           "x-nullable": true
         },
+        "bcgov_complete": {
+          "type": "boolean",
+          "x-nullable": true
+        },
         "stageid": {
           "type": "string",
           "x-nullable": true
@@ -29031,6 +29651,10 @@
         },
         "caseorigincode": {
           "type": "integer",
+          "x-nullable": true
+        },
+        "bcgov_typeofsellerothercheck": {
+          "type": "boolean",
           "x-nullable": true
         },
         "timezoneruleversionnumber": {
