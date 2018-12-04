@@ -54,7 +54,7 @@ export class DashboardLiteComponent implements OnInit {
 
   }
 
-  startNewLicenceApplication() {
+  startNewWaiverApplication() {
     const newLicenceApplicationData: Application = new Application();
     this.busy = this.applicationDataService.createApplication(newLicenceApplicationData).subscribe(
       data => {
@@ -66,4 +66,31 @@ export class DashboardLiteComponent implements OnInit {
       }
     );
   }
+
+  startNewAuthorizedOwnerApplication() {
+    const newLicenceApplicationData: Application = new Application();
+    this.busy = this.applicationDataService.createApplication(newLicenceApplicationData).subscribe(
+      data => {
+        this.router.navigateByUrl(`/application/authorized-owner/${data.id}`);
+      },
+      err => {
+        this.snackBar.open('Error starting a New Authorized Owner Application', 'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
+        console.log('Error starting a New Authorized Owner Application');
+      }
+    );
+  }
+
+  startNewASellerApplication() {
+    const newLicenceApplicationData: Application = new Application();
+    this.busy = this.applicationDataService.createApplication(newLicenceApplicationData).subscribe(
+      data => {
+        this.router.navigateByUrl(`/application/registered-seller/${data.id}`);
+      },
+      err => {
+        this.snackBar.open('Error starting a New Registered Seller Application', 'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
+        console.log('Error starting a Registered Seller Application');
+      }
+    );
+  }
+
 }
