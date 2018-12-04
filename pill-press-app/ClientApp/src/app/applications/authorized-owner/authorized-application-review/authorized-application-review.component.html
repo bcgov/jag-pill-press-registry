@@ -16,14 +16,14 @@
     <h2>Equipment Information</h2>
     <table class="summary-table">
       <tr *ngFor="let item of equipmentInformation; let i = index;">
-        <td [ngClass]="{'table-row': i%2==0, 'table-row-alt': i%2==1 }">{{ item}}</td>
+        <td [ngClass]="{'table-row': i%2==0, 'row-alt': i%2==1 }">{{ item}}</td>
       </tr>
     </table>
 
     <h2>Purpose of Controlled Equipment</h2>
     <table class="summary-table">
       <tr *ngFor="let item of purposeOfEquipment; let i = index;">
-        <td [ngClass]="{'table-row': i%2==0, 'table-row-alt': i%2==1 }">{{ item.text}}</td>
+        <td [ngClass]="{'table-row': i%2==0, 'row-alt': i%2==1 }">{{ item.text}}</td>
       </tr>
     </table>
 
@@ -36,7 +36,7 @@
         </td>
       </tr>
       <tr>
-        <td class="table-row-alt">
+        <td class="row-alt">
           <div *ngIf="formData?.foodanddrugact">Food and Drug Act</div>
           <div *ngIf="formData?.legislativeauthorityother">Other: {{formData?.legislativeauthorityother}}</div>
         </td>
@@ -48,7 +48,7 @@
         </td>
       </tr>
       <tr>
-        <td class="table-row-alt">
+        <td class="row-alt">
           <div *ngIf="formData?.kindsofproductsdrugs">Drugs</div>
           <div *ngIf="formData?.kindsofproductsnaturalhealthproducts">Natural Health Products</div>
           <div *ngIf="formData?.kindsofproductsother">Other: {{formData?.kindsofproductsother}}</div>
@@ -64,7 +64,7 @@
         </td>
       </tr>
       <tr *ngIf="formData?.drugestablishmentlicence">
-        <td class="table-row-alt">
+        <td class="row-alt">
           <ul style="margin-bottom: 0; padding-left: 15px;">
             <li>Drug Establishment Licence</li>
           </ul>
@@ -79,7 +79,7 @@
               </td>
             </tr>
             <tr>
-              <td class="table-row-alt">
+              <td class="row-alt">
                 {{formData?.delbusinessname}}
               </td>
             </tr>
@@ -89,7 +89,7 @@
               </td>
             </tr>
             <tr>
-              <td class="table-row-alt">
+              <td class="row-alt">
                 {{formData?.drugestablishmentlicencenumber}}
               </td>
             </tr>
@@ -99,7 +99,7 @@
               </td>
             </tr>
             <tr>
-              <td class="table-row-alt">
+              <td class="row-alt">
                 {{formData?.drugestablishmentlicenceexpirydate}}
               </td>
             </tr>
@@ -107,7 +107,7 @@
         </td>
       </tr>
       <tr *ngIf="formData?.sitelicence">
-        <td class="table-row-alt">
+        <td class="row-alt">
           <ul style="margin-bottom: 0; padding-left: 15px;">
             <li>Site Licence</li>
           </ul>
@@ -122,7 +122,7 @@
               </td>
             </tr>
             <tr>
-              <td class="table-row-alt">
+              <td class="row-alt">
                 {{formData?.sitelicencebusinessname}}
               </td>
             </tr>
@@ -132,7 +132,7 @@
               </td>
             </tr>
             <tr>
-              <td class="table-row-alt">
+              <td class="row-alt">
                 {{formData?.sitelicencenumber}}
               </td>
             </tr>
@@ -142,7 +142,7 @@
               </td>
             </tr>
             <tr>
-              <td class="table-row-alt">
+              <td class="row-alt">
                 {{formData?.sitelicenceexpirydate}}
               </td>
             </tr>
@@ -150,7 +150,7 @@
         </td>
       </tr>
       <tr *ngIf="formData?.otherlicencebusinessname">
-        <td class="table-row-alt">
+        <td class="row-alt">
           <ul style="margin-bottom: 0; padding-left: 15px;">
             <li>Other: {{formData?.otherlicence}}</li>
           </ul>
@@ -165,7 +165,7 @@
               </td>
             </tr>
             <tr>
-              <td class="table-row-alt">
+              <td class="row-alt">
                 {{formData?.otherlicencebusinessname}}
               </td>
             </tr>
@@ -175,7 +175,7 @@
               </td>
             </tr>
             <tr>
-              <td class="table-row-alt">
+              <td class="row-alt">
                 {{formData?.otherlicencenumber}}
               </td>
             </tr>
@@ -185,14 +185,14 @@
               </td>
             </tr>
             <tr>
-              <td class="table-row-alt">
+              <td class="row-alt">
                 {{formData?.otherlicenceexpirydate}}
               </td>
             </tr>
           </table>
         </td>
       </tr>
-      <!-- <td [ngClass]="{'table-row': i%2==0, 'table-row-alt': i%2==1 }">{{ item}}</td> -->
+      <!-- <td [ngClass]="{'table-row': i%2==0, 'row-alt': i%2==1 }">{{ item}}</td> -->
     </table>
 
     <h3 class="blue-header">DECLARATION AND CONSENT</h3>
@@ -229,53 +229,21 @@
   </div>
 
   <div class="col-lg-4 col-sm-12" style="position: relative">
-    <p></p>
-    <section class="submit-container">
-      <table>
-        <tr>
-          <td>
-            <h2 class="round-icon-wrapper"><i class="fas fa-question"></i></h2>
-          </td>
-          <td style="padding-left: 10px">
-            <h2>Update your personal information</h2>
-          </td>
-        </tr>
-      </table>
-      <div class="submit-content">
-        <p>If you find an error in your personal information, please contact Service BC, ICBC or AddressChangeBC to
-          correct
-          it.
-        </p>
-        <ul>
-          <li>
-            <a style="color: #fff;" href="https://www2.gov.bc.ca/gov/content/governments/government-id/bc-services-card/change-personal-information">BC
-              Service Card</a>
-          </li>
-          <li>
-            <a style="color: #fff;" href="https://www.icbc.com/driver-licensing/getting-licensed/Pages/Change-your-address-or-name.aspx">ICBC</a>
-          </li>
-          <li>
-            <a style="color: #fff;" href="https://www.addresschange.gov.bc.ca/">AddressChangeBC</a>
-          </li>
-        </ul>
-      </div>
-    </section>
-    <section class="submit-container" style="background-color: #F2F2F2; color:#000; border: none;">
-      <h2 style="color: #000">Collection Notice:</h2>
-      <div class="submit-content">
-        <p>
-          The Security Programs Division (SPD) will collect your personal information for the purpose of fulfilling
-          the requirements
-          of the Cannabis Control and Licensing Act (CCLA) and associated regulations in accordance with Sections 26
-          (a)
-          and (c) of the Freedom of Information and Protection of Privacy Act. Should you have any questions about
-          the
-          collection, use, or disclosure of personal information, please contact the Senior Policy Analyst, Security
-          Programs
-          Division via mail to PO Box 9217 Stn Prov Govt Victoria, BC V8W 9J1; email to
-          <a href="mailto:cannabissecurityscreening@gov.bc.ca">cannabissecurityscreening@gov.bc.ca</a>;
-          or by telephone at 1-855-587-0185.</p>
-      </div>
-    </section>
-  </div>
+      <!-- <div [ngBusy]="busy"></div> -->
+      <p></p>
+      <section class="submit-container">
+        <table>
+          <tr>
+            <td>
+              <h2 class="round-icon-wrapper"><i class="fas fa-address-card"></i></h2>
+            </td>
+            <td style="padding-left: 10px">
+              <h2>Useful Links & Information</h2>
+            </td>
+          </tr>
+        </table>
+        <div class="submit-content">
+        </div>
+      </section>
+    </div>
 </div>
