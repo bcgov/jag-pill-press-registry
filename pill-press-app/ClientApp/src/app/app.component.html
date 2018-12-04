@@ -143,6 +143,7 @@
           </li>
         </ul>
       </div>
+      <a *ngIf="versionInfo && versionInfo.fileVersion" (click)="showVersionInfo()" class="nav-link version-info">{{versionInfo.fileVersion}}</a>
     </nav>
   </footer>
 </div>
