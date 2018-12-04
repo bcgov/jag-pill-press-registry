@@ -39,11 +39,6 @@ const routes: Routes = [
     canActivate: [BCeidAuthGuard]
   },
   {
-    path: 'business-profile-review/:mode',
-    component: ProfileSummaryComponent,
-    canActivate: [BCeidAuthGuard]
-  },
-  {
     path: 'business-profile-review',
     component: ProfileSummaryComponent,
     canActivate: [BCeidAuthGuard]
@@ -52,6 +47,11 @@ const routes: Routes = [
     path: 'application',
     canActivate: [BCeidAuthGuard],
     children: [
+      {
+        path: 'profile-review/:mode/:applicationId',
+        component: ProfileSummaryComponent,
+        canActivate: [BCeidAuthGuard]
+      },
       {
         path: 'waiver',
         children: [
