@@ -4,11 +4,11 @@
     <div class="col-lg-8 col-sm-12">
       <div>
         <h2 class="step">STEP 2</h2>
-        <h1>Authorized Owner Confirmation</h1>
+        <h1 style="margin-top: 0">Authorized Owner Confirmation</h1>
         <p>Please complete the form below.  Your information will only be saved once you click the Save & Continue button at the end of the page.</p>
 
-        <section>
-          <h3 class="blue-header">EQUIPMENT INFORMATION</h3>
+        <h3 class="blue-header">EQUIPMENT INFORMATION</h3>
+        <section class="padded-section">
           <app-field label="Do you currently own, use, or possess Controlled Equipment?" [required]="true"
             [showChevrons]="false" errorMessage="Please select yes or no" [valid]="form.get('currentlyownusepossessequipment').valid || !form.get('currentlyownusepossessequipment').touched">
             <input type="radio" [value]="true" name="currentlyownusepossessequipment" formControlName="currentlyownusepossessequipment">
@@ -47,8 +47,8 @@
           </app-field>
         </section>
 
-        <section>
-          <h3 class="blue-header">PURPOSE OF CONTROLLED EQUIPMENT</h3>
+        <h3 class="blue-header">PURPOSE OF CONTROLLED EQUIPMENT</h3>
+        <section class="padded-section">
           <app-field label="Do you own, use, or possess (or intend to own) Controlled Equipment for the purposes of producing your own products?"
             [showChevrons]="false" errorMessage="Please select yes or no" [valid]="form.get('producingownproduct').valid || !form.get('producingownproduct').touched"
             [required]="true">
@@ -129,8 +129,8 @@
           </section>
         </section>
 
-        <section>
-          <h3 class="blue-header">LEGISLATIVE AUTHORIZATION</h3>
+        <h3 class="blue-header">LEGISLATIVE AUTHORIZATION</h3>
+        <section class="padded-section">
           <p></p>
           <p>An Authorized Owner of Controlled Equipment includes a person who is authorized under an enactment of BC
             or Canada to manufacture a drug or natural health product.</p>
@@ -237,9 +237,9 @@
         </div>
 
         <section style="display: flex; justify-content: space-between; padding-top: 30px;">
-          <div><span class="error-states">*</span> <i>Required field</i></div>
+          <!-- <div><span class="error-states">*</span> <i>Required field</i></div> -->
+          <a href="javascript: void(0);" (click)="save(false);"><i style="margin-right: 5px" class="fa fa-save"></i>Save & Close</a>
           <div>
-              <a href="javascript: void(0);" (click)="save(false);" style="margin-right: 10px"><i class="fas fa-save"></i>Save & Close</a>
             <button class="btn btn-primary" (click)="markAsTouched(); save(true);">SAVE & CONTINUE</button>
           </div>
         </section>
