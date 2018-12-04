@@ -85,6 +85,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
     				business.addressProv  = account.business.address.province.value;
     				business.addressPostal = account.business.address.postal.value;
     				business.addressCountry = account.business.address.country.value;
+                    business.userId = account.userId.value;
 
     				return business;
                 }
