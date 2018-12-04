@@ -15,6 +15,7 @@ export const MANUFACTURING_FOR_OTHERS = 'Manufacturing For Others';
 export class WaiverApplicationComponent implements OnInit {
   form: FormGroup;
   busy: Subscription;
+  busyPromise: Promise<any>;
   waiverId: string;
 
   deletedProducts: any[] = [];
@@ -79,7 +80,7 @@ export class WaiverApplicationComponent implements OnInit {
   }
 
   reloadData() {
-    this.applicationDataService.getApplicationById(this.waiverId).subscribe(data => {
+    this.busy = this.applicationDataService.getApplicationById(this.waiverId).subscribe(data => {
       this.form.patchValue(data);
 
       // process custom products
@@ -95,7 +96,7 @@ export class WaiverApplicationComponent implements OnInit {
         this.addCustomProduct(p);
       });
     }, error => {
-      debugger;
+      // debugger;
     });
   }
 
@@ -169,8 +170,9 @@ export class WaiverApplicationComponent implements OnInit {
   save(gotToReview: boolean) {
     const value = this.form.value;
     const saveList = [this.applicationDataService.updateApplication(value), ...this.saveCustomProducts()];
-    zip(...saveList)
-      .subscribe(res => {
+    this.busyPromise = zip(...saveList)
+      .toPromise()
+      .then(res => {
         if (gotToReview) {
           this.router.navigateByUrl(`/application/waiver/review/${this.waiverId}`);
         } else {
@@ -211,7 +213,7 @@ export class WaiverApplicationComponent implements OnInit {
 
 
   gotoReview() {
-    this.router.navigate(['/application/waiver/review/' + this.waiverId]);    
+    this.router.navigate(['/application/waiver/review/' + this.waiverId]);
   }
 
 }

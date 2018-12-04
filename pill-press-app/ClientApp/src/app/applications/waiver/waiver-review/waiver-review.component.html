@@ -32,7 +32,7 @@
     </table>
 
     <h3 class="blue-header">DECLARATION AND CONSENT</h3>
-    <div [formGroup]="form">
+    <div [formGroup]="form" class="padded-section">
       <section style="display: flex">
         <input type="checkbox" style="flex: 0 0 20px" formControlName="declarationofcorrectinformation">
         <span>
@@ -53,13 +53,13 @@
 
     <div style="margin-top: 30px; display: flex; justify-content: space-between">
       <section>
-        <strong class="error-states">*</strong> <i>Required field</i>
+        <!-- <strong class="error-states">*</strong> <i>Required field</i> -->
+        <a href="javascript: void(0);" (click)="save(false)"><i class="fa fa-save" style="margin-right: 5px"></i>Save & Close</a>
       </section>
       <section>
-        <a href="javascript: void(0);" style="margin-right: 10px"><i class="fas fa-save"></i>Save & Close</a>
         <button class="btn btn-secondary" style="margin-right: 10px" routerLink="/application/waiver/{{waiverId}}">EDIT
           APPLICATION</button>
-        <button class="btn btn-primary" (click)="save()">SUBMIT</button>
+        <button class="btn btn-primary" (click)="save(true)">SUBMIT</button>
       </section>
     </div>
   </div>

@@ -163,13 +163,13 @@ th {
     padding: 5px 5px 3px 10px;
 }
 
-td {
+.summary-table td {
     padding: 5px;
     background-color: #e1e8f2;
 }
 
-.row-alt {
-    background-color: #f1f4fa;
+.summary-table .row-alt {
+    background-color: #f1f4fa !important;
 }
 
 .blue-header {
@@ -201,7 +201,7 @@ hr {
 }
 
 .form-wrapper {
-    padding-left: 30px;
+    padding-left: 50px;
     padding-right: 30px;
 }
 
@@ -225,3 +225,6 @@ hr {
     display: inline-block;
 }
 
+.padded-section {
+    padding-left: 15px;
+}
