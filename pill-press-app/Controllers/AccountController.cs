@@ -238,6 +238,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 // Adoxio_externalid is where we will store the guid from siteminder.
                 string sanitizedContactSiteminderId = GuidUtility.SanitizeGuidString(contactSiteminderGuid);
                 userContact.Externaluseridentifier = sanitizedContactSiteminderId;
+                userContact.BcgovBceiduserguid = sanitizedContactSiteminderId;
+
                 userContact.Fullname = userSettings.UserDisplayName;
                 userContact.Nickname = userSettings.UserDisplayName;
 
@@ -257,6 +259,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     userContact.Lastname = bceidBusiness.individualSurname;
                     userContact.Emailaddress1 = bceidBusiness.contactEmail;
                     userContact.Telephone1 = bceidBusiness.contactPhone;
+                    userContact.BcgovBceid = bceidBusiness.userId;
+                    userContact.BcgovBceidemail = bceidBusiness.contactEmail;
                 }
                 else
                 {
