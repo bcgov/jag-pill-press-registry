@@ -72,6 +72,7 @@ import { SurveyTestComponent } from './survey/test.component';
 import { SurveySidebarComponent } from './survey/sidebar.component';
 import { SurveyDataService } from './services/survey-data.service';
 import { UserDataService } from './services/user-data.service';
+import { VersionInfoDataService } from './services/version-info-data.service';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ApplicationsListComponent } from './applications-list/applications-list.component';
 import { BusinessProfileComponent } from './business-information/business-profile/business-profile.component';
@@ -110,6 +111,7 @@ import { SellerApplicationThanksComponent } from './applications/registered-sell
 import { AuthorizedApplicationComponent } from './applications/authorized-owner/authorized-application/authorized-application.component';
 import { AuthorizedApplicationReviewComponent } from './applications/authorized-owner/authorized-application-review/authorized-application-review.component';
 import { AuthorizedApplicationThanksComponent } from './applications/authorized-owner/authorized-application-thanks/authorized-application-thanks.component';
+import { VersionInfoDialog } from './version-info/version-info.component';
 
 @NgModule({
   declarations: [
@@ -147,7 +149,8 @@ import { AuthorizedApplicationThanksComponent } from './applications/authorized-
     AuthorizedApplicationComponent,
     AuthorizedApplicationReviewComponent,
     AuthorizedApplicationThanksComponent,
-    SellerOwnerDialogComponent
+    SellerOwnerDialogComponent,
+    VersionInfoDialog
   ],
   imports: [
     BrowserModule,
@@ -257,12 +260,14 @@ import { AuthorizedApplicationThanksComponent } from './applications/authorized-
     PreviousAddressDataService,
     WorkerDataService,
     Title,
+    VersionInfoDataService,
     CanDeactivateGuard,
     BCeidAuthGuard,
     ServiceCardAuthGuard,
   ],
   entryComponents: [
-    SellerOwnerDialogComponent
+    SellerOwnerDialogComponent,
+    VersionInfoDialog
   ],
   bootstrap: [AppComponent]
 })
