@@ -1,6 +1,6 @@
 <div class="form-wrapper row">
   <div class="col-lg-8 col-sm-12" style="position: relative;">
-      <div [ngBusy]="busy"></div>
+      <div [ngBusy]="[busy, busyPromise]"></div>
     <h2 class="step">STEP 3</h2>
     <h1>Authorized Owner Confirmation Review</h1>
 
@@ -71,7 +71,7 @@
         </td>
       </tr>
       <tr *ngIf="formData?.drugestablishmentlicence">
-        <td style="padding-left: 30px;">
+        <td style="padding-left: 30px; background-color: transparent;">
           <table class="summary-table" style="margin-top: -10px">
             <tr>
               <td class="table-row">
@@ -114,7 +114,7 @@
         </td>
       </tr>
       <tr *ngIf="formData?.sitelicence">
-        <td style="padding-left: 30px;">
+        <td style="padding-left: 30px; background-color: transparent;">
           <table class="summary-table" style="margin-top: -10px">
             <tr>
               <td class="table-row">
@@ -157,7 +157,7 @@
         </td>
       </tr>
       <tr *ngIf="formData?.otherlicencebusinessname">
-        <td style="padding-left: 30px;">
+        <td style="padding-left: 30px; background-color: transparent;">
           <table class="summary-table" style="margin-top: -10px">
             <tr>
               <td class="table-row">
@@ -196,7 +196,7 @@
     </table>
 
     <h3 class="blue-header">DECLARATION AND CONSENT</h3>
-    <div [formGroup]="form">
+    <div [formGroup]="form" class="padded-section">
       <section style="display: flex">
         <input type="checkbox" style="flex: 0 0 20px" formControlName="declarationofcorrectinformation">
         <span>
@@ -217,13 +217,13 @@
 
     <div style="margin-top: 30px; display: flex; justify-content: space-between">
       <section>
-        <span class="error-states">*</span> <i>Required field</i>
+        <!-- <span class="error-states">*</span> <i>Required field</i> -->
+        <a href="javascript: void(0);" (click)="save(false)"><i class="fa fa-save" style="margin-right: 5px"></i>Save & Close</a>
       </section>
       <section>
-        <a href="javascript: void(0);" style="margin-right: 10px"><i class="fas fa-save"></i>Save & Close</a>
         <button class="btn btn-secondary" style="margin-right: 10px" routerLink="/application/authorized-owner/{{waiverId}}">EDIT
-          APPLICATION</button>
-        <button class="btn btn-primary" (click)="save()">SUBMIT</button>
+          CONFIRMATION</button>
+        <button class="btn btn-primary" (click)="save(true)">SUBMIT</button>
       </section>
     </div>
   </div>

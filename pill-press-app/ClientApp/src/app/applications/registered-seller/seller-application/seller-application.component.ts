@@ -36,6 +36,7 @@ export const MY_FORMATS = {
 export class SellerApplicationComponent implements OnInit {
   form: FormGroup;
   busy: Subscription;
+  busyPromise: Promise<any>;
   waiverId: string;
 
   ownerList: any[] = [];
@@ -80,7 +81,7 @@ export class SellerApplicationComponent implements OnInit {
   }
 
   reloadData() {
-    this.applicationDataService.getApplicationById(this.waiverId).subscribe(data => {
+    this.busy = this.applicationDataService.getApplicationById(this.waiverId).subscribe(data => {
       this.form.patchValue(data);
     }, error => {
       // todo: show errors;
@@ -101,8 +102,9 @@ export class SellerApplicationComponent implements OnInit {
   save(gotToReview: boolean) {
     const value = this.form.value;
     const saveList = [this.applicationDataService.updateApplication(value)];
-    zip(...saveList)
-      .subscribe(res => {
+    this.busyPromise = zip(...saveList)
+    .toPromise()
+      .then(res => {
         if (gotToReview) {
           this.router.navigateByUrl(`/application/registered-seller/review/${this.waiverId}`);
         } else {

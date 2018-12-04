@@ -1,10 +1,10 @@
 <div class="form-wrapper" style="position: relative;">
-  <div [ngBusy]="[busy]"></div>
+  <div [ngBusy]="[busy, busyPromise]"></div>
   <div class="row" [formGroup]="form">
     <div class="col-lg-8 col-sm-12">
       <div>
         <h2 class="step">STEP 2</h2>
-        <h1>Seller Registration Application</h1>
+        <h1 style="margin-top: 0">Seller Registration Application</h1>
 
         <p>A Registered Seller can sell the Controlled Equipment but can not use it for manufacturing. To be able to
           use the equipment, a seller must apply for a Waiver or be an Authorized Owner.</p>
@@ -12,8 +12,8 @@
         <p>When a Registered Seller rents/leases their equipment to others, these individuals must hold a Waiver to use
           the Controlled Equipment or be an Authorized Owner.</p>
 
-        <section>
-          <h3 class="blue-header">EQUIPMENT INFORMATION</h3>
+        <h3 class="blue-header">EQUIPMENT INFORMATION</h3>
+        <section class="padded-section">
           <app-field label="Do you currently own, use, or possess Controlled Equipment?" [required]="true"
             [showChevrons]="false" errorMessage="Please select yes or no" [valid]="form.get('currentlyownusepossessequipment').valid || !form.get('currentlyownusepossessequipment').touched">
             <input type="radio" [value]="true" name="currentlyownusepossessequipment" formControlName="currentlyownusepossessequipment">
@@ -31,8 +31,8 @@
           </app-field>
         </section>
 
-        <section>
-          <h3 class="blue-header">PURPOSE OF CONTROLLED EQUIPMENT</h3>
+        <h3 class="blue-header">PURPOSE OF CONTROLLED EQUIPMENT</h3>
+        <section class="padded-section">
           <app-field label="Do you intend on owning, using, or possessing Controlled Equipment for the purposes of producing a product?"
             [showChevrons]="false" errorMessage="Please select yes or no" [valid]="form.get('ownusepossesstoproduceaproduct').valid || !form.get('ownusepossesstoproduceaproduct').touched"
             [required]="true">
@@ -68,8 +68,8 @@
           </div>
         </section>
 
-        <section>
-          <h3 class="blue-header">SELLER BUSINESS DETAILS</h3>
+        <h3 class="blue-header">SELLER BUSINESS DETAILS</h3>
+        <section class="padded-section">
           <p></p>
           <app-field label="Do you intend on selling Controlled Equipment to others?" [required]="true" [showChevrons]="false"
             errorMessage="Please select yes or no" [valid]="form.get('intendonsellingequipmenttoothers').valid || !form.get('intendonsellingequipmenttoothers').touched">
@@ -91,7 +91,7 @@
             <input type="checkbox" formControlName="typeofsellerothercheck" style="margin-right: 10px;">
             <span>Other</span> <br>
             <section style="padding-left: 20px" *ngIf="form.get('typeofsellerothercheck').value === true">
-              <app-field >
+              <app-field>
                 <i>If Other, Please specify</i>
                 <br>
                 <input type="text" class="form-control" formControlName="typeofsellerother" style="width: 340px">
@@ -125,8 +125,8 @@
           </app-field>
         </section>
 
-        <section>
-          <h3 class="blue-header">OWNER/MANAGER INFORMATION</h3>
+        <h3 class="blue-header">OWNER/MANAGER INFORMATION</h3>
+        <section class="padded-section">
 
           <p>As part of the application process for a Registered Seller, business owners and managers are requested to
             consent to criminal record, police information, and correctional service information checks (Prescribed
@@ -170,36 +170,36 @@
             </tr>
           </table>
         </section>
-
+        <hr>
 
         <section style="display: flex; justify-content: space-between; padding-top: 30px;">
-          <div><span class="error-states">*</span> <i>Required field</i></div>
+          <!-- <div><span class="error-states">*</span> <i>Required field</i></div> -->
+          <a href="javascript: void(0);" (click)="save(false);"><i style="margin-right: 5px" class="fa fa-save"></i>Save
+            & Close</a>
           <div>
-            <a href="javascript: void(0);" (click)="save(false);" style="margin-right: 10px"><i class="fas fa-save"></i>Save
-              & Close</a>
             <button class="btn btn-primary" (click)="markAsTouched(); save(true);">SAVE & CONTINUE</button>
           </div>
         </section>
       </div>
     </div>
     <div class="col-lg-4 col-sm-12" style="position: relative">
-        <!-- <div [ngBusy]="busy"></div> -->
-        <p></p>
-        <section class="submit-container">
-          <table>
-            <tr>
-              <td>
-                <h2 class="round-icon-wrapper"><i class="fas fa-address-card"></i></h2>
-              </td>
-              <td style="padding-left: 10px">
-                <h2>Useful Links & Information</h2>
-              </td>
-            </tr>
-          </table>
-          <div class="submit-content">
-          </div>
-        </section>
-  
-      </div>
+      <!-- <div [ngBusy]="busy"></div> -->
+      <p></p>
+      <section class="submit-container">
+        <table>
+          <tr>
+            <td>
+              <h2 class="round-icon-wrapper"><i class="fas fa-address-card"></i></h2>
+            </td>
+            <td style="padding-left: 10px">
+              <h2>Useful Links & Information</h2>
+            </td>
+          </tr>
+        </table>
+        <div class="submit-content">
+        </div>
+      </section>
+
+    </div>
   </div>
 </div>
