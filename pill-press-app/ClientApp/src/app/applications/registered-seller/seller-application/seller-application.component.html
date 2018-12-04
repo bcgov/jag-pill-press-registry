@@ -34,14 +34,14 @@
         <section>
           <h3 class="blue-header">PURPOSE OF CONTROLLED EQUIPMENT</h3>
           <app-field label="Do you intend on owning, using, or possessing Controlled Equipment for the purposes of producing a product?"
-            [showChevrons]="false" errorMessage="Please select yes or no" [valid]="form.get('producingownproduct').valid || !form.get('producingownproduct').touched"
+            [showChevrons]="false" errorMessage="Please select yes or no" [valid]="form.get('ownusepossesstoproduceaproduct').valid || !form.get('ownusepossesstoproduceaproduct').touched"
             [required]="true">
-            <input type="radio" [value]="true" name="producingownproduct" formControlName="producingownproduct">
+            <input type="radio" [value]="true" name="ownusepossesstoproduceaproduct" formControlName="ownusepossesstoproduceaproduct">
             <span style="padding-right: 10px;">&nbsp;Yes</span>
-            <input type="radio" [value]="false" name="producingownproduct" formControlName="producingownproduct">
+            <input type="radio" [value]="false" name="ownusepossesstoproduceaproduct" formControlName="ownusepossesstoproduceaproduct">
             <span>&nbsp;No</span>
           </app-field>
-          <div class="notes" style="display: flex;" *ngIf="form.get('producingownproduct').value === true">
+          <div class="notes" style="display: flex;" *ngIf="form.get('ownusepossesstoproduceaproduct').value === true">
             <i class="fas fa-exclamation-circle" style="color: #fcba19; margin-right: 10px;"></i>
             <section>
               <strong>Note: </strong>
@@ -51,14 +51,14 @@
             </section>
           </div>
           <app-field label="Do you intend on renting or leasing Controlled Equipment to others?" [showChevrons]="false"
-            errorMessage="Please select yes or no" [valid]="form.get('providingmanufacturingtoothers').valid || !form.get('providingmanufacturingtoothers').touched"
+            errorMessage="Please select yes or no" [valid]="form.get('intendonrentingleasingtoothers').valid || !form.get('intendonrentingleasingtoothers').touched"
             [required]="true">
-            <input type="radio" [value]="true" name="providingmanufacturingtoothers" formControlName="providingmanufacturingtoothers">
+            <input type="radio" [value]="true" name="intendonrentingleasingtoothers" formControlName="intendonrentingleasingtoothers">
             <span style="padding-right: 10px;">&nbsp;Yes</span>
-            <input type="radio" [value]="false" name="providingmanufacturingtoothers" formControlName="providingmanufacturingtoothers">
+            <input type="radio" [value]="false" name="intendonrentingleasingtoothers" formControlName="intendonrentingleasingtoothers">
             <span>&nbsp;No</span>
           </app-field>
-          <div class="notes" style="display: flex;" *ngIf="form.get('providingmanufacturingtoothers').value === true">
+          <div class="notes" style="display: flex;" *ngIf="form.get('intendonrentingleasingtoothers').value === true">
             <i class="fas fa-exclamation-circle" style="color: #fcba19; margin-right: 10px;"></i>
             <section>
               <strong>Note: </strong>
@@ -72,56 +72,56 @@
           <h3 class="blue-header">SELLER BUSINESS DETAILS</h3>
           <p></p>
           <app-field label="Do you intend on selling Controlled Equipment to others?" [required]="true" [showChevrons]="false"
-            errorMessage="Please select yes or no" [valid]="form.get('currentlyownusepossessequipment').valid || !form.get('currentlyownusepossessequipment').touched">
-            <input type="radio" [value]="true" name="currentlyownusepossessequipment" formControlName="currentlyownusepossessequipment">
+            errorMessage="Please select yes or no" [valid]="form.get('intendonsellingequipmenttoothers').valid || !form.get('intendonsellingequipmenttoothers').touched">
+            <input type="radio" [value]="true" name="intendonsellingequipmenttoothers" formControlName="intendonsellingequipmenttoothers">
             <span style="padding-right: 10px;">&nbsp;Yes</span>
-            <input type="radio" [value]="false" name="currentlyownusepossessequipment" formControlName="currentlyownusepossessequipment">
+            <input type="radio" [value]="false" name="intendonsellingequipmenttoothers" formControlName="intendonsellingequipmenttoothers">
             <span>&nbsp;No</span>
           </app-field>
 
-          <app-field label="What type of seller are you?" [showChevrons]="false" errorMessage="Please select all the applicable legislative authorities"
-            [valid]="form.get('mainbusinessfocus').valid || !form.get('mainbusinessfocus').touched" [required]="true">
+          <app-field label="What type of seller are you?" [showChevrons]="false" errorMessage="" [valid]="true"
+            [required]="true">
             <p>Please select all the options that apply.</p>
-            <input type="checkbox" style="margin-right: 10px;" formControlName="foodanddrugact">
+            <input type="checkbox" style="margin-right: 10px;" formControlName="manufacturerofcontrolledequipment">
             <span>Manufacturer of Controlled Equipment</span> <br>
-            <input type="checkbox" style="margin-right: 10px;" formControlName="foodanddrugact">
+            <input type="checkbox" style="margin-right: 10px;" formControlName="onetimesellerofowncontrolledequipment">
             <span>One-time seller of Controlled Equipment</span> <br>
-            <input type="checkbox" style="margin-right: 10px;" formControlName="foodanddrugact">
+            <input type="checkbox" style="margin-right: 10px;" formControlName="retailerofcontrolledequipment">
             <span>Retailer of Controlled Equipment</span> <br>
-            <input type="checkbox" formControlName="legislativeauthorityothercheck" style="margin-right: 10px;">
+            <input type="checkbox" formControlName="typeofsellerothercheck" style="margin-right: 10px;">
             <span>Other</span> <br>
-            <section style="padding-left: 20px" *ngIf="form.get('legislativeauthorityothercheck').value === true">
+            <section style="padding-left: 20px" *ngIf="form.get('typeofsellerothercheck').value === true">
               <app-field>
                 <i>If Other, Please specify</i>
                 <br>
-                <input type="text" class="form-control" formControlName="legislativeauthorityother" style="width: 340px">
+                <input type="text" class="form-control" formControlName="typeofsellerother" style="width: 340px">
               </app-field>
             </section>
           </app-field>
           <app-field label="What type of Controlled Equipment do you intend to sell?" [showChevrons]="false"
-            errorMessage="Please select all the applicable legislative authorities" [valid]="form.get('mainbusinessfocus').valid || !form.get('mainbusinessfocus').touched"
-            [required]="true">
+            errorMessage="" [valid]="true" [required]="true">
             <p>Please select all the options that apply.</p>
-            <input type="checkbox" style="margin-right: 10px;" formControlName="foodanddrugact">
+            <input type="checkbox" style="margin-right: 10px;" formControlName="intendtosellpillpress">
             <span>Pill press</span> <br>
-            <input type="checkbox" style="margin-right: 10px;" formControlName="foodanddrugact">
+            <input type="checkbox" style="margin-right: 10px;" formControlName="intendtosellencapsulator">
             <span>Encapsulator</span> <br>
-            <input type="checkbox" style="margin-right: 10px;" formControlName="foodanddrugact">
+            <input type="checkbox" style="margin-right: 10px;" formControlName="intendtoselldiemouldorpunch">
             <span>Die, mould, or punch</span> <br>
-            <input type="checkbox" style="margin-right: 10px;" formControlName="foodanddrugact">
+            <input type="checkbox" style="margin-right: 10px;" formControlName="intendtosellpharmaceuticalmixerorblender">
             <span>Pharmaceutical mixer or blender</span> <br>
-            <input type="checkbox" formControlName="legislativeauthorityothercheck" style="margin-right: 10px;">
+            <input type="checkbox" formControlName="intendtosellothercheck" style="margin-right: 10px;">
             <span>Other</span> <br>
-            <section style="padding-left: 20px" *ngIf="form.get('legislativeauthorityothercheck').value === true">
+            <section style="padding-left: 20px" *ngIf="form.get('intendtosellothercheck').value === true">
               <app-field>
                 <i>If Other, Please specify</i>
                 <br>
-                <input type="text" class="form-control" formControlName="legislativeauthorityother" style="width: 340px">
+                <input type="text" class="form-control" formControlName="intendtosellother" style="width: 340px">
               </app-field>
             </section>
           </app-field>
           <app-field label="Please tell us more about your business as it relates to selling Controlled Equipment?">
-            <textarea class="form-control" rows="5"></textarea>
+            <textarea class="form-control" rows="5" formControlName="additionalbusinessinformationaboutseller"
+              maxlength="1000"></textarea>
           </app-field>
         </section>
 
@@ -147,7 +147,7 @@
           </div>
 
           <section style="display: flex; flex-direction: row-reverse;">
-            <button class="btn btn-secondary" (click)="addOwner()">ADD AN OWNER/MANAGER</button>
+            <button class="btn btn-secondary" (click)="addEditOwner({})">ADD AN OWNER/MANAGER</button>
           </section>
 
           <table>
@@ -156,14 +156,17 @@
               <th>LAST NAME</th>
               <th>TITLE/POSITION</th>
               <th>CONTACT DETAILS</th>
-              <th style="background-color: transparent"></th>
+              <th style="background-color: transparent; width: 100px"></th>
             </tr>
             <tr *ngFor="let item of ownerList" [ngClass]="{cssClass: expression}">
-              <td>.</td>
-              <td></td>
-              <td>.</td>
-              <td></td>
-              <td></td>
+              <td>{{item.firstName}}</td>
+              <td>{{item.lastName}}</td>
+              <td>{{item.title}}</td>
+              <td>Phone: {{item.phoneNumber}} <br>
+                Email: {{item.email}}</td>
+              <td>
+                <i class="fas fa-pencil-alt" style="cursor: pointer;" (click)="addEditOwner(item)"></i>
+              </td>
             </tr>
           </table>
         </section>
