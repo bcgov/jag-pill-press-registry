@@ -24,6 +24,7 @@ export class AuthorizedApplicationReviewComponent implements OnInit {
   attachmentURL: string;
   formData: Application = <Application>{};
   busy: Subscription;
+  busyPromise: Promise<any>;
 
   get ownProducts(): FormArray {
     return <FormArray>this.form.get('ownProducts');
@@ -52,8 +53,6 @@ export class AuthorizedApplicationReviewComponent implements OnInit {
 
   reloadData() {
     this.busy = this.applicationDataService.getApplicationById(this.waiverId)
-
-
       .subscribe(data => {
         const application = data;
         this.formData = application;
@@ -121,7 +120,7 @@ export class AuthorizedApplicationReviewComponent implements OnInit {
       }, error => {
         // todo: show errors;
       });
-      debugger;
+    debugger;
   }
 
   getUploadedFileData() {
@@ -143,16 +142,21 @@ export class AuthorizedApplicationReviewComponent implements OnInit {
     //   err => alert('Failed to get files'));
   }
 
-  save() {
+  save(goToThankYouPage: boolean) {
     const value = this.form.value;
     this.form.markAsTouched();
     if (value.declarationofcorrectinformation !== false) {
       const saveList = [this.applicationDataService.updateApplication(value)];
-      zip(...saveList)
-        .subscribe(res => {
-          this.router.navigateByUrl(`/application/authorized-owner/thank-you/${this.waiverId}`);
+      this.busyPromise = zip(...saveList)
+        .toPromise()
+        .then(res => {
+          if (goToThankYouPage) {
+            this.router.navigateByUrl(`/application/authorized-owner/thank-you/${this.waiverId}`);
+          } else {
+            this.router.navigateByUrl(`dashboard`);
+          }
         }, err => {
-         // todo: show errors;
+          // todo: show errors;
         });
     }
   }
