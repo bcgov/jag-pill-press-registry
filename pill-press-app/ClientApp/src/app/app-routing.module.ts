@@ -96,22 +96,7 @@ const routes: Routes = [
     component: DashboardLiteComponent,
     // canDeactivate: [CanDeactivateGuard],
     canActivate: [BCeidAuthGuard]
-  },
-  {
-    path: 'policy-document/:slug',
-    component: PolicyDocumentComponent
-  },
-  {
-    path: 'prv',
-    redirectTo: 'prv/survey'
-  },
-  {
-    path: 'survey-test',
-    component: SurveyTestComponent,
-    data: {
-      breadcrumb: 'Survey Test'
-    }
-  },
+  },  
   { path: '**', component: NotFoundComponent }
 ];
 
