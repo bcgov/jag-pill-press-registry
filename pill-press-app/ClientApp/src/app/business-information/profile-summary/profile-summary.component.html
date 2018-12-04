@@ -14,32 +14,32 @@
     <h2>Business Information</h2>
     <table class="summary-table">
       <tr *ngFor="let item of businessInfoData; let i = index;">
-        <td [ngClass]="{'table-row': i%2==0, 'table-row-alt': i%2==1 }">{{ item.label}}</td>
-        <td [ngClass]="{'table-row': i%2==0, 'table-row-alt': i%2==1 }">{{ item.value}}</td>
+        <td [ngClass]="{'table-row': i%2==0, 'row-alt': i%2==1 }">{{ item.label}}</td>
+        <td [ngClass]="{'table-row': i%2==0, 'row-alt': i%2==1 }">{{ item.value}}</td>
       </tr>
     </table>
 
     <h2>Business Address</h2>
     <table class="summary-table">
       <tr *ngFor="let item of businessAddressData; let i = index;">
-        <td [ngClass]="{'table-row': i%2==0, 'table-row-alt': i%2==1 }">{{ item.label}}</td>
-        <td [ngClass]="{'table-row': i%2==0, 'table-row-alt': i%2==1 }" [innerHTML]="item.value"></td>
+        <td [ngClass]="{'table-row': i%2==0, 'row-alt': i%2==1 }">{{ item.label}}</td>
+        <td [ngClass]="{'table-row': i%2==0, 'row-alt': i%2==1 }" [innerHTML]="item.value"></td>
       </tr>
     </table>
 
     <h2>Primary Contact</h2>
     <table class="summary-table">
       <tr *ngFor="let item of primaryContactData; let i = index;">
-        <td [ngClass]="{'table-row': i%2==0, 'table-row-alt': i%2==1 }">{{ item.label}}</td>
-        <td [ngClass]="{'table-row': i%2==0, 'table-row-alt': i%2==1 }">{{ item.value}}</td>
+        <td [ngClass]="{'table-row': i%2==0, 'row-alt': i%2==1 }">{{ item.label}}</td>
+        <td [ngClass]="{'table-row': i%2==0, 'row-alt': i%2==1 }">{{ item.value}}</td>
       </tr>
     </table>
 
     <h2>Additional Contact</h2>
     <table class="summary-table">
       <tr *ngFor="let item of additionalContactData; let i = index;">
-        <td [ngClass]="{'table-row': i%2==0, 'table-row-alt': i%2==1 }">{{ item.label}}</td>
-        <td [ngClass]="{'table-row': i%2==0, 'table-row-alt': i%2==1 }">{{ item.value}}</td>
+        <td [ngClass]="{'table-row': i%2==0, 'row-alt': i%2==1 }">{{ item.label}}</td>
+        <td [ngClass]="{'table-row': i%2==0, 'row-alt': i%2==1 }">{{ item.value}}</td>
       </tr>
     </table>
 
