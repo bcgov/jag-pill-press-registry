@@ -16,14 +16,14 @@
     <h2>Equipment Information</h2>
     <table class="summary-table">
       <tr *ngFor="let item of equipmentInformation; let i = index;">
-        <td [ngClass]="{'table-row': i%2==0, 'table-row-alt': i%2==1 }">{{ item}}</td>
+        <td [ngClass]="{'table-row': i%2==0, 'row-alt': i%2==1 }">{{ item}}</td>
       </tr>
     </table>
 
     <h2>Purpose of Controlled Equipment</h2>
     <table class="summary-table">
       <tr *ngFor="let item of purposeOfEquipment; let i = index;">
-        <td [ngClass]="{'table-row': i%2==0, 'table-row-alt': i%2==1 }">{{ item.text}}</td>
+        <td [ngClass]="{'table-row': i%2==0, 'row-alt': i%2==1 }">{{ item.text}}</td>
       </tr>
     </table>
 
@@ -36,7 +36,7 @@
         </td>
       </tr>
       <tr>
-        <td class="table-row-alt">
+        <td class="row-alt">
           <div *ngIf="formData?.foodanddrugact">Food and Drug Act</div>
           <div *ngIf="formData?.legislativeauthorityother">Other: {{formData?.legislativeauthorityother}}</div>
         </td>
@@ -48,7 +48,7 @@
         </td>
       </tr>
       <tr>
-        <td class="table-row-alt">
+        <td class="row-alt">
           <div *ngIf="formData?.kindsofproductsdrugs">Drugs</div>
           <div *ngIf="formData?.kindsofproductsnaturalhealthproducts">Natural Health Products</div>
           <div *ngIf="formData?.kindsofproductsother">Other: {{formData?.kindsofproductsother}}</div>
@@ -64,7 +64,7 @@
         </td>
       </tr>
       <tr *ngIf="formData?.drugestablishmentlicence">
-        <td class="table-row-alt">
+        <td class="row-alt">
           <ul style="margin-bottom: 0; padding-left: 15px;">
             <li>Drug Establishment Licence</li>
           </ul>
@@ -79,7 +79,7 @@
               </td>
             </tr>
             <tr>
-              <td class="table-row-alt">
+              <td class="row-alt">
                 {{formData?.delbusinessname}}
               </td>
             </tr>
@@ -89,7 +89,7 @@
               </td>
             </tr>
             <tr>
-              <td class="table-row-alt">
+              <td class="row-alt">
                 {{formData?.drugestablishmentlicencenumber}}
               </td>
             </tr>
@@ -99,7 +99,7 @@
               </td>
             </tr>
             <tr>
-              <td class="table-row-alt">
+              <td class="row-alt">
                 {{formData?.drugestablishmentlicenceexpirydate}}
               </td>
             </tr>
@@ -107,7 +107,7 @@
         </td>
       </tr>
       <tr *ngIf="formData?.sitelicence">
-        <td class="table-row-alt">
+        <td class="row-alt">
           <ul style="margin-bottom: 0; padding-left: 15px;">
             <li>Site Licence</li>
           </ul>
@@ -122,7 +122,7 @@
               </td>
             </tr>
             <tr>
-              <td class="table-row-alt">
+              <td class="row-alt">
                 {{formData?.sitelicencebusinessname}}
               </td>
             </tr>
@@ -132,7 +132,7 @@
               </td>
             </tr>
             <tr>
-              <td class="table-row-alt">
+              <td class="row-alt">
                 {{formData?.sitelicencenumber}}
               </td>
             </tr>
@@ -142,7 +142,7 @@
               </td>
             </tr>
             <tr>
-              <td class="table-row-alt">
+              <td class="row-alt">
                 {{formData?.sitelicenceexpirydate}}
               </td>
             </tr>
@@ -150,7 +150,7 @@
         </td>
       </tr>
       <tr *ngIf="formData?.otherlicencebusinessname">
-        <td class="table-row-alt">
+        <td class="row-alt">
           <ul style="margin-bottom: 0; padding-left: 15px;">
             <li>Other: {{formData?.otherlicence}}</li>
           </ul>
@@ -165,7 +165,7 @@
               </td>
             </tr>
             <tr>
-              <td class="table-row-alt">
+              <td class="row-alt">
                 {{formData?.otherlicencebusinessname}}
               </td>
             </tr>
@@ -175,7 +175,7 @@
               </td>
             </tr>
             <tr>
-              <td class="table-row-alt">
+              <td class="row-alt">
                 {{formData?.otherlicencenumber}}
               </td>
             </tr>
@@ -185,14 +185,14 @@
               </td>
             </tr>
             <tr>
-              <td class="table-row-alt">
+              <td class="row-alt">
                 {{formData?.otherlicenceexpirydate}}
               </td>
             </tr>
           </table>
         </td>
       </tr>
-      <!-- <td [ngClass]="{'table-row': i%2==0, 'table-row-alt': i%2==1 }">{{ item}}</td> -->
+      <!-- <td [ngClass]="{'table-row': i%2==0, 'row-alt': i%2==1 }">{{ item}}</td> -->
     </table>
 
     <h3 class="blue-header">DECLARATION AND CONSENT</h3>
