@@ -6,7 +6,7 @@ import { AccountDataService } from '../../services/account-data.service';
 import { DynamicsAccount } from '../../models/dynamics-account.model';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ValidatorFn, AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, Route, ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-profile-summary',
@@ -22,12 +22,18 @@ export class ProfileSummaryComponent implements OnInit {
   primaryContactData: { label: string; value: string; }[];
   additionalContactData: { label: string; value: string; }[];
   form: FormGroup;
+  mode: string;
+  applicationId: string;
 
   constructor(private userDataService: UserDataService,
     private sanitizer: DomSanitizer,
     private router: Router,
+    private route: ActivatedRoute,
     private fb: FormBuilder,
-    private accountDataService: AccountDataService) { }
+    private accountDataService: AccountDataService) {
+    this.mode = this.route.snapshot.params.mode;
+    this.applicationId = this.route.snapshot.params.applicationId;
+  }
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -115,7 +121,21 @@ export class ProfileSummaryComponent implements OnInit {
   }
 
   save() {
-    this.router.navigateByUrl('/dashboard');
+    switch (this.mode) {
+      case 'waiver':
+        this.router.navigateByUrl(`/application/waiver/${this.applicationId}`);
+        break;
+      case 'registered-seller':
+        this.router.navigateByUrl(`/application/registered-seller/${this.applicationId}`);
+        break;
+      case 'authorized-owner':
+        this.router.navigateByUrl(`/application/authorized-owner/${this.applicationId}`);
+        break;
+
+      default:
+        this.router.navigateByUrl('/dashboard');
+        break;
+    }
   }
 
   customRequiredCheckboxValidator(): ValidatorFn {
