@@ -44,8 +44,8 @@
       </tr>
     </table>
 
-    <h2 class="blue-header">DECLARATIONS AND CONSENT</h2>
-    <div style="padding-left: 10px;">
+    <h2 *ngIf="!mode" class="blue-header">DECLARATIONS AND CONSENT</h2>
+    <div *ngIf="!mode" style="padding-left: 10px;">
       <section style="display: flex">
         <input type="checkbox">
         <span class="error-states">*</span>
@@ -72,11 +72,13 @@
 
     <div style="margin-top: 30px; display: flex; justify-content: space-between">
       <section>
-        <span class="error-states">*</span> <i>Required field</i>
+        <!-- <span class="error-states">*</span> <i>Required field</i> -->
+        
+        <a routerLink="/business-profile"><i class="fas fa-pencil-alt"></i> Edit Business Profile</a>
       </section>
       <section>
-        <button class="btn btn-secondary" style="margin-right: 10px;" routerLink="/business-profile">EDIT PROFILE</button>
-        <button class="btn btn-primary" (click)="save()">SAVE</button>
+        <button *ngIf="mode" class="btn btn-primary" (click)="save()">CONTINUE TO APPLICATION</button>
+        <button *ngIf="!mode" class="btn btn-primary" (click)="save()">SAVE</button>
       </section>
     </div>
   </div>

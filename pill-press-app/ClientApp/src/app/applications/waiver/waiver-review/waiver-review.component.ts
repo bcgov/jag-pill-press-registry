@@ -50,8 +50,8 @@ export class WaiverReviewComponent implements OnInit {
 
   reloadData() {
     this.busyPromise = zip(this.applicationDataService.getApplicationById(this.waiverId))
-    // this.getUploadedFileData())
-    .toPromise()
+      // this.getUploadedFileData())
+      .toPromise()
       .then(data => {
         const waiver = data[0];
         // const files = data[1];
@@ -139,7 +139,7 @@ export class WaiverReviewComponent implements OnInit {
     //   err => alert('Failed to get files'));
   }
 
-  save() {
+  save(gotToThankYouPage: boolean) {
     const value = this.form.value;
     this.form.markAsTouched();
     if (value.declarationofcorrectinformation !== false) {
@@ -149,7 +149,11 @@ export class WaiverReviewComponent implements OnInit {
       this.busyPromise = zip(...saveList)
         .toPromise()
         .then(res => {
-          this.router.navigateByUrl(`/application/waiver/thank-you/${this.waiverId}`);
+          if (gotToThankYouPage) {
+            this.router.navigateByUrl(`/application/waiver/thank-you/${this.waiverId}`);
+          } else {
+            this.router.navigateByUrl(`/dashboard`);
+          }
         }, err => {
           // todo: show errors;
         });
