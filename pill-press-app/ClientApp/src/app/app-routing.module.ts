@@ -2,9 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BusinessProfileComponent } from './business-information/business-profile/business-profile.component';
 import { HomeComponent } from './home/home.component';
-import { PolicyDocumentComponent } from './policy-document/policy-document.component';
-import { SurveyPrimaryComponent } from './survey/primary.component';
-import { SurveyTestComponent } from './survey/test.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CanDeactivateGuard } from './services/can-deactivate-guard.service';
 import { BCeidAuthGuard } from './services/bceid-auth-guard.service';
@@ -113,10 +110,6 @@ const routes: Routes = [
     path: 'dashboard',
     component: DashboardLiteComponent,
     canActivate: [BCeidAuthGuard]
-  },
-  {
-    path: 'policy-document/:slug',
-    component: PolicyDocumentComponent
   },
   { path: '**', component: NotFoundComponent }
 ];
