@@ -25,11 +25,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                 {
                     result.id = businessContact.BcgovBusinesscontactid;
                 }
-                result.jobtitle = businessContact.BcgovJobtitle;
+                result.jobTitle = businessContact.BcgovJobtitle;
 
                 if (businessContact.BcgovContacttype != null)
                 {
-                    result.contacttype = (ContactTypeCodes) businessContact.BcgovContacttype;
+                    result.contactType = (ContactTypeCodes) businessContact.BcgovContacttype;
                 }                
 
             }
@@ -38,8 +38,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
 
         public static void CopyValues(this MicrosoftDynamicsCRMbcgovBusinesscontact to, ViewModels.BusinessContact from)
         {
-            to.BcgovJobtitle = from.jobtitle;
-            to.BcgovContacttype = (int?) from.contacttype;
+            to.BcgovJobtitle = from.jobTitle;
+            to.BcgovContacttype = (int?) from.contactType;
                         
         }
 
