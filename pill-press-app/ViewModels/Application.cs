@@ -165,7 +165,9 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public bool? intendtosellothercheck { get; set; }
         public string intendtosellother { get; set; }
         public string additionalbusinessinformationaboutseller { get; set; }
-
+        public bool? legislativeauthorityothercheck { get; set; }
+        public bool? kindsofproductsothercheck { get; set; }
+        public bool? otherlicencecheck { get; set; }
 
         List<Contact> OwnersAndManagers { get; set; }
 

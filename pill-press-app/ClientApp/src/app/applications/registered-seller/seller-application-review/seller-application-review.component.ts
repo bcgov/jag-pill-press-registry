@@ -39,7 +39,7 @@ export class SellerApplicationReviewComponent implements OnInit {
   busy: Subscription;
   waiverId: string;
 
-  ownerList: any[] = [];
+  ownersAndManagers: any[] = [];
   equipmentInformation: string[];
   purposeOfEquipment: { text: string; }[];
   sellerBusinessDetails: string[];
