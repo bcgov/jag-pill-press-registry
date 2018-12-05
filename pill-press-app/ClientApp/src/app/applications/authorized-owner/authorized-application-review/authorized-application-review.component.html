@@ -1,0 +1,249 @@
+<div class="form-wrapper row">
+  <div class="col-lg-8 col-sm-12" style="position: relative;">
+      <div [ngBusy]="[busy, busyPromise]"></div>
+    <h2 class="step">STEP 3</h2>
+    <h1>Authorized Owner Confirmation Review</h1>
+
+    <p>
+      You have provided the following information in your Authorized Owner confirmation. In order to proceed, please
+      confirm that
+      these details are correct. If they are not, please <a routerLink="/application/authorized-owner/{{waiverId}}">amend
+        your
+        answers</a>
+      before submitting the application.
+    </p>
+
+    <h2>Equipment Information</h2>
+    <table class="summary-table">
+      <tr *ngFor="let item of equipmentInformation; let i = index;">
+        <td [ngClass]="{'table-row': i%2==0, 'row-alt': i%2==1 }">{{ item}}</td>
+      </tr>
+    </table>
+
+    <h2>Purpose of Controlled Equipment</h2>
+    <table class="summary-table">
+      <tr *ngFor="let item of purposeOfEquipment; let i = index;">
+        <td [ngClass]="{'table-row': i%2==0, 'row-alt': i%2==1 }">{{ item.text}}</td>
+      </tr>
+    </table>
+
+    <h2>Legislative Authorization</h2>
+    <table class="summary-table">
+      <tr>
+        <td class="table-row">
+          <strong>Legislative Authority</strong> <br>
+          <span>What enactment authorizes you to manufacture these products? Please select all the options that apply.</span>
+        </td>
+      </tr>
+      <tr>
+        <td class="row-alt">
+          <div *ngIf="formData?.foodanddrugact">Food and Drug Act</div>
+          <div *ngIf="formData?.legislativeauthorityother">Other: {{formData?.legislativeauthorityother}}</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="table-row">
+          <strong>Type of Authorization</strong> <br>
+          <span>What kind of products are manufactured by your business? Please select all the options that apply.</span>
+        </td>
+      </tr>
+      <tr>
+        <td class="row-alt">
+          <div *ngIf="formData?.kindsofproductsdrugs">Drugs</div>
+          <div *ngIf="formData?.kindsofproductsnaturalhealthproducts">Natural Health Products</div>
+          <div *ngIf="formData?.kindsofproductsother">Other: {{formData?.kindsofproductsother}}</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="table-row">
+          <strong>
+            BC or Canada Issued - Licence Type
+            <br>
+            What kind of licence do you possess that authorizes you to manufacture a drug or natural health product?
+            Please select all the options that apply.</strong>
+        </td>
+      </tr>
+      <tr *ngIf="formData?.drugestablishmentlicence">
+        <td class="row-alt">
+          <ul style="margin-bottom: 0; padding-left: 15px;">
+            <li>Drug Establishment Licence</li>
+          </ul>
+        </td>
+      </tr>
+      <tr *ngIf="formData?.drugestablishmentlicence">
+        <td style="padding-left: 30px; background-color: transparent;">
+          <table class="summary-table" style="margin-top: -10px">
+            <tr>
+              <td class="table-row">
+                <strong>What is the name of the business that appears on your Drug Establishment Licence (i.e. issued to name).</strong>
+              </td>
+            </tr>
+            <tr>
+              <td class="row-alt">
+                {{formData?.delbusinessname}}
+              </td>
+            </tr>
+            <tr>
+              <td class="table-row">
+                <strong>Drug Establishment Licence - Number</strong>
+              </td>
+            </tr>
+            <tr>
+              <td class="row-alt">
+                {{formData?.drugestablishmentlicencenumber}}
+              </td>
+            </tr>
+            <tr>
+              <td class="table-row">
+                <strong>Drug Establishment Licence - Expiry Date</strong>
+              </td>
+            </tr>
+            <tr>
+              <td class="row-alt">
+                {{formData?.drugestablishmentlicenceexpirydate}}
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr *ngIf="formData?.sitelicence">
+        <td class="row-alt">
+          <ul style="margin-bottom: 0; padding-left: 15px;">
+            <li>Site Licence</li>
+          </ul>
+        </td>
+      </tr>
+      <tr *ngIf="formData?.sitelicence">
+        <td style="padding-left: 30px; background-color: transparent;">
+          <table class="summary-table" style="margin-top: -10px">
+            <tr>
+              <td class="table-row">
+                <strong>What is the name of the business that appears on your Site Licence (i.e. issued to name).</strong>
+              </td>
+            </tr>
+            <tr>
+              <td class="row-alt">
+                {{formData?.sitelicencebusinessname}}
+              </td>
+            </tr>
+            <tr>
+              <td class="table-row">
+                <strong>Site Licence - Number</strong>
+              </td>
+            </tr>
+            <tr>
+              <td class="row-alt">
+                {{formData?.sitelicencenumber}}
+              </td>
+            </tr>
+            <tr>
+              <td class="table-row">
+                <strong>Site Licence - Expiry Date</strong>
+              </td>
+            </tr>
+            <tr>
+              <td class="row-alt">
+                {{formData?.sitelicenceexpirydate}}
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr *ngIf="formData?.otherlicencebusinessname">
+        <td class="row-alt">
+          <ul style="margin-bottom: 0; padding-left: 15px;">
+            <li>Other: {{formData?.otherlicence}}</li>
+          </ul>
+        </td>
+      </tr>
+      <tr *ngIf="formData?.otherlicencebusinessname">
+        <td style="padding-left: 30px; background-color: transparent;">
+          <table class="summary-table" style="margin-top: -10px">
+            <tr>
+              <td class="table-row">
+                <strong>What is the name of the business that appears on this Other Licence (i.e. issued to name)</strong>
+              </td>
+            </tr>
+            <tr>
+              <td class="row-alt">
+                {{formData?.otherlicencebusinessname}}
+              </td>
+            </tr>
+            <tr>
+              <td class="table-row">
+                <strong>Other Licence - Number</strong>
+              </td>
+            </tr>
+            <tr>
+              <td class="row-alt">
+                {{formData?.otherlicencenumber}}
+              </td>
+            </tr>
+            <tr>
+              <td class="table-row">
+                <strong>Other Licence - Expiry Date</strong>
+              </td>
+            </tr>
+            <tr>
+              <td class="row-alt">
+                {{formData?.otherlicenceexpirydate}}
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <!-- <td [ngClass]="{'table-row': i%2==0, 'row-alt': i%2==1 }">{{ item}}</td> -->
+    </table>
+
+    <h3 class="blue-header">DECLARATION AND CONSENT</h3>
+    <div [formGroup]="form" class="padded-section">
+      <section style="display: flex">
+        <input type="checkbox" style="flex: 0 0 20px" formControlName="declarationofcorrectinformation">
+        <span>
+          I certify that, to the best of my knowledge, the information I have provided on my Waiver application and
+          will
+          provide as necessary is complete, honest, and accurate. I understand that a false statement or omission of
+          facts herein may lead to the a denial of a Waiver being granted. I am also aware that later discovery of an
+          omission or misrepresentation may be grounds for suspension or cancellation of a waiver or for being
+          prosecuted
+          under provincial law. <span class="error-states">*</span>
+        </span>
+      </section>
+      <div *ngIf="form.get('declarationofcorrectinformation').value !== true && form.touched" style="background-color: #F2F2F2; margin-top: 10px; border-radius: 5px; padding: 10px; font: 15px Myriad Pro Regular #494949;">
+        <i class="fas fa-exclamation-triangle error-states" style="margin-right: 10px;"></i>
+        <span class="error-states">Please complete the declarations and consent section.</span>
+      </div>
+    </div>
+
+    <div style="margin-top: 30px; display: flex; justify-content: space-between">
+      <section>
+        <!-- <span class="error-states">*</span> <i>Required field</i> -->
+        <a href="javascript: void(0);" (click)="save(false)"><i class="fa fa-save" style="margin-right: 5px"></i>Save & Close</a>
+      </section>
+      <section>
+        <button class="btn btn-secondary" style="margin-right: 10px" routerLink="/application/authorized-owner/{{waiverId}}">EDIT
+          CONFIRMATION</button>
+        <button class="btn btn-primary" (click)="save(true)">SUBMIT</button>
+      </section>
+    </div>
+  </div>
+
+  <div class="col-lg-4 col-sm-12" style="position: relative">
+      <!-- <div [ngBusy]="busy"></div> -->
+      <p></p>
+      <section class="submit-container">
+        <table>
+          <tr>
+            <td>
+              <h2 class="round-icon-wrapper"><i class="fas fa-address-card"></i></h2>
+            </td>
+            <td style="padding-left: 10px">
+              <h2>Useful Links & Information</h2>
+            </td>
+          </tr>
+        </table>
+        <div class="submit-content">
+        </div>
+      </section>
+    </div>
+</div>

@@ -28,5 +28,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public string addressProv { get; set; }
 		public string addressPostal { get; set; }
 		public string addressCountry { get; set; }
+        public string userId { get; set; }
     }
 }

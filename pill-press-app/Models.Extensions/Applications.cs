@@ -63,6 +63,27 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                 result.otherlicencenumber = incident.BcgovOtherlicencenumber;
                 result.otherlicenceexpirydate = incident.BcgovOtherlicenceexpirydate;
 
+                result.ownusepossesstoproduceaproduct = incident.BcgovOwnusepossesstoproduceaproduct;
+                result.intendonrentingleasingtoothers = incident.BcgovIntendonrentingleasingtoothers;
+                result.intendonsellingequipmenttoothers = incident.BcgovIntendonsellingequipmenttoothers;
+                result.manufacturerofcontrolledequipment = incident.BcgovManufacturerofcontrolledequipment;
+                result.retailerofcontrolledequipment = incident.BcgovRetailerofcontrolledequipment;
+                result.onetimesellerofowncontrolledequipment = incident.BcgovOnetimesellerofowncontrolledequipment;
+                result.typeofsellerothercheck = incident.BcgovTypeofsellerothercheck;
+                result.typeofsellerother = incident.BcgovTypeofsellerother;
+
+                result.intendtosellpillpress = incident.BcgovIntendtosellpillpress;
+                result.intendtosellencapsulator = incident.BcgovIntendtosellencapsulator;
+                result.intendtoselldiemouldorpunch = incident.BcgovIntendtoselldiemouldorpunch;
+                result.intendtosellpharmaceuticalmixerorblender = incident.BcgovIntendtosellpharmaceuticalmixerorblender;
+                result.intendtosellothercheck = incident.BcgovIntendtosellothercheck ;
+                result.intendtosellother = incident.BcgovIntendtosellother;
+                result.legislativeauthorityothercheck = incident.BcgovBcgovLegislativeauthorityothercheck;
+                result.kindsofproductsothercheck = incident.BcgovKindsofproductothercheck;
+                result.otherlicencecheck = incident.BcgovOtherlicencecheck;
+
+                result.additionalbusinessinformationaboutseller = incident.BcgovAdditionalbusinessinformationaboutseller;
+
                 // CustomerID
                 if (incident.CustomeridAccount != null)
                 {
@@ -79,6 +100,15 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     }
 
                 }
+                if (incident?.BcgovIncidentBusinesscontact?.Count > 0)
+                {
+                    result.BusinessContacts = new List<BusinessContact>();
+                    foreach (var businessContact in incident.BcgovIncidentBusinesscontact)
+                    {
+                        result.BusinessContacts.Add(businessContact.ToViewModel());
+                    }
+                }
+
             }
             return result;
         }
@@ -100,27 +130,49 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             to.BcgovMainbusinessfocus = from.mainbusinessfocus;
             to.BcgovManufacturingprocessdescription = from.manufacturingprocessdescription;
 
-             to.BcgovFoodanddrugact = from.foodanddrugact;
-             to.BcgovLegislativeauthorityother = from.legislativeauthorityother;
-             to.BcgovKindsofproductsdrugs = from.kindsofproductsdrugs;
-             to.BcgovKindsofproductsnaturalhealthproducts = from.kindsofproductsnaturalhealthproducts;
-             to.BcgovKindsofproductsother = from.kindsofproductsother;
-             to.BcgovDrugestablishmentlicence = from.drugestablishmentlicence;
-             to.BcgovSitelicence = from.sitelicence;
-             to.BcgovOtherlicence = from.otherlicence;
-             to.BcgovDelbusinessname = from.delbusinessname;
-             to.BcgovDrugestablishmentlicencenumber = from.drugestablishmentlicencenumber;
-             to.BcgovDrugestablishmentlicenceexpirydate = from.drugestablishmentlicenceexpirydate;
-             to.BcgovSitelicencebusinessname = from.sitelicencebusinessname;
-             to.BcgovSitelicencenumber = from.sitelicencenumber;
-             to.BcgovSitelicenceexpirydate = from.sitelicenceexpirydate;
-             to.BcgovOtherlicencebusinessname = from.otherlicencebusinessname;
-             to.BcgovOtherlicencenumber = from.otherlicencenumber;
-             to.BcgovOtherlicenceexpirydate = from.otherlicenceexpirydate;
+            to.BcgovFoodanddrugact = from.foodanddrugact;
+            to.BcgovLegislativeauthorityother = from.legislativeauthorityother;
+            to.BcgovKindsofproductsdrugs = from.kindsofproductsdrugs;
+            to.BcgovKindsofproductsnaturalhealthproducts = from.kindsofproductsnaturalhealthproducts;
+            to.BcgovKindsofproductsother = from.kindsofproductsother;
+            to.BcgovDrugestablishmentlicence = from.drugestablishmentlicence;
+            to.BcgovSitelicence = from.sitelicence;
+            to.BcgovOtherlicence = from.otherlicence;
+            to.BcgovDelbusinessname = from.delbusinessname;
+            to.BcgovDrugestablishmentlicencenumber = from.drugestablishmentlicencenumber;
+            to.BcgovDrugestablishmentlicenceexpirydate = from.drugestablishmentlicenceexpirydate;
+            to.BcgovSitelicencebusinessname = from.sitelicencebusinessname;
+            to.BcgovSitelicencenumber = from.sitelicencenumber;
+            to.BcgovSitelicenceexpirydate = from.sitelicenceexpirydate;
+            to.BcgovOtherlicencebusinessname = from.otherlicencebusinessname;
+            to.BcgovOtherlicencenumber = from.otherlicencenumber;
+            to.BcgovOtherlicenceexpirydate = from.otherlicenceexpirydate;
 
             // Declarations and Consent
             to.BcgovDeclarationofcorrectinformation = from.declarationofcorrectinformation;
             to.BcgovFoippaconsent = from.foippaconsent;
+
+
+            to.BcgovOwnusepossesstoproduceaproduct = from.ownusepossesstoproduceaproduct;
+            to.BcgovIntendonrentingleasingtoothers = from.intendonrentingleasingtoothers;
+            to.BcgovIntendonsellingequipmenttoothers = from.intendonsellingequipmenttoothers;
+            to.BcgovManufacturerofcontrolledequipment = from.manufacturerofcontrolledequipment;
+            to.BcgovRetailerofcontrolledequipment = from.retailerofcontrolledequipment;
+            to.BcgovOnetimesellerofowncontrolledequipment = from.onetimesellerofowncontrolledequipment;
+            to.BcgovTypeofsellerothercheck = from.typeofsellerothercheck;
+            to.BcgovTypeofsellerother = from.typeofsellerother;
+
+            to.BcgovIntendtosellpillpress = from.intendtosellpillpress;
+            to.BcgovIntendtosellencapsulator = from.intendtosellencapsulator;
+            to.BcgovIntendtoselldiemouldorpunch = from.intendtoselldiemouldorpunch;
+            to.BcgovIntendtosellpharmaceuticalmixerorblender = from.intendtosellpharmaceuticalmixerorblender;
+            to.BcgovIntendtosellothercheck  = from.intendtosellothercheck;
+            to.BcgovIntendtosellother = from.intendtosellother;
+            to.BcgovBcgovLegislativeauthorityothercheck = from.legislativeauthorityothercheck;
+            to.BcgovKindsofproductothercheck = from.kindsofproductsothercheck  ;
+            to.BcgovOtherlicencecheck = from.otherlicencecheck  ;
+
+            to.BcgovAdditionalbusinessinformationaboutseller = from.additionalbusinessinformationaboutseller;
         }
 
     }

@@ -151,12 +151,25 @@ select.form-control:not([size]):not([multiple]) {
     display: inline-block;
 }
 
-.table-row {
+table {
+    border-spacing: 5px;
+    border-collapse: separate;
+    width: 100%;
+}
+
+th {
+    background-color: #38598a;
+    color: #fff;
+    padding: 5px 5px 3px 10px;
+}
+
+.summary-table td {
+    padding: 5px;
     background-color: #e1e8f2;
 }
 
-.table-row-alt {
-    background-color: #f1f4fa;
+.summary-table .row-alt {
+    background-color: #f1f4fa !important;
 }
 
 .blue-header {
@@ -176,4 +189,42 @@ hr {
 
 .error-states {
     color: #d8292f
+}
+
+.error-summary {
+    background-color: #F2F2F2;
+    border: solid 1px transparent;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    color: #d8292f
+}
+
+.form-wrapper {
+    padding-left: 50px;
+    padding-right: 30px;
+}
+
+@media (max-width: 575.98px) {
+    .form-wrapper {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+.red-snackbar {
+    background: #F44336;
+}
+
+.green-snackbar {
+    background: #00ff21;
+}
+
+.step {
+    border-bottom: 2px solid #FCBA19;
+    display: inline-block;
+}
+
+.padded-section {
+    padding-left: 15px;
 }

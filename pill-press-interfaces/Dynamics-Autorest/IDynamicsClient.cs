@@ -113,5 +113,10 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// </summary>
         ISharepointsites Sharepointsites { get; }
 
+        /// <summary>
+        /// Gets the IEntitydefinitions.
+        /// </summary>
+        IEntitydefinitions Entitydefinitions { get; }
+
     }
 }
