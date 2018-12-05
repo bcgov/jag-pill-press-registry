@@ -154,7 +154,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             var id = Guid.Parse(entityId);
             switch (entityName.ToLower())
             {
-                case "application":
+                case "incident":
                     var application =  _dynamicsClient.GetApplicationById(id);
                     result = application != null && CurrentUserHasAccessToApplicationOwnedBy(application._customeridValue);
                     break;
@@ -189,7 +189,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     var contact = await _dynamicsClient.GetContactById(Guid.Parse(entityId));
                     folderName = GetContactFolderName(contact);
                     break;
-                case "application":
+                case "incident":
                     var incident =  _dynamicsClient.GetApplicationById(Guid.Parse(entityId));
                     folderName = GetApplicationFolderName(incident);
                     break;
@@ -221,7 +221,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                         throw (odee);
                     }
                     break;
-                case "application":
+                case "incident":
                     var patchIncident = new MicrosoftDynamicsCRMincident();
                     try
                     {
@@ -375,7 +375,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             var listTitle = "";
             switch (entityName.ToLower())
             {
-                case "application":
+                case "incident":
                     listTitle = SharePointFileManager.ApplicationDocumentListTitle;
                     break;
                 case "contact":
@@ -395,7 +395,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             var listTitle = "";
             switch (entityName.ToLower())
             {
-                case "application":
+                case "incident":
                     listTitle = SharePointFileManager.ApplicationDocumentListTitle;
                     break;
                 case "contact":
