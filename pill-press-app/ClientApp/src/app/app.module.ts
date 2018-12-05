@@ -72,6 +72,7 @@ import { SurveyTestComponent } from './survey/test.component';
 import { SurveySidebarComponent } from './survey/sidebar.component';
 import { SurveyDataService } from './services/survey-data.service';
 import { UserDataService } from './services/user-data.service';
+import { VersionInfoDataService } from './services/version-info-data.service';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ApplicationsListComponent } from './applications-list/applications-list.component';
 import { BusinessProfileComponent } from './business-information/business-profile/business-profile.component';
@@ -101,15 +102,16 @@ import { PreviousAddressDataService } from './services/previous-address-data.ser
 import { WorkerDataService } from './services/worker-data.service.';
 import { FieldComponent } from './shared/field/field.component';
 import { ProfileSummaryComponent } from './business-information/profile-summary/profile-summary.component';
-import { WaiverApplicationComponent } from './owner-applications/waiver/waiver-application/waiver-application.component';
-import { WaiverReviewComponent } from './owner-applications/waiver/waiver-review/waiver-review.component';
-import { ThankYouComponent } from './owner-applications/waiver/thank-you/thank-you.component';
-import { SellerApplicationComponent } from './owner-applications/registered-seller/seller-application/seller-application.component';
-import { SellerApplicationReviewComponent } from './owner-applications/registered-seller/seller-application-review/seller-application-review.component';
-import { SellerApplicationThanksComponent } from './owner-applications/registered-seller/seller-application-thanks/seller-application-thanks.component';
-import { AuthorizedApplicationComponent } from './owner-applications/authorized-owner/authorized-application/authorized-application.component';
-import { AuthorizedApplicationReviewComponent } from './owner-applications/authorized-owner/authorized-application-review/authorized-application-review.component';
-import { AuthorizedApplicationThanksComponent } from './owner-applications/authorized-owner/authorized-application-thanks/authorized-application-thanks.component';
+import { WaiverApplicationComponent } from './applications/waiver/waiver-application/waiver-application.component';
+import { WaiverReviewComponent } from './applications/waiver/waiver-review/waiver-review.component';
+import { ThankYouComponent } from './applications/waiver/thank-you/thank-you.component';
+import { SellerApplicationComponent, SellerOwnerDialogComponent } from './applications/registered-seller/seller-application/seller-application.component';
+import { SellerApplicationReviewComponent } from './applications/registered-seller/seller-application-review/seller-application-review.component';
+import { SellerApplicationThanksComponent } from './applications/registered-seller/seller-application-thanks/seller-application-thanks.component';
+import { AuthorizedApplicationComponent } from './applications/authorized-owner/authorized-application/authorized-application.component';
+import { AuthorizedApplicationReviewComponent } from './applications/authorized-owner/authorized-application-review/authorized-application-review.component';
+import { AuthorizedApplicationThanksComponent } from './applications/authorized-owner/authorized-application-thanks/authorized-application-thanks.component';
+import { VersionInfoDialog } from './version-info/version-info.component';
 
 @NgModule({
   declarations: [
@@ -146,7 +148,9 @@ import { AuthorizedApplicationThanksComponent } from './owner-applications/autho
     SellerApplicationThanksComponent,
     AuthorizedApplicationComponent,
     AuthorizedApplicationReviewComponent,
-    AuthorizedApplicationThanksComponent
+    AuthorizedApplicationThanksComponent,
+    SellerOwnerDialogComponent,
+    VersionInfoDialog
   ],
   imports: [
     BrowserModule,
@@ -256,11 +260,14 @@ import { AuthorizedApplicationThanksComponent } from './owner-applications/autho
     PreviousAddressDataService,
     WorkerDataService,
     Title,
+    VersionInfoDataService,
     CanDeactivateGuard,
     BCeidAuthGuard,
     ServiceCardAuthGuard,
   ],
   entryComponents: [
+    SellerOwnerDialogComponent,
+    VersionInfoDialog
   ],
   bootstrap: [AppComponent]
 })

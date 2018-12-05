@@ -122,8 +122,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         /// </summary>
         /// <param name="viewModel"></param>
         /// <returns></returns>
-        [HttpPost()]
-        public async Task<IActionResult> CreateApplication([FromBody] ViewModels.Application item)
+        [HttpPost("{applicationType}")]
+        public async Task<IActionResult> CreateApplication(string applicationType, [FromBody] ViewModels.Application item)
         {
 
             // get UserSettings from the session
@@ -142,12 +142,16 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             MicrosoftDynamicsCRMincident application = new MicrosoftDynamicsCRMincident();
             application.CopyValues(item);
 
+            if(string.IsNullOrEmpty(applicationType)){ // Default to waiver
+                applicationType = "Waiver";
+            }
+
             if (string.IsNullOrEmpty(application._bcgovApplicationtypeidValue) || string.IsNullOrEmpty(application.ApplicationTypeIdODataBind)) // set to Waiver if it is blank.
             {
-                string waiverTypeId = _dynamicsClient.GetApplicationTypeIdByName("Waiver");
-                if (waiverTypeId != null)
+                string applicationTypeId = _dynamicsClient.GetApplicationTypeIdByName(applicationType);
+                if (applicationTypeId != null)
                 {
-                    application.ApplicationTypeIdODataBind = _dynamicsClient.GetEntityURI("bcgov_applicationtypes", waiverTypeId);
+                    application.ApplicationTypeIdODataBind = _dynamicsClient.GetEntityURI("bcgov_applicationtypes", applicationTypeId);
                 }                
             }
 

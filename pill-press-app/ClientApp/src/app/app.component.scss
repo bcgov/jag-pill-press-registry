@@ -56,7 +56,7 @@ $bootstrap-sass-asset-helper: true;
 .app-main {
     background: #fff;
     flex: auto;
-    padding-bottom: 80px;
+    padding-bottom: 60px;
 }
 
 .sidebar-left,
@@ -92,6 +92,11 @@ h5 {
 
 .navbar-footer {
     background-color: #003366
+}
+
+.version-info {
+  float: right;
+  margin-top: 10px;
 }
 
 div.c1 li.c2 a {
