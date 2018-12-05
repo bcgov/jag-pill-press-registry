@@ -121,7 +121,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                 {
                     foreach (MicrosoftDynamicsCRMbcgovBusinesscontact businessContact in businessContacts.Value)
                     {
-                        if (businessContact.BcgovContacttype != (int?)ContactTypeEnum.BCeID)
+                        if (businessContact.BcgovContacttype != (int?)ContactTypeCodes.BCeID)
                         {
                             try
                             {

@@ -6,12 +6,7 @@ using System.Threading.Tasks;
 namespace Gov.Jag.PillPressRegistry.Public.ViewModels
 {
 
-    public enum ContactTypeEnum
-    {        
-        Primary = 931490000,
-        Additional = 931490001,        
-        BCeID = 931490002        
-    }
+    
 
     public class Contact
     {
