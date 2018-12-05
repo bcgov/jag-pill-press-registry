@@ -4,6 +4,7 @@ import { Subscription, Observable, zip } from 'rxjs';
 import { ApplicationDataService } from '../../../services/adoxio-application-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DynamicsDataService } from '../../../services/dynamics-data.service';
+import { Application } from '../../../models/adoxio-application.model';
 
 export const PRODUCTING_OWN_PRODUCT = 'Producing Own Product';
 export const MANUFACTURING_FOR_OTHERS = 'Manufacturing For Others';
@@ -80,7 +81,8 @@ export class WaiverApplicationComponent implements OnInit {
   }
 
   reloadData() {
-    this.busy = this.applicationDataService.getApplicationById(this.waiverId).subscribe(data => {
+    this.busy = this.applicationDataService.getApplicationById(this.waiverId)
+    .subscribe((data: Application) => {
       this.form.patchValue(data);
 
       // process custom products

@@ -69,15 +69,18 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                 result.manufacturerofcontrolledequipment = incident.BcgovManufacturerofcontrolledequipment;
                 result.retailerofcontrolledequipment = incident.BcgovRetailerofcontrolledequipment;
                 result.onetimesellerofowncontrolledequipment = incident.BcgovOnetimesellerofowncontrolledequipment;
-                // result.typeofsellerothercheck = incident.BcgovTypeofsellerothercheck;
+                result.typeofsellerothercheck = incident.BcgovTypeofsellerothercheck;
                 result.typeofsellerother = incident.BcgovTypeofsellerother;
 
                 result.intendtosellpillpress = incident.BcgovIntendtosellpillpress;
                 result.intendtosellencapsulator = incident.BcgovIntendtosellencapsulator;
                 result.intendtoselldiemouldorpunch = incident.BcgovIntendtoselldiemouldorpunch;
                 result.intendtosellpharmaceuticalmixerorblender = incident.BcgovIntendtosellpharmaceuticalmixerorblender;
-                // result.intendtosellothercheck = incident.BcgovIntendtosellother ;
+                result.intendtosellothercheck = incident.BcgovIntendtosellothercheck ;
                 result.intendtosellother = incident.BcgovIntendtosellother;
+                result.legislativeauthorityothercheck = incident.BcgovBcgovLegislativeauthorityothercheck;
+                result.kindsofproductsothercheck = incident.BcgovKindsofproductothercheck;
+                result.otherlicencecheck = incident.BcgovOtherlicencecheck;
 
                 result.additionalbusinessinformationaboutseller = incident.BcgovAdditionalbusinessinformationaboutseller;
 
@@ -156,15 +159,18 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             to.BcgovManufacturerofcontrolledequipment = from.manufacturerofcontrolledequipment;
             to.BcgovRetailerofcontrolledequipment = from.retailerofcontrolledequipment;
             to.BcgovOnetimesellerofowncontrolledequipment = from.onetimesellerofowncontrolledequipment;
-            // to.BcgovTypeofsellerothercheck = from.typeofsellerothercheck;
+            to.BcgovTypeofsellerothercheck = from.typeofsellerothercheck;
             to.BcgovTypeofsellerother = from.typeofsellerother;
 
             to.BcgovIntendtosellpillpress = from.intendtosellpillpress;
             to.BcgovIntendtosellencapsulator = from.intendtosellencapsulator;
             to.BcgovIntendtoselldiemouldorpunch = from.intendtoselldiemouldorpunch;
             to.BcgovIntendtosellpharmaceuticalmixerorblender = from.intendtosellpharmaceuticalmixerorblender;
-            // to.BcgovIntendtosellother  = from.intendtosellothercheck;
+            to.BcgovIntendtosellothercheck  = from.intendtosellothercheck;
             to.BcgovIntendtosellother = from.intendtosellother;
+            to.BcgovBcgovLegislativeauthorityothercheck = from.legislativeauthorityothercheck;
+            to.BcgovKindsofproductothercheck = from.kindsofproductsothercheck  ;
+            to.BcgovOtherlicencecheck = from.otherlicencecheck  ;
 
             to.BcgovAdditionalbusinessinformationaboutseller = from.additionalbusinessinformationaboutseller;
         }

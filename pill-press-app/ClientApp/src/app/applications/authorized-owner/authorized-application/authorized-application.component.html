@@ -138,8 +138,8 @@
           <app-field label="Legislative Authority" [showChevrons]="false" errorMessage="Please select all the applicable legislative authorities"
             [valid]="form.get('mainbusinessfocus').valid || !form.get('mainbusinessfocus').touched" [required]="true">
             <p>What enactment authorizes you to manufacture these products? Please select all the options that apply.</p>
-            <input type="checkbox" style="margin-right: 10px;" formControlName="foodanddrugact"> <span>Food and Drug
-              Act</span> <br>
+            <input type="checkbox" style="margin-right: 10px;" formControlName="foodanddrugact"> 
+            <span>Food and Drug Act</span> <br>
             <input type="checkbox" formControlName="legislativeauthorityothercheck" style="margin-right: 10px;"> <span>Other</span> <br>
             <section style="padding-left: 20px" *ngIf="form.get('legislativeauthorityothercheck').value === true">
               <app-field>
@@ -211,7 +211,7 @@
               <app-field>
                 <i>If Other, Please specify</i>
                 <br>
-                <input type="text" class="form-control" style="width: 340px">
+                <input type="text" formControlName="otherlicence" class="form-control" style="width: 340px">
               </app-field>
               <app-field label="What is the name of the business that appears on your Drug Establishment Licence (i.e. issued to name)"
                 [required]="true">
