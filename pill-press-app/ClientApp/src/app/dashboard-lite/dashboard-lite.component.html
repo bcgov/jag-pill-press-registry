@@ -1,4 +1,4 @@
-<div class="dashboard-spacing">
+<div class="form-wrapper">
   <div [ngBusy]="busy"></div>
   <h1>Client Profile Dashboard</h1>
   <div class="row">
@@ -19,7 +19,7 @@
             Short definition of what qualifies as a waiver holder. Lorem ipsum dolor sit amet, consectetur adipiscing
             elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </p>
-          <button class="btn btn-primary" (click)="startNewLicenceApplication()">APPLY TO BE A WAIVER HOLDER</button>
+          <button class="btn btn-primary" (click)="startNewWaiverApplication()">APPLY TO BE A WAIVER HOLDER</button>
         </section>
         <section class="waiver">
           <div class="icon-wrapper">
@@ -30,7 +30,7 @@
             Short definition of what qualifies as a waiver holder. Lorem ipsum dolor sit amet, consectetur adipiscing
             elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </p>
-          <button class="btn btn-primary" disabled>REGISTER AS AN <br> AUTHORIZED OWNER</button>
+          <button class="btn btn-primary" (click)="startNewAuthorizedOwnerApplication()">REGISTER AS AN <br> AUTHORIZED OWNER</button>
         </section>
         <section class="waiver">
           <div class="icon-wrapper">
@@ -41,7 +41,7 @@
             Short definition of what qualifies as a waiver holder. Lorem ipsum dolor sit amet, consectetur adipiscing
             elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </p>
-          <button class="btn btn-primary" disabled>REGISTER AS SELLER</button>
+          <button class="btn btn-primary" (click)="startNewASellerApplication()">REGISTER AS SELLER</button>
         </section>
       </div>
     </div>

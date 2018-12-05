@@ -11,7 +11,7 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
 {
     public enum ApplicationStatusCodes
     {
-        Draft = 931490005,        
+        Draft = 931490005,
         Pending = 931490000,
         [EnumMember(Value = "Under Review")]
         UnderReview = 931490001,
@@ -45,7 +45,7 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
     }
 
     public class Application
-    {     
+    {
 
         public string id { get; set; } //adoxio_applicationid
 
@@ -101,6 +101,8 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
 
         public List<CustomProduct> CustomProducts { get; set; }
 
+        public List<BusinessContact> BusinessContacts { get; set; }
+
         // ### BUSINESS DETAILS ###
 
         /// <summary>
@@ -147,6 +149,27 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         [JsonConverter(typeof(StringEnumConverter))]
         public ApplicationStatusCodes statuscode { get; set; }
         public string applicationtype { get; set; }
+
+        public bool? ownusepossesstoproduceaproduct { get; set; }
+        public bool? intendonrentingleasingtoothers { get; set; }
+        public bool? intendonsellingequipmenttoothers { get; set; }
+        public bool? manufacturerofcontrolledequipment { get; set; }
+        public bool? retailerofcontrolledequipment { get; set; }
+        public bool? onetimesellerofowncontrolledequipment { get; set; }
+        public bool? typeofsellerothercheck { get; set; }
+        public string typeofsellerother { get; set; }
+        public bool? intendtosellpillpress { get; set; }
+        public bool? intendtosellencapsulator { get; set; }
+        public bool? intendtoselldiemouldorpunch { get; set; }
+        public bool? intendtosellpharmaceuticalmixerorblender { get; set; }
+        public bool? intendtosellothercheck { get; set; }
+        public string intendtosellother { get; set; }
+        public string additionalbusinessinformationaboutseller { get; set; }
+        public bool? legislativeauthorityothercheck { get; set; }
+        public bool? kindsofproductsothercheck { get; set; }
+        public bool? otherlicencecheck { get; set; }
+
+        List<Contact> OwnersAndManagers { get; set; }
 
     }
 }
