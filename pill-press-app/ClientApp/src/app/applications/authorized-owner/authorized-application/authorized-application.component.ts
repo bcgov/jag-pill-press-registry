@@ -219,7 +219,7 @@ export class AuthorizedApplicationComponent implements OnInit {
   }
 
   save(gotToReview: boolean) {
-    const value = this.form.value;
+    const value = {...this.form.value};
     const saveList = [this.applicationDataService.updateApplication(value), ...this.saveCustomProducts()];
     zip(...saveList)
       .subscribe(res => {
