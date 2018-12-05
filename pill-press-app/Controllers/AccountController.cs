@@ -157,7 +157,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     MicrosoftDynamicsCRMaccount account = _dynamicsClient.Accounts.GetByKey(accountId.ToString(), expand: expand);                    
                     result = account.ToViewModel();
                 }
-                catch (OdataerrorException odee)
+                catch (OdataerrorException)
                 {
                     return new NotFoundResult();
                 }
@@ -416,7 +416,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 }
 
                 // create the bridge entity for the BCeID user
-                _dynamicsClient.CreateBusinessContactLink(_logger, userSettings.ContactId, userSettings.AccountId, null, (int?)ContactTypeEnum.BCeID);
+                _dynamicsClient.CreateBusinessContactLink(_logger, userSettings.ContactId, userSettings.AccountId, null, (int?)ContactTypeCodes.BCeID);
 
                 userSettings.IsNewUserRegistration = false;
 
@@ -436,11 +436,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             // create the business contact links.
             if (item.primaryContact != null)
             {
-                _dynamicsClient.CreateBusinessContactLink(_logger, item.primaryContact.id, account.Accountid, null, (int?)ContactTypeEnum.Primary);
+                _dynamicsClient.CreateBusinessContactLink(_logger, item.primaryContact.id, account.Accountid, null, (int?)ContactTypeCodes.Primary);
             }
             if (item.additionalContact != null)
             {
-                _dynamicsClient.CreateBusinessContactLink(_logger, item.additionalContact.id, account.Accountid, null, (int?)ContactTypeEnum.Additional);
+                _dynamicsClient.CreateBusinessContactLink(_logger, item.additionalContact.id, account.Accountid, null, (int?)ContactTypeCodes.Additional);
             }
             
             //account.Accountid = id;
@@ -615,11 +615,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 // create the business contact links.
                 if (item.primaryContact != null)
                 {
-                    _dynamicsClient.CreateBusinessContactLink(_logger, item.primaryContact.id, accountId.ToString(), null, (int?)ContactTypeEnum.Primary);
+                    _dynamicsClient.CreateBusinessContactLink(_logger, item.primaryContact.id, accountId.ToString(), null, (int?)ContactTypeCodes.Primary);
                 }
                 if (item.additionalContact != null)
                 {
-                    _dynamicsClient.CreateBusinessContactLink(_logger, item.additionalContact.id, accountId.ToString(), null, (int?)ContactTypeEnum.Additional);
+                    _dynamicsClient.CreateBusinessContactLink(_logger, item.additionalContact.id, accountId.ToString(), null, (int?)ContactTypeCodes.Additional);
                 }
                 
 
