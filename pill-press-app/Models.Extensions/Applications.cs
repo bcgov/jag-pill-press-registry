@@ -97,6 +97,15 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     }
 
                 }
+                if (incident?.BcgovIncidentBusinesscontact?.Count > 0)
+                {
+                    result.BusinessContacts = new List<BusinessContact>();
+                    foreach (var businessContact in incident.BcgovIncidentBusinesscontact)
+                    {
+                        result.BusinessContacts.Add(businessContact.ToViewModel());
+                    }
+                }
+
             }
             return result;
         }

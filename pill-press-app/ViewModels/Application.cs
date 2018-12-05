@@ -101,6 +101,8 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
 
         public List<CustomProduct> CustomProducts { get; set; }
 
+        public List<BusinessContact> BusinessContacts { get; set; }
+
         // ### BUSINESS DETAILS ###
 
         /// <summary>
