@@ -30,7 +30,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             {
                 List<string> expand = new List<string>()
                 {
-                    "bcgov_incident_customproduct_RelatedApplication","customerid_account"
+                    "bcgov_incident_customproduct_RelatedApplication","customerid_account","bcgov_incident_businesscontact"
                 };
                 // fetch from Dynamics.
                 result = system.Incidents.GetByKey(incidentid: id.ToString(), expand: expand);
@@ -39,6 +39,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             {
                 result = null;
             }
+            
+
             return result;
         }
 
