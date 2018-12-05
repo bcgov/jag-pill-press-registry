@@ -39,7 +39,8 @@ export class SellerApplicationComponent implements OnInit {
   busyPromise: Promise<any>;
   waiverId: string;
 
-  ownerList: any[] = [];
+  ownersAndManagers: any[] = [];
+  deletedOwnerAndManagers: any[] = [];
 
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -101,9 +102,12 @@ export class SellerApplicationComponent implements OnInit {
 
   save(gotToReview: boolean) {
     const value = this.form.value;
+
+    // Todo: BusinessContacts to delete are in this.deletedOwnerAndManagers
+    // Todo: BusinessContacts to create and update are  in this.ownersAndManagers
     const saveList = [this.applicationDataService.updateApplication(value)];
     this.busyPromise = zip(...saveList)
-    .toPromise()
+      .toPromise()
       .then(res => {
         if (gotToReview) {
           this.router.navigateByUrl(`/application/registered-seller/review/${this.waiverId}`);
@@ -129,15 +133,23 @@ export class SellerApplicationComponent implements OnInit {
     dialogRef.afterClosed().subscribe(
       formData => {
         if (formData) {
-          const i = this.ownerList.indexOf(formData);
+          const i = this.ownersAndManagers.indexOf(formData);
           if (i === -1) {
-            this.ownerList.push(formData);
+            this.ownersAndManagers.push(formData);
           } else {
-            this.ownerList[i] = formData;
+            this.ownersAndManagers[i] = formData;
           }
         }
       }
     );
+  }
+
+  deleteOwnerOrManager(owner: any) {
+    const index = this.ownersAndManagers.indexOf(owner);
+    if (owner.id) {
+      this.deletedOwnerAndManagers.push(owner);
+    }
+    this.ownersAndManagers.splice(index, 1);
   }
 
   isSellerTypeValid() {
@@ -155,6 +167,7 @@ export class SellerApplicationComponent implements OnInit {
 })
 export class SellerOwnerDialogComponent implements OnInit {
   form: FormGroup;
+  showErrors: boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -175,6 +188,7 @@ export class SellerOwnerDialogComponent implements OnInit {
   }
 
   save() {
+    this.showErrors = true;
     if (!this.form.valid) {
       Object.keys(this.form.controls).forEach(field => {
         const control = this.form.get(field);
