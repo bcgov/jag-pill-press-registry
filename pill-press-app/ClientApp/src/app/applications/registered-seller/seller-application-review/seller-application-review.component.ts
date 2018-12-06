@@ -105,6 +105,8 @@ export class SellerApplicationReviewComponent implements OnInit {
 
   save(gotToReview: boolean) {
     const value = this.form.value;
+    // set the status to pending.
+    value.statuscode = 'Pending';
     const saveList = [this.applicationDataService.updateApplication(value)];
     zip(...saveList)
       .subscribe(res => {
