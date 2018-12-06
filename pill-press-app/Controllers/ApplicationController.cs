@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Threading.Tasks;
 
@@ -86,11 +87,19 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             // get the Application
             Guid ApplicationId = Guid.Parse(id);
 
-            MicrosoftDynamicsCRMincident application = _dynamicsClient.GetApplicationById(ApplicationId);
+            MicrosoftDynamicsCRMincident application = _dynamicsClient.GetApplicationByIdWithChildren(ApplicationId);
             if (application == null)
             {
                 return new NotFoundResult();
             }
+
+            // get UserSettings from the session
+            string temp = _httpContextAccessor.HttpContext.Session.GetString("UserSettings");
+            UserSettings userSettings = JsonConvert.DeserializeObject<UserSettings>(temp);
+
+            // Get the current account
+            var account = await _dynamicsClient.GetAccountById(Guid.Parse(userSettings.AccountId));
+
             MicrosoftDynamicsCRMincident patchApplication = new MicrosoftDynamicsCRMincident();
             patchApplication.CopyValues(item);
 
@@ -100,6 +109,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 patchApplication.Statuscode = (int?)ViewModels.ApplicationStatusCodes.Pending;
             }
 
+            
             try
             {
                 await _dynamicsClient.Incidents.UpdateAsync(ApplicationId.ToString(), patchApplication);
@@ -111,6 +121,128 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 _logger.LogError(odee.Request.Content);
                 _logger.LogError("Response:");
                 _logger.LogError(odee.Response.Content);
+            }
+
+            // determine if there are any changes to the contacts.
+
+            if (item.BusinessContacts != null)
+            {
+                foreach (var businessContactViewModel in item.BusinessContacts)
+                {
+                    if (businessContactViewModel.contact != null)
+                    {
+                        // create the contact if necessary.
+                        var contact = businessContactViewModel.contact.ToModel();
+                        if (string.IsNullOrEmpty(businessContactViewModel.contact.id))
+                        {
+                            // create a contact.                        
+                            try
+                            {
+                                contact = _dynamicsClient.Contacts.Create(contact);
+                                businessContactViewModel.contact.id = contact.Contactid;
+                            }
+                            catch (OdataerrorException odee)
+                            {
+                                _logger.LogError(LoggingEvents.Error, "Error creating contact");
+                                _logger.LogError("Request:");
+                                _logger.LogError(odee.Request.Content);
+                                _logger.LogError("Response:");
+                                _logger.LogError(odee.Response.Content);
+                                throw new OdataerrorException("Error creating contact");
+                            }
+                        }
+                        else
+                        {
+                            // update
+                            try
+                            {
+                                _dynamicsClient.Contacts.Update(businessContactViewModel.contact.id, contact);
+                            }
+                            catch (OdataerrorException odee)
+                            {
+                                _logger.LogError(LoggingEvents.Error, "Error updating contact");
+                                _logger.LogError("Request:");
+                                _logger.LogError(odee.Request.Content);
+                                _logger.LogError("Response:");
+                                _logger.LogError(odee.Response.Content);
+                                throw new OdataerrorException("Error updating the contact.");
+                            }
+                        }
+
+                        // force the account to be the current account
+                        businessContactViewModel.account = account.ToViewModel();
+                        
+                        MicrosoftDynamicsCRMbcgovBusinesscontact businessContact = businessContactViewModel.ToModel(_dynamicsClient);
+
+                        if (string.IsNullOrEmpty(businessContactViewModel.id))
+                        {
+                            
+                            try
+                            {
+                                businessContact = _dynamicsClient.Businesscontacts.Create(businessContact);
+                                businessContactViewModel.id = businessContact.BcgovBusinesscontactid;
+                            }
+                            catch (OdataerrorException odee)
+                            {
+                                _logger.LogError(LoggingEvents.Error, "Error creating business contact");
+                                _logger.LogError("Request:");
+                                _logger.LogError(odee.Request.Content);
+                                _logger.LogError("Response:");
+                                _logger.LogError(odee.Response.Content);
+                                throw new OdataerrorException("Error creating business contact");
+                            }
+                        }
+                        else
+                        {
+                            // update
+                            try
+                            {
+                                _dynamicsClient.Businesscontacts.Update(businessContactViewModel.id, businessContact);
+                            }
+                            catch (OdataerrorException odee)
+                            {
+                                _logger.LogError(LoggingEvents.Error, "Error updating business contact");
+                                _logger.LogError("Request:");
+                                _logger.LogError(odee.Request.Content);
+                                _logger.LogError("Response:");
+                                _logger.LogError(odee.Response.Content);
+                                throw new OdataerrorException("Error updating the business contact.");
+                            }
+                        }
+                    }
+
+                }
+
+                // we may also need to delete removed contacts here.
+
+                //List<MicrosoftDynamicsCRMbcgovBusinesscontact> itemsToRemove = new List<MicrosoftDynamicsCRMbcgovBusinesscontact>();
+
+                List<BusinessContactOdataId> odataids = new List<BusinessContactOdataId>();
+                foreach (var businessContact in item.BusinessContacts)
+                {
+                    BusinessContactOdataId odataId = new BusinessContactOdataId()
+                    {
+                        OdataIdProperty = _dynamicsClient.GetEntityURI("bcgov_businesscontact", businessContact.id)
+                    };
+                    odataids.Add(odataId);
+                }
+
+                try
+                {
+                    //await _dynamicsClient.Incidents.AddReferencesAsync(id, "bcgov_incident_businesscontact", odataids);
+                }
+                catch (OdataerrorException odee)
+                {
+                    _logger.LogError(LoggingEvents.Error, "Error updating business contacts");
+                    _logger.LogError("Request:");
+                    _logger.LogError(odee.Request.Content);
+                    _logger.LogError("Response:");
+                    _logger.LogError(odee.Response.Content);
+                    throw new OdataerrorException("Error updating the business contacts.");
+                }
+
+                
+
             }
 
             application = _dynamicsClient.GetApplicationById(ApplicationId);
