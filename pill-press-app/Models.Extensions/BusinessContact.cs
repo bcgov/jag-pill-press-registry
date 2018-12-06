@@ -1,4 +1,5 @@
-﻿using Gov.Jag.PillPressRegistry.Interfaces.Models;
+﻿using Gov.Jag.PillPressRegistry.Interfaces;
+using Gov.Jag.PillPressRegistry.Interfaces.Models;
 using Gov.Jag.PillPressRegistry.Public.ViewModels;
 using Microsoft.AspNetCore.Http;
 using System;
@@ -42,6 +43,27 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             to.BcgovContacttype = (int?) from.contactType;
                         
         }
+
+
+        public static MicrosoftDynamicsCRMbcgovBusinesscontact ToModel(this ViewModels.BusinessContact from, IDynamicsClient system)
+        {
+            MicrosoftDynamicsCRMbcgovBusinesscontact result = new MicrosoftDynamicsCRMbcgovBusinesscontact()
+            {
+
+                BcgovContacttype = (int?)from.contactType,
+                ContactODataBind = system.GetEntityURI("contacts", from.contact.id),
+                AccountODataBind = system.GetEntityURI("accounts", from.account.id),
+                BcgovJobtitle = from.jobTitle
+            };
+            if (!string.IsNullOrEmpty(from.id))
+            {
+                result.BcgovBusinesscontactid = from.id;
+            }
+            return result;
+        }
+            
+        
+    
 
     }
 }
