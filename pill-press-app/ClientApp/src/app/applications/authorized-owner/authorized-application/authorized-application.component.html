@@ -5,7 +5,8 @@
       <div>
         <h2 class="step">STEP 2</h2>
         <h1 style="margin-top: 0">Authorized Owner Confirmation</h1>
-        <p>Please complete the form below.  Your information will only be saved once you click the Save & Continue button at the end of the page.</p>
+        <p>Please complete the form below. Your information will only be saved once you click the Save & Continue
+          button at the end of the page.</p>
 
         <h3 class="blue-header">EQUIPMENT INFORMATION</h3>
         <section class="padded-section">
@@ -138,9 +139,10 @@
           <app-field label="Legislative Authority" [showChevrons]="false" errorMessage="Please select all the applicable legislative authorities"
             [valid]="form.get('mainbusinessfocus').valid || !form.get('mainbusinessfocus').touched" [required]="true">
             <p>What enactment authorizes you to manufacture these products? Please select all the options that apply.</p>
-            <input type="checkbox" style="margin-right: 10px;" formControlName="foodanddrugact"> 
+            <input type="checkbox" style="margin-right: 10px;" formControlName="foodanddrugact">
             <span>Food and Drug Act</span> <br>
-            <input type="checkbox" formControlName="legislativeauthorityothercheck" style="margin-right: 10px;"> <span>Other</span> <br>
+            <input type="checkbox" formControlName="legislativeauthorityothercheck" style="margin-right: 10px;"> <span>Other</span>
+            <br>
             <section style="padding-left: 20px" *ngIf="form.get('legislativeauthorityothercheck').value === true">
               <app-field>
                 <i>If Other, Please specify</i>
@@ -157,7 +159,8 @@
             <br>
             <input type="checkbox" style="margin-right: 10px;" formControlName="kindsofproductsnaturalhealthproducts">
             <span>Natural Health Products</span> <br>
-            <input type="checkbox" style="margin-right: 10px;" formControlName="kindsofproductsothercheck"> <span>Other</span> <br>
+            <input type="checkbox" style="margin-right: 10px;" formControlName="kindsofproductsothercheck"> <span>Other</span>
+            <br>
             <section style="padding-left: 20px" *ngIf="form.get('kindsofproductsothercheck').value === true">
               <app-field>
                 <i>If Other, Please specify</i>
@@ -178,7 +181,9 @@
                 [required]="true">
                 <input type="text" class="form-control" formControlName="delbusinessname" style="width: 500px">
               </app-field>
-              <app-field label="Drug Establishment Licence - Number" [required]="true">
+              <app-field label="Drug Establishment Licence - Number" errorMessage="Please provide the drug establishment licence number"
+                [valid]="form.get('drugestablishmentlicencenumber').valid || !form.get('drugestablishmentlicencenumber').touched"
+                [required]="true">
                 <input type="text" class="form-control" formControlName="drugestablishmentlicencenumber" style="width: 340px">
               </app-field>
               <app-field label="Drug Establishment Licence - Expiry Date">
@@ -196,17 +201,18 @@
                 [required]="true">
                 <input type="text" class="form-control" formControlName="sitelicencebusinessname" style="width: 500px">
               </app-field>
-              <app-field label="Drug Establishment Licence - Number" [required]="true">
+              <app-field label="Drug Establishment Licence - Number" errorMessage="Please provide the site licence number"
+                [valid]="form.get('sitelicencenumber').valid || !form.get('sitelicencenumber').touched" [required]="true">
                 <input type="text" class="form-control" formControlName="sitelicencenumber" style="width: 340px">
               </app-field>
               <app-field label="Drug Establishment Licence - Expiry Date">
-                <input type="text" class="form-control" formControlName="sitelicenceexpirydate"
-                  placeholder="yyyy-mm-dd" [matDatepicker]="picker2" (focus)="picker2.open()" (click)="picker2.open()"
-                  readonly style="width: 200px; background-color: #fff;">
+                <input type="text" class="form-control" formControlName="sitelicenceexpirydate" placeholder="yyyy-mm-dd"
+                  [matDatepicker]="picker2" (focus)="picker2.open()" (click)="picker2.open()" readonly style="width: 200px; background-color: #fff;">
                 <mat-datepicker #picker2></mat-datepicker>
               </app-field>
             </section>
-            <input type="checkbox" style="margin-right: 10px;" formControlName="otherlicencecheck"> <span>Other</span> <br>
+            <input type="checkbox" style="margin-right: 10px;" formControlName="otherlicencecheck"> <span>Other</span>
+            <br>
             <section style="padding-left: 20px" *ngIf="form.get('otherlicencecheck').value === true">
               <app-field>
                 <i>If Other, Please specify</i>
@@ -217,13 +223,13 @@
                 [required]="true">
                 <input type="text" class="form-control" formControlName="otherlicencebusinessname" style="width: 500px">
               </app-field>
-              <app-field label="Drug Establishment Licence - Number" [required]="true">
+              <app-field label="Other Licence - Number" errorMessage="Please provide the licence number"
+              [valid]="form.get('otherlicencenumber').valid || !form.get('otherlicencenumber').touched" [required]="true">
                 <input type="text" class="form-control" formControlName="otherlicencenumber" style="width: 340px">
               </app-field>
               <app-field label="Drug Establishment Licence - Expiry Date">
-                <input type="text" class="form-control" formControlName="otherlicenceexpirydate"
-                  placeholder="yyyy-mm-dd" [matDatepicker]="picker3" (focus)="picker3.open()" (click)="picker3.open()"
-                  readonly style="width: 200px; background-color: #fff;">
+                <input type="text" class="form-control" formControlName="otherlicenceexpirydate" placeholder="yyyy-mm-dd"
+                  [matDatepicker]="picker3" (focus)="picker3.open()" (click)="picker3.open()" readonly style="width: 200px; background-color: #fff;">
                 <mat-datepicker #picker3></mat-datepicker>
               </app-field>
             </section>
@@ -238,7 +244,8 @@
 
         <section style="display: flex; justify-content: space-between; padding-top: 30px;">
           <!-- <div><span class="error-states">*</span> <i>Required field</i></div> -->
-          <a href="javascript: void(0);" (click)="save(false);"><i style="margin-right: 5px" class="fa fa-save"></i>Save & Close</a>
+          <a href="javascript: void(0);" (click)="save(false);"><i style="margin-right: 5px" class="fa fa-save"></i>Save
+            & Close</a>
           <div>
             <button class="btn btn-primary" (click)="markAsTouched(); save(true);">SAVE & CONTINUE</button>
           </div>
@@ -246,22 +253,22 @@
       </div>
     </div>
     <div class="col-lg-4 col-sm-12" style="position: relative">
-        <!-- <div [ngBusy]="busy"></div> -->
-        <p></p>
-        <section class="submit-container">
-          <table>
-            <tr>
-              <td>
-                <h2 class="round-icon-wrapper"><i class="fas fa-address-card"></i></h2>
-              </td>
-              <td style="padding-left: 10px">
-                <h2>Useful Links & Information</h2>
-              </td>
-            </tr>
-          </table>
-          <div class="submit-content">
-          </div>
-        </section>
-      </div>
+      <!-- <div [ngBusy]="busy"></div> -->
+      <p></p>
+      <section class="submit-container">
+        <table>
+          <tr>
+            <td>
+              <h2 class="round-icon-wrapper"><i class="fas fa-address-card"></i></h2>
+            </td>
+            <td style="padding-left: 10px">
+              <h2>Useful Links & Information</h2>
+            </td>
+          </tr>
+        </table>
+        <div class="submit-content">
+        </div>
+      </section>
+    </div>
   </div>
 </div>
