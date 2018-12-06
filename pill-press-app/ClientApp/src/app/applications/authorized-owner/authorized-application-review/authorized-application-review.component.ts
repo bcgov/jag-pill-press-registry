@@ -39,7 +39,7 @@ export class AuthorizedApplicationReviewComponent implements OnInit {
     private dynamicsDataService: DynamicsDataService,
     private applicationDataService: ApplicationDataService) {
     this.waiverId = this.route.snapshot.params.id;
-    this.attachmentURL = `api/file/${this.waiverId}/attachments/application`;
+    this.attachmentURL = `api/file/${this.waiverId}/attachments/incident`;
   }
 
   ngOnInit() {
@@ -144,6 +144,8 @@ export class AuthorizedApplicationReviewComponent implements OnInit {
 
   save(goToThankYouPage: boolean) {
     const value = this.form.value;
+    // set the status to pending.
+    value.statuscode = 'Pending';
     this.form.markAsTouched();
     if (value.declarationofcorrectinformation !== false) {
       const saveList = [this.applicationDataService.updateApplication(value)];
