@@ -2,8 +2,8 @@
     <h2>Add Owner or Manager</h2>
     <section>
         <div formGroupName="contact">
-            <app-field label="Type of management role" [valid]="!showErrors || form.get('contact.isOwner').valid" [required]="true"
-                [showChevrons]="false" errorMessage="Please indicate your type of management role">
+            <app-field label="Type of management role" [valid]="!showErrors || form.get('contact.isOwner').valid"
+                [required]="true" [showChevrons]="false" errorMessage="Please indicate your type of management role">
                 <input type="radio" formControlName="isOwner" name="isOwner" [value]="true" style="margin-right: 5px;"><span
                     style="margin-right: 20px;">Owner</span>
                 <input type="radio" formControlName="isOwner" name="isOwner" [value]="false" style="margin-right: 5px;"><span>Manager</span>
@@ -27,7 +27,8 @@
         <div formGroupName="contact">
             <app-field label="Phone Number" [required]="true" errorMessage="Please enter your owner/manager's phone number"
                 [valid]="form.get('contact.phoneNumber').valid || !form.get('contact.phoneNumber').touched">
-                <input type="text" class="form-control" style="width: 300px" formControlName="phoneNumber">
+                <input type="text" class="form-control" style="width: 300px" formControlName="phoneNumber" maxlength="10"
+                    (keydown)="rejectIfNotDigitOrBackSpace($event)">
             </app-field>
 
             <app-field label="Email" [required]="true" errorMessage="Please enter your owner/manager's email address"

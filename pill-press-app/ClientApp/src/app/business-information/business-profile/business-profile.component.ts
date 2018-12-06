@@ -20,6 +20,7 @@ import { defaultFormat as _rollupMoment } from 'moment';
 import { zip } from 'rxjs/operators';
 import { AccountDataService } from '../../services/account-data.service';
 import { DynamicsAccount } from '../../models/dynamics-account.model';
+import { FormBase } from '../../shared/form-base';
 const moment = _rollupMoment || _moment;
 
 // See the Moment.js docs for the meaning of these formats:
@@ -52,7 +53,7 @@ const postalRegex = '(^\\d{5}([\-]\\d{4})?$)|(^[A-Za-z][0-9][A-Za-z]\\s?[0-9][A-
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
   ],
 })
-export class BusinessProfileComponent implements OnInit {
+export class BusinessProfileComponent extends FormBase implements OnInit {
   currentUser: User;
   dataLoaded = false;
   busy: Subscription;
@@ -80,9 +81,7 @@ export class BusinessProfileComponent implements OnInit {
     private route: ActivatedRoute,
 
   ) {
-    // this.route.params.subscribe(params => {
-    //   this.accountId = params.id;
-    // });
+    super();
   }
 
   ngOnInit() {
@@ -253,46 +252,6 @@ export class BusinessProfileComponent implements OnInit {
         primaryContactControls[c].markAsTouched();
       }
     }
-
-  }
-
-  rejectIfNotDigitOrBackSpace(event) {
-    const acceptedKeys = ['Backspace', 'Tab', 'End', 'Home', 'ArrowLeft', 'ArrowRight', 'Control',
-      '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
-    if (acceptedKeys.indexOf(event.key) === -1) {
-      event.preventDefault();
-    }
-  }
-
-  customRequiredCheckboxValidator(): ValidatorFn {
-    return (control: AbstractControl): { [key: string]: any } | null => {
-      if (control.value === true) {
-        return null;
-      } else {
-        return { 'shouldBeTrue': 'But value is false' };
-      }
-    };
-  }
-
-  customZipCodeValidator(pattern: RegExp, countryField: string): ValidatorFn {
-    return (control: AbstractControl): { [key: string]: any } | null => {
-      if (!control.parent) {
-        return null;
-      }
-      const country = control.parent.get(countryField).value;
-      if (country !== 'Canada' && country !== 'United States of America') {
-        return null;
-      }
-      const valueMatchesPattern = pattern.test(control.value);
-      return valueMatchesPattern ? null : { 'regex-missmatch': { value: control.value } };
-    };
-  }
-
-  trimValue(control: FormControl) {
-    const value = control.value;
-    control.setValue('');
-    control.setValue(value.trim());
-
 
   }
 }

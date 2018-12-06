@@ -12,6 +12,7 @@ import * as _moment from 'moment';
 import { defaultFormat as _rollupMoment } from 'moment';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 import { BusinessContact } from '../../../models/business-contact.model';
+import { FormBase } from '../../../shared/form-base';
 const moment = _rollupMoment || _moment;
 
 // See the Moment.js docs for the meaning of these formats:
@@ -157,14 +158,16 @@ export class SellerApplicationComponent implements OnInit {
   selector: 'app-seller-owner-dialog',
   templateUrl: './owner-dialog.html',
 })
-export class SellerOwnerDialogComponent implements OnInit {
+export class SellerOwnerDialogComponent extends FormBase implements OnInit {
   form: FormGroup;
   showErrors: boolean;
 
   constructor(
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<SellerOwnerDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { owner: BusinessContact }) { }
+    @Inject(MAT_DIALOG_DATA) public data: { owner: BusinessContact }) {
+    super();
+  }
 
   ngOnInit(): void {
     const owner = this.data.owner;
