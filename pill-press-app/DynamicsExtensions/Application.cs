@@ -34,12 +34,22 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                 };
                 // fetch from Dynamics.
                 result = system.Incidents.GetByKey(incidentid: id.ToString(), expand: expand);
+
+               
             }
             catch (OdataerrorException)
             {
                 result = null;
             }
             
+            if (result.BcgovIncidentBusinesscontact != null)
+            {
+                for (int i = 0; i < result.BcgovIncidentBusinesscontact.Count; i++)
+                {
+                    result.BcgovIncidentBusinesscontact[i] = system.GetBusinessContactById(result.BcgovIncidentBusinesscontact[i].BcgovBusinesscontactid);
+                }
+            }
+
 
             return result;
         }

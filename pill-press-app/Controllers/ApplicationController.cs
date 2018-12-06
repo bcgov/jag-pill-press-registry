@@ -213,13 +213,13 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
 
                 }
 
-                // we may also need to delete removed contacts here.
 
                 //List<MicrosoftDynamicsCRMbcgovBusinesscontact> itemsToRemove = new List<MicrosoftDynamicsCRMbcgovBusinesscontact>();
                 
                 foreach (var businessContact in item.BusinessContacts)
                 {
 
+                    // TODO: Handle deletes as well as additions.
 
                     OdataId odataId = new OdataId()
                     {
@@ -241,9 +241,6 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     }
                 }
 
-                
-
-                
 
             }
 
