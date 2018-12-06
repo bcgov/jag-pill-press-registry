@@ -55,7 +55,6 @@ export class ProfileSummaryComponent implements OnInit {
               .subscribe(res => {
                 this.account = res;
                 this.setSummaryTables();
-                debugger;
                 this.form.patchValue(res);
               });
         }
@@ -125,26 +124,43 @@ export class ProfileSummaryComponent implements OnInit {
     ];
   }
 
-  save() {
-    const value = this.form.value;
-    this.busy = this.accountDataService.updateAccount(value)
-      .subscribe(data => {
-        switch (this.mode) {
-          case 'waiver':
-            this.router.navigateByUrl(`/application/waiver/${this.applicationId}`);
-            break;
-          case 'registered-seller':
-            this.router.navigateByUrl(`/application/registered-seller/${this.applicationId}`);
-            break;
-          case 'authorized-owner':
-            this.router.navigateByUrl(`/application/authorized-owner/${this.applicationId}`);
-            break;
+  declarationsValid() {
+    return this.form.get('declarationofcorrectinformation').value === true
+      && this.form.get('foippaconsent').value === true;
+  }
 
-          default:
-            this.router.navigateByUrl('/dashboard');
-            break;
-        }
-      });
+  markAsTouched() {
+    this.form.markAsTouched();
+    const controls = this.form.controls;
+    for (const c in controls) {
+      if (typeof (controls[c].markAsTouched) === 'function') {
+        controls[c].markAsTouched();
+      }
+    }
+  }
+
+  save() {
+    if (!!(this.mode || this.declarationsValid())) {
+      const value = this.form.value;
+      this.busy = this.accountDataService.updateAccount(value)
+        .subscribe(data => {
+          switch (this.mode) {
+            case 'waiver':
+              this.router.navigateByUrl(`/application/waiver/${this.applicationId}`);
+              break;
+            case 'registered-seller':
+              this.router.navigateByUrl(`/application/registered-seller/${this.applicationId}`);
+              break;
+            case 'authorized-owner':
+              this.router.navigateByUrl(`/application/authorized-owner/${this.applicationId}`);
+              break;
+
+            default:
+              this.router.navigateByUrl('/dashboard');
+              break;
+          }
+        });
+    }
   }
 
   customRequiredCheckboxValidator(): ValidatorFn {
