@@ -216,30 +216,32 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 // we may also need to delete removed contacts here.
 
                 //List<MicrosoftDynamicsCRMbcgovBusinesscontact> itemsToRemove = new List<MicrosoftDynamicsCRMbcgovBusinesscontact>();
-
-                List<BusinessContactOdataId> odataids = new List<BusinessContactOdataId>();
+                
                 foreach (var businessContact in item.BusinessContacts)
                 {
-                    BusinessContactOdataId odataId = new BusinessContactOdataId()
+
+
+                    OdataId odataId = new OdataId()
                     {
-                        OdataIdProperty = _dynamicsClient.GetEntityURI("bcgov_businesscontact", businessContact.id)
+                        OdataIdProperty = _dynamicsClient.GetEntityURI("bcgov_businesscontacts", businessContact.id)
                     };
-                    odataids.Add(odataId);
+
+                    try
+                    {
+                        await _dynamicsClient.Incidents.AddReferenceAsync(id, "bcgov_incident_businesscontact", odataId);
+                    }
+                    catch (OdataerrorException odee)
+                    {
+                        _logger.LogError(LoggingEvents.Error, "Error updating business contacts");
+                        _logger.LogError("Request:");
+                        _logger.LogError(odee.Request.Content);
+                        _logger.LogError("Response:");
+                        _logger.LogError(odee.Response.Content);
+                        throw new OdataerrorException("Error updating the business contacts.");
+                    }
                 }
 
-                try
-                {
-                    //await _dynamicsClient.Incidents.AddReferencesAsync(id, "bcgov_incident_businesscontact", odataids);
-                }
-                catch (OdataerrorException odee)
-                {
-                    _logger.LogError(LoggingEvents.Error, "Error updating business contacts");
-                    _logger.LogError("Request:");
-                    _logger.LogError(odee.Request.Content);
-                    _logger.LogError("Response:");
-                    _logger.LogError(odee.Response.Content);
-                    throw new OdataerrorException("Error updating the business contacts.");
-                }
+                
 
                 
 
