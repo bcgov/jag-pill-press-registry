@@ -1,4 +1,5 @@
-﻿using Gov.Jag.PillPressRegistry.Interfaces.Models;
+﻿using Gov.Jag.PillPressRegistry.Interfaces;
+using Gov.Jag.PillPressRegistry.Interfaces.Models;
 using Gov.Jag.PillPressRegistry.Public.ViewModels;
 using Microsoft.AspNetCore.Http;
 using System;
@@ -25,12 +26,22 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                 {
                     result.id = businessContact.BcgovBusinesscontactid;
                 }
-                result.jobtitle = businessContact.BcgovJobtitle;
+                result.jobTitle = businessContact.BcgovJobtitle;
 
                 if (businessContact.BcgovContacttype != null)
                 {
-                    result.contacttype = (ContactTypeCodes) businessContact.BcgovContacttype;
-                }                
+                    result.contactType = (ContactTypeCodes) businessContact.BcgovContacttype;
+                }
+                
+                if (businessContact.BcgovContact != null)
+                {
+                    result.contact = businessContact.BcgovContact.ToViewModel();
+                }
+
+                if (businessContact.BcgovBusinessProfile != null)
+                {
+                    result.account = businessContact.BcgovBusinessProfile.ToViewModel();
+                }
 
             }
             return result;
@@ -38,10 +49,31 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
 
         public static void CopyValues(this MicrosoftDynamicsCRMbcgovBusinesscontact to, ViewModels.BusinessContact from)
         {
-            to.BcgovJobtitle = from.jobtitle;
-            to.BcgovContacttype = (int?) from.contacttype;
+            to.BcgovJobtitle = from.jobTitle;
+            to.BcgovContacttype = (int?) from.contactType;
                         
         }
+
+
+        public static MicrosoftDynamicsCRMbcgovBusinesscontact ToModel(this ViewModels.BusinessContact from, IDynamicsClient system)
+        {
+            MicrosoftDynamicsCRMbcgovBusinesscontact result = new MicrosoftDynamicsCRMbcgovBusinesscontact()
+            {
+
+                BcgovContacttype = (int?)from.contactType,
+                ContactODataBind = system.GetEntityURI("contacts", from.contact.id),
+                AccountODataBind = system.GetEntityURI("accounts", from.account.id),
+                BcgovJobtitle = from.jobTitle
+            };
+            if (!string.IsNullOrEmpty(from.id))
+            {
+                result.BcgovBusinesscontactid = from.id;
+            }
+            return result;
+        }
+            
+        
+    
 
     }
 }

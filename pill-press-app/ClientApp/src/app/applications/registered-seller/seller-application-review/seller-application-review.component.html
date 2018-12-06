@@ -102,11 +102,11 @@
         <th>CONTACT DETAILS</th>
       </tr>
       <tr *ngFor="let item of ownersAndManagers" [ngClass]="{cssClass: expression}">
-        <td>{{item.firstName}}</td>
-        <td>{{item.lastName}}</td>
-        <td>{{item.title}}</td>
-        <td>Phone: {{item.phoneNumber}} <br>
-          Email: {{item.email}}</td>
+        <td>{{item?.contact?.firstName}}</td>
+        <td>{{item?.contact?.lastName}}</td>
+        <td>{{item?.jobTitle}}</td>
+        <td>Phone: {{item?.contact?.phoneNumber}} <br>
+          Email: {{item?.contact?.email}}</td>
       </tr>
     </table>
     <h3 class="blue-header">DECLARATION AND CONSENT</h3>

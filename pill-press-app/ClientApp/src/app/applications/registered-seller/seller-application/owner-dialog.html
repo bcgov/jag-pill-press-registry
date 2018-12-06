@@ -1,36 +1,41 @@
 <mat-dialog-content [formGroup]="form">
     <h2>Add Owner or Manager</h2>
     <section>
-        <app-field label="Type of management role" [valid]="!showErrors || form.get('isOwner').valid" [required]="true"
-            [showChevrons]="false" errorMessage="Please indicate your type of management role">
-            <input type="radio" formControlName="isOwner" name="isOwner" [value]="true" style="margin-right: 5px;"><span
-                style="margin-right: 20px;">Owner</span>
-            <input type="radio" formControlName="isOwner" name="isOwner" [value]="false" style="margin-right: 5px;"><span>Manager</span>
-        </app-field>
+        <div formGroupName="contact">
+            <app-field label="Type of management role" [valid]="!showErrors || form.get('contact.isOwner').valid"
+                [required]="true" [showChevrons]="false" errorMessage="Please indicate your type of management role">
+                <input type="radio" formControlName="isOwner" name="isOwner" [value]="true" style="margin-right: 5px;"><span
+                    style="margin-right: 20px;">Owner</span>
+                <input type="radio" formControlName="isOwner" name="isOwner" [value]="false" style="margin-right: 5px;"><span>Manager</span>
+            </app-field>
 
-        <app-field label="First Name" [required]="true" errorMessage="Please enter your owner/manager's first name"
-            [valid]="form.get('firstName').valid || !form.get('firstName').touched">
-            <input type="text" class="form-control" style="width: 400px" formControlName="firstName">
-        </app-field>
+            <app-field label="First Name" [required]="true" errorMessage="Please enter your owner/manager's first name"
+                [valid]="form.get('contact.firstName').valid || !form.get('contact.firstName').touched">
+                <input type="text" class="form-control" style="width: 400px" formControlName="firstName">
+            </app-field>
 
-        <app-field label="Last Name" [required]="true" errorMessage="Please enter your owner/manager's last name"
-            [valid]="form.get('lastName').valid || !form.get('lastName').touched">
-            <input type="text" class="form-control" style="width: 400px" formControlName="lastName">
-        </app-field>
+            <app-field label="Last Name" [required]="true" errorMessage="Please enter your owner/manager's last name"
+                [valid]="form.get('contact.lastName').valid || !form.get('contact.lastName').touched">
+                <input type="text" class="form-control" style="width: 400px" formControlName="lastName">
+            </app-field>
+        </div>
 
         <app-field label="Title/ Position">
-            <input type="text" class="form-control" style="width: 300px" formControlName="title">
+            <input type="text" class="form-control" style="width: 300px" formControlName="jobTitle">
         </app-field>
 
-        <app-field label="Phone Number" [required]="true" errorMessage="Please enter your owner/manager's phone number"
-            [valid]="form.get('phoneNumber').valid || !form.get('phoneNumber').touched">
-            <input type="text" class="form-control" style="width: 300px" formControlName="phoneNumber">
-        </app-field>
+        <div formGroupName="contact">
+            <app-field label="Phone Number" [required]="true" errorMessage="Please enter your owner/manager's phone number"
+                [valid]="form.get('contact.phoneNumber').valid || !form.get('contact.phoneNumber').touched">
+                <input type="text" class="form-control" style="width: 300px" formControlName="phoneNumber" maxlength="10"
+                    (keydown)="rejectIfNotDigitOrBackSpace($event)">
+            </app-field>
 
-        <app-field label="Email" [required]="true" errorMessage="Please enter your owner/manager's email address"
-            [valid]="form.get('email').valid || !form.get('email').touched">
-            <input type="text" class="form-control" style="width: 300px" formControlName="email">
-        </app-field>
+            <app-field label="Email" [required]="true" errorMessage="Please enter your owner/manager's email address"
+                [valid]="form.get('contact.email').valid || !form.get('contact.email').touched">
+                <input type="text" class="form-control" style="width: 300px" formControlName="email">
+            </app-field>
+        </div>
     </section>
 </mat-dialog-content>
 
