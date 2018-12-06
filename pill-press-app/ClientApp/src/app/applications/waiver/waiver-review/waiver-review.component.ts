@@ -36,7 +36,7 @@ export class WaiverReviewComponent implements OnInit {
     private dynamicsDataService: DynamicsDataService,
     private applicationDataService: ApplicationDataService) {
     this.waiverId = this.route.snapshot.params.id;
-    this.attachmentURL = `api/file/${this.waiverId}/attachments/application`;
+    this.attachmentURL = `api/file/${this.waiverId}/attachments/incident`;
   }
 
   ngOnInit() {
