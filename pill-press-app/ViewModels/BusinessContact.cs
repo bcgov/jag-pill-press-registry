@@ -24,9 +24,9 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public Account account { get; set; }
 
         [JsonConverter(typeof(StringEnumConverter))]
-        public ContactTypeCodes? contacttype { get; set; }
+        public ContactTypeCodes? contactType { get; set; }
 
-        public string jobtitle { get; set; }
+        public string jobTitle { get; set; }
 
     }
 }
