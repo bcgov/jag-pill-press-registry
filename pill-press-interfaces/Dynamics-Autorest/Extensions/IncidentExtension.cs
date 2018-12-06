@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
+// https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/webapi/associate-disassociate-entities-using-web-api
+
 namespace Gov.Jag.PillPressRegistry.Interfaces
 {
 
@@ -55,9 +57,9 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "fieldname");
             }
-            if (odataid != null)
+            if (odataid == null)
             {
-                odataid.Validate();
+                throw new ValidationException(ValidationRules.CannotBeNull, "odataids");
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -66,16 +68,15 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("adoxio_workerid", incidentId);
-                tracingParameters.Add("fieldname", fieldname);
-                tracingParameters.Add("odataid", odataid);
+                tracingParameters.Add("incidentid", incidentId);
+                tracingParameters.Add("fieldname", fieldname);                
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "AddReference", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "adoxio_workers({adoxio_workerid})/{fieldname}/$ref").ToString();
-            _url = _url.Replace("{adoxio_workerid}", System.Uri.EscapeDataString(incidentId));
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "incidents({incidentId})/{fieldname}/$ref").ToString();
+            _url = _url.Replace("{incidentId}", System.Uri.EscapeDataString(incidentId));
             _url = _url.Replace("{fieldname}", System.Uri.EscapeDataString(fieldname));
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
@@ -101,6 +102,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             string _requestContent = null;
             if (odataid != null)
             {
+
+
                 _requestContent = Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(odataid, Client.SerializationSettings);
                 _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
                 _httpRequest.Content.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
@@ -169,9 +172,9 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
     public partial interface IIncidents
     {
         /// <summary>
-        /// Add reference to adoxio_workers
+        /// Add reference to incident
         /// </summary>
-        /// <param name='incidentsId'>
+        /// <param name='incidentId'>
         /// key: adoxio_workerid
         /// </param>
         /// <param name='fieldname'>
@@ -192,7 +195,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<HttpOperationResponse> AddReferenceWithHttpMessagesAsync(string incidentsId, string fieldname, OdataId odataid = default(OdataId), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse> AddReferenceWithHttpMessagesAsync(string incidentId, string fieldname, OdataId odataid = default(OdataId), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 
     public static partial class IncidentsExtensions
@@ -203,7 +206,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='incidenId'>
+        /// <param name='incidentId'>
         /// key: adoxio_workerid
         /// </param>
         /// <param name='fieldname'>
@@ -212,9 +215,9 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <param name='odataid'>
         /// reference value
         /// </param>
-        public static void AddReference(this IIncidents operations, string incidenId, string fieldname, OdataId odataid = default(OdataId))
+        public static void AddReference(this IIncidents operations, string incidentId, string fieldname, OdataId odataid = default(OdataId))
         {
-            operations.AddReferenceAsync(incidenId, fieldname, odataid).GetAwaiter().GetResult();
+            operations.AddReferenceAsync(incidentId, fieldname, odataid).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -223,8 +226,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='workerId'>
-        /// key: adoxio_workerid
+        /// <param name='incidentId'>
+        /// key: incidentId
         /// </param>
         /// <param name='fieldname'>
         /// key: fieldname
@@ -235,9 +238,9 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async Task AddReferenceAsync(this IIncidents operations, string workerId, string fieldname, OdataId odataid = default(OdataId), CancellationToken cancellationToken = default(CancellationToken))
+        public static async Task AddReferenceAsync(this IIncidents operations, string incidentId, string fieldname, OdataId odataid = default(OdataId), CancellationToken cancellationToken = default(CancellationToken))
         {
-            (await operations.AddReferenceWithHttpMessagesAsync(workerId, fieldname, odataid, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.AddReferenceWithHttpMessagesAsync(incidentId, fieldname, odataid, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
     }
 }
