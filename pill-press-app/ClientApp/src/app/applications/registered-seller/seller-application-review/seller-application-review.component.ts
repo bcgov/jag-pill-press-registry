@@ -67,6 +67,8 @@ export class SellerApplicationReviewComponent implements OnInit {
       this.form.patchValue(application);
       this.formData = application;
 
+      this.ownersAndManagers = application.businessContacts || [];
+
        // Equipment information list
        this.equipmentInformation = [
         'Do you currently own, use, or possess Controlled Equipment?',

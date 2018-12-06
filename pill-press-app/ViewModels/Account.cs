@@ -90,6 +90,8 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public string mailingAddressCountry { get; set; } //dynamics = address2_country
         public string mailingAddressProvince { get; set; } //dynamics = address2_stateorprovince
         public string mailingAddressPostalCode { get; set; } //dynamics = address2_postalcode
+        public bool? foippaconsent { get; set; } //dynamics = address2_postalcode
+        public bool? declarationofcorrectinformation { get; set; } //dynamics = address2_postalcode
         
         public ViewModels.Contact additionalContact { get; set; }
         public ViewModels.Contact primaryContact { get; set; }
