@@ -11,7 +11,7 @@ import * as _moment from 'moment';
 // tslint:disable-next-line:no-duplicate-imports
 import { defaultFormat as _rollupMoment } from 'moment';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
-import { DynamicsContact } from '../../../models/dynamics-contact.model';
+import { BusinessContact } from '../../../models/business-contact.model';
 const moment = _rollupMoment || _moment;
 
 // See the Moment.js docs for the meaning of these formats:
@@ -40,7 +40,6 @@ export class SellerApplicationComponent implements OnInit {
   waiverId: string;
 
   ownersAndManagers: any[] = [];
-  deletedOwnerAndManagers: any[] = [];
 
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -102,13 +101,9 @@ export class SellerApplicationComponent implements OnInit {
 
   save(gotToReview: boolean) {
     const value = this.form.value;
-
-    // Todo: BusinessContacts to delete are in this.deletedOwnerAndManagers
-    // Todo: BusinessContacts to create and update are  in this.ownersAndManagers
-    const saveList = [this.applicationDataService.updateApplication(value)];
-    this.busyPromise = zip(...saveList)
-      .toPromise()
-      .then(res => {
+    value.businessContacts = this.ownersAndManagers;
+    this.busy = this.applicationDataService.updateApplication(value)
+      .subscribe(res => {
         if (gotToReview) {
           this.router.navigateByUrl(`/application/registered-seller/review/${this.waiverId}`);
         } else {
@@ -146,9 +141,6 @@ export class SellerApplicationComponent implements OnInit {
 
   deleteOwnerOrManager(owner: any) {
     const index = this.ownersAndManagers.indexOf(owner);
-    if (owner.id) {
-      this.deletedOwnerAndManagers.push(owner);
-    }
     this.ownersAndManagers.splice(index, 1);
   }
 
@@ -172,18 +164,23 @@ export class SellerOwnerDialogComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<SellerOwnerDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { owner: DynamicsContact }) { }
+    @Inject(MAT_DIALOG_DATA) public data: { owner: BusinessContact }) { }
 
   ngOnInit(): void {
     const owner = this.data.owner;
+    owner.contact = owner.contact || <any>{};
     this.form = this.fb.group({
       id: [owner.id || null],
-      firstName: [owner.firstName || '', Validators.required],
-      lastName: [owner.lastName || '', Validators.required],
-      title: [owner.title || ''],
-      phoneNumber: [owner.phoneNumber || '', Validators.required],
-      email: [owner.email || '', [Validators.required, Validators.email]],
-      isOwner: [owner.isOwner, Validators.required],
+      jobTitle: [owner.jobTitle || ''],
+      contactType: ['Additional'],
+      contact: this.fb.group({
+        id: [owner.contact.id],
+        firstName: [owner.contact.firstName || '', Validators.required],
+        lastName: [owner.contact.lastName || '', Validators.required],
+        phoneNumber: [owner.contact.phoneNumber || '', Validators.required],
+        email: [owner.contact.email || '', [Validators.required, Validators.email]],
+        isOwner: [owner.contact.isOwner, Validators.required],
+      })
     });
   }
 
