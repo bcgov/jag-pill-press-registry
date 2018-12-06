@@ -79,8 +79,8 @@
             <span>&nbsp;No</span>
           </app-field>
 
-          <app-field label="What type of seller are you?" [showChevrons]="false" errorMessage="" [valid]="isSellerTypeValid()"
-            [required]="true">
+          <app-field label="What type of seller are you?" [showChevrons]="false" errorMessage="Please indicate what type of seller you are"
+            [valid]="!showErrorMessages || isSellerTypeValid()" [required]="true">
             <p>Please select all the options that apply.</p>
             <input type="checkbox" style="margin-right: 10px;" formControlName="manufacturerofcontrolledequipment">
             <span>Manufacturer of Controlled Equipment</span> <br>
@@ -91,15 +91,15 @@
             <input type="checkbox" formControlName="typeofsellerothercheck" style="margin-right: 10px;">
             <span>Other</span> <br>
             <section style="padding-left: 20px" *ngIf="form.get('typeofsellerothercheck').value === true">
-              <app-field>
-                <i>If Other, Please specify</i>
+              <app-field errorMessage="Please specify what 'other' type of seller you are" [required]="true" [valid]="form.get('typeofsellerother').value || !form.get('typeofsellerother').touched">
+                <i>If Other, Please specify</i>&nbsp;<strong class="error-states">*</strong>
                 <br>
                 <input type="text" class="form-control" formControlName="typeofsellerother" style="width: 340px">
               </app-field>
             </section>
           </app-field>
           <app-field label="What type of Controlled Equipment do you intend to sell?" [showChevrons]="false"
-            errorMessage="" [valid]="true" [required]="true">
+            errorMessage="Please indicate what type of controlled equipment you intend to sell" [valid]="!showErrorMessages || isEquipmentTypeValid()" [required]="true">
             <p>Please select all the options that apply.</p>
             <input type="checkbox" style="margin-right: 10px;" formControlName="intendtosellpillpress">
             <span>Pill press</span> <br>
@@ -112,8 +112,8 @@
             <input type="checkbox" formControlName="intendtosellothercheck" style="margin-right: 10px;">
             <span>Other</span> <br>
             <section style="padding-left: 20px" *ngIf="form.get('intendtosellothercheck').value === true">
-              <app-field>
-                <i>If Other, Please specify</i>
+              <app-field errorMessage="Please specify what 'other' type of controlled equipment you intend to sell" [required]="true" [valid]="form.get('intendtosellother').value || !form.get('intendtosellother').touched">
+                <i>If Other, Please specify</i>&nbsp;<strong class="error-states">*</strong>
                 <br>
                 <input type="text" class="form-control" formControlName="intendtosellother" style="width: 340px">
               </app-field>
@@ -160,16 +160,19 @@
             </tr>
             <tr *ngFor="let item of ownersAndManagers; let i = index;" [ngClass]="{cssClass: expression}">
               <td [ngClass]="{'row-alt': i%2 == 0}">{{item?.contact?.firstName}}</td>
-              <td  [ngClass]="{'row-alt': i%2 == 0}">{{item?.contact?.lastName}}</td>
-              <td  [ngClass]="{'row-alt': i%2 == 0}">{{item.jobTitle}}</td>
-              <td  [ngClass]="{'row-alt': i%2 == 0}">Phone: {{item?.contact?.phoneNumber}} <br>
+              <td [ngClass]="{'row-alt': i%2 == 0}">{{item?.contact?.lastName}}</td>
+              <td [ngClass]="{'row-alt': i%2 == 0}">{{item.jobTitle}}</td>
+              <td [ngClass]="{'row-alt': i%2 == 0}">Phone: {{item?.contact?.phoneNumber}} <br>
                 Email: {{item?.contact?.email}}</td>
-              <td  [ngClass]="{'row-alt': i%2 == 0}">
+              <td [ngClass]="{'row-alt': i%2 == 0}">
                 <i class="fas fa-pencil-alt" style="cursor: pointer; margin-right: 10px;" (click)="addEditOwner(item)"></i>
                 <i class="fas fa-trash-alt" style="cursor: pointer;" (click)="deleteOwnerOrManager(item)"></i>
               </td>
             </tr>
           </table>
+          <p *ngIf="showErrorMessages && ownersAndManagers.length < 1" class="error-states">
+            Please add a manager or an owner
+          </p>
         </section>
         <hr>
 

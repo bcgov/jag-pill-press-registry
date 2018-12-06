@@ -53,11 +53,8 @@ import { AppComponent } from './app.component';
 import { BceidConfirmationComponent } from './bceid-confirmation/bceid-confirmation.component';
 import { SearchBoxDirective } from './search-box/search-box.directive';
 import { GeneralDataService } from './general-data.service';
-// import { AdminModule } from './admin/admin.module';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { DynamicsDataService } from './services/dynamics-data.service';
-// import { DynamicsFormComponent } from './dynamics-form/dynamics-form.component';
-// import { FormViewerComponent } from './form-viewer/form-viewer.component';
 import { InsertComponent } from './insert/insert.component';
 import { InsertService } from './insert/insert.service';
 import { StaticComponent } from './static/static.component';
@@ -78,17 +75,10 @@ import { ApplicationsListComponent } from './applications-list/applications-list
 import { BusinessProfileComponent } from './business-information/business-profile/business-profile.component';
 import { FileDropModule } from 'ngx-file-drop';
 import { FileUploaderComponent } from './shared/file-uploader/file-uploader.component';
-
-
 import { BusinessProfileSummaryComponent } from './business-profile-summary/business-profile-summary.component';
-
 import {NgBusyModule} from 'ng-busy';
-
-
 import { PaymentConfirmationComponent } from './payment-confirmation/payment-confirmation.component';
 import { LicenceFeePaymentConfirmationComponent } from './licence-fee-payment-confirmation/licence-fee-payment-confirmation.component';
-
-
 import { BsDatepickerModule, AlertModule } from 'ngx-bootstrap';
 import { CanDeactivateGuard } from './services/can-deactivate-guard.service';
 import { BCeidAuthGuard } from './services/bceid-auth-guard.service';
