@@ -45,9 +45,9 @@
     </table>
 
     <h2 *ngIf="!mode" class="blue-header">DECLARATIONS AND CONSENT</h2>
-    <div *ngIf="!mode" style="padding-left: 10px;">
+    <div [formGroup]="form" *ngIf="!mode" style="padding-left: 10px;">
       <section style="display: flex">
-        <input type="checkbox">
+        <input type="checkbox"  formControlName="declarationofcorrectinformation">
         <span class="error-states">*</span>
         <div style="padding-left: 10px;"> I certify that, to the best of my knowledge, the information I have provided
           on
@@ -56,7 +56,7 @@
           grounds for any finding of suitability to be reversed or for being prosecuted under provincial law.</div>
       </section>
       <section style="display: flex">
-        <input type="checkbox">
+        <input type="checkbox" formControlName="foippaconsent">
         <span class="error-states">*</span>
         <div style="padding-left: 10px;"> The Security Programs Division will collect your personal information for the
           purpose of fulfilling the requirements of the Pill Press and Related Equipment Control Act and associated
