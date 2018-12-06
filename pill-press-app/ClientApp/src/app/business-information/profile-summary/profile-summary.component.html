@@ -69,6 +69,11 @@
       </section>
     </div>
 
+    <div *ngIf="!declarationsValid() && form.touched" style="background-color: #F2F2F2; margin-top: 10px; border-radius: 5px; padding: 10px; font: 15px Myriad Pro Regular #494949;">
+      <i class="fas fa-exclamation-triangle error-states" style="margin-right: 10px;"></i>
+      <span class="error-states">Please complete the declarations and consent section.</span>
+    </div>
+
 
     <div style="margin-top: 30px; display: flex; justify-content: space-between">
       <section>
@@ -78,7 +83,7 @@
       </section>
       <section>
         <button *ngIf="mode" class="btn btn-primary" (click)="save()">CONTINUE TO APPLICATION</button>
-        <button *ngIf="!mode" class="btn btn-primary" (click)="save()">SAVE</button>
+        <button *ngIf="!mode" class="btn btn-primary" (click)="markAsTouched(); save()">SAVE</button>
       </section>
     </div>
   </div>
