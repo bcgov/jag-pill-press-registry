@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Threading.Tasks;
 
@@ -86,7 +87,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             // get the Application
             Guid ApplicationId = Guid.Parse(id);
 
-            MicrosoftDynamicsCRMincident application = _dynamicsClient.GetApplicationById(ApplicationId);
+            MicrosoftDynamicsCRMincident application = _dynamicsClient.GetApplicationByIdWithChildren(ApplicationId);
             if (application == null)
             {
                 return new NotFoundResult();
@@ -100,6 +101,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 patchApplication.Statuscode = (int?)ViewModels.ApplicationStatusCodes.Pending;
             }
 
+            
             try
             {
                 await _dynamicsClient.Incidents.UpdateAsync(ApplicationId.ToString(), patchApplication);
@@ -111,6 +113,75 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 _logger.LogError(odee.Request.Content);
                 _logger.LogError("Response:");
                 _logger.LogError(odee.Response.Content);
+            }
+
+            // determine if there are any changes to the contacts.
+
+            if (item.BusinessContacts != null)
+            {
+                foreach (var businessContact in item.BusinessContacts)
+                {
+                    if (businessContact.contact != null)
+                    {
+                        // create the contact if necessary.
+                        var contact = businessContact.contact.ToModel();
+                        if (string.IsNullOrEmpty(businessContact.contact.id))
+                        {
+                            // create an account.                        
+                            try
+                            {
+                                contact = _dynamicsClient.Contacts.Create(contact);
+                                businessContact.contact.id = contact.Contactid;
+                            }
+                            catch (OdataerrorException odee)
+                            {
+                                _logger.LogError(LoggingEvents.Error, "Error creating contact");
+                                _logger.LogError("Request:");
+                                _logger.LogError(odee.Request.Content);
+                                _logger.LogError("Response:");
+                                _logger.LogError(odee.Response.Content);
+                                throw new OdataerrorException("Error creating contact");
+                            }
+                        }
+                        else
+                        {
+                            // update
+                            try
+                            {
+                                _dynamicsClient.Contacts.Update(businessContact.contact.id, contact);
+                            }
+                            catch (OdataerrorException odee)
+                            {
+                                _logger.LogError(LoggingEvents.Error, "Error updating contact");
+                                _logger.LogError("Request:");
+                                _logger.LogError(odee.Request.Content);
+                                _logger.LogError("Response:");
+                                _logger.LogError(odee.Response.Content);
+                                throw new OdataerrorException("Error updating the contact.");
+                            }
+                        }
+                    }                    
+                }
+
+                // now update the contact
+
+                // we may also need to delete removed contacts here.
+
+                //List<MicrosoftDynamicsCRMbcgovBusinesscontact> itemsToRemove = new List<MicrosoftDynamicsCRMbcgovBusinesscontact>();
+
+                List<OdataId> odataids = new List<OdataId>();
+                foreach (var businessContact in item.BusinessContacts)
+                {
+                    OdataId odataId = new OdataId()
+                    {
+                        OdataIdProperty = _dynamicsClient.GetEntityURI("bcgov_businesscontact", businessContact.id)
+                    };
+                    odataids.Add(odataId);
+                }
+
+
+                await _dynamicsClient.Incidents.AddReferencesAsync(id, "bcgov_incident_businesscontact", odataids);
+
             }
 
             application = _dynamicsClient.GetApplicationById(ApplicationId);
