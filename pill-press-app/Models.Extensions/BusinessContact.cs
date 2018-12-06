@@ -31,7 +31,17 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                 if (businessContact.BcgovContacttype != null)
                 {
                     result.contactType = (ContactTypeCodes) businessContact.BcgovContacttype;
-                }                
+                }
+                
+                if (businessContact.BcgovContact != null)
+                {
+                    result.contact = businessContact.BcgovContact.ToViewModel();
+                }
+
+                if (businessContact.BcgovBusinessProfile != null)
+                {
+                    result.account = businessContact.BcgovBusinessProfile.ToViewModel();
+                }
 
             }
             return result;
