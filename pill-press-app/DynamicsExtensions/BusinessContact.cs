@@ -102,6 +102,25 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             return result;
         }
 
+        public static MicrosoftDynamicsCRMbcgovBusinesscontact GetBusinessContactById(this IDynamicsClient system, string id)
+        {
+            MicrosoftDynamicsCRMbcgovBusinesscontact result = null;
+            List<string> expand = new List<string>()
+                {
+                    "bcgov_Contact","bcgov_BusinessProfile"
+                };
+            try
+            {
+                result = system.Businesscontacts.GetByKey(bcgovBusinesscontactid:id,expand: expand);
+            }
+            catch (Exception)
+            {
+                result = null;
+            }
+
+            return result;
+        }
+
 
         /// <summary>
         /// Delete any business contact links if they exist.
