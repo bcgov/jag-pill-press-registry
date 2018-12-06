@@ -102,6 +102,12 @@ import { AuthorizedApplicationComponent } from './applications/authorized-owner/
 import { AuthorizedApplicationReviewComponent } from './applications/authorized-owner/authorized-application-review/authorized-application-review.component';
 import { AuthorizedApplicationThanksComponent } from './applications/authorized-owner/authorized-application-thanks/authorized-application-thanks.component';
 import { VersionInfoDialog } from './version-info/version-info.component';
+import { EquipmentTypeAndUseComponent } from './equipment-notification/equipment-type-and-use/equipment-type-and-use.component';
+import { EquipmentIdentificationComponent } from './equipment-notification/equipment-identification/equipment-identification.component';
+import { EquipmentSourceComponent } from './equipment-notification/equipment-source/equipment-source.component';
+import { EquipmentLocationComponent } from './equipment-notification/equipment-location/equipment-location.component';
+import { EquipmentReviewComponent } from './equipment-notification/equipment-review/equipment-review.component';
+import { EquipmentThankYouComponent } from './equipment-notification/equipment-thank-you/equipment-thank-you.component';
 
 @NgModule({
   declarations: [
@@ -140,7 +146,13 @@ import { VersionInfoDialog } from './version-info/version-info.component';
     AuthorizedApplicationReviewComponent,
     AuthorizedApplicationThanksComponent,
     SellerOwnerDialogComponent,
-    VersionInfoDialog
+    VersionInfoDialog,
+    EquipmentTypeAndUseComponent,
+    EquipmentIdentificationComponent,
+    EquipmentSourceComponent,
+    EquipmentLocationComponent,
+    EquipmentReviewComponent,
+    EquipmentThankYouComponent
   ],
   imports: [
     BrowserModule,
