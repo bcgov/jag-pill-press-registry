@@ -205,7 +205,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
         /// <returns>The GUID of the created Application</returns>
         private async Task<Guid> CreateNewApplicationGuid(ViewModels.Account currentAccount)
         {
-            var request = new HttpRequestMessage(HttpMethod.Post, "/api/Application");
+            var request = new HttpRequestMessage(HttpMethod.Post, "/api/Application/Waiver");
 
             ViewModels.Application viewmodel_application = SecurityHelper.CreateNewApplication(currentAccount);
 
