@@ -84,6 +84,7 @@ export class SellerApplicationComponent implements OnInit {
   reloadData() {
     this.busy = this.applicationDataService.getApplicationById(this.waiverId).subscribe(data => {
       this.form.patchValue(data);
+      this.ownersAndManagers = data.businessContacts || [];
     }, error => {
       // todo: show errors;
     });
