@@ -7,6 +7,7 @@ import { DynamicsAccount } from '../../models/dynamics-account.model';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ValidatorFn, AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 import { Router, Route, ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
+import { debug } from 'util';
 
 @Component({
   selector: 'app-profile-summary',
@@ -38,6 +39,8 @@ export class ProfileSummaryComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       id: [],
+      declarationofcorrectinformation: [],
+      foippaconsent: [],
     });
     this.reloadUser();
   }
@@ -52,6 +55,8 @@ export class ProfileSummaryComponent implements OnInit {
               .subscribe(res => {
                 this.account = res;
                 this.setSummaryTables();
+                debugger;
+                this.form.patchValue(res);
               });
         }
       });
@@ -121,21 +126,25 @@ export class ProfileSummaryComponent implements OnInit {
   }
 
   save() {
-    switch (this.mode) {
-      case 'waiver':
-        this.router.navigateByUrl(`/application/waiver/${this.applicationId}`);
-        break;
-      case 'registered-seller':
-        this.router.navigateByUrl(`/application/registered-seller/${this.applicationId}`);
-        break;
-      case 'authorized-owner':
-        this.router.navigateByUrl(`/application/authorized-owner/${this.applicationId}`);
-        break;
+    const value = this.form.value;
+    this.busy = this.accountDataService.updateAccount(value)
+      .subscribe(data => {
+        switch (this.mode) {
+          case 'waiver':
+            this.router.navigateByUrl(`/application/waiver/${this.applicationId}`);
+            break;
+          case 'registered-seller':
+            this.router.navigateByUrl(`/application/registered-seller/${this.applicationId}`);
+            break;
+          case 'authorized-owner':
+            this.router.navigateByUrl(`/application/authorized-owner/${this.applicationId}`);
+            break;
 
-      default:
-        this.router.navigateByUrl('/dashboard');
-        break;
-    }
+          default:
+            this.router.navigateByUrl('/dashboard');
+            break;
+        }
+      });
   }
 
   customRequiredCheckboxValidator(): ValidatorFn {

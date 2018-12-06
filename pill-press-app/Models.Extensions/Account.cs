@@ -154,6 +154,16 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                 toDynamics.Websiteurl = fromVM.websiteAddress;
             }
 
+            if (copyIfNull || fromVM.foippaconsent != null)
+            {
+                toDynamics.BcgovFoippaconsent = fromVM.foippaconsent;
+            }
+
+            if (copyIfNull || fromVM.declarationofcorrectinformation != null)
+            {
+                toDynamics.BcgovDeclarationofcorrectinformation = fromVM.declarationofcorrectinformation;
+            }
+
             // business type must be set only during creation, not in update (removed from copyValues() )
             //	toDynamics.AdoxioBusinesstype = (int)Enum.Parse(typeof(ViewModels.Adoxio_applicanttypecodes), fromVM.businessType, true);
         }
@@ -192,7 +202,9 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     mailingAddressCountry = account.Address2Country,
                     mailingAddressProvince = account.Address2Stateorprovince,
                     mailingAddressPostalCode = account.Address2Postalcode,
-                    websiteAddress = account.Websiteurl
+                    websiteAddress = account.Websiteurl,
+                    declarationofcorrectinformation = account.BcgovDeclarationofcorrectinformation,
+                    foippaconsent = account.BcgovFoippaconsent
 
                 };
                 if (account.Accountid != null)
