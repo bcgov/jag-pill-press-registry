@@ -120,7 +120,6 @@ export class AuthorizedApplicationReviewComponent implements OnInit {
       }, error => {
         // todo: show errors;
       });
-    debugger;
   }
 
   getUploadedFileData() {
@@ -140,6 +139,16 @@ export class AuthorizedApplicationReviewComponent implements OnInit {
     //   this.files = data;
     // },
     //   err => alert('Failed to get files'));
+  }
+
+  markAsTouched() {
+    this.form.markAsTouched();
+    const controls = this.form.controls;
+    for (const c in controls) {
+      if (typeof (controls[c].markAsTouched) === 'function') {
+        controls[c].markAsTouched();
+      }
+    }
   }
 
   save(goToThankYouPage: boolean) {

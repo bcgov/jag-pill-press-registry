@@ -47,7 +47,7 @@
       </section>
       <div *ngIf="form.get('declarationofcorrectinformation').value !== true && form.touched" style="background-color: #F2F2F2; margin-top: 10px; border-radius: 5px; padding: 10px; font: 15px Myriad Pro Regular #494949;">
         <i class="fas fa-exclamation-triangle error-states" style="margin-right: 10px;"></i>
-        <strong class="error-states">Please complete the declarations and consent section.</strong>
+        <span class="error-states">Please complete the declarations and consent section.</span>
       </div>
     </div>
 
@@ -59,7 +59,7 @@
       <section>
         <button class="btn btn-secondary" style="margin-right: 10px" routerLink="/application/waiver/{{waiverId}}">EDIT
           APPLICATION</button>
-        <button class="btn btn-primary" (click)="save(true)">SUBMIT</button>
+        <button class="btn btn-primary" (click)="markAsTouched(); save(true)">SUBMIT</button>
       </section>
     </div>
   </div>
