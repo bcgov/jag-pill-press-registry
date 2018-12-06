@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
+// https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/webapi/associate-disassociate-entities-using-web-api
+
 namespace Gov.Jag.PillPressRegistry.Interfaces
 {
 
@@ -45,7 +47,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse> AddReferencesWithHttpMessagesAsync(string incidentId, string fieldname, List<OdataId> odataids, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse> AddReferencesWithHttpMessagesAsync(string incidentId, string fieldname, List<BusinessContactOdataId> odataids, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (incidentId == null)
             {
@@ -73,13 +75,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "incidents({incidentId})/{fieldname}/$ref").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "incidents({incidentId})/{fieldname}").ToString();
             _url = _url.Replace("{incidentId}", System.Uri.EscapeDataString(incidentId));
             _url = _url.Replace("{fieldname}", System.Uri.EscapeDataString(fieldname));
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
             HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new HttpMethod("POST");
+            _httpRequest.Method = new HttpMethod("PUT");
             _httpRequest.RequestUri = new System.Uri(_url);
             // Set Headers
 
@@ -100,7 +102,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             string _requestContent = null;
             if (odataids != null)
             {
-                _requestContent = Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(odataids, Client.SerializationSettings);
+
+                BusinessContactChangeModel businessContactChangeModel = new BusinessContactChangeModel()
+                {
+                    Value = odataids
+                };
+
+                _requestContent = Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(businessContactChangeModel, Client.SerializationSettings);
                 _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
                 _httpRequest.Content.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
@@ -191,7 +199,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<HttpOperationResponse> AddReferenceWithHttpMessagesAsync(string incidentId, string fieldname, List<OdataId> odataids, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse> AddReferencesWithHttpMessagesAsync(string incidentId, string fieldname, List<BusinessContactOdataId> odataids, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 
     public static partial class IncidentsExtensions
@@ -211,7 +219,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <param name='odataid'>
         /// reference value
         /// </param>
-        public static void AddReferences(this IIncidents operations, string incidentId, string fieldname, List<OdataId> odataids)
+        public static void AddReferences(this IIncidents operations, string incidentId, string fieldname, List<BusinessContactOdataId> odataids)
         {
             operations.AddReferencesAsync(incidentId, fieldname, odataids).GetAwaiter().GetResult();
         }
@@ -234,9 +242,9 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async Task AddReferencesAsync(this IIncidents operations, string incidentId, string fieldname, List<OdataId> odataids, CancellationToken cancellationToken = default(CancellationToken))
+        public static async Task AddReferencesAsync(this IIncidents operations, string incidentId, string fieldname, List<BusinessContactOdataId> odataids, CancellationToken cancellationToken = default(CancellationToken))
         {
-            (await operations.AddReferenceWithHttpMessagesAsync(incidentId, fieldname, odataids, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.AddReferencesWithHttpMessagesAsync(incidentId, fieldname, odataids, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
     }
 }
