@@ -64,6 +64,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         ICertificates Certificates { get; }
 
         /// <summary>
+        /// Gets the ICertificatetermsandconditionses.
+        /// </summary>
+        ICertificatetermsandconditionses Certificatetermsandconditionses { get; }
+
+        /// <summary>
         /// Gets the ICustomaddresses.
         /// </summary>
         ICustomaddresses Customaddresses { get; }

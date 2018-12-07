@@ -13,12 +13,12 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Extension methods for Msdyncustomaddressknowledgebasereset.
+    /// Extension methods for Certificatetermsandconditionses.
     /// </summary>
-    public static partial class MsdyncustomaddressknowledgebaseresetExtensions
+    public static partial class CertificatetermsandconditionsesExtensions
     {
             /// <summary>
-            /// Get entities from msdyn_bcgov_customaddress_knowledgebasereset
+            /// Get entities from bcgov_certificatetermsandconditionses
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -42,13 +42,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// <param name='expand'>
             /// Expand related entities
             /// </param>
-            public static GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModelModelModel Get(this IMsdyncustomaddressknowledgebasereset operations, int? top = default(int?), int? skip = default(int?), string search = default(string), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>))
+            public static GetOKResponseModelModelModelModelModel Get(this ICertificatetermsandconditionses operations, int? top = default(int?), int? skip = default(int?), string search = default(string), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>))
             {
                 return operations.GetAsync(top, skip, search, filter, count, orderby, select, expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Get entities from msdyn_bcgov_customaddress_knowledgebasereset
+            /// Get entities from bcgov_certificatetermsandconditionses
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -75,7 +75,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModelModelModel> GetAsync(this IMsdyncustomaddressknowledgebasereset operations, int? top = default(int?), int? skip = default(int?), string search = default(string), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<GetOKResponseModelModelModelModelModel> GetAsync(this ICertificatetermsandconditionses operations, int? top = default(int?), int? skip = default(int?), string search = default(string), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetWithHttpMessagesAsync(top, skip, search, filter, count, orderby, select, expand, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -84,7 +84,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             }
 
             /// <summary>
-            /// Add new entity to msdyn_bcgov_customaddress_knowledgebasereset
+            /// Add new entity to bcgov_certificatetermsandconditionses
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -96,13 +96,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// Required in order for the service to return a JSON representation of the
             /// object.
             /// </param>
-            public static MicrosoftDynamicsCRMmsdynBcgovCustomaddressKnowledgebasere Create(this IMsdyncustomaddressknowledgebasereset operations, MicrosoftDynamicsCRMmsdynBcgovCustomaddressKnowledgebasere body, string prefer = "return=representation")
+            public static MicrosoftDynamicsCRMbcgovCertificatetermsandconditions Create(this ICertificatetermsandconditionses operations, MicrosoftDynamicsCRMbcgovCertificatetermsandconditions body, string prefer = "return=representation")
             {
                 return operations.CreateAsync(body, prefer).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Add new entity to msdyn_bcgov_customaddress_knowledgebasereset
+            /// Add new entity to bcgov_certificatetermsandconditionses
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -117,7 +117,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<MicrosoftDynamicsCRMmsdynBcgovCustomaddressKnowledgebasere> CreateAsync(this IMsdyncustomaddressknowledgebasereset operations, MicrosoftDynamicsCRMmsdynBcgovCustomaddressKnowledgebasere body, string prefer = "return=representation", CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<MicrosoftDynamicsCRMbcgovCertificatetermsandconditions> CreateAsync(this ICertificatetermsandconditionses operations, MicrosoftDynamicsCRMbcgovCertificatetermsandconditions body, string prefer = "return=representation", CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateWithHttpMessagesAsync(body, prefer, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -126,13 +126,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             }
 
             /// <summary>
-            /// Get entity from msdyn_bcgov_customaddress_knowledgebasereset by key
+            /// Get entity from bcgov_certificatetermsandconditionses by key
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='msdynBcgovCustomaddressKnowledgebasereid'>
-            /// key: msdyn_bcgov_customaddress_knowledgebasereid
+            /// <param name='bcgovCertificatetermsandconditionsid'>
+            /// key: bcgov_certificatetermsandconditionsid
             /// </param>
             /// <param name='select'>
             /// Select properties to be returned
@@ -140,19 +140,19 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// <param name='expand'>
             /// Expand related entities
             /// </param>
-            public static MicrosoftDynamicsCRMmsdynBcgovCustomaddressKnowledgebasere GetByKey(this IMsdyncustomaddressknowledgebasereset operations, string msdynBcgovCustomaddressKnowledgebasereid, IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>))
+            public static MicrosoftDynamicsCRMbcgovCertificatetermsandconditions GetByKey(this ICertificatetermsandconditionses operations, string bcgovCertificatetermsandconditionsid, IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>))
             {
-                return operations.GetByKeyAsync(msdynBcgovCustomaddressKnowledgebasereid, select, expand).GetAwaiter().GetResult();
+                return operations.GetByKeyAsync(bcgovCertificatetermsandconditionsid, select, expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Get entity from msdyn_bcgov_customaddress_knowledgebasereset by key
+            /// Get entity from bcgov_certificatetermsandconditionses by key
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='msdynBcgovCustomaddressKnowledgebasereid'>
-            /// key: msdyn_bcgov_customaddress_knowledgebasereid
+            /// <param name='bcgovCertificatetermsandconditionsid'>
+            /// key: bcgov_certificatetermsandconditionsid
             /// </param>
             /// <param name='select'>
             /// Select properties to be returned
@@ -163,39 +163,39 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<MicrosoftDynamicsCRMmsdynBcgovCustomaddressKnowledgebasere> GetByKeyAsync(this IMsdyncustomaddressknowledgebasereset operations, string msdynBcgovCustomaddressKnowledgebasereid, IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<MicrosoftDynamicsCRMbcgovCertificatetermsandconditions> GetByKeyAsync(this ICertificatetermsandconditionses operations, string bcgovCertificatetermsandconditionsid, IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetByKeyWithHttpMessagesAsync(msdynBcgovCustomaddressKnowledgebasereid, select, expand, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetByKeyWithHttpMessagesAsync(bcgovCertificatetermsandconditionsid, select, expand, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Delete entity from msdyn_bcgov_customaddress_knowledgebasereset
+            /// Delete entity from bcgov_certificatetermsandconditionses
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='msdynBcgovCustomaddressKnowledgebasereid'>
-            /// key: msdyn_bcgov_customaddress_knowledgebasereid
+            /// <param name='bcgovCertificatetermsandconditionsid'>
+            /// key: bcgov_certificatetermsandconditionsid
             /// </param>
             /// <param name='ifMatch'>
             /// ETag
             /// </param>
-            public static void Delete(this IMsdyncustomaddressknowledgebasereset operations, string msdynBcgovCustomaddressKnowledgebasereid, string ifMatch = default(string))
+            public static void Delete(this ICertificatetermsandconditionses operations, string bcgovCertificatetermsandconditionsid, string ifMatch = default(string))
             {
-                operations.DeleteAsync(msdynBcgovCustomaddressKnowledgebasereid, ifMatch).GetAwaiter().GetResult();
+                operations.DeleteAsync(bcgovCertificatetermsandconditionsid, ifMatch).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Delete entity from msdyn_bcgov_customaddress_knowledgebasereset
+            /// Delete entity from bcgov_certificatetermsandconditionses
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='msdynBcgovCustomaddressKnowledgebasereid'>
-            /// key: msdyn_bcgov_customaddress_knowledgebasereid
+            /// <param name='bcgovCertificatetermsandconditionsid'>
+            /// key: bcgov_certificatetermsandconditionsid
             /// </param>
             /// <param name='ifMatch'>
             /// ETag
@@ -203,36 +203,36 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this IMsdyncustomaddressknowledgebasereset operations, string msdynBcgovCustomaddressKnowledgebasereid, string ifMatch = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAsync(this ICertificatetermsandconditionses operations, string bcgovCertificatetermsandconditionsid, string ifMatch = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(msdynBcgovCustomaddressKnowledgebasereid, ifMatch, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DeleteWithHttpMessagesAsync(bcgovCertificatetermsandconditionsid, ifMatch, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
-            /// Update entity in msdyn_bcgov_customaddress_knowledgebasereset
+            /// Update entity in bcgov_certificatetermsandconditionses
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='msdynBcgovCustomaddressKnowledgebasereid'>
-            /// key: msdyn_bcgov_customaddress_knowledgebasereid
+            /// <param name='bcgovCertificatetermsandconditionsid'>
+            /// key: bcgov_certificatetermsandconditionsid
             /// </param>
             /// <param name='body'>
             /// New property values
             /// </param>
-            public static void Update(this IMsdyncustomaddressknowledgebasereset operations, string msdynBcgovCustomaddressKnowledgebasereid, MicrosoftDynamicsCRMmsdynBcgovCustomaddressKnowledgebasere body)
+            public static void Update(this ICertificatetermsandconditionses operations, string bcgovCertificatetermsandconditionsid, MicrosoftDynamicsCRMbcgovCertificatetermsandconditions body)
             {
-                operations.UpdateAsync(msdynBcgovCustomaddressKnowledgebasereid, body).GetAwaiter().GetResult();
+                operations.UpdateAsync(bcgovCertificatetermsandconditionsid, body).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Update entity in msdyn_bcgov_customaddress_knowledgebasereset
+            /// Update entity in bcgov_certificatetermsandconditionses
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='msdynBcgovCustomaddressKnowledgebasereid'>
-            /// key: msdyn_bcgov_customaddress_knowledgebasereid
+            /// <param name='bcgovCertificatetermsandconditionsid'>
+            /// key: bcgov_certificatetermsandconditionsid
             /// </param>
             /// <param name='body'>
             /// New property values
@@ -240,9 +240,9 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task UpdateAsync(this IMsdyncustomaddressknowledgebasereset operations, string msdynBcgovCustomaddressKnowledgebasereid, MicrosoftDynamicsCRMmsdynBcgovCustomaddressKnowledgebasere body, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task UpdateAsync(this ICertificatetermsandconditionses operations, string bcgovCertificatetermsandconditionsid, MicrosoftDynamicsCRMbcgovCertificatetermsandconditions body, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.UpdateWithHttpMessagesAsync(msdynBcgovCustomaddressKnowledgebasereid, body, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.UpdateWithHttpMessagesAsync(bcgovCertificatetermsandconditionsid, body, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
     }
