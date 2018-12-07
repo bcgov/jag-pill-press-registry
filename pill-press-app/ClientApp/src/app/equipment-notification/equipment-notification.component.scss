@@ -39,3 +39,7 @@
     border-left-width: 2px !important;
 
 }
+
+::ng-deep .mat-step-label-selected {
+    font-weight: bold;
+}
