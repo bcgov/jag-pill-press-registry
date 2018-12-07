@@ -1,3 +1,324 @@
-<p>
-  equipment-source works!
-</p>
+<div style="position: relative;">
+  <div [ngBusy]="[busy]"></div>
+  <div [formGroup]="form">
+    <h2 class="step">STEP 4</h2>
+    <h1 style="margin-top: 0;">Equipment Source</h1>
+
+    <h3 class="blue-header">EQUIPMENT SOURCE</h3>
+    <section class="padded-section">
+
+      <app-field label="Did you already own this piece of Controlled Equipment before January 2019?" [required]="true">
+        <input type="radio" [value]="true" name="ownedBefore1019" formControlName="ownedBefore1019">
+        <span style="padding-right: 10px;">&nbsp;Yes</span>
+        <input type="radio" [value]="false" name="ownedBefore1019" formControlName="ownedBefore1019">
+        <span>&nbsp;No</span>
+      </app-field>
+      <section *ngIf="form.get('ownedBefore1019').value === false">
+        <app-field label="How did this piece of equipment come into your possession (after January 2019)?" (change)="form.updateValueAndValidity()"
+          [required]="true">
+          <input type="checkbox" formControlName="purchasedFromBCSeller" style="margin-right: 10px;"> <span>Purchased
+            from BC seller</span> <br>
+          <input type="checkbox" formControlName="purchasedFromOutsideBC" style="margin-right: 10px;"> <span>Purchased
+            from seller outside of BC</span> <br>
+          <input type="checkbox" formControlName="importedToBC" style="margin-right: 10px;"> <span>Imported to BC by a
+            third party (i.e. broker)</span>
+          <br>
+          <input type="checkbox" formControlName="alternaticeOwnership" style="margin-right: 10px;"> <span>Alternative
+            ownership arrangement (renting,
+            leasing,
+            borrowing)</span> <br>
+          <input type="checkbox" formControlName="selfAssembled" style="margin-right: 10px;"> <span>I assembled it
+            mysel</span> <br>
+          <input type="checkbox" formControlName="purchasedOther" style="margin-right: 10px;"> <span>Other (specify)</span>
+          <br>
+        </app-field>
+
+        <section *ngIf="form.get('purchasedFromBCSeller').value === true">
+          <h3>Purchased from BC seller</h3>
+
+          <app-field label="Please provide the name of the BC Seller from whom you purchased this piece of Controlled Equipment."
+            [required]="true">
+            <input type="text" class="form-control">
+          </app-field>
+
+          <app-field label="Please provide the BC Seller's address." [required]="true">
+            <p></p>
+            <div class="row">
+              <section class="col-md-6 col-xs-12">
+                <app-field label="Street Address 1" [required]="true">
+                  <input type="text" class="form-control">
+                </app-field>
+                <app-field label="City" [required]="true">
+                  <input type="text" class="form-control">
+                </app-field>
+              </section>
+              <section class="col-md-6 col-xs-12">
+                <app-field label="Street Address 2">
+                  <input type="text" class="form-control">
+                </app-field>
+                <div class="row">
+                  <section class="col-md-6 col-xs-12">
+                    <app-field label="Province" [required]="true">
+                      <input type="text" class="form-control">
+                    </app-field>
+                  </section>
+                  <section class="col-md-6 col-xs-12">
+                    <app-field label="Postal Code" [required]="true">
+                      <input type="text" class="form-control">
+                    </app-field>
+                  </section>
+                </div>
+              </section>
+            </div>
+          </app-field>
+
+          <app-field label="Please provide the BC Seller's contact phone number.">
+            <input type="text" class="form-control" style="width: 250px;">
+          </app-field>
+
+          <app-field label="Please provide the BC Seller's contact email.">
+            <input type="text" class="form-control" style="width: 370px;">
+          </app-field>
+
+          <app-field label="What was the date of purchase?" [required]="true">
+            <input type="text" class="form-control" style="width: 170px;">
+          </app-field>
+
+          <app-field label="Please provide the BC Seller's registration number. " [required]="true">
+            <input type="text" class="form-control" style="width: 250px;">
+          </app-field>
+          <p></p>
+          <hr>
+        </section>
+
+        <section *ngIf="form.get('purchasedFromOutsideBC').value === true">
+          <h3>Purchased from seller outside of BC</h3>
+
+          <app-field label="Please provide the name of the seller (outside of BC) from whom you purchased this piece of Controlled Equipment."
+            [required]="true">
+            <input type="text" class="form-control">
+          </app-field>
+
+          <app-field label="Please provide the seller's address." [required]="true">
+            <p></p>
+            <div class="row">
+              <section class="col-md-6 col-xs-12">
+                <app-field label="Street Address 1" [required]="true">
+                  <input type="text" class="form-control">
+                </app-field>
+                <app-field label="City" [required]="true">
+                  <input type="text" class="form-control">
+                </app-field>
+              </section>
+              <section class="col-md-6 col-xs-12">
+                <app-field label="Street Address 2">
+                  <input type="text" class="form-control">
+                </app-field>
+                <div class="row">
+                  <section class="col-md-6 col-xs-12">
+                    <app-field label="Province" [required]="true">
+                      <input type="text" class="form-control">
+                    </app-field>
+                  </section>
+                  <section class="col-md-6 col-xs-12">
+                    <app-field label="Postal Code" [required]="true">
+                      <input type="text" class="form-control">
+                    </app-field>
+                  </section>
+                </div>
+              </section>
+            </div>
+          </app-field>
+
+          <app-field label="Please check geographical location of seller.">
+            <select class="form-control" style="width: 300px;">
+              <option value="">Please select an option</option>
+              <option value="Canada">Canada</option>
+              <option value="United States">United States</option>
+              <option value="Europe">Europe</option>
+              <option value="Asia">Asia</option>
+              <option value="South America">South America</option>
+              <option value="Africa">Africa</option>
+            </select>
+          </app-field>
+
+          <app-field label="Please provide the BC Seller's contact email.">
+            <input type="text" class="form-control" style="width: 370px;">
+          </app-field>
+
+          <app-field label="What was the date of purchase?" [required]="true">
+            <input type="text" class="form-control" style="width: 170px;">
+          </app-field>
+          <p></p>
+          <hr>
+        </section>
+
+        <section *ngIf="form.get('importedToBC').value === true">
+          <h3>Imported to BC by a third party</h3>
+
+          <app-field label="Please provide the name of the importer from whom you purchased this piece of Controlled Equipment."
+            [required]="true">
+            <input type="text" class="form-control">
+          </app-field>
+
+          <app-field label="Please provide the importer's address." [required]="true">
+            <p></p>
+            <div class="row">
+              <section class="col-md-6 col-xs-12">
+                <app-field label="Street Address 1" [required]="true">
+                  <input type="text" class="form-control">
+                </app-field>
+                <app-field label="City" [required]="true">
+                  <input type="text" class="form-control">
+                </app-field>
+              </section>
+              <section class="col-md-6 col-xs-12">
+                <app-field label="Street Address 2">
+                  <input type="text" class="form-control">
+                </app-field>
+                <div class="row">
+                  <section class="col-md-6 col-xs-12">
+                    <app-field label="Province" [required]="true">
+                      <input type="text" class="form-control">
+                    </app-field>
+                  </section>
+                  <section class="col-md-6 col-xs-12">
+                    <app-field label="Postal Code" [required]="true">
+                      <input type="text" class="form-control">
+                    </app-field>
+                  </section>
+                </div>
+              </section>
+            </div>
+          </app-field>
+
+          <app-field label="If importer is located in BC, please provide registration number.">
+            <input type="text" class="form-control">
+          </app-field>
+          <app-field label="Please provide the name of the originating seller from whom the importer obtained this piece of Controlled Equipment.">
+            <input type="text" class="form-control">
+          </app-field>
+
+          <app-field label="Please provide the originating seller's address.">
+            <p></p>
+            <div class="row">
+              <section class="col-md-6 col-xs-12">
+                <app-field label="Street Address 1" [required]="true">
+                  <input type="text" class="form-control">
+                </app-field>
+                <app-field label="City" [required]="true">
+                  <input type="text" class="form-control">
+                </app-field>
+              </section>
+              <section class="col-md-6 col-xs-12">
+                <app-field label="Street Address 2">
+                  <input type="text" class="form-control">
+                </app-field>
+                <div class="row">
+                  <section class="col-md-6 col-xs-12">
+                    <app-field label="Province" [required]="true">
+                      <input type="text" class="form-control">
+                    </app-field>
+                  </section>
+                  <section class="col-md-6 col-xs-12">
+                    <app-field label="Postal Code" [required]="true">
+                      <input type="text" class="form-control">
+                    </app-field>
+                  </section>
+                </div>
+              </section>
+            </div>
+          </app-field>
+
+          <app-field label="Please check geographical location of seller.">
+            <select class="form-control" style="width: 300px;">
+              <option value="">Please select an option</option>
+              <option value="Canada">Canada</option>
+              <option value="United States">United States</option>
+              <option value="Europe">Europe</option>
+              <option value="Asia">Asia</option>
+              <option value="South America">South America</option>
+              <option value="Africa">Africa</option>
+            </select>
+          </app-field>
+
+          <app-field label="What was the date of purchase?" [required]="true">
+            <input type="text" class="form-control" style="width: 170px;">
+          </app-field>
+          <p></p>
+          <hr>
+        </section>
+
+        <section *ngIf="form.get('alternaticeOwnership').value === true">
+          <h3>Alternative Ownership Arrangement</h3>
+          <app-field label="What kind of alternative ownership arrangement do you have regarding this piece of Controlled Equipment."
+            (change)="form.updateValueAndValidity()" [required]="true">
+            <input type="checkbox" style="margin-right: 10px;"> <span>I am in possession of this equipment until I can
+              sell it</span> <br>
+            <input type="checkbox" style="margin-right: 10px;"> <span>This piece of equipment was given or loaned to me</span>
+            <br>
+            <input type="checkbox" style="margin-right: 10px;"> <span>I am renting or leasing this piece of equipment
+              from another business</span> <br>
+            <input type="checkbox" style="margin-right: 10px;"> <span>Other (specify)</span> <br>
+            <section style="padding-left: 20px" *ngIf="true">
+              <app-field>
+                <i>If Other, Please specify</i>
+                <br>
+                <input type="text" class="form-control" style="width: 340px">
+              </app-field>
+            </section>
+          </app-field>
+          <p></p>
+          <hr>
+        </section>
+
+        <section *ngIf="form.get('selfAssembled').value === true">
+          <h3>I assembled it myself</h3>
+
+          <app-field label="When did you assemble this piece of Controlled Equipment?" [required]="true">
+            <input type="text" class="form-control" style="width: 170px;">
+          </app-field>
+
+          <app-field label="Where did you obtain the parts to assemble this piece of Controlled Equipment?" [required]="true">
+            <textarea rows="5" class="form-control" maxlength="500"></textarea>
+          </app-field>
+
+          <app-field label="Do you assemble Controlled Equipment for other businesses to use?" [required]="true">
+            <input type="radio" [value]="true" name="assembleEQForOtherUses" formControlName="assembleEQForOtherUses">
+            <span style="padding-right: 10px;">&nbsp;Yes</span>
+            <input type="radio" [value]="false" name="assembleEQForOtherUses" formControlName="assembleEQForOtherUses">
+            <span>&nbsp;No</span>
+          </app-field>
+
+          <app-field *ngIf="form.get('assembleEQForOtherUses').value === true" label="If yes, please explain."
+            [required]="true">
+            <textarea rows="5" class="form-control" maxlength="500"></textarea>
+          </app-field>
+
+          <hr>
+        </section>
+
+        <section *ngIf="form.get('purchasedOther').value === true">
+          <app-field  label="Please provide details about how this piece of Controlled Equipment came into your possession"
+            [required]="true">
+            <textarea rows="5" class="form-control" maxlength="500"></textarea>
+          </app-field>
+        </section>
+
+      </section>
+
+    </section>
+
+    <div style="margin-top: 30px; display: flex; justify-content: space-between">
+      <section>
+        <!-- <strong class="error-states">*</strong> <i>Required field</i> -->
+        <a href="javascript: void(0);" (click)="save(false)"><i class="fa fa-save" style="margin-right: 5px"></i>Save
+          & Close</a>
+      </section>
+      <section>
+        <button class="btn btn-secondary" style="margin-right: 10px" routerLink="/equipment-notification/identification/{{equipmentId}}">BACK TO STEP 3</button>
+        <button class="btn btn-primary" (click)="markAsTouched(); save(true)">SAVE & CONTINUE</button>
+      </section>
+    </div>
+  </div>
+</div>
