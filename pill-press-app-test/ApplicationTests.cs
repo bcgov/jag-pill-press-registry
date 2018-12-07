@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Gov.Jag.PillPressRegistry.Public.Test
@@ -47,7 +48,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             Account currentAccount = await GetAccountForCurrentUser();
 
             // C - Create
-            var request = new HttpRequestMessage(HttpMethod.Post, "/api/" + service);
+            var request = new HttpRequestMessage(HttpMethod.Post, "/api/" + service + "/Waiver");
 
             Application viewmodel_application = SecurityHelper.CreateNewApplication(currentAccount);
 
@@ -127,6 +128,148 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
         }
 
         [Fact]
+        public async System.Threading.Tasks.Task TestBusinessContactNewContact()
+        {
+            // login as default and get account for current user
+            var loginUser1 = randomNewUserName("TestAccountUser", 6);
+            var strId = await LoginAndRegisterAsNewUser(loginUser1);
+
+            Application responseViewModel = await CreateDefaultApplication();
+
+            // U - Update  
+            responseViewModel.BusinessContacts = new List<BusinessContact>() { new ViewModels.BusinessContact()
+            {
+                account = await GetAccountForCurrentUser(),
+                contact = new Contact(),
+                id = null,
+                contactType = ContactTypeCodes.Primary,
+                jobTitle = "Test Job"
+            }};
+            await UpdateApplication(responseViewModel);
+
+            // verify that the update persisted.
+            Application persistedApplication = await GetApplicationById(responseViewModel.id);
+            
+            Assert.NotNull(persistedApplication.BusinessContacts);
+            Assert.Equal(responseViewModel.BusinessContacts.Count, persistedApplication.BusinessContacts.Count);
+            responseViewModel.BusinessContacts[0].id = persistedApplication.BusinessContacts[0].id;
+            responseViewModel.BusinessContacts[0].contact = persistedApplication.BusinessContacts[0].contact;
+
+            AssertBusinessContacts(responseViewModel.BusinessContacts, persistedApplication.BusinessContacts);
+        }
+
+        [Fact]
+        public async System.Threading.Tasks.Task TestBusinessContactCreate()
+        {
+            // login as default and get account for current user
+            var loginUser1 = randomNewUserName("TestAccountUser", 6);
+            var strId = await LoginAndRegisterAsNewUser(loginUser1);
+
+            User user = await GetCurrentUser();
+            Account currentAccount = await GetAccountForCurrentUser();
+
+            Application responseViewModel = await CreateDefaultApplication();
+
+            responseViewModel.BusinessContacts = new List<BusinessContact>() { new ViewModels.BusinessContact()
+            {
+                account = await GetAccountForCurrentUser(),
+                contact = await GetContactForCurrentUser(),
+                id = responseViewModel.id,
+                contactType = ContactTypeCodes.Primary,
+                jobTitle = "Test Job"
+            }};
+
+            await UpdateApplication(responseViewModel);
+
+            // verify that the update persisted.
+            Application persistedApplication = await GetApplicationById(responseViewModel.id);
+
+            AssertBusinessContacts(responseViewModel.BusinessContacts, persistedApplication.BusinessContacts);
+        }
+
+        [Fact]
+        public async System.Threading.Tasks.Task TestBusinessContactUpdate()
+        {
+            // login as default and get account for current user
+            var loginUser1 = randomNewUserName("TestAccountUser", 6);
+            var strId = await LoginAndRegisterAsNewUser(loginUser1);
+
+            User user = await GetCurrentUser();
+            Account currentAccount = await GetAccountForCurrentUser();
+
+            Application responseViewModel = await CreateDefaultApplication();
+
+            responseViewModel.BusinessContacts = new List<BusinessContact>() { new ViewModels.BusinessContact()
+            {
+                account = await GetAccountForCurrentUser(),
+                contact = await GetContactForCurrentUser(),
+                id = responseViewModel.id,
+                contactType = ContactTypeCodes.Primary,
+                jobTitle = "Test Job"
+            }};
+
+            await UpdateApplication(responseViewModel);
+
+            responseViewModel.BusinessContacts = new List<BusinessContact>() { new ViewModels.BusinessContact()
+            {
+                account = await GetAccountForCurrentUser(),
+                contact = await GetContactForCurrentUser(),
+                id = responseViewModel.id,
+                contactType = ContactTypeCodes.Additional,
+                jobTitle = "Test Job - Updated"
+            }};
+
+            await UpdateApplication(responseViewModel);
+
+            // verify that the update persisted.
+            Application persistedApplication = await GetApplicationById(responseViewModel.id);
+
+            AssertBusinessContacts(responseViewModel.BusinessContacts, persistedApplication.BusinessContacts);
+        }
+
+        [Fact]
+        public async System.Threading.Tasks.Task TestBusinessContactAddRemove()
+        {
+            string initialName = randomNewUserName("Application Initial Name ", 6);
+
+            // login as default and get account for current user
+            var loginUser1 = randomNewUserName("TestAccountUser", 6);
+            var strId = await LoginAndRegisterAsNewUser(loginUser1);
+
+            User user = await GetCurrentUser();
+            Account currentAccount = await GetAccountForCurrentUser();
+
+            Application responseViewModel = await CreateDefaultApplication();
+
+            // U - Update  
+            responseViewModel.BusinessContacts = new List<BusinessContact>() { new ViewModels.BusinessContact()
+            {
+                account = await GetAccountForCurrentUser(),
+                contact = new Contact(),
+                id = responseViewModel.id,
+                contactType = ContactTypeCodes.Primary,
+                jobTitle = "Test Job"
+            }};
+
+            await UpdateApplication(responseViewModel);
+
+            responseViewModel.BusinessContacts = new List<BusinessContact>() { new ViewModels.BusinessContact()
+            {
+                account = await GetAccountForCurrentUser(),
+                contact = new Contact(),
+                id = null,
+                contactType = ContactTypeCodes.Additional,
+                jobTitle = "Updated Test Job"
+            }};
+
+            await UpdateApplication(responseViewModel);
+            // verify that the update persisted.
+
+            Application persistedApplication = await GetApplicationById(responseViewModel.id);
+            AssertBusinessContacts(responseViewModel.BusinessContacts, persistedApplication.BusinessContacts);
+        }
+
+        [Fact]
         public async System.Threading.Tasks.Task TestFileListing()
         {
             string initialName = randomNewUserName("First InitialName", 6);
@@ -142,7 +285,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             Account currentAccount = await GetAccountForCurrentUser();
 
             // C - Create
-            var request = new HttpRequestMessage(HttpMethod.Post, "/api/" + service);
+            var request = new HttpRequestMessage(HttpMethod.Post, "/api/" + service + "/Waiver");
 
             Application viewmodel_application = SecurityHelper.CreateNewApplication(currentAccount);
 
@@ -229,7 +372,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             Account currentAccount1 = await GetAccountForCurrentUser();
 
             // C - Create
-            var request = new HttpRequestMessage(HttpMethod.Post, "/api/" + service);
+            var request = new HttpRequestMessage(HttpMethod.Post, "/api/" + service + "/Waiver");
 
             Application viewmodel_application = SecurityHelper.CreateNewApplication(currentAccount1);
 
@@ -318,7 +461,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             User user = await GetCurrentUser();
             Account currentAccount = await GetAccountForCurrentUser();
 
-            var request = new HttpRequestMessage(HttpMethod.Post, "/api/" + service);
+            var request = new HttpRequestMessage(HttpMethod.Post, "/api/" + service + "/Waiver");
 
             
 
@@ -413,7 +556,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             User user = await GetCurrentUser();
             Account currentAccount = await GetAccountForCurrentUser();
 
-            var request = new HttpRequestMessage(HttpMethod.Post, "/api/" + service);
+            var request = new HttpRequestMessage(HttpMethod.Post, "/api/" + service + "/Waiver");
 
             Application viewmodel_application = SecurityHelper.CreateNewApplication(currentAccount);
             
@@ -478,6 +621,67 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             });
 
             await LogoutAndCleanupTestUser(strId);
+        }
+
+        private async Task<Application> GetApplicationById(string id)
+        {
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, "/api/Application/" + id);
+            HttpResponseMessage response = await _client.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+
+            string jsonString = await response.Content.ReadAsStringAsync();
+
+            return JsonConvert.DeserializeObject<Application>(jsonString);
+        }
+
+        private async Task<Application> CreateDefaultApplication()
+        {
+            User user = await GetCurrentUser();
+            Account currentAccount = await GetAccountForCurrentUser();
+
+            var request = new HttpRequestMessage(HttpMethod.Post, $"/api/Application/AuthorizedOwner");
+
+            Application viewmodel_application = SecurityHelper.CreateNewApplication(currentAccount);
+
+            var jsonString = JsonConvert.SerializeObject(viewmodel_application);
+            request.Content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+
+            var response = await _client.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+
+            // parse as JSON.
+            jsonString = await response.Content.ReadAsStringAsync();
+            Application responseViewModel = JsonConvert.DeserializeObject<Application>(jsonString);
+
+            Assert.Equal("Testing", responseViewModel.mainbusinessfocus);
+            Assert.Equal("Automated Testing", responseViewModel.manufacturingprocessdescription);
+            return responseViewModel;
+        }
+
+        private async Task<Application> UpdateApplication(Application applicationToUpdate)
+        {
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Put, "/api/Application/" + applicationToUpdate.id)
+            {
+                Content = new StringContent(JsonConvert.SerializeObject(applicationToUpdate), Encoding.UTF8, "application/json")
+            };
+            HttpResponseMessage response = await _client.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            var jsonString = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<Application>(jsonString);
+        }
+
+        private void AssertBusinessContacts(List<BusinessContact> expectedBusinessContacts, List<BusinessContact> actualBusinessContacts)
+        {
+            Assert.Equal(expectedBusinessContacts.Count, actualBusinessContacts.Count);
+            expectedBusinessContacts.ForEach(expectedBusinessContact =>
+            {
+                var actualBusinessContact = actualBusinessContacts[expectedBusinessContacts.IndexOf(expectedBusinessContact)];
+                Assert.Equal(expectedBusinessContact.id, actualBusinessContact.id);
+                Assert.Equal(expectedBusinessContact.account.id, actualBusinessContact.account.id);
+                Assert.Equal(expectedBusinessContact.contact.id, actualBusinessContact.contact.id);
+                Assert.Equal(expectedBusinessContact.jobTitle, actualBusinessContact.jobTitle);
+                Assert.Equal(expectedBusinessContact.contactType.ToString(), actualBusinessContact.contactType.ToString());
+            });
         }
     }
 }
