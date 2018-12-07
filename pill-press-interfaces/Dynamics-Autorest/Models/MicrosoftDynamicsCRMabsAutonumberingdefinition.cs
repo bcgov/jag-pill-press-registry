@@ -29,8 +29,10 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// Initializes a new instance of the
         /// MicrosoftDynamicsCRMabsAutonumberingdefinition class.
         /// </summary>
-        public MicrosoftDynamicsCRMabsAutonumberingdefinition(int? importsequencenumber = default(int?), string absFormat = default(string), string _organizationidValue = default(string), string absName = default(string), int? statecode = default(int?), int? absRandomsuffixlength = default(int?), int? utcconversiontimezonecode = default(int?), int? absDigits = default(int?), int? timezoneruleversionnumber = default(int?), int? absIncrement = default(int?), int? absLastnumberissued = default(int?), System.DateTimeOffset? overriddencreatedon = default(System.DateTimeOffset?), long? versionnumber = default(long?), System.DateTimeOffset? createdon = default(System.DateTimeOffset?), string absLock = default(string), int? statuscode = default(int?), string _createdonbehalfbyValue = default(string), string _modifiedbyValue = default(string), string _createdbyValue = default(string), string _modifiedonbehalfbyValue = default(string), int? absInitialvalue = default(int?), System.DateTimeOffset? modifiedon = default(System.DateTimeOffset?), string absAutonumberingdefinitionid = default(string), string absDatetimeformat = default(string), MicrosoftDynamicsCRMsystemuser createdbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser createdonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMorganization organizationid = default(MicrosoftDynamicsCRMorganization), IList<MicrosoftDynamicsCRMsyncerror> absAutonumberingdefinitionSyncErrors = default(IList<MicrosoftDynamicsCRMsyncerror>), IList<MicrosoftDynamicsCRMduplicaterecord> absAutonumberingdefinitionDuplicateMatchingRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMduplicaterecord> absAutonumberingdefinitionDuplicateBaseRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMasyncoperation> absAutonumberingdefinitionAsyncOperations = default(IList<MicrosoftDynamicsCRMasyncoperation>), IList<MicrosoftDynamicsCRMbulkdeletefailure> absAutonumberingdefinitionBulkDeleteFailures = default(IList<MicrosoftDynamicsCRMbulkdeletefailure>), IList<MicrosoftDynamicsCRMabsAutonumberedentity> absAutonumberedentityAutoNumberingDefinition = default(IList<MicrosoftDynamicsCRMabsAutonumberedentity>))
+        public MicrosoftDynamicsCRMabsAutonumberingdefinition(System.DateTimeOffset? createdon = default(System.DateTimeOffset?), int? absLastnumberissued = default(int?), int? importsequencenumber = default(int?), string absFormat = default(string), string _organizationidValue = default(string), string absName = default(string), int? statecode = default(int?), int? absRandomsuffixlength = default(int?), int? utcconversiontimezonecode = default(int?), int? absDigits = default(int?), int? timezoneruleversionnumber = default(int?), int? absIncrement = default(int?), System.DateTimeOffset? overriddencreatedon = default(System.DateTimeOffset?), long? versionnumber = default(long?), string absLock = default(string), int? statuscode = default(int?), string _createdonbehalfbyValue = default(string), string _modifiedbyValue = default(string), string _createdbyValue = default(string), string _modifiedonbehalfbyValue = default(string), int? absInitialvalue = default(int?), System.DateTimeOffset? modifiedon = default(System.DateTimeOffset?), string absAutonumberingdefinitionid = default(string), string absDatetimeformat = default(string), MicrosoftDynamicsCRMsystemuser createdbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser createdonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMorganization organizationid = default(MicrosoftDynamicsCRMorganization), IList<MicrosoftDynamicsCRMsyncerror> absAutonumberingdefinitionSyncErrors = default(IList<MicrosoftDynamicsCRMsyncerror>), IList<MicrosoftDynamicsCRMduplicaterecord> absAutonumberingdefinitionDuplicateMatchingRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMduplicaterecord> absAutonumberingdefinitionDuplicateBaseRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMasyncoperation> absAutonumberingdefinitionAsyncOperations = default(IList<MicrosoftDynamicsCRMasyncoperation>), IList<MicrosoftDynamicsCRMbulkdeletefailure> absAutonumberingdefinitionBulkDeleteFailures = default(IList<MicrosoftDynamicsCRMbulkdeletefailure>), IList<MicrosoftDynamicsCRMabsAutonumberedentity> absAutonumberedentityAutoNumberingDefinition = default(IList<MicrosoftDynamicsCRMabsAutonumberedentity>))
         {
+            Createdon = createdon;
+            AbsLastnumberissued = absLastnumberissued;
             Importsequencenumber = importsequencenumber;
             AbsFormat = absFormat;
             this._organizationidValue = _organizationidValue;
@@ -41,10 +43,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
             AbsDigits = absDigits;
             Timezoneruleversionnumber = timezoneruleversionnumber;
             AbsIncrement = absIncrement;
-            AbsLastnumberissued = absLastnumberissued;
             Overriddencreatedon = overriddencreatedon;
             Versionnumber = versionnumber;
-            Createdon = createdon;
             AbsLock = absLock;
             Statuscode = statuscode;
             this._createdonbehalfbyValue = _createdonbehalfbyValue;
@@ -73,6 +73,16 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "createdon")]
+        public System.DateTimeOffset? Createdon { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "abs_lastnumberissued")]
+        public int? AbsLastnumberissued { get; set; }
 
         /// <summary>
         /// </summary>
@@ -126,11 +136,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "abs_lastnumberissued")]
-        public int? AbsLastnumberissued { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "overriddencreatedon")]
         public System.DateTimeOffset? Overriddencreatedon { get; set; }
 
@@ -138,11 +143,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "versionnumber")]
         public long? Versionnumber { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "createdon")]
-        public System.DateTimeOffset? Createdon { get; set; }
 
         /// <summary>
         /// </summary>
