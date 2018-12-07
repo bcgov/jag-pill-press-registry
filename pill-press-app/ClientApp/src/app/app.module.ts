@@ -76,7 +76,7 @@ import { BusinessProfileComponent } from './business-information/business-profil
 import { FileDropModule } from 'ngx-file-drop';
 import { FileUploaderComponent } from './shared/file-uploader/file-uploader.component';
 import { BusinessProfileSummaryComponent } from './business-profile-summary/business-profile-summary.component';
-import {NgBusyModule} from 'ng-busy';
+import { NgBusyModule } from 'ng-busy';
 import { PaymentConfirmationComponent } from './payment-confirmation/payment-confirmation.component';
 import { LicenceFeePaymentConfirmationComponent } from './licence-fee-payment-confirmation/licence-fee-payment-confirmation.component';
 import { BsDatepickerModule, AlertModule } from 'ngx-bootstrap';
@@ -95,12 +95,24 @@ import { ProfileSummaryComponent } from './business-information/profile-summary/
 import { WaiverApplicationComponent } from './applications/waiver/waiver-application/waiver-application.component';
 import { WaiverReviewComponent } from './applications/waiver/waiver-review/waiver-review.component';
 import { ThankYouComponent } from './applications/waiver/thank-you/thank-you.component';
-import { SellerApplicationComponent, SellerOwnerDialogComponent } from './applications/registered-seller/seller-application/seller-application.component';
-import { SellerApplicationReviewComponent } from './applications/registered-seller/seller-application-review/seller-application-review.component';
-import { SellerApplicationThanksComponent } from './applications/registered-seller/seller-application-thanks/seller-application-thanks.component';
-import { AuthorizedApplicationComponent } from './applications/authorized-owner/authorized-application/authorized-application.component';
-import { AuthorizedApplicationReviewComponent } from './applications/authorized-owner/authorized-application-review/authorized-application-review.component';
-import { AuthorizedApplicationThanksComponent } from './applications/authorized-owner/authorized-application-thanks/authorized-application-thanks.component';
+import {
+  SellerApplicationComponent, SellerOwnerDialogComponent
+} from './applications/registered-seller/seller-application/seller-application.component';
+import {
+  SellerApplicationReviewComponent
+} from './applications/registered-seller/seller-application-review/seller-application-review.component';
+import {
+  SellerApplicationThanksComponent
+} from './applications/registered-seller/seller-application-thanks/seller-application-thanks.component';
+import {
+  AuthorizedApplicationComponent
+} from './applications/authorized-owner/authorized-application/authorized-application.component';
+import {
+  AuthorizedApplicationReviewComponent
+} from './applications/authorized-owner/authorized-application-review/authorized-application-review.component';
+import {
+  AuthorizedApplicationThanksComponent
+} from './applications/authorized-owner/authorized-application-thanks/authorized-application-thanks.component';
 import { VersionInfoDialog } from './version-info/version-info.component';
 import { EquipmentTypeAndUseComponent } from './equipment-notification/equipment-type-and-use/equipment-type-and-use.component';
 import { EquipmentIdentificationComponent } from './equipment-notification/equipment-identification/equipment-identification.component';
@@ -108,6 +120,7 @@ import { EquipmentSourceComponent } from './equipment-notification/equipment-sou
 import { EquipmentLocationComponent } from './equipment-notification/equipment-location/equipment-location.component';
 import { EquipmentReviewComponent } from './equipment-notification/equipment-review/equipment-review.component';
 import { EquipmentThankYouComponent } from './equipment-notification/equipment-thank-you/equipment-thank-you.component';
+import { EquipmentNotificationComponent } from './equipment-notification/equipment-notification.component';
 
 @NgModule({
   declarations: [
@@ -152,7 +165,8 @@ import { EquipmentThankYouComponent } from './equipment-notification/equipment-t
     EquipmentSourceComponent,
     EquipmentLocationComponent,
     EquipmentReviewComponent,
-    EquipmentThankYouComponent
+    EquipmentThankYouComponent,
+    EquipmentNotificationComponent
   ],
   imports: [
     BrowserModule,

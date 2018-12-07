@@ -1,6 +1,6 @@
 <div class="form-wrapper row" style="position: relative">
    <div [ngBusy]="busy"></div>
-  <div class="col-lg-8 col-sm-12">
+  <div [ngClass]="{'col-lg-12': mode, 'col-lg-8': !mode}" class="col-sm-12">
     <h2 class="step" *ngIf="mode">STEP 1</h2>
     <h1>Business Profile Review</h1>
 
@@ -88,7 +88,7 @@
     </div>
   </div>
 
-  <div class="col-lg-4 col-sm-12" style="position: relative">
+  <div *ngIf="!mode" class="col-lg-4 col-sm-12" style="position: relative">
     <p></p>
     <section class="submit-container">
       <table>
