@@ -24,7 +24,7 @@ export class ProfileSummaryComponent implements OnInit {
   additionalContactData: { label: string; value: string; }[];
   form: FormGroup;
   mode: string;
-  applicationId: string;
+  id: string;
 
   constructor(private userDataService: UserDataService,
     private sanitizer: DomSanitizer,
@@ -33,7 +33,7 @@ export class ProfileSummaryComponent implements OnInit {
     private fb: FormBuilder,
     private accountDataService: AccountDataService) {
     this.mode = this.route.snapshot.params.mode;
-    this.applicationId = this.route.snapshot.params.applicationId;
+    this.id = this.route.snapshot.params.id;
   }
 
   ngOnInit() {
@@ -146,13 +146,12 @@ export class ProfileSummaryComponent implements OnInit {
         .subscribe(data => {
           switch (this.mode) {
             case 'waiver':
-              this.router.navigateByUrl(`/application/waiver/${this.applicationId}`);
-              break;
             case 'registered-seller':
-              this.router.navigateByUrl(`/application/registered-seller/${this.applicationId}`);
-              break;
             case 'authorized-owner':
-              this.router.navigateByUrl(`/application/authorized-owner/${this.applicationId}`);
+              this.router.navigateByUrl(`/application/${this.mode}/${this.id}`);
+              break;
+            case 'type-and-use':
+              this.router.navigateByUrl(`/equipment-notification/${this.mode}/${this.id}`);
               break;
 
             default:
