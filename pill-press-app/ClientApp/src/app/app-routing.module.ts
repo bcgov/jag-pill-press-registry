@@ -32,6 +32,7 @@ import { EquipmentLocationComponent } from './equipment-notification/equipment-l
 import { EquipmentIdentificationComponent } from './equipment-notification/equipment-identification/equipment-identification.component';
 import { EquipmentTypeAndUseComponent } from './equipment-notification/equipment-type-and-use/equipment-type-and-use.component';
 import { EquipmentSourceComponent } from './equipment-notification/equipment-source/equipment-source.component';
+import { EquipmentNotificationComponent } from './equipment-notification/equipment-notification.component';
 
 const routes: Routes = [
   {
@@ -54,7 +55,7 @@ const routes: Routes = [
     canActivate: [BCeidAuthGuard],
     children: [
       {
-        path: 'profile-review/:mode/:applicationId',
+        path: 'profile-review/:mode/:id',
         component: ProfileSummaryComponent,
         canActivate: [BCeidAuthGuard]
       },
@@ -115,12 +116,8 @@ const routes: Routes = [
   {
     path: 'equipment-notification',
     canActivate: [BCeidAuthGuard],
+    component: EquipmentNotificationComponent,
     children: [
-      {
-        path: 'profile-review/:mode/:applicationId',
-        component: ProfileSummaryComponent,
-        canActivate: [BCeidAuthGuard]
-      },
       {
         path: 'type-and-use/:id',
         component: EquipmentTypeAndUseComponent,
@@ -144,6 +141,11 @@ const routes: Routes = [
       {
         path: 'thank-you/:id',
         component: EquipmentThankYouComponent,
+      },
+      {
+        path: 'profile-review/:mode/:id',
+        component: ProfileSummaryComponent,
+        canActivate: [BCeidAuthGuard]
       },
     ]
   },
