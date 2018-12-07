@@ -221,30 +221,89 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
 
                     // TODO: Handle deletes as well as additions.
 
-                    OdataId odataId = new OdataId()
-                    {
-                        OdataIdProperty = _dynamicsClient.GetEntityURI("bcgov_businesscontacts", businessContact.id)
-                    };
+                    // determine if this item needs to be added.
+                    bool notFound = true;
 
-                    try
+                    // don't bind the record twice.
+                    if (application.BcgovIncidentBusinesscontact != null && application.BcgovIncidentBusinesscontact.Count > 0)
                     {
-                        await _dynamicsClient.Incidents.AddReferenceAsync(id, "bcgov_incident_businesscontact", odataId);
+                        foreach (var bc in application.BcgovIncidentBusinesscontact)
+                        {
+                            if (bc.BcgovBusinesscontactid != null && businessContact.id == bc.BcgovBusinesscontactid)
+                            {
+                                notFound = false;
+                            }
+                        }
+
                     }
-                    catch (OdataerrorException odee)
+
+
+                    if (notFound)
                     {
-                        _logger.LogError(LoggingEvents.Error, "Error updating business contacts");
-                        _logger.LogError("Request:");
-                        _logger.LogError(odee.Request.Content);
-                        _logger.LogError("Response:");
-                        _logger.LogError(odee.Response.Content);
-                        throw new OdataerrorException("Error updating the business contacts.");
+                        OdataId odataId = new OdataId()
+                        {
+                            OdataIdProperty = _dynamicsClient.GetEntityURI("bcgov_businesscontacts", businessContact.id)
+                        };
+
+                        try
+                        {
+                            await _dynamicsClient.Incidents.AddReferenceAsync(id, "bcgov_incident_businesscontact", odataId);
+                        }
+                        catch (OdataerrorException odee)
+                        {
+                            _logger.LogError(LoggingEvents.Error, "Error updating business contacts");
+                            _logger.LogError("Request:");
+                            _logger.LogError(odee.Request.Content);
+                            _logger.LogError("Response:");
+                            _logger.LogError(odee.Response.Content);
+                            throw new OdataerrorException("Error updating the business contacts.");
+                        }
+
+                    }
+
+                }
+
+                // check for any businesscontacts that have to be removed.
+                if (application.BcgovIncidentBusinesscontact != null)
+                {
+                    foreach (var ibc in application.BcgovIncidentBusinesscontact)
+                    {
+                        bool notFound = true;
+                        foreach (var bc in item.BusinessContacts)
+                        {
+                            if (ibc.BcgovBusinesscontactid == bc.id)
+                            {
+                                notFound = false;
+                            }
+                        }
+
+                        if (notFound)
+                        {
+                            // remove the item.                            
+                            try
+                            {
+                                await _dynamicsClient.Incidents.RemoveReferenceAsync(id, "bcgov_incident_businesscontact", ibc.BcgovBusinesscontactid);
+                            }
+                            catch (OdataerrorException odee)
+                            {
+                                _logger.LogError(LoggingEvents.Error, "Error removing business contacts");
+                                _logger.LogError("Request:");
+                                _logger.LogError(odee.Request.Content);
+                                _logger.LogError("Response:");
+                                _logger.LogError(odee.Response.Content);
+                                throw new OdataerrorException("Error removing a business contact.");
+                            }
+                        }
+
+                        
                     }
                 }
 
-
             }
 
-            application = _dynamicsClient.GetApplicationById(ApplicationId);
+            
+
+            application = _dynamicsClient.GetApplicationByIdWithChildren(ApplicationId);
             return Json(application.ToViewModel());
         }
 
