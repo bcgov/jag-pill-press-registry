@@ -202,22 +202,19 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             responseViewModel.BusinessContacts = new List<BusinessContact>() { new ViewModels.BusinessContact()
             {
                 account = await GetAccountForCurrentUser(),
-                contact = await GetContactForCurrentUser(),
-                id = responseViewModel.id,
+                contact = await GetContactForCurrentUser(),                
                 contactType = ContactTypeCodes.Primary,
                 jobTitle = "Test Job"
             }};
 
             await UpdateApplication(responseViewModel);
 
-            responseViewModel.BusinessContacts = new List<BusinessContact>() { new ViewModels.BusinessContact()
-            {
-                account = await GetAccountForCurrentUser(),
-                contact = await GetContactForCurrentUser(),
-                id = responseViewModel.id,
-                contactType = ContactTypeCodes.Additional,
-                jobTitle = "Test Job - Updated"
-            }};
+            responseViewModel = await GetApplicationById(responseViewModel.id);
+
+            // do a change
+
+            responseViewModel.BusinessContacts[0].jobTitle = "Test Job - Updated";
+            
 
             await UpdateApplication(responseViewModel);
 
@@ -230,6 +227,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
         [Fact]
         public async System.Threading.Tasks.Task TestBusinessContactAddRemove()
         {
+            string service = "Application";
             string initialName = randomNewUserName("Application Initial Name ", 6);
 
             // login as default and get account for current user
@@ -245,8 +243,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             responseViewModel.BusinessContacts = new List<BusinessContact>() { new ViewModels.BusinessContact()
             {
                 account = await GetAccountForCurrentUser(),
-                contact = new Contact(),
-                id = responseViewModel.id,
+                contact = new Contact(),               
                 contactType = ContactTypeCodes.Primary,
                 jobTitle = "Test Job"
             }};
@@ -266,7 +263,21 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             // verify that the update persisted.
 
             Application persistedApplication = await GetApplicationById(responseViewModel.id);
-            AssertBusinessContacts(responseViewModel.BusinessContacts, persistedApplication.BusinessContacts);
+
+            Assert.Equal(persistedApplication.BusinessContacts[0].jobTitle, "Updated Test Job");
+
+            // Cleanup
+            var request = new HttpRequestMessage(HttpMethod.Post, "/api/" + service + "/" + responseViewModel.id + "/delete");
+            var response = await _client.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+
+            // should get a 404 if we try a get now.
+            request = new HttpRequestMessage(HttpMethod.Get, "/api/" + service + "/" + responseViewModel.id);
+            response = await _client.SendAsync(request);
+            Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
+
+            await LogoutAndCleanupTestUser(strId);
+
         }
 
         [Fact]
