@@ -26,6 +26,12 @@ import {
 import {
   AuthorizedApplicationThanksComponent
 } from './applications/authorized-owner/authorized-application-thanks/authorized-application-thanks.component';
+import { EquipmentThankYouComponent } from './equipment-notification/equipment-thank-you/equipment-thank-you.component';
+import { EquipmentReviewComponent } from './equipment-notification/equipment-review/equipment-review.component';
+import { EquipmentLocationComponent } from './equipment-notification/equipment-location/equipment-location.component';
+import { EquipmentIdentificationComponent } from './equipment-notification/equipment-identification/equipment-identification.component';
+import { EquipmentTypeAndUseComponent } from './equipment-notification/equipment-type-and-use/equipment-type-and-use.component';
+import { EquipmentSourceComponent } from './equipment-notification/equipment-source/equipment-source.component';
 
 const routes: Routes = [
   {
@@ -104,6 +110,41 @@ const routes: Routes = [
         ]
       },
 
+    ]
+  },
+  {
+    path: 'equipment-notification',
+    canActivate: [BCeidAuthGuard],
+    children: [
+      {
+        path: 'profile-review/:mode/:applicationId',
+        component: ProfileSummaryComponent,
+        canActivate: [BCeidAuthGuard]
+      },
+      {
+        path: 'type-and-use/:id',
+        component: EquipmentTypeAndUseComponent,
+      },
+      {
+        path: 'identification/:id',
+        component: EquipmentIdentificationComponent,
+      },
+      {
+        path: 'source/:id',
+        component: EquipmentSourceComponent,
+      },
+      {
+        path: 'location/:id',
+        component: EquipmentLocationComponent,
+      },
+      {
+        path: 'review/:id',
+        component: EquipmentReviewComponent,
+      },
+      {
+        path: 'thank-you/:id',
+        component: EquipmentThankYouComponent,
+      },
     ]
   },
   {
