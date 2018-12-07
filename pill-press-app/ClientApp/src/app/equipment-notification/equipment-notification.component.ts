@@ -25,13 +25,15 @@ export class EquipmentNotificationComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder) {
+    this.equipmentId = this.route.snapshot.firstChild.params.id;
+    this.tab = this.route.snapshot.firstChild.url[0].path;
   }
 
   ngOnInit() {
+    this.stepper.selectedIndex = this.tabList.indexOf(this.tab);
     this.router.events.forEach((event) => {
       if (event instanceof NavigationEnd) {
         if (this.route.snapshot.firstChild.url.length > 0) {
-          debugger;
           this.equipmentId = this.route.snapshot.firstChild.params.id;
           this.tab = this.route.snapshot.firstChild.url[0].path;
           this.stepper.selectedIndex = this.tabList.indexOf(this.tab);
