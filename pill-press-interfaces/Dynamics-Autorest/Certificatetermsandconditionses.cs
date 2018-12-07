@@ -19,12 +19,12 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Incidents operations.
+    /// Certificatetermsandconditionses operations.
     /// </summary>
-    public partial class Incidents : IServiceOperations<DynamicsClient>, IIncidents
+    public partial class Certificatetermsandconditionses : IServiceOperations<DynamicsClient>, ICertificatetermsandconditionses
     {
         /// <summary>
-        /// Initializes a new instance of the Incidents class.
+        /// Initializes a new instance of the Certificatetermsandconditionses class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -32,7 +32,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public Incidents(DynamicsClient client)
+        public Certificatetermsandconditionses(DynamicsClient client)
         {
             if (client == null)
             {
@@ -47,7 +47,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public DynamicsClient Client { get; private set; }
 
         /// <summary>
-        /// Get entities from incidents
+        /// Get entities from bcgov_certificatetermsandconditionses
         /// </summary>
         /// <param name='top'>
         /// </param>
@@ -83,7 +83,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse<GetOKResponseModelModelModelModelModelModelModelModelModelModelModel>> GetWithHttpMessagesAsync(int? top = default(int?), int? skip = default(int?), string search = default(string), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<GetOKResponseModelModelModelModelModel>> GetWithHttpMessagesAsync(int? top = default(int?), int? skip = default(int?), string search = default(string), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -105,7 +105,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "incidents").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "bcgov_certificatetermsandconditionses").ToString();
             List<string> _queryParameters = new List<string>();
             if (top != null)
             {
@@ -215,7 +215,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                 throw ex;
             }
             // Create Result
-            var _result = new HttpOperationResponse<GetOKResponseModelModelModelModelModelModelModelModelModelModelModel>();
+            var _result = new HttpOperationResponse<GetOKResponseModelModelModelModelModel>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             // Deserialize Response
@@ -224,7 +224,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<GetOKResponseModelModelModelModelModelModelModelModelModelModelModel>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<GetOKResponseModelModelModelModelModel>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -244,7 +244,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         }
 
         /// <summary>
-        /// Add new entity to incidents
+        /// Add new entity to bcgov_certificatetermsandconditionses
         /// </summary>
         /// <param name='body'>
         /// New entity
@@ -274,7 +274,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse<MicrosoftDynamicsCRMincident>> CreateWithHttpMessagesAsync(MicrosoftDynamicsCRMincident body, string prefer = "return=representation", Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<MicrosoftDynamicsCRMbcgovCertificatetermsandconditions>> CreateWithHttpMessagesAsync(MicrosoftDynamicsCRMbcgovCertificatetermsandconditions body, string prefer = "return=representation", Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (body == null)
             {
@@ -294,7 +294,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "incidents").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "bcgov_certificatetermsandconditionses").ToString();
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
             HttpResponseMessage _httpResponse = null;
@@ -381,7 +381,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                 throw ex;
             }
             // Create Result
-            var _result = new HttpOperationResponse<MicrosoftDynamicsCRMincident>();
+            var _result = new HttpOperationResponse<MicrosoftDynamicsCRMbcgovCertificatetermsandconditions>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             // Deserialize Response
@@ -390,7 +390,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<MicrosoftDynamicsCRMincident>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<MicrosoftDynamicsCRMbcgovCertificatetermsandconditions>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -410,10 +410,10 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         }
 
         /// <summary>
-        /// Get entity from incidents by key
+        /// Get entity from bcgov_certificatetermsandconditionses by key
         /// </summary>
-        /// <param name='incidentid'>
-        /// key: incidentid
+        /// <param name='bcgovCertificatetermsandconditionsid'>
+        /// key: bcgov_certificatetermsandconditionsid
         /// </param>
         /// <param name='select'>
         /// Select properties to be returned
@@ -442,11 +442,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse<MicrosoftDynamicsCRMincident>> GetByKeyWithHttpMessagesAsync(string incidentid, IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<MicrosoftDynamicsCRMbcgovCertificatetermsandconditions>> GetByKeyWithHttpMessagesAsync(string bcgovCertificatetermsandconditionsid, IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (incidentid == null)
+            if (bcgovCertificatetermsandconditionsid == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "incidentid");
+                throw new ValidationException(ValidationRules.CannotBeNull, "bcgovCertificatetermsandconditionsid");
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -455,7 +455,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("incidentid", incidentid);
+                tracingParameters.Add("bcgovCertificatetermsandconditionsid", bcgovCertificatetermsandconditionsid);
                 tracingParameters.Add("select", select);
                 tracingParameters.Add("expand", expand);
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -463,8 +463,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "incidents({incidentid})").ToString();
-            _url = _url.Replace("{incidentid}", System.Uri.EscapeDataString(incidentid));
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "bcgov_certificatetermsandconditionses({bcgov_certificatetermsandconditionsid})").ToString();
+            _url = _url.Replace("{bcgov_certificatetermsandconditionsid}", System.Uri.EscapeDataString(bcgovCertificatetermsandconditionsid));
             List<string> _queryParameters = new List<string>();
             if (select != null)
             {
@@ -550,7 +550,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                 throw ex;
             }
             // Create Result
-            var _result = new HttpOperationResponse<MicrosoftDynamicsCRMincident>();
+            var _result = new HttpOperationResponse<MicrosoftDynamicsCRMbcgovCertificatetermsandconditions>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             // Deserialize Response
@@ -559,7 +559,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<MicrosoftDynamicsCRMincident>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<MicrosoftDynamicsCRMbcgovCertificatetermsandconditions>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -579,10 +579,10 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         }
 
         /// <summary>
-        /// Delete entity from incidents
+        /// Delete entity from bcgov_certificatetermsandconditionses
         /// </summary>
-        /// <param name='incidentid'>
-        /// key: incidentid
+        /// <param name='bcgovCertificatetermsandconditionsid'>
+        /// key: bcgov_certificatetermsandconditionsid
         /// </param>
         /// <param name='ifMatch'>
         /// ETag
@@ -605,11 +605,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse> DeleteWithHttpMessagesAsync(string incidentid, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse> DeleteWithHttpMessagesAsync(string bcgovCertificatetermsandconditionsid, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (incidentid == null)
+            if (bcgovCertificatetermsandconditionsid == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "incidentid");
+                throw new ValidationException(ValidationRules.CannotBeNull, "bcgovCertificatetermsandconditionsid");
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -618,15 +618,15 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("incidentid", incidentid);
+                tracingParameters.Add("bcgovCertificatetermsandconditionsid", bcgovCertificatetermsandconditionsid);
                 tracingParameters.Add("ifMatch", ifMatch);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Delete", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "incidents({incidentid})").ToString();
-            _url = _url.Replace("{incidentid}", System.Uri.EscapeDataString(incidentid));
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "bcgov_certificatetermsandconditionses({bcgov_certificatetermsandconditionsid})").ToString();
+            _url = _url.Replace("{bcgov_certificatetermsandconditionsid}", System.Uri.EscapeDataString(bcgovCertificatetermsandconditionsid));
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
             HttpResponseMessage _httpResponse = null;
@@ -718,10 +718,10 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         }
 
         /// <summary>
-        /// Update entity in incidents
+        /// Update entity in bcgov_certificatetermsandconditionses
         /// </summary>
-        /// <param name='incidentid'>
-        /// key: incidentid
+        /// <param name='bcgovCertificatetermsandconditionsid'>
+        /// key: bcgov_certificatetermsandconditionsid
         /// </param>
         /// <param name='body'>
         /// New property values
@@ -744,11 +744,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse> UpdateWithHttpMessagesAsync(string incidentid, MicrosoftDynamicsCRMincident body, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse> UpdateWithHttpMessagesAsync(string bcgovCertificatetermsandconditionsid, MicrosoftDynamicsCRMbcgovCertificatetermsandconditions body, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (incidentid == null)
+            if (bcgovCertificatetermsandconditionsid == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "incidentid");
+                throw new ValidationException(ValidationRules.CannotBeNull, "bcgovCertificatetermsandconditionsid");
             }
             if (body == null)
             {
@@ -761,15 +761,15 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("incidentid", incidentid);
+                tracingParameters.Add("bcgovCertificatetermsandconditionsid", bcgovCertificatetermsandconditionsid);
                 tracingParameters.Add("body", body);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Update", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "incidents({incidentid})").ToString();
-            _url = _url.Replace("{incidentid}", System.Uri.EscapeDataString(incidentid));
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "bcgov_certificatetermsandconditionses({bcgov_certificatetermsandconditionsid})").ToString();
+            _url = _url.Replace("{bcgov_certificatetermsandconditionsid}", System.Uri.EscapeDataString(bcgovCertificatetermsandconditionsid));
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
             HttpResponseMessage _httpResponse = null;
