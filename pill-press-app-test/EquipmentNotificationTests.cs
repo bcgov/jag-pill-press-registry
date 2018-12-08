@@ -50,7 +50,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             var request = new HttpRequestMessage(HttpMethod.Post, "/api/" + service);
             var incidentId = await CreateNewApplicationGuid(await GetAccountForCurrentUser());
 
-            ViewModels.EquipmentNotification viewmodel_customproduct = new ViewModels.EquipmentNotification()
+            ViewModels.Equipment viewmodel_customproduct = new ViewModels.Equipment()
             {
                 incidentId = incidentId.ToString()
             };
@@ -64,11 +64,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
 
             // parse as JSON.
             jsonString = await response.Content.ReadAsStringAsync();
-            ViewModels.EquipmentNotification responseViewModel = JsonConvert.DeserializeObject<ViewModels.EquipmentNotification>(jsonString);
+            ViewModels.Equipment responseViewModel = JsonConvert.DeserializeObject<ViewModels.Equipment>(jsonString);
 
             // name should match.
             Assert.Equal(incidentId.ToString(), responseViewModel.incidentId);
-            Guid id = new Guid(responseViewModel.id);
+            Guid id = new Guid(responseViewModel.Id);
 
             // R - Read
 
@@ -77,7 +77,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             response.EnsureSuccessStatusCode();
 
             jsonString = await response.Content.ReadAsStringAsync();
-            responseViewModel = JsonConvert.DeserializeObject<ViewModels.EquipmentNotification>(jsonString);
+            responseViewModel = JsonConvert.DeserializeObject<ViewModels.Equipment>(jsonString);
             //TODO: Assert.Equal(changedName, responseViewModel.someimportantequipmentnotificationfield);
 
             // U - Update            
@@ -102,7 +102,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
 
             jsonString = await response.Content.ReadAsStringAsync();
 
-            responseViewModel = JsonConvert.DeserializeObject<ViewModels.EquipmentNotification>(jsonString);
+            responseViewModel = JsonConvert.DeserializeObject<ViewModels.Equipment>(jsonString);
             //TODO: Assert.Equal(changedName, responseViewModel.someimportantequipmentnotificationfield);
 
             // D - Delete
