@@ -14,12 +14,12 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Msdyncustomaddressknowledgebasereset operations.
+    /// Equipments operations.
     /// </summary>
-    public partial interface IMsdyncustomaddressknowledgebasereset
+    public partial interface IEquipments
     {
         /// <summary>
-        /// Get entities from msdyn_bcgov_customaddress_knowledgebasereset
+        /// Get entities from equipments
         /// </summary>
         /// <param name='top'>
         /// </param>
@@ -52,9 +52,9 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        Task<HttpOperationResponse<GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModelModelModelModel>> GetWithHttpMessagesAsync(int? top = default(int?), int? skip = default(int?), string search = default(string), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<GetOKResponseModelModelModelModelModelModelModelModelModelModelModel>> GetWithHttpMessagesAsync(int? top = default(int?), int? skip = default(int?), string search = default(string), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Add new entity to msdyn_bcgov_customaddress_knowledgebasereset
+        /// Add new entity to equipments
         /// </summary>
         /// <param name='body'>
         /// New entity
@@ -78,12 +78,12 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<HttpOperationResponse<MicrosoftDynamicsCRMmsdynBcgovCustomaddressKnowledgebasere>> CreateWithHttpMessagesAsync(MicrosoftDynamicsCRMmsdynBcgovCustomaddressKnowledgebasere body, string prefer = "return=representation", Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<MicrosoftDynamicsCRMequipment>> CreateWithHttpMessagesAsync(MicrosoftDynamicsCRMequipment body, string prefer = "return=representation", Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get entity from msdyn_bcgov_customaddress_knowledgebasereset by key
+        /// Get entity from equipments by key
         /// </summary>
-        /// <param name='msdynBcgovCustomaddressKnowledgebasereid'>
-        /// key: msdyn_bcgov_customaddress_knowledgebasereid
+        /// <param name='equipmentid'>
+        /// key: equipmentid
         /// </param>
         /// <param name='select'>
         /// Select properties to be returned
@@ -106,12 +106,12 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<HttpOperationResponse<MicrosoftDynamicsCRMmsdynBcgovCustomaddressKnowledgebasere>> GetByKeyWithHttpMessagesAsync(string msdynBcgovCustomaddressKnowledgebasereid, IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<MicrosoftDynamicsCRMequipment>> GetByKeyWithHttpMessagesAsync(string equipmentid, IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Delete entity from msdyn_bcgov_customaddress_knowledgebasereset
+        /// Delete entity from equipments
         /// </summary>
-        /// <param name='msdynBcgovCustomaddressKnowledgebasereid'>
-        /// key: msdyn_bcgov_customaddress_knowledgebasereid
+        /// <param name='equipmentid'>
+        /// key: equipmentid
         /// </param>
         /// <param name='ifMatch'>
         /// ETag
@@ -128,12 +128,12 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<HttpOperationResponse> DeleteWithHttpMessagesAsync(string msdynBcgovCustomaddressKnowledgebasereid, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse> DeleteWithHttpMessagesAsync(string equipmentid, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Update entity in msdyn_bcgov_customaddress_knowledgebasereset
+        /// Update entity in equipments
         /// </summary>
-        /// <param name='msdynBcgovCustomaddressKnowledgebasereid'>
-        /// key: msdyn_bcgov_customaddress_knowledgebasereid
+        /// <param name='equipmentid'>
+        /// key: equipmentid
         /// </param>
         /// <param name='body'>
         /// New property values
@@ -150,6 +150,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<HttpOperationResponse> UpdateWithHttpMessagesAsync(string msdynBcgovCustomaddressKnowledgebasereid, MicrosoftDynamicsCRMmsdynBcgovCustomaddressKnowledgebasere body, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse> UpdateWithHttpMessagesAsync(string equipmentid, MicrosoftDynamicsCRMequipment body, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

@@ -12,7 +12,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
     using System.Linq;
 
     /// <summary>
-    /// Collection of incidents
+    /// Collection of equipments
     /// </summary>
     public partial class GetOKResponseModelModelModelModelModelModelModelModelModelModelModel
     {
@@ -31,7 +31,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// GetOKResponseModelModelModelModelModelModelModelModelModelModelModel
         /// class.
         /// </summary>
-        public GetOKResponseModelModelModelModelModelModelModelModelModelModelModel(IList<MicrosoftDynamicsCRMincident> value = default(IList<MicrosoftDynamicsCRMincident>))
+        public GetOKResponseModelModelModelModelModelModelModelModelModelModelModel(IList<MicrosoftDynamicsCRMequipment> value = default(IList<MicrosoftDynamicsCRMequipment>))
         {
             Value = value;
             CustomInit();
@@ -45,7 +45,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "value")]
-        public IList<MicrosoftDynamicsCRMincident> Value { get; set; }
+        public IList<MicrosoftDynamicsCRMequipment> Value { get; set; }
 
     }
 }

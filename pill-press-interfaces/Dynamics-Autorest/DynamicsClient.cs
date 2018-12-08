@@ -97,6 +97,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual IContacts Contacts { get; private set; }
 
         /// <summary>
+        /// Gets the IEquipments.
+        /// </summary>
+        public virtual IEquipments Equipments { get; private set; }
+
+        /// <summary>
         /// Gets the IIncidents.
         /// </summary>
         public virtual IIncidents Incidents { get; private set; }
@@ -378,6 +383,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             Incidentbusinesscontactset = new Incidentbusinesscontactset(this);
             Termsconditionspresets = new Termsconditionspresets(this);
             Contacts = new Contacts(this);
+            Equipments = new Equipments(this);
             Incidents = new Incidents(this);
             Invoices = new Invoices(this);
             Msdyncustomaddressknowledgearticlset = new Msdyncustomaddressknowledgearticlset(this);
