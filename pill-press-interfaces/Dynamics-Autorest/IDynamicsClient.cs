@@ -94,6 +94,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         IContacts Contacts { get; }
 
         /// <summary>
+        /// Gets the IEquipments.
+        /// </summary>
+        IEquipments Equipments { get; }
+
+        /// <summary>
         /// Gets the IIncidents.
         /// </summary>
         IIncidents Incidents { get; }
