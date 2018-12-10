@@ -33,6 +33,9 @@ import { EquipmentIdentificationComponent } from './equipment-notification/equip
 import { EquipmentTypeAndUseComponent } from './equipment-notification/equipment-type-and-use/equipment-type-and-use.component';
 import { EquipmentSourceComponent } from './equipment-notification/equipment-source/equipment-source.component';
 import { EquipmentNotificationComponent } from './equipment-notification/equipment-notification.component';
+import { AuthorizedOwnerComponent } from './applications/authorized-owner/authorized-owner.component';
+import { RegisteredSellerComponent } from './applications/registered-seller/registered-seller.component';
+import { WaiverComponent } from './applications/waiver/waiver.component';
 
 const routes: Routes = [
   {
@@ -51,67 +54,85 @@ const routes: Routes = [
     canActivate: [BCeidAuthGuard]
   },
   {
-    path: 'application',
+    path: 'waiver',
+    component: WaiverComponent,
     canActivate: [BCeidAuthGuard],
     children: [
       {
-        path: 'profile-review/:mode/:id',
+        path: 'profile-review/:id',
         component: ProfileSummaryComponent,
-        canActivate: [BCeidAuthGuard]
+        data: {
+          nextRoute: 'waiver/application'
+        }
       },
       {
-        path: 'waiver',
-        children: [
-          {
-            path: ':id',
-            component: WaiverApplicationComponent,
-          },
-          {
-            path: 'review/:id',
-            component: WaiverReviewComponent,
-          },
-          {
-            path: 'thank-you/:id',
-            component: ThankYouComponent,
-          },
-        ]
+        path: 'application/:id',
+        component: WaiverApplicationComponent,
       },
       {
-        path: 'registered-seller',
-        children: [
-          {
-            path: ':id',
-            component: SellerApplicationComponent,
-          },
-          {
-            path: 'review/:id',
-            component: SellerApplicationReviewComponent,
-          },
-          {
-            path: 'thank-you/:id',
-            component: SellerApplicationThanksComponent,
-          },
-        ]
+        path: 'review/:id',
+        component: WaiverReviewComponent,
       },
-      {
-        path: 'authorized-owner',
-        children: [
-          {
-            path: ':id',
-            component: AuthorizedApplicationComponent,
-          },
-          {
-            path: 'review/:id',
-            component: AuthorizedApplicationReviewComponent,
-          },
-          {
-            path: 'thank-you/:id',
-            component: AuthorizedApplicationThanksComponent,
-          },
-        ]
-      },
-
     ]
+  },
+  {
+    path: 'waiver/thank-you/:id',
+    component: ThankYouComponent,
+    canActivate: [BCeidAuthGuard],
+  },
+  {
+    path: 'registered-seller',
+    component: RegisteredSellerComponent,
+    canActivate: [BCeidAuthGuard],
+    children: [
+      {
+        path: 'profile-review/:id',
+        component: ProfileSummaryComponent,
+        data: {
+          nextRoute: 'registered-seller/application'
+        }
+      },
+      {
+        path: 'application/:id',
+        component: SellerApplicationComponent,
+      },
+      {
+        path: 'review/:id',
+        component: SellerApplicationReviewComponent,
+      },
+    ]
+  },
+  {
+    path: 'registered-seller/thank-you/:id',
+    component: SellerApplicationThanksComponent,
+    canActivate: [BCeidAuthGuard],
+  },
+  {
+    path: 'authorized-owner',
+    component: AuthorizedOwnerComponent,
+    canActivate: [BCeidAuthGuard],
+    children: [
+      {
+        path: 'profile-review/:id',
+        component: ProfileSummaryComponent,
+        data: {
+          nextRoute: 'authorized-owner/application'
+        }
+      },
+      {
+        path: 'application/:id',
+        component: AuthorizedApplicationComponent,
+      },
+      {
+        path: 'review/:id',
+        component: AuthorizedApplicationReviewComponent,
+      },
+    ]
+  },
+  {
+    path: 'authorized-owner/thank-you/:id',
+    component: AuthorizedApplicationThanksComponent,
+    canActivate: [BCeidAuthGuard],
   },
   {
     path: 'equipment-notification',
@@ -143,9 +164,12 @@ const routes: Routes = [
         component: EquipmentThankYouComponent,
       },
       {
-        path: 'profile-review/:mode/:id',
+        path: 'profile-review/:id',
         component: ProfileSummaryComponent,
-        canActivate: [BCeidAuthGuard]
+        canActivate: [BCeidAuthGuard],
+        data: {
+          nextRoute: 'equipment-notification/type-and-use'
+        }
       },
     ]
   },

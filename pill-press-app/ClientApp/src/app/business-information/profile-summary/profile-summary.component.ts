@@ -25,6 +25,7 @@ export class ProfileSummaryComponent implements OnInit {
   form: FormGroup;
   mode: string;
   id: string;
+  nextRoute: string;
 
   constructor(private userDataService: UserDataService,
     private sanitizer: DomSanitizer,
@@ -34,6 +35,8 @@ export class ProfileSummaryComponent implements OnInit {
     private accountDataService: AccountDataService) {
     this.mode = this.route.snapshot.params.mode;
     this.id = this.route.snapshot.params.id;
+    this.nextRoute = this.route.snapshot.data.nextRoute;
+
   }
 
   ngOnInit() {
@@ -144,19 +147,10 @@ export class ProfileSummaryComponent implements OnInit {
       const value = this.form.value;
       this.busy = this.accountDataService.updateAccount(value)
         .subscribe(data => {
-          switch (this.mode) {
-            case 'waiver':
-            case 'registered-seller':
-            case 'authorized-owner':
-              this.router.navigateByUrl(`/application/${this.mode}/${this.id}`);
-              break;
-            case 'type-and-use':
-              this.router.navigateByUrl(`/equipment-notification/${this.mode}/${this.id}`);
-              break;
-
-            default:
-              this.router.navigateByUrl('/dashboard');
-              break;
+          if (this.nextRoute) {
+            this.router.navigateByUrl(`${this.nextRoute}/${this.id}`);
+          } else {
+            this.router.navigateByUrl('/dashboard');
           }
         });
     }
