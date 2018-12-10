@@ -162,7 +162,7 @@ export class AuthorizedApplicationReviewComponent implements OnInit {
         .toPromise()
         .then(res => {
           if (goToThankYouPage) {
-            this.router.navigateByUrl(`/application/authorized-owner/thank-you/${this.waiverId}`);
+            this.router.navigateByUrl(`/authorized-owner/thank-you/${this.waiverId}`);
           } else {
             this.router.navigateByUrl(`dashboard`);
           }

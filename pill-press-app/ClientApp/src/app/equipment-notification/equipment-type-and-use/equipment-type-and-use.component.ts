@@ -30,7 +30,12 @@ export class EquipmentTypeAndUseComponent implements OnInit {
 
   }
 
-  save(input: boolean) {
+  save(goToNextForm: boolean) {
+    if (goToNextForm) {
+      this.router.navigateByUrl(`/equipment-notification/identification/${this.equipmentId}`);
+    } else {
+      this.router.navigateByUrl('/dashboard');
+    }
   }
 
 }
