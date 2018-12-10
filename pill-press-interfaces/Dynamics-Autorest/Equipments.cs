@@ -47,7 +47,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public DynamicsClient Client { get; private set; }
 
         /// <summary>
-        /// Get entities from equipments
+        /// Get entities from bcgov_equipments
         /// </summary>
         /// <param name='top'>
         /// </param>
@@ -83,7 +83,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse<GetOKResponseModelModelModelModelModelModelModelModelModelModelModel>> GetWithHttpMessagesAsync(int? top = default(int?), int? skip = default(int?), string search = default(string), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<GetOKResponseModelModelModelModelModelModelModelModel>> GetWithHttpMessagesAsync(int? top = default(int?), int? skip = default(int?), string search = default(string), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -105,7 +105,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "equipments").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "bcgov_equipments").ToString();
             List<string> _queryParameters = new List<string>();
             if (top != null)
             {
@@ -215,7 +215,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                 throw ex;
             }
             // Create Result
-            var _result = new HttpOperationResponse<GetOKResponseModelModelModelModelModelModelModelModelModelModelModel>();
+            var _result = new HttpOperationResponse<GetOKResponseModelModelModelModelModelModelModelModel>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             // Deserialize Response
@@ -224,7 +224,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<GetOKResponseModelModelModelModelModelModelModelModelModelModelModel>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<GetOKResponseModelModelModelModelModelModelModelModel>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -244,7 +244,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         }
 
         /// <summary>
-        /// Add new entity to equipments
+        /// Add new entity to bcgov_equipments
         /// </summary>
         /// <param name='body'>
         /// New entity
@@ -274,7 +274,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse<MicrosoftDynamicsCRMequipment>> CreateWithHttpMessagesAsync(MicrosoftDynamicsCRMequipment body, string prefer = "return=representation", Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<MicrosoftDynamicsCRMbcgovEquipment>> CreateWithHttpMessagesAsync(MicrosoftDynamicsCRMbcgovEquipment body, string prefer = "return=representation", Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (body == null)
             {
@@ -294,7 +294,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "equipments").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "bcgov_equipments").ToString();
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
             HttpResponseMessage _httpResponse = null;
@@ -381,7 +381,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                 throw ex;
             }
             // Create Result
-            var _result = new HttpOperationResponse<MicrosoftDynamicsCRMequipment>();
+            var _result = new HttpOperationResponse<MicrosoftDynamicsCRMbcgovEquipment>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             // Deserialize Response
@@ -390,7 +390,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<MicrosoftDynamicsCRMequipment>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<MicrosoftDynamicsCRMbcgovEquipment>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -410,10 +410,10 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         }
 
         /// <summary>
-        /// Get entity from equipments by key
+        /// Get entity from bcgov_equipments by key
         /// </summary>
-        /// <param name='equipmentid'>
-        /// key: equipmentid
+        /// <param name='bcgovEquipmentid'>
+        /// key: bcgov_equipmentid
         /// </param>
         /// <param name='select'>
         /// Select properties to be returned
@@ -442,11 +442,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse<MicrosoftDynamicsCRMequipment>> GetByKeyWithHttpMessagesAsync(string equipmentid, IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<MicrosoftDynamicsCRMbcgovEquipment>> GetByKeyWithHttpMessagesAsync(string bcgovEquipmentid, IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (equipmentid == null)
+            if (bcgovEquipmentid == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "equipmentid");
+                throw new ValidationException(ValidationRules.CannotBeNull, "bcgovEquipmentid");
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -455,7 +455,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("equipmentid", equipmentid);
+                tracingParameters.Add("bcgovEquipmentid", bcgovEquipmentid);
                 tracingParameters.Add("select", select);
                 tracingParameters.Add("expand", expand);
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -463,8 +463,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "equipments({equipmentid})").ToString();
-            _url = _url.Replace("{equipmentid}", System.Uri.EscapeDataString(equipmentid));
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "bcgov_equipments({bcgov_equipmentid})").ToString();
+            _url = _url.Replace("{bcgov_equipmentid}", System.Uri.EscapeDataString(bcgovEquipmentid));
             List<string> _queryParameters = new List<string>();
             if (select != null)
             {
@@ -550,7 +550,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                 throw ex;
             }
             // Create Result
-            var _result = new HttpOperationResponse<MicrosoftDynamicsCRMequipment>();
+            var _result = new HttpOperationResponse<MicrosoftDynamicsCRMbcgovEquipment>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             // Deserialize Response
@@ -559,7 +559,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<MicrosoftDynamicsCRMequipment>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<MicrosoftDynamicsCRMbcgovEquipment>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -579,10 +579,10 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         }
 
         /// <summary>
-        /// Delete entity from equipments
+        /// Delete entity from bcgov_equipments
         /// </summary>
-        /// <param name='equipmentid'>
-        /// key: equipmentid
+        /// <param name='bcgovEquipmentid'>
+        /// key: bcgov_equipmentid
         /// </param>
         /// <param name='ifMatch'>
         /// ETag
@@ -605,11 +605,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse> DeleteWithHttpMessagesAsync(string equipmentid, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse> DeleteWithHttpMessagesAsync(string bcgovEquipmentid, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (equipmentid == null)
+            if (bcgovEquipmentid == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "equipmentid");
+                throw new ValidationException(ValidationRules.CannotBeNull, "bcgovEquipmentid");
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -618,15 +618,15 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("equipmentid", equipmentid);
+                tracingParameters.Add("bcgovEquipmentid", bcgovEquipmentid);
                 tracingParameters.Add("ifMatch", ifMatch);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Delete", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "equipments({equipmentid})").ToString();
-            _url = _url.Replace("{equipmentid}", System.Uri.EscapeDataString(equipmentid));
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "bcgov_equipments({bcgov_equipmentid})").ToString();
+            _url = _url.Replace("{bcgov_equipmentid}", System.Uri.EscapeDataString(bcgovEquipmentid));
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
             HttpResponseMessage _httpResponse = null;
@@ -718,10 +718,10 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         }
 
         /// <summary>
-        /// Update entity in equipments
+        /// Update entity in bcgov_equipments
         /// </summary>
-        /// <param name='equipmentid'>
-        /// key: equipmentid
+        /// <param name='bcgovEquipmentid'>
+        /// key: bcgov_equipmentid
         /// </param>
         /// <param name='body'>
         /// New property values
@@ -744,11 +744,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse> UpdateWithHttpMessagesAsync(string equipmentid, MicrosoftDynamicsCRMequipment body, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse> UpdateWithHttpMessagesAsync(string bcgovEquipmentid, MicrosoftDynamicsCRMbcgovEquipment body, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (equipmentid == null)
+            if (bcgovEquipmentid == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "equipmentid");
+                throw new ValidationException(ValidationRules.CannotBeNull, "bcgovEquipmentid");
             }
             if (body == null)
             {
@@ -761,15 +761,15 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("equipmentid", equipmentid);
+                tracingParameters.Add("bcgovEquipmentid", bcgovEquipmentid);
                 tracingParameters.Add("body", body);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Update", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "equipments({equipmentid})").ToString();
-            _url = _url.Replace("{equipmentid}", System.Uri.EscapeDataString(equipmentid));
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "bcgov_equipments({bcgov_equipmentid})").ToString();
+            _url = _url.Replace("{bcgov_equipmentid}", System.Uri.EscapeDataString(bcgovEquipmentid));
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
             HttpResponseMessage _httpResponse = null;

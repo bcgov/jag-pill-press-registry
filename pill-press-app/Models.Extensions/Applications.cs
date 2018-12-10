@@ -20,69 +20,132 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             ViewModels.Application result = null;
             if (incident != null)
             {
-                result = new ViewModels.Application();
-                if (incident.Incidentid != null)
+                result = new ViewModels.Application()
                 {
-                    result.id = incident.Incidentid;
-                }
+                    id = incident.Incidentid,
+                    // Equipment Information
+                    currentlyownusepossessequipment = incident.BcgovCurrentlyownusepossessequipment,
+                    intendtopurchaseequipment = incident.BcgovIntendtopurchaseequipment,
+                    ownintendtoownequipmentforbusinessuse = incident.BcgovOwnintendtoownequipmentforbusinessuse,
+                    borrowrentleaseequipment = incident.BcgovBorrowrentleaseequipment,
+                    sellequipment = incident.BcgovSellequipment,
 
-                // Equipment Information
-                result.currentlyownusepossessequipment = incident.BcgovCurrentlyownusepossessequipment;
-                result.intendtopurchaseequipment = incident.BcgovIntendtopurchaseequipment;
-                result.ownintendtoownequipmentforbusinessuse = incident.BcgovOwnintendtoownequipmentforbusinessuse;
-                result.borrowrentleaseequipment = incident.BcgovBorrowrentleaseequipment;
-                result.sellequipment = incident.BcgovSellequipment;
+                    // Purpose of Controlled Equipment
+                    producingownproduct = incident.BcgovProducingownproduct,
+                    providingmanufacturingtoothers = incident.BcgovProvidingmanufacturingtoothers,
 
-                // Purpose of Controlled Equipment
-                result.producingownproduct = incident.BcgovProducingownproduct;
-                result.providingmanufacturingtoothers = incident.BcgovProvidingmanufacturingtoothers;
+                    // Business Details
+                    mainbusinessfocus = incident.BcgovMainbusinessfocus,
+                    manufacturingprocessdescription = incident.BcgovManufacturingprocessdescription,
 
-                // Business Details
-                result.mainbusinessfocus = incident.BcgovMainbusinessfocus;
-                result.manufacturingprocessdescription = incident.BcgovManufacturingprocessdescription;
+                    // Declarations and Consent
+                    declarationofcorrectinformation = incident.BcgovDeclarationofcorrectinformation,
+                    foippaconsent = incident.BcgovFoippaconsent,
 
-                // Declarations and Consent
-                result.declarationofcorrectinformation = incident.BcgovDeclarationofcorrectinformation;
-                result.foippaconsent = incident.BcgovFoippaconsent;
+                    foodanddrugact = incident.BcgovFoodanddrugact,
+                    legislativeauthorityother = incident.BcgovLegislativeauthorityother,
+                    kindsofproductsdrugs = incident.BcgovKindsofproductsdrugs,
+                    kindsofproductsnaturalhealthproducts = incident.BcgovKindsofproductsnaturalhealthproducts,
+                    kindsofproductsother = incident.BcgovKindsofproductsother,
+                    drugestablishmentlicence = incident.BcgovDrugestablishmentlicence,
+                    sitelicence = incident.BcgovSitelicence,
+                    otherlicence = incident.BcgovOtherlicence,
+                    delbusinessname = incident.BcgovDelbusinessname,
+                    drugestablishmentlicencenumber = incident.BcgovDrugestablishmentlicencenumber,
+                    drugestablishmentlicenceexpirydate = incident.BcgovDrugestablishmentlicenceexpirydate,
+                    sitelicencebusinessname = incident.BcgovSitelicencebusinessname,
+                    sitelicencenumber = incident.BcgovSitelicencenumber,
+                    sitelicenceexpirydate = incident.BcgovSitelicenceexpirydate,
+                    otherlicencebusinessname = incident.BcgovOtherlicencebusinessname,
+                    otherlicencenumber = incident.BcgovOtherlicencenumber,
+                    otherlicenceexpirydate = incident.BcgovOtherlicenceexpirydate,
 
-                result.foodanddrugact = incident.BcgovFoodanddrugact;
-                result.legislativeauthorityother = incident.BcgovLegislativeauthorityother;
-                result.kindsofproductsdrugs = incident.BcgovKindsofproductsdrugs;
-                result.kindsofproductsnaturalhealthproducts = incident.BcgovKindsofproductsnaturalhealthproducts;
-                result.kindsofproductsother = incident.BcgovKindsofproductsother;
-                result.drugestablishmentlicence = incident.BcgovDrugestablishmentlicence;
-                result.sitelicence = incident.BcgovSitelicence;
-                result.otherlicence = incident.BcgovOtherlicence;
-                result.delbusinessname = incident.BcgovDelbusinessname;
-                result.drugestablishmentlicencenumber = incident.BcgovDrugestablishmentlicencenumber;
-                result.drugestablishmentlicenceexpirydate = incident.BcgovDrugestablishmentlicenceexpirydate;
-                result.sitelicencebusinessname = incident.BcgovSitelicencebusinessname;
-                result.sitelicencenumber = incident.BcgovSitelicencenumber;
-                result.sitelicenceexpirydate = incident.BcgovSitelicenceexpirydate;
-                result.otherlicencebusinessname = incident.BcgovOtherlicencebusinessname;
-                result.otherlicencenumber = incident.BcgovOtherlicencenumber;
-                result.otherlicenceexpirydate = incident.BcgovOtherlicenceexpirydate;
+                    ownusepossesstoproduceaproduct = incident.BcgovOwnusepossesstoproduceaproduct,
+                    intendonrentingleasingtoothers = incident.BcgovIntendonrentingleasingtoothers,
+                    intendonsellingequipmenttoothers = incident.BcgovIntendonsellingequipmenttoothers,
+                    manufacturerofcontrolledequipment = incident.BcgovManufacturerofcontrolledequipment,
+                    retailerofcontrolledequipment = incident.BcgovRetailerofcontrolledequipment,
+                    onetimesellerofowncontrolledequipment = incident.BcgovOnetimesellerofowncontrolledequipment,
+                    typeofsellerothercheck = incident.BcgovTypeofsellerothercheck,
+                    typeofsellerother = incident.BcgovTypeofsellerother,
 
-                result.ownusepossesstoproduceaproduct = incident.BcgovOwnusepossesstoproduceaproduct;
-                result.intendonrentingleasingtoothers = incident.BcgovIntendonrentingleasingtoothers;
-                result.intendonsellingequipmenttoothers = incident.BcgovIntendonsellingequipmenttoothers;
-                result.manufacturerofcontrolledequipment = incident.BcgovManufacturerofcontrolledequipment;
-                result.retailerofcontrolledequipment = incident.BcgovRetailerofcontrolledequipment;
-                result.onetimesellerofowncontrolledequipment = incident.BcgovOnetimesellerofowncontrolledequipment;
-                result.typeofsellerothercheck = incident.BcgovTypeofsellerothercheck;
-                result.typeofsellerother = incident.BcgovTypeofsellerother;
+                    intendtosellpillpress = incident.BcgovIntendtosellpillpress,
+                    intendtosellencapsulator = incident.BcgovIntendtosellencapsulator,
+                    intendtoselldiemouldorpunch = incident.BcgovIntendtoselldiemouldorpunch,
+                    intendtosellpharmaceuticalmixerorblender = incident.BcgovIntendtosellpharmaceuticalmixerorblender,
+                    intendtosellothercheck = incident.BcgovIntendtosellothercheck,
+                    intendtosellother = incident.BcgovIntendtosellother,
+                    legislativeauthorityothercheck = incident.BcgovBcgovLegislativeauthorityothercheck,
+                    kindsofproductsothercheck = incident.BcgovKindsofproductothercheck,
+                    otherlicencecheck = incident.BcgovOtherlicencecheck,
 
-                result.intendtosellpillpress = incident.BcgovIntendtosellpillpress;
-                result.intendtosellencapsulator = incident.BcgovIntendtosellencapsulator;
-                result.intendtoselldiemouldorpunch = incident.BcgovIntendtoselldiemouldorpunch;
-                result.intendtosellpharmaceuticalmixerorblender = incident.BcgovIntendtosellpharmaceuticalmixerorblender;
-                result.intendtosellothercheck = incident.BcgovIntendtosellothercheck ;
-                result.intendtosellother = incident.BcgovIntendtosellother;
-                result.legislativeauthorityothercheck = incident.BcgovBcgovLegislativeauthorityothercheck;
-                result.kindsofproductsothercheck = incident.BcgovKindsofproductothercheck;
-                result.otherlicencecheck = incident.BcgovOtherlicencecheck;
+                    additionalbusinessinformationaboutseller = incident.BcgovAdditionalbusinessinformationaboutseller,
 
-                result.additionalbusinessinformationaboutseller = incident.BcgovAdditionalbusinessinformationaboutseller;
+                    // EQUIPMENT FIELDS
+                    
+                    EquipmentTypeOther = incident.BcgovEquipmenttypeother,
+
+                    PillpressEncapsulatorSizeOtherCheck = incident.BcgovPillpressencapsulatorsizeothercheck,
+                    PillpressEncapsulatorSizeOther = incident.BcgovPillpressencapsulatorsizeother,
+                    
+                    ExplanationOfEquipmentUse = incident.BcgovExplanationofequipmentuse,
+                    
+                    HowWasEquipmentBuiltOtherCheck = incident.BcgovHowwasequipmentbuiltothercheck,
+                    HowWasEquipmentBuiltOther = incident.BcgovHowwasequipmentbuiltother,
+                    NameOfManufacturer = incident.BcgovNameofmanufacturer,
+                    EquipmentMake = incident.BcgovEquipmentmake,
+                    EquipmentModel = incident.BcgovEquipmentmodel,
+                    SerialNumber = incident.BcgovSerialnumber,
+                    HowEquipmentBuiltDescription = incident.BcgovHowequipmentbuiltdescription,
+                    PersonBusinessThatBuiltEquipment = incident.BcgovPersonbusinessthatbuiltequipment,                    
+                    SerialNumberForCustomBuilt = incident.BcgovSerialnumberforcustombuilt,
+                    CustomBuiltSerialNumber = incident.BcgovCustombuiltserialnumber,
+                    SerialNumberKeyPartDescription = incident.BcgovSerialnumberkeypartdescription,
+                    OwnedBeforeJan2019 = incident.BcgovOwnedbeforejan2019,
+                    PurchasedFromBcSeller = incident.BcgovPurchasedfrombcseller,
+                    PurchasedFromSellerOutsideofBc = incident.BcgovPurchasedfromselleroutsideofbc,
+                    ImportedToBcByAThirdParty = incident.BcgovImportedtobcbyathirdparty,
+                    AlternativeOwnershipArrangement = incident.BcgovAlternativeownershiparrangement,
+                    IAssembledItMyself = incident.BcgovIassembleditmyself,
+                    HowCameIntoPossessionOtherCheck = incident.BcgovHowcameintopossessionothercheck,
+                    HowCameIntoPossessionOther = incident.BcgovHowcameintopossessionother,
+                    NameOfBcSeller = incident.BcgovNameofbcseller,                    
+                    Dateofpurchasefrombcseller = incident.BcgovDateofpurchasefrombcseller,
+                    BcSellersRegistrationNumber = incident.BcgovBcsellersregistrationnumber,
+                    OutsideBcSellersName = incident.BcgovOutsidebcsellersname,
+                    DateOfPurchaseFromOutsideBcSeller = incident.BcgovDateofpurchasefromoutsidebcseller,
+                    NameOfImporter = incident.BcgovNameofimporter,                    
+                    ImportersRegistrationNumber = incident.BcgovImportersregistrationnumber,
+                    nameoforiginatingseller = incident.BcgovNameoforiginatingseller,
+                                        
+                    DateOfPurchaseFromImporter = incident.BcgovDateofpurchasefromimporter,
+                    PossessUntilICanSell = incident.BcgovPossessuntilicansell,
+                    GiveNorLoanedToMe = incident.BcgovGivenorloanedtome,
+                    RentingOrLeasingFromAnotherBusiness = incident.BcgovRentingorleasingfromanotherbusiness,
+                    KindOfAlternateOwnershipOtherCheck = incident.BcgovKindofalternateownershipothercheck,
+                    KindOfAlternateOwnershipOther = incident.BcgovKindofalternateownershipother,
+                    UsingToManufactureAProduct = incident.BcgovUsingtomanufactureaproduct,
+                    AreYouARegisteredSeller = incident.BcgovAreyouaregisteredseller,
+                    NameOfBusinessThatHasGivenOrLoaned = incident.BcgovNameofbusinessthathasgivenorloaned,
+                    
+                    PhoneOfBusinessThatHasGivenOrLoaned = incident.BcgovPhoneofbusinessthathasgivenorloaned,
+                    EmailOfTheBusinessThatHasGivenOrLoaned = incident.BcgovEmailofthebusinessthathasgivenorloaned,
+                    WhyAHaveYouAcceptedOrBorrowed = incident.BcgovWhyhaveyouacceptedorborrowed,
+                    NameOfBusinessThatHasRentedOrLeased = incident.BcgovNameofbusinessthathasrentedorleased,
+                    
+                    PhoneOfBusinessThatHasRentedOrLeased = incident.BcgovPhoneofbusinessthathasrentedorleased,
+                    EmailOfBusinessThatHasRentedOrLeased = incident.BcgovEmailofbusinessthathasrentedorleased,
+                    WhyHaveYouRentedOrLeased = incident.BcgovWhyhaveyourentedorleased,
+                    WhenDidYouAssembleEquipment = incident.BcgovWhendidyouassembleequipment,
+                    WhereDidYouObtainParts = incident.BcgovWheredidyouobtainparts,
+                    DoYouAssembleForOtherBusinesses = incident.BcgovDoyouassembleforotherbusinesses,
+                    DetailsOfAssemblyForOtherBusinesses = incident.BcgovDetailsofassemblyforotherbusinesses,
+                    DetailsOfHowEquipmentCameIntoPossession = incident.BcgovDetailsofhowequipmentcameintopossession,
+                    DeclarationOfCorrectInformation = incident.BcgovDeclarationofcorrectinformation,
+                    ConfirmationOfAuthorizedUse = incident.BcgovConfirmationofauthorizeduse
+
+                };
+                
 
                 // CustomerID
                 if (incident.CustomeridAccount != null)
@@ -98,8 +161,9 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     {
                         result.CustomProducts.Add(product.ToViewModel());
                     }
-
                 }
+
+                // Additional Contacts
                 if (incident?.BcgovIncidentBusinesscontact?.Count > 0)
                 {
                     result.BusinessContacts = new List<BusinessContact>();
@@ -108,6 +172,35 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                         result.BusinessContacts.Add(businessContact.ToViewModel());
                     }
                 }
+
+                // AddressPersonBusinessThatBuiltEquipment = changeme,
+
+                // BCSellersAddress
+
+                //                     BcSellersContactPhoneNumber = incident.,
+                //                BcSellersContactEmail = changeme,
+
+                // ImportersAddress = incident.BcgovImportersAddress,
+
+                // OriginatingSellersAddress = incident.BcgovOriginatingSellersAddress,
+
+
+                // OutsideBCSellersAddress = incident.BcgovOutsideBCSellersAddress,
+                // OutsideBcSellersLocation = incident.BcgovOutsidebcsellerslocation,
+
+                // AddressofBusinessthathasGivenorLoaned = incident.BcgovAddressofBusinessthathasGivenorLoaned,
+
+                // AddressofBusinessThatHasRentedorLeased = incident.BcgovAddressofBusinessthathasRentedorLeased,
+
+                // Option Sets
+
+                // EquipmentType = incident.BcgovEquipmenttype,
+                // LevelOfEquipmentAutomation = incident.BcgovLevelofequipmentautomation,
+                // PillpressEncapsulatorSize = incident.BcgovPillpressencapsulatorsize,
+                // PillpressMaxCapacity = incident.BcgovPillpressmaxcapacity,
+                // EncapsulatorMaxCapacity = incident.BcgovEncapsulatormaxcapacity,
+                // HowWasEquipmentBuilt = incident.BcgovHowwasequipmentbuilt,
+                // OriginatingSellersLocation = incident.BcgovOriginatingsellerslocation,
 
             }
             return result;
@@ -173,7 +266,69 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             to.BcgovOtherlicencecheck = from.otherlicencecheck  ;
 
             to.BcgovAdditionalbusinessinformationaboutseller = from.additionalbusinessinformationaboutseller;
-        }
 
+            // EQUIPMENT FIELDS
+
+            to.BcgovEquipmenttypeother = from.EquipmentTypeOther;
+
+            to.BcgovPillpressencapsulatorsizeothercheck = from.PillpressEncapsulatorSizeOtherCheck;
+            to.BcgovPillpressencapsulatorsizeother = from.PillpressEncapsulatorSizeOther;
+
+            to.BcgovExplanationofequipmentuse = from.ExplanationOfEquipmentUse;
+
+            to.BcgovHowwasequipmentbuiltothercheck = from.HowWasEquipmentBuiltOtherCheck;
+            to.BcgovHowwasequipmentbuiltother = from.HowWasEquipmentBuiltOther;
+            to.BcgovNameofmanufacturer = from.NameOfManufacturer;
+            to.BcgovEquipmentmake = from.EquipmentMake;
+            to.BcgovEquipmentmodel = from.EquipmentModel;
+            to.BcgovSerialnumber = from.SerialNumber;
+            to.BcgovHowequipmentbuiltdescription = from.HowEquipmentBuiltDescription;
+            to.BcgovPersonbusinessthatbuiltequipment = from.PersonBusinessThatBuiltEquipment;
+            to.BcgovSerialnumberforcustombuilt = from.SerialNumberForCustomBuilt;
+            to.BcgovCustombuiltserialnumber = from.CustomBuiltSerialNumber;
+            to.BcgovSerialnumberkeypartdescription = from.SerialNumberKeyPartDescription;
+            to.BcgovOwnedbeforejan2019 = from.OwnedBeforeJan2019;
+            to.BcgovPurchasedfrombcseller = from.PurchasedFromBcSeller;
+            to.BcgovPurchasedfromselleroutsideofbc = from.PurchasedFromSellerOutsideofBc;
+            to.BcgovImportedtobcbyathirdparty = from.ImportedToBcByAThirdParty;
+            to.BcgovAlternativeownershiparrangement = from.AlternativeOwnershipArrangement;
+            to.BcgovIassembleditmyself = from.IAssembledItMyself;
+            to.BcgovHowcameintopossessionothercheck = from.HowCameIntoPossessionOtherCheck;
+            to.BcgovHowcameintopossessionother = from.HowCameIntoPossessionOther;
+            to.BcgovNameofbcseller = from.NameOfBcSeller;  
+            to.BcgovDateofpurchasefrombcseller = from.Dateofpurchasefrombcseller;
+            to.BcgovBcsellersregistrationnumber = from.BcSellersRegistrationNumber;
+            to.BcgovOutsidebcsellersname = from.OutsideBcSellersName;
+            to.BcgovDateofpurchasefromoutsidebcseller = from.DateOfPurchaseFromOutsideBcSeller;
+            to.BcgovNameofimporter = from.NameOfImporter;
+            to.BcgovImportersregistrationnumber = from.ImportersRegistrationNumber;
+            to.BcgovNameoforiginatingseller = from.nameoforiginatingseller;
+
+            to.BcgovDateofpurchasefromimporter = from.DateOfPurchaseFromImporter;
+            to.BcgovPossessuntilicansell = from.PossessUntilICanSell;
+            to.BcgovGivenorloanedtome = from.GiveNorLoanedToMe;
+            to.BcgovRentingorleasingfromanotherbusiness = from.RentingOrLeasingFromAnotherBusiness;
+            to.BcgovKindofalternateownershipothercheck = from.KindOfAlternateOwnershipOtherCheck;
+            to.BcgovKindofalternateownershipother = from.KindOfAlternateOwnershipOther;
+            to.BcgovUsingtomanufactureaproduct = from.UsingToManufactureAProduct;
+            to.BcgovAreyouaregisteredseller = from.AreYouARegisteredSeller;
+            to.BcgovNameofbusinessthathasgivenorloaned = from.NameOfBusinessThatHasGivenOrLoaned;
+
+            to.BcgovPhoneofbusinessthathasgivenorloaned = from.PhoneOfBusinessThatHasGivenOrLoaned;
+            to.BcgovEmailofthebusinessthathasgivenorloaned = from.EmailOfTheBusinessThatHasGivenOrLoaned;
+            to.BcgovWhyhaveyouacceptedorborrowed = from.WhyAHaveYouAcceptedOrBorrowed;
+            to.BcgovNameofbusinessthathasrentedorleased = from.NameOfBusinessThatHasRentedOrLeased;
+
+            to.BcgovPhoneofbusinessthathasrentedorleased = from.PhoneOfBusinessThatHasRentedOrLeased;
+            to.BcgovEmailofbusinessthathasrentedorleased = from.EmailOfBusinessThatHasRentedOrLeased;
+            to.BcgovWhyhaveyourentedorleased = from.WhyHaveYouRentedOrLeased;
+            to.BcgovWhendidyouassembleequipment = from.WhenDidYouAssembleEquipment;
+            to.BcgovWheredidyouobtainparts = from.WhereDidYouObtainParts;
+            to.BcgovDoyouassembleforotherbusinesses = from.DoYouAssembleForOtherBusinesses;
+            to.BcgovDetailsofassemblyforotherbusinesses = from.DetailsOfAssemblyForOtherBusinesses;
+            to.BcgovDetailsofhowequipmentcameintopossession = from.DetailsOfHowEquipmentCameIntoPossession;
+            to.BcgovDeclarationofcorrectinformation = from.DeclarationOfCorrectInformation;
+            to.BcgovConfirmationofauthorizeduse = from.ConfirmationOfAuthorizedUse;
+        }
     }
 }

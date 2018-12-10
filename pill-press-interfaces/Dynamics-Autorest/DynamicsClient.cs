@@ -47,11 +47,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual IAccounts Accounts { get; private set; }
 
         /// <summary>
-        /// Gets the IApplicationtermses.
-        /// </summary>
-        public virtual IApplicationtermses Applicationtermses { get; private set; }
-
-        /// <summary>
         /// Gets the IApplicationtypes.
         /// </summary>
         public virtual IApplicationtypes Applicationtypes { get; private set; }
@@ -82,9 +77,34 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual ICustomproducts Customproducts { get; private set; }
 
         /// <summary>
+        /// Gets the IEquipmentlocations.
+        /// </summary>
+        public virtual IEquipmentlocations Equipmentlocations { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipments.
+        /// </summary>
+        public virtual IEquipments Equipments { get; private set; }
+
+        /// <summary>
         /// Gets the IIncidentbusinesscontactset.
         /// </summary>
         public virtual IIncidentbusinesscontactset Incidentbusinesscontactset { get; private set; }
+
+        /// <summary>
+        /// Gets the ILocationequipmentset.
+        /// </summary>
+        public virtual ILocationequipmentset Locationequipmentset { get; private set; }
+
+        /// <summary>
+        /// Gets the ILocations.
+        /// </summary>
+        public virtual ILocations Locations { get; private set; }
+
+        /// <summary>
+        /// Gets the IRiskassessments.
+        /// </summary>
+        public virtual IRiskassessments Riskassessments { get; private set; }
 
         /// <summary>
         /// Gets the ITermsconditionspresets.
@@ -95,11 +115,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// Gets the IContacts.
         /// </summary>
         public virtual IContacts Contacts { get; private set; }
-
-        /// <summary>
-        /// Gets the IEquipments.
-        /// </summary>
-        public virtual IEquipments Equipments { get; private set; }
 
         /// <summary>
         /// Gets the IIncidents.
@@ -373,17 +388,20 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         private void Initialize()
         {
             Accounts = new Accounts(this);
-            Applicationtermses = new Applicationtermses(this);
             Applicationtypes = new Applicationtypes(this);
             Businesscontacts = new Businesscontacts(this);
             Certificates = new Certificates(this);
             Certificatetermsandconditionses = new Certificatetermsandconditionses(this);
             Customaddresses = new Customaddresses(this);
             Customproducts = new Customproducts(this);
+            Equipmentlocations = new Equipmentlocations(this);
+            Equipments = new Equipments(this);
             Incidentbusinesscontactset = new Incidentbusinesscontactset(this);
+            Locationequipmentset = new Locationequipmentset(this);
+            Locations = new Locations(this);
+            Riskassessments = new Riskassessments(this);
             Termsconditionspresets = new Termsconditionspresets(this);
             Contacts = new Contacts(this);
-            Equipments = new Equipments(this);
             Incidents = new Incidents(this);
             Invoices = new Invoices(this);
             Msdyncustomaddressknowledgearticlset = new Msdyncustomaddressknowledgearticlset(this);
