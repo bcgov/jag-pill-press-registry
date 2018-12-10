@@ -42,11 +42,18 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                 result = null;
             }
             
-            if (result.BcgovIncidentBusinesscontact != null)
+            if (result != null && result.BcgovIncidentBusinesscontact != null)
             {
                 for (int i = 0; i < result.BcgovIncidentBusinesscontact.Count; i++)
                 {
-                    result.BcgovIncidentBusinesscontact[i] = system.GetBusinessContactById(result.BcgovIncidentBusinesscontact[i].BcgovBusinesscontactid);
+                    try
+                    {
+                        result.BcgovIncidentBusinesscontact[i] = system.GetBusinessContactById(result.BcgovIncidentBusinesscontact[i].BcgovBusinesscontactid);
+                    }
+                    catch (OdataerrorException)
+                    {
+                        // ignore the exception.
+                    }
                 }
             }
 
