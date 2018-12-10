@@ -19,7 +19,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
     public partial interface IEquipments
     {
         /// <summary>
-        /// Get entities from equipments
+        /// Get entities from bcgov_equipments
         /// </summary>
         /// <param name='top'>
         /// </param>
@@ -52,9 +52,9 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        Task<HttpOperationResponse<GetOKResponseModelModelModelModelModelModelModelModelModelModelModel>> GetWithHttpMessagesAsync(int? top = default(int?), int? skip = default(int?), string search = default(string), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<GetOKResponseModelModelModelModelModelModelModelModel>> GetWithHttpMessagesAsync(int? top = default(int?), int? skip = default(int?), string search = default(string), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Add new entity to equipments
+        /// Add new entity to bcgov_equipments
         /// </summary>
         /// <param name='body'>
         /// New entity
@@ -78,12 +78,12 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<HttpOperationResponse<MicrosoftDynamicsCRMequipment>> CreateWithHttpMessagesAsync(MicrosoftDynamicsCRMequipment body, string prefer = "return=representation", Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<MicrosoftDynamicsCRMbcgovEquipment>> CreateWithHttpMessagesAsync(MicrosoftDynamicsCRMbcgovEquipment body, string prefer = "return=representation", Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get entity from equipments by key
+        /// Get entity from bcgov_equipments by key
         /// </summary>
-        /// <param name='equipmentid'>
-        /// key: equipmentid
+        /// <param name='bcgovEquipmentid'>
+        /// key: bcgov_equipmentid
         /// </param>
         /// <param name='select'>
         /// Select properties to be returned
@@ -106,12 +106,12 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<HttpOperationResponse<MicrosoftDynamicsCRMequipment>> GetByKeyWithHttpMessagesAsync(string equipmentid, IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<MicrosoftDynamicsCRMbcgovEquipment>> GetByKeyWithHttpMessagesAsync(string bcgovEquipmentid, IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Delete entity from equipments
+        /// Delete entity from bcgov_equipments
         /// </summary>
-        /// <param name='equipmentid'>
-        /// key: equipmentid
+        /// <param name='bcgovEquipmentid'>
+        /// key: bcgov_equipmentid
         /// </param>
         /// <param name='ifMatch'>
         /// ETag
@@ -128,12 +128,12 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<HttpOperationResponse> DeleteWithHttpMessagesAsync(string equipmentid, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse> DeleteWithHttpMessagesAsync(string bcgovEquipmentid, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Update entity in equipments
+        /// Update entity in bcgov_equipments
         /// </summary>
-        /// <param name='equipmentid'>
-        /// key: equipmentid
+        /// <param name='bcgovEquipmentid'>
+        /// key: bcgov_equipmentid
         /// </param>
         /// <param name='body'>
         /// New property values
@@ -150,6 +150,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<HttpOperationResponse> UpdateWithHttpMessagesAsync(string equipmentid, MicrosoftDynamicsCRMequipment body, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse> UpdateWithHttpMessagesAsync(string bcgovEquipmentid, MicrosoftDynamicsCRMbcgovEquipment body, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

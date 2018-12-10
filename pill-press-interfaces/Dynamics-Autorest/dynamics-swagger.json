@@ -1103,382 +1103,6 @@
         }
       }
     },
-    "/bcgov_applicationtermses": {
-      "get": {
-        "tags": [
-          "applicationtermses"
-        ],
-        "summary": "Get entities from bcgov_applicationtermses",
-        "operationId": "Applicationtermses_Get",
-        "parameters": [
-          {
-            "name": "$top",
-            "in": "query",
-            "type": "integer"
-          },
-          {
-            "name": "$skip",
-            "in": "query",
-            "type": "integer"
-          },
-          {
-            "name": "$search",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "$filter",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "$count",
-            "in": "query",
-            "type": "boolean"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "type": "array",
-            "items": {
-              "type": "string",
-              "enum": [
-                "_ownerid_value",
-                "_ownerid_value desc",
-                "_modifiedby_value",
-                "_modifiedby_value desc",
-                "_modifiedonbehalfby_value",
-                "_modifiedonbehalfby_value desc",
-                "_createdby_value",
-                "_createdby_value desc",
-                "importsequencenumber",
-                "importsequencenumber desc",
-                "bcgov_name",
-                "bcgov_name desc",
-                "_bcgov_termspreset_value",
-                "_bcgov_termspreset_value desc",
-                "_bcgov_applicationtype_value",
-                "_bcgov_applicationtype_value desc",
-                "statecode",
-                "statecode desc",
-                "_bcgov_certificate_value",
-                "_bcgov_certificate_value desc",
-                "_owningbusinessunit_value",
-                "_owningbusinessunit_value desc",
-                "bcgov_termsandconditions",
-                "bcgov_termsandconditions desc",
-                "_createdonbehalfby_value",
-                "_createdonbehalfby_value desc",
-                "utcconversiontimezonecode",
-                "utcconversiontimezonecode desc",
-                "statuscode",
-                "statuscode desc",
-                "timezoneruleversionnumber",
-                "timezoneruleversionnumber desc",
-                "bcgov_applicationtermsid",
-                "bcgov_applicationtermsid desc",
-                "versionnumber",
-                "versionnumber desc",
-                "_owninguser_value",
-                "_owninguser_value desc",
-                "_bcgov_application_value",
-                "_bcgov_application_value desc",
-                "_owningteam_value",
-                "_owningteam_value desc",
-                "overriddencreatedon",
-                "overriddencreatedon desc",
-                "createdon",
-                "createdon desc",
-                "modifiedon",
-                "modifiedon desc"
-              ]
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "type": "array",
-            "items": {
-              "type": "string",
-              "enum": [
-                "_ownerid_value",
-                "_modifiedby_value",
-                "_modifiedonbehalfby_value",
-                "_createdby_value",
-                "importsequencenumber",
-                "bcgov_name",
-                "_bcgov_termspreset_value",
-                "_bcgov_applicationtype_value",
-                "statecode",
-                "_bcgov_certificate_value",
-                "_owningbusinessunit_value",
-                "bcgov_termsandconditions",
-                "_createdonbehalfby_value",
-                "utcconversiontimezonecode",
-                "statuscode",
-                "timezoneruleversionnumber",
-                "bcgov_applicationtermsid",
-                "versionnumber",
-                "_owninguser_value",
-                "_bcgov_application_value",
-                "_owningteam_value",
-                "overriddencreatedon",
-                "createdon",
-                "modifiedon"
-              ]
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "type": "array",
-            "items": {
-              "type": "string",
-              "enum": [
-                "*",
-                "createdbyname",
-                "createdonbehalfbyname",
-                "modifiedbyname",
-                "modifiedonbehalfbyname",
-                "owninguser",
-                "owningteam",
-                "ownerid",
-                "owningbusinessunit",
-                "bcgov_applicationterms_SyncErrors",
-                "bcgov_applicationterms_DuplicateMatchingRecord",
-                "bcgov_applicationterms_DuplicateBaseRecord",
-                "bcgov_applicationterms_AsyncOperations",
-                "bcgov_applicationterms_BulkDeleteFailures",
-                "bcgov_Application",
-                "bcgov_TermsPreset",
-                "bcgov_ApplicationType",
-                "bcgov_Certificate"
-              ]
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Retrieved entities",
-            "schema": {
-              "title": "Collection of bcgov_applicationtermses",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_applicationterms"
-                  }
-                }
-              }
-            }
-          },
-          "default": {
-            "schema": { "$ref": "#/definitions/odata.error" },
-            "description": ""
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "applicationtermses"
-        ],
-        "summary": "Add new entity to bcgov_applicationtermses",
-        "operationId": "Applicationtermses_Create",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_applicationterms"
-            },
-            "description": "New entity"
-          },
-          {
-            "name": "Prefer",
-            "in": "header",
-            "description": "Required in order for the service to return a JSON representation of the object.",
-            "type": "string",
-            "default": "return=representation"
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created entity",
-            "schema": {
-              "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_applicationterms"
-            }
-          },
-          "default": {
-            "schema": { "$ref": "#/definitions/odata.error" },
-            "description": ""
-          }
-        }
-      }
-    },
-    "/bcgov_applicationtermses({bcgov_applicationtermsid})": {
-      "get": {
-        "tags": [
-          "applicationtermses"
-        ],
-        "summary": "Get entity from bcgov_applicationtermses by key",
-        "operationId": "Applicationtermses_GetByKey",
-        "parameters": [
-          {
-            "name": "bcgov_applicationtermsid",
-            "in": "path",
-            "required": true,
-            "description": "key: bcgov_applicationtermsid",
-            "type": "string"
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "type": "array",
-            "items": {
-              "type": "string",
-              "enum": [
-                "_ownerid_value",
-                "_modifiedby_value",
-                "_modifiedonbehalfby_value",
-                "_createdby_value",
-                "importsequencenumber",
-                "bcgov_name",
-                "_bcgov_termspreset_value",
-                "_bcgov_applicationtype_value",
-                "statecode",
-                "_bcgov_certificate_value",
-                "_owningbusinessunit_value",
-                "bcgov_termsandconditions",
-                "_createdonbehalfby_value",
-                "utcconversiontimezonecode",
-                "statuscode",
-                "timezoneruleversionnumber",
-                "bcgov_applicationtermsid",
-                "versionnumber",
-                "_owninguser_value",
-                "_bcgov_application_value",
-                "_owningteam_value",
-                "overriddencreatedon",
-                "createdon",
-                "modifiedon"
-              ]
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "type": "array",
-            "items": {
-              "type": "string",
-              "enum": [
-                "*",
-                "createdbyname",
-                "createdonbehalfbyname",
-                "modifiedbyname",
-                "modifiedonbehalfbyname",
-                "owninguser",
-                "owningteam",
-                "ownerid",
-                "owningbusinessunit",
-                "bcgov_applicationterms_SyncErrors",
-                "bcgov_applicationterms_DuplicateMatchingRecord",
-                "bcgov_applicationterms_DuplicateBaseRecord",
-                "bcgov_applicationterms_AsyncOperations",
-                "bcgov_applicationterms_BulkDeleteFailures",
-                "bcgov_Application",
-                "bcgov_TermsPreset",
-                "bcgov_ApplicationType",
-                "bcgov_Certificate"
-              ]
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Retrieved entity",
-            "schema": {
-              "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_applicationterms"
-            }
-          },
-          "default": {
-            "schema": { "$ref": "#/definitions/odata.error" },
-            "description": ""
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "applicationtermses"
-        ],
-        "summary": "Delete entity from bcgov_applicationtermses",
-        "operationId": "Applicationtermses_Delete",
-        "parameters": [
-          {
-            "name": "bcgov_applicationtermsid",
-            "in": "path",
-            "required": true,
-            "description": "key: bcgov_applicationtermsid",
-            "type": "string"
-          },
-          {
-            "name": "If-Match",
-            "in": "header",
-            "description": "ETag",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Success"
-          },
-          "default": {
-            "schema": { "$ref": "#/definitions/odata.error" },
-            "description": ""
-          }
-        }
-      },
-      "patch": {
-        "tags": [
-          "applicationtermses"
-        ],
-        "summary": "Update entity in bcgov_applicationtermses",
-        "operationId": "Applicationtermses_Update",
-        "parameters": [
-          {
-            "name": "bcgov_applicationtermsid",
-            "in": "path",
-            "required": true,
-            "description": "key: bcgov_applicationtermsid",
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_applicationterms"
-            },
-            "description": "New property values"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Success"
-          },
-          "default": {
-            "schema": { "$ref": "#/definitions/odata.error" },
-            "description": ""
-          }
-        }
-      }
-    },
     "/bcgov_applicationtypes": {
       "get": {
         "tags": [
@@ -1616,7 +1240,6 @@
                 "bcgov_applicationtype_DuplicateBaseRecord",
                 "bcgov_applicationtype_AsyncOperations",
                 "bcgov_applicationtype_BulkDeleteFailures",
-                "bcgov_applicationtype_bcgov_applicationterms_ApplicationType",
                 "bcgov_applicationtype_incident_ApplicationTypeId",
                 "bcgov_applicationtype_bcgov_termsconditionspreset_ApplicationType",
                 "bcgov_applicationtype_bcgov_certificate_CertificateType",
@@ -1753,7 +1376,6 @@
                 "bcgov_applicationtype_DuplicateBaseRecord",
                 "bcgov_applicationtype_AsyncOperations",
                 "bcgov_applicationtype_BulkDeleteFailures",
-                "bcgov_applicationtype_bcgov_applicationterms_ApplicationType",
                 "bcgov_applicationtype_incident_ApplicationTypeId",
                 "bcgov_applicationtype_bcgov_termsconditionspreset_ApplicationType",
                 "bcgov_applicationtype_bcgov_certificate_CertificateType",
@@ -2395,7 +2017,6 @@
                 "bcgov_certificate_AsyncOperations",
                 "bcgov_certificate_BulkDeleteFailures",
                 "bcgov_CertificateType",
-                "bcgov_certificate_bcgov_applicationterms_Certificate",
                 "bcgov_Application",
                 "bcgov_certificate_bcgov_certificatetermsandconditions_Certificate"
               ]
@@ -2545,7 +2166,6 @@
                 "bcgov_certificate_AsyncOperations",
                 "bcgov_certificate_BulkDeleteFailures",
                 "bcgov_CertificateType",
-                "bcgov_certificate_bcgov_applicationterms_Certificate",
                 "bcgov_Application",
                 "bcgov_certificate_bcgov_certificatetermsandconditions_Certificate"
               ]
@@ -3218,6 +2838,7 @@
                 "bcgov_customaddress_incident_OriginatingSellersAddress",
                 "bcgov_customaddress_incident_AddressofBusinessthathasGivenorLoaned",
                 "bcgov_bcgov_customaddress_incident_AddressofBusinessthathasRentedorLeased",
+                "bcgov_customaddress_location_LocationAddress",
                 "bcgov_bcgov_customaddress_account_CurrentBusinessPhysicalAddress",
                 "bcgov_bcgov_customaddress_account_CurrentBusinessMailingAddress",
                 "bcgov_BusinessProfile"
@@ -3401,6 +3022,7 @@
                 "bcgov_customaddress_incident_OriginatingSellersAddress",
                 "bcgov_customaddress_incident_AddressofBusinessthathasGivenorLoaned",
                 "bcgov_bcgov_customaddress_incident_AddressofBusinessthathasRentedorLeased",
+                "bcgov_customaddress_location_LocationAddress",
                 "bcgov_bcgov_customaddress_account_CurrentBusinessPhysicalAddress",
                 "bcgov_bcgov_customaddress_account_CurrentBusinessMailingAddress",
                 "bcgov_BusinessProfile"
@@ -3899,6 +3521,844 @@
         }
       }
     },
+    "/bcgov_equipmentlocations": {
+      "get": {
+        "tags": [
+          "equipmentlocations"
+        ],
+        "summary": "Get entities from bcgov_equipmentlocations",
+        "operationId": "Equipmentlocations_Get",
+        "parameters": [
+          {
+            "name": "$top",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "$skip",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "$search",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "$count",
+            "in": "query",
+            "type": "boolean"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "_bcgov_equipment_value",
+                "_bcgov_equipment_value desc",
+                "importsequencenumber",
+                "importsequencenumber desc",
+                "_owningteam_value",
+                "_owningteam_value desc",
+                "timezoneruleversionnumber",
+                "timezoneruleversionnumber desc",
+                "statuscode",
+                "statuscode desc",
+                "statecode",
+                "statecode desc",
+                "overriddencreatedon",
+                "overriddencreatedon desc",
+                "bcgov_towhen",
+                "bcgov_towhen desc",
+                "_owninguser_value",
+                "_owninguser_value desc",
+                "bcgov_fromwhen",
+                "bcgov_fromwhen desc",
+                "_createdonbehalfby_value",
+                "_createdonbehalfby_value desc",
+                "_modifiedby_value",
+                "_modifiedby_value desc",
+                "_ownerid_value",
+                "_ownerid_value desc",
+                "_bcgov_location_value",
+                "_bcgov_location_value desc",
+                "utcconversiontimezonecode",
+                "utcconversiontimezonecode desc",
+                "_createdby_value",
+                "_createdby_value desc",
+                "_owningbusinessunit_value",
+                "_owningbusinessunit_value desc",
+                "bcgov_name",
+                "bcgov_name desc",
+                "bcgov_currentlocation",
+                "bcgov_currentlocation desc",
+                "modifiedon",
+                "modifiedon desc",
+                "emailaddress",
+                "emailaddress desc",
+                "versionnumber",
+                "versionnumber desc",
+                "createdon",
+                "createdon desc",
+                "_modifiedonbehalfby_value",
+                "_modifiedonbehalfby_value desc",
+                "bcgov_equipmentlocationid",
+                "bcgov_equipmentlocationid desc"
+              ]
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "_bcgov_equipment_value",
+                "importsequencenumber",
+                "_owningteam_value",
+                "timezoneruleversionnumber",
+                "statuscode",
+                "statecode",
+                "overriddencreatedon",
+                "bcgov_towhen",
+                "_owninguser_value",
+                "bcgov_fromwhen",
+                "_createdonbehalfby_value",
+                "_modifiedby_value",
+                "_ownerid_value",
+                "_bcgov_location_value",
+                "utcconversiontimezonecode",
+                "_createdby_value",
+                "_owningbusinessunit_value",
+                "bcgov_name",
+                "bcgov_currentlocation",
+                "modifiedon",
+                "emailaddress",
+                "versionnumber",
+                "createdon",
+                "_modifiedonbehalfby_value",
+                "bcgov_equipmentlocationid"
+              ]
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "*",
+                "createdbyname",
+                "createdonbehalfbyname",
+                "modifiedbyname",
+                "modifiedonbehalfbyname",
+                "owninguser",
+                "owningteam",
+                "ownerid",
+                "owningbusinessunit",
+                "bcgov_equipmentlocation_ActivityPointers",
+                "bcgov_equipmentlocation_Appointments",
+                "bcgov_equipmentlocation_Emails",
+                "bcgov_equipmentlocation_Faxes",
+                "bcgov_equipmentlocation_Letters",
+                "bcgov_equipmentlocation_PhoneCalls",
+                "bcgov_equipmentlocation_ServiceAppointments",
+                "bcgov_equipmentlocation_Tasks",
+                "bcgov_equipmentlocation_RecurringAppointmentMasters",
+                "bcgov_equipmentlocation_SocialActivities",
+                "bcgov_equipmentlocation_SyncErrors",
+                "bcgov_equipmentlocation_ActivityParties",
+                "bcgov_equipmentlocation_connections1",
+                "bcgov_equipmentlocation_connections2",
+                "bcgov_equipmentlocation_DuplicateMatchingRecord",
+                "bcgov_equipmentlocation_DuplicateBaseRecord",
+                "bcgov_equipmentlocation_SharePointDocumentLocations",
+                "bcgov_equipmentlocation_QueueItems",
+                "bcgov_equipmentlocation_Annotations",
+                "bcgov_equipmentlocation_AsyncOperations",
+                "bcgov_equipmentlocation_BulkDeleteFailures",
+                "bcgov_Equipment",
+                "bcgov_Location"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "schema": {
+              "title": "Collection of bcgov_equipmentlocations",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "equipmentlocations"
+        ],
+        "summary": "Add new entity to bcgov_equipmentlocations",
+        "operationId": "Equipmentlocations_Create",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
+            },
+            "description": "New entity"
+          },
+          {
+            "name": "Prefer",
+            "in": "header",
+            "description": "Required in order for the service to return a JSON representation of the object.",
+            "type": "string",
+            "default": "return=representation"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      }
+    },
+    "/bcgov_equipmentlocations({bcgov_equipmentlocationid})": {
+      "get": {
+        "tags": [
+          "equipmentlocations"
+        ],
+        "summary": "Get entity from bcgov_equipmentlocations by key",
+        "operationId": "Equipmentlocations_GetByKey",
+        "parameters": [
+          {
+            "name": "bcgov_equipmentlocationid",
+            "in": "path",
+            "required": true,
+            "description": "key: bcgov_equipmentlocationid",
+            "type": "string"
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "_bcgov_equipment_value",
+                "importsequencenumber",
+                "_owningteam_value",
+                "timezoneruleversionnumber",
+                "statuscode",
+                "statecode",
+                "overriddencreatedon",
+                "bcgov_towhen",
+                "_owninguser_value",
+                "bcgov_fromwhen",
+                "_createdonbehalfby_value",
+                "_modifiedby_value",
+                "_ownerid_value",
+                "_bcgov_location_value",
+                "utcconversiontimezonecode",
+                "_createdby_value",
+                "_owningbusinessunit_value",
+                "bcgov_name",
+                "bcgov_currentlocation",
+                "modifiedon",
+                "emailaddress",
+                "versionnumber",
+                "createdon",
+                "_modifiedonbehalfby_value",
+                "bcgov_equipmentlocationid"
+              ]
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "*",
+                "createdbyname",
+                "createdonbehalfbyname",
+                "modifiedbyname",
+                "modifiedonbehalfbyname",
+                "owninguser",
+                "owningteam",
+                "ownerid",
+                "owningbusinessunit",
+                "bcgov_equipmentlocation_ActivityPointers",
+                "bcgov_equipmentlocation_Appointments",
+                "bcgov_equipmentlocation_Emails",
+                "bcgov_equipmentlocation_Faxes",
+                "bcgov_equipmentlocation_Letters",
+                "bcgov_equipmentlocation_PhoneCalls",
+                "bcgov_equipmentlocation_ServiceAppointments",
+                "bcgov_equipmentlocation_Tasks",
+                "bcgov_equipmentlocation_RecurringAppointmentMasters",
+                "bcgov_equipmentlocation_SocialActivities",
+                "bcgov_equipmentlocation_SyncErrors",
+                "bcgov_equipmentlocation_ActivityParties",
+                "bcgov_equipmentlocation_connections1",
+                "bcgov_equipmentlocation_connections2",
+                "bcgov_equipmentlocation_DuplicateMatchingRecord",
+                "bcgov_equipmentlocation_DuplicateBaseRecord",
+                "bcgov_equipmentlocation_SharePointDocumentLocations",
+                "bcgov_equipmentlocation_QueueItems",
+                "bcgov_equipmentlocation_Annotations",
+                "bcgov_equipmentlocation_AsyncOperations",
+                "bcgov_equipmentlocation_BulkDeleteFailures",
+                "bcgov_Equipment",
+                "bcgov_Location"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "equipmentlocations"
+        ],
+        "summary": "Delete entity from bcgov_equipmentlocations",
+        "operationId": "Equipmentlocations_Delete",
+        "parameters": [
+          {
+            "name": "bcgov_equipmentlocationid",
+            "in": "path",
+            "required": true,
+            "description": "key: bcgov_equipmentlocationid",
+            "type": "string"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "equipmentlocations"
+        ],
+        "summary": "Update entity in bcgov_equipmentlocations",
+        "operationId": "Equipmentlocations_Update",
+        "parameters": [
+          {
+            "name": "bcgov_equipmentlocationid",
+            "in": "path",
+            "required": true,
+            "description": "key: bcgov_equipmentlocationid",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
+            },
+            "description": "New property values"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      }
+    },
+    "/bcgov_equipments": {
+      "get": {
+        "tags": [
+          "equipments"
+        ],
+        "summary": "Get entities from bcgov_equipments",
+        "operationId": "Equipments_Get",
+        "parameters": [
+          {
+            "name": "$top",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "$skip",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "$search",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "$count",
+            "in": "query",
+            "type": "boolean"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "_createdby_value",
+                "_createdby_value desc",
+                "statecode",
+                "statecode desc",
+                "bcgov_name",
+                "bcgov_name desc",
+                "_modifiedby_value",
+                "_modifiedby_value desc",
+                "processid",
+                "processid desc",
+                "overriddencreatedon",
+                "overriddencreatedon desc",
+                "traversedpath",
+                "traversedpath desc",
+                "timezoneruleversionnumber",
+                "timezoneruleversionnumber desc",
+                "bcgov_equipmenttypeother",
+                "bcgov_equipmenttypeother desc",
+                "bcgov_pillpressencapsulatorsizeother",
+                "bcgov_pillpressencapsulatorsizeother desc",
+                "_createdonbehalfby_value",
+                "_createdonbehalfby_value desc",
+                "_stageid_value",
+                "_stageid_value desc",
+                "_owningbusinessunit_value",
+                "_owningbusinessunit_value desc",
+                "bcgov_pillpressencapsulatorsize",
+                "bcgov_pillpressencapsulatorsize desc",
+                "statuscode",
+                "statuscode desc",
+                "bcgov_pillpressmaxcapacity",
+                "bcgov_pillpressmaxcapacity desc",
+                "bcgov_equipmentid",
+                "bcgov_equipmentid desc",
+                "bcgov_equipmenttype",
+                "bcgov_equipmenttype desc",
+                "utcconversiontimezonecode",
+                "utcconversiontimezonecode desc",
+                "_owningteam_value",
+                "_owningteam_value desc",
+                "bcgov_levelofautomation",
+                "bcgov_levelofautomation desc",
+                "versionnumber",
+                "versionnumber desc",
+                "modifiedon",
+                "modifiedon desc",
+                "importsequencenumber",
+                "importsequencenumber desc",
+                "_ownerid_value",
+                "_ownerid_value desc",
+                "bcgov_encapsulatormaxcapacity",
+                "bcgov_encapsulatormaxcapacity desc",
+                "createdon",
+                "createdon desc",
+                "emailaddress",
+                "emailaddress desc",
+                "_modifiedonbehalfby_value",
+                "_modifiedonbehalfby_value desc",
+                "_owninguser_value",
+                "_owninguser_value desc"
+              ]
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "_createdby_value",
+                "statecode",
+                "bcgov_name",
+                "_modifiedby_value",
+                "processid",
+                "overriddencreatedon",
+                "traversedpath",
+                "timezoneruleversionnumber",
+                "bcgov_equipmenttypeother",
+                "bcgov_pillpressencapsulatorsizeother",
+                "_createdonbehalfby_value",
+                "_stageid_value",
+                "_owningbusinessunit_value",
+                "bcgov_pillpressencapsulatorsize",
+                "statuscode",
+                "bcgov_pillpressmaxcapacity",
+                "bcgov_equipmentid",
+                "bcgov_equipmenttype",
+                "utcconversiontimezonecode",
+                "_owningteam_value",
+                "bcgov_levelofautomation",
+                "versionnumber",
+                "modifiedon",
+                "importsequencenumber",
+                "_ownerid_value",
+                "bcgov_encapsulatormaxcapacity",
+                "createdon",
+                "emailaddress",
+                "_modifiedonbehalfby_value",
+                "_owninguser_value"
+              ]
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "*",
+                "createdbyname",
+                "createdonbehalfbyname",
+                "modifiedbyname",
+                "modifiedonbehalfbyname",
+                "owninguser",
+                "owningteam",
+                "ownerid",
+                "owningbusinessunit",
+                "bcgov_equipment_ActivityPointers",
+                "bcgov_equipment_Appointments",
+                "bcgov_equipment_Emails",
+                "bcgov_equipment_Faxes",
+                "bcgov_equipment_Letters",
+                "bcgov_equipment_PhoneCalls",
+                "bcgov_equipment_ServiceAppointments",
+                "bcgov_equipment_Tasks",
+                "bcgov_equipment_RecurringAppointmentMasters",
+                "bcgov_equipment_SocialActivities",
+                "bcgov_equipment_SyncErrors",
+                "bcgov_equipment_ActivityParties",
+                "bcgov_equipment_connections1",
+                "bcgov_equipment_connections2",
+                "bcgov_equipment_DuplicateMatchingRecord",
+                "bcgov_equipment_DuplicateBaseRecord",
+                "bcgov_equipment_SharePointDocumentLocations",
+                "bcgov_equipment_QueueItems",
+                "bcgov_equipment_Annotations",
+                "bcgov_equipment_AsyncOperations",
+                "bcgov_equipment_BulkDeleteFailures",
+                "stageid",
+                "bcgov_location_equipment",
+                "bcgov_equipment_equipmentlocation_Equipment"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "schema": {
+              "title": "Collection of bcgov_equipments",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "equipments"
+        ],
+        "summary": "Add new entity to bcgov_equipments",
+        "operationId": "Equipments_Create",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+            },
+            "description": "New entity"
+          },
+          {
+            "name": "Prefer",
+            "in": "header",
+            "description": "Required in order for the service to return a JSON representation of the object.",
+            "type": "string",
+            "default": "return=representation"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      }
+    },
+    "/bcgov_equipments({bcgov_equipmentid})": {
+      "get": {
+        "tags": [
+          "equipments"
+        ],
+        "summary": "Get entity from bcgov_equipments by key",
+        "operationId": "Equipments_GetByKey",
+        "parameters": [
+          {
+            "name": "bcgov_equipmentid",
+            "in": "path",
+            "required": true,
+            "description": "key: bcgov_equipmentid",
+            "type": "string"
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "_createdby_value",
+                "statecode",
+                "bcgov_name",
+                "_modifiedby_value",
+                "processid",
+                "overriddencreatedon",
+                "traversedpath",
+                "timezoneruleversionnumber",
+                "bcgov_equipmenttypeother",
+                "bcgov_pillpressencapsulatorsizeother",
+                "_createdonbehalfby_value",
+                "_stageid_value",
+                "_owningbusinessunit_value",
+                "bcgov_pillpressencapsulatorsize",
+                "statuscode",
+                "bcgov_pillpressmaxcapacity",
+                "bcgov_equipmentid",
+                "bcgov_equipmenttype",
+                "utcconversiontimezonecode",
+                "_owningteam_value",
+                "bcgov_levelofautomation",
+                "versionnumber",
+                "modifiedon",
+                "importsequencenumber",
+                "_ownerid_value",
+                "bcgov_encapsulatormaxcapacity",
+                "createdon",
+                "emailaddress",
+                "_modifiedonbehalfby_value",
+                "_owninguser_value"
+              ]
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "*",
+                "createdbyname",
+                "createdonbehalfbyname",
+                "modifiedbyname",
+                "modifiedonbehalfbyname",
+                "owninguser",
+                "owningteam",
+                "ownerid",
+                "owningbusinessunit",
+                "bcgov_equipment_ActivityPointers",
+                "bcgov_equipment_Appointments",
+                "bcgov_equipment_Emails",
+                "bcgov_equipment_Faxes",
+                "bcgov_equipment_Letters",
+                "bcgov_equipment_PhoneCalls",
+                "bcgov_equipment_ServiceAppointments",
+                "bcgov_equipment_Tasks",
+                "bcgov_equipment_RecurringAppointmentMasters",
+                "bcgov_equipment_SocialActivities",
+                "bcgov_equipment_SyncErrors",
+                "bcgov_equipment_ActivityParties",
+                "bcgov_equipment_connections1",
+                "bcgov_equipment_connections2",
+                "bcgov_equipment_DuplicateMatchingRecord",
+                "bcgov_equipment_DuplicateBaseRecord",
+                "bcgov_equipment_SharePointDocumentLocations",
+                "bcgov_equipment_QueueItems",
+                "bcgov_equipment_Annotations",
+                "bcgov_equipment_AsyncOperations",
+                "bcgov_equipment_BulkDeleteFailures",
+                "stageid",
+                "bcgov_location_equipment",
+                "bcgov_equipment_equipmentlocation_Equipment"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "equipments"
+        ],
+        "summary": "Delete entity from bcgov_equipments",
+        "operationId": "Equipments_Delete",
+        "parameters": [
+          {
+            "name": "bcgov_equipmentid",
+            "in": "path",
+            "required": true,
+            "description": "key: bcgov_equipmentid",
+            "type": "string"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "equipments"
+        ],
+        "summary": "Update entity in bcgov_equipments",
+        "operationId": "Equipments_Update",
+        "parameters": [
+          {
+            "name": "bcgov_equipmentid",
+            "in": "path",
+            "required": true,
+            "description": "key: bcgov_equipmentid",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+            },
+            "description": "New property values"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      }
+    },
     "/bcgov_incident_businesscontactset": {
       "get": {
         "tags": [
@@ -4161,6 +4621,1116 @@
         }
       }
     },
+    "/bcgov_location_equipmentset": {
+      "get": {
+        "tags": [
+          "location_equipmentset"
+        ],
+        "summary": "Get entities from bcgov_location_equipmentset",
+        "operationId": "Locationequipmentset_Get",
+        "parameters": [
+          {
+            "name": "$top",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "$skip",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "$search",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "$count",
+            "in": "query",
+            "type": "boolean"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "bcgov_equipmentid",
+                "bcgov_equipmentid desc",
+                "bcgov_location_equipmentid",
+                "bcgov_location_equipmentid desc",
+                "versionnumber",
+                "versionnumber desc",
+                "bcgov_locationid",
+                "bcgov_locationid desc"
+              ]
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "bcgov_equipmentid",
+                "bcgov_location_equipmentid",
+                "versionnumber",
+                "bcgov_locationid"
+              ]
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "*"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "schema": {
+              "title": "Collection of bcgov_location_equipmentset",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location_equipment"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "location_equipmentset"
+        ],
+        "summary": "Add new entity to bcgov_location_equipmentset",
+        "operationId": "Locationequipmentset_Create",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location_equipment"
+            },
+            "description": "New entity"
+          },
+          {
+            "name": "Prefer",
+            "in": "header",
+            "description": "Required in order for the service to return a JSON representation of the object.",
+            "type": "string",
+            "default": "return=representation"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location_equipment"
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      }
+    },
+    "/bcgov_location_equipmentset({bcgov_location_equipmentid})": {
+      "get": {
+        "tags": [
+          "location_equipmentset"
+        ],
+        "summary": "Get entity from bcgov_location_equipmentset by key",
+        "operationId": "Locationequipmentset_GetByKey",
+        "parameters": [
+          {
+            "name": "bcgov_location_equipmentid",
+            "in": "path",
+            "required": true,
+            "description": "key: bcgov_location_equipmentid",
+            "type": "string"
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "bcgov_equipmentid",
+                "bcgov_location_equipmentid",
+                "versionnumber",
+                "bcgov_locationid"
+              ]
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "*"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location_equipment"
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "location_equipmentset"
+        ],
+        "summary": "Delete entity from bcgov_location_equipmentset",
+        "operationId": "Locationequipmentset_Delete",
+        "parameters": [
+          {
+            "name": "bcgov_location_equipmentid",
+            "in": "path",
+            "required": true,
+            "description": "key: bcgov_location_equipmentid",
+            "type": "string"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "location_equipmentset"
+        ],
+        "summary": "Update entity in bcgov_location_equipmentset",
+        "operationId": "Locationequipmentset_Update",
+        "parameters": [
+          {
+            "name": "bcgov_location_equipmentid",
+            "in": "path",
+            "required": true,
+            "description": "key: bcgov_location_equipmentid",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location_equipment"
+            },
+            "description": "New property values"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      }
+    },
+    "/bcgov_locations": {
+      "get": {
+        "tags": [
+          "locations"
+        ],
+        "summary": "Get entities from bcgov_locations",
+        "operationId": "Locations_Get",
+        "parameters": [
+          {
+            "name": "$top",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "$skip",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "$search",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "$count",
+            "in": "query",
+            "type": "boolean"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "_stageid_value",
+                "_stageid_value desc",
+                "traversedpath",
+                "traversedpath desc",
+                "_bcgov_locationaddress_value",
+                "_bcgov_locationaddress_value desc",
+                "_modifiedonbehalfby_value",
+                "_modifiedonbehalfby_value desc",
+                "versionnumber",
+                "versionnumber desc",
+                "emailaddress",
+                "emailaddress desc",
+                "importsequencenumber",
+                "importsequencenumber desc",
+                "_createdonbehalfby_value",
+                "_createdonbehalfby_value desc",
+                "modifiedon",
+                "modifiedon desc",
+                "bcgov_name",
+                "bcgov_name desc",
+                "_owninguser_value",
+                "_owninguser_value desc",
+                "_owningbusinessunit_value",
+                "_owningbusinessunit_value desc",
+                "_ownerid_value",
+                "_ownerid_value desc",
+                "createdon",
+                "createdon desc",
+                "_createdby_value",
+                "_createdby_value desc",
+                "_owningteam_value",
+                "_owningteam_value desc",
+                "bcgov_settingdescription",
+                "bcgov_settingdescription desc",
+                "_modifiedby_value",
+                "_modifiedby_value desc",
+                "_bcgov_associatedapplication_value",
+                "_bcgov_associatedapplication_value desc",
+                "timezoneruleversionnumber",
+                "timezoneruleversionnumber desc",
+                "statecode",
+                "statecode desc",
+                "utcconversiontimezonecode",
+                "utcconversiontimezonecode desc",
+                "statuscode",
+                "statuscode desc",
+                "bcgov_privatedwelling",
+                "bcgov_privatedwelling desc",
+                "bcgov_locationid",
+                "bcgov_locationid desc",
+                "processid",
+                "processid desc",
+                "overriddencreatedon",
+                "overriddencreatedon desc"
+              ]
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "_stageid_value",
+                "traversedpath",
+                "_bcgov_locationaddress_value",
+                "_modifiedonbehalfby_value",
+                "versionnumber",
+                "emailaddress",
+                "importsequencenumber",
+                "_createdonbehalfby_value",
+                "modifiedon",
+                "bcgov_name",
+                "_owninguser_value",
+                "_owningbusinessunit_value",
+                "_ownerid_value",
+                "createdon",
+                "_createdby_value",
+                "_owningteam_value",
+                "bcgov_settingdescription",
+                "_modifiedby_value",
+                "_bcgov_associatedapplication_value",
+                "timezoneruleversionnumber",
+                "statecode",
+                "utcconversiontimezonecode",
+                "statuscode",
+                "bcgov_privatedwelling",
+                "bcgov_locationid",
+                "processid",
+                "overriddencreatedon"
+              ]
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "*",
+                "createdbyname",
+                "createdonbehalfbyname",
+                "modifiedbyname",
+                "modifiedonbehalfbyname",
+                "owninguser",
+                "owningteam",
+                "ownerid",
+                "owningbusinessunit",
+                "bcgov_location_ActivityPointers",
+                "bcgov_location_Appointments",
+                "bcgov_location_Emails",
+                "bcgov_location_Faxes",
+                "bcgov_location_Letters",
+                "bcgov_location_PhoneCalls",
+                "bcgov_location_ServiceAppointments",
+                "bcgov_location_Tasks",
+                "bcgov_location_RecurringAppointmentMasters",
+                "bcgov_location_SocialActivities",
+                "bcgov_location_SyncErrors",
+                "bcgov_location_ActivityParties",
+                "bcgov_location_connections1",
+                "bcgov_location_connections2",
+                "bcgov_location_DuplicateMatchingRecord",
+                "bcgov_location_DuplicateBaseRecord",
+                "bcgov_location_SharePointDocumentLocations",
+                "bcgov_location_QueueItems",
+                "bcgov_location_Annotations",
+                "bcgov_location_AsyncOperations",
+                "bcgov_location_BulkDeleteFailures",
+                "stageid",
+                "bcgov_LocationAddress",
+                "bcgov_AssociatedApplication",
+                "bcgov_location_incident_EquipmentLocation",
+                "bcgov_location_equipment",
+                "bcgov_location_equipmentlocation_Location"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "schema": {
+              "title": "Collection of bcgov_locations",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "locations"
+        ],
+        "summary": "Add new entity to bcgov_locations",
+        "operationId": "Locations_Create",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+            },
+            "description": "New entity"
+          },
+          {
+            "name": "Prefer",
+            "in": "header",
+            "description": "Required in order for the service to return a JSON representation of the object.",
+            "type": "string",
+            "default": "return=representation"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      }
+    },
+    "/bcgov_locations({bcgov_locationid})": {
+      "get": {
+        "tags": [
+          "locations"
+        ],
+        "summary": "Get entity from bcgov_locations by key",
+        "operationId": "Locations_GetByKey",
+        "parameters": [
+          {
+            "name": "bcgov_locationid",
+            "in": "path",
+            "required": true,
+            "description": "key: bcgov_locationid",
+            "type": "string"
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "_stageid_value",
+                "traversedpath",
+                "_bcgov_locationaddress_value",
+                "_modifiedonbehalfby_value",
+                "versionnumber",
+                "emailaddress",
+                "importsequencenumber",
+                "_createdonbehalfby_value",
+                "modifiedon",
+                "bcgov_name",
+                "_owninguser_value",
+                "_owningbusinessunit_value",
+                "_ownerid_value",
+                "createdon",
+                "_createdby_value",
+                "_owningteam_value",
+                "bcgov_settingdescription",
+                "_modifiedby_value",
+                "_bcgov_associatedapplication_value",
+                "timezoneruleversionnumber",
+                "statecode",
+                "utcconversiontimezonecode",
+                "statuscode",
+                "bcgov_privatedwelling",
+                "bcgov_locationid",
+                "processid",
+                "overriddencreatedon"
+              ]
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "*",
+                "createdbyname",
+                "createdonbehalfbyname",
+                "modifiedbyname",
+                "modifiedonbehalfbyname",
+                "owninguser",
+                "owningteam",
+                "ownerid",
+                "owningbusinessunit",
+                "bcgov_location_ActivityPointers",
+                "bcgov_location_Appointments",
+                "bcgov_location_Emails",
+                "bcgov_location_Faxes",
+                "bcgov_location_Letters",
+                "bcgov_location_PhoneCalls",
+                "bcgov_location_ServiceAppointments",
+                "bcgov_location_Tasks",
+                "bcgov_location_RecurringAppointmentMasters",
+                "bcgov_location_SocialActivities",
+                "bcgov_location_SyncErrors",
+                "bcgov_location_ActivityParties",
+                "bcgov_location_connections1",
+                "bcgov_location_connections2",
+                "bcgov_location_DuplicateMatchingRecord",
+                "bcgov_location_DuplicateBaseRecord",
+                "bcgov_location_SharePointDocumentLocations",
+                "bcgov_location_QueueItems",
+                "bcgov_location_Annotations",
+                "bcgov_location_AsyncOperations",
+                "bcgov_location_BulkDeleteFailures",
+                "stageid",
+                "bcgov_LocationAddress",
+                "bcgov_AssociatedApplication",
+                "bcgov_location_incident_EquipmentLocation",
+                "bcgov_location_equipment",
+                "bcgov_location_equipmentlocation_Location"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "locations"
+        ],
+        "summary": "Delete entity from bcgov_locations",
+        "operationId": "Locations_Delete",
+        "parameters": [
+          {
+            "name": "bcgov_locationid",
+            "in": "path",
+            "required": true,
+            "description": "key: bcgov_locationid",
+            "type": "string"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "locations"
+        ],
+        "summary": "Update entity in bcgov_locations",
+        "operationId": "Locations_Update",
+        "parameters": [
+          {
+            "name": "bcgov_locationid",
+            "in": "path",
+            "required": true,
+            "description": "key: bcgov_locationid",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+            },
+            "description": "New property values"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      }
+    },
+    "/bcgov_riskassessments": {
+      "get": {
+        "tags": [
+          "riskassessments"
+        ],
+        "summary": "Get entities from bcgov_riskassessments",
+        "operationId": "Riskassessments_Get",
+        "parameters": [
+          {
+            "name": "$top",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "$skip",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "$search",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "$count",
+            "in": "query",
+            "type": "boolean"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "emailaddress",
+                "emailaddress desc",
+                "bcgov_legalname",
+                "bcgov_legalname desc",
+                "_modifiedonbehalfby_value",
+                "_modifiedonbehalfby_value desc",
+                "overriddencreatedon",
+                "overriddencreatedon desc",
+                "timezoneruleversionnumber",
+                "timezoneruleversionnumber desc",
+                "versionnumber",
+                "versionnumber desc",
+                "bcgov_gender",
+                "bcgov_gender desc",
+                "modifiedon",
+                "modifiedon desc",
+                "_owningteam_value",
+                "_owningteam_value desc",
+                "_owninguser_value",
+                "_owninguser_value desc",
+                "bcgov_driverslicence",
+                "bcgov_driverslicence desc",
+                "_createdonbehalfby_value",
+                "_createdonbehalfby_value desc",
+                "bcgov_primarydocumentedgivennames",
+                "bcgov_primarydocumentedgivennames desc",
+                "importsequencenumber",
+                "importsequencenumber desc",
+                "statecode",
+                "statecode desc",
+                "_owningbusinessunit_value",
+                "_owningbusinessunit_value desc",
+                "createdon",
+                "createdon desc",
+                "_modifiedby_value",
+                "_modifiedby_value desc",
+                "_createdby_value",
+                "_createdby_value desc",
+                "bcgov_consentauthorizationtofingerprint",
+                "bcgov_consentauthorizationtofingerprint desc",
+                "bcgov_dateofbirth",
+                "bcgov_dateofbirth desc",
+                "bcgov_riskassessmentid",
+                "bcgov_riskassessmentid desc",
+                "bcgov_verifiedemail",
+                "bcgov_verifiedemail desc",
+                "statuscode",
+                "statuscode desc",
+                "bcgov_name",
+                "bcgov_name desc",
+                "utcconversiontimezonecode",
+                "utcconversiontimezonecode desc",
+                "bcgov_primarydocumentedsurname",
+                "bcgov_primarydocumentedsurname desc",
+                "bcgov_consentauthforsecurityscreening",
+                "bcgov_consentauthforsecurityscreening desc",
+                "_ownerid_value",
+                "_ownerid_value desc",
+                "bcgov_aliasesnames",
+                "bcgov_aliasesnames desc"
+              ]
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "emailaddress",
+                "bcgov_legalname",
+                "_modifiedonbehalfby_value",
+                "overriddencreatedon",
+                "timezoneruleversionnumber",
+                "versionnumber",
+                "bcgov_gender",
+                "modifiedon",
+                "_owningteam_value",
+                "_owninguser_value",
+                "bcgov_driverslicence",
+                "_createdonbehalfby_value",
+                "bcgov_primarydocumentedgivennames",
+                "importsequencenumber",
+                "statecode",
+                "_owningbusinessunit_value",
+                "createdon",
+                "_modifiedby_value",
+                "_createdby_value",
+                "bcgov_consentauthorizationtofingerprint",
+                "bcgov_dateofbirth",
+                "bcgov_riskassessmentid",
+                "bcgov_verifiedemail",
+                "statuscode",
+                "bcgov_name",
+                "utcconversiontimezonecode",
+                "bcgov_primarydocumentedsurname",
+                "bcgov_consentauthforsecurityscreening",
+                "_ownerid_value",
+                "bcgov_aliasesnames"
+              ]
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "*",
+                "createdbyname",
+                "createdonbehalfbyname",
+                "modifiedbyname",
+                "modifiedonbehalfbyname",
+                "owninguser",
+                "owningteam",
+                "ownerid",
+                "owningbusinessunit",
+                "bcgov_riskassessment_ActivityPointers",
+                "bcgov_riskassessment_Appointments",
+                "bcgov_riskassessment_Emails",
+                "bcgov_riskassessment_Faxes",
+                "bcgov_riskassessment_Letters",
+                "bcgov_riskassessment_PhoneCalls",
+                "bcgov_riskassessment_ServiceAppointments",
+                "bcgov_riskassessment_Tasks",
+                "bcgov_riskassessment_RecurringAppointmentMasters",
+                "bcgov_riskassessment_SocialActivities",
+                "bcgov_riskassessment_SyncErrors",
+                "bcgov_riskassessment_ActivityParties",
+                "bcgov_riskassessment_connections1",
+                "bcgov_riskassessment_connections2",
+                "bcgov_riskassessment_DuplicateMatchingRecord",
+                "bcgov_riskassessment_DuplicateBaseRecord",
+                "bcgov_riskassessment_SharePointDocumentLocations",
+                "bcgov_riskassessment_QueueItems",
+                "bcgov_riskassessment_Annotations",
+                "bcgov_riskassessment_AsyncOperations",
+                "bcgov_riskassessment_BulkDeleteFailures"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "schema": {
+              "title": "Collection of bcgov_riskassessments",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "riskassessments"
+        ],
+        "summary": "Add new entity to bcgov_riskassessments",
+        "operationId": "Riskassessments_Create",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
+            },
+            "description": "New entity"
+          },
+          {
+            "name": "Prefer",
+            "in": "header",
+            "description": "Required in order for the service to return a JSON representation of the object.",
+            "type": "string",
+            "default": "return=representation"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      }
+    },
+    "/bcgov_riskassessments({bcgov_riskassessmentid})": {
+      "get": {
+        "tags": [
+          "riskassessments"
+        ],
+        "summary": "Get entity from bcgov_riskassessments by key",
+        "operationId": "Riskassessments_GetByKey",
+        "parameters": [
+          {
+            "name": "bcgov_riskassessmentid",
+            "in": "path",
+            "required": true,
+            "description": "key: bcgov_riskassessmentid",
+            "type": "string"
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "emailaddress",
+                "bcgov_legalname",
+                "_modifiedonbehalfby_value",
+                "overriddencreatedon",
+                "timezoneruleversionnumber",
+                "versionnumber",
+                "bcgov_gender",
+                "modifiedon",
+                "_owningteam_value",
+                "_owninguser_value",
+                "bcgov_driverslicence",
+                "_createdonbehalfby_value",
+                "bcgov_primarydocumentedgivennames",
+                "importsequencenumber",
+                "statecode",
+                "_owningbusinessunit_value",
+                "createdon",
+                "_modifiedby_value",
+                "_createdby_value",
+                "bcgov_consentauthorizationtofingerprint",
+                "bcgov_dateofbirth",
+                "bcgov_riskassessmentid",
+                "bcgov_verifiedemail",
+                "statuscode",
+                "bcgov_name",
+                "utcconversiontimezonecode",
+                "bcgov_primarydocumentedsurname",
+                "bcgov_consentauthforsecurityscreening",
+                "_ownerid_value",
+                "bcgov_aliasesnames"
+              ]
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "*",
+                "createdbyname",
+                "createdonbehalfbyname",
+                "modifiedbyname",
+                "modifiedonbehalfbyname",
+                "owninguser",
+                "owningteam",
+                "ownerid",
+                "owningbusinessunit",
+                "bcgov_riskassessment_ActivityPointers",
+                "bcgov_riskassessment_Appointments",
+                "bcgov_riskassessment_Emails",
+                "bcgov_riskassessment_Faxes",
+                "bcgov_riskassessment_Letters",
+                "bcgov_riskassessment_PhoneCalls",
+                "bcgov_riskassessment_ServiceAppointments",
+                "bcgov_riskassessment_Tasks",
+                "bcgov_riskassessment_RecurringAppointmentMasters",
+                "bcgov_riskassessment_SocialActivities",
+                "bcgov_riskassessment_SyncErrors",
+                "bcgov_riskassessment_ActivityParties",
+                "bcgov_riskassessment_connections1",
+                "bcgov_riskassessment_connections2",
+                "bcgov_riskassessment_DuplicateMatchingRecord",
+                "bcgov_riskassessment_DuplicateBaseRecord",
+                "bcgov_riskassessment_SharePointDocumentLocations",
+                "bcgov_riskassessment_QueueItems",
+                "bcgov_riskassessment_Annotations",
+                "bcgov_riskassessment_AsyncOperations",
+                "bcgov_riskassessment_BulkDeleteFailures"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "riskassessments"
+        ],
+        "summary": "Delete entity from bcgov_riskassessments",
+        "operationId": "Riskassessments_Delete",
+        "parameters": [
+          {
+            "name": "bcgov_riskassessmentid",
+            "in": "path",
+            "required": true,
+            "description": "key: bcgov_riskassessmentid",
+            "type": "string"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "riskassessments"
+        ],
+        "summary": "Update entity in bcgov_riskassessments",
+        "operationId": "Riskassessments_Update",
+        "parameters": [
+          {
+            "name": "bcgov_riskassessmentid",
+            "in": "path",
+            "required": true,
+            "description": "key: bcgov_riskassessmentid",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
+            },
+            "description": "New property values"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      }
+    },
     "/bcgov_termsconditionspresets": {
       "get": {
         "tags": [
@@ -4307,7 +5877,6 @@
                 "bcgov_termsconditionspreset_DuplicateBaseRecord",
                 "bcgov_termsconditionspreset_AsyncOperations",
                 "bcgov_termsconditionspreset_BulkDeleteFailures",
-                "bcgov_termsconditionspreset_bcgov_applicationterms_TermsPreset",
                 "bcgov_ApplicationType",
                 "bcgov_termsconditionspreset_bcgov_certificatetermsandconditions_PresetTerms"
               ]
@@ -4445,7 +6014,6 @@
                 "bcgov_termsconditionspreset_DuplicateBaseRecord",
                 "bcgov_termsconditionspreset_AsyncOperations",
                 "bcgov_termsconditionspreset_BulkDeleteFailures",
-                "bcgov_termsconditionspreset_bcgov_applicationterms_TermsPreset",
                 "bcgov_ApplicationType",
                 "bcgov_termsconditionspreset_bcgov_certificatetermsandconditions_PresetTerms"
               ]
@@ -5747,398 +7315,6 @@
         }
       }
     },
-    "/equipments": {
-      "get": {
-        "tags": [
-          "equipments"
-        ],
-        "summary": "Get entities from equipments",
-        "operationId": "Equipments_Get",
-        "parameters": [
-          {
-            "name": "$top",
-            "in": "query",
-            "type": "integer"
-          },
-          {
-            "name": "$skip",
-            "in": "query",
-            "type": "integer"
-          },
-          {
-            "name": "$search",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "$filter",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "$count",
-            "in": "query",
-            "type": "boolean"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "type": "array",
-            "items": {
-              "type": "string",
-              "enum": [
-                "_businessunitid_value",
-                "_businessunitid_value desc",
-                "timezoneruleversionnumber",
-                "timezoneruleversionnumber desc",
-                "_transactioncurrencyid_value",
-                "_transactioncurrencyid_value desc",
-                "isdisabled",
-                "isdisabled desc",
-                "skills",
-                "skills desc",
-                "_siteid_value",
-                "_siteid_value desc",
-                "timezonecode",
-                "timezonecode desc",
-                "utcconversiontimezonecode",
-                "utcconversiontimezonecode desc",
-                "displayinserviceviews",
-                "displayinserviceviews desc",
-                "emailaddress",
-                "emailaddress desc",
-                "createdon",
-                "createdon desc",
-                "description",
-                "description desc",
-                "overriddencreatedon",
-                "overriddencreatedon desc",
-                "_modifiedonbehalfby_value",
-                "_modifiedonbehalfby_value desc",
-                "name",
-                "name desc",
-                "_organizationid_value",
-                "_organizationid_value desc",
-                "versionnumber",
-                "versionnumber desc",
-                "importsequencenumber",
-                "importsequencenumber desc",
-                "_modifiedby_value",
-                "_modifiedby_value desc",
-                "_createdby_value",
-                "_createdby_value desc",
-                "_createdonbehalfby_value",
-                "_createdonbehalfby_value desc",
-                "exchangerate",
-                "exchangerate desc",
-                "modifiedon",
-                "modifiedon desc",
-                "_calendarid_value",
-                "_calendarid_value desc",
-                "equipmentid",
-                "equipmentid desc"
-              ]
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "type": "array",
-            "items": {
-              "type": "string",
-              "enum": [
-                "_businessunitid_value",
-                "timezoneruleversionnumber",
-                "_transactioncurrencyid_value",
-                "isdisabled",
-                "skills",
-                "_siteid_value",
-                "timezonecode",
-                "utcconversiontimezonecode",
-                "displayinserviceviews",
-                "emailaddress",
-                "createdon",
-                "description",
-                "overriddencreatedon",
-                "_modifiedonbehalfby_value",
-                "name",
-                "_organizationid_value",
-                "versionnumber",
-                "importsequencenumber",
-                "_modifiedby_value",
-                "_createdby_value",
-                "_createdonbehalfby_value",
-                "exchangerate",
-                "modifiedon",
-                "_calendarid_value",
-                "equipmentid"
-              ]
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "type": "array",
-            "items": {
-              "type": "string",
-              "enum": [
-                "*",
-                "modifiedby",
-                "calendarid",
-                "Equipment_AsyncOperations",
-                "Equipment_DuplicateBaseRecord",
-                "Equipment_DuplicateMatchingRecord",
-                "equipment_accounts",
-                "businessunitid_businessunit",
-                "businessunitid_systemuser",
-                "Equipment_BulkDeleteFailures",
-                "equipment_connections1",
-                "organizationid",
-                "siteid",
-                "transactioncurrencyid",
-                "Equipment_Annotation",
-                "equipment_resources",
-                "modifiedonbehalfby",
-                "Equipment_Email_EmailSender",
-                "equipment_contacts",
-                "equipment_activity_parties",
-                "createdby",
-                "equipment_connections2",
-                "Equipment_SyncErrors",
-                "createdonbehalfby"
-              ]
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Retrieved entities",
-            "schema": {
-              "title": "Collection of equipments",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/Microsoft.Dynamics.CRM.equipment"
-                  }
-                }
-              }
-            }
-          },
-          "default": {
-            "schema": { "$ref": "#/definitions/odata.error" },
-            "description": ""
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "equipments"
-        ],
-        "summary": "Add new entity to equipments",
-        "operationId": "Equipments_Create",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Microsoft.Dynamics.CRM.equipment"
-            },
-            "description": "New entity"
-          },
-          {
-            "name": "Prefer",
-            "in": "header",
-            "description": "Required in order for the service to return a JSON representation of the object.",
-            "type": "string",
-            "default": "return=representation"
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created entity",
-            "schema": {
-              "$ref": "#/definitions/Microsoft.Dynamics.CRM.equipment"
-            }
-          },
-          "default": {
-            "schema": { "$ref": "#/definitions/odata.error" },
-            "description": ""
-          }
-        }
-      }
-    },
-    "/equipments({equipmentid})": {
-      "get": {
-        "tags": [
-          "equipments"
-        ],
-        "summary": "Get entity from equipments by key",
-        "operationId": "Equipments_GetByKey",
-        "parameters": [
-          {
-            "name": "equipmentid",
-            "in": "path",
-            "required": true,
-            "description": "key: equipmentid",
-            "type": "string"
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "type": "array",
-            "items": {
-              "type": "string",
-              "enum": [
-                "_businessunitid_value",
-                "timezoneruleversionnumber",
-                "_transactioncurrencyid_value",
-                "isdisabled",
-                "skills",
-                "_siteid_value",
-                "timezonecode",
-                "utcconversiontimezonecode",
-                "displayinserviceviews",
-                "emailaddress",
-                "createdon",
-                "description",
-                "overriddencreatedon",
-                "_modifiedonbehalfby_value",
-                "name",
-                "_organizationid_value",
-                "versionnumber",
-                "importsequencenumber",
-                "_modifiedby_value",
-                "_createdby_value",
-                "_createdonbehalfby_value",
-                "exchangerate",
-                "modifiedon",
-                "_calendarid_value",
-                "equipmentid"
-              ]
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "type": "array",
-            "items": {
-              "type": "string",
-              "enum": [
-                "*",
-                "modifiedby",
-                "calendarid",
-                "Equipment_AsyncOperations",
-                "Equipment_DuplicateBaseRecord",
-                "Equipment_DuplicateMatchingRecord",
-                "equipment_accounts",
-                "businessunitid_businessunit",
-                "businessunitid_systemuser",
-                "Equipment_BulkDeleteFailures",
-                "equipment_connections1",
-                "organizationid",
-                "siteid",
-                "transactioncurrencyid",
-                "Equipment_Annotation",
-                "equipment_resources",
-                "modifiedonbehalfby",
-                "Equipment_Email_EmailSender",
-                "equipment_contacts",
-                "equipment_activity_parties",
-                "createdby",
-                "equipment_connections2",
-                "Equipment_SyncErrors",
-                "createdonbehalfby"
-              ]
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Retrieved entity",
-            "schema": {
-              "$ref": "#/definitions/Microsoft.Dynamics.CRM.equipment"
-            }
-          },
-          "default": {
-            "schema": { "$ref": "#/definitions/odata.error" },
-            "description": ""
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "equipments"
-        ],
-        "summary": "Delete entity from equipments",
-        "operationId": "Equipments_Delete",
-        "parameters": [
-          {
-            "name": "equipmentid",
-            "in": "path",
-            "required": true,
-            "description": "key: equipmentid",
-            "type": "string"
-          },
-          {
-            "name": "If-Match",
-            "in": "header",
-            "description": "ETag",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Success"
-          },
-          "default": {
-            "schema": { "$ref": "#/definitions/odata.error" },
-            "description": ""
-          }
-        }
-      },
-      "patch": {
-        "tags": [
-          "equipments"
-        ],
-        "summary": "Update entity in equipments",
-        "operationId": "Equipments_Update",
-        "parameters": [
-          {
-            "name": "equipmentid",
-            "in": "path",
-            "required": true,
-            "description": "key: equipmentid",
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Microsoft.Dynamics.CRM.equipment"
-            },
-            "description": "New property values"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Success"
-          },
-          "default": {
-            "schema": { "$ref": "#/definitions/odata.error" },
-            "description": ""
-          }
-        }
-      }
-    },
     "/incidents": {
       "get": {
         "tags": [
@@ -6412,8 +7588,6 @@
                 "bcgov_intendonrentingleasingtoothers desc",
                 "onholdtime",
                 "onholdtime desc",
-                "bcgov_foippaconsent",
-                "bcgov_foippaconsent desc",
                 "bcgov_otherlicencecheck",
                 "bcgov_otherlicencecheck desc",
                 "resolveby",
@@ -6524,6 +7698,8 @@
                 "bcgov_kindsofproductsother desc",
                 "overriddencreatedon",
                 "overriddencreatedon desc",
+                "bcgov_foippaconsent",
+                "bcgov_foippaconsent desc",
                 "bcgov_explanationofequipmentuse",
                 "bcgov_explanationofequipmentuse desc",
                 "firstresponsesent",
@@ -6564,6 +7740,8 @@
                 "responseby desc",
                 "escalatedon",
                 "escalatedon desc",
+                "_bcgov_equipmentlocation_value",
+                "_bcgov_equipmentlocation_value desc",
                 "bcgov_kindofalternateownershipothercheck",
                 "bcgov_kindofalternateownershipothercheck desc",
                 "_bcgov_bcsellersaddress_value",
@@ -6723,7 +7901,6 @@
                 "_bcgov_addressofbusinessthathasgivenorloaned_value",
                 "bcgov_intendonrentingleasingtoothers",
                 "onholdtime",
-                "bcgov_foippaconsent",
                 "bcgov_otherlicencecheck",
                 "resolveby",
                 "_owninguser_value",
@@ -6779,6 +7956,7 @@
                 "bcgov_whyhaveyouacceptedorborrowed",
                 "bcgov_kindsofproductsother",
                 "overriddencreatedon",
+                "bcgov_foippaconsent",
                 "bcgov_explanationofequipmentuse",
                 "firstresponsesent",
                 "bcgov_sitelicence",
@@ -6799,6 +7977,7 @@
                 "exchangerate",
                 "responseby",
                 "escalatedon",
+                "_bcgov_equipmentlocation_value",
                 "bcgov_kindofalternateownershipothercheck",
                 "_bcgov_bcsellersaddress_value",
                 "resolvebyslastatus",
@@ -6889,7 +8068,6 @@
                 "kbarticleid",
                 "incident_SharePointDocumentLocations",
                 "incident_Teams",
-                "bcgov_incident_bcgov_applicationterms_Application",
                 "bcgov_ApplicationTypeId",
                 "bcgov_Submitter",
                 "bcgov_AddressofPersonBusiness",
@@ -6901,6 +8079,8 @@
                 "bcgov_OriginatingSellersAddress",
                 "bcgov_AddressofBusinessthathasGivenorLoaned",
                 "bcgov_AddressofBusinessthathasRentedorLeased",
+                "bcgov_incident_location_AssociatedApplication",
+                "bcgov_EquipmentLocation",
                 "bcgov_incident_bcgov_certificate_Application"
               ]
             }
@@ -7105,7 +8285,6 @@
                 "_bcgov_addressofbusinessthathasgivenorloaned_value",
                 "bcgov_intendonrentingleasingtoothers",
                 "onholdtime",
-                "bcgov_foippaconsent",
                 "bcgov_otherlicencecheck",
                 "resolveby",
                 "_owninguser_value",
@@ -7161,6 +8340,7 @@
                 "bcgov_whyhaveyouacceptedorborrowed",
                 "bcgov_kindsofproductsother",
                 "overriddencreatedon",
+                "bcgov_foippaconsent",
                 "bcgov_explanationofequipmentuse",
                 "firstresponsesent",
                 "bcgov_sitelicence",
@@ -7181,6 +8361,7 @@
                 "exchangerate",
                 "responseby",
                 "escalatedon",
+                "_bcgov_equipmentlocation_value",
                 "bcgov_kindofalternateownershipothercheck",
                 "_bcgov_bcsellersaddress_value",
                 "resolvebyslastatus",
@@ -7271,7 +8452,6 @@
                 "kbarticleid",
                 "incident_SharePointDocumentLocations",
                 "incident_Teams",
-                "bcgov_incident_bcgov_applicationterms_Application",
                 "bcgov_ApplicationTypeId",
                 "bcgov_Submitter",
                 "bcgov_AddressofPersonBusiness",
@@ -7283,6 +8463,8 @@
                 "bcgov_OriginatingSellersAddress",
                 "bcgov_AddressofBusinessthathasGivenorLoaned",
                 "bcgov_AddressofBusinessthathasRentedorLeased",
+                "bcgov_incident_location_AssociatedApplication",
+                "bcgov_EquipmentLocation",
                 "bcgov_incident_bcgov_certificate_Application"
               ]
             }
@@ -11615,6 +12797,18 @@
         },
         "partyid_bcgov_customproduct": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
+        },
+        "partyid_bcgov_location": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+        },
+        "partyid_bcgov_equipment": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+        },
+        "partyid_bcgov_equipmentlocation": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
+        },
+        "partyid_bcgov_riskassessment": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
         }
       }
     },
@@ -12107,6 +13301,18 @@
         },
         "regardingobjectid_bcgov_customproduct": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
+        },
+        "regardingobjectid_bcgov_location": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+        },
+        "regardingobjectid_bcgov_equipment": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+        },
+        "regardingobjectid_bcgov_equipmentlocation": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
+        },
+        "regardingobjectid_bcgov_riskassessment": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
         }
       }
     },
@@ -12415,6 +13621,18 @@
         },
         "objectid_bcgov_customaddress": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customaddress"
+        },
+        "objectid_bcgov_location": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+        },
+        "objectid_bcgov_equipment": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+        },
+        "objectid_bcgov_equipmentlocation": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
+        },
+        "objectid_bcgov_riskassessment": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
         }
       }
     },
@@ -12815,6 +14033,18 @@
         },
         "regardingobjectid_bcgov_customproduct_appointment": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
+        },
+        "regardingobjectid_bcgov_location_appointment": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+        },
+        "regardingobjectid_bcgov_equipment_appointment": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+        },
+        "regardingobjectid_bcgov_equipmentlocation_appointment": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
+        },
+        "regardingobjectid_bcgov_riskassessment_appointment": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
         }
       }
     },
@@ -13440,9 +14670,6 @@
         "regardingobjectid_bcgov_termsconditionspreset": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_termsconditionspreset"
         },
-        "regardingobjectid_bcgov_applicationterms": {
-          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_applicationterms"
-        },
         "regardingobjectid_bcgov_applicationtype": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_applicationtype"
         },
@@ -13455,8 +14682,20 @@
         "regardingobjectid_bcgov_certificate": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_certificate"
         },
+        "regardingobjectid_bcgov_location": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+        },
+        "regardingobjectid_bcgov_equipment": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+        },
+        "regardingobjectid_bcgov_equipmentlocation": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
+        },
         "regardingobjectid_bcgov_certificatetermsandconditions": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_certificatetermsandconditions"
+        },
+        "regardingobjectid_bcgov_riskassessment": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
         },
         "regardingobjectid_abs_autonumberedentity": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.abs_autonumberedentity"
@@ -13513,175 +14752,6 @@
           "items": {
             "$ref": "#/definitions/Microsoft.Dynamics.CRM.activitymimeattachment"
           }
-        }
-      }
-    },
-    "Microsoft.Dynamics.CRM.bcgov_applicationterms": {
-      "title": "bcgov_applicationterms",
-      "type": "object",
-      "properties": {
-        "_ownerid_value": {
-          "type": "string",
-          "x-nullable": true
-        },
-        "_modifiedby_value": {
-          "type": "string",
-          "x-nullable": true
-        },
-        "_modifiedonbehalfby_value": {
-          "type": "string",
-          "x-nullable": true
-        },
-        "_createdby_value": {
-          "type": "string",
-          "x-nullable": true
-        },
-        "importsequencenumber": {
-          "type": "integer",
-          "x-nullable": true
-        },
-        "bcgov_name": {
-          "type": "string",
-          "x-nullable": true
-        },
-        "_bcgov_termspreset_value": {
-          "type": "string",
-          "x-nullable": true
-        },
-        "_bcgov_applicationtype_value": {
-          "type": "string",
-          "x-nullable": true
-        },
-        "statecode": {
-          "type": "integer",
-          "x-nullable": true
-        },
-        "_bcgov_certificate_value": {
-          "type": "string",
-          "x-nullable": true
-        },
-        "_owningbusinessunit_value": {
-          "type": "string",
-          "x-nullable": true
-        },
-        "bcgov_termsandconditions": {
-          "type": "string",
-          "x-nullable": true
-        },
-        "_createdonbehalfby_value": {
-          "type": "string",
-          "x-nullable": true
-        },
-        "utcconversiontimezonecode": {
-          "type": "integer",
-          "x-nullable": true
-        },
-        "statuscode": {
-          "type": "integer",
-          "x-nullable": true
-        },
-        "timezoneruleversionnumber": {
-          "type": "integer",
-          "x-nullable": true
-        },
-        "bcgov_applicationtermsid": {
-          "type": "string",
-          "x-nullable": true
-        },
-        "versionnumber": {
-          "type": "integer",
-          "format": "int64",
-          "x-nullable": true
-        },
-        "_owninguser_value": {
-          "type": "string",
-          "x-nullable": true
-        },
-        "_bcgov_application_value": {
-          "type": "string",
-          "x-nullable": true
-        },
-        "_owningteam_value": {
-          "type": "string",
-          "x-nullable": true
-        },
-        "overriddencreatedon": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "createdon": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "modifiedon": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "createdbyname": {
-          "$ref": "#/definitions/Microsoft.Dynamics.CRM.systemuser"
-        },
-        "createdonbehalfbyname": {
-          "$ref": "#/definitions/Microsoft.Dynamics.CRM.systemuser"
-        },
-        "modifiedbyname": {
-          "$ref": "#/definitions/Microsoft.Dynamics.CRM.systemuser"
-        },
-        "modifiedonbehalfbyname": {
-          "$ref": "#/definitions/Microsoft.Dynamics.CRM.systemuser"
-        },
-        "owninguser": {
-          "$ref": "#/definitions/Microsoft.Dynamics.CRM.systemuser"
-        },
-        "owningteam": {
-          "$ref": "#/definitions/Microsoft.Dynamics.CRM.team"
-        },
-        "ownerid": {
-          "$ref": "#/definitions/Microsoft.Dynamics.CRM.principal"
-        },
-        "owningbusinessunit": {
-          "$ref": "#/definitions/Microsoft.Dynamics.CRM.businessunit"
-        },
-        "bcgov_applicationterms_SyncErrors": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Microsoft.Dynamics.CRM.syncerror"
-          }
-        },
-        "bcgov_applicationterms_DuplicateMatchingRecord": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Microsoft.Dynamics.CRM.duplicaterecord"
-          }
-        },
-        "bcgov_applicationterms_DuplicateBaseRecord": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Microsoft.Dynamics.CRM.duplicaterecord"
-          }
-        },
-        "bcgov_applicationterms_AsyncOperations": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Microsoft.Dynamics.CRM.asyncoperation"
-          }
-        },
-        "bcgov_applicationterms_BulkDeleteFailures": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bulkdeletefailure"
-          }
-        },
-        "bcgov_Application": {
-          "$ref": "#/definitions/Microsoft.Dynamics.CRM.incident"
-        },
-        "bcgov_TermsPreset": {
-          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_termsconditionspreset"
-        },
-        "bcgov_ApplicationType": {
-          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_applicationtype"
-        },
-        "bcgov_Certificate": {
-          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_certificate"
         }
       }
     },
@@ -13822,12 +14892,6 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/Microsoft.Dynamics.CRM.bulkdeletefailure"
-          }
-        },
-        "bcgov_applicationtype_bcgov_applicationterms_ApplicationType": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_applicationterms"
           }
         },
         "bcgov_applicationtype_incident_ApplicationTypeId": {
@@ -14222,12 +15286,6 @@
         },
         "bcgov_CertificateType": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_applicationtype"
-        },
-        "bcgov_certificate_bcgov_applicationterms_Certificate": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_applicationterms"
-          }
         },
         "bcgov_Application": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.incident"
@@ -14785,6 +15843,12 @@
             "$ref": "#/definitions/Microsoft.Dynamics.CRM.incident"
           }
         },
+        "bcgov_customaddress_location_LocationAddress": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+          }
+        },
         "bcgov_bcgov_customaddress_account_CurrentBusinessPhysicalAddress": {
           "type": "array",
           "items": {
@@ -15069,6 +16133,561 @@
         }
       }
     },
+    "Microsoft.Dynamics.CRM.bcgov_equipmentlocation": {
+      "title": "bcgov_equipmentlocation",
+      "type": "object",
+      "properties": {
+        "_bcgov_equipment_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "importsequencenumber": {
+          "type": "integer",
+          "x-nullable": true
+        },
+        "_owningteam_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "timezoneruleversionnumber": {
+          "type": "integer",
+          "x-nullable": true
+        },
+        "statuscode": {
+          "type": "integer",
+          "x-nullable": true
+        },
+        "statecode": {
+          "type": "integer",
+          "x-nullable": true
+        },
+        "overriddencreatedon": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "bcgov_towhen": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "_owninguser_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "bcgov_fromwhen": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "_createdonbehalfby_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "_modifiedby_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "_ownerid_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "_bcgov_location_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "utcconversiontimezonecode": {
+          "type": "integer",
+          "x-nullable": true
+        },
+        "_createdby_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "_owningbusinessunit_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "bcgov_name": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "bcgov_currentlocation": {
+          "type": "boolean",
+          "x-nullable": true
+        },
+        "modifiedon": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "emailaddress": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "versionnumber": {
+          "type": "integer",
+          "format": "int64",
+          "x-nullable": true
+        },
+        "createdon": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "_modifiedonbehalfby_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "bcgov_equipmentlocationid": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "createdbyname": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.systemuser"
+        },
+        "createdonbehalfbyname": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.systemuser"
+        },
+        "modifiedbyname": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.systemuser"
+        },
+        "modifiedonbehalfbyname": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.systemuser"
+        },
+        "owninguser": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.systemuser"
+        },
+        "owningteam": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.team"
+        },
+        "ownerid": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.principal"
+        },
+        "owningbusinessunit": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.businessunit"
+        },
+        "bcgov_equipmentlocation_ActivityPointers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.activitypointer"
+          }
+        },
+        "bcgov_equipmentlocation_Appointments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.appointment"
+          }
+        },
+        "bcgov_equipmentlocation_Emails": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.email"
+          }
+        },
+        "bcgov_equipmentlocation_Faxes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.fax"
+          }
+        },
+        "bcgov_equipmentlocation_Letters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.letter"
+          }
+        },
+        "bcgov_equipmentlocation_PhoneCalls": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.phonecall"
+          }
+        },
+        "bcgov_equipmentlocation_ServiceAppointments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.serviceappointment"
+          }
+        },
+        "bcgov_equipmentlocation_Tasks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.task"
+          }
+        },
+        "bcgov_equipmentlocation_RecurringAppointmentMasters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.recurringappointmentmaster"
+          }
+        },
+        "bcgov_equipmentlocation_SocialActivities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.socialactivity"
+          }
+        },
+        "bcgov_equipmentlocation_SyncErrors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.syncerror"
+          }
+        },
+        "bcgov_equipmentlocation_ActivityParties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.activityparty"
+          }
+        },
+        "bcgov_equipmentlocation_connections1": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.connection"
+          }
+        },
+        "bcgov_equipmentlocation_connections2": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.connection"
+          }
+        },
+        "bcgov_equipmentlocation_DuplicateMatchingRecord": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.duplicaterecord"
+          }
+        },
+        "bcgov_equipmentlocation_DuplicateBaseRecord": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.duplicaterecord"
+          }
+        },
+        "bcgov_equipmentlocation_SharePointDocumentLocations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.sharepointdocumentlocation"
+          }
+        },
+        "bcgov_equipmentlocation_QueueItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.queueitem"
+          }
+        },
+        "bcgov_equipmentlocation_Annotations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.annotation"
+          }
+        },
+        "bcgov_equipmentlocation_AsyncOperations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.asyncoperation"
+          }
+        },
+        "bcgov_equipmentlocation_BulkDeleteFailures": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bulkdeletefailure"
+          }
+        },
+        "bcgov_Equipment": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+        },
+        "bcgov_Location": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+        }
+      }
+    },
+    "Microsoft.Dynamics.CRM.bcgov_equipment": {
+      "title": "bcgov_equipment",
+      "type": "object",
+      "properties": {
+        "_createdby_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "statecode": {
+          "type": "integer",
+          "x-nullable": true
+        },
+        "bcgov_name": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "_modifiedby_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "processid": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "overriddencreatedon": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "traversedpath": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "timezoneruleversionnumber": {
+          "type": "integer",
+          "x-nullable": true
+        },
+        "bcgov_equipmenttypeother": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "bcgov_pillpressencapsulatorsizeother": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "_createdonbehalfby_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "_stageid_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "_owningbusinessunit_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "bcgov_pillpressencapsulatorsize": {
+          "type": "integer",
+          "x-nullable": true
+        },
+        "statuscode": {
+          "type": "integer",
+          "x-nullable": true
+        },
+        "bcgov_pillpressmaxcapacity": {
+          "type": "integer",
+          "x-nullable": true
+        },
+        "bcgov_equipmentid": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "bcgov_equipmenttype": {
+          "type": "integer",
+          "x-nullable": true
+        },
+        "utcconversiontimezonecode": {
+          "type": "integer",
+          "x-nullable": true
+        },
+        "_owningteam_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "bcgov_levelofautomation": {
+          "type": "integer",
+          "x-nullable": true
+        },
+        "versionnumber": {
+          "type": "integer",
+          "format": "int64",
+          "x-nullable": true
+        },
+        "modifiedon": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "importsequencenumber": {
+          "type": "integer",
+          "x-nullable": true
+        },
+        "_ownerid_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "bcgov_encapsulatormaxcapacity": {
+          "type": "integer",
+          "x-nullable": true
+        },
+        "createdon": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "emailaddress": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "_modifiedonbehalfby_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "_owninguser_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "createdbyname": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.systemuser"
+        },
+        "createdonbehalfbyname": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.systemuser"
+        },
+        "modifiedbyname": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.systemuser"
+        },
+        "modifiedonbehalfbyname": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.systemuser"
+        },
+        "owninguser": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.systemuser"
+        },
+        "owningteam": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.team"
+        },
+        "ownerid": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.principal"
+        },
+        "owningbusinessunit": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.businessunit"
+        },
+        "bcgov_equipment_ActivityPointers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.activitypointer"
+          }
+        },
+        "bcgov_equipment_Appointments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.appointment"
+          }
+        },
+        "bcgov_equipment_Emails": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.email"
+          }
+        },
+        "bcgov_equipment_Faxes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.fax"
+          }
+        },
+        "bcgov_equipment_Letters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.letter"
+          }
+        },
+        "bcgov_equipment_PhoneCalls": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.phonecall"
+          }
+        },
+        "bcgov_equipment_ServiceAppointments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.serviceappointment"
+          }
+        },
+        "bcgov_equipment_Tasks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.task"
+          }
+        },
+        "bcgov_equipment_RecurringAppointmentMasters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.recurringappointmentmaster"
+          }
+        },
+        "bcgov_equipment_SocialActivities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.socialactivity"
+          }
+        },
+        "bcgov_equipment_SyncErrors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.syncerror"
+          }
+        },
+        "bcgov_equipment_ActivityParties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.activityparty"
+          }
+        },
+        "bcgov_equipment_connections1": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.connection"
+          }
+        },
+        "bcgov_equipment_connections2": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.connection"
+          }
+        },
+        "bcgov_equipment_DuplicateMatchingRecord": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.duplicaterecord"
+          }
+        },
+        "bcgov_equipment_DuplicateBaseRecord": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.duplicaterecord"
+          }
+        },
+        "bcgov_equipment_SharePointDocumentLocations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.sharepointdocumentlocation"
+          }
+        },
+        "bcgov_equipment_QueueItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.queueitem"
+          }
+        },
+        "bcgov_equipment_Annotations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.annotation"
+          }
+        },
+        "bcgov_equipment_AsyncOperations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.asyncoperation"
+          }
+        },
+        "bcgov_equipment_BulkDeleteFailures": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bulkdeletefailure"
+          }
+        },
+        "stageid": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.processstage"
+        },
+        "bcgov_location_equipment": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+          }
+        },
+        "bcgov_equipment_equipmentlocation_Equipment": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
+          }
+        }
+      }
+    },
     "Microsoft.Dynamics.CRM.bcgov_incident_businesscontact": {
       "title": "bcgov_incident_businesscontact",
       "type": "object",
@@ -15089,6 +16708,598 @@
           "type": "integer",
           "format": "int64",
           "x-nullable": true
+        }
+      }
+    },
+    "Microsoft.Dynamics.CRM.bcgov_location_equipment": {
+      "title": "bcgov_location_equipment",
+      "type": "object",
+      "properties": {
+        "bcgov_equipmentid": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "bcgov_location_equipmentid": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "versionnumber": {
+          "type": "integer",
+          "format": "int64",
+          "x-nullable": true
+        },
+        "bcgov_locationid": {
+          "type": "string",
+          "x-nullable": true
+        }
+      }
+    },
+    "Microsoft.Dynamics.CRM.bcgov_location": {
+      "title": "bcgov_location",
+      "type": "object",
+      "properties": {
+        "_stageid_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "traversedpath": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "_bcgov_locationaddress_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "_modifiedonbehalfby_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "versionnumber": {
+          "type": "integer",
+          "format": "int64",
+          "x-nullable": true
+        },
+        "emailaddress": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "importsequencenumber": {
+          "type": "integer",
+          "x-nullable": true
+        },
+        "_createdonbehalfby_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "modifiedon": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "bcgov_name": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "_owninguser_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "_owningbusinessunit_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "_ownerid_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "createdon": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "_createdby_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "_owningteam_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "bcgov_settingdescription": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "_modifiedby_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "_bcgov_associatedapplication_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "timezoneruleversionnumber": {
+          "type": "integer",
+          "x-nullable": true
+        },
+        "statecode": {
+          "type": "integer",
+          "x-nullable": true
+        },
+        "utcconversiontimezonecode": {
+          "type": "integer",
+          "x-nullable": true
+        },
+        "statuscode": {
+          "type": "integer",
+          "x-nullable": true
+        },
+        "bcgov_privatedwelling": {
+          "type": "boolean",
+          "x-nullable": true
+        },
+        "bcgov_locationid": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "processid": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "overriddencreatedon": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "createdbyname": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.systemuser"
+        },
+        "createdonbehalfbyname": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.systemuser"
+        },
+        "modifiedbyname": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.systemuser"
+        },
+        "modifiedonbehalfbyname": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.systemuser"
+        },
+        "owninguser": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.systemuser"
+        },
+        "owningteam": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.team"
+        },
+        "ownerid": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.principal"
+        },
+        "owningbusinessunit": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.businessunit"
+        },
+        "bcgov_location_ActivityPointers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.activitypointer"
+          }
+        },
+        "bcgov_location_Appointments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.appointment"
+          }
+        },
+        "bcgov_location_Emails": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.email"
+          }
+        },
+        "bcgov_location_Faxes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.fax"
+          }
+        },
+        "bcgov_location_Letters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.letter"
+          }
+        },
+        "bcgov_location_PhoneCalls": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.phonecall"
+          }
+        },
+        "bcgov_location_ServiceAppointments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.serviceappointment"
+          }
+        },
+        "bcgov_location_Tasks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.task"
+          }
+        },
+        "bcgov_location_RecurringAppointmentMasters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.recurringappointmentmaster"
+          }
+        },
+        "bcgov_location_SocialActivities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.socialactivity"
+          }
+        },
+        "bcgov_location_SyncErrors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.syncerror"
+          }
+        },
+        "bcgov_location_ActivityParties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.activityparty"
+          }
+        },
+        "bcgov_location_connections1": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.connection"
+          }
+        },
+        "bcgov_location_connections2": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.connection"
+          }
+        },
+        "bcgov_location_DuplicateMatchingRecord": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.duplicaterecord"
+          }
+        },
+        "bcgov_location_DuplicateBaseRecord": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.duplicaterecord"
+          }
+        },
+        "bcgov_location_SharePointDocumentLocations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.sharepointdocumentlocation"
+          }
+        },
+        "bcgov_location_QueueItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.queueitem"
+          }
+        },
+        "bcgov_location_Annotations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.annotation"
+          }
+        },
+        "bcgov_location_AsyncOperations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.asyncoperation"
+          }
+        },
+        "bcgov_location_BulkDeleteFailures": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bulkdeletefailure"
+          }
+        },
+        "stageid": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.processstage"
+        },
+        "bcgov_LocationAddress": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customaddress"
+        },
+        "bcgov_AssociatedApplication": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.incident"
+        },
+        "bcgov_location_incident_EquipmentLocation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.incident"
+          }
+        },
+        "bcgov_location_equipment": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+          }
+        },
+        "bcgov_location_equipmentlocation_Location": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
+          }
+        }
+      }
+    },
+    "Microsoft.Dynamics.CRM.bcgov_riskassessment": {
+      "title": "bcgov_riskassessment",
+      "type": "object",
+      "properties": {
+        "emailaddress": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "bcgov_legalname": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "_modifiedonbehalfby_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "overriddencreatedon": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "timezoneruleversionnumber": {
+          "type": "integer",
+          "x-nullable": true
+        },
+        "versionnumber": {
+          "type": "integer",
+          "format": "int64",
+          "x-nullable": true
+        },
+        "bcgov_gender": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "modifiedon": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "_owningteam_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "_owninguser_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "bcgov_driverslicence": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "_createdonbehalfby_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "bcgov_primarydocumentedgivennames": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "importsequencenumber": {
+          "type": "integer",
+          "x-nullable": true
+        },
+        "statecode": {
+          "type": "integer",
+          "x-nullable": true
+        },
+        "_owningbusinessunit_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "createdon": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "_modifiedby_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "_createdby_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "bcgov_consentauthorizationtofingerprint": {
+          "type": "boolean",
+          "x-nullable": true
+        },
+        "bcgov_dateofbirth": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "bcgov_riskassessmentid": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "bcgov_verifiedemail": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "statuscode": {
+          "type": "integer",
+          "x-nullable": true
+        },
+        "bcgov_name": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "utcconversiontimezonecode": {
+          "type": "integer",
+          "x-nullable": true
+        },
+        "bcgov_primarydocumentedsurname": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "bcgov_consentauthforsecurityscreening": {
+          "type": "boolean",
+          "x-nullable": true
+        },
+        "_ownerid_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "bcgov_aliasesnames": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "createdbyname": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.systemuser"
+        },
+        "createdonbehalfbyname": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.systemuser"
+        },
+        "modifiedbyname": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.systemuser"
+        },
+        "modifiedonbehalfbyname": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.systemuser"
+        },
+        "owninguser": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.systemuser"
+        },
+        "owningteam": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.team"
+        },
+        "ownerid": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.principal"
+        },
+        "owningbusinessunit": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.businessunit"
+        },
+        "bcgov_riskassessment_ActivityPointers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.activitypointer"
+          }
+        },
+        "bcgov_riskassessment_Appointments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.appointment"
+          }
+        },
+        "bcgov_riskassessment_Emails": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.email"
+          }
+        },
+        "bcgov_riskassessment_Faxes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.fax"
+          }
+        },
+        "bcgov_riskassessment_Letters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.letter"
+          }
+        },
+        "bcgov_riskassessment_PhoneCalls": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.phonecall"
+          }
+        },
+        "bcgov_riskassessment_ServiceAppointments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.serviceappointment"
+          }
+        },
+        "bcgov_riskassessment_Tasks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.task"
+          }
+        },
+        "bcgov_riskassessment_RecurringAppointmentMasters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.recurringappointmentmaster"
+          }
+        },
+        "bcgov_riskassessment_SocialActivities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.socialactivity"
+          }
+        },
+        "bcgov_riskassessment_SyncErrors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.syncerror"
+          }
+        },
+        "bcgov_riskassessment_ActivityParties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.activityparty"
+          }
+        },
+        "bcgov_riskassessment_connections1": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.connection"
+          }
+        },
+        "bcgov_riskassessment_connections2": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.connection"
+          }
+        },
+        "bcgov_riskassessment_DuplicateMatchingRecord": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.duplicaterecord"
+          }
+        },
+        "bcgov_riskassessment_DuplicateBaseRecord": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.duplicaterecord"
+          }
+        },
+        "bcgov_riskassessment_SharePointDocumentLocations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.sharepointdocumentlocation"
+          }
+        },
+        "bcgov_riskassessment_QueueItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.queueitem"
+          }
+        },
+        "bcgov_riskassessment_Annotations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.annotation"
+          }
+        },
+        "bcgov_riskassessment_AsyncOperations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.asyncoperation"
+          }
+        },
+        "bcgov_riskassessment_BulkDeleteFailures": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bulkdeletefailure"
+          }
         }
       }
     },
@@ -15241,12 +17452,6 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/Microsoft.Dynamics.CRM.bulkdeletefailure"
-          }
-        },
-        "bcgov_termsconditionspreset_bcgov_applicationterms_TermsPreset": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_applicationterms"
           }
         },
         "bcgov_ApplicationType": {
@@ -17213,9 +19418,6 @@
         "regardingobjectid_bcgov_termsconditionspreset": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_termsconditionspreset"
         },
-        "regardingobjectid_bcgov_applicationterms": {
-          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_applicationterms"
-        },
         "regardingobjectid_bcgov_applicationtype": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_applicationtype"
         },
@@ -17228,8 +19430,20 @@
         "regardingobjectid_bcgov_certificate": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_certificate"
         },
+        "regardingobjectid_bcgov_location": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+        },
+        "regardingobjectid_bcgov_equipment": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+        },
+        "regardingobjectid_bcgov_equipmentlocation": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
+        },
         "regardingobjectid_bcgov_certificatetermsandconditions": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_certificatetermsandconditions"
+        },
+        "regardingobjectid_bcgov_riskassessment": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
         },
         "regardingobjectid_abs_autonumberedentity": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.abs_autonumberedentity"
@@ -18617,12 +20831,6 @@
             "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_termsconditionspreset"
           }
         },
-        "business_unit_bcgov_applicationterms": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_applicationterms"
-          }
-        },
         "business_unit_bcgov_applicationtype": {
           "type": "array",
           "items": {
@@ -18647,10 +20855,34 @@
             "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_certificate"
           }
         },
+        "business_unit_bcgov_location": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+          }
+        },
+        "business_unit_bcgov_equipment": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+          }
+        },
+        "business_unit_bcgov_equipmentlocation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
+          }
+        },
         "business_unit_bcgov_certificatetermsandconditions": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_certificatetermsandconditions"
+          }
+        },
+        "business_unit_bcgov_riskassessment": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
           }
         },
         "business_unit_abs_autonumberedentity": {
@@ -21513,6 +23745,30 @@
         },
         "record2id_bcgov_customproduct": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
+        },
+        "record1id_bcgov_location": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+        },
+        "record2id_bcgov_location": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+        },
+        "record1id_bcgov_equipment": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+        },
+        "record2id_bcgov_equipment": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+        },
+        "record1id_bcgov_equipmentlocation": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
+        },
+        "record2id_bcgov_equipmentlocation": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
+        },
+        "record1id_bcgov_riskassessment": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
+        },
+        "record2id_bcgov_riskassessment": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
         }
       }
     },
@@ -25153,12 +27409,6 @@
         "baserecordid_bcgov_termsconditionspreset": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_termsconditionspreset"
         },
-        "duplicaterecordid_bcgov_applicationterms": {
-          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_applicationterms"
-        },
-        "baserecordid_bcgov_applicationterms": {
-          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_applicationterms"
-        },
         "duplicaterecordid_bcgov_applicationtype": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_applicationtype"
         },
@@ -25183,11 +27433,35 @@
         "baserecordid_bcgov_certificate": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_certificate"
         },
+        "duplicaterecordid_bcgov_location": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+        },
+        "baserecordid_bcgov_location": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+        },
+        "duplicaterecordid_bcgov_equipment": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+        },
+        "baserecordid_bcgov_equipment": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+        },
+        "duplicaterecordid_bcgov_equipmentlocation": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
+        },
+        "baserecordid_bcgov_equipmentlocation": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
+        },
         "duplicaterecordid_bcgov_certificatetermsandconditions": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_certificatetermsandconditions"
         },
         "baserecordid_bcgov_certificatetermsandconditions": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_certificatetermsandconditions"
+        },
+        "duplicaterecordid_bcgov_riskassessment": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
+        },
+        "baserecordid_bcgov_riskassessment": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
         },
         "duplicaterecordid_abs_autonumberedentity": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.abs_autonumberedentity"
@@ -26399,6 +28673,18 @@
         },
         "regardingobjectid_bcgov_customproduct_email": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
+        },
+        "regardingobjectid_bcgov_location_email": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+        },
+        "regardingobjectid_bcgov_equipment_email": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+        },
+        "regardingobjectid_bcgov_equipmentlocation_email": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
+        },
+        "regardingobjectid_bcgov_riskassessment_email": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
         }
       }
     },
@@ -28332,6 +30618,18 @@
         },
         "regardingobjectid_bcgov_customproduct_fax": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
+        },
+        "regardingobjectid_bcgov_location_fax": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+        },
+        "regardingobjectid_bcgov_equipment_fax": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+        },
+        "regardingobjectid_bcgov_equipmentlocation_fax": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
+        },
+        "regardingobjectid_bcgov_riskassessment_fax": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
         }
       }
     },
@@ -31048,10 +33346,6 @@
           "type": "integer",
           "x-nullable": true
         },
-        "bcgov_foippaconsent": {
-          "type": "boolean",
-          "x-nullable": true
-        },
         "bcgov_otherlicencecheck": {
           "type": "boolean",
           "x-nullable": true
@@ -31273,6 +33567,10 @@
           "type": "string",
           "format": "date-time"
         },
+        "bcgov_foippaconsent": {
+          "type": "boolean",
+          "x-nullable": true
+        },
         "bcgov_explanationofequipmentuse": {
           "type": "string",
           "x-nullable": true
@@ -31351,6 +33649,10 @@
         "escalatedon": {
           "type": "string",
           "format": "date-time"
+        },
+        "_bcgov_equipmentlocation_value": {
+          "type": "string",
+          "x-nullable": true
         },
         "bcgov_kindofalternateownershipothercheck": {
           "type": "boolean",
@@ -31704,12 +34006,6 @@
             "$ref": "#/definitions/Microsoft.Dynamics.CRM.team"
           }
         },
-        "bcgov_incident_bcgov_applicationterms_Application": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_applicationterms"
-          }
-        },
         "bcgov_ApplicationTypeId": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_applicationtype"
         },
@@ -31748,6 +34044,15 @@
         },
         "bcgov_AddressofBusinessthathasRentedorLeased": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customaddress"
+        },
+        "bcgov_incident_location_AssociatedApplication": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+          }
+        },
+        "bcgov_EquipmentLocation": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
         },
         "bcgov_incident_bcgov_certificate_Application": {
           "type": "array",
@@ -35708,6 +38013,18 @@
         },
         "regardingobjectid_bcgov_customproduct_letter": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
+        },
+        "regardingobjectid_bcgov_location_letter": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+        },
+        "regardingobjectid_bcgov_equipment_letter": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+        },
+        "regardingobjectid_bcgov_equipmentlocation_letter": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
+        },
+        "regardingobjectid_bcgov_riskassessment_letter": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
         }
       }
     },
@@ -41222,12 +43539,6 @@
             "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_termsconditionspreset"
           }
         },
-        "owner_bcgov_applicationterms": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_applicationterms"
-          }
-        },
         "owner_bcgov_applicationtype": {
           "type": "array",
           "items": {
@@ -41252,10 +43563,34 @@
             "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_certificate"
           }
         },
+        "owner_bcgov_location": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+          }
+        },
+        "owner_bcgov_equipment": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+          }
+        },
+        "owner_bcgov_equipmentlocation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
+          }
+        },
         "owner_bcgov_certificatetermsandconditions": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_certificatetermsandconditions"
+          }
+        },
+        "owner_bcgov_riskassessment": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
           }
         },
         "owner_abs_autonumberedentity": {
@@ -41591,6 +43926,18 @@
         },
         "regardingobjectid_bcgov_customproduct_phonecall": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
+        },
+        "regardingobjectid_bcgov_location_phonecall": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+        },
+        "regardingobjectid_bcgov_equipment_phonecall": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+        },
+        "regardingobjectid_bcgov_equipmentlocation_phonecall": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
+        },
+        "regardingobjectid_bcgov_riskassessment_phonecall": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
         }
       }
     },
@@ -43328,6 +45675,18 @@
           "items": {
             "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
           }
+        },
+        "processstage_bcgov_location": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+          }
+        },
+        "processstage_bcgov_equipment": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+          }
         }
       }
     },
@@ -45061,6 +47420,18 @@
         },
         "objectid_bcgov_customproduct": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
+        },
+        "objectid_bcgov_location": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+        },
+        "objectid_bcgov_equipment": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+        },
+        "objectid_bcgov_equipmentlocation": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
+        },
+        "objectid_bcgov_riskassessment": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
         }
       }
     },
@@ -47112,6 +49483,18 @@
         },
         "regardingobjectid_bcgov_customproduct_recurringappointmentmaster": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
+        },
+        "regardingobjectid_bcgov_location_recurringappointmentmaster": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+        },
+        "regardingobjectid_bcgov_equipment_recurringappointmentmaster": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+        },
+        "regardingobjectid_bcgov_equipmentlocation_recurringappointmentmaster": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
+        },
+        "regardingobjectid_bcgov_riskassessment_recurringappointmentmaster": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
         }
       }
     },
@@ -50553,6 +52936,18 @@
         },
         "regardingobjectid_bcgov_customproduct_serviceappointment": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
+        },
+        "regardingobjectid_bcgov_location_serviceappointment": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+        },
+        "regardingobjectid_bcgov_equipment_serviceappointment": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+        },
+        "regardingobjectid_bcgov_equipmentlocation_serviceappointment": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
+        },
+        "regardingobjectid_bcgov_riskassessment_serviceappointment": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
         }
       }
     },
@@ -51213,6 +53608,18 @@
         },
         "regardingobjectid_bcgov_customproduct": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
+        },
+        "regardingobjectid_bcgov_location": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+        },
+        "regardingobjectid_bcgov_equipment": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+        },
+        "regardingobjectid_bcgov_equipmentlocation": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
+        },
+        "regardingobjectid_bcgov_riskassessment": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
         }
       }
     },
@@ -52878,6 +55285,18 @@
         },
         "regardingobjectid_bcgov_customproduct_socialactivity": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
+        },
+        "regardingobjectid_bcgov_location_socialactivity": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+        },
+        "regardingobjectid_bcgov_equipment_socialactivity": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+        },
+        "regardingobjectid_bcgov_equipmentlocation_socialactivity": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
+        },
+        "regardingobjectid_bcgov_riskassessment_socialactivity": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
         }
       }
     },
@@ -54093,9 +56512,6 @@
         "regardingobjectid_bcgov_termsconditionspreset": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_termsconditionspreset"
         },
-        "regardingobjectid_bcgov_applicationterms": {
-          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_applicationterms"
-        },
         "regardingobjectid_bcgov_applicationtype": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_applicationtype"
         },
@@ -54108,8 +56524,20 @@
         "regardingobjectid_bcgov_certificate": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_certificate"
         },
+        "regardingobjectid_bcgov_location": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+        },
+        "regardingobjectid_bcgov_equipment": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+        },
+        "regardingobjectid_bcgov_equipmentlocation": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
+        },
         "regardingobjectid_bcgov_certificatetermsandconditions": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_certificatetermsandconditions"
+        },
+        "regardingobjectid_bcgov_riskassessment": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
         },
         "regardingobjectid_abs_autonumberedentity": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.abs_autonumberedentity"
@@ -59918,36 +62346,6 @@
             "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_termsconditionspreset"
           }
         },
-        "lk_bcgov_applicationterms_createdby": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_applicationterms"
-          }
-        },
-        "lk_bcgov_applicationterms_createdonbehalfby": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_applicationterms"
-          }
-        },
-        "lk_bcgov_applicationterms_modifiedby": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_applicationterms"
-          }
-        },
-        "lk_bcgov_applicationterms_modifiedonbehalfby": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_applicationterms"
-          }
-        },
-        "user_bcgov_applicationterms": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_applicationterms"
-          }
-        },
         "lk_bcgov_applicationtype_createdby": {
           "type": "array",
           "items": {
@@ -60068,6 +62466,96 @@
             "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_certificate"
           }
         },
+        "lk_bcgov_location_createdby": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+          }
+        },
+        "lk_bcgov_location_createdonbehalfby": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+          }
+        },
+        "lk_bcgov_location_modifiedby": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+          }
+        },
+        "lk_bcgov_location_modifiedonbehalfby": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+          }
+        },
+        "user_bcgov_location": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+          }
+        },
+        "lk_bcgov_equipment_createdby": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+          }
+        },
+        "lk_bcgov_equipment_createdonbehalfby": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+          }
+        },
+        "lk_bcgov_equipment_modifiedby": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+          }
+        },
+        "lk_bcgov_equipment_modifiedonbehalfby": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+          }
+        },
+        "user_bcgov_equipment": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+          }
+        },
+        "lk_bcgov_equipmentlocation_createdby": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
+          }
+        },
+        "lk_bcgov_equipmentlocation_createdonbehalfby": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
+          }
+        },
+        "lk_bcgov_equipmentlocation_modifiedby": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
+          }
+        },
+        "lk_bcgov_equipmentlocation_modifiedonbehalfby": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
+          }
+        },
+        "user_bcgov_equipmentlocation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
+          }
+        },
         "lk_bcgov_certificatetermsandconditions_createdby": {
           "type": "array",
           "items": {
@@ -60096,6 +62584,36 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_certificatetermsandconditions"
+          }
+        },
+        "lk_bcgov_riskassessment_createdby": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
+          }
+        },
+        "lk_bcgov_riskassessment_createdonbehalfby": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
+          }
+        },
+        "lk_bcgov_riskassessment_modifiedby": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
+          }
+        },
+        "lk_bcgov_riskassessment_modifiedonbehalfby": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
+          }
+        },
+        "user_bcgov_riskassessment": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
           }
         },
         "lk_abs_autonumberedentity_createdby": {
@@ -60388,6 +62906,18 @@
         },
         "regardingobjectid_bcgov_customproduct_task": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customproduct"
+        },
+        "regardingobjectid_bcgov_location_task": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+        },
+        "regardingobjectid_bcgov_equipment_task": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+        },
+        "regardingobjectid_bcgov_equipmentlocation_task": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
+        },
+        "regardingobjectid_bcgov_riskassessment_task": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
         }
       }
     },
@@ -61134,12 +63664,6 @@
             "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_termsconditionspreset"
           }
         },
-        "team_bcgov_applicationterms": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_applicationterms"
-          }
-        },
         "team_bcgov_applicationtype": {
           "type": "array",
           "items": {
@@ -61167,10 +63691,34 @@
             "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_certificate"
           }
         },
+        "team_bcgov_location": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
+          }
+        },
+        "team_bcgov_equipment": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+          }
+        },
+        "team_bcgov_equipmentlocation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
+          }
+        },
         "team_bcgov_certificatetermsandconditions": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_certificatetermsandconditions"
+          }
+        },
+        "team_bcgov_riskassessment": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
           }
         },
         "team_abs_autonumberedentity": {
@@ -69659,9 +72207,6 @@
       "name": "attachments"
     },
     {
-      "name": "bcgov_applicationtermses"
-    },
-    {
       "name": "bcgov_applicationtypes"
     },
     {
@@ -69680,7 +72225,22 @@
       "name": "bcgov_customproducts"
     },
     {
+      "name": "bcgov_equipmentlocations"
+    },
+    {
+      "name": "bcgov_equipments"
+    },
+    {
       "name": "bcgov_incident_businesscontactset"
+    },
+    {
+      "name": "bcgov_location_equipmentset"
+    },
+    {
+      "name": "bcgov_locations"
+    },
+    {
+      "name": "bcgov_riskassessments"
     },
     {
       "name": "bcgov_termsconditionspresets"

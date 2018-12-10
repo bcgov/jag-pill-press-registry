@@ -44,11 +44,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         IAccounts Accounts { get; }
 
         /// <summary>
-        /// Gets the IApplicationtermses.
-        /// </summary>
-        IApplicationtermses Applicationtermses { get; }
-
-        /// <summary>
         /// Gets the IApplicationtypes.
         /// </summary>
         IApplicationtypes Applicationtypes { get; }
@@ -79,9 +74,34 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         ICustomproducts Customproducts { get; }
 
         /// <summary>
+        /// Gets the IEquipmentlocations.
+        /// </summary>
+        IEquipmentlocations Equipmentlocations { get; }
+
+        /// <summary>
+        /// Gets the IEquipments.
+        /// </summary>
+        IEquipments Equipments { get; }
+
+        /// <summary>
         /// Gets the IIncidentbusinesscontactset.
         /// </summary>
         IIncidentbusinesscontactset Incidentbusinesscontactset { get; }
+
+        /// <summary>
+        /// Gets the ILocationequipmentset.
+        /// </summary>
+        ILocationequipmentset Locationequipmentset { get; }
+
+        /// <summary>
+        /// Gets the ILocations.
+        /// </summary>
+        ILocations Locations { get; }
+
+        /// <summary>
+        /// Gets the IRiskassessments.
+        /// </summary>
+        IRiskassessments Riskassessments { get; }
 
         /// <summary>
         /// Gets the ITermsconditionspresets.
@@ -92,11 +112,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// Gets the IContacts.
         /// </summary>
         IContacts Contacts { get; }
-
-        /// <summary>
-        /// Gets the IEquipments.
-        /// </summary>
-        IEquipments Equipments { get; }
 
         /// <summary>
         /// Gets the IIncidents.

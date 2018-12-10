@@ -12,7 +12,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
     using System.Linq;
 
     /// <summary>
-    /// Collection of bcgov_applicationtermses
+    /// Collection of bcgov_applicationtypes
     /// </summary>
     public partial class GetOKResponseModel
     {
@@ -27,7 +27,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// Initializes a new instance of the GetOKResponseModel class.
         /// </summary>
-        public GetOKResponseModel(IList<MicrosoftDynamicsCRMbcgovApplicationterms> value = default(IList<MicrosoftDynamicsCRMbcgovApplicationterms>))
+        public GetOKResponseModel(IList<MicrosoftDynamicsCRMbcgovApplicationtype> value = default(IList<MicrosoftDynamicsCRMbcgovApplicationtype>))
         {
             Value = value;
             CustomInit();
@@ -41,7 +41,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "value")]
-        public IList<MicrosoftDynamicsCRMbcgovApplicationterms> Value { get; set; }
+        public IList<MicrosoftDynamicsCRMbcgovApplicationtype> Value { get; set; }
 
     }
 }
