@@ -1,4 +1,4 @@
 <div class="container">  
   <div [ngBusy]="[busySubscription, busy]"></div>
-  <app-terms-and-conditions (termsAccepted)="termsAccepted=$event; confirmContactYes()" *ngIf="!accountExists"></app-terms-and-conditions>
+  <app-terms-and-conditions (termsAccepted)="termsAccepted=$event; confirmContactYes()" [parentBusy]="busy" *ngIf="!accountExists"></app-terms-and-conditions>
  </div>
