@@ -124,7 +124,7 @@ export class SellerApplicationComponent implements OnInit {
       this.busy = this.applicationDataService.updateApplication(value)
         .subscribe(res => {
           if (gotToReview) {
-            this.router.navigateByUrl(`/application/registered-seller/review/${this.waiverId}`);
+            this.router.navigateByUrl(`/registered-seller/review/${this.waiverId}`);
           } else {
             this.router.navigateByUrl(`/dashboard`);
           }

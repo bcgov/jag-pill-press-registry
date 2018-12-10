@@ -224,7 +224,7 @@ export class AuthorizedApplicationComponent implements OnInit {
       zip(...saveList)
         .subscribe(res => {
           if (gotToReview) {
-            this.router.navigateByUrl(`/application/authorized-owner/review/${this.waiverId}`);
+            this.router.navigateByUrl(`/authorized-owner/review/${this.waiverId}`);
           } else {
             this.router.navigateByUrl(`/dashboard`);
             // this.reloadData();

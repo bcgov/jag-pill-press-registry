@@ -1,7 +1,7 @@
 <div class="form-wrapper row" style="position: relative">
    <div [ngBusy]="busy"></div>
-  <div class="col-lg-8 col-sm-12">
-    <h2 class="step" *ngIf="mode">STEP 1</h2>
+  <div [ngClass]="{'col-lg-12': nextRoute, 'col-lg-8': !nextRoute}" class="col-sm-12">
+    <h2 class="step" *ngIf="nextRoute">STEP 1</h2>
     <h1>Business Profile Review</h1>
 
     <p>
@@ -44,8 +44,8 @@
       </tr>
     </table>
 
-    <h2 *ngIf="!mode" class="blue-header">DECLARATIONS AND CONSENT</h2>
-    <div [formGroup]="form" *ngIf="!mode" style="padding-left: 10px;">
+    <h2 *ngIf="!nextRoute" class="blue-header">DECLARATIONS AND CONSENT</h2>
+    <div [formGroup]="form" *ngIf="!nextRoute" style="padding-left: 10px;">
       <section style="display: flex">
         <input type="checkbox"  formControlName="declarationofcorrectinformation">
         <span class="error-states">*</span>
@@ -82,13 +82,13 @@
         <a routerLink="/business-profile"><i class="fas fa-pencil-alt"></i> Edit Business Profile</a>
       </section>
       <section>
-        <button *ngIf="mode" class="btn btn-primary" (click)="save()">CONTINUE TO APPLICATION</button>
-        <button *ngIf="!mode" class="btn btn-primary" (click)="markAsTouched(); save()">SAVE</button>
+        <button *ngIf="nextRoute" class="btn btn-primary" (click)="save()">CONTINUE TO APPLICATION</button>
+        <button *ngIf="!nextRoute" class="btn btn-primary" (click)="markAsTouched(); save()">SAVE</button>
       </section>
     </div>
   </div>
 
-  <div class="col-lg-4 col-sm-12" style="position: relative">
+  <div *ngIf="!nextRoute" class="col-lg-4 col-sm-12" style="position: relative">
     <p></p>
     <section class="submit-container">
       <table>
