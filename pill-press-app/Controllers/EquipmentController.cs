@@ -50,7 +50,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             {
                 Guid ApplicationId = Guid.Parse(id);
                 // query the Dynamics system to get the Equipment record.
-                MicrosoftDynamicsCRMequipment equipment = _dynamicsClient.GetEquipmentByIdWithChildren(ApplicationId);
+                MicrosoftDynamicsCRMbcgovEquipment equipment = _dynamicsClient.GetEquipmentByIdWithChildren(ApplicationId);
                 
                 if (equipment != null)
                 {
@@ -85,9 +85,9 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             }
 
             // get the Equipment
-            Guid ApplicationId = Guid.Parse(id);
+            Guid EquipmentId = Guid.Parse(id);
 
-            MicrosoftDynamicsCRMincident equipment = _dynamicsClient.GetApplicationByIdWithChildren(ApplicationId);
+            MicrosoftDynamicsCRMbcgovEquipment equipment = _dynamicsClient.GetEquipmentByIdWithChildren(EquipmentId);
             if (equipment == null)
             {
                 return new NotFoundResult();
@@ -100,19 +100,12 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             // Get the current account
             var account = await _dynamicsClient.GetAccountById(Guid.Parse(userSettings.AccountId));
 
-            MicrosoftDynamicsCRMincident patchApplication = new MicrosoftDynamicsCRMincident();
-            patchApplication.CopyValues(item);
-
-            // allow the user to change the status to Pending if it is Draft.
-            if (equipment.Statuscode != null && equipment.Statuscode == (int?) ViewModels.ApplicationStatusCodes.Draft && item.statuscode == ViewModels.ApplicationStatusCodes.Pending)
-            {
-                patchApplication.Statuscode = (int?)ViewModels.ApplicationStatusCodes.Pending;
-            }
-
+            MicrosoftDynamicsCRMbcgovEquipment patchEquipment = new MicrosoftDynamicsCRMbcgovEquipment();
+            patchEquipment.CopyValues(item);
             
             try
             {
-                await _dynamicsClient.Incidents.UpdateAsync(ApplicationId.ToString(), patchApplication);
+                await _dynamicsClient.Equipments.UpdateAsync(EquipmentId.ToString(), patchEquipment);
             }
             catch (OdataerrorException odee)
             {
@@ -123,197 +116,18 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 _logger.LogError(odee.Response.Content);
             }
 
-            // determine if there are any changes to the contacts.
 
-            if (item.BusinessContacts != null)
-            {
-                foreach (var businessContactViewModel in item.BusinessContacts)
-                {
-                    if (businessContactViewModel.contact != null)
-                    {
-                        // create the contact if necessary.
-                        var contact = businessContactViewModel.contact.ToModel();
-                        if (string.IsNullOrEmpty(businessContactViewModel.contact.id))
-                        {
-                            // create a contact.                        
-                            try
-                            {
-                                contact = _dynamicsClient.Contacts.Create(contact);
-                                businessContactViewModel.contact.id = contact.Contactid;
-                            }
-                            catch (OdataerrorException odee)
-                            {
-                                _logger.LogError(LoggingEvents.Error, "Error creating contact");
-                                _logger.LogError("Request:");
-                                _logger.LogError(odee.Request.Content);
-                                _logger.LogError("Response:");
-                                _logger.LogError(odee.Response.Content);
-                                throw new OdataerrorException("Error creating contact");
-                            }
-                        }
-                        else
-                        {
-                            // update
-                            try
-                            {
-                                _dynamicsClient.Contacts.Update(businessContactViewModel.contact.id, contact);
-                            }
-                            catch (OdataerrorException odee)
-                            {
-                                _logger.LogError(LoggingEvents.Error, "Error updating contact");
-                                _logger.LogError("Request:");
-                                _logger.LogError(odee.Request.Content);
-                                _logger.LogError("Response:");
-                                _logger.LogError(odee.Response.Content);
-                                throw new OdataerrorException("Error updating the contact.");
-                            }
-                        }
-
-                        // force the account to be the current account
-                        businessContactViewModel.account = account.ToViewModel();
-                        
-                        MicrosoftDynamicsCRMbcgovBusinesscontact businessContact = businessContactViewModel.ToModel(_dynamicsClient);
-
-                        if (string.IsNullOrEmpty(businessContactViewModel.id))
-                        {
-                            
-                            try
-                            {
-                                businessContact = _dynamicsClient.Businesscontacts.Create(businessContact);
-                                businessContactViewModel.id = businessContact.BcgovBusinesscontactid;
-                            }
-                            catch (OdataerrorException odee)
-                            {
-                                _logger.LogError(LoggingEvents.Error, "Error creating business contact");
-                                _logger.LogError("Request:");
-                                _logger.LogError(odee.Request.Content);
-                                _logger.LogError("Response:");
-                                _logger.LogError(odee.Response.Content);
-                                throw new OdataerrorException("Error creating business contact");
-                            }
-                        }
-                        else
-                        {
-                            // update
-                            try
-                            {
-                                _dynamicsClient.Businesscontacts.Update(businessContactViewModel.id, businessContact);
-                            }
-                            catch (OdataerrorException odee)
-                            {
-                                _logger.LogError(LoggingEvents.Error, "Error updating business contact");
-                                _logger.LogError("Request:");
-                                _logger.LogError(odee.Request.Content);
-                                _logger.LogError("Response:");
-                                _logger.LogError(odee.Response.Content);
-                                throw new OdataerrorException("Error updating the business contact.");
-                            }
-                        }
-                    }
-
-                }
-
-
-                //List<MicrosoftDynamicsCRMbcgovBusinesscontact> itemsToRemove = new List<MicrosoftDynamicsCRMbcgovBusinesscontact>();
-                
-                foreach (var businessContact in item.BusinessContacts)
-                {
-
-                    // TODO: Handle deletes as well as additions.
-
-                    // determine if this item needs to be added.
-                    bool notFound = true;
-
-                    // don't bind the record twice.
-                    if (equipment.BcgovIncidentBusinesscontact != null && equipment.BcgovIncidentBusinesscontact.Count > 0)
-                    {
-                        foreach (var bc in equipment.BcgovIncidentBusinesscontact)
-                        {
-                            if (bc.BcgovBusinesscontactid != null && businessContact.id == bc.BcgovBusinesscontactid)
-                            {
-                                notFound = false;
-                            }
-                        }
-
-                    }
-
-
-                    if (notFound)
-                    {
-                        OdataId odataId = new OdataId()
-                        {
-                            OdataIdProperty = _dynamicsClient.GetEntityURI("bcgov_businesscontacts", businessContact.id)
-                        };
-
-                        try
-                        {
-                            await _dynamicsClient.Incidents.AddReferenceAsync(id, "bcgov_incident_businesscontact", odataId);
-                        }
-                        catch (OdataerrorException odee)
-                        {
-                            _logger.LogError(LoggingEvents.Error, "Error updating business contacts");
-                            _logger.LogError("Request:");
-                            _logger.LogError(odee.Request.Content);
-                            _logger.LogError("Response:");
-                            _logger.LogError(odee.Response.Content);
-                            throw new OdataerrorException("Error updating the business contacts.");
-                        }
-
-                    }
-
-                }
-
-                // check for any businesscontacts that have to be removed.
-                if (equipment.BcgovIncidentBusinesscontact != null)
-                {
-                    foreach (var ibc in equipment.BcgovIncidentBusinesscontact)
-                    {
-                        bool notFound = true;
-                        foreach (var bc in item.BusinessContacts)
-                        {
-                            if (ibc.BcgovBusinesscontactid == bc.id)
-                            {
-                                notFound = false;
-                            }
-                        }
-
-                        if (notFound)
-                        {
-                            // remove the item.                            
-                            try
-                            {
-                                await _dynamicsClient.Incidents.RemoveReferenceAsync(id, "bcgov_incident_businesscontact", ibc.BcgovBusinesscontactid);
-                            }
-                            catch (OdataerrorException odee)
-                            {
-                                _logger.LogError(LoggingEvents.Error, "Error removing business contacts");
-                                _logger.LogError("Request:");
-                                _logger.LogError(odee.Request.Content);
-                                _logger.LogError("Response:");
-                                _logger.LogError(odee.Response.Content);
-                                throw new OdataerrorException("Error removing a business contact.");
-                            }
-                        }
-
-                        
-                    }
-                }
-
-            }
-
-            
-
-            equipment = _dynamicsClient.GetApplicationByIdWithChildren(ApplicationId);
+            equipment = _dynamicsClient.GetEquipmentByIdWithChildren(EquipmentId);
             return Json(equipment.ToViewModel());
         }
 
         /// <summary>
-        /// Create a Equipment
+        /// Create an Equipment
         /// </summary>
         /// <param name="viewModel"></param>
         /// <returns></returns>
-        [HttpPost("{applicationType}")]
-        public async Task<IActionResult> CreateApplication(string applicationType, [FromBody] ViewModels.Equipment item)
+        [HttpPost]
+        public async Task<IActionResult> CreateEquipment(string applicationType, [FromBody] ViewModels.Equipment item)
         {
 
             // get UserSettings from the session
@@ -327,35 +141,14 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 _logger.LogError(LoggingEvents.Error, "No Equipment Siteminder Guid exernal id");
                 throw new Exception("Error. No ApplicationSiteminderGuid exernal id");
             }
-            
+
             // create a new Equipment.
-            MicrosoftDynamicsCRMincident equipment = new MicrosoftDynamicsCRMincident();
+            MicrosoftDynamicsCRMbcgovEquipment equipment = new MicrosoftDynamicsCRMbcgovEquipment();
             equipment.CopyValues(item);
 
-            if(string.IsNullOrEmpty(applicationType)){ // Default to waiver
-                applicationType = "Waiver";
-            }
-
-            if (string.IsNullOrEmpty(equipment._bcgovApplicationtypeidValue) || string.IsNullOrEmpty(equipment.ApplicationTypeIdODataBind)) // set to Waiver if it is blank.
-            {
-                string applicationTypeId = _dynamicsClient.GetApplicationTypeIdByName(applicationType);
-                if (applicationTypeId != null)
-                {
-                    equipment.ApplicationTypeIdODataBind = _dynamicsClient.GetEntityURI("bcgov_applicationtypes", applicationTypeId);
-                }                
-            }
-
-            // set the author based on the current user.
-            equipment.SubmitterODataBind = _dynamicsClient.GetEntityURI("contacts", userSettings.ContactId);
-
-            // Also setup the customer.
-            var account = await _dynamicsClient.GetAccountById(Guid.Parse(userSettings.AccountId));
-            //equipment.CustomeridAccount = account;
-            equipment.CustomerIdAccountODataBind = _dynamicsClient.GetEntityURI("accounts", userSettings.AccountId);
-            equipment.Statuscode = (int?) ViewModels.ApplicationStatusCodes.Draft;
             try
             {
-                equipment = await _dynamicsClient.Incidents.CreateAsync(equipment);
+                equipment = await _dynamicsClient.Equipments.CreateAsync(equipment);
             }
             catch (OdataerrorException odee)
             {
@@ -375,30 +168,33 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpPost("{id}/delete")]
-        public async Task<IActionResult> DeleteApplication(string id)
+        public async Task<IActionResult> DeleteEquipment(string id)
         {
             _logger.LogDebug(LoggingEvents.HttpPost, "Begin method " + this.GetType().Name + "." + MethodBase.GetCurrentMethod().ReflectedType.Name);
 
             // verify the currently logged in user has access to this account
             Guid applicationId = new Guid(id);
 
-            MicrosoftDynamicsCRMincident equipment = _dynamicsClient.GetApplicationById(applicationId);
+            MicrosoftDynamicsCRMbcgovEquipment equipment = _dynamicsClient.GetEquipmentById(applicationId);
             if (equipment == null)
             {
                 _logger.LogWarning(LoggingEvents.NotFound, "Equipment NOT found.");
                 return new NotFoundResult();
             }
 
-            if (!UserDynamicsExtensions.CurrentUserHasAccessToApplication(applicationId, _httpContextAccessor, _dynamicsClient))
+            // TODO - add this routine.
+            /*
+            if (!UserDynamicsExtensions.CurrentUserHasAccessToEquipment(equipmentId, _httpContextAccessor, _dynamicsClient))
             {
                 _logger.LogWarning(LoggingEvents.NotFound, "Current user has NO access to the equipment.");
                 return new NotFoundResult();
             }
+            */
 
-            // get the account            
+            // get the equipment            
             try
             {
-                await _dynamicsClient.Incidents.DeleteAsync(applicationId.ToString());
+                await _dynamicsClient.Equipments.DeleteAsync(applicationId.ToString());
                 _logger.LogDebug(LoggingEvents.HttpDelete, "Equipment deleted: " + applicationId.ToString());
             }
             catch (OdataerrorException odee)
