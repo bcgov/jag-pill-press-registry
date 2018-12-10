@@ -15,7 +15,8 @@ import { debug } from 'util';
   styleUrls: ['./profile-summary.component.scss']
 })
 export class ProfileSummaryComponent implements OnInit {
-  busy: Subscription;
+  busy: Promise<any>;
+  busy2: Promise<any>;
   dataLoaded: boolean;
   account: DynamicsAccount;
   businessInfoData: any[];
@@ -50,12 +51,14 @@ export class ProfileSummaryComponent implements OnInit {
 
   reloadUser() {
     this.busy = this.userDataService.getCurrentUser()
-      .subscribe((data: User) => {
+      .toPromise()
+      .then((data: User) => {
         this.dataLoaded = true;
         if (data && data.accountid) {
           this.busy =
             this.accountDataService.getAccount(data.accountid)
-              .subscribe(res => {
+              .toPromise()
+              .then(res => {
                 this.account = res;
                 this.setSummaryTables();
                 this.form.patchValue(res);
@@ -146,13 +149,15 @@ export class ProfileSummaryComponent implements OnInit {
     if (!!(this.mode || this.declarationsValid())) {
       const value = this.form.value;
       this.busy = this.accountDataService.updateAccount(value)
-        .subscribe(data => {
+        .toPromise()
+        .then(data => {
           if (this.nextRoute) {
             this.router.navigateByUrl(`${this.nextRoute}/${this.id}`);
           } else {
             this.router.navigateByUrl('/dashboard');
           }
         });
+      this.busy2 = Promise.resolve(this.busy);
     }
   }
 
