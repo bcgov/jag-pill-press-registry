@@ -121,6 +121,9 @@ import { EquipmentLocationComponent } from './equipment-notification/equipment-l
 import { EquipmentReviewComponent } from './equipment-notification/equipment-review/equipment-review.component';
 import { EquipmentThankYouComponent } from './equipment-notification/equipment-thank-you/equipment-thank-you.component';
 import { EquipmentNotificationComponent } from './equipment-notification/equipment-notification.component';
+import { WaiverComponent } from './applications/waiver/waiver.component';
+import { RegisteredSellerComponent } from './applications/registered-seller/registered-seller.component';
+import { AuthorizedOwnerComponent } from './applications/authorized-owner/authorized-owner.component';
 
 @NgModule({
   declarations: [
@@ -166,7 +169,10 @@ import { EquipmentNotificationComponent } from './equipment-notification/equipme
     EquipmentLocationComponent,
     EquipmentReviewComponent,
     EquipmentThankYouComponent,
-    EquipmentNotificationComponent
+    EquipmentNotificationComponent,
+    WaiverComponent,
+    RegisteredSellerComponent,
+    AuthorizedOwnerComponent
   ],
   imports: [
     BrowserModule,

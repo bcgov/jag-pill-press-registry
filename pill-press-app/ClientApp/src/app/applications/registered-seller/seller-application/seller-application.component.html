@@ -1,209 +1,188 @@
-<div class="form-wrapper" style="position: relative;">
+<div style="position: relative;">
   <div [ngBusy]="[busy, busyPromise]"></div>
-  <div class="row" [formGroup]="form">
-    <div class="col-lg-8 col-sm-12">
-      <div>
-        <h2 class="step">STEP 2</h2>
-        <h1 style="margin-top: 0">Seller Registration Application</h1>
+  <div [formGroup]="form">
+    <div>
+      <h2 class="step">STEP 2</h2>
+      <h1 style="margin-top: 0">Seller Registration Application</h1>
 
-        <p>A Registered Seller can sell the Controlled Equipment but can not use it for manufacturing. To be able to
-          use the equipment, a seller must apply for a Waiver or be an Authorized Owner.</p>
+      <p>A Registered Seller can sell the Controlled Equipment but can not use it for manufacturing. To be able to
+        use the equipment, a seller must apply for a Waiver or be an Authorized Owner.</p>
 
-        <p>When a Registered Seller rents/leases their equipment to others, these individuals must hold a Waiver to use
-          the Controlled Equipment or be an Authorized Owner.</p>
+      <p>When a Registered Seller rents/leases their equipment to others, these individuals must hold a Waiver to use
+        the Controlled Equipment or be an Authorized Owner.</p>
 
-        <h3 class="blue-header">EQUIPMENT INFORMATION</h3>
-        <section class="padded-section">
-          <app-field label="Do you currently own, use, or possess Controlled Equipment?" [required]="true"
-            [showChevrons]="false" errorMessage="Please select yes or no" [valid]="form.get('currentlyownusepossessequipment').valid || !form.get('currentlyownusepossessequipment').touched">
-            <input type="radio" [value]="true" name="currentlyownusepossessequipment" formControlName="currentlyownusepossessequipment">
-            <span style="padding-right: 10px;">&nbsp;Yes</span>
-            <input type="radio" [value]="false" name="currentlyownusepossessequipment" formControlName="currentlyownusepossessequipment">
-            <span>&nbsp;No</span>
-          </app-field>
-          <app-field *ngIf="form.get('currentlyownusepossessequipment').value === false" label="Do you intend on purchasing Controlled Equipment in the future?"
-            [showChevrons]="false" errorMessage="Please select yes or no" [valid]="form.get('intendtopurchaseequipment').valid || !form.get('intendtopurchaseequipment').touched"
-            [required]="true">
-            <input type="radio" [value]="true" name="intendtopurchaseequipment" formControlName="intendtopurchaseequipment">
-            <span style="padding-right: 10px;">&nbsp;Yes</span>
-            <input type="radio" [value]="false" name="intendtopurchaseequipment" formControlName="intendtopurchaseequipment">
-            <span>&nbsp;No</span>
-          </app-field>
-        </section>
+      <h3 class="blue-header">EQUIPMENT INFORMATION</h3>
+      <section class="padded-section">
+        <app-field label="Do you currently own, use, or possess Controlled Equipment?" [required]="true" [showChevrons]="false"
+          errorMessage="Please select yes or no" [valid]="form.get('currentlyownusepossessequipment').valid || !form.get('currentlyownusepossessequipment').touched">
+          <input type="radio" [value]="true" name="currentlyownusepossessequipment" formControlName="currentlyownusepossessequipment">
+          <span style="padding-right: 10px;">&nbsp;Yes</span>
+          <input type="radio" [value]="false" name="currentlyownusepossessequipment" formControlName="currentlyownusepossessequipment">
+          <span>&nbsp;No</span>
+        </app-field>
+        <app-field *ngIf="form.get('currentlyownusepossessequipment').value === false" label="Do you intend on purchasing Controlled Equipment in the future?"
+          [showChevrons]="false" errorMessage="Please select yes or no" [valid]="form.get('intendtopurchaseequipment').valid || !form.get('intendtopurchaseequipment').touched"
+          [required]="true">
+          <input type="radio" [value]="true" name="intendtopurchaseequipment" formControlName="intendtopurchaseequipment">
+          <span style="padding-right: 10px;">&nbsp;Yes</span>
+          <input type="radio" [value]="false" name="intendtopurchaseequipment" formControlName="intendtopurchaseequipment">
+          <span>&nbsp;No</span>
+        </app-field>
+      </section>
 
-        <h3 class="blue-header">PURPOSE OF CONTROLLED EQUIPMENT</h3>
-        <section class="padded-section">
-          <app-field label="Do you intend on owning, using, or possessing Controlled Equipment for the purposes of producing a product?"
-            [showChevrons]="false" errorMessage="Please select yes or no" [valid]="form.get('ownusepossesstoproduceaproduct').valid || !form.get('ownusepossesstoproduceaproduct').touched"
-            [required]="true">
-            <input type="radio" [value]="true" name="ownusepossesstoproduceaproduct" formControlName="ownusepossesstoproduceaproduct">
-            <span style="padding-right: 10px;">&nbsp;Yes</span>
-            <input type="radio" [value]="false" name="ownusepossesstoproduceaproduct" formControlName="ownusepossesstoproduceaproduct">
-            <span>&nbsp;No</span>
-          </app-field>
-          <div class="notes" style="display: flex;" *ngIf="form.get('ownusepossesstoproduceaproduct').value === true">
-            <i class="fas fa-exclamation-circle" style="color: #fcba19; margin-right: 10px;"></i>
-            <section>
-              <strong>Note: </strong>
-              <span>A Registered Seller is only permitted to sell Controlled Equipment. If you want to produce a
-                product
-                for your own business or for others, you must also be an Authorized Owner or Waiver Holder.</span>
-            </section>
-          </div>
-          <app-field label="Do you intend on renting or leasing Controlled Equipment to others?" [showChevrons]="false"
-            errorMessage="Please select yes or no" [valid]="form.get('intendonrentingleasingtoothers').valid || !form.get('intendonrentingleasingtoothers').touched"
-            [required]="true">
-            <input type="radio" [value]="true" name="intendonrentingleasingtoothers" formControlName="intendonrentingleasingtoothers">
-            <span style="padding-right: 10px;">&nbsp;Yes</span>
-            <input type="radio" [value]="false" name="intendonrentingleasingtoothers" formControlName="intendonrentingleasingtoothers">
-            <span>&nbsp;No</span>
-          </app-field>
-          <div class="notes" style="display: flex;" *ngIf="form.get('intendonrentingleasingtoothers').value === true">
-            <i class="fas fa-exclamation-circle" style="color: #fcba19; margin-right: 10px;"></i>
-            <section>
-              <strong>Note: </strong>
-              <span>If you are renting, leasing (or otherwise lending) Controlled Equipment to other businesses, they
-                must be confirmed Authorized Owners or Waiver Holders.</span>
-            </section>
-          </div>
-        </section>
-
-        <h3 class="blue-header">SELLER BUSINESS DETAILS</h3>
-        <section class="padded-section">
-          <p></p>
-          <app-field label="Do you intend on selling Controlled Equipment to others?" [required]="true" [showChevrons]="false"
-            errorMessage="Please select yes or no" [valid]="form.get('intendonsellingequipmenttoothers').valid || !form.get('intendonsellingequipmenttoothers').touched">
-            <input type="radio" [value]="true" name="intendonsellingequipmenttoothers" formControlName="intendonsellingequipmenttoothers">
-            <span style="padding-right: 10px;">&nbsp;Yes</span>
-            <input type="radio" [value]="false" name="intendonsellingequipmenttoothers" formControlName="intendonsellingequipmenttoothers">
-            <span>&nbsp;No</span>
-          </app-field>
-
-          <app-field label="What type of seller are you?" [showChevrons]="false" errorMessage="Please indicate what type of seller you are"
-            [valid]="!showErrorMessages || isSellerTypeValid()" [required]="true">
-            <p>Please select all the options that apply.</p>
-            <input type="checkbox" style="margin-right: 10px;" formControlName="manufacturerofcontrolledequipment">
-            <span>Manufacturer of Controlled Equipment</span> <br>
-            <input type="checkbox" style="margin-right: 10px;" formControlName="onetimesellerofowncontrolledequipment">
-            <span>One-time seller of Controlled Equipment</span> <br>
-            <input type="checkbox" style="margin-right: 10px;" formControlName="retailerofcontrolledequipment">
-            <span>Retailer of Controlled Equipment</span> <br>
-            <input type="checkbox" formControlName="typeofsellerothercheck" style="margin-right: 10px;">
-            <span>Other</span> <br>
-            <section style="padding-left: 20px" *ngIf="form.get('typeofsellerothercheck').value === true">
-              <app-field errorMessage="Please specify what 'other' type of seller you are" [required]="true" [valid]="form.get('typeofsellerother').value || !form.get('typeofsellerother').touched">
-                <i>If Other, Please specify</i>&nbsp;<strong class="error-states">*</strong>
-                <br>
-                <input type="text" class="form-control" formControlName="typeofsellerother" style="width: 340px">
-              </app-field>
-            </section>
-          </app-field>
-          <app-field label="What type of Controlled Equipment do you intend to sell?" [showChevrons]="false"
-            errorMessage="Please indicate what type of controlled equipment you intend to sell" [valid]="!showErrorMessages || isEquipmentTypeValid()" [required]="true">
-            <p>Please select all the options that apply.</p>
-            <input type="checkbox" style="margin-right: 10px;" formControlName="intendtosellpillpress">
-            <span>Pill press</span> <br>
-            <input type="checkbox" style="margin-right: 10px;" formControlName="intendtosellencapsulator">
-            <span>Encapsulator</span> <br>
-            <input type="checkbox" style="margin-right: 10px;" formControlName="intendtoselldiemouldorpunch">
-            <span>Die, mould, or punch</span> <br>
-            <input type="checkbox" style="margin-right: 10px;" formControlName="intendtosellpharmaceuticalmixerorblender">
-            <span>Pharmaceutical mixer or blender</span> <br>
-            <input type="checkbox" formControlName="intendtosellothercheck" style="margin-right: 10px;">
-            <span>Other</span> <br>
-            <section style="padding-left: 20px" *ngIf="form.get('intendtosellothercheck').value === true">
-              <app-field errorMessage="Please specify what 'other' type of controlled equipment you intend to sell" [required]="true" [valid]="form.get('intendtosellother').value || !form.get('intendtosellother').touched">
-                <i>If Other, Please specify</i>&nbsp;<strong class="error-states">*</strong>
-                <br>
-                <input type="text" class="form-control" formControlName="intendtosellother" style="width: 340px">
-              </app-field>
-            </section>
-          </app-field>
-          <app-field label="Please tell us more about your business as it relates to selling Controlled Equipment?">
-            <textarea class="form-control" rows="5" formControlName="additionalbusinessinformationaboutseller"
-              maxlength="1000"></textarea>
-          </app-field>
-        </section>
-
-        <h3 class="blue-header">OWNER/MANAGER INFORMATION</h3>
-        <section class="padded-section">
-
-          <p>As part of the application process for a Registered Seller, business owners and managers are requested to
-            consent to criminal record, police information, and correctional service information checks (Prescribed
-            Checks).</p>
-
-          <div class="notes" style="display: flex;">
-            <i class="fas fa-exclamation-circle" style="color: #fcba19; margin-right: 10px;"></i>
-            <span>Please be advised that your application is not considered complete until all the listed business
-              owners and managers have separately consented to Prescribed Checks.</span>
-          </div>
-
-          <p>Business owners and managers listed in this application will be contacted with instructions once you
-            submit this application.</p>
-
-          <div class="notes" style="display: flex;">
-            <i class="fas fa-exclamation-circle" style="color: #003366; margin-right: 10px;"></i>
-            <span>Further information on the definitions of "owner" and "manager" can be found at: www.website.com</span>
-          </div>
-
-          <section style="display: flex; flex-direction: row-reverse;">
-            <button class="btn btn-secondary" (click)="addEditOwner({})">ADD AN OWNER/MANAGER</button>
+      <h3 class="blue-header">PURPOSE OF CONTROLLED EQUIPMENT</h3>
+      <section class="padded-section">
+        <app-field label="Do you intend on owning, using, or possessing Controlled Equipment for the purposes of producing a product?"
+          [showChevrons]="false" errorMessage="Please select yes or no" [valid]="form.get('ownusepossesstoproduceaproduct').valid || !form.get('ownusepossesstoproduceaproduct').touched"
+          [required]="true">
+          <input type="radio" [value]="true" name="ownusepossesstoproduceaproduct" formControlName="ownusepossesstoproduceaproduct">
+          <span style="padding-right: 10px;">&nbsp;Yes</span>
+          <input type="radio" [value]="false" name="ownusepossesstoproduceaproduct" formControlName="ownusepossesstoproduceaproduct">
+          <span>&nbsp;No</span>
+        </app-field>
+        <div class="notes" style="display: flex;" *ngIf="form.get('ownusepossesstoproduceaproduct').value === true">
+          <i class="fas fa-exclamation-circle" style="color: #fcba19; margin-right: 10px;"></i>
+          <section>
+            <strong>Note: </strong>
+            <span>A Registered Seller is only permitted to sell Controlled Equipment. If you want to produce a
+              product
+              for your own business or for others, you must also be an Authorized Owner or Waiver Holder.</span>
           </section>
-
-          <table class="summary-table">
-            <tr>
-              <th>FIRST NAME</th>
-              <th>LAST NAME</th>
-              <th>TITLE/POSITION</th>
-              <th>CONTACT DETAILS</th>
-              <th style="background-color: transparent; width: 50px"></th>
-            </tr>
-            <tr *ngFor="let item of ownersAndManagers; let i = index;" [ngClass]="{cssClass: expression}">
-              <td [ngClass]="{'row-alt': i%2 == 0}">{{item?.contact?.firstName}}</td>
-              <td [ngClass]="{'row-alt': i%2 == 0}">{{item?.contact?.lastName}}</td>
-              <td [ngClass]="{'row-alt': i%2 == 0}">{{item.jobTitle}}</td>
-              <td [ngClass]="{'row-alt': i%2 == 0}">Phone: {{item?.contact?.phoneNumber}} <br>
-                Email: {{item?.contact?.email}}</td>
-              <td [ngClass]="{'row-alt': i%2 == 0}">
-                <i class="fas fa-pencil-alt" style="cursor: pointer; margin-right: 10px;" (click)="addEditOwner(item)"></i>
-                <i class="fas fa-trash-alt" style="cursor: pointer;" (click)="deleteOwnerOrManager(item)"></i>
-              </td>
-            </tr>
-          </table>
-          <p *ngIf="showErrorMessages && ownersAndManagers.length < 1" class="error-states">
-            Please add a manager or an owner
-          </p>
-        </section>
-        <hr>
-
-        <section style="display: flex; justify-content: space-between; padding-top: 30px;">
-          <!-- <div><span class="error-states">*</span> <i>Required field</i></div> -->
-          <a href="javascript: void(0);" (click)="save(false);"><i style="margin-right: 5px" class="fa fa-save"></i>Save
-            & Close</a>
-          <div>
-            <button class="btn btn-primary" (click)="markAsTouched(); save(true);">SAVE & CONTINUE</button>
-          </div>
-        </section>
-      </div>
-    </div>
-    <div class="col-lg-4 col-sm-12" style="position: relative">
-      <!-- <div [ngBusy]="busy"></div> -->
-      <p></p>
-      <section class="submit-container">
-        <table>
-          <tr>
-            <td>
-              <h2 class="round-icon-wrapper"><i class="fas fa-address-card"></i></h2>
-            </td>
-            <td style="padding-left: 10px">
-              <h2>Useful Links & Information</h2>
-            </td>
-          </tr>
-        </table>
-        <div class="submit-content">
+        </div>
+        <app-field label="Do you intend on renting or leasing Controlled Equipment to others?" [showChevrons]="false"
+          errorMessage="Please select yes or no" [valid]="form.get('intendonrentingleasingtoothers').valid || !form.get('intendonrentingleasingtoothers').touched"
+          [required]="true">
+          <input type="radio" [value]="true" name="intendonrentingleasingtoothers" formControlName="intendonrentingleasingtoothers">
+          <span style="padding-right: 10px;">&nbsp;Yes</span>
+          <input type="radio" [value]="false" name="intendonrentingleasingtoothers" formControlName="intendonrentingleasingtoothers">
+          <span>&nbsp;No</span>
+        </app-field>
+        <div class="notes" style="display: flex;" *ngIf="form.get('intendonrentingleasingtoothers').value === true">
+          <i class="fas fa-exclamation-circle" style="color: #fcba19; margin-right: 10px;"></i>
+          <section>
+            <strong>Note: </strong>
+            <span>If you are renting, leasing (or otherwise lending) Controlled Equipment to other businesses, they
+              must be confirmed Authorized Owners or Waiver Holders.</span>
+          </section>
         </div>
       </section>
 
+      <h3 class="blue-header">SELLER BUSINESS DETAILS</h3>
+      <section class="padded-section">
+        <p></p>
+        <app-field label="Do you intend on selling Controlled Equipment to others?" [required]="true" [showChevrons]="false"
+          errorMessage="Please select yes or no" [valid]="form.get('intendonsellingequipmenttoothers').valid || !form.get('intendonsellingequipmenttoothers').touched">
+          <input type="radio" [value]="true" name="intendonsellingequipmenttoothers" formControlName="intendonsellingequipmenttoothers">
+          <span style="padding-right: 10px;">&nbsp;Yes</span>
+          <input type="radio" [value]="false" name="intendonsellingequipmenttoothers" formControlName="intendonsellingequipmenttoothers">
+          <span>&nbsp;No</span>
+        </app-field>
+
+        <app-field label="What type of seller are you?" [showChevrons]="false" errorMessage="Please indicate what type of seller you are"
+          [valid]="!showErrorMessages || isSellerTypeValid()" [required]="true">
+          <p>Please select all the options that apply.</p>
+          <input type="checkbox" style="margin-right: 10px;" formControlName="manufacturerofcontrolledequipment">
+          <span>Manufacturer of Controlled Equipment</span> <br>
+          <input type="checkbox" style="margin-right: 10px;" formControlName="onetimesellerofowncontrolledequipment">
+          <span>One-time seller of Controlled Equipment</span> <br>
+          <input type="checkbox" style="margin-right: 10px;" formControlName="retailerofcontrolledequipment">
+          <span>Retailer of Controlled Equipment</span> <br>
+          <input type="checkbox" formControlName="typeofsellerothercheck" style="margin-right: 10px;">
+          <span>Other</span> <br>
+          <section style="padding-left: 20px" *ngIf="form.get('typeofsellerothercheck').value === true">
+            <app-field errorMessage="Please specify what 'other' type of seller you are" [required]="true" [valid]="form.get('typeofsellerother').value || !form.get('typeofsellerother').touched">
+              <i>If Other, Please specify</i>&nbsp;<strong class="error-states">*</strong>
+              <br>
+              <input type="text" class="form-control" formControlName="typeofsellerother" style="width: 340px">
+            </app-field>
+          </section>
+        </app-field>
+        <app-field label="What type of Controlled Equipment do you intend to sell?" [showChevrons]="false" errorMessage="Please indicate what type of controlled equipment you intend to sell"
+          [valid]="!showErrorMessages || isEquipmentTypeValid()" [required]="true">
+          <p>Please select all the options that apply.</p>
+          <input type="checkbox" style="margin-right: 10px;" formControlName="intendtosellpillpress">
+          <span>Pill press</span> <br>
+          <input type="checkbox" style="margin-right: 10px;" formControlName="intendtosellencapsulator">
+          <span>Encapsulator</span> <br>
+          <input type="checkbox" style="margin-right: 10px;" formControlName="intendtoselldiemouldorpunch">
+          <span>Die, mould, or punch</span> <br>
+          <input type="checkbox" style="margin-right: 10px;" formControlName="intendtosellpharmaceuticalmixerorblender">
+          <span>Pharmaceutical mixer or blender</span> <br>
+          <input type="checkbox" formControlName="intendtosellothercheck" style="margin-right: 10px;">
+          <span>Other</span> <br>
+          <section style="padding-left: 20px" *ngIf="form.get('intendtosellothercheck').value === true">
+            <app-field errorMessage="Please specify what 'other' type of controlled equipment you intend to sell"
+              [required]="true" [valid]="form.get('intendtosellother').value || !form.get('intendtosellother').touched">
+              <i>If Other, Please specify</i>&nbsp;<strong class="error-states">*</strong>
+              <br>
+              <input type="text" class="form-control" formControlName="intendtosellother" style="width: 340px">
+            </app-field>
+          </section>
+        </app-field>
+        <app-field label="Please tell us more about your business as it relates to selling Controlled Equipment?">
+          <textarea class="form-control" rows="5" formControlName="additionalbusinessinformationaboutseller" maxlength="1000"></textarea>
+        </app-field>
+      </section>
+
+      <h3 class="blue-header">OWNER/MANAGER INFORMATION</h3>
+      <section class="padded-section">
+
+        <p>As part of the application process for a Registered Seller, business owners and managers are requested to
+          consent to criminal record, police information, and correctional service information checks (Prescribed
+          Checks).</p>
+
+        <div class="notes" style="display: flex;">
+          <i class="fas fa-exclamation-circle" style="color: #fcba19; margin-right: 10px;"></i>
+          <span>Please be advised that your application is not considered complete until all the listed business
+            owners and managers have separately consented to Prescribed Checks.</span>
+        </div>
+
+        <p>Business owners and managers listed in this application will be contacted with instructions once you
+          submit this application.</p>
+
+        <div class="notes" style="display: flex;">
+          <i class="fas fa-exclamation-circle" style="color: #003366; margin-right: 10px;"></i>
+          <span>Further information on the definitions of "owner" and "manager" can be found at: www.website.com</span>
+        </div>
+
+        <section style="display: flex; flex-direction: row-reverse;">
+          <button class="btn btn-secondary" (click)="addEditOwner({})">ADD AN OWNER/MANAGER</button>
+        </section>
+
+        <table class="summary-table">
+          <tr>
+            <th>FIRST NAME</th>
+            <th>LAST NAME</th>
+            <th>TITLE/POSITION</th>
+            <th>CONTACT DETAILS</th>
+            <th style="background-color: transparent; width: 50px"></th>
+          </tr>
+          <tr *ngFor="let item of ownersAndManagers; let i = index;" [ngClass]="{cssClass: expression}">
+            <td [ngClass]="{'row-alt': i%2 == 0}">{{item?.contact?.firstName}}</td>
+            <td [ngClass]="{'row-alt': i%2 == 0}">{{item?.contact?.lastName}}</td>
+            <td [ngClass]="{'row-alt': i%2 == 0}">{{item.jobTitle}}</td>
+            <td [ngClass]="{'row-alt': i%2 == 0}">Phone: {{item?.contact?.phoneNumber}} <br>
+              Email: {{item?.contact?.email}}</td>
+            <td [ngClass]="{'row-alt': i%2 == 0}">
+              <i class="fas fa-pencil-alt" style="cursor: pointer; margin-right: 10px;" (click)="addEditOwner(item)"></i>
+              <i class="fas fa-trash-alt" style="cursor: pointer;" (click)="deleteOwnerOrManager(item)"></i>
+            </td>
+          </tr>
+        </table>
+        <p *ngIf="showErrorMessages && ownersAndManagers.length < 1" class="error-states">
+          Please add a manager or an owner
+        </p>
+      </section>
+      <hr>
+
+      <section style="display: flex; justify-content: space-between; padding-top: 30px;">
+        <!-- <div><span class="error-states">*</span> <i>Required field</i></div> -->
+        <a href="javascript: void(0);" (click)="save(false);"><i style="margin-right: 5px" class="fa fa-save"></i>Save
+          & Close</a>
+        <div>
+          <button class="btn btn-primary" (click)="markAsTouched(); save(true);">SAVE & CONTINUE</button>
+        </div>
+      </section>
     </div>
   </div>
 </div>
