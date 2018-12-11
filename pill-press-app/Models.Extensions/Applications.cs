@@ -82,7 +82,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     additionalbusinessinformationaboutseller = incident.BcgovAdditionalbusinessinformationaboutseller,
 
                     // EQUIPMENT FIELDS
-                    
+                    EquipmentType = (Equipmenttype?)incident.BcgovEquipmenttype,
                     EquipmentTypeOther = incident.BcgovEquipmenttypeother,
 
                     PillpressEncapsulatorSizeOtherCheck = incident.BcgovPillpressencapsulatorsizeothercheck,
@@ -146,7 +146,14 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     DeclarationOfCorrectInformation = incident.BcgovDeclarationofcorrectinformation,
                     ConfirmationOfAuthorizedUse = incident.BcgovConfirmationofauthorizeduse,
 
-                    SubmittedDate = incident.BcgovSubmitteddate
+                    SubmittedDate = incident.BcgovSubmitteddate,
+
+                    LevelOfEquipmentAutomation = (Levelofequipmentautomation?)incident.BcgovLevelofequipmentautomation,
+                    PillpressEncapsulatorSize = (Pillpressencapsulatorsize?)incident.BcgovPillpressencapsulatorsize,
+                    PillpressMaxCapacity = incident.BcgovPillpressmaxcapacity,
+                    EncapsulatorMaxCapacity = incident.BcgovEncapsulatormaxcapacity,
+                    HowWasEquipmentBuilt = (Howwasequipmentbuilt?)incident.BcgovHowwasequipmentbuilt
+                    
                 };
 
 
@@ -213,17 +220,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     result.AddressofBusinessThatHasRentedorLeased = incident.BcgovAddressofBusinessthathasRentedorLeased.ToViewModel();
                 }
 
-                // Option Sets
-
-                // OutsideBcSellersLocation = incident.BcgovOutsidebcsellerslocation,
-
-                // EquipmentType = incident.BcgovEquipmenttype,
-                // LevelOfEquipmentAutomation = incident.BcgovLevelofequipmentautomation,
-                // PillpressEncapsulatorSize = incident.BcgovPillpressencapsulatorsize,
-                // PillpressMaxCapacity = incident.BcgovPillpressmaxcapacity,
-                // EncapsulatorMaxCapacity = incident.BcgovEncapsulatormaxcapacity,
-                // HowWasEquipmentBuilt = incident.BcgovHowwasequipmentbuilt,
-                // OriginatingSellersLocation = incident.BcgovOriginatingsellerslocation,
+                // OutsideBcSellersLocation = incident.BcgovOutsidebcsellerslocation,                
 
             }
             return result;
@@ -291,7 +288,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             to.BcgovAdditionalbusinessinformationaboutseller = from.additionalbusinessinformationaboutseller;
 
             // EQUIPMENT FIELDS
-
+            to.BcgovEquipmenttype = (int?)from.EquipmentType;
             to.BcgovEquipmenttypeother = from.EquipmentTypeOther;
 
             to.BcgovPillpressencapsulatorsizeothercheck = from.PillpressEncapsulatorSizeOtherCheck;
@@ -355,6 +352,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
 
             to.BcgovSubmitteddate = from.SubmittedDate;
 
+            to.BcgovLevelofequipmentautomation = (int?)from.LevelOfEquipmentAutomation;
+            to.BcgovPillpressencapsulatorsize = (int?)from.PillpressEncapsulatorSize;
+            to.BcgovPillpressmaxcapacity = from.PillpressMaxCapacity;
+            to.BcgovEncapsulatormaxcapacity = from.EncapsulatorMaxCapacity;
+            to.BcgovHowwasequipmentbuilt = (int?)from.HowWasEquipmentBuilt;
         }
     }
 }
