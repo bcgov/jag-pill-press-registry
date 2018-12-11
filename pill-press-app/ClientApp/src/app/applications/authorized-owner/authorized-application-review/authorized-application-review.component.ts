@@ -6,7 +6,7 @@ import { DynamicsDataService } from '../../../services/dynamics-data.service';
 import { ApplicationDataService } from '../../../services/adoxio-application-data.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { PRODUCTING_OWN_PRODUCT, MANUFACTURING_FOR_OTHERS } from '../../waiver/waiver-application/waiver-application.component';
-import { Application } from '../../../models/adoxio-application.model';
+import { Application } from '../../../models/application.model';
 
 
 @Component({

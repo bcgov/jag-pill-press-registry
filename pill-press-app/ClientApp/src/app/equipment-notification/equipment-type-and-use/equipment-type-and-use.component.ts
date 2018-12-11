@@ -21,7 +21,16 @@ export class EquipmentTypeAndUseComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-
+      id: [],
+      equipmentType: [],
+      equipmentTypeOther: [],
+      levelOfEquipmentAutomation: [],
+      pillpressEncapsulatorsize: [],
+      pillpressencapsulatorsizeothercheck: [],
+      pillpressencapsulatorsizeother: [],
+      pillpressmaxcapacity: [],
+      encapsulatorMaxCapacity: [],
+      explanationOfEquipmentuse: [],
     });
 
   }

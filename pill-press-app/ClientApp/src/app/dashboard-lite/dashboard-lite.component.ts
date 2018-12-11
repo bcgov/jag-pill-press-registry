@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserDataService } from '../services/user-data.service';
 import { User } from '../models/user.model';
 import { Router } from '@angular/router';
-import { Application } from '../models/adoxio-application.model';
+import { Application } from '../models/application.model';
 import { DynamicsDataService } from '../services/dynamics-data.service';
 import { ApplicationDataService } from '../services/adoxio-application-data.service';
 import { DynamicsAccount } from '../models/dynamics-account.model';
