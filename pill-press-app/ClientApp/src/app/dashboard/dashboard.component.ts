@@ -71,7 +71,7 @@ export class DashboardComponent implements OnInit {
     const newLicenceApplicationData: Application = new Application();
     this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Authorized Owner').subscribe(
       data => {
-        this.router.navigateByUrl(`/application/profile-review/authorized-owner/${data.id}`);
+        this.router.navigateByUrl(`/authorized-owner/profile-review/${data.id}`);
       },
       err => {
         this.snackBar.open('Error starting a New Authorized Owner Application', 'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
@@ -84,10 +84,24 @@ export class DashboardComponent implements OnInit {
     const newLicenceApplicationData: Application = new Application();
     this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Registered Seller').subscribe(
       data => {
-        this.router.navigateByUrl(`/application/profile-review/registered-seller/${data.id}`);
+        this.router.navigateByUrl(`/registered-seller/profile-review/${data.id}`);
       },
       err => {
         this.snackBar.open('Error starting a New Registered Seller Application', 'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
+        console.log('Error starting a Registered Seller Application');
+      }
+    );
+  }
+
+  addEquipment() {
+    const newLicenceApplicationData: Application = new Application();
+    this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Equipment Notification').subscribe(
+      data => {
+        this.router.navigateByUrl(`/equipment-notification/profile-review/${data.id}`);
+      },
+      err => {
+        this.snackBar.open('Error starting a New Equipment Notificatio Application',
+          'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
         console.log('Error starting a Registered Seller Application');
       }
     );
