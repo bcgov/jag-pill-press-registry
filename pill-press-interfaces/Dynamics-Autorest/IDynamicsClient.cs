@@ -143,5 +143,10 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// </summary>
         IEntitydefinitions Entitydefinitions { get; }
 
+        /// <summary>
+        /// Gets the IGlobaloptionsetdefinitions.
+        /// </summary>
+        IGlobaloptionsetdefinitions Globaloptionsetdefinitions { get; }
+
     }
 }
