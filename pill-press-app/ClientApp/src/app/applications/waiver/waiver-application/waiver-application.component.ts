@@ -4,7 +4,7 @@ import { Subscription, Observable, zip } from 'rxjs';
 import { ApplicationDataService } from '../../../services/adoxio-application-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DynamicsDataService } from '../../../services/dynamics-data.service';
-import { Application } from '../../../models/adoxio-application.model';
+import { Application } from '../../../models/application.model';
 
 export const PRODUCTING_OWN_PRODUCT = 'Producing Own Product';
 export const MANUFACTURING_FOR_OTHERS = 'Manufacturing For Others';
