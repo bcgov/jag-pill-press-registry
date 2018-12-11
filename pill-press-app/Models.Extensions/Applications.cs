@@ -112,6 +112,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     NameOfBcSeller = incident.BcgovNameofbcseller,                    
                     Dateofpurchasefrombcseller = incident.BcgovDateofpurchasefrombcseller,
                     BcSellersRegistrationNumber = incident.BcgovBcsellersregistrationnumber,
+                    BcSellersContactPhoneNumber = incident.BcgovBcsellerscontactphonenumber,
+                    BcSellersContactEmail = incident.BcgovBcsellerscontactemail,
                     OutsideBcSellersName = incident.BcgovOutsidebcsellersname,
                     DateOfPurchaseFromOutsideBcSeller = incident.BcgovDateofpurchasefromoutsidebcseller,
                     NameOfImporter = incident.BcgovNameofimporter,                    
@@ -145,7 +147,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     ConfirmationOfAuthorizedUse = incident.BcgovConfirmationofauthorizeduse
 
                 };
-                
+
 
                 // CustomerID
                 if (incident.CustomeridAccount != null)
@@ -173,26 +175,46 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     }
                 }
 
-                // AddressPersonBusinessThatBuiltEquipment = changeme,
+                ///
+                /// EQUIPMENT RELATED ENTITIES
+                /// 
 
-                // BCSellersAddress
+                // Addresses of equipment builders - seems to be removed
+                // AddressPersonBusinessThatBuiltEquipment = changeme,                
 
-                //                     BcSellersContactPhoneNumber = incident.,
-                //                BcSellersContactEmail = changeme,
+                if (incident?.BcgovBCSellersAddress != null)
+                {
+                    result.BCSellersAddress = incident.BcgovBCSellersAddress.ToViewModel();
+                }
 
-                // ImportersAddress = incident.BcgovImportersAddress,
+                if (incident?.BcgovImportersAddress != null)
+                {
+                    result.ImportersAddress = incident.BcgovImportersAddress.ToViewModel();
+                }
 
-                // OriginatingSellersAddress = incident.BcgovOriginatingSellersAddress,
+                if (incident?.BcgovOriginatingSellersAddress != null)
+                {
+                    result.OriginatingSellersAddress = incident.BcgovOriginatingSellersAddress.ToViewModel();
+                }
 
+                if (incident?.BcgovOutsideBCSellersAddress != null)
+                {
+                    result.OutsideBCSellersAddress = incident.BcgovOutsideBCSellersAddress.ToViewModel();
+                }
 
-                // OutsideBCSellersAddress = incident.BcgovOutsideBCSellersAddress,
-                // OutsideBcSellersLocation = incident.BcgovOutsidebcsellerslocation,
+                if (incident?.BcgovAddressofBusinessthathasGivenorLoaned != null)
+                {
+                    result.AddressofBusinessthathasGivenorLoaned = incident.BcgovAddressofBusinessthathasGivenorLoaned.ToViewModel();
+                }
 
-                // AddressofBusinessthathasGivenorLoaned = incident.BcgovAddressofBusinessthathasGivenorLoaned,
-
-                // AddressofBusinessThatHasRentedorLeased = incident.BcgovAddressofBusinessthathasRentedorLeased,
+                if (incident?.BcgovAddressofBusinessthathasRentedorLeased != null)
+                {
+                    result.AddressofBusinessThatHasRentedorLeased = incident.BcgovAddressofBusinessthathasRentedorLeased.ToViewModel();
+                }
 
                 // Option Sets
+
+                // OutsideBcSellersLocation = incident.BcgovOutsidebcsellerslocation,
 
                 // EquipmentType = incident.BcgovEquipmenttype,
                 // LevelOfEquipmentAutomation = incident.BcgovLevelofequipmentautomation,
@@ -329,6 +351,9 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             to.BcgovDetailsofhowequipmentcameintopossession = from.DetailsOfHowEquipmentCameIntoPossession;
             to.BcgovDeclarationofcorrectinformation = from.DeclarationOfCorrectInformation;
             to.BcgovConfirmationofauthorizeduse = from.ConfirmationOfAuthorizedUse;
+
+
+
         }
     }
 }

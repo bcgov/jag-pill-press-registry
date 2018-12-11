@@ -265,7 +265,7 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public string NameOfBcSeller { get; set; }
 
         [JsonProperty(PropertyName = "bcSellersAddress")]
-        public string BCSellersAddress { get; set; }
+        public ViewModels.CustomAddress BCSellersAddress { get; set; }
 
         [JsonProperty(PropertyName = "bcSellersContactPhoneNumber")]
         public string BcSellersContactPhoneNumber { get; set; }
@@ -283,7 +283,7 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public string OutsideBcSellersName { get; set; }
 
         [JsonProperty(PropertyName = "outsideBcSellersAddress")]
-        public string OutsideBCSellersAddress { get; set; }
+        public ViewModels.CustomAddress OutsideBCSellersAddress { get; set; }
 
         [JsonProperty(PropertyName = "outsideBcSellersLocation")]
         public string OutsideBcSellersLocation { get; set; }
@@ -295,7 +295,7 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public string NameOfImporter { get; set; }
 
         [JsonProperty(PropertyName = "importersAddress")]
-        public string ImportersAddress { get; set; }
+        public ViewModels.CustomAddress ImportersAddress { get; set; }
 
         [JsonProperty(PropertyName = "importersRegistrationNumber")]
         public string ImportersRegistrationNumber { get; set; }
@@ -304,7 +304,7 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public string nameoforiginatingseller { get; set; }
 
         [JsonProperty(PropertyName = "OriginatingSellersAddress")]
-        public string OriginatingSellersAddress { get; set; }
+        public ViewModels.CustomAddress OriginatingSellersAddress { get; set; }
 
         [JsonProperty(PropertyName = "originatingSellersLocation")]
         public string OriginatingSellersLocation { get; set; }
@@ -337,7 +337,7 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public string NameOfBusinessThatHasGivenOrLoaned { get; set; }
 
         [JsonProperty(PropertyName = "addressofBusinessthathasGivenorLoaned")]
-        public string AddressofBusinessthathasGivenorLoaned { get; set; }
+        public ViewModels.CustomAddress AddressofBusinessthathasGivenorLoaned { get; set; }
 
         [JsonProperty(PropertyName = "phoneofbusinessthathasgivenorloaned")]
         public string PhoneOfBusinessThatHasGivenOrLoaned { get; set; }
@@ -352,7 +352,7 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public string NameOfBusinessThatHasRentedOrLeased { get; set; }
 
         [JsonProperty(PropertyName = "addressOfBusinessThatHasRentedorLeased")]
-        public string AddressofBusinessThatHasRentedorLeased { get; set; }
+        public ViewModels.CustomAddress AddressofBusinessThatHasRentedorLeased { get; set; }
 
         [JsonProperty(PropertyName = "phoneOfBusinessThatHasRentedOrLeased")]
         public string PhoneOfBusinessThatHasRentedOrLeased { get; set; }
