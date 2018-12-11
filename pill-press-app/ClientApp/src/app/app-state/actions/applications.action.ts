@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Application } from '../../models/adoxio-application.model';
+import { Application } from '../../models/application.model';
 
 export const APPLICATION = 'APPLICATION';
 export const SET_APPLICATION = 'SET_APPLICATION';

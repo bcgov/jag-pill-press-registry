@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Headers, Response, ResponseContentType } from '@angular/http';
 
 import { FileSystemItem } from '../models/file-system-item.model';
-import { Application } from '../models/adoxio-application.model';
+import { Application } from '../models/application.model';
 import { catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
