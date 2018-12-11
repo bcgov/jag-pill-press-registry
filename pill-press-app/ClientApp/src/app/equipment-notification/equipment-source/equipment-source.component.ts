@@ -22,14 +22,103 @@ export class EquipmentSourceComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       id: [],
-      ownedBefore1019: [],
-      purchasedFromBCSeller: [],
-      purchasedFromOutsideBC: [],
-      importedToBC: [],
-      alternaticeOwnership: [],
-      selfAssembled: [],
-      purchasedOther: [],
-      assembleEQForOtherUses: [],
+      ownedBeforeJan2019: [],
+
+      // BC Seller fields
+      purchasedFromBcSeller: [],
+      purchasedFromSellerOutsideOfBc: [],
+      importedToBcByAThirdParty: [],
+      alternativeOwnershipArrangement: [],
+      iAssembledItMyself: [],
+      nameOfBcSeller: [],
+      bcSellersContactPhoneNumber: [],
+      bcSellersContactEmail: [],
+      dateOfPurchaseFromBcSeller: [],
+      bcSellersRegistrationNumber: [],
+
+      // Outside BC seller fields
+      outsideBcSellersName: [],
+      outsideBcSellersLocation: [],
+      dateOfPurchaseFromOutsideBcSeller: [],
+
+      // Imported to BC by a third party
+      nameOfImporter: [],
+      importersRegistrationNumber: [],
+      nameOfOriginatingSeller: [],
+      originatingSellersLocation: [],
+      dateOfPurchaseFromImporter: [],
+
+      // Alternative Ownership Arrangement fields
+      kindOfAlternateOwnershipOtherCheck: [],
+      kindOfAlternateOwnershipOther: [],
+      possessUntilICanSell: [],
+      giveNorLoanedToMe: [],
+      rentingOrLeasingFromAnotherBusiness: [],
+      usingToManufactureAProduct: [],
+      areYouARegisteredSeller: [],
+      emailOfTheBusinessThatHasGivenOrLoaned: [],
+      phoneofbusinessthathasgivenorloaned: [],
+      emailOfBusinessThatHasRentedOrLeased: [],
+      phoneOfBusinessThatHasRentedOrLeased: [],
+      whyHaveYouRentedOrLeased: [],
+      whyHaveYouAcceptedOrBorrowed: [],
+
+      // I assembled it myself fields
+      whenDidYouAssembleEquipment: [],
+      whereDidYouObtainParts: [],
+      doYouAssembleForOtherBusinesses: [],
+      detailsOfAssemblyForOtherBusinesses: [],
+      howCameIntoPossessionOtherCheck: [],
+      detailsOfHowEquipmentCameIntoPossession: [],
+
+      addressofBusinessthathasGivenorLoaned: this.fb.group({
+        id: [],
+        streetLine1: [],
+        streetLine2: [],
+        city: [],
+        province: [],
+        postalCode: [],
+      }),
+      addressOfBusinessThatHasRentedorLeased: this.fb.group({
+        id: [],
+        streetLine1: [],
+        streetLine2: [],
+        city: [],
+        province: [],
+        postalCode: [],
+      }),
+      bcSellersAddress: this.fb.group({
+        id: [],
+        streetLine1: [],
+        streetLine2: [],
+        city: [],
+        province: [],
+        postalCode: [],
+      }),
+      importersAddress: this.fb.group({
+        id: [],
+        streetLine1: [],
+        streetLine2: [],
+        city: [],
+        province: [],
+        postalCode: [],
+      }),
+      outsideBcSellersAddress: this.fb.group({
+        id: [],
+        streetLine1: [],
+        streetLine2: [],
+        city: [],
+        province: [],
+        postalCode: [],
+      }),
+      OriginatingSellersAddress: this.fb.group({
+        id: [],
+        streetLine1: [],
+        streetLine2: [],
+        city: [],
+        province: [],
+        postalCode: [],
+      }),
 
     });
 

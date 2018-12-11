@@ -3,6 +3,7 @@ import { AdoxioLicense } from './adoxio-license.model';
 import { Invoice } from './invoice.model';
 import { DynamicsContact } from './dynamics-contact.model';
 import { BusinessContact } from './business-contact.model';
+import { CustomAddress } from './custom-address.model';
 
 export class Application {
   id: string;
@@ -54,20 +55,17 @@ export class Application {
   typeofsellerothercheck: boolean;
 
   // EquipmentFields
-  addressofBusinessthathasGivenorLoaned: string;
-  addressOfBusinessThatHasRentedorLeased: string;
   addressPersonBusinessThatBuiltEquipment: string;
   alternativeOwnershipArrangement: boolean;
   areYouARegisteredSeller: boolean;
-  bcSellersAddress: string;
   bcSellersContactEmail: string;
   bcSellersContactPhoneNumber: string;
   bcSellersRegistrationNumber: string;
   confirmationOfAuthorizedUse: boolean;
   customBuiltSerialNumber: string;
-  dateOfPurchaseFromBcSellerte;
-  dateOfPurchaseFromImporterte;
-  dateOfPurchaseFromOutsideBcSellerte;
+  dateOfPurchaseFromBcSeller: Date;
+  dateOfPurchaseFromImporter: Date;
+  dateOfPurchaseFromOutsideBcSeller: Date;
   declarationOfCorrectInformation: boolean;
   detailsOfAssemblyForOtherBusinesses: string;
   detailsOfHowEquipmentCameIntoPossession: string;
@@ -89,7 +87,6 @@ export class Application {
   howWasEquipmentBuiltOtherCheck: boolean;
   iAssembledItMyself: boolean;
   importedToBcByAThirdParty: boolean;
-  importersAddress: string;
   importersRegistrationNumber: string;
   kindOfAlternateOwnershipOther: string;
   kindOfAlternateOwnershipOtherCheck: boolean;
@@ -100,9 +97,7 @@ export class Application {
   nameOfImporter: string;
   nameOfManufacturer: string;
   nameOfOriginatingSeller: string;
-  OriginatingSellersAddress: string;
   originatingSellersLocation: string;
-  outsideBcSellersAddress: string;
   outsideBcSellersLocation: string;
   outsideBcSellersName: string;
   ownedBeforeJan2019: boolean;
@@ -121,13 +116,19 @@ export class Application {
   serialNumberForCustomBuilt: boolean;
   serialNumberKeyPartDescription: string;
   usingToManufactureAProduct: boolean;
-  whenDidYouAssembleEquipmentte;
+  whenDidYouAssembleEquipment: Date;
   whereDidYouObtainParts: string;
   whyHaveYouAcceptedOrBorrowed: string;
   whyHaveYouRentedOrLeased: string;
 
   // related entities
+  addressOfBusinessThatHasRentedorLeased: CustomAddress;
+  addressofBusinessthathasGivenorLoaned: CustomAddress;
   applicant: Account;
-  customProducts: CustomProduct[];
+  bcSellersAddress: CustomAddress;
   businessContacts: BusinessContact[];
+  customProducts: CustomProduct[];
+  importersAddress: CustomAddress;
+  outsideBcSellersAddress: CustomAddress;
+  OriginatingSellersAddress: CustomAddress;
 }

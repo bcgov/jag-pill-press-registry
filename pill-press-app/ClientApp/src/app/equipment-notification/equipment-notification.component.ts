@@ -43,11 +43,7 @@ export class EquipmentNotificationComponent implements OnInit {
   }
 
   selectionChange(event) {
-    if (event.selectedIndex === 0) {
-      this.router.navigateByUrl(`/equipment-notification/${this.tabList[event.selectedIndex]}/type-and-use/${this.equipmentId}`);
-    } else {
       this.router.navigateByUrl(`/equipment-notification/${this.tabList[event.selectedIndex]}/${this.equipmentId}`);
-    }
   }
 
 }
