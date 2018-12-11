@@ -172,16 +172,18 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         // EQUIPMENT FIELDS
 
         [JsonProperty(PropertyName = "equipmentType")]
-        public string EquipmentType { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public Equipmenttype? EquipmentType { get; set; }
 
         [JsonProperty(PropertyName = "equipmentTypeOther")]
         public string EquipmentTypeOther { get; set; }
 
         [JsonProperty(PropertyName = "levelOfEquipmentAutomation")]
-        public string LevelOfEquipmentAutomation { get; set; }
+        public Levelofequipmentautomation? LevelOfEquipmentAutomation { get; set; }
 
         [JsonProperty(PropertyName = "pillpressEncapsulatorsize")]
-        public string PillpressEncapsulatorSize { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public Pillpressencapsulatorsize? PillpressEncapsulatorSize { get; set; }
 
         [JsonProperty(PropertyName = "pillpressEncapsulatorSizeOtherCheck")]
         public bool? PillpressEncapsulatorSizeOtherCheck { get; set; }
@@ -190,16 +192,16 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public string PillpressEncapsulatorSizeOther { get; set; }
 
         [JsonProperty(PropertyName = "pillpressmaxcapacity")]
-        public string PillpressMaxCapacity { get; set; }
+        public int? PillpressMaxCapacity { get; set; }
 
         [JsonProperty(PropertyName = "encapsulatorMaxCapacity")]
-        public string EncapsulatorMaxCapacity { get; set; }
+        public int? EncapsulatorMaxCapacity { get; set; }
 
         [JsonProperty(PropertyName = "explanationOfEquipmentuse")]
         public string ExplanationOfEquipmentUse { get; set; }
 
         [JsonProperty(PropertyName = "howWasEquipmentBuilt")]
-        public string HowWasEquipmentBuilt { get; set; }
+        public Howwasequipmentbuilt? HowWasEquipmentBuilt { get; set; }
 
         [JsonProperty(PropertyName = "howWasEquipmentBuiltOtherCheck")]
         public bool? HowWasEquipmentBuiltOtherCheck { get; set; }
@@ -386,5 +388,7 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
 
         List<Contact> OwnersAndManagers { get; set; }
 
+        [JsonProperty(PropertyName = "submittedDate")]
+        public System.DateTimeOffset? SubmittedDate { get; set; }
     }
 }

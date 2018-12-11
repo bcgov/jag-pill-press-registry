@@ -102,5 +102,8 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public string name { get; set; }
         public string pstNumber { get; set; }
         public string websiteAddress { get; set; }
+
+        [JsonProperty(PropertyName = "submittedDate")]
+        public System.DateTimeOffset? SubmittedDate { get; set; }
     }
 }

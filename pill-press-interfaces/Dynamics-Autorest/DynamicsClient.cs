@@ -147,6 +147,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual IEntitydefinitions Entitydefinitions { get; private set; }
 
         /// <summary>
+        /// Gets the IGlobaloptionsetdefinitions.
+        /// </summary>
+        public virtual IGlobaloptionsetdefinitions Globaloptionsetdefinitions { get; private set; }
+
+        /// <summary>
         /// Initializes a new instance of the DynamicsClient class.
         /// </summary>
         /// <param name='httpClient'>
@@ -408,6 +413,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             Msdyncustomaddressknowledgebasereset = new Msdyncustomaddressknowledgebasereset(this);
             Sharepointsites = new Sharepointsites(this);
             Entitydefinitions = new Entitydefinitions(this);
+            Globaloptionsetdefinitions = new Globaloptionsetdefinitions(this);
             BaseUri = new System.Uri("https://pillspressdev.api.crm3.dynamics.com/api/data/v8.2");
             SerializationSettings = new JsonSerializerSettings
             {
