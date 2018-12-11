@@ -144,8 +144,9 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     DetailsOfAssemblyForOtherBusinesses = incident.BcgovDetailsofassemblyforotherbusinesses,
                     DetailsOfHowEquipmentCameIntoPossession = incident.BcgovDetailsofhowequipmentcameintopossession,
                     DeclarationOfCorrectInformation = incident.BcgovDeclarationofcorrectinformation,
-                    ConfirmationOfAuthorizedUse = incident.BcgovConfirmationofauthorizeduse
+                    ConfirmationOfAuthorizedUse = incident.BcgovConfirmationofauthorizeduse,
 
+                    SubmittedDate = incident.BcgovSubmitteddate
                 };
 
 
@@ -352,7 +353,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             to.BcgovDeclarationofcorrectinformation = from.DeclarationOfCorrectInformation;
             to.BcgovConfirmationofauthorizeduse = from.ConfirmationOfAuthorizedUse;
 
-
+            to.BcgovSubmitteddate = from.SubmittedDate;
 
         }
     }
