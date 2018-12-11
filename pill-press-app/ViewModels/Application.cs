@@ -386,5 +386,7 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
 
         List<Contact> OwnersAndManagers { get; set; }
 
+        [JsonProperty(PropertyName = "submittedDate")]
+        public System.DateTimeOffset? SubmittedDate { get; set; }
     }
 }

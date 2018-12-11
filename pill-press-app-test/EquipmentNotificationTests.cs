@@ -1,26 +1,27 @@
-﻿using Newtonsoft.Json;
+﻿using Gov.Jag.PillPressRegistry.Public.ViewModels;
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
 namespace Gov.Jag.PillPressRegistry.Public.Test
 {
-    public class EquipmentNotificationTests : ApplicationTestBase, IAsyncLifetime
+    public class EquipmentNotificationTests : ApiIntegrationTestBaseWithLogin
     {
         public EquipmentNotificationTests(CustomWebApplicationFactory<Startup> factory)
-          : base(factory, service)
+          : base(factory)
         { }
-
-        const string service = "equipmentnotification";
 
         [Fact]
         public async System.Threading.Tasks.Task TestNoAccessToAnonymousUser()
         {
+            string service = "Application";
             string id = "SomeRandomId";
-            await Logout();
 
             // first confirm we are not logged in
             await GetCurrentUserIsUnauthorized();
@@ -33,30 +34,25 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
         }
 
         [Fact]
-        public async System.Threading.Tasks.Task TestNullIncidentId()
-        {
-            // Create an equipment notification with a null incidentId.
-            var response = await CreateNewEquipmentNotification(null);
-
-            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
-            var responseMessage = response.Content.ReadAsStringAsync().Result;
-            Assert.Equal("IncidentId missing", responseMessage);
-        }
-
-        [Fact]
         public async System.Threading.Tasks.Task TestCRUD()
         {
+            string initialName = randomNewUserName("Application Initial Name ", 6);
+            string changedName = randomNewUserName("Application Changed Name ", 6);
+            string service = "Application";
+
+            // login as default and get account for current user
+            var loginUser1 = randomNewUserName("TestAccountUser", 6);
+            var strId = await LoginAndRegisterAsNewUser(loginUser1);
+
+            User user = await GetCurrentUser();
+            Account currentAccount = await GetAccountForCurrentUser();
+
             // C - Create
-            var request = new HttpRequestMessage(HttpMethod.Post, "/api/" + service);
-            var incidentId = await CreateNewApplicationGuid(await GetAccountForCurrentUser());
+            var request = new HttpRequestMessage(HttpMethod.Post, "/api/" + service + "/Equipment Notification");
 
-            ViewModels.Equipment viewmodel_customproduct = new ViewModels.Equipment()
-            {
-                incidentId = incidentId.ToString()
-            };
+            Application viewmodel_application = SecurityHelper.CreateNewApplication(currentAccount);
 
-            string jsonString = JsonConvert.SerializeObject(viewmodel_customproduct);
-
+            var jsonString = JsonConvert.SerializeObject(viewmodel_application);
             request.Content = new StringContent(jsonString, Encoding.UTF8, "application/json");
 
             var response = await _client.SendAsync(request);
@@ -64,34 +60,40 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
 
             // parse as JSON.
             jsonString = await response.Content.ReadAsStringAsync();
-            ViewModels.Equipment responseViewModel = JsonConvert.DeserializeObject<ViewModels.Equipment>(jsonString);
+            Application responseViewModel = JsonConvert.DeserializeObject<Application>(jsonString);
 
-            // name should match.
-            Assert.Equal(incidentId.ToString(), responseViewModel.incidentId);
-            Guid id = new Guid(responseViewModel.Id);
+            Assert.Equal("Testing", responseViewModel.mainbusinessfocus);
+            Assert.Equal("Automated Testing", responseViewModel.manufacturingprocessdescription);
 
+
+            Guid id = new Guid(responseViewModel.id);
+            //return;
             // R - Read
-
             request = new HttpRequestMessage(HttpMethod.Get, "/api/" + service + "/" + id);
             response = await _client.SendAsync(request);
             response.EnsureSuccessStatusCode();
 
             jsonString = await response.Content.ReadAsStringAsync();
-            responseViewModel = JsonConvert.DeserializeObject<ViewModels.Equipment>(jsonString);
-            //TODO: Assert.Equal(changedName, responseViewModel.someimportantequipmentnotificationfield);
+            responseViewModel = JsonConvert.DeserializeObject<Application>(jsonString);
 
-            // U - Update            
-            ViewModels.CustomProduct patchModel = new ViewModels.CustomProduct()
-            {
-                //TODO: fill in update fields.
-            };
+            Assert.Equal("Testing", responseViewModel.mainbusinessfocus);
+            Assert.Equal("Automated Testing", responseViewModel.manufacturingprocessdescription);
+
+
+            Assert.True(responseViewModel.applicant != null);
+            Assert.Equal(currentAccount.id, responseViewModel.applicant.id);
+
+
+            // U - Update  
+            viewmodel_application = new Application();
+            viewmodel_application.mainbusinessfocus = changedName;
+            
 
             request = new HttpRequestMessage(HttpMethod.Put, "/api/" + service + "/" + id)
             {
-                Content = new StringContent(JsonConvert.SerializeObject(patchModel), Encoding.UTF8, "application/json")
+                Content = new StringContent(JsonConvert.SerializeObject(viewmodel_application), Encoding.UTF8, "application/json")
             };
             response = await _client.SendAsync(request);
-            jsonString = await response.Content.ReadAsStringAsync();
             response.EnsureSuccessStatusCode();
 
             // verify that the update persisted.
@@ -102,8 +104,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
 
             jsonString = await response.Content.ReadAsStringAsync();
 
-            responseViewModel = JsonConvert.DeserializeObject<ViewModels.Equipment>(jsonString);
-            //TODO: Assert.Equal(changedName, responseViewModel.someimportantequipmentnotificationfield);
+            responseViewModel = JsonConvert.DeserializeObject<Application>(jsonString);
+            Assert.Equal(changedName, responseViewModel.mainbusinessfocus);
 
             // D - Delete
 
@@ -120,22 +122,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             request = new HttpRequestMessage(HttpMethod.Get, "/api/" + service + "/" + id);
             response = await _client.SendAsync(request);
             Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
+
+            // logout and cleanup (deletes the account and contact created above ^^^)
+            await LogoutAndCleanupTestUser(strId);
         }
 
-        /// <summary>
-        /// Create a new equipment notification, using the passed parameters to create the equipment notification view model.
-        /// </summary>
-        /// <param name="incidentId"></param>
-        /// <returns>The http response of the creation request.</returns>
-        private async Task<HttpResponseMessage> CreateNewEquipmentNotification(String incidentId)
-        {
-            ViewModels.CustomProduct viewmodel_equipmentnotification = new ViewModels.CustomProduct()
-            {
-                incidentId = incidentId
-            };
-            string jsonString = JsonConvert.SerializeObject(viewmodel_equipmentnotification);
-
-            return await CreateNewTypeWithContent(jsonString);
-        }
+        
     }
 }
