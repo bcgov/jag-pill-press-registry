@@ -65,7 +65,7 @@ export class LoginPage {
     }
 
     waitForDashboard() {
-        var elem = element(by.xpath('/html/body/app-root/div/div/main/div/app-dashboard-lite'));
+        var elem = element(by.xpath('/html/body/app-root/div/div/main/div/app-dashboard'));
         var until = protractor.ExpectedConditions;
         browser.wait(until.presenceOf(elem), 5000, 'Element taking too long to appear in the DOM');
     }

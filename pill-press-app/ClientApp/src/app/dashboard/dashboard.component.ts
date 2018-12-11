@@ -11,11 +11,11 @@ import { MatSnackBar } from '@angular/material';
 import { PaymentDataService } from '../services/payment-data.service';
 
 @Component({
-  selector: 'app-dashboard-lite',
-  templateUrl: './dashboard-lite.component.html',
-  styleUrls: ['./dashboard-lite.component.scss']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardLiteComponent implements OnInit {
+export class DashboardComponent implements OnInit {
   public currentUser: User;
   applicationId: string;
   submittedApplications = 8;
