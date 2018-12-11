@@ -75,13 +75,14 @@
     </div>
 
 
-    <div style="margin-top: 30px; display: flex; justify-content: space-between">
+    <div style="margin-top: 30px; display: flex; justify-content: space-between; position: relative;">
       <section>
         <!-- <span class="error-states">*</span> <i>Required field</i> -->
         
         <a routerLink="/business-profile"><i class="fas fa-pencil-alt"></i> Edit Business Profile</a>
       </section>
       <section>
+        <div [ngBusy]="busy2"></div>
         <button *ngIf="nextRoute" class="btn btn-primary" (click)="save()">CONTINUE TO APPLICATION</button>
         <button *ngIf="!nextRoute" class="btn btn-primary" (click)="markAsTouched(); save()">SAVE</button>
       </section>
