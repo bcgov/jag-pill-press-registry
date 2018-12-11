@@ -11,7 +11,7 @@
     <section class="padded-section">
       <app-field label="Select the type of Controlled Equipment you are registering." (change)="form.updateValueAndValidity()"
         [required]="true">
-        <select class="form-control" style="width: 300px;" #eqType>
+        <select class="form-control" formControlName="equipmentType" style="width: 300px;">
           <option value="">Please select an option</option>
           <option value="Pill Press">Pill Press</option>
           <option value="Encapsulator">Encapsulator</option>
@@ -21,9 +21,9 @@
         </select>
       </app-field>
 
-      <section *ngIf="eqType.value === 'Pill Press'">
+      <section *ngIf="form.get('equipmentType').value === 'Pill Press'">
         <app-field label="Select the level of automation for this piece of Controlled Equipment." [required]="true">
-          <select class="form-control" style="width: 300px;">
+          <select class="form-control" formControlName="levelOfEquipmentAutomation" style="width: 300px;">
             <option value="">Please select an option</option>
             <option value="Semi-Automatic">Semi-Automatic</option>
             <option value="Automated">Automated</option>
@@ -34,7 +34,7 @@
         </app-field>
 
         <app-field label="Please select from the following list to describe the size of this Pill Press." [required]="true">
-          <select class="form-control" style="width: 300px;">
+          <select class="form-control" formControlName="pillpressEncapsulatorsize" style="width: 300px;">
             <option value="">Please select an option</option>
             <option value="Table top model">Table top model</option>
             <option value="Free standing model">Free standing model</option>
@@ -44,13 +44,13 @@
         </app-field>
 
         <app-field label="Please indicate your Pill Press maximum capacity in number of pills/tablets per hour.">
-          <input type="text" style="width: 150px">
+          <input type="text" formControlName="pillpressmaxcapacity" style="width: 150px">
         </app-field>
       </section>
 
-      <section *ngIf="eqType.value === 'Encapsulator'">
+      <section *ngIf="form.get('equipmentType').value === 'Encapsulator'">
         <app-field label="Select the level of automation for this piece of Controlled Equipment. " [required]="true">
-          <select class="form-control" style="width: 300px;">
+          <select class="form-control" formControlName="levelOfEquipmentAutomation" style="width: 300px;">
             <option value="">Please select an option</option>
             <option value="Semi-Automatic">Semi-Automatic</option>
             <option value="Automated">Automated</option>
@@ -61,7 +61,7 @@
         </app-field>
 
         <app-field label="Please select from the following list to describe the size of this Encapsulator. " [required]="true">
-          <select class="form-control" style="width: 300px;">
+          <select class="form-control" formControlName="pillpressEncapsulatorsize" style="width: 300px;">
             <option value="">Please select an option</option>
             <option value="Table top model">Table top model</option>
             <option value="Free standing model">Free standing model</option>
@@ -71,12 +71,12 @@
         </app-field>
 
         <app-field label="Please indicate your Encapsulator maximum capacity in number of capsules per hour.">
-          <input type="text" style="width: 150px">
+          <input type="text" formControlName="encapsulatorMaxCapacity" style="width: 150px">
         </app-field>
       </section>
 
-      <div class="notes" style="display: flex;" *ngIf="eqType.value === 'Die, mould or punch'">
-        <i class="fas fa-exclamation-circle" style="color: #003366; margin-right: 10px;"></i>
+      <div class="notes" style="display: flex;" *ngIf="form.get('equipmentType').value === 'Die, mould or punch'">
+        <i class="fas fa-exclamation-circle"  style="color: #003366; margin-right: 10px;"></i>
         <span>
           Although dies, moulds, and punches are considered Controlled Equipment, the notification requirements in
           the legislation do not apply to these pieces of equipment. Therefore, you do not need to provide
@@ -84,9 +84,9 @@
         </span>
       </div>
 
-      <section *ngIf="eqType.value === 'Phamaceutical mixer or blender'">
+      <section *ngIf="form.get('equipmentType').value === 'Phamaceutical mixer or blender'">
         <app-field label="Select the level of automation for this piece of Controlled Equipment." [required]="true">
-          <select class="form-control" style="width: 300px;">
+          <select class="form-control" formControlName="levelOfEquipmentAutomation" style="width: 300px;">
             <option value="">Please select an option</option>
             <option value="Semi-Automatic">Semi-Automatic</option>
             <option value="Automated">Automated</option>
@@ -97,14 +97,14 @@
         </app-field>
       </section>
 
-      <section *ngIf="eqType.value === 'Other'">
+      <section *ngIf="form.get('equipmentType').value === 'Other'">
         <app-field>
           <i>If Other, please specify</i> <br>
-          <input type="text" class="form-control" style="width: 350px">
+          <input type="text" formControlName="equipmentTypeOther" class="form-control" style="width: 350px">
         </app-field>
 
         <app-field label="Select the level of automation for this piece of Controlled Equipment." [required]="true">
-          <select class="form-control" style="width: 300px;">
+          <select class="form-control" formControlName="levelOfEquipmentAutomation" style="width: 300px;">
             <option value="">Please select an option</option>
             <option value="Semi-Automatic">Semi-Automatic</option>
             <option value="Automated">Automated</option>
@@ -117,7 +117,7 @@
 
       <app-field label="Please explain how you use this piece of Controlled Equipment in your manufacturing process."
         [required]="true">
-        <textarea class="form-control" rows="5" maxlength="500"></textarea>
+        <textarea class="form-control" formControlName="explanationOfEquipmentuse" rows="5" maxlength="500"></textarea>
       </app-field>
     </section>
 
@@ -128,9 +128,10 @@
           & Close</a>
       </section>
       <section>
-        <button class="btn btn-secondary" style="margin-right: 10px" routerLink="/equipment-notification/profile-review/type-and-use/{{equipmentId}}">BACK TO STEP 1</button>
+        <button class="btn btn-secondary" style="margin-right: 10px" routerLink="/equipment-notification/profile-review/{{equipmentId}}">BACK TO STEP 1</button>
         <button class="btn btn-primary" (click)="markAsTouched(); save(true)">SAVE & CONTINUE</button>
       </section>
     </div>
   </div>
 </div>
+{{form.value | json}}

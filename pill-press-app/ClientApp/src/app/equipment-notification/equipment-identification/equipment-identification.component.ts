@@ -21,6 +21,19 @@ export class EquipmentIdentificationComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
+      id: [],
+      howWasEquipmentBuilt: [],
+      howWasEquipmentBuiltOther: [],
+      howWasEquipmentBuiltOtherCheck: [],
+      nameOfManufacturer: [],
+      equipmentMake: [],
+      equipmentModel: [],
+      serialNumber: [],
+      howEquipmentBuiltDescription: [],
+      personBusinessThatBuiltEquipment: [],
+      serialNumberForCustomBuilt: [],
+      customBuiltSerialNumber: [],
+      serialNumberKeyPartDescription: [],
 
     });
 
