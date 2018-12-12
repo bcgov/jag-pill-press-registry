@@ -303,7 +303,7 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public string ImportersRegistrationNumber { get; set; }
 
         [JsonProperty(PropertyName = "nameOfOriginatingSeller")]
-        public string nameoforiginatingseller { get; set; }
+        public string Nameoforiginatingseller { get; set; }
 
         [JsonProperty(PropertyName = "OriginatingSellersAddress")]
         public ViewModels.CustomAddress OriginatingSellersAddress { get; set; }

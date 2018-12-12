@@ -118,7 +118,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     DateOfPurchaseFromOutsideBcSeller = incident.BcgovDateofpurchasefromoutsidebcseller,
                     NameOfImporter = incident.BcgovNameofimporter,                    
                     ImportersRegistrationNumber = incident.BcgovImportersregistrationnumber,
-                    nameoforiginatingseller = incident.BcgovNameoforiginatingseller,
+                    Nameoforiginatingseller = incident.BcgovNameoforiginatingseller,
                                         
                     DateOfPurchaseFromImporter = incident.BcgovDateofpurchasefromimporter,
                     PossessUntilICanSell = incident.BcgovPossessuntilicansell,
@@ -318,11 +318,14 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             to.BcgovNameofbcseller = from.NameOfBcSeller;  
             to.BcgovDateofpurchasefrombcseller = from.Dateofpurchasefrombcseller;
             to.BcgovBcsellersregistrationnumber = from.BcSellersRegistrationNumber;
+            to.BcgovBcsellerscontactphonenumber = from.BcSellersContactPhoneNumber;
+            to.BcgovBcsellerscontactemail = from.BcSellersContactEmail;
+
             to.BcgovOutsidebcsellersname = from.OutsideBcSellersName;
             to.BcgovDateofpurchasefromoutsidebcseller = from.DateOfPurchaseFromOutsideBcSeller;
             to.BcgovNameofimporter = from.NameOfImporter;
             to.BcgovImportersregistrationnumber = from.ImportersRegistrationNumber;
-            to.BcgovNameoforiginatingseller = from.nameoforiginatingseller;
+            to.BcgovNameoforiginatingseller = from.Nameoforiginatingseller;
 
             to.BcgovDateofpurchasefromimporter = from.DateOfPurchaseFromImporter;
             to.BcgovPossessuntilicansell = from.PossessUntilICanSell;
