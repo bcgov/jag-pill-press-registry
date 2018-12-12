@@ -30,7 +30,9 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             {
                 List<string> expand = new List<string>()
                 {
-                    "bcgov_incident_customproduct_RelatedApplication","customerid_account","bcgov_incident_businesscontact"
+                    "bcgov_incident_customproduct_RelatedApplication","customerid_account","bcgov_incident_businesscontact",
+                    "bcgov_BCSellersAddress","bcgov_OutsideBCSellersAddress","bcgov_ImportersAddress","bcgov_OriginatingSellersAddress",
+                    "bcgov_AddressofBusinessthathasGivenorLoaned","bcgov_AddressofBusinessthathasRentedorLeased"        
                 };
                 // fetch from Dynamics.
                 result = system.Incidents.GetByKey(incidentid: id.ToString(), expand: expand);
@@ -42,11 +44,18 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                 result = null;
             }
             
-            if (result.BcgovIncidentBusinesscontact != null)
+            if (result != null && result.BcgovIncidentBusinesscontact != null)
             {
                 for (int i = 0; i < result.BcgovIncidentBusinesscontact.Count; i++)
                 {
-                    result.BcgovIncidentBusinesscontact[i] = system.GetBusinessContactById(result.BcgovIncidentBusinesscontact[i].BcgovBusinesscontactid);
+                    try
+                    {
+                        result.BcgovIncidentBusinesscontact[i] = system.GetBusinessContactById(result.BcgovIncidentBusinesscontact[i].BcgovBusinesscontactid);
+                    }
+                    catch (OdataerrorException)
+                    {
+                        // ignore the exception.
+                    }
                 }
             }
 

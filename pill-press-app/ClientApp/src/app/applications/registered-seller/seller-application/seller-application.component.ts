@@ -41,6 +41,7 @@ export class SellerApplicationComponent implements OnInit {
   waiverId: string;
 
   ownersAndManagers: any[] = [];
+  showErrorMessages: boolean;
 
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -100,20 +101,37 @@ export class SellerApplicationComponent implements OnInit {
     }
   }
 
+  isFormValid() {
+    return this.ownersAndManagers.length > 0
+      && this.isSellerTypeValid()
+      && this.isEquipmentTypeValid()
+      && this.form.valid
+      && (
+        this.form.get('typeofsellerothercheck').value === false
+        || this.form.get('typeofsellerother').value
+      )
+      && (
+        this.form.get('intendtosellothercheck').value === false
+        || this.form.get('intendtosellother').value
+      );
+  }
 
   save(gotToReview: boolean) {
-    const value = this.form.value;
-    value.businessContacts = this.ownersAndManagers;
-    this.busy = this.applicationDataService.updateApplication(value)
-      .subscribe(res => {
-        if (gotToReview) {
-          this.router.navigateByUrl(`/application/registered-seller/review/${this.waiverId}`);
-        } else {
-          this.router.navigateByUrl(`/dashboard`);
-        }
-      }, err => {
-        // todo: show errors;
-      });
+    this.showErrorMessages = true;
+    if (this.isFormValid() || gotToReview === false) {
+      const value = this.form.value;
+      value.businessContacts = this.ownersAndManagers;
+      this.busy = this.applicationDataService.updateApplication(value)
+        .subscribe(res => {
+          if (gotToReview) {
+            this.router.navigateByUrl(`/registered-seller/review/${this.waiverId}`);
+          } else {
+            this.router.navigateByUrl(`/dashboard`);
+          }
+        }, err => {
+          // todo: show errors;
+        });
+    }
   }
 
   addEditOwner(owner: any) {
@@ -151,6 +169,14 @@ export class SellerApplicationComponent implements OnInit {
       || this.form.get('onetimesellerofowncontrolledequipment').value === true
       || this.form.get('retailerofcontrolledequipment').value === true
       || this.form.get('typeofsellerothercheck').value === true;
+  }
+
+  isEquipmentTypeValid() {
+    return this.form.get('intendtosellpillpress').value === true
+      || this.form.get('intendtosellencapsulator').value === true
+      || this.form.get('intendtoselldiemouldorpunch').value === true
+      || this.form.get('intendtosellpharmaceuticalmixerorblender').value === true
+      || this.form.get('intendtosellothercheck').value === true;
   }
 
 }

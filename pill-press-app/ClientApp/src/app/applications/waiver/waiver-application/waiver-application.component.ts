@@ -4,7 +4,7 @@ import { Subscription, Observable, zip } from 'rxjs';
 import { ApplicationDataService } from '../../../services/adoxio-application-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DynamicsDataService } from '../../../services/dynamics-data.service';
-import { Application } from '../../../models/adoxio-application.model';
+import { Application } from '../../../models/application.model';
 
 export const PRODUCTING_OWN_PRODUCT = 'Producing Own Product';
 export const MANUFACTURING_FOR_OTHERS = 'Manufacturing For Others';
@@ -82,24 +82,24 @@ export class WaiverApplicationComponent implements OnInit {
 
   reloadData() {
     this.busy = this.applicationDataService.getApplicationById(this.waiverId)
-    .subscribe((data: Application) => {
-      this.form.patchValue(data);
+      .subscribe((data: Application) => {
+        this.form.patchValue(data);
 
-      // process custom products
-      data.customProducts = data.customProducts || [];
-      this.clearCustomProducts();
-      const ownProducts = data.customProducts.filter(p => p.purpose === PRODUCTING_OWN_PRODUCT);
-      ownProducts.forEach(p => {
-        this.addCustomProduct(p);
-      });
+        // process custom products
+        data.customProducts = data.customProducts || [];
+        this.clearCustomProducts();
+        const ownProducts = data.customProducts.filter(p => p.purpose === PRODUCTING_OWN_PRODUCT);
+        ownProducts.forEach(p => {
+          this.addCustomProduct(p);
+        });
 
-      const productsForOthers = data.customProducts.filter(p => p.purpose === MANUFACTURING_FOR_OTHERS);
-      productsForOthers.forEach(p => {
-        this.addCustomProduct(p);
+        const productsForOthers = data.customProducts.filter(p => p.purpose === MANUFACTURING_FOR_OTHERS);
+        productsForOthers.forEach(p => {
+          this.addCustomProduct(p);
+        });
+      }, error => {
+        // debugger;
       });
-    }, error => {
-      // debugger;
-    });
   }
 
   markAsTouched() {
@@ -170,20 +170,22 @@ export class WaiverApplicationComponent implements OnInit {
   }
 
   save(gotToReview: boolean) {
-    const value = this.form.value;
-    const saveList = [this.applicationDataService.updateApplication(value), ...this.saveCustomProducts()];
-    this.busyPromise = zip(...saveList)
-      .toPromise()
-      .then(res => {
-        if (gotToReview) {
-          this.router.navigateByUrl(`/application/waiver/review/${this.waiverId}`);
-        } else {
-          this.router.navigateByUrl(`/dashboard`);
-          // this.reloadData();
-        }
-      }, err => {
-        // todo: show errors;
-      });
+    if (this.form.valid || gotToReview === false) {
+      const value = this.form.value;
+      const saveList = [this.applicationDataService.updateApplication(value), ...this.saveCustomProducts()];
+      this.busyPromise = zip(...saveList)
+        .toPromise()
+        .then(res => {
+          if (gotToReview) {
+            this.router.navigateByUrl(`/waiver/review/${this.waiverId}`);
+          } else {
+            this.router.navigateByUrl(`/dashboard`);
+            // this.reloadData();
+          }
+        }, err => {
+          // todo: show errors;
+        });
+    }
   }
 
   saveCustomProducts(): Observable<any>[] {
@@ -215,7 +217,7 @@ export class WaiverApplicationComponent implements OnInit {
 
 
   gotoReview() {
-    this.router.navigate(['/application/waiver/review/' + this.waiverId]);
+    this.router.navigate(['/waiver/review/' + this.waiverId]);
   }
 
 }

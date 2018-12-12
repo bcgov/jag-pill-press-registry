@@ -56,8 +56,9 @@ const postalRegex = '(^\\d{5}([\-]\\d{4})?$)|(^[A-Za-z][0-9][A-Za-z]\\s?[0-9][A-
 export class BusinessProfileComponent extends FormBase implements OnInit {
   currentUser: User;
   dataLoaded = false;
-  busy: Subscription;
+  busy: Promise<any>;
   busy2: Promise<any>;
+  busy3: Promise<any>;
   form: FormGroup;
   countryList = COUNTRIES;
 
@@ -133,7 +134,8 @@ export class BusinessProfileComponent extends FormBase implements OnInit {
 
   reloadUser() {
     this.busy = this.userDataService.getCurrentUser()
-      .subscribe((data: User) => {
+      .toPromise()
+      .then((data: User) => {
         this.currentUser = data;
 
         this.store.dispatch(new CurrentUserActions.SetCurrentUserAction(data));
@@ -187,7 +189,9 @@ export class BusinessProfileComponent extends FormBase implements OnInit {
       contact.firstName = this.currentUser.firstname;
       contact.lastName = this.currentUser.lastname;
       contact.email = this.currentUser.email;
-      this.busy = this.contactDataService.createWorkerContact(contact).subscribe(res => {
+      this.busy = this.contactDataService.createWorkerContact(contact)
+      .toPromise()
+      .then(res => {
         this.reloadUser();
       }, error => alert('Failed to create contact'));
     } else {
@@ -212,10 +216,13 @@ export class BusinessProfileComponent extends FormBase implements OnInit {
       additionalContact: this.form.get('additionalContact').value
     };
 
-    this.busy = this.accountDataService.updateAccount(value).subscribe(res => {
+    this.busy = this.accountDataService.updateAccount(value)
+    .toPromise()
+    .then(res => {
       subResult.next(true);
       this.reloadUser();
     }, err => subResult.next(false));
+    this.busy3 = Promise.resolve(this.busy);
 
     return subResult;
   }

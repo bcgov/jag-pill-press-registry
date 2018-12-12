@@ -100,6 +100,15 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             // Get the current account
             var account = await _dynamicsClient.GetAccountById(Guid.Parse(userSettings.AccountId));
 
+            // setup custom addresses.
+            var BCSellersAddress = CreateOrUpdateAddress(item.BCSellersAddress);
+            var OutsideBCSellersAddress = CreateOrUpdateAddress(item.OutsideBCSellersAddress);
+            var ImportersAddress = CreateOrUpdateAddress(item.ImportersAddress);
+            var OriginatingSellersAddress = CreateOrUpdateAddress(item.OriginatingSellersAddress);
+            var AddressofBusinessthathasGivenorLoaned = CreateOrUpdateAddress(item.AddressofBusinessthathasGivenorLoaned);
+            var AddressofBusinessThatHasRentedorLeased = CreateOrUpdateAddress(item.AddressofBusinessThatHasRentedorLeased);
+
+
             MicrosoftDynamicsCRMincident patchApplication = new MicrosoftDynamicsCRMincident();
             patchApplication.CopyValues(item);
 
@@ -221,31 +230,136 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
 
                     // TODO: Handle deletes as well as additions.
 
-                    OdataId odataId = new OdataId()
-                    {
-                        OdataIdProperty = _dynamicsClient.GetEntityURI("bcgov_businesscontacts", businessContact.id)
-                    };
+                    // determine if this item needs to be added.
+                    bool notFound = true;
 
+                    // don't bind the record twice.
+                    if (application.BcgovIncidentBusinesscontact != null && application.BcgovIncidentBusinesscontact.Count > 0)
+                    {
+                        foreach (var bc in application.BcgovIncidentBusinesscontact)
+                        {
+                            if (bc.BcgovBusinesscontactid != null && businessContact.id == bc.BcgovBusinesscontactid)
+                            {
+                                notFound = false;
+                            }
+                        }
+
+                    }
+
+
+                    if (notFound)
+                    {
+                        OdataId odataId = new OdataId()
+                        {
+                            OdataIdProperty = _dynamicsClient.GetEntityURI("bcgov_businesscontacts", businessContact.id)
+                        };
+
+                        try
+                        {
+                            await _dynamicsClient.Incidents.AddReferenceAsync(id, "bcgov_incident_businesscontact", odataId);
+                        }
+                        catch (OdataerrorException odee)
+                        {
+                            _logger.LogError(LoggingEvents.Error, "Error updating business contacts");
+                            _logger.LogError("Request:");
+                            _logger.LogError(odee.Request.Content);
+                            _logger.LogError("Response:");
+                            _logger.LogError(odee.Response.Content);
+                            throw new OdataerrorException("Error updating the business contacts.");
+                        }
+
+                    }
+
+                }
+
+                // check for any businesscontacts that have to be removed.
+                if (application.BcgovIncidentBusinesscontact != null)
+                {
+                    foreach (var ibc in application.BcgovIncidentBusinesscontact)
+                    {
+                        bool notFound = true;
+                        foreach (var bc in item.BusinessContacts)
+                        {
+                            if (ibc.BcgovBusinesscontactid == bc.id)
+                            {
+                                notFound = false;
+                            }
+                        }
+
+                        if (notFound)
+                        {
+                            // remove the item.                            
+                            try
+                            {
+                                await _dynamicsClient.Incidents.RemoveReferenceAsync(id, "bcgov_incident_businesscontact", ibc.BcgovBusinesscontactid);
+                            }
+                            catch (OdataerrorException odee)
+                            {
+                                _logger.LogError(LoggingEvents.Error, "Error removing business contacts");
+                                _logger.LogError("Request:");
+                                _logger.LogError(odee.Request.Content);
+                                _logger.LogError("Response:");
+                                _logger.LogError(odee.Response.Content);
+                                throw new OdataerrorException("Error removing a business contact.");
+                            }
+                        }
+
+                        
+                    }
+                }
+
+            }
+
+            
+
+            application = _dynamicsClient.GetApplicationByIdWithChildren(ApplicationId);
+            return Json(application.ToViewModel());
+        }
+
+        private MicrosoftDynamicsCRMbcgovCustomaddress CreateOrUpdateAddress(ViewModels.CustomAddress ca)
+        {
+            MicrosoftDynamicsCRMbcgovCustomaddress address = null;
+            // Primary Contact
+            if (ca != null)
+            {
+                address = ca.ToModel();
+                if (string.IsNullOrEmpty(ca.Id))
+                {
+                    // create an account.                        
                     try
                     {
-                        await _dynamicsClient.Incidents.AddReferenceAsync(id, "bcgov_incident_businesscontact", odataId);
+                        address = _dynamicsClient.Customaddresses.Create(address);
+                        ca.Id = address.BcgovCustomaddressid;
                     }
                     catch (OdataerrorException odee)
                     {
-                        _logger.LogError(LoggingEvents.Error, "Error updating business contacts");
+                        _logger.LogError(LoggingEvents.Error, "Error creating address");
                         _logger.LogError("Request:");
                         _logger.LogError(odee.Request.Content);
                         _logger.LogError("Response:");
                         _logger.LogError(odee.Response.Content);
-                        throw new OdataerrorException("Error updating the business contacts.");
+                        throw new OdataerrorException("Error creating the address");
                     }
                 }
-
-
+                else
+                {
+                    // update
+                    try
+                    {
+                        _dynamicsClient.Customaddresses.Update(ca.Id, address);
+                    }
+                    catch (OdataerrorException odee)
+                    {
+                        _logger.LogError(LoggingEvents.Error, "Error updating address");
+                        _logger.LogError("Request:");
+                        _logger.LogError(odee.Request.Content);
+                        _logger.LogError("Response:");
+                        _logger.LogError(odee.Response.Content);
+                        throw new OdataerrorException("Error updating the address");
+                    }
+                }
             }
-
-            application = _dynamicsClient.GetApplicationById(ApplicationId);
-            return Json(application.ToViewModel());
+            return address;
         }
 
         /// <summary>
@@ -268,7 +382,16 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 _logger.LogError(LoggingEvents.Error, "No Application Siteminder Guid exernal id");
                 throw new Exception("Error. No ApplicationSiteminderGuid exernal id");
             }
-            
+
+            // setup custom addresses.
+            var BCSellersAddress = CreateOrUpdateAddress(item.BCSellersAddress);
+            var OutsideBCSellersAddress = CreateOrUpdateAddress(item.OutsideBCSellersAddress);
+            var ImportersAddress = CreateOrUpdateAddress(item.ImportersAddress);
+            var OriginatingSellersAddress = CreateOrUpdateAddress(item.OriginatingSellersAddress);
+            var AddressofBusinessthathasGivenorLoaned = CreateOrUpdateAddress(item.AddressofBusinessthathasGivenorLoaned);
+            var AddressofBusinessThatHasRentedorLeased = CreateOrUpdateAddress(item.AddressofBusinessThatHasRentedorLeased);
+
+
             // create a new Application.
             MicrosoftDynamicsCRMincident application = new MicrosoftDynamicsCRMincident();
             application.CopyValues(item);
@@ -293,6 +416,38 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             var account = await _dynamicsClient.GetAccountById(Guid.Parse(userSettings.AccountId));
             //application.CustomeridAccount = account;
             application.CustomerIdAccountODataBind = _dynamicsClient.GetEntityURI("accounts", userSettings.AccountId);
+            // bind the addresses. 
+            if (BCSellersAddress != null)
+            {
+                application.BCSellersAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", BCSellersAddress.BcgovCustomaddressid);
+            }
+            
+            if (OutsideBCSellersAddress != null)
+            {
+                application.OutsideBCSellersAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", OutsideBCSellersAddress.BcgovCustomaddressid);
+            }
+            
+            if (ImportersAddress != null)
+            {
+                application.ImportersAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", ImportersAddress.BcgovCustomaddressid);
+            }
+            
+            if (OriginatingSellersAddress != null)
+            {
+                application.OriginatingSellersAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", OriginatingSellersAddress.BcgovCustomaddressid);
+            }
+            if (AddressofBusinessthathasGivenorLoaned != null)
+            {
+                application.AddressofBusinessthathasGivenorLoanedODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", AddressofBusinessthathasGivenorLoaned.BcgovCustomaddressid);
+            }
+            
+            if (AddressofBusinessThatHasRentedorLeased != null)
+            {
+                application.AddressofBusinessThatHasRentedorLeasedODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", AddressofBusinessThatHasRentedorLeased.BcgovCustomaddressid);
+            }
+            
+
+
             application.Statuscode = (int?) ViewModels.ApplicationStatusCodes.Draft;
             try
             {
@@ -306,7 +461,15 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 _logger.LogError("Response:");
                 _logger.LogError(odee.Response.Content);
                 throw new OdataerrorException("Error creating Application");
-            }           
+            }
+            Guid applicationId = Guid.Parse(application.Incidentid);
+
+            
+           
+
+
+            application = _dynamicsClient.GetApplicationByIdWithChildren(applicationId);
+
             return Json(application.ToViewModel());
         }
 
@@ -321,7 +484,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             _logger.LogDebug(LoggingEvents.HttpPost, "Begin method " + this.GetType().Name + "." + MethodBase.GetCurrentMethod().ReflectedType.Name);
 
             // verify the currently logged in user has access to this account
-            Guid applicationId = new Guid(id);
+            Guid applicationId = Guid.Parse(id);
 
             MicrosoftDynamicsCRMincident application = _dynamicsClient.GetApplicationById(applicationId);
             if (application == null)
