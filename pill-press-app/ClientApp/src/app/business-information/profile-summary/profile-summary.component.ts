@@ -15,7 +15,8 @@ import { debug } from 'util';
   styleUrls: ['./profile-summary.component.scss']
 })
 export class ProfileSummaryComponent implements OnInit {
-  busy: Subscription;
+  busy: Promise<any>;
+  busy2: Promise<any>;
   dataLoaded: boolean;
   account: DynamicsAccount;
   businessInfoData: any[];
@@ -24,7 +25,8 @@ export class ProfileSummaryComponent implements OnInit {
   additionalContactData: { label: string; value: string; }[];
   form: FormGroup;
   mode: string;
-  applicationId: string;
+  id: string;
+  nextRoute: string;
 
   constructor(private userDataService: UserDataService,
     private sanitizer: DomSanitizer,
@@ -33,7 +35,9 @@ export class ProfileSummaryComponent implements OnInit {
     private fb: FormBuilder,
     private accountDataService: AccountDataService) {
     this.mode = this.route.snapshot.params.mode;
-    this.applicationId = this.route.snapshot.params.applicationId;
+    this.id = this.route.snapshot.params.id;
+    this.nextRoute = this.route.snapshot.data.nextRoute;
+
   }
 
   ngOnInit() {
@@ -47,15 +51,16 @@ export class ProfileSummaryComponent implements OnInit {
 
   reloadUser() {
     this.busy = this.userDataService.getCurrentUser()
-      .subscribe((data: User) => {
+      .toPromise()
+      .then((data: User) => {
         this.dataLoaded = true;
         if (data && data.accountid) {
           this.busy =
             this.accountDataService.getAccount(data.accountid)
-              .subscribe(res => {
+              .toPromise()
+              .then(res => {
                 this.account = res;
                 this.setSummaryTables();
-                debugger;
                 this.form.patchValue(res);
               });
         }
@@ -125,26 +130,35 @@ export class ProfileSummaryComponent implements OnInit {
     ];
   }
 
-  save() {
-    const value = this.form.value;
-    this.busy = this.accountDataService.updateAccount(value)
-      .subscribe(data => {
-        switch (this.mode) {
-          case 'waiver':
-            this.router.navigateByUrl(`/application/waiver/${this.applicationId}`);
-            break;
-          case 'registered-seller':
-            this.router.navigateByUrl(`/application/registered-seller/${this.applicationId}`);
-            break;
-          case 'authorized-owner':
-            this.router.navigateByUrl(`/application/authorized-owner/${this.applicationId}`);
-            break;
+  declarationsValid() {
+    return this.form.get('declarationofcorrectinformation').value === true
+      && this.form.get('foippaconsent').value === true;
+  }
 
-          default:
+  markAsTouched() {
+    this.form.markAsTouched();
+    const controls = this.form.controls;
+    for (const c in controls) {
+      if (typeof (controls[c].markAsTouched) === 'function') {
+        controls[c].markAsTouched();
+      }
+    }
+  }
+
+  save() {
+    if (!!(this.mode || this.declarationsValid())) {
+      const value = this.form.value;
+      this.busy = this.accountDataService.updateAccount(value)
+        .toPromise()
+        .then(data => {
+          if (this.nextRoute) {
+            this.router.navigateByUrl(`${this.nextRoute}/${this.id}`);
+          } else {
             this.router.navigateByUrl('/dashboard');
-            break;
-        }
-      });
+          }
+        });
+      this.busy2 = Promise.resolve(this.busy);
+    }
   }
 
   customRequiredCheckboxValidator(): ValidatorFn {

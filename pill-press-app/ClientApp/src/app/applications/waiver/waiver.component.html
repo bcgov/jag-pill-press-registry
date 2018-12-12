@@ -1,0 +1,42 @@
+<div class="form-wrapper" style="position: relative;">
+  <div class="row">
+
+    <div class="col-lg-8 col-sm-12">
+      <router-outlet></router-outlet>
+    </div>
+
+    <div class="col-lg-4 col-sm-12">
+      <section class="step" style="display: block; background-color: #F1F4FA">
+        <h3 class="blue-header">EQUIPMENT NOTIFICATION</h3>
+        <section style="padding-top: 15px; padding-bottom: 20px;">
+          <mat-vertical-stepper [linear]="true" (selectionChange)="selectionChange($event)" #stepper>
+            <ng-template matStepperIcon="edit">
+              <mat-icon>done</mat-icon>
+            </ng-template>
+            <ng-template matStepperIcon="number">
+            </ng-template>
+
+            <mat-step label="STEP 1: Business Profile Review"></mat-step>
+            <mat-step label="STEP 2: Waiver Application"></mat-step>
+            <mat-step label="STEP 3: Application Review"></mat-step>
+          </mat-vertical-stepper>
+        </section>
+      </section>
+      <p></p>
+      <section class="submit-container">
+        <table>
+          <tr>
+            <td>
+              <h2 class="round-icon-wrapper"><i class="fas fa-address-card"></i></h2>
+            </td>
+            <td style="padding-left: 10px">
+              <h2>Useful Links & Information</h2>
+            </td>
+          </tr>
+        </table>
+        <div class="submit-content">
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

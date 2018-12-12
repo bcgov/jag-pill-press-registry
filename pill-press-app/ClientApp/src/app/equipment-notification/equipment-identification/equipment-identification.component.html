@@ -1,0 +1,130 @@
+<div style="position: relative;">
+  <div [ngBusy]="[busy]"></div>
+  <div [formGroup]="form">
+    <h2 class="step">STEP 3</h2>
+    <h1 style="margin-top: 0;">Equipment Identification</h1>
+
+    <h3 class="blue-header">EQUIPMENT IDENTIFICATION</h3>
+    <section class="padded-section">
+      <app-field label="How was this piece of Controlled Equipment built?" (change)="form.updateValueAndValidity()"
+        [required]="true">
+        <select class="form-control" formControlName="howWasEquipmentBuilt" style="width: 300px;" >
+          <option value="">Please select an option</option>
+          <option value="Commecially Manufactured">Commecially Manufactured</option>
+          <option value="Custom Built">Custom Built (i.e. built out of spare parts)</option>
+          <option value="Other">Other</option>
+        </select>
+      </app-field>
+
+      <section *ngIf="form.get('howWasEquipmentBuilt').value === 'Commecially Manufactured'">
+        <app-field label="Name of Manufacturer" [required]="true">
+          <input type="text" formControlName="nameOfManufacturer" style="width: 680px" maxlength="100">
+        </app-field>
+
+        <app-field label="Make" [required]="true">
+          <input type="text" formControlName="equipmentMake" style="width: 680px" maxlength="100">
+        </app-field>
+
+        <app-field label="Model" [required]="true">
+          <input type="text" formControlName="equipmentModel" style="width: 680px" maxlength="100">
+        </app-field>
+
+        <app-field label="Serial Number" [required]="true">
+          <input type="text" formControlName="serialNumber" style="width: 680px" maxlength="100">
+        </app-field>
+
+      </section>
+
+      <section *ngIf="form.get('howWasEquipmentBuilt').value === 'Custom Built' || form.get('howWasEquipmentBuilt').value === 'Other'">
+        <app-field label="Please describe how this piece of Controlled Equipment was built." [required]="true">
+          <textarea rows="5" formControlName="howEquipmentBuiltDescription" class="form-control" maxlength="1000"></textarea>
+        </app-field>
+
+        <app-field label="Please provide the name of the person/business that built this piece of equipment."
+          [required]="true">
+          <input type="text" formControlName="personBusinessThatBuiltEquipment" class="form-control">
+        </app-field>
+
+        <app-field label="Please provide the address of the person/business that built this piece of equipment.">
+          <p></p>
+          <div class="row padded-section">
+            <section class="col-md-6 col-xs-12">
+              <app-field label="Street Address 1" [required]="false">
+                <input type="text" class="form-control">
+              </app-field>
+              <app-field label="City" [required]="false">
+                <input type="text" class="form-control">
+              </app-field>
+            </section>
+            <section class="col-md-6 col-xs-12">
+              <app-field label="Street Address 2" [required]="false">
+                <input type="text" class="form-control">
+              </app-field>
+              <div class="row">
+                <section class="col-md-6 col-xs-12">
+                  <app-field label="Province" [required]="false">
+                    <input type="text" class="form-control">
+                  </app-field>
+                </section>
+                <section class="col-md-6 col-xs-12">
+                  <app-field label="Postal Code" [required]="false">
+                    <input type="text" class="form-control">
+                  </app-field>
+                </section>
+              </div>
+            </section>
+          </div>
+        </app-field>
+
+        <div class="notes" style="display: flex;">
+          <i class="fas fa-exclamation-circle" style="color: #FCBA19; margin-right: 10px;"></i>
+          <span>
+            The Pill Press registry requires a unique identifier for this piece of Controlled Equipment. If there is no
+            manufacturer serial number for this piece of equipment, you are requested to provide a "key part" serial
+            number, and upload photos for identification purposes.
+          </span>
+        </div>
+
+        <app-field label="Does this piece of custom-built equipment (or a key part) have a manufacturer's serial number?"
+          [required]="true">
+          <input type="radio" [value]="true" name="serialNumberForCustomBuilt" formControlName="serialNumberForCustomBuilt">
+          <span style="padding-right: 10px;">&nbsp;Yes</span>
+          <input type="radio" [value]="false" name="serialNumberForCustomBuilt" formControlName="serialNumberForCustomBuilt">
+          <span>&nbsp;No</span>
+        </app-field>
+
+        <app-field *ngIf="form.get('serialNumberForCustomBuilt').value  === true" label="If yes, please provide the serial number of the custom-built equipment (or the key part)."
+          [required]="true">
+          <input type="text" formControlName="customBuiltSerialNumber" class="form-control">
+        </app-field>
+
+        <app-field label="If the serial number is for a key part, please describe the key part.">
+          <textarea rows="5" formControlName="serialNumberKeyPartDescription" class="form-control" maxlength="1000"></textarea>
+        </app-field>
+
+        <label>Please upload photos of this piece of Controlled Equipment with the following specifications:</label> <br>
+        <section class="padded-section">
+          <span>Photo 1: Picture of the front of the equipment.</span> <br>
+          <span>Photo 2: Picture of the side of the equipment.</span> <br>
+          <span>Photo 3: Close up picture of the equipment serial number, or key part serial number provided in this application.</span> <br>
+        </section>
+        <!-- <app-file-uploader></app-file-uploader> -->
+      </section>
+
+    </section>
+
+    <div style="margin-top: 30px; display: flex; justify-content: space-between">
+      <section>
+        <!-- <strong class="error-states">*</strong> <i>Required field</i> -->
+        <a href="javascript: void(0);" (click)="save(false)"><i class="fa fa-save" style="margin-right: 5px"></i>Save
+          & Close</a>
+      </section>
+      <section>
+        <button class="btn btn-secondary" style="margin-right: 10px" routerLink="/equipment-notification/type-and-use/{{equipmentId}}">BACK TO STEP 2</button>
+        <button class="btn btn-primary" (click)="markAsTouched(); save(true)">SAVE & CONTINUE</button>
+      </section>
+    </div>
+  </div>
+</div>
+
+{{form.value | json}}

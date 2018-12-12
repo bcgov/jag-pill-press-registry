@@ -29,11 +29,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// Initializes a new instance of the
         /// MicrosoftDynamicsCRMabsAutonumberedentity class.
         /// </summary>
-        public MicrosoftDynamicsCRMabsAutonumberedentity(int? statuscode = default(int?), string _owningteamValue = default(string), string _absAutonumberingdefinitionValue = default(string), System.DateTimeOffset? modifiedon = default(System.DateTimeOffset?), string _owningbusinessunitValue = default(string), string _modifiedbyValue = default(string), string absAutonumberedentityid = default(string), string _createdbyValue = default(string), string _modifiedonbehalfbyValue = default(string), int? absMode = default(int?), string absName = default(string), string _owninguserValue = default(string), int? timezoneruleversionnumber = default(int?), string absTargetattributelogicalname = default(string), long? versionnumber = default(long?), string absEntitylogicalname = default(string), System.DateTimeOffset? createdon = default(System.DateTimeOffset?), System.DateTimeOffset? overriddencreatedon = default(System.DateTimeOffset?), string _createdonbehalfbyValue = default(string), int? statecode = default(int?), string absActivationattributelogicalname = default(string), int? importsequencenumber = default(int?), string _owneridValue = default(string), int? absRank = default(int?), int? utcconversiontimezonecode = default(int?), MicrosoftDynamicsCRMsystemuser createdbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser createdonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser owninguser = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMteam owningteam = default(MicrosoftDynamicsCRMteam), MicrosoftDynamicsCRMprincipal ownerid = default(MicrosoftDynamicsCRMprincipal), MicrosoftDynamicsCRMbusinessunit owningbusinessunit = default(MicrosoftDynamicsCRMbusinessunit), IList<MicrosoftDynamicsCRMsyncerror> absAutonumberedentitySyncErrors = default(IList<MicrosoftDynamicsCRMsyncerror>), IList<MicrosoftDynamicsCRMduplicaterecord> absAutonumberedentityDuplicateMatchingRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMduplicaterecord> absAutonumberedentityDuplicateBaseRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMasyncoperation> absAutonumberedentityAsyncOperations = default(IList<MicrosoftDynamicsCRMasyncoperation>), IList<MicrosoftDynamicsCRMbulkdeletefailure> absAutonumberedentityBulkDeleteFailures = default(IList<MicrosoftDynamicsCRMbulkdeletefailure>), MicrosoftDynamicsCRMabsAutonumberingdefinition absAutoNumberingDefinition = default(MicrosoftDynamicsCRMabsAutonumberingdefinition))
+        public MicrosoftDynamicsCRMabsAutonumberedentity(int? statuscode = default(int?), string _owningteamValue = default(string), string _owneridValue = default(string), System.DateTimeOffset? modifiedon = default(System.DateTimeOffset?), string _owningbusinessunitValue = default(string), string _modifiedbyValue = default(string), string absAutonumberedentityid = default(string), string _createdbyValue = default(string), string _modifiedonbehalfbyValue = default(string), int? absMode = default(int?), string _owninguserValue = default(string), int? timezoneruleversionnumber = default(int?), int? importsequencenumber = default(int?), string _absAutonumberingdefinitionValue = default(string), string absTargetattributelogicalname = default(string), string absName = default(string), string absEntitylogicalname = default(string), System.DateTimeOffset? createdon = default(System.DateTimeOffset?), System.DateTimeOffset? overriddencreatedon = default(System.DateTimeOffset?), string _createdonbehalfbyValue = default(string), int? statecode = default(int?), string absActivationattributelogicalname = default(string), int? absRank = default(int?), long? versionnumber = default(long?), int? utcconversiontimezonecode = default(int?), MicrosoftDynamicsCRMsystemuser createdbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser createdonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser owninguser = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMteam owningteam = default(MicrosoftDynamicsCRMteam), MicrosoftDynamicsCRMprincipal ownerid = default(MicrosoftDynamicsCRMprincipal), MicrosoftDynamicsCRMbusinessunit owningbusinessunit = default(MicrosoftDynamicsCRMbusinessunit), IList<MicrosoftDynamicsCRMsyncerror> absAutonumberedentitySyncErrors = default(IList<MicrosoftDynamicsCRMsyncerror>), IList<MicrosoftDynamicsCRMduplicaterecord> absAutonumberedentityDuplicateMatchingRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMduplicaterecord> absAutonumberedentityDuplicateBaseRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMasyncoperation> absAutonumberedentityAsyncOperations = default(IList<MicrosoftDynamicsCRMasyncoperation>), IList<MicrosoftDynamicsCRMbulkdeletefailure> absAutonumberedentityBulkDeleteFailures = default(IList<MicrosoftDynamicsCRMbulkdeletefailure>), MicrosoftDynamicsCRMabsAutonumberingdefinition absAutoNumberingDefinition = default(MicrosoftDynamicsCRMabsAutonumberingdefinition))
         {
             Statuscode = statuscode;
             this._owningteamValue = _owningteamValue;
-            this._absAutonumberingdefinitionValue = _absAutonumberingdefinitionValue;
+            this._owneridValue = _owneridValue;
             Modifiedon = modifiedon;
             this._owningbusinessunitValue = _owningbusinessunitValue;
             this._modifiedbyValue = _modifiedbyValue;
@@ -41,20 +41,20 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
             this._createdbyValue = _createdbyValue;
             this._modifiedonbehalfbyValue = _modifiedonbehalfbyValue;
             AbsMode = absMode;
-            AbsName = absName;
             this._owninguserValue = _owninguserValue;
             Timezoneruleversionnumber = timezoneruleversionnumber;
+            Importsequencenumber = importsequencenumber;
+            this._absAutonumberingdefinitionValue = _absAutonumberingdefinitionValue;
             AbsTargetattributelogicalname = absTargetattributelogicalname;
-            Versionnumber = versionnumber;
+            AbsName = absName;
             AbsEntitylogicalname = absEntitylogicalname;
             Createdon = createdon;
             Overriddencreatedon = overriddencreatedon;
             this._createdonbehalfbyValue = _createdonbehalfbyValue;
             Statecode = statecode;
             AbsActivationattributelogicalname = absActivationattributelogicalname;
-            Importsequencenumber = importsequencenumber;
-            this._owneridValue = _owneridValue;
             AbsRank = absRank;
+            Versionnumber = versionnumber;
             Utcconversiontimezonecode = utcconversiontimezonecode;
             Createdbyname = createdbyname;
             Createdonbehalfbyname = createdonbehalfbyname;
@@ -90,8 +90,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "_abs_autonumberingdefinition_value")]
-        public string _absAutonumberingdefinitionValue { get; set; }
+        [JsonProperty(PropertyName = "_ownerid_value")]
+        public string _owneridValue { get; set; }
 
         /// <summary>
         /// </summary>
@@ -130,11 +130,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "abs_name")]
-        public string AbsName { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "_owninguser_value")]
         public string _owninguserValue { get; set; }
 
@@ -145,13 +140,23 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "importsequencenumber")]
+        public int? Importsequencenumber { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "_abs_autonumberingdefinition_value")]
+        public string _absAutonumberingdefinitionValue { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "abs_targetattributelogicalname")]
         public string AbsTargetattributelogicalname { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "versionnumber")]
-        public long? Versionnumber { get; set; }
+        [JsonProperty(PropertyName = "abs_name")]
+        public string AbsName { get; set; }
 
         /// <summary>
         /// </summary>
@@ -185,18 +190,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "importsequencenumber")]
-        public int? Importsequencenumber { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "_ownerid_value")]
-        public string _owneridValue { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "abs_rank")]
         public int? AbsRank { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "versionnumber")]
+        public long? Versionnumber { get; set; }
 
         /// <summary>
         /// </summary>
