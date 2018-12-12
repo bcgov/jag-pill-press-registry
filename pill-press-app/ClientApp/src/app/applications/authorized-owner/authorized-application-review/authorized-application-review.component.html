@@ -1,5 +1,5 @@
-<div class="form-wrapper row">
-  <div class="col-lg-8 col-sm-12" style="position: relative;">
+<div class="">
+  <div class="" style="position: relative;">
       <div [ngBusy]="[busy, busyPromise]"></div>
     <h2 class="step">STEP 3</h2>
     <h1>Authorized Owner Confirmation Review</h1>
@@ -7,7 +7,7 @@
     <p>
       You have provided the following information in your Authorized Owner confirmation. In order to proceed, please
       confirm that
-      these details are correct. If they are not, please <a routerLink="/application/authorized-owner/{{waiverId}}">amend
+      these details are correct. If they are not, please <a routerLink="/authorized-owner/application/{{waiverId}}">amend
         your
         answers</a>
       before submitting the application.
@@ -221,29 +221,11 @@
         <a href="javascript: void(0);" (click)="save(false)"><i class="fa fa-save" style="margin-right: 5px"></i>Save & Close</a>
       </section>
       <section>
-        <button class="btn btn-secondary" style="margin-right: 10px" routerLink="/application/authorized-owner/{{waiverId}}">EDIT
+        <button class="btn btn-secondary" style="margin-right: 10px" routerLink="/authorized-owner/application/{{waiverId}}">EDIT
           CONFIRMATION</button>
-        <button class="btn btn-primary" (click)="save(true)">SUBMIT</button>
+        <button class="btn btn-primary" (click)="markAsTouched(); save(true)">SUBMIT</button>
       </section>
     </div>
   </div>
 
-  <div class="col-lg-4 col-sm-12" style="position: relative">
-      <!-- <div [ngBusy]="busy"></div> -->
-      <p></p>
-      <section class="submit-container">
-        <table>
-          <tr>
-            <td>
-              <h2 class="round-icon-wrapper"><i class="fas fa-address-card"></i></h2>
-            </td>
-            <td style="padding-left: 10px">
-              <h2>Useful Links & Information</h2>
-            </td>
-          </tr>
-        </table>
-        <div class="submit-content">
-        </div>
-      </section>
-    </div>
 </div>

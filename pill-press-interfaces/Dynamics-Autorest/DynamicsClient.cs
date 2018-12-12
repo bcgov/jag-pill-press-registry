@@ -47,11 +47,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual IAccounts Accounts { get; private set; }
 
         /// <summary>
-        /// Gets the IApplicationtermses.
-        /// </summary>
-        public virtual IApplicationtermses Applicationtermses { get; private set; }
-
-        /// <summary>
         /// Gets the IApplicationtypes.
         /// </summary>
         public virtual IApplicationtypes Applicationtypes { get; private set; }
@@ -67,6 +62,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual ICertificates Certificates { get; private set; }
 
         /// <summary>
+        /// Gets the ICertificatetermsandconditionses.
+        /// </summary>
+        public virtual ICertificatetermsandconditionses Certificatetermsandconditionses { get; private set; }
+
+        /// <summary>
         /// Gets the ICustomaddresses.
         /// </summary>
         public virtual ICustomaddresses Customaddresses { get; private set; }
@@ -77,9 +77,34 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual ICustomproducts Customproducts { get; private set; }
 
         /// <summary>
+        /// Gets the IEquipmentlocations.
+        /// </summary>
+        public virtual IEquipmentlocations Equipmentlocations { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipments.
+        /// </summary>
+        public virtual IEquipments Equipments { get; private set; }
+
+        /// <summary>
         /// Gets the IIncidentbusinesscontactset.
         /// </summary>
         public virtual IIncidentbusinesscontactset Incidentbusinesscontactset { get; private set; }
+
+        /// <summary>
+        /// Gets the ILocationequipmentset.
+        /// </summary>
+        public virtual ILocationequipmentset Locationequipmentset { get; private set; }
+
+        /// <summary>
+        /// Gets the ILocations.
+        /// </summary>
+        public virtual ILocations Locations { get; private set; }
+
+        /// <summary>
+        /// Gets the IRiskassessments.
+        /// </summary>
+        public virtual IRiskassessments Riskassessments { get; private set; }
 
         /// <summary>
         /// Gets the ITermsconditionspresets.
@@ -120,6 +145,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// Gets the IEntitydefinitions.
         /// </summary>
         public virtual IEntitydefinitions Entitydefinitions { get; private set; }
+
+        /// <summary>
+        /// Gets the IGlobaloptionsetdefinitions.
+        /// </summary>
+        public virtual IGlobaloptionsetdefinitions Globaloptionsetdefinitions { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the DynamicsClient class.
@@ -363,13 +393,18 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         private void Initialize()
         {
             Accounts = new Accounts(this);
-            Applicationtermses = new Applicationtermses(this);
             Applicationtypes = new Applicationtypes(this);
             Businesscontacts = new Businesscontacts(this);
             Certificates = new Certificates(this);
+            Certificatetermsandconditionses = new Certificatetermsandconditionses(this);
             Customaddresses = new Customaddresses(this);
             Customproducts = new Customproducts(this);
+            Equipmentlocations = new Equipmentlocations(this);
+            Equipments = new Equipments(this);
             Incidentbusinesscontactset = new Incidentbusinesscontactset(this);
+            Locationequipmentset = new Locationequipmentset(this);
+            Locations = new Locations(this);
+            Riskassessments = new Riskassessments(this);
             Termsconditionspresets = new Termsconditionspresets(this);
             Contacts = new Contacts(this);
             Incidents = new Incidents(this);
@@ -378,6 +413,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             Msdyncustomaddressknowledgebasereset = new Msdyncustomaddressknowledgebasereset(this);
             Sharepointsites = new Sharepointsites(this);
             Entitydefinitions = new Entitydefinitions(this);
+            Globaloptionsetdefinitions = new Globaloptionsetdefinitions(this);
             BaseUri = new System.Uri("https://pillspressdev.api.crm3.dynamics.com/api/data/v8.2");
             SerializationSettings = new JsonSerializerSettings
             {

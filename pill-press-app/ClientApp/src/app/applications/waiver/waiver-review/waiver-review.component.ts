@@ -139,6 +139,16 @@ export class WaiverReviewComponent implements OnInit {
     //   err => alert('Failed to get files'));
   }
 
+  markAsTouched() {
+    this.form.markAsTouched();
+    const controls = this.form.controls;
+    for (const c in controls) {
+      if (typeof (controls[c].markAsTouched) === 'function') {
+        controls[c].markAsTouched();
+      }
+    }
+  }
+
   save(gotToThankYouPage: boolean) {
     const value = this.form.value;
     this.form.markAsTouched();

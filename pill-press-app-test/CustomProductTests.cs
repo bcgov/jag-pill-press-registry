@@ -8,39 +8,15 @@ using Xunit;
 
 namespace Gov.Jag.PillPressRegistry.Public.Test
 {
-    public class CustomProductTests : ApiIntegrationTestBaseWithLogin, IAsyncLifetime
+    public class CustomProductTests : ApplicationTestBase, IAsyncLifetime
     {
         public CustomProductTests(CustomWebApplicationFactory<Startup> factory)
-          : base(factory)
+          : base(factory, service)
         { }
 
         const string service = "customproduct";
         const string FRENCH_CHARACTERS = "ÀàÂâÆæÈèÉéÊêËëÎîÏïÔôŒœÙùÛûÜüŸÿÇç";
         const int MAX_CHAR_LENGTH_PRODUCT_DESCRIPTION_AND_INTENDED_USE = 1000;
-
-        /// <summary>
-        /// Log in a random user. This is required by most tests. Tests that do not require a user should call Logout().
-        /// </summary>
-        /// <returns></returns>
-        public async Task InitializeAsync()
-        {
-            var loginUser = randomNewUserName("NewLoginUser", 6);
-            await LoginAndRegisterAsNewUser(loginUser);
-        }
-
-        public async Task DisposeAsync()
-        {
-            try
-            {
-                ViewModels.Account currentAccount = await GetAccountForCurrentUser();
-                await LogoutAndCleanupTestUser(currentAccount.id);
-            }
-            catch (HttpRequestException requestException)
-            {
-                // Ignore any failures to clean up the test user.
-                Console.WriteLine(requestException.ToString());
-            }
-        }
 
         [Fact]
         public async System.Threading.Tasks.Task TestNoAccessToAnonymousUser()
@@ -199,30 +175,6 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
         }
 
         /// <summary>
-        /// Create a new Application for testing, using the passed account.
-        /// </summary>
-        /// <param name="currentAccount">Non-null account to use when creating the Application</param>
-        /// <returns>The GUID of the created Application</returns>
-        private async Task<Guid> CreateNewApplicationGuid(ViewModels.Account currentAccount)
-        {
-            var request = new HttpRequestMessage(HttpMethod.Post, "/api/Application");
-
-            ViewModels.Application viewmodel_application = SecurityHelper.CreateNewApplication(currentAccount);
-
-            var jsonString = JsonConvert.SerializeObject(viewmodel_application);
-            request.Content = new StringContent(jsonString, Encoding.UTF8, "application/json");
-
-            var response = await _client.SendAsync(request);
-            response.EnsureSuccessStatusCode();
-
-            // parse as JSON.
-            jsonString = await response.Content.ReadAsStringAsync();
-            ViewModels.Application responseViewModel = JsonConvert.DeserializeObject<ViewModels.Application>(jsonString);
-
-            return new Guid(responseViewModel.id);
-        }
-
-        /// <summary>
         /// Create a new custom product, using the passed parameters to create the custom product view model.
         /// </summary>
         /// <param name="productDescriptionAndIntendedUse"></param>
@@ -230,7 +182,6 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
         /// <returns>The http response of the creation request.</returns>
         private async Task<HttpResponseMessage> CreateNewCustomProduct(String productDescriptionAndIntendedUse, String incidentId)
         {
-            var request = new HttpRequestMessage(HttpMethod.Post, "/api/" + service);
             ViewModels.CustomProduct viewmodel_customproduct = new ViewModels.CustomProduct()
             {
                 productdescriptionandintendeduse = productDescriptionAndIntendedUse,
@@ -238,8 +189,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             };
             string jsonString = JsonConvert.SerializeObject(viewmodel_customproduct);
 
-            request.Content = new StringContent(jsonString, Encoding.UTF8, "application/json");
-            return await _client.SendAsync(request);
+            return await CreateNewTypeWithContent(jsonString);
         }
     }
 }

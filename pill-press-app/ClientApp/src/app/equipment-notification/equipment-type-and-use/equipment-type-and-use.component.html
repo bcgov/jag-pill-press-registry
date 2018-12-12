@@ -1,0 +1,137 @@
+<div style="position: relative;">
+  <div [ngBusy]="[busy]"></div>
+  <div [formGroup]="form">
+    <h2 class="step">STEP 2</h2>
+    <h1 style="margin-top: 0;">Equipment Type and Use</h1>
+
+    <p>Please fill out the following information for one piece of Controlled Equipment at a time until your entire
+      inventory is listed.</p>
+
+    <h3 class="blue-header">EQUIPMENT TYPE AND USE</h3>
+    <section class="padded-section">
+      <app-field label="Select the type of Controlled Equipment you are registering." (change)="form.updateValueAndValidity()"
+        [required]="true">
+        <select class="form-control" formControlName="equipmentType" style="width: 300px;">
+          <option value="">Please select an option</option>
+          <option value="Pill Press">Pill Press</option>
+          <option value="Encapsulator">Encapsulator</option>
+          <option value="Die, mould or punch">Die, mould or punch</option>
+          <option value="Phamaceutical mixer or blender">Phamaceutical mixer or blender</option>
+          <option value="Other">Other</option>
+        </select>
+      </app-field>
+
+      <section *ngIf="form.get('equipmentType').value === 'Pill Press'">
+        <app-field label="Select the level of automation for this piece of Controlled Equipment." [required]="true">
+          <select class="form-control" formControlName="levelOfEquipmentAutomation" style="width: 300px;">
+            <option value="">Please select an option</option>
+            <option value="Semi-Automatic">Semi-Automatic</option>
+            <option value="Automated">Automated</option>
+            <option value="Capable of being automated">Capable of being automated</option>
+            <option value="Manual">Manual</option>
+            <option value="Other">Other</option>
+          </select>
+        </app-field>
+
+        <app-field label="Please select from the following list to describe the size of this Pill Press." [required]="true">
+          <select class="form-control" formControlName="pillpressEncapsulatorsize" style="width: 300px;">
+            <option value="">Please select an option</option>
+            <option value="Table top model">Table top model</option>
+            <option value="Free standing model">Free standing model</option>
+            <option value="Industrial model">Industrial model</option>
+            <option value="Other">Other</option>
+          </select>
+        </app-field>
+
+        <app-field label="Please indicate your Pill Press maximum capacity in number of pills/tablets per hour.">
+          <input type="text" formControlName="pillpressmaxcapacity" style="width: 150px">
+        </app-field>
+      </section>
+
+      <section *ngIf="form.get('equipmentType').value === 'Encapsulator'">
+        <app-field label="Select the level of automation for this piece of Controlled Equipment. " [required]="true">
+          <select class="form-control" formControlName="levelOfEquipmentAutomation" style="width: 300px;">
+            <option value="">Please select an option</option>
+            <option value="Semi-Automatic">Semi-Automatic</option>
+            <option value="Automated">Automated</option>
+            <option value="Capable of being automated">Capable of being automated</option>
+            <option value="Manual">Manual</option>
+            <option value="Other">Other</option>
+          </select>
+        </app-field>
+
+        <app-field label="Please select from the following list to describe the size of this Encapsulator. " [required]="true">
+          <select class="form-control" formControlName="pillpressEncapsulatorsize" style="width: 300px;">
+            <option value="">Please select an option</option>
+            <option value="Table top model">Table top model</option>
+            <option value="Free standing model">Free standing model</option>
+            <option value="Industrial model">Industrial model</option>
+            <option value="Other">Other</option>
+          </select>
+        </app-field>
+
+        <app-field label="Please indicate your Encapsulator maximum capacity in number of capsules per hour.">
+          <input type="text" formControlName="encapsulatorMaxCapacity" style="width: 150px">
+        </app-field>
+      </section>
+
+      <div class="notes" style="display: flex;" *ngIf="form.get('equipmentType').value === 'Die, mould or punch'">
+        <i class="fas fa-exclamation-circle"  style="color: #003366; margin-right: 10px;"></i>
+        <span>
+          Although dies, moulds, and punches are considered Controlled Equipment, the notification requirements in
+          the legislation do not apply to these pieces of equipment. Therefore, you do not need to provide
+          notification of any die, mould, or punch in your possession at this time.
+        </span>
+      </div>
+
+      <section *ngIf="form.get('equipmentType').value === 'Phamaceutical mixer or blender'">
+        <app-field label="Select the level of automation for this piece of Controlled Equipment." [required]="true">
+          <select class="form-control" formControlName="levelOfEquipmentAutomation" style="width: 300px;">
+            <option value="">Please select an option</option>
+            <option value="Semi-Automatic">Semi-Automatic</option>
+            <option value="Automated">Automated</option>
+            <option value="Capable of being automated">Capable of being automated</option>
+            <option value="Manual">Manual</option>
+            <option value="Other">Other</option>
+          </select>
+        </app-field>
+      </section>
+
+      <section *ngIf="form.get('equipmentType').value === 'Other'">
+        <app-field>
+          <i>If Other, please specify</i> <br>
+          <input type="text" formControlName="equipmentTypeOther" class="form-control" style="width: 350px">
+        </app-field>
+
+        <app-field label="Select the level of automation for this piece of Controlled Equipment." [required]="true">
+          <select class="form-control" formControlName="levelOfEquipmentAutomation" style="width: 300px;">
+            <option value="">Please select an option</option>
+            <option value="Semi-Automatic">Semi-Automatic</option>
+            <option value="Automated">Automated</option>
+            <option value="Capable of being automated">Capable of being automated</option>
+            <option value="Manual">Manual</option>
+            <option value="Other">Other</option>
+          </select>
+        </app-field>
+      </section>
+
+      <app-field label="Please explain how you use this piece of Controlled Equipment in your manufacturing process."
+        [required]="true">
+        <textarea class="form-control" formControlName="explanationOfEquipmentuse" rows="5" maxlength="500"></textarea>
+      </app-field>
+    </section>
+
+    <div style="margin-top: 30px; display: flex; justify-content: space-between">
+      <section>
+        <!-- <strong class="error-states">*</strong> <i>Required field</i> -->
+        <a href="javascript: void(0);" (click)="save(false)"><i class="fa fa-save" style="margin-right: 5px"></i>Save
+          & Close</a>
+      </section>
+      <section>
+        <button class="btn btn-secondary" style="margin-right: 10px" routerLink="/equipment-notification/profile-review/{{equipmentId}}">BACK TO STEP 1</button>
+        <button class="btn btn-primary" (click)="markAsTouched(); save(true)">SAVE & CONTINUE</button>
+      </section>
+    </div>
+  </div>
+</div>
+{{form.value | json}}

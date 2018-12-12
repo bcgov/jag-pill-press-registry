@@ -111,7 +111,7 @@ export class SellerApplicationReviewComponent implements OnInit {
     zip(...saveList)
       .subscribe(res => {
         if (gotToReview) {
-          this.router.navigateByUrl(`/application/registered-seller/thank-you/${this.waiverId}`);
+          this.router.navigateByUrl(`/registered-seller/thank-you/${this.waiverId}`);
         } else {
           this.router.navigateByUrl(`/dashboard`);
         }

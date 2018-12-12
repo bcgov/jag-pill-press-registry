@@ -53,11 +53,8 @@ import { AppComponent } from './app.component';
 import { BceidConfirmationComponent } from './bceid-confirmation/bceid-confirmation.component';
 import { SearchBoxDirective } from './search-box/search-box.directive';
 import { GeneralDataService } from './general-data.service';
-// import { AdminModule } from './admin/admin.module';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { DynamicsDataService } from './services/dynamics-data.service';
-// import { DynamicsFormComponent } from './dynamics-form/dynamics-form.component';
-// import { FormViewerComponent } from './form-viewer/form-viewer.component';
 import { InsertComponent } from './insert/insert.component';
 import { InsertService } from './insert/insert.service';
 import { StaticComponent } from './static/static.component';
@@ -78,17 +75,10 @@ import { ApplicationsListComponent } from './applications-list/applications-list
 import { BusinessProfileComponent } from './business-information/business-profile/business-profile.component';
 import { FileDropModule } from 'ngx-file-drop';
 import { FileUploaderComponent } from './shared/file-uploader/file-uploader.component';
-
-
 import { BusinessProfileSummaryComponent } from './business-profile-summary/business-profile-summary.component';
-
-import {NgBusyModule} from 'ng-busy';
-
-
+import { NgBusyModule } from 'ng-busy';
 import { PaymentConfirmationComponent } from './payment-confirmation/payment-confirmation.component';
 import { LicenceFeePaymentConfirmationComponent } from './licence-fee-payment-confirmation/licence-fee-payment-confirmation.component';
-
-
 import { BsDatepickerModule, AlertModule } from 'ngx-bootstrap';
 import { CanDeactivateGuard } from './services/can-deactivate-guard.service';
 import { BCeidAuthGuard } from './services/bceid-auth-guard.service';
@@ -105,13 +95,35 @@ import { ProfileSummaryComponent } from './business-information/profile-summary/
 import { WaiverApplicationComponent } from './applications/waiver/waiver-application/waiver-application.component';
 import { WaiverReviewComponent } from './applications/waiver/waiver-review/waiver-review.component';
 import { ThankYouComponent } from './applications/waiver/thank-you/thank-you.component';
-import { SellerApplicationComponent, SellerOwnerDialogComponent } from './applications/registered-seller/seller-application/seller-application.component';
-import { SellerApplicationReviewComponent } from './applications/registered-seller/seller-application-review/seller-application-review.component';
-import { SellerApplicationThanksComponent } from './applications/registered-seller/seller-application-thanks/seller-application-thanks.component';
-import { AuthorizedApplicationComponent } from './applications/authorized-owner/authorized-application/authorized-application.component';
-import { AuthorizedApplicationReviewComponent } from './applications/authorized-owner/authorized-application-review/authorized-application-review.component';
-import { AuthorizedApplicationThanksComponent } from './applications/authorized-owner/authorized-application-thanks/authorized-application-thanks.component';
+import {
+  SellerApplicationComponent, SellerOwnerDialogComponent
+} from './applications/registered-seller/seller-application/seller-application.component';
+import {
+  SellerApplicationReviewComponent
+} from './applications/registered-seller/seller-application-review/seller-application-review.component';
+import {
+  SellerApplicationThanksComponent
+} from './applications/registered-seller/seller-application-thanks/seller-application-thanks.component';
+import {
+  AuthorizedApplicationComponent
+} from './applications/authorized-owner/authorized-application/authorized-application.component';
+import {
+  AuthorizedApplicationReviewComponent
+} from './applications/authorized-owner/authorized-application-review/authorized-application-review.component';
+import {
+  AuthorizedApplicationThanksComponent
+} from './applications/authorized-owner/authorized-application-thanks/authorized-application-thanks.component';
 import { VersionInfoDialog } from './version-info/version-info.component';
+import { EquipmentTypeAndUseComponent } from './equipment-notification/equipment-type-and-use/equipment-type-and-use.component';
+import { EquipmentIdentificationComponent } from './equipment-notification/equipment-identification/equipment-identification.component';
+import { EquipmentSourceComponent } from './equipment-notification/equipment-source/equipment-source.component';
+import { EquipmentLocationComponent } from './equipment-notification/equipment-location/equipment-location.component';
+import { EquipmentReviewComponent } from './equipment-notification/equipment-review/equipment-review.component';
+import { EquipmentThankYouComponent } from './equipment-notification/equipment-thank-you/equipment-thank-you.component';
+import { EquipmentNotificationComponent } from './equipment-notification/equipment-notification.component';
+import { WaiverComponent } from './applications/waiver/waiver.component';
+import { RegisteredSellerComponent } from './applications/registered-seller/registered-seller.component';
+import { AuthorizedOwnerComponent } from './applications/authorized-owner/authorized-owner.component';
 
 @NgModule({
   declarations: [
@@ -150,7 +162,17 @@ import { VersionInfoDialog } from './version-info/version-info.component';
     AuthorizedApplicationReviewComponent,
     AuthorizedApplicationThanksComponent,
     SellerOwnerDialogComponent,
-    VersionInfoDialog
+    VersionInfoDialog,
+    EquipmentTypeAndUseComponent,
+    EquipmentIdentificationComponent,
+    EquipmentSourceComponent,
+    EquipmentLocationComponent,
+    EquipmentReviewComponent,
+    EquipmentThankYouComponent,
+    EquipmentNotificationComponent,
+    WaiverComponent,
+    RegisteredSellerComponent,
+    AuthorizedOwnerComponent
   ],
   imports: [
     BrowserModule,

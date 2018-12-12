@@ -75,7 +75,6 @@ export class AuthorizedApplicationComponent implements OnInit {
       foippaconsent: ['', Validators.required],
       intendtopurchaseequipment: ['', Validators.required],
       mainbusinessfocus: ['', Validators.required],
-      manufacturingprocessdescription: ['', Validators.required],
       ownProducts: this.fb.array([this.createCustomProduct(<CustomProduct>{ purpose: PRODUCTING_OWN_PRODUCT })]),
       ownintendtoownequipmentforbusinessuse: ['', Validators.required],
       producingownproduct: ['', Validators.required],
@@ -91,7 +90,7 @@ export class AuthorizedApplicationComponent implements OnInit {
       sitelicence: [''],
       otherlicence: ['', Validators.required],
       delbusinessname: ['', Validators.required],
-      drugestablishmentlicencenumber: [''],
+      drugestablishmentlicencenumber: ['', Validators.required],
       drugestablishmentlicenceexpirydate: [''],
       sitelicencebusinessname: ['', Validators.required],
       sitelicencenumber: ['', Validators.required],
@@ -219,19 +218,21 @@ export class AuthorizedApplicationComponent implements OnInit {
   }
 
   save(gotToReview: boolean) {
-    const value = {...this.form.value};
-    const saveList = [this.applicationDataService.updateApplication(value), ...this.saveCustomProducts()];
-    zip(...saveList)
-      .subscribe(res => {
-        if (gotToReview) {
-          this.router.navigateByUrl(`/application/authorized-owner/review/${this.waiverId}`);
-        } else {
-          this.router.navigateByUrl(`/dashboard`);
-          // this.reloadData();
-        }
-      }, err => {
-        // todo: show errors;
-      });
+    if (this.form.valid || gotToReview === false) {
+      const value = { ...this.form.value };
+      const saveList = [this.applicationDataService.updateApplication(value), ...this.saveCustomProducts()];
+      zip(...saveList)
+        .subscribe(res => {
+          if (gotToReview) {
+            this.router.navigateByUrl(`/authorized-owner/review/${this.waiverId}`);
+          } else {
+            this.router.navigateByUrl(`/dashboard`);
+            // this.reloadData();
+          }
+        }, err => {
+          // todo: show errors;
+        });
+    }
   }
 
   saveCustomProducts(): Observable<any>[] {

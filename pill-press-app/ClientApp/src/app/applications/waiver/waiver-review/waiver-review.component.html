@@ -1,84 +1,66 @@
-<div class="form-wrapper row"style="position: relative">
-    <div [ngBusy]="[busy, busyPromise]"></div>
-  <div class="col-lg-8 col-sm-12">
-    <h1>Waiver Application Review</h1>
+<div style="position: relative">
+  <div [ngBusy]="[busy, busyPromise]"></div>
 
-    <p>
-      You have provided the following information in your Waiver application. In order to proceed, please confirm that
-      these details are correct. If they are not, please <a routerLink="/application/waiver/{{waiverId}}">amend your
-        answers</a>
-      before submitting the application.
-    </p>
+  <h1>Waiver Application Review</h1>
 
-    <h2>Equipment Information</h2>
-    <table class="summary-table">
-      <tr *ngFor="let item of equipmentInformation; let i = index;">
-        <td [ngClass]="{'row-alt': i%2==1 }">{{ item}}</td>
-      </tr>
-    </table>
+  <p>
+    You have provided the following information in your Waiver application. In order to proceed, please confirm that
+    these details are correct. If they are not, please <a routerLink="/waiver/application/{{waiverId}}">amend your
+      answers</a>
+    before submitting the application.
+  </p>
 
-    <h2>Purpose of Controlled Equipment</h2>
-    <table class="summary-table">
-      <tr *ngFor="let item of purposeOfEquipment; let i = index;">
-        <td [ngClass]="{'row-alt': i%2==1 }">{{ item.text}}</td>
-      </tr>
-    </table>
+  <h2>Equipment Information</h2>
+  <table class="summary-table">
+    <tr *ngFor="let item of equipmentInformation; let i = index;">
+      <td [ngClass]="{'row-alt': i%2==1 }">{{ item}}</td>
+    </tr>
+  </table>
 
-    <h2>Purpose of Controlled Equipment</h2>
-    <table class="summary-table">
-      <tr *ngFor="let item of purposeExplanation; let i = index;">
-        <td [ngClass]="{'row-alt': i%2==1 }">{{ item}}</td>
-      </tr>
-    </table>
+  <h2>Purpose of Controlled Equipment</h2>
+  <table class="summary-table">
+    <tr *ngFor="let item of purposeOfEquipment; let i = index;">
+      <td [ngClass]="{'row-alt': i%2==1 }">{{ item.text}}</td>
+    </tr>
+  </table>
 
-    <h3 class="blue-header">DECLARATION AND CONSENT</h3>
-    <div [formGroup]="form" class="padded-section">
-      <section style="display: flex">
-        <input type="checkbox" style="flex: 0 0 20px" formControlName="declarationofcorrectinformation">
-        <span>
-          I certify that, to the best of my knowledge, the information I have provided on my Waiver application and
-          will
-          provide as necessary is complete, honest, and accurate. I understand that a false statement or omission of
-          facts herein may lead to the a denial of a Waiver being granted. I am also aware that later discovery of an
-          omission or misrepresentation may be grounds for suspension or cancellation of a waiver or for being
-          prosecuted
-          under provincial law. <strong class="error-states">*</strong>
-        </span>
-      </section>
-      <div *ngIf="form.get('declarationofcorrectinformation').value !== true && form.touched" style="background-color: #F2F2F2; margin-top: 10px; border-radius: 5px; padding: 10px; font: 15px Myriad Pro Regular #494949;">
-        <i class="fas fa-exclamation-triangle error-states" style="margin-right: 10px;"></i>
-        <strong class="error-states">Please complete the declarations and consent section.</strong>
-      </div>
-    </div>
+  <h2>Purpose of Controlled Equipment</h2>
+  <table class="summary-table">
+    <tr *ngFor="let item of purposeExplanation; let i = index;">
+      <td [ngClass]="{'row-alt': i%2==1 }">{{ item}}</td>
+    </tr>
+  </table>
 
-    <div style="margin-top: 30px; display: flex; justify-content: space-between">
-      <section>
-        <!-- <strong class="error-states">*</strong> <i>Required field</i> -->
-        <a href="javascript: void(0);" (click)="save(false)"><i class="fa fa-save" style="margin-right: 5px"></i>Save & Close</a>
-      </section>
-      <section>
-        <button class="btn btn-secondary" style="margin-right: 10px" routerLink="/application/waiver/{{waiverId}}">EDIT
-          APPLICATION</button>
-        <button class="btn btn-primary" (click)="save(true)">SUBMIT</button>
-      </section>
+  <h3 class="blue-header">DECLARATION AND CONSENT</h3>
+  <div [formGroup]="form" class="padded-section">
+    <section style="display: flex">
+      <input type="checkbox" style="flex: 0 0 20px" formControlName="declarationofcorrectinformation">
+      <span>
+        I certify that, to the best of my knowledge, the information I have provided on my Waiver application and
+        will
+        provide as necessary is complete, honest, and accurate. I understand that a false statement or omission of
+        facts herein may lead to the a denial of a Waiver being granted. I am also aware that later discovery of an
+        omission or misrepresentation may be grounds for suspension or cancellation of a waiver or for being
+        prosecuted
+        under provincial law. <strong class="error-states">*</strong>
+      </span>
+    </section>
+    <div *ngIf="form.get('declarationofcorrectinformation').value !== true && form.touched" style="background-color: #F2F2F2; margin-top: 10px; border-radius: 5px; padding: 10px; font: 15px Myriad Pro Regular #494949;">
+      <i class="fas fa-exclamation-triangle error-states" style="margin-right: 10px;"></i>
+      <span class="error-states">Please complete the declarations and consent section.</span>
     </div>
   </div>
 
-  <div class="col-lg-4 col-sm-12" >
-    <p></p>
-    <section class="submit-container">
-        <table>
-          <tr>
-            <td>
-              <h2 class="round-icon-wrapper"><i class="fas fa-address-card"></i></h2>
-            </td>
-            <td style="padding-left: 10px">
-              <h2>Useful Links & Information</h2>
-            </td>
-          </tr>
-        </table>
-        <div class="submit-content">
-        </div>
-      </section>
+  <div style="margin-top: 30px; display: flex; justify-content: space-between">
+    <section>
+      <!-- <strong class="error-states">*</strong> <i>Required field</i> -->
+      <a href="javascript: void(0);" (click)="save(false)"><i class="fa fa-save" style="margin-right: 5px"></i>Save &
+        Close</a>
+    </section>
+    <section>
+      <button class="btn btn-secondary" style="margin-right: 10px" routerLink="/waiver/application/{{waiverId}}">EDIT
+        APPLICATION</button>
+      <button class="btn btn-primary" (click)="markAsTouched(); save(true)">SUBMIT</button>
+    </section>
   </div>
 </div>

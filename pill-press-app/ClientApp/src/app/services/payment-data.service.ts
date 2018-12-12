@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 
 
-import { Application } from '../models/adoxio-application.model';
+import { Application } from '../models/application.model';
 
 @Injectable()
 export class PaymentDataService {

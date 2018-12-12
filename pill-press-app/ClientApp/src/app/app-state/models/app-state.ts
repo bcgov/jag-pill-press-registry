@@ -1,6 +1,6 @@
 import { AdoxioLegalEntity } from '../../models/adoxio-legalentities.model';
 import { DynamicsAccount } from '../../models/dynamics-account.model';
-import { Application } from '../../models/adoxio-application.model';
+import { Application } from '../../models/application.model';
 import { User } from '../../models/user.model';
 
 export interface AppState {

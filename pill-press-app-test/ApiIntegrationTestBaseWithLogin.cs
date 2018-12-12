@@ -64,8 +64,13 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
 			return userid + TestUtilities.RandomANString(len);
 		}
 
+        public string RandomTextString(int len, int aNumber)
+        {
+            return TestUtilities.RandomANString(len) + aNumber.ToString();
+        }
+
         // this fellow returns the external id of the new account
-		public async System.Threading.Tasks.Task<string> LoginAndRegisterAsNewUser(string loginUser)
+        public async System.Threading.Tasks.Task<string> LoginAndRegisterAsNewUser(string loginUser)
 		{
 			return await LoginAndRegisterAsNewUser(loginUser, loginUser);
 		}
@@ -208,7 +213,18 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
 			return currentAccount;
 		}
 
-		public async System.Threading.Tasks.Task GetCurrentUserIsUnauthorized()
+        public async System.Threading.Tasks.Task<ViewModels.Contact> GetContactForCurrentUser()
+        {
+            ViewModels.User user = await GetCurrentUser();
+            var request = new HttpRequestMessage(HttpMethod.Get, "/api/contact/" + user.contactid);
+            var response = await _client.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+
+            string jsonString = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<ViewModels.Contact>(jsonString);
+        }
+
+        public async System.Threading.Tasks.Task GetCurrentUserIsUnauthorized()
         {
             var request = new HttpRequestMessage(HttpMethod.Get, "/api/user/current");
             var response = await _client.SendAsync(request);

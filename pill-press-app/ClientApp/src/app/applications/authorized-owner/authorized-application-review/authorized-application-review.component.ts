@@ -6,7 +6,7 @@ import { DynamicsDataService } from '../../../services/dynamics-data.service';
 import { ApplicationDataService } from '../../../services/adoxio-application-data.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { PRODUCTING_OWN_PRODUCT, MANUFACTURING_FOR_OTHERS } from '../../waiver/waiver-application/waiver-application.component';
-import { Application } from '../../../models/adoxio-application.model';
+import { Application } from '../../../models/application.model';
 
 
 @Component({
@@ -120,7 +120,6 @@ export class AuthorizedApplicationReviewComponent implements OnInit {
       }, error => {
         // todo: show errors;
       });
-    debugger;
   }
 
   getUploadedFileData() {
@@ -142,6 +141,16 @@ export class AuthorizedApplicationReviewComponent implements OnInit {
     //   err => alert('Failed to get files'));
   }
 
+  markAsTouched() {
+    this.form.markAsTouched();
+    const controls = this.form.controls;
+    for (const c in controls) {
+      if (typeof (controls[c].markAsTouched) === 'function') {
+        controls[c].markAsTouched();
+      }
+    }
+  }
+
   save(goToThankYouPage: boolean) {
     const value = this.form.value;
     // set the status to pending.
@@ -153,7 +162,7 @@ export class AuthorizedApplicationReviewComponent implements OnInit {
         .toPromise()
         .then(res => {
           if (goToThankYouPage) {
-            this.router.navigateByUrl(`/application/authorized-owner/thank-you/${this.waiverId}`);
+            this.router.navigateByUrl(`/authorized-owner/thank-you/${this.waiverId}`);
           } else {
             this.router.navigateByUrl(`dashboard`);
           }

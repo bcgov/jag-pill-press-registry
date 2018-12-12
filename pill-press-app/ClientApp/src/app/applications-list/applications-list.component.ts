@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Application } from '../models/adoxio-application.model';
+import { Application } from '../models/application.model';
 import { ApplicationDataService } from '../services/adoxio-application-data.service';
 import { MatPaginator, MatTableDataSource, MatSort} from '@angular/material';
 
