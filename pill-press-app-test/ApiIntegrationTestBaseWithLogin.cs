@@ -64,8 +64,13 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
 			return userid + TestUtilities.RandomANString(len);
 		}
 
+        public string RandomTextString(int len, int aNumber)
+        {
+            return TestUtilities.RandomANString(len) + aNumber.ToString();
+        }
+
         // this fellow returns the external id of the new account
-		public async System.Threading.Tasks.Task<string> LoginAndRegisterAsNewUser(string loginUser)
+        public async System.Threading.Tasks.Task<string> LoginAndRegisterAsNewUser(string loginUser)
 		{
 			return await LoginAndRegisterAsNewUser(loginUser, loginUser);
 		}
