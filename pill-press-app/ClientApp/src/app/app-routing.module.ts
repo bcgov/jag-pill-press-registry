@@ -5,7 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CanDeactivateGuard } from './services/can-deactivate-guard.service';
 import { BCeidAuthGuard } from './services/bceid-auth-guard.service';
-import { DashboardLiteComponent } from './dashboard-lite/dashboard-lite.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileSummaryComponent } from './business-information/profile-summary/profile-summary.component';
 import { WaiverApplicationComponent } from './applications/waiver/waiver-application/waiver-application.component';
 import { WaiverReviewComponent } from './applications/waiver/waiver-review/waiver-review.component';
@@ -175,7 +175,7 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardLiteComponent,
+    component: DashboardComponent,
     canActivate: [BCeidAuthGuard]
   },
   { path: '**', component: NotFoundComponent }
