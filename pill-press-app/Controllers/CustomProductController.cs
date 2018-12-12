@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -24,13 +25,18 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ILogger _logger;
         private readonly IHostingEnvironment _env;
+        private readonly IMemoryCache _cache;
 
-        public CustomProductController(IConfiguration configuration, IDynamicsClient dynamicsClient, IHttpContextAccessor httpContextAccessor, ILoggerFactory loggerFactory, IHostingEnvironment env)
+        public static readonly string ENTITY_NAME = "bcgov_customproduct";
+
+        public CustomProductController(IConfiguration configuration, IDynamicsClient dynamicsClient, IHttpContextAccessor httpContextAccessor, ILoggerFactory loggerFactory, IHostingEnvironment env, IMemoryCache memoryCache)
         {
             Configuration = configuration;
             _dynamicsClient = dynamicsClient;
+            _cache = memoryCache;
+
             _httpContextAccessor = httpContextAccessor;
-            _logger = loggerFactory.CreateLogger(typeof(ContactController));
+            _logger = loggerFactory.CreateLogger(typeof(CustomProductController));
             this._env = env;
         }
 
@@ -83,6 +89,12 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 return BadRequest();
             }
 
+            int? maxLength = ControllerUtility.GetAttributeMaxLength((DynamicsClient)_dynamicsClient, _cache, _logger, ENTITY_NAME, "bcgov_productdescriptionandintendeduse");
+            if (maxLength != null && item.productdescriptionandintendeduse.Length > maxLength)
+            {
+                return BadRequest("productdescriptionandintendeduse exceeds maximum field length");
+            }
+
             // get the customProduct
             Guid customProductGuid = Guid.Parse(id);
 
@@ -122,6 +134,12 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             if (string.IsNullOrEmpty(item.incidentId))
             {
                 return BadRequest("IncidentId missing");
+            }
+
+            int? maxLength = ControllerUtility.GetAttributeMaxLength((DynamicsClient) _dynamicsClient, _cache, _logger, ENTITY_NAME, "bcgov_productdescriptionandintendeduse");
+            if(maxLength != null && item.productdescriptionandintendeduse.Length > maxLength)
+            {
+                return BadRequest("productdescriptionandintendeduse exceeds maximum field length");
             }
 
             // get UserSettings from the session
