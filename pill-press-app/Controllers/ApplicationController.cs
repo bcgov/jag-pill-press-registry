@@ -81,7 +81,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
 
             var filter = $"_customerid_value eq {applicantId}";
             // filter += $" and statuscode ne {(int)AdoxioApplicationStatusCodes.Denied}";
-            var expand = new List<string> { "customerid_account" };
+            var expand = new List<string> { "customerid_account", "bcgov_ApplicationTypeId" };
             try
             {
                 dynamicsApplicationList = _dynamicsClient.Incidents.Get(filter: filter, expand: expand, orderby: new List<string> { "modifiedon desc" }).Value;

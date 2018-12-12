@@ -68,6 +68,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             // verify that the item was present
             foreach (var item in dashboardItems)
             {
+
                 if (item.id == responseViewModel.id)
                 {
                     found = true;
