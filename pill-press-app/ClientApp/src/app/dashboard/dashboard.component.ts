@@ -46,7 +46,11 @@ export class DashboardComponent implements OnInit {
               }
             });
         }
+      });
 
+      this.applicationDataService.getApplications()
+      .subscribe(data => {
+        debugger;
       });
   }
 
