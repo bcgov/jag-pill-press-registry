@@ -22,7 +22,14 @@ export class EquipmentLocationComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       id: [],
-
+      outsideBcSellersAddress: this.fb.group({
+        id: [],
+        streetLine1: [],
+        streetLine2: [],
+        city: [],
+        province: ['British Columbia'],
+        postalCode: [],
+      }),
     });
 
   }
