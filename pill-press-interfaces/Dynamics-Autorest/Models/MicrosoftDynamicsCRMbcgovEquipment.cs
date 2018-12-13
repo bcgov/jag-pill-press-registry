@@ -29,38 +29,47 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// Initializes a new instance of the
         /// MicrosoftDynamicsCRMbcgovEquipment class.
         /// </summary>
-        public MicrosoftDynamicsCRMbcgovEquipment(string _createdbyValue = default(string), int? statecode = default(int?), string bcgovName = default(string), string _modifiedbyValue = default(string), string processid = default(string), System.DateTimeOffset? overriddencreatedon = default(System.DateTimeOffset?), string traversedpath = default(string), int? timezoneruleversionnumber = default(int?), string bcgovEquipmenttypeother = default(string), string bcgovPillpressencapsulatorsizeother = default(string), string _createdonbehalfbyValue = default(string), string _stageidValue = default(string), string _owningbusinessunitValue = default(string), int? bcgovPillpressencapsulatorsize = default(int?), int? statuscode = default(int?), int? bcgovPillpressmaxcapacity = default(int?), string bcgovEquipmentid = default(string), int? bcgovEquipmenttype = default(int?), int? utcconversiontimezonecode = default(int?), string _owningteamValue = default(string), int? bcgovLevelofautomation = default(int?), long? versionnumber = default(long?), System.DateTimeOffset? modifiedon = default(System.DateTimeOffset?), int? importsequencenumber = default(int?), string _owneridValue = default(string), int? bcgovEncapsulatormaxcapacity = default(int?), System.DateTimeOffset? createdon = default(System.DateTimeOffset?), string emailaddress = default(string), string _modifiedonbehalfbyValue = default(string), string _owninguserValue = default(string), MicrosoftDynamicsCRMsystemuser createdbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser createdonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser owninguser = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMteam owningteam = default(MicrosoftDynamicsCRMteam), MicrosoftDynamicsCRMprincipal ownerid = default(MicrosoftDynamicsCRMprincipal), MicrosoftDynamicsCRMbusinessunit owningbusinessunit = default(MicrosoftDynamicsCRMbusinessunit), IList<MicrosoftDynamicsCRMactivitypointer> bcgovEquipmentActivityPointers = default(IList<MicrosoftDynamicsCRMactivitypointer>), IList<MicrosoftDynamicsCRMappointment> bcgovEquipmentAppointments = default(IList<MicrosoftDynamicsCRMappointment>), IList<MicrosoftDynamicsCRMemail> bcgovEquipmentEmails = default(IList<MicrosoftDynamicsCRMemail>), IList<MicrosoftDynamicsCRMfax> bcgovEquipmentFaxes = default(IList<MicrosoftDynamicsCRMfax>), IList<MicrosoftDynamicsCRMletter> bcgovEquipmentLetters = default(IList<MicrosoftDynamicsCRMletter>), IList<MicrosoftDynamicsCRMphonecall> bcgovEquipmentPhoneCalls = default(IList<MicrosoftDynamicsCRMphonecall>), IList<MicrosoftDynamicsCRMserviceappointment> bcgovEquipmentServiceAppointments = default(IList<MicrosoftDynamicsCRMserviceappointment>), IList<MicrosoftDynamicsCRMtask> bcgovEquipmentTasks = default(IList<MicrosoftDynamicsCRMtask>), IList<MicrosoftDynamicsCRMrecurringappointmentmaster> bcgovEquipmentRecurringAppointmentMasters = default(IList<MicrosoftDynamicsCRMrecurringappointmentmaster>), IList<MicrosoftDynamicsCRMsocialactivity> bcgovEquipmentSocialActivities = default(IList<MicrosoftDynamicsCRMsocialactivity>), IList<MicrosoftDynamicsCRMsyncerror> bcgovEquipmentSyncErrors = default(IList<MicrosoftDynamicsCRMsyncerror>), IList<MicrosoftDynamicsCRMactivityparty> bcgovEquipmentActivityParties = default(IList<MicrosoftDynamicsCRMactivityparty>), IList<MicrosoftDynamicsCRMconnection> bcgovEquipmentConnections1 = default(IList<MicrosoftDynamicsCRMconnection>), IList<MicrosoftDynamicsCRMconnection> bcgovEquipmentConnections2 = default(IList<MicrosoftDynamicsCRMconnection>), IList<MicrosoftDynamicsCRMduplicaterecord> bcgovEquipmentDuplicateMatchingRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMduplicaterecord> bcgovEquipmentDuplicateBaseRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMsharepointdocumentlocation> bcgovEquipmentSharePointDocumentLocations = default(IList<MicrosoftDynamicsCRMsharepointdocumentlocation>), IList<MicrosoftDynamicsCRMqueueitem> bcgovEquipmentQueueItems = default(IList<MicrosoftDynamicsCRMqueueitem>), IList<MicrosoftDynamicsCRMannotation> bcgovEquipmentAnnotations = default(IList<MicrosoftDynamicsCRMannotation>), IList<MicrosoftDynamicsCRMasyncoperation> bcgovEquipmentAsyncOperations = default(IList<MicrosoftDynamicsCRMasyncoperation>), IList<MicrosoftDynamicsCRMbulkdeletefailure> bcgovEquipmentBulkDeleteFailures = default(IList<MicrosoftDynamicsCRMbulkdeletefailure>), MicrosoftDynamicsCRMprocessstage stageid = default(MicrosoftDynamicsCRMprocessstage), IList<MicrosoftDynamicsCRMbcgovLocation> bcgovLocationEquipment = default(IList<MicrosoftDynamicsCRMbcgovLocation>), IList<MicrosoftDynamicsCRMbcgovEquipmentlocation> bcgovEquipmentEquipmentlocationEquipment = default(IList<MicrosoftDynamicsCRMbcgovEquipmentlocation>), IList<MicrosoftDynamicsCRMincident> bcgovEquipmentIncident = default(IList<MicrosoftDynamicsCRMincident>), IList<MicrosoftDynamicsCRMincident> bcgovEquipmentIncidentEquipmentRecord = default(IList<MicrosoftDynamicsCRMincident>), IList<MicrosoftDynamicsCRMbcgovCertificate> bcgovEquipmentBcgovCertificateEquipment = default(IList<MicrosoftDynamicsCRMbcgovCertificate>))
+        public MicrosoftDynamicsCRMbcgovEquipment(string _createdbyValue = default(string), int? statecode = default(int?), string bcgovName = default(string), string _modifiedbyValue = default(string), int? bcgovPillpressmaxcapacity = default(int?), int? bcgovEncapsulatormaxcapacity = default(int?), string processid = default(string), System.DateTimeOffset? overriddencreatedon = default(System.DateTimeOffset?), string _bcgovCurrentbusinessownerValue = default(string), string traversedpath = default(string), int? timezoneruleversionnumber = default(int?), string bcgovEquipmenttypeother = default(string), int? bcgovHowwasequipmentbuilt = default(int?), string bcgovPillpressencapsulatorsizeother = default(string), string _createdonbehalfbyValue = default(string), string _stageidValue = default(string), long? versionnumber = default(long?), string bcgovMake = default(string), int? statuscode = default(int?), string _owningbusinessunitValue = default(string), int? bcgovEquipmenttype = default(int?), string bcgovCustombuiltorkeypartserialnumber = default(string), int? bcgovLevelofautomation = default(int?), string _owningteamValue = default(string), string _modifiedonbehalfbyValue = default(string), string bcgovModel = default(string), System.DateTimeOffset? modifiedon = default(System.DateTimeOffset?), int? importsequencenumber = default(int?), string _owneridValue = default(string), string bcgovEquipmentid = default(string), System.DateTimeOffset? createdon = default(System.DateTimeOffset?), string bcgovNameofmanufacturer = default(string), string bcgovSerialnumber = default(string), int? bcgovPillpressencapsulatorsize = default(int?), string emailaddress = default(string), string _owninguserValue = default(string), int? utcconversiontimezonecode = default(int?), MicrosoftDynamicsCRMaccount bcgovCurrentBusinessOwner = default(MicrosoftDynamicsCRMaccount), IList<MicrosoftDynamicsCRMincident> bcgovEquipmentIncidentAssociatedEquipmentRecord = default(IList<MicrosoftDynamicsCRMincident>), MicrosoftDynamicsCRMsystemuser createdbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser createdonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser owninguser = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMteam owningteam = default(MicrosoftDynamicsCRMteam), MicrosoftDynamicsCRMprincipal ownerid = default(MicrosoftDynamicsCRMprincipal), MicrosoftDynamicsCRMbusinessunit owningbusinessunit = default(MicrosoftDynamicsCRMbusinessunit), IList<MicrosoftDynamicsCRMactivitypointer> bcgovEquipmentActivityPointers = default(IList<MicrosoftDynamicsCRMactivitypointer>), IList<MicrosoftDynamicsCRMappointment> bcgovEquipmentAppointments = default(IList<MicrosoftDynamicsCRMappointment>), IList<MicrosoftDynamicsCRMemail> bcgovEquipmentEmails = default(IList<MicrosoftDynamicsCRMemail>), IList<MicrosoftDynamicsCRMfax> bcgovEquipmentFaxes = default(IList<MicrosoftDynamicsCRMfax>), IList<MicrosoftDynamicsCRMletter> bcgovEquipmentLetters = default(IList<MicrosoftDynamicsCRMletter>), IList<MicrosoftDynamicsCRMphonecall> bcgovEquipmentPhoneCalls = default(IList<MicrosoftDynamicsCRMphonecall>), IList<MicrosoftDynamicsCRMserviceappointment> bcgovEquipmentServiceAppointments = default(IList<MicrosoftDynamicsCRMserviceappointment>), IList<MicrosoftDynamicsCRMtask> bcgovEquipmentTasks = default(IList<MicrosoftDynamicsCRMtask>), IList<MicrosoftDynamicsCRMrecurringappointmentmaster> bcgovEquipmentRecurringAppointmentMasters = default(IList<MicrosoftDynamicsCRMrecurringappointmentmaster>), IList<MicrosoftDynamicsCRMsocialactivity> bcgovEquipmentSocialActivities = default(IList<MicrosoftDynamicsCRMsocialactivity>), IList<MicrosoftDynamicsCRMsyncerror> bcgovEquipmentSyncErrors = default(IList<MicrosoftDynamicsCRMsyncerror>), IList<MicrosoftDynamicsCRMactivityparty> bcgovEquipmentActivityParties = default(IList<MicrosoftDynamicsCRMactivityparty>), IList<MicrosoftDynamicsCRMconnection> bcgovEquipmentConnections1 = default(IList<MicrosoftDynamicsCRMconnection>), IList<MicrosoftDynamicsCRMconnection> bcgovEquipmentConnections2 = default(IList<MicrosoftDynamicsCRMconnection>), IList<MicrosoftDynamicsCRMduplicaterecord> bcgovEquipmentDuplicateMatchingRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMduplicaterecord> bcgovEquipmentDuplicateBaseRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMsharepointdocumentlocation> bcgovEquipmentSharePointDocumentLocations = default(IList<MicrosoftDynamicsCRMsharepointdocumentlocation>), IList<MicrosoftDynamicsCRMqueueitem> bcgovEquipmentQueueItems = default(IList<MicrosoftDynamicsCRMqueueitem>), IList<MicrosoftDynamicsCRMannotation> bcgovEquipmentAnnotations = default(IList<MicrosoftDynamicsCRMannotation>), IList<MicrosoftDynamicsCRMasyncoperation> bcgovEquipmentAsyncOperations = default(IList<MicrosoftDynamicsCRMasyncoperation>), IList<MicrosoftDynamicsCRMbulkdeletefailure> bcgovEquipmentBulkDeleteFailures = default(IList<MicrosoftDynamicsCRMbulkdeletefailure>), MicrosoftDynamicsCRMprocessstage stageid = default(MicrosoftDynamicsCRMprocessstage), IList<MicrosoftDynamicsCRMbcgovLocation> bcgovLocationEquipment = default(IList<MicrosoftDynamicsCRMbcgovLocation>), IList<MicrosoftDynamicsCRMbcgovEquipmentlocation> bcgovEquipmentEquipmentlocationEquipment = default(IList<MicrosoftDynamicsCRMbcgovEquipmentlocation>), IList<MicrosoftDynamicsCRMincident> bcgovEquipmentIncident = default(IList<MicrosoftDynamicsCRMincident>), IList<MicrosoftDynamicsCRMincident> bcgovEquipmentIncidentEquipmentRecord = default(IList<MicrosoftDynamicsCRMincident>), IList<MicrosoftDynamicsCRMbcgovCertificate> bcgovEquipmentBcgovCertificateEquipment = default(IList<MicrosoftDynamicsCRMbcgovCertificate>))
         {
             this._createdbyValue = _createdbyValue;
             Statecode = statecode;
             BcgovName = bcgovName;
             this._modifiedbyValue = _modifiedbyValue;
+            BcgovPillpressmaxcapacity = bcgovPillpressmaxcapacity;
+            BcgovEncapsulatormaxcapacity = bcgovEncapsulatormaxcapacity;
             Processid = processid;
             Overriddencreatedon = overriddencreatedon;
+            this._bcgovCurrentbusinessownerValue = _bcgovCurrentbusinessownerValue;
             Traversedpath = traversedpath;
             Timezoneruleversionnumber = timezoneruleversionnumber;
             BcgovEquipmenttypeother = bcgovEquipmenttypeother;
+            BcgovHowwasequipmentbuilt = bcgovHowwasequipmentbuilt;
             BcgovPillpressencapsulatorsizeother = bcgovPillpressencapsulatorsizeother;
             this._createdonbehalfbyValue = _createdonbehalfbyValue;
             this._stageidValue = _stageidValue;
-            this._owningbusinessunitValue = _owningbusinessunitValue;
-            BcgovPillpressencapsulatorsize = bcgovPillpressencapsulatorsize;
-            Statuscode = statuscode;
-            BcgovPillpressmaxcapacity = bcgovPillpressmaxcapacity;
-            BcgovEquipmentid = bcgovEquipmentid;
-            BcgovEquipmenttype = bcgovEquipmenttype;
-            Utcconversiontimezonecode = utcconversiontimezonecode;
-            this._owningteamValue = _owningteamValue;
-            BcgovLevelofautomation = bcgovLevelofautomation;
             Versionnumber = versionnumber;
+            BcgovMake = bcgovMake;
+            Statuscode = statuscode;
+            this._owningbusinessunitValue = _owningbusinessunitValue;
+            BcgovEquipmenttype = bcgovEquipmenttype;
+            BcgovCustombuiltorkeypartserialnumber = bcgovCustombuiltorkeypartserialnumber;
+            BcgovLevelofautomation = bcgovLevelofautomation;
+            this._owningteamValue = _owningteamValue;
+            this._modifiedonbehalfbyValue = _modifiedonbehalfbyValue;
+            BcgovModel = bcgovModel;
             Modifiedon = modifiedon;
             Importsequencenumber = importsequencenumber;
             this._owneridValue = _owneridValue;
-            BcgovEncapsulatormaxcapacity = bcgovEncapsulatormaxcapacity;
+            BcgovEquipmentid = bcgovEquipmentid;
             Createdon = createdon;
+            BcgovNameofmanufacturer = bcgovNameofmanufacturer;
+            BcgovSerialnumber = bcgovSerialnumber;
+            BcgovPillpressencapsulatorsize = bcgovPillpressencapsulatorsize;
             Emailaddress = emailaddress;
-            this._modifiedonbehalfbyValue = _modifiedonbehalfbyValue;
             this._owninguserValue = _owninguserValue;
+            Utcconversiontimezonecode = utcconversiontimezonecode;
+            BcgovCurrentBusinessOwner = bcgovCurrentBusinessOwner;
+            BcgovEquipmentIncidentAssociatedEquipmentRecord = bcgovEquipmentIncidentAssociatedEquipmentRecord;
             Createdbyname = createdbyname;
             Createdonbehalfbyname = createdonbehalfbyname;
             Modifiedbyname = modifiedbyname;
@@ -126,6 +135,16 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "bcgov_pillpressmaxcapacity")]
+        public int? BcgovPillpressmaxcapacity { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_encapsulatormaxcapacity")]
+        public int? BcgovEncapsulatormaxcapacity { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "processid")]
         public string Processid { get; set; }
 
@@ -133,6 +152,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "overriddencreatedon")]
         public System.DateTimeOffset? Overriddencreatedon { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "_bcgov_currentbusinessowner_value")]
+        public string _bcgovCurrentbusinessownerValue { get; set; }
 
         /// <summary>
         /// </summary>
@@ -151,6 +175,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "bcgov_howwasequipmentbuilt")]
+        public int? BcgovHowwasequipmentbuilt { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "bcgov_pillpressencapsulatorsizeother")]
         public string BcgovPillpressencapsulatorsizeother { get; set; }
 
@@ -166,13 +195,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "_owningbusinessunit_value")]
-        public string _owningbusinessunitValue { get; set; }
+        [JsonProperty(PropertyName = "versionnumber")]
+        public long? Versionnumber { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "bcgov_pillpressencapsulatorsize")]
-        public int? BcgovPillpressencapsulatorsize { get; set; }
+        [JsonProperty(PropertyName = "bcgov_make")]
+        public string BcgovMake { get; set; }
 
         /// <summary>
         /// </summary>
@@ -181,13 +210,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "bcgov_pillpressmaxcapacity")]
-        public int? BcgovPillpressmaxcapacity { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "bcgov_equipmentid")]
-        public string BcgovEquipmentid { get; set; }
+        [JsonProperty(PropertyName = "_owningbusinessunit_value")]
+        public string _owningbusinessunitValue { get; set; }
 
         /// <summary>
         /// </summary>
@@ -196,13 +220,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "utcconversiontimezonecode")]
-        public int? Utcconversiontimezonecode { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "_owningteam_value")]
-        public string _owningteamValue { get; set; }
+        [JsonProperty(PropertyName = "bcgov_custombuiltorkeypartserialnumber")]
+        public string BcgovCustombuiltorkeypartserialnumber { get; set; }
 
         /// <summary>
         /// </summary>
@@ -211,8 +230,18 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "versionnumber")]
-        public long? Versionnumber { get; set; }
+        [JsonProperty(PropertyName = "_owningteam_value")]
+        public string _owningteamValue { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "_modifiedonbehalfby_value")]
+        public string _modifiedonbehalfbyValue { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_model")]
+        public string BcgovModel { get; set; }
 
         /// <summary>
         /// </summary>
@@ -231,8 +260,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "bcgov_encapsulatormaxcapacity")]
-        public int? BcgovEncapsulatormaxcapacity { get; set; }
+        [JsonProperty(PropertyName = "bcgov_equipmentid")]
+        public string BcgovEquipmentid { get; set; }
 
         /// <summary>
         /// </summary>
@@ -241,18 +270,43 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "bcgov_nameofmanufacturer")]
+        public string BcgovNameofmanufacturer { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_serialnumber")]
+        public string BcgovSerialnumber { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_pillpressencapsulatorsize")]
+        public int? BcgovPillpressencapsulatorsize { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "emailaddress")]
         public string Emailaddress { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "_modifiedonbehalfby_value")]
-        public string _modifiedonbehalfbyValue { get; set; }
+        [JsonProperty(PropertyName = "_owninguser_value")]
+        public string _owninguserValue { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "_owninguser_value")]
-        public string _owninguserValue { get; set; }
+        [JsonProperty(PropertyName = "utcconversiontimezonecode")]
+        public int? Utcconversiontimezonecode { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_CurrentBusinessOwner")]
+        public MicrosoftDynamicsCRMaccount BcgovCurrentBusinessOwner { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_equipment_incident_AssociatedEquipmentRecord")]
+        public IList<MicrosoftDynamicsCRMincident> BcgovEquipmentIncidentAssociatedEquipmentRecord { get; set; }
 
         /// <summary>
         /// </summary>

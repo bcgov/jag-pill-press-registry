@@ -30,13 +30,20 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         Expired = 931490015
     }
 
+    public enum PublicStatusCodes
+    {
+        Draft = 931490005,
+        Pending = 931490000,
+        [EnumMember(Value = "Under Review")]
+        UnderReview = 931490001,        
+        Cancelled = 931490014        
+    }
+
     public enum UserApplicationStatusCodes
     {
         Draft = 931490005,
         Pending = 931490000
     }
-
-
 
     public enum AdoxioFinalDecisionCodes
     {
@@ -46,7 +53,6 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
 
     public class Application
     {
-
         public string id { get; set; } //adoxio_applicationid
 
         /// <summary>
