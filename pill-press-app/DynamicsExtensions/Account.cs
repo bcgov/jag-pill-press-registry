@@ -37,7 +37,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             // get the primary contact.
             if (result != null && result.Primarycontactid == null && result._primarycontactidValue != null)
             {
-                result.Primarycontactid = await system.GetContactById(Guid.Parse(result._primarycontactidValue));
+                result.Primarycontactid = system.GetContactById(Guid.Parse(result._primarycontactidValue));
             }
 
             return result;
@@ -63,7 +63,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             // get the primary contact.
             if (result != null && result.Primarycontactid == null && result._primarycontactidValue != null)
             {
-                result.Primarycontactid = await system.GetContactById(Guid.Parse(result._primarycontactidValue));
+                result.Primarycontactid = system.GetContactById(Guid.Parse(result._primarycontactidValue));
             }
 
             return result;
@@ -77,7 +77,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <param name="system"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public static async Task<MicrosoftDynamicsCRMaccount> GetAccountById(this IDynamicsClient system, Guid id)
+        public static MicrosoftDynamicsCRMaccount GetAccountById(this IDynamicsClient system, Guid id)
         {
             List<string> expand = new List<string>()
             {
@@ -89,7 +89,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             try
             {
                 // fetch from Dynamics.
-                result = await system.Accounts.GetByKeyAsync(accountid: id.ToString(), expand: expand);
+                result = system.Accounts.GetByKey(accountid: id.ToString(), expand: expand);
             }
             catch (OdataerrorException)
             {
@@ -101,7 +101,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             {
                 try
                 {
-                    result.Primarycontactid = await system.GetContactById(Guid.Parse(result._primarycontactidValue));
+                    result.Primarycontactid = system.GetContactById(Guid.Parse(result._primarycontactidValue));
                 }
                 catch (OdataerrorException)
                 {

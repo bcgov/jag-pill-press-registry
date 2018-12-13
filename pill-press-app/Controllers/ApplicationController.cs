@@ -74,7 +74,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         /// </summary>
         /// <param name="applicantId"></param>
         /// <returns></returns>
-        private async Task<List<ViewModels.Application>> GetApplicationsByApplicant(string applicantId)
+        private List<ViewModels.Application> GetApplicationsByApplicant(string applicantId)
         {
             List<ViewModels.Application> result = new List<ViewModels.Application>();
             IEnumerable<MicrosoftDynamicsCRMincident> dynamicsApplicationList = null;
@@ -104,14 +104,14 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
 
         /// GET all applications in Dynamics for the current user
         [HttpGet("current")]
-        public async Task<JsonResult> GetCurrentUserDyanamicsApplications()
+        public JsonResult GetCurrentUserDyanamicsApplications()
         {
             // get the current user.
             string temp = _httpContextAccessor.HttpContext.Session.GetString("UserSettings");
             UserSettings userSettings = JsonConvert.DeserializeObject<UserSettings>(temp);
 
             // GET all applications in Dynamics by applicant using the account Id assigned to the user logged in
-            List<ViewModels.Application> applications = await GetApplicationsByApplicant(userSettings.AccountId);
+            List<ViewModels.Application> applications = GetApplicationsByApplicant(userSettings.AccountId);
             return Json(applications);
         }
 
@@ -122,7 +122,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateApplication([FromBody] ViewModels.Application item, string id)
+        public IActionResult UpdateApplication([FromBody] ViewModels.Application item, string id)
         {
             if (id != null && item.id != null && id != item.id)
             {
@@ -143,7 +143,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             UserSettings userSettings = JsonConvert.DeserializeObject<UserSettings>(temp);
 
             // Get the current account
-            var account = await _dynamicsClient.GetAccountById(Guid.Parse(userSettings.AccountId));
+            var account = _dynamicsClient.GetAccountById(Guid.Parse(userSettings.AccountId));
 
             // setup custom addresses.
             var BCSellersAddress = CreateOrUpdateAddress(item.BCSellersAddress);
@@ -153,6 +153,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             var AddressofBusinessthathasGivenorLoaned = CreateOrUpdateAddress(item.AddressofBusinessthathasGivenorLoaned);
             var AddressofBusinessThatHasRentedorLeased = CreateOrUpdateAddress(item.AddressofBusinessThatHasRentedorLeased);
 
+            var EquipmentLocation = CreateOrUpdateLocation(item.EquipmentLocation);
 
             MicrosoftDynamicsCRMincident patchApplication = new MicrosoftDynamicsCRMincident();
             patchApplication.CopyValues(item);
@@ -232,9 +233,20 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 patchApplication.AddressofBusinessThatHasRentedorLeasedODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", AddressofBusinessThatHasRentedorLeased.BcgovCustomaddressid);
             }
 
+            if (EquipmentLocation != null &&
+                (application._bcgovEquipmentlocationValue == null || application._bcgovEquipmentlocationValue != EquipmentLocation.BcgovLocationid))
+            {
+                if (application._bcgovEquipmentlocationValue != null)
+                {
+                    // delete an existing reference.
+                    _dynamicsClient.Incidents.RemoveReference(id, "bcgov_EquipmentLocation", null);
+                }
+                patchApplication.EquipmentLocationODataBind = _dynamicsClient.GetEntityURI("bcgov_locations", EquipmentLocation.BcgovLocationid);
+            }
+
             try
             {
-                await _dynamicsClient.Incidents.UpdateAsync(ApplicationId.ToString(), patchApplication);
+                 _dynamicsClient.Incidents.Update(ApplicationId.ToString(), patchApplication);
             }
             catch (OdataerrorException odee)
             {
@@ -367,7 +379,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
 
                         try
                         {
-                            await _dynamicsClient.Incidents.AddReferenceAsync(id, "bcgov_incident_businesscontact", odataId);
+                             _dynamicsClient.Incidents.AddReference(id, "bcgov_incident_businesscontact", odataId);
                         }
                         catch (OdataerrorException odee)
                         {
@@ -402,7 +414,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                             // remove the item.                            
                             try
                             {
-                                await _dynamicsClient.Incidents.RemoveReferenceAsync(id, "bcgov_incident_businesscontact", ibc.BcgovBusinesscontactid);
+                                _dynamicsClient.Incidents.RemoveReference(id, "bcgov_incident_businesscontact", ibc.BcgovBusinesscontactid);
                             }
                             catch (OdataerrorException odee)
                             {
@@ -426,6 +438,71 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             application = _dynamicsClient.GetApplicationByIdWithChildren(ApplicationId);
             return Json(application.ToViewModel());
         }
+
+        private MicrosoftDynamicsCRMbcgovLocation CreateOrUpdateLocation(ViewModels.Location item)
+        {
+            MicrosoftDynamicsCRMbcgovLocation location = null;
+            // Primary Contact
+            if (item != null)
+            {
+                location = item.ToModel();
+
+                // handle the address.
+                var address = CreateOrUpdateAddress(item.Address);
+                item.Address = address.ToViewModel();
+
+                if (string.IsNullOrEmpty(item.Id))
+                {
+                    if (address != null)
+                    {
+                        // bind the address.
+                        location.LocationAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", address.BcgovCustomaddressid);
+                    }                    
+
+                    // create a location                        
+                    try
+                    {
+                        location = _dynamicsClient.Locations.Create(location);
+                        item.Id = location.BcgovLocationid;
+                    }
+                    catch (OdataerrorException odee)
+                    {
+                        _logger.LogError(LoggingEvents.Error, "Error creating location");
+                        _logger.LogError("Request:");
+                        _logger.LogError(odee.Request.Content);
+                        _logger.LogError("Response:");
+                        _logger.LogError(odee.Response.Content);
+                        throw new OdataerrorException("Error creating the location");
+                    }
+                    
+                }
+                else
+                {                    
+                    // update
+                    try
+                    {
+                        _dynamicsClient.Locations.Update(item.Id, location);
+                    }
+                    catch (OdataerrorException odee)
+                    {
+                        _logger.LogError(LoggingEvents.Error, "Error updating address");
+                        _logger.LogError("Request:");
+                        _logger.LogError(odee.Request.Content);
+                        _logger.LogError("Response:");
+                        _logger.LogError(odee.Response.Content);
+                        throw new OdataerrorException("Error updating the address");
+                    }
+                    
+                }
+                if (address != null)
+                {
+                    location.BcgovLocationAddress = address;
+                }
+            }
+
+            return location;
+        }
+
 
         private MicrosoftDynamicsCRMbcgovCustomaddress CreateOrUpdateAddress(ViewModels.CustomAddress ca)
         {
@@ -502,6 +579,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             var AddressofBusinessthathasGivenorLoaned = CreateOrUpdateAddress(item.AddressofBusinessthathasGivenorLoaned);
             var AddressofBusinessThatHasRentedorLeased = CreateOrUpdateAddress(item.AddressofBusinessThatHasRentedorLeased);
 
+            var EquipmentLocation = CreateOrUpdateLocation(item.EquipmentLocation);
 
             // create a new Application.
             MicrosoftDynamicsCRMincident application = new MicrosoftDynamicsCRMincident();
@@ -524,7 +602,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             application.SubmitterODataBind = _dynamicsClient.GetEntityURI("contacts", userSettings.ContactId);
         
             // Also setup the customer.
-            var account = await _dynamicsClient.GetAccountById(Guid.Parse(userSettings.AccountId));
+            var account = _dynamicsClient.GetAccountById(Guid.Parse(userSettings.AccountId));
             
             application.CustomerIdAccountODataBind = _dynamicsClient.GetEntityURI("accounts", userSettings.AccountId);
 
@@ -557,8 +635,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             {
                 application.AddressofBusinessThatHasRentedorLeasedODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", AddressofBusinessThatHasRentedorLeased.BcgovCustomaddressid);
             }
-            
 
+            if (EquipmentLocation != null)             
+            {
+                application.EquipmentLocationODataBind = _dynamicsClient.GetEntityURI("bcgov_locations", EquipmentLocation.BcgovLocationid);
+            }
 
             application.Statuscode = (int?) ViewModels.ApplicationStatusCodes.Draft;
             try
@@ -575,11 +656,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 throw new OdataerrorException("Error creating Application");
             }
             Guid applicationId = Guid.Parse(application.Incidentid);
-
             
-           
-
-
             application = _dynamicsClient.GetApplicationByIdWithChildren(applicationId);
 
             return Json(application.ToViewModel());

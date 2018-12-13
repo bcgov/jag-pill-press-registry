@@ -55,7 +55,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             if (userSettings.AccountId != null && userSettings.AccountId.Length > 0)
             {
                 var accountId = GuidUtility.SanitizeGuidString(userSettings.AccountId);
-                MicrosoftDynamicsCRMaccount account = await _dynamicsClient.GetAccountById(new Guid(accountId));
+                MicrosoftDynamicsCRMaccount account = _dynamicsClient.GetAccountById(new Guid(accountId));
                 _logger.LogDebug(LoggingEvents.HttpGet, "Dynamics Account: " + JsonConvert.SerializeObject(account));
 
                 if (account == null)
@@ -369,7 +369,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 }
 
                 // populate child elements.
-                account = await _dynamicsClient.GetAccountById(Guid.Parse(account.Accountid));
+                account = _dynamicsClient.GetAccountById(Guid.Parse(account.Accountid));
                 
                 accountString = JsonConvert.SerializeObject(accountString);
                 _logger.LogDebug("Account Entity after creation in dynamics --> " + accountString);
@@ -568,7 +568,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     return NotFound();
                 }
 
-                MicrosoftDynamicsCRMaccount account = await _dynamicsClient.GetAccountById(accountId);
+                MicrosoftDynamicsCRMaccount account = _dynamicsClient.GetAccountById(accountId);
                 if (account == null)
                 {
                     _logger.LogWarning(LoggingEvents.NotFound, "Account NOT found.");
@@ -624,7 +624,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 
 
                 // populate child items in the account.
-                account = await _dynamicsClient.GetAccountById(accountId);
+                account = _dynamicsClient.GetAccountById(accountId);
 
                 var updatedAccount = account.ToViewModel();
                 _logger.LogDebug(LoggingEvents.HttpPut, "updatedAccount: " +
@@ -654,7 +654,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             }
 
             // get the account
-            MicrosoftDynamicsCRMaccount account = await _dynamicsClient.GetAccountById(accountId);
+            MicrosoftDynamicsCRMaccount account = _dynamicsClient.GetAccountById(accountId);
             if (account == null)
             {
                 _logger.LogWarning(LoggingEvents.NotFound, "Account NOT found.");
