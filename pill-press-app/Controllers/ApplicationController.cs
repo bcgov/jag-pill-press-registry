@@ -124,7 +124,6 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateApplication([FromBody] ViewModels.Application item, string id)
         {
-            var x = ModelState;
             if (id != null && item.id != null && id != item.id)
             {
                 return BadRequest();
