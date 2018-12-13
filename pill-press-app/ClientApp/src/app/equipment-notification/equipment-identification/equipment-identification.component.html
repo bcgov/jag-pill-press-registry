@@ -1,5 +1,5 @@
 <div style="position: relative;">
-  <div [ngBusy]="[busy]"></div>
+  <div [ngBusy]="[busy, busyPromise]"></div>
   <div [formGroup]="form">
     <h2 class="step">STEP 3</h2>
     <h1 style="margin-top: 0;">Equipment Identification</h1>
@@ -10,13 +10,13 @@
         [required]="true">
         <select class="form-control" formControlName="howWasEquipmentBuilt" style="width: 300px;" >
           <option value="">Please select an option</option>
-          <option value="Commecially Manufactured">Commecially Manufactured</option>
-          <option value="Custom Built">Custom Built (i.e. built out of spare parts)</option>
+          <option value="Commercially Manufactured">Commercially Manufactured</option>
+          <option value="Custom-Built">Custom Built (i.e. built out of spare parts)</option>
           <option value="Other">Other</option>
         </select>
       </app-field>
 
-      <section *ngIf="form.get('howWasEquipmentBuilt').value === 'Commecially Manufactured'">
+      <section *ngIf="form.get('howWasEquipmentBuilt').value === 'Commercially Manufactured'">
         <app-field label="Name of Manufacturer" [required]="true">
           <input type="text" formControlName="nameOfManufacturer" style="width: 680px" maxlength="100">
         </app-field>
@@ -35,7 +35,7 @@
 
       </section>
 
-      <section *ngIf="form.get('howWasEquipmentBuilt').value === 'Custom Built' || form.get('howWasEquipmentBuilt').value === 'Other'">
+      <section *ngIf="form.get('howWasEquipmentBuilt').value === 'Custom-Built' || form.get('howWasEquipmentBuilt').value === 'Other'">
         <app-field label="Please describe how this piece of Controlled Equipment was built." [required]="true">
           <textarea rows="5" formControlName="howEquipmentBuiltDescription" class="form-control" maxlength="1000"></textarea>
         </app-field>
@@ -126,5 +126,3 @@
     </div>
   </div>
 </div>
-
-{{form.value | json}}

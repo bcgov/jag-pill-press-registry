@@ -1,95 +1,96 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
 
 namespace Gov.Jag.PillPressRegistry.Public.ViewModels
 {
 
     public enum Contacttypes
     {
-        [Display(Name = "Primary")]
+        [EnumMember(Value = "Primary")]
         Primary = 931490000,
-        [Display(Name = "Additional")]
+        [EnumMember(Value = "Additional")]
         Additional = 931490001,
-        [Display(Name = "BceID")]
+        [EnumMember(Value = "BceID")]
         BceID = 931490002
     }
 
 
     public enum Equipmenttype
     {
-        [Display(Name = "Pill Press")]
+        [EnumMember(Value = "Pill Press")]
         PillPress = 931490000,
-        [Display(Name = "Encapsulator")]
+        [EnumMember(Value = "Encapsulator")]
         Encapsulator = 931490001,
-        [Display(Name = "Die, Mould or Punch")]
+        [EnumMember(Value = "Die, Mould or Punch")]
         DieMouldorPunch = 931490003,
-        [Display(Name = "Pharmaceutical Mixer or Blender")]
+        [EnumMember(Value = "Pharmaceutical Mixer or Blender")]
         PharmaceuticalMixerorBlender = 931490004,
-        [Display(Name = "Other")]
+        [EnumMember(Value = "Other")]
         Other = 931490005
     }
 
 
     public enum Levelofequipmentautomation
     {
-        [Display(Name = "Semi-Automatic")]
+        [EnumMember(Value = "Semi-Automatic")]
         SemiAutomatic = 931490000,
-        [Display(Name = "Automated")]
+        [EnumMember(Value = "Automated")]
         Automated = 931490001,
-        [Display(Name = "Capable of Being Automated")]
+        [EnumMember(Value = "Capable of Being Automated")]
         CapableofBeingAutomated = 931490002,
-        [Display(Name = "Manual")]
+        [EnumMember(Value = "Manual")]
         Manual = 931490003
     }
 
 
     public enum Pillpressencapsulatorsize
     {
-        [Display(Name = "Table Top Model")]
+        [EnumMember(Value = "Table Top Model")]
         TableTopModel = 931490000,
-        [Display(Name = "Free Standing Model")]
+        [EnumMember(Value = "Free Standing Model")]
         FreeStandingModel = 931490001,
-        [Display(Name = "Industrial Model")]
+        [EnumMember(Value = "Industrial Model")]
         IndustrialModel = 931490003,
-        [Display(Name = "Other")]
+        [EnumMember(Value = "Other")]
         Other = 931490002
     }
 
 
     public enum Howwasequipmentbuilt
     {
-        [Display(Name = "Commercially Manufactured")]
+        [EnumMember(Value = "Commercially Manufactured")]
         CommerciallyManufactured = 931490000,
-        [Display(Name = "Custom-built")]
+        [EnumMember(Value = "Custom-built")]
         Custombuilt = 931490001,
-        [Display(Name = "Other")]
+        [EnumMember(Value = "Other")]
         Other = 931490002
     }
 
 
     public enum Productcategory
     {
-        [Display(Name = "Consumable")]
+        [EnumMember(Value = "Consumable")]
         Consumable = 931490000,
-        [Display(Name = "Non-Consumable")]
+        [EnumMember(Value = "Non-Consumable")]
         NonConsumable = 931490001,
-        [Display(Name = "Other")]
+        [EnumMember(Value = "Other")]
         Other = 931490002
     }
 
 
     public enum Productsubcategory
     {
-        [Display(Name = "Food")]
+        [EnumMember(Value = "Food")]
         Food = 931490000,
-        [Display(Name = "Health Product")]
+        [EnumMember(Value = "Health Product")]
         HealthProduct = 931490001,
-        [Display(Name = "Candy")]
+        [EnumMember(Value = "Candy")]
         Candy = 931490002,
-        [Display(Name = "Batteries")]
+        [EnumMember(Value = "Batteries")]
         Batteries = 931490003,
-        [Display(Name = "Cosmetics")]
+        [EnumMember(Value = "Cosmetics")]
         Cosmetics = 931490004,
-        [Display(Name = "Other")]
+        [EnumMember(Value = "Other")]
         Other = 931490005
     }
 

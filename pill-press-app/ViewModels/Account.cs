@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -11,45 +12,45 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
 
     public enum Adoxio_stateprovince
     {
-        [Display(Name = "Alberta")]
+        [EnumMember(Value = "Alberta")]
         AB = 845280000,
-        [Display(Name = "British Columbia")]
+        [EnumMember(Value = "British Columbia")]
         BC,
-        [Display(Name = "Manitoba")]
+        [EnumMember(Value = "Manitoba")]
         MN,
-        [Display(Name = "New Brunswick")]
+        [EnumMember(Value = "New Brunswick")]
         NB,
-        [Display(Name = "Newfoundland and Labrador")]
+        [EnumMember(Value = "Newfoundland and Labrador")]
         NL,
-        [Display(Name = "Northwest Territories")]
+        [EnumMember(Value = "Northwest Territories")]
         NT,
-        [Display(Name = "Nova Scotia")]
+        [EnumMember(Value = "Nova Scotia")]
         NS,
-        [Display(Name = "Nunavut")]
+        [EnumMember(Value = "Nunavut")]
         NU,
-        [Display(Name = "Ontario")]
+        [EnumMember(Value = "Ontario")]
         ON,
-        [Display(Name = "Prince Edward Island")]
+        [EnumMember(Value = "Prince Edward Island")]
         PE,
-        [Display(Name = "Quebec")]
+        [EnumMember(Value = "Quebec")]
         QC,
-        [Display(Name = "Saskatchewan")]
+        [EnumMember(Value = "Saskatchewan")]
         SK,
-        [Display(Name = "Yukon")]
+        [EnumMember(Value = "Yukon")]
         YT
     }
 
     public enum BusinessTypeEnum
     {
-        [Display(Name = "Sole Proprietorship")]
+        [EnumMember(Value = "Sole Proprietorship")]
         SoleProprietorship = 1,
-        [Display(Name = "Society")]
+        [EnumMember(Value = "Society")]
         Society = 931490000,
-        [Display(Name = "Partnership")]
+        [EnumMember(Value = "Partnership")]
         Partnership = 931490001,
-        [Display(Name = "Private Corporation")]
+        [EnumMember(Value = "Private Corporation")]
         PrivateCorporation = 931490002,
-        [Display(Name = "Public Corporation")]
+        [EnumMember(Value = "Public Corporation")]
         PublicCorporation = 931490003
     }
 
