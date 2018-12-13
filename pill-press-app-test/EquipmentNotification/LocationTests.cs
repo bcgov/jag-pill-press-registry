@@ -109,10 +109,10 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
 
             viewmodel_application.EquipmentLocation = new Location()
             {
-                Id = responseViewModel.id,
+                Id = responseViewModel.EquipmentLocation.Id,
                 Address = new CustomAddress()
                 {
-                    Id = responseViewModel.EquipmentLocation.Id,
+                    Id = responseViewModel.EquipmentLocation.Address.Id,
                     StreetLine1 = stringsToMatch[1],
                     StreetLine2 = stringsToMatch[2],
                     StreetLine3 = stringsToMatch[3],
