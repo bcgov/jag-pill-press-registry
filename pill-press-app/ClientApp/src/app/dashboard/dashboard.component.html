@@ -86,39 +86,71 @@
         <mat-tab-group>
           <mat-tab label="IN PROGRESS">
             <p>The list of Controlled Equipment notifications below have been submitted.</p>
+            <table class="eq-table">
+              <tr>
+                <th>EQUIPMENT</th>
+                <th style="width: 95px">SUMBITTED</th>
+                <th style="width: 235px">STATUS</th>
+                <th>ACTIONS</th>
+              </tr>
+              <tr *ngFor="let item of inProgressEquipment; let i = index;" style="border: 1px solid #ccc; ">
+                <td style="padding: 0;">
+                  <div style="display: flex;">
+                    <span style="background-color: #E1E8F2; padding: 5px;">{{i+1}}</span>
+                    <div style="background-color: #F1F4FA; padding: 5px; padding-bottom: 15px;">
+                      <span>Pill Press</span> <br>
+                      <span>Serial #: </span> <i>Not available</i> <br>
+                      <span>Reference #: </span> <span>EQ1234567</span> <br>
+                    </div>
+                  </div>
+                </td>
+                <td>12 Dec 2018</td>
+                <td style="background-color: #E1E8F2; padding: 5px;">
+                  <span>DRAFT</span>
+                  <p>You have started an application but not submitted it yet.</p>
+                </td>
+                <td style="background-color: #E1E8F2; padding: 5px;">
+                  <a href="javascript: void(0);" routerLink="/equipment-notification/profile-review/{{item.id}}">Complete Application</a>
+                </td>
+              </tr>
+            </table>
           </mat-tab>
           <mat-tab label="COMPLETED">
             <p>The inventory of Controlled Equipment notifications below have been completed.</p>
+            <table class="eq-table">
+              <tr>
+                <th>EQUIPMENT</th>
+                <th>LOCATION <span style="font-weight: normal;">(where equipment ordinarily stored)</span></th>
+                <th style="width: 335px">STATUS CHANGES <span style="font-weight: normal;">(for each piece of
+                    equipment)</span></th>
+              </tr>
+              <tr *ngFor="let item of [{},{}]; let i = index;" style="border: 1px solid #ccc; ">
+                <td style="padding: 0;">
+                  <div style="display: flex;">
+                    <span style="background-color: #E1E8F2; padding: 5px;">{{i+1}}</span>
+                    <div style="background-color: #F1F4FA; padding: 5px; padding-bottom: 15px;">
+                      <span>Pill Press</span> <br>
+                      <span>Serial #: </span> <i>Not available</i> <br>
+                      <span>Reference #: </span> <span>EQ1234567</span> <br>
+                    </div>
+                  </div>
+                </td>
+                <td>12 Dec 2018</td>
+                <td style="background-color: #E1E8F2; padding: 5px;">
+                  <a href="javascript: void(0)"><i class="fas fa-eye" style="margin-right: 5px;"></i>View Submission</a>
+                  <br>
+                  <a href="javascript: void(0)"><i class="fas fa-map-marker-alt" style="margin-right: 5px;"></i>Edit
+                    Location</a> <br>
+                  <a href="javascript: void(0)"><i class="fas fa-exclamation-triangle" style="margin-right: 5px;"></i>Report
+                    Change (lost, stolen, destroyed)</a> <br>
+                  <a href="javascript: void(0)"><i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>Report
+                    Sale</a>
+                </td>
+              </tr>
+            </table>
           </mat-tab>
         </mat-tab-group>
-        <table class="eq-table">
-          <tr>
-            <th>EQUIPMENT</th>
-            <th style="width: 95px">SUMBITTED</th>
-            <th style="width: 235px">STATUS</th>
-            <th>ACTIONS</th>
-          </tr>
-          <tr *ngFor="let item of [{},{}]; let i = index;" style="border: 1px solid #ccc; ">
-            <td style="padding: 0;">
-              <div style="display: flex;">
-                <span style="background-color: #E1E8F2; padding: 5px;">{{i+1}}</span>
-                <div style="background-color: #F1F4FA; padding: 5px; padding-bottom: 15px;">
-                  <span>Pill Press</span> <br>
-                  <span>Serial nr: </span> <i>Not available</i> <br>
-                  <span>Reference nr: </span> <span>EQ1234567</span> <br>
-                </div>
-              </div>
-            </td>
-            <td>12 Dec 2018</td>
-            <td style="background-color: #E1E8F2; padding: 5px;">
-              <span>DRAFT</span>
-              <p>You have started an application but not submitted it yet.</p>
-            </td>
-            <td style="background-color: #E1E8F2; padding: 5px;">
-              <a href="javascript: void(0)">Complete Application</a>
-            </td>
-          </tr>
-        </table>
+
       </section>
 
       <p></p>
