@@ -90,6 +90,22 @@ li {
     justify-content: space-between;
 }
 
+.user-icon {
+    background-color: #fff;
+    padding: 5px;
+    display: inline-block;
+    border-radius: 30px;
+    margin-left: 20px;
+    float: right;
+    border: 1px solid #eee;
+}
+
+.user-icon i {
+    color: #38598A;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
 ::ng-deep .mat-tab-label {
     background-color: #E1E8F2 !important;
     color: #000;
@@ -104,7 +120,6 @@ li {
 ::ng-deep .mat-tab-label-active {
     background-color: #38598A !important;
     color: #fff;
-
 }
 
 ::ng-deep .mat-tab-header {
@@ -114,4 +129,39 @@ li {
 
 ::ng-deep .mat-ink-bar {
     display: none;
+}
+
+/* status styles*/
+
+.status-container {
+    background-color: #E1E8F2;
+    padding: 15px;
+    height: 170px;
+}
+
+.status,
+.status-orange,
+.status-red,
+.status-blue,
+.status-green {
+    display: inline-block;
+    color: #666;
+    font-weight: 600;
+}
+
+.status-blue,
+    {
+    color: #1A5A96;
+}
+
+.status-orange {
+    color: #FF9900;
+}
+
+.status-red {
+    color: #D8292F;
+}
+
+.status-green {
+    color: #669933;
 }
