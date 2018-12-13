@@ -55,6 +55,8 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
     {
         public string id { get; set; } //adoxio_applicationid
 
+        public string title { get; set; }
+
         /// <summary>
         /// The related business
         /// </summary>

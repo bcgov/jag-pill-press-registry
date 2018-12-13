@@ -153,8 +153,10 @@ export class AuthorizedApplicationReviewComponent implements OnInit {
 
   save(goToThankYouPage: boolean) {
     const value = this.form.value;
-    // set the status to pending.
-    value.statuscode = 'Pending';
+    if (goToThankYouPage) {
+      value.statuscode = 'Pending';
+      value.submittedDate = new Date();
+    }
     this.form.markAsTouched();
     if (value.declarationofcorrectinformation !== false) {
       const saveList = [this.applicationDataService.updateApplication(value)];

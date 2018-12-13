@@ -32,19 +32,20 @@
                   US</button>
                 <div style="clear: both;"></div>
               </section>
-              <section *ngIf="authorizedOwnerApplication?.statuscode === 'Draft'  && !authorizedOwnerApplication?.submittedDate">
+              <section *ngIf="authorizedOwnerApplication?.statuscode === 'Draft'">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-orange">DRAFT</h4>
                 <p>You have started an application but not submitted it yet.</p>
-                <a routerLink="/authorized-owner/profile-review/{{authorizedOwnerApplication.id}}"><i class="fas fa-exclamation-circle" style="color: #38598A; margin-right: 5px;"></i>Complete
+                <a routerLink="/authorized-owner/profile-review/{{authorizedOwnerApplication.id}}"><i class="fas fa-exclamation-circle"
+                    style="color: #38598A; margin-right: 5px;"></i>Complete
                   Application</a>
               </section>
-              <section *ngIf="authorizedOwnerApplication?.statuscode === 'Pending'">
+              <section *ngIf="isAuthorizedApplicationPending()">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-blue">PENDING</h4>
                 <p>Your application has been submitted.No futher action currently required</p>
               </section>
-              <section *ngIf="authorizedOwnerApplication?.statuscode === 'Draf' && authorizedOwnerApplication?.submittedDate">
+              <section *ngIf="authorizedOwnerApplication?.statuscode === 'Approved'">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-green">COMPLETED</h4>
                 <p>You are an Authorized Owner.</p>
@@ -60,7 +61,7 @@
                   US AGAIN</button>
                 <div style="clear: both;"></div>
               </section>
-              <section *ngIf="authorizedOwnerApplication?.statuscode === 'Cancelled'">
+              <section *ngIf="authorizedOwnerApplication?.statuscode === 'Cancelled' || authorizedOwnerApplication?.statuscode === 'Denied'">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-red">ON HOLD</h4>
                 <p>Your application has been cancelled. No futher action required</p>
@@ -113,7 +114,7 @@
                   <strong>Application #:&nbsp;</strong>WA00000001
                 </p>
               </section>
-              <section *ngIf="waiverApplication?.statuscode === 'Under Review'">
+              <section *ngIf="isWaiverOrSellerUnderReview(waiverApplication?.statuscode)">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-blue">UNDER REVIEW</h4>
                 <p>Your application is currently under review. No futher action currently required</p>
@@ -210,7 +211,7 @@
                   <strong>Application #:&nbsp;</strong>SA00000001
                 </p>
               </section>
-              <section *ngIf="registeredSellerApplication?.statuscode === 'Under Review'">
+              <section *ngIf="isWaiverOrSellerUnderReview(registeredSellerApplication?.statuscode)">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-blue">UNDER REVIEW</h4>
                 <p>Your application is currently under review. No futher action currently required</p>
@@ -269,84 +270,117 @@
       <p></p>
       <h3 class="blue-header" style="margin-bottom: 0; margin-top: 0;">EQUIPMENT</h3>
       <section style="border: 1px solid #ccc; padding: 10px;  border-bottom: 4px solid #FFCC00;">
-        <div class="space-between" style="padding: 10px;">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tem</p>
-          <button class="btn btn-primary" (click)="addEquipment()">ADD MORE EQUIPMENT</button>
-        </div>
-        <mat-tab-group>
-          <mat-tab label="IN PROGRESS">
-            <p>The list of Controlled Equipment notifications below have been submitted.</p>
-            <table class="eq-table">
-              <tr>
-                <th>EQUIPMENT</th>
-                <th style="width: 95px">SUMBITTED</th>
-                <th style="width: 235px">STATUS</th>
-                <th>ACTIONS</th>
-              </tr>
-              <tr *ngFor="let item of inProgressEquipment; let i = index;" style="border: 1px solid #ccc; ">
-                <td style="padding: 0;">
-                  <div style="display: flex;">
-                    <span style="background-color: #E1E8F2; padding: 5px;">{{i+1}}</span>
-                    <div style="background-color: #F1F4FA; padding: 5px; padding-bottom: 15px;">
-                      <span>Pill Press</span> <br>
-                      <span>Serial #: </span> <i>Not available</i> <br>
-                      <span>Reference #: </span> <span>EQ1234567</span> <br>
+        <section *ngIf="inProgressEquipment?.length === 0 && completedEquipment?.length === 0">
+          <div class="space-between" style="padding: 10px;">
+            <p>You have not submitted any Controlled Equipment yet.</p>
+            <button class="btn btn-primary" (click)="addEquipment()">ADD EQUIPMENT</button>
+          </div>
+          <p></p>
+          <div class="notes" style="display: flex;">
+            <i class="fas fa-exclamation-circle fa-lg" style="color: #FFCC00; margin-right: 10px;"></i>
+            <span>
+              Once your owner application is approved, please ensure you register your Controlled Equipment within 10
+              days. For more information about Controlled Equipment, please see: www.tbc.com</span>
+          </div>
+        </section>
+        <section *ngIf="inProgressEquipment?.length > 0 || completedEquipment?.length > 0">
+          <div class="space-between" style="padding: 10px;">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tem</p>
+            <button class="btn btn-primary" (click)="addEquipment()">ADD MORE EQUIPMENT</button>
+          </div>
+          <mat-tab-group [selectedIndex]="(inProgressEquipment?.length > 0 || completedEquipment?.length == 0) ? 0 : 1">
+            <mat-tab label="IN PROGRESS">
+              <p>The list of Controlled Equipment notifications below have been submitted.</p>
+              <table class="eq-table">
+                <tr>
+                  <th>EQUIPMENT</th>
+                  <th style="width: 95px">SUMBITTED</th>
+                  <th style="width: 235px">STATUS</th>
+                  <th>ACTIONS</th>
+                </tr>
+                <tr *ngFor="let item of inProgressEquipment; let i = index;" style="border: 1px solid #ccc; ">
+                  <td style="padding: 0;">
+                    <div style="display: flex;">
+                      <span style="background-color: #E1E8F2; padding: 10px;">{{i+1}}</span>
+                      <div style="background-color: #F1F4FA; padding: 10px; padding-bottom: 15px;">
+                        <span>{{item.equipmentType}}</span> <br>
+                        <span>Serial #: </span> <i>{{item.serialNumber || 'Not available'}}</i> <br>
+                        <span>Reference #: {{item.title}} </span> <span></span> <br>
+                      </div>
                     </div>
-                  </div>
-                </td>
-                <td>12 Dec 2018</td>
-                <td style="background-color: #E1E8F2; padding: 5px;">
-                  <span>DRAFT</span>
-                  <p>You have started an application but not submitted it yet.</p>
-                </td>
-                <td style="background-color: #E1E8F2; padding: 5px;">
-                  <a href="javascript: void(0);" routerLink="/equipment-notification/profile-review/{{item.id}}">
-                    <i class="fa fa-exclamation-circle" style="color: #003366; margin-right: 10px;"></i>Complete Application</a>
-                </td>
-              </tr>
-            </table>
-            <p></p>
-            <div class="notes" style="display: flex;">
-              <i class="fas fa-exclamation-circle" style="color: #003366; margin-right: 10px;"></i>
-              <span> Please ensure you fill out an equipment notification form for each individual piece of Controlled
-                Equipment in your posession until your entire inventory is listed.</span>
-            </div>
-          </mat-tab>
-          <mat-tab label="COMPLETED">
-            <p>The inventory of Controlled Equipment notifications below have been completed.</p>
-            <table class="eq-table">
-              <tr>
-                <th>EQUIPMENT</th>
-                <th>LOCATION <span style="font-weight: normal;">(where equipment ordinarily stored)</span></th>
-                <th style="width: 335px">STATUS CHANGES <span style="font-weight: normal;">(for each piece of
-                    equipment)</span></th>
-              </tr>
-              <tr *ngFor="let item of [{},{}]; let i = index;" style="border: 1px solid #ccc; ">
-                <td style="padding: 0;">
-                  <div style="display: flex;">
-                    <span style="background-color: #E1E8F2; padding: 5px;">{{i+1}}</span>
-                    <div style="background-color: #F1F4FA; padding: 5px; padding-bottom: 15px;">
-                      <span>Pill Press</span> <br>
-                      <span>Serial #: </span> <i>Not available</i> <br>
-                      <span>Reference #: </span> <span>EQ1234567</span> <br>
+                  </td>
+                  <td style="padding: 10px; width: 110px;" valign="top">
+                    {{item.submittedDate}}
+                  </td>
+                  <td style="background-color: #E1E8F2; padding: 10px;">
+                    <section *ngIf="item.statuscode === 'Draft'">
+                      <span class="status-orange">DRAFT</span>
+                      <p>You have started an application but not submitted it yet.</p>
+                    </section>
+                    <section *ngIf="item.statuscode !== 'Draft'">
+                      <span class="status-blue">PENDING</span>
+                      <p>Your application has been submitted.</p>
+                    </section>
+                  </td>
+                  <td style="background-color: #E1E8F2; padding: 10px;" valign="top">
+                    <section *ngIf="item.statuscode === 'Draft'">
+                      <a href="javascript: void(0);" routerLink="/equipment-notification/profile-review/{{item.id}}">
+                        <i class="fa fa-exclamation-circle" style="color: #003366; margin-right: 10px;"></i>Complete
+                        Application</a>
+                    </section>
+                    <section *ngIf="item.statuscode === 'Pending'">
+                      <a href="javascript: void(0);" routerLink="/equipment-notification/profile-review/{{item.id}}">
+                        <i class="fa fa-eye" style="color: #003366; margin-right: 10px;"></i>View Submission</a>
+                    </section>
+                  </td>
+                </tr>
+              </table>
+              <p></p>
+              <div class="notes" style="display: flex;">
+                <i class="fas fa-exclamation-circle fa-lg" style="color: #003366; margin-right: 10px;"></i>
+                <span> Please ensure you fill out an equipment notification form for each individual piece of
+                  Controlled
+                  Equipment in your posession until your entire inventory is listed.</span>
+              </div>
+            </mat-tab>
+            <mat-tab label="COMPLETED">
+              <p>The inventory of Controlled Equipment notifications below have been completed.</p>
+              <table class="eq-table">
+                <tr>
+                  <th>EQUIPMENT</th>
+                  <th>LOCATION <span style="font-weight: normal;">(where equipment ordinarily stored)</span></th>
+                  <th style="width: 335px">STATUS CHANGES <span style="font-weight: normal;">(for each piece of
+                      equipment)</span></th>
+                </tr>
+                <tr *ngFor="let item of completedEquipment; let i = index;" style="border: 1px solid #ccc; ">
+                  <td style="padding: 0;">
+                    <div style="display: flex;">
+                      <span style="background-color: #E1E8F2; padding: 10px;">{{i+1}}</span>
+                      <div style="background-color: #F1F4FA; padding: 10px; padding-bottom: 15px;">
+                          <span>{{item.equipmentType}}</span> <br>
+                          <span>Serial #: </span> <i>{{item.serialNumber || 'Not available'}}</i> <br>
+                          <span>Equipment Registry #: </span> <span></span> <br>
+                          <a href=""><i class="fa fa-file-pdf" style="color: #38598A; margin-right: 5px;"></i>Download
+                            Certificate</a>
+                      </div>
                     </div>
-                  </div>
-                </td>
-                <td>12 Dec 2018</td>
-                <td style="background-color: #E1E8F2; padding: 5px;">
-                  <a href="javascript: void(0)"><i class="fas fa-eye" style="margin-right: 5px;"></i>View Submission</a>
-                  <br>
-                  <a href="javascript: void(0)"><i class="fas fa-map-marker-alt" style="margin-right: 5px;"></i>Edit
-                    Location</a> <br>
-                  <a href="javascript: void(0)"><i class="fas fa-exclamation-triangle" style="margin-right: 5px;"></i>Report
-                    Change (lost, stolen, destroyed)</a> <br>
-                  <a href="javascript: void(0)"><i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>Report
-                    Sale</a>
-                </td>
-              </tr>
-            </table>
-          </mat-tab>
-        </mat-tab-group>
+                  </td>
+                  <td  style="padding: 10px;">12 Dec 2018</td>
+                  <td style="background-color: #E1E8F2; padding: 10px;">
+                    <a href="javascript: void(0)"><i class="fas fa-eye" style="margin-right: 5px;"></i>View Submission</a>
+                    <br>
+                    <a href="javascript: void(0)"><i class="fas fa-map-marker-alt" style="margin-right: 5px;"></i>Edit
+                      Location</a> <br>
+                    <a href="javascript: void(0)"><i class="fas fa-exclamation-triangle" style="margin-right: 5px;"></i>Report
+                      Change (lost, stolen, destroyed)</a> <br>
+                    <a href="javascript: void(0)"><i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>Report
+                      Sale</a>
+                  </td>
+                </tr>
+              </table>
+            </mat-tab>
+          </mat-tab-group>
+        </section>
 
       </section>
 
