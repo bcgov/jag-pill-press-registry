@@ -210,10 +210,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "fieldname");
             }
-            if (removeId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "removeId");
-            }
+            
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -229,9 +226,20 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "incidents({incidentId})/{fieldname}({removeId})/$ref").ToString();
+
+            if (removeId == null)
+            {
+                _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "incidents({incidentId})/{fieldname}/$ref").ToString();
+            }
+            else
+            {
+                _url = _url.Replace("{removeId}", System.Uri.EscapeDataString(removeId));
+            }
+
+
             _url = _url.Replace("{incidentId}", System.Uri.EscapeDataString(incidentId));
             _url = _url.Replace("{fieldname}", System.Uri.EscapeDataString(fieldname));
-            _url = _url.Replace("{removeId}", System.Uri.EscapeDataString(removeId));
+            
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
             HttpResponseMessage _httpResponse = null;

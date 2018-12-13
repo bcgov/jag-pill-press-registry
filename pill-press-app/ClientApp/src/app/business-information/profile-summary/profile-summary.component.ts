@@ -30,7 +30,7 @@ export class ProfileSummaryComponent implements OnInit {
 
   constructor(private userDataService: UserDataService,
     private sanitizer: DomSanitizer,
-    private router: Router,
+    public router: Router,
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private accountDataService: AccountDataService) {

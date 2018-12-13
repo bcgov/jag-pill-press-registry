@@ -15,7 +15,7 @@
           <option value="">Please select an option</option>
           <option value="Pill Press">Pill Press</option>
           <option value="Encapsulator">Encapsulator</option>
-          <option value="Die, mould or punch">Die, mould or punch</option>
+          <option value="Die, Mould or Punch">Die, Mould or Punch</option>
           <option value="Phamaceutical mixer or blender">Phamaceutical mixer or blender</option>
           <option value="Other">Other</option>
         </select>
@@ -27,7 +27,7 @@
             <option value="">Please select an option</option>
             <option value="Semi-Automatic">Semi-Automatic</option>
             <option value="Automated">Automated</option>
-            <option value="Capable of being automated">Capable of being automated</option>
+            <option value="Capable of Being Automated">Capable of Being Automated</option>
             <option value="Manual">Manual</option>
             <option value="Other">Other</option>
           </select>
@@ -36,9 +36,9 @@
         <app-field label="Please select from the following list to describe the size of this Pill Press." [required]="true">
           <select class="form-control" formControlName="pillpressEncapsulatorsize" style="width: 300px;">
             <option value="">Please select an option</option>
-            <option value="Table top model">Table top model</option>
-            <option value="Free standing model">Free standing model</option>
-            <option value="Industrial model">Industrial model</option>
+            <option value="Table Top Model">Table Top Model</option>
+            <option value="Free Standing Model">Free Standing Model</option>
+            <option value="Industrial Model">Industrial Model</option>
             <option value="Other">Other</option>
           </select>
         </app-field>
@@ -54,7 +54,7 @@
             <option value="">Please select an option</option>
             <option value="Semi-Automatic">Semi-Automatic</option>
             <option value="Automated">Automated</option>
-            <option value="Capable of being automated">Capable of being automated</option>
+            <option value="Capable of Being Automated">Capable of Being Automated</option>
             <option value="Manual">Manual</option>
             <option value="Other">Other</option>
           </select>
@@ -63,9 +63,9 @@
         <app-field label="Please select from the following list to describe the size of this Encapsulator. " [required]="true">
           <select class="form-control" formControlName="pillpressEncapsulatorsize" style="width: 300px;">
             <option value="">Please select an option</option>
-            <option value="Table top model">Table top model</option>
-            <option value="Free standing model">Free standing model</option>
-            <option value="Industrial model">Industrial model</option>
+            <option value="Table Top Model">Table Top Model</option>
+            <option value="Free Standing Model">Free Standing Model</option>
+            <option value="Industrial Model">Industrial Model</option>
             <option value="Other">Other</option>
           </select>
         </app-field>
@@ -75,7 +75,7 @@
         </app-field>
       </section>
 
-      <div class="notes" style="display: flex;" *ngIf="form.get('equipmentType').value === 'Die, mould or punch'">
+      <div class="notes" style="display: flex;" *ngIf="form.get('equipmentType').value === 'Die, Mould or Punch'">
         <i class="fas fa-exclamation-circle"  style="color: #003366; margin-right: 10px;"></i>
         <span>
           Although dies, moulds, and punches are considered Controlled Equipment, the notification requirements in
@@ -90,7 +90,7 @@
             <option value="">Please select an option</option>
             <option value="Semi-Automatic">Semi-Automatic</option>
             <option value="Automated">Automated</option>
-            <option value="Capable of being automated">Capable of being automated</option>
+            <option value="Capable of Being Automated">Capable of Being Automated</option>
             <option value="Manual">Manual</option>
             <option value="Other">Other</option>
           </select>
@@ -108,7 +108,7 @@
             <option value="">Please select an option</option>
             <option value="Semi-Automatic">Semi-Automatic</option>
             <option value="Automated">Automated</option>
-            <option value="Capable of being automated">Capable of being automated</option>
+            <option value="Capable of Being Automated">Capable of Being Automated</option>
             <option value="Manual">Manual</option>
             <option value="Other">Other</option>
           </select>
@@ -134,4 +134,3 @@
     </div>
   </div>
 </div>
-{{form.value | json}}

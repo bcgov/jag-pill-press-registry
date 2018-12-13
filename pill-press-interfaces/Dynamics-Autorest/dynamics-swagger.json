@@ -666,6 +666,8 @@
                 "account_Teams",
                 "bcgov_account_bcgov_businesscontact_BusinessProfile",
                 "bcgov_account_customaddress",
+                "bcgov_account_equipment_CurrentBusinessOwner",
+                "bcgov_account_location_BusinessProfile",
                 "bcgov_AdditionalContact",
                 "bcgov_CurrentBusinessPhysicalAddress",
                 "bcgov_CurrentBusinessMailingAddress",
@@ -1020,6 +1022,8 @@
                 "account_Teams",
                 "bcgov_account_bcgov_businesscontact_BusinessProfile",
                 "bcgov_account_customaddress",
+                "bcgov_account_equipment_CurrentBusinessOwner",
+                "bcgov_account_location_BusinessProfile",
                 "bcgov_AdditionalContact",
                 "bcgov_CurrentBusinessPhysicalAddress",
                 "bcgov_CurrentBusinessMailingAddress",
@@ -3996,58 +4000,72 @@
                 "bcgov_name desc",
                 "_modifiedby_value",
                 "_modifiedby_value desc",
+                "bcgov_pillpressmaxcapacity",
+                "bcgov_pillpressmaxcapacity desc",
+                "bcgov_encapsulatormaxcapacity",
+                "bcgov_encapsulatormaxcapacity desc",
                 "processid",
                 "processid desc",
                 "overriddencreatedon",
                 "overriddencreatedon desc",
+                "_bcgov_currentbusinessowner_value",
+                "_bcgov_currentbusinessowner_value desc",
                 "traversedpath",
                 "traversedpath desc",
                 "timezoneruleversionnumber",
                 "timezoneruleversionnumber desc",
                 "bcgov_equipmenttypeother",
                 "bcgov_equipmenttypeother desc",
+                "bcgov_howwasequipmentbuilt",
+                "bcgov_howwasequipmentbuilt desc",
                 "bcgov_pillpressencapsulatorsizeother",
                 "bcgov_pillpressencapsulatorsizeother desc",
                 "_createdonbehalfby_value",
                 "_createdonbehalfby_value desc",
                 "_stageid_value",
                 "_stageid_value desc",
-                "_owningbusinessunit_value",
-                "_owningbusinessunit_value desc",
-                "bcgov_pillpressencapsulatorsize",
-                "bcgov_pillpressencapsulatorsize desc",
-                "statuscode",
-                "statuscode desc",
-                "bcgov_pillpressmaxcapacity",
-                "bcgov_pillpressmaxcapacity desc",
-                "bcgov_equipmentid",
-                "bcgov_equipmentid desc",
-                "bcgov_equipmenttype",
-                "bcgov_equipmenttype desc",
-                "utcconversiontimezonecode",
-                "utcconversiontimezonecode desc",
-                "_owningteam_value",
-                "_owningteam_value desc",
-                "bcgov_levelofautomation",
-                "bcgov_levelofautomation desc",
                 "versionnumber",
                 "versionnumber desc",
+                "bcgov_make",
+                "bcgov_make desc",
+                "statuscode",
+                "statuscode desc",
+                "_owningbusinessunit_value",
+                "_owningbusinessunit_value desc",
+                "bcgov_equipmenttype",
+                "bcgov_equipmenttype desc",
+                "bcgov_custombuiltorkeypartserialnumber",
+                "bcgov_custombuiltorkeypartserialnumber desc",
+                "bcgov_levelofautomation",
+                "bcgov_levelofautomation desc",
+                "_owningteam_value",
+                "_owningteam_value desc",
+                "_modifiedonbehalfby_value",
+                "_modifiedonbehalfby_value desc",
+                "bcgov_model",
+                "bcgov_model desc",
                 "modifiedon",
                 "modifiedon desc",
                 "importsequencenumber",
                 "importsequencenumber desc",
                 "_ownerid_value",
                 "_ownerid_value desc",
-                "bcgov_encapsulatormaxcapacity",
-                "bcgov_encapsulatormaxcapacity desc",
+                "bcgov_equipmentid",
+                "bcgov_equipmentid desc",
                 "createdon",
                 "createdon desc",
+                "bcgov_nameofmanufacturer",
+                "bcgov_nameofmanufacturer desc",
+                "bcgov_serialnumber",
+                "bcgov_serialnumber desc",
+                "bcgov_pillpressencapsulatorsize",
+                "bcgov_pillpressencapsulatorsize desc",
                 "emailaddress",
                 "emailaddress desc",
-                "_modifiedonbehalfby_value",
-                "_modifiedonbehalfby_value desc",
                 "_owninguser_value",
-                "_owninguser_value desc"
+                "_owninguser_value desc",
+                "utcconversiontimezonecode",
+                "utcconversiontimezonecode desc"
               ]
             }
           },
@@ -4063,32 +4081,39 @@
                 "statecode",
                 "bcgov_name",
                 "_modifiedby_value",
+                "bcgov_pillpressmaxcapacity",
+                "bcgov_encapsulatormaxcapacity",
                 "processid",
                 "overriddencreatedon",
+                "_bcgov_currentbusinessowner_value",
                 "traversedpath",
                 "timezoneruleversionnumber",
                 "bcgov_equipmenttypeother",
+                "bcgov_howwasequipmentbuilt",
                 "bcgov_pillpressencapsulatorsizeother",
                 "_createdonbehalfby_value",
                 "_stageid_value",
-                "_owningbusinessunit_value",
-                "bcgov_pillpressencapsulatorsize",
-                "statuscode",
-                "bcgov_pillpressmaxcapacity",
-                "bcgov_equipmentid",
-                "bcgov_equipmenttype",
-                "utcconversiontimezonecode",
-                "_owningteam_value",
-                "bcgov_levelofautomation",
                 "versionnumber",
+                "bcgov_make",
+                "statuscode",
+                "_owningbusinessunit_value",
+                "bcgov_equipmenttype",
+                "bcgov_custombuiltorkeypartserialnumber",
+                "bcgov_levelofautomation",
+                "_owningteam_value",
+                "_modifiedonbehalfby_value",
+                "bcgov_model",
                 "modifiedon",
                 "importsequencenumber",
                 "_ownerid_value",
-                "bcgov_encapsulatormaxcapacity",
+                "bcgov_equipmentid",
                 "createdon",
+                "bcgov_nameofmanufacturer",
+                "bcgov_serialnumber",
+                "bcgov_pillpressencapsulatorsize",
                 "emailaddress",
-                "_modifiedonbehalfby_value",
-                "_owninguser_value"
+                "_owninguser_value",
+                "utcconversiontimezonecode"
               ]
             }
           },
@@ -4101,6 +4126,8 @@
               "type": "string",
               "enum": [
                 "*",
+                "bcgov_CurrentBusinessOwner",
+                "bcgov_equipment_incident_AssociatedEquipmentRecord",
                 "createdbyname",
                 "createdonbehalfbyname",
                 "modifiedbyname",
@@ -4227,32 +4254,39 @@
                 "statecode",
                 "bcgov_name",
                 "_modifiedby_value",
+                "bcgov_pillpressmaxcapacity",
+                "bcgov_encapsulatormaxcapacity",
                 "processid",
                 "overriddencreatedon",
+                "_bcgov_currentbusinessowner_value",
                 "traversedpath",
                 "timezoneruleversionnumber",
                 "bcgov_equipmenttypeother",
+                "bcgov_howwasequipmentbuilt",
                 "bcgov_pillpressencapsulatorsizeother",
                 "_createdonbehalfby_value",
                 "_stageid_value",
-                "_owningbusinessunit_value",
-                "bcgov_pillpressencapsulatorsize",
-                "statuscode",
-                "bcgov_pillpressmaxcapacity",
-                "bcgov_equipmentid",
-                "bcgov_equipmenttype",
-                "utcconversiontimezonecode",
-                "_owningteam_value",
-                "bcgov_levelofautomation",
                 "versionnumber",
+                "bcgov_make",
+                "statuscode",
+                "_owningbusinessunit_value",
+                "bcgov_equipmenttype",
+                "bcgov_custombuiltorkeypartserialnumber",
+                "bcgov_levelofautomation",
+                "_owningteam_value",
+                "_modifiedonbehalfby_value",
+                "bcgov_model",
                 "modifiedon",
                 "importsequencenumber",
                 "_ownerid_value",
-                "bcgov_encapsulatormaxcapacity",
+                "bcgov_equipmentid",
                 "createdon",
+                "bcgov_nameofmanufacturer",
+                "bcgov_serialnumber",
+                "bcgov_pillpressencapsulatorsize",
                 "emailaddress",
-                "_modifiedonbehalfby_value",
-                "_owninguser_value"
+                "_owninguser_value",
+                "utcconversiontimezonecode"
               ]
             }
           },
@@ -4265,6 +4299,8 @@
               "type": "string",
               "enum": [
                 "*",
+                "bcgov_CurrentBusinessOwner",
+                "bcgov_equipment_incident_AssociatedEquipmentRecord",
                 "createdbyname",
                 "createdonbehalfbyname",
                 "modifiedbyname",
@@ -4968,6 +5004,8 @@
                 "modifiedon desc",
                 "bcgov_name",
                 "bcgov_name desc",
+                "_bcgov_associatedapplication_value",
+                "_bcgov_associatedapplication_value desc",
                 "_owninguser_value",
                 "_owninguser_value desc",
                 "_owningbusinessunit_value",
@@ -4978,22 +5016,22 @@
                 "createdon desc",
                 "_createdby_value",
                 "_createdby_value desc",
-                "_owningteam_value",
-                "_owningteam_value desc",
+                "timezoneruleversionnumber",
+                "timezoneruleversionnumber desc",
                 "bcgov_settingdescription",
                 "bcgov_settingdescription desc",
                 "_modifiedby_value",
                 "_modifiedby_value desc",
-                "_bcgov_associatedapplication_value",
-                "_bcgov_associatedapplication_value desc",
-                "timezoneruleversionnumber",
-                "timezoneruleversionnumber desc",
-                "statecode",
-                "statecode desc",
                 "utcconversiontimezonecode",
                 "utcconversiontimezonecode desc",
+                "statecode",
+                "statecode desc",
+                "_owningteam_value",
+                "_owningteam_value desc",
                 "statuscode",
                 "statuscode desc",
+                "_bcgov_businessprofile_value",
+                "_bcgov_businessprofile_value desc",
                 "bcgov_privatedwelling",
                 "bcgov_privatedwelling desc",
                 "bcgov_locationid",
@@ -5023,19 +5061,20 @@
                 "_createdonbehalfby_value",
                 "modifiedon",
                 "bcgov_name",
+                "_bcgov_associatedapplication_value",
                 "_owninguser_value",
                 "_owningbusinessunit_value",
                 "_ownerid_value",
                 "createdon",
                 "_createdby_value",
-                "_owningteam_value",
+                "timezoneruleversionnumber",
                 "bcgov_settingdescription",
                 "_modifiedby_value",
-                "_bcgov_associatedapplication_value",
-                "timezoneruleversionnumber",
-                "statecode",
                 "utcconversiontimezonecode",
+                "statecode",
+                "_owningteam_value",
                 "statuscode",
+                "_bcgov_businessprofile_value",
                 "bcgov_privatedwelling",
                 "bcgov_locationid",
                 "processid",
@@ -5052,6 +5091,7 @@
               "type": "string",
               "enum": [
                 "*",
+                "bcgov_BusinessProfile",
                 "createdbyname",
                 "createdonbehalfbyname",
                 "modifiedbyname",
@@ -5184,19 +5224,20 @@
                 "_createdonbehalfby_value",
                 "modifiedon",
                 "bcgov_name",
+                "_bcgov_associatedapplication_value",
                 "_owninguser_value",
                 "_owningbusinessunit_value",
                 "_ownerid_value",
                 "createdon",
                 "_createdby_value",
-                "_owningteam_value",
+                "timezoneruleversionnumber",
                 "bcgov_settingdescription",
                 "_modifiedby_value",
-                "_bcgov_associatedapplication_value",
-                "timezoneruleversionnumber",
-                "statecode",
                 "utcconversiontimezonecode",
+                "statecode",
+                "_owningteam_value",
                 "statuscode",
+                "_bcgov_businessprofile_value",
                 "bcgov_privatedwelling",
                 "bcgov_locationid",
                 "processid",
@@ -5213,6 +5254,7 @@
               "type": "string",
               "enum": [
                 "*",
+                "bcgov_BusinessProfile",
                 "createdbyname",
                 "createdonbehalfbyname",
                 "modifiedbyname",
@@ -7666,6 +7708,8 @@
                 "merged desc",
                 "bcgov_typeofsellerother",
                 "bcgov_typeofsellerother desc",
+                "_bcgov_associatedequipmentrecord_value",
+                "_bcgov_associatedequipmentrecord_value desc",
                 "bcgov_pillpressmaxcapacity",
                 "bcgov_pillpressmaxcapacity desc",
                 "bcgov_incompletecycle2",
@@ -7958,6 +8002,7 @@
                 "severitycode",
                 "merged",
                 "bcgov_typeofsellerother",
+                "_bcgov_associatedequipmentrecord_value",
                 "bcgov_pillpressmaxcapacity",
                 "bcgov_incompletecycle2",
                 "bcgov_howequipmentbuiltdescription",
@@ -8104,6 +8149,7 @@
                 "bcgov_ApplicationTypeId",
                 "bcgov_Submitter",
                 "bcgov_AddressofPersonBusiness",
+                "bcgov_AssociatedEquipmentRecord",
                 "bcgov_incident_customproduct_RelatedApplication",
                 "bcgov_incident_businesscontact",
                 "bcgov_BCSellersAddress",
@@ -8347,6 +8393,7 @@
                 "severitycode",
                 "merged",
                 "bcgov_typeofsellerother",
+                "_bcgov_associatedequipmentrecord_value",
                 "bcgov_pillpressmaxcapacity",
                 "bcgov_incompletecycle2",
                 "bcgov_howequipmentbuiltdescription",
@@ -8493,6 +8540,7 @@
                 "bcgov_ApplicationTypeId",
                 "bcgov_Submitter",
                 "bcgov_AddressofPersonBusiness",
+                "bcgov_AssociatedEquipmentRecord",
                 "bcgov_incident_customproduct_RelatedApplication",
                 "bcgov_incident_businesscontact",
                 "bcgov_BCSellersAddress",
@@ -12529,6 +12577,18 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customaddress"
+          }
+        },
+        "bcgov_account_equipment_CurrentBusinessOwner": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+          }
+        },
+        "bcgov_account_location_BusinessProfile": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
           }
         },
         "bcgov_AdditionalContact": {
@@ -16770,6 +16830,14 @@
           "type": "string",
           "x-nullable": true
         },
+        "bcgov_pillpressmaxcapacity": {
+          "type": "integer",
+          "x-nullable": true
+        },
+        "bcgov_encapsulatormaxcapacity": {
+          "type": "integer",
+          "x-nullable": true
+        },
         "processid": {
           "type": "string",
           "x-nullable": true
@@ -16777,6 +16845,10 @@
         "overriddencreatedon": {
           "type": "string",
           "format": "date-time"
+        },
+        "_bcgov_currentbusinessowner_value": {
+          "type": "string",
+          "x-nullable": true
         },
         "traversedpath": {
           "type": "string",
@@ -16788,6 +16860,10 @@
         },
         "bcgov_equipmenttypeother": {
           "type": "string",
+          "x-nullable": true
+        },
+        "bcgov_howwasequipmentbuilt": {
+          "type": "integer",
           "x-nullable": true
         },
         "bcgov_pillpressencapsulatorsizeother": {
@@ -16802,23 +16878,20 @@
           "type": "string",
           "x-nullable": true
         },
-        "_owningbusinessunit_value": {
-          "type": "string",
+        "versionnumber": {
+          "type": "integer",
+          "format": "int64",
           "x-nullable": true
         },
-        "bcgov_pillpressencapsulatorsize": {
-          "type": "integer",
+        "bcgov_make": {
+          "type": "string",
           "x-nullable": true
         },
         "statuscode": {
           "type": "integer",
           "x-nullable": true
         },
-        "bcgov_pillpressmaxcapacity": {
-          "type": "integer",
-          "x-nullable": true
-        },
-        "bcgov_equipmentid": {
+        "_owningbusinessunit_value": {
           "type": "string",
           "x-nullable": true
         },
@@ -16826,11 +16899,7 @@
           "type": "integer",
           "x-nullable": true
         },
-        "utcconversiontimezonecode": {
-          "type": "integer",
-          "x-nullable": true
-        },
-        "_owningteam_value": {
+        "bcgov_custombuiltorkeypartserialnumber": {
           "type": "string",
           "x-nullable": true
         },
@@ -16838,9 +16907,16 @@
           "type": "integer",
           "x-nullable": true
         },
-        "versionnumber": {
-          "type": "integer",
-          "format": "int64",
+        "_owningteam_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "_modifiedonbehalfby_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "bcgov_model": {
+          "type": "string",
           "x-nullable": true
         },
         "modifiedon": {
@@ -16855,25 +16931,46 @@
           "type": "string",
           "x-nullable": true
         },
-        "bcgov_encapsulatormaxcapacity": {
-          "type": "integer",
+        "bcgov_equipmentid": {
+          "type": "string",
           "x-nullable": true
         },
         "createdon": {
           "type": "string",
           "format": "date-time"
         },
-        "emailaddress": {
+        "bcgov_nameofmanufacturer": {
           "type": "string",
           "x-nullable": true
         },
-        "_modifiedonbehalfby_value": {
+        "bcgov_serialnumber": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "bcgov_pillpressencapsulatorsize": {
+          "type": "integer",
+          "x-nullable": true
+        },
+        "emailaddress": {
           "type": "string",
           "x-nullable": true
         },
         "_owninguser_value": {
           "type": "string",
           "x-nullable": true
+        },
+        "utcconversiontimezonecode": {
+          "type": "integer",
+          "x-nullable": true
+        },
+        "bcgov_CurrentBusinessOwner": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.account"
+        },
+        "bcgov_equipment_incident_AssociatedEquipmentRecord": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.incident"
+          }
         },
         "createdbyname": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.systemuser"
@@ -17151,6 +17248,10 @@
           "type": "string",
           "x-nullable": true
         },
+        "_bcgov_associatedapplication_value": {
+          "type": "string",
+          "x-nullable": true
+        },
         "_owninguser_value": {
           "type": "string",
           "x-nullable": true
@@ -17171,8 +17272,8 @@
           "type": "string",
           "x-nullable": true
         },
-        "_owningteam_value": {
-          "type": "string",
+        "timezoneruleversionnumber": {
+          "type": "integer",
           "x-nullable": true
         },
         "bcgov_settingdescription": {
@@ -17183,11 +17284,7 @@
           "type": "string",
           "x-nullable": true
         },
-        "_bcgov_associatedapplication_value": {
-          "type": "string",
-          "x-nullable": true
-        },
-        "timezoneruleversionnumber": {
+        "utcconversiontimezonecode": {
           "type": "integer",
           "x-nullable": true
         },
@@ -17195,12 +17292,16 @@
           "type": "integer",
           "x-nullable": true
         },
-        "utcconversiontimezonecode": {
-          "type": "integer",
+        "_owningteam_value": {
+          "type": "string",
           "x-nullable": true
         },
         "statuscode": {
           "type": "integer",
+          "x-nullable": true
+        },
+        "_bcgov_businessprofile_value": {
+          "type": "string",
           "x-nullable": true
         },
         "bcgov_privatedwelling": {
@@ -17218,6 +17319,9 @@
         "overriddencreatedon": {
           "type": "string",
           "format": "date-time"
+        },
+        "bcgov_BusinessProfile": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.account"
         },
         "createdbyname": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.systemuser"
@@ -33826,6 +33930,10 @@
           "type": "string",
           "x-nullable": true
         },
+        "_bcgov_associatedequipmentrecord_value": {
+          "type": "string",
+          "x-nullable": true
+        },
         "bcgov_pillpressmaxcapacity": {
           "type": "integer",
           "x-nullable": true
@@ -34398,6 +34506,9 @@
         },
         "bcgov_AddressofPersonBusiness": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customaddress"
+        },
+        "bcgov_AssociatedEquipmentRecord": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
         },
         "bcgov_incident_customproduct_RelatedApplication": {
           "type": "array",

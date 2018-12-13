@@ -85,7 +85,7 @@ import { BCeidAuthGuard } from './services/bceid-auth-guard.service';
 import { ServiceCardAuthGuard } from './services/service-card-auth-guard.service';
 import { metaReducers, reducers } from './app-state/reducers/reducers';
 import { StoreModule } from '@ngrx/store';
-import { DashboardLiteComponent } from './dashboard-lite/dashboard-lite.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { TermsAndConditionsComponent } from './lite/terms-and-conditions/terms-and-conditions.component';
 import { AliasDataService } from './services/alias-data.service';
 import { PreviousAddressDataService } from './services/previous-address-data.service';
@@ -147,7 +147,7 @@ import { AuthorizedOwnerComponent } from './applications/authorized-owner/author
     FileUploaderComponent,
     BusinessProfileSummaryComponent,
     PaymentConfirmationComponent,
-    DashboardLiteComponent,
+    DashboardComponent,
     LicenceFeePaymentConfirmationComponent,
     FieldComponent,
     ProfileSummaryComponent,
