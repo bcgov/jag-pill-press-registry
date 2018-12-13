@@ -398,5 +398,9 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
 
         [JsonProperty(PropertyName = "submittedDate")]
         public System.DateTimeOffset? SubmittedDate { get; set; }
+
+        [JsonProperty(PropertyName = "equipmentLocation")]
+        public Location EquipmentLocation { get; set; }
+
     }
 }
