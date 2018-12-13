@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Subscription, zip } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ApplicationDataService } from '../../services/adoxio-application-data.service';
+import { Application } from '../../models/application.model';
 
 @Component({
   selector: 'app-equipment-source',
@@ -12,9 +14,11 @@ export class EquipmentSourceComponent implements OnInit {
   form: FormGroup;
   busy: Subscription;
   equipmentId: string;
+  busyPromise: Promise<void>;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
+    private applicationDataService: ApplicationDataService,
     private fb: FormBuilder) {
     this.equipmentId = this.route.snapshot.params.id;
   }
@@ -122,17 +126,37 @@ export class EquipmentSourceComponent implements OnInit {
 
     });
 
+    this.reloadData();
   }
 
+  reloadData() {
+    this.busy = this.applicationDataService.getApplicationById(this.equipmentId)
+      .subscribe((data: Application) => {
+        this.form.patchValue(data);
+      }, error => {
+        // debugger;
+      });
+  }
   markAsTouched() {
 
   }
 
-  save(goToNextForm: boolean) {
-    if (goToNextForm) {
-      this.router.navigateByUrl(`/equipment-notification/location/${this.equipmentId}`);
-    } else {
-      this.router.navigateByUrl('/dashboard');
+  save(gotToReview: boolean) {
+    if (this.form.valid || gotToReview === false) {
+      const value = this.form.value;
+      const saveList = [this.applicationDataService.updateApplication(value)];
+      this.busyPromise = zip(...saveList)
+        .toPromise()
+        .then(res => {
+          if (gotToReview) {
+            this.router.navigateByUrl(`/equipment-notification/location/${this.equipmentId}`);
+          } else {
+            this.router.navigateByUrl(`/dashboard`);
+            // this.reloadData();
+          }
+        }, err => {
+          // todo: show errors;
+        });
     }
   }
 
