@@ -24,7 +24,7 @@
 
             </div>
             <div class="status-container">
-              <section *ngIf="false">
+              <section *ngIf="!authorizedOwnerApplication">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-blue">NO ACTION TAKEN YET</h4>
                 <p>To become a Waiver Holder, please complete and submit an application form.</p>
@@ -32,19 +32,19 @@
                   US</button>
                 <div style="clear: both;"></div>
               </section>
-              <section *ngIf="false">
+              <section *ngIf="authorizedOwnerApplication?.statuscode === 'Draft'  && !authorizedOwnerApplication?.submittedDate">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-orange">DRAFT</h4>
                 <p>You have started an application but not submitted it yet.</p>
-                <a href=""><i class="fas fa-exclamation-circle" style="color: #38598A; margin-right: 5px;"></i>Complete
+                <a routerLink="/authorized-owner/profile-review/{{authorizedOwnerApplication.id}}"><i class="fas fa-exclamation-circle" style="color: #38598A; margin-right: 5px;"></i>Complete
                   Application</a>
               </section>
-              <section *ngIf="false">
+              <section *ngIf="authorizedOwnerApplication?.statuscode === 'Pending'">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-blue">PENDING</h4>
                 <p>Your application has been submitted.No futher action currently required</p>
               </section>
-              <section *ngIf="false">
+              <section *ngIf="authorizedOwnerApplication?.statuscode === 'Draf' && authorizedOwnerApplication?.submittedDate">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-green">COMPLETED</h4>
                 <p>You are an Authorized Owner.</p>
@@ -52,7 +52,7 @@
                   <strong>Reference #:&nbsp;</strong>AA00000001
                 </p>
               </section>
-              <section *ngIf="false">
+              <section *ngIf="authorizedOwnerApplication?.statuscode === 'Withdrawn'">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-orange">WITHDRAWN</h4>
                 <p>You have withdrawn your application. We will cease all processing activities.</p>
@@ -60,7 +60,7 @@
                   US AGAIN</button>
                 <div style="clear: both;"></div>
               </section>
-              <section *ngIf="!false">
+              <section *ngIf="authorizedOwnerApplication?.statuscode === 'Cancelled'">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-red">ON HOLD</h4>
                 <p>Your application has been cancelled. No futher action required</p>
@@ -82,7 +82,7 @@
 
             </div>
             <div class="status-container">
-              <section *ngIf="false">
+              <section *ngIf="!waiverApplication">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-blue">NO ACTION TAKEN YET</h4>
                 <p>To become a Waiver Holder, please complete and submit an application form.</p>
@@ -90,14 +90,14 @@
                   NOW</button>
                 <div style="clear: both;"></div>
               </section>
-              <section *ngIf="false">
+              <section *ngIf="waiverApplication?.statuscode === 'Draft'">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-orange">DRAFT</h4>
                 <p>You have started an application but not submitted it yet.</p>
                 <a href=""><i class="fas fa-exclamation-circle" style="color: #38598A; margin-right: 5px;"></i>Complete
                   Application</a>
               </section>
-              <section *ngIf="false">
+              <section *ngIf="waiverApplication?.statuscode === 'Pending'">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-blue">PENDING</h4>
                 <p>Your application has been submitted.No futher action currently required</p>
@@ -105,7 +105,7 @@
                   <strong>Application #:&nbsp;</strong>WA00000001
                 </p>
               </section>
-              <section *ngIf="false">
+              <section *ngIf="waiverApplication?.statuscode === 'Incomplete'">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-red">INCOMPLETE</h4>
                 <p>Your application has missing or inaccurate information. Our team will contact you.</p>
@@ -113,7 +113,7 @@
                   <strong>Application #:&nbsp;</strong>WA00000001
                 </p>
               </section>
-              <section *ngIf="false">
+              <section *ngIf="waiverApplication?.statuscode === 'Under Review'">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-blue">UNDER REVIEW</h4>
                 <p>Your application is currently under review. No futher action currently required</p>
@@ -121,7 +121,7 @@
                   <strong>Application #:&nbsp;</strong>wA00000001
                 </p>
               </section>
-              <section *ngIf="false">
+              <section *ngIf="waiverApplication?.statuscode === 'Approved'">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-green">APPROVED</h4>
                 <p>
@@ -133,7 +133,7 @@
                 <a href=""><i class="fa fa-file-pdf" style="color: #38598A; margin-right: 5px;"></i>Download
                   Certificate</a>
               </section>
-              <section *ngIf="false">
+              <section *ngIf="waiverApplication?.statuscode === 'Denied'">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-red">DENIED</h4>
                 <p>Your application has been denied. No futher action required.</p>
@@ -141,7 +141,7 @@
                   AGAIN</button>
                 <div style="clear: both;"></div>
               </section>
-              <section *ngIf="false">
+              <section *ngIf="waiverApplication?.statuscode === 'Withdrawn'">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-orange">WITHDRAWN</h4>
                 <p>You have withdrawn your application. We will cease all processing activities.</p>
@@ -149,7 +149,7 @@
                   AGAIN</button>
                 <div style="clear: both;"></div>
               </section>
-              <section *ngIf="false">
+              <section *ngIf="waiverApplication?.statuscode === 'Cancelled'">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-red">CANCELLED</h4>
                 <p>Your application has been cancelled. No futher action required</p>
@@ -157,7 +157,7 @@
                   AGAIN</button>
                 <div style="clear: both;"></div>
               </section>
-              <section *ngIf="!false">
+              <section *ngIf="waiverApplication?.statuscode === 'Expired'">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-orange">EXPIRED</h4>
                 <p>Your waiver has expired. Please submit a renewal application.</p>
@@ -179,7 +179,7 @@
 
             </div>
             <div class="status-container">
-              <section *ngIf="false">
+              <section *ngIf="!registeredSellerApplication">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-blue">NO ACTION TAKEN YET</h4>
                 <p>To become a Registered Seller, please complete and submit an application form.</p>
@@ -187,14 +187,14 @@
                   NOW</button>
                 <div style="clear: both;"></div>
               </section>
-              <section *ngIf="false">
+              <section *ngIf="registeredSellerApplication?.statuscode === 'Draft'">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-orange">DRAFT</h4>
                 <p>You have started an application but not submitted it yet.</p>
                 <a href=""><i class="fas fa-exclamation-circle" style="color: #38598A; margin-right: 5px;"></i>Complete
                   Application</a>
               </section>
-              <section *ngIf="false">
+              <section *ngIf="registeredSellerApplication?.statuscode === 'Pending'">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-blue">PENDING</h4>
                 <p>Your application has been submitted.No futher action currently required</p>
@@ -202,7 +202,7 @@
                   <strong>Application #:&nbsp;</strong>SA00000001
                 </p>
               </section>
-              <section *ngIf="false">
+              <section *ngIf="registeredSellerApplication?.statuscode === 'Incomplete'">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-red">INCOMPLETE</h4>
                 <p>Your application has missing or inaccurate information. Our team will contact you.</p>
@@ -210,7 +210,7 @@
                   <strong>Application #:&nbsp;</strong>SA00000001
                 </p>
               </section>
-              <section *ngIf="false">
+              <section *ngIf="registeredSellerApplication?.statuscode === 'Under Review'">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-blue">UNDER REVIEW</h4>
                 <p>Your application is currently under review. No futher action currently required</p>
@@ -218,7 +218,7 @@
                   <strong>Application #:&nbsp;</strong>SA00000001
                 </p>
               </section>
-              <section *ngIf="false">
+              <section *ngIf="registeredSellerApplication?.statuscode === 'Approved'">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-green">APPROVED</h4>
                 <p>
@@ -230,7 +230,7 @@
                 <a href=""><i class="fa fa-file-pdf" style="color: #38598A; margin-right: 5px;"></i>Download
                   Certificate</a>
               </section>
-              <section *ngIf="false">
+              <section *ngIf="registeredSellerApplication?.statuscode === 'Denied'">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-red">DENIED</h4>
                 <p>Your application has been denied. No futher action required.</p>
@@ -238,7 +238,7 @@
                   NOW</button>
                 <div style="clear: both;"></div>
               </section>
-              <section *ngIf="false">
+              <section *ngIf="registeredSellerApplication?.statuscode === 'Withdrawn'">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-orange">WITHDRAWN</h4>
                 <p>You have withdrawn your application. We will cease all processing activities.</p>
@@ -246,7 +246,7 @@
                   NOW</button>
                 <div style="clear: both;"></div>
               </section>
-              <section *ngIf="false">
+              <section *ngIf="registeredSellerApplication?.statuscode === 'Cancelled'">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-red">CANCELLED</h4>
                 <p>Your application has been cancelled. No futher action required</p>
@@ -254,7 +254,7 @@
                   AGAIN</button>
                 <div style="clear: both;"></div>
               </section>
-              <section *ngIf="!false">
+              <section *ngIf="registeredSellerApplication?.statuscode === 'Expired'">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-orange">EXPIRED</h4>
                 <p>Your waiver has expired. Please submit a renewal application.</p>

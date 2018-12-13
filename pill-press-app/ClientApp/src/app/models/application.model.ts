@@ -7,6 +7,9 @@ import { CustomAddress } from './custom-address.model';
 
 export class Application {
   id: string;
+  statuscode: string;
+  applicationtype: string;
+  submittedDate: Date;
   additionalbusinessinformationaboutseller: string;
   borrowrentleaseequipment: boolean;
   currentlyownusepossessequipment: boolean;
