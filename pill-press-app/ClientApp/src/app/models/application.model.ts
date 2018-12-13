@@ -8,6 +8,7 @@ import { CustomAddress } from './custom-address.model';
 export class Application {
   id: string;
   statuscode: string;
+  title: string;
   applicationtype: string;
   submittedDate: Date;
   additionalbusinessinformationaboutseller: string;

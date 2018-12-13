@@ -82,6 +82,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     additionalbusinessinformationaboutseller = incident.BcgovAdditionalbusinessinformationaboutseller,
                     statuscode = (ApplicationStatusCodes)incident.Statuscode,
 
+                    title = incident.Title,
+
                     // EQUIPMENT FIELDS
                     EquipmentType = (Equipmenttype?)incident.BcgovEquipmenttype,
                     EquipmentTypeOther = incident.BcgovEquipmenttypeother,
