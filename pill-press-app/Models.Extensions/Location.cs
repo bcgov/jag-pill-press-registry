@@ -51,6 +51,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             {
                 result = new MicrosoftDynamicsCRMbcgovLocation()
                 {
+                    BcgovLocationid = location.Id,
                     BcgovPrivatedwelling = location.PrivateDwelling,
                     BcgovSettingdescription = location.SettingDescription,
                 };                

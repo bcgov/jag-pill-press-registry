@@ -159,7 +159,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     result = application != null && CurrentUserHasAccessToApplicationOwnedBy(application._customeridValue);
                     break;
                 case "contact":
-                    var contact = await _dynamicsClient.GetContactById(id);
+                    var contact = _dynamicsClient.GetContactById(id);
                     result = contact != null && CurrentUserHasAccessToContactOwnedBy(contact.Contactid);
                     break;             
                 default:
@@ -186,7 +186,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             {
 
                 case "contact":
-                    var contact = await _dynamicsClient.GetContactById(Guid.Parse(entityId));
+                    var contact = _dynamicsClient.GetContactById(Guid.Parse(entityId));
                     folderName = GetContactFolderName(contact);
                     break;
                 case "incident":
