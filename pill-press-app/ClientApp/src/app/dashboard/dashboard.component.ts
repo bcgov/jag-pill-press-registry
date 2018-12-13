@@ -26,6 +26,12 @@ export class DashboardComponent implements OnInit {
   isPaid: Boolean;
   orgType = '';
 
+  inProgressEquipment: Application[] = [];
+  completedEquipment: Application[] = [];
+  waiverApplication: Application;
+  authorizedOwnerApplication: Application;
+  registeredSellerApplication: Application;
+
   constructor(private paymentDataService: PaymentDataService,
     private userDataService: UserDataService, private router: Router,
     private dynamicsDataService: DynamicsDataService,
@@ -33,12 +39,12 @@ export class DashboardComponent implements OnInit {
     public snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
-    this.userDataService.getCurrentUser()
+    this.busy = this.userDataService.getCurrentUser()
       .subscribe((data) => {
         this.currentUser = data;
         if (this.currentUser.accountid != null) {
           // fetch the account to get the primary contact.
-          this.dynamicsDataService.getRecord('account', this.currentUser.accountid)
+          this.busy = this.dynamicsDataService.getRecord('account', this.currentUser.accountid)
             .subscribe((result: DynamicsAccount) => {
               this.account = result;
               if (result.primaryContact) {
@@ -50,7 +56,7 @@ export class DashboardComponent implements OnInit {
 
       this.applicationDataService.getApplications()
       .subscribe(data => {
-        debugger;
+        this.inProgressEquipment = data || [];
       });
   }
 

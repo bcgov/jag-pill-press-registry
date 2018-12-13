@@ -179,6 +179,7 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public string EquipmentTypeOther { get; set; }
 
         [JsonProperty(PropertyName = "levelOfEquipmentAutomation")]
+        [JsonConverter(typeof(StringEnumConverter))]
         public Levelofequipmentautomation? LevelOfEquipmentAutomation { get; set; }
 
         [JsonProperty(PropertyName = "pillpressEncapsulatorsize")]
@@ -201,6 +202,7 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public string ExplanationOfEquipmentUse { get; set; }
 
         [JsonProperty(PropertyName = "howWasEquipmentBuilt")]
+        [JsonConverter(typeof(StringEnumConverter))]
         public Howwasequipmentbuilt? HowWasEquipmentBuilt { get; set; }
 
         [JsonProperty(PropertyName = "howWasEquipmentBuiltOtherCheck")]
