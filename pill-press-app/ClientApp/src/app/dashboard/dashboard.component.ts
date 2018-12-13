@@ -11,11 +11,11 @@ import { MatSnackBar } from '@angular/material';
 import { PaymentDataService } from '../services/payment-data.service';
 
 @Component({
-  selector: 'app-dashboard-lite',
-  templateUrl: './dashboard-lite.component.html',
-  styleUrls: ['./dashboard-lite.component.scss']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardLiteComponent implements OnInit {
+export class DashboardComponent implements OnInit {
   public currentUser: User;
   applicationId: string;
   submittedApplications = 8;
@@ -26,6 +26,12 @@ export class DashboardLiteComponent implements OnInit {
   isPaid: Boolean;
   orgType = '';
 
+  inProgressEquipment: Application[] = [];
+  completedEquipment: Application[] = [];
+  waiverApplication: Application;
+  authorizedOwnerApplication: Application;
+  registeredSellerApplication: Application;
+
   constructor(private paymentDataService: PaymentDataService,
     private userDataService: UserDataService, private router: Router,
     private dynamicsDataService: DynamicsDataService,
@@ -33,12 +39,12 @@ export class DashboardLiteComponent implements OnInit {
     public snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
-    this.userDataService.getCurrentUser()
+    this.busy = this.userDataService.getCurrentUser()
       .subscribe((data) => {
         this.currentUser = data;
         if (this.currentUser.accountid != null) {
           // fetch the account to get the primary contact.
-          this.dynamicsDataService.getRecord('account', this.currentUser.accountid)
+          this.busy = this.dynamicsDataService.getRecord('account', this.currentUser.accountid)
             .subscribe((result: DynamicsAccount) => {
               this.account = result;
               if (result.primaryContact) {
@@ -46,7 +52,11 @@ export class DashboardLiteComponent implements OnInit {
               }
             });
         }
+      });
 
+      this.applicationDataService.getApplications()
+      .subscribe(data => {
+        this.inProgressEquipment = data || [];
       });
   }
 
@@ -58,7 +68,7 @@ export class DashboardLiteComponent implements OnInit {
     const newLicenceApplicationData: Application = new Application();
     this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Waiver').subscribe(
       data => {
-        this.router.navigateByUrl(`/application/profile-review/waiver/${data.id}`);
+        this.router.navigateByUrl(`/waiver/profile-review/${data.id}`);
       },
       err => {
         this.snackBar.open('Error starting a New Licence Application', 'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
@@ -71,7 +81,7 @@ export class DashboardLiteComponent implements OnInit {
     const newLicenceApplicationData: Application = new Application();
     this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Authorized Owner').subscribe(
       data => {
-        this.router.navigateByUrl(`/application/profile-review/authorized-owner/${data.id}`);
+        this.router.navigateByUrl(`/authorized-owner/profile-review/${data.id}`);
       },
       err => {
         this.snackBar.open('Error starting a New Authorized Owner Application', 'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
@@ -84,10 +94,24 @@ export class DashboardLiteComponent implements OnInit {
     const newLicenceApplicationData: Application = new Application();
     this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Registered Seller').subscribe(
       data => {
-        this.router.navigateByUrl(`/application/profile-review/registered-seller/${data.id}`);
+        this.router.navigateByUrl(`/registered-seller/profile-review/${data.id}`);
       },
       err => {
         this.snackBar.open('Error starting a New Registered Seller Application', 'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
+        console.log('Error starting a Registered Seller Application');
+      }
+    );
+  }
+
+  addEquipment() {
+    const newLicenceApplicationData: Application = new Application();
+    this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Equipment Notification').subscribe(
+      data => {
+        this.router.navigateByUrl(`/equipment-notification/profile-review/${data.id}`);
+      },
+      err => {
+        this.snackBar.open('Error starting a New Equipment Notificatio Application',
+          'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
         console.log('Error starting a Registered Seller Application');
       }
     );

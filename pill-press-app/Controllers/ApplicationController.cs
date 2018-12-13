@@ -69,6 +69,51 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             return Json(result);
         }
 
+        /// <summary>
+        /// Get a license application by applicant id
+        /// </summary>
+        /// <param name="applicantId"></param>
+        /// <returns></returns>
+        private async Task<List<ViewModels.Application>> GetApplicationsByApplicant(string applicantId)
+        {
+            List<ViewModels.Application> result = new List<ViewModels.Application>();
+            IEnumerable<MicrosoftDynamicsCRMincident> dynamicsApplicationList = null;
+
+            var filter = $"_customerid_value eq {applicantId}";
+            // filter += $" and statuscode ne {(int)AdoxioApplicationStatusCodes.Denied}";
+            var expand = new List<string> { "customerid_account", "bcgov_ApplicationTypeId" };
+            try
+            {
+                dynamicsApplicationList = _dynamicsClient.Incidents.Get(filter: filter, expand: expand, orderby: new List<string> { "modifiedon desc" }).Value;
+            }
+            catch (OdataerrorException)
+            {
+                dynamicsApplicationList = null;
+            }
+            
+
+            if (dynamicsApplicationList != null)
+            {
+                foreach (MicrosoftDynamicsCRMincident dynamicsApplication in dynamicsApplicationList)
+                {                    
+                    result.Add(dynamicsApplication.ToViewModel());                    
+                }
+            }
+            return result;
+        }
+
+        /// GET all applications in Dynamics for the current user
+        [HttpGet("current")]
+        public async Task<JsonResult> GetCurrentUserDyanamicsApplications()
+        {
+            // get the current user.
+            string temp = _httpContextAccessor.HttpContext.Session.GetString("UserSettings");
+            UserSettings userSettings = JsonConvert.DeserializeObject<UserSettings>(temp);
+
+            // GET all applications in Dynamics by applicant using the account Id assigned to the user logged in
+            List<ViewModels.Application> applications = await GetApplicationsByApplicant(userSettings.AccountId);
+            return Json(applications);
+        }
 
         /// <summary>
         /// Update a legal entity
@@ -79,6 +124,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateApplication([FromBody] ViewModels.Application item, string id)
         {
+            var x = ModelState;
             if (id != null && item.id != null && id != item.id)
             {
                 return BadRequest();
@@ -118,7 +164,75 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 patchApplication.Statuscode = (int?)ViewModels.ApplicationStatusCodes.Pending;
             }
 
-            
+            // patch the data bindings
+            if (BCSellersAddress != null && 
+                (application._bcgovBcsellersaddressValue == null || application._bcgovBcsellersaddressValue != BCSellersAddress.BcgovCustomaddressid))
+            {
+                if (application._bcgovBcsellersaddressValue != null)
+                {
+                    // delete an existing reference.
+                    _dynamicsClient.Incidents.RemoveReference(id, "bcgov_BCSellersAddress", null);
+                }
+                patchApplication.BCSellersAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", BCSellersAddress.BcgovCustomaddressid);
+            }
+
+            if (OutsideBCSellersAddress != null &&
+                (application._bcgovOutsidebcsellersaddressValue == null || application._bcgovOutsidebcsellersaddressValue != OutsideBCSellersAddress.BcgovCustomaddressid))
+            {
+                if (application._bcgovOutsidebcsellersaddressValue != null)
+                {
+                    // delete an existing reference.
+                    _dynamicsClient.Incidents.RemoveReference(id, "bcgov_OutsideBCSellersAddress", null);
+                }
+                patchApplication.OutsideBCSellersAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", OutsideBCSellersAddress.BcgovCustomaddressid);
+            }
+
+            if (ImportersAddress != null &&
+                (application._bcgovImportersaddressValue == null || application._bcgovImportersaddressValue != ImportersAddress.BcgovCustomaddressid))
+            {
+                if (application._bcgovImportersaddressValue != null)
+                {
+                    // delete an existing reference.
+                    _dynamicsClient.Incidents.RemoveReference(id, "bcgov_ImportersAddress", null);
+                }
+
+                patchApplication.ImportersAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", ImportersAddress.BcgovCustomaddressid);
+            }
+
+            if (OriginatingSellersAddress != null &&
+                (application._bcgovOriginatingsellersaddressValue == null || application._bcgovOriginatingsellersaddressValue != OriginatingSellersAddress.BcgovCustomaddressid))
+            {
+                if (application._bcgovOriginatingsellersaddressValue != null)
+                {
+                    // delete an existing reference.
+                    _dynamicsClient.Incidents.RemoveReference(id, "bcgov_OriginatingSellersAddress", null);
+                }
+
+                patchApplication.OriginatingSellersAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", OriginatingSellersAddress.BcgovCustomaddressid);
+            }
+
+            if (AddressofBusinessthathasGivenorLoaned != null &&
+                (application._bcgovAddressofbusinessthathasgivenorloanedValue == null || application._bcgovAddressofbusinessthathasgivenorloanedValue != AddressofBusinessthathasGivenorLoaned.BcgovCustomaddressid))
+            {
+                if (application._bcgovAddressofbusinessthathasgivenorloanedValue != null)
+                {
+                    // delete an existing reference.
+                    _dynamicsClient.Incidents.RemoveReference(id, "bcgov_AddressofBusinessthathasGivenorLoaned", null);
+                }
+                patchApplication.AddressofBusinessthathasGivenorLoanedODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", AddressofBusinessthathasGivenorLoaned.BcgovCustomaddressid);
+            }
+
+            if (AddressofBusinessThatHasRentedorLeased != null &&
+                (application._bcgovAddressofbusinessthathasrentedorleasedValue == null || application._bcgovAddressofbusinessthathasrentedorleasedValue != AddressofBusinessThatHasRentedorLeased.BcgovCustomaddressid))
+            {
+                if (application._bcgovAddressofbusinessthathasrentedorleasedValue != null)
+                {
+                    // delete an existing reference.
+                    _dynamicsClient.Incidents.RemoveReference(id, "bcgov_AddressofBusinessthathasRentedorLeased", null);
+                }
+                patchApplication.AddressofBusinessThatHasRentedorLeasedODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", AddressofBusinessThatHasRentedorLeased.BcgovCustomaddressid);
+            }
+
             try
             {
                 await _dynamicsClient.Incidents.UpdateAsync(ApplicationId.ToString(), patchApplication);
@@ -243,9 +357,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                                 notFound = false;
                             }
                         }
-
                     }
-
 
                     if (notFound)
                     {
@@ -411,11 +523,12 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
 
             // set the author based on the current user.
             application.SubmitterODataBind = _dynamicsClient.GetEntityURI("contacts", userSettings.ContactId);
-
+        
             // Also setup the customer.
             var account = await _dynamicsClient.GetAccountById(Guid.Parse(userSettings.AccountId));
-            //application.CustomeridAccount = account;
+            
             application.CustomerIdAccountODataBind = _dynamicsClient.GetEntityURI("accounts", userSettings.AccountId);
+
             // bind the addresses. 
             if (BCSellersAddress != null)
             {

@@ -30,13 +30,20 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         Expired = 931490015
     }
 
+    public enum PublicStatusCodes
+    {
+        Draft = 931490005,
+        Pending = 931490000,
+        [EnumMember(Value = "Under Review")]
+        UnderReview = 931490001,        
+        Cancelled = 931490014        
+    }
+
     public enum UserApplicationStatusCodes
     {
         Draft = 931490005,
         Pending = 931490000
     }
-
-
 
     public enum AdoxioFinalDecisionCodes
     {
@@ -46,7 +53,6 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
 
     public class Application
     {
-
         public string id { get; set; } //adoxio_applicationid
 
         /// <summary>
@@ -179,6 +185,7 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public string EquipmentTypeOther { get; set; }
 
         [JsonProperty(PropertyName = "levelOfEquipmentAutomation")]
+        [JsonConverter(typeof(StringEnumConverter))]
         public Levelofequipmentautomation? LevelOfEquipmentAutomation { get; set; }
 
         [JsonProperty(PropertyName = "pillpressEncapsulatorsize")]
@@ -201,6 +208,7 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public string ExplanationOfEquipmentUse { get; set; }
 
         [JsonProperty(PropertyName = "howWasEquipmentBuilt")]
+        [JsonConverter(typeof(StringEnumConverter))]
         public Howwasequipmentbuilt? HowWasEquipmentBuilt { get; set; }
 
         [JsonProperty(PropertyName = "howWasEquipmentBuiltOtherCheck")]
