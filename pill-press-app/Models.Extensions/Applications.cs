@@ -156,6 +156,10 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     
                 };
 
+                if (incident.BcgovApplicationTypeId != null)
+                {
+                    result.applicationtype = incident.BcgovApplicationTypeId.BcgovName;
+                }
 
                 // CustomerID
                 if (incident.CustomeridAccount != null)
@@ -218,6 +222,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                 if (incident?.BcgovAddressofBusinessthathasRentedorLeased != null)
                 {
                     result.AddressofBusinessThatHasRentedorLeased = incident.BcgovAddressofBusinessthathasRentedorLeased.ToViewModel();
+                }
+
+                if (incident?.BcgovEquipmentLocation != null)
+                {
+                    result.EquipmentLocation = incident?.BcgovEquipmentLocation.ToViewModel();
                 }
 
                 // OutsideBcSellersLocation = incident.BcgovOutsidebcsellerslocation,                
