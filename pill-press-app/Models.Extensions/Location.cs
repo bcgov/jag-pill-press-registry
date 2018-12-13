@@ -43,5 +43,19 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             to.BcgovPrivatedwelling = from.PrivateDwelling;
             to.BcgovSettingdescription = from.SettingDescription;
         }
+
+        public static MicrosoftDynamicsCRMbcgovLocation ToModel(this ViewModels.Location location)
+        {
+            MicrosoftDynamicsCRMbcgovLocation result = null;
+            if (location != null)
+            {
+                result = new MicrosoftDynamicsCRMbcgovLocation()
+                {
+                    BcgovPrivatedwelling = location.PrivateDwelling,
+                    BcgovSettingdescription = location.SettingDescription,
+                };                
+            }
+            return result;
+        }
     }
 }
