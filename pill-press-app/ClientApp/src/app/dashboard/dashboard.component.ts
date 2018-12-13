@@ -70,12 +70,29 @@ export class DashboardComponent implements OnInit {
         if (waivers.length > 0) {
           this.waiverApplication = waivers[0];
         }
-        this.inProgressEquipment = data.filter(a => a.applicationtype === 'Equipment Notification');
+
+        this.inProgressEquipment = data.filter(a => a.applicationtype === 'Equipment Notification' && a.statuscode !== 'Approved');
+        this.completedEquipment = data.filter(a => a.applicationtype === 'Equipment Notification' && a.statuscode === 'Approved');
       });
   }
 
-  applyForWaiver() {
+  isAuthorizedApplicationPending() {
+    return this.authorizedOwnerApplication
+      && this.authorizedOwnerApplication.statuscode !== 'Draft'
+      && this.authorizedOwnerApplication.statuscode !== 'Withdrawn'
+      && this.authorizedOwnerApplication.statuscode !== 'Approved'
+      && this.authorizedOwnerApplication.statuscode !== 'Cancelled'
+      && this.authorizedOwnerApplication.statuscode !== 'Denied';
+  }
 
+  isWaiverOrSellerUnderReview(statuscode: string) {
+    return statuscode
+      && (
+        statuscode === 'Under Review'
+        || statuscode === 'With Risk Assessment'
+        || statuscode === 'With C&E Investigations'
+        || statuscode === 'With Deputy Registrar'
+      );
   }
 
   startNewWaiverApplication() {
