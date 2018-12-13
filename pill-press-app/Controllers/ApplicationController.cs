@@ -427,6 +427,64 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             return Json(application.ToViewModel());
         }
 
+        private MicrosoftDynamicsCRMbcgovLocation CreateOrUpdateLocation(ViewModels.Location item)
+        {
+            MicrosoftDynamicsCRMbcgovLocation location = null;
+            // Primary Contact
+            if (item != null)
+            {
+                location = item.ToModel();
+
+                // handle the address.
+                var address = CreateOrUpdateAddress(item.Address);
+                item.Address = address.ToViewModel();
+
+                if (string.IsNullOrEmpty(item.Id))
+                {
+                    if (address != null)
+                    {
+                        // bind the address.
+                        location.LocationAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", address.BcgovCustomaddressid);
+                    }                    
+
+                    // create a location                        
+                    try
+                    {
+                        location = _dynamicsClient.Locations.Create(location);
+                        item.Id = location.BcgovLocationid;
+                    }
+                    catch (OdataerrorException odee)
+                    {
+                        _logger.LogError(LoggingEvents.Error, "Error creating location");
+                        _logger.LogError("Request:");
+                        _logger.LogError(odee.Request.Content);
+                        _logger.LogError("Response:");
+                        _logger.LogError(odee.Response.Content);
+                        throw new OdataerrorException("Error creating the location");
+                    }
+                }
+                else
+                {                    
+                    // update
+                    try
+                    {
+                        _dynamicsClient.Locations.Update(item.Id, location);
+                    }
+                    catch (OdataerrorException odee)
+                    {
+                        _logger.LogError(LoggingEvents.Error, "Error updating address");
+                        _logger.LogError("Request:");
+                        _logger.LogError(odee.Request.Content);
+                        _logger.LogError("Response:");
+                        _logger.LogError(odee.Response.Content);
+                        throw new OdataerrorException("Error updating the address");
+                    }
+                }
+            }
+            return location;
+        }
+
+
         private MicrosoftDynamicsCRMbcgovCustomaddress CreateOrUpdateAddress(ViewModels.CustomAddress ca)
         {
             MicrosoftDynamicsCRMbcgovCustomaddress address = null;
@@ -502,6 +560,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             var AddressofBusinessthathasGivenorLoaned = CreateOrUpdateAddress(item.AddressofBusinessthathasGivenorLoaned);
             var AddressofBusinessThatHasRentedorLeased = CreateOrUpdateAddress(item.AddressofBusinessThatHasRentedorLeased);
 
+            var EquipmentLocation = CreateOrUpdateLocation(item.EquipmentLocation);
 
             // create a new Application.
             MicrosoftDynamicsCRMincident application = new MicrosoftDynamicsCRMincident();
