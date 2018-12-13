@@ -68,7 +68,7 @@ export class DashboardComponent implements OnInit {
     const newLicenceApplicationData: Application = new Application();
     this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Waiver').subscribe(
       data => {
-        this.router.navigateByUrl(`/application/profile-review/waiver/${data.id}`);
+        this.router.navigateByUrl(`/waiver/profile-review/${data.id}`);
       },
       err => {
         this.snackBar.open('Error starting a New Licence Application', 'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
