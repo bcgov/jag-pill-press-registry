@@ -32,11 +32,17 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                 {
                     "bcgov_ApplicationTypeId","bcgov_incident_customproduct_RelatedApplication","customerid_account","bcgov_incident_businesscontact",
                     "bcgov_BCSellersAddress","bcgov_OutsideBCSellersAddress","bcgov_ImportersAddress","bcgov_OriginatingSellersAddress",
-                    "bcgov_AddressofBusinessthathasGivenorLoaned","bcgov_AddressofBusinessthathasRentedorLeased"        
+                    "bcgov_AddressofBusinessthathasGivenorLoaned","bcgov_AddressofBusinessthathasRentedorLeased","bcgov_EquipmentLocation"        
                 };
                 // fetch from Dynamics.
                 result = system.Incidents.GetByKey(incidentid: id.ToString(), expand: expand);
 
+                // expand only goes one level deep - we need the "location address"
+
+                if (result.BcgovEquipmentLocation != null && result.BcgovEquipmentLocation._bcgovLocationaddressValue != null)
+                {
+                    result.BcgovEquipmentLocation.BcgovLocationAddress = system.GetCustomAddressById(result.BcgovEquipmentLocation._bcgovLocationaddressValue);
+                }
                
             }
             catch (OdataerrorException)

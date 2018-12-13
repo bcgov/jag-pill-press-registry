@@ -11,13 +11,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
     {
 
 
-        public static async Task<MicrosoftDynamicsCRMcontact> GetContactById(this IDynamicsClient system, Guid id)
+        public static MicrosoftDynamicsCRMcontact GetContactById(this IDynamicsClient system, Guid id)
         {
             MicrosoftDynamicsCRMcontact result;
             try
             {
                 // fetch from Dynamics.
-                result = await system.Contacts.GetByKeyAsync(id.ToString());
+                result =  system.Contacts.GetByKey(id.ToString());
             }
             catch (OdataerrorException)
             {
