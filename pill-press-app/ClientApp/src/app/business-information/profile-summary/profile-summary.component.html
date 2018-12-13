@@ -83,7 +83,7 @@
       </section>
       <section>
         <div [ngBusy]="busy2"></div>
-        <button *ngIf="nextRoute" class="btn btn-primary" (click)="save()">CONTINUE TO APPLICATION</button>
+        <button *ngIf="nextRoute" class="btn btn-primary" (click)="router.navigateByUrl(nextRoute + '/' + id)">CONTINUE TO APPLICATION</button>
         <button *ngIf="!nextRoute" class="btn btn-primary" (click)="markAsTouched(); save()">SAVE</button>
       </section>
     </div>
