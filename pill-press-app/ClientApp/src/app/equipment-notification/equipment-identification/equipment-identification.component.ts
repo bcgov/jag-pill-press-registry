@@ -38,6 +38,14 @@ export class EquipmentIdentificationComponent implements OnInit {
       serialNumberForCustomBuilt: [],
       customBuiltSerialNumber: [],
       serialNumberKeyPartDescription: [],
+      addressofPersonBusiness: this.fb.group({
+        id: [],
+        streetLine1: [],
+        streetLine2: [],
+        city: [],
+        province: [],
+        postalCode: [],
+      })
 
     });
     this.reloadData();
