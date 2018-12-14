@@ -217,13 +217,13 @@ export class AuthorizedApplicationComponent implements OnInit {
     }
   }
 
-  save(gotToReview: boolean) {
-    if (this.form.valid || gotToReview === false) {
+  save(goToReview: boolean) {
+    if (this.form.valid || goToReview === false) {
       const value = { ...this.form.value };
       const saveList = [this.applicationDataService.updateApplication(value), ...this.saveCustomProducts()];
       zip(...saveList)
         .subscribe(res => {
-          if (gotToReview) {
+          if (goToReview) {
             this.router.navigateByUrl(`/authorized-owner/review/${this.waiverId}`);
           } else {
             this.router.navigateByUrl(`/dashboard`);
