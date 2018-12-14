@@ -1,3 +1,61 @@
-<p>
-  equipment-review works!
-</p>
+<div class="">
+  <div class="" style="position: relative;">
+    <div [ngBusy]="[busy, busyPromise]"></div>
+    <h2 class="step">STEP 6</h2>
+    <h1>Equipment Notification Review</h1>
+
+    <p>
+      You have provided the following information in your Controlled Equipment notification. In order to proceed,
+      please confirm that these details are correct. If they are not, please <a routerLink="/equipment-notification/location/{{equipmentId}}">amend
+        your
+        answers</a>
+      before submitting the application.
+    </p>
+
+    <h2>Equipment Information</h2>
+    <table class="summary-table">
+      <tr>
+        <td class="">Select the type of Controlled Equipment you are registering.</td>
+      </tr>
+      <tr>
+        <td class="row-alt"> {{ notification.equipmentType }}</td>
+      </tr>
+    </table>
+
+
+
+    <h3 class="blue-header">DECLARATION AND CONSENT</h3>
+    <div [formGroup]="form" class="padded-section">
+      <section style="display: flex">
+        <input type="checkbox" style="flex: 0 0 20px" formControlName="declarationofcorrectinformation">
+        <span>
+          I certify that, to the best of my knowledge, the information I have provided on my Waiver application and
+          will
+          provide as necessary is complete, honest, and accurate. I understand that a false statement or omission of
+          facts herein may lead to the a denial of a Waiver being granted. I am also aware that later discovery of an
+          omission or misrepresentation may be grounds for suspension or cancellation of a waiver or for being
+          prosecuted
+          under provincial law. <span class="error-states">*</span>
+        </span>
+      </section>
+      <div *ngIf="form.get('declarationofcorrectinformation').value !== true && form.touched" style="background-color: #F2F2F2; margin-top: 10px; border-radius: 5px; padding: 10px; font: 15px Myriad Pro Regular #494949;">
+        <i class="fas fa-exclamation-triangle error-states" style="margin-right: 10px;"></i>
+        <span class="error-states">Please complete the declarations and consent section.</span>
+      </div>
+    </div>
+
+    <div style="margin-top: 30px; display: flex; justify-content: space-between">
+      <section>
+        <!-- <span class="error-states">*</span> <i>Required field</i> -->
+        <a href="javascript: void(0);" (click)="save(false)"><i class="fa fa-save" style="margin-right: 5px"></i>Save &
+          Close</a>
+      </section>
+      <section>
+        <button class="btn btn-secondary" style="margin-right: 10px" routerLink="/equipment-notification/location/{{equipmentId}}">EDIT
+          CONFIRMATION</button>
+        <button class="btn btn-primary" (click)="save(true)">SUBMIT</button>
+      </section>
+    </div>
+  </div>
+
+</div>
