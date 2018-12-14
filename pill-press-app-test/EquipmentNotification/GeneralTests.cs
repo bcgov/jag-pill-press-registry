@@ -219,7 +219,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             Assert.Equal(responseViewModel.PillpressEncapsulatorSize , Pillpressencapsulatorsize.FreeStandingModel);
             Assert.Equal(responseViewModel.PillpressMaxCapacity , 1000);
             Assert.Equal(responseViewModel.EncapsulatorMaxCapacity, 1000);
-            Assert.Equal(responseViewModel.HowWasEquipmentBuilt, Howwasequipmentbuilt.CommerciallyManufactured);
+            Assert.Equal(Howwasequipmentbuilt.CommerciallyManufactured, responseViewModel.HowWasEquipmentBuilt);
 
             // U - Update  
             viewmodel_application = new Application();

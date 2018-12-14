@@ -153,7 +153,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             var AddressofBusinessthathasGivenorLoaned = CreateOrUpdateAddress(item.AddressofBusinessthathasGivenorLoaned);
             var AddressofBusinessThatHasRentedorLeased = CreateOrUpdateAddress(item.AddressofBusinessThatHasRentedorLeased);
 
-            var EquipmentLocation = CreateOrUpdateLocation(item.EquipmentLocation);
+            var EquipmentLocation = CreateOrUpdateLocation(item.EquipmentLocation, userSettings.AccountId);
 
             MicrosoftDynamicsCRMincident patchApplication = new MicrosoftDynamicsCRMincident();
             patchApplication.CopyValues(item);
@@ -439,7 +439,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             return Json(application.ToViewModel());
         }
 
-        private MicrosoftDynamicsCRMbcgovLocation CreateOrUpdateLocation(ViewModels.Location item)
+        private MicrosoftDynamicsCRMbcgovLocation CreateOrUpdateLocation(ViewModels.Location item, string accountId)
         {
             MicrosoftDynamicsCRMbcgovLocation location = null;
             // Primary Contact
@@ -458,6 +458,9 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                         // bind the address.
                         location.LocationAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", address.BcgovCustomaddressid);
                     }                    
+
+                    // bind the current account.
+                    location.BusinessProfileODataBind = _dynamicsClient.GetEntityURI("accounts", accountId);
 
                     // create a location                        
                     try
@@ -579,7 +582,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             var AddressofBusinessthathasGivenorLoaned = CreateOrUpdateAddress(item.AddressofBusinessthathasGivenorLoaned);
             var AddressofBusinessThatHasRentedorLeased = CreateOrUpdateAddress(item.AddressofBusinessThatHasRentedorLeased);
 
-            var EquipmentLocation = CreateOrUpdateLocation(item.EquipmentLocation);
+            var EquipmentLocation = CreateOrUpdateLocation(item.EquipmentLocation, userSettings.AccountId);
 
             // create a new Application.
             MicrosoftDynamicsCRMincident application = new MicrosoftDynamicsCRMincident();
