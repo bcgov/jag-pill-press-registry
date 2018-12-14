@@ -23,7 +23,14 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             return result;
         }
 
+
         public static MicrosoftDynamicsCRMincident GetApplicationByIdWithChildren(this IDynamicsClient system, Guid id)
+        {
+            return system.GetApplicationByIdWithChildren(id.ToString());
+        }
+
+
+        public static MicrosoftDynamicsCRMincident GetApplicationByIdWithChildren(this IDynamicsClient system, string id)
         {
             MicrosoftDynamicsCRMincident result;
             try
@@ -35,7 +42,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                     "bcgov_AddressofBusinessthathasGivenorLoaned","bcgov_AddressofBusinessthathasRentedorLeased","bcgov_EquipmentLocation"        
                 };
                 // fetch from Dynamics.
-                result = system.Incidents.GetByKey(incidentid: id.ToString(), expand: expand);
+                result = system.Incidents.GetByKey(incidentid: id, expand: expand);
 
                 // expand only goes one level deep - we need the "location address"
 
