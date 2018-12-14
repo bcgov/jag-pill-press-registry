@@ -474,8 +474,6 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
 
             var request = new HttpRequestMessage(HttpMethod.Post, "/api/" + service + "/Waiver");
 
-            
-
             Application viewmodel_application = new Application()
             {
                 applicant = currentAccount, //account
@@ -511,7 +509,6 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             Assert.True(responseViewModel.applicant != null);
             Assert.Equal(currentAccount.id, responseViewModel.applicant.id);
 
-            /*  file tests disabled as there is no SharePoint yet
 
             // Test upload, get, delete attachment
             string documentType = "Licence Application Main";
@@ -528,11 +525,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
                 };
                 formData.Add(fileContent);
                 formData.Add(new StringContent(documentType, Encoding.UTF8, "application/json"), "documentType");
-                response = _client.PostAsync($"/api/file/{id}/attachments/application", formData).Result;
+                response = _client.PostAsync($"/api/file/{id}/attachments/incident", formData).Result;
                 Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
                 // Get
-                request = new HttpRequestMessage(HttpMethod.Get, $"/api/file/{id}/attachments/application/{documentType}");
+                request = new HttpRequestMessage(HttpMethod.Get, $"/api/file/{id}/attachments/incident/{documentType}");
                 response = await _client.SendAsync(request);
                 response.EnsureSuccessStatusCode();
 
@@ -541,13 +538,19 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
                 files.ForEach(async file =>
                 {
                     // Delete
-                    request = new HttpRequestMessage(HttpMethod.Delete, $"/api/file/{id}/attachments/application?serverRelativeUrl={Uri.EscapeDataString(file.serverrelativeurl)}&documentType={documentType}");
+                    request = new HttpRequestMessage(HttpMethod.Delete, $"/api/file/{id}/attachments/incident?serverRelativeUrl={Uri.EscapeDataString(file.serverrelativeurl)}&documentType={documentType}");
                     response = await _client.SendAsync(request);
                     response.EnsureSuccessStatusCode();
                 });
-            }
 
-        */
+                request = new HttpRequestMessage(HttpMethod.Get, $"/api/file/{id}/attachments/incident/{documentType}");
+                response = await _client.SendAsync(request);
+                response.EnsureSuccessStatusCode();
+
+                jsonString = await response.Content.ReadAsStringAsync();
+                files = JsonConvert.DeserializeObject<List<FileSystemItem>>(jsonString);
+                Assert.Empty(files);
+            }
 
             await LogoutAndCleanupTestUser(strId);
         }
@@ -592,7 +595,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
 
             jsonString = await response.Content.ReadAsStringAsync();
             responseViewModel = JsonConvert.DeserializeObject<Application>(jsonString);
-            Assert.Equal("Not a Dispensary", responseViewModel.mainbusinessfocus);
+            Assert.Equal("Testing", responseViewModel.mainbusinessfocus);
             Assert.True(responseViewModel.applicant != null);
             Assert.Equal(currentAccount.id, responseViewModel.applicant.id);
 
@@ -611,12 +614,12 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
                 };
                 formData.Add(fileContent);
                 formData.Add(new StringContent(documentType, Encoding.UTF8, "application/json"), "documentType");
-                response = _client.PostAsync($"/api/file/{id}/attachments/application", formData).Result;
+                response = _client.PostAsync($"/api/file/{id}/attachments/incident", formData).Result;
                 Assert.Equal(HttpStatusCode.OK, response.StatusCode);
             }
 
             // Get
-            request = new HttpRequestMessage(HttpMethod.Get, $"/api/file/{id}/attachments/application/{documentType}");
+            request = new HttpRequestMessage(HttpMethod.Get, $"/api/file/{id}/attachments/incident/{documentType}");
             response = await _client.SendAsync(request);
 
             response.EnsureSuccessStatusCode();
@@ -626,10 +629,18 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             files.ForEach(async file =>
             {
                 // Delete
-                request = new HttpRequestMessage(HttpMethod.Delete, $"/api/file/{id}/attachments/application?serverRelativeUrl={Uri.EscapeDataString(file.serverrelativeurl)}&documentType={documentType}");
+                request = new HttpRequestMessage(HttpMethod.Delete, $"/api/file/{id}/attachments/incident?serverRelativeUrl={Uri.EscapeDataString(file.serverrelativeurl)}&documentType={documentType}");
                 response = await _client.SendAsync(request);
                 response.EnsureSuccessStatusCode();
             });
+
+            request = new HttpRequestMessage(HttpMethod.Get, $"/api/file/{id}/attachments/incident/{documentType}");
+            response = await _client.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+
+            jsonString = await response.Content.ReadAsStringAsync();
+            files = JsonConvert.DeserializeObject<List<FileSystemItem>>(jsonString);
+            Assert.Empty(files);
 
             await LogoutAndCleanupTestUser(strId);
         }
