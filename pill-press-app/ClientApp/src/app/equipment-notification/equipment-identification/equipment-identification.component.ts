@@ -57,14 +57,14 @@ export class EquipmentIdentificationComponent implements OnInit {
   }
 
 
-  save(gotToReview: boolean) {
-    if (this.form.valid || gotToReview === false) {
+  save(goToReview: boolean) {
+    if (this.form.valid || goToReview === false) {
       const value = this.form.value;
       const saveList = [this.applicationDataService.updateApplication(value)];
       this.busyPromise = zip(...saveList)
         .toPromise()
         .then(res => {
-          if (gotToReview) {
+          if (goToReview) {
             this.router.navigateByUrl(`/equipment-notification/source/${this.equipmentId}`);
           } else {
             this.router.navigateByUrl(`/dashboard`);

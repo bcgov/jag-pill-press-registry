@@ -4,6 +4,7 @@ import { Invoice } from './invoice.model';
 import { DynamicsContact } from './dynamics-contact.model';
 import { BusinessContact } from './business-contact.model';
 import { CustomAddress } from './custom-address.model';
+import { EquipmentLocation } from './equipment-location.model';
 
 export class Application {
   id: string;
@@ -135,4 +136,5 @@ export class Application {
   importersAddress: CustomAddress;
   outsideBcSellersAddress: CustomAddress;
   OriginatingSellersAddress: CustomAddress;
+  equipmentLocation: EquipmentLocation;
 }
