@@ -16,7 +16,7 @@
           <option value="Pill Press">Pill Press</option>
           <option value="Encapsulator">Encapsulator</option>
           <option value="Die, Mould or Punch">Die, Mould or Punch</option>
-          <option value="Phamaceutical mixer or blender">Phamaceutical mixer or blender</option>
+          <option value="Pharmaceutical Mixer or Blender">Pharmaceutical Mixer or Blender</option>
           <option value="Other">Other</option>
         </select>
       </app-field>
@@ -49,7 +49,7 @@
       </section>
 
       <section *ngIf="form.get('equipmentType').value === 'Encapsulator'">
-        <app-field label="Select the level of automation for this piece of Controlled Equipment. " [required]="true">
+        <app-field label="Select the level of automation for this piece of Controlled Equipment." [required]="true">
           <select class="form-control" formControlName="levelOfEquipmentAutomation" style="width: 300px;">
             <option value="">Please select an option</option>
             <option value="Semi-Automatic">Semi-Automatic</option>
@@ -84,7 +84,7 @@
         </span>
       </div>
 
-      <section *ngIf="form.get('equipmentType').value === 'Phamaceutical mixer or blender'">
+      <section *ngIf="form.get('equipmentType').value === 'Pharmaceutical Mixer or Blender'">
         <app-field label="Select the level of automation for this piece of Controlled Equipment." [required]="true">
           <select class="form-control" formControlName="levelOfEquipmentAutomation" style="width: 300px;">
             <option value="">Please select an option</option>
