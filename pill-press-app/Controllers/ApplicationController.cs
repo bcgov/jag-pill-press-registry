@@ -81,10 +81,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
 
             var filter = $"_customerid_value eq {applicantId}";
             // filter += $" and statuscode ne {(int)AdoxioApplicationStatusCodes.Denied}";
-            var expand = new List<string> { "customerid_account", "bcgov_ApplicationTypeId" };
+            // fields will be expanded on individual calls.
+            //var expand = new List<string> { "customerid_account", "bcgov_ApplicationTypeId" };
             try
             {
-                dynamicsApplicationList = _dynamicsClient.Incidents.Get(filter: filter, expand: expand, orderby: new List<string> { "modifiedon desc" }).Value;
+                dynamicsApplicationList = _dynamicsClient.Incidents.Get(filter: filter, orderby: new List<string> { "modifiedon desc" }).Value;
             }
             catch (OdataerrorException)
             {
@@ -95,8 +96,10 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             if (dynamicsApplicationList != null)
             {
                 foreach (MicrosoftDynamicsCRMincident dynamicsApplication in dynamicsApplicationList)
-                {                    
-                    result.Add(dynamicsApplication.ToViewModel());                    
+                {
+                    string id = dynamicsApplication.Incidentid;
+                    var application = _dynamicsClient.GetApplicationByIdWithChildren(id);
+                    result.Add(application.ToViewModel());                    
                 }
             }
             return result;
