@@ -95,7 +95,7 @@
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-orange">DRAFT</h4>
                 <p>You have started an application but not submitted it yet.</p>
-                <a href=""><i class="fas fa-exclamation-circle" style="color: #38598A; margin-right: 5px;"></i>Complete
+                <a routerLink="/waiver/profile-review/{{waiverApplication.id}}"><i class="fas fa-exclamation-circle" style="color: #38598A; margin-right: 5px;"></i>Complete
                   Application</a>
               </section>
               <section *ngIf="waiverApplication?.statuscode === 'Pending'">
@@ -192,7 +192,7 @@
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-orange">DRAFT</h4>
                 <p>You have started an application but not submitted it yet.</p>
-                <a href=""><i class="fas fa-exclamation-circle" style="color: #38598A; margin-right: 5px;"></i>Complete
+                <a routerLink="/registered-seller/profile-review/{{registeredSellerApplication.id}}"><i class="fas fa-exclamation-circle" style="color: #38598A; margin-right: 5px;"></i>Complete
                   Application</a>
               </section>
               <section *ngIf="registeredSellerApplication?.statuscode === 'Pending'">
