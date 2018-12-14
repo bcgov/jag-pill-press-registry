@@ -12,16 +12,395 @@
       before submitting the application.
     </p>
 
-    <h2>Equipment Information</h2>
-    <table class="summary-table">
-      <tr>
-        <td class="">Select the type of Controlled Equipment you are registering.</td>
-      </tr>
-      <tr>
-        <td class="row-alt"> {{ notification.equipmentType }}</td>
-      </tr>
-    </table>
+    <h2>Equipment Type and Use</h2>
+    <div>
+      <div class="dark-row">Select the type of Controlled Equipment you are registering.</div>
+      <div class="alt-row"> {{ notification?.equipmentType }}</div>
 
+      <section *ngIf="notification?.equipmentType === 'Pill Press'" class="padded-section">
+        <div class="dark-row">Select the level of automation for this piece of Controlled Equipment.</div>
+        <div class="alt-row"> {{ notification?.levelOfEquipmentAutomation }}</div>
+
+        <div class="dark-row">Please select from the following list to describe the size of this Pill Press.</div>
+        <div class="alt-row"> {{ notification?.pillpressEncapsulatorsize }}</div>
+
+        <div class="dark-row">Please indicate your Pill Press maximum capacity in number of pills/tablets per hour.</div>
+        <div class="alt-row"> {{ notification?.pillpressmaxcapacity }}</div>
+
+        <div class="dark-row">Please explain how you use this piece of Controlled Equipment in your manufacturing
+          process.</div>
+        <div class="alt-row"> {{ notification?.explanationOfEquipmentuse }}</div>
+      </section>
+
+      <section *ngIf="notification?.equipmentType === 'Encapsulator'" class="padded-section">
+        <div class="dark-row">Select the level of automation for this piece of Controlled Equipment.</div>
+        <div class="alt-row"> {{ notification?.levelOfEquipmentAutomation }}</div>
+
+        <div class="dark-row">Please select from the following list to describe the size of this Encapsulator.</div>
+        <div class="alt-row"> {{ notification?.pillpressEncapsulatorsize }}</div>
+
+        <div class="dark-row">Please indicate your Encapsulator maximum capacity in number of capsules per hour.</div>
+        <div class="alt-row"> {{ notification?.encapsulatorMaxCapacity }}</div>
+
+        <div class="dark-row">Please explain how you use this piece of Controlled Equipment in your manufacturing
+          process.</div>
+        <div class="alt-row"> {{ notification?.explanationOfEquipmentuse }}</div>
+      </section>
+
+      <section *ngIf="notification?.equipmentType === 'Pharmaceutical Mixer or Blende'" class="padded-section">
+        <div class="dark-row">Select the level of automation for this piece of Controlled Equipment.</div>
+        <div class="alt-row"> {{ notification?.levelOfEquipmentAutomation }}</div>
+
+        <div class="dark-row">Please explain how you use this piece of Controlled Equipment in your manufacturing
+          process.</div>
+        <div class="alt-row"> {{ notification?.explanationOfEquipmentuse }}</div>
+      </section>
+
+      <section *ngIf="notification?.equipmentType === 'Other'" class="padded-section">
+        <div class="dark-row">If Other, please specify</div>
+        <div class="alt-row"> {{ notification?.equipmentTypeOther }}</div>
+
+        <div class="dark-row">Please explain how you use this piece of Controlled Equipment in your manufacturing
+          process.</div>
+        <div class="alt-row"> {{ notification?.explanationOfEquipmentuse }}</div>
+      </section>
+    </div>
+
+    <h2>Equipment Identification</h2>
+    <div>
+      <div class="dark-row">How was this piece of Controlled Equipment built?</div>
+      <div class="alt-row"> {{ notification?.howWasEquipmentBuilt }}</div>
+
+      <section *ngIf="notification?.howWasEquipmentBuilt === 'Commercially Manufactured'" class="padded-section">
+        <div class="dark-row">Name of Manufacturer</div>
+        <div class="alt-row"> {{ notification?.nameOfManufacturer }}</div>
+
+        <div class="dark-row">Make</div>
+        <div class="alt-row"> {{ notification?.equipmentMake }}</div>
+
+        <div class="dark-row">Model</div>
+        <div class="alt-row"> {{ notification?.equipmentModel }}</div>
+
+        <div class="dark-row">Serial Number</div>
+        <div class="alt-row"> {{ notification?.serialNumber }}</div>
+      </section>
+
+      <section *ngIf="notification?.howWasEquipmentBuilt === 'Custom-Built' || notification?.howWasEquipmentBuilt === 'Other'"
+        class="padded-section">
+        <div class="dark-row">Please describe how this piece of Controlled Equipment was built.</div>
+        <div class="alt-row"> {{ notification?.howEquipmentBuiltDescription }}</div>
+
+        <div class="dark-row">Please provide the name of the person/business that built this piece of equipment.</div>
+        <div class="alt-row"> {{ notification?.personBusinessThatBuiltEquipment }}</div>
+
+        <div class="dark-row">Please provide the address of the person/business that built this piece of equipment.</div>
+        <div class="alt-row">
+          {{ notification?.addressofPersonBusiness?.streetLine1 }} <br>
+          <div *ngIf="notification?.addressofPersonBusiness?.streetLine2">
+            {{ notification?.addressofPersonBusiness?.streetLine2 }}
+          </div>
+          {{ notification?.addressofPersonBusiness?.city }} <br>
+          {{ notification?.addressofPersonBusiness?.province }} <br>
+          {{ notification?.addressofPersonBusiness?.postalCode }} <br>
+        </div>
+
+        <div class="dark-row">Does this piece of custom-built equipment (or a key part) have a manufacturer's serial
+          number?</div>
+        <div class="alt-row"> {{ notification?.serialNumberForCustomBuilt === true ? 'Yes' : 'No' }}</div>
+
+        <div *ngIf=" notification?.serialNumberForCustomBuilt === true">
+          <div class="dark-row">If yes, please provide the serial number of the custom-built equipment (or the key
+            part).
+            number?</div>
+          <div class="alt-row"> {{ notification?.customBuiltSerialNumber }}</div>
+
+          <div class="dark-row">If the serial number is for a key part, please describe the key part.</div>
+          <div class="alt-row"> {{ notification?.serialNumberKeyPartDescription }}</div>
+        </div>
+
+      </section>
+    </div>
+
+    <h2>Equipment Source</h2>
+    <div>
+      <div class="dark-row">Did you already own this piece of Controlled Equipment before January 2019?</div>
+      <div class="alt-row"> {{ notification?.ownedBeforeJan2019 === true ? 'Yes' : 'No' }}</div>
+      <section class="padded-section">
+        <div class="dark-row">How did this piece of equipment come into your possession (after January 2019)?</div>
+
+        <section *ngIf="notification?.purchasedFromBcSeller === true">
+          <div class="alt-row">
+            <ul style="margin-bottom: 0; padding-left: 10px;">
+              <li><strong>Purchased from BC seller</strong></li>
+            </ul>
+          </div>
+          <section class="padded-section">
+            <div class="dark-row">Please provide the name of the BC Seller from whom you purchased this piece of
+              Controlled Equipment.</div>
+            <div class="alt-row">{{ notification?.nameOfBcSeller}}</div>
+
+            <div class="dark-row">Please provide the BC Seller's address.</div>
+            <div class="alt-row">
+              {{ notification?.bcSellersAddress?.streetLine1 }} <br>
+              <div *ngIf="notification?.bcSellersAddress?.streetLine2">
+                {{ notification?.bcSellersAddress?.streetLine2 }}
+              </div>
+              {{ notification?.bcSellersAddress?.city }} <br>
+              {{ notification?.bcSellersAddress?.province }} <br>
+              {{ notification?.bcSellersAddress?.postalCode }} <br>
+            </div>
+
+            <div class="dark-row">Please provide the BC Seller's contact phone number.</div>
+            <div class="alt-row">{{ notification?.bcSellersContactPhoneNumber}}</div>
+
+            <div class="dark-row">Please provide the BC Seller's contact email.</div>
+            <div class="alt-row">{{ notification?.bcSellersContactEmail}}</div>
+
+            <div class="dark-row">What was the date of purchase?</div>
+            <div class="alt-row">{{ notification?.dateOfPurchaseFromBcSeller | date : 'MM/dd/yyyy'}}</div>
+
+            <div class="dark-row">Please provide the BC Seller's registration number.</div>
+            <div class="alt-row">{{ notification?.bcSellersRegistrationNumber}}</div>
+          </section>
+        </section>
+
+        <section *ngIf="notification?.purchasedFromSellerOutsideOfBc === true">
+          <div class="alt-row">
+            <ul style="margin-bottom: 0; padding-left: 10px;">
+              <li><strong>Purchased from seller outside of BC</strong></li>
+            </ul>
+          </div>
+          <section class="padded-section">
+            <div class="dark-row">Please provide the name of the seller (outside of BC) from whom you purchased this
+              piece of Controlled Equipment.</div>
+            <div class="alt-row">{{ notification?.outsideBcSellersName}}</div>
+
+            <div class="dark-row">Please provide the seller's address.</div>
+            <div class="alt-row">
+              {{ notification?.outsideBcSellersAddress?.streetLine1 }} <br>
+              <div *ngIf="notification?.outsideBcSellersAddress?.streetLine2">
+                {{ notification?.outsideBcSellersAddress?.streetLine2 }}
+              </div>
+              {{ notification?.outsideBcSellersAddress?.city }} <br>
+              {{ notification?.outsideBcSellersAddress?.province }} <br>
+              {{ notification?.outsideBcSellersAddress?.postalCode }} <br>
+            </div>
+
+            <div class="dark-row">Please check geographical location of seller.</div>
+            <div class="alt-row">{{ notification?.outsideBcSellersLocation}}</div>
+
+            <div class="dark-row">What was the date of purchase?</div>
+            <div class="alt-row">{{ notification?.dateOfPurchaseFromBcSeller | date : 'MM/dd/yyyy'}}</div>
+          </section>
+        </section>
+
+        <section *ngIf="notification?.importedToBcByAThirdParty === true">
+          <div class="alt-row">
+            <ul style="margin-bottom: 0; padding-left: 10px;">
+              <li><strong>Imported to BC by a third party</strong></li>
+            </ul>
+          </div>
+          <section class="padded-section">
+            <div class="dark-row">Please provide the name of the importer from whom you purchased this piece of
+              Controlled Equipment.</div>
+            <div class="alt-row">{{ notification?.nameOfImporter}}</div>
+
+            <div class="dark-row">Please provide the importer's address.</div>
+            <div class="alt-row">
+              {{ notification?.importersAddress?.streetLine1 }} <br>
+              <div *ngIf="notification?.importersAddress?.streetLine2">
+                {{ notification?.importersAddress?.streetLine2 }}
+              </div>
+              {{ notification?.importersAddress?.city }} <br>
+              {{ notification?.importersAddress?.province }} <br>
+              {{ notification?.importersAddress?.postalCode }} <br>
+            </div>
+
+            <div class="dark-row">If importer is located in BC, please provide registration number.</div>
+            <div class="alt-row">{{ notification?.importersRegistrationNumber}}</div>
+
+            <div class="dark-row">Please provide the name of the originating seller from whom the importer obtained
+              this piece of Controlled Equipment.</div>
+            <div class="alt-row">
+              {{ notification?.OriginatingSellersAddress?.streetLine1 }} <br>
+              <div *ngIf="notification?.OriginatingSellersAddress?.streetLine2">
+                {{ notification?.OriginatingSellersAddress?.streetLine2 }}
+              </div>
+              {{ notification?.OriginatingSellersAddress?.city }} <br>
+              {{ notification?.OriginatingSellersAddress?.province }} <br>
+              {{ notification?.OriginatingSellersAddress?.postalCode }} <br>
+            </div>
+
+            <div class="dark-row">Please check geographical location of seller.</div>
+            <div class="alt-row">{{ notification?.originatingSellersLocation }}</div>
+
+            <div class="dark-row">What was the date of purchase?</div>
+            <div class="alt-row">{{ notification?.dateOfPurchaseFromImporter | date : 'MM/dd/yyyy'}}</div>
+          </section>
+        </section>
+
+        <section *ngIf="notification?.giveNorLoanedToMe === true">
+          <div class="alt-row">
+            <ul style="margin-bottom: 0; padding-left: 10px;">
+              <li><strong>Alternative Ownership Arrangement</strong></li>
+            </ul>
+          </div>
+          <section class="padded-section">
+            <div class="dark-row">What kind of alternative ownership arrangement do you have regarding this piece of
+              Controlled Equipment.</div>
+
+
+            <section *ngIf="notification?.possessUntilICanSell === true">
+              <div class="alt-row">
+                <ul style="margin-bottom: 0; padding-left: 10px;">
+                  <li><i>I am in possession of this equipment until I can sell it</i></li>
+                </ul>
+              </div>
+              <section class="padded-section">
+                <div class="dark-row">Are you using this piece of Controlled Equipment to manufacture a product?</div>
+                <div class="alt-row">{{ notification?.usingToManufactureAProduct === true ? 'Yes': 'No'}}</div>
+
+                <div class="dark-row">Are you a Registered Seller under the Act?</div>
+                <div class="alt-row">{{ notification?.areYouARegisteredSeller === true ? 'Yes': 'No'}}</div>
+              </section>
+            </section>
+
+            <section *ngIf="notification?.giveNorLoanedToMe === true">
+              <div class="alt-row">
+                <ul style="margin-bottom: 0; padding-left: 10px;">
+                  <li><i>This piece of equipment was given or loaned to me</i></li>
+                </ul>
+              </div>
+              <section class="padded-section">
+                <div class="dark-row">Please provide the name of the business that has given or loaned this piece of
+                  Controlled Equipment to you.</div>
+                <div class="alt-row">{{ notification?.nameOfBusinessThatHasGivenOrLoaned }}</div>
+
+                <div class="dark-row">Please provide the address of the business that gave or loaned this equipment to
+                  you.</div>
+                <div class="alt-row">
+                  {{ notification?.addressofBusinessthathasGivenorLoaned?.streetLine1 }} <br>
+                  <div *ngIf="notification?.addressofBusinessthathasGivenorLoaned?.streetLine2">
+                    {{ notification?.addressofBusinessthathasGivenorLoaned?.streetLine2 }}
+                  </div>
+                  {{ notification?.addressofBusinessthathasGivenorLoaned?.city }} <br>
+                  {{ notification?.addressofBusinessthathasGivenorLoaned?.province }} <br>
+                  {{ notification?.addressofBusinessthathasGivenorLoaned?.postalCode }} <br>
+                </div>
+
+                <div class="dark-row">Please provide the business' phone number.</div>
+                <div class="alt-row">{{ notification?.phoneofbusinessthathasgivenorloaned }}</div>
+
+                <div class="dark-row">Please provide the business' contact email.</div>
+                <div class="alt-row">{{ notification?.emailOfTheBusinessThatHasGivenOrLoaned }}</div>
+
+                <div class="dark-row">Why have you accepted or borrowed this piece of Controlled Equipment?</div>
+                <div class="alt-row">{{ notification?.whyHaveYouAcceptedOrBorrowed }}</div>
+              </section>
+            </section>
+
+            <section *ngIf="notification?.rentingOrLeasingFromAnotherBusiness === true">
+              <div class="alt-row">
+                <ul style="margin-bottom: 0; padding-left: 10px;">
+                  <li><i>I am renting or leasing this piece of equipment from another business</i></li>
+                </ul>
+              </div>
+              <section class="padded-section">
+                <div class="dark-row">Please provide the name of the business that has rented or leased this piece of
+                  Controlled Equipment to you.</div>
+                <div class="alt-row">{{ notification?.NameOfBusinessThatHasRentedOrLeased }}</div>
+
+                <div class="dark-row">Please provide the address of the business that is renting or leasing this
+                  equipment to you.</div>
+                <div class="alt-row">
+                  {{ notification?.addressOfBusinessThatHasRentedorLeased?.streetLine1 }} <br>
+                  <div *ngIf="notification?.addressOfBusinessThatHasRentedorLeased?.streetLine2">
+                    {{ notification?.addressOfBusinessThatHasRentedorLeased?.streetLine2 }}
+                  </div>
+                  {{ notification?.addressOfBusinessThatHasRentedorLeased?.city }} <br>
+                  {{ notification?.addressOfBusinessThatHasRentedorLeased?.province }} <br>
+                  {{ notification?.addressOfBusinessThatHasRentedorLeased?.postalCode }} <br>
+                </div>
+
+                <div class="dark-row">Please provide the business' phone number.</div>
+                <div class="alt-row">{{ notification?.phoneOfBusinessThatHasRentedOrLeased }}</div>
+
+                <div class="dark-row">Please provide the business' contact email.</div>
+                <div class="alt-row">{{ notification?.emailOfBusinessThatHasRentedOrLeased }}</div>
+
+                <div class="dark-row">Why have you rented or leased this piece of Controlled Equipment?</div>
+                <div class="alt-row">{{ notification?.whyHaveYouRentedOrLeased }}</div>
+              </section>
+            </section>
+
+            <section *ngIf="notification?.kindOfAlternateOwnershipOtherCheck === true">
+              <div class="alt-row">
+                <ul style="margin-bottom: 0; padding-left: 10px;">
+                  <li><i>Other: {{ notification?.kindOfAlternateOwnershipOther}}</i></li>
+                </ul>
+              </div>
+            </section>
+
+          </section>
+        </section>
+
+        <section *ngIf="notification?.iAssembledItMyself === true">
+          <div class="alt-row">
+            <ul style="margin-bottom: 0; padding-left: 10px;">
+              <li><strong>I assembled it mysel</strong></li>
+            </ul>
+          </div>
+          <section class="padded-section">
+            <div class="dark-row">When did you assemble this piece of Controlled Equipment?</div>
+            <div class="alt-row">{{ notification?.whenDidYouAssembleEquipment}}</div>
+
+
+            <div class="dark-row">Do you assemble Controlled Equipment for other businesses to use?</div>
+            <div class="alt-row">{{ notification?.doYouAssembleForOtherBusinesses === true ? 'Yes' : 'No'}}</div>
+
+            <div *ngIf="notification?.doYouAssembleForOtherBusinesses === true">
+              <div class="dark-row">If yes, please explain.</div>
+              <div class="alt-row">{{ notification?.detailsOfAssemblyForOtherBusinesses}}</div>
+            </div>
+          </section>
+        </section>
+
+        <section *ngIf="notification?.howCameIntoPossessionOtherCheck === true">
+          <div class="alt-row">
+            <ul style="margin-bottom: 0; padding-left: 10px;">
+              <li><strong>Other</strong></li>
+            </ul>
+          </div>
+          <section class="padded-section">
+            <div class="dark-row">Please provide details about how this piece of Controlled Equipment came into your
+              possession</div>
+            <div class="alt-row">{{ notification?.detailsOfHowEquipmentCameIntoPossession}}</div>
+          </section>
+        </section>
+
+      </section>
+    </div>
+
+    <h2>Equipment Location</h2>
+    <div>
+      <div class="dark-row">Please provide the location where this piece of Controlled Equipment is ordinarily stored.</div>
+      <div class="alt-row">
+        {{ notification?.equipmentLocation?.address?.streetLine1 }} <br>
+        <div *ngIf="notification?.equipmentLocation?.address?.streetLine2">
+          {{ notification?.equipmentLocation?.address?.streetLine2 }}
+        </div>
+        {{ notification?.equipmentLocation?.address?.city }} <br>
+        {{ notification?.equipmentLocation?.address?.province }} <br>
+        {{ notification?.equipmentLocation?.address?.postalCode }} <br>
+      </div>
+
+      <div class="dark-row">Please describe the setting in which this piece of equipment is ordinarily stored (i.e.
+        manufacturing floor, storage room, outbuilding etc.)</div>
+      <div class="alt-row">{{ notification?.equipmentLocation?.settingDescription}}</div>
+
+      <div class="dark-row">Is this piece of equipment ordinarily stored at a private dwelling?</div>
+      <div class="alt-row">{{ notification?.equipmentLocation?.privateDwelling}}</div>
+    </div>
 
 
     <h3 class="blue-header">DECLARATION AND CONSENT</h3>
@@ -29,19 +408,32 @@
       <section style="display: flex">
         <input type="checkbox" style="flex: 0 0 20px" formControlName="declarationofcorrectinformation">
         <span>
-          I certify that, to the best of my knowledge, the information I have provided on my Waiver application and
-          will
-          provide as necessary is complete, honest, and accurate. I understand that a false statement or omission of
-          facts herein may lead to the a denial of a Waiver being granted. I am also aware that later discovery of an
-          omission or misrepresentation may be grounds for suspension or cancellation of a waiver or for being
-          prosecuted
-          under provincial law. <span class="error-states">*</span>
+          I certify that, to the best of my knowledge, the information I have provided on the controlled equipment and
+          will provide as necessary is complete, honest, and accurate. I am aware that later discovery of an omission
+          or misrepresentation may be grounds for any finding of suitability to be reversed or for being prosecuted
+          under provincial law.<span class="error-states">*</span>
         </span>
       </section>
+      <section style="display: flex; margin-top: 5px;">
+        <input type="checkbox" style="flex: 0 0 20px" formControlName="declarationofcorrectinformation">
+        <span>
+          I confirm that the use of the equipment is within my authorization as identified in this notification.<span
+            class="error-states">*</span>
+        </span>
+      </section>
+
+
       <div *ngIf="form.get('declarationofcorrectinformation').value !== true && form.touched" style="background-color: #F2F2F2; margin-top: 10px; border-radius: 5px; padding: 10px; font: 15px Myriad Pro Regular #494949;">
         <i class="fas fa-exclamation-triangle error-states" style="margin-right: 10px;"></i>
         <span class="error-states">Please complete the declarations and consent section.</span>
       </div>
+    </div>
+
+    <div class="notes" style="display: flex; margin-top: 20px;">
+      <i class="fas fa-lg fa-exclamation-circle" style="color: #003366; margin-right: 10px;"></i>
+      <p>
+        Please ensure you complete a submission for each piece of Controlled Equipment in your possession until your
+        entire inventory is listed.</p>
     </div>
 
     <div style="margin-top: 30px; display: flex; justify-content: space-between">
@@ -51,9 +443,10 @@
           Close</a>
       </section>
       <section>
-        <button class="btn btn-secondary" style="margin-right: 10px" routerLink="/equipment-notification/location/{{equipmentId}}">EDIT
-          CONFIRMATION</button>
-        <button class="btn btn-primary" (click)="save(true)">SUBMIT</button>
+        <button class="btn btn-secondary" style="margin-right: 10px" routerLink="/equipment-notification/type-and-use/{{equipmentId}}">EDIT
+          EQUIPMENT</button>
+        <button class="btn btn-primary" style="margin-right: 10px" (click)="save(true)">SUBMIT</button>
+        <button class="btn btn-primary" (click)="save(true)">SUBMIT & ADD ANOTHER</button>
       </section>
     </div>
   </div>

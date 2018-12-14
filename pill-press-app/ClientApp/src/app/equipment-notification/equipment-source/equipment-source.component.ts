@@ -66,6 +66,8 @@ export class EquipmentSourceComponent implements OnInit {
       phoneOfBusinessThatHasRentedOrLeased: [],
       whyHaveYouRentedOrLeased: [],
       whyHaveYouAcceptedOrBorrowed: [],
+      nameOfBusinessThatHasGivenOrLoaned: [],
+      NameOfBusinessThatHasRentedOrLeased: [],
 
       // I assembled it myself fields
       whenDidYouAssembleEquipment: [],
