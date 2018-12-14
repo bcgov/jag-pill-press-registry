@@ -18,7 +18,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
     public class SharePointFileManager
     {
         public const string DefaultDocumentListTitle = "Account";
-        public const string ApplicationDocumentListTitle = "Application";
+        public const string ApplicationDocumentListTitle = "incident";
         public const string ApplicationDocumentUrlTitle = "incident";
         public const string ContactDocumentListTitle = "contact";
         public const string WorkertDocumentListTitle = "Worker Qualification";
@@ -140,7 +140,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <returns></returns>
         public async Task<List<FileDetailsList>> GetFileDetailsListInFolder(string listTitle, string folderName, string documentType)
         {
-            string serverRelativeUrl = $"{WebName}/" + Uri.EscapeUriString(listTitle) + "/" + Uri.EscapeUriString(folderName);
+            string serverRelativeUrl = GetServerRelativeURL(listTitle, folderName);
             string _responseContent = null;
             HttpRequestMessage _httpRequest =
                             new HttpRequestMessage(HttpMethod.Post, ApiEndpoint + "web/getFolderByServerRelativeUrl('" + EscapeApostrophe(serverRelativeUrl) + "')/files");
@@ -215,7 +215,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                 new HttpRequestMessage(HttpMethod.Post, ApiEndpoint + "web/folders");
 
 
-            var folder = CreateNewFolderRequest($"{WebName}/{listTitle}/{folderName}");
+            var folder = CreateNewFolderRequest($"{listTitle}/{folderName}");
 
 
             string jsonString = JsonConvert.SerializeObject(folder);
@@ -383,7 +383,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         {
             bool result = false;
             // Delete is very similar to a GET.
-            string serverRelativeUrl = $"{WebName}/" + Uri.EscapeUriString(listTitle) + "/" + Uri.EscapeUriString(folderName);
+            string serverRelativeUrl = GetServerRelativeURL(listTitle, folderName);
 
             HttpRequestMessage endpointRequest =
     new HttpRequestMessage(HttpMethod.Post, ApiEndpoint + "web/getFolderByServerRelativeUrl('" + EscapeApostrophe(serverRelativeUrl) + "')");
@@ -436,7 +436,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public async Task<Object> GetFolder(string listTitle, string folderName)
         {
             Object result = null;
-            string serverRelativeUrl = $"{WebName}/" + Uri.EscapeUriString(listTitle) + "/" + Uri.EscapeUriString(folderName);
+            string serverRelativeUrl = GetServerRelativeURL(listTitle, folderName);
 
             HttpRequestMessage endpointRequest = new HttpRequestMessage(HttpMethod.Post, ApiEndpoint + "web/getFolderByServerRelativeUrl('" + EscapeApostrophe(serverRelativeUrl) + "')");
 
@@ -500,7 +500,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
 
         public string GetServerRelativeURL(string listTitle, string folderName)
         {
-            string serverRelativeUrl = $"{WebName}/" + Uri.EscapeUriString(listTitle) + "/" + Uri.EscapeUriString(folderName);
+            string serverRelativeUrl = Uri.EscapeUriString(listTitle) + "/" + Uri.EscapeUriString(folderName);
             return serverRelativeUrl;
         }
 
@@ -521,8 +521,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             string serverRelativeUrl = GetServerRelativeURL(listTitle, folderName);
 
             HttpRequestMessage endpointRequest =
-    new HttpRequestMessage(HttpMethod.Post, ApiEndpoint + "web/getFolderByServerRelativeUrl('" + EscapeApostrophe(serverRelativeUrl) + "')/Files/add(url='"
-    + EscapeApostrophe(name) + "',overwrite=true)");
+                new HttpRequestMessage(HttpMethod.Post, ApiEndpoint + "web/getFolderByServerRelativeUrl('" + EscapeApostrophe(serverRelativeUrl) + "')/Files/add(url='"
+                + EscapeApostrophe(name) + "',overwrite=true)");
             // convert the stream into a byte array.
             MemoryStream ms = new MemoryStream();
             fileData.CopyTo(ms);
