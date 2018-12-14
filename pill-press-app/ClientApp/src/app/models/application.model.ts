@@ -129,6 +129,7 @@ export class Application {
   // related entities
   addressOfBusinessThatHasRentedorLeased: CustomAddress;
   addressofBusinessthathasGivenorLoaned: CustomAddress;
+  addressofPersonBusiness: CustomAddress;
   applicant: Account;
   bcSellersAddress: CustomAddress;
   businessContacts: BusinessContact[];

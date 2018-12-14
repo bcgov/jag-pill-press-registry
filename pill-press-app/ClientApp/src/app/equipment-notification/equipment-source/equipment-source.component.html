@@ -86,7 +86,7 @@
             <input type="text" formControlName="dateOfPurchaseFromBcSeller" class="form-control" style="width: 170px;">
           </app-field>
 
-          <app-field label="Please provide the BC Seller's registration number. " [required]="true">
+          <app-field label="Please provide the BC Seller's registration number." [required]="true">
             <input type="text" formControlName="bcSellersRegistrationNumber" class="form-control" style="width: 250px;">
           </app-field>
           <p></p>
@@ -298,9 +298,10 @@
             </section>
 
             <section *ngIf="form.get('giveNorLoanedToMe').value === true" style="padding-left: 20px">
+
               <app-field label="Please provide the name of the business that has given or loaned this piece of Controlled Equipment to you."
                 [required]="true">
-                <input type="text" formControlName="outsideBcSellersName" class="form-control">
+                <input type="text" formControlName="nameOfBusinessThatHasGivenOrLoaned" class="form-control">
               </app-field>
 
               <app-field formGroupName="addressofBusinessthathasGivenorLoaned" label="Please provide the address of the business that gave or loaned this equipment to you."
@@ -355,7 +356,7 @@
             <section *ngIf="form.get('rentingOrLeasingFromAnotherBusiness').value === true" style="padding-left: 20px">
               <app-field label="Please provide the name of the business that has rented or leased this piece of Controlled Equipment to you."
                 [required]="true">
-                <input type="text" formControlName="outsideBcSellersName" class="form-control">
+                <input type="text" formControlName="NameOfBusinessThatHasRentedOrLeased" class="form-control">
               </app-field>
 
               <app-field formGroupName="addressOfBusinessThatHasRentedorLeased" label="Please provide the address of the business that is renting or leasing this equipment to you."
