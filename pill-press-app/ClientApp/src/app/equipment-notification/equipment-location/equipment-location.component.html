@@ -1,19 +1,19 @@
-  <div [ngBusy]="[busy]"></div>
-  <div [formGroup]="form">
-    <h2 class="step">STEP 5</h2>
-    <h1 style="margin-top: 0;">Equipment Location</h1>
+<div [ngBusy]="[busy]"></div>
+<div [formGroup]="form">
+  <h2 class="step">STEP 5</h2>
+  <h1 style="margin-top: 0;">Equipment Location</h1>
 
-    <h3 class="blue-header">EQUIPMENT LOCATION</h3>
-    <section class="padded-section">
-      <div class="notes" style="display: flex;">
-        <i class="fas fa-exclamation-circle" style="color: #FCBA19; margin-right: 10px;"></i>
-        <span>
-          You have an ongoing obligation to keep current the location at which you ordinarily store each piece of
-          Controlled Equipment.
-        </span>
-      </div>
-
-      <app-field formGroupName="outsideBcSellersAddress" label="Please provide the location where this piece of Controlled Equipment is ordinarily stored."
+  <h3 class="blue-header">EQUIPMENT LOCATION</h3>
+  <section class="padded-section">
+    <div class="notes" style="display: flex;">
+      <i class="fas fa-exclamation-circle" style="color: #FCBA19; margin-right: 10px;"></i>
+      <span>
+        You have an ongoing obligation to keep current the location at which you ordinarily store each piece of
+        Controlled Equipment.
+      </span>
+    </div>
+    <div formGroupName="equipmentLocation">
+      <app-field formGroupName="address" label="Please provide the location where this piece of Controlled Equipment is ordinarily stored."
         [required]="true">
         <p></p>
         <div class="row">
@@ -47,28 +47,28 @@
 
       <app-field label="Please describe the setting in which this piece of equipment is ordinarily stored (i.e. manufacturing floor, storage room, outbuilding etc.)"
         [required]="true">
-        <textarea rows="5" maxlength="500" class="form-control"></textarea>
+        <textarea rows="5" formControlName="settingDescription" maxlength="500" class="form-control"></textarea>
       </app-field>
 
-      <app-field label="Is this piece of equipment ordinarily stored at a private dwelling?"
-        [required]="true">
-        <input type="radio" [value]="true" name="1">
+      <app-field label="Is this piece of equipment ordinarily stored at a private dwelling?" [required]="true">
+        <input type="radio" [value]="true" name="privateDwelling" formControlName="privateDwelling">
         <span style="padding-right: 10px;">&nbsp;Yes</span>
-        <input type="radio" [value]="false" name="1">
+        <input type="radio" [value]="false" name="privateDwelling" formControlName="privateDwelling">
         <span>&nbsp;No</span>
       </app-field>
-    </section>
-
-    <div style="margin-top: 30px; display: flex; justify-content: space-between">
-      <section>
-        <!-- <strong class="error-states">*</strong> <i>Required field</i> -->
-        <a href="javascript: void(0);" (click)="save(false)"><i class="fa fa-save" style="margin-right: 5px"></i>Save
-          & Close</a>
-      </section>
-      <section>
-        <button class="btn btn-secondary" style="margin-right: 10px" routerLink="/equipment-notification/source/{{equipmentId}}">BACK
-          TO STEP 4</button>
-        <button class="btn btn-primary" (click)="markAsTouched(); save(true)">SAVE & CONTINUE</button>
-      </section>
     </div>
+  </section>
+
+  <div style="margin-top: 30px; display: flex; justify-content: space-between">
+    <section>
+      <!-- <strong class="error-states">*</strong> <i>Required field</i> -->
+      <a href="javascript: void(0);" (click)="save(false)"><i class="fa fa-save" style="margin-right: 5px"></i>Save
+        & Close</a>
+    </section>
+    <section>
+      <button class="btn btn-secondary" style="margin-right: 10px" routerLink="/equipment-notification/source/{{equipmentId}}">BACK
+        TO STEP 4</button>
+      <button class="btn btn-primary" (click)="markAsTouched(); save(true)">SAVE & CONTINUE</button>
+    </section>
   </div>
+</div>
