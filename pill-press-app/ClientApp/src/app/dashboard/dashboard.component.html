@@ -50,7 +50,7 @@
                 <h4 class="status-green">COMPLETED</h4>
                 <p>You are an Authorized Owner.</p>
                 <p>
-                  <strong>Reference #:&nbsp;</strong>AA00000001
+                  <strong>Reference #:&nbsp;</strong>{{authorizedOwnerApplication?.title}}
                 </p>
               </section>
               <section *ngIf="authorizedOwnerApplication?.statuscode === 'Withdrawn'">
@@ -103,7 +103,7 @@
                 <h4 class="status-blue">PENDING</h4>
                 <p>Your application has been submitted.No futher action currently required</p>
                 <p>
-                  <strong>Application #:&nbsp;</strong>WA00000001
+                  <strong>Application #:&nbsp;</strong> {{waiverApplication?.title}}
                 </p>
               </section>
               <section *ngIf="waiverApplication?.statuscode === 'Incomplete'">
@@ -111,7 +111,7 @@
                 <h4 class="status-red">INCOMPLETE</h4>
                 <p>Your application has missing or inaccurate information. Our team will contact you.</p>
                 <p>
-                  <strong>Application #:&nbsp;</strong>WA00000001
+                  <strong>Application #:&nbsp;</strong> {{waiverApplication?.title}}
                 </p>
               </section>
               <section *ngIf="isWaiverOrSellerUnderReview(waiverApplication?.statuscode)">
@@ -119,7 +119,7 @@
                 <h4 class="status-blue">UNDER REVIEW</h4>
                 <p>Your application is currently under review. No futher action currently required</p>
                 <p>
-                  <strong>Application #:&nbsp;</strong>wA00000001
+                  <strong>Application #:&nbsp;</strong> {{waiverApplication?.title}}
                 </p>
               </section>
               <section *ngIf="waiverApplication?.statuscode === 'Approved'">
@@ -200,7 +200,7 @@
                 <h4 class="status-blue">PENDING</h4>
                 <p>Your application has been submitted.No futher action currently required</p>
                 <p>
-                  <strong>Application #:&nbsp;</strong>SA00000001
+                  <strong>Application #:&nbsp;</strong> {{registeredSellerApplication?.title}}
                 </p>
               </section>
               <section *ngIf="registeredSellerApplication?.statuscode === 'Incomplete'">
@@ -208,7 +208,7 @@
                 <h4 class="status-red">INCOMPLETE</h4>
                 <p>Your application has missing or inaccurate information. Our team will contact you.</p>
                 <p>
-                  <strong>Application #:&nbsp;</strong>SA00000001
+                  <strong>Application #:&nbsp;</strong> {{registeredSellerApplication?.title}}
                 </p>
               </section>
               <section *ngIf="isWaiverOrSellerUnderReview(registeredSellerApplication?.statuscode)">
@@ -216,7 +216,7 @@
                 <h4 class="status-blue">UNDER REVIEW</h4>
                 <p>Your application is currently under review. No futher action currently required</p>
                 <p>
-                  <strong>Application #:&nbsp;</strong>SA00000001
+                  <strong>Application #:&nbsp;</strong> {{registeredSellerApplication?.title}}
                 </p>
               </section>
               <section *ngIf="registeredSellerApplication?.statuscode === 'Approved'">
