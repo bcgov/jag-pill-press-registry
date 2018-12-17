@@ -39,7 +39,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     manufacturingprocessdescription = incident.BcgovManufacturingprocessdescription,
 
                     // Declarations and Consent
-                    declarationofcorrectinformation = incident.BcgovDeclarationofcorrectinformation,
+                    DeclarationOfCorrectInformation = incident.BcgovDeclarationofcorrectinformation,
                     foippaconsent = incident.BcgovFoippaconsent,
 
                     foodanddrugact = incident.BcgovFoodanddrugact,
@@ -146,7 +146,6 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     DoYouAssembleForOtherBusinesses = incident.BcgovDoyouassembleforotherbusinesses,
                     DetailsOfAssemblyForOtherBusinesses = incident.BcgovDetailsofassemblyforotherbusinesses,
                     DetailsOfHowEquipmentCameIntoPossession = incident.BcgovDetailsofhowequipmentcameintopossession,
-                    DeclarationOfCorrectInformation = incident.BcgovDeclarationofcorrectinformation,
                     ConfirmationOfAuthorizedUse = incident.BcgovConfirmationofauthorizeduse,
 
                     SubmittedDate = incident.BcgovSubmitteddate,
@@ -274,7 +273,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             to.BcgovOtherlicenceexpirydate = from.otherlicenceexpirydate;
 
             // Declarations and Consent
-            to.BcgovDeclarationofcorrectinformation = from.declarationofcorrectinformation;
+            to.BcgovDeclarationofcorrectinformation = from.DeclarationOfCorrectInformation;
             to.BcgovFoippaconsent = from.foippaconsent;
 
 

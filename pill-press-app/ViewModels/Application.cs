@@ -123,11 +123,6 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         /// </summary>
         public string manufacturingprocessdescription { get; set; }
 
-        // ### DECLARATIONS AND CONSENT ###
-        /// <summary>
-        /// Declaration that all information provided is correct, including the information on the Client Profile - Business Information page (which is incorporated into this application)
-        /// </summary>
-        public bool? declarationofcorrectinformation { get; set; }
 
         /// <summary>
         /// Consent that by submitting the application the applicant understands their information is being collected for FOIPPA purposes and may be released as per FOIPPA.

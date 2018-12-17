@@ -15,7 +15,7 @@ export class Application {
   additionalbusinessinformationaboutseller: string;
   borrowrentleaseequipment: boolean;
   currentlyownusepossessequipment: boolean;
-  declarationofcorrectinformation: boolean;
+  declarationOfCorrectInformation: boolean;
   delbusinessname: string;
   drugestablishmentlicence: boolean;
   drugestablishmentlicenceexpirydate: Date;
@@ -71,7 +71,6 @@ export class Application {
   dateOfPurchaseFromBcSeller: Date;
   dateOfPurchaseFromImporter: Date;
   dateOfPurchaseFromOutsideBcSeller: Date;
-  declarationOfCorrectInformation: boolean;
   detailsOfAssemblyForOtherBusinesses: string;
   detailsOfHowEquipmentCameIntoPossession: string;
   doYouAssembleForOtherBusinesses: boolean;
