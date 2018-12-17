@@ -39,7 +39,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     manufacturingprocessdescription = incident.BcgovManufacturingprocessdescription,
 
                     // Declarations and Consent
-                    declarationofcorrectinformation = incident.BcgovDeclarationofcorrectinformation,
+                    DeclarationOfCorrectInformation = incident.BcgovDeclarationofcorrectinformation,
                     foippaconsent = incident.BcgovFoippaconsent,
 
                     foodanddrugact = incident.BcgovFoodanddrugact,
@@ -80,6 +80,9 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     otherlicencecheck = incident.BcgovOtherlicencecheck,
 
                     additionalbusinessinformationaboutseller = incident.BcgovAdditionalbusinessinformationaboutseller,
+                    statuscode = (ApplicationStatusCodes)incident.Statuscode,
+
+                    title = incident.Title,
 
                     // EQUIPMENT FIELDS
                     EquipmentType = (Equipmenttype?)incident.BcgovEquipmenttype,
@@ -143,7 +146,6 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     DoYouAssembleForOtherBusinesses = incident.BcgovDoyouassembleforotherbusinesses,
                     DetailsOfAssemblyForOtherBusinesses = incident.BcgovDetailsofassemblyforotherbusinesses,
                     DetailsOfHowEquipmentCameIntoPossession = incident.BcgovDetailsofhowequipmentcameintopossession,
-                    DeclarationOfCorrectInformation = incident.BcgovDeclarationofcorrectinformation,
                     ConfirmationOfAuthorizedUse = incident.BcgovConfirmationofauthorizeduse,
 
                     SubmittedDate = incident.BcgovSubmitteddate,
@@ -156,6 +158,10 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     
                 };
 
+                if (incident.BcgovApplicationTypeId != null)
+                {
+                    result.applicationtype = incident.BcgovApplicationTypeId.BcgovName;
+                }
 
                 // CustomerID
                 if (incident.CustomeridAccount != null)
@@ -220,6 +226,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     result.AddressofBusinessThatHasRentedorLeased = incident.BcgovAddressofBusinessthathasRentedorLeased.ToViewModel();
                 }
 
+                if (incident?.BcgovEquipmentLocation != null)
+                {
+                    result.EquipmentLocation = incident?.BcgovEquipmentLocation.ToViewModel();
+                }
+
                 // OutsideBcSellersLocation = incident.BcgovOutsidebcsellerslocation,                
 
             }
@@ -262,7 +273,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             to.BcgovOtherlicenceexpirydate = from.otherlicenceexpirydate;
 
             // Declarations and Consent
-            to.BcgovDeclarationofcorrectinformation = from.declarationofcorrectinformation;
+            to.BcgovDeclarationofcorrectinformation = from.DeclarationOfCorrectInformation;
             to.BcgovFoippaconsent = from.foippaconsent;
 
 

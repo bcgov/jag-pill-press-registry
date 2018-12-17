@@ -18,19 +18,19 @@
 
       <section *ngIf="form.get('howWasEquipmentBuilt').value === 'Commercially Manufactured'">
         <app-field label="Name of Manufacturer" [required]="true">
-          <input type="text" formControlName="nameOfManufacturer" style="width: 680px" maxlength="100">
+          <input type="text" class="form-control" formControlName="nameOfManufacturer" style="width: 680px" maxlength="100">
         </app-field>
 
         <app-field label="Make" [required]="true">
-          <input type="text" formControlName="equipmentMake" style="width: 680px" maxlength="100">
+          <input type="text" class="form-control" formControlName="equipmentMake" style="width: 680px" maxlength="100">
         </app-field>
 
         <app-field label="Model" [required]="true">
-          <input type="text" formControlName="equipmentModel" style="width: 680px" maxlength="100">
+          <input type="text" class="form-control" formControlName="equipmentModel" style="width: 680px" maxlength="100">
         </app-field>
 
         <app-field label="Serial Number" [required]="true">
-          <input type="text" formControlName="serialNumber" style="width: 680px" maxlength="100">
+          <input type="text" class="form-control" formControlName="serialNumber" style="width: 680px" maxlength="100">
         </app-field>
 
       </section>
@@ -45,30 +45,30 @@
           <input type="text" formControlName="personBusinessThatBuiltEquipment" class="form-control">
         </app-field>
 
-        <app-field label="Please provide the address of the person/business that built this piece of equipment.">
+        <app-field formGroupName="addressofPersonBusiness" label="Please provide the address of the person/business that built this piece of equipment.">
           <p></p>
-          <div class="row padded-section">
+          <div class="row">
             <section class="col-md-6 col-xs-12">
-              <app-field label="Street Address 1" [required]="false">
-                <input type="text" class="form-control">
+              <app-field label="Street Address 1" [required]="true">
+                <input type="text" formControlName="streetLine1" class="form-control">
               </app-field>
-              <app-field label="City" [required]="false">
-                <input type="text" class="form-control">
+              <app-field label="City" [required]="true">
+                <input type="text" formControlName="city" class="form-control">
               </app-field>
             </section>
             <section class="col-md-6 col-xs-12">
               <app-field label="Street Address 2" [required]="false">
-                <input type="text" class="form-control">
+                <input type="text" formControlName="streetLine2" class="form-control">
               </app-field>
               <div class="row">
                 <section class="col-md-6 col-xs-12">
                   <app-field label="Province" [required]="false">
-                    <input type="text" class="form-control">
+                    <input type="text" readonly formControlName="province" class="form-control">
                   </app-field>
                 </section>
                 <section class="col-md-6 col-xs-12">
-                  <app-field label="Postal Code" [required]="false">
-                    <input type="text" class="form-control">
+                  <app-field label="Postal Code" [required]="true">
+                    <input type="text" formControlName="postalCode" class="form-control">
                   </app-field>
                 </section>
               </div>

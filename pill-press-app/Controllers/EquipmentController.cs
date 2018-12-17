@@ -98,7 +98,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             UserSettings userSettings = JsonConvert.DeserializeObject<UserSettings>(temp);
 
             // Get the current account
-            var account = await _dynamicsClient.GetAccountById(Guid.Parse(userSettings.AccountId));
+            var account = _dynamicsClient.GetAccountById(Guid.Parse(userSettings.AccountId));
 
             MicrosoftDynamicsCRMbcgovEquipment patchEquipment = new MicrosoftDynamicsCRMbcgovEquipment();
             patchEquipment.CopyValues(item);

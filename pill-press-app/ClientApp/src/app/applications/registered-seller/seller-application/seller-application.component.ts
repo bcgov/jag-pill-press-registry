@@ -116,14 +116,14 @@ export class SellerApplicationComponent implements OnInit {
       );
   }
 
-  save(gotToReview: boolean) {
+  save(goToReview: boolean) {
     this.showErrorMessages = true;
-    if (this.isFormValid() || gotToReview === false) {
+    if (this.isFormValid() || goToReview === false) {
       const value = this.form.value;
       value.businessContacts = this.ownersAndManagers;
       this.busy = this.applicationDataService.updateApplication(value)
         .subscribe(res => {
-          if (gotToReview) {
+          if (goToReview) {
             this.router.navigateByUrl(`/registered-seller/review/${this.waiverId}`);
           } else {
             this.router.navigateByUrl(`/dashboard`);
