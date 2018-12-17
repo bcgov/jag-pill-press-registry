@@ -42,7 +42,7 @@ export class WaiverApplicationComponent implements OnInit {
       id: [],
       borrowrentleaseequipment: ['', Validators.required],
       currentlyownusepossessequipment: ['', Validators.required],
-      declarationofcorrectinformation: ['', Validators.required],
+      declarationOfCorrectInformation: ['', Validators.required],
       foippaconsent: ['', Validators.required],
       intendtopurchaseequipment: ['', Validators.required],
       mainbusinessfocus: ['', Validators.required],

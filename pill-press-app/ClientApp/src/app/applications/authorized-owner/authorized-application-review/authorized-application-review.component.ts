@@ -45,7 +45,7 @@ export class AuthorizedApplicationReviewComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       id: [],
-      declarationofcorrectinformation: ['']
+      declarationOfCorrectInformation: ['']
     });
 
     this.reloadData();
@@ -158,7 +158,7 @@ export class AuthorizedApplicationReviewComponent implements OnInit {
       value.submittedDate = new Date();
     }
     this.form.markAsTouched();
-    if (value.declarationofcorrectinformation !== false) {
+    if (value.declarationOfCorrectInformation !== false) {
       const saveList = [this.applicationDataService.updateApplication(value)];
       this.busyPromise = zip(...saveList)
         .toPromise()

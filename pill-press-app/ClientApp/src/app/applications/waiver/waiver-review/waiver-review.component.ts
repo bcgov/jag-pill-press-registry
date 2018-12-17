@@ -42,7 +42,7 @@ export class WaiverReviewComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       id: [],
-      declarationofcorrectinformation: ['']
+      declarationOfCorrectInformation: ['']
     });
 
     this.reloadData();
@@ -152,7 +152,7 @@ export class WaiverReviewComponent implements OnInit {
   save(goToThankYouPage: boolean) {
     const value = this.form.value;
     this.form.markAsTouched();
-    if (value.declarationofcorrectinformation !== false) {
+    if (value.declarationOfCorrectInformation !== false) {
       if (goToThankYouPage) {
         value.statuscode = 'Pending';
         value.submittedDate = new Date();

@@ -23,12 +23,13 @@ export class EquipmentReviewComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute) {
     this.equipmentId = this.route.snapshot.params.id;
-   }
+  }
 
   ngOnInit() {
     this.form = this.fb.group({
       id: [],
-      declarationofcorrectinformation: [],
+      declarationOfCorrectInformation: [],
+      confirmationOfAuthorizedUse: []
     });
 
     this.reloadData();
@@ -47,6 +48,10 @@ export class EquipmentReviewComponent implements OnInit {
   save(goToReview: boolean) {
     if (this.form.valid || goToReview === false) {
       const value = this.form.value;
+      if (goToReview) {
+        value.statuscode = 'Pending';
+        value.submittedDate = new Date();
+      }
       const saveList = [this.applicationDataService.updateApplication(value)];
       this.busyPromise = zip(...saveList)
         .toPromise()

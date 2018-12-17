@@ -56,7 +56,7 @@ export class SellerApplicationReviewComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       id: [],
-      declarationofcorrectinformation: []
+      declarationOfCorrectInformation: []
     });
 
     this.reloadData();

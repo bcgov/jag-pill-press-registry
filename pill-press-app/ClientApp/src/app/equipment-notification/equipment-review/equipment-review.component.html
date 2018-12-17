@@ -406,7 +406,7 @@
     <h3 class="blue-header">DECLARATION AND CONSENT</h3>
     <div [formGroup]="form" class="padded-section">
       <section style="display: flex">
-        <input type="checkbox" style="flex: 0 0 20px" formControlName="declarationofcorrectinformation">
+        <input type="checkbox" style="flex: 0 0 20px" formControlName="declarationOfCorrectInformation">
         <span>
           I certify that, to the best of my knowledge, the information I have provided on the controlled equipment and
           will provide as necessary is complete, honest, and accurate. I am aware that later discovery of an omission
@@ -415,7 +415,7 @@
         </span>
       </section>
       <section style="display: flex; margin-top: 5px;">
-        <input type="checkbox" style="flex: 0 0 20px" formControlName="declarationofcorrectinformation">
+        <input type="checkbox" style="flex: 0 0 20px" formControlName="confirmationOfAuthorizedUse">
         <span>
           I confirm that the use of the equipment is within my authorization as identified in this notification.<span
             class="error-states">*</span>
@@ -423,7 +423,7 @@
       </section>
 
 
-      <div *ngIf="form.get('declarationofcorrectinformation').value !== true && form.touched" style="background-color: #F2F2F2; margin-top: 10px; border-radius: 5px; padding: 10px; font: 15px Myriad Pro Regular #494949;">
+      <div *ngIf="form.get('declarationOfCorrectInformation').value !== true && form.touched" style="background-color: #F2F2F2; margin-top: 10px; border-radius: 5px; padding: 10px; font: 15px Myriad Pro Regular #494949;">
         <i class="fas fa-exclamation-triangle error-states" style="margin-right: 10px;"></i>
         <span class="error-states">Please complete the declarations and consent section.</span>
       </div>
