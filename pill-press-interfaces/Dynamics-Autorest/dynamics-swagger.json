@@ -4127,7 +4127,6 @@
               "enum": [
                 "*",
                 "bcgov_CurrentBusinessOwner",
-                "bcgov_equipment_incident_AssociatedEquipmentRecord",
                 "createdbyname",
                 "createdonbehalfbyname",
                 "modifiedbyname",
@@ -4300,7 +4299,6 @@
               "enum": [
                 "*",
                 "bcgov_CurrentBusinessOwner",
-                "bcgov_equipment_incident_AssociatedEquipmentRecord",
                 "createdbyname",
                 "createdonbehalfbyname",
                 "modifiedbyname",
@@ -7708,8 +7706,6 @@
                 "merged desc",
                 "bcgov_typeofsellerother",
                 "bcgov_typeofsellerother desc",
-                "_bcgov_associatedequipmentrecord_value",
-                "_bcgov_associatedequipmentrecord_value desc",
                 "bcgov_pillpressmaxcapacity",
                 "bcgov_pillpressmaxcapacity desc",
                 "bcgov_incompletecycle2",
@@ -8002,7 +7998,6 @@
                 "severitycode",
                 "merged",
                 "bcgov_typeofsellerother",
-                "_bcgov_associatedequipmentrecord_value",
                 "bcgov_pillpressmaxcapacity",
                 "bcgov_incompletecycle2",
                 "bcgov_howequipmentbuiltdescription",
@@ -8149,7 +8144,6 @@
                 "bcgov_ApplicationTypeId",
                 "bcgov_Submitter",
                 "bcgov_AddressofPersonBusiness",
-                "bcgov_AssociatedEquipmentRecord",
                 "bcgov_incident_customproduct_RelatedApplication",
                 "bcgov_incident_businesscontact",
                 "bcgov_BCSellersAddress",
@@ -8393,7 +8387,6 @@
                 "severitycode",
                 "merged",
                 "bcgov_typeofsellerother",
-                "_bcgov_associatedequipmentrecord_value",
                 "bcgov_pillpressmaxcapacity",
                 "bcgov_incompletecycle2",
                 "bcgov_howequipmentbuiltdescription",
@@ -8540,7 +8533,6 @@
                 "bcgov_ApplicationTypeId",
                 "bcgov_Submitter",
                 "bcgov_AddressofPersonBusiness",
-                "bcgov_AssociatedEquipmentRecord",
                 "bcgov_incident_customproduct_RelatedApplication",
                 "bcgov_incident_businesscontact",
                 "bcgov_BCSellersAddress",
@@ -16965,12 +16957,6 @@
         },
         "bcgov_CurrentBusinessOwner": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.account"
-        },
-        "bcgov_equipment_incident_AssociatedEquipmentRecord": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Microsoft.Dynamics.CRM.incident"
-          }
         },
         "createdbyname": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.systemuser"
@@ -33930,10 +33916,6 @@
           "type": "string",
           "x-nullable": true
         },
-        "_bcgov_associatedequipmentrecord_value": {
-          "type": "string",
-          "x-nullable": true
-        },
         "bcgov_pillpressmaxcapacity": {
           "type": "integer",
           "x-nullable": true
@@ -34506,9 +34488,6 @@
         },
         "bcgov_AddressofPersonBusiness": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customaddress"
-        },
-        "bcgov_AssociatedEquipmentRecord": {
-          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
         },
         "bcgov_incident_customproduct_RelatedApplication": {
           "type": "array",

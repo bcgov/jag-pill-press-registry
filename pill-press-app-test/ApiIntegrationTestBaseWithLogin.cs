@@ -1,5 +1,6 @@
 ﻿using Gov.Jag.PillPressRegistry.Interfaces.Models;
 using Gov.Jag.PillPressRegistry.Public.Models;
+using Gov.Jag.PillPressRegistry.Public.ViewModels;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Newtonsoft.Json;
 using System;
@@ -31,6 +32,20 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
                 _client = new HttpClient();
                 _client.BaseAddress = new Uri(_factory.Configuration["TEST_BASE_URI"]);
             }
+        }
+
+        public void CheckAddress(CustomAddress ca, string stringsToMatch1,
+            string stringsToMatch2, string stringsToMatch3, string stringsToMatch4,
+            string stringsToMatch5, string stringsToMatch6, string stringsToMatch7)
+        {
+            Assert.NotNull(ca);
+            Assert.Equal(ca.StreetLine1, stringsToMatch1);
+            Assert.Equal(ca.StreetLine2, stringsToMatch2);
+            Assert.Equal(ca.StreetLine3, stringsToMatch3);
+            Assert.Equal(ca.City, stringsToMatch4);
+            Assert.Equal(ca.Province, stringsToMatch5);
+            Assert.Equal(ca.Postalcode, stringsToMatch6);
+            Assert.Equal(ca.Country, stringsToMatch7);
         }
 
         public async System.Threading.Tasks.Task Login(string userid)

@@ -165,7 +165,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         {
             Guid id = new Guid(guid);
             User user = null;
-            var contact = await _dynamicsClient.GetContactById(id);
+            var contact = _dynamicsClient.GetContactById(id);
             if (contact != null)
             {
                 user = new User();

@@ -40,7 +40,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetContact(string id)
+        public IActionResult GetContact(string id)
         {
             ViewModels.Contact result = null;
 
@@ -48,7 +48,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             {
                 Guid contactId = Guid.Parse(id);
                 // query the Dynamics system to get the contact record.
-                MicrosoftDynamicsCRMcontact contact = await _dynamicsClient.GetContactById(contactId);
+                MicrosoftDynamicsCRMcontact contact =  _dynamicsClient.GetContactById(contactId);
 
                 if (contact != null)
                 {
@@ -85,7 +85,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             // get the contact
             Guid contactId = Guid.Parse(id);
 
-            MicrosoftDynamicsCRMcontact contact = await _dynamicsClient.GetContactById(contactId);
+            MicrosoftDynamicsCRMcontact contact = _dynamicsClient.GetContactById(contactId);
             if (contact == null)
             {
                 return new NotFoundResult();
@@ -105,7 +105,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 _logger.LogError(odee.Response.Content);
             }
 
-            contact = await _dynamicsClient.GetContactById(contactId);
+            contact = _dynamicsClient.GetContactById(contactId);
             return Json(contact.ToViewModel());
         }
 
