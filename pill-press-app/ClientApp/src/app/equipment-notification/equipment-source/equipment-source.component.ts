@@ -66,6 +66,8 @@ export class EquipmentSourceComponent implements OnInit {
       phoneOfBusinessThatHasRentedOrLeased: [],
       whyHaveYouRentedOrLeased: [],
       whyHaveYouAcceptedOrBorrowed: [],
+      nameOfBusinessThatHasGivenOrLoaned: [],
+      NameOfBusinessThatHasRentedOrLeased: [],
 
       // I assembled it myself fields
       whenDidYouAssembleEquipment: [],
@@ -141,14 +143,14 @@ export class EquipmentSourceComponent implements OnInit {
 
   }
 
-  save(gotToReview: boolean) {
-    if (this.form.valid || gotToReview === false) {
+  save(goToReview: boolean) {
+    if (this.form.valid || goToReview === false) {
       const value = this.form.value;
       const saveList = [this.applicationDataService.updateApplication(value)];
       this.busyPromise = zip(...saveList)
         .toPromise()
         .then(res => {
-          if (gotToReview) {
+          if (goToReview) {
             this.router.navigateByUrl(`/equipment-notification/location/${this.equipmentId}`);
           } else {
             this.router.navigateByUrl(`/dashboard`);

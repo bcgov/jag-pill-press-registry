@@ -42,7 +42,7 @@ export class WaiverReviewComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       id: [],
-      declarationofcorrectinformation: ['']
+      declarationOfCorrectInformation: ['']
     });
 
     this.reloadData();
@@ -149,17 +149,19 @@ export class WaiverReviewComponent implements OnInit {
     }
   }
 
-  save(gotToThankYouPage: boolean) {
+  save(goToThankYouPage: boolean) {
     const value = this.form.value;
     this.form.markAsTouched();
-    if (value.declarationofcorrectinformation !== false) {
-      // set the status to pending.
-      value.statuscode = 'Pending';
+    if (value.declarationOfCorrectInformation !== false) {
+      if (goToThankYouPage) {
+        value.statuscode = 'Pending';
+        value.submittedDate = new Date();
+      }
       const saveList = [this.applicationDataService.updateApplication(value)];
       this.busyPromise = zip(...saveList)
         .toPromise()
         .then(res => {
-          if (gotToThankYouPage) {
+          if (goToThankYouPage) {
             this.router.navigateByUrl(`/application/waiver/thank-you/${this.waiverId}`);
           } else {
             this.router.navigateByUrl(`/dashboard`);

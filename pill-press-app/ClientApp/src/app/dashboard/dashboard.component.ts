@@ -54,18 +54,51 @@ export class DashboardComponent implements OnInit {
         }
       });
 
-      this.applicationDataService.getApplications()
-      .subscribe(data => {
-        this.inProgressEquipment = data || [];
+    this.applicationDataService.getApplications()
+      .subscribe((data: Application[]) => {
+        const authorizedOwners = data.filter(a => a.applicationtype === 'Authorized Owner');
+        if (authorizedOwners.length > 0) {
+          this.authorizedOwnerApplication = authorizedOwners[0];
+        }
+
+        const sellers = data.filter(a => a.applicationtype === 'Registered Seller');
+        if (sellers.length > 0) {
+          this.registeredSellerApplication = sellers[0];
+        }
+
+        const waivers = data.filter(a => a.applicationtype === 'Waiver');
+        if (waivers.length > 0) {
+          this.waiverApplication = waivers[0];
+        }
+
+        this.inProgressEquipment = data.filter(a => a.applicationtype === 'Equipment Notification' && a.statuscode !== 'Approved');
+        this.completedEquipment = data.filter(a => a.applicationtype === 'Equipment Notification' && a.statuscode === 'Approved');
       });
   }
 
-  applyForWaiver() {
+  isAuthorizedApplicationPending() {
+    return this.authorizedOwnerApplication
+      && this.authorizedOwnerApplication.statuscode !== 'Draft'
+      && this.authorizedOwnerApplication.statuscode !== 'Withdrawn'
+      && this.authorizedOwnerApplication.statuscode !== 'Approved'
+      && this.authorizedOwnerApplication.statuscode !== 'Cancelled'
+      && this.authorizedOwnerApplication.statuscode !== 'Denied';
+  }
 
+  isWaiverOrSellerUnderReview(statuscode: string) {
+    return statuscode
+      && (
+        statuscode === 'Under Review'
+        || statuscode === 'With Risk Assessment'
+        || statuscode === 'With C&E Investigations'
+        || statuscode === 'With Deputy Registrar'
+      );
   }
 
   startNewWaiverApplication() {
-    const newLicenceApplicationData: Application = new Application();
+    const newLicenceApplicationData: Application = <Application>{
+      statuscode: 'Draft'
+    };
     this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Waiver').subscribe(
       data => {
         this.router.navigateByUrl(`/waiver/profile-review/${data.id}`);
@@ -78,7 +111,9 @@ export class DashboardComponent implements OnInit {
   }
 
   startNewAuthorizedOwnerApplication() {
-    const newLicenceApplicationData: Application = new Application();
+    const newLicenceApplicationData: Application = <Application>{
+      statuscode: 'Draft'
+    };
     this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Authorized Owner').subscribe(
       data => {
         this.router.navigateByUrl(`/authorized-owner/profile-review/${data.id}`);
@@ -91,7 +126,9 @@ export class DashboardComponent implements OnInit {
   }
 
   startNewASellerApplication() {
-    const newLicenceApplicationData: Application = new Application();
+    const newLicenceApplicationData: Application = <Application>{
+      statuscode: 'Draft'
+    };
     this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Registered Seller').subscribe(
       data => {
         this.router.navigateByUrl(`/registered-seller/profile-review/${data.id}`);
@@ -104,7 +141,9 @@ export class DashboardComponent implements OnInit {
   }
 
   addEquipment() {
-    const newLicenceApplicationData: Application = new Application();
+    const newLicenceApplicationData: Application = <Application>{
+      statuscode: 'Draft'
+    };
     this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Equipment Notification').subscribe(
       data => {
         this.router.navigateByUrl(`/equipment-notification/profile-review/${data.id}`);

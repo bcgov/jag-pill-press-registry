@@ -56,7 +56,7 @@ export class SellerApplicationReviewComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       id: [],
-      declarationofcorrectinformation: []
+      declarationOfCorrectInformation: []
     });
 
     this.reloadData();
@@ -103,14 +103,16 @@ export class SellerApplicationReviewComponent implements OnInit {
   }
 
 
-  save(gotToReview: boolean) {
+  save(goToThankYouPage: boolean) {
     const value = this.form.value;
-    // set the status to pending.
-    value.statuscode = 'Pending';
+    if (goToThankYouPage) {
+      value.statuscode = 'Pending';
+      value.submittedDate = new Date();
+    }
     const saveList = [this.applicationDataService.updateApplication(value)];
     zip(...saveList)
       .subscribe(res => {
-        if (gotToReview) {
+        if (goToThankYouPage) {
           this.router.navigateByUrl(`/registered-seller/thank-you/${this.waiverId}`);
         } else {
           this.router.navigateByUrl(`/dashboard`);
