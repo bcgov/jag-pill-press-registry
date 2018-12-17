@@ -310,7 +310,7 @@
                     </div>
                   </td>
                   <td style="padding: 10px; width: 110px;" valign="top">
-                    {{item.submittedDate}}
+                    {{item.submittedDate | date: 'dd/MM/yyyy'}}
                   </td>
                   <td style="background-color: #E1E8F2; padding: 10px;">
                     <section *ngIf="item.statuscode === 'Draft'">
@@ -347,14 +347,14 @@
               <p>The inventory of Controlled Equipment notifications below have been completed.</p>
               <table class="eq-table">
                 <tr>
-                  <th>EQUIPMENT</th>
+                  <th style="width: 335px">EQUIPMENT</th>
                   <th>LOCATION <span style="font-weight: normal;">(where equipment ordinarily stored)</span></th>
                   <th style="width: 335px">STATUS CHANGES <span style="font-weight: normal;">(for each piece of
                       equipment)</span></th>
                 </tr>
                 <tr *ngFor="let item of completedEquipment; let i = index;" style="border: 1px solid #ccc; ">
-                  <td style="padding: 0;">
-                    <div style="display: flex;">
+                  <td style="padding: 0; position: relative;">
+                    <div style="display: flex;position: absolute;top: 0;bottom:  0;right:  0;left: 0;">
                       <span style="background-color: #E1E8F2; padding: 10px;">{{i+1}}</span>
                       <div style="background-color: #F1F4FA; padding: 10px; padding-bottom: 15px;">
                           <span>{{item.equipmentType}}</span> <br>
