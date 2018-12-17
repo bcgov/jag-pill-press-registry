@@ -439,14 +439,14 @@
     <div style="margin-top: 30px; display: flex; justify-content: space-between">
       <section>
         <!-- <span class="error-states">*</span> <i>Required field</i> -->
-        <a href="javascript: void(0);" (click)="save(false)"><i class="fa fa-save" style="margin-right: 5px"></i>Save &
+        <a href="javascript: void(0);" (click)="saveAndExit()"><i class="fa fa-save" style="margin-right: 5px"></i>Save &
           Close</a>
       </section>
       <section>
         <button class="btn btn-secondary" style="margin-right: 10px" routerLink="/equipment-notification/type-and-use/{{equipmentId}}">EDIT
           EQUIPMENT</button>
-        <button class="btn btn-primary" style="margin-right: 10px" (click)="save(true)">SUBMIT</button>
-        <button class="btn btn-primary" (click)="save(true)">SUBMIT & ADD ANOTHER</button>
+        <button class="btn btn-primary" style="margin-right: 10px" (click)="save()">SUBMIT</button>
+        <button class="btn btn-primary" (click)="saveAndAddMore()">SUBMIT & ADD ANOTHER</button>
       </section>
     </div>
   </div>
