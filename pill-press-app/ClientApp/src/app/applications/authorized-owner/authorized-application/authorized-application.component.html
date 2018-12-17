@@ -137,22 +137,22 @@
             or Canada to manufacture a drug or natural health product.</p>
 
           <app-field label="Legislative Authority" [showChevrons]="false" errorMessage="Please select all the applicable legislative authorities"
-            [valid]="form.get('mainbusinessfocus').valid || !form.get('mainbusinessfocus').touched" [required]="true">
+            [valid]="isLegislativeAuthorityValid()" [required]="true">
             <p>What enactment authorizes you to manufacture these products? Please select all the options that apply.</p>
             <input type="checkbox" style="margin-right: 10px;" formControlName="foodanddrugact">
             <span>Food and Drug Act</span> <br>
             <input type="checkbox" formControlName="legislativeauthorityothercheck" style="margin-right: 10px;"> <span>Other</span>
             <br>
             <section style="padding-left: 20px" *ngIf="form.get('legislativeauthorityothercheck').value === true">
-              <app-field>
-                <i>If Other, Please specify</i>
-                <br>
+              <app-field [valid]="form.get('legislativeauthorityother').valid || !form.get('legislativeauthorityother').touched"
+                errorMessage="Please provide an answer to the question above" label="If Other, Please specify"
+                [required]="true">
                 <input type="text" class="form-control" formControlName="legislativeauthorityother" style="width: 340px">
               </app-field>
             </section>
           </app-field>
-          <app-field label="Type of Authorization" [showChevrons]="false" errorMessage="Please select all the applicable legislative authorities"
-            [valid]="form.get('mainbusinessfocus').valid || !form.get('mainbusinessfocus').touched" [required]="true">
+          <app-field label="Type of Authorization" [showChevrons]="false" errorMessage="Please select all the applicable authorization types"
+            [valid]="isTypeOfAuthorizationValid()" [required]="true">
             <p>What kind of licence do you possess that authorizes you to manufacture a drug or natural health product?
               Please select all the options that apply.</p>
             <input type="checkbox" style="margin-right: 10px;" formControlName="kindsofproductsdrugs"> <span>Drugs</span>
@@ -162,15 +162,16 @@
             <input type="checkbox" style="margin-right: 10px;" formControlName="kindsofproductsothercheck"> <span>Other</span>
             <br>
             <section style="padding-left: 20px" *ngIf="form.get('kindsofproductsothercheck').value === true">
-              <app-field>
-                <i>If Other, Please specify</i>
+              <app-field [valid]="form.get('kindsofproductsother').valid || !form.get('kindsofproductsother').touched"
+                errorMessage="Please provide an answer to the question above">
+                <i>If Other, Please specify</i>&nbsp; <span class="error-states">*</span>
                 <br>
                 <input type="text" class="form-control" formControlName="kindsofproductsother" style="width: 340px">
               </app-field>
             </section>
           </app-field>
-          <app-field label="BC or Canada Issued - Licence Type" [showChevrons]="false" errorMessage="Please select all the applicable legislative authorities"
-            [valid]="form.get('mainbusinessfocus').valid || !form.get('mainbusinessfocus').touched" [required]="true">
+          <app-field label="BC or Canada Issued - Licence Type" [showChevrons]="false" errorMessage="Please select all the applicable licence types"
+            [valid]="isLicenceTypeValid()" [required]="true">
             <p>What kind of licence do you possess that authorizes you to manufacture a drug or natural health product?
               Please select all the options that apply.
             </p>
@@ -223,8 +224,8 @@
                 [required]="true">
                 <input type="text" class="form-control" formControlName="otherlicencebusinessname" style="width: 500px">
               </app-field>
-              <app-field label="Other Licence - Number" errorMessage="Please provide the licence number"
-              [valid]="form.get('otherlicencenumber').valid || !form.get('otherlicencenumber').touched" [required]="true">
+              <app-field label="Other Licence - Number" errorMessage="Please provide the licence number" [valid]="form.get('otherlicencenumber').valid || !form.get('otherlicencenumber').touched"
+                [required]="true">
                 <input type="text" class="form-control" formControlName="otherlicencenumber" style="width: 340px">
               </app-field>
               <app-field label="Drug Establishment Licence - Expiry Date">
