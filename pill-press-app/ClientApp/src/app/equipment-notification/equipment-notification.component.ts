@@ -34,7 +34,10 @@ export class EquipmentNotificationComponent implements OnInit {
     this.router.events.forEach((event) => {
       if (event instanceof NavigationEnd) {
         if (this.route.snapshot.firstChild.url.length > 0) {
-          this.equipmentId = this.route.snapshot.firstChild.params.id;
+          if (this.equipmentId !== this.route.snapshot.firstChild.params.id) {
+            this.equipmentId = this.route.snapshot.firstChild.params.id;
+            this.stepper.reset();
+          }
           this.tab = this.route.snapshot.firstChild.url[0].path;
           this.stepper.selectedIndex = this.tabList.indexOf(this.tab);
         }
@@ -43,7 +46,7 @@ export class EquipmentNotificationComponent implements OnInit {
   }
 
   selectionChange(event) {
-      this.router.navigateByUrl(`/equipment-notification/${this.tabList[event.selectedIndex]}/${this.equipmentId}`);
+    this.router.navigateByUrl(`/equipment-notification/${this.tabList[event.selectedIndex]}/${this.equipmentId}`);
   }
 
 }

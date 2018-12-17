@@ -45,27 +45,64 @@ export class EquipmentReviewComponent implements OnInit {
       });
   }
 
-  save(goToReview: boolean) {
-    if (this.form.valid || goToReview === false) {
+  save() {
+    if (this.form.valid) {
       const value = this.form.value;
-      if (goToReview) {
-        value.statuscode = 'Pending';
-        value.submittedDate = new Date();
-      }
-      const saveList = [this.applicationDataService.updateApplication(value)];
-      this.busyPromise = zip(...saveList)
+      value.statuscode = 'Pending';
+      value.submittedDate = new Date();
+
+      this.busyPromise = this.applicationDataService.updateApplication(value)
         .toPromise()
         .then(res => {
-          if (goToReview) {
-            this.router.navigateByUrl(`/equipment-notification/thank-you/${this.equipmentId}`);
-          } else {
-            this.router.navigateByUrl(`/dashboard`);
-            // this.reloadData();
-          }
+          this.router.navigateByUrl(`/equipment-notification/thank-you/${this.equipmentId}`);
         }, err => {
           // todo: show errors;
         });
     }
+  }
+
+  saveAndExit() {
+    const value = this.form.value;
+    this.busyPromise = this.applicationDataService.updateApplication(value)
+      .toPromise()
+      .then(res => {
+        this.router.navigateByUrl(`/dashboard`);
+      }, err => {
+        // todo: show errors;
+      });
+
+  }
+
+  saveAndAddMore() {
+    if (this.form.valid) {
+      const value = this.form.value;
+      value.statuscode = 'Pending';
+      value.submittedDate = new Date();
+
+      this.busyPromise = this.applicationDataService.updateApplication(value)
+        .toPromise()
+        .then(res => {
+          this.addEquipment();
+        }, err => {
+          // todo: show errors;
+        });
+    }
+  }
+
+  addEquipment() {
+    const newLicenceApplicationData: Application = <Application>{
+      statuscode: 'Draft'
+    };
+    this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Equipment Notification').subscribe(
+      data => {
+        this.router.navigateByUrl(`/equipment-notification/profile-review/${data.id}`);
+      },
+      err => {
+        // this.snackBar.open('Error starting a New Equipment Notificatio Application',
+        //   'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
+        console.log('Error starting a Registered Seller Application');
+      }
+    );
   }
 
 }
