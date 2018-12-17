@@ -34,6 +34,19 @@ export class FormBase {
         };
     }
 
+    public requiredCheckboxChildValidator(checkboxField: string): ValidatorFn {
+        return (control: AbstractControl): { [key: string]: any } | null => {
+            if (!control.parent || !control.parent.get(checkboxField)) {
+                return null;
+            }
+            const parentIsChecked = control.parent.get(checkboxField).value;
+            if (!parentIsChecked) {
+                return null;
+            }
+            return control.value ? null : { 'required': { value: control.value } };
+        };
+    }
+
     public trimValue(control: FormControl) {
         const value = control.value;
         control.setValue('');
