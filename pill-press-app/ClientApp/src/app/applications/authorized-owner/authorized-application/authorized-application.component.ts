@@ -5,6 +5,7 @@ import { PRODUCTING_OWN_PRODUCT, MANUFACTURING_FOR_OTHERS } from '../../waiver/w
 import { ActivatedRoute, Router } from '@angular/router';
 import { DynamicsDataService } from '../../../services/dynamics-data.service';
 import { ApplicationDataService } from '../../../services/adoxio-application-data.service';
+import { FormBase } from './../../../shared/form-base';
 
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
@@ -42,7 +43,7 @@ export const MY_FORMATS = {
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
   ],
 })
-export class AuthorizedApplicationComponent implements OnInit {
+export class AuthorizedApplicationComponent extends FormBase implements OnInit {
   form: FormGroup;
   busy: Subscription;
   waiverId: string;
@@ -63,6 +64,7 @@ export class AuthorizedApplicationComponent implements OnInit {
     private router: Router,
     private dynamicsDataService: DynamicsDataService,
     private applicationDataService: ApplicationDataService) {
+    super();
     this.waiverId = this.route.snapshot.params.id;
   }
 
@@ -74,7 +76,6 @@ export class AuthorizedApplicationComponent implements OnInit {
       declarationOfCorrectInformation: ['', Validators.required],
       foippaconsent: ['', Validators.required],
       intendtopurchaseequipment: ['', Validators.required],
-      mainbusinessfocus: ['', Validators.required],
       ownProducts: this.fb.array([this.createCustomProduct(<CustomProduct>{ purpose: PRODUCTING_OWN_PRODUCT })]),
       ownintendtoownequipmentforbusinessuse: ['', Validators.required],
       producingownproduct: ['', Validators.required],
@@ -82,21 +83,21 @@ export class AuthorizedApplicationComponent implements OnInit {
       providingmanufacturingtoothers: ['', Validators.required],
       sellequipment: ['', Validators.required],
       foodanddrugact: [''],
-      legislativeauthorityother: ['', Validators.required],
+      legislativeauthorityother: ['', this.requiredCheckboxChildValidator('legislativeauthorityothercheck')],
       kindsofproductsdrugs: [''],
       kindsofproductsnaturalhealthproducts: [''],
-      kindsofproductsother: ['', Validators.required],
+      kindsofproductsother: ['', this.requiredCheckboxChildValidator('kindsofproductsothercheck')],
       drugestablishmentlicence: ['', Validators.required],
       sitelicence: [''],
-      otherlicence: ['', Validators.required],
-      delbusinessname: ['', Validators.required],
-      drugestablishmentlicencenumber: ['', Validators.required],
+      otherlicence: ['', this.requiredCheckboxChildValidator('otherlicencecheck')],
+      delbusinessname: ['', this.requiredCheckboxChildValidator('drugestablishmentlicence')],
+      drugestablishmentlicencenumber: ['', this.requiredCheckboxChildValidator('drugestablishmentlicence')],
       drugestablishmentlicenceexpirydate: [''],
-      sitelicencebusinessname: ['', Validators.required],
-      sitelicencenumber: ['', Validators.required],
+      sitelicencebusinessname: ['', this.requiredCheckboxChildValidator('sitelicence')],
+      sitelicencenumber: ['', this.requiredCheckboxChildValidator('sitelicence')],
       sitelicenceexpirydate: [''],
-      otherlicencebusinessname: ['', Validators.required],
-      otherlicencenumber: ['', Validators.required],
+      otherlicencebusinessname: ['', this.requiredCheckboxChildValidator('otherlicencecheck')],
+      otherlicencenumber: ['', this.requiredCheckboxChildValidator('otherlicencecheck')],
       otherlicenceexpirydate: [''],
       legislativeauthorityothercheck: [''],
       kindsofproductsothercheck: [''],
@@ -182,12 +183,44 @@ export class AuthorizedApplicationComponent implements OnInit {
   }
 
   createCustomProduct(product: CustomProduct) {
+    let validator = this.requiredCheckboxChildValidator('producingownproduct');
+    if (product.purpose === MANUFACTURING_FOR_OTHERS) {
+      validator = this.requiredCheckboxChildValidator('providingmanufacturingtoothers');
+    }
     return this.fb.group({
       id: [product.id],
       purpose: [product.purpose],
       incidentId: [this.waiverId],
-      productdescriptionandintendeduse: [product.productdescriptionandintendeduse, Validators.required]
+      productdescriptionandintendeduse: [product.productdescriptionandintendeduse, validator]
     });
+  }
+
+  isTypeOfAuthorizationValid() {
+    const valid = this.form.get('kindsofproductsdrugs').value === true
+      || this.form.get('kindsofproductsnaturalhealthproducts').value === true
+      || this.form.get('kindsofproductsothercheck').value === true
+      || !(this.form.get('kindsofproductsdrugs').touched
+        || this.form.get('kindsofproductsnaturalhealthproducts').touched
+        || this.form.get('kindsofproductsothercheck').touched);
+    return valid;
+  }
+
+  isLegislativeAuthorityValid() {
+    const valid = this.form.get('foodanddrugact').value === true
+      || this.form.get('legislativeauthorityothercheck').value === true
+      || !(this.form.get('foodanddrugact').touched
+        || this.form.get('legislativeauthorityothercheck').touched);
+    return valid;
+  }
+
+  isLicenceTypeValid() {
+    const valid = this.form.get('drugestablishmentlicence').value === true
+      || this.form.get('sitelicence').value === true
+      || this.form.get('otherlicencecheck').value === true
+      || !(this.form.get('drugestablishmentlicence').touched
+        || this.form.get('sitelicence').touched
+        || this.form.get('otherlicencecheck').touched);
+    return valid;
   }
 
   addCustomProduct(product: CustomProduct) {
@@ -218,6 +251,7 @@ export class AuthorizedApplicationComponent implements OnInit {
   }
 
   save(goToReview: boolean) {
+    this.form.updateValueAndValidity();
     if (this.form.valid || goToReview === false) {
       const value = { ...this.form.value };
       const saveList = [this.applicationDataService.updateApplication(value), ...this.saveCustomProducts()];
