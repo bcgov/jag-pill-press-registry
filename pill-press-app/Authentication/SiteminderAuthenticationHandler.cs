@@ -384,7 +384,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Authentication
                 }
                 else // DEV user, setup a fake session and SiteMinder headers.
                 {
-                    if (isDeveloperLogin)
+                    if (isDeveloperLogin && _dynamicsClient != null)
                     {
                         _logger.LogError("Generating a Development user");
                         userSettings.BusinessLegalName = devCompanyId + " BusinessProfileName";
