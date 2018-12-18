@@ -215,10 +215,10 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
 
             Assert.Equal(responseViewModel.SubmittedDate.Value.Date, dto.Date);
 
-            Assert.Equal(responseViewModel.LevelOfEquipmentAutomation , Levelofequipmentautomation.Automated);
-            Assert.Equal(responseViewModel.PillpressEncapsulatorSize , Pillpressencapsulatorsize.FreeStandingModel);
-            Assert.Equal(responseViewModel.PillpressMaxCapacity , 1000);
-            Assert.Equal(responseViewModel.EncapsulatorMaxCapacity, 1000);
+            Assert.Equal(Levelofequipmentautomation.Automated, responseViewModel.LevelOfEquipmentAutomation);
+            Assert.Equal(Pillpressencapsulatorsize.FreeStandingModel, responseViewModel.PillpressEncapsulatorSize);
+            Assert.Equal(1000,responseViewModel.PillpressMaxCapacity);
+            Assert.Equal(1000,responseViewModel.EncapsulatorMaxCapacity);
             Assert.Equal(Howwasequipmentbuilt.CommerciallyManufactured, responseViewModel.HowWasEquipmentBuilt);
 
             // U - Update  
