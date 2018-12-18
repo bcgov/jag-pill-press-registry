@@ -127,6 +127,7 @@ export class AuthorizedApplicationComponent implements OnInit {
       });
 
     this.reloadData();
+    this.clearHiddenFields();
   }
 
   reloadData() {
@@ -148,6 +149,62 @@ export class AuthorizedApplicationComponent implements OnInit {
     }, error => {
       // todo: show errors;
     });
+  }
+
+  clearHiddenFields() {
+    this.form.get('currentlyownusepossessequipment').valueChanges
+      .filter(value => value)
+      .subscribe(() => {
+        this.form.get('intendtopurchaseequipment').reset();
+      });
+    this.form.get('producingownproduct').valueChanges
+      .filter(value => !value)
+      .subscribe(() => {
+        while (this.ownProducts.controls.length > 0) {
+          this.ownProducts.removeAt(0);
+        }
+      });
+    this.form.get('providingmanufacturingtoothers').valueChanges
+      .filter(value => !value)
+      .subscribe(() => {
+        while (this.productsForOthers.controls.length > 0) {
+          this.productsForOthers.removeAt(0);
+        }
+      });
+
+    this.form.get('legislativeauthorityothercheck').valueChanges
+      .filter(value => !value)
+      .subscribe(() => {
+        this.form.get('legislativeauthorityother').reset();
+      });
+    this.form.get('kindsofproductsothercheck').valueChanges
+      .filter(value => !value)
+      .subscribe(() => {
+        this.form.get('kindsofproductsother').reset();
+      });
+
+    this.form.get('drugestablishmentlicence').valueChanges
+      .filter(value => !value)
+      .subscribe(() => {
+        this.form.get('delbusinessname').reset();
+        this.form.get('drugestablishmentlicencenumber').reset();
+        this.form.get('drugestablishmentlicenceexpirydate').reset();
+      });
+    this.form.get('sitelicence').valueChanges
+      .filter(value => !value)
+      .subscribe(() => {
+        this.form.get('sitelicencebusinessname').reset();
+        this.form.get('sitelicencenumber').reset();
+        this.form.get('sitelicenceexpirydate').reset();
+      });
+    this.form.get('otherlicencecheck').valueChanges
+      .filter(value => !value)
+      .subscribe(() => {
+        this.form.get('otherlicence').reset();
+        this.form.get('otherlicencebusinessname').reset();
+        this.form.get('otherlicencenumber').reset();
+        this.form.get('otherlicenceexpirydate').reset();
+      });
   }
 
   markAsTouched() {
