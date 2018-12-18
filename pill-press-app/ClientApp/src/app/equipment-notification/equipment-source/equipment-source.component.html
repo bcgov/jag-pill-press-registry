@@ -83,7 +83,9 @@
           </app-field>
 
           <app-field label="What was the date of purchase?" [required]="true">
-            <input type="text" formControlName="dateOfPurchaseFromBcSeller" class="form-control" style="width: 170px;">
+            <input type="text" class="form-control" formControlName="dateOfPurchaseFromBcSeller" placeholder="yyyy-mm-dd"
+              [matDatepicker]="picker2" (focus)="picker2.open()" (click)="picker2.open()" readonly style="width: 170px; background-color: #fff;">
+            <mat-datepicker #picker2></mat-datepicker>
           </app-field>
 
           <app-field label="Please provide the BC Seller's registration number." [required]="true">
@@ -149,7 +151,9 @@
           </app-field> -->
 
           <app-field label="What was the date of purchase?" [required]="true">
-            <input type="text" formControlName="dateOfPurchaseFromOutsideBcSeller" class="form-control" style="width: 170px;">
+            <input type="text" class="form-control" formControlName="dateOfPurchaseFromOutsideBcSeller" placeholder="yyyy-mm-dd"
+              [matDatepicker]="picker3" (focus)="picker3.open()" (click)="picker3.open()" readonly style="width: 170px; background-color: #fff;">
+            <mat-datepicker #picker3></mat-datepicker>
           </app-field>
           <p></p>
           <hr>
@@ -246,7 +250,9 @@
           </app-field>
 
           <app-field label="What was the date of purchase?" [required]="true">
-            <input type="text" formControlName="dateOfPurchaseFromImporter" class="form-control" style="width: 170px;">
+            <input type="text" class="form-control" formControlName="dateOfPurchaseFromImporter" placeholder="yyyy-mm-dd"
+              [matDatepicker]="picker4" (focus)="picker4.open()" (click)="picker4.open()" readonly style="width: 170px; background-color: #fff;">
+            <mat-datepicker #picker4></mat-datepicker>
           </app-field>
           <p></p>
           <hr>
@@ -418,7 +424,9 @@
           <h3>I assembled it myself</h3>
 
           <app-field label="When did you assemble this piece of Controlled Equipment?" [required]="true">
-            <input type="text" formControlName="whenDidYouAssembleEquipment" class="form-control" style="width: 170px;">
+            <input type="text" class="form-control" formControlName="whenDidYouAssembleEquipment" placeholder="yyyy-mm-dd"
+              [matDatepicker]="picker" (focus)="picker.open()" (click)="picker.open()" readonly style="width: 170px; background-color: #fff;">
+            <mat-datepicker #picker></mat-datepicker>
           </app-field>
 
           <app-field label="Where did you obtain the parts to assemble this piece of Controlled Equipment?" [required]="true">
