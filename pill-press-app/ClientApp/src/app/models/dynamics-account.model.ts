@@ -31,6 +31,7 @@ export class DynamicsAccount {
   physicalAddressPostalCode: string;
   physicalAddressProvince: string;
   pstNumber: string;
+  submittedDate: Date;
   websiteAddress: string;
 
   // related entities
