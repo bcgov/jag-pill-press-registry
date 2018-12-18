@@ -38,7 +38,7 @@ export class EquipmentTypeAndUseComponent implements OnInit {
     });
 
     this.reloadData();
-
+    this.clearHiddenFields();
   }
 
   reloadData() {
@@ -47,6 +47,20 @@ export class EquipmentTypeAndUseComponent implements OnInit {
         this.form.patchValue(data);
       }, error => {
         // debugger;
+      });
+  }
+
+  clearHiddenFields() {
+    this.form.get('equipmentType').valueChanges
+      .subscribe(() => {
+        for (const field in this.form.controls) {
+          if (field != 'id' 
+            && field != 'equipmentType' 
+            && field != 'explanationOfEquipmentuse') {
+            this.form.get(field).reset();
+          }
+        }
+
       });
   }
 
