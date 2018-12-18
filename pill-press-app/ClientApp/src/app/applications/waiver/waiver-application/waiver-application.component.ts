@@ -78,6 +78,7 @@ export class WaiverApplicationComponent implements OnInit {
       });
 
     this.reloadData();
+    this.clearHiddenFields();
   }
 
   reloadData() {
@@ -99,6 +100,28 @@ export class WaiverApplicationComponent implements OnInit {
         });
       }, error => {
         // debugger;
+      });
+  }
+
+  clearHiddenFields() {
+    this.form.get('currentlyownusepossessequipment').valueChanges
+      .filter(value => value)
+      .subscribe(() => {
+        this.form.get('intendtopurchaseequipment').reset();
+      });
+    this.form.get('producingownproduct').valueChanges
+      .filter(value => !value)
+      .subscribe(() => {
+        while (this.ownProducts.controls.length > 0) {
+          this.ownProducts.removeAt(0);
+        }
+      });
+    this.form.get('providingmanufacturingtoothers').valueChanges
+      .filter(value => !value)
+      .subscribe(() => {
+        while (this.productsForOthers.controls.length > 0) {
+          this.productsForOthers.removeAt(0);
+        }
       });
   }
 

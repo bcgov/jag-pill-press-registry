@@ -41,6 +41,7 @@ export class EquipmentIdentificationComponent implements OnInit {
 
     });
     this.reloadData();
+    this.clearHiddenFields();
   }
 
   reloadData() {
@@ -52,10 +53,17 @@ export class EquipmentIdentificationComponent implements OnInit {
       });
   }
 
-  markAsTouched() {
-
+  clearHiddenFields() {
+    this.form.get('howWasEquipmentBuilt').valueChanges
+      .subscribe(() => {
+        for (const field in this.form.controls) {
+          if (field != 'id' 
+            && field != 'howWasEquipmentBuilt') {
+            this.form.get(field).reset();
+          }
+        }
+      });
   }
-
 
   save(goToReview: boolean) {
     if (this.form.valid || goToReview === false) {
