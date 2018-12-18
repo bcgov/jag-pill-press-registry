@@ -7,7 +7,6 @@ import { DynamicsAccount } from '../../models/dynamics-account.model';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ValidatorFn, AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 import { Router, Route, ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
-import { debug } from 'util';
 
 @Component({
   selector: 'app-profile-summary',
@@ -147,7 +146,10 @@ export class ProfileSummaryComponent implements OnInit {
 
   save() {
     if (!!(this.mode || this.declarationsValid())) {
-      const value = this.form.value;
+      const value = <DynamicsAccount>this.form.value;
+      if (!this.nextRoute) {
+        value.submittedDate = new Date();
+      }
       this.busy = this.accountDataService.updateAccount(value)
         .toPromise()
         .then(data => {
