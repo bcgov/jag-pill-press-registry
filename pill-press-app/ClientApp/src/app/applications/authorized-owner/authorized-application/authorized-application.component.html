@@ -17,7 +17,7 @@
             <input type="radio" [value]="false" name="currentlyownusepossessequipment" formControlName="currentlyownusepossessequipment">
             <span>&nbsp;No</span>
           </app-field>
-          <app-field *ngIf="form.get('intendtopurchaseequipment').value === false" label="Do you intend on purchasing Controlled Equipment in the future?"
+          <app-field *ngIf="form.get('currentlyownusepossessequipment').value === false" label="Do you intend on purchasing Controlled Equipment in the future?"
             [showChevrons]="false" errorMessage="Please select yes or no" [valid]="form.get('intendtopurchaseequipment').valid || !form.get('intendtopurchaseequipment').touched"
             [required]="true">
             <input type="radio" [value]="true" name="intendtopurchaseequipment" formControlName="intendtopurchaseequipment">
