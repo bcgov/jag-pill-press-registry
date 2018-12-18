@@ -104,8 +104,11 @@ namespace Gov.Jag.PillPressRegistry.Public
             services.RegisterPermissionHandler();
 
             // setup key ring to persist in storage.
-            services.AddDataProtection().PersistKeysToFileSystem(new DirectoryInfo(Configuration["KEY_RING_DIRECTORY"]));
-
+            if (! string.IsNullOrEmpty(Configuration["KEY_RING_DIRECTORY"]))
+            {
+                services.AddDataProtection().PersistKeysToFileSystem(new DirectoryInfo(Configuration["KEY_RING_DIRECTORY"]));
+            }
+            
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
