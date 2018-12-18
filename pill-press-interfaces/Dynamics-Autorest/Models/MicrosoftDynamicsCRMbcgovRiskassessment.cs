@@ -29,17 +29,16 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// Initializes a new instance of the
         /// MicrosoftDynamicsCRMbcgovRiskassessment class.
         /// </summary>
-        public MicrosoftDynamicsCRMbcgovRiskassessment(string emailaddress = default(string), string bcgovLegalname = default(string), string _modifiedonbehalfbyValue = default(string), System.DateTimeOffset? overriddencreatedon = default(System.DateTimeOffset?), int? timezoneruleversionnumber = default(int?), long? versionnumber = default(long?), string bcgovGender = default(string), System.DateTimeOffset? modifiedon = default(System.DateTimeOffset?), string _owningteamValue = default(string), string _owninguserValue = default(string), string bcgovDriverslicence = default(string), string _createdonbehalfbyValue = default(string), string bcgovPrimarydocumentedgivennames = default(string), int? importsequencenumber = default(int?), int? statecode = default(int?), string _owningbusinessunitValue = default(string), System.DateTimeOffset? createdon = default(System.DateTimeOffset?), string _modifiedbyValue = default(string), string _createdbyValue = default(string), bool? bcgovConsentauthorizationtofingerprint = default(bool?), System.DateTimeOffset? bcgovDateofbirth = default(System.DateTimeOffset?), string bcgovRiskassessmentid = default(string), string bcgovVerifiedemail = default(string), int? statuscode = default(int?), string bcgovName = default(string), int? utcconversiontimezonecode = default(int?), string bcgovPrimarydocumentedsurname = default(string), bool? bcgovConsentauthforsecurityscreening = default(bool?), string _owneridValue = default(string), string bcgovAliasesnames = default(string), MicrosoftDynamicsCRMsystemuser createdbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser createdonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser owninguser = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMteam owningteam = default(MicrosoftDynamicsCRMteam), MicrosoftDynamicsCRMprincipal ownerid = default(MicrosoftDynamicsCRMprincipal), MicrosoftDynamicsCRMbusinessunit owningbusinessunit = default(MicrosoftDynamicsCRMbusinessunit), IList<MicrosoftDynamicsCRMactivitypointer> bcgovRiskassessmentActivityPointers = default(IList<MicrosoftDynamicsCRMactivitypointer>), IList<MicrosoftDynamicsCRMappointment> bcgovRiskassessmentAppointments = default(IList<MicrosoftDynamicsCRMappointment>), IList<MicrosoftDynamicsCRMemail> bcgovRiskassessmentEmails = default(IList<MicrosoftDynamicsCRMemail>), IList<MicrosoftDynamicsCRMfax> bcgovRiskassessmentFaxes = default(IList<MicrosoftDynamicsCRMfax>), IList<MicrosoftDynamicsCRMletter> bcgovRiskassessmentLetters = default(IList<MicrosoftDynamicsCRMletter>), IList<MicrosoftDynamicsCRMphonecall> bcgovRiskassessmentPhoneCalls = default(IList<MicrosoftDynamicsCRMphonecall>), IList<MicrosoftDynamicsCRMserviceappointment> bcgovRiskassessmentServiceAppointments = default(IList<MicrosoftDynamicsCRMserviceappointment>), IList<MicrosoftDynamicsCRMtask> bcgovRiskassessmentTasks = default(IList<MicrosoftDynamicsCRMtask>), IList<MicrosoftDynamicsCRMrecurringappointmentmaster> bcgovRiskassessmentRecurringAppointmentMasters = default(IList<MicrosoftDynamicsCRMrecurringappointmentmaster>), IList<MicrosoftDynamicsCRMsocialactivity> bcgovRiskassessmentSocialActivities = default(IList<MicrosoftDynamicsCRMsocialactivity>), IList<MicrosoftDynamicsCRMsyncerror> bcgovRiskassessmentSyncErrors = default(IList<MicrosoftDynamicsCRMsyncerror>), IList<MicrosoftDynamicsCRMactivityparty> bcgovRiskassessmentActivityParties = default(IList<MicrosoftDynamicsCRMactivityparty>), IList<MicrosoftDynamicsCRMconnection> bcgovRiskassessmentConnections1 = default(IList<MicrosoftDynamicsCRMconnection>), IList<MicrosoftDynamicsCRMconnection> bcgovRiskassessmentConnections2 = default(IList<MicrosoftDynamicsCRMconnection>), IList<MicrosoftDynamicsCRMduplicaterecord> bcgovRiskassessmentDuplicateMatchingRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMduplicaterecord> bcgovRiskassessmentDuplicateBaseRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMsharepointdocumentlocation> bcgovRiskassessmentSharePointDocumentLocations = default(IList<MicrosoftDynamicsCRMsharepointdocumentlocation>), IList<MicrosoftDynamicsCRMqueueitem> bcgovRiskassessmentQueueItems = default(IList<MicrosoftDynamicsCRMqueueitem>), IList<MicrosoftDynamicsCRMannotation> bcgovRiskassessmentAnnotations = default(IList<MicrosoftDynamicsCRMannotation>), IList<MicrosoftDynamicsCRMasyncoperation> bcgovRiskassessmentAsyncOperations = default(IList<MicrosoftDynamicsCRMasyncoperation>), IList<MicrosoftDynamicsCRMbulkdeletefailure> bcgovRiskassessmentBulkDeleteFailures = default(IList<MicrosoftDynamicsCRMbulkdeletefailure>))
+        public MicrosoftDynamicsCRMbcgovRiskassessment(string bcgovLegalname = default(string), string _modifiedonbehalfbyValue = default(string), System.DateTimeOffset? overriddencreatedon = default(System.DateTimeOffset?), int? timezoneruleversionnumber = default(int?), long? versionnumber = default(long?), System.DateTimeOffset? modifiedon = default(System.DateTimeOffset?), string _owningteamValue = default(string), string _bcgovApplicationidlookupValue = default(string), string _owninguserValue = default(string), string bcgovDriverslicence = default(string), string _createdonbehalfbyValue = default(string), string bcgovPrimarydocumentedgivennames = default(string), int? importsequencenumber = default(int?), int? statecode = default(int?), string _owningbusinessunitValue = default(string), System.DateTimeOffset? createdon = default(System.DateTimeOffset?), string _modifiedbyValue = default(string), string _createdbyValue = default(string), string bcgovDescriptionandnotes = default(string), bool? bcgovConsentauthorizationtofingerprint = default(bool?), System.DateTimeOffset? bcgovDateofbirth = default(System.DateTimeOffset?), string bcgovRiskassessmentid = default(string), string bcgovVerifiedemail = default(string), string bcgovGender = default(string), string emailaddress = default(string), int? statuscode = default(int?), string bcgovName = default(string), int? utcconversiontimezonecode = default(int?), string bcgovPrimarydocumentedsurname = default(string), bool? bcgovConsentauthforsecurityscreening = default(bool?), string _owneridValue = default(string), string bcgovAliasesnames = default(string), MicrosoftDynamicsCRMincident bcgovApplicationIDlookup = default(MicrosoftDynamicsCRMincident), MicrosoftDynamicsCRMsystemuser createdbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser createdonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser owninguser = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMteam owningteam = default(MicrosoftDynamicsCRMteam), MicrosoftDynamicsCRMprincipal ownerid = default(MicrosoftDynamicsCRMprincipal), MicrosoftDynamicsCRMbusinessunit owningbusinessunit = default(MicrosoftDynamicsCRMbusinessunit), IList<MicrosoftDynamicsCRMactivitypointer> bcgovRiskassessmentActivityPointers = default(IList<MicrosoftDynamicsCRMactivitypointer>), IList<MicrosoftDynamicsCRMappointment> bcgovRiskassessmentAppointments = default(IList<MicrosoftDynamicsCRMappointment>), IList<MicrosoftDynamicsCRMemail> bcgovRiskassessmentEmails = default(IList<MicrosoftDynamicsCRMemail>), IList<MicrosoftDynamicsCRMfax> bcgovRiskassessmentFaxes = default(IList<MicrosoftDynamicsCRMfax>), IList<MicrosoftDynamicsCRMletter> bcgovRiskassessmentLetters = default(IList<MicrosoftDynamicsCRMletter>), IList<MicrosoftDynamicsCRMphonecall> bcgovRiskassessmentPhoneCalls = default(IList<MicrosoftDynamicsCRMphonecall>), IList<MicrosoftDynamicsCRMserviceappointment> bcgovRiskassessmentServiceAppointments = default(IList<MicrosoftDynamicsCRMserviceappointment>), IList<MicrosoftDynamicsCRMtask> bcgovRiskassessmentTasks = default(IList<MicrosoftDynamicsCRMtask>), IList<MicrosoftDynamicsCRMrecurringappointmentmaster> bcgovRiskassessmentRecurringAppointmentMasters = default(IList<MicrosoftDynamicsCRMrecurringappointmentmaster>), IList<MicrosoftDynamicsCRMsocialactivity> bcgovRiskassessmentSocialActivities = default(IList<MicrosoftDynamicsCRMsocialactivity>), IList<MicrosoftDynamicsCRMsyncerror> bcgovRiskassessmentSyncErrors = default(IList<MicrosoftDynamicsCRMsyncerror>), IList<MicrosoftDynamicsCRMactivityparty> bcgovRiskassessmentActivityParties = default(IList<MicrosoftDynamicsCRMactivityparty>), IList<MicrosoftDynamicsCRMconnection> bcgovRiskassessmentConnections1 = default(IList<MicrosoftDynamicsCRMconnection>), IList<MicrosoftDynamicsCRMconnection> bcgovRiskassessmentConnections2 = default(IList<MicrosoftDynamicsCRMconnection>), IList<MicrosoftDynamicsCRMduplicaterecord> bcgovRiskassessmentDuplicateMatchingRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMduplicaterecord> bcgovRiskassessmentDuplicateBaseRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMsharepointdocumentlocation> bcgovRiskassessmentSharePointDocumentLocations = default(IList<MicrosoftDynamicsCRMsharepointdocumentlocation>), IList<MicrosoftDynamicsCRMqueueitem> bcgovRiskassessmentQueueItems = default(IList<MicrosoftDynamicsCRMqueueitem>), IList<MicrosoftDynamicsCRMannotation> bcgovRiskassessmentAnnotations = default(IList<MicrosoftDynamicsCRMannotation>), IList<MicrosoftDynamicsCRMasyncoperation> bcgovRiskassessmentAsyncOperations = default(IList<MicrosoftDynamicsCRMasyncoperation>), IList<MicrosoftDynamicsCRMbulkdeletefailure> bcgovRiskassessmentBulkDeleteFailures = default(IList<MicrosoftDynamicsCRMbulkdeletefailure>), IList<MicrosoftDynamicsCRMincident> bcgovRiskassessmentIncidentAssociatedRiskAssessmentRecord = default(IList<MicrosoftDynamicsCRMincident>))
         {
-            Emailaddress = emailaddress;
             BcgovLegalname = bcgovLegalname;
             this._modifiedonbehalfbyValue = _modifiedonbehalfbyValue;
             Overriddencreatedon = overriddencreatedon;
             Timezoneruleversionnumber = timezoneruleversionnumber;
             Versionnumber = versionnumber;
-            BcgovGender = bcgovGender;
             Modifiedon = modifiedon;
             this._owningteamValue = _owningteamValue;
+            this._bcgovApplicationidlookupValue = _bcgovApplicationidlookupValue;
             this._owninguserValue = _owninguserValue;
             BcgovDriverslicence = bcgovDriverslicence;
             this._createdonbehalfbyValue = _createdonbehalfbyValue;
@@ -50,10 +49,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
             Createdon = createdon;
             this._modifiedbyValue = _modifiedbyValue;
             this._createdbyValue = _createdbyValue;
+            BcgovDescriptionandnotes = bcgovDescriptionandnotes;
             BcgovConsentauthorizationtofingerprint = bcgovConsentauthorizationtofingerprint;
             BcgovDateofbirth = bcgovDateofbirth;
             BcgovRiskassessmentid = bcgovRiskassessmentid;
             BcgovVerifiedemail = bcgovVerifiedemail;
+            BcgovGender = bcgovGender;
+            Emailaddress = emailaddress;
             Statuscode = statuscode;
             BcgovName = bcgovName;
             Utcconversiontimezonecode = utcconversiontimezonecode;
@@ -61,6 +63,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
             BcgovConsentauthforsecurityscreening = bcgovConsentauthforsecurityscreening;
             this._owneridValue = _owneridValue;
             BcgovAliasesnames = bcgovAliasesnames;
+            BcgovApplicationIDlookup = bcgovApplicationIDlookup;
             Createdbyname = createdbyname;
             Createdonbehalfbyname = createdonbehalfbyname;
             Modifiedbyname = modifiedbyname;
@@ -90,6 +93,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
             BcgovRiskassessmentAnnotations = bcgovRiskassessmentAnnotations;
             BcgovRiskassessmentAsyncOperations = bcgovRiskassessmentAsyncOperations;
             BcgovRiskassessmentBulkDeleteFailures = bcgovRiskassessmentBulkDeleteFailures;
+            BcgovRiskassessmentIncidentAssociatedRiskAssessmentRecord = bcgovRiskassessmentIncidentAssociatedRiskAssessmentRecord;
             CustomInit();
         }
 
@@ -97,11 +101,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "emailaddress")]
-        public string Emailaddress { get; set; }
 
         /// <summary>
         /// </summary>
@@ -130,11 +129,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "bcgov_gender")]
-        public string BcgovGender { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "modifiedon")]
         public System.DateTimeOffset? Modifiedon { get; set; }
 
@@ -142,6 +136,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "_owningteam_value")]
         public string _owningteamValue { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "_bcgov_applicationidlookup_value")]
+        public string _bcgovApplicationidlookupValue { get; set; }
 
         /// <summary>
         /// </summary>
@@ -195,6 +194,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "bcgov_descriptionandnotes")]
+        public string BcgovDescriptionandnotes { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "bcgov_consentauthorizationtofingerprint")]
         public bool? BcgovConsentauthorizationtofingerprint { get; set; }
 
@@ -212,6 +216,16 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "bcgov_verifiedemail")]
         public string BcgovVerifiedemail { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_gender")]
+        public string BcgovGender { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "emailaddress")]
+        public string Emailaddress { get; set; }
 
         /// <summary>
         /// </summary>
@@ -247,6 +261,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "bcgov_aliasesnames")]
         public string BcgovAliasesnames { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_ApplicationIDlookup")]
+        public MicrosoftDynamicsCRMincident BcgovApplicationIDlookup { get; set; }
 
         /// <summary>
         /// </summary>
@@ -392,6 +411,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "bcgov_riskassessment_BulkDeleteFailures")]
         public IList<MicrosoftDynamicsCRMbulkdeletefailure> BcgovRiskassessmentBulkDeleteFailures { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_riskassessment_incident_AssociatedRiskAssessmentRecord")]
+        public IList<MicrosoftDynamicsCRMincident> BcgovRiskassessmentIncidentAssociatedRiskAssessmentRecord { get; set; }
 
     }
 }
