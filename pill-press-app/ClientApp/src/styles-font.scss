@@ -151,13 +151,13 @@ select.form-control:not([size]):not([multiple]) {
     display: inline-block;
 }
 
-table {
+.summary-table  table {
     border-spacing: 5px;
     border-collapse: separate;
     width: 100%;
 }
 
-th {
+.summary-table  th {
     background-color: #38598a;
     color: #fff;
     padding: 5px 5px 3px 10px;
