@@ -13,6 +13,8 @@ import { AdoxioLegalEntity } from './models/adoxio-legalentities.model';
 import { Store } from '@ngrx/store';
 import { AppState } from './app-state/models/app-state';
 import { Observable } from '../../node_modules/rxjs';
+import 'rxjs/add/operator/filter';
+
 import * as CurrentUserActions from './app-state/actions/current-user.action';
 import { filter } from 'rxjs/operators';
 import { VersionInfoDialog } from './version-info/version-info.component';
