@@ -165,6 +165,9 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             if (application.Statuscode != null && application.Statuscode == (int?) ViewModels.ApplicationStatusCodes.Draft && item.statuscode == ViewModels.ApplicationStatusCodes.Pending)
             {
                 patchApplication.Statuscode = (int?)ViewModels.ApplicationStatusCodes.Pending;
+                // force submitted date if we are changing from Draft to Pending.
+                patchApplication.BcgovSubmitteddate = DateTimeOffset.Now;
+
             }
 
             // patch the data bindings
