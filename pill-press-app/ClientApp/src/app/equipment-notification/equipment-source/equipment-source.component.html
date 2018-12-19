@@ -36,7 +36,7 @@
         </app-field>
 
         <section *ngIf="form.get('purchasedFromBcSeller').value === true">
-          <h3>Purchased from BC seller</h3>
+          <h3 style="color: #38598A">Purchased from BC seller</h3>
 
           <app-field label="Please provide the name of the BC Seller from whom you purchased this piece of Controlled Equipment."
             [required]="true">
@@ -96,7 +96,7 @@
         </section>
 
         <section *ngIf="form.get('purchasedFromSellerOutsideOfBc').value === true">
-          <h3>Purchased from seller outside of BC</h3>
+          <h3 style="color: #38598A">Purchased from seller outside of BC</h3>
 
           <app-field label="Please provide the name of the seller (outside of BC) from whom you purchased this piece of Controlled Equipment."
             [required]="true">
@@ -160,7 +160,7 @@
         </section>
 
         <section *ngIf="form.get('importedToBcByAThirdParty').value === true">
-          <h3>Imported to BC by a third party</h3>
+          <h3 style="color: #38598A">Imported to BC by a third party</h3>
 
           <app-field label="Please provide the name of the importer from whom you purchased this piece of Controlled Equipment."
             [required]="true">
@@ -259,7 +259,7 @@
         </section>
 
         <section *ngIf="form.get('alternativeOwnershipArrangement').value === true">
-          <h3>Alternative Ownership Arrangement</h3>
+          <h3 style="color: #38598A">Alternative Ownership Arrangement</h3>
           <app-field label="What kind of alternative ownership arrangement do you have regarding this piece of Controlled Equipment."
             (change)="form.updateValueAndValidity()" [required]="true">
             <input type="checkbox" formControlName="possessUntilICanSell" style="margin-right: 10px;"> <span>I am in
@@ -421,7 +421,7 @@
         </section>
 
         <section *ngIf="form.get('iAssembledItMyself').value === true">
-          <h3>I assembled it myself</h3>
+          <h3 style="color: #38598A">I assembled it myself</h3>
 
           <app-field label="When did you assemble this piece of Controlled Equipment?" [required]="true">
             <input type="text" class="form-control" formControlName="whenDidYouAssembleEquipment" placeholder="yyyy-mm-dd"
@@ -449,7 +449,7 @@
         </section>
 
         <section *ngIf="form.get('howCameIntoPossessionOtherCheck').value === true">
-          <h3>Other</h3>
+          <h3 style="color: #38598A">Other</h3>
           <app-field label="Please provide details about how this piece of Controlled Equipment came into your possession"
             [required]="true">
             <textarea rows="5" formControlName="detailsOfHowEquipmentCameIntoPossession" class="form-control" maxlength="500"></textarea>
