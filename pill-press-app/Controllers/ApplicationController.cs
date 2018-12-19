@@ -156,7 +156,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             var AddressofBusinessthathasGivenorLoaned = CreateOrUpdateAddress(item.AddressofBusinessthathasGivenorLoaned);
             var AddressofBusinessThatHasRentedorLeased = CreateOrUpdateAddress(item.AddressofBusinessThatHasRentedorLeased);
 
-            var EquipmentLocation = CreateOrUpdateLocation(item.EquipmentLocation, userSettings.AccountId);
+            var EquipmentLocation = CreateOrUpdateLocation(id, item.EquipmentLocation, userSettings.AccountId);
 
             MicrosoftDynamicsCRMincident patchApplication = new MicrosoftDynamicsCRMincident();
             patchApplication.CopyValues(item);
@@ -445,7 +445,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             return Json(application.ToViewModel());
         }
 
-        private MicrosoftDynamicsCRMbcgovLocation CreateOrUpdateLocation(ViewModels.Location item, string accountId)
+        private MicrosoftDynamicsCRMbcgovLocation CreateOrUpdateLocation(string incidentId, ViewModels.Location item, string accountId)
         {
             MicrosoftDynamicsCRMbcgovLocation location = null;
             // Primary Contact
@@ -467,7 +467,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
 
                     // bind the current account.
                     location.BusinessProfileODataBind = _dynamicsClient.GetEntityURI("accounts", accountId);
-
+                    // bind the incident.
+                    location.IncidentODataBind = _dynamicsClient.GetEntityURI("incidents", incidentId);
                     // create a location                        
                     try
                     {
@@ -588,7 +589,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             var AddressofBusinessthathasGivenorLoaned = CreateOrUpdateAddress(item.AddressofBusinessthathasGivenorLoaned);
             var AddressofBusinessThatHasRentedorLeased = CreateOrUpdateAddress(item.AddressofBusinessThatHasRentedorLeased);
 
-            var EquipmentLocation = CreateOrUpdateLocation(item.EquipmentLocation, userSettings.AccountId);
+            
 
             // create a new Application.
             MicrosoftDynamicsCRMincident application = new MicrosoftDynamicsCRMincident();
@@ -645,10 +646,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 application.AddressofBusinessThatHasRentedorLeasedODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", AddressofBusinessThatHasRentedorLeased.BcgovCustomaddressid);
             }
 
-            if (EquipmentLocation != null)             
-            {
-                application.EquipmentLocationODataBind = _dynamicsClient.GetEntityURI("bcgov_locations", EquipmentLocation.BcgovLocationid);
-            }
+            
 
             application.Statuscode = (int?) ViewModels.ApplicationStatusCodes.Draft;
             try
@@ -665,7 +663,32 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 throw new OdataerrorException("Error creating Application");
             }
             Guid applicationId = Guid.Parse(application.Incidentid);
+            // bind equipment location
+
+            if (item.EquipmentLocation != null)
+            {
+                var EquipmentLocation = CreateOrUpdateLocation(application.Incidentid, item.EquipmentLocation, userSettings.AccountId);
+                var patchApplication = new MicrosoftDynamicsCRMincident()
+                {
+                    EquipmentLocationODataBind = _dynamicsClient.GetEntityURI("bcgov_locations", EquipmentLocation.BcgovLocationid)
+                };
+                try
+                {
+                    _dynamicsClient.Incidents.Update(application.Incidentid, patchApplication);
+                }
+                catch (OdataerrorException odee)
+                {
+                    _logger.LogError("Error creating Application");
+                    _logger.LogError("Request:");
+                    _logger.LogError(odee.Request.Content);
+                    _logger.LogError("Response:");
+                    _logger.LogError(odee.Response.Content);
+                    throw new OdataerrorException("Error updating Application");
+                }
+        }
+
             
+
             application = _dynamicsClient.GetApplicationByIdWithChildren(applicationId);
 
             return Json(application.ToViewModel());
