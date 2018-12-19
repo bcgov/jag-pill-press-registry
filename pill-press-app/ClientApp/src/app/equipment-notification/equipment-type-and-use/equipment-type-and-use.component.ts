@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subscription, zip } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApplicationDataService } from '../../services/adoxio-application-data.service';
 import { Application } from '../../models/application.model';
+import { FormBase } from './../../shared/form-base';
 
 @Component({
   selector: 'app-equipment-type-and-use',
   templateUrl: './equipment-type-and-use.component.html',
   styleUrls: ['./equipment-type-and-use.component.scss']
 })
-export class EquipmentTypeAndUseComponent implements OnInit {
+export class EquipmentTypeAndUseComponent extends FormBase implements OnInit {
   form: FormGroup;
   busy: Subscription;
   equipmentId: string;
@@ -20,21 +21,22 @@ export class EquipmentTypeAndUseComponent implements OnInit {
     private router: Router,
     private applicationDataService: ApplicationDataService,
     private fb: FormBuilder) {
+    super();
     this.equipmentId = this.route.snapshot.params.id;
   }
 
   ngOnInit() {
     this.form = this.fb.group({
       id: [],
-      equipmentType: [],
-      equipmentTypeOther: [],
-      levelOfEquipmentAutomation: [],
-      pillpressEncapsulatorsize: [],
+      equipmentType: ['', Validators.required],
+      equipmentTypeOther: ['', this.requiredSelectChildValidator('equipmentType', ['Other'])],
+      levelOfEquipmentAutomation: ['', Validators.required],
+      pillpressEncapsulatorsize: ['', this.requiredSelectChildValidator('equipmentType', ['Pill Press', 'Encapsulator'])],
       pillpressencapsulatorsizeothercheck: [],
       pillpressencapsulatorsizeother: [],
-      pillpressmaxcapacity: [],
-      encapsulatorMaxCapacity: [],
-      explanationOfEquipmentuse: [],
+      pillpressmaxcapacity: ['', this.requiredSelectChildValidator('equipmentType', ['Pill Press'])],
+      encapsulatorMaxCapacity: ['', this.requiredSelectChildValidator('equipmentType', ['Encapsulator'])],
+      explanationOfEquipmentuse: ['', Validators.required],
     });
 
     this.reloadData();
@@ -54,9 +56,9 @@ export class EquipmentTypeAndUseComponent implements OnInit {
     this.form.get('equipmentType').valueChanges
       .subscribe(() => {
         for (const field in this.form.controls) {
-          if (field != 'id' 
-            && field != 'equipmentType' 
-            && field != 'explanationOfEquipmentuse') {
+          if (field !== 'id'
+            && field !== 'equipmentType'
+            && field !== 'explanationOfEquipmentuse') {
             this.form.get(field).reset();
           }
         }
