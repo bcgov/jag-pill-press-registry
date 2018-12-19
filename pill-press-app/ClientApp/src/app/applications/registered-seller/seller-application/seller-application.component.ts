@@ -80,6 +80,7 @@ export class SellerApplicationComponent implements OnInit {
 
 
     this.reloadData();
+    this.clearHiddenFields();
   }
 
   reloadData() {
@@ -89,6 +90,24 @@ export class SellerApplicationComponent implements OnInit {
     }, error => {
       // todo: show errors;
     });
+  }
+
+  clearHiddenFields() {
+    this.form.get('currentlyownusepossessequipment').valueChanges
+      .filter(value => value)
+      .subscribe(() => {
+        this.form.get('intendtopurchaseequipment').reset();
+      });
+    this.form.get('typeofsellerothercheck').valueChanges
+      .filter(value => !value)
+      .subscribe(() => {
+        this.form.get('typeofsellerother').reset();
+      });
+    this.form.get('intendtosellothercheck').valueChanges
+      .filter(value => !value)
+      .subscribe(() => {
+        this.form.get('intendtosellother').reset();
+      });
   }
 
   markAsTouched() {
