@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Gov.Jag.PillPressRegistry.Interfaces;
+using Gov.Jag.PillPressRegistry.Interfaces.Models;
 using Gov.Jag.PillPressRegistry.Public.Authentication;
 using Gov.Jag.PillPressRegistry.Public.Models;
+using Gov.Jag.PillPressRegistry.Public.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -25,15 +28,16 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         private readonly SiteMinderAuthOptions _options = new SiteMinderAuthOptions();
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ILogger _logger;
-
+        private readonly IDynamicsClient _dynamicsClient;
         const string BUSINESS_PROFILE_PAGE = "business-profile";
 
-        public LoginController(IConfiguration configuration, IHostingEnvironment env, IHttpContextAccessor httpContextAccessor, ILoggerFactory loggerFactory)
+        public LoginController(IConfiguration configuration, IDynamicsClient dynamicsClient, IHostingEnvironment env, IHttpContextAccessor httpContextAccessor, ILoggerFactory loggerFactory)
         {
             Configuration = configuration;
             _env = env;
             _httpContextAccessor = httpContextAccessor;
             _logger = loggerFactory.CreateLogger(typeof(LoginController));
+            this._dynamicsClient = dynamicsClient;
         }
 
         [HttpGet]
@@ -81,7 +85,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 else
                 {
                     UserSettings userSettings = JsonConvert.DeserializeObject<UserSettings>(temp);
-                    if (userSettings.IsNewUserRegistration)
+                    if (userSettings.IsNewUserRegistration || isBusinessProfileSubmitted(userSettings))
                     {
                         dashboard = BUSINESS_PROFILE_PAGE;
                     }
@@ -90,6 +94,25 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
 
                 return Redirect(basePath + "/" + dashboard);
             }
+        }
+
+        private bool isBusinessProfileSubmitted(UserSettings userSettings)
+        {
+            var isSubmitted = false;
+            // query the Dynamics system to get the account record.
+            if (userSettings.AccountId != null && userSettings.AccountId.Length > 0)
+            {
+                var accountId = GuidUtility.SanitizeGuidString(userSettings.AccountId);
+                MicrosoftDynamicsCRMaccount account = _dynamicsClient.GetAccountById(new Guid(accountId));
+                _logger.LogDebug(LoggingEvents.HttpGet, "Dynamics Account: " + JsonConvert.SerializeObject(account));
+
+                if (account == null)
+                {
+                    isSubmitted = account.BcgovSubmitteddate != null;
+                }
+            }
+
+            return isSubmitted;
         }
 
         /// <summary>
