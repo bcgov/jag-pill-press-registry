@@ -48,7 +48,7 @@ export class FormBase {
     }
 
 
-    public requiredSelectChildValidator(selectField: string, conditionalValue: string[]): ValidatorFn {
+    public requiredSelectChildValidator(selectField: string, conditionalValue: any[]): ValidatorFn {
         return (control: AbstractControl): { [key: string]: any } | null => {
             if (!control.parent
                 || !control.parent.get(selectField)
