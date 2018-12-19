@@ -6,9 +6,9 @@
 
     <h3 class="blue-header">EQUIPMENT IDENTIFICATION</h3>
     <section class="padded-section">
-      <app-field label="How was this piece of Controlled Equipment built?" (change)="form.updateValueAndValidity()"
-        [required]="true">
-        <select class="form-control" formControlName="howWasEquipmentBuilt" style="width: 300px;" >
+      <app-field label="How was this piece of Controlled Equipment built?" [valid]="form.get('howWasEquipmentBuilt').valid || !form.get('howWasEquipmentBuilt').touched"
+        errorMessage="Please indicate how this controlled equipment was built" [required]="true">
+        <select class="form-control" formControlName="howWasEquipmentBuilt" style="width: 300px;">
           <option value="">Please select an option</option>
           <option value="Commercially Manufactured">Commercially Manufactured</option>
           <option value="Custom-Built">Custom Built (i.e. built out of spare parts)</option>
@@ -17,26 +17,31 @@
       </app-field>
 
       <section *ngIf="form.get('howWasEquipmentBuilt').value === 'Commercially Manufactured'">
-        <app-field label="Name of Manufacturer" [required]="true">
+        <app-field label="Name of Manufacturer" [valid]="form.get('nameOfManufacturer').valid || !form.get('nameOfManufacturer').touched"
+          errorMessage="Please specify the manufacturer name" [required]="true">
           <input type="text" class="form-control" formControlName="nameOfManufacturer" style="width: 680px" maxlength="100">
         </app-field>
 
-        <app-field label="Make" [required]="true">
+        <app-field label="Make" [valid]="form.get('equipmentMake').valid || !form.get('equipmentMake').touched"
+          errorMessage="Please specify the make" [required]="true">
           <input type="text" class="form-control" formControlName="equipmentMake" style="width: 680px" maxlength="100">
         </app-field>
 
-        <app-field label="Model" [required]="true">
+        <app-field label="Model" [valid]="form.get('equipmentModel').valid || !form.get('equipmentModel').touched"
+          errorMessage="Please specify the model" [required]="true">
           <input type="text" class="form-control" formControlName="equipmentModel" style="width: 680px" maxlength="100">
         </app-field>
 
-        <app-field label="Serial Number" [required]="true">
+        <app-field label="Serial Number" [valid]="form.get('serialNumber').valid || !form.get('serialNumber').touched"
+          errorMessage="Please provide the serial number" [required]="true">
           <input type="text" class="form-control" formControlName="serialNumber" style="width: 680px" maxlength="100">
         </app-field>
 
       </section>
 
       <section *ngIf="form.get('howWasEquipmentBuilt').value === 'Custom-Built' || form.get('howWasEquipmentBuilt').value === 'Other'">
-        <app-field label="Please describe how this piece of Controlled Equipment was built." [required]="true">
+        <app-field label="Please describe how this piece of Controlled Equipment was built." [valid]="form.get('howEquipmentBuiltDescription').valid || !form.get('howEquipmentBuiltDescription').touched"
+          errorMessage="Please provide an answer to the question above" [showChevrons]="false" [required]="true">
           <textarea rows="5" formControlName="howEquipmentBuiltDescription" class="form-control" maxlength="1000"></textarea>
         </app-field>
 
@@ -86,7 +91,8 @@
         </div>
 
         <app-field label="Does this piece of custom-built equipment (or a key part) have a manufacturer's serial number?"
-          [required]="true">
+          [valid]="form.get('serialNumberForCustomBuilt').valid || !form.get('serialNumberForCustomBuilt').touched"
+          errorMessage="Please select yes or no" [showChevrons]="false" [required]="true">
           <input type="radio" [value]="true" name="serialNumberForCustomBuilt" formControlName="serialNumberForCustomBuilt">
           <span style="padding-right: 10px;">&nbsp;Yes</span>
           <input type="radio" [value]="false" name="serialNumberForCustomBuilt" formControlName="serialNumberForCustomBuilt">
@@ -102,13 +108,16 @@
           <textarea rows="5" formControlName="serialNumberKeyPartDescription" class="form-control" maxlength="1000"></textarea>
         </app-field>
 
-        <label>Please upload photos of this piece of Controlled Equipment with the following specifications:</label> <br>
+        <label>Please upload photos of this piece of Controlled Equipment with the following specifications:</label>
+        <br>
         <section class="padded-section">
           <span>Photo 1: Picture of the front of the equipment.</span> <br>
           <span>Photo 2: Picture of the side of the equipment.</span> <br>
-          <span>Photo 3: Close up picture of the equipment serial number, or key part serial number provided in this application.</span> <br>
+          <span>Photo 3: Close up picture of the equipment serial number, or key part serial number provided in this
+            application.</span> <br>
         </section>
-        <!-- <app-file-uploader></app-file-uploader> -->
+        <app-file-uploader documentType="Waiver Documents" entityName="incident" [entityId]="equipmentId" fileTypes="FILE MUST BE IN DOC, XLS, PDF, JPG OR PNG"
+          [extensions]="['pdf', 'jpg', 'jpeg', 'png', 'xls', 'doc']"></app-file-uploader>
       </section>
 
     </section>
@@ -120,7 +129,8 @@
           & Close</a>
       </section>
       <section>
-        <button class="btn btn-secondary" style="margin-right: 10px" routerLink="/equipment-notification/type-and-use/{{equipmentId}}">BACK TO STEP 2</button>
+        <button class="btn btn-secondary" style="margin-right: 10px" routerLink="/equipment-notification/type-and-use/{{equipmentId}}">BACK
+          TO STEP 2</button>
         <button class="btn btn-primary" (click)="markAsTouched(); save(true)">SAVE & CONTINUE</button>
       </section>
     </div>
