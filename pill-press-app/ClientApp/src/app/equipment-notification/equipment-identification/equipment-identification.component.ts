@@ -92,4 +92,7 @@ export class EquipmentIdentificationComponent implements OnInit {
     }
   }
 
+  markAsTouched() {
+
+  }
 }
