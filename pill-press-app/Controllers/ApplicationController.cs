@@ -467,8 +467,6 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
 
                     // bind the current account.
                     location.BusinessProfileODataBind = _dynamicsClient.GetEntityURI("accounts", accountId);
-                    // bind the incident.
-                    location.IncidentODataBind = _dynamicsClient.GetEntityURI("incidents", incidentId);
                     // create a location                        
                     try
                     {
@@ -484,7 +482,31 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                         _logger.LogError(odee.Response.Content);
                         throw new OdataerrorException("Error creating the location");
                     }
-                    
+                    // now bind the incident to the location.    
+                    try
+                    {
+                        OdataId odataId = new OdataId()
+                        {
+                            OdataIdProperty = _dynamicsClient.GetEntityURI("incidents", incidentId)
+                        };
+
+                        _dynamicsClient.Locations.AddReference(location.BcgovLocationid, "bcgov_location_incident_EquipmentLocation", odataId);
+
+                    }
+                    catch (OdataerrorException odee)
+                    {
+                        _logger.LogError(LoggingEvents.Error, "Error binding location");
+                        _logger.LogError("Request:");
+                        _logger.LogError(odee.Request.Content);
+                        _logger.LogError("Response:");
+                        _logger.LogError(odee.Response.Content);
+                        throw new OdataerrorException("Error binding the location");
+                    }
+
+
+
+
+
                 }
                 else
                 {                    
