@@ -52,6 +52,7 @@ export class EquipmentIdentificationComponent extends FormBase implements OnInit
     });
     this.reloadData();
     this.clearHiddenFields();
+
   }
 
   reloadData() {
