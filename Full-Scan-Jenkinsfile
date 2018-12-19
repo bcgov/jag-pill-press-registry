@@ -16,9 +16,9 @@ environments = [
 
 // You shouldn't have to edit these if you're following the conventions
 ARTIFACT_BUILD = APP_NAME
-RUNTIME_CHAINED_BUILD = "${APP_NAME}-static"
+RUNTIME_CHAINED_BUILD = "${APP_NAME}"
 
-IMAGESTREAM_NAME = "${APP_NAME}-static"
+IMAGESTREAM_NAME = "${APP_NAME}"
 
 PATHFINDER_URL = "pathfinder.gov.bc.ca"
 
