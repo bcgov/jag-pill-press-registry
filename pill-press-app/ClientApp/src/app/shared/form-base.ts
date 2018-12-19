@@ -47,6 +47,22 @@ export class FormBase {
         };
     }
 
+
+    public requiredSelectChildValidator(selectField: string, conditionalValue: string[]): ValidatorFn {
+        return (control: AbstractControl): { [key: string]: any } | null => {
+            if (!control.parent
+                || !control.parent.get(selectField)
+                || conditionalValue.indexOf(control.parent.get(selectField).value) === -1) {
+                return null;
+            }
+            const parentIsChecked = control.parent.get(selectField).value;
+            if (!parentIsChecked) {
+                return null;
+            }
+            return control.value ? null : { 'required': { value: control.value } };
+        };
+    }
+
     public trimValue(control: FormControl) {
         const value = control.value;
         control.setValue('');
