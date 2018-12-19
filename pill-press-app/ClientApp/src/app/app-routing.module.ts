@@ -73,13 +73,13 @@ const routes: Routes = [
         path: 'review/:id',
         component: WaiverReviewComponent,
       },
-      {
-        path: 'thank-you/:id',
-        component: ThankYouComponent,
-      },
     ]
   },
-  
+  {
+    path: 'waiver/thank-you/:id',
+    component: ThankYouComponent,
+    canActivate: [BCeidAuthGuard],
+  },
   {
     path: 'registered-seller',
     component: RegisteredSellerComponent,
@@ -100,13 +100,13 @@ const routes: Routes = [
         path: 'review/:id',
         component: SellerApplicationReviewComponent,
       },
-      {
-        path: 'thank-you/:id',
-        component: SellerApplicationThanksComponent,        
-      },
     ]
   },
-  
+  {
+    path: 'registered-seller/thank-you/:id',
+    component: SellerApplicationThanksComponent,
+    canActivate: [BCeidAuthGuard],
+  },
   {
     path: 'authorized-owner',
     component: AuthorizedOwnerComponent,
@@ -127,13 +127,13 @@ const routes: Routes = [
         path: 'review/:id',
         component: AuthorizedApplicationReviewComponent,
       },
-      {
-        path: 'thank-you/:id',
-        component: AuthorizedApplicationThanksComponent,        
-      },
     ]
   },
-  
+  {
+    path: 'authorized-owner/thank-you/:id',
+    component: AuthorizedApplicationThanksComponent,
+    canActivate: [BCeidAuthGuard],
+  },
   {
     path: 'equipment-notification',
     canActivate: [BCeidAuthGuard],
