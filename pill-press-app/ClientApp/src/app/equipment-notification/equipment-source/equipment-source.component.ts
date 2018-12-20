@@ -141,6 +141,7 @@ export class EquipmentSourceComponent extends FormBase implements OnInit {
         streetLine1: [],
         streetLine2: [],
         city: [],
+        country: [],
         province: [],
         postalCode: [],
       }),
@@ -149,6 +150,7 @@ export class EquipmentSourceComponent extends FormBase implements OnInit {
         streetLine1: [],
         streetLine2: [],
         city: [],
+        country: [],
         province: [],
         postalCode: [],
       }),
@@ -163,28 +165,17 @@ export class EquipmentSourceComponent extends FormBase implements OnInit {
 
     this.form.get('ownedBeforeJan2019').valueChanges
       .subscribe(value => {
+        const group = ['purchasedFromBcSeller', 'purchasedFromSellerOutsideOfBc', 'importedToBcByAThirdParty',
+          'alternativeOwnershipArrangement', 'iAssembledItMyself', 'howCameIntoPossessionOtherCheck'];
         if (value) {
-          this.form.get('purchasedFromBcSeller').clearValidators();
-          this.form.get('purchasedFromBcSeller').reset();
-          this.form.get('purchasedFromSellerOutsideOfBc').clearValidators();
-          this.form.get('purchasedFromSellerOutsideOfBc').reset();
-          this.form.get('importedToBcByAThirdParty').clearValidators();
-          this.form.get('importedToBcByAThirdParty').reset();
-          this.form.get('alternativeOwnershipArrangement').clearValidators();
-          this.form.get('alternativeOwnershipArrangement').reset();
-          this.form.get('iAssembledItMyself').clearValidators();
-          this.form.get('iAssembledItMyself').reset();
-          this.form.get('howCameIntoPossessionOtherCheck').clearValidators();
-          this.form.get('howCameIntoPossessionOtherCheck').reset();
+          group.forEach(field => {
+            this.form.get(field).clearValidators();
+            this.form.get(field).reset();
+          });
         } else {
-          const group = ['purchasedFromBcSeller', 'purchasedFromSellerOutsideOfBc', 'alternativeOwnershipArrangement',
-            'iAssembledItMyself', 'howCameIntoPossessionOtherCheck'];
-          this.form.get('purchasedFromBcSeller').setValidators([this.requiredCheckboxGroupValidator(group)]);
-          this.form.get('purchasedFromSellerOutsideOfBc').setValidators([this.requiredCheckboxGroupValidator(group)]);
-          this.form.get('importedToBcByAThirdParty').setValidators([this.requiredCheckboxGroupValidator(group)]);
-          this.form.get('alternativeOwnershipArrangement').setValidators([this.requiredCheckboxGroupValidator(group)]);
-          this.form.get('iAssembledItMyself').setValidators([this.requiredCheckboxGroupValidator(group)]);
-          this.form.get('howCameIntoPossessionOtherCheck').setValidators([this.requiredCheckboxGroupValidator(group)]);
+          group.forEach(field => {
+            this.form.get(field).setValidators([this.requiredCheckboxGroupValidator(group)]);
+          });
         }
       });
 
@@ -207,6 +198,7 @@ export class EquipmentSourceComponent extends FormBase implements OnInit {
           this.form.get('bcSellersAddress.province').clearValidators();
           this.form.get('bcSellersAddress.postalCode').clearValidators();
           this.form.get('bcSellersAddress').reset();
+          this.form.get('bcSellersAddress.province').setValue('British Columbia');
         } else {
           this.form.get('nameOfBcSeller').setValidators([Validators.required]);
           this.form.get('bcSellersContactPhoneNumber').setValidators([]);
@@ -222,17 +214,31 @@ export class EquipmentSourceComponent extends FormBase implements OnInit {
       });
 
     this.form.get('purchasedFromSellerOutsideOfBc').valueChanges
-      .filter(v => !v)
       .subscribe(value => {
-        this.form.get('outsideBcSellersName').clearValidators();
-        this.form.get('outsideBcSellersName').reset();
-        this.form.get('outsideBcSellersLocation').clearValidators();
-        this.form.get('outsideBcSellersLocation').reset();
-        this.form.get('dateOfPurchaseFromOutsideBcSeller').clearValidators();
-        this.form.get('dateOfPurchaseFromOutsideBcSeller').reset();
+        if (!value) {
+          this.form.get('outsideBcSellersName').clearValidators();
+          this.form.get('outsideBcSellersName').reset();
+          this.form.get('outsideBcSellersLocation').clearValidators();
+          this.form.get('outsideBcSellersLocation').reset();
+          this.form.get('dateOfPurchaseFromOutsideBcSeller').clearValidators();
+          this.form.get('dateOfPurchaseFromOutsideBcSeller').reset();
 
-        this.form.get('outsideBcSellersAddress').clearValidators();
-        this.form.get('outsideBcSellersAddress').reset();
+          this.form.get('outsideBcSellersAddress.streetLine1').clearValidators();
+          this.form.get('outsideBcSellersAddress.city').clearValidators();
+          this.form.get('outsideBcSellersAddress.country').clearValidators();
+          this.form.get('outsideBcSellersAddress.province').clearValidators();
+          this.form.get('outsideBcSellersAddress.postalCode').clearValidators();
+          this.form.get('outsideBcSellersAddress').reset();
+        } else {
+          this.form.get('outsideBcSellersName').setValidators([Validators.required]);
+          this.form.get('dateOfPurchaseFromOutsideBcSeller').setValidators([Validators.required]);
+
+          this.form.get('outsideBcSellersAddress.streetLine1').setValidators([Validators.required]);
+          this.form.get('outsideBcSellersAddress.city').setValidators([Validators.required]);
+          this.form.get('outsideBcSellersAddress.country').setValidators([Validators.required]);
+          this.form.get('outsideBcSellersAddress.province').setValidators([Validators.required]);
+          this.form.get('outsideBcSellersAddress.postalCode').setValidators([Validators.required]);
+        }
       });
 
     this.form.get('importedToBcByAThirdParty').valueChanges
