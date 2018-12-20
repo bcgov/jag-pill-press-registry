@@ -472,17 +472,20 @@
         <section *ngIf="form.get('iAssembledItMyself').value === true">
           <h3 style="color: #38598A">I assembled it myself</h3>
 
-          <app-field label="When did you assemble this piece of Controlled Equipment?" [required]="true">
+          <app-field label="When did you assemble this piece of Controlled Equipment?" [valid]="isValidOrNotTouched('whenDidYouAssembleEquipment')"
+            errorMessage="Please specify a date" [required]="true">
             <input type="text" class="form-control" formControlName="whenDidYouAssembleEquipment" placeholder="yyyy-mm-dd"
               [matDatepicker]="picker" (focus)="picker.open()" (click)="picker.open()" readonly style="width: 170px; background-color: #fff;">
             <mat-datepicker #picker></mat-datepicker>
           </app-field>
 
-          <app-field label="Where did you obtain the parts to assemble this piece of Controlled Equipment?" [required]="true">
+          <app-field label="Where did you obtain the parts to assemble this piece of Controlled Equipment?" [valid]="isValidOrNotTouched('whereDidYouObtainParts')"
+            errorMessage="Please provide an answer to the question above" [showChevrons]="false" [required]="true">
             <textarea rows="5" formControlName="whereDidYouObtainParts" class="form-control" maxlength="500"></textarea>
           </app-field>
 
-          <app-field label="Do you assemble Controlled Equipment for other businesses to use?" [required]="true">
+          <app-field label="Do you assemble Controlled Equipment for other businesses to use?" [valid]="isValidOrNotTouched('doYouAssembleForOtherBusinesses')"
+            errorMessage="Please select yes or no" [showChevrons]="false" [required]="true">
             <input type="radio" [value]="true" name="doYouAssembleForOtherBusinesses" formControlName="doYouAssembleForOtherBusinesses">
             <span style="padding-right: 10px;">&nbsp;Yes</span>
             <input type="radio" [value]="false" name="doYouAssembleForOtherBusinesses" formControlName="doYouAssembleForOtherBusinesses">
@@ -490,7 +493,8 @@
           </app-field>
 
           <app-field *ngIf="form.get('doYouAssembleForOtherBusinesses').value === true" label="If yes, please explain."
-            [required]="true">
+            [valid]="isValidOrNotTouched('detailsOfAssemblyForOtherBusinesses')" errorMessage="Please provide an answer to the question above"
+            [showChevrons]="false" [required]="true">
             <textarea rows="5" formControlName="detailsOfAssemblyForOtherBusinesses" class="form-control" maxlength="500"></textarea>
           </app-field>
 
@@ -500,7 +504,8 @@
         <section *ngIf="form.get('howCameIntoPossessionOtherCheck').value === true">
           <h3 style="color: #38598A">Other</h3>
           <app-field label="Please provide details about how this piece of Controlled Equipment came into your possession"
-            [required]="true">
+            [valid]="isValidOrNotTouched('detailsOfHowEquipmentCameIntoPossession')" errorMessage="Please provide an answer to the question above"
+            [showChevrons]="false" [required]="true">
             <textarea rows="5" formControlName="detailsOfHowEquipmentCameIntoPossession" class="form-control" maxlength="500"></textarea>
           </app-field>
         </section>

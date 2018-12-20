@@ -377,28 +377,39 @@ export class EquipmentSourceComponent extends FormBase implements OnInit {
 
 
     this.form.get('iAssembledItMyself').valueChanges
-      .filter(v => !v)
       .subscribe(value => {
-        this.form.get('whenDidYouAssembleEquipment').clearValidators();
-        this.form.get('whenDidYouAssembleEquipment').reset();
-        this.form.get('whereDidYouObtainParts').clearValidators();
-        this.form.get('whereDidYouObtainParts').reset();
-        this.form.get('doYouAssembleForOtherBusinesses').clearValidators();
-        this.form.get('doYouAssembleForOtherBusinesses').reset();
+        if (!value) {
+          this.form.get('whenDidYouAssembleEquipment').clearValidators();
+          this.form.get('whenDidYouAssembleEquipment').reset();
+          this.form.get('whereDidYouObtainParts').clearValidators();
+          this.form.get('whereDidYouObtainParts').reset();
+          this.form.get('doYouAssembleForOtherBusinesses').clearValidators();
+          this.form.get('doYouAssembleForOtherBusinesses').reset();
+        } else {
+          this.form.get('whenDidYouAssembleEquipment').setValidators([Validators.required]);
+          this.form.get('whereDidYouObtainParts').setValidators([Validators.required]);
+          this.form.get('doYouAssembleForOtherBusinesses').setValidators([Validators.required]);
+        }
       });
 
     this.form.get('doYouAssembleForOtherBusinesses').valueChanges
-      .filter(v => !v)
       .subscribe(value => {
-        this.form.get('detailsOfAssemblyForOtherBusinesses').clearValidators();
-        this.form.get('detailsOfAssemblyForOtherBusinesses').reset();
+        if (!value) {
+          this.form.get('detailsOfAssemblyForOtherBusinesses').clearValidators();
+          this.form.get('detailsOfAssemblyForOtherBusinesses').reset();
+        } else {
+          this.form.get('detailsOfAssemblyForOtherBusinesses').setValidators([Validators.required]);
+        }
       });
 
     this.form.get('howCameIntoPossessionOtherCheck').valueChanges
-      .filter(v => !v)
       .subscribe(value => {
-        this.form.get('detailsOfHowEquipmentCameIntoPossession').clearValidators();
-        this.form.get('detailsOfHowEquipmentCameIntoPossession').reset();
+        if (!value) {
+          this.form.get('detailsOfHowEquipmentCameIntoPossession').clearValidators();
+          this.form.get('detailsOfHowEquipmentCameIntoPossession').reset();
+        } else {
+          this.form.get('detailsOfHowEquipmentCameIntoPossession').setValidators([Validators.required]);
+        }
       });
 
   }
