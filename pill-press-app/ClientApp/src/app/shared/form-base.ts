@@ -2,6 +2,7 @@ import { ValidatorFn, AbstractControl, FormControl } from '@angular/forms';
 
 
 export class FormBase {
+
     public rejectIfNotDigitOrBackSpace(event) {
         const acceptedKeys = ['Backspace', 'Tab', 'End', 'Home', 'ArrowLeft', 'ArrowRight', 'Control',
             '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
@@ -31,6 +32,19 @@ export class FormBase {
             }
             const valueMatchesPattern = pattern.test(control.value);
             return valueMatchesPattern ? null : { 'regex-missmatch': { value: control.value } };
+        };
+    }
+
+    public requiredCheckboxGroupValidator(checkboxFields: string[]): ValidatorFn {
+        return (control: AbstractControl): { [key: string]: any } | null => {
+            if (!control.parent) {
+                return null;
+            }
+            let valid = false;
+            checkboxFields.forEach(f => {
+                valid = valid || control.parent.get(f).value;
+            });
+            return valid ? null : { 'required-set': { value: control.value } };
         };
     }
 
