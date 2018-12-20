@@ -9,6 +9,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
 {
     public static class CustomAddressDynamicsExtensions
     {
+        public static bool HasValue(this MicrosoftDynamicsCRMbcgovCustomaddress address)
+        {
+            bool result = !address.IsNullOrEmpty();
+            return result;
+        }
 
         public static bool IsNullOrEmpty(this MicrosoftDynamicsCRMbcgovCustomaddress address)
         {
