@@ -55,7 +55,7 @@
                   <input type="text" formControlName="streetLine1" class="form-control">
                 </app-field>
                 <app-field label="City" [valid]="form.get('bcSellersAddress.city').valid || !form.get('bcSellersAddress.city').touched"
-                errorMessage="Please enter your city or town"  [required]="true">
+                  errorMessage="Please enter your city or town" [required]="true">
                   <input type="text" formControlName="city" class="form-control">
                 </app-field>
               </section>
@@ -66,12 +66,12 @@
                 <div class="row">
                   <section class="col-md-6 col-xs-12">
                     <app-field label="Province">
-                      <input type="text" formControlName="province" readonly  class="form-control">
+                      <input type="text" formControlName="province" readonly class="form-control">
                     </app-field>
                   </section>
                   <section class="col-md-6 col-xs-12">
                     <app-field label="Postal Code" [valid]="form.get('bcSellersAddress.postalCode').valid || !form.get('bcSellersAddress.postalCode').touched"
-                    errorMessage="Please enter a postal code"  [required]="true">
+                      errorMessage="Please enter a postal code" [required]="true">
                       <input type="text" formControlName="postalCode" class="form-control">
                     </app-field>
                   </section>
@@ -89,14 +89,14 @@
           </app-field>
 
           <app-field label="What was the date of purchase?" [valid]="form.get('dateOfPurchaseFromBcSeller').valid || !form.get('dateOfPurchaseFromBcSeller').touched"
-          errorMessage="Please specify a date" [required]="true">
+            errorMessage="Please specify a date" [required]="true">
             <input type="text" class="form-control" formControlName="dateOfPurchaseFromBcSeller" placeholder="yyyy-mm-dd"
               [matDatepicker]="picker2" (focus)="picker2.open()" (click)="picker2.open()" readonly style="width: 170px; background-color: #fff;">
             <mat-datepicker #picker2></mat-datepicker>
           </app-field>
 
-          <app-field label="Please provide the BC Seller's registration number."[valid]="form.get('bcSellersRegistrationNumber').valid || !form.get('bcSellersRegistrationNumber').touched"
-          errorMessage="Please specify the BC Seller's registration number"  [required]="true">
+          <app-field label="Please provide the BC Seller's registration number." [valid]="form.get('bcSellersRegistrationNumber').valid || !form.get('bcSellersRegistrationNumber').touched"
+            errorMessage="Please specify the BC Seller's registration number" [required]="true">
             <input type="text" formControlName="bcSellersRegistrationNumber" class="form-control" style="width: 250px;">
           </app-field>
           <p></p>
@@ -107,6 +107,7 @@
           <h3 style="color: #38598A">Purchased from seller outside of BC</h3>
 
           <app-field label="Please provide the name of the seller (outside of BC) from whom you purchased this piece of Controlled Equipment."
+            [valid]="form.get('outsideBcSellersName').valid || !form.get('outsideBcSellersName').touched" errorMessage="Please provide an answer to the question above"
             [required]="true">
             <input type="text" formControlName="outsideBcSellersName" class="form-control">
           </app-field>
@@ -115,11 +116,17 @@
             <p></p>
             <div class="row">
               <section class="col-md-6 col-xs-12">
-                <app-field label="Street Address 1" [required]="true">
+                <app-field label="Street Address 1" [valid]="form.get('outsideBcSellersAddress.streetLine1').valid || !form.get('outsideBcSellersAddress.streetLine1').touched"
+                  errorMessage="Please enter your street address" [required]="true">
                   <input type="text" formControlName="streetLine1" class="form-control">
                 </app-field>
-                <app-field label="City" [required]="true">
+                <app-field label="City" [valid]="form.get('outsideBcSellersAddress.city').valid || !form.get('outsideBcSellersAddress.city').touched"
+                  errorMessage="Please enter your city or town" [required]="true">
                   <input type="text" formControlName="city" class="form-control">
+                </app-field>
+                <app-field label="Country" [valid]="form.get('outsideBcSellersAddress.country').valid || !form.get('outsideBcSellersAddress.country').touched"
+                  errorMessage="Please enter your country" [required]="true">
+                  <input type="text" formControlName="country" class="form-control">
                 </app-field>
               </section>
               <section class="col-md-6 col-xs-12">
@@ -128,12 +135,14 @@
                 </app-field>
                 <div class="row">
                   <section class="col-md-6 col-xs-12">
-                    <app-field label="Province" [required]="true">
+                    <app-field label="Province/State" [valid]="form.get('outsideBcSellersAddress.province').valid || !form.get('outsideBcSellersAddress.province').touched"
+                    errorMessage=" Please enter a province/state" [required]="true">
                       <input type="text" formControlName="province" class="form-control">
                     </app-field>
                   </section>
                   <section class="col-md-6 col-xs-12">
-                    <app-field label="Postal Code" [required]="true">
+                    <app-field label="Postal/Zip Code" [valid]="form.get('outsideBcSellersAddress.postalCode').valid || !form.get('outsideBcSellersAddress.postalCode').touched"
+                      errorMessage="Please enter a postal/zip code" [required]="true">
                       <input type="text" formControlName="postalCode" class="form-control">
                     </app-field>
                   </section>
@@ -158,7 +167,8 @@
             <input type="text" formControlName="nameOfImporter" class="form-control" style="width: 370px;">
           </app-field> -->
 
-          <app-field label="What was the date of purchase?" [required]="true">
+          <app-field label="What was the date of purchase?" [valid]="form.get('dateOfPurchaseFromOutsideBcSeller').valid || !form.get('dateOfPurchaseFromOutsideBcSeller').touched"
+            errorMessage="Please specify a date" [required]="true">
             <input type="text" class="form-control" formControlName="dateOfPurchaseFromOutsideBcSeller" placeholder="yyyy-mm-dd"
               [matDatepicker]="picker3" (focus)="picker3.open()" (click)="picker3.open()" readonly style="width: 170px; background-color: #fff;">
             <mat-datepicker #picker3></mat-datepicker>
