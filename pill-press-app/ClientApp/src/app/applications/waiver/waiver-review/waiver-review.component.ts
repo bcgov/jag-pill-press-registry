@@ -162,7 +162,7 @@ export class WaiverReviewComponent implements OnInit {
         .toPromise()
         .then(res => {
           if (goToThankYouPage) {
-            this.router.navigateByUrl(`/application/waiver/thank-you/${this.waiverId}`);
+            this.router.navigateByUrl(`/waiver/thank-you/${this.waiverId}`);
           } else {
             this.router.navigateByUrl(`/dashboard`);
           }
