@@ -109,6 +109,7 @@ export class EquipmentSourceComponent extends FormBase implements OnInit {
         streetLine1: [],
         streetLine2: [],
         city: [],
+        country: [],
         province: [],
         postalCode: [],
       }),
@@ -117,6 +118,7 @@ export class EquipmentSourceComponent extends FormBase implements OnInit {
         streetLine1: [],
         streetLine2: [],
         city: [],
+        country: [],
         province: [],
         postalCode: [],
       }),
@@ -133,6 +135,7 @@ export class EquipmentSourceComponent extends FormBase implements OnInit {
         streetLine1: [],
         streetLine2: [],
         city: [],
+        country: [],
         province: [],
         postalCode: [],
       }),
@@ -242,81 +245,134 @@ export class EquipmentSourceComponent extends FormBase implements OnInit {
       });
 
     this.form.get('importedToBcByAThirdParty').valueChanges
-      .filter(v => !v)
       .subscribe(value => {
-        this.form.get('nameOfImporter').clearValidators();
-        this.form.get('nameOfImporter').reset();
-        this.form.get('importersRegistrationNumber').clearValidators();
-        this.form.get('importersRegistrationNumber').reset();
-        this.form.get('nameOfOriginatingSeller').clearValidators();
-        this.form.get('nameOfOriginatingSeller').reset();
-        this.form.get('originatingSellersLocation').clearValidators();
-        this.form.get('originatingSellersLocation').reset();
-        this.form.get('dateOfPurchaseFromImporter').clearValidators();
-        this.form.get('dateOfPurchaseFromImporter').reset();
-        this.form.get('importersAddress').clearValidators();
-        this.form.get('importersAddress').reset();
-        this.form.get('OriginatingSellersAddress').clearValidators();
-        this.form.get('OriginatingSellersAddress').reset();
+        if (!value) {
+          this.form.get('nameOfImporter').clearValidators();
+          this.form.get('nameOfImporter').reset();
+          this.form.get('importersRegistrationNumber').clearValidators();
+          this.form.get('importersRegistrationNumber').reset();
+          this.form.get('nameOfOriginatingSeller').clearValidators();
+          this.form.get('nameOfOriginatingSeller').reset();
+          this.form.get('originatingSellersLocation').clearValidators();
+          this.form.get('originatingSellersLocation').reset();
+          this.form.get('dateOfPurchaseFromImporter').clearValidators();
+          this.form.get('dateOfPurchaseFromImporter').reset();
+
+          this.form.get('importersAddress.streetLine1').clearValidators();
+          this.form.get('importersAddress.city').clearValidators();
+          this.form.get('importersAddress.country').clearValidators();
+          this.form.get('importersAddress.province').clearValidators();
+          this.form.get('importersAddress.postalCode').clearValidators();
+          this.form.get('importersAddress').reset();
+
+          this.form.get('OriginatingSellersAddress').reset();
+        } else {
+          this.form.get('nameOfImporter').setValidators([Validators.required]);
+          this.form.get('dateOfPurchaseFromImporter').setValidators([Validators.required]);
+
+          this.form.get('importersAddress.streetLine1').setValidators([Validators.required]);
+          this.form.get('importersAddress.city').setValidators([Validators.required]);
+          this.form.get('importersAddress.country').setValidators([Validators.required]);
+          this.form.get('importersAddress.province').setValidators([Validators.required]);
+          this.form.get('importersAddress.postalCode').setValidators([Validators.required]);
+        }
       });
 
     this.form.get('alternativeOwnershipArrangement').valueChanges
-      .filter(v => !v)
       .subscribe(value => {
-        this.form.get('kindOfAlternateOwnershipOtherCheck').clearValidators();
-        this.form.get('kindOfAlternateOwnershipOtherCheck').reset();
-        this.form.get('possessUntilICanSell').clearValidators();
-        this.form.get('possessUntilICanSell').reset();
-        this.form.get('giveNorLoanedToMe').clearValidators();
-        this.form.get('giveNorLoanedToMe').reset();
-        this.form.get('rentingOrLeasingFromAnotherBusiness').clearValidators();
-        this.form.get('rentingOrLeasingFromAnotherBusiness').reset();
+        const group = ['kindOfAlternateOwnershipOtherCheck', 'possessUntilICanSell',
+          'giveNorLoanedToMe', 'rentingOrLeasingFromAnotherBusiness'];
+        if (!value) {
+          group.forEach(field => {
+            this.form.get(field).clearValidators();
+            this.form.get(field).reset();
+          });
+        } else {
+          group.forEach(field => {
+            this.form.get(field).setValidators([this.requiredCheckboxGroupValidator(group)]);
+          });
+        }
       });
 
     this.form.get('kindOfAlternateOwnershipOtherCheck').valueChanges
-      .filter(v => !v)
       .subscribe(value => {
-        this.form.get('kindOfAlternateOwnershipOther').clearValidators();
-        this.form.get('kindOfAlternateOwnershipOther').reset();
+        if (!value) {
+          this.form.get('kindOfAlternateOwnershipOther').clearValidators();
+          this.form.get('kindOfAlternateOwnershipOther').reset();
+        } else {
+          this.form.get('kindOfAlternateOwnershipOther').setValidators([Validators.required]);
+        }
       });
 
     this.form.get('possessUntilICanSell').valueChanges
-      .filter(v => !v)
       .subscribe(value => {
-        this.form.get('usingToManufactureAProduct').clearValidators();
-        this.form.get('usingToManufactureAProduct').reset();
-        this.form.get('areYouARegisteredSeller').clearValidators();
-        this.form.get('areYouARegisteredSeller').reset();
+        if (!value) {
+          this.form.get('usingToManufactureAProduct').clearValidators();
+          this.form.get('usingToManufactureAProduct').reset();
+          this.form.get('areYouARegisteredSeller').clearValidators();
+          this.form.get('areYouARegisteredSeller').reset();
+        } else {
+          this.form.get('usingToManufactureAProduct').setValidators([Validators.required]);
+          this.form.get('areYouARegisteredSeller').setValidators([Validators.required]);
+        }
       });
 
     this.form.get('giveNorLoanedToMe').valueChanges
-      .filter(v => !v)
       .subscribe(value => {
-        this.form.get('emailOfTheBusinessThatHasGivenOrLoaned').clearValidators();
-        this.form.get('emailOfTheBusinessThatHasGivenOrLoaned').reset();
-        this.form.get('phoneofbusinessthathasgivenorloaned').clearValidators();
-        this.form.get('phoneofbusinessthathasgivenorloaned').reset();
-        this.form.get('whyHaveYouAcceptedOrBorrowed').clearValidators();
-        this.form.get('whyHaveYouAcceptedOrBorrowed').reset();
-        this.form.get('nameOfBusinessThatHasGivenOrLoaned').clearValidators();
-        this.form.get('nameOfBusinessThatHasGivenOrLoaned').reset();
-        this.form.get('addressofBusinessthathasGivenorLoaned').clearValidators();
-        this.form.get('addressofBusinessthathasGivenorLoaned').reset();
+        if (!value) {
+          this.form.get('emailOfTheBusinessThatHasGivenOrLoaned').clearValidators();
+          this.form.get('emailOfTheBusinessThatHasGivenOrLoaned').reset();
+          this.form.get('phoneofbusinessthathasgivenorloaned').clearValidators();
+          this.form.get('phoneofbusinessthathasgivenorloaned').reset();
+          this.form.get('whyHaveYouAcceptedOrBorrowed').clearValidators();
+          this.form.get('whyHaveYouAcceptedOrBorrowed').reset();
+          this.form.get('nameOfBusinessThatHasGivenOrLoaned').clearValidators();
+          this.form.get('nameOfBusinessThatHasGivenOrLoaned').reset();
+
+          this.form.get('addressofBusinessthathasGivenorLoaned.streetLine1').clearValidators();
+          this.form.get('addressofBusinessthathasGivenorLoaned.city').clearValidators();
+          this.form.get('addressofBusinessthathasGivenorLoaned.country').clearValidators();
+          this.form.get('addressofBusinessthathasGivenorLoaned.province').clearValidators();
+          this.form.get('addressofBusinessthathasGivenorLoaned.postalCode').clearValidators();
+          this.form.get('addressofBusinessthathasGivenorLoaned').reset();
+        } else {
+          this.form.get('nameOfBusinessThatHasGivenOrLoaned').setValidators([Validators.required]);
+
+          this.form.get('addressofBusinessthathasGivenorLoaned.streetLine1').setValidators([Validators.required]);
+          this.form.get('addressofBusinessthathasGivenorLoaned.city').setValidators([Validators.required]);
+          this.form.get('addressofBusinessthathasGivenorLoaned.country').setValidators([Validators.required]);
+          this.form.get('addressofBusinessthathasGivenorLoaned.province').setValidators([Validators.required]);
+          this.form.get('addressofBusinessthathasGivenorLoaned.postalCode').setValidators([Validators.required]);
+        }
       });
 
     this.form.get('rentingOrLeasingFromAnotherBusiness').valueChanges
-      .filter(v => !v)
       .subscribe(value => {
-        this.form.get('emailOfBusinessThatHasRentedOrLeased').clearValidators();
-        this.form.get('emailOfBusinessThatHasRentedOrLeased').reset();
-        this.form.get('phoneOfBusinessThatHasRentedOrLeased').clearValidators();
-        this.form.get('phoneOfBusinessThatHasRentedOrLeased').reset();
-        this.form.get('whyHaveYouRentedOrLeased').clearValidators();
-        this.form.get('whyHaveYouRentedOrLeased').reset();
-        this.form.get('NameOfBusinessThatHasRentedOrLeased').clearValidators();
-        this.form.get('NameOfBusinessThatHasRentedOrLeased').reset();
-        this.form.get('addressOfBusinessThatHasRentedorLeased').clearValidators();
-        this.form.get('addressOfBusinessThatHasRentedorLeased').reset();
+        if (!value) {
+          this.form.get('emailOfBusinessThatHasRentedOrLeased').clearValidators();
+          this.form.get('emailOfBusinessThatHasRentedOrLeased').reset();
+          this.form.get('phoneOfBusinessThatHasRentedOrLeased').clearValidators();
+          this.form.get('phoneOfBusinessThatHasRentedOrLeased').reset();
+          this.form.get('whyHaveYouRentedOrLeased').clearValidators();
+          this.form.get('whyHaveYouRentedOrLeased').reset();
+          this.form.get('NameOfBusinessThatHasRentedOrLeased').clearValidators();
+          this.form.get('NameOfBusinessThatHasRentedOrLeased').reset();
+
+          this.form.get('addressOfBusinessThatHasRentedorLeased.streetLine1').clearValidators();
+          this.form.get('addressOfBusinessThatHasRentedorLeased.city').clearValidators();
+          this.form.get('addressOfBusinessThatHasRentedorLeased.country').clearValidators();
+          this.form.get('addressOfBusinessThatHasRentedorLeased.province').clearValidators();
+          this.form.get('addressOfBusinessThatHasRentedorLeased.postalCode').clearValidators();
+          this.form.get('addressOfBusinessThatHasRentedorLeased').reset();
+        } else {
+          this.form.get('NameOfBusinessThatHasRentedOrLeased').setValidators([Validators.required]);
+
+          this.form.get('addressOfBusinessThatHasRentedorLeased.streetLine1').setValidators([Validators.required]);
+          this.form.get('addressOfBusinessThatHasRentedorLeased.city').setValidators([Validators.required]);
+          this.form.get('addressOfBusinessThatHasRentedorLeased.country').setValidators([Validators.required]);
+          this.form.get('addressOfBusinessThatHasRentedorLeased.province').setValidators([Validators.required]);
+          this.form.get('addressOfBusinessThatHasRentedorLeased.postalCode').setValidators([Validators.required]);
+        }
       });
 
 
@@ -378,6 +434,22 @@ export class EquipmentSourceComponent extends FormBase implements OnInit {
         || this.form.get('alternativeOwnershipArrangement').touched
         || this.form.get('iAssembledItMyself').touched
         || this.form.get('howCameIntoPossessionOtherCheck').touched
+      );
+    return result;
+  }
+
+  areAltArrangementChecksValid() {
+    const result = (
+      this.form.get('kindOfAlternateOwnershipOtherCheck').valid
+      || this.form.get('possessUntilICanSell').valid
+      || this.form.get('giveNorLoanedToMe').valid
+      || this.form.get('rentingOrLeasingFromAnotherBusiness').valid
+    )
+      || !(
+        this.form.get('kindOfAlternateOwnershipOtherCheck').touched
+        || this.form.get('possessUntilICanSell').touched
+        || this.form.get('giveNorLoanedToMe').touched
+        || this.form.get('rentingOrLeasingFromAnotherBusiness').touched
       );
     return result;
   }
