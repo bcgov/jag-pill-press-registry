@@ -10,6 +10,24 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
     public static class CustomAddressDynamicsExtensions
     {
 
+        public static bool IsNullOrEmpty(this MicrosoftDynamicsCRMbcgovCustomaddress address)
+        {
+            bool result = true;
+            if (address != null)
+            {
+                if (!string.IsNullOrEmpty(address.BcgovCity) ||
+                    !string.IsNullOrEmpty(address.BcgovCountrytxt) ||
+                    !string.IsNullOrEmpty(address.BcgovStreetline2) ||
+                    !string.IsNullOrEmpty(address.BcgovName) ||
+                    !string.IsNullOrEmpty(address.BcgovProvince) ||
+                    !string.IsNullOrEmpty(address.BcgovPostalcode)
+                    )
+                {
+                    result = false;
+                }
+            }
+            return result;
+        }
 
         public static MicrosoftDynamicsCRMbcgovCustomaddress GetCustomAddressById(this IDynamicsClient system, Guid id)
         {            
