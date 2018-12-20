@@ -1,7 +1,12 @@
-import { ValidatorFn, AbstractControl, FormControl } from '@angular/forms';
+import { ValidatorFn, AbstractControl, FormControl, FormGroup } from '@angular/forms';
 
 
 export class FormBase {
+    form: FormGroup;
+
+    isValidOrNotTouched(field: string) {
+        return this.form.get(field).valid || !this.form.get(field).touched;
+    }
 
     public rejectIfNotDigitOrBackSpace(event) {
         const acceptedKeys = ['Backspace', 'Tab', 'End', 'Home', 'ArrowLeft', 'ArrowRight', 'Control',
