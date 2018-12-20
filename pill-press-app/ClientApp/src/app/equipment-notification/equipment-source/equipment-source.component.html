@@ -14,23 +14,25 @@
         <span>&nbsp;No</span>
       </app-field>
       <section *ngIf="form.get('ownedBeforeJan2019').value === false">
-        <app-field label="How did this piece of equipment come into your possession (after January 2019)?" (change)="form.updateValueAndValidity()"
+        <app-field label="How did this piece of equipment come into your possession (after January 2019)?"
+          [showChevrons]="false" [valid]="arePossessionCheckValid()" errorMessage="Please select an answer to the question above"
           [required]="true">
-          <input type="checkbox" formControlName="purchasedFromBcSeller" style="margin-right: 10px;"> <span>Purchased
-            from BC seller</span> <br>
-          <input type="checkbox" formControlName="purchasedFromSellerOutsideOfBc" style="margin-right: 10px;"> <span>Purchased
+          <input type="checkbox" formControlName="purchasedFromBcSeller" style="margin-right: 10px;">
+          <span>Purchased from BC seller</span> <br>
+          <input type="checkbox" formControlName="purchasedFromSellerOutsideOfBc" (change)="form.updateValueAndValidity()"
+            style="margin-right: 10px;"> <span>Purchased
             from seller outside of BC</span> <br>
-          <input type="checkbox" formControlName="importedToBcByAThirdParty" style="margin-right: 10px;"> <span>Imported
-            to BC by a
-            third party (i.e. broker)</span>
+          <input type="checkbox" formControlName="importedToBcByAThirdParty" (change)="form.updateValueAndValidity()"
+            style="margin-right: 10px;">
+          <span>Imported to BC by a third party (i.e. broker)</span>
           <br>
-          <input type="checkbox" formControlName="alternativeOwnershipArrangement" style="margin-right: 10px;"> <span>Alternative
-            ownership arrangement (renting,
-            leasing,
-            borrowing)</span> <br>
-          <input type="checkbox" formControlName="iAssembledItMyself" style="margin-right: 10px;"> <span>I assembled it
-            mysel</span> <br>
-          <input type="checkbox" formControlName="howCameIntoPossessionOtherCheck" style="margin-right: 10px;"> <span>Other
+          <input type="checkbox" formControlName="alternativeOwnershipArrangement" (change)="form.updateValueAndValidity()"
+            style="margin-right: 10px;">
+          <span>Alternative ownership arrangement (renting, leasing, borrowing)</span> <br>
+          <input type="checkbox" formControlName="iAssembledItMyself" (change)="form.updateValueAndValidity()" style="margin-right: 10px;">
+          <span>I assembled it myself</span> <br>
+          <input type="checkbox" formControlName="howCameIntoPossessionOtherCheck" (change)="form.updateValueAndValidity()"
+            style="margin-right: 10px;"> <span>Other
             (specify)</span>
           <br>
         </app-field>
@@ -39,6 +41,7 @@
           <h3 style="color: #38598A">Purchased from BC seller</h3>
 
           <app-field label="Please provide the name of the BC Seller from whom you purchased this piece of Controlled Equipment."
+            [valid]="form.get('nameOfBcSeller').valid || !form.get('nameOfBcSeller').touched" errorMessage="Please provide an answer to the question above"
             [required]="true">
             <input type="text" formControlName="nameOfBcSeller" class="form-control">
           </app-field>
@@ -47,10 +50,12 @@
             <p></p>
             <div class="row">
               <section class="col-md-6 col-xs-12">
-                <app-field label="Street Address 1" [required]="true">
+                <app-field label="Street Address 1" [valid]="form.get('bcSellersAddress.streetLine1').valid || !form.get('bcSellersAddress.streetLine1').touched"
+                  errorMessage="Please enter your street address" [required]="true">
                   <input type="text" formControlName="streetLine1" class="form-control">
                 </app-field>
-                <app-field label="City" [required]="true">
+                <app-field label="City" [valid]="form.get('bcSellersAddress.city').valid || !form.get('bcSellersAddress.city').touched"
+                errorMessage="Please enter your city or town"  [required]="true">
                   <input type="text" formControlName="city" class="form-control">
                 </app-field>
               </section>
@@ -60,12 +65,13 @@
                 </app-field>
                 <div class="row">
                   <section class="col-md-6 col-xs-12">
-                    <app-field label="Province" [required]="true">
-                      <input type="text" formControlName="province" class="form-control">
+                    <app-field label="Province">
+                      <input type="text" formControlName="province" readonly  class="form-control">
                     </app-field>
                   </section>
                   <section class="col-md-6 col-xs-12">
-                    <app-field label="Postal Code" [required]="true">
+                    <app-field label="Postal Code" [valid]="form.get('bcSellersAddress.postalCode').valid || !form.get('bcSellersAddress.postalCode').touched"
+                    errorMessage="Please enter a postal code"  [required]="true">
                       <input type="text" formControlName="postalCode" class="form-control">
                     </app-field>
                   </section>
@@ -82,13 +88,15 @@
             <input type="text" formControlName="bcSellersContactEmail" class="form-control" style="width: 370px;">
           </app-field>
 
-          <app-field label="What was the date of purchase?" [required]="true">
+          <app-field label="What was the date of purchase?" [valid]="form.get('dateOfPurchaseFromBcSeller').valid || !form.get('dateOfPurchaseFromBcSeller').touched"
+          errorMessage="Please specify a date" [required]="true">
             <input type="text" class="form-control" formControlName="dateOfPurchaseFromBcSeller" placeholder="yyyy-mm-dd"
               [matDatepicker]="picker2" (focus)="picker2.open()" (click)="picker2.open()" readonly style="width: 170px; background-color: #fff;">
             <mat-datepicker #picker2></mat-datepicker>
           </app-field>
 
-          <app-field label="Please provide the BC Seller's registration number." [required]="true">
+          <app-field label="Please provide the BC Seller's registration number."[valid]="form.get('bcSellersRegistrationNumber').valid || !form.get('bcSellersRegistrationNumber').touched"
+          errorMessage="Please specify the BC Seller's registration number"  [required]="true">
             <input type="text" formControlName="bcSellersRegistrationNumber" class="form-control" style="width: 250px;">
           </app-field>
           <p></p>
