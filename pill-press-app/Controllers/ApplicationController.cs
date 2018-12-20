@@ -649,31 +649,31 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             application.CustomerIdAccountODataBind = _dynamicsClient.GetEntityURI("accounts", userSettings.AccountId);
             
             // bind the addresses. 
-            if (BCSellersAddress.IsNullOrEmpty())
+            if (BCSellersAddress.HasValue())
             {
                 application.BCSellersAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", BCSellersAddress.BcgovCustomaddressid);
             }
             
-            if (OutsideBCSellersAddress.IsNullOrEmpty())
+            if (OutsideBCSellersAddress.HasValue())
             {
                 application.OutsideBCSellersAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", OutsideBCSellersAddress.BcgovCustomaddressid);
             }
             
-            if (ImportersAddress.IsNullOrEmpty())
+            if (ImportersAddress.HasValue())
             {
                 application.ImportersAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", ImportersAddress.BcgovCustomaddressid);
             }
             
-            if (OriginatingSellersAddress.IsNullOrEmpty())
+            if (OriginatingSellersAddress.HasValue())
             {
                 application.OriginatingSellersAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", OriginatingSellersAddress.BcgovCustomaddressid);
             }
-            if (AddressofBusinessthathasGivenorLoaned.IsNullOrEmpty())
+            if (AddressofBusinessthathasGivenorLoaned.HasValue())
             {
                 application.AddressofBusinessthathasGivenorLoanedODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", AddressofBusinessthathasGivenorLoaned.BcgovCustomaddressid);
             }
             
-            if (AddressofBusinessThatHasRentedorLeased.IsNullOrEmpty())
+            if (AddressofBusinessThatHasRentedorLeased.HasValue())
             {
                 application.AddressofBusinessThatHasRentedorLeasedODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", AddressofBusinessThatHasRentedorLeased.BcgovCustomaddressid);
             }
