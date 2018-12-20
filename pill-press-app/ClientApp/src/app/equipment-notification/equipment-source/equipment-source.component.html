@@ -136,7 +136,7 @@
                 <div class="row">
                   <section class="col-md-6 col-xs-12">
                     <app-field label="Province/State" [valid]="form.get('outsideBcSellersAddress.province').valid || !form.get('outsideBcSellersAddress.province').touched"
-                    errorMessage=" Please enter a province/state" [required]="true">
+                      errorMessage=" Please enter a province/state" [required]="true">
                       <input type="text" formControlName="province" class="form-control">
                     </app-field>
                   </section>
@@ -181,6 +181,7 @@
           <h3 style="color: #38598A">Imported to BC by a third party</h3>
 
           <app-field label="Please provide the name of the importer from whom you purchased this piece of Controlled Equipment."
+            [valid]="isValidOrNotTouched('nameOfImporter')" errorMessage="Please provide an answer to the question above"
             [required]="true">
             <input type="text" formControlName="nameOfImporter" class="form-control">
           </app-field>
@@ -189,11 +190,17 @@
             <p></p>
             <div class="row">
               <section class="col-md-6 col-xs-12">
-                <app-field label="Street Address 1" [required]="true">
+                <app-field label="Street Address 1" [valid]="isValidOrNotTouched('importersAddress.streetLine1')"
+                  errorMessage="Please enter your street address" [required]="true">
                   <input type="text" formControlName="streetLine1" class="form-control">
                 </app-field>
-                <app-field label="City" [required]="true">
+                <app-field label="City" [valid]="isValidOrNotTouched('importersAddress.city')" errorMessage="Please enter your city or town"
+                  [required]="true">
                   <input type="text" formControlName="city" class="form-control">
+                </app-field>
+                <app-field label="Country" [valid]="isValidOrNotTouched('importersAddress.country')" errorMessage="Please enter your country"
+                  [required]="true">
+                  <input type="text" formControlName="country" class="form-control">
                 </app-field>
               </section>
               <section class="col-md-6 col-xs-12">
@@ -202,12 +209,14 @@
                 </app-field>
                 <div class="row">
                   <section class="col-md-6 col-xs-12">
-                    <app-field label="Province" [required]="true">
+                    <app-field label="Province/State" [valid]="isValidOrNotTouched('importersAddress.province')"
+                      errorMessage=" Please enter a province/state" [required]="true">
                       <input type="text" formControlName="province" class="form-control">
                     </app-field>
                   </section>
                   <section class="col-md-6 col-xs-12">
-                    <app-field label="Postal Code" [required]="true">
+                    <app-field label="Postal/Zip Code" [valid]="isValidOrNotTouched('importersAddress.postalCode')"
+                      errorMessage="Please enter a postal/zip code" [required]="true">
                       <input type="text" formControlName="postalCode" class="form-control">
                     </app-field>
                   </section>
@@ -267,7 +276,8 @@
             </select>
           </app-field>
 
-          <app-field label="What was the date of purchase?" [required]="true">
+          <app-field label="What was the date of purchase?" [valid]="isValidOrNotTouched('dateOfPurchaseFromImporter')"
+            errorMessage="Please specify a date" [required]="true">
             <input type="text" class="form-control" formControlName="dateOfPurchaseFromImporter" placeholder="yyyy-mm-dd"
               [matDatepicker]="picker4" (focus)="picker4.open()" (click)="picker4.open()" readonly style="width: 170px; background-color: #fff;">
             <mat-datepicker #picker4></mat-datepicker>
@@ -279,7 +289,8 @@
         <section *ngIf="form.get('alternativeOwnershipArrangement').value === true">
           <h3 style="color: #38598A">Alternative Ownership Arrangement</h3>
           <app-field label="What kind of alternative ownership arrangement do you have regarding this piece of Controlled Equipment."
-            (change)="form.updateValueAndValidity()" [required]="true">
+            [valid]="areAltArrangementChecksValid()" errorMessage="Please select an answer to the question above"
+            [required]="true">
             <input type="checkbox" formControlName="possessUntilICanSell" style="margin-right: 10px;"> <span>I am in
               possession of this equipment until I can
               sell it</span> <br>
@@ -293,24 +304,26 @@
             <span>Other (specify)</span> <br>
 
             <section *ngIf="form.get('kindOfAlternateOwnershipOtherCheck').value === true" style="padding-left: 20px">
-              <app-field>
-                <i>If Other, Please specify</i>
+              <app-field [valid]="isValidOrNotTouched('kindOfAlternateOwnershipOther')" errorMessage="Please provide an answer to the question above">
+                <i>If Other, Please specify</i>&nbsp; <strong class="error-states">*</strong>
                 <br>
                 <input type="text" formControlName="kindOfAlternateOwnershipOther" class="form-control" style="width: 340px">
-                <p></p>
-                <hr>
               </app-field>
+              <p></p>
+              <hr>
             </section>
 
             <section *ngIf="form.get('possessUntilICanSell').value === true" style="padding-left: 20px">
-              <app-field label="Are you using this piece of Controlled Equipment to manufacture a product?" [required]="true">
+              <app-field label="Are you using this piece of Controlled Equipment to manufacture a product?" [valid]="isValidOrNotTouched('usingToManufactureAProduct')"
+                errorMessage="Please select yes or no" [showChevrons]="false" [required]="true">
                 <input type="radio" [value]="true" name="usingToManufactureAProduct" formControlName="usingToManufactureAProduct">
                 <span style="padding-right: 10px;">&nbsp;Yes</span>
                 <input type="radio" [value]="false" name="usingToManufactureAProduct" formControlName="usingToManufactureAProduct">
                 <span>&nbsp;No</span>
               </app-field>
 
-              <app-field label="Are you a Registered Seller under the Act?" [required]="true">
+              <app-field label="Are you a Registered Seller under the Act?" [valid]="isValidOrNotTouched('areYouARegisteredSeller')"
+                errorMessage="Please select yes or no" [showChevrons]="false" [required]="true">
                 <input type="radio" [value]="true" name="areYouARegisteredSeller" formControlName="areYouARegisteredSeller">
                 <span style="padding-right: 10px;">&nbsp;Yes</span>
                 <input type="radio" [value]="false" name="areYouARegisteredSeller" formControlName="areYouARegisteredSeller">
@@ -324,6 +337,7 @@
             <section *ngIf="form.get('giveNorLoanedToMe').value === true" style="padding-left: 20px">
 
               <app-field label="Please provide the name of the business that has given or loaned this piece of Controlled Equipment to you."
+                [valid]="isValidOrNotTouched('nameOfBusinessThatHasGivenOrLoaned')" errorMessage="Please provide an answer to the question above"
                 [required]="true">
                 <input type="text" formControlName="nameOfBusinessThatHasGivenOrLoaned" class="form-control">
               </app-field>
@@ -333,11 +347,17 @@
                 <p></p>
                 <div class="row">
                   <section class="col-md-6 col-xs-12">
-                    <app-field label="Street Address 1" [required]="true">
+                    <app-field label="Street Address 1" [valid]="isValidOrNotTouched('addressofBusinessthathasGivenorLoaned.streetLine1')"
+                      errorMessage="Please enter your street address" [required]="true">
                       <input type="text" formControlName="streetLine1" class="form-control">
                     </app-field>
-                    <app-field label="City" [required]="true">
+                    <app-field label="City" [valid]="isValidOrNotTouched('addressofBusinessthathasGivenorLoaned.city')"
+                      errorMessage="Please enter your city or town" [required]="true">
                       <input type="text" formControlName="city" class="form-control">
+                    </app-field>
+                    <app-field label="Country" [valid]="isValidOrNotTouched('addressofBusinessthathasGivenorLoaned.country')"
+                      errorMessage="Please enter your country" [required]="true">
+                      <input type="text" formControlName="country" class="form-control">
                     </app-field>
                   </section>
                   <section class="col-md-6 col-xs-12">
@@ -346,12 +366,14 @@
                     </app-field>
                     <div class="row">
                       <section class="col-md-6 col-xs-12">
-                        <app-field label="Province" [required]="true">
+                        <app-field label="Province/State" [valid]="isValidOrNotTouched('addressofBusinessthathasGivenorLoaned.province')"
+                          errorMessage=" Please enter a province/state" [required]="true">
                           <input type="text" formControlName="province" class="form-control">
                         </app-field>
                       </section>
                       <section class="col-md-6 col-xs-12">
-                        <app-field label="Postal Code" [required]="true">
+                        <app-field label="Postal/Zip Code" [valid]="isValidOrNotTouched('addressofBusinessthathasGivenorLoaned.postalCode')"
+                          errorMessage="Please enter a postal/zip code" [required]="true">
                           <input type="text" formControlName="postalCode" class="form-control">
                         </app-field>
                       </section>
@@ -379,6 +401,7 @@
 
             <section *ngIf="form.get('rentingOrLeasingFromAnotherBusiness').value === true" style="padding-left: 20px">
               <app-field label="Please provide the name of the business that has rented or leased this piece of Controlled Equipment to you."
+                [valid]="isValidOrNotTouched('NameOfBusinessThatHasRentedOrLeased')" errorMessage="Please provide an answer to the question above"
                 [required]="true">
                 <input type="text" formControlName="NameOfBusinessThatHasRentedOrLeased" class="form-control">
               </app-field>
@@ -388,11 +411,17 @@
                 <p></p>
                 <div class="row">
                   <section class="col-md-6 col-xs-12">
-                    <app-field label="Street Address 1" [required]="true">
+                    <app-field label="Street Address 1" [valid]="isValidOrNotTouched('addressOfBusinessThatHasRentedorLeased.streetLine1')"
+                      errorMessage="Please enter your street address" [required]="true">
                       <input type="text" formControlName="streetLine1" class="form-control">
                     </app-field>
-                    <app-field label="City" [required]="true">
+                    <app-field label="City" [valid]="isValidOrNotTouched('addressOfBusinessThatHasRentedorLeased.city')"
+                      errorMessage="Please enter your city or town" [required]="true">
                       <input type="text" formControlName="city" class="form-control">
+                    </app-field>
+                    <app-field label="Country" [valid]="isValidOrNotTouched('addressOfBusinessThatHasRentedorLeased.country')"
+                      errorMessage="Please enter your country" [required]="true">
+                      <input type="text" formControlName="country" class="form-control">
                     </app-field>
                   </section>
                   <section class="col-md-6 col-xs-12">
@@ -401,12 +430,14 @@
                     </app-field>
                     <div class="row">
                       <section class="col-md-6 col-xs-12">
-                        <app-field label="Province" [required]="true">
+                        <app-field label="Province/State" [valid]="isValidOrNotTouched('addressOfBusinessThatHasRentedorLeased.province')"
+                          errorMessage=" Please enter a province/state" [required]="true">
                           <input type="text" formControlName="province" class="form-control">
                         </app-field>
                       </section>
                       <section class="col-md-6 col-xs-12">
-                        <app-field label="Postal Code" [required]="true">
+                        <app-field label="Postal/Zip Code" [valid]="isValidOrNotTouched('addressOfBusinessThatHasRentedorLeased.postalCode')"
+                          errorMessage="Please enter a postal/zip code" [required]="true">
                           <input type="text" formControlName="postalCode" class="form-control">
                         </app-field>
                       </section>
