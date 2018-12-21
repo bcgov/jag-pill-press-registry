@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApplicationDataService } from '../../services/adoxio-application-data.service';
 import { Application } from '../../models/application.model';
 import { EquipmentLocation } from '../../models/equipment-location.model';
+import { idLocale } from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-equipment-location',
@@ -17,11 +18,30 @@ export class EquipmentLocationComponent implements OnInit {
   equipmentId: string;
   busyPromise: Promise<any>;
 
+  locations: EquipmentLocation[] = [
+    // <any>{
+    //   id: '1',
+    //   address: <any>{
+    //     id: '1',
+    //     streetLine1: '880 Douglas',
+    //     streetLine2: 'suite 102',
+    //     city: 'Victoria',
+    //     province: 'British Columbia',
+    //     postalCode: 'V8B 6F1',
+    //   }
+    // }
+  ];
+
   constructor(private route: ActivatedRoute,
     private router: Router,
     private applicationDataService: ApplicationDataService,
     private fb: FormBuilder) {
     this.equipmentId = this.route.snapshot.params.id;
+  }
+
+  updateLocation(event) {
+    const loc = this.locations.filter(i => i.id === event.target.value)[0];
+    this.form.get('equipmentLocation').patchValue(loc);
   }
 
   ngOnInit() {
