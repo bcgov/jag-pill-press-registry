@@ -12,6 +12,7 @@ export class Application {
   title: string;
   applicationtype: string;
   submittedDate: Date;
+  settingDescription: string;
   additionalbusinessinformationaboutseller: string;
   borrowrentleaseequipment: boolean;
   currentlyownusepossessequipment: boolean;
