@@ -550,7 +550,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             if (ca != null)
             {
                 address = ca.ToModel();
-                if (address.IsNullOrEmpty())
+                if (address.HasValue())
                 {
                     if (string.IsNullOrEmpty(ca.Id))
                     {
@@ -588,7 +588,6 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                         }
                     }
                 }
-
             }
 
             return address;
