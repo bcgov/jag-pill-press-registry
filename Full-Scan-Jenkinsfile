@@ -140,39 +140,43 @@ node('master') {
     stage('Build') {        
 		echo "Building Application image..."
 		buildAndVerify(ARTIFACT_BUILD)
+		
+		IMAGE_HASH = getLatestHash(IMAGESTREAM_NAME)
+		echo ">> IMAGE_HASH: ${IMAGE_HASH}"
+	  	  
 		//openshiftBuild bldCfg: 'pill-press', showBuildLogs: 'true'
 		//openshiftTag destStream: 'pill-press', verbose: 'true', destTag: '$BUILD_ID', srcStream: 'pill-press', srcTag: 'latest'
     }
 
 	
-	
-/* Deploying to DEV
-    - backing up latest stable deployment
-    - deploying newly built image
-    - notifying of success or failure
-*/
-stage("Deploy to ${environments.dev.name}") {
-  def environment = environments.dev.tag
-  def stableTag = environments.dev.previousTag
-  node {
-    try {
-      // hold on to a copy of the last stable DEV environment (in case the upcoming deployment fails...)
-      tagLatestStable(environment, stableTag, IMAGESTREAM_NAME)
-      deployAndVerify(IMAGE_HASH, environment, IMAGESTREAM_NAME)
-      // all is good!
-      notifyGood(
-        "New ${APP_NAME} in ${environment} :)",
-        "Changes: ${getChangeString()}"
-      )
-    } catch(error) {
-      notifyError(
-        "Couldn't deploy ${APP_NAME} to ${environment} :(",
-        "Error: '${error.message}'"
-      )
-      throw error
-    }
-  }
-}
+		
+	/* Deploying to DEV
+		- backing up latest stable deployment
+		- deploying newly built image
+		- notifying of success or failure
+	*/
+	stage("Deploy to ${environments.dev.name}") {
+	  def environment = environments.dev.tag
+	  def stableTag = environments.dev.previousTag
+	  node {
+		try {
+		  // hold on to a copy of the last stable DEV environment (in case the upcoming deployment fails...)
+		  tagLatestStable(environment, stableTag, IMAGESTREAM_NAME)
+		  deployAndVerify(IMAGE_HASH, environment, IMAGESTREAM_NAME)
+		  // all is good!
+		  notifyGood(
+			"New ${APP_NAME} in ${environment} :)",
+			"Changes: ${getChangeString()}"
+		  )
+		} catch(error) {
+		  notifyError(
+			"Couldn't deploy ${APP_NAME} to ${environment} :(",
+			"Error: '${error.message}'"
+		  )
+		  throw error
+		}
+	  }
+   }
 }
 
 // ZAP security scan
