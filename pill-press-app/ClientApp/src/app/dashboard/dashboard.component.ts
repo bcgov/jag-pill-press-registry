@@ -140,6 +140,13 @@ export class DashboardComponent implements OnInit {
     );
   }
 
+  showEquipmentTables() {
+    const show = (this.authorizedOwnerApplication && this.authorizedOwnerApplication.statuscode === 'Approved')
+      || (this.waiverApplication && this.waiverApplication.statuscode === 'Approved')
+      || (this.registeredSellerApplication && this.registeredSellerApplication.statuscode === 'Approved');
+    return show;
+  }
+
   addEquipment() {
     const newLicenceApplicationData: Application = <Application>{
       statuscode: 'Draft'
