@@ -21,6 +21,7 @@ export class EquipmentNotificationComponent implements OnInit {
     'location',
     'review'
   ];
+  displayedColumns: string[] = ['equipment', 'status'];
 
   constructor(private route: ActivatedRoute,
     private router: Router,
