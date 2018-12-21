@@ -154,8 +154,9 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     PillpressEncapsulatorSize = (Pillpressencapsulatorsize?)incident.BcgovPillpressencapsulatorsize,
                     PillpressMaxCapacity = incident.BcgovPillpressmaxcapacity,
                     EncapsulatorMaxCapacity = incident.BcgovEncapsulatormaxcapacity,
-                    HowWasEquipmentBuilt = (Howwasequipmentbuilt?)incident.BcgovHowwasequipmentbuilt
+                    HowWasEquipmentBuilt = (Howwasequipmentbuilt?)incident.BcgovHowwasequipmentbuilt,
                     
+                    SettingDescription = incident.BcgovSettingdescription
                 };
 
                 if (incident.BcgovApplicationTypeId != null)
@@ -371,6 +372,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             to.BcgovPillpressmaxcapacity = from.PillpressMaxCapacity;
             to.BcgovEncapsulatormaxcapacity = from.EncapsulatorMaxCapacity;
             to.BcgovHowwasequipmentbuilt = (int?)from.HowWasEquipmentBuilt;
+
+            to.BcgovSettingdescription = from.SettingDescription;
         }
     }
 }
