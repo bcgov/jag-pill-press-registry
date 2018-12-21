@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { Subscription, zip } from 'rxjs';
+import { Subscription, zip, forkJoin } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApplicationDataService } from '../../services/adoxio-application-data.service';
 import { Application } from '../../models/application.model';
 import { EquipmentLocation } from '../../models/equipment-location.model';
 import { idLocale } from 'ngx-bootstrap';
+import { UserDataService } from './../../services/user-data.service';
+import { DynamicsDataService } from './../../services/dynamics-data.service';
 
 @Component({
   selector: 'app-equipment-location',
@@ -35,6 +37,8 @@ export class EquipmentLocationComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private router: Router,
     private applicationDataService: ApplicationDataService,
+    private dynamicsDataService: DynamicsDataService,
+    private userDataService: UserDataService,
     private fb: FormBuilder) {
     this.equipmentId = this.route.snapshot.params.id;
   }
@@ -66,17 +70,34 @@ export class EquipmentLocationComponent implements OnInit {
   }
 
   reloadData() {
-    this.busy = this.applicationDataService.getApplicationById(this.equipmentId)
-      .subscribe((data: Application) => {
-        data.equipmentLocation = data.equipmentLocation || <EquipmentLocation>{ address: {} };
-        this.form.patchValue(data);
-      }, error => {
-        // debugger;
+
+    this.busy = this.userDataService.getCurrentUser()
+      .subscribe((data) => {
+        if (data.accountid != null) {
+          this.busyPromise = forkJoin([
+            this.applicationDataService.getApplicationById(this.equipmentId),
+            this.dynamicsDataService.getRecord(`account/${data.accountid}/locations`, ''),
+          ])
+            .toPromise()
+            .then((result) => {
+              const application = <Application>(result[0]);
+              application.equipmentLocation = application.equipmentLocation || <EquipmentLocation>{ address: {} };
+              this.form.patchValue(application);
+              this.locations = <EquipmentLocation[]>result[1];
+            });
+        }
       });
   }
 
   markAsTouched() {
 
+  }
+
+  tabChanged(event: any) {
+    if (event.tab.textLabel === 'ADD A NEW LOCATION') {
+      this.form.get('equipmentLocation').reset();
+      this.form.get('equipmentLocation.address.provice').setValue('British Columbia');
+    }
   }
 
 
