@@ -65,25 +65,29 @@
             <p></p>
             <div class="row">
               <section class="col-md-6 col-xs-12">
-                <app-field label="Street Address 1" [required]="true">
+                <app-field label="Street Address 1" [valid]="isValidOrNotTouched('equipmentLocation.address.streetLine1')"
+                  errorMessage="Please enter your street address" [required]="true">
                   <input type="text" formControlName="streetLine1" class="form-control">
                 </app-field>
-                <app-field label="City" [required]="true">
+                <app-field label="City" [valid]="isValidOrNotTouched('equipmentLocation.address.city')" errorMessage="Please enter your city or town"
+                  [required]="true">
                   <input type="text" formControlName="city" class="form-control">
                 </app-field>
               </section>
               <section class="col-md-6 col-xs-12">
-                <app-field label="Street Address 2" [required]="false">
+                <app-field label="Street Address 2">
                   <input type="text" formControlName="streetLine2" class="form-control">
                 </app-field>
                 <div class="row">
                   <section class="col-md-6 col-xs-12">
-                    <app-field label="Province" [required]="false">
+                    <app-field label="Province/State" [valid]="isValidOrNotTouched('equipmentLocation.address.province')"
+                      errorMessage=" Please enter a province/state" [required]="true">
                       <input type="text" readonly formControlName="province" class="form-control">
                     </app-field>
                   </section>
                   <section class="col-md-6 col-xs-12">
-                    <app-field label="Postal Code" [required]="true">
+                    <app-field label="Postal/Zip Code" [valid]="isValidOrNotTouched('equipmentLocation.address.postalCode')"
+                      errorMessage="Please enter a postal/zip code" [required]="true">
                       <input type="text" formControlName="postalCode" class="form-control">
                     </app-field>
                   </section>
@@ -100,25 +104,29 @@
         <p></p>
         <div class="row">
           <section class="col-md-6 col-xs-12">
-            <app-field label="Street Address 1" [required]="true">
+            <app-field label="Street Address 1" [valid]="isValidOrNotTouched('equipmentLocation.address.streetLine1')"
+              errorMessage="Please enter your street address" [required]="true">
               <input type="text" formControlName="streetLine1" class="form-control">
             </app-field>
-            <app-field label="City" [required]="true">
+            <app-field label="City" [valid]="isValidOrNotTouched('equipmentLocation.address.city')" errorMessage="Please enter your city or town"
+              [required]="true">
               <input type="text" formControlName="city" class="form-control">
             </app-field>
           </section>
           <section class="col-md-6 col-xs-12">
-            <app-field label="Street Address 2" [required]="false">
+            <app-field label="Street Address 2">
               <input type="text" formControlName="streetLine2" class="form-control">
             </app-field>
             <div class="row">
               <section class="col-md-6 col-xs-12">
-                <app-field label="Province" [required]="false">
+                <app-field label="Province/State" [valid]="isValidOrNotTouched('equipmentLocation.address.province')"
+                  errorMessage=" Please enter a province/state" [required]="true">
                   <input type="text" readonly formControlName="province" class="form-control">
                 </app-field>
               </section>
               <section class="col-md-6 col-xs-12">
-                <app-field label="Postal Code" [required]="true">
+                <app-field label="Postal/Zip Code" [valid]="isValidOrNotTouched('equipmentLocation.address.postalCode')"
+                  errorMessage="Please enter a postal/zip code" [required]="true">
                   <input type="text" formControlName="postalCode" class="form-control">
                 </app-field>
               </section>
@@ -129,13 +137,14 @@
     </div>
 
     <app-field label="Please describe the setting in which this piece of equipment is ordinarily stored (i.e. manufacturing floor, storage room, outbuilding etc.)"
-      [required]="true">
+      [valid]="isValidOrNotTouched('settingDescription')" errorMessage="Please answer the question above"
+      [showChevrons]="false" [required]="true">
       <textarea rows="5" formControlName="settingDescription" maxlength="500" class="form-control"></textarea>
     </app-field>
-
     <div formGroupName="equipmentLocation">
-      <app-field label="Is this piece of equipment ordinarily stored at a private dwelling?" [required]="true">
-        <input type="radio" [value]="true" name="privateDwelling" formControlName="privateDwelling">
+      <app-field label="Is this piece of equipment ordinarily stored at a private dwelling?" [valid]="isValidOrNotTouched('equipmentLocation.privateDwelling')"
+        errorMessage="Please select yes or no" [showChevrons]="false" [required]="true">
+        <input type="radio"  [value]="true" name="privateDwelling" formControlName="privateDwelling">
         <span style="padding-right: 10px;">&nbsp;Yes</span>
         <input type="radio" [value]="false" name="privateDwelling" formControlName="privateDwelling">
         <span>&nbsp;No</span>
