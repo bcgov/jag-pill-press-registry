@@ -399,5 +399,7 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         [JsonProperty(PropertyName = "equipmentLocation")]
         public Location EquipmentLocation { get; set; }
 
+        [JsonProperty(PropertyName = "settingDescription")]
+        public string SettingDescription { get; set; }
     }
 }
