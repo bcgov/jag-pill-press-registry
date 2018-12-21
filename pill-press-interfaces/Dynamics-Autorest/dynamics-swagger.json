@@ -3622,6 +3622,8 @@
                 "bcgov_name desc",
                 "modifiedon",
                 "modifiedon desc",
+                "bcgov_settingdescription",
+                "bcgov_settingdescription desc",
                 "emailaddress",
                 "emailaddress desc",
                 "versionnumber",
@@ -3662,6 +3664,7 @@
                 "_owningbusinessunit_value",
                 "bcgov_name",
                 "modifiedon",
+                "bcgov_settingdescription",
                 "emailaddress",
                 "versionnumber",
                 "createdon",
@@ -3816,6 +3819,7 @@
                 "_owningbusinessunit_value",
                 "bcgov_name",
                 "modifiedon",
+                "bcgov_settingdescription",
                 "emailaddress",
                 "versionnumber",
                 "createdon",
@@ -7830,6 +7834,8 @@
                 "bcgov_withdrawnstatusdate desc",
                 "incidentstagecode",
                 "incidentstagecode desc",
+                "bcgov_settingdescription",
+                "bcgov_settingdescription desc",
                 "_existingcase_value",
                 "_existingcase_value desc",
                 "bcgov_intendtosellothercheck",
@@ -8100,6 +8106,7 @@
                 "bcgov_retailerofcontrolledequipment",
                 "bcgov_withdrawnstatusdate",
                 "incidentstagecode",
+                "bcgov_settingdescription",
                 "_existingcase_value",
                 "bcgov_intendtosellothercheck",
                 "_bcgov_submitter_value",
@@ -8507,6 +8514,7 @@
                 "bcgov_retailerofcontrolledequipment",
                 "bcgov_withdrawnstatusdate",
                 "incidentstagecode",
+                "bcgov_settingdescription",
                 "_existingcase_value",
                 "bcgov_intendtosellothercheck",
                 "_bcgov_submitter_value",
@@ -16702,6 +16710,10 @@
         "modifiedon": {
           "type": "string",
           "format": "date-time"
+        },
+        "bcgov_settingdescription": {
+          "type": "string",
+          "x-nullable": true
         },
         "emailaddress": {
           "type": "string",
@@ -34241,6 +34253,10 @@
         },
         "incidentstagecode": {
           "type": "integer",
+          "x-nullable": true
+        },
+        "bcgov_settingdescription": {
+          "type": "string",
           "x-nullable": true
         },
         "_existingcase_value": {
