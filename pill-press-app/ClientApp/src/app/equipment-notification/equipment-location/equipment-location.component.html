@@ -1,4 +1,4 @@
-<div [ngBusy]="[busy]"></div>
+<div [ngBusy]="[busy, busyPromise]"></div>
 <div [formGroup]="form">
   <h2 class="step">STEP 5</h2>
   <h1 style="margin-top: 0;">Equipment Location</h1>
@@ -12,12 +12,11 @@
         Controlled Equipment.
       </span>
     </div>
-    
-    <mat-tab-group [selectedIndex]="0">
+    <mat-tab-group *ngIf="locations?.length > 0" [selectedIndex]="0" (selectedTabChange)="tabChanged($event)">
       <mat-tab label="CHOOSE EXISTING LOCATION" style="overflow: hidden;">
         <div formGroupName="equipmentLocation">
           <app-field label="If this equipment is stored at a previously added location, please select it from the dropdown list below. ">
-            <select class="form-control"  (change)="updateLocation($event)">
+            <select class="form-control" formControlName="id" (change)="updateLocation($event)">
               <option value="">Choose an existing location</option>
               <option *ngFor="let item of locations" [value]="item.id">
                 <span>{{item?.address?.streetLine1}} </span>
@@ -62,30 +61,33 @@
       </mat-tab>
       <mat-tab label="ADD A NEW LOCATION">
         <div formGroupName="equipmentLocation">
-          <app-field formGroupName="address"
-            [required]="true">
+          <app-field formGroupName="address" [required]="true">
             <p></p>
             <div class="row">
               <section class="col-md-6 col-xs-12">
-                <app-field label="Street Address 1" [required]="true">
+                <app-field label="Street Address 1" [valid]="isValidOrNotTouched('equipmentLocation.address.streetLine1')"
+                  errorMessage="Please enter your street address" [required]="true">
                   <input type="text" formControlName="streetLine1" class="form-control">
                 </app-field>
-                <app-field label="City" [required]="true">
+                <app-field label="City" [valid]="isValidOrNotTouched('equipmentLocation.address.city')" errorMessage="Please enter your city or town"
+                  [required]="true">
                   <input type="text" formControlName="city" class="form-control">
                 </app-field>
               </section>
               <section class="col-md-6 col-xs-12">
-                <app-field label="Street Address 2" [required]="false">
+                <app-field label="Street Address 2">
                   <input type="text" formControlName="streetLine2" class="form-control">
                 </app-field>
                 <div class="row">
                   <section class="col-md-6 col-xs-12">
-                    <app-field label="Province" [required]="false">
+                    <app-field label="Province/State" [valid]="isValidOrNotTouched('equipmentLocation.address.province')"
+                      errorMessage=" Please enter a province/state" [required]="true">
                       <input type="text" readonly formControlName="province" class="form-control">
                     </app-field>
                   </section>
                   <section class="col-md-6 col-xs-12">
-                    <app-field label="Postal Code" [required]="true">
+                    <app-field label="Postal/Zip Code" [valid]="isValidOrNotTouched('equipmentLocation.address.postalCode')"
+                      errorMessage="Please enter a postal/zip code" [required]="true">
                       <input type="text" formControlName="postalCode" class="form-control">
                     </app-field>
                   </section>
@@ -97,30 +99,34 @@
       </mat-tab>
     </mat-tab-group>
     <div formGroupName="equipmentLocation">
-      <app-field *ngIf="false" formGroupName="address" label="Please provide the location where this piece of Controlled Equipment is ordinarily stored."
+      <app-field *ngIf="!(locations?.length > 0)" formGroupName="address" label="Please provide the location where this piece of Controlled Equipment is ordinarily stored."
         [required]="true">
         <p></p>
         <div class="row">
           <section class="col-md-6 col-xs-12">
-            <app-field label="Street Address 1" [required]="true">
+            <app-field label="Street Address 1" [valid]="isValidOrNotTouched('equipmentLocation.address.streetLine1')"
+              errorMessage="Please enter your street address" [required]="true">
               <input type="text" formControlName="streetLine1" class="form-control">
             </app-field>
-            <app-field label="City" [required]="true">
+            <app-field label="City" [valid]="isValidOrNotTouched('equipmentLocation.address.city')" errorMessage="Please enter your city or town"
+              [required]="true">
               <input type="text" formControlName="city" class="form-control">
             </app-field>
           </section>
           <section class="col-md-6 col-xs-12">
-            <app-field label="Street Address 2" [required]="false">
+            <app-field label="Street Address 2">
               <input type="text" formControlName="streetLine2" class="form-control">
             </app-field>
             <div class="row">
               <section class="col-md-6 col-xs-12">
-                <app-field label="Province" [required]="false">
+                <app-field label="Province/State" [valid]="isValidOrNotTouched('equipmentLocation.address.province')"
+                  errorMessage=" Please enter a province/state" [required]="true">
                   <input type="text" readonly formControlName="province" class="form-control">
                 </app-field>
               </section>
               <section class="col-md-6 col-xs-12">
-                <app-field label="Postal Code" [required]="true">
+                <app-field label="Postal/Zip Code" [valid]="isValidOrNotTouched('equipmentLocation.address.postalCode')"
+                  errorMessage="Please enter a postal/zip code" [required]="true">
                   <input type="text" formControlName="postalCode" class="form-control">
                 </app-field>
               </section>
@@ -128,14 +134,17 @@
           </section>
         </div>
       </app-field>
+    </div>
 
-      <app-field label="Please describe the setting in which this piece of equipment is ordinarily stored (i.e. manufacturing floor, storage room, outbuilding etc.)"
-        [required]="true">
-        <textarea rows="5" formControlName="settingDescription" maxlength="500" class="form-control"></textarea>
-      </app-field>
-
-      <app-field label="Is this piece of equipment ordinarily stored at a private dwelling?" [required]="true">
-        <input type="radio" [value]="true" name="privateDwelling" formControlName="privateDwelling">
+    <app-field label="Please describe the setting in which this piece of equipment is ordinarily stored (i.e. manufacturing floor, storage room, outbuilding etc.)"
+      [valid]="isValidOrNotTouched('settingDescription')" errorMessage="Please answer the question above"
+      [showChevrons]="false" [required]="true">
+      <textarea rows="5" formControlName="settingDescription" maxlength="500" class="form-control"></textarea>
+    </app-field>
+    <div formGroupName="equipmentLocation">
+      <app-field label="Is this piece of equipment ordinarily stored at a private dwelling?" [valid]="isValidOrNotTouched('equipmentLocation.privateDwelling')"
+        errorMessage="Please select yes or no" [showChevrons]="false" [required]="true">
+        <input type="radio"  [value]="true" name="privateDwelling" formControlName="privateDwelling">
         <span style="padding-right: 10px;">&nbsp;Yes</span>
         <input type="radio" [value]="false" name="privateDwelling" formControlName="privateDwelling">
         <span>&nbsp;No</span>
