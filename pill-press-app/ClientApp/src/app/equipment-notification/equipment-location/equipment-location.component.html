@@ -16,7 +16,7 @@
       <mat-tab label="CHOOSE EXISTING LOCATION" style="overflow: hidden;">
         <div formGroupName="equipmentLocation">
           <app-field label="If this equipment is stored at a previously added location, please select it from the dropdown list below. ">
-            <select class="form-control" formControlName="id"  (change)="updateLocation($event)">
+            <select class="form-control" formControlName="id" (change)="updateLocation($event)">
               <option value="">Choose an existing location</option>
               <option *ngFor="let item of locations" [value]="item.id">
                 <span>{{item?.address?.streetLine1}} </span>
@@ -61,8 +61,7 @@
       </mat-tab>
       <mat-tab label="ADD A NEW LOCATION">
         <div formGroupName="equipmentLocation">
-          <app-field formGroupName="address"
-            [required]="true">
+          <app-field formGroupName="address" [required]="true">
             <p></p>
             <div class="row">
               <section class="col-md-6 col-xs-12">
@@ -95,8 +94,8 @@
         </div>
       </mat-tab>
     </mat-tab-group>
-    <div  formGroupName="equipmentLocation">
-      <app-field *ngIf="!(locations?.length > 0)"  formGroupName="address" label="Please provide the location where this piece of Controlled Equipment is ordinarily stored."
+    <div formGroupName="equipmentLocation">
+      <app-field *ngIf="!(locations?.length > 0)" formGroupName="address" label="Please provide the location where this piece of Controlled Equipment is ordinarily stored."
         [required]="true">
         <p></p>
         <div class="row">
@@ -127,12 +126,14 @@
           </section>
         </div>
       </app-field>
+    </div>
 
-      <app-field label="Please describe the setting in which this piece of equipment is ordinarily stored (i.e. manufacturing floor, storage room, outbuilding etc.)"
-        [required]="true">
-        <textarea rows="5" formControlName="settingDescription" maxlength="500" class="form-control"></textarea>
-      </app-field>
+    <app-field label="Please describe the setting in which this piece of equipment is ordinarily stored (i.e. manufacturing floor, storage room, outbuilding etc.)"
+      [required]="true">
+      <textarea rows="5" formControlName="settingDescription" maxlength="500" class="form-control"></textarea>
+    </app-field>
 
+    <div formGroupName="equipmentLocation">
       <app-field label="Is this piece of equipment ordinarily stored at a private dwelling?" [required]="true">
         <input type="radio" [value]="true" name="privateDwelling" formControlName="privateDwelling">
         <span style="padding-right: 10px;">&nbsp;Yes</span>

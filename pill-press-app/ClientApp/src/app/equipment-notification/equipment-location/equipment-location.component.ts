@@ -62,8 +62,8 @@ export class EquipmentLocationComponent implements OnInit {
           postalCode: [],
         }),
         privateDwelling: [],
-        settingDescription: [],
       }),
+      settingDescription: [],
     });
 
     this.reloadData();
