@@ -133,9 +133,9 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             }
 
             // get the Application
-            Guid ApplicationId = Guid.Parse(id);
+            Guid applicationId = Guid.Parse(id);
 
-            MicrosoftDynamicsCRMincident application = _dynamicsClient.GetApplicationByIdWithChildren(ApplicationId);
+            MicrosoftDynamicsCRMincident application = _dynamicsClient.GetApplicationByIdWithChildren(applicationId);
             if (application == null)
             {
                 return new NotFoundResult();
@@ -147,6 +147,13 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
 
             // Get the current account
             var account = _dynamicsClient.GetAccountById(Guid.Parse(userSettings.AccountId));
+
+            // verify the current user has access to the given application
+            if (!UserDynamicsExtensions.CurrentUserHasAccessToApplication(applicationId, _httpContextAccessor, _dynamicsClient))
+            {
+                _logger.LogWarning(LoggingEvents.NotFound, "Current user has NO access to the application.");
+                return new NotFoundResult();
+            }
 
             // setup custom addresses.
             var BCSellersAddress = CreateOrUpdateAddress(item.BCSellersAddress);
@@ -252,7 +259,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
 
             try
             {
-                 _dynamicsClient.Incidents.Update(ApplicationId.ToString(), patchApplication);
+                 _dynamicsClient.Incidents.Update(applicationId.ToString(), patchApplication);
             }
             catch (OdataerrorException odee)
             {
@@ -441,7 +448,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
 
             
 
-            application = _dynamicsClient.GetApplicationByIdWithChildren(ApplicationId);
+            application = _dynamicsClient.GetApplicationByIdWithChildren(applicationId);
             return Json(application.ToViewModel());
         }
 
@@ -543,42 +550,47 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             if (ca != null)
             {
                 address = ca.ToModel();
-                if (string.IsNullOrEmpty(ca.Id))
+                if (address.IsNullOrEmpty())
                 {
-                    // create an account.                        
-                    try
+                    if (string.IsNullOrEmpty(ca.Id))
                     {
-                        address = _dynamicsClient.Customaddresses.Create(address);
-                        ca.Id = address.BcgovCustomaddressid;
+                        // create an account.                        
+                        try
+                        {
+                            address = _dynamicsClient.Customaddresses.Create(address);
+                            ca.Id = address.BcgovCustomaddressid;
+                        }
+                        catch (OdataerrorException odee)
+                        {
+                            _logger.LogError(LoggingEvents.Error, "Error creating address");
+                            _logger.LogError("Request:");
+                            _logger.LogError(odee.Request.Content);
+                            _logger.LogError("Response:");
+                            _logger.LogError(odee.Response.Content);
+                            throw new OdataerrorException("Error creating the address");
+                        }
                     }
-                    catch (OdataerrorException odee)
+                    else
                     {
-                        _logger.LogError(LoggingEvents.Error, "Error creating address");
-                        _logger.LogError("Request:");
-                        _logger.LogError(odee.Request.Content);
-                        _logger.LogError("Response:");
-                        _logger.LogError(odee.Response.Content);
-                        throw new OdataerrorException("Error creating the address");
+                        // update
+                        try
+                        {
+                            _dynamicsClient.Customaddresses.Update(ca.Id, address);
+                        }
+                        catch (OdataerrorException odee)
+                        {
+                            _logger.LogError(LoggingEvents.Error, "Error updating address");
+                            _logger.LogError("Request:");
+                            _logger.LogError(odee.Request.Content);
+                            _logger.LogError("Response:");
+                            _logger.LogError(odee.Response.Content);
+                            throw new OdataerrorException("Error updating the address");
+                        }
                     }
                 }
-                else
-                {
-                    // update
-                    try
-                    {
-                        _dynamicsClient.Customaddresses.Update(ca.Id, address);
-                    }
-                    catch (OdataerrorException odee)
-                    {
-                        _logger.LogError(LoggingEvents.Error, "Error updating address");
-                        _logger.LogError("Request:");
-                        _logger.LogError(odee.Request.Content);
-                        _logger.LogError("Response:");
-                        _logger.LogError(odee.Response.Content);
-                        throw new OdataerrorException("Error updating the address");
-                    }
-                }
+
             }
+
             return address;
         }
 
@@ -611,8 +623,6 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             var AddressofBusinessthathasGivenorLoaned = CreateOrUpdateAddress(item.AddressofBusinessthathasGivenorLoaned);
             var AddressofBusinessThatHasRentedorLeased = CreateOrUpdateAddress(item.AddressofBusinessThatHasRentedorLeased);
 
-            
-
             // create a new Application.
             MicrosoftDynamicsCRMincident application = new MicrosoftDynamicsCRMincident();
             application.CopyValues(item);
@@ -637,37 +647,36 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             var account = _dynamicsClient.GetAccountById(Guid.Parse(userSettings.AccountId));
             
             application.CustomerIdAccountODataBind = _dynamicsClient.GetEntityURI("accounts", userSettings.AccountId);
-
+            
             // bind the addresses. 
-            if (BCSellersAddress != null)
+            if (BCSellersAddress.HasValue())
             {
                 application.BCSellersAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", BCSellersAddress.BcgovCustomaddressid);
             }
             
-            if (OutsideBCSellersAddress != null)
+            if (OutsideBCSellersAddress.HasValue())
             {
                 application.OutsideBCSellersAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", OutsideBCSellersAddress.BcgovCustomaddressid);
             }
             
-            if (ImportersAddress != null)
+            if (ImportersAddress.HasValue())
             {
                 application.ImportersAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", ImportersAddress.BcgovCustomaddressid);
             }
             
-            if (OriginatingSellersAddress != null)
+            if (OriginatingSellersAddress.HasValue())
             {
                 application.OriginatingSellersAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", OriginatingSellersAddress.BcgovCustomaddressid);
             }
-            if (AddressofBusinessthathasGivenorLoaned != null)
+            if (AddressofBusinessthathasGivenorLoaned.HasValue())
             {
                 application.AddressofBusinessthathasGivenorLoanedODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", AddressofBusinessthathasGivenorLoaned.BcgovCustomaddressid);
             }
             
-            if (AddressofBusinessThatHasRentedorLeased != null)
+            if (AddressofBusinessThatHasRentedorLeased.HasValue())
             {
                 application.AddressofBusinessThatHasRentedorLeasedODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", AddressofBusinessThatHasRentedorLeased.BcgovCustomaddressid);
             }
-
             
 
             application.Statuscode = (int?) ViewModels.ApplicationStatusCodes.Draft;
