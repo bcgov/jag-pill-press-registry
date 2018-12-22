@@ -77,12 +77,17 @@ li {
 
 .eq-table {
     border-spacing: 1px 5px;
+    border-collapse: separate;
+    width: 100%;
 }
 
 .eq-table td,
 .eq-table th {
     background-color: #F1F4FA;
     color: #000;
+}
+.eq-table th {
+    padding: 10px;
 }
 
 .space-between {
