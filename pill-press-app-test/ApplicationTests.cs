@@ -128,6 +128,107 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
         }
 
         [Fact]
+        public async System.Threading.Tasks.Task VerifyBlankLocationsAndAddressesAreNull()
+        {
+            string initialName = randomNewUserName("Application Initial Name ", 6);
+            string changedName = randomNewUserName("Application Changed Name ", 6);
+            string service = "Application";
+
+            // login as default and get account for current user
+            var loginUser1 = randomNewUserName("TestAccountUser", 6);
+            var strId = await LoginAndRegisterAsNewUser(loginUser1);
+
+            User user = await GetCurrentUser();
+            Account currentAccount = await GetAccountForCurrentUser();
+
+            // C - Create
+            var request = new HttpRequestMessage(HttpMethod.Post, "/api/" + service + "/Waiver");
+
+            Application viewmodel_application = SecurityHelper.CreateNewApplication(currentAccount);
+
+            var jsonString = JsonConvert.SerializeObject(viewmodel_application);
+            request.Content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+
+            var response = await _client.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+
+            // parse as JSON.
+            jsonString = await response.Content.ReadAsStringAsync();
+            Application responseViewModel = JsonConvert.DeserializeObject<Application>(jsonString);
+
+            Assert.Null(responseViewModel.BCSellersAddress);
+            Assert.Null(responseViewModel.EquipmentLocation);
+            Assert.Null(responseViewModel.OriginatingSellersAddress);
+            Assert.Null(responseViewModel.OutsideBCSellersAddress);            
+
+            Guid id = new Guid(responseViewModel.id);
+            //return;
+            // R - Read
+            request = new HttpRequestMessage(HttpMethod.Get, "/api/" + service + "/" + id);
+            response = await _client.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+
+            jsonString = await response.Content.ReadAsStringAsync();
+            responseViewModel = JsonConvert.DeserializeObject<Application>(jsonString);
+
+            Assert.Equal("Testing", responseViewModel.mainbusinessfocus);
+            Assert.Equal("Automated Testing", responseViewModel.manufacturingprocessdescription);
+
+
+            Assert.True(responseViewModel.applicant != null);
+            Assert.Equal(currentAccount.id, responseViewModel.applicant.id);
+
+
+            // U - Update  
+            viewmodel_application = new Application();
+            viewmodel_application.mainbusinessfocus = changedName;
+
+
+            request = new HttpRequestMessage(HttpMethod.Put, "/api/" + service + "/" + id)
+            {
+                Content = new StringContent(JsonConvert.SerializeObject(viewmodel_application), Encoding.UTF8, "application/json")
+            };
+            response = await _client.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+
+            // verify that the update persisted.
+
+            request = new HttpRequestMessage(HttpMethod.Get, "/api/" + service + "/" + id);
+            response = await _client.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+
+            jsonString = await response.Content.ReadAsStringAsync();
+
+            responseViewModel = JsonConvert.DeserializeObject<Application>(jsonString);
+            Assert.Equal(changedName, responseViewModel.mainbusinessfocus);
+            Assert.Null(responseViewModel.BCSellersAddress);
+            Assert.Null(responseViewModel.EquipmentLocation);
+            Assert.Null(responseViewModel.OriginatingSellersAddress);
+            Assert.Null(responseViewModel.OutsideBCSellersAddress);
+
+
+            // D - Delete
+
+            request = new HttpRequestMessage(HttpMethod.Post, "/api/" + service + "/" + id + "/delete");
+            response = await _client.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+
+            // second delete should return a 404.
+            request = new HttpRequestMessage(HttpMethod.Post, "/api/" + service + "/" + id + "/delete");
+            response = await _client.SendAsync(request);
+            Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
+
+            // should get a 404 if we try a get now.
+            request = new HttpRequestMessage(HttpMethod.Get, "/api/" + service + "/" + id);
+            response = await _client.SendAsync(request);
+            Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
+
+            // logout and cleanup (deletes the account and contact created above ^^^)
+            await LogoutAndCleanupTestUser(strId);
+        }
+
+
+        [Fact]
         public async System.Threading.Tasks.Task TestBusinessContactNewContact()
         {
             // login as default and get account for current user
