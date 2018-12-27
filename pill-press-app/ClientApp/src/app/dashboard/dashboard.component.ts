@@ -54,7 +54,7 @@ export class DashboardComponent implements OnInit {
         }
       });
 
-    this.applicationDataService.getApplications()
+    this.busy = this.applicationDataService.getApplications()
       .subscribe((data: Application[]) => {
         const authorizedOwners = data.filter(a => a.applicationtype === 'Authorized Owner');
         if (authorizedOwners.length > 0) {
