@@ -459,86 +459,83 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             if (item != null)
             {
                 location = item.ToModel();
-
-                // handle the address.
-                var address = CreateOrUpdateAddress(item.Address);
-                item.Address = address.ToViewModel();
-
-                if (string.IsNullOrEmpty(item.Id))
+                if (location.HasValue())
                 {
+                    // handle the address.
+                    var address = CreateOrUpdateAddress(item.Address);
+                    item.Address = address.ToViewModel();
+
+                    if (string.IsNullOrEmpty(item.Id))
+                    {
+                        if (address != null)
+                        {
+                            // bind the address.
+                            location.LocationAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", address.BcgovCustomaddressid);
+                        }
+
+                        // bind the current account.
+                        location.BusinessProfileODataBind = _dynamicsClient.GetEntityURI("accounts", accountId);
+                        // create a location                        
+                        try
+                        {
+                            location = _dynamicsClient.Locations.Create(location);
+                            item.Id = location.BcgovLocationid;
+                        }
+                        catch (OdataerrorException odee)
+                        {
+                            _logger.LogError(LoggingEvents.Error, "Error creating location");
+                            _logger.LogError("Request:");
+                            _logger.LogError(odee.Request.Content);
+                            _logger.LogError("Response:");
+                            _logger.LogError(odee.Response.Content);
+                            throw new OdataerrorException("Error creating the location");
+                        }
+                        // now bind the incident to the location.    
+                        try
+                        {
+                            OdataId odataId = new OdataId()
+                            {
+                                OdataIdProperty = _dynamicsClient.GetEntityURI("incidents", incidentId)
+                            };
+
+                            _dynamicsClient.Locations.AddReference(location.BcgovLocationid, "bcgov_location_incident_EquipmentLocation", odataId);
+
+                        }
+                        catch (OdataerrorException odee)
+                        {
+                            _logger.LogError(LoggingEvents.Error, "Error binding location");
+                            _logger.LogError("Request:");
+                            _logger.LogError(odee.Request.Content);
+                            _logger.LogError("Response:");
+                            _logger.LogError(odee.Response.Content);
+                            throw new OdataerrorException("Error binding the location");
+                        }
+
+                    }
+                    else
+                    {
+                        // update
+                        try
+                        {
+                            _dynamicsClient.Locations.Update(item.Id, location);
+                        }
+                        catch (OdataerrorException odee)
+                        {
+                            _logger.LogError(LoggingEvents.Error, "Error updating address");
+                            _logger.LogError("Request:");
+                            _logger.LogError(odee.Request.Content);
+                            _logger.LogError("Response:");
+                            _logger.LogError(odee.Response.Content);
+                            throw new OdataerrorException("Error updating the address");
+                        }
+                    }
                     if (address != null)
                     {
-                        // bind the address.
-                        location.LocationAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", address.BcgovCustomaddressid);
-                    }                    
-
-                    // bind the current account.
-                    location.BusinessProfileODataBind = _dynamicsClient.GetEntityURI("accounts", accountId);
-                    // create a location                        
-                    try
-                    {
-                        location = _dynamicsClient.Locations.Create(location);
-                        item.Id = location.BcgovLocationid;
+                        location.BcgovLocationAddress = address;
                     }
-                    catch (OdataerrorException odee)
-                    {
-                        _logger.LogError(LoggingEvents.Error, "Error creating location");
-                        _logger.LogError("Request:");
-                        _logger.LogError(odee.Request.Content);
-                        _logger.LogError("Response:");
-                        _logger.LogError(odee.Response.Content);
-                        throw new OdataerrorException("Error creating the location");
-                    }
-                    // now bind the incident to the location.    
-                    try
-                    {
-                        OdataId odataId = new OdataId()
-                        {
-                            OdataIdProperty = _dynamicsClient.GetEntityURI("incidents", incidentId)
-                        };
-
-                        _dynamicsClient.Locations.AddReference(location.BcgovLocationid, "bcgov_location_incident_EquipmentLocation", odataId);
-
-                    }
-                    catch (OdataerrorException odee)
-                    {
-                        _logger.LogError(LoggingEvents.Error, "Error binding location");
-                        _logger.LogError("Request:");
-                        _logger.LogError(odee.Request.Content);
-                        _logger.LogError("Response:");
-                        _logger.LogError(odee.Response.Content);
-                        throw new OdataerrorException("Error binding the location");
-                    }
-
-
-
-
-
-                }
-                else
-                {                    
-                    // update
-                    try
-                    {
-                        _dynamicsClient.Locations.Update(item.Id, location);
-                    }
-                    catch (OdataerrorException odee)
-                    {
-                        _logger.LogError(LoggingEvents.Error, "Error updating address");
-                        _logger.LogError("Request:");
-                        _logger.LogError(odee.Request.Content);
-                        _logger.LogError("Response:");
-                        _logger.LogError(odee.Response.Content);
-                        throw new OdataerrorException("Error updating the address");
-                    }
-                    
-                }
-                if (address != null)
-                {
-                    location.BcgovLocationAddress = address;
                 }
             }
-
+        
             return location;
         }
 

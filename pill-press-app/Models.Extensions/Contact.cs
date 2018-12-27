@@ -253,7 +253,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                 result.Lastname = contact.lastName;
                 result.Telephone1 = contact.phoneNumber;
                 result.Telephone2 = contact.phoneNumberAlt;
-                result.Jobtitle = contact.title;
+                result.Jobtitle = contact.title;                
 
                 if (string.IsNullOrEmpty(result.Fullname) && (!string.IsNullOrEmpty(result.Firstname) || !string.IsNullOrEmpty(result.Lastname)))
                 {

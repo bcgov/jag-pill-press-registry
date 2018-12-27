@@ -15,6 +15,12 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         BCeID = 931490002
     }
 
+    public enum OwnerManagerCodes
+    {
+        Owner = 931490000,
+        Manager = 931490001
+    }
+
     public class BusinessContact
     {
         public string id { get; set; }
@@ -27,6 +33,9 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public ContactTypeCodes? contactType { get; set; }
 
         public string jobTitle { get; set; }
+
+        [JsonConverter(typeof(StringEnumConverter))]
+        public OwnerManagerCodes registeredSellerOwnerManager { get; set; }
 
     }
 }
