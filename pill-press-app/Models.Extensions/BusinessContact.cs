@@ -32,7 +32,12 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                 {
                     result.contactType = (ContactTypeCodes) businessContact.BcgovContacttype;
                 }
-                
+
+                if (businessContact.BcgovRegisteredsellerownermanager != null)
+                {
+                    result.registeredSellerOwnerManager = (OwnerManagerCodes)businessContact.BcgovRegisteredsellerownermanager;
+                }
+
                 if (businessContact.BcgovContact != null)
                 {
                     result.contact = businessContact.BcgovContact.ToViewModel();
@@ -51,6 +56,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
         {
             to.BcgovJobtitle = from.jobTitle;
             to.BcgovContacttype = (int?) from.contactType;
+            to.BcgovRegisteredsellerownermanager = (int?)from.registeredSellerOwnerManager;
                         
         }
 
@@ -63,12 +69,14 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                 BcgovContacttype = (int?)from.contactType,
                 ContactODataBind = system.GetEntityURI("contacts", from.contact.id),
                 AccountODataBind = system.GetEntityURI("accounts", from.account.id),
-                BcgovJobtitle = from.jobTitle
+                BcgovJobtitle = from.jobTitle,
+                BcgovRegisteredsellerownermanager = (int?)from.registeredSellerOwnerManager
             };
             if (!string.IsNullOrEmpty(from.id))
             {
                 result.BcgovBusinesscontactid = from.id;
-            }
+            } 
+            
             return result;
         }
             
