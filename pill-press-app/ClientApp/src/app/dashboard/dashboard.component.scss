@@ -27,7 +27,7 @@
     margin-bottom: 20px;
     padding: 30px;
     padding-top: 20px;
-    h2 {
+    h2,a {
         color: #fff;
     }
 }
@@ -86,6 +86,7 @@ li {
     background-color: #F1F4FA;
     color: #000;
 }
+
 .eq-table th {
     padding: 10px;
 }
@@ -95,21 +96,25 @@ li {
     justify-content: space-between;
 }
 
-.user-icon {
-    background-color: #fff;
-    padding: 5px;
-    display: inline-block;
-    border-radius: 30px;
-    margin-left: 20px;
-    float: right;
-    border: 1px solid #eee;
+.user-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h3 {
+        display: inline-block;
+        margin-top: 0
+    }
+    img {
+        height: 50px;
+        width: 50px;
+    }
 }
 
-.user-icon i {
-    color: #38598A;
-    margin-left: 5px;
-    margin-right: 5px;
+.row-reverse {
+    display: flex;
+    flex-direction: row-reverse;
 }
+
 
 ::ng-deep .mat-tab-label {
     background-color: #E1E8F2 !important;
