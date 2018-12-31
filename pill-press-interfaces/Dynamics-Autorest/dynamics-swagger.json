@@ -48405,6 +48405,12 @@
           "items": {
             "$ref": "#/definitions/Microsoft.Dynamics.CRM.duplicaterecord"
           }
+        },
+        "queue_SharePointDocumentLocations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.sharepointdocumentlocation"
+          }
         }
       }
     },
@@ -54299,6 +54305,9 @@
         },
         "regardingobjectid_bcgov_riskassessment": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
+        },
+        "regardingobjectid_queue": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.queue"
         }
       }
     },
