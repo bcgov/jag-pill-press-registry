@@ -45,7 +45,7 @@
               <section *ngIf="isAuthorizedApplicationPending()">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-blue">PENDING</h4>
-                <p>Your application has been submitted.No futher action currently required</p>
+                <p>Your application has been submitted. No further action currently required.</p>
                 <p>
                   <strong>Reference #:&nbsp;</strong>{{authorizedOwnerApplication?.title}}
                 </p>
@@ -101,7 +101,7 @@
               <section *ngIf="waiverApplication?.statuscode === 'Pending'">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-blue">PENDING</h4>
-                <p>Your application has been submitted. No futher action currently required</p>
+                <p>Your application has been submitted. No further action currently required</p>
                 <p>
                   <strong>Application #:&nbsp;</strong> {{waiverApplication?.title}}
                 </p>
@@ -117,7 +117,7 @@
               <section *ngIf="isWaiverOrSellerUnderReview(waiverApplication?.statuscode)">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-blue">UNDER REVIEW</h4>
-                <p>Your application is currently under review. No futher action currently required</p>
+                <p>Your application is currently under review. No further action currently required</p>
                 <p>
                   <strong>Application #:&nbsp;</strong> {{waiverApplication?.title}}
                 </p>
@@ -137,7 +137,7 @@
               <section *ngIf="waiverApplication?.statuscode === 'Denied'">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-red">DENIED</h4>
-                <p>Your application has been denied. No futher action required.</p>
+                <p>Your application has been denied. No further action required.</p>
                 <button class="btn btn-primary" style="float:right" (click)="startNewWaiverApplication()">APPLY
                   AGAIN</button>
                 <div style="clear: both;"></div>
@@ -153,7 +153,7 @@
               <section *ngIf="waiverApplication?.statuscode === 'Cancelled'">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-red">CANCELLED</h4>
-                <p>Your application has been cancelled. No futher action required</p>
+                <p>Your application has been cancelled. No further action required</p>
                 <button class="btn btn-primary" style="float:right" (click)="startNewWaiverApplication()">APPLY
                   AGAIN</button>
                 <div style="clear: both;"></div>
@@ -198,7 +198,7 @@
               <section *ngIf="registeredSellerApplication?.statuscode === 'Pending'">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-blue">PENDING</h4>
-                <p>Your application has been submitted.No futher action currently required</p>
+                <p>Your application has been submitted. No further action currently required</p>
                 <p>
                   <strong>Application #:&nbsp;</strong> {{registeredSellerApplication?.title}}
                 </p>
@@ -214,7 +214,7 @@
               <section *ngIf="isWaiverOrSellerUnderReview(registeredSellerApplication?.statuscode)">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-blue">UNDER REVIEW</h4>
-                <p>Your application is currently under review. No futher action currently required</p>
+                <p>Your application is currently under review. No further action currently required</p>
                 <p>
                   <strong>Application #:&nbsp;</strong> {{registeredSellerApplication?.title}}
                 </p>
@@ -234,7 +234,7 @@
               <section *ngIf="registeredSellerApplication?.statuscode === 'Denied'">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-red">DENIED</h4>
-                <p>Your application has been denied. No futher action required.</p>
+                <p>Your application has been denied. No further action required.</p>
                 <button class="btn btn-primary" style="float:right" (click)="startNewASellerApplication()">REGISTER
                   NOW</button>
                 <div style="clear: both;"></div>
@@ -250,7 +250,7 @@
               <section *ngIf="registeredSellerApplication?.statuscode === 'Cancelled'">
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-red">CANCELLED</h4>
-                <p>Your application has been cancelled. No futher action required</p>
+                <p>Your application has been cancelled. No further action required</p>
                 <button class="btn btn-primary" style="float:right" (click)="startNewASellerApplication()">REGISTER
                   AGAIN</button>
                 <div style="clear: both;"></div>
