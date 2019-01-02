@@ -180,7 +180,7 @@
             <section style="padding-left: 20px" *ngIf="form.get('drugestablishmentlicence').value === true">
               <app-field label="What is the name of the business that appears on your Drug Establishment Licence (i.e. issued to name)"
                 [required]="true">
-                <input type="text" class="form-control" formControlName="delbusinessname" style="width: 500px">
+                <input type="text" class="form-control" formControlName="delbusinessname" maxlength="100" style="width: 500px">
               </app-field>
               <app-field label="Drug Establishment Licence - Number" errorMessage="Please provide the drug establishment licence number"
                 [valid]="form.get('drugestablishmentlicencenumber').valid || !form.get('drugestablishmentlicencenumber').touched"
@@ -200,7 +200,7 @@
             <section style="padding-left: 20px" *ngIf="form.get('sitelicence').value === true">
               <app-field label="What is the name of the business that appears on your Drug Establishment Licence (i.e. issued to name)"
                 [required]="true">
-                <input type="text" class="form-control" formControlName="sitelicencebusinessname" style="width: 500px">
+                <input type="text" class="form-control" formControlName="sitelicencebusinessname" maxlength="100" style="width: 500px">
               </app-field>
               <app-field label="Drug Establishment Licence - Number" errorMessage="Please provide the site licence number"
                 [valid]="form.get('sitelicencenumber').valid || !form.get('sitelicencenumber').touched" [required]="true">
@@ -222,7 +222,7 @@
               </app-field>
               <app-field label="What is the name of the business that appears on your Drug Establishment Licence (i.e. issued to name)"
                 [required]="true">
-                <input type="text" class="form-control" formControlName="otherlicencebusinessname" style="width: 500px">
+                <input type="text" class="form-control" formControlName="otherlicencebusinessname" maxlength="100" style="width: 500px">
               </app-field>
               <app-field label="Other Licence - Number" errorMessage="Please provide the licence number" [valid]="form.get('otherlicencenumber').valid || !form.get('otherlicencenumber').touched"
                 [required]="true">

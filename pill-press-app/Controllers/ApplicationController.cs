@@ -178,7 +178,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             }
 
             // patch the data bindings
-            if (BCSellersAddress != null && 
+            if (BCSellersAddress.HasValue() && BCSellersAddress.BcgovAddressesId != null && 
                 (application._bcgovBcsellersaddressValue == null || application._bcgovBcsellersaddressValue != BCSellersAddress.BcgovCustomaddressid))
             {
                 if (application._bcgovBcsellersaddressValue != null)
@@ -189,7 +189,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 patchApplication.BCSellersAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", BCSellersAddress.BcgovCustomaddressid);
             }
 
-            if (OutsideBCSellersAddress != null &&
+            if (OutsideBCSellersAddress.HasValue() && OutsideBCSellersAddress.BcgovAddressesId != null &&
                 (application._bcgovOutsidebcsellersaddressValue == null || application._bcgovOutsidebcsellersaddressValue != OutsideBCSellersAddress.BcgovCustomaddressid))
             {
                 if (application._bcgovOutsidebcsellersaddressValue != null)
@@ -200,7 +200,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 patchApplication.OutsideBCSellersAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", OutsideBCSellersAddress.BcgovCustomaddressid);
             }
 
-            if (ImportersAddress != null &&
+            if (ImportersAddress.HasValue() && ImportersAddress.BcgovAddressesId != null &&
                 (application._bcgovImportersaddressValue == null || application._bcgovImportersaddressValue != ImportersAddress.BcgovCustomaddressid))
             {
                 if (application._bcgovImportersaddressValue != null)
@@ -212,7 +212,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 patchApplication.ImportersAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", ImportersAddress.BcgovCustomaddressid);
             }
 
-            if (OriginatingSellersAddress != null &&
+            if (OriginatingSellersAddress.HasValue() && OriginatingSellersAddress.BcgovAddressesId != null &&
                 (application._bcgovOriginatingsellersaddressValue == null || application._bcgovOriginatingsellersaddressValue != OriginatingSellersAddress.BcgovCustomaddressid))
             {
                 if (application._bcgovOriginatingsellersaddressValue != null)
@@ -224,7 +224,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 patchApplication.OriginatingSellersAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", OriginatingSellersAddress.BcgovCustomaddressid);
             }
 
-            if (AddressofBusinessthathasGivenorLoaned != null &&
+            if (AddressofBusinessthathasGivenorLoaned.HasValue() &&
                 (application._bcgovAddressofbusinessthathasgivenorloanedValue == null || application._bcgovAddressofbusinessthathasgivenorloanedValue != AddressofBusinessthathasGivenorLoaned.BcgovCustomaddressid))
             {
                 if (application._bcgovAddressofbusinessthathasgivenorloanedValue != null)
@@ -235,7 +235,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 patchApplication.AddressofBusinessthathasGivenorLoanedODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", AddressofBusinessthathasGivenorLoaned.BcgovCustomaddressid);
             }
 
-            if (AddressofBusinessThatHasRentedorLeased != null &&
+            if (AddressofBusinessThatHasRentedorLeased.HasValue() &&
                 (application._bcgovAddressofbusinessthathasrentedorleasedValue == null || application._bcgovAddressofbusinessthathasrentedorleasedValue != AddressofBusinessThatHasRentedorLeased.BcgovCustomaddressid))
             {
                 if (application._bcgovAddressofbusinessthathasrentedorleasedValue != null)
@@ -246,7 +246,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 patchApplication.AddressofBusinessThatHasRentedorLeasedODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", AddressofBusinessThatHasRentedorLeased.BcgovCustomaddressid);
             }
 
-            if (EquipmentLocation != null &&
+            if (EquipmentLocation.HasValue() &&
                 (application._bcgovEquipmentlocationValue == null || application._bcgovEquipmentlocationValue != EquipmentLocation.BcgovLocationid))
             {
                 if (application._bcgovEquipmentlocationValue != null)
