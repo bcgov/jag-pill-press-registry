@@ -5,4 +5,5 @@ export class BusinessContact {
   jobTitle: string;
   contactType: string;
   contact: DynamicsContact;
+  registeredSellerOwnerManager: string;
 }
