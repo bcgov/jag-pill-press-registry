@@ -24,7 +24,5 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
 
         public string email { get; set; }
 
-        public bool? registeredSellerOwnerManager { get; set; }
-
     }
 }
