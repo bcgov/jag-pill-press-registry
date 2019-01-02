@@ -153,6 +153,7 @@
           <tr>
             <th>FIRST NAME</th>
             <th>LAST NAME</th>
+            <th>TYPE</th>
             <th>TITLE/POSITION</th>
             <th>CONTACT DETAILS</th>
             <th style="background-color: transparent; width: 50px"></th>
@@ -160,9 +161,12 @@
           <tr *ngFor="let item of ownersAndManagers; let i = index;" [ngClass]="{cssClass: expression}">
             <td [ngClass]="{'row-alt': i%2 == 0}">{{item?.contact?.firstName}}</td>
             <td [ngClass]="{'row-alt': i%2 == 0}">{{item?.contact?.lastName}}</td>
+            <td [ngClass]="{'row-alt': i%2 == 0}">{{item.registeredSellerOwnerManager}}</td>
             <td [ngClass]="{'row-alt': i%2 == 0}">{{item.jobTitle}}</td>
-            <td [ngClass]="{'row-alt': i%2 == 0}">Phone: {{item?.contact?.phoneNumber}} <br>
-              Email: {{item?.contact?.email}}</td>
+            <td [ngClass]="{'row-alt': i%2 == 0}">
+              Phone: {{item?.contact?.phoneNumber}} <br>
+              Email: {{item?.contact?.email}}
+            </td>
             <td [ngClass]="{'row-alt': i%2 == 0}">
               <i class="fas fa-pencil-alt" style="cursor: pointer; margin-right: 10px;" (click)="addEditOwner(item)"></i>
               <i class="fas fa-trash-alt" style="cursor: pointer;" (click)="deleteOwnerOrManager(item)"></i>
