@@ -755,7 +755,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             return Json(application.ToViewModel());
         }
 
-        [HttpPost("{id}/download-certificate")]
+        [HttpGet("{id}/download-certificate")]
         public async Task<IActionResult> DownloadCertificate(string id)
         {
             _logger.LogDebug(LoggingEvents.HttpPost, "Begin method " + this.GetType().Name + "." + MethodBase.GetCurrentMethod().ReflectedType.Name);
@@ -800,7 +800,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     break;
             }
            
-            string serverRelativeUrl = _sharePointFileManager.GetServerRelativeURL(SharePointFileManager.ApplicationDocumentListTitle, application.GetApplicationFolderName()) + "/{applicationTypeName}{application.title}.pdf";
+            string serverRelativeUrl = _sharePointFileManager.GetServerRelativeURL(SharePointFileManager.ApplicationDocumentListTitle, application.GetApplicationFolderName()) + $"/{applicationTypeName}{application.Title}.pdf";
 
             try
             {
