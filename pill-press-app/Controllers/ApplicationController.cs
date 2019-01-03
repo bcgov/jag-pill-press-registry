@@ -800,7 +800,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     break;
             }
            
-            string serverRelativeUrl = _sharePointFileManager.GetServerRelativeURL(SharePointFileManager.ApplicationDocumentListTitle, application.GetApplicationFolderName()) + $"/{applicationTypeName}{application.Title}.pdf";
+            string serverRelativeUrl = "/sites/" + _sharePointFileManager.WebName + "/" + _sharePointFileManager.GetServerRelativeURL(SharePointFileManager.ApplicationDocumentListTitle, application.GetApplicationFolderName()) + $"/{filePrefix}{application.Title}.pdf";
 
             try
             {
