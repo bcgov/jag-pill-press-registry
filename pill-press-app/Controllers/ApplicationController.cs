@@ -25,14 +25,17 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ILogger _logger;
         private readonly IHostingEnvironment _env;
+        private readonly SharePointFileManager _sharePointFileManager;
 
-        public ApplicationController(IConfiguration configuration, IDynamicsClient dynamicsClient, IHttpContextAccessor httpContextAccessor, ILoggerFactory loggerFactory, IHostingEnvironment env)
+        public ApplicationController(SharePointFileManager sharePointFileManager, IConfiguration configuration, IDynamicsClient dynamicsClient, IHttpContextAccessor httpContextAccessor, ILoggerFactory loggerFactory, IHostingEnvironment env)
         {
             Configuration = configuration;
             _dynamicsClient = dynamicsClient;
+            _env = env;
             _httpContextAccessor = httpContextAccessor;
             _logger = loggerFactory.CreateLogger(typeof(ApplicationController));
-            this._env = env;
+            _sharePointFileManager = sharePointFileManager;
+            
         }
 
 
@@ -54,7 +57,19 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 
                 if (application != null)
                 {
-                    result = application.ToViewModel();
+                    // verify the currently logged in user has access to this account
+                    Guid applicationId = Guid.Parse(id);
+
+                    if (!UserDynamicsExtensions.CurrentUserHasAccessToApplication(applicationId, _httpContextAccessor, _dynamicsClient))
+                    {
+                        _logger.LogWarning(LoggingEvents.NotFound, "Current user has NO access to the application.");
+                        return new NotFoundResult();
+                    }
+                    else
+                    {
+                        result = application.ToViewModel();
+                    }
+                    
                 }
                 else
                 {
@@ -737,6 +752,68 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             application = _dynamicsClient.GetApplicationByIdWithChildren(applicationId);
 
             return Json(application.ToViewModel());
+        }
+
+        [HttpPost("{id}/download-certificate")]
+        public async Task<IActionResult> DownloadCertificate(string id)
+        {
+            _logger.LogDebug(LoggingEvents.HttpPost, "Begin method " + this.GetType().Name + "." + MethodBase.GetCurrentMethod().ReflectedType.Name);
+
+            // verify the currently logged in user has access to this account
+            Guid applicationId = Guid.Parse(id);
+
+            MicrosoftDynamicsCRMincident application = _dynamicsClient.GetApplicationByIdWithChildren(applicationId);
+            if (application == null)
+            {
+                _logger.LogWarning(LoggingEvents.NotFound, "Application NOT found.");
+                return new NotFoundResult();
+            }
+
+            if (!UserDynamicsExtensions.CurrentUserHasAccessToApplication(applicationId, _httpContextAccessor, _dynamicsClient))
+            {
+                _logger.LogWarning(LoggingEvents.NotFound, "Current user has NO access to the application.");
+                return new NotFoundResult();
+            }
+
+            string applicationTypeName = application.BcgovApplicationTypeId.BcgovName;
+            string filePrefix = "";
+
+            /*             
+             * File name format is
+             * WA_CERTIFICATE_<CERTIFICATE_NUMBER> (for Waiver)
+             * RS_CERTIFICATE_<CERTIFICATE_NUMBER> (for Registered Seller)
+             * EC_CERTIFICATE_<CERTIFICATE_NUMBER> (For Equipment Notification)
+             * 
+             */
+
+            switch (applicationTypeName)
+            {
+                case "Waiver":
+                    filePrefix = "WA_CERTIFICATE_";
+                    break;
+                case "Registered Seller":
+                    filePrefix = "RS_CERTIFICATE_";
+                    break;
+                case "Equipment Notification":
+                    filePrefix = "EC_CERTIFICATE_";
+                    break;
+            }
+           
+            string serverRelativeUrl = _sharePointFileManager.GetServerRelativeURL(SharePointFileManager.ApplicationDocumentListTitle, application.GetApplicationFolderName()) + "/{applicationTypeName}{application.title}.pdf";
+
+            try
+            {
+                byte[] fileContents = await _sharePointFileManager.DownloadFile(serverRelativeUrl);
+                return new FileContentResult(fileContents, "application/octet-stream")
+                {
+                };
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(LoggingEvents.HttpGet, "Error downloading certificate for application: ");                
+                _logger.LogError(LoggingEvents.HttpGet, e.Message);
+                return new NotFoundResult();
+            }
         }
 
         /// <summary>
