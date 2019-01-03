@@ -490,7 +490,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 var address = CreateOrUpdateAddress(item.Address);
                 item.Address = address.ToViewModel();
 
-                if (location.HasValue())
+                // There are cases where only the child address has a value
+                if (location != null && (location.HasValue() || address.HasValue()))
                 {                    
                     if (string.IsNullOrEmpty(item.Id))
                     {
