@@ -177,6 +177,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             var OriginatingSellersAddress = CreateOrUpdateAddress(item.OriginatingSellersAddress);
             var AddressofBusinessthathasGivenorLoaned = CreateOrUpdateAddress(item.AddressofBusinessthathasGivenorLoaned);
             var AddressofBusinessThatHasRentedorLeased = CreateOrUpdateAddress(item.AddressofBusinessThatHasRentedorLeased);
+            var AddressofPersonBusiness = CreateOrUpdateAddress(item.AddressofPersonBusiness);
 
             var EquipmentLocation = CreateOrUpdateLocation(id, item.EquipmentLocation, userSettings.AccountId);
 
@@ -193,7 +194,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             }
 
             // patch the data bindings
-            if (BCSellersAddress.HasValue() && BCSellersAddress.BcgovAddressesId != null && 
+            if (BCSellersAddress.HasValue() && BCSellersAddress.BcgovCustomaddressid != null && 
                 (application._bcgovBcsellersaddressValue == null || application._bcgovBcsellersaddressValue != BCSellersAddress.BcgovCustomaddressid))
             {
                 if (application._bcgovBcsellersaddressValue != null)
@@ -204,7 +205,18 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 patchApplication.BCSellersAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", BCSellersAddress.BcgovCustomaddressid);
             }
 
-            if (OutsideBCSellersAddress.HasValue() && OutsideBCSellersAddress.BcgovAddressesId != null &&
+            if (AddressofPersonBusiness.HasValue() && AddressofPersonBusiness.BcgovCustomaddressid != null && 
+                (application._bcgovAddressofpersonbusinessValue == null || application._bcgovAddressofpersonbusinessValue != AddressofPersonBusiness.BcgovCustomaddressid))
+            {
+                if (application._bcgovAddressofpersonbusinessValue != null)
+                {
+                    // delete an existing reference.
+                    _dynamicsClient.Incidents.RemoveReference(id, "bcgov_AddressofPersonBusiness", null);
+                }
+                patchApplication.AddressofPersonBusinessODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", AddressofPersonBusiness.BcgovCustomaddressid);
+            }
+
+            if (OutsideBCSellersAddress.HasValue() && OutsideBCSellersAddress.BcgovCustomaddressid != null &&
                 (application._bcgovOutsidebcsellersaddressValue == null || application._bcgovOutsidebcsellersaddressValue != OutsideBCSellersAddress.BcgovCustomaddressid))
             {
                 if (application._bcgovOutsidebcsellersaddressValue != null)
@@ -215,7 +227,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 patchApplication.OutsideBCSellersAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", OutsideBCSellersAddress.BcgovCustomaddressid);
             }
 
-            if (ImportersAddress.HasValue() && ImportersAddress.BcgovAddressesId != null &&
+            if (ImportersAddress.HasValue() && ImportersAddress.BcgovCustomaddressid != null &&
                 (application._bcgovImportersaddressValue == null || application._bcgovImportersaddressValue != ImportersAddress.BcgovCustomaddressid))
             {
                 if (application._bcgovImportersaddressValue != null)
@@ -227,7 +239,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 patchApplication.ImportersAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", ImportersAddress.BcgovCustomaddressid);
             }
 
-            if (OriginatingSellersAddress.HasValue() && OriginatingSellersAddress.BcgovAddressesId != null &&
+            if (OriginatingSellersAddress.HasValue() && OriginatingSellersAddress.BcgovCustomaddressid != null &&
                 (application._bcgovOriginatingsellersaddressValue == null || application._bcgovOriginatingsellersaddressValue != OriginatingSellersAddress.BcgovCustomaddressid))
             {
                 if (application._bcgovOriginatingsellersaddressValue != null)
@@ -633,6 +645,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             var OriginatingSellersAddress = CreateOrUpdateAddress(item.OriginatingSellersAddress);
             var AddressofBusinessthathasGivenorLoaned = CreateOrUpdateAddress(item.AddressofBusinessthathasGivenorLoaned);
             var AddressofBusinessThatHasRentedorLeased = CreateOrUpdateAddress(item.AddressofBusinessThatHasRentedorLeased);
+            var AddressofPersonBusiness = CreateOrUpdateAddress(item.AddressofPersonBusiness);
 
             // create a new Application.
             MicrosoftDynamicsCRMincident application = new MicrosoftDynamicsCRMincident();
@@ -687,6 +700,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             if (AddressofBusinessThatHasRentedorLeased.HasValue())
             {
                 application.AddressofBusinessThatHasRentedorLeasedODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", AddressofBusinessThatHasRentedorLeased.BcgovCustomaddressid);
+            }
+            
+            if (AddressofPersonBusiness.HasValue())
+            {
+                application.AddressofPersonBusinessODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", AddressofPersonBusiness.BcgovCustomaddressid);
             }
             
 
