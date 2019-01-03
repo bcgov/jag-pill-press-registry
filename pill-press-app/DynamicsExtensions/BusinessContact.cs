@@ -42,7 +42,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
 
             if (valid)
             {
-                MicrosoftDynamicsCRMbcgovBusinesscontact result = system.GetBusinessContactLink(contactId, accountId);
+                MicrosoftDynamicsCRMbcgovBusinesscontact result = system.GetBusinessContactLink(_logger, contactId, accountId);
 
                 if (result == null)
                 {
@@ -85,18 +85,21 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             }            
         }
 
-        public static MicrosoftDynamicsCRMbcgovBusinesscontact GetBusinessContactLink(this IDynamicsClient system, string contactId, string accountId)
+        public static MicrosoftDynamicsCRMbcgovBusinesscontact GetBusinessContactLink(this IDynamicsClient system, ILogger _logger, string contactId, string accountId)
         {
-            MicrosoftDynamicsCRMbcgovBusinesscontact result = null;
-
+            MicrosoftDynamicsCRMbcgovBusinesscontact result = null;            
             try
             {
-                var businessContact = system.Businesscontacts.Get(filter: $"_bcgov_contact_value eq '{contactId}' and _bcgov_businessprofile_value eq '{accountId}'");
+                var businessContact = system.Businesscontacts.Get(filter: $"_bcgov_contact_value eq {contactId} and _bcgov_businessprofile_value eq {accountId}");
                 result = businessContact.Value.FirstOrDefault();
             }
-            catch (Exception)
+            catch (OdataerrorException odee)
             {
-                result = null;
+                _logger.LogError(LoggingEvents.Error, "Error while getting a business contact.");
+                _logger.LogError("Request:");
+                _logger.LogError(odee.Request.Content);
+                _logger.LogError("Response:");
+                _logger.LogError(odee.Response.Content);
             }
 
             return result;
@@ -135,7 +138,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
 
             try
             {
-                var businessContacts = system.Businesscontacts.Get(filter: $"_bcgov_businessprofile_value eq '{accountId}'");
+                var businessContacts = system.Businesscontacts.Get(filter: $"_bcgov_businessprofile_value eq {accountId}");
                 if (businessContacts.Value != null)
                 {
                     foreach (MicrosoftDynamicsCRMbcgovBusinesscontact businessContact in businessContacts.Value)
@@ -160,8 +163,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                 }
                 
             }
-            catch (Exception)
+            catch (OdataerrorException odee)
             {
+                _logger.LogError(LoggingEvents.Error, "Error while getting business contacts.");
+                _logger.LogError("Request:");
+                _logger.LogError(odee.Request.Content);
+                _logger.LogError("Response:");
+                _logger.LogError(odee.Response.Content);
                 result = false;
             }
 
