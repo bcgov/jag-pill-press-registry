@@ -33,17 +33,6 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
         }
 
         [Fact]
-        public async System.Threading.Tasks.Task TestNullIncidentId()
-        {
-            // Create an equipment notification with a null incidentId.
-            var response = await CreateNewEquipmentNotification(null);
-
-            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
-            var responseMessage = response.Content.ReadAsStringAsync().Result;
-            Assert.Equal("IncidentId missing", responseMessage);
-        }
-
-        [Fact]
         public async System.Threading.Tasks.Task TestCRUD()
         {
             // C - Create
@@ -65,9 +54,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             // parse as JSON.
             jsonString = await response.Content.ReadAsStringAsync();
             ViewModels.Equipment responseViewModel = JsonConvert.DeserializeObject<ViewModels.Equipment>(jsonString);
-
-            // name should match.
-            Assert.Equal(incidentId.ToString(), responseViewModel.incidentId);
+            
             Guid id = new Guid(responseViewModel.Id);
 
             // R - Read

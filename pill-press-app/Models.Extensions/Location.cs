@@ -54,7 +54,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     BcgovLocationid = location.Id,
                     BcgovPrivatedwelling = location.PrivateDwelling,
                     BcgovSettingdescription = location.SettingDescription,
-                };                
+                };    
+                                
             }
             return result;
         }

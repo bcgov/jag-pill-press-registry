@@ -486,12 +486,12 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             if (item != null)
             {
                 location = item.ToModel();
-                if (location.HasValue())
-                {
-                    // handle the address.
-                    var address = CreateOrUpdateAddress(item.Address);
-                    item.Address = address.ToViewModel();
+                // handle the address.
+                var address = CreateOrUpdateAddress(item.Address);
+                item.Address = address.ToViewModel();
 
+                if (location.HasValue())
+                {                    
                     if (string.IsNullOrEmpty(item.Id))
                     {
                         if (address != null)
