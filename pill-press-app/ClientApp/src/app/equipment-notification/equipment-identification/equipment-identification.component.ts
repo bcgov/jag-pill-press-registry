@@ -4,7 +4,8 @@ import { Subscription, zip } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApplicationDataService } from '../../services/adoxio-application-data.service';
 import { Application } from '../../models/application.model';
-import { FormBase } from './../../shared/form-base';
+import { FormBase } from '../../shared/form-base';
+import { postalRegex } from '../../business-information/business-profile/business-profile.component';
 
 @Component({
   selector: 'app-equipment-identification',
@@ -35,23 +36,23 @@ export class EquipmentIdentificationComponent extends FormBase implements OnInit
       equipmentMake: ['', this.requiredSelectChildValidator('howWasEquipmentBuilt', ['Commercially Manufactured'])],
       equipmentModel: ['', this.requiredSelectChildValidator('howWasEquipmentBuilt', ['Commercially Manufactured'])],
       serialNumber: ['', this.requiredSelectChildValidator('howWasEquipmentBuilt', ['Commercially Manufactured'])],
-      howEquipmentBuiltDescription: ['', this.requiredSelectChildValidator('howWasEquipmentBuilt', ['Custom-Built', 'Other'])],
+      howEquipmentBuiltDescription: ['', this.requiredSelectChildValidator('howWasEquipmentBuilt', ['Custom-built', 'Other'])],
       personBusinessThatBuiltEquipment: [''],
-      serialNumberForCustomBuilt: ['', this.requiredSelectChildValidator('howWasEquipmentBuilt', ['Custom-Built', 'Other'])],
+      serialNumberForCustomBuilt: ['', this.requiredSelectChildValidator('howWasEquipmentBuilt', ['Custom-built', 'Other'])],
       customBuiltSerialNumber: ['', this.requiredSelectChildValidator('serialNumberForCustomBuilt', [true])],
       serialNumberKeyPartDescription: [],
       addressofPersonBusiness: this.fb.group({
         id: [],
-        streetLine1: [],
+        streetLine1: ['', Validators.required],
         streetLine2: [],
-        city: [],
+        city: ['', Validators.required],
         province: ['British Columbia'],
-        postalCode: [],
+        postalCode: ['', [Validators.required, Validators.pattern(postalRegex)]],
       })
 
     });
-    this.reloadData();
     this.clearHiddenFields();
+    this.reloadData();
 
   }
 
@@ -59,6 +60,7 @@ export class EquipmentIdentificationComponent extends FormBase implements OnInit
     this.busy = this.applicationDataService.getApplicationById(this.equipmentId)
       .subscribe((data: Application) => {
         this.form.patchValue(data);
+        this.form.get('addressofPersonBusiness.province').setValue('British Columbia');
       }, error => {
         // debugger;
       });
@@ -69,6 +71,7 @@ export class EquipmentIdentificationComponent extends FormBase implements OnInit
       .subscribe(() => {
         for (const field in this.form.controls) {
           if (field !== 'id'
+          && field !== 'province'
             && field !== 'howWasEquipmentBuilt') {
             this.form.get(field).reset();
           }
@@ -77,8 +80,10 @@ export class EquipmentIdentificationComponent extends FormBase implements OnInit
   }
 
   save(goToReview: boolean) {
+    this.form.get('addressofPersonBusiness.province').setValue('British Columbia');
     if (this.form.valid || goToReview === false) {
       const value = this.form.value;
+      value.addressofPersonBusiness.country = 'Canada';
       const saveList = [this.applicationDataService.updateApplication(value)];
       this.busyPromise = zip(...saveList)
         .toPromise()
