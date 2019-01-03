@@ -303,6 +303,9 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
 
         [JsonProperty(PropertyName = "importersAddress")]
         public ViewModels.CustomAddress ImportersAddress { get; set; }
+        
+        [JsonProperty(PropertyName = "addressofPersonBusiness")]
+        public ViewModels.CustomAddress AddressofPersonBusiness { get; set; }
 
         [JsonProperty(PropertyName = "importersRegistrationNumber")]
         public string ImportersRegistrationNumber { get; set; }

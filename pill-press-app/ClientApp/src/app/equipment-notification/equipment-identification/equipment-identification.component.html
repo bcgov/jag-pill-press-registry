@@ -11,7 +11,7 @@
         <select class="form-control" formControlName="howWasEquipmentBuilt" style="width: 300px;">
           <option value="">Please select an option</option>
           <option value="Commercially Manufactured">Commercially Manufactured</option>
-          <option value="Custom-Built">Custom Built (i.e. built out of spare parts)</option>
+          <option value="Custom-built">Custom Built (i.e. built out of spare parts)</option>
           <option value="Other">Other</option>
         </select>
       </app-field>
@@ -39,7 +39,7 @@
 
       </section>
 
-      <section *ngIf="form.get('howWasEquipmentBuilt').value === 'Custom-Built' || form.get('howWasEquipmentBuilt').value === 'Other'">
+      <section *ngIf="form.get('howWasEquipmentBuilt').value === 'Custom-built' || form.get('howWasEquipmentBuilt').value === 'Other'">
         <app-field label="Please describe how this piece of Controlled Equipment was built." [valid]="form.get('howEquipmentBuiltDescription').valid || !form.get('howEquipmentBuiltDescription').touched"
           errorMessage="Please provide an answer to the question above" [showChevrons]="false" [required]="true">
           <textarea rows="5" formControlName="howEquipmentBuiltDescription" class="form-control" maxlength="1000"></textarea>
@@ -54,25 +54,28 @@
           <p></p>
           <div class="row">
             <section class="col-md-6 col-xs-12">
-              <app-field label="Street Address 1" [required]="true">
+              <app-field label="Street Address 1" [valid]="form.get('addressofPersonBusiness.streetLine1').valid || !form.get('addressofPersonBusiness.streetLine1').touched"
+                errorMessage="Please enter your street address" [required]="true">
                 <input type="text" formControlName="streetLine1" class="form-control">
               </app-field>
-              <app-field label="City" [required]="true">
+              <app-field label="City" [valid]="form.get('addressofPersonBusiness.city').valid || !form.get('addressofPersonBusiness.city').touched"
+                errorMessage="Please enter your city or town" [required]="true">
                 <input type="text" formControlName="city" class="form-control">
               </app-field>
             </section>
             <section class="col-md-6 col-xs-12">
-              <app-field label="Street Address 2" [required]="false">
+              <app-field label="Street Address 2">
                 <input type="text" formControlName="streetLine2" class="form-control">
               </app-field>
               <div class="row">
                 <section class="col-md-6 col-xs-12">
-                  <app-field label="Province" [required]="false">
-                    <input type="text" readonly formControlName="province" class="form-control">
+                  <app-field label="Province">
+                    <input type="text" formControlName="province" readonly class="form-control">
                   </app-field>
                 </section>
                 <section class="col-md-6 col-xs-12">
-                  <app-field label="Postal Code" [required]="true">
+                  <app-field label="Postal Code" [valid]="form.get('addressofPersonBusiness.postalCode').valid || !form.get('addressofPersonBusiness.postalCode').touched"
+                    errorMessage="Please enter a postal code" [required]="true">
                     <input type="text" formControlName="postalCode" class="form-control">
                   </app-field>
                 </section>

@@ -78,7 +78,7 @@ export class FormBase {
             if (!parentIsChecked) {
                 return null;
             }
-            return control.value ? null : { 'required': { value: control.value } };
+            return control.value !== null ? null : { 'required': { value: control.value } };
         };
     }
 
