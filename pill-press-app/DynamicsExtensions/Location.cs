@@ -20,7 +20,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             bool result = true;
             if (location != null)
             {
-                if (!string.IsNullOrEmpty(location.BcgovSettingdescription))
+                if (!string.IsNullOrEmpty(location.BcgovSettingdescription) || location.BcgovLocationAddress.HasValue())
                 {
                     result = false;
                 }
