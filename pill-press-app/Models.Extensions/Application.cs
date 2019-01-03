@@ -207,6 +207,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     result.ImportersAddress = incident.BcgovImportersAddress.ToViewModel();
                 }
 
+                if (incident?.BcgovAddressofPersonBusiness != null)
+                {
+                    result.AddressofPersonBusiness = incident.BcgovAddressofPersonBusiness.ToViewModel();
+                }
+
                 if (incident?.BcgovOriginatingSellersAddress != null)
                 {
                     result.OriginatingSellersAddress = incident.BcgovOriginatingSellersAddress.ToViewModel();
