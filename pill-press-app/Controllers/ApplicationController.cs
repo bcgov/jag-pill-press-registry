@@ -486,12 +486,13 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             if (item != null)
             {
                 location = item.ToModel();
-                if (location.HasValue())
-                {
-                    // handle the address.
-                    var address = CreateOrUpdateAddress(item.Address);
-                    item.Address = address.ToViewModel();
+                // handle the address.
+                var address = CreateOrUpdateAddress(item.Address);
+                item.Address = address.ToViewModel();
 
+                // There are cases where only the child address has a value
+                if (location != null && (location.HasValue() || address.HasValue()))
+                {                    
                     if (string.IsNullOrEmpty(item.Id))
                     {
                         if (address != null)
@@ -578,7 +579,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 {
                     if (string.IsNullOrEmpty(ca.Id))
                     {
-                        // create an account.                        
+                        // create an address.                        
                         try
                         {
                             address = _dynamicsClient.Customaddresses.Create(address);
