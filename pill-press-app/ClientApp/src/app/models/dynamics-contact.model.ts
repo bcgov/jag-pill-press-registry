@@ -6,5 +6,4 @@ export class DynamicsContact {
   phoneNumber: string;
   phoneNumberAlt: string;
   email: string;
-  isOwner: boolean;
 }
