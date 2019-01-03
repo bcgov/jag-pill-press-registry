@@ -39,7 +39,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                 {
                     "bcgov_ApplicationTypeId","bcgov_incident_customproduct_RelatedApplication","customerid_account","bcgov_incident_businesscontact",
                     "bcgov_BCSellersAddress","bcgov_OutsideBCSellersAddress","bcgov_ImportersAddress","bcgov_OriginatingSellersAddress",
-                    "bcgov_AddressofBusinessthathasGivenorLoaned","bcgov_AddressofBusinessthathasRentedorLeased","bcgov_EquipmentLocation"        
+                    "bcgov_AddressofBusinessthathasGivenorLoaned","bcgov_AddressofBusinessthathasRentedorLeased","bcgov_EquipmentLocation", "bcgov_AddressofPersonBusiness"
                 };
                 // fetch from Dynamics.
                 result = system.Incidents.GetByKey(incidentid: id, expand: expand);
