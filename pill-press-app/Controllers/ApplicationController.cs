@@ -566,7 +566,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 {
                     if (string.IsNullOrEmpty(ca.Id))
                     {
-                        // create an account.                        
+                        // create an address.                        
                         try
                         {
                             address = _dynamicsClient.Customaddresses.Create(address);
