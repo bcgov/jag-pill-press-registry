@@ -36,13 +36,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             _logger = loggerFactory.CreateLogger(typeof(FileController));
         }
 
-        private string GetApplicationFolderName(MicrosoftDynamicsCRMincident application)
-        {
-
-            string applicationIdCleaned = application.Incidentid.ToString().ToUpper().Replace("-", "");
-            string folderName = $"{application.Title}_{applicationIdCleaned}";
-            return folderName;
-        }
+        
 
         private string GetContactFolderName(MicrosoftDynamicsCRMcontact contact)
         {
@@ -191,7 +185,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     break;
                 case "incident":
                     var incident =  _dynamicsClient.GetApplicationById(Guid.Parse(entityId));
-                    folderName = GetApplicationFolderName(incident);
+                    folderName = incident.GetApplicationFolderName();
                     break;
                 default:
                     break;
@@ -380,9 +374,6 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     break;
                 case "contact":
                     listTitle = SharePointFileManager.ContactDocumentListTitle;
-                    break;
-                case "worker":
-                    listTitle = SharePointFileManager.WorkertDocumentListTitle;
                     break;
                 default:
                     break;
