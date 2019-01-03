@@ -7,7 +7,15 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
 {
     public static class ApplicationDynamicsExtensions
     {
-        
+
+        public static string GetApplicationFolderName(this MicrosoftDynamicsCRMincident application)
+        {
+
+            string applicationIdCleaned = application.Incidentid.ToString().ToUpper().Replace("-", "");
+            string folderName = $"{application.Title}_{applicationIdCleaned}";
+            return folderName;
+        }
+
         public static MicrosoftDynamicsCRMincident GetApplicationById(this IDynamicsClient system, Guid id)
         {
             MicrosoftDynamicsCRMincident result;
