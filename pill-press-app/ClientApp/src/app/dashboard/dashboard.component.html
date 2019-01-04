@@ -333,7 +333,7 @@
                           <i class="fa fa-exclamation-circle" style="color: #003366; margin-right: 10px;"></i>Complete
                           Application</a>
                       </section>
-                      <section *ngIf="item.statuscode === 'Pending'">
+                      <section *ngIf="item.statuscode !== 'Draft'">
                         <a href="javascript: void(0);" routerLink="/equipment-notification/profile-review/{{item.id}}">
                           <i class="fa fa-eye" style="color: #003366; margin-right: 10px;"></i>View Submission</a>
                       </section>

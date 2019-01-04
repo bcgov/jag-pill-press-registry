@@ -95,8 +95,10 @@
             <mat-datepicker #picker2></mat-datepicker>
           </app-field>
 
-          <app-field label="Please provide the BC Seller's registration number." [valid]="form.get('bcSellersRegistrationNumber').valid || !form.get('bcSellersRegistrationNumber').touched"
-            errorMessage="Please specify the BC Seller's registration number" [required]="true">
+          <app-field  [valid]="form.get('bcSellersRegistrationNumber').valid || !form.get('bcSellersRegistrationNumber').touched"
+            errorMessage="Please specify the BC Seller's registration number">
+            <span>Please provide the <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/definition#rscn"
+                target="blank">BC Seller's registration number</a>. </span> <strong class="error-states">*</strong>
             <input type="text" formControlName="bcSellersRegistrationNumber" class="form-control" style="width: 250px;">
           </app-field>
           <p></p>
