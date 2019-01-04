@@ -86,14 +86,14 @@
   </table>
 
   <h3 class="blue-header">Owner/Manager Information</h3>
-  <table>
+  <table >
     <tr>
       <td class="table-row">
         <strong>Business owners and managers listed in this application:</strong>
       </td>
     </tr>
   </table>
-  <table>
+  <table class="summary-table">
     <tr>
       <th>FIRST NAME</th>
       <th>LAST NAME</th>
@@ -111,7 +111,9 @@
   <h3 class="blue-header">DECLARATION AND CONSENT</h3>
   <div [formGroup]="form" class="padded-section">
     <section style="display: flex">
-      <input type="checkbox" style="flex: 0 0 20px" formControlName="declarationOfCorrectInformation">
+      <section style="flex: 0 0 20px">
+        <input type="checkbox"  formControlName="declarationOfCorrectInformation">
+      </section>
       <span>I certify that, to the best of my knowledge, the information I have provided on my Registered Seller
         application and will provide as necessary is complete, honest, and accurate. I understand that a false
         statement or omission of facts herein may lead to the a denial of a registration being granted. I am also
