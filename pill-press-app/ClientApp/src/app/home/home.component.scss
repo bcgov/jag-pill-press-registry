@@ -20,19 +20,21 @@ p {
 }
 
 .home-header-wrapper {
-    background-color: rgba(242, 242, 242, 1);
+  background-image: url(assets/header-pillpress.jpg);
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-size: cover;
 }
 
 .home-body {
-    background-color: rgba(255, 255, 255, 1);
     padding-top: 60px;
     max-width: 775px;
     display: flex;
 }
 
 .jumbotron {
-    background-color: rgba(242, 242, 242, 1);
-    margin-top: 15px;
+    background-color: #ddd0;
+    padding-top: 100px;
     h2 {
         font-weight: 400;
         font-size: 36px;
@@ -41,7 +43,8 @@ p {
 
 .side-box {
     max-width: 400px;
-    margin-top: 40px;
+    margin-top: 200px;
+    margin-left: 50px;
     margin-bottom: 30px;
     padding: 45px;
     background-color: rgba(56, 89, 138, 1);
@@ -58,6 +61,7 @@ p {
     .btn {
         background-color: #003366;
     }
+    a {color: white}
 }
 
 .side-box-wrapper {
@@ -86,3 +90,4 @@ p {
         padding: 25px;
     }
 }
+
