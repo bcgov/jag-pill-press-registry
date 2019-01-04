@@ -131,7 +131,7 @@
                   <strong>Expiry Date:&nbsp;</strong>11 Dec 2023
                   <br>
                 </p>
-                <a href=""><i class="fa fa-file-pdf" style="color: #38598A; margin-right: 5px;"></i>Download
+                <a href="api/application/{{waiverApplication?.id}}/download-certificate" download><i class="fa fa-file-pdf" style="color: #38598A; margin-right: 5px;"></i>Download
                   Certificate</a>
               </section>
               <section *ngIf="waiverApplication?.statuscode === 'Denied'">
@@ -228,7 +228,7 @@
                   <strong>Expiry Date:&nbsp;</strong>11 Dec 2023
                   <br>
                 </p>
-                <a href=""><i class="fa fa-file-pdf" style="color: #38598A; margin-right: 5px;"></i>Download
+                <a href="api/application/{{registeredSellerApplication?.id}}/download-certificate" download><i class="fa fa-file-pdf" style="color: #38598A; margin-right: 5px;"></i>Download
                   Certificate</a>
               </section>
               <section *ngIf="registeredSellerApplication?.statuscode === 'Denied'">
