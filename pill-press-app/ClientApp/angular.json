@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "lclb_public_app": {
+    "pill-press-app": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -99,7 +99,7 @@
         }
       }
     },
-    "lclb_public_app-e2e": {
+    "pill-press-app-e2e": {
       "root": "e2e",
       "sourceRoot": "e2e",
       "projectType": "application",
