@@ -1,4 +1,4 @@
-﻿/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
 
 /* Controls Survey styles */
 
@@ -21,6 +21,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
     font: MyriadWebPro, Calibri, Arial, "sans serif";
     font-weight: 400;
+    width:98%;
 }
 
 h1, h2, h3 {
@@ -274,4 +275,24 @@ hr {
     h2 {
         color: #fff;
     }
+}
+
+.arrow {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 1.2em;
+  text-indent: -1.2em;
+}
+
+ul.arrow > li:before {
+  content: "►";
+  display: block;
+  float: left;
+  width: 1.2em;
+  color: #fcba19;
+}
+
+.default-ul {
+  list-style: initial;
+  text-indent: initial;
 }
