@@ -16,7 +16,7 @@
 
         <div class="space-between">
           <section style="margin-right: 10px;  flex: 1">
-            <div style="background-color: #F1F4FA; padding: 15px; height: 120px;">
+            <div style="background-color: #F1F4FA; padding: 15px;">
               <section class="user-header">
                 <h3>Authorized Owner</h3>
                 <img alt="" src="assets/icon-pillpress-owner-ao.png">
@@ -30,9 +30,10 @@
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-blue">NO ACTIVE NOTIFICATION</h4>
                 <p>To become a Waiver Holder, please complete and submit an application form.</p>
-                <button class="btn btn-primary" style="float:right" (click)="startNewAuthorizedOwnerApplication()">NOTIFY
-                  US</button>
-                <div style="clear: both;"></div>
+                <div style="display: flex; flex-direction: row-reverse">
+                  <button class="btn btn-primary" (click)="startNewAuthorizedOwnerApplication()">NOTIFY
+                    US</button>
+                </div>
               </section>
               <section *ngIf="authorizedOwnerApplication?.statuscode === 'Draft'">
                 <h4 class="status">STATUS:</h4> &nbsp;
@@ -64,20 +65,21 @@
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-orange">WITHDRAWN</h4>
                 <p>You have withdrawn your application. We will cease all processing activities.</p>
-                <button class="btn btn-primary" style="float:right" (click)="startNewAuthorizedOwnerApplication()">NOTIFY
-                  US AGAIN</button>
-                <div style="clear: both;"></div>
+                <div style="display: flex; flex-direction: row-reverse">
+                  <button class="btn btn-primary" (click)="startNewAuthorizedOwnerApplication()">NOTIFY
+                    US AGAIN</button>
+                </div>
               </section>
             </div>
           </section>
 
           <section style="margin-right: 10px; flex: 1">
-            <div style="background-color: #F1F4FA; padding: 15px; height: 120px;">
+            <div style="background-color: #F1F4FA; padding: 15px;">
               <section class="user-header">
                 <h3>Waiver Holder</h3>
                 <img alt="" src="assets/icon-pillpress-owner-wh.png">
               </section>
-              <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-waiver-holder">Find
+              <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-waiver-holder" target="blank">Find
                 out whether the Waiver Holder category applies to you</a>
 
             </div>
@@ -131,7 +133,8 @@
                   <strong>Expiry Date:&nbsp;</strong>11 Dec 2023
                   <br>
                 </p>
-                <a href="api/application/{{waiverApplication?.id}}/download-certificate" download><i class="fa fa-file-pdf" style="color: #38598A; margin-right: 5px;"></i>Download
+                <a href="api/application/{{waiverApplication?.id}}/download-certificate" download><i class="fa fa-file-pdf"
+                    style="color: #38598A; margin-right: 5px;"></i>Download
                   Certificate</a>
               </section>
               <section *ngIf="waiverApplication?.statuscode === 'Denied'">
@@ -169,12 +172,12 @@
           </section>
 
           <section style=" flex: 1">
-            <div style="background-color: #F1F4FA; padding: 15px; height: 120px;">
+            <div style="background-color: #F1F4FA; padding: 15px;">
               <section class="user-header">
                 <h3>Registered Seller</h3>
                 <img alt="" src="assets/icon-pillpress-owner-rs.png">
               </section>
-              <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-registered-seller">Find
+              <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-registered-seller" target="blank">Find
                 out whether the Registered Seller category applies to you</a>
 
             </div>
@@ -228,7 +231,8 @@
                   <strong>Expiry Date:&nbsp;</strong>11 Dec 2023
                   <br>
                 </p>
-                <a href="api/application/{{registeredSellerApplication?.id}}/download-certificate" download><i class="fa fa-file-pdf" style="color: #38598A; margin-right: 5px;"></i>Download
+                <a href="api/application/{{registeredSellerApplication?.id}}/download-certificate" download><i class="fa fa-file-pdf"
+                    style="color: #38598A; margin-right: 5px;"></i>Download
                   Certificate</a>
               </section>
               <section *ngIf="registeredSellerApplication?.statuscode === 'Denied'">
