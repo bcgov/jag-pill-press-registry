@@ -372,24 +372,26 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 UpdateContacts(item);
 
                 // we are doing a patch, so wipe out the record.
-                account = new MicrosoftDynamicsCRMaccount();
+                MicrosoftDynamicsCRMaccount patchAccount = new MicrosoftDynamicsCRMaccount();
 
                 // copy values over from the data provided
-                account.CopyValues(item);
-                if (item.primaryContact != null && item.primaryContact.id != null)
+                patchAccount.CopyValues(item);
+                if (item.primaryContact != null && item.primaryContact.id != null && 
+                    (account._primarycontactidValue == null || account._primarycontactidValue != item.primaryContact.id))
                 {
-                    account.PrimaryContactidODataBind = _dynamicsClient.GetEntityURI("contacts", item.primaryContact.id);
+                    patchAccount.PrimaryContactidODataBind = _dynamicsClient.GetEntityURI("contacts", item.primaryContact.id);
                 }
                 
-                if (item.additionalContact != null && item.additionalContact.id != null)
+                if (item.additionalContact != null && item.additionalContact.id != null &&
+                    (account._bcgovAdditionalcontactValue == null || account._bcgovAdditionalcontactValue != item.additionalContact.id))
                 {
-                    account.AdditionalContactODataBind = _dynamicsClient.GetEntityURI("contacts", item.additionalContact.id);
+                    patchAccount.AdditionalContactODataBind = _dynamicsClient.GetEntityURI("contacts", item.additionalContact.id);
                 }
                 
 
                 try
                 {
-                    await _dynamicsClient.Accounts.UpdateAsync(accountId.ToString(), account);
+                    await _dynamicsClient.Accounts.UpdateAsync(accountId.ToString(), patchAccount);
                 }
                 catch (OdataerrorException odee)
                 {
@@ -416,9 +418,9 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 
 
                 // populate child items in the account.
-                account = _dynamicsClient.GetAccountById(accountId);
+                patchAccount = _dynamicsClient.GetAccountById(accountId);
 
-                var updatedAccount = account.ToViewModel();
+                var updatedAccount = patchAccount.ToViewModel();
                 _logger.LogDebug(LoggingEvents.HttpPut, "updatedAccount: " +
                     JsonConvert.SerializeObject(updatedAccount, Formatting.Indented, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore }));
 
