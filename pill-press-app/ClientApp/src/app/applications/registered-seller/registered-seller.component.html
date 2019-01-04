@@ -1,43 +1,52 @@
 <div class="form-wrapper" style="position: relative;">
-    <div class="row">
-  
-      <div class="col-lg-8 col-sm-12">
-        <router-outlet></router-outlet>
-      </div>
-  
-      <div class="col-lg-4 col-sm-12">
-        <section class="step" style="display: block; background-color: #F1F4FA">
-          <h3 class="blue-header">REGISTERED SELLER</h3>
-          <section style="padding-top: 15px; padding-bottom: 20px;">
-            <mat-vertical-stepper [linear]="true" (selectionChange)="selectionChange($event)" #stepper>
-              <ng-template matStepperIcon="edit">
-                <mat-icon>done</mat-icon>
-              </ng-template>
-              <ng-template matStepperIcon="number">
-              </ng-template>
-  
-              <mat-step label="STEP 1: Business Profile Review"></mat-step>
-              <mat-step label="STEP 2: Registered Seller Application"></mat-step>
-              <mat-step label="STEP 3: Registered Seller Application Review"></mat-step>
-            </mat-vertical-stepper>
-          </section>
-        </section>
+  <div class="row">
 
-        <p></p>
-        <section class="submit-container">
-          <table>
-            <tr>
-              <td>
-                <h2 class="round-icon-wrapper"><i class="fas fa-address-card"></i></h2>
-              </td>
-              <td style="padding-left: 10px">
-                <h2>Useful Links & Information</h2>
-              </td>
-            </tr>
-          </table>
-          <div class="submit-content">
-          </div>
+    <div class="col-lg-8 col-sm-12">
+      <router-outlet></router-outlet>
+    </div>
+
+    <div class="col-lg-4 col-sm-12">
+      <section class="step" style="display: block; background-color: #F1F4FA">
+        <h3 class="blue-header">REGISTERED SELLER</h3>
+        <section style="padding-top: 15px; padding-bottom: 20px;">
+          <mat-vertical-stepper [linear]="true" (selectionChange)="selectionChange($event)" #stepper>
+            <ng-template matStepperIcon="edit">
+              <mat-icon>done</mat-icon>
+            </ng-template>
+            <ng-template matStepperIcon="number">
+            </ng-template>
+
+            <mat-step label="STEP 1: Business Profile Review"></mat-step>
+            <mat-step label="STEP 2: Registered Seller Application"></mat-step>
+            <mat-step label="STEP 3: Registered Seller Application Review"></mat-step>
+          </mat-vertical-stepper>
         </section>
-      </div>
+      </section>
+
+      <p></p>
+      <section class="submit-container">
+        <table>
+          <tr>
+            <td>
+              <h2 class="round-icon-wrapper"><i class="fas fa-address-card"></i></h2>
+            </td>
+            <td style="padding-left: 10px">
+              <h2>Useful Links & Information</h2>
+            </td>
+          </tr>
+        </table>
+        <div class="submit-content">
+          <p>What you need to know about:</p>
+          <ul>
+            <li><a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-waiver-holder#ap"
+                target="blank">The application process</a></li>
+            <li><a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-controlled-equipment#enp"
+                target="blank">The equipment notification process</a></li>
+            <li><a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-waiver-holder#bts"
+                target="blank"> Obligations and responsibilities of Waiver Holders</a></li>
+          </ul>
+        </div>
+      </section>
     </div>
   </div>
+</div>

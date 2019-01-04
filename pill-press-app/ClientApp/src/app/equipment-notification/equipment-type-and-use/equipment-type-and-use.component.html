@@ -4,7 +4,8 @@
     <h2 class="step">STEP 2</h2>
     <h1 style="margin-top: 0;">Equipment Type and Use</h1>
 
-    <p>Please fill out the following information for one piece of Controlled Equipment at a time until your entire
+    <p>Please fill out the following information for one piece of <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-controlled-equipment"
+        target="blank">Controlled Equipment</a> at a time until your entire
       inventory is listed.</p>
 
     <h3 class="blue-header">EQUIPMENT TYPE AND USE</h3>
@@ -108,7 +109,7 @@
       <section *ngIf="form.get('equipmentType').value === 'Other'">
         <i>If Other, please specify</i> <br>
         <app-field [valid]="form.get('equipmentTypeOther').valid || !form.get('equipmentTypeOther').touched "
-        errorMessage="Please specify what 'other' type of equipment you are registering">
+          errorMessage="Please specify what 'other' type of equipment you are registering">
           <input type="text" formControlName="equipmentTypeOther" class="form-control" style="width: 350px">
         </app-field>
 
