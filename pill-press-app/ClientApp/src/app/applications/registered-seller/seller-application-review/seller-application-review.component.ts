@@ -63,7 +63,7 @@ export class SellerApplicationReviewComponent implements OnInit {
   }
 
   reloadData() {
-    this.applicationDataService.getApplicationById(this.waiverId).subscribe(application => {
+    this.busy = this.applicationDataService.getApplicationById(this.waiverId).subscribe(application => {
       this.form.patchValue(application);
       this.formData = application;
 
