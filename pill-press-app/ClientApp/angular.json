@@ -51,18 +51,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "lclb_public_app:build"
+            "browserTarget": "pill-press-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "lclb_public_app:build:production"
+              "browserTarget": "pill-press-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "lclb_public_app:build"
+            "browserTarget": "pill-press-app:build"
           }
         },
         "test": {
@@ -108,7 +108,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "lclb_public_app:serve"
+            "devServerTarget": "pill-press-app:serve"
           }
         },
         "lint": {
@@ -125,7 +125,7 @@
       }
     }
   },
-  "defaultProject": "lclb_public_app",
+  "defaultProject": "pill-press-app",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
