@@ -20,16 +20,13 @@ p {
 }
 
 .home-header-wrapper {
-  /*background-color: rgba(242, 242, 242, 1);*/
   background-image: url(assets/header-pillpress.jpg);
   background-repeat: no-repeat;
   background-position: left top;
-  background-size: contain;
-  /*height: 500px;*/
+  background-size: cover;
 }
 
 .home-body {
-    /*background-color: rgba(255, 255, 255, 1);*/
     padding-top: 60px;
     max-width: 775px;
     display: flex;
@@ -93,3 +90,4 @@ p {
         padding: 25px;
     }
 }
+
