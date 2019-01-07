@@ -9921,6 +9921,436 @@
         }
       }
     },
+    "/sharepointdocumentlocations": {
+      "get": {
+        "tags": [
+          "sharepointdocumentlocations"
+        ],
+        "summary": "Get entities from sharepointdocumentlocations",
+        "operationId": "Sharepointdocumentlocations_Get",
+        "parameters": [
+          {
+            "name": "$top",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "$skip",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "$search",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "$count",
+            "in": "query",
+            "type": "boolean"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "importsequencenumber",
+                "importsequencenumber desc",
+                "description",
+                "description desc",
+                "_ownerid_value",
+                "_ownerid_value desc",
+                "createdon",
+                "createdon desc",
+                "_owningbusinessunit_value",
+                "_owningbusinessunit_value desc",
+                "modifiedon",
+                "modifiedon desc",
+                "_transactioncurrencyid_value",
+                "_transactioncurrencyid_value desc",
+                "_owninguser_value",
+                "_owninguser_value desc",
+                "absoluteurl",
+                "absoluteurl desc",
+                "name",
+                "name desc",
+                "_createdby_value",
+                "_createdby_value desc",
+                "locationtype",
+                "locationtype desc",
+                "_modifiedonbehalfby_value",
+                "_modifiedonbehalfby_value desc",
+                "_regardingobjectid_value",
+                "_regardingobjectid_value desc",
+                "_parentsiteorlocation_value",
+                "_parentsiteorlocation_value desc",
+                "versionnumber",
+                "versionnumber desc",
+                "timezoneruleversionnumber",
+                "timezoneruleversionnumber desc",
+                "exchangerate",
+                "exchangerate desc",
+                "statecode",
+                "statecode desc",
+                "_owningteam_value",
+                "_owningteam_value desc",
+                "sitecollectionid",
+                "sitecollectionid desc",
+                "utcconversiontimezonecode",
+                "utcconversiontimezonecode desc",
+                "overriddencreatedon",
+                "overriddencreatedon desc",
+                "relativeurl",
+                "relativeurl desc",
+                "userid",
+                "userid desc",
+                "_modifiedby_value",
+                "_modifiedby_value desc",
+                "sharepointdocumentlocationid",
+                "sharepointdocumentlocationid desc",
+                "servicetype",
+                "servicetype desc",
+                "_createdonbehalfby_value",
+                "_createdonbehalfby_value desc",
+                "statuscode",
+                "statuscode desc"
+              ]
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "importsequencenumber",
+                "description",
+                "_ownerid_value",
+                "createdon",
+                "_owningbusinessunit_value",
+                "modifiedon",
+                "_transactioncurrencyid_value",
+                "_owninguser_value",
+                "absoluteurl",
+                "name",
+                "_createdby_value",
+                "locationtype",
+                "_modifiedonbehalfby_value",
+                "_regardingobjectid_value",
+                "_parentsiteorlocation_value",
+                "versionnumber",
+                "timezoneruleversionnumber",
+                "exchangerate",
+                "statecode",
+                "_owningteam_value",
+                "sitecollectionid",
+                "utcconversiontimezonecode",
+                "overriddencreatedon",
+                "relativeurl",
+                "userid",
+                "_modifiedby_value",
+                "sharepointdocumentlocationid",
+                "servicetype",
+                "_createdonbehalfby_value",
+                "statuscode"
+              ]
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "*",
+                "regardingobjectid_knowledgearticle",
+                "owninguser",
+                "owningteam",
+                "ownerid",
+                "owningbusinessunit",
+                "regardingobjectid_account",
+                "regardingobjectid_quote",
+                "regardingobjectid_product",
+                "parentsiteorlocation_sharepointdocumentlocation",
+                "sharepointdocumentlocation_parent_sharepointdocumentlocation",
+                "createdonbehalfby",
+                "modifiedby",
+                "regardingobjectid_lead",
+                "SharePointDocumentLocation_DuplicateBaseRecord",
+                "createdby",
+                "regardingobjectid_salesliterature",
+                "regardingobjectid_opportunity",
+                "parentsiteorlocation_sharepointsite",
+                "modifiedonbehalfby",
+                "regardingobjectid_kbarticle",
+                "SharePointDocumentLocation_DuplicateMatchingRecord",
+                "transactioncurrencyid",
+                "SharePointDocumentLocation_SyncErrors",
+                "SharePointDocumentLocation_AsyncOperations",
+                "regardingobjectid_bcgov_customaddress",
+                "regardingobjectid_incident",
+                "regardingobjectid_bcgov_customproduct",
+                "regardingobjectid_bcgov_location",
+                "regardingobjectid_bcgov_equipment",
+                "regardingobjectid_bcgov_equipmentlocation",
+                "regardingobjectid_bcgov_riskassessment",
+                "regardingobjectid_queue"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "schema": {
+              "title": "Collection of sharepointdocumentlocations",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.Dynamics.CRM.sharepointdocumentlocation"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "sharepointdocumentlocations"
+        ],
+        "summary": "Add new entity to sharepointdocumentlocations",
+        "operationId": "Sharepointdocumentlocations_Create",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.sharepointdocumentlocation"
+            },
+            "description": "New entity"
+          },
+          {
+            "name": "Prefer",
+            "in": "header",
+            "description": "Required in order for the service to return a JSON representation of the object.",
+            "type": "string",
+            "default": "return=representation"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.sharepointdocumentlocation"
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      }
+    },
+    "/sharepointdocumentlocations({sharepointdocumentlocationid})": {
+      "get": {
+        "tags": [
+          "sharepointdocumentlocations"
+        ],
+        "summary": "Get entity from sharepointdocumentlocations by key",
+        "operationId": "Sharepointdocumentlocations_GetByKey",
+        "parameters": [
+          {
+            "name": "sharepointdocumentlocationid",
+            "in": "path",
+            "required": true,
+            "description": "key: sharepointdocumentlocationid",
+            "type": "string"
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "importsequencenumber",
+                "description",
+                "_ownerid_value",
+                "createdon",
+                "_owningbusinessunit_value",
+                "modifiedon",
+                "_transactioncurrencyid_value",
+                "_owninguser_value",
+                "absoluteurl",
+                "name",
+                "_createdby_value",
+                "locationtype",
+                "_modifiedonbehalfby_value",
+                "_regardingobjectid_value",
+                "_parentsiteorlocation_value",
+                "versionnumber",
+                "timezoneruleversionnumber",
+                "exchangerate",
+                "statecode",
+                "_owningteam_value",
+                "sitecollectionid",
+                "utcconversiontimezonecode",
+                "overriddencreatedon",
+                "relativeurl",
+                "userid",
+                "_modifiedby_value",
+                "sharepointdocumentlocationid",
+                "servicetype",
+                "_createdonbehalfby_value",
+                "statuscode"
+              ]
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "*",
+                "regardingobjectid_knowledgearticle",
+                "owninguser",
+                "owningteam",
+                "ownerid",
+                "owningbusinessunit",
+                "regardingobjectid_account",
+                "regardingobjectid_quote",
+                "regardingobjectid_product",
+                "parentsiteorlocation_sharepointdocumentlocation",
+                "sharepointdocumentlocation_parent_sharepointdocumentlocation",
+                "createdonbehalfby",
+                "modifiedby",
+                "regardingobjectid_lead",
+                "SharePointDocumentLocation_DuplicateBaseRecord",
+                "createdby",
+                "regardingobjectid_salesliterature",
+                "regardingobjectid_opportunity",
+                "parentsiteorlocation_sharepointsite",
+                "modifiedonbehalfby",
+                "regardingobjectid_kbarticle",
+                "SharePointDocumentLocation_DuplicateMatchingRecord",
+                "transactioncurrencyid",
+                "SharePointDocumentLocation_SyncErrors",
+                "SharePointDocumentLocation_AsyncOperations",
+                "regardingobjectid_bcgov_customaddress",
+                "regardingobjectid_incident",
+                "regardingobjectid_bcgov_customproduct",
+                "regardingobjectid_bcgov_location",
+                "regardingobjectid_bcgov_equipment",
+                "regardingobjectid_bcgov_equipmentlocation",
+                "regardingobjectid_bcgov_riskassessment",
+                "regardingobjectid_queue"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.sharepointdocumentlocation"
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "sharepointdocumentlocations"
+        ],
+        "summary": "Delete entity from sharepointdocumentlocations",
+        "operationId": "Sharepointdocumentlocations_Delete",
+        "parameters": [
+          {
+            "name": "sharepointdocumentlocationid",
+            "in": "path",
+            "required": true,
+            "description": "key: sharepointdocumentlocationid",
+            "type": "string"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "sharepointdocumentlocations"
+        ],
+        "summary": "Update entity in sharepointdocumentlocations",
+        "operationId": "Sharepointdocumentlocations_Update",
+        "parameters": [
+          {
+            "name": "sharepointdocumentlocationid",
+            "in": "path",
+            "required": true,
+            "description": "key: sharepointdocumentlocationid",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.sharepointdocumentlocation"
+            },
+            "description": "New property values"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      }
+    },
     "/sharepointsites": {
       "get": {
         "tags": [
@@ -73069,7 +73499,7 @@
       "name": "customeraddresses"
     },
     {
-      "name": "dataperformances"
+      "name": "dataperformanceset"
     },
     {
       "name": "dependencies"
@@ -73597,7 +74027,7 @@
       "name": "themes"
     },
     {
-      "name": "timestampdatemappings"
+      "name": "timestampdatemappingset"
     },
     {
       "name": "timezonedefinitions"
