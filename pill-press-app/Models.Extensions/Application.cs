@@ -237,7 +237,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     result.EquipmentLocation = incident?.BcgovEquipmentLocation.ToViewModel();
                 }
 
-                // OutsideBcSellersLocation = incident.BcgovOutsidebcsellerslocation,                
+                 result.OutsideBcSellersLocation = (GeographicalLocation?)incident.BcgovOutsidebcsellerslocation;              
+                 result.OriginatingSellersLocation = (GeographicalLocation?)incident.BcgovOriginatingsellerslocation;              
 
             }
             return result;
@@ -379,6 +380,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             to.BcgovHowwasequipmentbuilt = (int?)from.HowWasEquipmentBuilt;
 
             to.BcgovSettingdescription = from.SettingDescription;
+            to.BcgovOutsidebcsellerslocation =  (int?)from.OutsideBcSellersLocation; 
+            to.BcgovOriginatingsellerslocation =  (int?)from.OriginatingSellersLocation; 
         }
     }
 }
