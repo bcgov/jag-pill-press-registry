@@ -59,6 +59,7 @@ export class EquipmentIdentificationComponent extends FormBase implements OnInit
   reloadData() {
     this.busy = this.applicationDataService.getApplicationById(this.equipmentId)
       .subscribe((data: Application) => {
+        data.addressofPersonBusiness = data.addressofPersonBusiness || <any>{};
         this.form.patchValue(data);
         this.form.get('addressofPersonBusiness.province').setValue('British Columbia');
       }, error => {
@@ -68,10 +69,20 @@ export class EquipmentIdentificationComponent extends FormBase implements OnInit
 
   clearHiddenFields() {
     this.form.get('howWasEquipmentBuilt').valueChanges
-      .subscribe(() => {
+      .subscribe((value) => {
+        if (value === 'Commercially Manufactured') {
+          this.form.get('addressofPersonBusiness.streetLine1').clearValidators();
+          this.form.get('addressofPersonBusiness.city').clearValidators();
+          this.form.get('addressofPersonBusiness.postalCode').clearValidators();
+          this.form.get('addressofPersonBusiness').reset();
+        } else {
+          this.form.get('addressofPersonBusiness.streetLine1').setValidators([Validators.required]);
+          this.form.get('addressofPersonBusiness.city').setValidators([Validators.required]);
+          this.form.get('addressofPersonBusiness.postalCode').setValidators([Validators.required, Validators.pattern(postalRegex)]);
+        }
         for (const field in this.form.controls) {
           if (field !== 'id'
-          && field !== 'province'
+            && field !== 'province'
             && field !== 'howWasEquipmentBuilt') {
             this.form.get(field).reset();
           }

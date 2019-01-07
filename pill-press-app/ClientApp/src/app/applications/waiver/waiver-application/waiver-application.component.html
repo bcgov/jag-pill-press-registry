@@ -10,8 +10,9 @@
 
         <h3 class="blue-header">EQUIPMENT INFORMATION</h3>
         <section class="padded-section">
-          <app-field label="Do you currently own, use, or possess Controlled Equipment?" [required]="true"
-            [showChevrons]="false" errorMessage="Please select yes or no" [valid]="form.get('currentlyownusepossessequipment').valid || !form.get('currentlyownusepossessequipment').touched">
+          <app-field [showChevrons]="false" errorMessage="Please select yes or no" [valid]="form.get('currentlyownusepossessequipment').valid || !form.get('currentlyownusepossessequipment').touched">
+            <span>Do you currently own, use, or possess <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-controlled-equipment"
+                target="blank">Controlled Equipment</a>? </span>
             <input type="radio" [value]="true" name="currentlyownusepossessequipment" formControlName="currentlyownusepossessequipment">
             <span style="padding-right: 10px;">&nbsp;Yes</span>
             <input type="radio" [value]="false" name="currentlyownusepossessequipment" formControlName="currentlyownusepossessequipment">
@@ -144,7 +145,8 @@
           </app-field>
 
           <section>
-            <label for="">If you have additional supporting documents, please upload them below.</label>
+            <label for="">If you have additional <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/definition#sd"
+                target="blank">supporting documents</a>, please upload them below.</label>
             <app-file-uploader documentType="Waiver Documents" entityName="incident" [entityId]="waiverId" fileTypes="FILE MUST BE IN DOC, XLS, PDF, JPG OR PNG"
               [extensions]="['pdf', 'jpg', 'jpeg', 'png', 'xls', 'doc']"></app-file-uploader>
           </section>

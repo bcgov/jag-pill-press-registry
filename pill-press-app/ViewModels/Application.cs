@@ -51,6 +51,19 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         Denied = 845280001
     }
 
+    public enum GeographicalLocation {
+        Canada = 931490000,
+        [EnumMember(Value = "United States")]
+        UnitedStates = 931490001,
+
+        Europe = 931490002,
+        Asia = 931490003,
+        [EnumMember(Value = "South America")]
+        SouthAmerica = 931490004,
+        Africa = 931490005,
+
+    }
+
     public class Application
     {
         public string id { get; set; } //adoxio_applicationid
@@ -293,7 +306,8 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public ViewModels.CustomAddress OutsideBCSellersAddress { get; set; }
 
         [JsonProperty(PropertyName = "outsideBcSellersLocation")]
-        public string OutsideBcSellersLocation { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public GeographicalLocation? OutsideBcSellersLocation { get; set; }
 
         [JsonProperty(PropertyName = "dateOfPurchaseFromOutsideBcSeller")]
         public System.DateTimeOffset? DateOfPurchaseFromOutsideBcSeller { get; set; }
@@ -317,7 +331,8 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public ViewModels.CustomAddress OriginatingSellersAddress { get; set; }
 
         [JsonProperty(PropertyName = "originatingSellersLocation")]
-        public string OriginatingSellersLocation { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public GeographicalLocation? OriginatingSellersLocation { get; set; }
 
         [JsonProperty(PropertyName = "dateOfPurchaseFromImporter")]
         public System.DateTimeOffset? DateOfPurchaseFromImporter { get; set; }
