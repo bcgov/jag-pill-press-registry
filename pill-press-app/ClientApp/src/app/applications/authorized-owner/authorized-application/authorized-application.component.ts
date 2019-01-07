@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 import { Subscription, Observable, zip } from 'rxjs';
-import { PRODUCTING_OWN_PRODUCT, MANUFACTURING_FOR_OTHERS } from '../../waiver/waiver-application/waiver-application.component';
+import { PRODUCING_OWN_PRODUCT, MANUFACTURING_FOR_OTHERS } from '../../waiver/waiver-application/waiver-application.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DynamicsDataService } from '../../../services/dynamics-data.service';
 import { ApplicationDataService } from '../../../services/adoxio-application-data.service';
@@ -49,7 +49,7 @@ export class AuthorizedApplicationComponent extends FormBase implements OnInit {
   waiverId: string;
 
   deletedProducts: any[] = [];
-  PRODUCTING_OWN_PRODUCT = PRODUCTING_OWN_PRODUCT;
+  PRODUCING_OWN_PRODUCT = PRODUCING_OWN_PRODUCT;
   MANUFACTURING_FOR_OTHERS = MANUFACTURING_FOR_OTHERS;
 
   get ownProducts(): FormArray {
@@ -76,7 +76,7 @@ export class AuthorizedApplicationComponent extends FormBase implements OnInit {
       declarationOfCorrectInformation: ['', Validators.required],
       foippaconsent: ['', Validators.required],
       intendtopurchaseequipment: ['', Validators.required],
-      ownProducts: this.fb.array([this.createCustomProduct(<CustomProduct>{ purpose: PRODUCTING_OWN_PRODUCT })]),
+      ownProducts: this.fb.array([this.createCustomProduct(<CustomProduct>{ purpose: PRODUCING_OWN_PRODUCT })]),
       ownintendtoownequipmentforbusinessuse: ['', Validators.required],
       producingownproduct: ['', Validators.required],
       productsForOthers: this.fb.array([this.createCustomProduct(<CustomProduct>{ purpose: MANUFACTURING_FOR_OTHERS })]),
@@ -112,7 +112,7 @@ export class AuthorizedApplicationComponent extends FormBase implements OnInit {
             this.deleteCustomProduct(0, this.ownProducts.controls[0].value.purpose);
           }
         } else {
-          this.addCustomProduct(<CustomProduct>{ purpose: PRODUCTING_OWN_PRODUCT });
+          this.addCustomProduct(<CustomProduct>{ purpose: PRODUCING_OWN_PRODUCT });
         }
       });
 
@@ -138,7 +138,7 @@ export class AuthorizedApplicationComponent extends FormBase implements OnInit {
       // process custom products
       data.customProducts = data.customProducts || [];
       this.clearCustomProducts();
-      const ownProducts = data.customProducts.filter(p => p.purpose === PRODUCTING_OWN_PRODUCT);
+      const ownProducts = data.customProducts.filter(p => p.purpose === PRODUCING_OWN_PRODUCT);
       ownProducts.forEach(p => {
         this.addCustomProduct(p);
       });
@@ -281,7 +281,7 @@ export class AuthorizedApplicationComponent extends FormBase implements OnInit {
   }
 
   addCustomProduct(product: CustomProduct) {
-    if (product.purpose === PRODUCTING_OWN_PRODUCT) {
+    if (product.purpose === PRODUCING_OWN_PRODUCT) {
       const control = this.createCustomProduct(product);
       this.ownProducts.push(control);
     } else if (product.purpose === MANUFACTURING_FOR_OTHERS) {
@@ -292,7 +292,7 @@ export class AuthorizedApplicationComponent extends FormBase implements OnInit {
   }
 
   deleteCustomProduct(index: number, type: string) {
-    if (type === PRODUCTING_OWN_PRODUCT) {
+    if (type === PRODUCING_OWN_PRODUCT) {
       const product = this.ownProducts.at(index).value;
       if (product.id) {
         this.deletedProducts.push(product);

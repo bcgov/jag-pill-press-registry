@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 import { Subscription, zip, Observable } from 'rxjs';
-import { PRODUCTING_OWN_PRODUCT, MANUFACTURING_FOR_OTHERS } from '../waiver-application/waiver-application.component';
+import { PRODUCING_OWN_PRODUCT, MANUFACTURING_FOR_OTHERS } from '../waiver-application/waiver-application.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DynamicsDataService } from '../../../services/dynamics-data.service';
 import { ApplicationDataService } from '../../../services/adoxio-application-data.service';
@@ -79,7 +79,7 @@ export class WaiverReviewComponent implements OnInit {
         });
 
         const productsForSelfProcessed = [];
-        const productsForSelf = waiver.customProducts.filter(p => p.purpose === PRODUCTING_OWN_PRODUCT);
+        const productsForSelf = waiver.customProducts.filter(p => p.purpose === PRODUCING_OWN_PRODUCT);
         for (let i = 0; i < productsForSelf.length; i++) {
           productsForSelfProcessed.push({
             text: `Product ${i === 0 ? '' : i + 1} Description and Intended Use`

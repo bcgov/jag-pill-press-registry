@@ -137,6 +137,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual IMsdyncustomaddressknowledgebasereset Msdyncustomaddressknowledgebasereset { get; private set; }
 
         /// <summary>
+        /// Gets the ISharepointdocumentlocations.
+        /// </summary>
+        public virtual ISharepointdocumentlocations Sharepointdocumentlocations { get; private set; }
+
+        /// <summary>
         /// Gets the ISharepointsites.
         /// </summary>
         public virtual ISharepointsites Sharepointsites { get; private set; }
@@ -411,6 +416,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             Invoices = new Invoices(this);
             Msdyncustomaddressknowledgearticlset = new Msdyncustomaddressknowledgearticlset(this);
             Msdyncustomaddressknowledgebasereset = new Msdyncustomaddressknowledgebasereset(this);
+            Sharepointdocumentlocations = new Sharepointdocumentlocations(this);
             Sharepointsites = new Sharepointsites(this);
             Entitydefinitions = new Entitydefinitions(this);
             Globaloptionsetdefinitions = new Globaloptionsetdefinitions(this);
