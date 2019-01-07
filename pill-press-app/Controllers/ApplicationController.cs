@@ -806,7 +806,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 patchSharePointDocumentLocation.RegardingobjectidODataBind = accountReference;
                 
                 // set the parent document library.
-                string parentDocumentLibraryReference = GetDocumentLocationReferenceByRelativeURL("incidents");
+                string parentDocumentLibraryReference = GetDocumentLocationReferenceByRelativeURL("incident");
                 patchSharePointDocumentLocation.ParentsiteorlocationSharepointdocumentlocationODataBind = _dynamicsClient.GetEntityURI("sharepointdocumentlocations", parentDocumentLibraryReference);
 
                 try
