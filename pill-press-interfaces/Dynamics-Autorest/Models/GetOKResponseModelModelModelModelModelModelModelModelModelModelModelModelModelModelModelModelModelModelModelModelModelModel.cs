@@ -12,26 +12,26 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
     using System.Linq;
 
     /// <summary>
-    /// Collection of sharepointdocumentlocations
+    /// Collection of GlobalOptionSetDefinitions
     /// </summary>
-    public partial class GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModel
+    public partial class GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModel
     {
         /// <summary>
         /// Initializes a new instance of the
-        /// GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModel
+        /// GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModel
         /// class.
         /// </summary>
-        public GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModel()
+        public GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModel()
         {
             CustomInit();
         }
 
         /// <summary>
         /// Initializes a new instance of the
-        /// GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModel
+        /// GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModel
         /// class.
         /// </summary>
-        public GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModel(IList<MicrosoftDynamicsCRMsharepointdocumentlocation> value = default(IList<MicrosoftDynamicsCRMsharepointdocumentlocation>))
+        public GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModel(IList<MicrosoftDynamicsCRMOptionSetMetadataBase> value = default(IList<MicrosoftDynamicsCRMOptionSetMetadataBase>))
         {
             Value = value;
             CustomInit();
@@ -45,7 +45,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "value")]
-        public IList<MicrosoftDynamicsCRMsharepointdocumentlocation> Value { get; set; }
+        public IList<MicrosoftDynamicsCRMOptionSetMetadataBase> Value { get; set; }
 
     }
 }
