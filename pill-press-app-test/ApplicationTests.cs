@@ -365,7 +365,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
 
             Application persistedApplication = await GetApplicationById(responseViewModel.id);
 
-            Assert.Equal(persistedApplication.BusinessContacts[0].jobTitle, "Updated Test Job");
+            Assert.Equal("Updated Test Job", persistedApplication.BusinessContacts[0].jobTitle);
 
             // Cleanup
             var request = new HttpRequestMessage(HttpMethod.Post, "/api/" + service + "/" + responseViewModel.id + "/delete");
