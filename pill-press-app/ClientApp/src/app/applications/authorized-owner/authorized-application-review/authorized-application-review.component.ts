@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DynamicsDataService } from '../../../services/dynamics-data.service';
 import { ApplicationDataService } from '../../../services/adoxio-application-data.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { PRODUCTING_OWN_PRODUCT, MANUFACTURING_FOR_OTHERS } from '../../waiver/waiver-application/waiver-application.component';
+import { PRODUCING_OWN_PRODUCT, MANUFACTURING_FOR_OTHERS } from '../../waiver/waiver-application/waiver-application.component';
 import { Application } from '../../../models/application.model';
 
 
@@ -81,7 +81,7 @@ export class AuthorizedApplicationReviewComponent implements OnInit {
         });
 
         const productsForSelfProcessed = [];
-        const productsForSelf = application.customProducts.filter(p => p.purpose === PRODUCTING_OWN_PRODUCT);
+        const productsForSelf = application.customProducts.filter(p => p.purpose === PRODUCING_OWN_PRODUCT);
         for (let i = 0; i < productsForSelf.length; i++) {
           productsForSelfProcessed.push({
             text: `Product ${i === 0 ? '' : i + 1} Description and Intended Use`
