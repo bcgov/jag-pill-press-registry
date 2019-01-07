@@ -14,12 +14,12 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Sharepointsites operations.
+    /// Sharepointdocumentlocations operations.
     /// </summary>
-    public partial interface ISharepointsites
+    public partial interface ISharepointdocumentlocations
     {
         /// <summary>
-        /// Get entities from sharepointsites
+        /// Get entities from sharepointdocumentlocations
         /// </summary>
         /// <param name='top'>
         /// </param>
@@ -52,9 +52,9 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        Task<HttpOperationResponse<GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModel>> GetWithHttpMessagesAsync(int? top = default(int?), int? skip = default(int?), string search = default(string), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModel>> GetWithHttpMessagesAsync(int? top = default(int?), int? skip = default(int?), string search = default(string), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Add new entity to sharepointsites
+        /// Add new entity to sharepointdocumentlocations
         /// </summary>
         /// <param name='body'>
         /// New entity
@@ -78,12 +78,12 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<HttpOperationResponse<MicrosoftDynamicsCRMsharepointsite>> CreateWithHttpMessagesAsync(MicrosoftDynamicsCRMsharepointsite body, string prefer = "return=representation", Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<MicrosoftDynamicsCRMsharepointdocumentlocation>> CreateWithHttpMessagesAsync(MicrosoftDynamicsCRMsharepointdocumentlocation body, string prefer = "return=representation", Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get entity from sharepointsites by key
+        /// Get entity from sharepointdocumentlocations by key
         /// </summary>
-        /// <param name='sharepointsiteid'>
-        /// key: sharepointsiteid
+        /// <param name='sharepointdocumentlocationid'>
+        /// key: sharepointdocumentlocationid
         /// </param>
         /// <param name='select'>
         /// Select properties to be returned
@@ -106,12 +106,12 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<HttpOperationResponse<MicrosoftDynamicsCRMsharepointsite>> GetByKeyWithHttpMessagesAsync(string sharepointsiteid, IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<MicrosoftDynamicsCRMsharepointdocumentlocation>> GetByKeyWithHttpMessagesAsync(string sharepointdocumentlocationid, IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Delete entity from sharepointsites
+        /// Delete entity from sharepointdocumentlocations
         /// </summary>
-        /// <param name='sharepointsiteid'>
-        /// key: sharepointsiteid
+        /// <param name='sharepointdocumentlocationid'>
+        /// key: sharepointdocumentlocationid
         /// </param>
         /// <param name='ifMatch'>
         /// ETag
@@ -128,12 +128,12 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<HttpOperationResponse> DeleteWithHttpMessagesAsync(string sharepointsiteid, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse> DeleteWithHttpMessagesAsync(string sharepointdocumentlocationid, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Update entity in sharepointsites
+        /// Update entity in sharepointdocumentlocations
         /// </summary>
-        /// <param name='sharepointsiteid'>
-        /// key: sharepointsiteid
+        /// <param name='sharepointdocumentlocationid'>
+        /// key: sharepointdocumentlocationid
         /// </param>
         /// <param name='body'>
         /// New property values
@@ -150,6 +150,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<HttpOperationResponse> UpdateWithHttpMessagesAsync(string sharepointsiteid, MicrosoftDynamicsCRMsharepointsite body, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse> UpdateWithHttpMessagesAsync(string sharepointdocumentlocationid, MicrosoftDynamicsCRMsharepointdocumentlocation body, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
