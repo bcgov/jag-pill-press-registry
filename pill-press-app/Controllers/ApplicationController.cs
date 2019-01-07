@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 
@@ -748,10 +749,105 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 }
         }
 
-            
+            string serverRelativeUrl = "/sites/" + _sharePointFileManager.WebName + "/" + _sharePointFileManager.GetServerRelativeURL(SharePointFileManager.ApplicationDocumentListTitle, application.GetApplicationFolderName());
+
+            string folderName = application.GetApplicationFolderName();
+
+
+            // create a SharePointDocumentLocation link
+
+            string name = application.Title + " Files";
+
+            // Create the folder
+            bool folderExists = await _sharePointFileManager.FolderExists(SharePointFileManager.ApplicationDocumentListTitle, folderName);
+            if (!folderExists)
+            {
+                try
+                {
+                    var folder = await _sharePointFileManager.CreateFolder(SharePointFileManager.ApplicationDocumentListTitle, folderName);
+                }
+                catch (Exception e)
+                {
+                    _logger.LogError("Error creating Sharepoint Folder");
+                    _logger.LogError($"List is: {SharePointFileManager.ApplicationDocumentListTitle}");
+                    _logger.LogError($"FolderName is: {folderName}");
+                    throw e;
+                }
+
+            }
+
+            // Create the SharePointDocumentLocation entity
+            MicrosoftDynamicsCRMsharepointdocumentlocation mdcsdl = new MicrosoftDynamicsCRMsharepointdocumentlocation()
+            {
+                Relativeurl = folderName,
+                Description = "Business Profile Files",
+                Name = name
+            };
+
+
+            try
+            {
+                mdcsdl = _dynamicsClient.Sharepointdocumentlocations.Create(mdcsdl);
+            }
+            catch (OdataerrorException odee)
+            {
+                _logger.LogError("Error creating SharepointDocumentLocation");
+                _logger.LogError("Request:");
+                _logger.LogError(odee.Request.Content);
+                _logger.LogError("Response:");
+                _logger.LogError(odee.Response.Content);
+                mdcsdl = null;
+            }
+            if (mdcsdl != null)
+            {
+                // add a regardingobjectid.
+                string accountReference = _dynamicsClient.GetEntityURI("accounts", userSettings.AccountId);
+                var patchSharePointDocumentLocation = new MicrosoftDynamicsCRMsharepointdocumentlocation();
+                patchSharePointDocumentLocation.RegardingobjectidODataBind = accountReference;
+                
+                // set the parent document library.
+                string parentDocumentLibraryReference = GetDocumentLocationReferenceByRelativeURL("incidents");
+                patchSharePointDocumentLocation.ParentsiteorlocationSharepointdocumentlocationODataBind = _dynamicsClient.GetEntityURI("sharepointdocumentlocations", parentDocumentLibraryReference);
+
+                try
+                {
+                    _dynamicsClient.Sharepointdocumentlocations.Update(mdcsdl.Sharepointdocumentlocationid, patchSharePointDocumentLocation);
+                }
+                catch (OdataerrorException odee)
+                {
+                    _logger.LogError("Error adding reference SharepointDocumentLocation to application");
+                    _logger.LogError("Request:");
+                    _logger.LogError(odee.Request.Content);
+                    _logger.LogError("Response:");
+                    _logger.LogError(odee.Response.Content);
+                }
+
+                string sharePointLocationData = _dynamicsClient.GetEntityURI("sharepointdocumentlocations", mdcsdl.Sharepointdocumentlocationid);
+                /* Pill Press does not seem to have a relation between the incident and the document location.                 
+                    
+                Odataid oDataId = new Odataid()
+                {
+                    OdataidProperty = sharePointLocationData
+                };
+                try
+                {
+                    _dynamicsClient.Incidents.AddReference(applicationId, "adoxio_application_SharePointDocumentLocations", oDataId);
+                }
+                catch (OdataerrorException odee)
+                {
+                    _logger.LogError("Error adding reference to SharepointDocumentLocation");
+                    _logger.LogError("Request:");
+                    _logger.LogError(odee.Request.Content);
+                    _logger.LogError("Response:");
+                    _logger.LogError(odee.Response.Content);
+                }
+
+                */
+            }
+
 
             application = _dynamicsClient.GetApplicationByIdWithChildren(applicationId);
-
+            
             return Json(application.ToViewModel());
         }
 
@@ -862,6 +958,54 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             _logger.LogDebug(LoggingEvents.HttpDelete, "No content returned.");
             return NoContent(); // 204 
         }
+
+        /// <summary>
+        /// Get a document location by reference
+        /// </summary>
+        /// <param name="relativeUrl"></param>
+        /// <returns></returns>
+        private string GetDocumentLocationReferenceByRelativeURL(string relativeUrl)
+        {
+            string result = null;
+            string sanitized = relativeUrl.Replace("'", "''");
+            // first see if one exists.
+            var locations = _dynamicsClient.Sharepointdocumentlocations.Get(filter: "relativeurl eq '" + sanitized + "'");
+
+            var location = locations.Value.FirstOrDefault();
+
+            if (location == null)
+            {
+                var parentSite = _dynamicsClient.Sharepointsites.Get().Value.FirstOrDefault();
+                var parentSiteRef = _dynamicsClient.GetEntityURI("sharepointsites", parentSite.Sharepointsiteid);
+                MicrosoftDynamicsCRMsharepointdocumentlocation newRecord = new MicrosoftDynamicsCRMsharepointdocumentlocation()
+                {
+                    Relativeurl = relativeUrl,
+                    Name = "Application",
+                    ParentsiteorlocationSharepointdocumentlocationODataBind = parentSiteRef
+                };
+                // create a new document location.
+                try
+                {
+                    location = _dynamicsClient.Sharepointdocumentlocations.Create(newRecord);
+                }
+                catch (OdataerrorException odee)
+                {
+                    _logger.LogError("Error creating document location");
+                    _logger.LogError("Request:");
+                    _logger.LogError(odee.Request.Content);
+                    _logger.LogError("Response:");
+                    _logger.LogError(odee.Response.Content);
+                }
+            }
+
+            if (location != null)
+            {
+                result = location.Sharepointdocumentlocationid;
+            }
+
+            return result;
+        }
+
 
     }
 }
