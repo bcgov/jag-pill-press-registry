@@ -5,6 +5,7 @@ import { DynamicsContact } from './dynamics-contact.model';
 import { BusinessContact } from './business-contact.model';
 import { CustomAddress } from './custom-address.model';
 import { EquipmentLocation } from './equipment-location.model';
+import { Certificate } from './certificate.model';
 
 export class Application {
   id: string;
@@ -138,4 +139,6 @@ export class Application {
   outsideBcSellersAddress: CustomAddress;
   OriginatingSellersAddress: CustomAddress;
   equipmentLocation: EquipmentLocation;
+
+  Certificates: Certificate[];
 }

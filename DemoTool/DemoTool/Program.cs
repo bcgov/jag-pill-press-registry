@@ -157,7 +157,145 @@ namespace DemoTool
                         Console.Out.WriteLine(odee.Response.Content);
                     }
                 }
-            }             
+
+                // remove customAddresses
+
+                var customAddresses = _dynamicsClient.Customaddresses.Get().Value;
+
+                foreach (var item in customAddresses)
+                {
+                    try
+                    {
+                        _dynamicsClient.Customaddresses.Delete(item.BcgovCustomaddressid);
+                        Console.Out.WriteLine("Deleted CustomAddress " + item.BcgovCustomaddressid);
+                    }
+                    catch (OdataerrorException odee)
+                    {
+                        Console.Out.WriteLine("Error deleting CustomAddress");
+                        Console.Out.WriteLine("Request:");
+                        Console.Out.WriteLine(odee.Request.Content);
+                        Console.Out.WriteLine("Response:");
+                        Console.Out.WriteLine(odee.Response.Content);
+                    }
+                }
+
+                // remove customProducts
+
+                var customProducts = _dynamicsClient.Customproducts.Get().Value;
+
+                foreach (var item in customProducts)
+                {
+                    try
+                    {
+                        _dynamicsClient.Customaddresses.Delete(item.BcgovCustomproductid);
+                        Console.Out.WriteLine("Deleted customProducts " + item.BcgovCustomproductid);
+                    }
+                    catch (OdataerrorException odee)
+                    {
+                        Console.Out.WriteLine("Error deleting customProduct");
+                        Console.Out.WriteLine("Request:");
+                        Console.Out.WriteLine(odee.Request.Content);
+                        Console.Out.WriteLine("Response:");
+                        Console.Out.WriteLine(odee.Response.Content);
+                    }
+                }
+
+                var certificates = _dynamicsClient.Certificates.Get().Value;
+
+                foreach (var item in certificates)
+                {
+                    try
+                    {
+                        _dynamicsClient.Certificates.Delete(item.BcgovCertificateid);
+                        Console.Out.WriteLine("Deleted certificate " + item.BcgovCertificateid);
+                    }
+                    catch (OdataerrorException odee)
+                    {
+                        Console.Out.WriteLine("Error deleting certificate");
+                        Console.Out.WriteLine("Request:");
+                        Console.Out.WriteLine(odee.Request.Content);
+                        Console.Out.WriteLine("Response:");
+                        Console.Out.WriteLine(odee.Response.Content);
+                    }
+                }
+
+                var riskAssessments = _dynamicsClient.Riskassessments.Get().Value;
+
+                foreach (var item in riskAssessments)
+                {
+                    try
+                    {
+                        _dynamicsClient.Riskassessments.Delete(item.BcgovRiskassessmentid);
+                        Console.Out.WriteLine("Deleted Riskassessment " + item.BcgovRiskassessmentid);
+                    }
+                    catch (OdataerrorException odee)
+                    {
+                        Console.Out.WriteLine("Error deleting Riskassessment");
+                        Console.Out.WriteLine("Request:");
+                        Console.Out.WriteLine(odee.Request.Content);
+                        Console.Out.WriteLine("Response:");
+                        Console.Out.WriteLine(odee.Response.Content);
+                    }
+                }
+
+                var equipmentLocations = _dynamicsClient.Equipmentlocations.Get().Value;
+
+                foreach (var item in equipmentLocations)
+                {
+                    try
+                    {
+                        _dynamicsClient.Riskassessments.Delete(item.BcgovEquipmentlocationid);
+                        Console.Out.WriteLine("Deleted Equipmentlocation " + item.BcgovEquipmentlocationid);
+                    }
+                    catch (OdataerrorException odee)
+                    {
+                        Console.Out.WriteLine("Error deleting Equipmentlocation");
+                        Console.Out.WriteLine("Request:");
+                        Console.Out.WriteLine(odee.Request.Content);
+                        Console.Out.WriteLine("Response:");
+                        Console.Out.WriteLine(odee.Response.Content);
+                    }
+                }
+
+                var locations = _dynamicsClient.Locations.Get().Value;
+
+                foreach (var item in locations)
+                {
+                    try
+                    {
+                        _dynamicsClient.Riskassessments.Delete(item.BcgovLocationid);
+                        Console.Out.WriteLine("Deleted location " + item.BcgovLocationid);
+                    }
+                    catch (OdataerrorException odee)
+                    {
+                        Console.Out.WriteLine("Error deleting location");
+                        Console.Out.WriteLine("Request:");
+                        Console.Out.WriteLine(odee.Request.Content);
+                        Console.Out.WriteLine("Response:");
+                        Console.Out.WriteLine(odee.Response.Content);
+                    }
+                }
+
+                var equipment = _dynamicsClient.Equipments.Get().Value;
+
+                foreach (var item in equipment)
+                {
+                    try
+                    {
+                        _dynamicsClient.Riskassessments.Delete(item.BcgovEquipmentid);
+                        Console.Out.WriteLine("Deleted equipment " + item.BcgovEquipmentid);
+                    }
+                    catch (OdataerrorException odee)
+                    {
+                        Console.Out.WriteLine("Error deleting equipment");
+                        Console.Out.WriteLine("Request:");
+                        Console.Out.WriteLine(odee.Request.Content);
+                        Console.Out.WriteLine("Response:");
+                        Console.Out.WriteLine(odee.Response.Content);
+                    }
+                }
+
+            }
         }
     }
 }
