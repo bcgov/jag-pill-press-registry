@@ -190,6 +190,16 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     }
                 }
 
+                // Certificates
+                if (incident?.BcgovIncidentBcgovCertificateApplication?.Count > 0)
+                {
+                    result.Certificates = new List<Certificate>();
+                    foreach (var certificate in incident.BcgovIncidentBcgovCertificateApplication)
+                    {
+                        result.Certificates.Add(certificate.ToViewModel());
+                    }
+                }
+
                 ///
                 /// EQUIPMENT RELATED ENTITIES
                 /// 
