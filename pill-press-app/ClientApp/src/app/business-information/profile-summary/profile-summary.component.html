@@ -36,13 +36,15 @@
       </tr>
     </table>
 
-    <h2>Additional Contact</h2>
-    <table class="summary-table">
-      <tr *ngFor="let item of additionalContactData; let i = index;">
-        <td [ngClass]="{'table-row': i%2==0, 'row-alt': i%2==1 }">{{ item.label}}</td>
-        <td [ngClass]="{'table-row': i%2==0, 'row-alt': i%2==1 }">{{ item.value}}</td>
-      </tr>
-    </table>
+    <section *ngIf="additionalContactData?.length > 0">
+      <h2>Additional Contact</h2>
+      <table class="summary-table">
+        <tr *ngFor="let item of additionalContactData; let i = index;">
+          <td [ngClass]="{'table-row': i%2==0, 'row-alt': i%2==1 }">{{ item.label}}</td>
+          <td [ngClass]="{'table-row': i%2==0, 'row-alt': i%2==1 }">{{ item.value}}</td>
+        </tr>
+      </table>
+    </section>
 
     <h2 *ngIf="!nextRoute" class="blue-header">DECLARATIONS AND CONSENT</h2>
     <div [formGroup]="form" *ngIf="!nextRoute" style="padding-left: 10px;">
