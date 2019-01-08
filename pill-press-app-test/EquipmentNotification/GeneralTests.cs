@@ -148,7 +148,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             Assert.True(responseViewModel.applicant != null);
             Assert.Equal(currentAccount.id, responseViewModel.applicant.id);
 
-            Assert.Equal(responseViewModel.EquipmentType, Equipmenttype.DieMouldorPunch);
+            Assert.Equal(Equipmenttype.DieMouldorPunch, responseViewModel.EquipmentType);
             Assert.Equal(responseViewModel.EquipmentTypeOther, stringsToMatch[0]);
       
 

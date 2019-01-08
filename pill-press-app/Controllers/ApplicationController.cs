@@ -115,7 +115,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 {
                     string id = dynamicsApplication.Incidentid;
                     var application = _dynamicsClient.GetApplicationByIdWithChildren(id);
-                    result.Add(application.ToViewModel());                    
+                    result.Add(application.ToViewModel());                      
                 }
             }
             return result;
