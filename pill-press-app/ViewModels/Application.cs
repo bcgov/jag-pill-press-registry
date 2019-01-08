@@ -419,5 +419,7 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
 
         [JsonProperty(PropertyName = "settingDescription")]
         public string SettingDescription { get; set; }
+
+        public List<Certificate> Certificates { get; set; }
     }
 }
