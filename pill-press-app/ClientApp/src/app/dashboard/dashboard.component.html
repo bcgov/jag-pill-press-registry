@@ -131,9 +131,9 @@
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-green">APPROVED</h4>
                 <p>
-                  <strong>Issue Date:&nbsp;</strong>11 Dec 2018
+                  <strong>Issue Date:&nbsp;</strong> {{waiverApplication?.certificate?.issueDate | date : 'dd MMM yyyy'}}
                   <br>
-                  <strong>Expiry Date:&nbsp;</strong>11 Dec 2023
+                  <strong>Expiry Date:&nbsp;</strong> {{waiverApplication?.certificate?.expiryDate | date : 'dd MMM yyyy'}}
                   <br>
                 </p>
                 <a href="api/application/{{waiverApplication?.id}}/download-certificate" download><i class="fa fa-file-pdf"
@@ -230,9 +230,9 @@
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-green">APPROVED</h4>
                 <p>
-                  <strong>Issue Date:&nbsp;</strong>11 Dec 2018
+                  <strong>Issue Date:&nbsp;</strong> {{registeredSellerApplication?.certificate?.issueDate | date : 'dd MMM yyyy'}}
                   <br>
-                  <strong>Expiry Date:&nbsp;</strong>11 Dec 2023
+                  <strong>Expiry Date:&nbsp;</strong> {{registeredSellerApplication?.certificate?.expiryDate | date : 'dd MMM yyyy'}}
                   <br>
                 </p>
                 <a href="api/application/{{registeredSellerApplication?.id}}/download-certificate" download><i class="fa fa-file-pdf"
