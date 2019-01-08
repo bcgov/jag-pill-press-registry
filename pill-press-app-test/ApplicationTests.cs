@@ -446,7 +446,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             string accountId = user.accountid;
 
             // create a new request object for the upload, as we will be using multipart form submission.
-            var requestMessage = new HttpRequestMessage(HttpMethod.Post, $"/api/file/{ id }/attachments/application");
+            var requestMessage = new HttpRequestMessage(HttpMethod.Post, $"/api/file/{ id }/attachments/incident");
             requestMessage.Content = multiPartContent;
 
             var uploadResponse = await _client.SendAsync(requestMessage);
@@ -617,6 +617,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
 
             using (var formData = new MultipartFormDataContent())
             {
+                /*
                 // Upload
                 var fileContent = new ByteArrayContent(new byte[100]);
                 fileContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
@@ -628,6 +629,43 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
                 formData.Add(new StringContent(documentType, Encoding.UTF8, "application/json"), "documentType");
                 response = _client.PostAsync($"/api/file/{id}/attachments/incident", formData).Result;
                 Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+
+    */
+
+
+                // Attach a file
+
+                string testData = "This is just a test.";
+                byte[] bytes = Encoding.ASCII.GetBytes(testData);
+                documentType = "Test Document Type";
+                // Create random filename
+                var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+                var stringChars = new char[9];
+                var random = new Random();
+                for (int i = 0; i < stringChars.Length; i++)
+                {
+                    stringChars[i] = chars[random.Next(chars.Length)];
+                }
+                var randomString = new String(stringChars);
+                string filename = randomString + ".txt";
+
+                MultipartFormDataContent multiPartContent = new MultipartFormDataContent("----TestBoundary");
+                var fileContent = new MultipartContent { new ByteArrayContent(bytes) };
+                fileContent.Headers.ContentType = new MediaTypeHeaderValue("text/plain");
+                fileContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data");
+                fileContent.Headers.ContentDisposition.Name = "File";
+                fileContent.Headers.ContentDisposition.FileName = filename;
+                multiPartContent.Add(fileContent);
+                multiPartContent.Add(new StringContent(documentType), "documentType");   // form input
+
+                string accountId = user.accountid;
+
+                // create a new request object for the upload, as we will be using multipart form submission.
+                var requestMessage = new HttpRequestMessage(HttpMethod.Post, $"/api/file/{ id }/attachments/incident");
+                requestMessage.Content = multiPartContent;
+
+                var uploadResponse = await _client.SendAsync(requestMessage);
+                uploadResponse.EnsureSuccessStatusCode();
 
                 // Get
                 request = new HttpRequestMessage(HttpMethod.Get, $"/api/file/{id}/attachments/incident/{documentType}");
