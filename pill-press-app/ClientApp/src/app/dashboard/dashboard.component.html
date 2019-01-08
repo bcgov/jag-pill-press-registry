@@ -313,7 +313,7 @@
                         <span style="background-color: #E1E8F2; padding: 10px;">{{i+1}}</span>
                         <div style="background-color: #F1F4FA; padding: 10px; padding-bottom: 15px;">
                           <span>{{item.equipmentType}}</span> <br>
-                          <span>Serial #: </span> <i>{{item.serialNumber || 'Not available'}}</i> <br>
+                          <span>Serial #: </span> <i>{{item.serialNumber || item.customBuiltSerialNumber || 'Not available'}}</i> <br>
                           <span>Reference #: {{item.title}} </span> <span></span> <br>
                         </div>
                       </div>
@@ -367,7 +367,7 @@
                         <span style="background-color: #E1E8F2; padding: 10px;">{{i+1}}</span>
                         <div style="background-color: #F1F4FA; padding: 10px; padding-bottom: 15px;">
                           <span>{{item.equipmentType}}</span> <br>
-                          <span>Serial #: </span> <i>{{item.serialNumber || 'Not available'}}</i> <br>
+                          <span>Serial #: </span> <i>{{item.serialNumber || item.customBuiltSerialNumber || 'Not available'}}</i> <br>
                           <span>Equipment Registry #: </span> <span></span> <br>
                           <a href=""><i class="fa fa-file-pdf" style="color: #38598A; margin-right: 5px;"></i>Download
                             Certificate</a>
