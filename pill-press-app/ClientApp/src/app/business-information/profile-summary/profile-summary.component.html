@@ -1,5 +1,5 @@
 <div class="form-wrapper row" style="position: relative">
-   <div [ngBusy]="busy"></div>
+  <div [ngBusy]="busy"></div>
   <div [ngClass]="{'col-lg-12': nextRoute, 'col-lg-8': !nextRoute}" class="col-sm-12">
     <h2 class="step" *ngIf="nextRoute">STEP 1</h2>
     <h1>Business Profile Review</h1>
@@ -47,7 +47,7 @@
     <h2 *ngIf="!nextRoute" class="blue-header">DECLARATIONS AND CONSENT</h2>
     <div [formGroup]="form" *ngIf="!nextRoute" style="padding-left: 10px;">
       <section style="display: flex">
-        <input type="checkbox"  formControlName="declarationofcorrectinformation">
+        <input type="checkbox" formControlName="declarationofcorrectinformation">
         <span class="error-states">*</span>
         <div style="padding-left: 10px;"> I certify that, to the best of my knowledge, the information I have provided
           on
@@ -78,12 +78,13 @@
     <div style="margin-top: 30px; display: flex; justify-content: space-between; position: relative;">
       <section>
         <!-- <span class="error-states">*</span> <i>Required field</i> -->
-        
+
         <a routerLink="/business-profile"><i class="fas fa-pencil-alt"></i> Edit Business Profile</a>
       </section>
       <section>
         <div [ngBusy]="busy2"></div>
-        <button *ngIf="nextRoute" class="btn btn-primary" (click)="router.navigateByUrl(nextRoute + '/' + id)">CONTINUE TO APPLICATION</button>
+        <button *ngIf="nextRoute" class="btn btn-primary" (click)="router.navigateByUrl(nextRoute + '/' + id)">CONTINUE
+          TO APPLICATION</button>
         <button *ngIf="!nextRoute" class="btn btn-primary" (click)="markAsTouched(); save()">SAVE</button>
       </section>
     </div>
@@ -125,17 +126,14 @@
       <h2 style="color: #000">Collection Notice:</h2>
       <div class="submit-content">
         <p>
-          The Security Programs Division (SPD) will collect your personal information for the purpose of fulfilling
-          the requirements
-          of the Cannabis Control and Licensing Act (CCLA) and associated regulations in accordance with Sections 26
-          (a)
-          and (c) of the Freedom of Information and Protection of Privacy Act. Should you have any questions about
-          the
-          collection, use, or disclosure of personal information, please contact the Senior Policy Analyst, Security
-          Programs
-          Division via mail to PO Box 9217 Stn Prov Govt Victoria, BC V8W 9J1; email to
-          <a href="mailto:cannabissecurityscreening@gov.bc.ca">cannabissecurityscreening@gov.bc.ca</a>;
-          or by telephone at 1-855-587-0185.</p>
+          The Security Programs Division will collect your personal information for the purpose of fulfilling the
+          requirements of the Pill Press and Related Equipment Control Act and associated regulations in Pill Press
+          registration, compliance and enforcement matters in accordance with Sections 26 (a) and (c) of the Freedom of
+          Information and Protection of Privacy Act. Should you have any questions about the collection, use, or
+          disclosure of personal information, please contact the Senior Policy Analyst, Security Programs Division via
+          mail to PO Box 9217 Stn Prov Govt Victoria, BC V8W 9J1; email to securitylicensing@gov.bc.ca; or by telephone
+          at 1-855-587-0185.
+        </p>
       </div>
     </section>
   </div>
