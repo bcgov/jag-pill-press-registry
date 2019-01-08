@@ -756,7 +756,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
 
             // create a SharePointDocumentLocation link
 
-            string name = application.Title + " Files";
+            string name = application.Title + " Application Files";
 
             // Create the folder
             bool folderExists = await _sharePointFileManager.FolderExists(SharePointFileManager.ApplicationDocumentListTitle, folderName);
@@ -780,7 +780,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             MicrosoftDynamicsCRMsharepointdocumentlocation mdcsdl = new MicrosoftDynamicsCRMsharepointdocumentlocation()
             {
                 Relativeurl = folderName,
-                Description = "Business Profile Files",
+                Description = "Application Files",
                 Name = name
             };
 
@@ -801,17 +801,24 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             if (mdcsdl != null)
             {
                 // add a regardingobjectid.
-                string accountReference = _dynamicsClient.GetEntityURI("accounts", userSettings.AccountId);
-                var patchSharePointDocumentLocation = new MicrosoftDynamicsCRMsharepointdocumentlocation();
-                patchSharePointDocumentLocation.RegardingobjectidODataBind = accountReference;
+                //string accountReference = _dynamicsClient.GetEntityURI("accounts", userSettings.AccountId);
+                //var patchSharePointDocumentLocation = new MicrosoftDynamicsCRMsharepointdocumentlocation();
+                //patchSharePointDocumentLocation.RegardingobjectIdAccountODataBind = accountReference;
                 
                 // set the parent document library.
                 string parentDocumentLibraryReference = GetDocumentLocationReferenceByRelativeURL("incident");
-                patchSharePointDocumentLocation.ParentsiteorlocationSharepointdocumentlocationODataBind = _dynamicsClient.GetEntityURI("sharepointdocumentlocations", parentDocumentLibraryReference);
+
+                string incidentURI = _dynamicsClient.GetEntityURI("incidents", applicationId.ToString());
+                var patchSharePointDocumentLocationIncident = new MicrosoftDynamicsCRMsharepointdocumentlocation()
+                {
+                    RegardingobjectIdIncidentODataBind = incidentURI,
+                    ParentsiteorlocationSharepointdocumentlocationODataBind = _dynamicsClient.GetEntityURI("sharepointdocumentlocations", parentDocumentLibraryReference)
+                };
+                
 
                 try
                 {
-                    _dynamicsClient.Sharepointdocumentlocations.Update(mdcsdl.Sharepointdocumentlocationid, patchSharePointDocumentLocation);
+                    _dynamicsClient.Sharepointdocumentlocations.Update(mdcsdl.Sharepointdocumentlocationid, patchSharePointDocumentLocationIncident);
                 }
                 catch (OdataerrorException odee)
                 {
@@ -821,17 +828,16 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     _logger.LogError("Response:");
                     _logger.LogError(odee.Response.Content);
                 }
-
-                string sharePointLocationData = _dynamicsClient.GetEntityURI("sharepointdocumentlocations", mdcsdl.Sharepointdocumentlocationid);
-                /* Pill Press does not seem to have a relation between the incident and the document location.                 
+                
+                string sharePointLocationData = _dynamicsClient.GetEntityURI("sharepointdocumentlocations", mdcsdl.Sharepointdocumentlocationid);                               
                     
-                Odataid oDataId = new Odataid()
+                OdataId oDataId = new OdataId()
                 {
-                    OdataidProperty = sharePointLocationData
+                    OdataIdProperty = sharePointLocationData
                 };
                 try
                 {
-                    _dynamicsClient.Incidents.AddReference(applicationId, "adoxio_application_SharePointDocumentLocations", oDataId);
+                    _dynamicsClient.Incidents.AddReference(applicationId.ToString(), "incident_SharePointDocumentLocations", oDataId);
                 }
                 catch (OdataerrorException odee)
                 {
@@ -841,8 +847,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     _logger.LogError("Response:");
                     _logger.LogError(odee.Response.Content);
                 }
-
-                */
+                
             }
 
 
