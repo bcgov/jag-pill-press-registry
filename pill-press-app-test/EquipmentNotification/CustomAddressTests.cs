@@ -26,8 +26,6 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             string changedName = randomNewUserName("Application Changed Name ", 6);
             string service = "Application";
 
-            string initialPhoneNumber = "3331112222";
-
             DateTimeOffset dto = DateTimeOffset.Now;
 
             // login as default and get account for current user
