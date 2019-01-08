@@ -44,7 +44,7 @@ export class WaiverApplicationComponent implements OnInit {
       currentlyownusepossessequipment: ['', Validators.required],
       declarationOfCorrectInformation: ['', Validators.required],
       foippaconsent: ['', Validators.required],
-      intendtopurchaseequipment: ['', Validators.required],
+      intendtopurchaseequipment: [''],
       mainbusinessfocus: ['', Validators.required],
       manufacturingprocessdescription: ['', Validators.required],
       ownProducts: this.fb.array([this.createCustomProduct(<CustomProduct>{ purpose: PRODUCING_OWN_PRODUCT })]),
@@ -105,9 +105,13 @@ export class WaiverApplicationComponent implements OnInit {
 
   clearHiddenFields() {
     this.form.get('currentlyownusepossessequipment').valueChanges
-      .filter(value => value)
-      .subscribe(() => {
-        this.form.get('intendtopurchaseequipment').reset();
+      .subscribe((value) => {
+        if (value) {
+          this.form.get('intendtopurchaseequipment').clearValidators();
+          this.form.get('intendtopurchaseequipment').reset();
+        } else {
+          this.form.get('intendtopurchaseequipment').setValidators([Validators.required]);
+        }
       });
     this.form.get('producingownproduct').valueChanges
       .filter(value => !value)
