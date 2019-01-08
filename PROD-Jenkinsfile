@@ -89,7 +89,7 @@ def deployAndVerify(srcHash, environment, imageStream) {
   tagImage(srcHash, environment, "pill-press-prod")
   // verify deployment to an environment; e.g. [your-project-name]-dev
   openshiftVerifyDeployment(
-    deploymentConfig: APP_NAME,
+    deploymentConfig: pill-press,
     namespace: "${PROJECT_NAMESPACE}-${environment}",
     waitTime: '900000'
   )
