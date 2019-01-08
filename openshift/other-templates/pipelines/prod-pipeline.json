@@ -1,0 +1,42 @@
+{
+    "apiVersion": "build.openshift.io/v1",
+    "kind": "BuildConfig",
+    "metadata": {
+        "creationTimestamp": null,
+        "labels": {
+            "app": "prod-pipeline",
+            "name": "prod-pipeline",
+            "template": "prod-pipeline"
+        },
+        "name": "prod-pipeline",
+        "selfLink": "/apis/build.openshift.io/v1/namespaces/rqnyx8-tools/buildconfigs/prod-pipeline"
+    },
+    "spec": {
+        "failedBuildsHistoryLimit": 5,
+        "nodeSelector": {},
+        "output": {},
+        "postCommit": {},
+        "resources": {},
+        "runPolicy": "Parallel",
+        "source": {
+            "git": {
+                "uri": "https://github.com/bcgov/jag-pill-press-registry.git"
+            },
+            "type": "Git"
+        },
+        "strategy": {
+            "jenkinsPipelineStrategy": {
+                "jenkinsfilePath": "PROD-Jenkinsfile"
+            },
+            "type": "JenkinsPipeline"
+        },
+        "successfulBuildsHistoryLimit": 5,
+        "triggers": [
+            {                
+            }
+        ]
+    },
+    "status": {
+        "lastVersion": 904
+    }
+}
