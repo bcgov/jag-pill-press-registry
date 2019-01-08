@@ -31,7 +31,8 @@
           </mat-vertical-stepper>
         </section>
       </section>
-      <section class="step" style="display: block; background-color: #F1F4FA">
+
+      <section *ngIf="tab !== 'thank-you'" class="step" style="display: block; background-color: #F1F4FA; margin-bottom: 20px;">
         <h3 class="blue-header">EQUIPMENT SUBMISSIONS</h3>
         <section style="padding: 15px; padding-bottom: 20px;">
           <p>
@@ -67,7 +68,8 @@
 
         </section>
       </section>
-      <section class="submit-container">
+
+      <section  *ngIf="tab !== 'thank-you'" class="submit-container">
           <table>
             <tr>
               <td>

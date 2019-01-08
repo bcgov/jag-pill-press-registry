@@ -140,5 +140,5 @@ export class Application {
   OriginatingSellersAddress: CustomAddress;
   equipmentLocation: EquipmentLocation;
 
-  Certificates: Certificate[];
+  certificates: Certificate[];
 }

@@ -131,9 +131,9 @@
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-green">APPROVED</h4>
                 <p>
-                  <strong>Issue Date:&nbsp;</strong>11 Dec 2018
+                  <strong>Issue Date:&nbsp;</strong> {{waiverApplication?.certificate?.issueDate | date : 'dd MMM yyyy'}}
                   <br>
-                  <strong>Expiry Date:&nbsp;</strong>11 Dec 2023
+                  <strong>Expiry Date:&nbsp;</strong> {{waiverApplication?.certificate?.expiryDate | date : 'dd MMM yyyy'}}
                   <br>
                 </p>
                 <a href="api/application/{{waiverApplication?.id}}/download-certificate" download><i class="fa fa-file-pdf"
@@ -230,9 +230,9 @@
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-green">APPROVED</h4>
                 <p>
-                  <strong>Issue Date:&nbsp;</strong>11 Dec 2018
+                  <strong>Issue Date:&nbsp;</strong> {{registeredSellerApplication?.certificate?.issueDate | date : 'dd MMM yyyy'}}
                   <br>
-                  <strong>Expiry Date:&nbsp;</strong>11 Dec 2023
+                  <strong>Expiry Date:&nbsp;</strong> {{registeredSellerApplication?.certificate?.expiryDate | date : 'dd MMM yyyy'}}
                   <br>
                 </p>
                 <a href="api/application/{{registeredSellerApplication?.id}}/download-certificate" download><i class="fa fa-file-pdf"
@@ -313,7 +313,7 @@
                         <span style="background-color: #E1E8F2; padding: 10px;">{{i+1}}</span>
                         <div style="background-color: #F1F4FA; padding: 10px; padding-bottom: 15px;">
                           <span>{{item.equipmentType}}</span> <br>
-                          <span>Serial #: </span> <i>{{item.serialNumber || 'Not available'}}</i> <br>
+                          <span>Serial #: </span> <i>{{item.serialNumber || item.customBuiltSerialNumber || 'Not available'}}</i> <br>
                           <span>Reference #: {{item.title}} </span> <span></span> <br>
                         </div>
                       </div>
@@ -367,7 +367,7 @@
                         <span style="background-color: #E1E8F2; padding: 10px;">{{i+1}}</span>
                         <div style="background-color: #F1F4FA; padding: 10px; padding-bottom: 15px;">
                           <span>{{item.equipmentType}}</span> <br>
-                          <span>Serial #: </span> <i>{{item.serialNumber || 'Not available'}}</i> <br>
+                          <span>Serial #: </span> <i>{{item.serialNumber || item.customBuiltSerialNumber || 'Not available'}}</i> <br>
                           <span>Equipment Registry #: </span> <span></span> <br>
                           <a href=""><i class="fa fa-file-pdf" style="color: #38598A; margin-right: 5px;"></i>Download
                             Certificate</a>
