@@ -42,8 +42,7 @@ export class ProfileSummaryComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       id: [],
-      declarationofcorrectinformation: [],
-      foippaconsent: [],
+      declarationofcorrectinformation: []
     });
     this.reloadUser();
   }
@@ -130,8 +129,7 @@ export class ProfileSummaryComponent implements OnInit {
   }
 
   declarationsValid() {
-    return this.form.get('declarationofcorrectinformation').value === true
-      && this.form.get('foippaconsent').value === true;
+    return this.form.get('declarationofcorrectinformation').value === true;
   }
 
   markAsTouched() {
@@ -142,6 +140,18 @@ export class ProfileSummaryComponent implements OnInit {
         controls[c].markAsTouched();
       }
     }
+  }
+
+  isAdditionalContactPopulated() {
+    return !(this.account
+      && this.account.additionalContact
+      && this.account.additionalContact.firstName !== null
+      && this.account.additionalContact.lastName !== null
+      && this.account.additionalContact.title !== null
+      && this.account.additionalContact.phoneNumber !== null
+      && this.account.additionalContact.phoneNumberAlt !== null
+      && this.account.additionalContact.email !== null
+    );
   }
 
   save() {

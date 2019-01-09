@@ -228,7 +228,7 @@ export class SellerOwnerDialogComponent extends FormBase implements OnInit {
         firstName: [owner.contact.firstName || '', Validators.required],
         lastName: [owner.contact.lastName || '', Validators.required],
         phoneNumber: [owner.contact.phoneNumber || '', Validators.required],
-        email: [owner.contact.email || '', [Validators.required, Validators.email]],        
+        email: [owner.contact.email || '', [Validators.required, Validators.email]],
       })
     });
   }
