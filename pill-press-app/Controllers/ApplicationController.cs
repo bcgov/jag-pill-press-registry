@@ -49,17 +49,14 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         public IActionResult GetApplication(string id)
         {
             ViewModels.Application result = null;
-
-            if (!string.IsNullOrEmpty(id))
-            {
-                Guid ApplicationId = Guid.Parse(id);
+            if (!string.IsNullOrEmpty(id) && Guid.TryParse(id, out Guid applicationId))
+            {             
                 // query the Dynamics system to get the Application record.
-                MicrosoftDynamicsCRMincident application = _dynamicsClient.GetApplicationByIdWithChildren(ApplicationId);
+                MicrosoftDynamicsCRMincident application = _dynamicsClient.GetApplicationByIdWithChildren(applicationId);
                 
                 if (application != null)
                 {
-                    // verify the currently logged in user has access to this account
-                    Guid applicationId = Guid.Parse(id);
+                    // verify the currently logged in user has access to this account                    
 
                     if (!UserDynamicsExtensions.CurrentUserHasAccessToApplication(applicationId, _httpContextAccessor, _dynamicsClient))
                     {

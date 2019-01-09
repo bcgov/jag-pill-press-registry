@@ -13,5 +13,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         [JsonProperty(PropertyName = "parentcustomerid_account@odata.bind")]
         public string ParentCustomerIdAccountODataBind { get; set; }
 
+        [JsonProperty(PropertyName = "bcgov_contact_bcgov_businesscontact_Contact@odata.bind")]
+        public string BusinessContactODataBind { get; set; }
+
     }
 }
