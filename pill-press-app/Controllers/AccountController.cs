@@ -127,11 +127,9 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             ViewModels.Account result = null;
 
             // query the Dynamics system to get the account record.
-            if (id != null)
+            if (!string.IsNullOrEmpty(id) && Guid.TryParse(id, out Guid accountId))
             {
                 // verify the currently logged in user has access to this account
-                Guid accountId = new Guid(id);
-
                 try
                 {
                     userAccessToAccount = UserDynamicsExtensions.CurrentUserHasAccessToAccount(accountId, _httpContextAccessor, _dynamicsClient);
@@ -190,11 +188,9 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             List<ViewModels.Location> result = new List<Location>();
 
             // query the Dynamics system to get the account record.
-            if (id != null)
+            if (!string.IsNullOrEmpty(id) && Guid.TryParse(id, out Guid accountId))
             {
                 // verify the currently logged in user has access to this account
-                Guid accountId = new Guid(id);
-
                 try
                 {
                     userAccessToAccount = UserDynamicsExtensions.CurrentUserHasAccessToAccount(accountId, _httpContextAccessor, _dynamicsClient);
@@ -229,7 +225,6 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     _logger.LogDebug("Error occured obtaining incident locations.");
                     return new NotFoundResult();
                 }
-
 
             }
             else
@@ -340,20 +335,14 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateAccount([FromBody] ViewModels.Account item, string id)
-        {
-            // check for null.
-            if (item == null)
-            {
-                return new BadRequestResult();
-            }
-            else
+        {            
+            if (!string.IsNullOrEmpty(id) && Guid.TryParse(id, out Guid accountId))
             {
                 _logger.LogInformation(LoggingEvents.HttpPut, "Begin method " + this.GetType().Name + "." + MethodBase.GetCurrentMethod().ReflectedType.Name);
                 _logger.LogDebug(LoggingEvents.HttpPut, "Account parameter: " + JsonConvert.SerializeObject(item));
                 _logger.LogDebug(LoggingEvents.HttpPut, "id parameter: " + id);
 
-                Guid accountId = new Guid(id);
-
+         
                 if (!UserDynamicsExtensions.CurrentUserHasAccessToAccount(accountId, _httpContextAccessor, _dynamicsClient))
                 {
                     _logger.LogWarning(LoggingEvents.NotFound, "Current user has NO access to the account.");
@@ -426,7 +415,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
 
                 return Json(updatedAccount);
             }
-            
+            else
+            {
+                return new BadRequestResult();
+            }
+
         }
 
 
