@@ -49,11 +49,10 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         public IActionResult GetApplication(string id)
         {
             ViewModels.Application result = null;
-            Guid applicationId;
-            if (!string.IsNullOrEmpty(id) && Guid.TryParse(id, out applicationId))
+            if (!string.IsNullOrEmpty(id) && Guid.TryParse(id, out Guid applicationId))
             {             
                 // query the Dynamics system to get the Application record.
-                MicrosoftDynamicsCRMincident application = _dynamicsClient.GetApplicationByIdWithChildren(ApplicationId);
+                MicrosoftDynamicsCRMincident application = _dynamicsClient.GetApplicationByIdWithChildren(applicationId);
                 
                 if (application != null)
                 {
