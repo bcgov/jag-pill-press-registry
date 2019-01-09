@@ -60,7 +60,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                         {
                             result.BcgovJobtitle = jobtitle;
                         }
-                        system.Businesscontacts.Create(result);
+                        result = system.Businesscontacts.Create(result);
                     }
                     catch (OdataerrorException odee)
                     {
@@ -73,7 +73,58 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                             _logger.LogError(odee.Response.Content);
                         }                        
                     }
+
+                    // now link the business contact to the Account.
+
+                    try
+                    {                        
+                        var patchAccount = new MicrosoftDynamicsCRMaccount()
+                        {
+                            BusinessContactODataBind = system.GetEntityURI("bcgov_businesscontacts", result.BcgovBusinesscontactid),
+                        };
+                        system.Accounts.Update(accountId, patchAccount);
+                    }
+                    catch (OdataerrorException odee)
+                    {
+                        if (_logger != null)
+                        {
+                            _logger.LogError(LoggingEvents.Error, "Error while adding reference from account to business contact");
+                            _logger.LogError("Request:");
+                            _logger.LogError(odee.Request.Content);
+                            _logger.LogError("Response:");
+                            _logger.LogError(odee.Response.Content);
+                        }
+                    }
+
+                    // now link the contact
+
+                    try
+                    {
+                        var patchContact = new MicrosoftDynamicsCRMcontact()
+                        {
+                            BusinessContactODataBind = system.GetEntityURI("bcgov_businesscontacts", result.BcgovBusinesscontactid),
+                        };
+                        system.Contacts.Update(accountId, patchContact);
+                    }
+                    catch (OdataerrorException odee)
+                    {
+                        if (_logger != null)
+                        {
+                            _logger.LogError(LoggingEvents.Error, "Error while adding reference from contact to business contact.");
+                            _logger.LogError("Request:");
+                            _logger.LogError(odee.Request.Content);
+                            _logger.LogError("Response:");
+                            _logger.LogError(odee.Response.Content);
+                        }
+                    }
+
+
+
+
                 }
+
+
+
             }
             else
             {
