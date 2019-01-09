@@ -187,7 +187,7 @@ namespace DemoTool
                 {
                     try
                     {
-                        _dynamicsClient.Customaddresses.Delete(item.BcgovCustomproductid);
+                        _dynamicsClient.Customproducts.Delete(item.BcgovCustomproductid);
                         Console.Out.WriteLine("Deleted customProducts " + item.BcgovCustomproductid);
                     }
                     catch (OdataerrorException odee)
@@ -244,7 +244,7 @@ namespace DemoTool
                 {
                     try
                     {
-                        _dynamicsClient.Riskassessments.Delete(item.BcgovEquipmentlocationid);
+                        _dynamicsClient.Equipmentlocations.Delete(item.BcgovEquipmentlocationid);
                         Console.Out.WriteLine("Deleted Equipmentlocation " + item.BcgovEquipmentlocationid);
                     }
                     catch (OdataerrorException odee)
@@ -263,7 +263,7 @@ namespace DemoTool
                 {
                     try
                     {
-                        _dynamicsClient.Riskassessments.Delete(item.BcgovLocationid);
+                        _dynamicsClient.Locations.Delete(item.BcgovLocationid);
                         Console.Out.WriteLine("Deleted location " + item.BcgovLocationid);
                     }
                     catch (OdataerrorException odee)
@@ -282,7 +282,7 @@ namespace DemoTool
                 {
                     try
                     {
-                        _dynamicsClient.Riskassessments.Delete(item.BcgovEquipmentid);
+                        _dynamicsClient.Equipments.Delete(item.BcgovEquipmentid);
                         Console.Out.WriteLine("Deleted equipment " + item.BcgovEquipmentid);
                     }
                     catch (OdataerrorException odee)
