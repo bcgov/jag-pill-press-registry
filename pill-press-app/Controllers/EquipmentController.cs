@@ -35,7 +35,6 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             this._env = env;
         }
 
-
         /// <summary>
         /// Get a specific legal entity
         /// </summary>
@@ -46,11 +45,10 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         {
             ViewModels.Equipment result = null;
 
-            if (!string.IsNullOrEmpty(id))
+            if (!string.IsNullOrEmpty(id) && Guid.TryParse(id, out Guid equipmentId))
             {
-                Guid ApplicationId = Guid.Parse(id);
                 // query the Dynamics system to get the Equipment record.
-                MicrosoftDynamicsCRMbcgovEquipment equipment = _dynamicsClient.GetEquipmentByIdWithChildren(ApplicationId);
+                MicrosoftDynamicsCRMbcgovEquipment equipment = _dynamicsClient.GetEquipmentByIdWithChildren(equipmentId);
                 
                 if (equipment != null)
                 {
@@ -79,46 +77,45 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateEquipment([FromBody] ViewModels.Equipment item, string id)
         {
-            if (id != null && item.Id != null && id != item.Id)
+            if (!string.IsNullOrEmpty(id) && Guid.TryParse(id, out Guid equipmentId))
+            {
+                // get the Equipment
+                MicrosoftDynamicsCRMbcgovEquipment equipment = _dynamicsClient.GetEquipmentByIdWithChildren(equipmentId);
+                if (equipment == null)
+                {
+                    return new NotFoundResult();
+                }
+
+                // get UserSettings from the session
+                string temp = _httpContextAccessor.HttpContext.Session.GetString("UserSettings");
+                UserSettings userSettings = JsonConvert.DeserializeObject<UserSettings>(temp);
+
+                // Get the current account
+                var account = _dynamicsClient.GetAccountById(Guid.Parse(userSettings.AccountId));
+
+                MicrosoftDynamicsCRMbcgovEquipment patchEquipment = new MicrosoftDynamicsCRMbcgovEquipment();
+                patchEquipment.CopyValues(item);
+
+                try
+                {
+                    await _dynamicsClient.Equipments.UpdateAsync(equipmentId.ToString(), patchEquipment);
+                }
+                catch (OdataerrorException odee)
+                {
+                    _logger.LogError("Error updating Equipment");
+                    _logger.LogError("Request:");
+                    _logger.LogError(odee.Request.Content);
+                    _logger.LogError("Response:");
+                    _logger.LogError(odee.Response.Content);
+                }
+
+                equipment = _dynamicsClient.GetEquipmentByIdWithChildren(equipmentId);
+                return Json(equipment.ToViewModel());
+            }
+            else
             {
                 return BadRequest();
             }
-
-            // get the Equipment
-            Guid EquipmentId = Guid.Parse(id);
-
-            MicrosoftDynamicsCRMbcgovEquipment equipment = _dynamicsClient.GetEquipmentByIdWithChildren(EquipmentId);
-            if (equipment == null)
-            {
-                return new NotFoundResult();
-            }
-
-            // get UserSettings from the session
-            string temp = _httpContextAccessor.HttpContext.Session.GetString("UserSettings");
-            UserSettings userSettings = JsonConvert.DeserializeObject<UserSettings>(temp);
-
-            // Get the current account
-            var account = _dynamicsClient.GetAccountById(Guid.Parse(userSettings.AccountId));
-
-            MicrosoftDynamicsCRMbcgovEquipment patchEquipment = new MicrosoftDynamicsCRMbcgovEquipment();
-            patchEquipment.CopyValues(item);
-            
-            try
-            {
-                await _dynamicsClient.Equipments.UpdateAsync(EquipmentId.ToString(), patchEquipment);
-            }
-            catch (OdataerrorException odee)
-            {
-                _logger.LogError("Error updating Equipment");
-                _logger.LogError("Request:");
-                _logger.LogError(odee.Request.Content);
-                _logger.LogError("Response:");
-                _logger.LogError(odee.Response.Content);
-            }
-
-
-            equipment = _dynamicsClient.GetEquipmentByIdWithChildren(EquipmentId);
-            return Json(equipment.ToViewModel());
         }
 
         /// <summary>
@@ -168,48 +165,52 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpPost("{id}/delete")]
-        public async Task<IActionResult> DeleteEquipment(string id)
+        public IActionResult DeleteEquipment(string id)
         {
             _logger.LogDebug(LoggingEvents.HttpPost, "Begin method " + this.GetType().Name + "." + MethodBase.GetCurrentMethod().ReflectedType.Name);
 
-            // verify the currently logged in user has access to this account
-            Guid applicationId = new Guid(id);
-
-            MicrosoftDynamicsCRMbcgovEquipment equipment = _dynamicsClient.GetEquipmentById(applicationId);
-            if (equipment == null)
+            if (!string.IsNullOrEmpty(id) && Guid.TryParse(id, out Guid equipmentId))
             {
-                _logger.LogWarning(LoggingEvents.NotFound, "Equipment NOT found.");
-                return new NotFoundResult();
-            }
 
-            // TODO - add this routine.
-            /*
-            if (!UserDynamicsExtensions.CurrentUserHasAccessToEquipment(equipmentId, _httpContextAccessor, _dynamicsClient))
-            {
-                _logger.LogWarning(LoggingEvents.NotFound, "Current user has NO access to the equipment.");
-                return new NotFoundResult();
-            }
-            */
+                MicrosoftDynamicsCRMbcgovEquipment equipment = _dynamicsClient.GetEquipmentById(equipmentId);
+                if (equipment == null)
+                {
+                    _logger.LogWarning(LoggingEvents.NotFound, "Equipment NOT found.");
+                    return new NotFoundResult();
+                }
 
-            // get the equipment            
-            try
-            {
-                await _dynamicsClient.Equipments.DeleteAsync(applicationId.ToString());
-                _logger.LogDebug(LoggingEvents.HttpDelete, "Equipment deleted: " + applicationId.ToString());
-            }
-            catch (OdataerrorException odee)
-            {
-                _logger.LogError(LoggingEvents.Error, "Error deleting the equipment: " + applicationId.ToString());
-                _logger.LogError("Request:");
-                _logger.LogError(odee.Request.Content);
-                _logger.LogError("Response:");
-                _logger.LogError(odee.Response.Content);
-                throw new OdataerrorException("Error deleting the account: " + applicationId.ToString());
-            }
+                // TODO - add this routine.
+                /*
+                if (!UserDynamicsExtensions.CurrentUserHasAccessToEquipment(equipmentId, _httpContextAccessor, _dynamicsClient))
+                {
+                    _logger.LogWarning(LoggingEvents.NotFound, "Current user has NO access to the equipment.");
+                    return new NotFoundResult();
+                }
+                */
 
-            _logger.LogDebug(LoggingEvents.HttpDelete, "No content returned.");
-            return NoContent(); // 204 
+                // delete the equipment            
+                try
+                {
+                    _dynamicsClient.Equipments.Delete(equipmentId.ToString());
+                    _logger.LogDebug(LoggingEvents.HttpDelete, "Equipment deleted: " + equipmentId.ToString());
+                }
+                catch (OdataerrorException odee)
+                {
+                    _logger.LogError(LoggingEvents.Error, "Error deleting the equipment: " + equipmentId.ToString());
+                    _logger.LogError("Request:");
+                    _logger.LogError(odee.Request.Content);
+                    _logger.LogError("Response:");
+                    _logger.LogError(odee.Response.Content);
+                    throw new OdataerrorException("Error deleting the account: " + equipmentId.ToString());
+                }
+
+                _logger.LogDebug(LoggingEvents.HttpDelete, "No content returned.");
+                return NoContent(); // 204 
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
-
     }
 }
