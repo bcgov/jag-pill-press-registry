@@ -36,7 +36,7 @@
       </tr>
     </table>
 
-    <section *ngIf="additionalContactData?.length > 0">
+    <section *ngIf=" isAdditionalContactPopulated()">
       <h2>Additional Contact</h2>
       <table class="summary-table">
         <tr *ngFor="let item of additionalContactData; let i = index;">
