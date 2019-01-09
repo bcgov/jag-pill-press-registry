@@ -75,7 +75,7 @@ export class AuthorizedApplicationComponent extends FormBase implements OnInit {
       currentlyownusepossessequipment: ['', Validators.required],
       declarationOfCorrectInformation: ['', Validators.required],
       foippaconsent: ['', Validators.required],
-      intendtopurchaseequipment: ['', Validators.required],
+      intendtopurchaseequipment: [''],
       ownProducts: this.fb.array([this.createCustomProduct(<CustomProduct>{ purpose: PRODUCING_OWN_PRODUCT })]),
       ownintendtoownequipmentforbusinessuse: ['', Validators.required],
       producingownproduct: ['', Validators.required],
@@ -155,8 +155,13 @@ export class AuthorizedApplicationComponent extends FormBase implements OnInit {
   clearHiddenFields() {
     this.form.get('currentlyownusepossessequipment').valueChanges
       .filter(value => value)
-      .subscribe(() => {
-        this.form.get('intendtopurchaseequipment').reset();
+      .subscribe((value) => {
+        if (value) {
+          this.form.get('intendtopurchaseequipment').clearValidators();
+          this.form.get('intendtopurchaseequipment').reset();
+        } else {
+          this.form.get('intendtopurchaseequipment').setValidators([Validators.required]);
+        }
       });
     this.form.get('producingownproduct').valueChanges
       .filter(value => !value)

@@ -42,8 +42,7 @@ export class ProfileSummaryComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       id: [],
-      declarationofcorrectinformation: [],
-      foippaconsent: [],
+      declarationofcorrectinformation: []
     });
     this.reloadUser();
   }
@@ -130,8 +129,7 @@ export class ProfileSummaryComponent implements OnInit {
   }
 
   declarationsValid() {
-    return this.form.get('declarationofcorrectinformation').value === true
-      && this.form.get('foippaconsent').value === true;
+    return this.form.get('declarationofcorrectinformation').value === true;
   }
 
   markAsTouched() {

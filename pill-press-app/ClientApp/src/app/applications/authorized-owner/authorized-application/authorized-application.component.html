@@ -13,6 +13,7 @@
           <app-field [showChevrons]="false" errorMessage="Please select yes or no" [valid]="form.get('currentlyownusepossessequipment').valid || !form.get('currentlyownusepossessequipment').touched">
             <span>Do you currently own, use, or possess <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-controlled-equipment"
                 target="blank">Controlled Equipment</a>?</span> &nbsp; <strong class="error-states">*</strong>
+            <br>
             <input type="radio" [value]="true" name="currentlyownusepossessequipment" formControlName="currentlyownusepossessequipment">
             <span style="padding-right: 10px;">&nbsp;Yes</span>
             <input type="radio" [value]="false" name="currentlyownusepossessequipment" formControlName="currentlyownusepossessequipment">
@@ -207,8 +208,8 @@
                 [required]="true">
                 <input type="text" class="form-control" formControlName="sitelicencebusinessname" maxlength="100" style="width: 500px">
               </app-field>
-              <app-field label="Site Licence - Number" errorMessage="Please provide the site licence number"
-                [valid]="form.get('sitelicencenumber').valid || !form.get('sitelicencenumber').touched" [required]="true">
+              <app-field label="Site Licence - Number" errorMessage="Please provide the site licence number" [valid]="form.get('sitelicencenumber').valid || !form.get('sitelicencenumber').touched"
+                [required]="true">
                 <input type="text" class="form-control" formControlName="sitelicencenumber" style="width: 340px">
               </app-field>
               <app-field label="Site Licence - Expiry Date">
