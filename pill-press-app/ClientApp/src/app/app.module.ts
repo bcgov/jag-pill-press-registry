@@ -79,7 +79,8 @@ import { BusinessProfileSummaryComponent } from './business-profile-summary/busi
 import { NgBusyModule } from 'ng-busy';
 import { PaymentConfirmationComponent } from './payment-confirmation/payment-confirmation.component';
 import { LicenceFeePaymentConfirmationComponent } from './licence-fee-payment-confirmation/licence-fee-payment-confirmation.component';
-import { BsDatepickerModule, AlertModule } from 'ngx-bootstrap';
+import { BsDatepickerModule, AlertModule  } from 'ngx-bootstrap';
+import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
 import { CanDeactivateGuard } from './services/can-deactivate-guard.service';
 import { BCeidAuthGuard } from './services/bceid-auth-guard.service';
 import { ServiceCardAuthGuard } from './services/service-card-auth-guard.service';
@@ -124,6 +125,8 @@ import { EquipmentNotificationComponent } from './equipment-notification/equipme
 import { WaiverComponent } from './applications/waiver/waiver.component';
 import { RegisteredSellerComponent } from './applications/registered-seller/registered-seller.component';
 import { AuthorizedOwnerComponent } from './applications/authorized-owner/authorized-owner.component';
+
+
 
 @NgModule({
   declarations: [
@@ -217,6 +220,7 @@ import { AuthorizedOwnerComponent } from './applications/authorized-owner/author
     MatToolbarModule,
     MatTooltipModule,
     FileDropModule,
+    ModalModule.forRoot(),
     BsDatepickerModule.forRoot(),
     StoreModule.forRoot(reducers, { metaReducers }),
     AlertModule.forRoot()
@@ -286,6 +290,7 @@ import { AuthorizedOwnerComponent } from './applications/authorized-owner/author
     CanDeactivateGuard,
     BCeidAuthGuard,
     ServiceCardAuthGuard,
+    BsModalService,
   ],
   entryComponents: [
     SellerOwnerDialogComponent,
