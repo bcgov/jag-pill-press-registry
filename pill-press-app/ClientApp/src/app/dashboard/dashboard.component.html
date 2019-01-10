@@ -289,12 +289,13 @@
               <i class="fas fa-exclamation-circle fa-lg" style="color: #FFCC00; margin-right: 10px;"></i>
               <span>
                 Once your owner application is approved, please ensure you register your Controlled Equipment within 10
-                days. For more information about Controlled Equipment, please see: www.tbc.com</span>
+                days. <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-controlled-equipment#Equipment%20Notification%20Process" target="_blank">
+                Find out how to start your equipment notification.</a></span>
             </div>
           </section>
           <section *ngIf="inProgressEquipment?.length > 0 || completedEquipment?.length > 0">
             <div class="space-between" style="padding: 10px;">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tem</p>
+              <p>Submit an Equipment Notification for each piece of Controlled Equipment in your inventory, and track the status below.</p>
               <button class="btn btn-primary" (click)="addEquipment()">ADD MORE EQUIPMENT</button>
             </div>
             <mat-tab-group [selectedIndex]="(inProgressEquipment?.length > 0 || completedEquipment?.length == 0) ? 0 : 1">
