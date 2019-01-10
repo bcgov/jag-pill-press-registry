@@ -34,14 +34,7 @@ export const MY_FORMATS = {
   templateUrl: './seller-application.component.html',
   styleUrls: ['./seller-application.component.scss']
 })
-export class SellerApplicationComponent implements OnInit {
-  form: FormGroup;
-  busy: Subscription;
-  busyPromise: Promise<any>;
-  waiverId: string;
-
-  ownersAndManagers: any[] = [];
-  showErrorMessages: boolean;
+export class SellerApplicationComponent extends FormBase implements OnInit {
 
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -49,8 +42,19 @@ export class SellerApplicationComponent implements OnInit {
     private dialog: MatDialog,
     private dynamicsDataService: DynamicsDataService,
     private applicationDataService: ApplicationDataService) {
+    super();
     this.waiverId = this.route.snapshot.params.id;
   }
+  form: FormGroup;
+  busy: Subscription;
+  busyPromise: Promise<any>;
+  waiverId: string;
+
+  ownersAndManagers: any[] = [];
+  showErrorMessages: boolean;
+  form2: FormGroup;
+
+  currentOwner: any;
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -78,6 +82,19 @@ export class SellerApplicationComponent implements OnInit {
       registeredsellerownermanager: [],
     });
 
+    this.form2 = this.fb.group({
+      id: [null],
+      jobTitle: [''],
+      contactType: ['Additional'],
+      registeredSellerOwnerManager: ['', Validators.required],
+      contact: this.fb.group({
+        id: [''],
+        firstName: ['', Validators.required],
+        lastName: ['', Validators.required],
+        phoneNumber: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+      })
+    });
 
     this.reloadData();
     this.clearHiddenFields();
@@ -113,6 +130,23 @@ export class SellerApplicationComponent implements OnInit {
   markAsTouched() {
     this.form.markAsTouched();
     const controls = this.form.controls;
+    for (const c in controls) {
+      if (typeof (controls[c].markAsTouched) === 'function') {
+        controls[c].markAsTouched();
+      }
+    }
+  }
+
+  markForm2AsTouched() {
+    this.form2.markAsTouched();
+    let controls = this.form2.controls;
+    for (const c in controls) {
+      if (typeof (controls[c].markAsTouched) === 'function') {
+        controls[c].markAsTouched();
+      }
+    }
+
+    controls = (<FormGroup>this.form2.get('contact')).controls;
     for (const c in controls) {
       if (typeof (controls[c].markAsTouched) === 'function') {
         controls[c].markAsTouched();
@@ -176,6 +210,23 @@ export class SellerApplicationComponent implements OnInit {
         }
       }
     );
+  }
+
+  addOwner(data, modal) {
+    this.currentOwner = this.currentOwner || {};
+    data = Object.assign(this.currentOwner, data);
+
+
+    this.markForm2AsTouched();
+    if (this.form2.valid && data) {
+      const i = this.ownersAndManagers.indexOf(data);
+      if (i === -1) {
+        this.ownersAndManagers.push(data);
+      } else {
+        this.ownersAndManagers[i] = data;
+      }
+      modal.hide();
+    }
   }
 
   deleteOwnerOrManager(owner: any) {

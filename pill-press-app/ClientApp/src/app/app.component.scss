@@ -301,3 +301,22 @@ button.btn-mobile {
     outline: none;
     background: #ddd;
 }
+
+
+table {
+    width: 100%;
+    margin-left: 10px;
+}
+
+tr td:first-child {
+    font-weight: bold;
+    padding-right: 10px;
+}
+
+td {
+    background-color: transparent;
+}
+
+button {
+    margin: 0 auto;
+}
