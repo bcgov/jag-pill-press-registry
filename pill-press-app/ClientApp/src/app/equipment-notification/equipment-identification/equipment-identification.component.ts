@@ -43,11 +43,11 @@ export class EquipmentIdentificationComponent extends FormBase implements OnInit
       serialNumberKeyPartDescription: [],
       addressofPersonBusiness: this.fb.group({
         id: [],
-        streetLine1: ['', Validators.required],
+        streetLine1: [''],
         streetLine2: [],
-        city: ['', Validators.required],
+        city: [''],
         province: [],
-        postalCode: ['', [Validators.required, Validators.pattern(postalRegex)]],
+        postalCode: [''],
       })
 
     });
@@ -70,16 +70,7 @@ export class EquipmentIdentificationComponent extends FormBase implements OnInit
     this.form.get('howWasEquipmentBuilt').valueChanges
       .subscribe((value) => {
         if (value === 'Commercially Manufactured') {
-          this.form.get('addressofPersonBusiness.streetLine1').clearValidators();
-          this.form.get('addressofPersonBusiness.city').clearValidators();
-          this.form.get('addressofPersonBusiness.postalCode').clearValidators();
-          this.form.get('addressofPersonBusiness.province').clearValidators();
           this.form.get('addressofPersonBusiness').reset();
-        } else {
-          this.form.get('addressofPersonBusiness.streetLine1').setValidators([Validators.required]);
-          this.form.get('addressofPersonBusiness.city').setValidators([Validators.required]);
-          this.form.get('addressofPersonBusiness.province').setValidators([Validators.required]);
-          this.form.get('addressofPersonBusiness.postalCode').setValidators([Validators.required, Validators.pattern(postalRegex)]);
         }
         for (const field in this.form.controls) {
           if (field !== 'id'
