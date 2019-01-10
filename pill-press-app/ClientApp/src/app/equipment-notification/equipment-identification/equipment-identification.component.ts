@@ -46,7 +46,7 @@ export class EquipmentIdentificationComponent extends FormBase implements OnInit
         streetLine1: ['', Validators.required],
         streetLine2: [],
         city: ['', Validators.required],
-        province: ['British Columbia'],
+        province: [],
         postalCode: ['', [Validators.required, Validators.pattern(postalRegex)]],
       })
 
@@ -61,7 +61,6 @@ export class EquipmentIdentificationComponent extends FormBase implements OnInit
       .subscribe((data: Application) => {
         data.addressofPersonBusiness = data.addressofPersonBusiness || <any>{};
         this.form.patchValue(data);
-        this.form.get('addressofPersonBusiness.province').setValue('British Columbia');
       }, error => {
         // debugger;
       });
@@ -74,10 +73,12 @@ export class EquipmentIdentificationComponent extends FormBase implements OnInit
           this.form.get('addressofPersonBusiness.streetLine1').clearValidators();
           this.form.get('addressofPersonBusiness.city').clearValidators();
           this.form.get('addressofPersonBusiness.postalCode').clearValidators();
+          this.form.get('addressofPersonBusiness.province').clearValidators();
           this.form.get('addressofPersonBusiness').reset();
         } else {
           this.form.get('addressofPersonBusiness.streetLine1').setValidators([Validators.required]);
           this.form.get('addressofPersonBusiness.city').setValidators([Validators.required]);
+          this.form.get('addressofPersonBusiness.province').setValidators([Validators.required]);
           this.form.get('addressofPersonBusiness.postalCode').setValidators([Validators.required, Validators.pattern(postalRegex)]);
         }
         for (const field in this.form.controls) {
@@ -91,7 +92,6 @@ export class EquipmentIdentificationComponent extends FormBase implements OnInit
   }
 
   save(goToReview: boolean) {
-    this.form.get('addressofPersonBusiness.province').setValue('British Columbia');
     if (this.form.valid || goToReview === false) {
       const value = this.form.value;
       value.addressofPersonBusiness.country = 'Canada';
