@@ -57,7 +57,7 @@
                 <h4 class="status">STATUS:</h4> &nbsp;
                 <h4 class="status-green">COMPLETED</h4>
                 <p>
-                  <strong>Confirmation Date:&nbsp;</strong>
+                  <strong>Confirmation Date:&nbsp;</strong>{{authorizedOwnerApplication?.submittedDate}}
                 </p>
                 <p>
                   <strong>Reference #:&nbsp;</strong>{{authorizedOwnerApplication?.title}}
@@ -319,7 +319,7 @@
                       </div>
                     </td>
                     <td style="padding: 10px; width: 110px;" valign="top">
-                      {{item.submittedDate | date: 'dd/MM/yyyy'}}
+                      {{item.submittedDate | date: 'dd MMM yyyy'}}
                     </td>
                     <td style="background-color: #E1E8F2; padding: 10px;">
                       <section *ngIf="item.statuscode === 'Draft'">
