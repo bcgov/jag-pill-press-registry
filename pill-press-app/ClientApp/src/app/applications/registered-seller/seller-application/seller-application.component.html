@@ -148,7 +148,7 @@
         </div>
 
         <section style="display: flex; flex-direction: row-reverse; margin-bottom: 10px;">
-          <button class="btn btn-secondary" (click)="addEditOwner({})">ADD AN OWNER/MANAGER</button>
+          <button class="btn btn-secondary" (click)="currentOwner = {}; form2.reset(); staticModal.show()">ADD AN OWNER/MANAGER</button>
         </section>
 
         <table class="summary-table" style="width: 100%;">
@@ -170,7 +170,7 @@
               Email: {{item?.contact?.email}}
             </td>
             <td [ngClass]="{'row-alt': i%2 == 0}">
-              <i class="fas fa-pencil-alt" style="cursor: pointer; margin-right: 10px;" (click)="addEditOwner(item)"></i>
+              <i class="fas fa-pencil-alt" style="cursor: pointer; margin-right: 10px;" (click)="currentOwner = item; form2.patchValue(item); staticModal.show()"></i>
               <i class="fas fa-trash-alt" style="cursor: pointer;" (click)="deleteOwnerOrManager(item)"></i>
             </td>
           </tr>
@@ -190,5 +190,67 @@
         </div>
       </section>
     </div>
+  </div>
+
+  <div [formGroup]="form2">
+      <section style="display: inline-block;">
+          <div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}"
+               tabindex="-1" role="dialog" aria-labelledby="dialog-static-name">
+            <div class="modal-dialog modal-md">
+              <div class="modal-content">
+                <!-- <div class="modal-header">
+                  <h4 id="dialog-static-name" class="modal-title pull-left">Static modal</h4>
+                  <button type="button" class="close pull-right" aria-label="Close" (click)="staticModal.hide()">
+                    <span aria-hidden="true">&times;</span>
+                  </button> 
+                </div>-->
+                <div class="modal-body">
+             
+                    <h2>Add Owner or Manager</h2>
+                    <section>
+                
+                      <app-field label="Type of management role" [valid]="(form2.get('registeredSellerOwnerManager').valid || !form2.get('registeredSellerOwnerManager').touched)"
+                                 [required]="true" [showChevrons]="false" errorMessage="Please indicate your type of management role">
+                        <input type="radio" formControlName="registeredSellerOwnerManager" name="registeredSellerOwnerManager" [value]="'Owner'">&nbsp;<span style="margin-right: 20px;">Owner</span>
+                        <input type="radio" formControlName="registeredSellerOwnerManager" name="registeredSellerOwnerManager" [value]="'Manager'">&nbsp;<span>Manager</span>
+                      </app-field>
+                      <div formGroupName="contact">
+                        <app-field label="First Name" [required]="true" errorMessage="Please enter your owner/manager's first name"
+                                   [valid]="form2.get('contact.firstName').valid || !form2.get('contact.firstName').touched">
+                          <input type="text" class="form-control" style="width: 400px" formControlName="firstName">
+                        </app-field>
+                
+                        <app-field label="Last Name" [required]="true" errorMessage="Please enter your owner/manager's last name"
+                                   [valid]="form2.get('contact.lastName').valid || !form2.get('contact.lastName').touched">
+                          <input type="text" class="form-control" style="width: 400px" formControlName="lastName">
+                        </app-field>
+                      </div>
+                
+                      <app-field label="Title/ Position">
+                        <input type="text" class="form-control" style="width: 300px" formControlName="jobTitle">
+                      </app-field>
+                
+                      <div formGroupName="contact">
+                        <app-field label="Phone Number" [required]="true" errorMessage="Please enter your owner/manager's phone number"
+                                   [valid]="form2.get('contact.phoneNumber').valid || !form2.get('contact.phoneNumber').touched">
+                          <input type="text" class="form-control" style="width: 300px" formControlName="phoneNumber" maxlength="10"
+                                 (keydown)="rejectIfNotDigitOrBackSpace($event)">
+                        </app-field>
+                
+                        <app-field label="Email" [required]="true" errorMessage="Please enter your owner/manager's email address"
+                                   [valid]="form2.get('contact.email').valid || !form2.get('contact.email').touched">
+                          <input type="text" class="form-control" style="width: 300px" formControlName="email">
+                        </app-field>
+                      </div>
+                    </section>
+                      <div style="">
+                          <button class="btn btn-secondary" style="margin-right: 10px;" (click)="staticModal.hide()">Cancel</button>
+                          <button class="btn btn-primary" (click)="addOwner(form2.value, staticModal)">OK</button>
+                      </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </section>
   </div>
 </div>

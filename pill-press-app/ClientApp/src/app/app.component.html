@@ -35,7 +35,8 @@
 
   <div *ngIf="currentUser && currentUser.businessname && currentUser.isNewUser == true">
     <main class="app-content">
-      <app-bceid-confirmation *ngIf="currentUser && currentUser.isNewUser == true" (reloadUser)="reloadUser()" [currentUser]="currentUser"></app-bceid-confirmation>
+      <app-bceid-confirmation *ngIf="currentUser && currentUser.isNewUser == true" (reloadUser)="reloadUser()"
+        [currentUser]="currentUser"></app-bceid-confirmation>
     </main>
   </div>
 
@@ -109,9 +110,9 @@
         </div>
       </div>
     </section>-->
-          
+
     <!-- /NAVBAR END -->
-    
+
     <main class="app-content">
       <app-insert id="sidebar-left" class="sidebar-left"></app-insert>
 
@@ -142,7 +143,51 @@
           </li>
         </ul>
       </div>
-      <a *ngIf="versionInfo && versionInfo.fileVersion" (click)="showVersionInfo()" class="nav-link version-info">{{versionInfo.fileVersion}}</a>
+      <a *ngIf="versionInfo && versionInfo.fileVersion" (click)="staticModal.show()" class="nav-link version-info">{{versionInfo.fileVersion}}</a>
+      <section style="display: inline-block;">
+          <div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}"
+               tabindex="-1" role="dialog" aria-labelledby="dialog-static-name">
+            <div class="modal-dialog modal-md">
+              <div class="modal-content">
+                <!-- <div class="modal-header">
+                  <h4 id="dialog-static-name" class="modal-title pull-left">Static modal</h4>
+                  <button type="button" class="close pull-right" aria-label="Close" (click)="staticModal.hide()">
+                    <span aria-hidden="true">&times;</span>
+                  </button> 
+                </div>-->
+                <div class="modal-body">
+                    <table class="mat-list mat-list-base">
+                        <tr class="mat-list-item">
+                          <td>Environment:</td>
+                          <td>{{versionInfo?.environment}}</td>
+                        </tr>
+                        <tr class="mat-list-item">
+                          <td>Last Updated:</td>
+                          <td>{{versionInfo?.fileCreationTime}}</td>
+                        </tr>
+                        <tr class="mat-list-item">
+                          <td>Reference:</td>
+                          <td>{{versionInfo?.sourceReference}}</td>
+                        </tr>
+                        <tr class="mat-list-item">
+                          <td>Repository:</td>
+                          <td>{{versionInfo?.sourceRepository}}</td>
+                        </tr>
+                        <tr class="mat-list-item">
+                          <td>Commit:</td>
+                          <td>{{versionInfo?.sourceCommit}}</td>
+                        </tr>
+                      </table>
+                      <div style="display: flex; justify-content: space-around">
+                          <button class="btn btn-primary" style="margin: auto" (click)="staticModal.hide()">OK</button>
+                      </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </section>
+
+
     </nav>
   </footer>
 </div>

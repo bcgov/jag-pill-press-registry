@@ -100,7 +100,7 @@
             </tr>
             <tr>
               <td class="row-alt">
-                {{formData?.drugestablishmentlicenceexpirydate}}
+                {{formData?.drugestablishmentlicenceexpirydate | date : 'dd MMM yyyy'}}
               </td>
             </tr>
           </table>
@@ -143,7 +143,7 @@
             </tr>
             <tr>
               <td class="row-alt">
-                {{formData?.sitelicenceexpirydate}}
+                {{formData?.sitelicenceexpirydate | date : 'dd MMM yyyy'}}
               </td>
             </tr>
           </table>
@@ -186,7 +186,7 @@
             </tr>
             <tr>
               <td class="row-alt">
-                {{formData?.otherlicenceexpirydate}}
+                {{formData?.otherlicenceexpirydate | date : 'dd MMM yyyy'}}
               </td>
             </tr>
           </table>
