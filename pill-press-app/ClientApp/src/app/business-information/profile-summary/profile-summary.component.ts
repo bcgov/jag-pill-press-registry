@@ -143,14 +143,16 @@ export class ProfileSummaryComponent implements OnInit {
   }
 
   isAdditionalContactPopulated() {
-    return !(this.account
+    return (this.account
       && this.account.additionalContact
-      && this.account.additionalContact.firstName !== null
-      && this.account.additionalContact.lastName !== null
-      && this.account.additionalContact.title !== null
-      && this.account.additionalContact.phoneNumber !== null
-      && this.account.additionalContact.phoneNumberAlt !== null
-      && this.account.additionalContact.email !== null
+      && (
+      this.account.additionalContact.firstName !== null
+      || this.account.additionalContact.lastName !== null
+      || this.account.additionalContact.title !== null
+      || this.account.additionalContact.phoneNumber !== null
+      || this.account.additionalContact.phoneNumberAlt !== null
+      || this.account.additionalContact.email !== null
+      )
     );
   }
 
