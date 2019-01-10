@@ -17,6 +17,7 @@ export class EquipmentReviewComponent implements OnInit {
   notification: Application;
   form: FormGroup;
   busyPromise: Promise<any>;
+  showErrors: boolean;
 
   constructor(private applicationDataService: ApplicationDataService,
     private fb: FormBuilder,
@@ -46,7 +47,8 @@ export class EquipmentReviewComponent implements OnInit {
   }
 
   save() {
-    if (this.form.valid) {
+    this.showErrors = true;
+    if (this.form.get('declarationOfCorrectInformation').value && this.form.get('confirmationOfAuthorizedUse').value) {
       const value = this.form.value;
       value.statuscode = 'Pending';
       value.submittedDate = new Date();
@@ -74,7 +76,8 @@ export class EquipmentReviewComponent implements OnInit {
   }
 
   saveAndAddMore() {
-    if (this.form.valid) {
+    this.showErrors = true;
+    if (this.form.get('declarationOfCorrectInformation').value && this.form.get('confirmationOfAuthorizedUse').value) {
       const value = this.form.value;
       value.statuscode = 'Pending';
       value.submittedDate = new Date();
