@@ -74,15 +74,15 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                         }                        
                     }
 
-                    // now link the business contact to the Account.
-
+                    // now link the BusinessContact to the Account.
+                                      
                     try
                     {                        
-                        var patchAccount = new MicrosoftDynamicsCRMaccount()
+                        OdataId oDataId = new OdataId()
                         {
-                            BusinessContactODataBind = system.GetEntityURI("bcgov_businesscontacts", result.BcgovBusinesscontactid),
+                            OdataIdProperty = system.GetEntityURI("bcgov_businesscontacts", result.BcgovBusinesscontactid)
                         };
-                        system.Accounts.Update(accountId, patchAccount);
+                        system.Accounts.AddReference(accountId, "bcgov_account_bcgov_businesscontact_BusinessProfile", oDataId);
                     }
                     catch (OdataerrorException odee)
                     {
@@ -100,11 +100,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
 
                     try
                     {
-                        var patchContact = new MicrosoftDynamicsCRMcontact()
+                        OdataId oDataId = new OdataId()
                         {
-                            BusinessContactODataBind = system.GetEntityURI("bcgov_businesscontacts", result.BcgovBusinesscontactid),
+                            OdataIdProperty = system.GetEntityURI("bcgov_businesscontacts", result.BcgovBusinesscontactid)
                         };
-                        system.Contacts.Update(accountId, patchContact);
+                        system.Contacts.AddReference(accountId, "bcgov_contact_bcgov_businesscontact_Contact", oDataId);
                     }
                     catch (OdataerrorException odee)
                     {
@@ -117,14 +117,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                             _logger.LogError(odee.Response.Content);
                         }
                     }
-
-
-
-
                 }
-
-
-
             }
             else
             {
