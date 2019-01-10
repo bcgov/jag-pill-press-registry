@@ -11,8 +11,8 @@
         <h3 class="blue-header">EQUIPMENT INFORMATION</h3>
         <section class="padded-section">
           <app-field [showChevrons]="false" errorMessage="Please select yes or no" [valid]="form.get('currentlyownusepossessequipment').valid || !form.get('currentlyownusepossessequipment').touched">
-            <span>Do you currently own, use, or possess <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-controlled-equipment"
-                target="blank">Controlled Equipment</a>? </span>
+            <strong>Do you currently own, use, or possess <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-controlled-equipment"
+                target="blank">Controlled Equipment</a>? </strong>
             <br>
             <input type="radio" [value]="true" name="currentlyownusepossessequipment" formControlName="currentlyownusepossessequipment">
             <span style="padding-right: 10px;">&nbsp;Yes</span>
