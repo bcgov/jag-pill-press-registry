@@ -4,6 +4,7 @@ using Gov.Jag.PillPressRegistry.Public.Authorization;
 using Gov.Jag.PillPressRegistry.Public.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -274,6 +275,15 @@ namespace Gov.Jag.PillPressRegistry.Public
             // IMPORTANT: This session call MUST go before UseMvc()
             app.UseSession();
             app.UseAuthentication();
+
+            // set the cookie policy
+            app.UseCookiePolicy(new CookiePolicyOptions
+            {
+                HttpOnly = HttpOnlyPolicy.Always,
+                Secure = CookieSecurePolicy.Always,
+                MinimumSameSitePolicy = Microsoft.AspNetCore.Http.SameSiteMode.None
+            });
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
