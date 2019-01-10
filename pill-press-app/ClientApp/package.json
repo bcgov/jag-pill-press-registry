@@ -5,9 +5,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --source-map --host 0.0.0.0",
-    "build": "ng build   --extract-css --base-href /pillpressregistry/ --deploy-url /pillpressregistry/",
-    "builduat": "ng build   --extract-css --base-href /uat/pillpressregistry/ --deploy-url /uat/pillpressregistry/",
-    "buildprod": "ng build   --extract-css --base-href / --deploy-url /",
+    "build": "ng build --extract-css --base-href /pillpressregistry/ --deploy-url /pillpressregistry/",
+    "builduat": "ng build --extract-css --base-href /uat/pillpressregistry/ --deploy-url /uat/pillpressregistry/",
+    "buildprod": "ng build --extract-css --base-href / --deploy-url /",
     "watch": "ng build --watch --extract-css   --base-href /pillpressregistry/ --deploy-url /pillpressregistry/",
     "build:ssr": "npm run build -- --app=ssr --output-hashing=media",
     "test": "ng test",
