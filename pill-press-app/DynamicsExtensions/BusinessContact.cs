@@ -104,7 +104,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                         {
                             OdataIdProperty = system.GetEntityURI("bcgov_businesscontacts", result.BcgovBusinesscontactid)
                         };
-                        system.Contacts.AddReference(accountId, "bcgov_contact_bcgov_businesscontact_Contact", oDataId);
+                        system.Contacts.AddReference(contactId, "bcgov_contact_bcgov_businesscontact_Contact", oDataId);
                     }
                     catch (OdataerrorException odee)
                     {
