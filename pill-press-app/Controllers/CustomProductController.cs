@@ -51,9 +51,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         {
             ViewModels.CustomProduct result = null;
 
-            if (!string.IsNullOrEmpty(id))
-            {
-                Guid customProductGuid = Guid.Parse(id);
+            if (!string.IsNullOrEmpty(id) && Guid.TryParse(id, out Guid customProductGuid))
+            {                
                 // query the Dynamics system to get the contact record.
                 MicrosoftDynamicsCRMbcgovCustomproduct contact = _dynamicsClient.GetCustomProductById(customProductGuid);
 
@@ -84,42 +83,42 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateCustomProduct([FromBody] ViewModels.CustomProduct item, string id)
         {
-            if (id != null && item.id != null && id != item.id)
+            if (!string.IsNullOrEmpty(id) && Guid.TryParse(id, out Guid customProductGuid))
+            {
+                int? maxLength = ControllerUtility.GetAttributeMaxLength((DynamicsClient)_dynamicsClient, _cache, _logger, ENTITY_NAME, "bcgov_productdescriptionandintendeduse");
+                if (maxLength != null && item.productdescriptionandintendeduse.Length > maxLength)
+                {
+                    return BadRequest("productdescriptionandintendeduse exceeds maximum field length");
+                }
+
+                // get the customProduct
+                MicrosoftDynamicsCRMbcgovCustomproduct customProduct = _dynamicsClient.GetCustomProductById(customProductGuid);
+                if (customProduct == null)
+                {
+                    return new NotFoundResult();
+                }
+                MicrosoftDynamicsCRMbcgovCustomproduct patchCustomProduct = new MicrosoftDynamicsCRMbcgovCustomproduct();
+                patchCustomProduct.CopyValues(item);
+                try
+                {
+                    _dynamicsClient.Customproducts.Update(customProductGuid.ToString(), patchCustomProduct);
+                }
+                catch (OdataerrorException odee)
+                {
+                    _logger.LogError("Error updating Custom Product");
+                    _logger.LogError("Request:");
+                    _logger.LogError(odee.Request.Content);
+                    _logger.LogError("Response:");
+                    _logger.LogError(odee.Response.Content);
+                }
+
+                customProduct = _dynamicsClient.GetCustomProductById(customProductGuid);
+                return Json(customProduct.ToViewModel());
+            }
+            else
             {
                 return BadRequest();
             }
-
-            int? maxLength = ControllerUtility.GetAttributeMaxLength((DynamicsClient)_dynamicsClient, _cache, _logger, ENTITY_NAME, "bcgov_productdescriptionandintendeduse");
-            if (maxLength != null && item.productdescriptionandintendeduse.Length > maxLength)
-            {
-                return BadRequest("productdescriptionandintendeduse exceeds maximum field length");
-            }
-
-            // get the customProduct
-            Guid customProductGuid = Guid.Parse(id);
-
-            MicrosoftDynamicsCRMbcgovCustomproduct customProduct =  _dynamicsClient.GetCustomProductById(customProductGuid);
-            if (customProduct == null)
-            {
-                return new NotFoundResult();
-            }
-            MicrosoftDynamicsCRMbcgovCustomproduct patchCustomProduct = new MicrosoftDynamicsCRMbcgovCustomproduct();
-            patchCustomProduct.CopyValues(item);
-            try
-            {
-                 _dynamicsClient.Customproducts.Update(customProductGuid.ToString(), patchCustomProduct);
-            }
-            catch (OdataerrorException odee)
-            {
-                _logger.LogError("Error updating Custom Product");
-                _logger.LogError("Request:");
-                _logger.LogError(odee.Request.Content);
-                _logger.LogError("Response:");
-                _logger.LogError(odee.Response.Content);
-            }
-
-            customProduct =  _dynamicsClient.GetCustomProductById(customProductGuid);
-            return Json(customProduct.ToViewModel());
         }
 
         /// <summary>
@@ -177,36 +176,41 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         [HttpPost("{id}/delete")]
         public async Task<IActionResult> DeleteCustomProduct(string id)
         {
-            _logger.LogDebug(LoggingEvents.HttpPost, "Begin method " + this.GetType().Name + "." + MethodBase.GetCurrentMethod().ReflectedType.Name);
-
-            // verify the currently logged in user has access to this account
-            Guid customProductGuid = new Guid(id);
-
-            // get the custom product
-            MicrosoftDynamicsCRMbcgovCustomproduct customProduct = _dynamicsClient.GetCustomProductById(customProductGuid);
-            if (customProduct == null)
+            if (!string.IsNullOrEmpty(id) && Guid.TryParse(id, out Guid customProductGuid))
             {
-                _logger.LogWarning(LoggingEvents.NotFound, "Custom product NOT found.");
-                return new NotFoundResult();
-            }
 
-            try
-            {
-                await _dynamicsClient.Customproducts.DeleteAsync(customProductGuid.ToString());
-                _logger.LogDebug(LoggingEvents.HttpDelete, "Custom product deleted: " + customProductGuid.ToString());
-            }
-            catch (OdataerrorException odee)
-            {
-                _logger.LogError(LoggingEvents.Error, "Error deleting the custom product: " + customProductGuid.ToString());
-                _logger.LogError("Request:");
-                _logger.LogError(odee.Request.Content);
-                _logger.LogError("Response:");
-                _logger.LogError(odee.Response.Content);
-                throw new OdataerrorException("Error deleting the custom product: " + customProductGuid.ToString());
-            }
+                _logger.LogDebug(LoggingEvents.HttpPost, "Begin method " + this.GetType().Name + "." + MethodBase.GetCurrentMethod().ReflectedType.Name);
 
-            _logger.LogDebug(LoggingEvents.HttpDelete, "No content returned.");
-            return NoContent(); // 204 
+                // get the custom product
+                MicrosoftDynamicsCRMbcgovCustomproduct customProduct = _dynamicsClient.GetCustomProductById(customProductGuid);
+                if (customProduct == null)
+                {
+                    _logger.LogWarning(LoggingEvents.NotFound, "Custom product NOT found.");
+                    return new NotFoundResult();
+                }
+
+                try
+                {
+                    await _dynamicsClient.Customproducts.DeleteAsync(customProductGuid.ToString());
+                    _logger.LogDebug(LoggingEvents.HttpDelete, "Custom product deleted: " + customProductGuid.ToString());
+                }
+                catch (OdataerrorException odee)
+                {
+                    _logger.LogError(LoggingEvents.Error, "Error deleting the custom product: " + customProductGuid.ToString());
+                    _logger.LogError("Request:");
+                    _logger.LogError(odee.Request.Content);
+                    _logger.LogError("Response:");
+                    _logger.LogError(odee.Response.Content);
+                    throw new OdataerrorException("Error deleting the custom product: " + customProductGuid.ToString());
+                }
+
+                _logger.LogDebug(LoggingEvents.HttpDelete, "No content returned.");
+                return NoContent(); // 204 
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
     }
 }
