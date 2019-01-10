@@ -107,7 +107,7 @@ export class BusinessProfileComponent extends FormBase implements OnInit {
         mailingAddressLine2: [''],
         mailingAddressCity: ['', this.requiredCheckboxChildValidator('_mailingSameAsPhysicalAddress')],
         mailingAddressPostalCode: ['', this.requiredCheckboxChildValidator('_mailingSameAsPhysicalAddress')],
-        mailingAddressProvince: ['British Columbia'],
+        mailingAddressProvince: [],
         mailingAddressCountry: ['Canada'],
       }),
       primaryContact: this.fb.group({
