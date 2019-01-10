@@ -370,13 +370,87 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 {
                     patchAccount.PrimaryContactidODataBind = _dynamicsClient.GetEntityURI("contacts", item.primaryContact.id);
                 }
+                else
+                {
+                    if (account._primarycontactidValue != null && ! item.primaryContact.HasValue())
+                    {
+                        // remove the reference.
+                        try
+                        {
+                            // pass null as recordId to remove the single value navigation property
+                            _dynamicsClient.Accounts.RemoveReference(accountId.ToString(), "primarycontactid", null);
+                        }
+                        catch (OdataerrorException odee)
+                        {
+                            _logger.LogError(LoggingEvents.Error, "Error updating the account.");
+                            _logger.LogError("Request:");
+                            _logger.LogError(odee.Request.Content);
+                            _logger.LogError("Response:");
+                            _logger.LogError(odee.Response.Content);
+                            throw new OdataerrorException("Error updating the account.");
+                        }
+
+                        // delete the contact.
+                        try
+                        {                            
+                            _dynamicsClient.Contacts.Delete(account._primarycontactidValue);
+                        }
+                        catch (OdataerrorException odee)
+                        {
+                            _logger.LogError(LoggingEvents.Error, "Error removing primary contact");
+                            _logger.LogError("Request:");
+                            _logger.LogError(odee.Request.Content);
+                            _logger.LogError("Response:");
+                            _logger.LogError(odee.Response.Content);
+                            throw new OdataerrorException("Error updating the account.");
+                        }
+
+                    }
+                }
+
                 
                 if (item.additionalContact != null && item.additionalContact.id != null &&
                     (account._bcgovAdditionalcontactValue == null || account._bcgovAdditionalcontactValue != item.additionalContact.id))
                 {
                     patchAccount.AdditionalContactODataBind = _dynamicsClient.GetEntityURI("contacts", item.additionalContact.id);
                 }
-                
+                else
+                {
+                    if (account._bcgovAdditionalcontactValue != null && ! item.additionalContact.HasValue())
+                    {
+                        // remove the reference.
+                        try
+                        {
+                            // pass null as recordId to remove the single value navigation property
+                            _dynamicsClient.Accounts.RemoveReference(accountId.ToString(), "bcgov_AdditionalContact", null);
+                        }
+                        catch (OdataerrorException odee)
+                        {
+                            _logger.LogError(LoggingEvents.Error, "Error updating the account.");
+                            _logger.LogError("Request:");
+                            _logger.LogError(odee.Request.Content);
+                            _logger.LogError("Response:");
+                            _logger.LogError(odee.Response.Content);
+                            throw new OdataerrorException("Error updating the account.");
+                        }
+
+                        // delete the contact.
+                        try
+                        {
+                            _dynamicsClient.Contacts.Delete(account._bcgovAdditionalcontactValue);
+                        }
+                        catch (OdataerrorException odee)
+                        {
+                            _logger.LogError(LoggingEvents.Error, "Error removing additional contact");
+                            _logger.LogError("Request:");
+                            _logger.LogError(odee.Request.Content);
+                            _logger.LogError("Response:");
+                            _logger.LogError(odee.Response.Content);
+                            throw new OdataerrorException("Error updating the account.");
+                        }
+                    }
+                }
+
 
                 try
                 {
