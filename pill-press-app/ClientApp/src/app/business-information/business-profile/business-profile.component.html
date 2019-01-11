@@ -1,7 +1,7 @@
 <div class="form-wrapper" style="position: relative;">
   <div [ngBusy]="[busy, busy2]"></div>
   <div class="row" [formGroup]="form">
-    <div class="col-lg-7 col-sm-12">
+    <div class="col-lg-8 col-sm-12">
       <div [formGroup]="form">
         <div *ngIf="dataLoaded || true">
           <section>
@@ -106,7 +106,7 @@
                   <div class="row">
                     <section class="col-md-6 col-xs-12">
                       <app-field label="Province/State" [required]="false">
-                        <input type="text" readonly formControlName="mailingAddressProvince" class="form-control">
+                        <input type="text" formControlName="mailingAddressProvince" class="form-control">
                       </app-field>
                     </section>
                     <section class="col-md-6 col-xs-12">
