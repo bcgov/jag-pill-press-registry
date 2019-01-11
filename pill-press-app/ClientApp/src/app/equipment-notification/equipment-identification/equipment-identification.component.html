@@ -45,8 +45,7 @@
           <textarea rows="5" formControlName="howEquipmentBuiltDescription" class="form-control" maxlength="1000"></textarea>
         </app-field>
 
-        <app-field label="Please provide the name of the person/business that built this piece of equipment."
-          [required]="true">
+        <app-field label="Please provide the name of the person/business that built this piece of equipment.">
           <input type="text" formControlName="personBusinessThatBuiltEquipment" class="form-control">
         </app-field>
 
@@ -54,12 +53,10 @@
           <p></p>
           <div class="row">
             <section class="col-md-6 col-xs-12">
-              <app-field label="Street Address 1" [valid]="form.get('addressofPersonBusiness.streetLine1').valid || !form.get('addressofPersonBusiness.streetLine1').touched"
-                errorMessage="Please enter your street address" [required]="true">
+              <app-field label="Street Address 1">
                 <input type="text" formControlName="streetLine1" class="form-control">
               </app-field>
-              <app-field label="City" [valid]="form.get('addressofPersonBusiness.city').valid || !form.get('addressofPersonBusiness.city').touched"
-                errorMessage="Please enter your city or town" [required]="true">
+              <app-field label="City">
                 <input type="text" formControlName="city" class="form-control">
               </app-field>
             </section>
@@ -70,12 +67,11 @@
               <div class="row">
                 <section class="col-md-6 col-xs-12">
                   <app-field label="Province">
-                    <input type="text" formControlName="province" readonly class="form-control">
+                    <input type="text" formControlName="province" class="form-control">
                   </app-field>
                 </section>
                 <section class="col-md-6 col-xs-12">
-                  <app-field label="Postal Code" [valid]="form.get('addressofPersonBusiness.postalCode').valid || !form.get('addressofPersonBusiness.postalCode').touched"
-                    errorMessage="Please enter a postal code" [required]="true">
+                  <app-field label="Postal Code" >
                     <input type="text" formControlName="postalCode" class="form-control">
                   </app-field>
                 </section>
@@ -103,6 +99,7 @@
         </app-field>
 
         <app-field *ngIf="form.get('serialNumberForCustomBuilt').value  === true" label="If yes, please provide the serial number of the custom-built equipment (or the key part)."
+          errorMessage="Please provide an answer to the question above" [valid]="form.get('customBuiltSerialNumber').valid || !form.get('customBuiltSerialNumber').touched"
           [required]="true">
           <input type="text" formControlName="customBuiltSerialNumber" class="form-control">
         </app-field>
@@ -119,8 +116,8 @@
           <span>Photo 3: Close up picture of the equipment serial number, or key part serial number provided in this
             application.</span> <br>
         </section>
-        <app-file-uploader documentType="Waiver Documents" entityName="incident" [entityId]="equipmentId" fileTypes="FILE MUST BE IN DOC, XLS, PDF, JPG OR PNG"
-          [extensions]="['pdf', 'jpg', 'jpeg', 'png', 'xls', 'doc']"></app-file-uploader>
+        <app-file-uploader documentType="Waiver Documents" entityName="incident" [entityId]="equipmentId" fileTypes="FILE MUST BE IN DOC, DOCX, XLS, PDF, JPG OR PNG"
+          [extensions]="['pdf', 'jpg', 'jpeg', 'png', 'xls', 'doc', 'docx']"></app-file-uploader>
       </section>
 
     </section>
