@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApplicationDataService } from '../../services/application-data.service';
 import { Application } from '../../models/application.model';
 import { FormBase } from '../../shared/form-base';
-import { postalRegex } from '../../business-information/business-profile/business-profile.component';
+import { postalRegex } from '../../business-profile/business-profile/business-profile.component';
 
 @Component({
   selector: 'app-equipment-identification',

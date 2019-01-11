@@ -11,7 +11,7 @@ import * as _moment from 'moment';
 // tslint:disable-next-line:no-duplicate-imports
 import { defaultFormat as _rollupMoment } from 'moment';
 import { FormBase } from '../../../app/shared/form-base';
-import { postalRegex } from '../../../app/business-information/business-profile/business-profile.component';
+import { postalRegex } from '../../../app/business-profile/business-profile/business-profile.component';
 const moment = _rollupMoment || _moment;
 
 // See the Moment.js docs for the meaning of these formats:

@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { BusinessProfileComponent } from './business-information/business-profile/business-profile.component';
+import { BusinessProfileComponent } from './business-profile/business-profile/business-profile.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CanDeactivateGuard } from './services/can-deactivate-guard.service';
 import { BCeidAuthGuard } from './services/bceid-auth-guard.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ProfileReviewComponent } from './business-information/profile-review/profile-review.component';
+import { ProfileReviewComponent } from './business-profile/profile-review/profile-review.component';
 import { WaiverApplicationComponent } from './applications/waiver/waiver-application/waiver-application.component';
 import { WaiverReviewComponent } from './applications/waiver/waiver-review/waiver-review.component';
 import { ThankYouComponent } from './applications/waiver/thank-you/thank-you.component';
