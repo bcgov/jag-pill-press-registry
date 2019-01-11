@@ -4,7 +4,7 @@ import { Subscription, Observable, zip } from 'rxjs';
 import { PRODUCING_OWN_PRODUCT, MANUFACTURING_FOR_OTHERS } from '../../waiver/waiver-application/waiver-application.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DynamicsDataService } from '../../../services/dynamics-data.service';
-import { ApplicationDataService } from '../../../services/adoxio-application-data.service';
+import { ApplicationDataService } from '../../../services/application-data.service';
 import { FormBase } from './../../../shared/form-base';
 
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
