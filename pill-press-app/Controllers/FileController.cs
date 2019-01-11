@@ -193,7 +193,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     break;
                 case "incident":
                     var incident =  _dynamicsClient.GetApplicationById(Guid.Parse(entityId));
-                    folderName = incident.GetApplicationFolderName();
+                    folderName = incident.GetSharePointFolderName();
                     break;
                 default:
                     break;
