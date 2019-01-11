@@ -111,6 +111,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             return result;
         }
 
+        public static string GetSharePointFolderName(this MicrosoftDynamicsCRMaccount account)
+        {
+
+            string accountIdCleaned = account.Accountid.ToString().ToUpper().Replace("-", "");
+            string folderName = $"{account.Name}_{accountIdCleaned}";
+            return folderName;
+        }
 
     }
 }
