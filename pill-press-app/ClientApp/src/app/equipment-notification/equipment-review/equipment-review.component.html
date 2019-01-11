@@ -399,7 +399,7 @@
       <div class="alt-row">{{ notification?.settingDescription}}</div>
 
       <div class="dark-row">Is this piece of equipment ordinarily stored at a private dwelling?</div>
-      <div class="alt-row">{{ notification?.equipmentLocation?.privateDwelling}}</div>
+      <div class="alt-row">{{ notification?.equipmentLocation?.privateDwelling === true ? 'Yes' : 'No'}}</div>
     </div>
 
 
@@ -427,7 +427,8 @@
       </section>
 
 
-      <div *ngIf="(form.get('declarationOfCorrectInformation').value !== true || form.get('confirmationOfAuthorizedUse').value !== true) && showErrors" style="background-color: #F2F2F2; margin-top: 10px; border-radius: 5px; padding: 10px; font: 15px Myriad Pro Regular #494949;">
+      <div *ngIf="(form.get('declarationOfCorrectInformation').value !== true || form.get('confirmationOfAuthorizedUse').value !== true) && showErrors"
+        style="background-color: #F2F2F2; margin-top: 10px; border-radius: 5px; padding: 10px; font: 15px Myriad Pro Regular #494949;">
         <i class="fas fa-exclamation-triangle error-states" style="margin-right: 10px;"></i>
         <span class="error-states">Please complete the declarations and consent section.</span>
       </div>
@@ -448,10 +449,10 @@
           Close</a>
       </section>
       <section>
-        <button class="btn btn-secondary" style="margin-right: 10px" routerLink="/equipment-notification/type-and-use/{{equipmentId}}">EDIT
+        <button class="btn btn-secondary" style="margin-right: 15px" routerLink="/equipment-notification/type-and-use/{{equipmentId}}">EDIT
           EQUIPMENT</button>
-        <button class="btn btn-primary" style="margin-right: 10px" (click)="save()">SUBMIT</button>
-        <button class="btn btn-primary" (click)="saveAndAddMore()">SUBMIT & ADD ANOTHER</button>
+        <button class="btn btn-primary" style="margin-right: 15px" (click)="saveAndAddMore()">SUBMIT & ADD ANOTHER</button>
+        <button class="btn btn-primary" (click)="save()">SUBMIT</button>
       </section>
     </div>
   </div>
