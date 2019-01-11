@@ -159,6 +159,8 @@ export class ProfileSummaryComponent implements OnInit {
   save() {
     if (!!(this.mode || this.declarationsValid())) {
       const value = <DynamicsAccount>this.form.value;
+      value.primaryContact = this.account.primaryContact;
+      value.additionalContact = this.account.additionalContact;
       if (!this.nextRoute) {
         value.submittedDate = new Date();
       }
