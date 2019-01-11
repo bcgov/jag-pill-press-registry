@@ -1,14 +1,12 @@
 import { Component, OnInit, Renderer2, TemplateRef } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
-import { InsertService } from './insert/insert.service';
 import { UserDataService } from './services/user-data.service';
 import { VersionInfoDataService } from './services/version-info-data.service';
 import { User } from './models/user.model';
 import { VersionInfo } from './models/version-info.model';
 import { isDevMode } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { AdoxioLegalEntityDataService } from './services/adoxio-legal-entity-data.service';
 import { AdoxioLegalEntity } from './models/adoxio-legalentities.model';
 import { Store } from '@ngrx/store';
 import { AppState } from './app-state/models/app-state';
@@ -45,7 +43,6 @@ export class AppComponent implements OnInit {
     private versionInfoDataService: VersionInfoDataService,
     private store: Store<AppState>,
     private modalService: BsModalService,
-    private adoxioLegalEntityDataService: AdoxioLegalEntityDataService,
     private dialog: MatDialog
   ) {
     this.isDevMode = isDevMode();
@@ -98,13 +95,6 @@ export class AppComponent implements OnInit {
         this.isNewUser = this.currentUser.isNewUser;
 
         this.store.dispatch(new CurrentUserActions.SetCurrentUserAction(data));
-        // this.isAssociate = (this.currentUser.businessname == null);
-        // if (!this.isAssociate) {
-        //   this.adoxioLegalEntityDataService.getBusinessProfileSummary().subscribe(
-        //     res => {
-        //       this.businessProfiles = res;
-        //     });
-        // }
       });
   }
 

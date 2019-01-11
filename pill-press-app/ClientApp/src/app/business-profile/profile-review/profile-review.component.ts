@@ -9,11 +9,11 @@ import { ValidatorFn, AbstractControl, FormBuilder, FormGroup } from '@angular/f
 import { Router, Route, ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-profile-summary',
-  templateUrl: './profile-summary.component.html',
-  styleUrls: ['./profile-summary.component.scss']
+  selector: 'app-profile-review',
+  templateUrl: './profile-review.component.html',
+  styleUrls: ['./profile-review.component.scss']
 })
-export class ProfileSummaryComponent implements OnInit {
+export class ProfileReviewComponent implements OnInit {
   busy: Promise<any>;
   busy2: Promise<any>;
   dataLoaded: boolean;
@@ -146,12 +146,12 @@ export class ProfileSummaryComponent implements OnInit {
     return (this.account
       && this.account.additionalContact
       && (
-      this.account.additionalContact.firstName !== null
-      || this.account.additionalContact.lastName !== null
-      || this.account.additionalContact.title !== null
-      || this.account.additionalContact.phoneNumber !== null
-      || this.account.additionalContact.phoneNumberAlt !== null
-      || this.account.additionalContact.email !== null
+      this.account.additionalContact.firstName 
+      || this.account.additionalContact.lastName 
+      || this.account.additionalContact.title
+      || this.account.additionalContact.phoneNumber 
+      || this.account.additionalContact.phoneNumberAlt 
+      || this.account.additionalContact.email 
       )
     );
   }
@@ -159,6 +159,8 @@ export class ProfileSummaryComponent implements OnInit {
   save() {
     if (!!(this.mode || this.declarationsValid())) {
       const value = <DynamicsAccount>this.form.value;
+      value.primaryContact = this.account.primaryContact;
+      value.additionalContact = this.account.additionalContact;
       if (!this.nextRoute) {
         value.submittedDate = new Date();
       }

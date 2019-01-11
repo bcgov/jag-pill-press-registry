@@ -3,7 +3,7 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 import { StepperSelectionEvent } from '@angular/cdk/stepper';
 import { MatStepper } from '@angular/material';
-import { ApplicationDataService } from './../services/adoxio-application-data.service';
+import { ApplicationDataService } from '../services/application-data.service';
 import { Application } from '../models/application.model';
 
 @Component({

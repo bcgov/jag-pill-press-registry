@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { BusinessProfileComponent } from './business-information/business-profile/business-profile.component';
+import { BusinessProfileComponent } from './business-profile/business-profile/business-profile.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CanDeactivateGuard } from './services/can-deactivate-guard.service';
 import { BCeidAuthGuard } from './services/bceid-auth-guard.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ProfileSummaryComponent } from './business-information/profile-summary/profile-summary.component';
+import { ProfileReviewComponent } from './business-profile/profile-review/profile-review.component';
 import { WaiverApplicationComponent } from './applications/waiver/waiver-application/waiver-application.component';
 import { WaiverReviewComponent } from './applications/waiver/waiver-review/waiver-review.component';
 import { ThankYouComponent } from './applications/waiver/thank-you/thank-you.component';
@@ -49,7 +49,7 @@ const routes: Routes = [
   },
   {
     path: 'business-profile-review',
-    component: ProfileSummaryComponent,
+    component: ProfileReviewComponent,
     canActivate: [BCeidAuthGuard]
   },
   {
@@ -59,7 +59,7 @@ const routes: Routes = [
     children: [
       {
         path: 'profile-review/:id',
-        component: ProfileSummaryComponent,
+        component: ProfileReviewComponent,
         data: {
           nextRoute: 'waiver/application'
         }
@@ -85,7 +85,7 @@ const routes: Routes = [
     children: [
       {
         path: 'profile-review/:id',
-        component: ProfileSummaryComponent,
+        component: ProfileReviewComponent,
         data: {
           nextRoute: 'registered-seller/application'
         }
@@ -111,7 +111,7 @@ const routes: Routes = [
     children: [
       {
         path: 'profile-review/:id',
-        component: ProfileSummaryComponent,
+        component: ProfileReviewComponent,
         data: {
           nextRoute: 'authorized-owner/application'
         }
@@ -161,7 +161,7 @@ const routes: Routes = [
       },
       {
         path: 'profile-review/:id',
-        component: ProfileSummaryComponent,
+        component: ProfileReviewComponent,
         canActivate: [BCeidAuthGuard],
         data: {
           nextRoute: 'equipment-notification/type-and-use'
