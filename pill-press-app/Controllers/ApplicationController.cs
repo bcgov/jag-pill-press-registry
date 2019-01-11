@@ -879,7 +879,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                  * 
                  */
                 
-                if (Guid.TryParse(application._accountidValue, out Guid accountId))
+                if (Guid.TryParse(application._customeridValue, out Guid accountId))
                 {
                     var account = _dynamicsClient.GetAccountById(accountId);
 
@@ -896,14 +896,28 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                             break;
                     }
 
+                    // get the latest certificate
 
-                    string serverRelativeUrl = "/sites/" + _sharePointFileManager.WebName + "/" + _sharePointFileManager.GetServerRelativeURL(SharePointFileManager.AccountDocumentListTitle, account.GetSharePointFolderName() + $"/{filePrefix}{application.Title}.pdf");
+                    DateTimeOffset? dto = null;
+                    string certificateName = "";
+
+                    foreach (var certificate in application.BcgovIncidentBcgovCertificateApplication)
+                    {
+                        if (dto == null || dto < certificate.BcgovIssueddate)
+                        {
+                            dto = certificate.BcgovIssueddate;
+                            certificateName = certificate.BcgovName;
+                        }
+                    }
+
+                    string serverRelativeUrl = "/sites/" + _sharePointFileManager.WebName + "/" + _sharePointFileManager.GetServerRelativeURL(SharePointFileManager.AccountDocumentListTitle, account.GetSharePointFolderName() + $"/{filePrefix}{certificateName}.pdf");
 
                     try
                     {
                         byte[] fileContents = await _sharePointFileManager.DownloadFile(serverRelativeUrl);
                         return new FileContentResult(fileContents, "application/octet-stream")
                         {
+                            FileDownloadName = $"{filePrefix}{certificateName}.pdf"
                         };
                     }
                     catch (Exception e)
@@ -917,6 +931,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 }
                 else
                 {
+                    _logger.LogError(LoggingEvents.HttpGet, "Unable to get account from application."); 
                     return BadRequest();
                 }
                 
