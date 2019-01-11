@@ -8,7 +8,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
     public static class ApplicationDynamicsExtensions
     {
 
-        public static string GetApplicationFolderName(this MicrosoftDynamicsCRMincident application)
+        public static string GetSharePointFolderName(this MicrosoftDynamicsCRMincident application)
         {
 
             string applicationIdCleaned = application.Incidentid.ToString().ToUpper().Replace("-", "");
