@@ -1,6 +1,6 @@
 <div class="">
   <div class="" style="position: relative;">
-      <div [ngBusy]="[busy, busyPromise]"></div>
+    <div [ngBusy]="[busy, busyPromise]"></div>
     <h2 class="step">STEP 3</h2>
     <h1>Authorized Owner Confirmation Review</h1>
 
@@ -75,7 +75,8 @@
           <table class="summary-table" style="margin-top: -10px">
             <tr>
               <td class="table-row">
-                <strong>What is the name of the business that appears on your Drug Establishment Licence (i.e. issued to name).</strong>
+                <strong>What is the name of the business that appears on your Drug Establishment Licence (i.e. issued
+                  to name).</strong>
               </td>
             </tr>
             <tr>
@@ -202,13 +203,10 @@
           <input type="checkbox" style="flex: 0 0 20px" formControlName="declarationOfCorrectInformation">
         </div>
         <span>
-          I certify that, to the best of my knowledge, the information I have provided on my Waiver application and
-          will
-          provide as necessary is complete, honest, and accurate. I understand that a false statement or omission of
-          facts herein may lead to the a denial of a Waiver being granted. I am also aware that later discovery of an
-          omission or misrepresentation may be grounds for suspension or cancellation of a waiver or for being
-          prosecuted
-          under provincial law. <span class="error-states">*</span>
+          I certify that, to the best of my knowledge, the information I have provided in my notification and will
+          provide as necessary is complete, honest, and accurate. I am aware that later discovery of an omission or
+          misrepresentation may be grounds for any finding of suitability to be reversed or for being prosecuted under
+          provincial law. <span class="error-states">*</span>
         </span>
       </section>
       <div *ngIf="form.get('declarationOfCorrectInformation').value !== true && form.touched" style="background-color: #F2F2F2; margin-top: 10px; border-radius: 5px; padding: 10px; font: 15px Myriad Pro Regular #494949;">
@@ -220,7 +218,8 @@
     <div style="margin-top: 30px; display: flex; justify-content: space-between">
       <section>
         <!-- <span class="error-states">*</span> <i>Required field</i> -->
-        <a href="javascript: void(0);" (click)="save(false)"><i class="fa fa-save" style="margin-right: 5px"></i>Save & Close</a>
+        <a href="javascript: void(0);" (click)="save(false)"><i class="fa fa-save" style="margin-right: 5px"></i>Save &
+          Close</a>
       </section>
       <section>
         <button class="btn btn-secondary" style="margin-right: 10px" routerLink="/authorized-owner/application/{{waiverId}}">EDIT
