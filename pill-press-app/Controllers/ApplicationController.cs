@@ -905,6 +905,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 {
                     _logger.LogError(LoggingEvents.HttpGet, "Error downloading certificate for application: ");
                     _logger.LogError(LoggingEvents.HttpGet, e.Message);
+                    _logger.LogError(LoggingEvents.HttpGet, serverRelativeUrl);
                     return new NotFoundResult();
                 }
             }
