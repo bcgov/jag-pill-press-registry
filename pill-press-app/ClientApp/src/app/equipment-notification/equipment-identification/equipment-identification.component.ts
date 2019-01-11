@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subscription, zip } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ApplicationDataService } from '../../services/adoxio-application-data.service';
+import { ApplicationDataService } from '../../services/application-data.service';
 import { Application } from '../../models/application.model';
 import { FormBase } from '../../shared/form-base';
 import { postalRegex } from '../../business-information/business-profile/business-profile.component';

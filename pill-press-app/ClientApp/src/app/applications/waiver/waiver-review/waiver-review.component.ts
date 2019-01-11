@@ -4,7 +4,7 @@ import { Subscription, zip, Observable } from 'rxjs';
 import { PRODUCING_OWN_PRODUCT, MANUFACTURING_FOR_OTHERS } from '../waiver-application/waiver-application.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DynamicsDataService } from '../../../services/dynamics-data.service';
-import { ApplicationDataService } from '../../../services/adoxio-application-data.service';
+import { ApplicationDataService } from '../../../services/application-data.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({

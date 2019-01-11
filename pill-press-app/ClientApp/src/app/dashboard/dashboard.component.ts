@@ -4,11 +4,10 @@ import { User } from '../models/user.model';
 import { Router } from '@angular/router';
 import { Application } from '../models/application.model';
 import { DynamicsDataService } from '../services/dynamics-data.service';
-import { ApplicationDataService } from '../services/adoxio-application-data.service';
+import { ApplicationDataService } from '../services/application-data.service';
 import { DynamicsAccount } from '../models/dynamics-account.model';
 import { Subscription } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
-import { PaymentDataService } from '../services/payment-data.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -32,8 +31,7 @@ export class DashboardComponent implements OnInit {
   authorizedOwnerApplication: Application;
   registeredSellerApplication: any;
 
-  constructor(private paymentDataService: PaymentDataService,
-    private userDataService: UserDataService, private router: Router,
+  constructor(private userDataService: UserDataService, private router: Router,
     private dynamicsDataService: DynamicsDataService,
     private applicationDataService: ApplicationDataService,
     public snackBar: MatSnackBar) { }
