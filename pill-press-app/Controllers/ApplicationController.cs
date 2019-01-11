@@ -910,7 +910,13 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                         }
                     }
 
-                    string serverRelativeUrl = "/sites/" + _sharePointFileManager.WebName + "/" + _sharePointFileManager.GetServerRelativeURL(SharePointFileManager.AccountDocumentListTitle, account.GetSharePointFolderName() + $"/{filePrefix}{certificateName}.pdf");
+                    string serverRelativeUrl = "";
+
+                    if (! string.IsNullOrEmpty(_sharePointFileManager.WebName))
+                    {
+                        serverRelativeUrl += "/sites/" + _sharePointFileManager.WebName;
+                    }
+                    serverRelativeUrl += "/" + _sharePointFileManager.GetServerRelativeURL(SharePointFileManager.AccountDocumentListTitle, account.GetSharePointFolderName() + $"/{filePrefix}{certificateName}.pdf");
 
                     try
                     {
