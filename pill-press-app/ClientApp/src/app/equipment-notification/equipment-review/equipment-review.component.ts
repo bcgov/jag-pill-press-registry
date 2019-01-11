@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { Application } from '../../models/application.model';
-import { ApplicationDataService } from '../../services/adoxio-application-data.service';
+import { ApplicationDataService } from '../../services/application-data.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { zip } from 'rxjs';
 
