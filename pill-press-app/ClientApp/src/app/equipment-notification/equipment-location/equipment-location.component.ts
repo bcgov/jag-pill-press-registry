@@ -9,7 +9,7 @@ import { idLocale } from 'ngx-bootstrap';
 import { UserDataService } from './../../services/user-data.service';
 import { DynamicsDataService } from './../../services/dynamics-data.service';
 import { FormBase } from './../../shared/form-base';
-import { postalRegex } from '../../business-information/business-profile/business-profile.component';
+import { postalRegex } from '../../business-profile/business-profile/business-profile.component';
 
 @Component({
   selector: 'app-equipment-location',
