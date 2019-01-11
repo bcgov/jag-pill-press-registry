@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subscription, zip, forkJoin } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ApplicationDataService } from '../../services/adoxio-application-data.service';
+import { ApplicationDataService } from '../../services/application-data.service';
 import { Application } from '../../models/application.model';
 import { EquipmentLocation } from '../../models/equipment-location.model';
 import { idLocale } from 'ngx-bootstrap';
 import { UserDataService } from './../../services/user-data.service';
 import { DynamicsDataService } from './../../services/dynamics-data.service';
 import { FormBase } from './../../shared/form-base';
-import { postalRegex } from '../../business-information/business-profile/business-profile.component';
+import { postalRegex } from '../../business-profile/business-profile/business-profile.component';
 
 @Component({
   selector: 'app-equipment-location',
