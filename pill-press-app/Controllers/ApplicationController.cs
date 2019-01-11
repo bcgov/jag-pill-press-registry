@@ -738,9 +738,9 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 }
         }
 
-            string serverRelativeUrl = "/sites/" + _sharePointFileManager.WebName + "/" + _sharePointFileManager.GetServerRelativeURL(SharePointFileManager.ApplicationDocumentListTitle, application.GetApplicationFolderName());
+            string serverRelativeUrl = "/sites/" + _sharePointFileManager.WebName + "/" + _sharePointFileManager.GetServerRelativeURL(SharePointFileManager.ApplicationDocumentListTitle, application.GetSharePointFolderName());
 
-            string folderName = application.GetApplicationFolderName();
+            string folderName = application.GetSharePointFolderName();
 
 
             // create a SharePointDocumentLocation link
@@ -878,36 +878,50 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                  * EC_CERTIFICATE_<CERTIFICATE_NUMBER> (For Equipment Notification)
                  * 
                  */
-
-                switch (applicationTypeName)
+                
+                if (Guid.TryParse(application._accountidValue, out Guid accountId))
                 {
-                    case "Waiver":
-                        filePrefix = "WA_CERTIFICATE_";
-                        break;
-                    case "Registered Seller":
-                        filePrefix = "RS_CERTIFICATE_";
-                        break;
-                    case "Equipment Notification":
-                        filePrefix = "EC_CERTIFICATE_";
-                        break;
-                }
+                    var account = _dynamicsClient.GetAccountById(accountId);
 
-                string serverRelativeUrl = "/sites/" + _sharePointFileManager.WebName + "/" + _sharePointFileManager.GetServerRelativeURL(SharePointFileManager.ApplicationDocumentListTitle, application.GetApplicationFolderName()) + $"/{filePrefix}{application.Title}.pdf";
-
-                try
-                {
-                    byte[] fileContents = await _sharePointFileManager.DownloadFile(serverRelativeUrl);
-                    return new FileContentResult(fileContents, "application/octet-stream")
+                    switch (applicationTypeName)
                     {
-                    };
+                        case "Waiver":
+                            filePrefix = "WA_CERTIFICATE_";
+                            break;
+                        case "Registered Seller":
+                            filePrefix = "RS_CERTIFICATE_";
+                            break;
+                        case "Equipment Notification":
+                            filePrefix = "EC_CERTIFICATE_";
+                            break;
+                    }
+
+
+                    string serverRelativeUrl = "/sites/" + _sharePointFileManager.WebName + "/" + _sharePointFileManager.GetServerRelativeURL(SharePointFileManager.AccountDocumentListTitle, account.GetSharePointFolderName() + $"/{filePrefix}{application.Title}.pdf");
+
+                    try
+                    {
+                        byte[] fileContents = await _sharePointFileManager.DownloadFile(serverRelativeUrl);
+                        return new FileContentResult(fileContents, "application/octet-stream")
+                        {
+                        };
+                    }
+                    catch (Exception e)
+                    {
+                        _logger.LogError(LoggingEvents.HttpGet, "Error downloading certificate for application: ");
+                        _logger.LogError(LoggingEvents.HttpGet, e.Message);
+                        _logger.LogError(LoggingEvents.HttpGet, serverRelativeUrl);
+                        return new NotFoundResult();
+                    }
+
                 }
-                catch (Exception e)
+                else
                 {
-                    _logger.LogError(LoggingEvents.HttpGet, "Error downloading certificate for application: ");
-                    _logger.LogError(LoggingEvents.HttpGet, e.Message);
-                    _logger.LogError(LoggingEvents.HttpGet, serverRelativeUrl);
-                    return new NotFoundResult();
+                    return BadRequest();
                 }
+                
+
+                
             }
             else
             {
