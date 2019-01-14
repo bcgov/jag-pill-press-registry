@@ -209,15 +209,7 @@ export class BusinessProfileComponent extends FormBase implements OnInit {
               additionalContact: account.additionalContact || {}
             });
 
-            // set the mailing address differnt value if there is a value for the mailing address.
 
-            if (account.mailingAddressLine1 ||
-              account.mailingAddressLine2 ||
-              account.mailingAddressCity ||
-              account.mailingAddressPostalCode ||
-              account.mailingAddressProvince) {
-              account._mailingSameAsPhysicalAddress = true;
-            }
 
             this.form.patchValue({
               businessProfile: account,
@@ -236,10 +228,6 @@ export class BusinessProfileComponent extends FormBase implements OnInit {
             }
 
             this.saveFormData = this.form.value;
-            // this.workerStatus = worker.status;
-            // if (worker.status !== 'Application Incomplete') {
-            //   this.form.disable();
-            // }
           });
         }
       });
