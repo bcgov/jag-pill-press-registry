@@ -27,6 +27,21 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         {            
             // clear session
             HttpContext.Session.Clear();
+
+            // Removing Cookies
+            CookieOptions option = new CookieOptions();
+            if (Request.Cookies[".AspNetCore.Session"] != null)
+            {
+                option.Expires = DateTime.Now.AddDays(-1);
+                Response.Cookies.Append(".AspNetCore.Session", "", option);
+            }
+
+            if (Request.Cookies["AuthenticationToken"] != null)
+            {
+                option.Expires = DateTime.Now.AddDays(-1);
+                Response.Cookies.Append("AuthenticationToken", "", option);
+            }
+
             if (! _env.IsProduction()) // clear dev tokens
             {
                 string temp = HttpContext.Request.Cookies[_options.DevAuthenticationTokenKey];
