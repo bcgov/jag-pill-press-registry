@@ -262,16 +262,23 @@ namespace Gov.Jag.PillPressRegistry.Public
             // X-Frame-Options header
             app.UseXfo(options => options.Deny());
             // Content-Security-Policy header
-            app.UseCsp(opts => opts
-                .BlockAllMixedContent()
-                .StyleSources(s => s.Self())
-                .StyleSources(s => s.UnsafeInline())
-                .FontSources(s => s.Self())
-                .FormActions(s => s.Self())
-                .FrameAncestors(s => s.Self())
-                .ImageSources(s => s.Self())
-                .ScriptSources(s => s.Self())
-                //                 ctx.Response.Headers.Add("Content-Security-Policy",  "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://apis.google.com https://maxcdn.bootstrapcdn.com https://cdnjs.cloudflare.com https://code.jquery.com https://stackpath.bootstrapcdn.com https://fonts.googleapis.com");
+            app.UseCsp(opts =>
+                {
+                    opts
+                    .BlockAllMixedContent()
+                    .StyleSources(s => s.Self())
+                    .StyleSources(s => s.UnsafeInline())
+                    .FontSources(s => s.Self())
+                    .FormActions(s => s.Self())
+                    .FrameAncestors(s => s.Self())
+                    .ImageSources(s => s.Self())
+                    .DefaultSources(s => s.Self())
+                    .ScriptSources(s => s.Self().CustomSources("https://apis.google.com https://maxcdn.bootstrapcdn.com https://cdnjs.cloudflare.com https://code.jquery.com https://stackpath.bootstrapcdn.com https://fonts.googleapis.com"));
+                    //                 ctx.Response.Headers.Add("Content-Security-Policy",  
+                    //"script-src 'self' 'unsafe-eval' 'unsafe-inline' https://apis.google.com 
+                    //https://maxcdn.bootstrapcdn.com https://cdnjs.cloudflare.com https://code.jquery.com 
+                    //https://stackpath.bootstrapcdn.com https://fonts.googleapis.com");
+                 }
             );            
 
             StaticFileOptions staticFileOptions = new StaticFileOptions();
