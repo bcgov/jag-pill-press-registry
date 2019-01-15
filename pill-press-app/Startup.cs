@@ -273,7 +273,7 @@ namespace Gov.Jag.PillPressRegistry.Public
                     .FrameAncestors(s => s.Self())
                     .ImageSources(s => s.Self())
                     .DefaultSources(s => s.Self())
-                    .ScriptSources(s => s.Self().UnsafeInline().CustomSources("https://apis.google.com",
+                    .ScriptSources(s => s.Self().CustomSources("https://apis.google.com",
                     "https://maxcdn.bootstrapcdn.com",
                     "https://cdnjs.cloudflare.com",
                     "https://code.jquery.com",
