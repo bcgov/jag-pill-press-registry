@@ -102,11 +102,18 @@ export class AppComponent implements OnInit {
     let result, jscriptVersion;
     result = false;
 
-    jscriptVersion = new Function('/*@cc_on return @_jscript_version; @*/')();
+    var ua = window.navigator.userAgent;    
 
-    if (jscriptVersion !== undefined) {
-      result = true;
+    var msie = ua.indexOf('MSIE ');
+    if (msie > 0) {
+      // IE 10 or older => return version number
+      var version = parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+
+      if (version !== undefined && version > 11) {
+        result = true;
+      }
     }
+    
     return result;
   }
 
