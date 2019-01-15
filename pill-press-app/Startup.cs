@@ -268,7 +268,7 @@ namespace Gov.Jag.PillPressRegistry.Public
                     .BlockAllMixedContent()
                     .StyleSources(s => s.Self().UnsafeInline().CustomSources("https://use.fontawesome.com",
                         "https://stackpath.bootstrapcdn.com"))                    
-                    .FontSources(s => s.Self())
+                    .FontSources(s => s.Self().CustomSources("https://use.fontawesome.com"))
                     .FormActions(s => s.Self())
                     .FrameAncestors(s => s.Self())
                     .ImageSources(s => s.Self())
