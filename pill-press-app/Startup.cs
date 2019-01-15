@@ -266,14 +266,14 @@ namespace Gov.Jag.PillPressRegistry.Public
                 {
                     opts
                     .BlockAllMixedContent()
-                    .StyleSources(s => s.Self())
-                    .StyleSources(s => s.UnsafeInline())
+                    .StyleSources(s => s.Self().UnsafeInline().CustomSources("https://use.fontawesome.com",
+                        "https://stackpath.bootstrapcdn.com"))                    
                     .FontSources(s => s.Self())
                     .FormActions(s => s.Self())
                     .FrameAncestors(s => s.Self())
                     .ImageSources(s => s.Self())
                     .DefaultSources(s => s.Self())
-                    .ScriptSources(s => s.Self().CustomSources("https://apis.google.com",
+                    .ScriptSources(s => s.Self().UnsafeInline().CustomSources("https://apis.google.com",
                     "https://maxcdn.bootstrapcdn.com",
                     "https://cdnjs.cloudflare.com",
                     "https://code.jquery.com",
