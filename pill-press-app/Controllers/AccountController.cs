@@ -25,11 +25,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         private readonly BCeIDBusinessQuery _bceid;
         private readonly IConfiguration Configuration;
         private readonly IDynamicsClient _dynamicsClient;
-        //private readonly SharePointFileManager _sharePointFileManager;
+        private readonly SharePointFileManager _sharePointFileManager;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ILogger _logger;
 
-        public AccountController(IConfiguration configuration, IHttpContextAccessor httpContextAccessor, BCeIDBusinessQuery bceid, ILoggerFactory loggerFactory, IDynamicsClient dynamicsClient)
+        public AccountController(SharePointFileManager sharePointFileManager, IConfiguration configuration, IHttpContextAccessor httpContextAccessor, BCeIDBusinessQuery bceid, ILoggerFactory loggerFactory, IDynamicsClient dynamicsClient)
         {
             Configuration = configuration;
             _bceid = bceid;
@@ -37,6 +37,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             _httpContextAccessor = httpContextAccessor;
             //_sharePointFileManager = sharePointFileManager;
             _logger = loggerFactory.CreateLogger(typeof(AccountController));
+            _sharePointFileManager = sharePointFileManager;
         }
 
         /// GET account in Dynamics for the current user
@@ -55,7 +56,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             if (userSettings.AccountId != null && userSettings.AccountId.Length > 0)
             {
                 var accountId = GuidUtility.SanitizeGuidString(userSettings.AccountId);
-                MicrosoftDynamicsCRMaccount account = _dynamicsClient.GetAccountById(new Guid(accountId));
+                MicrosoftDynamicsCRMaccount account = _dynamicsClient.GetAccountByIdWithChildren(new Guid(accountId));
                 _logger.LogDebug(LoggingEvents.HttpGet, "Dynamics Account: " + JsonConvert.SerializeObject(account));
 
                 if (account == null)
@@ -349,7 +350,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     return NotFound();
                 }
 
-                MicrosoftDynamicsCRMaccount account = _dynamicsClient.GetAccountById(accountId);
+                MicrosoftDynamicsCRMaccount account = _dynamicsClient.GetAccountByIdWithChildren(accountId);
                 if (account == null)
                 {
                     _logger.LogWarning(LoggingEvents.NotFound, "Account NOT found.");
@@ -481,7 +482,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 
 
                 // populate child items in the account.
-                patchAccount = _dynamicsClient.GetAccountById(accountId);
+                patchAccount = _dynamicsClient.GetAccountByIdWithChildren(accountId);
 
                 var updatedAccount = patchAccount.ToViewModel();
                 _logger.LogDebug(LoggingEvents.HttpPut, "updatedAccount: " +
@@ -690,8 +691,12 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     throw new OdataerrorException("Error creating Account");
                 }
 
+                // create a document location
+
+                await CreateAccountDocumentLocation(account);
+
                 // populate child elements.
-                account = _dynamicsClient.GetAccountById(Guid.Parse(account.Accountid));
+                account = _dynamicsClient.GetAccountByIdWithChildren(Guid.Parse(account.Accountid));
 
                 accountString = JsonConvert.SerializeObject(accountString);
                 _logger.LogDebug("Account Entity after creation in dynamics --> " + accountString);
@@ -773,6 +778,124 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             return Json(result);
         }
 
+        private async Task CreateAccountDocumentLocation(MicrosoftDynamicsCRMaccount account)
+        {
+            string serverRelativeUrl = "";
+
+            if (!string.IsNullOrEmpty(_sharePointFileManager.WebName))
+            {
+                serverRelativeUrl += "/sites/" + _sharePointFileManager.WebName;
+            }
+            serverRelativeUrl += "/" + _sharePointFileManager.GetServerRelativeURL(SharePointFileManager.AccountDocumentListTitle, account.GetSharePointFolderName());
+
+            string name = "";
+
+            if (string.IsNullOrEmpty(account.BcgovDoingbusinessasname))
+            {
+                name = account.Accountid;
+            }
+            else
+            {
+                name = account.BcgovDoingbusinessasname;
+            }
+
+            name += " Account Files";
+
+
+            // create a SharePointDocumentLocation link
+            string folderName = "_" + account.Accountid;
+
+
+            // Create the folder
+            bool folderExists = await _sharePointFileManager.FolderExists(SharePointFileManager.ApplicationDocumentListTitle, folderName);
+            if (!folderExists)
+            {
+                try
+                {
+                    var folder = await _sharePointFileManager.CreateFolder(SharePointFileManager.ApplicationDocumentListTitle, folderName);
+                }
+                catch (Exception e)
+                {
+                    _logger.LogError("Error creating Sharepoint Folder");
+                    _logger.LogError($"List is: {SharePointFileManager.ApplicationDocumentListTitle}");
+                    _logger.LogError($"FolderName is: {folderName}");
+                    throw e;
+                }
+
+            }
+
+            // now create a document location to link them.
+
+            // Create the SharePointDocumentLocation entity
+            MicrosoftDynamicsCRMsharepointdocumentlocation mdcsdl = new MicrosoftDynamicsCRMsharepointdocumentlocation()
+            {
+                Relativeurl = folderName,
+                Description = "Account Files",
+                Name = name
+            };
+
+
+            try
+            {
+                mdcsdl = _dynamicsClient.Sharepointdocumentlocations.Create(mdcsdl);
+            }
+            catch (OdataerrorException odee)
+            {
+                _logger.LogError("Error creating SharepointDocumentLocation");
+                _logger.LogError("Request:");
+                _logger.LogError(odee.Request.Content);
+                _logger.LogError("Response:");
+                _logger.LogError(odee.Response.Content);
+                mdcsdl = null;
+            }
+            if (mdcsdl != null)
+            {
+
+                // set the parent document library.
+                string parentDocumentLibraryReference = GetDocumentLocationReferenceByRelativeURL("account");
+
+                string accountUri = _dynamicsClient.GetEntityURI("accounts", account.Accountid);
+                // add a regardingobjectid.
+                var patchSharePointDocumentLocationIncident = new MicrosoftDynamicsCRMsharepointdocumentlocation()
+                {
+                    RegardingobjectIdIncidentODataBind = accountUri,
+                    ParentsiteorlocationSharepointdocumentlocationODataBind = _dynamicsClient.GetEntityURI("sharepointdocumentlocations", parentDocumentLibraryReference)
+                };
+
+                try
+                {
+                    _dynamicsClient.Sharepointdocumentlocations.Update(mdcsdl.Sharepointdocumentlocationid, patchSharePointDocumentLocationIncident);
+                }
+                catch (OdataerrorException odee)
+                {
+                    _logger.LogError("Error adding reference SharepointDocumentLocation to account");
+                    _logger.LogError("Request:");
+                    _logger.LogError(odee.Request.Content);
+                    _logger.LogError("Response:");
+                    _logger.LogError(odee.Response.Content);
+                }
+
+                string sharePointLocationData = _dynamicsClient.GetEntityURI("sharepointdocumentlocations", mdcsdl.Sharepointdocumentlocationid);
+
+                OdataId oDataId = new OdataId()
+                {
+                    OdataIdProperty = sharePointLocationData
+                };
+                try
+                {
+                    _dynamicsClient.Incidents.AddReference(account.Accountid, "Account_SharepointDocumentLocation", oDataId);
+                }
+                catch (OdataerrorException odee)
+                {
+                    _logger.LogError("Error adding reference to SharepointDocumentLocation");
+                    _logger.LogError("Request:");
+                    _logger.LogError(odee.Request.Content);
+                    _logger.LogError("Response:");
+                    _logger.LogError(odee.Response.Content);
+                }
+            }
+        }
+
 
         /// <summary>
         /// Delete a legal entity.  Using a HTTP Post to avoid Siteminder issues with DELETE
@@ -793,7 +916,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             }
 
             // get the account
-            MicrosoftDynamicsCRMaccount account = _dynamicsClient.GetAccountById(accountId);
+            MicrosoftDynamicsCRMaccount account = _dynamicsClient.GetAccountByIdWithChildren(accountId);
             if (account == null)
             {
                 _logger.LogWarning(LoggingEvents.NotFound, "Account NOT found.");
@@ -818,5 +941,54 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             _logger.LogDebug(LoggingEvents.HttpDelete, "No content returned.");
             return NoContent(); // 204 
         }
+
+        /// <summary>
+        /// Get a document location by reference
+        /// </summary>
+        /// <param name="relativeUrl"></param>
+        /// <returns></returns>
+        private string GetDocumentLocationReferenceByRelativeURL(string relativeUrl)
+        {
+            string result = null;
+            string sanitized = relativeUrl.Replace("'", "''");
+            // first see if one exists.
+            var locations = _dynamicsClient.Sharepointdocumentlocations.Get(filter: "relativeurl eq '" + sanitized + "'");
+
+            var location = locations.Value.FirstOrDefault();
+
+            if (location == null)
+            {
+                var parentSite = _dynamicsClient.Sharepointsites.Get().Value.FirstOrDefault();
+                var parentSiteRef = _dynamicsClient.GetEntityURI("sharepointsites", parentSite.Sharepointsiteid);
+                MicrosoftDynamicsCRMsharepointdocumentlocation newRecord = new MicrosoftDynamicsCRMsharepointdocumentlocation()
+                {
+                    Relativeurl = relativeUrl,
+                    Name = "Account",
+                    ParentsiteorlocationSharepointdocumentlocationODataBind = parentSiteRef
+                };
+                // create a new document location.
+                try
+                {
+                    location = _dynamicsClient.Sharepointdocumentlocations.Create(newRecord);
+                }
+                catch (OdataerrorException odee)
+                {
+                    _logger.LogError("Error creating document location");
+                    _logger.LogError("Request:");
+                    _logger.LogError(odee.Request.Content);
+                    _logger.LogError("Response:");
+                    _logger.LogError(odee.Response.Content);
+                }
+            }
+
+            if (location != null)
+            {
+                result = location.Sharepointdocumentlocationid;
+            }
+
+            return result;
+        }
+
     }
 }
+
