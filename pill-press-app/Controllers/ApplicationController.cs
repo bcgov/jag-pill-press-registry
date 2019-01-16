@@ -155,7 +155,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 UserSettings userSettings = JsonConvert.DeserializeObject<UserSettings>(temp);
 
                 // Get the current account
-                var account = _dynamicsClient.GetAccountById(Guid.Parse(userSettings.AccountId));
+                var account = _dynamicsClient.GetAccountByIdWithChildren(Guid.Parse(userSettings.AccountId));
 
                 // verify the current user has access to the given application
                 if (!UserDynamicsExtensions.CurrentUserHasAccessToApplication(applicationId, _httpContextAccessor, _dynamicsClient))
@@ -659,7 +659,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             application.SubmitterODataBind = _dynamicsClient.GetEntityURI("contacts", userSettings.ContactId);
         
             // Also setup the customer.
-            var account = _dynamicsClient.GetAccountById(Guid.Parse(userSettings.AccountId));
+            var account = _dynamicsClient.GetAccountByIdWithChildren(Guid.Parse(userSettings.AccountId));
             
             application.CustomerIdAccountODataBind = _dynamicsClient.GetEntityURI("accounts", userSettings.AccountId);
             
@@ -737,8 +737,13 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     throw new OdataerrorException("Error updating Application");
                 }
         }
+            string serverRelativeUrl = "";
 
-            string serverRelativeUrl = "/sites/" + _sharePointFileManager.WebName + "/" + _sharePointFileManager.GetServerRelativeURL(SharePointFileManager.ApplicationDocumentListTitle, application.GetSharePointFolderName());
+            if (!string.IsNullOrEmpty(_sharePointFileManager.WebName))
+            {
+                serverRelativeUrl += "/sites/" + _sharePointFileManager.WebName;
+            }
+            serverRelativeUrl += _sharePointFileManager.GetServerRelativeURL(SharePointFileManager.ApplicationDocumentListTitle, application.GetSharePointFolderName());
 
             string folderName = application.GetSharePointFolderName();
 
@@ -881,7 +886,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 
                 if (Guid.TryParse(application._customeridValue, out Guid accountId))
                 {
-                    var account = _dynamicsClient.GetAccountById(accountId);
+                    var account = _dynamicsClient.GetAccountByIdWithChildren(accountId);
 
                     switch (applicationTypeName)
                     {
@@ -911,12 +916,14 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     }
 
                     string serverRelativeUrl = "";
-
-                    if (! string.IsNullOrEmpty(_sharePointFileManager.WebName))
+                    if (!string.IsNullOrEmpty(_sharePointFileManager.WebName))
                     {
                         serverRelativeUrl += "/sites/" + _sharePointFileManager.WebName;
                     }
-                    serverRelativeUrl += "/" + _sharePointFileManager.GetServerRelativeURL(SharePointFileManager.AccountDocumentListTitle, account.GetSharePointFolderName() + $"/{filePrefix}{certificateName}.pdf");
+                    serverRelativeUrl += "/" + _sharePointFileManager.GetServerRelativeURL(SharePointFileManager.AccountDocumentListTitle, account.GetSharePointFolderName());
+                
+                    
+                    serverRelativeUrl += $"/{filePrefix}{certificateName}.pdf";
 
                     try
                     {

@@ -261,13 +261,16 @@ namespace Gov.Jag.PillPressRegistry.Public
             app.UseXXssProtection(options => options.EnabledWithBlockMode());
             // X-Frame-Options header
             app.UseXfo(options => options.Deny());
-            // Content-Security-Policy header
-            app.UseCsp(opts =>
+
+            if (!env.IsDevelopment())  // when running locally we can't have a strict CSP
+            {
+                // Content-Security-Policy header
+                app.UseCsp(opts =>
                 {
                     opts
                     .BlockAllMixedContent()
                     .StyleSources(s => s.Self().UnsafeInline().CustomSources("https://use.fontawesome.com",
-                        "https://stackpath.bootstrapcdn.com"))                    
+                        "https://stackpath.bootstrapcdn.com"))
                     .FontSources(s => s.Self().CustomSources("https://use.fontawesome.com"))
                     .FormActions(s => s.Self())
                     .FrameAncestors(s => s.Self())
@@ -279,23 +282,21 @@ namespace Gov.Jag.PillPressRegistry.Public
                     "https://code.jquery.com",
                     "https://stackpath.bootstrapcdn.com",
                     "https://fonts.googleapis.com"));
-                    //                 ctx.Response.Headers.Add("Content-Security-Policy",  
-                    //"script-src 'self' 'unsafe-eval' 'unsafe-inline' https://apis.google.com 
-                    //https://maxcdn.bootstrapcdn.com https://cdnjs.cloudflare.com https://code.jquery.com 
-                    //https://stackpath.bootstrapcdn.com https://fonts.googleapis.com");
-                 }
-            );            
 
-            StaticFileOptions staticFileOptions = new StaticFileOptions();
+                });
+            }
 
-            staticFileOptions.OnPrepareResponse = ctx =>
+            StaticFileOptions staticFileOptions = new StaticFileOptions()
             {
-                ctx.Context.Response.Headers[HeaderNames.CacheControl] = "no-cache, no-store, must-revalidate, private";
-                ctx.Context.Response.Headers[HeaderNames.Pragma] = "no-cache";
-                ctx.Context.Response.Headers["X-Frame-Options"] = "SAMEORIGIN";
-                ctx.Context.Response.Headers["X-XSS-Protection"] = "1; mode=block";
-                ctx.Context.Response.Headers["X-Content-Type-Options"] = "nosniff";
-            };
+                OnPrepareResponse = ctx =>
+                {
+                    ctx.Context.Response.Headers[HeaderNames.CacheControl] = "no-cache, no-store, must-revalidate, private";
+                    ctx.Context.Response.Headers[HeaderNames.Pragma] = "no-cache";
+                    ctx.Context.Response.Headers["X-Frame-Options"] = "SAMEORIGIN";
+                    ctx.Context.Response.Headers["X-XSS-Protection"] = "1; mode=block";
+                    ctx.Context.Response.Headers["X-Content-Type-Options"] = "nosniff";
+                }
+            };            
 
             app.UseStaticFiles(staticFileOptions);
             app.UseSpaStaticFiles(staticFileOptions);
@@ -332,6 +333,8 @@ namespace Gov.Jag.PillPressRegistry.Public
                 {
                     spa.UseAngularCliServer(npmScript: "start");
                 }
+
+
             });
 
         }
