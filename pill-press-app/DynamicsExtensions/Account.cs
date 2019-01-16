@@ -77,12 +77,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <param name="system"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public static MicrosoftDynamicsCRMaccount GetAccountById(this IDynamicsClient system, Guid id)
+        public static MicrosoftDynamicsCRMaccount GetAccountByIdWithChildren(this IDynamicsClient system, Guid id)
         {
             List<string> expand = new List<string>()
             {
                 "primarycontactid",
-                "bcgov_AdditionalContact"
+                "bcgov_AdditionalContact",
+                "Account_SharepointDocumentLocation"
             };
 
             MicrosoftDynamicsCRMaccount result;
@@ -113,10 +114,19 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
 
         public static string GetSharePointFolderName(this MicrosoftDynamicsCRMaccount account)
         {
-
-            string accountIdCleaned = account.Accountid.ToString().ToUpper().Replace("-", "");
-            string folderName = $"{account.Name}_{accountIdCleaned}";
-            return folderName;
+            string serverRelativeUrl = "";
+            // use the account document location if it exists.
+            if (account.AccountSharepointDocumentLocation != null && account.AccountSharepointDocumentLocation.Count > 0)
+            {
+                var location = account.AccountSharepointDocumentLocation.FirstOrDefault();
+                serverRelativeUrl = location.Relativeurl;
+            }
+            else
+            {
+                string accountIdCleaned = account.Accountid.ToString().ToUpper().Replace("-", "");
+                serverRelativeUrl = $"{account.Name}_{accountIdCleaned}";
+            }
+            return serverRelativeUrl;
         }
 
     }
