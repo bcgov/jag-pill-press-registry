@@ -103,7 +103,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             if (userSettings.AccountId != null && userSettings.AccountId.Length > 0)
             {
                 var accountId = GuidUtility.SanitizeGuidString(userSettings.AccountId);
-                MicrosoftDynamicsCRMaccount account = _dynamicsClient.GetAccountById(new Guid(accountId));
+                MicrosoftDynamicsCRMaccount account = _dynamicsClient.GetAccountByIdWithChildren(new Guid(accountId));
                 _logger.LogDebug(LoggingEvents.HttpGet, "Dynamics Account: " + JsonConvert.SerializeObject(account));
 
                 if (account == null)
