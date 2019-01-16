@@ -19,7 +19,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <param name="system"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public static void CreateBusinessContactLink(this IDynamicsClient system, ILogger _logger, string contactId, string accountId, string jobtitle, int? contactType)
+        public static void CreateBusinessContactLink(this IDynamicsClient system, ILogger _logger, string contactId, string accountId, string jobtitle, int? contactType, string jobTitle)
         {
             bool valid = true;
             string errorMessage = "";
@@ -50,12 +50,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                     try
                     {
                         result = new MicrosoftDynamicsCRMbcgovBusinesscontact()
-                        {
-                            
+                        {                            
                             BcgovContacttype = contactType,
                             ContactODataBind = system.GetEntityURI("contacts", contactId),
                             AccountODataBind = system.GetEntityURI("accounts", accountId),
-                        };
+                            BcgovJobtitle = jobTitle
+                        };                        
+
                         if (!string.IsNullOrEmpty(jobtitle))
                         {
                             result.BcgovJobtitle = jobtitle;
