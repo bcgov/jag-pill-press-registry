@@ -9,11 +9,11 @@ import { ValidatorFn, AbstractControl, FormBuilder, FormGroup } from '@angular/f
 import { Router, Route, ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-profile-summary',
-  templateUrl: './profile-summary.component.html',
-  styleUrls: ['./profile-summary.component.scss']
+  selector: 'app-profile-review',
+  templateUrl: './profile-review.component.html',
+  styleUrls: ['./profile-review.component.scss']
 })
-export class ProfileSummaryComponent implements OnInit {
+export class ProfileReviewComponent implements OnInit {
   busy: Promise<any>;
   busy2: Promise<any>;
   dataLoaded: boolean;
