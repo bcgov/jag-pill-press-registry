@@ -6,6 +6,9 @@
     "module": "commonjs",
     "target": "es5",
     "types": [
+      "knockout",
+      "q",
+      "selenium-webdriver",
       "jasmine",
       "jasminewd2",
       "node"
