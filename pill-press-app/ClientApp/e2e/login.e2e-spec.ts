@@ -12,16 +12,16 @@ describe('Login component test', () => {
     });
 
     it('should finish login process and redirect to dashboard', async () => {
-        await page.navigateToBusinessLogin("protractorBusinessTestUser");
+        await page.navigateToBusinessLogin('protractorBusinessTestUser');
         expect(page.getHeading('h1')).toEqual('Terms of Use');
         page.getCheckbox().click();
         page.getButton().click();
         expect(page.getHeading('h2')).toEqual('Please confirm the business or organization name associated to the Business BCeID.');
-        page.getButtonByClass("btn-primary").click();
+        page.getButtonByClass('btn-primary').click();
         expect(page.getHeading('h2')).toEqual('Please confirm the organization type associated with the Business BCeID:');
         page.getPrivateCorpRadio().click();
         expect(page.getHeading('h2')).toEqual('Please confirm the name associated with the Business BCeID login provided.');
-        page.getButtonByClass("btn-primary").click();
+        page.getButtonByClass('btn-primary').click();
 
         page.waitForDashboard();
         expect(page.getHeading('h1')).toEqual('Welcome to Pill Press Retail Store Licensing');
