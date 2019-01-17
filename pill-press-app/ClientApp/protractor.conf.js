@@ -10,11 +10,14 @@ exports.config = {
   specs: [
     './e2e/**/*.e2e-spec.ts'
   ],
+  suites: {
+    smokeTest: './e2e/**/app.e2e-spec.ts'
+  },
   capabilities: {
     'browserName': 'chrome',
     chromeOptions: {
-       args: ["--headless", "--disable-gpu", "--no-zygote", "--no-sandbox", "--window-size=1024x768"]
-       //args: ["--disable-gpu", "--no-zygote", "--no-sandbox", "--window-size=1024x768"]
+      args: ["--headless", "--disable-gpu", "--no-zygote", "--no-sandbox", "--window-size=1024x768"]
+      //args: ["--disable-gpu", "--no-zygote", "--no-sandbox", "--window-size=1024x768"]
     },
     'loggingPrefs': {
       'driver': 'INFO',
@@ -28,7 +31,7 @@ exports.config = {
   jasmineNodeOpts: {
     showColors: true,
     defaultTimeoutInterval: 3000000,
-    print: function() {}
+    print: function () { }
   },
   onPrepare() {
     require('ts-node').register({
