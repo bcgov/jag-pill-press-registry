@@ -6,7 +6,7 @@ export class AppHomePage {
     }
 
      async getMainHeading() {
-        return await element(by.css('h2')).getText();
+        return await element(by.css('.jumbotron.home-header > h2')).getText();
     }
 
     inputEmail() {
