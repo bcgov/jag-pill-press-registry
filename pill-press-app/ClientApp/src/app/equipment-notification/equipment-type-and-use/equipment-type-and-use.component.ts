@@ -80,10 +80,8 @@ export class EquipmentTypeAndUseComponent extends FormBase implements OnInit {
   save(goToReview: boolean) {
     if (this.form.valid || goToReview === false) {
       const value = this.form.value;
-      const saveList = [this.applicationDataService.updateApplication(value)];
-      this.busyPromise = zip(...saveList)
-        .toPromise()
-        .then(res => {
+      this.busy = this.applicationDataService.updateApplication(value)
+        .subscribe(res => {
           if (goToReview) {
             this.router.navigateByUrl(`/equipment-notification/identification/${this.equipmentId}`);
           } else {
