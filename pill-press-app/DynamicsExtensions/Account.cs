@@ -119,9 +119,9 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             if (account.AccountSharepointDocumentLocation != null && account.AccountSharepointDocumentLocation.Count > 0)
             {
                 var location = account.AccountSharepointDocumentLocation.FirstOrDefault();
-                serverRelativeUrl = location.Relativeurl;
+                serverRelativeUrl = location.Relativeurl;                                
             }
-            else
+            if(string.IsNullOrEmpty(serverRelativeUrl))
             {
                 string accountIdCleaned = account.Accountid.ToString().ToUpper().Replace("-", "");
                 serverRelativeUrl = $"{account.Name}_{accountIdCleaned}";

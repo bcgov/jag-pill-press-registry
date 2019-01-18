@@ -858,8 +858,10 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 // add a regardingobjectid.
                 var patchSharePointDocumentLocationIncident = new MicrosoftDynamicsCRMsharepointdocumentlocation()
                 {
-                    RegardingobjectIdIncidentODataBind = accountUri,
-                    ParentsiteorlocationSharepointdocumentlocationODataBind = _dynamicsClient.GetEntityURI("sharepointdocumentlocations", parentDocumentLibraryReference)
+                    RegardingobjectIdAccountODataBind = accountUri,
+                    ParentsiteorlocationSharepointdocumentlocationODataBind = _dynamicsClient.GetEntityURI("sharepointdocumentlocations", parentDocumentLibraryReference),
+                    Relativeurl = folderName,
+                    Description = "Account Files",
                 };
 
                 try
@@ -883,7 +885,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 };
                 try
                 {
-                    _dynamicsClient.Incidents.AddReference(account.Accountid, "Account_SharepointDocumentLocation", oDataId);
+                    _dynamicsClient.Accounts.AddReference(account.Accountid, "Account_SharepointDocumentLocation", oDataId);
                 }
                 catch (OdataerrorException odee)
                 {
