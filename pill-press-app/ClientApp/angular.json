@@ -53,9 +53,6 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "baseHref": "/piilpressregistry/",
-            "host": "0.0.0.0",
-            "sourceMap": true,
             "browserTarget": "pill-press-app:build"
           },
           "configurations": {
