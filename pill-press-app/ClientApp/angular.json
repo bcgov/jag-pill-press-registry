@@ -29,6 +29,8 @@
             "scripts": []
           },
           "configurations": {
+            "development": {
+            },
             "production": {
               "optimization": true,
               "outputHashing": "all",
@@ -55,6 +57,7 @@
           },
           "configurations": {
             "production": {
+              "baseHref": "/",
               "browserTarget": "pill-press-app:build:production"
             }
           }
@@ -107,6 +110,7 @@
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
+            "baseUrl": "/piilpressregistry/",
             "protractorConfig": "./protractor.conf.js",
             "devServerTarget": "pill-press-app:serve"
           }
@@ -129,7 +133,7 @@
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
-      "styleext": "css"
+      "styleext": "scss"
     },
     "@schematics/angular:directive": {
       "prefix": "app"
