@@ -473,11 +473,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 // create the business contact links.
                 if (item.primaryContact != null)
                 {
-                    _dynamicsClient.CreateBusinessContactLink(_logger, item.primaryContact.id, accountId.ToString(), null, (int?)ContactTypeCodes.Primary);
+                    _dynamicsClient.CreateBusinessContactLink(_logger, item.primaryContact.id, accountId.ToString(), null, (int?)ContactTypeCodes.Primary, item.primaryContact.title);
                 }
                 if (item.additionalContact != null)
                 {
-                    _dynamicsClient.CreateBusinessContactLink(_logger, item.additionalContact.id, accountId.ToString(), null, (int?)ContactTypeCodes.Additional);
+                    _dynamicsClient.CreateBusinessContactLink(_logger, item.additionalContact.id, accountId.ToString(), null, (int?)ContactTypeCodes.Additional, item.additionalContact.title);
                 }
                 
 
@@ -743,7 +743,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 }
 
                 // create the bridge entity for the BCeID user
-                _dynamicsClient.CreateBusinessContactLink(_logger, userSettings.ContactId, userSettings.AccountId, null, (int?)ContactTypeCodes.BCeID);
+                _dynamicsClient.CreateBusinessContactLink(_logger, userSettings.ContactId, userSettings.AccountId, null, (int?)ContactTypeCodes.BCeID, "BCeID");
 
                 userSettings.IsNewUserRegistration = false;
 
@@ -763,11 +763,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             // create the business contact links.
             if (item.primaryContact != null)
             {
-                _dynamicsClient.CreateBusinessContactLink(_logger, item.primaryContact.id, account.Accountid, null, (int?)ContactTypeCodes.Primary);
+                _dynamicsClient.CreateBusinessContactLink(_logger, item.primaryContact.id, account.Accountid, null, (int?)ContactTypeCodes.Primary, item.primaryContact.title);
             }
             if (item.additionalContact != null)
             {
-                _dynamicsClient.CreateBusinessContactLink(_logger, item.additionalContact.id, account.Accountid, null, (int?)ContactTypeCodes.Additional);
+                _dynamicsClient.CreateBusinessContactLink(_logger, item.additionalContact.id, account.Accountid, null, (int?)ContactTypeCodes.Additional, item.additionalContact.title);
             }
 
             //account.Accountid = id;
@@ -858,8 +858,10 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 // add a regardingobjectid.
                 var patchSharePointDocumentLocationIncident = new MicrosoftDynamicsCRMsharepointdocumentlocation()
                 {
-                    RegardingobjectIdIncidentODataBind = accountUri,
-                    ParentsiteorlocationSharepointdocumentlocationODataBind = _dynamicsClient.GetEntityURI("sharepointdocumentlocations", parentDocumentLibraryReference)
+                    RegardingobjectIdAccountODataBind = accountUri,
+                    ParentsiteorlocationSharepointdocumentlocationODataBind = _dynamicsClient.GetEntityURI("sharepointdocumentlocations", parentDocumentLibraryReference),
+                    Relativeurl = folderName,
+                    Description = "Account Files",
                 };
 
                 try
@@ -883,7 +885,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 };
                 try
                 {
-                    _dynamicsClient.Incidents.AddReference(account.Accountid, "Account_SharepointDocumentLocation", oDataId);
+                    _dynamicsClient.Accounts.AddReference(account.Accountid, "Account_SharepointDocumentLocation", oDataId);
                 }
                 catch (OdataerrorException odee)
                 {
