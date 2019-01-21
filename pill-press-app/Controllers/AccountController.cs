@@ -800,17 +800,17 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
 
 
             // Create the folder
-            bool folderExists = await _sharePointFileManager.FolderExists(SharePointFileManager.ApplicationDocumentListTitle, folderName);
+            bool folderExists = await _sharePointFileManager.FolderExists(SharePointFileManager.AccountDocumentListTitle, folderName);
             if (!folderExists)
             {
                 try
                 {
-                    var folder = await _sharePointFileManager.CreateFolder(SharePointFileManager.ApplicationDocumentListTitle, folderName);
+                    var folder = await _sharePointFileManager.CreateFolder(SharePointFileManager.AccountDocumentListTitle, folderName);
                 }
                 catch (Exception e)
                 {
                     _logger.LogError("Error creating Sharepoint Folder");
-                    _logger.LogError($"List is: {SharePointFileManager.ApplicationDocumentListTitle}");
+                    _logger.LogError($"List is: {SharePointFileManager.AccountDocumentListTitle}");
                     _logger.LogError($"FolderName is: {folderName}");
                     throw e;
                 }
