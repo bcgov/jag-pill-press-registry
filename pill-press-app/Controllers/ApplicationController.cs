@@ -915,12 +915,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                         }
                     }
 
-                    string serverRelativeUrl = "";
-                    if (!string.IsNullOrEmpty(_sharePointFileManager.WebName))
-                    {
-                        serverRelativeUrl += "/sites/" + _sharePointFileManager.WebName;
-                    }
-                    serverRelativeUrl += "/" + _sharePointFileManager.GetServerRelativeURL(SharePointFileManager.AccountDocumentListTitle, account.GetSharePointFolderName());
+                    string serverRelativeUrl = account.GetServerUrl(_sharePointFileManager);
                 
                     
                     serverRelativeUrl += $"/{filePrefix}{certificateName}.pdf";
