@@ -112,21 +112,45 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             return result;
         }
 
-        public static string GetSharePointFolderName(this MicrosoftDynamicsCRMaccount account)
+        public static string GetServerUrl(this MicrosoftDynamicsCRMaccount account, SharePointFileManager _sharePointFileManager)
         {
-            string serverRelativeUrl = "";
+            string result = "";
             // use the account document location if it exists.
             if (account.AccountSharepointDocumentLocation != null && account.AccountSharepointDocumentLocation.Count > 0)
             {
                 var location = account.AccountSharepointDocumentLocation.FirstOrDefault();
-                serverRelativeUrl = location.Relativeurl;                                
+                if (location != null)
+                {
+                    if (string.IsNullOrEmpty(location.Relativeurl))
+                    {
+                        if (!string.IsNullOrEmpty(location.Absoluteurl))
+                        {
+                            result = location.Absoluteurl;
+                        }
+                    }
+                    else
+                    {
+                        result = location.Relativeurl;
+                    }
+                }                
             }
-            if(string.IsNullOrEmpty(serverRelativeUrl))
+            if(string.IsNullOrEmpty(result))
             {
+                string serverRelativeUrl = "";
+
+                if (!string.IsNullOrEmpty(_sharePointFileManager.WebName))
+                {
+                    serverRelativeUrl += "/sites/" + _sharePointFileManager.WebName;
+                }
                 string accountIdCleaned = account.Accountid.ToString().ToUpper().Replace("-", "");
-                serverRelativeUrl = $"{account.Name}_{accountIdCleaned}";
+                string folderName = $"_{accountIdCleaned}";
+
+                serverRelativeUrl += "/" + _sharePointFileManager.GetServerRelativeURL(SharePointFileManager.AccountDocumentListTitle, folderName);
+
+                result = serverRelativeUrl;
+                
             }
-            return serverRelativeUrl;
+            return result;
         }
 
     }
