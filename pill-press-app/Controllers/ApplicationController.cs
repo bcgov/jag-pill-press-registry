@@ -883,7 +883,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                  * EC_CERTIFICATE_<CERTIFICATE_NUMBER> (For Equipment Notification)
                  * 
                  */
-                
+
                 if (Guid.TryParse(application._customeridValue, out Guid accountId))
                 {
                     var account = _dynamicsClient.GetAccountByIdWithChildren(accountId);
@@ -916,8 +916,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     }
 
                     string serverRelativeUrl = account.GetServerUrl(_sharePointFileManager);
-                
-                    
+
+
                     serverRelativeUrl += $"/{filePrefix}{certificateName}.pdf";
 
                     try
@@ -939,12 +939,109 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 }
                 else
                 {
-                    _logger.LogError(LoggingEvents.HttpGet, "Unable to get account from application."); 
+                    _logger.LogError(LoggingEvents.HttpGet, "Unable to get account from application.");
                     return BadRequest();
                 }
-                
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+        [HttpGet("{id}/certificate-exists")]
+        public async Task<IActionResult> CertificateExists(string id)
+        {
+            _logger.LogDebug(LoggingEvents.HttpPost, "Begin method " + this.GetType().Name + "." + MethodBase.GetCurrentMethod().ReflectedType.Name);
+            bool fileExists = false;
 
-                
+            if (!string.IsNullOrEmpty(id) && Guid.TryParse(id, out Guid applicationId))
+            {
+
+                // verify the currently logged in user has access to this account
+
+                MicrosoftDynamicsCRMincident application = _dynamicsClient.GetApplicationByIdWithChildren(applicationId);
+                if (application == null)
+                {
+                    _logger.LogWarning(LoggingEvents.NotFound, "Application NOT found.");
+                    return new NotFoundResult();
+                }
+
+                if (!UserDynamicsExtensions.CurrentUserHasAccessToApplication(applicationId, _httpContextAccessor, _dynamicsClient))
+                {
+                    _logger.LogWarning(LoggingEvents.NotFound, "Current user has NO access to the application.");
+                    return new NotFoundResult();
+                }
+
+                string applicationTypeName = application.BcgovApplicationTypeId.BcgovName;
+                string filePrefix = "";
+
+                /*             
+                 * File name format is
+                 * WA_CERTIFICATE_<CERTIFICATE_NUMBER> (for Waiver)
+                 * RS_CERTIFICATE_<CERTIFICATE_NUMBER> (for Registered Seller)
+                 * EC_CERTIFICATE_<CERTIFICATE_NUMBER> (For Equipment Notification)
+                 * 
+                 */
+
+                if (Guid.TryParse(application._customeridValue, out Guid accountId))
+                {
+                    var account = _dynamicsClient.GetAccountByIdWithChildren(accountId);
+
+                    switch (applicationTypeName)
+                    {
+                        case "Waiver":
+                            filePrefix = "WA_CERTIFICATE_";
+                            break;
+                        case "Registered Seller":
+                            filePrefix = "RS_CERTIFICATE_";
+                            break;
+                        case "Equipment Notification":
+                            filePrefix = "EC_CERTIFICATE_";
+                            break;
+                    }
+
+                    // get the latest certificate
+
+                    DateTimeOffset? dto = null;
+                    string certificateName = "";
+
+                    foreach (var certificate in application.BcgovIncidentBcgovCertificateApplication)
+                    {
+                        if (dto == null || dto < certificate.BcgovIssueddate)
+                        {
+                            dto = certificate.BcgovIssueddate;
+                            certificateName = certificate.BcgovName;
+                        }
+                    }
+
+                    string serverRelativeUrl = account.GetServerUrl(_sharePointFileManager);
+
+
+                    serverRelativeUrl += $"/{filePrefix}{certificateName}.pdf";
+
+                    try
+                    {
+                        byte[] fileContents = await _sharePointFileManager.DownloadFile(serverRelativeUrl);
+                        if(fileContents.Length > 0)
+                        {
+                            fileExists = true;
+                        }
+                        return new JsonResult( fileExists);
+                    }
+                    catch (Exception e)
+                    {
+                        _logger.LogError(LoggingEvents.HttpGet, "Error downloading certificate for application: ");
+                        _logger.LogError(LoggingEvents.HttpGet, e.Message);
+                        _logger.LogError(LoggingEvents.HttpGet, serverRelativeUrl);
+                        return new JsonResult(false);
+                    }
+
+                }
+                else
+                {
+                    _logger.LogError(LoggingEvents.HttpGet, "Unable to get account from application.");
+                    return BadRequest();
+                }
             }
             else
             {
