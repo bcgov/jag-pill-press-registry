@@ -63,6 +63,14 @@ export class DashboardComponent implements OnInit {
           }
         });
 
+        data.forEach((app: any) => {
+          if (app.certificate) {
+            this.applicationDataService.doesCertificateExist(app.id).subscribe(result => {
+              app.hasCertificate = result;
+            });
+          }
+        });
+
         const authorizedOwners = data.filter(a => a.applicationtype === 'Authorized Owner');
         if (authorizedOwners.length > 0) {
           this.authorizedOwnerApplication = authorizedOwners[0];
