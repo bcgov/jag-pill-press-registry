@@ -36,6 +36,8 @@ import { EquipmentNotificationComponent } from './equipment-notification/equipme
 import { AuthorizedOwnerComponent } from './applications/authorized-owner/authorized-owner.component';
 import { RegisteredSellerComponent } from './applications/registered-seller/registered-seller.component';
 import { WaiverComponent } from './applications/waiver/waiver.component';
+import { LocationChangeComponent } from './equipment-changes/location-change/location-change.component';
+import { ReportChangesComponent } from './equipment-changes/report-changes/report-changes.component';
 
 const routes: Routes = [
   {
@@ -170,6 +172,14 @@ const routes: Routes = [
     ]
   },
   {
+    path: 'equipment-changes/location-change/:id',
+    component: LocationChangeComponent
+  },
+  {
+    path: 'equipment-changes/report-changes/:id',
+    component: ReportChangesComponent
+  },
+  {
     path: 'dashboard',
     component: DashboardComponent,
     canActivate: [BCeidAuthGuard]
@@ -179,7 +189,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'top' })],
-  exports: [RouterModule],
+exports: [RouterModule],
   providers: []
 })
 export class AppRoutingModule { }
