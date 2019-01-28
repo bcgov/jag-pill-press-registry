@@ -136,7 +136,7 @@
                   <strong>Expiry Date:&nbsp;</strong> {{waiverApplication?.certificate?.expiryDate | date : 'dd MMM yyyy'}}
                   <br>
                 </p>
-                <a href="api/application/{{waiverApplication?.id}}/download-certificate" download><i class="fa fa-file-pdf"
+                <a *ngIf="waiverApplication.hasCertificate" href="api/application/{{waiverApplication?.id}}/download-certificate" download><i class="fa fa-file-pdf"
                     style="color: #38598A; margin-right: 5px;"></i>Download
                   Certificate</a>
               </section>
@@ -235,7 +235,7 @@
                   <strong>Expiry Date:&nbsp;</strong> {{registeredSellerApplication?.certificate?.expiryDate | date : 'dd MMM yyyy'}}
                   <br>
                 </p>
-                <a href="api/application/{{registeredSellerApplication?.id}}/download-certificate" download><i class="fa fa-file-pdf"
+                <a *ngIf="registeredSellerApplication.hasCertificate" href="api/application/{{registeredSellerApplication?.id}}/download-certificate" download><i class="fa fa-file-pdf"
                     style="color: #38598A; margin-right: 5px;"></i>Download
                   Certificate</a>
               </section>
@@ -369,8 +369,8 @@
                         <div style="background-color: #F1F4FA; padding: 10px; padding-bottom: 15px;">
                           <span>{{item.equipmentType}}</span> <br>
                           <span>Serial #: </span> <i>{{item.serialNumber || item.customBuiltSerialNumber || 'Not available'}}</i> <br>
-                          <span>Equipment Registry #: </span> <span></span> <br>
-                          <a href=""><i class="fa fa-file-pdf" style="color: #38598A; margin-right: 5px;"></i>Download
+                              <span>Equipment Registry #: </span> {{item?.certificate?.name}}<span></span> <br>
+                          <a *ngIf="item.hasCertificate" href="api/application/{{item?.id}}/download-certificate" download><i class="fa fa-file-pdf" style="color: #38598A; margin-right: 5px;"></i>Download
                             Certificate</a>
                         </div>
                       </div>
@@ -388,7 +388,8 @@
                       <a href="javascript: void(0)"><i class="fas fa-eye" style="margin-right: 5px;"></i>View
                         Submission</a>
                       <br>
-                      <a href="javascript: void(0)"><i class="fas fa-map-marker-alt" style="margin-right: 5px;"></i>Edit
+                      <a routerLink="/equipment-changes/location-change/{{item.id}}">
+                        <i class="fas fa-map-marker-alt" style="margin-right: 5px;"></i>Change
                         Location</a> <br>
                       <a href="javascript: void(0)"><i class="fas fa-exclamation-triangle" style="margin-right: 5px;"></i>Report
                         Change (lost, stolen, destroyed)</a> <br>

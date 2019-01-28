@@ -108,6 +108,8 @@ import { EquipmentNotificationComponent } from './equipment-notification/equipme
 import { WaiverComponent } from './applications/waiver/waiver.component';
 import { RegisteredSellerComponent } from './applications/registered-seller/registered-seller.component';
 import { AuthorizedOwnerComponent } from './applications/authorized-owner/authorized-owner.component';
+import { LocationChangeComponent } from './equipment-changes/location-change/location-change.component';
+import { ReportChangesComponent } from './equipment-changes/report-changes/report-changes.component';
 
 
 
@@ -148,7 +150,9 @@ import { AuthorizedOwnerComponent } from './applications/authorized-owner/author
     EquipmentNotificationComponent,
     WaiverComponent,
     RegisteredSellerComponent,
-    AuthorizedOwnerComponent
+    AuthorizedOwnerComponent,
+    LocationChangeComponent,
+    ReportChangesComponent
   ],
   imports: [
     BrowserModule,
