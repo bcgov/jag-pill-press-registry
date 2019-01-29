@@ -1,0 +1,213 @@
+<div style="position: relative;">
+  <div [ngBusy]="[busy, busyPromise]"></div>
+  <div [formGroup]="form">
+    <h2 class="step">STEP 1</h2>
+    <h1 style="margin-top: 0;">Report of Equipment Change</h1>
+
+    <h3 class="blue-header">EQUIPMENT IDENTIFICATION</h3>
+    <section class="padded-section">
+
+      <app-field label="Equipment Type" [valid]="true" errorMessage="Please specify the make" [required]="true">
+        <input type="text" class="form-control" readonly formControlName="equipmentType" style="width: 680px" maxlength="100">
+      </app-field>
+
+
+      <!-- <app-field label="How was this piece of Controlled Equipment built?" [valid]="form.get('howWasEquipmentBuilt').valid || !form.get('howWasEquipmentBuilt').touched"
+          errorMessage="Please indicate how this controlled equipment was built" [required]="true">
+          <select class="form-control" formControlName="howWasEquipmentBuilt" style="width: 300px;">
+            <option value="">Please select an option</option>
+            <option value="Commercially Manufactured">Commercially Manufactured</option>
+            <option value="Custom-built">Custom Built (i.e. built out of spare parts)</option>
+            <option value="Other">Other</option>
+          </select>
+        </app-field> -->
+
+      <section *ngIf="form.get('howWasEquipmentBuilt').value === 'Commercially Manufactured'">
+
+        <app-field label="Make" [valid]="form.get('equipmentMake').valid || !form.get('equipmentMake').touched"
+          errorMessage="Please specify the make" [required]="true">
+          <input type="text" class="form-control" readonly formControlName="equipmentMake" style="width: 680px"
+            maxlength="100">
+        </app-field>
+
+        <app-field label="Model" [valid]="form.get('equipmentModel').valid || !form.get('equipmentModel').touched"
+          errorMessage="Please specify the model" [required]="true">
+          <input type="text" class="form-control" readonly formControlName="equipmentModel" style="width: 680px"
+            maxlength="100">
+        </app-field>
+
+        <app-field label="Serial Number" [valid]="form.get('serialNumber').valid || !form.get('serialNumber').touched"
+          errorMessage="Please provide the serial number" [required]="true">
+          <input type="text" class="form-control" readonly formControlName="serialNumber" style="width: 680px"
+            maxlength="100">
+        </app-field>
+
+      </section>
+
+      <section *ngIf="form.get('howWasEquipmentBuilt').value === 'Custom-built' || form.get('howWasEquipmentBuilt').value === 'Other'">
+
+        <app-field label="Key Part Serial Number" errorMessage="Please provide an answer to the question above" [valid]="form.get('customBuiltSerialNumber').valid || !form.get('customBuiltSerialNumber').touched"
+          [required]="true">
+          <input type="text" readonly formControlName="customBuiltSerialNumber" class="form-control" style="width: 680px">
+        </app-field>
+
+      </section>
+
+      <app-field label="Equipment Registry Number" [valid]="true" errorMessage="Please specify the make" [required]="true">
+        <input type="text" class="form-control" readonly formControlName="equipmentRegistryNumber" style="width: 680px"
+          maxlength="100">
+      </app-field>
+
+    </section>
+
+    <h3 class="blue-header">DETAILS OF EQUIPMENT CHANGE</h3>
+    <section class="padded-section">
+      <app-field label="Please indicate the type of change to this piece of Controlled Equipment" [valid]="true"
+        errorMessage="Please provide an answer to the question above" [required]="true">
+        <input type="radio"> Lost &nbsp;
+        <input type="radio"> Stolen &nbsp;
+        <input type="radio"> Destroyed
+      </app-field>
+
+      <!-- Lost -->
+      <section>
+        <app-field label="What was the date on which this piece of equipment was lost?" [valid]="form.get('dateLost').valid || !form.get('dateLost').touched"
+          errorMessage="Please specify a date" [required]="true">
+          <input type="text" class="form-control" formControlName="dateLost" placeholder="yyyy-mm-dd" [matDatepicker]="picker1"
+            (focus)="picker1.open()" (click)="picker1.open()" readonly style="width: 170px; background-color: #fff;">
+          <mat-datepicker #picker1></mat-datepicker>
+        </app-field>
+
+        <app-field label="Describe the circumstances under which this piece of equipment was lost?" [valid]="form.get('dateLost').valid || !form.get('dateLost').touched"
+          errorMessage="Please specify a date" [required]="true">
+          <textarea rows="5" class="form-control"></textarea>
+        </app-field>
+
+        <app-field label="On what date did you report the loss to police?" [valid]="form.get('dateLost').valid || !form.get('dateLost').touched"
+          errorMessage="Please specify a date" [required]="true">
+          <input type="text" class="form-control" formControlName="dateLost" placeholder="yyyy-mm-dd" [matDatepicker]="picker2"
+            (focus)="picker2.open()" (click)="picker2.open()" readonly style="width: 170px; background-color: #fff;">
+          <mat-datepicker #picker2></mat-datepicker>
+        </app-field>
+
+        <app-field label="What is the police file number?" [valid]="form.get('dateLost').valid || !form.get('dateLost').touched"
+          errorMessage="Please specify a date" [required]="true">
+          <input type="radio"> Yes &nbsp;
+          <input type="radio"> No
+        </app-field>
+
+        <app-field label="What is the police file number?" [valid]="form.get('dateLost').valid || !form.get('dateLost').touched"
+          errorMessage="Please specify a date" [required]="true">
+          <input type="text" class="form-control" style="width: 260px;">
+        </app-field>
+      </section>
+
+      <!-- Stolen -->
+      <section>
+        <app-field label="What was the date on which this piece of equipment was stolen?" [valid]="form.get('dateLost').valid || !form.get('dateLost').touched"
+          errorMessage="Please specify a date" [required]="true">
+          <input type="text" class="form-control" formControlName="dateLost" placeholder="yyyy-mm-dd" [matDatepicker]="picker3"
+            (focus)="picker3.open()" (click)="picker3.open()" readonly style="width: 170px; background-color: #fff;">
+          <mat-datepicker #picker3></mat-datepicker>
+        </app-field>
+
+        <app-field label="Describe the circumstances under which this piece of equipment was stolen?" [valid]="form.get('dateLost').valid || !form.get('dateLost').touched"
+          errorMessage="Please specify a date" [required]="true">
+          <textarea rows="5" class="form-control"></textarea>
+        </app-field>
+
+        <app-field label="Did you notify the police that this piece of equipment was stolen?" [valid]="form.get('dateLost').valid || !form.get('dateLost').touched"
+          errorMessage="Please specify a date" [required]="true">
+          <input type="radio"> Yes &nbsp;
+          <input type="radio"> No
+        </app-field>
+
+        <app-field label="On what date did you report the theft to police?" [valid]="form.get('dateLost').valid || !form.get('dateLost').touched"
+          errorMessage="Please specify a date" [required]="true">
+          <input type="text" class="form-control" formControlName="dateLost" placeholder="yyyy-mm-dd" [matDatepicker]="picker4"
+            (focus)="picker4.open()" (click)="picker4.open()" readonly style="width: 170px; background-color: #fff;">
+          <mat-datepicker #picker4></mat-datepicker>
+        </app-field>
+
+        <app-field label="What is the police file number?" [valid]="form.get('dateLost').valid || !form.get('dateLost').touched"
+          errorMessage="Please specify a date" [required]="true">
+          <input type="text" class="form-control" style="width: 260px;">
+        </app-field>
+      </section>
+
+      <!-- Destroyed -->
+      <section>
+        <app-field label="What was the date on which this piece of equipment was destroyed?" [valid]="form.get('dateLost').valid || !form.get('dateLost').touched"
+          errorMessage="Please specify a date" [required]="true">
+          <input type="text" class="form-control" formControlName="dateLost" placeholder="yyyy-mm-dd" [matDatepicker]="picker5"
+            (focus)="picker5.open()" (click)="picker5.open()" readonly style="width: 170px; background-color: #fff;">
+          <mat-datepicker #picker5></mat-datepicker>
+        </app-field>
+
+        <app-field label="Describe the circumstances under which this piece of equipment was destroyed?" [valid]="form.get('dateLost').valid || !form.get('dateLost').touched"
+          errorMessage="Please specify a date" [required]="true">
+          <textarea rows="5" class="form-control"></textarea>
+        </app-field>
+
+        <app-field label="Did you notify the police that this piece of equipment was stolen?" [valid]="form.get('dateLost').valid || !form.get('dateLost').touched"
+          errorMessage="Please specify a date" [required]="true">
+          <input type="text" class="form-control">
+        </app-field>
+
+        <div>
+            <app-field *ngIf="!(locations?.length > 0)" formGroupName="address" label="What is the address where this piece of equipment was destroyed?"
+              [required]="true">
+              <p></p>
+              <div class="row">
+                <section class="col-md-6 col-xs-12">
+                  <app-field label="Street Address 1" [valid]="isValidOrNotTouched('address.streetLine1')"
+                    errorMessage="Please enter your street address" [required]="true">
+                    <input type="text" formControlName="streetLine1" class="form-control">
+                  </app-field>
+                  <app-field label="City" [valid]="isValidOrNotTouched('address.city')" errorMessage="Please enter your city or town"
+                    [required]="true">
+                    <input type="text" formControlName="city" class="form-control">
+                  </app-field>
+                </section>
+                <section class="col-md-6 col-xs-12">
+                  <app-field label="Street Address 2">
+                    <input type="text" formControlName="streetLine2" class="form-control">
+                  </app-field>
+                  <div class="row">
+                    <section class="col-md-6 col-xs-12">
+                      <app-field label="Province/State" [valid]="isValidOrNotTouched('address.province')"
+                        errorMessage=" Please enter a province/state" [required]="true">
+                        <input type="text" readonly formControlName="province" class="form-control">
+                      </app-field>
+                    </section>
+                    <section class="col-md-6 col-xs-12">
+                      <app-field label="Postal/Zip Code" [valid]="isValidOrNotTouched('address.postalCode')"
+                        errorMessage="Please enter a postal/zip code" [required]="true">
+                        <input type="text" formControlName="postalCode" class="form-control">
+                      </app-field>
+                    </section>
+                  </div>
+                </section>
+              </div>
+            </app-field>
+          </div>
+      </section>
+
+      <label>If you have any supporting documents, please upload them below.</label>
+        <br>
+        <app-file-uploader documentType="Equipment Change Documents" entityName="incident" [entityId]="equipmentId" fileTypes="FILE MUST BE IN DOC, DOCX, XLS, PDF, JPG OR PNG"
+          [extensions]="['pdf', 'jpg', 'jpeg', 'png', 'xls', 'doc', 'docx']"></app-file-uploader>
+
+    </section>
+    <div style="margin-top: 30px; display: flex; justify-content: space-between">
+      <section>
+        <!-- <strong class="error-states">*</strong> <i>Required field</i> -->
+        <a href="javascript: void(0);" (click)="save(false)"><i class="fa fa-save" style="margin-right: 5px"></i>Save
+          & Close</a>
+      </section>
+      <section>
+        <button class="btn btn-primary" (click)="markAsTouched(); save(true)">SAVE & CONTINUE</button>
+      </section>
+    </div>
+  </div>
+</div>
