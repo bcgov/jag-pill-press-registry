@@ -38,6 +38,9 @@ import { RegisteredSellerComponent } from './applications/registered-seller/regi
 import { WaiverComponent } from './applications/waiver/waiver.component';
 import { LocationChangeComponent } from './equipment-changes/location-change/location-change.component';
 import { ReportChangesComponent } from './equipment-changes/report-changes/report-changes.component';
+import { EquipmentChangeFormComponent } from './equipment-changes/report-changes/equipment-change-form/equipment-change-form.component';
+import { EquipmentChangeReviewComponent } from './equipment-changes/report-changes/equipment-change-review/equipment-change-review.component';
+import { EquipmentChangeThankYouComponent } from './equipment-changes/report-changes/equipment-change-thank-you/equipment-change-thank-you.component';
 
 const routes: Routes = [
   {
@@ -173,11 +176,27 @@ const routes: Routes = [
   },
   {
     path: 'equipment-changes/location-change/:id',
+    canActivate: [BCeidAuthGuard],
     component: LocationChangeComponent
   },
   {
-    path: 'equipment-changes/report-changes/:id',
-    component: ReportChangesComponent
+    path: 'equipment-changes/report-changes',
+    canActivate: [BCeidAuthGuard],
+    component: ReportChangesComponent,
+    children: [
+      {
+        path: 'details/:id',
+        component: EquipmentChangeFormComponent
+      },
+      {
+        path: 'review/:id',
+        component: EquipmentChangeReviewComponent
+      },
+      {
+        path: 'thank-you/:id',
+        component: EquipmentChangeThankYouComponent
+      }
+    ]
   },
   {
     path: 'dashboard',
@@ -189,7 +208,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'top' })],
-exports: [RouterModule],
+  exports: [RouterModule],
   providers: []
 })
 export class AppRoutingModule { }

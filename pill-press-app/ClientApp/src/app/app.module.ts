@@ -110,6 +110,9 @@ import { RegisteredSellerComponent } from './applications/registered-seller/regi
 import { AuthorizedOwnerComponent } from './applications/authorized-owner/authorized-owner.component';
 import { LocationChangeComponent } from './equipment-changes/location-change/location-change.component';
 import { ReportChangesComponent } from './equipment-changes/report-changes/report-changes.component';
+import { EquipmentChangeFormComponent } from './equipment-changes/report-changes/equipment-change-form/equipment-change-form.component';
+import { EquipmentChangeReviewComponent } from './equipment-changes/report-changes/equipment-change-review/equipment-change-review.component';
+import { EquipmentChangeThankYouComponent } from './equipment-changes/report-changes/equipment-change-thank-you/equipment-change-thank-you.component';
 
 
 
@@ -152,7 +155,10 @@ import { ReportChangesComponent } from './equipment-changes/report-changes/repor
     RegisteredSellerComponent,
     AuthorizedOwnerComponent,
     LocationChangeComponent,
-    ReportChangesComponent
+    ReportChangesComponent,
+    EquipmentChangeFormComponent,
+    EquipmentChangeReviewComponent,
+    EquipmentChangeThankYouComponent
   ],
   imports: [
     BrowserModule,
