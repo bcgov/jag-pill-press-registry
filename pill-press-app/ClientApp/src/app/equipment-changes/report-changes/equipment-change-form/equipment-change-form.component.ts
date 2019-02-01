@@ -34,6 +34,7 @@ export class EquipmentChangeFormComponent extends FormBase implements OnInit {
   busy: Subscription;
   equipmentId: string;
   busyPromise: Promise<any>;
+  locations: any;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
