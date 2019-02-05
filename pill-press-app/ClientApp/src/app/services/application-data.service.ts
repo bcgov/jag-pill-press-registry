@@ -42,6 +42,15 @@ export class ApplicationDataService {
       .pipe(catchError(this.handleError));
   }
 
+  /**
+   * Get a Dynamics Application by application ID
+   * @param applicationId
+   */
+  doesCertificateExist(applicationId: string): Observable<Application> {
+    return this.http.get<Application>(`${this.apiPath}${applicationId}/certificate-exists`, { headers: this.jsonHeaders })
+      .pipe(catchError(this.handleError));
+  }
+
 
   /**
    * Cancel the Dynamics Application
