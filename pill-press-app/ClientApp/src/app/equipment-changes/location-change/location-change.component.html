@@ -1,0 +1,208 @@
+<div class="form-wrapper">
+  <div class="row">
+    <div class="col-lg-8 col-sm-12">
+      <div [ngBusy]="[busy, busyPromise]"></div>
+      <div [formGroup]="form">
+        <h1>Equipment Location Change</h1>
+
+        <p>Please complete the equipment location change below. Your information will only be saved once you click the
+          Save Location button at the end of the page.</p>
+        <br>
+
+        <section class="padded-section">
+          <div class="notes" style="display: flex;">
+            <i class="fas fa-exclamation-circle" style="color: #FCBA19; margin-right: 10px;"></i>
+            <span>
+              You have an ongoing obligation to keep current the location at which you ordinarily store each piece of
+              Controlled Equipment in your inventory. To update the current location for this piece of equipment,
+              choose from an existing location, or add a new one below.
+            </span>
+          </div>
+          <mat-tab-group *ngIf="locations?.length > 0" [selectedIndex]="0" (selectedTabChange)="tabChanged($event)">
+            <mat-tab label="CHOOSE EXISTING LOCATION" style="overflow: hidden;">
+              <div formGroupName="equipmentLocation">
+                <app-field label="If this equipment is stored at a previously added location, please select it from the dropdown list below. ">
+                  <select class="form-control" formControlName="id" (change)="updateLocation($event)">
+                    <option value="">Choose an existing location</option>
+                    <option *ngFor="let item of locations" [value]="item.id">
+                      <span>{{item?.address?.streetLine1}} </span>
+                      <span *ngIf="item?.address?.streetLine2">, {{item?.address?.streetLine2}} </span>
+                      <span>, {{item?.address?.city}} </span>
+                      <span>, {{item?.address?.province}} </span>
+                      <span>, {{item?.address?.postalCode}} </span>
+                    </option>
+                  </select>
+                </app-field>
+                <div formGroupName="address">
+                  <p></p>
+                  <div class="row">
+                    <section class="col-md-6 col-xs-12">
+                      <app-field label="Street Address 1" [required]="true">
+                        <input type="text" readonly formControlName="streetLine1" class="form-control">
+                      </app-field>
+                      <app-field label="City" [required]="true">
+                        <input type="text" readonly formControlName="city" class="form-control">
+                      </app-field>
+                    </section>
+                    <section class="col-md-6 col-xs-12">
+                      <app-field label="Street Address 2" [required]="false">
+                        <input type="text" readonly formControlName="streetLine2" class="form-control">
+                      </app-field>
+                      <div class="row">
+                        <section class="col-md-6 col-xs-12">
+                          <app-field label="Province" [required]="false">
+                            <input type="text" readonly formControlName="province" class="form-control">
+                          </app-field>
+                        </section>
+                        <section class="col-md-6 col-xs-12">
+                          <app-field label="Postal Code" [required]="true">
+                            <input type="text" readonly formControlName="postalCode" class="form-control">
+                          </app-field>
+                        </section>
+                      </div>
+                    </section>
+                  </div>
+                </div>
+              </div>
+            </mat-tab>
+            <mat-tab label="ADD A NEW LOCATION">
+              <div formGroupName="equipmentLocation">
+                <app-field formGroupName="address" [required]="true">
+                  <p></p>
+                  <div class="row">
+                    <section class="col-md-6 col-xs-12">
+                      <app-field label="Street Address 1" [valid]="isValidOrNotTouched('equipmentLocation.address.streetLine1')"
+                        errorMessage="Please enter your street address" [required]="true">
+                        <input type="text" formControlName="streetLine1" class="form-control">
+                      </app-field>
+                      <app-field label="City" [valid]="isValidOrNotTouched('equipmentLocation.address.city')"
+                        errorMessage="Please enter your city or town" [required]="true">
+                        <input type="text" formControlName="city" class="form-control">
+                      </app-field>
+                    </section>
+                    <section class="col-md-6 col-xs-12">
+                      <app-field label="Street Address 2">
+                        <input type="text" formControlName="streetLine2" class="form-control">
+                      </app-field>
+                      <div class="row">
+                        <section class="col-md-6 col-xs-12">
+                          <app-field label="Province/State" [valid]="isValidOrNotTouched('equipmentLocation.address.province')"
+                            errorMessage=" Please enter a province/state" [required]="true">
+                            <input type="text" readonly formControlName="province" class="form-control">
+                          </app-field>
+                        </section>
+                        <section class="col-md-6 col-xs-12">
+                          <app-field label="Postal/Zip Code" [valid]="isValidOrNotTouched('equipmentLocation.address.postalCode')"
+                            errorMessage="Please enter a postal/zip code" [required]="true">
+                            <input type="text" formControlName="postalCode" class="form-control">
+                          </app-field>
+                        </section>
+                      </div>
+                    </section>
+                  </div>
+                </app-field>
+              </div>
+            </mat-tab>
+          </mat-tab-group>
+          <div formGroupName="equipmentLocation">
+            <app-field *ngIf="!(locations?.length > 0)" formGroupName="address" label="Please provide the location where this piece of Controlled Equipment is ordinarily stored."
+              [required]="true">
+              <p></p>
+              <div class="row">
+                <section class="col-md-6 col-xs-12">
+                  <app-field label="Street Address 1" [valid]="isValidOrNotTouched('equipmentLocation.address.streetLine1')"
+                    errorMessage="Please enter your street address" [required]="true">
+                    <input type="text" formControlName="streetLine1" class="form-control">
+                  </app-field>
+                  <app-field label="City" [valid]="isValidOrNotTouched('equipmentLocation.address.city')" errorMessage="Please enter your city or town"
+                    [required]="true">
+                    <input type="text" formControlName="city" class="form-control">
+                  </app-field>
+                </section>
+                <section class="col-md-6 col-xs-12">
+                  <app-field label="Street Address 2">
+                    <input type="text" formControlName="streetLine2" class="form-control">
+                  </app-field>
+                  <div class="row">
+                    <section class="col-md-6 col-xs-12">
+                      <app-field label="Province/State" [valid]="isValidOrNotTouched('equipmentLocation.address.province')"
+                        errorMessage=" Please enter a province/state" [required]="true">
+                        <input type="text" readonly formControlName="province" class="form-control">
+                      </app-field>
+                    </section>
+                    <section class="col-md-6 col-xs-12">
+                      <app-field label="Postal/Zip Code" [valid]="isValidOrNotTouched('equipmentLocation.address.postalCode')"
+                        errorMessage="Please enter a postal/zip code" [required]="true">
+                        <input type="text" formControlName="postalCode" class="form-control">
+                      </app-field>
+                    </section>
+                  </div>
+                </section>
+              </div>
+            </app-field>
+          </div>
+
+          <app-field label="Please describe the setting in which this piece of equipment is ordinarily stored (i.e. manufacturing floor, storage room, outbuilding etc.)"
+            [valid]="isValidOrNotTouched('settingDescription')" errorMessage="Please answer the question above"
+            [showChevrons]="false" [required]="true">
+            <textarea rows="5" formControlName="settingDescription" maxlength="500" class="form-control"></textarea>
+          </app-field>
+          <div formGroupName="equipmentLocation">
+            <app-field label="Is this piece of equipment ordinarily stored at a private dwelling?" [valid]="isValidOrNotTouched('equipmentLocation.privateDwelling')"
+              errorMessage="Please select yes or no" [showChevrons]="false" [required]="true">
+              <input type="radio" [value]="true" name="privateDwelling" formControlName="privateDwelling">
+              <span style="padding-right: 10px;">&nbsp;Yes</span>
+              <input type="radio" [value]="false" name="privateDwelling" formControlName="privateDwelling">
+              <span>&nbsp;No</span>
+            </app-field>
+          </div>
+        </section>
+
+        <div style="margin-top: 30px; display: flex; justify-content: space-between">
+          <section>
+            <!-- <strong class="error-states">*</strong> <i>Required field</i> -->
+            <a routerLink="/dashboard"><i class="fa fa-times" style="margin-right: 5px"></i>Cancel
+              & Close</a>
+          </section>
+          <section>
+            <button class="btn btn-primary" (click)="markAsTouched(); save(true)">SAVE LOCATION</button>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-12" style="position: relative">
+      <div [ngBusy]="busy"></div>
+      <section class="submit-container">
+        <table>
+          <tr>
+            <td>
+              <h2 class="round-icon-wrapper"><i class="fas fa-file-alt"></i></h2>
+            </td>
+            <td style="padding-left: 10px">
+              <h2>Useful Links &amp; Information</h2>
+            </td>
+          </tr>
+        </table>
+        <div class="submit-content">
+          <p>
+            What you need to know about:
+          </p>
+
+          <ul class="arrow">
+            <li>
+              <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-waiver-holder#ap"
+                target="blank" style="color: #fff;">The application process</a>
+            </li>
+            <li>
+              <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-controlled-equipment#enp"
+                target="blank" style="color: #fff;">The equipment notification process</a>
+            </li>
+            <li>
+              <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-waiver-holder#bts"
+                target="blank" style="color: #fff;">Obligations and responsibilities of Waiver Holders</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </div>

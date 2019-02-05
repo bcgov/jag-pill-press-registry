@@ -130,7 +130,16 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                     }
                     else
                     {
-                        result = location.Relativeurl;
+                        string serverRelativeUrl = "";
+
+                        if (!string.IsNullOrEmpty(_sharePointFileManager.WebName))
+                        {
+                            serverRelativeUrl += "/sites/" + _sharePointFileManager.WebName;
+                        }
+
+                        serverRelativeUrl += "/" + _sharePointFileManager.GetServerRelativeURL(SharePointFileManager.AccountDocumentListTitle, location.Relativeurl);
+
+                        result = serverRelativeUrl;
                     }
                 }                
             }
