@@ -12,7 +12,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
     using System.Linq;
 
     /// <summary>
-    /// Collection of bcgov_riskassessments
+    /// Collection of bcgov_locations
     /// </summary>
     public partial class GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModel
     {
@@ -31,7 +31,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModel
         /// class.
         /// </summary>
-        public GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModel(IList<MicrosoftDynamicsCRMbcgovRiskassessment> value = default(IList<MicrosoftDynamicsCRMbcgovRiskassessment>))
+        public GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModel(IList<MicrosoftDynamicsCRMbcgovLocation> value = default(IList<MicrosoftDynamicsCRMbcgovLocation>))
         {
             Value = value;
             CustomInit();
@@ -45,7 +45,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "value")]
-        public IList<MicrosoftDynamicsCRMbcgovRiskassessment> Value { get; set; }
+        public IList<MicrosoftDynamicsCRMbcgovLocation> Value { get; set; }
 
     }
 }

@@ -27,12 +27,12 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// Initializes a new instance of the
         /// MicrosoftDynamicsCRMmsdynBcgovCustomaddressKnowledgebasere class.
         /// </summary>
-        public MicrosoftDynamicsCRMmsdynBcgovCustomaddressKnowledgebasere(string bcgovCustomaddressid = default(string), long? versionnumber = default(long?), string msdynBcgovCustomaddressKnowledgebasereid = default(string), string knowledgebaserecordid = default(string))
+        public MicrosoftDynamicsCRMmsdynBcgovCustomaddressKnowledgebasere(long? versionnumber = default(long?), string knowledgebaserecordid = default(string), string msdynBcgovCustomaddressKnowledgebasereid = default(string), string bcgovCustomaddressid = default(string))
         {
-            BcgovCustomaddressid = bcgovCustomaddressid;
             Versionnumber = versionnumber;
-            MsdynBcgovCustomaddressKnowledgebasereid = msdynBcgovCustomaddressKnowledgebasereid;
             Knowledgebaserecordid = knowledgebaserecordid;
+            MsdynBcgovCustomaddressKnowledgebasereid = msdynBcgovCustomaddressKnowledgebasereid;
+            BcgovCustomaddressid = bcgovCustomaddressid;
             CustomInit();
         }
 
@@ -43,13 +43,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "bcgov_customaddressid")]
-        public string BcgovCustomaddressid { get; set; }
+        [JsonProperty(PropertyName = "versionnumber")]
+        public long? Versionnumber { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "versionnumber")]
-        public long? Versionnumber { get; set; }
+        [JsonProperty(PropertyName = "knowledgebaserecordid")]
+        public string Knowledgebaserecordid { get; set; }
 
         /// <summary>
         /// </summary>
@@ -58,8 +58,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "knowledgebaserecordid")]
-        public string Knowledgebaserecordid { get; set; }
+        [JsonProperty(PropertyName = "bcgov_customaddressid")]
+        public string BcgovCustomaddressid { get; set; }
 
     }
 }
