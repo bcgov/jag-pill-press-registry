@@ -195,7 +195,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                 {
                     result.Certificates = new List<Certificate>();
                     foreach (var certificate in incident.BcgovIncidentBcgovCertificateApplication)
-                    {
+                    {                        
                         result.Certificates.Add(certificate.ToViewModel());
                     }
                 }
