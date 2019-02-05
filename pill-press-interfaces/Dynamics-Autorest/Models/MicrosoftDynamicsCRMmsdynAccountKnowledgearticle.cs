@@ -27,12 +27,12 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// Initializes a new instance of the
         /// MicrosoftDynamicsCRMmsdynAccountKnowledgearticle class.
         /// </summary>
-        public MicrosoftDynamicsCRMmsdynAccountKnowledgearticle(string msdynAccountKnowledgearticleid = default(string), string accountid = default(string), string knowledgearticleid = default(string), long? versionnumber = default(long?))
+        public MicrosoftDynamicsCRMmsdynAccountKnowledgearticle(string msdynAccountKnowledgearticleid = default(string), long? versionnumber = default(long?), string knowledgearticleid = default(string), string accountid = default(string))
         {
             MsdynAccountKnowledgearticleid = msdynAccountKnowledgearticleid;
-            Accountid = accountid;
-            Knowledgearticleid = knowledgearticleid;
             Versionnumber = versionnumber;
+            Knowledgearticleid = knowledgearticleid;
+            Accountid = accountid;
             CustomInit();
         }
 
@@ -48,8 +48,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "accountid")]
-        public string Accountid { get; set; }
+        [JsonProperty(PropertyName = "versionnumber")]
+        public long? Versionnumber { get; set; }
 
         /// <summary>
         /// </summary>
@@ -58,8 +58,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "versionnumber")]
-        public long? Versionnumber { get; set; }
+        [JsonProperty(PropertyName = "accountid")]
+        public string Accountid { get; set; }
 
     }
 }
