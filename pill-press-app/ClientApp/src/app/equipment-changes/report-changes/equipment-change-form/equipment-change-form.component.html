@@ -5,7 +5,7 @@
     <h1 style="margin-top: 0;">Report of Equipment Change</h1>
 
     <h3 class="blue-header">EQUIPMENT IDENTIFICATION</h3>
-    <section class="padded-section">
+    <section formGroupName="equipmentRecord" class="padded-section">
 
       <app-field label="Equipment Type" [valid]="true" errorMessage="Please specify the make" [required]="true">
         <input type="text" class="form-control" readonly formControlName="equipmentType" style="width: 680px" maxlength="100">
@@ -64,107 +64,109 @@
     <section class="padded-section">
       <app-field label="Please indicate the type of change to this piece of Controlled Equipment" [valid]="true"
         errorMessage="Please provide an answer to the question above" [required]="true">
-        <input type="radio"> Lost &nbsp;
-        <input type="radio"> Stolen &nbsp;
-        <input type="radio"> Destroyed
+        <input type="radio" name="typeOfChange" formControlName="typeOfChange" value="Lost"> Lost &nbsp;
+        <input type="radio" name="typeOfChange" formControlName="typeOfChange" value="Stolen"> Stolen &nbsp;
+        <input type="radio" name="typeOfChange" formControlName="typeOfChange" value="Destroyed"> Destroyed
       </app-field>
 
       <!-- Lost -->
-      <section>
-        <app-field label="What was the date on which this piece of equipment was lost?" [valid]="form.get('dateLost').valid || !form.get('dateLost').touched"
+      <section *ngIf="form.get('typeOfChange').value === 'Lost'">
+        <app-field label="What was the date on which this piece of equipment was lost?" [valid]="form.get('dateOfEquipmentChange').valid || !form.get('dateOfEquipmentChange').touched"
           errorMessage="Please specify a date" [required]="true">
-          <input type="text" class="form-control" formControlName="dateLost" placeholder="yyyy-mm-dd" [matDatepicker]="picker1"
+          <input type="text" class="form-control" formControlName="dateOfEquipmentChange" placeholder="yyyy-mm-dd" [matDatepicker]="picker1"
             (focus)="picker1.open()" (click)="picker1.open()" readonly style="width: 170px; background-color: #fff;">
           <mat-datepicker #picker1></mat-datepicker>
         </app-field>
 
-        <app-field label="Describe the circumstances under which this piece of equipment was lost?" [valid]="form.get('dateLost').valid || !form.get('dateLost').touched"
+        <app-field label="Describe the circumstances under which this piece of equipment was lost?" [valid]="form.get('circumstancesOfLoss').valid || !form.get('circumstancesOfLoss').touched"
           errorMessage="Please specify a date" [required]="true">
-          <textarea rows="5" class="form-control"></textarea>
+          <textarea rows="5" class="form-control" formControlName="circumstancesOfLoss"></textarea>
         </app-field>
 
-        <app-field label="On what date did you report the loss to police?" [valid]="form.get('dateLost').valid || !form.get('dateLost').touched"
+        <app-field label="What is the police file number?" [valid]="form.get('policeNotified').valid || !form.get('policeNotified').touched"
           errorMessage="Please specify a date" [required]="true">
-          <input type="text" class="form-control" formControlName="dateLost" placeholder="yyyy-mm-dd" [matDatepicker]="picker2"
+          <input type="radio" name="policeNotified" formControlName="policeNotified" [value]="1"> Yes &nbsp;
+          <input type="radio" name="policeNotified" formControlName="policeNotified" [value]="0"> No
+        </app-field>
+
+        <app-field label="On what date did you report the loss to police?" [valid]="form.get('policeReportDate').valid || !form.get('policeReportDate').touched"
+          errorMessage="Please specify a date" [required]="true">
+          <input type="text" class="form-control" formControlName="policeReportDate" placeholder="yyyy-mm-dd" [matDatepicker]="picker2"
             (focus)="picker2.open()" (click)="picker2.open()" readonly style="width: 170px; background-color: #fff;">
           <mat-datepicker #picker2></mat-datepicker>
         </app-field>
 
-        <app-field label="What is the police file number?" [valid]="form.get('dateLost').valid || !form.get('dateLost').touched"
-          errorMessage="Please specify a date" [required]="true">
-          <input type="radio"> Yes &nbsp;
-          <input type="radio"> No
-        </app-field>
 
-        <app-field label="What is the police file number?" [valid]="form.get('dateLost').valid || !form.get('dateLost').touched"
+        <app-field label="What is the police file number?" [valid]="form.get('policeFileNumber').valid || !form.get('policeFileNumber').touched"
           errorMessage="Please specify a date" [required]="true">
-          <input type="text" class="form-control" style="width: 260px;">
+          <input type="text" class="form-control" formControlName="policeFileNumber" style="width: 260px;">
         </app-field>
       </section>
 
       <!-- Stolen -->
-      <section>
-        <app-field label="What was the date on which this piece of equipment was stolen?" [valid]="form.get('dateLost').valid || !form.get('dateLost').touched"
+      <section  *ngIf="form.get('typeOfChange').value === 'Stolen'">
+        <app-field label="What was the date on which this piece of equipment was stolen?" [valid]="form.get('dateOfEquipmentChange').valid || !form.get('dateOfEquipmentChange').touched"
           errorMessage="Please specify a date" [required]="true">
-          <input type="text" class="form-control" formControlName="dateLost" placeholder="yyyy-mm-dd" [matDatepicker]="picker3"
+          <input type="text" class="form-control" formControlName="dateOfEquipmentChange" placeholder="yyyy-mm-dd" [matDatepicker]="picker3"
             (focus)="picker3.open()" (click)="picker3.open()" readonly style="width: 170px; background-color: #fff;">
           <mat-datepicker #picker3></mat-datepicker>
         </app-field>
 
-        <app-field label="Describe the circumstances under which this piece of equipment was stolen?" [valid]="form.get('dateLost').valid || !form.get('dateLost').touched"
+        <app-field label="Describe the circumstances under which this piece of equipment was stolen?" [valid]="form.get('circumstancesOfStolenEquipment').valid || !form.get('circumstancesOfStolenEquipment').touched"
           errorMessage="Please specify a date" [required]="true">
-          <textarea rows="5" class="form-control"></textarea>
+          <textarea rows="5" class="form-control" formControlName="circumstancesOfStolenEquipment"></textarea>
         </app-field>
 
-        <app-field label="Did you notify the police that this piece of equipment was stolen?" [valid]="form.get('dateLost').valid || !form.get('dateLost').touched"
+        <app-field label="Did you notify the police that this piece of equipment was stolen?" [valid]="form.get('policeNotified').valid || !form.get('policeNotified').touched"
           errorMessage="Please specify a date" [required]="true">
-          <input type="radio"> Yes &nbsp;
-          <input type="radio"> No
+          <input type="radio" name="policeNotified" formControlName="policeNotified" [value]="1"> Yes &nbsp;
+          <input type="radio" name="policeNotified" formControlName="policeNotified" [value]="0"> No
         </app-field>
 
-        <app-field label="On what date did you report the theft to police?" [valid]="form.get('dateLost').valid || !form.get('dateLost').touched"
+        <app-field label="On what date did you report the theft to police?" [valid]="form.get('policeReportDate').valid || !form.get('policeReportDate').touched"
           errorMessage="Please specify a date" [required]="true">
-          <input type="text" class="form-control" formControlName="dateLost" placeholder="yyyy-mm-dd" [matDatepicker]="picker4"
+          <input type="text" class="form-control" formControlName="policeReportDate" placeholder="yyyy-mm-dd" [matDatepicker]="picker4"
             (focus)="picker4.open()" (click)="picker4.open()" readonly style="width: 170px; background-color: #fff;">
           <mat-datepicker #picker4></mat-datepicker>
         </app-field>
 
-        <app-field label="What is the police file number?" [valid]="form.get('dateLost').valid || !form.get('dateLost').touched"
+        <app-field label="What is the police file number?" [valid]="form.get('policeFileNumber').valid || !form.get('policeFileNumber').touched"
           errorMessage="Please specify a date" [required]="true">
-          <input type="text" class="form-control" style="width: 260px;">
+          <input type="text" class="form-control" formControlName="policeFileNumber" style="width: 260px;">
         </app-field>
       </section>
 
       <!-- Destroyed -->
-      <section>
-        <app-field label="What was the date on which this piece of equipment was destroyed?" [valid]="form.get('dateLost').valid || !form.get('dateLost').touched"
+      <section  *ngIf="form.get('typeOfChange').value === 'Destroyed'">
+        <app-field label="What was the date on which this piece of equipment was destroyed?" [valid]="form.get('dateOfEquipmentChange').valid || !form.get('dateOfEquipmentChange').touched"
           errorMessage="Please specify a date" [required]="true">
-          <input type="text" class="form-control" formControlName="dateLost" placeholder="yyyy-mm-dd" [matDatepicker]="picker5"
+          <input type="text" class="form-control" formControlName="dateOfEquipmentChange" placeholder="yyyy-mm-dd" [matDatepicker]="picker5"
             (focus)="picker5.open()" (click)="picker5.open()" readonly style="width: 170px; background-color: #fff;">
           <mat-datepicker #picker5></mat-datepicker>
         </app-field>
 
-        <app-field label="Describe the circumstances under which this piece of equipment was destroyed?" [valid]="form.get('dateLost').valid || !form.get('dateLost').touched"
+        <app-field label="Describe the circumstances under which this piece of equipment was destroyed?" [valid]="form.get('circumstancesOfDestroyedEquipment').valid || !form.get('circumstancesOfDestroyedEquipment').touched"
           errorMessage="Please specify a date" [required]="true">
-          <textarea rows="5" class="form-control"></textarea>
+          <textarea rows="5" class="form-control" formControlName="circumstancesOfDestroyedEquipment"></textarea>
         </app-field>
 
-        <app-field label="Did you notify the police that this piece of equipment was stolen?" [valid]="form.get('dateLost').valid || !form.get('dateLost').touched"
+        <app-field label="Did you notify the police that this piece of equipment was stolen?" [valid]="form.get('policeNotified').valid || !form.get('policeNotified').touched"
           errorMessage="Please specify a date" [required]="true">
-          <input type="text" class="form-control">
+          <input type="radio" name="policeNotified" formControlName="policeNotified" [value]="1"> Yes &nbsp;
+          <input type="radio" name="policeNotified" formControlName="policeNotified" [value]="0"> No
         </app-field>
 
         <div>
-            <app-field *ngIf="!(locations?.length > 0)" formGroupName="address" label="What is the address where this piece of equipment was destroyed?"
+            <app-field *ngIf="!(locations?.length > 0)" formGroupName="addressWhereEquipmentWasDestroyed" label="What is the address where this piece of equipment was destroyed?"
               [required]="true">
               <p></p>
               <div class="row">
                 <section class="col-md-6 col-xs-12">
-                  <app-field label="Street Address 1" [valid]="isValidOrNotTouched('address.streetLine1')"
+                  <app-field label="Street Address 1" [valid]="isValidOrNotTouched('addressWhereEquipmentWasDestroyed.streetLine1')"
                     errorMessage="Please enter your street address" [required]="true">
                     <input type="text" formControlName="streetLine1" class="form-control">
                   </app-field>
-                  <app-field label="City" [valid]="isValidOrNotTouched('address.city')" errorMessage="Please enter your city or town"
+                  <app-field label="City" [valid]="isValidOrNotTouched('addressWhereEquipmentWasDestroyed.city')" errorMessage="Please enter your city or town"
                     [required]="true">
                     <input type="text" formControlName="city" class="form-control">
                   </app-field>
@@ -175,13 +177,13 @@
                   </app-field>
                   <div class="row">
                     <section class="col-md-6 col-xs-12">
-                      <app-field label="Province/State" [valid]="isValidOrNotTouched('address.province')"
+                      <app-field label="Province/State" [valid]="isValidOrNotTouched('addressWhereEquipmentWasDestroyed.province')"
                         errorMessage=" Please enter a province/state" [required]="true">
                         <input type="text" readonly formControlName="province" class="form-control">
                       </app-field>
                     </section>
                     <section class="col-md-6 col-xs-12">
-                      <app-field label="Postal/Zip Code" [valid]="isValidOrNotTouched('address.postalCode')"
+                      <app-field label="Postal/Zip Code" [valid]="isValidOrNotTouched('addressWhereEquipmentWasDestroyed.postalCode')"
                         errorMessage="Please enter a postal/zip code" [required]="true">
                         <input type="text" formControlName="postalCode" class="form-control">
                       </app-field>
