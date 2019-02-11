@@ -3620,10 +3620,10 @@
                 "_owningbusinessunit_value desc",
                 "bcgov_name",
                 "bcgov_name desc",
-                "bcgov_currentlocation",
-                "bcgov_currentlocation desc",
                 "modifiedon",
                 "modifiedon desc",
+                "bcgov_settingdescription",
+                "bcgov_settingdescription desc",
                 "emailaddress",
                 "emailaddress desc",
                 "versionnumber",
@@ -3663,8 +3663,8 @@
                 "_createdby_value",
                 "_owningbusinessunit_value",
                 "bcgov_name",
-                "bcgov_currentlocation",
                 "modifiedon",
+                "bcgov_settingdescription",
                 "emailaddress",
                 "versionnumber",
                 "createdon",
@@ -3818,8 +3818,8 @@
                 "_createdby_value",
                 "_owningbusinessunit_value",
                 "bcgov_name",
-                "bcgov_currentlocation",
                 "modifiedon",
+                "bcgov_settingdescription",
                 "emailaddress",
                 "versionnumber",
                 "createdon",
@@ -3994,36 +3994,40 @@
               "enum": [
                 "_createdby_value",
                 "_createdby_value desc",
+                "importsequencenumber",
+                "importsequencenumber desc",
                 "statecode",
                 "statecode desc",
                 "bcgov_name",
                 "bcgov_name desc",
-                "_modifiedby_value",
-                "_modifiedby_value desc",
                 "bcgov_pillpressmaxcapacity",
                 "bcgov_pillpressmaxcapacity desc",
                 "bcgov_encapsulatormaxcapacity",
                 "bcgov_encapsulatormaxcapacity desc",
+                "bcgov_pillpressencapsulatorsize",
+                "bcgov_pillpressencapsulatorsize desc",
                 "processid",
                 "processid desc",
+                "_modifiedby_value",
+                "_modifiedby_value desc",
                 "overriddencreatedon",
                 "overriddencreatedon desc",
-                "_bcgov_currentbusinessowner_value",
-                "_bcgov_currentbusinessowner_value desc",
+                "utcconversiontimezonecode",
+                "utcconversiontimezonecode desc",
                 "traversedpath",
                 "traversedpath desc",
-                "timezoneruleversionnumber",
-                "timezoneruleversionnumber desc",
+                "bcgov_levelofautomation",
+                "bcgov_levelofautomation desc",
                 "bcgov_equipmenttypeother",
                 "bcgov_equipmenttypeother desc",
-                "bcgov_howwasequipmentbuilt",
-                "bcgov_howwasequipmentbuilt desc",
+                "_bcgov_currentlocation_value",
+                "_bcgov_currentlocation_value desc",
                 "bcgov_pillpressencapsulatorsizeother",
                 "bcgov_pillpressencapsulatorsizeother desc",
                 "_createdonbehalfby_value",
                 "_createdonbehalfby_value desc",
-                "_stageid_value",
-                "_stageid_value desc",
+                "bcgov_equipmenttype",
+                "bcgov_equipmenttype desc",
                 "versionnumber",
                 "versionnumber desc",
                 "bcgov_make",
@@ -4032,22 +4036,22 @@
                 "statuscode desc",
                 "_owningbusinessunit_value",
                 "_owningbusinessunit_value desc",
-                "bcgov_equipmenttype",
-                "bcgov_equipmenttype desc",
+                "_stageid_value",
+                "_stageid_value desc",
                 "bcgov_custombuiltorkeypartserialnumber",
                 "bcgov_custombuiltorkeypartserialnumber desc",
-                "bcgov_levelofautomation",
-                "bcgov_levelofautomation desc",
+                "_bcgov_currentbusinessowner_value",
+                "_bcgov_currentbusinessowner_value desc",
                 "_owningteam_value",
                 "_owningteam_value desc",
                 "_modifiedonbehalfby_value",
                 "_modifiedonbehalfby_value desc",
-                "bcgov_model",
-                "bcgov_model desc",
+                "bcgov_howwasequipmentbuilt",
+                "bcgov_howwasequipmentbuilt desc",
                 "modifiedon",
                 "modifiedon desc",
-                "importsequencenumber",
-                "importsequencenumber desc",
+                "bcgov_model",
+                "bcgov_model desc",
                 "_ownerid_value",
                 "_ownerid_value desc",
                 "bcgov_equipmentid",
@@ -4058,14 +4062,12 @@
                 "bcgov_nameofmanufacturer desc",
                 "bcgov_serialnumber",
                 "bcgov_serialnumber desc",
-                "bcgov_pillpressencapsulatorsize",
-                "bcgov_pillpressencapsulatorsize desc",
                 "emailaddress",
                 "emailaddress desc",
+                "timezoneruleversionnumber",
+                "timezoneruleversionnumber desc",
                 "_owninguser_value",
-                "_owninguser_value desc",
-                "utcconversiontimezonecode",
-                "utcconversiontimezonecode desc"
+                "_owninguser_value desc"
               ]
             }
           },
@@ -4078,42 +4080,43 @@
               "type": "string",
               "enum": [
                 "_createdby_value",
+                "importsequencenumber",
                 "statecode",
                 "bcgov_name",
-                "_modifiedby_value",
                 "bcgov_pillpressmaxcapacity",
                 "bcgov_encapsulatormaxcapacity",
+                "bcgov_pillpressencapsulatorsize",
                 "processid",
+                "_modifiedby_value",
                 "overriddencreatedon",
-                "_bcgov_currentbusinessowner_value",
+                "utcconversiontimezonecode",
                 "traversedpath",
-                "timezoneruleversionnumber",
+                "bcgov_levelofautomation",
                 "bcgov_equipmenttypeother",
-                "bcgov_howwasequipmentbuilt",
+                "_bcgov_currentlocation_value",
                 "bcgov_pillpressencapsulatorsizeother",
                 "_createdonbehalfby_value",
-                "_stageid_value",
+                "bcgov_equipmenttype",
                 "versionnumber",
                 "bcgov_make",
                 "statuscode",
                 "_owningbusinessunit_value",
-                "bcgov_equipmenttype",
+                "_stageid_value",
                 "bcgov_custombuiltorkeypartserialnumber",
-                "bcgov_levelofautomation",
+                "_bcgov_currentbusinessowner_value",
                 "_owningteam_value",
                 "_modifiedonbehalfby_value",
-                "bcgov_model",
+                "bcgov_howwasequipmentbuilt",
                 "modifiedon",
-                "importsequencenumber",
+                "bcgov_model",
                 "_ownerid_value",
                 "bcgov_equipmentid",
                 "createdon",
                 "bcgov_nameofmanufacturer",
                 "bcgov_serialnumber",
-                "bcgov_pillpressencapsulatorsize",
                 "emailaddress",
-                "_owninguser_value",
-                "utcconversiontimezonecode"
+                "timezoneruleversionnumber",
+                "_owninguser_value"
               ]
             }
           },
@@ -4161,6 +4164,7 @@
                 "bcgov_equipment_equipmentlocation_Equipment",
                 "bcgov_equipment_incident",
                 "bcgov_equipment_incident_EquipmentRecord",
+                "bcgov_CurrentLocation",
                 "bcgov_equipment_bcgov_certificate_Equipment"
               ]
             }
@@ -4250,42 +4254,43 @@
               "type": "string",
               "enum": [
                 "_createdby_value",
+                "importsequencenumber",
                 "statecode",
                 "bcgov_name",
-                "_modifiedby_value",
                 "bcgov_pillpressmaxcapacity",
                 "bcgov_encapsulatormaxcapacity",
+                "bcgov_pillpressencapsulatorsize",
                 "processid",
+                "_modifiedby_value",
                 "overriddencreatedon",
-                "_bcgov_currentbusinessowner_value",
+                "utcconversiontimezonecode",
                 "traversedpath",
-                "timezoneruleversionnumber",
+                "bcgov_levelofautomation",
                 "bcgov_equipmenttypeother",
-                "bcgov_howwasequipmentbuilt",
+                "_bcgov_currentlocation_value",
                 "bcgov_pillpressencapsulatorsizeother",
                 "_createdonbehalfby_value",
-                "_stageid_value",
+                "bcgov_equipmenttype",
                 "versionnumber",
                 "bcgov_make",
                 "statuscode",
                 "_owningbusinessunit_value",
-                "bcgov_equipmenttype",
+                "_stageid_value",
                 "bcgov_custombuiltorkeypartserialnumber",
-                "bcgov_levelofautomation",
+                "_bcgov_currentbusinessowner_value",
                 "_owningteam_value",
                 "_modifiedonbehalfby_value",
-                "bcgov_model",
+                "bcgov_howwasequipmentbuilt",
                 "modifiedon",
-                "importsequencenumber",
+                "bcgov_model",
                 "_ownerid_value",
                 "bcgov_equipmentid",
                 "createdon",
                 "bcgov_nameofmanufacturer",
                 "bcgov_serialnumber",
-                "bcgov_pillpressencapsulatorsize",
                 "emailaddress",
-                "_owninguser_value",
-                "utcconversiontimezonecode"
+                "timezoneruleversionnumber",
+                "_owninguser_value"
               ]
             }
           },
@@ -4333,6 +4338,7 @@
                 "bcgov_equipment_equipmentlocation_Equipment",
                 "bcgov_equipment_incident",
                 "bcgov_equipment_incident_EquipmentRecord",
+                "bcgov_CurrentLocation",
                 "bcgov_equipment_bcgov_certificate_Equipment"
               ]
             }
@@ -5124,7 +5130,8 @@
                 "bcgov_AssociatedApplication",
                 "bcgov_location_incident_EquipmentLocation",
                 "bcgov_location_equipment",
-                "bcgov_location_equipmentlocation_Location"
+                "bcgov_location_equipmentlocation_Location",
+                "bcgov_location_equipment_CurrentLocation"
               ]
             }
           }
@@ -5287,7 +5294,8 @@
                 "bcgov_AssociatedApplication",
                 "bcgov_location_incident_EquipmentLocation",
                 "bcgov_location_equipment",
-                "bcgov_location_equipmentlocation_Location"
+                "bcgov_location_equipmentlocation_Location",
+                "bcgov_location_equipment_CurrentLocation"
               ]
             }
           }
@@ -5412,8 +5420,6 @@
             "items": {
               "type": "string",
               "enum": [
-                "emailaddress",
-                "emailaddress desc",
                 "bcgov_legalname",
                 "bcgov_legalname desc",
                 "_modifiedonbehalfby_value",
@@ -5424,12 +5430,12 @@
                 "timezoneruleversionnumber desc",
                 "versionnumber",
                 "versionnumber desc",
-                "bcgov_gender",
-                "bcgov_gender desc",
                 "modifiedon",
                 "modifiedon desc",
                 "_owningteam_value",
                 "_owningteam_value desc",
+                "_bcgov_applicationidlookup_value",
+                "_bcgov_applicationidlookup_value desc",
                 "_owninguser_value",
                 "_owninguser_value desc",
                 "bcgov_driverslicence",
@@ -5450,6 +5456,8 @@
                 "_modifiedby_value desc",
                 "_createdby_value",
                 "_createdby_value desc",
+                "bcgov_descriptionandnotes",
+                "bcgov_descriptionandnotes desc",
                 "bcgov_consentauthorizationtofingerprint",
                 "bcgov_consentauthorizationtofingerprint desc",
                 "bcgov_dateofbirth",
@@ -5458,6 +5466,10 @@
                 "bcgov_riskassessmentid desc",
                 "bcgov_verifiedemail",
                 "bcgov_verifiedemail desc",
+                "bcgov_gender",
+                "bcgov_gender desc",
+                "emailaddress",
+                "emailaddress desc",
                 "statuscode",
                 "statuscode desc",
                 "bcgov_name",
@@ -5483,15 +5495,14 @@
             "items": {
               "type": "string",
               "enum": [
-                "emailaddress",
                 "bcgov_legalname",
                 "_modifiedonbehalfby_value",
                 "overriddencreatedon",
                 "timezoneruleversionnumber",
                 "versionnumber",
-                "bcgov_gender",
                 "modifiedon",
                 "_owningteam_value",
+                "_bcgov_applicationidlookup_value",
                 "_owninguser_value",
                 "bcgov_driverslicence",
                 "_createdonbehalfby_value",
@@ -5502,10 +5513,13 @@
                 "createdon",
                 "_modifiedby_value",
                 "_createdby_value",
+                "bcgov_descriptionandnotes",
                 "bcgov_consentauthorizationtofingerprint",
                 "bcgov_dateofbirth",
                 "bcgov_riskassessmentid",
                 "bcgov_verifiedemail",
+                "bcgov_gender",
+                "emailaddress",
                 "statuscode",
                 "bcgov_name",
                 "utcconversiontimezonecode",
@@ -5525,6 +5539,7 @@
               "type": "string",
               "enum": [
                 "*",
+                "bcgov_ApplicationIDlookup",
                 "createdbyname",
                 "createdonbehalfbyname",
                 "modifiedbyname",
@@ -5553,7 +5568,8 @@
                 "bcgov_riskassessment_QueueItems",
                 "bcgov_riskassessment_Annotations",
                 "bcgov_riskassessment_AsyncOperations",
-                "bcgov_riskassessment_BulkDeleteFailures"
+                "bcgov_riskassessment_BulkDeleteFailures",
+                "bcgov_riskassessment_incident_AssociatedRiskAssessmentRecord"
               ]
             }
           }
@@ -5641,15 +5657,14 @@
             "items": {
               "type": "string",
               "enum": [
-                "emailaddress",
                 "bcgov_legalname",
                 "_modifiedonbehalfby_value",
                 "overriddencreatedon",
                 "timezoneruleversionnumber",
                 "versionnumber",
-                "bcgov_gender",
                 "modifiedon",
                 "_owningteam_value",
+                "_bcgov_applicationidlookup_value",
                 "_owninguser_value",
                 "bcgov_driverslicence",
                 "_createdonbehalfby_value",
@@ -5660,10 +5675,13 @@
                 "createdon",
                 "_modifiedby_value",
                 "_createdby_value",
+                "bcgov_descriptionandnotes",
                 "bcgov_consentauthorizationtofingerprint",
                 "bcgov_dateofbirth",
                 "bcgov_riskassessmentid",
                 "bcgov_verifiedemail",
+                "bcgov_gender",
+                "emailaddress",
                 "statuscode",
                 "bcgov_name",
                 "utcconversiontimezonecode",
@@ -5683,6 +5701,7 @@
               "type": "string",
               "enum": [
                 "*",
+                "bcgov_ApplicationIDlookup",
                 "createdbyname",
                 "createdonbehalfbyname",
                 "modifiedbyname",
@@ -5711,7 +5730,8 @@
                 "bcgov_riskassessment_QueueItems",
                 "bcgov_riskassessment_Annotations",
                 "bcgov_riskassessment_AsyncOperations",
-                "bcgov_riskassessment_BulkDeleteFailures"
+                "bcgov_riskassessment_BulkDeleteFailures",
+                "bcgov_riskassessment_incident_AssociatedRiskAssessmentRecord"
               ]
             }
           }
@@ -7478,6 +7498,8 @@
                 "processid desc",
                 "_firstresponsebykpiid_value",
                 "_firstresponsebykpiid_value desc",
+                "bcgov_completestatusdate",
+                "bcgov_completestatusdate desc",
                 "bcgov_intendtopurchaseequipment",
                 "bcgov_intendtopurchaseequipment desc",
                 "bcgov_alternativeownershiparrangement",
@@ -7510,6 +7532,8 @@
                 "_primarycontactid_value desc",
                 "bcgov_originatingsellerslocation",
                 "bcgov_originatingsellerslocation desc",
+                "_bcgov_addressofbusinessthathasrentedorleased_value",
+                "_bcgov_addressofbusinessthathasrentedorleased_value desc",
                 "decremententitlementterm",
                 "decremententitlementterm desc",
                 "bcgov_wheredidyouobtainparts",
@@ -7528,10 +7552,12 @@
                 "bcgov_intendtosellother desc",
                 "bcgov_emailofthebusinessthathasgivenorloaned",
                 "bcgov_emailofthebusinessthathasgivenorloaned desc",
+                "bcgov_withceinvestigationsstatusdate",
+                "bcgov_withceinvestigationsstatusdate desc",
                 "title",
                 "title desc",
-                "caseorigincode",
-                "caseorigincode desc",
+                "bcgov_withdeputyregistrarstatusdate",
+                "bcgov_withdeputyregistrarstatusdate desc",
                 "_owningbusinessunit_value",
                 "_owningbusinessunit_value desc",
                 "bcgov_manufacturingprocessdescription",
@@ -7544,6 +7570,8 @@
                 "bcgov_delbusinessname desc",
                 "bcgov_otherlicence",
                 "bcgov_otherlicence desc",
+                "bcgov_approvedstatusdate",
+                "bcgov_approvedstatusdate desc",
                 "lastonholdtime",
                 "lastonholdtime desc",
                 "bcgov_dateofpurchasefrombcseller",
@@ -7588,16 +7616,12 @@
                 "bcgov_incomplete desc",
                 "_createdby_value",
                 "_createdby_value desc",
-                "bcgov_givenorloanedtome",
-                "bcgov_givenorloanedtome desc",
                 "bcgov_dateofpurchasefromimporter",
                 "bcgov_dateofpurchasefromimporter desc",
                 "_modifiedby_value",
                 "_modifiedby_value desc",
                 "_contractdetailid_value",
                 "_contractdetailid_value desc",
-                "incidentstagecode",
-                "incidentstagecode desc",
                 "_entitlementid_value",
                 "_entitlementid_value desc",
                 "bcgov_typeofsellerothercheck",
@@ -7610,10 +7634,14 @@
                 "stageid desc",
                 "bcgov_importersregistrationnumber",
                 "bcgov_importersregistrationnumber desc",
+                "bcgov_purchasedfromselleroutsideofbc",
+                "bcgov_purchasedfromselleroutsideofbc desc",
                 "bcgov_iassembleditmyself",
                 "bcgov_iassembleditmyself desc",
                 "bcgov_kindsofproductsnaturalhealthproducts",
                 "bcgov_kindsofproductsnaturalhealthproducts desc",
+                "caseorigincode",
+                "caseorigincode desc",
                 "bcgov_intendtosellpillpress",
                 "bcgov_intendtosellpillpress desc",
                 "bcgov_submitteddate",
@@ -7632,14 +7660,20 @@
                 "productserialnumber desc",
                 "bcgov_nameofmanufacturer",
                 "bcgov_nameofmanufacturer desc",
+                "bcgov_draftstatusdate",
+                "bcgov_draftstatusdate desc",
                 "firstresponseslastatus",
                 "firstresponseslastatus desc",
                 "timezoneruleversionnumber",
                 "timezoneruleversionnumber desc",
+                "bcgov_hearingstatusdate",
+                "bcgov_hearingstatusdate desc",
                 "_productid_value",
                 "_productid_value desc",
                 "bcgov_equipmenttype",
                 "bcgov_equipmenttype desc",
+                "bcgov_givenorloanedtome",
+                "bcgov_givenorloanedtome desc",
                 "bcgov_dateofpurchasefromoutsidebcseller",
                 "bcgov_dateofpurchasefromoutsidebcseller desc",
                 "bcgov_foodanddrugact",
@@ -7652,6 +7686,8 @@
                 "_bcgov_addressofbusinessthathasgivenorloaned_value desc",
                 "bcgov_intendonrentingleasingtoothers",
                 "bcgov_intendonrentingleasingtoothers desc",
+                "bcgov_applicationstep",
+                "bcgov_applicationstep desc",
                 "onholdtime",
                 "onholdtime desc",
                 "bcgov_otherlicencecheck",
@@ -7664,8 +7700,12 @@
                 "routecase desc",
                 "bcgov_whendidyouassembleequipment",
                 "bcgov_whendidyouassembleequipment desc",
+                "bcgov_withriskassessmentstatusdate",
+                "bcgov_withriskassessmentstatusdate desc",
                 "isdecrementing",
                 "isdecrementing desc",
+                "bcgov_incompletestatusdate",
+                "bcgov_incompletestatusdate desc",
                 "_slaid_value",
                 "_slaid_value desc",
                 "activitiescomplete",
@@ -7684,6 +7724,8 @@
                 "bcgov_producingownproduct desc",
                 "_subjectid_value",
                 "_subjectid_value desc",
+                "bcgov_underreviewstatusdate",
+                "bcgov_underreviewstatusdate desc",
                 "_owningteam_value",
                 "_owningteam_value desc",
                 "description",
@@ -7712,10 +7754,10 @@
                 "bcgov_incompletecycle2 desc",
                 "bcgov_howequipmentbuiltdescription",
                 "bcgov_howequipmentbuiltdescription desc",
-                "incidentid",
-                "incidentid desc",
-                "_bcgov_addressofbusinessthathasrentedorleased_value",
-                "_bcgov_addressofbusinessthathasrentedorleased_value desc",
+                "bcgov_cancelledstatusdate",
+                "bcgov_cancelledstatusdate desc",
+                "bcgov_sitelicencebusinessname",
+                "bcgov_sitelicencebusinessname desc",
                 "bcgov_ownintendtoownequipmentforbusinessuse",
                 "bcgov_ownintendtoownequipmentforbusinessuse desc",
                 "bcgov_phoneofbusinessthathasgivenorloaned",
@@ -7734,14 +7776,18 @@
                 "bcgov_kindsofproductothercheck desc",
                 "bcgov_serialnumber",
                 "bcgov_serialnumber desc",
+                "bcgov_pendingstatusdate",
+                "bcgov_pendingstatusdate desc",
                 "bcgov_howwasequipmentbuiltother",
                 "bcgov_howwasequipmentbuiltother desc",
+                "_bcgov_associatedriskassessmentrecord_value",
+                "_bcgov_associatedriskassessmentrecord_value desc",
                 "casetypecode",
                 "casetypecode desc",
                 "bcgov_ownusepossesstoproduceaproduct",
                 "bcgov_ownusepossesstoproduceaproduct desc",
-                "bcgov_purchasedfromselleroutsideofbc",
-                "bcgov_purchasedfromselleroutsideofbc desc",
+                "bcgov_expiredstatusdate",
+                "bcgov_expiredstatusdate desc",
                 "bcgov_howwasequipmentbuiltothercheck",
                 "bcgov_howwasequipmentbuiltothercheck desc",
                 "bcgov_rentingorleasingfromanotherbusiness",
@@ -7772,6 +7818,8 @@
                 "bcgov_explanationofequipmentuse desc",
                 "firstresponsesent",
                 "firstresponsesent desc",
+                "bcgov_detailsofhowequipmentcameintopossession",
+                "bcgov_detailsofhowequipmentcameintopossession desc",
                 "bcgov_sitelicence",
                 "bcgov_sitelicence desc",
                 "prioritycode",
@@ -7782,8 +7830,12 @@
                 "ticketnumber desc",
                 "bcgov_retailerofcontrolledequipment",
                 "bcgov_retailerofcontrolledequipment desc",
-                "bcgov_sitelicencebusinessname",
-                "bcgov_sitelicencebusinessname desc",
+                "bcgov_withdrawnstatusdate",
+                "bcgov_withdrawnstatusdate desc",
+                "incidentstagecode",
+                "incidentstagecode desc",
+                "bcgov_settingdescription",
+                "bcgov_settingdescription desc",
                 "_existingcase_value",
                 "_existingcase_value desc",
                 "bcgov_intendtosellothercheck",
@@ -7822,8 +7874,10 @@
                 "bcgov_nameofbusinessthathasgivenorloaned desc",
                 "bcgov_equipmentmodel",
                 "bcgov_equipmentmodel desc",
-                "bcgov_detailsofhowequipmentcameintopossession",
-                "bcgov_detailsofhowequipmentcameintopossession desc",
+                "incidentid",
+                "incidentid desc",
+                "bcgov_deniedstatusdate",
+                "bcgov_deniedstatusdate desc",
                 "blockedprofile",
                 "blockedprofile desc",
                 "_bcgov_relatedapplicationsid_value",
@@ -7884,6 +7938,7 @@
                 "bcgov_outsidebcsellerslocation",
                 "processid",
                 "_firstresponsebykpiid_value",
+                "bcgov_completestatusdate",
                 "bcgov_intendtopurchaseequipment",
                 "bcgov_alternativeownershiparrangement",
                 "bcgov_emailofbusinessthathasrentedorleased",
@@ -7900,6 +7955,7 @@
                 "bcgov_serialnumberkeypartdescription",
                 "_primarycontactid_value",
                 "bcgov_originatingsellerslocation",
+                "_bcgov_addressofbusinessthathasrentedorleased_value",
                 "decremententitlementterm",
                 "bcgov_wheredidyouobtainparts",
                 "customercontacted",
@@ -7909,14 +7965,16 @@
                 "_modifiedbyexternalparty_value",
                 "bcgov_intendtosellother",
                 "bcgov_emailofthebusinessthathasgivenorloaned",
+                "bcgov_withceinvestigationsstatusdate",
                 "title",
-                "caseorigincode",
+                "bcgov_withdeputyregistrarstatusdate",
                 "_owningbusinessunit_value",
                 "bcgov_manufacturingprocessdescription",
                 "bcgov_allownermanagerscreeningconsentsreceived",
                 "isescalated",
                 "bcgov_delbusinessname",
                 "bcgov_otherlicence",
+                "bcgov_approvedstatusdate",
                 "lastonholdtime",
                 "bcgov_dateofpurchasefrombcseller",
                 "bcgov_personbusinessthatbuiltequipment",
@@ -7939,19 +7997,19 @@
                 "_bcgov_equipmentrecord_value",
                 "bcgov_incomplete",
                 "_createdby_value",
-                "bcgov_givenorloanedtome",
                 "bcgov_dateofpurchasefromimporter",
                 "_modifiedby_value",
                 "_contractdetailid_value",
-                "incidentstagecode",
                 "_entitlementid_value",
                 "bcgov_typeofsellerothercheck",
                 "bcgov_nameofbcseller",
                 "_parentcaseid_value",
                 "stageid",
                 "bcgov_importersregistrationnumber",
+                "bcgov_purchasedfromselleroutsideofbc",
                 "bcgov_iassembleditmyself",
                 "bcgov_kindsofproductsnaturalhealthproducts",
+                "caseorigincode",
                 "bcgov_intendtosellpillpress",
                 "bcgov_submitteddate",
                 "bcgov_manufacturerofcontrolledequipment",
@@ -7961,23 +8019,29 @@
                 "checkemail",
                 "productserialnumber",
                 "bcgov_nameofmanufacturer",
+                "bcgov_draftstatusdate",
                 "firstresponseslastatus",
                 "timezoneruleversionnumber",
+                "bcgov_hearingstatusdate",
                 "_productid_value",
                 "bcgov_equipmenttype",
+                "bcgov_givenorloanedtome",
                 "bcgov_dateofpurchasefromoutsidebcseller",
                 "bcgov_foodanddrugact",
                 "bcgov_bcgov_legislativeauthorityothercheck",
                 "bcgov_purchasedfrombcseller",
                 "_bcgov_addressofbusinessthathasgivenorloaned_value",
                 "bcgov_intendonrentingleasingtoothers",
+                "bcgov_applicationstep",
                 "onholdtime",
                 "bcgov_otherlicencecheck",
                 "resolveby",
                 "_owninguser_value",
                 "routecase",
                 "bcgov_whendidyouassembleequipment",
+                "bcgov_withriskassessmentstatusdate",
                 "isdecrementing",
+                "bcgov_incompletestatusdate",
                 "_slaid_value",
                 "activitiescomplete",
                 "messagetypecode",
@@ -7987,6 +8051,7 @@
                 "bcgov_nameofimporter",
                 "bcgov_producingownproduct",
                 "_subjectid_value",
+                "bcgov_underreviewstatusdate",
                 "_owningteam_value",
                 "description",
                 "bcgov_drugestablishmentlicence",
@@ -8001,8 +8066,8 @@
                 "bcgov_pillpressmaxcapacity",
                 "bcgov_incompletecycle2",
                 "bcgov_howequipmentbuiltdescription",
-                "incidentid",
-                "_bcgov_addressofbusinessthathasrentedorleased_value",
+                "bcgov_cancelledstatusdate",
+                "bcgov_sitelicencebusinessname",
                 "bcgov_ownintendtoownequipmentforbusinessuse",
                 "bcgov_phoneofbusinessthathasgivenorloaned",
                 "traversedpath",
@@ -8012,10 +8077,12 @@
                 "utcconversiontimezonecode",
                 "bcgov_kindsofproductothercheck",
                 "bcgov_serialnumber",
+                "bcgov_pendingstatusdate",
                 "bcgov_howwasequipmentbuiltother",
+                "_bcgov_associatedriskassessmentrecord_value",
                 "casetypecode",
                 "bcgov_ownusepossesstoproduceaproduct",
-                "bcgov_purchasedfromselleroutsideofbc",
+                "bcgov_expiredstatusdate",
                 "bcgov_howwasequipmentbuiltothercheck",
                 "bcgov_rentingorleasingfromanotherbusiness",
                 "entityimage_timestamp",
@@ -8031,12 +8098,15 @@
                 "bcgov_foippaconsent",
                 "bcgov_explanationofequipmentuse",
                 "firstresponsesent",
+                "bcgov_detailsofhowequipmentcameintopossession",
                 "bcgov_sitelicence",
                 "prioritycode",
                 "bcgov_currentlyownusepossessequipment",
                 "ticketnumber",
                 "bcgov_retailerofcontrolledequipment",
-                "bcgov_sitelicencebusinessname",
+                "bcgov_withdrawnstatusdate",
+                "incidentstagecode",
+                "bcgov_settingdescription",
                 "_existingcase_value",
                 "bcgov_intendtosellothercheck",
                 "_bcgov_submitter_value",
@@ -8056,7 +8126,8 @@
                 "importsequencenumber",
                 "bcgov_nameofbusinessthathasgivenorloaned",
                 "bcgov_equipmentmodel",
-                "bcgov_detailsofhowequipmentcameintopossession",
+                "incidentid",
+                "bcgov_deniedstatusdate",
                 "blockedprofile",
                 "_bcgov_relatedapplicationsid_value",
                 "_createdonbehalfby_value",
@@ -8144,6 +8215,7 @@
                 "bcgov_ApplicationTypeId",
                 "bcgov_Submitter",
                 "bcgov_AddressofPersonBusiness",
+                "bcgov_incident_bcgov_riskassessment_ApplicationID",
                 "bcgov_incident_customproduct_RelatedApplication",
                 "bcgov_incident_businesscontact",
                 "bcgov_BCSellersAddress",
@@ -8156,7 +8228,8 @@
                 "bcgov_EquipmentLocation",
                 "bcgov_incident_bcgov_certificate_Application",
                 "bcgov_RelatedApplicationsId",
-                "bcgov_EquipmentRecord"
+                "bcgov_EquipmentRecord",
+                "bcgov_AssociatedRiskAssessmentRecord"
               ]
             }
           }
@@ -8273,6 +8346,7 @@
                 "bcgov_outsidebcsellerslocation",
                 "processid",
                 "_firstresponsebykpiid_value",
+                "bcgov_completestatusdate",
                 "bcgov_intendtopurchaseequipment",
                 "bcgov_alternativeownershiparrangement",
                 "bcgov_emailofbusinessthathasrentedorleased",
@@ -8289,6 +8363,7 @@
                 "bcgov_serialnumberkeypartdescription",
                 "_primarycontactid_value",
                 "bcgov_originatingsellerslocation",
+                "_bcgov_addressofbusinessthathasrentedorleased_value",
                 "decremententitlementterm",
                 "bcgov_wheredidyouobtainparts",
                 "customercontacted",
@@ -8298,14 +8373,16 @@
                 "_modifiedbyexternalparty_value",
                 "bcgov_intendtosellother",
                 "bcgov_emailofthebusinessthathasgivenorloaned",
+                "bcgov_withceinvestigationsstatusdate",
                 "title",
-                "caseorigincode",
+                "bcgov_withdeputyregistrarstatusdate",
                 "_owningbusinessunit_value",
                 "bcgov_manufacturingprocessdescription",
                 "bcgov_allownermanagerscreeningconsentsreceived",
                 "isescalated",
                 "bcgov_delbusinessname",
                 "bcgov_otherlicence",
+                "bcgov_approvedstatusdate",
                 "lastonholdtime",
                 "bcgov_dateofpurchasefrombcseller",
                 "bcgov_personbusinessthatbuiltequipment",
@@ -8328,19 +8405,19 @@
                 "_bcgov_equipmentrecord_value",
                 "bcgov_incomplete",
                 "_createdby_value",
-                "bcgov_givenorloanedtome",
                 "bcgov_dateofpurchasefromimporter",
                 "_modifiedby_value",
                 "_contractdetailid_value",
-                "incidentstagecode",
                 "_entitlementid_value",
                 "bcgov_typeofsellerothercheck",
                 "bcgov_nameofbcseller",
                 "_parentcaseid_value",
                 "stageid",
                 "bcgov_importersregistrationnumber",
+                "bcgov_purchasedfromselleroutsideofbc",
                 "bcgov_iassembleditmyself",
                 "bcgov_kindsofproductsnaturalhealthproducts",
+                "caseorigincode",
                 "bcgov_intendtosellpillpress",
                 "bcgov_submitteddate",
                 "bcgov_manufacturerofcontrolledequipment",
@@ -8350,23 +8427,29 @@
                 "checkemail",
                 "productserialnumber",
                 "bcgov_nameofmanufacturer",
+                "bcgov_draftstatusdate",
                 "firstresponseslastatus",
                 "timezoneruleversionnumber",
+                "bcgov_hearingstatusdate",
                 "_productid_value",
                 "bcgov_equipmenttype",
+                "bcgov_givenorloanedtome",
                 "bcgov_dateofpurchasefromoutsidebcseller",
                 "bcgov_foodanddrugact",
                 "bcgov_bcgov_legislativeauthorityothercheck",
                 "bcgov_purchasedfrombcseller",
                 "_bcgov_addressofbusinessthathasgivenorloaned_value",
                 "bcgov_intendonrentingleasingtoothers",
+                "bcgov_applicationstep",
                 "onholdtime",
                 "bcgov_otherlicencecheck",
                 "resolveby",
                 "_owninguser_value",
                 "routecase",
                 "bcgov_whendidyouassembleequipment",
+                "bcgov_withriskassessmentstatusdate",
                 "isdecrementing",
+                "bcgov_incompletestatusdate",
                 "_slaid_value",
                 "activitiescomplete",
                 "messagetypecode",
@@ -8376,6 +8459,7 @@
                 "bcgov_nameofimporter",
                 "bcgov_producingownproduct",
                 "_subjectid_value",
+                "bcgov_underreviewstatusdate",
                 "_owningteam_value",
                 "description",
                 "bcgov_drugestablishmentlicence",
@@ -8390,8 +8474,8 @@
                 "bcgov_pillpressmaxcapacity",
                 "bcgov_incompletecycle2",
                 "bcgov_howequipmentbuiltdescription",
-                "incidentid",
-                "_bcgov_addressofbusinessthathasrentedorleased_value",
+                "bcgov_cancelledstatusdate",
+                "bcgov_sitelicencebusinessname",
                 "bcgov_ownintendtoownequipmentforbusinessuse",
                 "bcgov_phoneofbusinessthathasgivenorloaned",
                 "traversedpath",
@@ -8401,10 +8485,12 @@
                 "utcconversiontimezonecode",
                 "bcgov_kindsofproductothercheck",
                 "bcgov_serialnumber",
+                "bcgov_pendingstatusdate",
                 "bcgov_howwasequipmentbuiltother",
+                "_bcgov_associatedriskassessmentrecord_value",
                 "casetypecode",
                 "bcgov_ownusepossesstoproduceaproduct",
-                "bcgov_purchasedfromselleroutsideofbc",
+                "bcgov_expiredstatusdate",
                 "bcgov_howwasequipmentbuiltothercheck",
                 "bcgov_rentingorleasingfromanotherbusiness",
                 "entityimage_timestamp",
@@ -8420,12 +8506,15 @@
                 "bcgov_foippaconsent",
                 "bcgov_explanationofequipmentuse",
                 "firstresponsesent",
+                "bcgov_detailsofhowequipmentcameintopossession",
                 "bcgov_sitelicence",
                 "prioritycode",
                 "bcgov_currentlyownusepossessequipment",
                 "ticketnumber",
                 "bcgov_retailerofcontrolledequipment",
-                "bcgov_sitelicencebusinessname",
+                "bcgov_withdrawnstatusdate",
+                "incidentstagecode",
+                "bcgov_settingdescription",
                 "_existingcase_value",
                 "bcgov_intendtosellothercheck",
                 "_bcgov_submitter_value",
@@ -8445,7 +8534,8 @@
                 "importsequencenumber",
                 "bcgov_nameofbusinessthathasgivenorloaned",
                 "bcgov_equipmentmodel",
-                "bcgov_detailsofhowequipmentcameintopossession",
+                "incidentid",
+                "bcgov_deniedstatusdate",
                 "blockedprofile",
                 "_bcgov_relatedapplicationsid_value",
                 "_createdonbehalfby_value",
@@ -8533,6 +8623,7 @@
                 "bcgov_ApplicationTypeId",
                 "bcgov_Submitter",
                 "bcgov_AddressofPersonBusiness",
+                "bcgov_incident_bcgov_riskassessment_ApplicationID",
                 "bcgov_incident_customproduct_RelatedApplication",
                 "bcgov_incident_businesscontact",
                 "bcgov_BCSellersAddress",
@@ -8545,7 +8636,8 @@
                 "bcgov_EquipmentLocation",
                 "bcgov_incident_bcgov_certificate_Application",
                 "bcgov_RelatedApplicationsId",
-                "bcgov_EquipmentRecord"
+                "bcgov_EquipmentRecord",
+                "bcgov_AssociatedRiskAssessmentRecord"
               ]
             }
           }
@@ -9814,6 +9906,436 @@
             "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.Dynamics.CRM.msdyn_bcgov_customaddress_knowledgebasere"
+            },
+            "description": "New property values"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      }
+    },
+    "/sharepointdocumentlocations": {
+      "get": {
+        "tags": [
+          "sharepointdocumentlocations"
+        ],
+        "summary": "Get entities from sharepointdocumentlocations",
+        "operationId": "Sharepointdocumentlocations_Get",
+        "parameters": [
+          {
+            "name": "$top",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "$skip",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "$search",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "$count",
+            "in": "query",
+            "type": "boolean"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "importsequencenumber",
+                "importsequencenumber desc",
+                "description",
+                "description desc",
+                "_ownerid_value",
+                "_ownerid_value desc",
+                "createdon",
+                "createdon desc",
+                "_owningbusinessunit_value",
+                "_owningbusinessunit_value desc",
+                "modifiedon",
+                "modifiedon desc",
+                "_transactioncurrencyid_value",
+                "_transactioncurrencyid_value desc",
+                "_owninguser_value",
+                "_owninguser_value desc",
+                "absoluteurl",
+                "absoluteurl desc",
+                "name",
+                "name desc",
+                "_createdby_value",
+                "_createdby_value desc",
+                "locationtype",
+                "locationtype desc",
+                "_modifiedonbehalfby_value",
+                "_modifiedonbehalfby_value desc",
+                "_regardingobjectid_value",
+                "_regardingobjectid_value desc",
+                "_parentsiteorlocation_value",
+                "_parentsiteorlocation_value desc",
+                "versionnumber",
+                "versionnumber desc",
+                "timezoneruleversionnumber",
+                "timezoneruleversionnumber desc",
+                "exchangerate",
+                "exchangerate desc",
+                "statecode",
+                "statecode desc",
+                "_owningteam_value",
+                "_owningteam_value desc",
+                "sitecollectionid",
+                "sitecollectionid desc",
+                "utcconversiontimezonecode",
+                "utcconversiontimezonecode desc",
+                "overriddencreatedon",
+                "overriddencreatedon desc",
+                "relativeurl",
+                "relativeurl desc",
+                "userid",
+                "userid desc",
+                "_modifiedby_value",
+                "_modifiedby_value desc",
+                "sharepointdocumentlocationid",
+                "sharepointdocumentlocationid desc",
+                "servicetype",
+                "servicetype desc",
+                "_createdonbehalfby_value",
+                "_createdonbehalfby_value desc",
+                "statuscode",
+                "statuscode desc"
+              ]
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "importsequencenumber",
+                "description",
+                "_ownerid_value",
+                "createdon",
+                "_owningbusinessunit_value",
+                "modifiedon",
+                "_transactioncurrencyid_value",
+                "_owninguser_value",
+                "absoluteurl",
+                "name",
+                "_createdby_value",
+                "locationtype",
+                "_modifiedonbehalfby_value",
+                "_regardingobjectid_value",
+                "_parentsiteorlocation_value",
+                "versionnumber",
+                "timezoneruleversionnumber",
+                "exchangerate",
+                "statecode",
+                "_owningteam_value",
+                "sitecollectionid",
+                "utcconversiontimezonecode",
+                "overriddencreatedon",
+                "relativeurl",
+                "userid",
+                "_modifiedby_value",
+                "sharepointdocumentlocationid",
+                "servicetype",
+                "_createdonbehalfby_value",
+                "statuscode"
+              ]
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "*",
+                "regardingobjectid_knowledgearticle",
+                "owninguser",
+                "owningteam",
+                "ownerid",
+                "owningbusinessunit",
+                "regardingobjectid_account",
+                "regardingobjectid_quote",
+                "regardingobjectid_product",
+                "parentsiteorlocation_sharepointdocumentlocation",
+                "sharepointdocumentlocation_parent_sharepointdocumentlocation",
+                "createdonbehalfby",
+                "modifiedby",
+                "regardingobjectid_lead",
+                "SharePointDocumentLocation_DuplicateBaseRecord",
+                "createdby",
+                "regardingobjectid_salesliterature",
+                "regardingobjectid_opportunity",
+                "parentsiteorlocation_sharepointsite",
+                "modifiedonbehalfby",
+                "regardingobjectid_kbarticle",
+                "SharePointDocumentLocation_DuplicateMatchingRecord",
+                "transactioncurrencyid",
+                "SharePointDocumentLocation_SyncErrors",
+                "SharePointDocumentLocation_AsyncOperations",
+                "regardingobjectid_bcgov_customaddress",
+                "regardingobjectid_incident",
+                "regardingobjectid_bcgov_customproduct",
+                "regardingobjectid_bcgov_location",
+                "regardingobjectid_bcgov_equipment",
+                "regardingobjectid_bcgov_equipmentlocation",
+                "regardingobjectid_bcgov_riskassessment",
+                "regardingobjectid_queue"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "schema": {
+              "title": "Collection of sharepointdocumentlocations",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.Dynamics.CRM.sharepointdocumentlocation"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "sharepointdocumentlocations"
+        ],
+        "summary": "Add new entity to sharepointdocumentlocations",
+        "operationId": "Sharepointdocumentlocations_Create",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.sharepointdocumentlocation"
+            },
+            "description": "New entity"
+          },
+          {
+            "name": "Prefer",
+            "in": "header",
+            "description": "Required in order for the service to return a JSON representation of the object.",
+            "type": "string",
+            "default": "return=representation"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.sharepointdocumentlocation"
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      }
+    },
+    "/sharepointdocumentlocations({sharepointdocumentlocationid})": {
+      "get": {
+        "tags": [
+          "sharepointdocumentlocations"
+        ],
+        "summary": "Get entity from sharepointdocumentlocations by key",
+        "operationId": "Sharepointdocumentlocations_GetByKey",
+        "parameters": [
+          {
+            "name": "sharepointdocumentlocationid",
+            "in": "path",
+            "required": true,
+            "description": "key: sharepointdocumentlocationid",
+            "type": "string"
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "importsequencenumber",
+                "description",
+                "_ownerid_value",
+                "createdon",
+                "_owningbusinessunit_value",
+                "modifiedon",
+                "_transactioncurrencyid_value",
+                "_owninguser_value",
+                "absoluteurl",
+                "name",
+                "_createdby_value",
+                "locationtype",
+                "_modifiedonbehalfby_value",
+                "_regardingobjectid_value",
+                "_parentsiteorlocation_value",
+                "versionnumber",
+                "timezoneruleversionnumber",
+                "exchangerate",
+                "statecode",
+                "_owningteam_value",
+                "sitecollectionid",
+                "utcconversiontimezonecode",
+                "overriddencreatedon",
+                "relativeurl",
+                "userid",
+                "_modifiedby_value",
+                "sharepointdocumentlocationid",
+                "servicetype",
+                "_createdonbehalfby_value",
+                "statuscode"
+              ]
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "*",
+                "regardingobjectid_knowledgearticle",
+                "owninguser",
+                "owningteam",
+                "ownerid",
+                "owningbusinessunit",
+                "regardingobjectid_account",
+                "regardingobjectid_quote",
+                "regardingobjectid_product",
+                "parentsiteorlocation_sharepointdocumentlocation",
+                "sharepointdocumentlocation_parent_sharepointdocumentlocation",
+                "createdonbehalfby",
+                "modifiedby",
+                "regardingobjectid_lead",
+                "SharePointDocumentLocation_DuplicateBaseRecord",
+                "createdby",
+                "regardingobjectid_salesliterature",
+                "regardingobjectid_opportunity",
+                "parentsiteorlocation_sharepointsite",
+                "modifiedonbehalfby",
+                "regardingobjectid_kbarticle",
+                "SharePointDocumentLocation_DuplicateMatchingRecord",
+                "transactioncurrencyid",
+                "SharePointDocumentLocation_SyncErrors",
+                "SharePointDocumentLocation_AsyncOperations",
+                "regardingobjectid_bcgov_customaddress",
+                "regardingobjectid_incident",
+                "regardingobjectid_bcgov_customproduct",
+                "regardingobjectid_bcgov_location",
+                "regardingobjectid_bcgov_equipment",
+                "regardingobjectid_bcgov_equipmentlocation",
+                "regardingobjectid_bcgov_riskassessment",
+                "regardingobjectid_queue"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.sharepointdocumentlocation"
+            }
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "sharepointdocumentlocations"
+        ],
+        "summary": "Delete entity from sharepointdocumentlocations",
+        "operationId": "Sharepointdocumentlocations_Delete",
+        "parameters": [
+          {
+            "name": "sharepointdocumentlocationid",
+            "in": "path",
+            "required": true,
+            "description": "key: sharepointdocumentlocationid",
+            "type": "string"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "schema": { "$ref": "#/definitions/odata.error" },
+            "description": ""
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "sharepointdocumentlocations"
+        ],
+        "summary": "Update entity in sharepointdocumentlocations",
+        "operationId": "Sharepointdocumentlocations_Update",
+        "parameters": [
+          {
+            "name": "sharepointdocumentlocationid",
+            "in": "path",
+            "required": true,
+            "description": "key: sharepointdocumentlocationid",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Microsoft.Dynamics.CRM.sharepointdocumentlocation"
             },
             "description": "New property values"
           }
@@ -16615,13 +17137,13 @@
           "type": "string",
           "x-nullable": true
         },
-        "bcgov_currentlocation": {
-          "type": "boolean",
-          "x-nullable": true
-        },
         "modifiedon": {
           "type": "string",
           "format": "date-time"
+        },
+        "bcgov_settingdescription": {
+          "type": "string",
+          "x-nullable": true
         },
         "emailaddress": {
           "type": "string",
@@ -16810,15 +17332,15 @@
           "type": "string",
           "x-nullable": true
         },
+        "importsequencenumber": {
+          "type": "integer",
+          "x-nullable": true
+        },
         "statecode": {
           "type": "integer",
           "x-nullable": true
         },
         "bcgov_name": {
-          "type": "string",
-          "x-nullable": true
-        },
-        "_modifiedby_value": {
           "type": "string",
           "x-nullable": true
         },
@@ -16830,7 +17352,15 @@
           "type": "integer",
           "x-nullable": true
         },
+        "bcgov_pillpressencapsulatorsize": {
+          "type": "integer",
+          "x-nullable": true
+        },
         "processid": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "_modifiedby_value": {
           "type": "string",
           "x-nullable": true
         },
@@ -16838,15 +17368,15 @@
           "type": "string",
           "format": "date-time"
         },
-        "_bcgov_currentbusinessowner_value": {
-          "type": "string",
+        "utcconversiontimezonecode": {
+          "type": "integer",
           "x-nullable": true
         },
         "traversedpath": {
           "type": "string",
           "x-nullable": true
         },
-        "timezoneruleversionnumber": {
+        "bcgov_levelofautomation": {
           "type": "integer",
           "x-nullable": true
         },
@@ -16854,8 +17384,8 @@
           "type": "string",
           "x-nullable": true
         },
-        "bcgov_howwasequipmentbuilt": {
-          "type": "integer",
+        "_bcgov_currentlocation_value": {
+          "type": "string",
           "x-nullable": true
         },
         "bcgov_pillpressencapsulatorsizeother": {
@@ -16866,8 +17396,8 @@
           "type": "string",
           "x-nullable": true
         },
-        "_stageid_value": {
-          "type": "string",
+        "bcgov_equipmenttype": {
+          "type": "integer",
           "x-nullable": true
         },
         "versionnumber": {
@@ -16887,16 +17417,16 @@
           "type": "string",
           "x-nullable": true
         },
-        "bcgov_equipmenttype": {
-          "type": "integer",
+        "_stageid_value": {
+          "type": "string",
           "x-nullable": true
         },
         "bcgov_custombuiltorkeypartserialnumber": {
           "type": "string",
           "x-nullable": true
         },
-        "bcgov_levelofautomation": {
-          "type": "integer",
+        "_bcgov_currentbusinessowner_value": {
+          "type": "string",
           "x-nullable": true
         },
         "_owningteam_value": {
@@ -16907,16 +17437,16 @@
           "type": "string",
           "x-nullable": true
         },
-        "bcgov_model": {
-          "type": "string",
+        "bcgov_howwasequipmentbuilt": {
+          "type": "integer",
           "x-nullable": true
         },
         "modifiedon": {
           "type": "string",
           "format": "date-time"
         },
-        "importsequencenumber": {
-          "type": "integer",
+        "bcgov_model": {
+          "type": "string",
           "x-nullable": true
         },
         "_ownerid_value": {
@@ -16939,20 +17469,16 @@
           "type": "string",
           "x-nullable": true
         },
-        "bcgov_pillpressencapsulatorsize": {
-          "type": "integer",
-          "x-nullable": true
-        },
         "emailaddress": {
           "type": "string",
           "x-nullable": true
         },
-        "_owninguser_value": {
-          "type": "string",
+        "timezoneruleversionnumber": {
+          "type": "integer",
           "x-nullable": true
         },
-        "utcconversiontimezonecode": {
-          "type": "integer",
+        "_owninguser_value": {
+          "type": "string",
           "x-nullable": true
         },
         "bcgov_CurrentBusinessOwner": {
@@ -17134,6 +17660,9 @@
           "items": {
             "$ref": "#/definitions/Microsoft.Dynamics.CRM.incident"
           }
+        },
+        "bcgov_CurrentLocation": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_location"
         },
         "bcgov_equipment_bcgov_certificate_Equipment": {
           "type": "array",
@@ -17485,6 +18014,12 @@
           "items": {
             "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipmentlocation"
           }
+        },
+        "bcgov_location_equipment_CurrentLocation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+          }
         }
       }
     },
@@ -17492,10 +18027,6 @@
       "title": "bcgov_riskassessment",
       "type": "object",
       "properties": {
-        "emailaddress": {
-          "type": "string",
-          "x-nullable": true
-        },
         "bcgov_legalname": {
           "type": "string",
           "x-nullable": true
@@ -17517,15 +18048,15 @@
           "format": "int64",
           "x-nullable": true
         },
-        "bcgov_gender": {
-          "type": "string",
-          "x-nullable": true
-        },
         "modifiedon": {
           "type": "string",
           "format": "date-time"
         },
         "_owningteam_value": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "_bcgov_applicationidlookup_value": {
           "type": "string",
           "x-nullable": true
         },
@@ -17569,6 +18100,10 @@
           "type": "string",
           "x-nullable": true
         },
+        "bcgov_descriptionandnotes": {
+          "type": "string",
+          "x-nullable": true
+        },
         "bcgov_consentauthorizationtofingerprint": {
           "type": "boolean",
           "x-nullable": true
@@ -17582,6 +18117,14 @@
           "x-nullable": true
         },
         "bcgov_verifiedemail": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "bcgov_gender": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "emailaddress": {
           "type": "string",
           "x-nullable": true
         },
@@ -17612,6 +18155,9 @@
         "bcgov_aliasesnames": {
           "type": "string",
           "x-nullable": true
+        },
+        "bcgov_ApplicationIDlookup": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.incident"
         },
         "createdbyname": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.systemuser"
@@ -17761,6 +18307,12 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/Microsoft.Dynamics.CRM.bulkdeletefailure"
+          }
+        },
+        "bcgov_riskassessment_incident_AssociatedRiskAssessmentRecord": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.incident"
           }
         }
       }
@@ -33460,6 +34012,10 @@
           "type": "string",
           "x-nullable": true
         },
+        "bcgov_completestatusdate": {
+          "type": "string",
+          "format": "date-time"
+        },
         "bcgov_intendtopurchaseequipment": {
           "type": "boolean",
           "x-nullable": true
@@ -33524,6 +34080,10 @@
           "type": "integer",
           "x-nullable": true
         },
+        "_bcgov_addressofbusinessthathasrentedorleased_value": {
+          "type": "string",
+          "x-nullable": true
+        },
         "decremententitlementterm": {
           "type": "boolean",
           "x-nullable": true
@@ -33560,13 +34120,17 @@
           "type": "string",
           "x-nullable": true
         },
+        "bcgov_withceinvestigationsstatusdate": {
+          "type": "string",
+          "format": "date-time"
+        },
         "title": {
           "type": "string",
           "x-nullable": true
         },
-        "caseorigincode": {
-          "type": "integer",
-          "x-nullable": true
+        "bcgov_withdeputyregistrarstatusdate": {
+          "type": "string",
+          "format": "date-time"
         },
         "_owningbusinessunit_value": {
           "type": "string",
@@ -33591,6 +34155,10 @@
         "bcgov_otherlicence": {
           "type": "string",
           "x-nullable": true
+        },
+        "bcgov_approvedstatusdate": {
+          "type": "string",
+          "format": "date-time"
         },
         "lastonholdtime": {
           "type": "string",
@@ -33680,10 +34248,6 @@
           "type": "string",
           "x-nullable": true
         },
-        "bcgov_givenorloanedtome": {
-          "type": "boolean",
-          "x-nullable": true
-        },
         "bcgov_dateofpurchasefromimporter": {
           "type": "string",
           "format": "date-time"
@@ -33694,10 +34258,6 @@
         },
         "_contractdetailid_value": {
           "type": "string",
-          "x-nullable": true
-        },
-        "incidentstagecode": {
-          "type": "integer",
           "x-nullable": true
         },
         "_entitlementid_value": {
@@ -33724,12 +34284,20 @@
           "type": "string",
           "x-nullable": true
         },
+        "bcgov_purchasedfromselleroutsideofbc": {
+          "type": "boolean",
+          "x-nullable": true
+        },
         "bcgov_iassembleditmyself": {
           "type": "boolean",
           "x-nullable": true
         },
         "bcgov_kindsofproductsnaturalhealthproducts": {
           "type": "boolean",
+          "x-nullable": true
+        },
+        "caseorigincode": {
+          "type": "integer",
           "x-nullable": true
         },
         "bcgov_intendtosellpillpress": {
@@ -33768,6 +34336,10 @@
           "type": "string",
           "x-nullable": true
         },
+        "bcgov_draftstatusdate": {
+          "type": "string",
+          "format": "date-time"
+        },
         "firstresponseslastatus": {
           "type": "integer",
           "x-nullable": true
@@ -33776,12 +34348,20 @@
           "type": "integer",
           "x-nullable": true
         },
+        "bcgov_hearingstatusdate": {
+          "type": "string",
+          "format": "date-time"
+        },
         "_productid_value": {
           "type": "string",
           "x-nullable": true
         },
         "bcgov_equipmenttype": {
           "type": "integer",
+          "x-nullable": true
+        },
+        "bcgov_givenorloanedtome": {
+          "type": "boolean",
           "x-nullable": true
         },
         "bcgov_dateofpurchasefromoutsidebcseller": {
@@ -33808,6 +34388,10 @@
           "type": "boolean",
           "x-nullable": true
         },
+        "bcgov_applicationstep": {
+          "type": "integer",
+          "x-nullable": true
+        },
         "onholdtime": {
           "type": "integer",
           "x-nullable": true
@@ -33832,9 +34416,17 @@
           "type": "string",
           "format": "date-time"
         },
+        "bcgov_withriskassessmentstatusdate": {
+          "type": "string",
+          "format": "date-time"
+        },
         "isdecrementing": {
           "type": "boolean",
           "x-nullable": true
+        },
+        "bcgov_incompletestatusdate": {
+          "type": "string",
+          "format": "date-time"
         },
         "_slaid_value": {
           "type": "string",
@@ -33871,6 +34463,10 @@
         "_subjectid_value": {
           "type": "string",
           "x-nullable": true
+        },
+        "bcgov_underreviewstatusdate": {
+          "type": "string",
+          "format": "date-time"
         },
         "_owningteam_value": {
           "type": "string",
@@ -33928,11 +34524,11 @@
           "type": "string",
           "x-nullable": true
         },
-        "incidentid": {
+        "bcgov_cancelledstatusdate": {
           "type": "string",
-          "x-nullable": true
+          "format": "date-time"
         },
-        "_bcgov_addressofbusinessthathasrentedorleased_value": {
+        "bcgov_sitelicencebusinessname": {
           "type": "string",
           "x-nullable": true
         },
@@ -33972,7 +34568,15 @@
           "type": "string",
           "x-nullable": true
         },
+        "bcgov_pendingstatusdate": {
+          "type": "string",
+          "format": "date-time"
+        },
         "bcgov_howwasequipmentbuiltother": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "_bcgov_associatedriskassessmentrecord_value": {
           "type": "string",
           "x-nullable": true
         },
@@ -33984,9 +34588,9 @@
           "type": "boolean",
           "x-nullable": true
         },
-        "bcgov_purchasedfromselleroutsideofbc": {
-          "type": "boolean",
-          "x-nullable": true
+        "bcgov_expiredstatusdate": {
+          "type": "string",
+          "format": "date-time"
         },
         "bcgov_howwasequipmentbuiltothercheck": {
           "type": "boolean",
@@ -34049,6 +34653,10 @@
           "type": "boolean",
           "x-nullable": true
         },
+        "bcgov_detailsofhowequipmentcameintopossession": {
+          "type": "string",
+          "x-nullable": true
+        },
         "bcgov_sitelicence": {
           "type": "boolean",
           "x-nullable": true
@@ -34069,7 +34677,15 @@
           "type": "boolean",
           "x-nullable": true
         },
-        "bcgov_sitelicencebusinessname": {
+        "bcgov_withdrawnstatusdate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "incidentstagecode": {
+          "type": "integer",
+          "x-nullable": true
+        },
+        "bcgov_settingdescription": {
           "type": "string",
           "x-nullable": true
         },
@@ -34148,9 +34764,13 @@
           "type": "string",
           "x-nullable": true
         },
-        "bcgov_detailsofhowequipmentcameintopossession": {
+        "incidentid": {
           "type": "string",
           "x-nullable": true
+        },
+        "bcgov_deniedstatusdate": {
+          "type": "string",
+          "format": "date-time"
         },
         "blockedprofile": {
           "type": "boolean",
@@ -34489,6 +35109,12 @@
         "bcgov_AddressofPersonBusiness": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_customaddress"
         },
+        "bcgov_incident_bcgov_riskassessment_ApplicationID": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
+          }
+        },
         "bcgov_incident_customproduct_RelatedApplication": {
           "type": "array",
           "items": {
@@ -34539,6 +35165,9 @@
         },
         "bcgov_EquipmentRecord": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_equipment"
+        },
+        "bcgov_AssociatedRiskAssessmentRecord": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
         }
       }
     },
@@ -48206,6 +48835,12 @@
           "items": {
             "$ref": "#/definitions/Microsoft.Dynamics.CRM.duplicaterecord"
           }
+        },
+        "queue_SharePointDocumentLocations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Microsoft.Dynamics.CRM.sharepointdocumentlocation"
+          }
         }
       }
     },
@@ -54100,6 +54735,9 @@
         },
         "regardingobjectid_bcgov_riskassessment": {
           "$ref": "#/definitions/Microsoft.Dynamics.CRM.bcgov_riskassessment"
+        },
+        "regardingobjectid_queue": {
+          "$ref": "#/definitions/Microsoft.Dynamics.CRM.queue"
         }
       }
     },
@@ -72861,7 +73499,7 @@
       "name": "customeraddresses"
     },
     {
-      "name": "dataperformances"
+      "name": "dataperformanceset"
     },
     {
       "name": "dependencies"
@@ -73389,7 +74027,7 @@
       "name": "themes"
     },
     {
-      "name": "timestampdatemappings"
+      "name": "timestampdatemappingset"
     },
     {
       "name": "timezonedefinitions"

@@ -27,33 +27,9 @@
     margin-bottom: 20px;
     padding: 30px;
     padding-top: 20px;
-    h2 {
+    h2,a {
         color: #fff;
     }
-}
-
-ul {
-    list-style-type: none;
-}
-
-li::before {
-    color: #1E4176;
-    content: "\25AA";
-    display: inline-block;
-    font-size: 34px;
-    line-height: 0;
-    vertical-align: middle;
-    width: 0.5em;
-    margin-left: -16px;
-}
-
-li {
-    margin: 10px auto;
-    margin-left: 16px;
-}
-
-.li-header {
-    margin-left: 40px;
 }
 
 .waiver {
@@ -77,6 +53,8 @@ li {
 
 .eq-table {
     border-spacing: 1px 5px;
+    border-collapse: separate;
+    width: 100%;
 }
 
 .eq-table td,
@@ -85,26 +63,34 @@ li {
     color: #000;
 }
 
+.eq-table th {
+    padding: 10px;
+}
+
 .space-between {
     display: flex;
     justify-content: space-between;
 }
 
-.user-icon {
-    background-color: #fff;
-    padding: 5px;
-    display: inline-block;
-    border-radius: 30px;
-    margin-left: 20px;
-    float: right;
-    border: 1px solid #eee;
+.user-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h3 {
+        display: inline-block;
+        margin-top: 0
+    }
+    img {
+        height: 50px;
+        width: 50px;
+    }
 }
 
-.user-icon i {
-    color: #38598A;
-    margin-left: 5px;
-    margin-right: 5px;
+.row-reverse {
+    display: flex;
+    flex-direction: row-reverse;
 }
+
 
 ::ng-deep .mat-tab-label {
     background-color: #E1E8F2 !important;
@@ -136,7 +122,6 @@ li {
 .status-container {
     background-color: #E1E8F2;
     padding: 15px;
-    height: 170px;
 }
 
 .status,

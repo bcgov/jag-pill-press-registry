@@ -134,6 +134,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         IMsdyncustomaddressknowledgebasereset Msdyncustomaddressknowledgebasereset { get; }
 
         /// <summary>
+        /// Gets the ISharepointdocumentlocations.
+        /// </summary>
+        ISharepointdocumentlocations Sharepointdocumentlocations { get; }
+
+        /// <summary>
         /// Gets the ISharepointsites.
         /// </summary>
         ISharepointsites Sharepointsites { get; }

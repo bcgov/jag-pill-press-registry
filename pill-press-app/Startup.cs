@@ -4,6 +4,7 @@ using Gov.Jag.PillPressRegistry.Public.Authorization;
 using Gov.Jag.PillPressRegistry.Public.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -104,8 +105,11 @@ namespace Gov.Jag.PillPressRegistry.Public
             services.RegisterPermissionHandler();
 
             // setup key ring to persist in storage.
-            services.AddDataProtection().PersistKeysToFileSystem(new DirectoryInfo(Configuration["KEY_RING_DIRECTORY"]));
-
+            if (! string.IsNullOrEmpty(Configuration["KEY_RING_DIRECTORY"]))
+            {
+                services.AddDataProtection().PersistKeysToFileSystem(new DirectoryInfo(Configuration["KEY_RING_DIRECTORY"]));
+            }
+            
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
@@ -245,32 +249,71 @@ namespace Gov.Jag.PillPressRegistry.Public
 
             app.Use(async (ctx, next) =>
             {
-                ctx.Response.Headers.Add("Content-Security-Policy",
-                                         "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://apis.google.com https://maxcdn.bootstrapcdn.com https://cdnjs.cloudflare.com https://code.jquery.com https://stackpath.bootstrapcdn.com https://fonts.googleapis.com");
                 ctx.Response.Headers.Add("Strict-Transport-Security", "max-age=31536000; includeSubDomains; preload");
                 await next();
             });
+
+            // X-Content-Type-Options header
             app.UseXContentTypeOptions();
-            app.UseXfo(xfo => xfo.Deny());
+            // Referrer-Policy header.
+            app.UseReferrerPolicy(opts => opts.NoReferrer());
+            // X-Xss-Protection header
+            app.UseXXssProtection(options => options.EnabledWithBlockMode());
+            // X-Frame-Options header
+            app.UseXfo(options => options.Deny());
 
-            StaticFileOptions staticFileOptions = new StaticFileOptions();
-
-            staticFileOptions.OnPrepareResponse = ctx =>
+            if (!env.IsDevelopment())  // when running locally we can't have a strict CSP
             {
-                ctx.Context.Response.Headers[HeaderNames.CacheControl] = "no-cache, no-store, must-revalidate, private";
-                ctx.Context.Response.Headers[HeaderNames.Pragma] = "no-cache";
-                ctx.Context.Response.Headers["X-Frame-Options"] = "SAMEORIGIN";
-                ctx.Context.Response.Headers["X-XSS-Protection"] = "1; mode=block";
-                ctx.Context.Response.Headers["X-Content-Type-Options"] = "nosniff";
-            };
+                // Content-Security-Policy header
+                app.UseCsp(opts =>
+                {
+                    opts
+                    .BlockAllMixedContent()
+                    .StyleSources(s => s.Self().UnsafeInline().CustomSources("https://use.fontawesome.com",
+                        "https://stackpath.bootstrapcdn.com"))
+                    .FontSources(s => s.Self().CustomSources("https://use.fontawesome.com"))
+                    .FormActions(s => s.Self())
+                    .FrameAncestors(s => s.Self())
+                    .ImageSources(s => s.Self())
+                    .DefaultSources(s => s.Self())
+                    .ScriptSources(s => s.Self().CustomSources("https://apis.google.com",
+                    "https://maxcdn.bootstrapcdn.com",
+                    "https://cdnjs.cloudflare.com",
+                    "https://code.jquery.com",
+                    "https://stackpath.bootstrapcdn.com",
+                    "https://fonts.googleapis.com"));
+
+                });
+            }
+
+            StaticFileOptions staticFileOptions = new StaticFileOptions()
+            {
+                OnPrepareResponse = ctx =>
+                {
+                    ctx.Context.Response.Headers[HeaderNames.CacheControl] = "no-cache, no-store, must-revalidate, private";
+                    ctx.Context.Response.Headers[HeaderNames.Pragma] = "no-cache";
+                    ctx.Context.Response.Headers["X-Frame-Options"] = "SAMEORIGIN";
+                    ctx.Context.Response.Headers["X-XSS-Protection"] = "1; mode=block";
+                    ctx.Context.Response.Headers["X-Content-Type-Options"] = "nosniff";
+                }
+            };            
 
             app.UseStaticFiles(staticFileOptions);
             app.UseSpaStaticFiles(staticFileOptions);
-            app.UseXXssProtection(options => options.EnabledWithBlockMode());
+            
             app.UseNoCacheHttpHeaders();
             // IMPORTANT: This session call MUST go before UseMvc()
             app.UseSession();
             app.UseAuthentication();
+
+            // set the cookie policy
+            app.UseCookiePolicy(new CookiePolicyOptions
+            {
+                HttpOnly = HttpOnlyPolicy.Always,
+                Secure = CookieSecurePolicy.Always,
+                MinimumSameSitePolicy = Microsoft.AspNetCore.Http.SameSiteMode.None
+            });
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -290,6 +333,8 @@ namespace Gov.Jag.PillPressRegistry.Public
                 {
                     spa.UseAngularCliServer(npmScript: "start");
                 }
+
+
             });
 
         }

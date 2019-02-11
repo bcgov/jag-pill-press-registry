@@ -5,6 +5,7 @@ import { DynamicsContact } from './dynamics-contact.model';
 import { BusinessContact } from './business-contact.model';
 import { CustomAddress } from './custom-address.model';
 import { EquipmentLocation } from './equipment-location.model';
+import { Certificate } from './certificate.model';
 
 export class Application {
   id: string;
@@ -12,10 +13,11 @@ export class Application {
   title: string;
   applicationtype: string;
   submittedDate: Date;
+  settingDescription: string;
   additionalbusinessinformationaboutseller: string;
   borrowrentleaseequipment: boolean;
   currentlyownusepossessequipment: boolean;
-  declarationofcorrectinformation: boolean;
+  declarationOfCorrectInformation: boolean;
   delbusinessname: string;
   drugestablishmentlicence: boolean;
   drugestablishmentlicenceexpirydate: Date;
@@ -71,7 +73,6 @@ export class Application {
   dateOfPurchaseFromBcSeller: Date;
   dateOfPurchaseFromImporter: Date;
   dateOfPurchaseFromOutsideBcSeller: Date;
-  declarationOfCorrectInformation: boolean;
   detailsOfAssemblyForOtherBusinesses: string;
   detailsOfHowEquipmentCameIntoPossession: string;
   doYouAssembleForOtherBusinesses: boolean;
@@ -129,6 +130,7 @@ export class Application {
   // related entities
   addressOfBusinessThatHasRentedorLeased: CustomAddress;
   addressofBusinessthathasGivenorLoaned: CustomAddress;
+  addressofPersonBusiness: CustomAddress;
   applicant: Account;
   bcSellersAddress: CustomAddress;
   businessContacts: BusinessContact[];
@@ -137,4 +139,6 @@ export class Application {
   outsideBcSellersAddress: CustomAddress;
   OriginatingSellersAddress: CustomAddress;
   equipmentLocation: EquipmentLocation;
+
+  certificates: Certificate[];
 }

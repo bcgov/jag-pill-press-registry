@@ -5,7 +5,8 @@
       <h2 class="step">STEP 2</h2>
       <h1 style="margin-top: 0">Seller Registration Application</h1>
 
-      <p>A Registered Seller can sell the Controlled Equipment but can not use it for manufacturing. To be able to
+      <p>A Registered Seller can sell the <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-controlled-equipment"
+          target="blank">Controlled Equipment</a> but can not use it for manufacturing. To be able to
         use the equipment, a seller must apply for a Waiver or be an Authorized Owner.</p>
 
       <p>When a Registered Seller rents/leases their equipment to others, these individuals must hold a Waiver to use
@@ -127,9 +128,10 @@
       <h3 class="blue-header">OWNER/MANAGER INFORMATION</h3>
       <section class="padded-section">
 
-        <p>As part of the application process for a Registered Seller, business owners and managers are requested to
-          consent to criminal record, police information, and correctional service information checks (Prescribed
-          Checks).</p>
+        <p>As part of the application process for a Registered Seller, business <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/definition#om"
+            target="blank">owners and managers</a> are requested to
+          consent to criminal record, police information, and correctional service information checks (<a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-registered-seller#sc"
+            target="blank">Prescribed Checks</a>).</p>
 
         <div class="notes" style="display: flex;">
           <i class="fas fa-exclamation-circle" style="color: #fcba19; margin-right: 10px;"></i>
@@ -142,17 +144,19 @@
 
         <div class="notes" style="display: flex;">
           <i class="fas fa-exclamation-circle" style="color: #003366; margin-right: 10px;"></i>
-          <span>Further information on the definitions of "owner" and "manager" can be found at: www.website.com</span>
+          <span><a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/definition#om"
+            target="blank"> Find more information </a> on the definitions of "owner" and "manager"</span>
         </div>
 
-        <section style="display: flex; flex-direction: row-reverse;">
-          <button class="btn btn-secondary" (click)="addEditOwner({})">ADD AN OWNER/MANAGER</button>
+        <section style="display: flex; flex-direction: row-reverse; margin-bottom: 10px;">
+          <button class="btn btn-secondary" (click)="currentOwner = {}; form2.reset(); staticModal.show()">ADD AN OWNER/MANAGER</button>
         </section>
 
-        <table class="summary-table">
+        <table class="summary-table" style="width: 100%;">
           <tr>
             <th>FIRST NAME</th>
             <th>LAST NAME</th>
+            <th>TYPE</th>
             <th>TITLE/POSITION</th>
             <th>CONTACT DETAILS</th>
             <th style="background-color: transparent; width: 50px"></th>
@@ -160,11 +164,14 @@
           <tr *ngFor="let item of ownersAndManagers; let i = index;" [ngClass]="{cssClass: expression}">
             <td [ngClass]="{'row-alt': i%2 == 0}">{{item?.contact?.firstName}}</td>
             <td [ngClass]="{'row-alt': i%2 == 0}">{{item?.contact?.lastName}}</td>
+            <td [ngClass]="{'row-alt': i%2 == 0}">{{item.registeredSellerOwnerManager}}</td>
             <td [ngClass]="{'row-alt': i%2 == 0}">{{item.jobTitle}}</td>
-            <td [ngClass]="{'row-alt': i%2 == 0}">Phone: {{item?.contact?.phoneNumber}} <br>
-              Email: {{item?.contact?.email}}</td>
             <td [ngClass]="{'row-alt': i%2 == 0}">
-              <i class="fas fa-pencil-alt" style="cursor: pointer; margin-right: 10px;" (click)="addEditOwner(item)"></i>
+              Phone: {{item?.contact?.phoneNumber}} <br>
+              Email: {{item?.contact?.email}}
+            </td>
+            <td [ngClass]="{'row-alt': i%2 == 0}">
+              <i class="fas fa-pencil-alt" style="cursor: pointer; margin-right: 10px;" (click)="currentOwner = item; form2.patchValue(item); staticModal.show()"></i>
               <i class="fas fa-trash-alt" style="cursor: pointer;" (click)="deleteOwnerOrManager(item)"></i>
             </td>
           </tr>
@@ -184,5 +191,67 @@
         </div>
       </section>
     </div>
+  </div>
+
+  <div [formGroup]="form2">
+      <section style="display: inline-block;">
+          <div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}"
+               tabindex="-1" role="dialog" aria-labelledby="dialog-static-name">
+            <div class="modal-dialog modal-md">
+              <div class="modal-content">
+                <!-- <div class="modal-header">
+                  <h4 id="dialog-static-name" class="modal-title pull-left">Static modal</h4>
+                  <button type="button" class="close pull-right" aria-label="Close" (click)="staticModal.hide()">
+                    <span aria-hidden="true">&times;</span>
+                  </button> 
+                </div>-->
+                <div class="modal-body">
+             
+                    <h2>Add Owner or Manager</h2>
+                    <section>
+                
+                      <app-field label="Type of management role" [valid]="(form2.get('registeredSellerOwnerManager').valid || !form2.get('registeredSellerOwnerManager').touched)"
+                                 [required]="true" [showChevrons]="false" errorMessage="Please indicate your type of management role">
+                        <input type="radio" formControlName="registeredSellerOwnerManager" name="registeredSellerOwnerManager" [value]="'Owner'">&nbsp;<span style="margin-right: 20px;">Owner</span>
+                        <input type="radio" formControlName="registeredSellerOwnerManager" name="registeredSellerOwnerManager" [value]="'Manager'">&nbsp;<span>Manager</span>
+                      </app-field>
+                      <div formGroupName="contact">
+                        <app-field label="First Name" [required]="true" errorMessage="Please enter your owner/manager's first name"
+                                   [valid]="form2.get('contact.firstName').valid || !form2.get('contact.firstName').touched">
+                          <input type="text" class="form-control" style="width: 400px" formControlName="firstName">
+                        </app-field>
+                
+                        <app-field label="Last Name" [required]="true" errorMessage="Please enter your owner/manager's last name"
+                                   [valid]="form2.get('contact.lastName').valid || !form2.get('contact.lastName').touched">
+                          <input type="text" class="form-control" style="width: 400px" formControlName="lastName">
+                        </app-field>
+                      </div>
+                
+                      <app-field label="Title/ Position">
+                        <input type="text" class="form-control" style="width: 300px" formControlName="jobTitle">
+                      </app-field>
+                
+                      <div formGroupName="contact">
+                        <app-field label="Phone Number" [required]="true" errorMessage="Please enter your owner/manager's phone number"
+                                   [valid]="form2.get('contact.phoneNumber').valid || !form2.get('contact.phoneNumber').touched">
+                          <input type="text" class="form-control" style="width: 300px" formControlName="phoneNumber" maxlength="10"
+                                 (keydown)="rejectIfNotDigitOrBackSpace($event)">
+                        </app-field>
+                
+                        <app-field label="Email" [required]="true" errorMessage="Please enter your owner/manager's email address"
+                                   [valid]="form2.get('contact.email').valid || !form2.get('contact.email').touched">
+                          <input type="text" class="form-control" style="width: 300px" formControlName="email">
+                        </app-field>
+                      </div>
+                    </section>
+                      <div>
+                          <button class="btn btn-secondary" style="margin-right: 10px;" (click)="staticModal.hide()">Cancel</button>
+                          <button class="btn btn-primary" (click)="addOwner(form2.value, staticModal)">OK</button>
+                      </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </section>
   </div>
 </div>
