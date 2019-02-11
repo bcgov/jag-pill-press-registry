@@ -27,12 +27,12 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// Initializes a new instance of the
         /// MicrosoftDynamicsCRMbcgovIncidentBusinesscontact class.
         /// </summary>
-        public MicrosoftDynamicsCRMbcgovIncidentBusinesscontact(string bcgovBusinesscontactid = default(string), string bcgovIncidentBusinesscontactid = default(string), string incidentid = default(string), long? versionnumber = default(long?))
+        public MicrosoftDynamicsCRMbcgovIncidentBusinesscontact(string bcgovIncidentBusinesscontactid = default(string), long? versionnumber = default(long?), string bcgovBusinesscontactid = default(string), string incidentid = default(string))
         {
-            BcgovBusinesscontactid = bcgovBusinesscontactid;
             BcgovIncidentBusinesscontactid = bcgovIncidentBusinesscontactid;
-            Incidentid = incidentid;
             Versionnumber = versionnumber;
+            BcgovBusinesscontactid = bcgovBusinesscontactid;
+            Incidentid = incidentid;
             CustomInit();
         }
 
@@ -43,23 +43,23 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "bcgov_businesscontactid")]
-        public string BcgovBusinesscontactid { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "bcgov_incident_businesscontactid")]
         public string BcgovIncidentBusinesscontactid { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "incidentid")]
-        public string Incidentid { get; set; }
+        [JsonProperty(PropertyName = "versionnumber")]
+        public long? Versionnumber { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "versionnumber")]
-        public long? Versionnumber { get; set; }
+        [JsonProperty(PropertyName = "bcgov_businesscontactid")]
+        public string BcgovBusinesscontactid { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "incidentid")]
+        public string Incidentid { get; set; }
 
     }
 }

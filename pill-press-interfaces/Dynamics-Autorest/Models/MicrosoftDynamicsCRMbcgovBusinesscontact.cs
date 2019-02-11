@@ -29,32 +29,34 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// Initializes a new instance of the
         /// MicrosoftDynamicsCRMbcgovBusinesscontact class.
         /// </summary>
-        public MicrosoftDynamicsCRMbcgovBusinesscontact(System.DateTimeOffset? createdon = default(System.DateTimeOffset?), int? statecode = default(int?), int? bcgovContacttype = default(int?), int? timezoneruleversionnumber = default(int?), string _modifiedbyValue = default(string), string _owneridValue = default(string), int? bcgovRegisteredsellerownermanager = default(int?), string bcgovBusinesscontactid = default(string), string _createdonbehalfbyValue = default(string), string _owningbusinessunitValue = default(string), string _bcgovContactValue = default(string), string _bcgovBusinessprofileValue = default(string), System.DateTimeOffset? modifiedon = default(System.DateTimeOffset?), string _owningteamValue = default(string), int? utcconversiontimezonecode = default(int?), string _modifiedonbehalfbyValue = default(string), int? importsequencenumber = default(int?), string _createdbyValue = default(string), string bcgovName = default(string), long? versionnumber = default(long?), string _owninguserValue = default(string), int? statuscode = default(int?), string bcgovJobtitle = default(string), System.DateTimeOffset? overriddencreatedon = default(System.DateTimeOffset?), MicrosoftDynamicsCRMsystemuser createdbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser createdonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser owninguser = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMteam owningteam = default(MicrosoftDynamicsCRMteam), MicrosoftDynamicsCRMprincipal ownerid = default(MicrosoftDynamicsCRMprincipal), MicrosoftDynamicsCRMbusinessunit owningbusinessunit = default(MicrosoftDynamicsCRMbusinessunit), IList<MicrosoftDynamicsCRMsyncerror> bcgovBusinesscontactSyncErrors = default(IList<MicrosoftDynamicsCRMsyncerror>), IList<MicrosoftDynamicsCRMduplicaterecord> bcgovBusinesscontactDuplicateMatchingRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMduplicaterecord> bcgovBusinesscontactDuplicateBaseRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMasyncoperation> bcgovBusinesscontactAsyncOperations = default(IList<MicrosoftDynamicsCRMasyncoperation>), IList<MicrosoftDynamicsCRMbulkdeletefailure> bcgovBusinesscontactBulkDeleteFailures = default(IList<MicrosoftDynamicsCRMbulkdeletefailure>), MicrosoftDynamicsCRMaccount bcgovBusinessProfile = default(MicrosoftDynamicsCRMaccount), MicrosoftDynamicsCRMcontact bcgovContact = default(MicrosoftDynamicsCRMcontact), IList<MicrosoftDynamicsCRMincident> bcgovIncidentBusinesscontact = default(IList<MicrosoftDynamicsCRMincident>))
+        public MicrosoftDynamicsCRMbcgovBusinesscontact(string _owningbusinessunitValue = default(string), string _owneridValue = default(string), System.DateTimeOffset? overriddencreatedon = default(System.DateTimeOffset?), int? utcconversiontimezonecode = default(int?), System.DateTimeOffset? createdon = default(System.DateTimeOffset?), string _modifiedonbehalfbyValue = default(string), int? timezoneruleversionnumber = default(int?), string _bcgovContactValue = default(string), int? statuscode = default(int?), string _owninguserValue = default(string), int? importsequencenumber = default(int?), int? bcgovRegisteredsellerownermanager = default(int?), System.DateTimeOffset? bcgovEnddate = default(System.DateTimeOffset?), string _createdbyValue = default(string), string _createdonbehalfbyValue = default(string), string bcgovJobtitle = default(string), string bcgovName = default(string), long? versionnumber = default(long?), string _modifiedbyValue = default(string), int? bcgovContacttype = default(int?), int? statecode = default(int?), string _bcgovBusinessprofileValue = default(string), System.DateTimeOffset? bcgovFromdate = default(System.DateTimeOffset?), string bcgovBusinesscontactid = default(string), System.DateTimeOffset? modifiedon = default(System.DateTimeOffset?), string _owningteamValue = default(string), MicrosoftDynamicsCRMsystemuser createdbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser createdonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser owninguser = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMteam owningteam = default(MicrosoftDynamicsCRMteam), MicrosoftDynamicsCRMprincipal ownerid = default(MicrosoftDynamicsCRMprincipal), MicrosoftDynamicsCRMbusinessunit owningbusinessunit = default(MicrosoftDynamicsCRMbusinessunit), IList<MicrosoftDynamicsCRMsyncerror> bcgovBusinesscontactSyncErrors = default(IList<MicrosoftDynamicsCRMsyncerror>), IList<MicrosoftDynamicsCRMduplicaterecord> bcgovBusinesscontactDuplicateMatchingRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMduplicaterecord> bcgovBusinesscontactDuplicateBaseRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMasyncoperation> bcgovBusinesscontactAsyncOperations = default(IList<MicrosoftDynamicsCRMasyncoperation>), IList<MicrosoftDynamicsCRMbulkdeletefailure> bcgovBusinesscontactBulkDeleteFailures = default(IList<MicrosoftDynamicsCRMbulkdeletefailure>), MicrosoftDynamicsCRMaccount bcgovBusinessProfile = default(MicrosoftDynamicsCRMaccount), MicrosoftDynamicsCRMcontact bcgovContact = default(MicrosoftDynamicsCRMcontact), IList<MicrosoftDynamicsCRMincident> bcgovIncidentBusinesscontact = default(IList<MicrosoftDynamicsCRMincident>))
         {
-            Createdon = createdon;
-            Statecode = statecode;
-            BcgovContacttype = bcgovContacttype;
-            Timezoneruleversionnumber = timezoneruleversionnumber;
-            this._modifiedbyValue = _modifiedbyValue;
-            this._owneridValue = _owneridValue;
-            BcgovRegisteredsellerownermanager = bcgovRegisteredsellerownermanager;
-            BcgovBusinesscontactid = bcgovBusinesscontactid;
-            this._createdonbehalfbyValue = _createdonbehalfbyValue;
             this._owningbusinessunitValue = _owningbusinessunitValue;
-            this._bcgovContactValue = _bcgovContactValue;
-            this._bcgovBusinessprofileValue = _bcgovBusinessprofileValue;
-            Modifiedon = modifiedon;
-            this._owningteamValue = _owningteamValue;
+            this._owneridValue = _owneridValue;
+            Overriddencreatedon = overriddencreatedon;
             Utcconversiontimezonecode = utcconversiontimezonecode;
+            Createdon = createdon;
             this._modifiedonbehalfbyValue = _modifiedonbehalfbyValue;
+            Timezoneruleversionnumber = timezoneruleversionnumber;
+            this._bcgovContactValue = _bcgovContactValue;
+            Statuscode = statuscode;
+            this._owninguserValue = _owninguserValue;
             Importsequencenumber = importsequencenumber;
+            BcgovRegisteredsellerownermanager = bcgovRegisteredsellerownermanager;
+            BcgovEnddate = bcgovEnddate;
             this._createdbyValue = _createdbyValue;
+            this._createdonbehalfbyValue = _createdonbehalfbyValue;
+            BcgovJobtitle = bcgovJobtitle;
             BcgovName = bcgovName;
             Versionnumber = versionnumber;
-            this._owninguserValue = _owninguserValue;
-            Statuscode = statuscode;
-            BcgovJobtitle = bcgovJobtitle;
-            Overriddencreatedon = overriddencreatedon;
+            this._modifiedbyValue = _modifiedbyValue;
+            BcgovContacttype = bcgovContacttype;
+            Statecode = statecode;
+            this._bcgovBusinessprofileValue = _bcgovBusinessprofileValue;
+            BcgovFromdate = bcgovFromdate;
+            BcgovBusinesscontactid = bcgovBusinesscontactid;
+            Modifiedon = modifiedon;
+            this._owningteamValue = _owningteamValue;
             Createdbyname = createdbyname;
             Createdonbehalfbyname = createdonbehalfbyname;
             Modifiedbyname = modifiedbyname;
@@ -81,28 +83,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "createdon")]
-        public System.DateTimeOffset? Createdon { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "statecode")]
-        public int? Statecode { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "bcgov_contacttype")]
-        public int? BcgovContacttype { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "timezoneruleversionnumber")]
-        public int? Timezoneruleversionnumber { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "_modifiedby_value")]
-        public string _modifiedbyValue { get; set; }
+        [JsonProperty(PropertyName = "_owningbusinessunit_value")]
+        public string _owningbusinessunitValue { get; set; }
 
         /// <summary>
         /// </summary>
@@ -111,43 +93,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "bcgov_registeredsellerownermanager")]
-        public int? BcgovRegisteredsellerownermanager { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "bcgov_businesscontactid")]
-        public string BcgovBusinesscontactid { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "_createdonbehalfby_value")]
-        public string _createdonbehalfbyValue { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "_owningbusinessunit_value")]
-        public string _owningbusinessunitValue { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "_bcgov_contact_value")]
-        public string _bcgovContactValue { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "_bcgov_businessprofile_value")]
-        public string _bcgovBusinessprofileValue { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "modifiedon")]
-        public System.DateTimeOffset? Modifiedon { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "_owningteam_value")]
-        public string _owningteamValue { get; set; }
+        [JsonProperty(PropertyName = "overriddencreatedon")]
+        public System.DateTimeOffset? Overriddencreatedon { get; set; }
 
         /// <summary>
         /// </summary>
@@ -156,8 +103,33 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "createdon")]
+        public System.DateTimeOffset? Createdon { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "_modifiedonbehalfby_value")]
         public string _modifiedonbehalfbyValue { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "timezoneruleversionnumber")]
+        public int? Timezoneruleversionnumber { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "_bcgov_contact_value")]
+        public string _bcgovContactValue { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "statuscode")]
+        public int? Statuscode { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "_owninguser_value")]
+        public string _owninguserValue { get; set; }
 
         /// <summary>
         /// </summary>
@@ -166,8 +138,28 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "bcgov_registeredsellerownermanager")]
+        public int? BcgovRegisteredsellerownermanager { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_enddate")]
+        public System.DateTimeOffset? BcgovEnddate { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "_createdby_value")]
         public string _createdbyValue { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "_createdonbehalfby_value")]
+        public string _createdonbehalfbyValue { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_jobtitle")]
+        public string BcgovJobtitle { get; set; }
 
         /// <summary>
         /// </summary>
@@ -181,23 +173,43 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "_owninguser_value")]
-        public string _owninguserValue { get; set; }
+        [JsonProperty(PropertyName = "_modifiedby_value")]
+        public string _modifiedbyValue { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "statuscode")]
-        public int? Statuscode { get; set; }
+        [JsonProperty(PropertyName = "bcgov_contacttype")]
+        public int? BcgovContacttype { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "bcgov_jobtitle")]
-        public string BcgovJobtitle { get; set; }
+        [JsonProperty(PropertyName = "statecode")]
+        public int? Statecode { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "overriddencreatedon")]
-        public System.DateTimeOffset? Overriddencreatedon { get; set; }
+        [JsonProperty(PropertyName = "_bcgov_businessprofile_value")]
+        public string _bcgovBusinessprofileValue { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_fromdate")]
+        public System.DateTimeOffset? BcgovFromdate { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_businesscontactid")]
+        public string BcgovBusinesscontactid { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "modifiedon")]
+        public System.DateTimeOffset? Modifiedon { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "_owningteam_value")]
+        public string _owningteamValue { get; set; }
 
         /// <summary>
         /// </summary>

@@ -29,7 +29,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// Initializes a new instance of the MicrosoftDynamicsCRMaccount
         /// class.
         /// </summary>
-        public MicrosoftDynamicsCRMaccount(object openrevenue = default(object), int? territorycode = default(int?), System.DateTimeOffset? lastusedincampaign = default(System.DateTimeOffset?), string address1Name = default(string), string address1Telephone2 = default(string), System.DateTimeOffset? overriddencreatedon = default(System.DateTimeOffset?), string entityimageid = default(string), int? ownershipcode = default(int?), int? customersizecode = default(int?), System.DateTimeOffset? bcgovSubmitteddate = default(System.DateTimeOffset?), object creditlimit = default(object), string _primarycontactidValue = default(string), long? versionnumber = default(long?), string address1County = default(string), long? entityimageTimestamp = default(long?), string telephone3 = default(string), System.DateTimeOffset? openrevenueDate = default(System.DateTimeOffset?), bool? donotbulkpostalmail = default(bool?), int? address1Freighttermscode = default(int?), string address2Line1 = default(string), int? onholdtime = default(int?), bool? donotpostalmail = default(bool?), string _createdbyexternalpartyValue = default(string), string telephone2 = default(string), string _owningbusinessunitValue = default(string), string primarysatoriid = default(string), int? shippingmethodcode = default(int?), string address1Addressid = default(string), string address2Telephone1 = default(string), string address1Fax = default(string), string _owneridValue = default(string), string _createdonbehalfbyValue = default(string), int? preferredcontactmethodcode = default(int?), string address2City = default(string), double? address2Latitude = default(double?), string address2Composite = default(string), object creditlimitBase = default(object), bool? bcgovMailaddressdiffromphysaddress = default(bool?), object aging90Base = default(object), string address2Postalcode = default(string), string address2Name = default(string), bool? merged = default(bool?), int? preferredappointmentdaycode = default(int?), string _owningteamValue = default(string), string bcgovBusinessnumber = default(string), string address2Line3 = default(string), object revenueBase = default(object), object aging30 = default(object), string ftpsiteurl = default(string), bool? donotbulkemail = default(bool?), string _originatingleadidValue = default(string), string emailaddress3 = default(string), string _modifiedbyexternalpartyValue = default(string), int? paymenttermscode = default(int?), string websiteurl = default(string), object revenue = default(object), string bcgovDoingbusinessasname = default(string), int? address1Shippingmethodcode = default(int?), string description = default(string), string _bcgovCurrentbusinessmailingaddressValue = default(string), string tickersymbol = default(string), int? bcgovBusinesstype = default(int?), System.DateTimeOffset? lastonholdtime = default(System.DateTimeOffset?), bool? bcgovBusinessprofileupdate = default(bool?), int? statuscode = default(int?), object marketcap = default(object), string _parentaccountidValue = default(string), string _owninguserValue = default(string), string address2Addressid = default(string), string _bcgovAdditionalcontactValue = default(string), string _preferredsystemuseridValue = default(string), double? address2Longitude = default(double?), string _defaultpricelevelidValue = default(string), int? openrevenueState = default(int?), string address1Primarycontactname = default(string), int? accountcategorycode = default(int?), int? statecode = default(int?), object marketcapBase = default(object), bool? donotfax = default(bool?), string address2Telephone3 = default(string), string address2Postofficebox = default(string), bool? marketingonly = default(bool?), string _preferredserviceidValue = default(string), int? importsequencenumber = default(int?), string address1Upszone = default(string), string stageid = default(string), int? utcconversiontimezonecode = default(int?), bool? donotemail = default(bool?), object aging60 = default(object), int? customertypecode = default(int?), string telephone1 = default(string), int? opendealsState = default(int?), string address1Postofficebox = default(string), string _modifiedbyValue = default(string), string yominame = default(string), string address2Country = default(string), string address1Line2 = default(string), string bcgovBceid = default(string), bool? donotsendmm = default(bool?), string address1Postalcode = default(string), string traversedpath = default(string), string _transactioncurrencyidValue = default(string), string fax = default(string), int? numberofemployees = default(int?), System.DateTimeOffset? opendealsDate = default(System.DateTimeOffset?), string address2Upszone = default(string), int? address2Freighttermscode = default(int?), int? accountratingcode = default(int?), object aging90 = default(object), double? address1Longitude = default(double?), bool? participatesinworkflow = default(bool?), string emailaddress2 = default(string), bool? creditonhold = default(bool?), string address1Telephone1 = default(string), System.DateTimeOffset? createdon = default(System.DateTimeOffset?), string name = default(string), object exchangerate = default(object), int? address2Addresstypecode = default(int?), string address1Stateorprovince = default(string), string address2Line2 = default(string), object entityimage = default(object), string primarytwitterid = default(string), string timespentbymeonemailandmeetings = default(string), string accountnumber = default(string), string address1Line1 = default(string), string _territoryidValue = default(string), string accountid = default(string), string address1Composite = default(string), string _slaidValue = default(string), string address2County = default(string), bool? bcgovDeclarationofcorrectinformation = default(bool?), bool? followemail = default(bool?), bool? donotphone = default(bool?), int? accountclassificationcode = default(int?), string _preferredequipmentidValue = default(string), string sic = default(string), string bcgovClientid = default(string), string entityimageUrl = default(string), string processid = default(string), string address2Telephone2 = default(string), int? address1Addresstypecode = default(int?), int? address1Utcoffset = default(int?), string address2Fax = default(string), int? businesstypecode = default(int?), object aging60Base = default(object), string address1Country = default(string), string _modifiedonbehalfbyValue = default(string), int? address2Shippingmethodcode = default(int?), string stockexchange = default(string), string _createdbyValue = default(string), string address1Line3 = default(string), bool? bcgovFoippaconsent = default(bool?), object aging30Base = default(object), object openrevenueBase = default(object), int? sharesoutstanding = default(int?), string _slainvokedidValue = default(string), string address1City = default(string), string address2Primarycontactname = default(string), double? address1Latitude = default(double?), System.DateTimeOffset? modifiedon = default(System.DateTimeOffset?), string _masteridValue = default(string), int? address2Utcoffset = default(int?), string _bcgovCurrentbusinessphysicaladdressValue = default(string), bool? bcgovConsentforemailcommunication = default(bool?), string emailaddress1 = default(string), int? timezoneruleversionnumber = default(int?), int? opendeals = default(int?), string address2Stateorprovince = default(string), int? preferredappointmenttimecode = default(int?), int? industrycode = default(int?), string address1Telephone3 = default(string), IList<MicrosoftDynamicsCRMlead> accountleadsAssociation = default(IList<MicrosoftDynamicsCRMlead>), IList<MicrosoftDynamicsCRMlist> listaccountAssociation = default(IList<MicrosoftDynamicsCRMlist>), IList<MicrosoftDynamicsCRMentitlement> accountEntitlementCustomer = default(IList<MicrosoftDynamicsCRMentitlement>), IList<MicrosoftDynamicsCRMentitlement> accountEntitlementAccount = default(IList<MicrosoftDynamicsCRMentitlement>), IList<MicrosoftDynamicsCRMbookableresource> accountBookableresourceAccountId = default(IList<MicrosoftDynamicsCRMbookableresource>), MicrosoftDynamicsCRMprincipal ownerid = default(MicrosoftDynamicsCRMprincipal), IList<MicrosoftDynamicsCRMactivitypointer> accountActivityPointers = default(IList<MicrosoftDynamicsCRMactivitypointer>), IList<MicrosoftDynamicsCRMserviceappointment> accountServiceAppointments = default(IList<MicrosoftDynamicsCRMserviceappointment>), IList<MicrosoftDynamicsCRMsyncerror> accountSyncErrors = default(IList<MicrosoftDynamicsCRMsyncerror>), MicrosoftDynamicsCRMsystemuser createdby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMlead> leadCustomerAccounts = default(IList<MicrosoftDynamicsCRMlead>), IList<MicrosoftDynamicsCRMemail> accountEmailSendersAccount = default(IList<MicrosoftDynamicsCRMemail>), IList<MicrosoftDynamicsCRMemail> accountEmailEmailSender = default(IList<MicrosoftDynamicsCRMemail>), IList<MicrosoftDynamicsCRMcontract> contractBillingcustomerAccounts = default(IList<MicrosoftDynamicsCRMcontract>), IList<MicrosoftDynamicsCRMannotation> accountAnnotation = default(IList<MicrosoftDynamicsCRMannotation>), IList<MicrosoftDynamicsCRMsharepointdocumentlocation> accountSharepointDocumentLocation = default(IList<MicrosoftDynamicsCRMsharepointdocumentlocation>), MicrosoftDynamicsCRMservice preferredserviceid = default(MicrosoftDynamicsCRMservice), MicrosoftDynamicsCRMsla slaAccountSla = default(MicrosoftDynamicsCRMsla), IList<MicrosoftDynamicsCRMconnection> accountConnections2 = default(IList<MicrosoftDynamicsCRMconnection>), MicrosoftDynamicsCRMsystemuser modifiedby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMpostfollow> accountPostFollows = default(IList<MicrosoftDynamicsCRMpostfollow>), IList<MicrosoftDynamicsCRMpostregarding> accountPostRegardings = default(IList<MicrosoftDynamicsCRMpostregarding>), IList<MicrosoftDynamicsCRMfax> accountFaxes = default(IList<MicrosoftDynamicsCRMfax>), MicrosoftDynamicsCRMaccount masterid = default(MicrosoftDynamicsCRMaccount), IList<MicrosoftDynamicsCRMaccount> accountMasterAccount = default(IList<MicrosoftDynamicsCRMaccount>), MicrosoftDynamicsCRMequipment preferredequipmentid = default(MicrosoftDynamicsCRMequipment), MicrosoftDynamicsCRMbusinessunit owningbusinessunit = default(MicrosoftDynamicsCRMbusinessunit), IList<MicrosoftDynamicsCRMasyncoperation> accountAsyncOperations = default(IList<MicrosoftDynamicsCRMasyncoperation>), MicrosoftDynamicsCRMtransactioncurrency transactioncurrencyid = default(MicrosoftDynamicsCRMtransactioncurrency), IList<MicrosoftDynamicsCRMduplicaterecord> accountDuplicateBaseRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), MicrosoftDynamicsCRMsystemuser preferredsystemuserid = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMbulkoperationlog> createdAccountBulkOperationLogs2 = default(IList<MicrosoftDynamicsCRMbulkoperationlog>), MicrosoftDynamicsCRMsystemuser createdonbehalfby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMrecurringappointmentmaster> accountRecurringAppointmentMasters = default(IList<MicrosoftDynamicsCRMrecurringappointmentmaster>), IList<MicrosoftDynamicsCRMphonecall> accountPhonecalls = default(IList<MicrosoftDynamicsCRMphonecall>), MicrosoftDynamicsCRMcontact primarycontactid = default(MicrosoftDynamicsCRMcontact), IList<MicrosoftDynamicsCRMsocialactivity> accountSocialActivities = default(IList<MicrosoftDynamicsCRMsocialactivity>), IList<MicrosoftDynamicsCRMsocialactivity> socialActivityPostAuthorAccountAccounts = default(IList<MicrosoftDynamicsCRMsocialactivity>), IList<MicrosoftDynamicsCRMopportunity> opportunityCustomerAccounts = default(IList<MicrosoftDynamicsCRMopportunity>), IList<MicrosoftDynamicsCRMbulkoperationlog> sourceAccountBulkOperationLogs = default(IList<MicrosoftDynamicsCRMbulkoperationlog>), IList<MicrosoftDynamicsCRMcustomeraddress> accountCustomerAddress = default(IList<MicrosoftDynamicsCRMcustomeraddress>), IList<MicrosoftDynamicsCRMslakpiinstance> slakpiinstanceAccount = default(IList<MicrosoftDynamicsCRMslakpiinstance>), MicrosoftDynamicsCRMlead originatingleadid = default(MicrosoftDynamicsCRMlead), IList<MicrosoftDynamicsCRMtask> accountTasks = default(IList<MicrosoftDynamicsCRMtask>), IList<MicrosoftDynamicsCRMopportunity> opportunityParentAccount = default(IList<MicrosoftDynamicsCRMopportunity>), MicrosoftDynamicsCRMsla slainvokedidAccountSla = default(MicrosoftDynamicsCRMsla), IList<MicrosoftDynamicsCRMbulkdeletefailure> accountBulkDeleteFailures = default(IList<MicrosoftDynamicsCRMbulkdeletefailure>), IList<MicrosoftDynamicsCRMquote> quoteCustomerAccounts = default(IList<MicrosoftDynamicsCRMquote>), IList<MicrosoftDynamicsCRMsocialactivity> socialActivityPostAuthorAccounts = default(IList<MicrosoftDynamicsCRMsocialactivity>), MicrosoftDynamicsCRMterritory territoryid = default(MicrosoftDynamicsCRMterritory), IList<MicrosoftDynamicsCRMcontact> contactCustomerAccounts = default(IList<MicrosoftDynamicsCRMcontact>), IList<MicrosoftDynamicsCRMincident> incidentCustomerAccounts = default(IList<MicrosoftDynamicsCRMincident>), IList<MicrosoftDynamicsCRMinvoice> invoiceCustomerAccounts = default(IList<MicrosoftDynamicsCRMinvoice>), IList<MicrosoftDynamicsCRMappointment> accountAppointments = default(IList<MicrosoftDynamicsCRMappointment>), IList<MicrosoftDynamicsCRMcontractdetail> contractlineitemCustomerAccounts = default(IList<MicrosoftDynamicsCRMcontractdetail>), IList<MicrosoftDynamicsCRMemail> accountEmails = default(IList<MicrosoftDynamicsCRMemail>), MicrosoftDynamicsCRMaccount parentaccountid = default(MicrosoftDynamicsCRMaccount), IList<MicrosoftDynamicsCRMaccount> accountParentAccount = default(IList<MicrosoftDynamicsCRMaccount>), IList<MicrosoftDynamicsCRMsocialprofile> socialprofileCustomerAccounts = default(IList<MicrosoftDynamicsCRMsocialprofile>), IList<MicrosoftDynamicsCRMduplicaterecord> accountDuplicateMatchingRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMactivityparty> accountActivityParties = default(IList<MicrosoftDynamicsCRMactivityparty>), IList<MicrosoftDynamicsCRMconnection> accountConnections1 = default(IList<MicrosoftDynamicsCRMconnection>), MicrosoftDynamicsCRMteam owningteam = default(MicrosoftDynamicsCRMteam), MicrosoftDynamicsCRMpricelevel defaultpricelevelid = default(MicrosoftDynamicsCRMpricelevel), IList<MicrosoftDynamicsCRMlead> leadParentAccount = default(IList<MicrosoftDynamicsCRMlead>), IList<MicrosoftDynamicsCRMcontract> contractCustomerAccounts = default(IList<MicrosoftDynamicsCRMcontract>), IList<MicrosoftDynamicsCRMactioncard> accountActioncard = default(IList<MicrosoftDynamicsCRMactioncard>), MicrosoftDynamicsCRMsystemuser owninguser = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMletter> accountLetters = default(IList<MicrosoftDynamicsCRMletter>), MicrosoftDynamicsCRMprocessstage stageidProcessstage = default(MicrosoftDynamicsCRMprocessstage), IList<MicrosoftDynamicsCRMsalesorder> orderCustomerAccounts = default(IList<MicrosoftDynamicsCRMsalesorder>), MicrosoftDynamicsCRMsystemuser modifiedonbehalfby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMknowledgebaserecord> accountKnowledgebaserecord = default(IList<MicrosoftDynamicsCRMknowledgebaserecord>), IList<MicrosoftDynamicsCRMknowledgearticle> msdynAccountKnowledgearticle = default(IList<MicrosoftDynamicsCRMknowledgearticle>), IList<MicrosoftDynamicsCRMqueueitem> accountQueueItems = default(IList<MicrosoftDynamicsCRMqueueitem>), IList<MicrosoftDynamicsCRMteam> accountTeams = default(IList<MicrosoftDynamicsCRMteam>), IList<MicrosoftDynamicsCRMbcgovBusinesscontact> bcgovAccountBcgovBusinesscontactBusinessProfile = default(IList<MicrosoftDynamicsCRMbcgovBusinesscontact>), IList<MicrosoftDynamicsCRMbcgovCustomaddress> bcgovAccountCustomaddress = default(IList<MicrosoftDynamicsCRMbcgovCustomaddress>), IList<MicrosoftDynamicsCRMbcgovEquipment> bcgovAccountEquipmentCurrentBusinessOwner = default(IList<MicrosoftDynamicsCRMbcgovEquipment>), IList<MicrosoftDynamicsCRMbcgovLocation> bcgovAccountLocationBusinessProfile = default(IList<MicrosoftDynamicsCRMbcgovLocation>), MicrosoftDynamicsCRMcontact bcgovAdditionalContact = default(MicrosoftDynamicsCRMcontact), MicrosoftDynamicsCRMbcgovCustomaddress bcgovCurrentBusinessPhysicalAddress = default(MicrosoftDynamicsCRMbcgovCustomaddress), MicrosoftDynamicsCRMbcgovCustomaddress bcgovCurrentBusinessMailingAddress = default(MicrosoftDynamicsCRMbcgovCustomaddress), IList<MicrosoftDynamicsCRMbcgovCustomaddress> bcgovAccountCustomaddressBusinessProfile = default(IList<MicrosoftDynamicsCRMbcgovCustomaddress>), IList<MicrosoftDynamicsCRMcontact> bcgovAccountContactBusinessLegalName = default(IList<MicrosoftDynamicsCRMcontact>), IList<MicrosoftDynamicsCRMbcgovCertificate> bcgovAccountBcgovCertificateCertificateHolderBusiness = default(IList<MicrosoftDynamicsCRMbcgovCertificate>))
+        public MicrosoftDynamicsCRMaccount(object openrevenue = default(object), int? territorycode = default(int?), System.DateTimeOffset? lastusedincampaign = default(System.DateTimeOffset?), string address1Name = default(string), string address1Telephone2 = default(string), System.DateTimeOffset? overriddencreatedon = default(System.DateTimeOffset?), string entityimageid = default(string), int? ownershipcode = default(int?), int? customersizecode = default(int?), string bcgovBceid = default(string), string _bcgovCurrentbusinessphysicaladdressValue = default(string), object creditlimit = default(object), string _primarycontactidValue = default(string), long? versionnumber = default(long?), string address1County = default(string), long? entityimageTimestamp = default(long?), string telephone3 = default(string), System.DateTimeOffset? openrevenueDate = default(System.DateTimeOffset?), bool? bcgovWaiveradministrativehold = default(bool?), bool? donotbulkpostalmail = default(bool?), int? address1Freighttermscode = default(int?), string address2Line1 = default(string), int? onholdtime = default(int?), bool? donotpostalmail = default(bool?), string _createdbyexternalpartyValue = default(string), string telephone2 = default(string), string _owningbusinessunitValue = default(string), string primarysatoriid = default(string), int? shippingmethodcode = default(int?), string address1Addressid = default(string), bool? bcgovMailaddressdiffromphysaddress = default(bool?), string address2Telephone1 = default(string), string address1Fax = default(string), bool? bcgovDeclarationofcorrectinformation = default(bool?), string _owneridValue = default(string), string _createdonbehalfbyValue = default(string), int? preferredcontactmethodcode = default(int?), string address2City = default(string), double? address2Latitude = default(double?), string address2Composite = default(string), object creditlimitBase = default(object), string bcgovClientid = default(string), object aging90Base = default(object), string address2Postalcode = default(string), string address2Name = default(string), bool? merged = default(bool?), int? preferredappointmentdaycode = default(int?), string _owningteamValue = default(string), string address2Line3 = default(string), object revenueBase = default(object), object aging30 = default(object), string ftpsiteurl = default(string), bool? donotbulkemail = default(bool?), string _originatingleadidValue = default(string), string emailaddress3 = default(string), string _modifiedbyexternalpartyValue = default(string), int? paymenttermscode = default(int?), string websiteurl = default(string), object revenue = default(object), int? address1Shippingmethodcode = default(int?), string description = default(string), string tickersymbol = default(string), System.DateTimeOffset? lastonholdtime = default(System.DateTimeOffset?), int? statuscode = default(int?), System.DateTimeOffset? bcgovLegislativeauthoritystatusdate = default(System.DateTimeOffset?), object marketcap = default(object), string _parentaccountidValue = default(string), string _owninguserValue = default(string), System.DateTimeOffset? bcgovSubmitteddate = default(System.DateTimeOffset?), string _bcgovAdditionalcontactValue = default(string), string address2Addressid = default(string), string _preferredsystemuseridValue = default(string), double? address2Longitude = default(double?), string _defaultpricelevelidValue = default(string), int? openrevenueState = default(int?), string address1Primarycontactname = default(string), bool? bcgovFoippaconsent = default(bool?), int? accountcategorycode = default(int?), int? statecode = default(int?), object marketcapBase = default(object), bool? donotfax = default(bool?), System.DateTimeOffset? bcgovLegislativeauthoritystatusnotificationdat = default(System.DateTimeOffset?), string address2Telephone3 = default(string), string address2Postofficebox = default(string), bool? marketingonly = default(bool?), string _preferredserviceidValue = default(string), bool? bcgovRegisteredselleradministrativehold = default(bool?), int? importsequencenumber = default(int?), string address1Upszone = default(string), string stageid = default(string), int? utcconversiontimezonecode = default(int?), bool? donotemail = default(bool?), object aging60 = default(object), string _bcgovCurrentbusinessmailingaddressValue = default(string), int? customertypecode = default(int?), string telephone1 = default(string), int? opendealsState = default(int?), string address1Postofficebox = default(string), bool? bcgovAoadministrativehold = default(bool?), string _modifiedbyValue = default(string), int? bcgovBusinesstype = default(int?), string yominame = default(string), string address2Country = default(string), bool? bcgovBusinessprofileupdate = default(bool?), string address1Line2 = default(string), bool? donotsendmm = default(bool?), string address1Postalcode = default(string), string traversedpath = default(string), string _transactioncurrencyidValue = default(string), string fax = default(string), int? numberofemployees = default(int?), System.DateTimeOffset? opendealsDate = default(System.DateTimeOffset?), string address2Upszone = default(string), int? address2Freighttermscode = default(int?), int? accountratingcode = default(int?), object aging90 = default(object), double? address1Longitude = default(double?), bool? bcgovConsentforemailcommunication = default(bool?), bool? participatesinworkflow = default(bool?), string emailaddress2 = default(string), bool? creditonhold = default(bool?), string address1Telephone1 = default(string), System.DateTimeOffset? createdon = default(System.DateTimeOffset?), string name = default(string), object exchangerate = default(object), int? address2Addresstypecode = default(int?), string address1Stateorprovince = default(string), string address2Line2 = default(string), object entityimage = default(object), string primarytwitterid = default(string), string timespentbymeonemailandmeetings = default(string), string accountnumber = default(string), string address1Line1 = default(string), string _territoryidValue = default(string), string accountid = default(string), string address1Composite = default(string), string _slaidValue = default(string), string address2County = default(string), bool? followemail = default(bool?), bool? donotphone = default(bool?), int? accountclassificationcode = default(int?), string _preferredequipmentidValue = default(string), int? bcgovLegislativeauthoritylicensestatus = default(int?), string sic = default(string), string entityimageUrl = default(string), string processid = default(string), string address2Telephone2 = default(string), int? address1Addresstypecode = default(int?), int? address1Utcoffset = default(int?), string address2Fax = default(string), int? businesstypecode = default(int?), object aging60Base = default(object), string address1Country = default(string), string _modifiedonbehalfbyValue = default(string), int? address2Shippingmethodcode = default(int?), string stockexchange = default(string), string _createdbyValue = default(string), string address1Line3 = default(string), object aging30Base = default(object), object openrevenueBase = default(object), int? sharesoutstanding = default(int?), string _slainvokedidValue = default(string), string address1City = default(string), string address2Primarycontactname = default(string), string bcgovDoingbusinessasname = default(string), double? address1Latitude = default(double?), System.DateTimeOffset? modifiedon = default(System.DateTimeOffset?), string _masteridValue = default(string), int? address2Utcoffset = default(int?), string emailaddress1 = default(string), int? timezoneruleversionnumber = default(int?), int? opendeals = default(int?), string address2Stateorprovince = default(string), int? preferredappointmenttimecode = default(int?), string bcgovBusinessnumber = default(string), int? industrycode = default(int?), string address1Telephone3 = default(string), IList<MicrosoftDynamicsCRMlead> accountleadsAssociation = default(IList<MicrosoftDynamicsCRMlead>), IList<MicrosoftDynamicsCRMlist> listaccountAssociation = default(IList<MicrosoftDynamicsCRMlist>), IList<MicrosoftDynamicsCRMentitlement> accountEntitlementCustomer = default(IList<MicrosoftDynamicsCRMentitlement>), IList<MicrosoftDynamicsCRMentitlement> accountEntitlementAccount = default(IList<MicrosoftDynamicsCRMentitlement>), IList<MicrosoftDynamicsCRMbookableresource> accountBookableresourceAccountId = default(IList<MicrosoftDynamicsCRMbookableresource>), MicrosoftDynamicsCRMprincipal ownerid = default(MicrosoftDynamicsCRMprincipal), IList<MicrosoftDynamicsCRMactivitypointer> accountActivityPointers = default(IList<MicrosoftDynamicsCRMactivitypointer>), IList<MicrosoftDynamicsCRMserviceappointment> accountServiceAppointments = default(IList<MicrosoftDynamicsCRMserviceappointment>), IList<MicrosoftDynamicsCRMsyncerror> accountSyncErrors = default(IList<MicrosoftDynamicsCRMsyncerror>), MicrosoftDynamicsCRMsystemuser createdby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMlead> leadCustomerAccounts = default(IList<MicrosoftDynamicsCRMlead>), IList<MicrosoftDynamicsCRMemail> accountEmailSendersAccount = default(IList<MicrosoftDynamicsCRMemail>), IList<MicrosoftDynamicsCRMemail> accountEmailEmailSender = default(IList<MicrosoftDynamicsCRMemail>), IList<MicrosoftDynamicsCRMcontract> contractBillingcustomerAccounts = default(IList<MicrosoftDynamicsCRMcontract>), IList<MicrosoftDynamicsCRMannotation> accountAnnotation = default(IList<MicrosoftDynamicsCRMannotation>), IList<MicrosoftDynamicsCRMsharepointdocumentlocation> accountSharepointDocumentLocation = default(IList<MicrosoftDynamicsCRMsharepointdocumentlocation>), MicrosoftDynamicsCRMservice preferredserviceid = default(MicrosoftDynamicsCRMservice), MicrosoftDynamicsCRMsla slaAccountSla = default(MicrosoftDynamicsCRMsla), IList<MicrosoftDynamicsCRMconnection> accountConnections2 = default(IList<MicrosoftDynamicsCRMconnection>), MicrosoftDynamicsCRMsystemuser modifiedby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMpostfollow> accountPostFollows = default(IList<MicrosoftDynamicsCRMpostfollow>), IList<MicrosoftDynamicsCRMpostregarding> accountPostRegardings = default(IList<MicrosoftDynamicsCRMpostregarding>), IList<MicrosoftDynamicsCRMfax> accountFaxes = default(IList<MicrosoftDynamicsCRMfax>), MicrosoftDynamicsCRMaccount masterid = default(MicrosoftDynamicsCRMaccount), IList<MicrosoftDynamicsCRMaccount> accountMasterAccount = default(IList<MicrosoftDynamicsCRMaccount>), MicrosoftDynamicsCRMequipment preferredequipmentid = default(MicrosoftDynamicsCRMequipment), MicrosoftDynamicsCRMbusinessunit owningbusinessunit = default(MicrosoftDynamicsCRMbusinessunit), IList<MicrosoftDynamicsCRMasyncoperation> accountAsyncOperations = default(IList<MicrosoftDynamicsCRMasyncoperation>), MicrosoftDynamicsCRMtransactioncurrency transactioncurrencyid = default(MicrosoftDynamicsCRMtransactioncurrency), IList<MicrosoftDynamicsCRMduplicaterecord> accountDuplicateBaseRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), MicrosoftDynamicsCRMsystemuser preferredsystemuserid = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMbulkoperationlog> createdAccountBulkOperationLogs2 = default(IList<MicrosoftDynamicsCRMbulkoperationlog>), MicrosoftDynamicsCRMsystemuser createdonbehalfby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMrecurringappointmentmaster> accountRecurringAppointmentMasters = default(IList<MicrosoftDynamicsCRMrecurringappointmentmaster>), IList<MicrosoftDynamicsCRMphonecall> accountPhonecalls = default(IList<MicrosoftDynamicsCRMphonecall>), MicrosoftDynamicsCRMcontact primarycontactid = default(MicrosoftDynamicsCRMcontact), IList<MicrosoftDynamicsCRMsocialactivity> accountSocialActivities = default(IList<MicrosoftDynamicsCRMsocialactivity>), IList<MicrosoftDynamicsCRMsocialactivity> socialActivityPostAuthorAccountAccounts = default(IList<MicrosoftDynamicsCRMsocialactivity>), IList<MicrosoftDynamicsCRMopportunity> opportunityCustomerAccounts = default(IList<MicrosoftDynamicsCRMopportunity>), IList<MicrosoftDynamicsCRMbulkoperationlog> sourceAccountBulkOperationLogs = default(IList<MicrosoftDynamicsCRMbulkoperationlog>), IList<MicrosoftDynamicsCRMcustomeraddress> accountCustomerAddress = default(IList<MicrosoftDynamicsCRMcustomeraddress>), IList<MicrosoftDynamicsCRMslakpiinstance> slakpiinstanceAccount = default(IList<MicrosoftDynamicsCRMslakpiinstance>), MicrosoftDynamicsCRMlead originatingleadid = default(MicrosoftDynamicsCRMlead), IList<MicrosoftDynamicsCRMtask> accountTasks = default(IList<MicrosoftDynamicsCRMtask>), IList<MicrosoftDynamicsCRMopportunity> opportunityParentAccount = default(IList<MicrosoftDynamicsCRMopportunity>), MicrosoftDynamicsCRMsla slainvokedidAccountSla = default(MicrosoftDynamicsCRMsla), IList<MicrosoftDynamicsCRMbulkdeletefailure> accountBulkDeleteFailures = default(IList<MicrosoftDynamicsCRMbulkdeletefailure>), IList<MicrosoftDynamicsCRMquote> quoteCustomerAccounts = default(IList<MicrosoftDynamicsCRMquote>), IList<MicrosoftDynamicsCRMsocialactivity> socialActivityPostAuthorAccounts = default(IList<MicrosoftDynamicsCRMsocialactivity>), MicrosoftDynamicsCRMterritory territoryid = default(MicrosoftDynamicsCRMterritory), IList<MicrosoftDynamicsCRMcontact> contactCustomerAccounts = default(IList<MicrosoftDynamicsCRMcontact>), IList<MicrosoftDynamicsCRMincident> incidentCustomerAccounts = default(IList<MicrosoftDynamicsCRMincident>), IList<MicrosoftDynamicsCRMinvoice> invoiceCustomerAccounts = default(IList<MicrosoftDynamicsCRMinvoice>), IList<MicrosoftDynamicsCRMappointment> accountAppointments = default(IList<MicrosoftDynamicsCRMappointment>), IList<MicrosoftDynamicsCRMcontractdetail> contractlineitemCustomerAccounts = default(IList<MicrosoftDynamicsCRMcontractdetail>), IList<MicrosoftDynamicsCRMemail> accountEmails = default(IList<MicrosoftDynamicsCRMemail>), MicrosoftDynamicsCRMaccount parentaccountid = default(MicrosoftDynamicsCRMaccount), IList<MicrosoftDynamicsCRMaccount> accountParentAccount = default(IList<MicrosoftDynamicsCRMaccount>), IList<MicrosoftDynamicsCRMsocialprofile> socialprofileCustomerAccounts = default(IList<MicrosoftDynamicsCRMsocialprofile>), IList<MicrosoftDynamicsCRMduplicaterecord> accountDuplicateMatchingRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMactivityparty> accountActivityParties = default(IList<MicrosoftDynamicsCRMactivityparty>), IList<MicrosoftDynamicsCRMconnection> accountConnections1 = default(IList<MicrosoftDynamicsCRMconnection>), MicrosoftDynamicsCRMteam owningteam = default(MicrosoftDynamicsCRMteam), MicrosoftDynamicsCRMpricelevel defaultpricelevelid = default(MicrosoftDynamicsCRMpricelevel), IList<MicrosoftDynamicsCRMlead> leadParentAccount = default(IList<MicrosoftDynamicsCRMlead>), IList<MicrosoftDynamicsCRMcontract> contractCustomerAccounts = default(IList<MicrosoftDynamicsCRMcontract>), IList<MicrosoftDynamicsCRMactioncard> accountActioncard = default(IList<MicrosoftDynamicsCRMactioncard>), MicrosoftDynamicsCRMsystemuser owninguser = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMletter> accountLetters = default(IList<MicrosoftDynamicsCRMletter>), MicrosoftDynamicsCRMprocessstage stageidProcessstage = default(MicrosoftDynamicsCRMprocessstage), IList<MicrosoftDynamicsCRMsalesorder> orderCustomerAccounts = default(IList<MicrosoftDynamicsCRMsalesorder>), MicrosoftDynamicsCRMsystemuser modifiedonbehalfby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMabsScheduledprocessexecution> accountAbsScheduledprocessexecutions = default(IList<MicrosoftDynamicsCRMabsScheduledprocessexecution>), IList<MicrosoftDynamicsCRMknowledgebaserecord> accountKnowledgebaserecord = default(IList<MicrosoftDynamicsCRMknowledgebaserecord>), IList<MicrosoftDynamicsCRMknowledgearticle> msdynAccountKnowledgearticle = default(IList<MicrosoftDynamicsCRMknowledgearticle>), IList<MicrosoftDynamicsCRMqueueitem> accountQueueItems = default(IList<MicrosoftDynamicsCRMqueueitem>), IList<MicrosoftDynamicsCRMbcgovBusinesscontact> bcgovAccountBcgovBusinesscontactBusinessProfile = default(IList<MicrosoftDynamicsCRMbcgovBusinesscontact>), IList<MicrosoftDynamicsCRMbcgovCertificate> bcgovAccountBcgovCertificateCertificateHolderBusiness = default(IList<MicrosoftDynamicsCRMbcgovCertificate>), IList<MicrosoftDynamicsCRMcontact> bcgovAccountContactBusinessLegalName = default(IList<MicrosoftDynamicsCRMcontact>), IList<MicrosoftDynamicsCRMbcgovCustomaddress> bcgovAccountCustomaddress = default(IList<MicrosoftDynamicsCRMbcgovCustomaddress>), IList<MicrosoftDynamicsCRMbcgovCustomaddress> bcgovAccountCustomaddressBusinessProfile = default(IList<MicrosoftDynamicsCRMbcgovCustomaddress>), IList<MicrosoftDynamicsCRMbcgovEquipment> bcgovAccountEquipmentCurrentBusinessOwner = default(IList<MicrosoftDynamicsCRMbcgovEquipment>), IList<MicrosoftDynamicsCRMbcgovLocation> bcgovAccountLocationBusinessProfile = default(IList<MicrosoftDynamicsCRMbcgovLocation>), MicrosoftDynamicsCRMbcgovCustomaddress bcgovCurrentBusinessMailingAddress = default(MicrosoftDynamicsCRMbcgovCustomaddress), MicrosoftDynamicsCRMbcgovCustomaddress bcgovCurrentBusinessPhysicalAddress = default(MicrosoftDynamicsCRMbcgovCustomaddress), MicrosoftDynamicsCRMcontact bcgovAdditionalContact = default(MicrosoftDynamicsCRMcontact))
         {
             Openrevenue = openrevenue;
             Territorycode = territorycode;
@@ -40,7 +40,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
             Entityimageid = entityimageid;
             Ownershipcode = ownershipcode;
             Customersizecode = customersizecode;
-            BcgovSubmitteddate = bcgovSubmitteddate;
+            BcgovBceid = bcgovBceid;
+            this._bcgovCurrentbusinessphysicaladdressValue = _bcgovCurrentbusinessphysicaladdressValue;
             Creditlimit = creditlimit;
             this._primarycontactidValue = _primarycontactidValue;
             Versionnumber = versionnumber;
@@ -48,6 +49,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
             EntityimageTimestamp = entityimageTimestamp;
             Telephone3 = telephone3;
             OpenrevenueDate = openrevenueDate;
+            BcgovWaiveradministrativehold = bcgovWaiveradministrativehold;
             Donotbulkpostalmail = donotbulkpostalmail;
             Address1Freighttermscode = address1Freighttermscode;
             Address2Line1 = address2Line1;
@@ -59,8 +61,10 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
             Primarysatoriid = primarysatoriid;
             Shippingmethodcode = shippingmethodcode;
             Address1Addressid = address1Addressid;
+            BcgovMailaddressdiffromphysaddress = bcgovMailaddressdiffromphysaddress;
             Address2Telephone1 = address2Telephone1;
             Address1Fax = address1Fax;
+            BcgovDeclarationofcorrectinformation = bcgovDeclarationofcorrectinformation;
             this._owneridValue = _owneridValue;
             this._createdonbehalfbyValue = _createdonbehalfbyValue;
             Preferredcontactmethodcode = preferredcontactmethodcode;
@@ -68,14 +72,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
             Address2Latitude = address2Latitude;
             Address2Composite = address2Composite;
             CreditlimitBase = creditlimitBase;
-            BcgovMailaddressdiffromphysaddress = bcgovMailaddressdiffromphysaddress;
+            BcgovClientid = bcgovClientid;
             Aging90Base = aging90Base;
             Address2Postalcode = address2Postalcode;
             Address2Name = address2Name;
             Merged = merged;
             Preferredappointmentdaycode = preferredappointmentdaycode;
             this._owningteamValue = _owningteamValue;
-            BcgovBusinessnumber = bcgovBusinessnumber;
             Address2Line3 = address2Line3;
             RevenueBase = revenueBase;
             Aging30 = aging30;
@@ -87,48 +90,52 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
             Paymenttermscode = paymenttermscode;
             Websiteurl = websiteurl;
             Revenue = revenue;
-            BcgovDoingbusinessasname = bcgovDoingbusinessasname;
             Address1Shippingmethodcode = address1Shippingmethodcode;
             Description = description;
-            this._bcgovCurrentbusinessmailingaddressValue = _bcgovCurrentbusinessmailingaddressValue;
             Tickersymbol = tickersymbol;
-            BcgovBusinesstype = bcgovBusinesstype;
             Lastonholdtime = lastonholdtime;
-            BcgovBusinessprofileupdate = bcgovBusinessprofileupdate;
             Statuscode = statuscode;
+            BcgovLegislativeauthoritystatusdate = bcgovLegislativeauthoritystatusdate;
             Marketcap = marketcap;
             this._parentaccountidValue = _parentaccountidValue;
             this._owninguserValue = _owninguserValue;
-            Address2Addressid = address2Addressid;
+            BcgovSubmitteddate = bcgovSubmitteddate;
             this._bcgovAdditionalcontactValue = _bcgovAdditionalcontactValue;
+            Address2Addressid = address2Addressid;
             this._preferredsystemuseridValue = _preferredsystemuseridValue;
             Address2Longitude = address2Longitude;
             this._defaultpricelevelidValue = _defaultpricelevelidValue;
             OpenrevenueState = openrevenueState;
             Address1Primarycontactname = address1Primarycontactname;
+            BcgovFoippaconsent = bcgovFoippaconsent;
             Accountcategorycode = accountcategorycode;
             Statecode = statecode;
             MarketcapBase = marketcapBase;
             Donotfax = donotfax;
+            BcgovLegislativeauthoritystatusnotificationdat = bcgovLegislativeauthoritystatusnotificationdat;
             Address2Telephone3 = address2Telephone3;
             Address2Postofficebox = address2Postofficebox;
             Marketingonly = marketingonly;
             this._preferredserviceidValue = _preferredserviceidValue;
+            BcgovRegisteredselleradministrativehold = bcgovRegisteredselleradministrativehold;
             Importsequencenumber = importsequencenumber;
             Address1Upszone = address1Upszone;
             Stageid = stageid;
             Utcconversiontimezonecode = utcconversiontimezonecode;
             Donotemail = donotemail;
             Aging60 = aging60;
+            this._bcgovCurrentbusinessmailingaddressValue = _bcgovCurrentbusinessmailingaddressValue;
             Customertypecode = customertypecode;
             Telephone1 = telephone1;
             OpendealsState = opendealsState;
             Address1Postofficebox = address1Postofficebox;
+            BcgovAoadministrativehold = bcgovAoadministrativehold;
             this._modifiedbyValue = _modifiedbyValue;
+            BcgovBusinesstype = bcgovBusinesstype;
             Yominame = yominame;
             Address2Country = address2Country;
+            BcgovBusinessprofileupdate = bcgovBusinessprofileupdate;
             Address1Line2 = address1Line2;
-            BcgovBceid = bcgovBceid;
             Donotsendmm = donotsendmm;
             Address1Postalcode = address1Postalcode;
             Traversedpath = traversedpath;
@@ -141,6 +148,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
             Accountratingcode = accountratingcode;
             Aging90 = aging90;
             Address1Longitude = address1Longitude;
+            BcgovConsentforemailcommunication = bcgovConsentforemailcommunication;
             Participatesinworkflow = participatesinworkflow;
             Emailaddress2 = emailaddress2;
             Creditonhold = creditonhold;
@@ -161,13 +169,12 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
             Address1Composite = address1Composite;
             this._slaidValue = _slaidValue;
             Address2County = address2County;
-            BcgovDeclarationofcorrectinformation = bcgovDeclarationofcorrectinformation;
             Followemail = followemail;
             Donotphone = donotphone;
             Accountclassificationcode = accountclassificationcode;
             this._preferredequipmentidValue = _preferredequipmentidValue;
+            BcgovLegislativeauthoritylicensestatus = bcgovLegislativeauthoritylicensestatus;
             Sic = sic;
-            BcgovClientid = bcgovClientid;
             EntityimageUrl = entityimageUrl;
             Processid = processid;
             Address2Telephone2 = address2Telephone2;
@@ -182,24 +189,23 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
             Stockexchange = stockexchange;
             this._createdbyValue = _createdbyValue;
             Address1Line3 = address1Line3;
-            BcgovFoippaconsent = bcgovFoippaconsent;
             Aging30Base = aging30Base;
             OpenrevenueBase = openrevenueBase;
             Sharesoutstanding = sharesoutstanding;
             this._slainvokedidValue = _slainvokedidValue;
             Address1City = address1City;
             Address2Primarycontactname = address2Primarycontactname;
+            BcgovDoingbusinessasname = bcgovDoingbusinessasname;
             Address1Latitude = address1Latitude;
             Modifiedon = modifiedon;
             this._masteridValue = _masteridValue;
             Address2Utcoffset = address2Utcoffset;
-            this._bcgovCurrentbusinessphysicaladdressValue = _bcgovCurrentbusinessphysicaladdressValue;
-            BcgovConsentforemailcommunication = bcgovConsentforemailcommunication;
             Emailaddress1 = emailaddress1;
             Timezoneruleversionnumber = timezoneruleversionnumber;
             Opendeals = opendeals;
             Address2Stateorprovince = address2Stateorprovince;
             Preferredappointmenttimecode = preferredappointmenttimecode;
+            BcgovBusinessnumber = bcgovBusinessnumber;
             Industrycode = industrycode;
             Address1Telephone3 = address1Telephone3;
             AccountleadsAssociation = accountleadsAssociation;
@@ -274,20 +280,20 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
             StageidProcessstage = stageidProcessstage;
             OrderCustomerAccounts = orderCustomerAccounts;
             Modifiedonbehalfby = modifiedonbehalfby;
+            AccountAbsScheduledprocessexecutions = accountAbsScheduledprocessexecutions;
             AccountKnowledgebaserecord = accountKnowledgebaserecord;
             MsdynAccountKnowledgearticle = msdynAccountKnowledgearticle;
             AccountQueueItems = accountQueueItems;
-            AccountTeams = accountTeams;
             BcgovAccountBcgovBusinesscontactBusinessProfile = bcgovAccountBcgovBusinesscontactBusinessProfile;
+            BcgovAccountBcgovCertificateCertificateHolderBusiness = bcgovAccountBcgovCertificateCertificateHolderBusiness;
+            BcgovAccountContactBusinessLegalName = bcgovAccountContactBusinessLegalName;
             BcgovAccountCustomaddress = bcgovAccountCustomaddress;
+            BcgovAccountCustomaddressBusinessProfile = bcgovAccountCustomaddressBusinessProfile;
             BcgovAccountEquipmentCurrentBusinessOwner = bcgovAccountEquipmentCurrentBusinessOwner;
             BcgovAccountLocationBusinessProfile = bcgovAccountLocationBusinessProfile;
-            BcgovAdditionalContact = bcgovAdditionalContact;
-            BcgovCurrentBusinessPhysicalAddress = bcgovCurrentBusinessPhysicalAddress;
             BcgovCurrentBusinessMailingAddress = bcgovCurrentBusinessMailingAddress;
-            BcgovAccountCustomaddressBusinessProfile = bcgovAccountCustomaddressBusinessProfile;
-            BcgovAccountContactBusinessLegalName = bcgovAccountContactBusinessLegalName;
-            BcgovAccountBcgovCertificateCertificateHolderBusiness = bcgovAccountBcgovCertificateCertificateHolderBusiness;
+            BcgovCurrentBusinessPhysicalAddress = bcgovCurrentBusinessPhysicalAddress;
+            BcgovAdditionalContact = bcgovAdditionalContact;
             CustomInit();
         }
 
@@ -343,8 +349,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "bcgov_submitteddate")]
-        public System.DateTimeOffset? BcgovSubmitteddate { get; set; }
+        [JsonProperty(PropertyName = "bcgov_bceid")]
+        public string BcgovBceid { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "_bcgov_currentbusinessphysicaladdress_value")]
+        public string _bcgovCurrentbusinessphysicaladdressValue { get; set; }
 
         /// <summary>
         /// </summary>
@@ -380,6 +391,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "openrevenue_date")]
         public System.DateTimeOffset? OpenrevenueDate { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_waiveradministrativehold")]
+        public bool? BcgovWaiveradministrativehold { get; set; }
 
         /// <summary>
         /// </summary>
@@ -438,6 +454,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "bcgov_mailaddressdiffromphysaddress")]
+        public bool? BcgovMailaddressdiffromphysaddress { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "address2_telephone1")]
         public string Address2Telephone1 { get; set; }
 
@@ -445,6 +466,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "address1_fax")]
         public string Address1Fax { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_declarationofcorrectinformation")]
+        public bool? BcgovDeclarationofcorrectinformation { get; set; }
 
         /// <summary>
         /// </summary>
@@ -483,8 +509,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "bcgov_mailaddressdiffromphysaddress")]
-        public bool? BcgovMailaddressdiffromphysaddress { get; set; }
+        [JsonProperty(PropertyName = "bcgov_clientid")]
+        public string BcgovClientid { get; set; }
 
         /// <summary>
         /// </summary>
@@ -515,11 +541,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "_owningteam_value")]
         public string _owningteamValue { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "bcgov_businessnumber")]
-        public string BcgovBusinessnumber { get; set; }
 
         /// <summary>
         /// </summary>
@@ -578,11 +599,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "bcgov_doingbusinessasname")]
-        public string BcgovDoingbusinessasname { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "address1_shippingmethodcode")]
         public int? Address1Shippingmethodcode { get; set; }
 
@@ -593,18 +609,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "_bcgov_currentbusinessmailingaddress_value")]
-        public string _bcgovCurrentbusinessmailingaddressValue { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "tickersymbol")]
         public string Tickersymbol { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "bcgov_businesstype")]
-        public int? BcgovBusinesstype { get; set; }
 
         /// <summary>
         /// </summary>
@@ -613,13 +619,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "bcgov_businessprofileupdate")]
-        public bool? BcgovBusinessprofileupdate { get; set; }
+        [JsonProperty(PropertyName = "statuscode")]
+        public int? Statuscode { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "statuscode")]
-        public int? Statuscode { get; set; }
+        [JsonProperty(PropertyName = "bcgov_legislativeauthoritystatusdate")]
+        public System.DateTimeOffset? BcgovLegislativeauthoritystatusdate { get; set; }
 
         /// <summary>
         /// </summary>
@@ -638,13 +644,18 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "address2_addressid")]
-        public string Address2Addressid { get; set; }
+        [JsonProperty(PropertyName = "bcgov_submitteddate")]
+        public System.DateTimeOffset? BcgovSubmitteddate { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "_bcgov_additionalcontact_value")]
         public string _bcgovAdditionalcontactValue { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "address2_addressid")]
+        public string Address2Addressid { get; set; }
 
         /// <summary>
         /// </summary>
@@ -673,6 +684,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "bcgov_foippaconsent")]
+        public bool? BcgovFoippaconsent { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "accountcategorycode")]
         public int? Accountcategorycode { get; set; }
 
@@ -693,6 +709,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "bcgov_legislativeauthoritystatusnotificationdat")]
+        public System.DateTimeOffset? BcgovLegislativeauthoritystatusnotificationdat { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "address2_telephone3")]
         public string Address2Telephone3 { get; set; }
 
@@ -710,6 +731,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "_preferredserviceid_value")]
         public string _preferredserviceidValue { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_registeredselleradministrativehold")]
+        public bool? BcgovRegisteredselleradministrativehold { get; set; }
 
         /// <summary>
         /// </summary>
@@ -743,6 +769,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "_bcgov_currentbusinessmailingaddress_value")]
+        public string _bcgovCurrentbusinessmailingaddressValue { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "customertypecode")]
         public int? Customertypecode { get; set; }
 
@@ -763,8 +794,18 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "bcgov_aoadministrativehold")]
+        public bool? BcgovAoadministrativehold { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "_modifiedby_value")]
         public string _modifiedbyValue { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_businesstype")]
+        public int? BcgovBusinesstype { get; set; }
 
         /// <summary>
         /// </summary>
@@ -778,13 +819,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "address1_line2")]
-        public string Address1Line2 { get; set; }
+        [JsonProperty(PropertyName = "bcgov_businessprofileupdate")]
+        public bool? BcgovBusinessprofileupdate { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "bcgov_bceid")]
-        public string BcgovBceid { get; set; }
+        [JsonProperty(PropertyName = "address1_line2")]
+        public string Address1Line2 { get; set; }
 
         /// <summary>
         /// </summary>
@@ -845,6 +886,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "address1_longitude")]
         public double? Address1Longitude { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_consentforemailcommunication")]
+        public bool? BcgovConsentforemailcommunication { get; set; }
 
         /// <summary>
         /// </summary>
@@ -948,11 +994,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "bcgov_declarationofcorrectinformation")]
-        public bool? BcgovDeclarationofcorrectinformation { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "followemail")]
         public bool? Followemail { get; set; }
 
@@ -973,13 +1014,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "sic")]
-        public string Sic { get; set; }
+        [JsonProperty(PropertyName = "bcgov_legislativeauthoritylicensestatus")]
+        public int? BcgovLegislativeauthoritylicensestatus { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "bcgov_clientid")]
-        public string BcgovClientid { get; set; }
+        [JsonProperty(PropertyName = "sic")]
+        public string Sic { get; set; }
 
         /// <summary>
         /// </summary>
@@ -1053,11 +1094,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "bcgov_foippaconsent")]
-        public bool? BcgovFoippaconsent { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "aging30_base")]
         public object Aging30Base { get; set; }
 
@@ -1088,6 +1124,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "bcgov_doingbusinessasname")]
+        public string BcgovDoingbusinessasname { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "address1_latitude")]
         public double? Address1Latitude { get; set; }
 
@@ -1105,16 +1146,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "address2_utcoffset")]
         public int? Address2Utcoffset { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "_bcgov_currentbusinessphysicaladdress_value")]
-        public string _bcgovCurrentbusinessphysicaladdressValue { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "bcgov_consentforemailcommunication")]
-        public bool? BcgovConsentforemailcommunication { get; set; }
 
         /// <summary>
         /// </summary>
@@ -1140,6 +1171,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "preferredappointmenttimecode")]
         public int? Preferredappointmenttimecode { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_businessnumber")]
+        public string BcgovBusinessnumber { get; set; }
 
         /// <summary>
         /// </summary>
@@ -1513,6 +1549,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "account_abs_scheduledprocessexecutions")]
+        public IList<MicrosoftDynamicsCRMabsScheduledprocessexecution> AccountAbsScheduledprocessexecutions { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "account_knowledgebaserecord")]
         public IList<MicrosoftDynamicsCRMknowledgebaserecord> AccountKnowledgebaserecord { get; set; }
 
@@ -1528,18 +1569,28 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "account_Teams")]
-        public IList<MicrosoftDynamicsCRMteam> AccountTeams { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "bcgov_account_bcgov_businesscontact_BusinessProfile")]
         public IList<MicrosoftDynamicsCRMbcgovBusinesscontact> BcgovAccountBcgovBusinesscontactBusinessProfile { get; set; }
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "bcgov_account_bcgov_certificate_CertificateHolderBusiness")]
+        public IList<MicrosoftDynamicsCRMbcgovCertificate> BcgovAccountBcgovCertificateCertificateHolderBusiness { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_account_contact_BusinessLegalName")]
+        public IList<MicrosoftDynamicsCRMcontact> BcgovAccountContactBusinessLegalName { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "bcgov_account_customaddress")]
         public IList<MicrosoftDynamicsCRMbcgovCustomaddress> BcgovAccountCustomaddress { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_account_customaddress_BusinessProfile")]
+        public IList<MicrosoftDynamicsCRMbcgovCustomaddress> BcgovAccountCustomaddressBusinessProfile { get; set; }
 
         /// <summary>
         /// </summary>
@@ -1553,8 +1604,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "bcgov_AdditionalContact")]
-        public MicrosoftDynamicsCRMcontact BcgovAdditionalContact { get; set; }
+        [JsonProperty(PropertyName = "bcgov_CurrentBusinessMailingAddress")]
+        public MicrosoftDynamicsCRMbcgovCustomaddress BcgovCurrentBusinessMailingAddress { get; set; }
 
         /// <summary>
         /// </summary>
@@ -1563,23 +1614,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "bcgov_CurrentBusinessMailingAddress")]
-        public MicrosoftDynamicsCRMbcgovCustomaddress BcgovCurrentBusinessMailingAddress { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "bcgov_account_customaddress_BusinessProfile")]
-        public IList<MicrosoftDynamicsCRMbcgovCustomaddress> BcgovAccountCustomaddressBusinessProfile { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "bcgov_account_contact_BusinessLegalName")]
-        public IList<MicrosoftDynamicsCRMcontact> BcgovAccountContactBusinessLegalName { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "bcgov_account_bcgov_certificate_CertificateHolderBusiness")]
-        public IList<MicrosoftDynamicsCRMbcgovCertificate> BcgovAccountBcgovCertificateCertificateHolderBusiness { get; set; }
+        [JsonProperty(PropertyName = "bcgov_AdditionalContact")]
+        public MicrosoftDynamicsCRMcontact BcgovAdditionalContact { get; set; }
 
     }
 }

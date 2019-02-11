@@ -617,7 +617,10 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         [HttpPost("{applicationType}")]
         public async Task<IActionResult> CreateApplication(string applicationType, [FromBody] ViewModels.Application item)
         {
-
+            if (!ModelState.IsValid)
+            {
+                int j = 0;
+            }
             // get UserSettings from the session
             string temp = _httpContextAccessor.HttpContext.Session.GetString("UserSettings");
             UserSettings userSettings = JsonConvert.DeserializeObject<UserSettings>(temp);

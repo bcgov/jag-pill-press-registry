@@ -187,4 +187,45 @@ export class DashboardComponent implements OnInit {
     );
   }
 
+  reportSales(equipmentId: string) {
+    // TODO: Link the equipment to the application
+    // const newLicenceApplicationData: Application = <Application>{
+    //   statuscode: 'Draft',
+    //   typeOfChange: 'Sold',
+    //   equipmentRecord: {
+    //     id: equipmentId
+    //   }
+    // };
+    // this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Equipment Notification').subscribe(
+    //   data => {
+    const data = { id: 1 };
+    this.router.navigateByUrl(`/equipment-change/reporting-sales/details/${data.id}`);
+    //   },
+    //   err => {
+    //     this.snackBar.open('Error starting a Reporting Sales Application', 'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
+    //     console.log('Error starting Reporting Sales Application');
+    //   }
+    // );
+  }
+
+  reportLSD(equipmentId: string) {
+    const newLicenceApplicationData: Application = <Application>{
+      statuscode: 'Draft',
+      typeOfChange: 'Lost',
+      equipmentRecord: {
+        id: equipmentId
+      }
+    };
+    this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Equipment Notification').subscribe(
+      data => {
+        // const data = { id: 1 };
+        this.router.navigateByUrl(`//equipment-changes/report-changes/details/{{item.id}}>${data.id}`);
+      },
+      err => {
+        this.snackBar.open('Error starting a Reporting Sales Application', 'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
+        console.log('Error starting Reporting Sales Application');
+      }
+    );
+  }
+
 }

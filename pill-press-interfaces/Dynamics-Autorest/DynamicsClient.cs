@@ -57,6 +57,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual IBusinesscontacts Businesscontacts { get; private set; }
 
         /// <summary>
+        /// Gets the ICertificateapprovedproducts.
+        /// </summary>
+        public virtual ICertificateapprovedproducts Certificateapprovedproducts { get; private set; }
+
+        /// <summary>
         /// Gets the ICertificates.
         /// </summary>
         public virtual ICertificates Certificates { get; private set; }
@@ -400,6 +405,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             Accounts = new Accounts(this);
             Applicationtypes = new Applicationtypes(this);
             Businesscontacts = new Businesscontacts(this);
+            Certificateapprovedproducts = new Certificateapprovedproducts(this);
             Certificates = new Certificates(this);
             Certificatetermsandconditionses = new Certificatetermsandconditionses(this);
             Customaddresses = new Customaddresses(this);

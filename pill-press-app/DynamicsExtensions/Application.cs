@@ -58,6 +58,25 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                 {
                     result.BcgovEquipmentLocation.BcgovLocationAddress = system.GetCustomAddressById(result.BcgovEquipmentLocation._bcgovLocationaddressValue);
                 }
+
+                // get the full certificate data.  The initial request only has one level deep of data.
+
+                if (result.BcgovIncidentBcgovCertificateApplication != null)
+                {
+                    foreach (var certificate in result.BcgovIncidentBcgovCertificateApplication)
+                    {
+                        // copy over child entities
+                        var temp = system.GetCertificateByIdWithChildren(certificate.BcgovCertificateid);
+                        if (temp != null)
+                        {
+                            certificate.BcgovCertificateBcgovCertificateapprovedproductCertificateId
+                            = temp.BcgovCertificateBcgovCertificateapprovedproductCertificateId;
+                            certificate.BcgovCertificateBcgovCertificatetermsandconditionsCertificate
+                                = temp.BcgovCertificateBcgovCertificatetermsandconditionsCertificate;
+                        }                        
+                    }
+                }
+
                
             }
             catch (OdataerrorException)
