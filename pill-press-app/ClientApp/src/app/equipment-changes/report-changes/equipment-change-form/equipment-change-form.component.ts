@@ -47,30 +47,42 @@ export class EquipmentChangeFormComponent extends FormBase implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       id: [],
-      equipmentType: ['', Validators.required],
-      equipmentRegistryNumber: ['', Validators.required],
-      howWasEquipmentBuilt: ['', Validators.required],
-      dateLost: ['', Validators.required],
-      dateReported: ['', Validators.required],
-      howWasEquipmentBuiltOther: [],
-      howWasEquipmentBuiltOtherCheck: [],
-      nameOfManufacturer: ['', this.requiredSelectChildValidator('howWasEquipmentBuilt', ['Commercially Manufactured'])],
-      equipmentMake: ['', this.requiredSelectChildValidator('howWasEquipmentBuilt', ['Commercially Manufactured'])],
-      equipmentModel: ['', this.requiredSelectChildValidator('howWasEquipmentBuilt', ['Commercially Manufactured'])],
-      serialNumber: ['', this.requiredSelectChildValidator('howWasEquipmentBuilt', ['Commercially Manufactured'])],
-      howEquipmentBuiltDescription: ['', this.requiredSelectChildValidator('howWasEquipmentBuilt', ['Custom-built', 'Other'])],
-      personBusinessThatBuiltEquipment: [''],
-      serialNumberForCustomBuilt: ['', this.requiredSelectChildValidator('howWasEquipmentBuilt', ['Custom-built', 'Other'])],
-      customBuiltSerialNumber: ['', this.requiredSelectChildValidator('serialNumberForCustomBuilt', [true])],
-      serialNumberKeyPartDescription: [],
-      address: this.fb.group({
+      typeOfChange: [''],
+      dateOfEquipmentChange: [''],
+      circumstancesOfLoss: [''],
+      policeNotified: [''],
+      policeReportDate: [''],
+      policeFileNumber: [''],
+      circumstancesOfStolenEquipment: [''],
+      circumstancesOfDestroyedEquipment: [''],
+      whoDestroyedEquipment: [''],
+      addressWhereEquipmentWasDestroyed: this.fb.group({
         id: [],
         streetLine1: [''],
         streetLine2: [],
         city: [''],
         province: [],
         postalCode: [''],
-      })
+      }),
+      equipmentRecord: this.fb.group({
+        id: [],
+        equipmentType: ['', Validators.required],
+        equipmentRegistryNumber: ['', Validators.required],
+        howWasEquipmentBuilt: ['', Validators.required],
+        dateLost: ['', Validators.required],
+        dateReported: ['', Validators.required],
+        howWasEquipmentBuiltOther: [],
+        howWasEquipmentBuiltOtherCheck: [],
+        nameOfManufacturer: [''],
+        equipmentMake: [''],
+        equipmentModel: [''],
+        serialNumber: [''],
+        howEquipmentBuiltDescription: [''],
+        personBusinessThatBuiltEquipment: [''],
+        serialNumberForCustomBuilt: [''],
+        customBuiltSerialNumber: [''],
+        serialNumberKeyPartDescription: []
+      }),
 
     });
     // this.clearHiddenFields();
@@ -138,18 +150,18 @@ export class EquipmentChangeFormComponent extends FormBase implements OnInit {
   }
 
   markAsTouched() {
-    let controls = this.form.controls;
+    const controls = this.form.controls;
     for (const c in controls) {
       if (typeof (controls[c].markAsTouched) === 'function') {
         controls[c].markAsTouched();
       }
     }
 
-    controls = (<FormGroup>this.form.get('address')).controls;
-    for (const c in controls) {
-      if (typeof (controls[c].markAsTouched) === 'function') {
-        controls[c].markAsTouched();
-      }
-    }
+    // controls = (<FormGroup>this.form.get('address')).controls;
+    // for (const c in controls) {
+    //   if (typeof (controls[c].markAsTouched) === 'function') {
+    //     controls[c].markAsTouched();
+    //   }
+    // }
   }
 }
