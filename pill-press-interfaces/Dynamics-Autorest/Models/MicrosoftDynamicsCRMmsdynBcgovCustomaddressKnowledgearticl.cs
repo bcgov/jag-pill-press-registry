@@ -27,12 +27,12 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// Initializes a new instance of the
         /// MicrosoftDynamicsCRMmsdynBcgovCustomaddressKnowledgearticl class.
         /// </summary>
-        public MicrosoftDynamicsCRMmsdynBcgovCustomaddressKnowledgearticl(string bcgovCustomaddressid = default(string), string msdynBcgovCustomaddressKnowledgearticlid = default(string), long? versionnumber = default(long?), string knowledgearticleid = default(string))
+        public MicrosoftDynamicsCRMmsdynBcgovCustomaddressKnowledgearticl(string knowledgearticleid = default(string), long? versionnumber = default(long?), string msdynBcgovCustomaddressKnowledgearticlid = default(string), string bcgovCustomaddressid = default(string))
         {
-            BcgovCustomaddressid = bcgovCustomaddressid;
-            MsdynBcgovCustomaddressKnowledgearticlid = msdynBcgovCustomaddressKnowledgearticlid;
-            Versionnumber = versionnumber;
             Knowledgearticleid = knowledgearticleid;
+            Versionnumber = versionnumber;
+            MsdynBcgovCustomaddressKnowledgearticlid = msdynBcgovCustomaddressKnowledgearticlid;
+            BcgovCustomaddressid = bcgovCustomaddressid;
             CustomInit();
         }
 
@@ -43,13 +43,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "bcgov_customaddressid")]
-        public string BcgovCustomaddressid { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "msdyn_bcgov_customaddress_knowledgearticlid")]
-        public string MsdynBcgovCustomaddressKnowledgearticlid { get; set; }
+        [JsonProperty(PropertyName = "knowledgearticleid")]
+        public string Knowledgearticleid { get; set; }
 
         /// <summary>
         /// </summary>
@@ -58,8 +53,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "knowledgearticleid")]
-        public string Knowledgearticleid { get; set; }
+        [JsonProperty(PropertyName = "msdyn_bcgov_customaddress_knowledgearticlid")]
+        public string MsdynBcgovCustomaddressKnowledgearticlid { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_customaddressid")]
+        public string BcgovCustomaddressid { get; set; }
 
     }
 }

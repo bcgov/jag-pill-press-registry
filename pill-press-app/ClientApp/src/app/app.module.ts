@@ -113,6 +113,10 @@ import { ReportChangesComponent } from './equipment-changes/report-changes/repor
 import { EquipmentChangeFormComponent } from './equipment-changes/report-changes/equipment-change-form/equipment-change-form.component';
 import { EquipmentChangeReviewComponent } from './equipment-changes/report-changes/equipment-change-review/equipment-change-review.component';
 import { EquipmentChangeThankYouComponent } from './equipment-changes/report-changes/equipment-change-thank-you/equipment-change-thank-you.component';
+import { ReportingSalesFormComponent } from './equipment-changes/reporting-sales/reporting-sales-form/reporting-sales-form.component';
+import { ReportingSalesReviewComponent } from './equipment-changes/reporting-sales/reporting-sales-review/reporting-sales-review.component';
+import { ReportingSalesThankYouComponent } from './equipment-changes/reporting-sales/reporting-sales-thank-you/reporting-sales-thank-you.component';
+import { ReportingSalesComponent } from './equipment-changes/reporting-sales/reporting-sales.component';
 
 
 
@@ -158,7 +162,11 @@ import { EquipmentChangeThankYouComponent } from './equipment-changes/report-cha
     ReportChangesComponent,
     EquipmentChangeFormComponent,
     EquipmentChangeReviewComponent,
-    EquipmentChangeThankYouComponent
+    EquipmentChangeThankYouComponent,
+    ReportingSalesFormComponent,
+    ReportingSalesReviewComponent,
+    ReportingSalesThankYouComponent,
+    ReportingSalesComponent
   ],
   imports: [
     BrowserModule,
