@@ -4,11 +4,10 @@ import { User } from '../models/user.model';
 import { Router } from '@angular/router';
 import { Application } from '../models/application.model';
 import { DynamicsDataService } from '../services/dynamics-data.service';
-import { ApplicationDataService } from '../services/adoxio-application-data.service';
+import { ApplicationDataService } from '../services/application-data.service';
 import { DynamicsAccount } from '../models/dynamics-account.model';
 import { Subscription } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
-import { PaymentDataService } from '../services/payment-data.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -28,12 +27,11 @@ export class DashboardComponent implements OnInit {
 
   inProgressEquipment: Application[] = [];
   completedEquipment: Application[] = [];
-  waiverApplication: Application;
+  waiverApplication: any;
   authorizedOwnerApplication: Application;
-  registeredSellerApplication: Application;
+  registeredSellerApplication: any;
 
-  constructor(private paymentDataService: PaymentDataService,
-    private userDataService: UserDataService, private router: Router,
+  constructor(private userDataService: UserDataService, private router: Router,
     private dynamicsDataService: DynamicsDataService,
     private applicationDataService: ApplicationDataService,
     public snackBar: MatSnackBar) { }
@@ -54,7 +52,7 @@ export class DashboardComponent implements OnInit {
         }
       });
 
-    this.applicationDataService.getApplications()
+    this.busy = this.applicationDataService.getApplications()
       .subscribe((data: Application[]) => {
         const authorizedOwners = data.filter(a => a.applicationtype === 'Authorized Owner');
         if (authorizedOwners.length > 0) {
@@ -64,11 +62,30 @@ export class DashboardComponent implements OnInit {
         const sellers = data.filter(a => a.applicationtype === 'Registered Seller');
         if (sellers.length > 0) {
           this.registeredSellerApplication = sellers[0];
+
+          this.registeredSellerApplication.certificates = this.registeredSellerApplication.certificates || [];
+          this.registeredSellerApplication.certificates.sort((a, b) => {
+            if (a.issueDate > b.issueDate) {
+              return 1;
+            } else {
+              return -1;
+            }
+          });
+          this.registeredSellerApplication.certificate = this.registeredSellerApplication.certificates[0];
         }
 
         const waivers = data.filter(a => a.applicationtype === 'Waiver');
         if (waivers.length > 0) {
           this.waiverApplication = waivers[0];
+          this.waiverApplication.certificates = this.waiverApplication.certificates || [];
+          this.waiverApplication.certificates.sort((a, b) => {
+            if (a.issueDate > b.issueDate) {
+              return 1;
+            } else {
+              return -1;
+            }
+          });
+          this.waiverApplication.certificate = this.waiverApplication.certificates[0];
         }
 
         this.inProgressEquipment = data.filter(a => a.applicationtype === 'Equipment Notification' && a.statuscode !== 'Approved');
@@ -138,6 +155,13 @@ export class DashboardComponent implements OnInit {
         console.log('Error starting a Registered Seller Application');
       }
     );
+  }
+
+  showEquipmentTables() {
+    const show = (this.authorizedOwnerApplication && this.authorizedOwnerApplication.statuscode === 'Approved')
+      || (this.waiverApplication && this.waiverApplication.statuscode === 'Approved')
+      || (this.registeredSellerApplication && this.registeredSellerApplication.statuscode === 'Approved');
+    return show;
   }
 
   addEquipment() {

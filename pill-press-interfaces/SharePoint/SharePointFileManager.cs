@@ -21,6 +21,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public const string ApplicationDocumentListTitle = "incident";
         public const string ApplicationDocumentUrlTitle = "incident";
         public const string ContactDocumentListTitle = "contact";
+        public const string AccountDocumentListTitle = "account";
         public const string WorkertDocumentListTitle = "Worker Qualification";
 
         private AuthenticationResult authenticationResult;

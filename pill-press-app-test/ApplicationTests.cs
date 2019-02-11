@@ -128,6 +128,107 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
         }
 
         [Fact]
+        public async System.Threading.Tasks.Task VerifyBlankLocationsAndAddressesAreNull()
+        {
+            string initialName = randomNewUserName("Application Initial Name ", 6);
+            string changedName = randomNewUserName("Application Changed Name ", 6);
+            string service = "Application";
+
+            // login as default and get account for current user
+            var loginUser1 = randomNewUserName("TestAccountUser", 6);
+            var strId = await LoginAndRegisterAsNewUser(loginUser1);
+
+            User user = await GetCurrentUser();
+            Account currentAccount = await GetAccountForCurrentUser();
+
+            // C - Create
+            var request = new HttpRequestMessage(HttpMethod.Post, "/api/" + service + "/Waiver");
+
+            Application viewmodel_application = SecurityHelper.CreateNewApplication(currentAccount);
+
+            var jsonString = JsonConvert.SerializeObject(viewmodel_application);
+            request.Content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+
+            var response = await _client.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+
+            // parse as JSON.
+            jsonString = await response.Content.ReadAsStringAsync();
+            Application responseViewModel = JsonConvert.DeserializeObject<Application>(jsonString);
+
+            Assert.Null(responseViewModel.BCSellersAddress);
+            Assert.Null(responseViewModel.EquipmentLocation);
+            Assert.Null(responseViewModel.OriginatingSellersAddress);
+            Assert.Null(responseViewModel.OutsideBCSellersAddress);            
+
+            Guid id = new Guid(responseViewModel.id);
+            //return;
+            // R - Read
+            request = new HttpRequestMessage(HttpMethod.Get, "/api/" + service + "/" + id);
+            response = await _client.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+
+            jsonString = await response.Content.ReadAsStringAsync();
+            responseViewModel = JsonConvert.DeserializeObject<Application>(jsonString);
+
+            Assert.Equal("Testing", responseViewModel.mainbusinessfocus);
+            Assert.Equal("Automated Testing", responseViewModel.manufacturingprocessdescription);
+
+
+            Assert.True(responseViewModel.applicant != null);
+            Assert.Equal(currentAccount.id, responseViewModel.applicant.id);
+
+
+            // U - Update  
+            viewmodel_application = new Application();
+            viewmodel_application.mainbusinessfocus = changedName;
+
+
+            request = new HttpRequestMessage(HttpMethod.Put, "/api/" + service + "/" + id)
+            {
+                Content = new StringContent(JsonConvert.SerializeObject(viewmodel_application), Encoding.UTF8, "application/json")
+            };
+            response = await _client.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+
+            // verify that the update persisted.
+
+            request = new HttpRequestMessage(HttpMethod.Get, "/api/" + service + "/" + id);
+            response = await _client.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+
+            jsonString = await response.Content.ReadAsStringAsync();
+
+            responseViewModel = JsonConvert.DeserializeObject<Application>(jsonString);
+            Assert.Equal(changedName, responseViewModel.mainbusinessfocus);
+            Assert.Null(responseViewModel.BCSellersAddress);
+            Assert.Null(responseViewModel.EquipmentLocation);
+            Assert.Null(responseViewModel.OriginatingSellersAddress);
+            Assert.Null(responseViewModel.OutsideBCSellersAddress);
+
+
+            // D - Delete
+
+            request = new HttpRequestMessage(HttpMethod.Post, "/api/" + service + "/" + id + "/delete");
+            response = await _client.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+
+            // second delete should return a 404.
+            request = new HttpRequestMessage(HttpMethod.Post, "/api/" + service + "/" + id + "/delete");
+            response = await _client.SendAsync(request);
+            Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
+
+            // should get a 404 if we try a get now.
+            request = new HttpRequestMessage(HttpMethod.Get, "/api/" + service + "/" + id);
+            response = await _client.SendAsync(request);
+            Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
+
+            // logout and cleanup (deletes the account and contact created above ^^^)
+            await LogoutAndCleanupTestUser(strId);
+        }
+
+
+        [Fact]
         public async System.Threading.Tasks.Task TestBusinessContactNewContact()
         {
             // login as default and get account for current user
@@ -264,7 +365,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
 
             Application persistedApplication = await GetApplicationById(responseViewModel.id);
 
-            Assert.Equal(persistedApplication.BusinessContacts[0].jobTitle, "Updated Test Job");
+            Assert.Equal("Updated Test Job", persistedApplication.BusinessContacts[0].jobTitle);
 
             // Cleanup
             var request = new HttpRequestMessage(HttpMethod.Post, "/api/" + service + "/" + responseViewModel.id + "/delete");
@@ -345,7 +446,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             string accountId = user.accountid;
 
             // create a new request object for the upload, as we will be using multipart form submission.
-            var requestMessage = new HttpRequestMessage(HttpMethod.Post, $"/api/file/{ id }/attachments/application");
+            var requestMessage = new HttpRequestMessage(HttpMethod.Post, $"/api/file/{ id }/attachments/incident");
             requestMessage.Content = multiPartContent;
 
             var uploadResponse = await _client.SendAsync(requestMessage);
@@ -516,6 +617,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
 
             using (var formData = new MultipartFormDataContent())
             {
+                /*
                 // Upload
                 var fileContent = new ByteArrayContent(new byte[100]);
                 fileContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
@@ -527,6 +629,43 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
                 formData.Add(new StringContent(documentType, Encoding.UTF8, "application/json"), "documentType");
                 response = _client.PostAsync($"/api/file/{id}/attachments/incident", formData).Result;
                 Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+
+    */
+
+
+                // Attach a file
+
+                string testData = "This is just a test.";
+                byte[] bytes = Encoding.ASCII.GetBytes(testData);
+                documentType = "Test Document Type";
+                // Create random filename
+                var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+                var stringChars = new char[9];
+                var random = new Random();
+                for (int i = 0; i < stringChars.Length; i++)
+                {
+                    stringChars[i] = chars[random.Next(chars.Length)];
+                }
+                var randomString = new String(stringChars);
+                string filename = randomString + ".txt";
+
+                MultipartFormDataContent multiPartContent = new MultipartFormDataContent("----TestBoundary");
+                var fileContent = new MultipartContent { new ByteArrayContent(bytes) };
+                fileContent.Headers.ContentType = new MediaTypeHeaderValue("text/plain");
+                fileContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data");
+                fileContent.Headers.ContentDisposition.Name = "File";
+                fileContent.Headers.ContentDisposition.FileName = filename;
+                multiPartContent.Add(fileContent);
+                multiPartContent.Add(new StringContent(documentType), "documentType");   // form input
+
+                string accountId = user.accountid;
+
+                // create a new request object for the upload, as we will be using multipart form submission.
+                var requestMessage = new HttpRequestMessage(HttpMethod.Post, $"/api/file/{ id }/attachments/incident");
+                requestMessage.Content = multiPartContent;
+
+                var uploadResponse = await _client.SendAsync(requestMessage);
+                uploadResponse.EnsureSuccessStatusCode();
 
                 // Get
                 request = new HttpRequestMessage(HttpMethod.Get, $"/api/file/{id}/attachments/incident/{documentType}");

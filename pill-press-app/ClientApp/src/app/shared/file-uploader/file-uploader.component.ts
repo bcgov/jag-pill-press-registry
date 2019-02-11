@@ -3,7 +3,7 @@ import { UploadEvent, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-
 import { Http, Headers, Response } from '@angular/http';
 import { FileSystemItem } from '../../models/file-system-item.model';
 import { Subscription } from 'rxjs';
-import { ApplicationDataService } from '../../services/adoxio-application-data.service';
+import { ApplicationDataService } from '../../services/application-data.service';
 import { map } from 'rxjs/operators';
 
 export interface DropdownOption {

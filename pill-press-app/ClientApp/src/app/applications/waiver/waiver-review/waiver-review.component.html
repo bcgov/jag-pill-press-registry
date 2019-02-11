@@ -34,7 +34,9 @@
   <h3 class="blue-header">DECLARATION AND CONSENT</h3>
   <div [formGroup]="form" class="padded-section">
     <section style="display: flex">
-      <input type="checkbox" style="flex: 0 0 20px" formControlName="declarationofcorrectinformation">
+      <div style="flex: 0 0 20px" >
+        <input type="checkbox"formControlName="declarationOfCorrectInformation">
+      </div>
       <span>
         I certify that, to the best of my knowledge, the information I have provided on my Waiver application and
         will
@@ -45,7 +47,7 @@
         under provincial law. <strong class="error-states">*</strong>
       </span>
     </section>
-    <div *ngIf="form.get('declarationofcorrectinformation').value !== true && form.touched" style="background-color: #F2F2F2; margin-top: 10px; border-radius: 5px; padding: 10px; font: 15px Myriad Pro Regular #494949;">
+    <div *ngIf="form.get('declarationOfCorrectInformation').value !== true && form.touched" style="background-color: #F2F2F2; margin-top: 10px; border-radius: 5px; padding: 10px; font: 15px Myriad Pro Regular #494949;">
       <i class="fas fa-exclamation-triangle error-states" style="margin-right: 10px;"></i>
       <span class="error-states">Please complete the declarations and consent section.</span>
     </div>

@@ -3,7 +3,7 @@ import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 import { Subscription, Observable, zip } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DynamicsDataService } from '../../../services/dynamics-data.service';
-import { ApplicationDataService } from '../../../services/adoxio-application-data.service';
+import { ApplicationDataService } from '../../../services/application-data.service';
 
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
@@ -56,21 +56,21 @@ export class SellerApplicationReviewComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       id: [],
-      declarationofcorrectinformation: []
+      declarationOfCorrectInformation: []
     });
 
     this.reloadData();
   }
 
   reloadData() {
-    this.applicationDataService.getApplicationById(this.waiverId).subscribe(application => {
+    this.busy = this.applicationDataService.getApplicationById(this.waiverId).subscribe(application => {
       this.form.patchValue(application);
       this.formData = application;
 
       this.ownersAndManagers = application.businessContacts || [];
 
-       // Equipment information list
-       this.equipmentInformation = [
+      // Equipment information list
+      this.equipmentInformation = [
         'Do you currently own, use, or possess Controlled Equipment?',
         application.currentlyownusepossessequipment ? 'Yes' : 'No',
         'Do you intend on purchasing Controlled Equipment in the future?',
@@ -109,8 +109,11 @@ export class SellerApplicationReviewComponent implements OnInit {
       value.statuscode = 'Pending';
       value.submittedDate = new Date();
     }
-    const saveList = [this.applicationDataService.updateApplication(value)];
-    zip(...saveList)
+    if (goToThankYouPage && !this.form.get('declarationOfCorrectInformation').value) {
+      return;
+    }
+
+    this.busy = this.applicationDataService.updateApplication(value)
       .subscribe(res => {
         if (goToThankYouPage) {
           this.router.navigateByUrl(`/registered-seller/thank-you/${this.waiverId}`);

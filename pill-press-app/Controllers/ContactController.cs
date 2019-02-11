@@ -44,9 +44,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         {
             ViewModels.Contact result = null;
 
-            if (!string.IsNullOrEmpty(id))
-            {
-                Guid contactId = Guid.Parse(id);
+            if (!string.IsNullOrEmpty(id) && Guid.TryParse(id, out Guid contactId))
+            {                
                 // query the Dynamics system to get the contact record.
                 MicrosoftDynamicsCRMcontact contact =  _dynamicsClient.GetContactById(contactId);
 
@@ -77,36 +76,36 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateContact([FromBody] ViewModels.Contact item, string id)
         {
-            if (id != null && item.id != null && id != item.id)
+            if (!string.IsNullOrEmpty(id) && Guid.TryParse(id, out Guid contactId))
+            {
+                // get the contact
+                MicrosoftDynamicsCRMcontact contact = _dynamicsClient.GetContactById(contactId);
+                if (contact == null)
+                {
+                    return new NotFoundResult();
+                }
+                MicrosoftDynamicsCRMcontact patchContact = new MicrosoftDynamicsCRMcontact();
+                patchContact.CopyValues(item);
+                try
+                {
+                    await _dynamicsClient.Contacts.UpdateAsync(contactId.ToString(), patchContact);
+                }
+                catch (OdataerrorException odee)
+                {
+                    _logger.LogError("Error updating contact");
+                    _logger.LogError("Request:");
+                    _logger.LogError(odee.Request.Content);
+                    _logger.LogError("Response:");
+                    _logger.LogError(odee.Response.Content);
+                }
+
+                contact = _dynamicsClient.GetContactById(contactId);
+                return Json(contact.ToViewModel());
+            }
+            else
             {
                 return BadRequest();
             }
-
-            // get the contact
-            Guid contactId = Guid.Parse(id);
-
-            MicrosoftDynamicsCRMcontact contact = _dynamicsClient.GetContactById(contactId);
-            if (contact == null)
-            {
-                return new NotFoundResult();
-            }
-            MicrosoftDynamicsCRMcontact patchContact = new MicrosoftDynamicsCRMcontact();
-            patchContact.CopyValues(item);
-            try
-            {
-                await _dynamicsClient.Contacts.UpdateAsync(contactId.ToString(), patchContact);
-            }
-            catch (OdataerrorException odee)
-            {
-                _logger.LogError("Error updating contact");
-                _logger.LogError("Request:");
-                _logger.LogError(odee.Request.Content);
-                _logger.LogError("Response:");
-                _logger.LogError(odee.Response.Content);
-            }
-
-            contact = _dynamicsClient.GetContactById(contactId);
-            return Json(contact.ToViewModel());
         }
 
         /// <summary>

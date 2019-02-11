@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 import { Subscription, zip, Observable } from 'rxjs';
-import { PRODUCTING_OWN_PRODUCT, MANUFACTURING_FOR_OTHERS } from '../waiver-application/waiver-application.component';
+import { PRODUCING_OWN_PRODUCT, MANUFACTURING_FOR_OTHERS } from '../waiver-application/waiver-application.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DynamicsDataService } from '../../../services/dynamics-data.service';
-import { ApplicationDataService } from '../../../services/adoxio-application-data.service';
+import { ApplicationDataService } from '../../../services/application-data.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
@@ -42,7 +42,7 @@ export class WaiverReviewComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       id: [],
-      declarationofcorrectinformation: ['']
+      declarationOfCorrectInformation: ['']
     });
 
     this.reloadData();
@@ -79,7 +79,7 @@ export class WaiverReviewComponent implements OnInit {
         });
 
         const productsForSelfProcessed = [];
-        const productsForSelf = waiver.customProducts.filter(p => p.purpose === PRODUCTING_OWN_PRODUCT);
+        const productsForSelf = waiver.customProducts.filter(p => p.purpose === PRODUCING_OWN_PRODUCT);
         for (let i = 0; i < productsForSelf.length; i++) {
           productsForSelfProcessed.push({
             text: `Product ${i === 0 ? '' : i + 1} Description and Intended Use`
@@ -151,18 +151,20 @@ export class WaiverReviewComponent implements OnInit {
 
   save(goToThankYouPage: boolean) {
     const value = this.form.value;
-    this.form.markAsTouched();
-    if (value.declarationofcorrectinformation !== false) {
-      if (goToThankYouPage) {
-        value.statuscode = 'Pending';
-        value.submittedDate = new Date();
-      }
+
+    if (goToThankYouPage) {
+      this.form.markAsTouched();
+      value.statuscode = 'Pending';
+      value.submittedDate = new Date();
+    }
+
+    if (value.declarationOfCorrectInformation !== false || !goToThankYouPage) {
       const saveList = [this.applicationDataService.updateApplication(value)];
       this.busyPromise = zip(...saveList)
         .toPromise()
         .then(res => {
           if (goToThankYouPage) {
-            this.router.navigateByUrl(`/application/waiver/thank-you/${this.waiverId}`);
+            this.router.navigateByUrl(`/waiver/thank-you/${this.waiverId}`);
           } else {
             this.router.navigateByUrl(`/dashboard`);
           }

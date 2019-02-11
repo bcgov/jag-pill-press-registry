@@ -1,0 +1,65 @@
+{
+    "apiVersion": "build.openshift.io/v1",
+    "kind": "BuildConfig",
+    "metadata": {
+        "creationTimestamp": null,
+        "labels": {
+            "app": "pill-press-prod"
+        },
+        "name": "pill-press-prod",
+        "selfLink": "/apis/build.openshift.io/v1/namespaces/rqnyx8-tools/buildconfigs/pill-press-prod"
+    },
+    "spec": {
+        "failedBuildsHistoryLimit": 5,
+        "nodeSelector": null,
+        "output": {
+            "to": {
+                "kind": "ImageStreamTag",
+                "name": "pill-press-prod:latest"
+            }
+        },
+        "postCommit": {},
+        "resources": {
+            "limits": {
+                "cpu": "1",
+                "memory": "6Gi"
+            },
+            "requests": {
+                "cpu": "1",
+                "memory": "4Gi"
+            }
+        },
+        "runPolicy": "Serial",
+        "source": {
+            "git": {
+                "ref": "master",
+                "uri": "https://github.com/bcgov/jag-pill-press-registry"
+            },
+            "type": "Git"
+        },
+        "strategy": {
+            "sourceStrategy": {
+                "env": [
+                    {
+                        "name": "DOTNET_STARTUP_PROJECT",
+                        "value": "pill-press-app/pill-press-app.csproj"
+                    }
+                ],
+                "from": {
+                    "kind": "ImageStreamTag",
+                    "name": "dotnet-21-rhel7:latest"
+                }
+            },
+            "type": "Source"
+        },
+        "successfulBuildsHistoryLimit": 5,
+        "triggers": [
+            {
+                "type": "ConfigChange"
+            }
+        ]
+    },
+    "status": {
+        "lastVersion": 105
+    }
+}

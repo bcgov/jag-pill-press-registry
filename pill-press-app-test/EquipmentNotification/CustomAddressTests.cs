@@ -26,8 +26,6 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             string changedName = randomNewUserName("Application Changed Name ", 6);
             string service = "Application";
 
-            string initialPhoneNumber = "3331112222";
-
             DateTimeOffset dto = DateTimeOffset.Now;
 
             // login as default and get account for current user
@@ -400,7 +398,6 @@ namespace Gov.Jag.PillPressRegistry.Public.Test
             request = new HttpRequestMessage(HttpMethod.Get, "/api/" + service + "/" + id);
             response = await _client.SendAsync(request);
             
-
             jsonString = await response.Content.ReadAsStringAsync();
             response.EnsureSuccessStatusCode();
             responseViewModel = JsonConvert.DeserializeObject<Application>(jsonString);

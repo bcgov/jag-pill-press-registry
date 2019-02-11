@@ -32,8 +32,17 @@ openshift/      - OpenShift-specific files
 
 ## Deployment (Local Development)
 
-* Developer Workstation Requirements/Setup
-* Application Specific Setup
+### Developer Workstation Requirements/Setup
+**Recommended Configuration**
+- 16 GB RAM
+- NVME SSD
+- Core i7 7th generation or better
+- Windows 10 Pro
+- Docker
+- S2I
+- Git 
+
+Application Specific Setup
 
 ## Deployment (OpenShift)
 

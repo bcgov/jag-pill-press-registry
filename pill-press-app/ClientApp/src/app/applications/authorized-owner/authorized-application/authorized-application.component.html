@@ -10,8 +10,10 @@
 
         <h3 class="blue-header">EQUIPMENT INFORMATION</h3>
         <section class="padded-section">
-          <app-field label="Do you currently own, use, or possess Controlled Equipment?" [required]="true"
-            [showChevrons]="false" errorMessage="Please select yes or no" [valid]="form.get('currentlyownusepossessequipment').valid || !form.get('currentlyownusepossessequipment').touched">
+          <app-field [showChevrons]="false" errorMessage="Please select yes or no" [valid]="form.get('currentlyownusepossessequipment').valid || !form.get('currentlyownusepossessequipment').touched">
+            <strong>Do you currently own, use, or possess <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-controlled-equipment"
+                target="blank">Controlled Equipment</a>?</strong> &nbsp; <strong class="error-states">*</strong>
+            <br>
             <input type="radio" [value]="true" name="currentlyownusepossessequipment" formControlName="currentlyownusepossessequipment">
             <span style="padding-right: 10px;">&nbsp;Yes</span>
             <input type="radio" [value]="false" name="currentlyownusepossessequipment" formControlName="currentlyownusepossessequipment">
@@ -50,7 +52,7 @@
 
         <h3 class="blue-header">PURPOSE OF CONTROLLED EQUIPMENT</h3>
         <section class="padded-section">
-          <app-field label="Do you own, use, or possess (or intend to own) Controlled Equipment for the purposes of producing your own products?"
+          <app-field label="Do you own, use, or possess Controlled Equipment for the purposes of producing your own products?"
             [showChevrons]="false" errorMessage="Please select yes or no" [valid]="form.get('producingownproduct').valid || !form.get('producingownproduct').touched"
             [required]="true">
             <input type="radio" [value]="true" name="producingownproduct" formControlName="producingownproduct">
@@ -59,14 +61,9 @@
             <span>&nbsp;No</span>
           </app-field>
           <section *ngIf="form.get('producingownproduct').value === true" formArrayName="ownProducts">
-            <p>
-              Please provide detailed information on the type of product you produce and its intended use. If you
-              produce multiple products, please describe all of them by clicking on the 'Add another product' link
-              below.
-            </p>
             <div style="display: flex;" *ngFor="let item of ownProducts.controls; let i = index;">
               <section style="flex: 10" [formGroupName]="i">
-                <app-field [required]="true" [showChevrons]="false" errorMessage="Please provide the product description and its intended use"
+                <app-field [required]="true" [showChevrons]="false" errorMessage="Please tell us more about the types of products that you produce."
                   [valid]="item.get('productdescriptionandintendeduse').valid || !item.get('productdescriptionandintendeduse').touched">
                   <div style="display: flex; justify-content: space-between">
                     <section>
@@ -81,13 +78,6 @@
                 </app-field>
               </section>
             </div>
-            <div style="background-color: #F2F2F2; border: solid 1px transparent; border-radius: 5px; padding: 10px; margin-bottom: 10px;">
-              <i class="fas fa-info-circle" style="color: #38598A; margin-right: 10px;"></i>
-              <span>A waiver will only be granted for the intended products and uses disclosed in this application.</span>
-            </div>
-            <a href="javascript:void(0);" (click)="addCustomProduct({purpose: PRODUCTING_OWN_PRODUCT})" style="float: right">
-              <i class="fas fa-plus-circle" style="color: #669900;"></i>Add another product</a>
-            <div style="clear: both;"></div>
           </section>
           <app-field label="Do you own, use, or possess (or intend to own) Controlled Equipment for the purposes of providing manufacturing services to others?"
             [showChevrons]="false" errorMessage="Please select yes or no" [valid]="form.get('providingmanufacturingtoothers').valid || !form.get('providingmanufacturingtoothers').touched"
@@ -98,14 +88,9 @@
             <span>&nbsp;No</span>
           </app-field>
           <section *ngIf="form.get('providingmanufacturingtoothers').value === true" formArrayName="productsForOthers">
-            <p>
-              Please provide detailed information on the type of product you produce for others and its intended use.
-              If you produce multiple products, please describe all of them by clicking on the "Add another product"
-              link below.
-            </p>
             <div style="display: flex;" *ngFor="let item of productsForOthers.controls; let i = index;">
               <section style="flex: 10" [formGroupName]="i">
-                <app-field [required]="true" [showChevrons]="false" errorMessage="Please provide the product description and its intended use"
+                <app-field [required]="true" [showChevrons]="false" errorMessage="Please tell us more about the types of products you produce for others."
                   [valid]="item.get('productdescriptionandintendeduse').valid || !item.get('productdescriptionandintendeduse').touched">
                   <div style="display: flex; justify-content: space-between">
                     <section>
@@ -120,13 +105,6 @@
                 </app-field>
               </section>
             </div>
-            <div style="background-color: #F2F2F2; border: solid 1px transparent; border-radius: 5px; padding: 10px; margin-bottom: 10px;">
-              <i class="fas fa-info-circle" style="color: #38598A; margin-right: 10px;"></i>
-              <span>A waiver will only be granted for the intended products and uses disclosed in this application.</span>
-            </div>
-            <a href="javascript:void(0);" (click)="addCustomProduct({purpose: MANUFACTURING_FOR_OTHERS})" style="float: right">
-              <i class="fas fa-plus-circle" style="color: #669900;"></i>Add another product</a>
-            <div style="clear: both;"></div>
           </section>
         </section>
 
@@ -137,22 +115,23 @@
             or Canada to manufacture a drug or natural health product.</p>
 
           <app-field label="Legislative Authority" [showChevrons]="false" errorMessage="Please select all the applicable legislative authorities"
-            [valid]="form.get('mainbusinessfocus').valid || !form.get('mainbusinessfocus').touched" [required]="true">
+            [valid]="isLegislativeAuthorityValid()" [required]="true">
             <p>What enactment authorizes you to manufacture these products? Please select all the options that apply.</p>
             <input type="checkbox" style="margin-right: 10px;" formControlName="foodanddrugact">
-            <span>Food and Drug Act</span> <br>
+            <span><a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/definition#fda"
+                target="blank">Food and Drug Act</a></span> <br>
             <input type="checkbox" formControlName="legislativeauthorityothercheck" style="margin-right: 10px;"> <span>Other</span>
             <br>
             <section style="padding-left: 20px" *ngIf="form.get('legislativeauthorityothercheck').value === true">
-              <app-field>
-                <i>If Other, Please specify</i>
-                <br>
+              <app-field [valid]="form.get('legislativeauthorityother').valid || !form.get('legislativeauthorityother').touched"
+                errorMessage="Please provide an answer to the question above" label="If Other, Please specify"
+                [required]="true">
                 <input type="text" class="form-control" formControlName="legislativeauthorityother" style="width: 340px">
               </app-field>
             </section>
           </app-field>
-          <app-field label="Type of Authorization" [showChevrons]="false" errorMessage="Please select all the applicable legislative authorities"
-            [valid]="form.get('mainbusinessfocus').valid || !form.get('mainbusinessfocus').touched" [required]="true">
+          <app-field label="Type of Authorization" [showChevrons]="false" errorMessage="Please select all the applicable authorization types"
+            [valid]="isTypeOfAuthorizationValid()" [required]="true">
             <p>What kind of licence do you possess that authorizes you to manufacture a drug or natural health product?
               Please select all the options that apply.</p>
             <input type="checkbox" style="margin-right: 10px;" formControlName="kindsofproductsdrugs"> <span>Drugs</span>
@@ -162,24 +141,26 @@
             <input type="checkbox" style="margin-right: 10px;" formControlName="kindsofproductsothercheck"> <span>Other</span>
             <br>
             <section style="padding-left: 20px" *ngIf="form.get('kindsofproductsothercheck').value === true">
-              <app-field>
-                <i>If Other, Please specify</i>
+              <app-field [valid]="form.get('kindsofproductsother').valid || !form.get('kindsofproductsother').touched"
+                errorMessage="Please provide an answer to the question above">
+                <i>If Other, Please specify</i>&nbsp; <span class="error-states">*</span>
                 <br>
                 <input type="text" class="form-control" formControlName="kindsofproductsother" style="width: 340px">
               </app-field>
             </section>
           </app-field>
-          <app-field label="BC or Canada Issued - Licence Type" [showChevrons]="false" errorMessage="Please select all the applicable legislative authorities"
-            [valid]="form.get('mainbusinessfocus').valid || !form.get('mainbusinessfocus').touched" [required]="true">
+          <app-field label="BC or Canada Issued - Licence Type" [showChevrons]="false" errorMessage="Please select all the applicable licence types"
+            [valid]="isLicenceTypeValid()" [required]="true">
             <p>What kind of licence do you possess that authorizes you to manufacture a drug or natural health product?
               Please select all the options that apply.
             </p>
-            <input type="checkbox" style="margin-right: 10px;" formControlName="drugestablishmentlicence"> <span>Drug
-              Establishment Licence</span> <br>
+            <input type="checkbox" style="margin-right: 10px;" formControlName="drugestablishmentlicence">
+            <span><a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/definition#del"
+                target="blank">Drug Establishment Licence</a></span> <br>
             <section style="padding-left: 20px" *ngIf="form.get('drugestablishmentlicence').value === true">
               <app-field label="What is the name of the business that appears on your Drug Establishment Licence (i.e. issued to name)"
                 [required]="true">
-                <input type="text" class="form-control" formControlName="delbusinessname" style="width: 500px">
+                <input type="text" class="form-control" formControlName="delbusinessname" maxlength="100" style="width: 500px">
               </app-field>
               <app-field label="Drug Establishment Licence - Number" errorMessage="Please provide the drug establishment licence number"
                 [valid]="form.get('drugestablishmentlicencenumber').valid || !form.get('drugestablishmentlicencenumber').touched"
@@ -194,18 +175,20 @@
               </app-field>
 
             </section>
-            <input type="checkbox" style="margin-right: 10px;" formControlName="sitelicence"> <span>Site Licence</span>
+            <input type="checkbox" style="margin-right: 10px;" formControlName="sitelicence">
+            <span><a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/definition#sl"
+                target="blank">Site Licence</a></span>
             <br>
             <section style="padding-left: 20px" *ngIf="form.get('sitelicence').value === true">
-              <app-field label="What is the name of the business that appears on your Drug Establishment Licence (i.e. issued to name)"
+              <app-field label="What is the name of the business that appears on your Site Licence (i.e. issued to name)"
                 [required]="true">
-                <input type="text" class="form-control" formControlName="sitelicencebusinessname" style="width: 500px">
+                <input type="text" class="form-control" formControlName="sitelicencebusinessname" maxlength="100" style="width: 500px">
               </app-field>
-              <app-field label="Drug Establishment Licence - Number" errorMessage="Please provide the site licence number"
-                [valid]="form.get('sitelicencenumber').valid || !form.get('sitelicencenumber').touched" [required]="true">
+              <app-field label="Site Licence - Number" errorMessage="Please provide the site licence number" [valid]="form.get('sitelicencenumber').valid || !form.get('sitelicencenumber').touched"
+                [required]="true">
                 <input type="text" class="form-control" formControlName="sitelicencenumber" style="width: 340px">
               </app-field>
-              <app-field label="Drug Establishment Licence - Expiry Date">
+              <app-field label="Site Licence - Expiry Date">
                 <input type="text" class="form-control" formControlName="sitelicenceexpirydate" placeholder="yyyy-mm-dd"
                   [matDatepicker]="picker2" (focus)="picker2.open()" (click)="picker2.open()" readonly style="width: 200px; background-color: #fff;">
                 <mat-datepicker #picker2></mat-datepicker>
@@ -221,10 +204,11 @@
               </app-field>
               <app-field label="What is the name of the business that appears on your Drug Establishment Licence (i.e. issued to name)"
                 [required]="true">
-                <input type="text" class="form-control" formControlName="otherlicencebusinessname" style="width: 500px">
+                <input type="text" class="form-control" formControlName="otherlicencebusinessname" maxlength="100"
+                  style="width: 500px">
               </app-field>
-              <app-field label="Other Licence - Number" errorMessage="Please provide the licence number"
-              [valid]="form.get('otherlicencenumber').valid || !form.get('otherlicencenumber').touched" [required]="true">
+              <app-field label="Other Licence - Number" errorMessage="Please provide the licence number" [valid]="form.get('otherlicencenumber').valid || !form.get('otherlicencenumber').touched"
+                [required]="true">
                 <input type="text" class="form-control" formControlName="otherlicencenumber" style="width: 340px">
               </app-field>
               <app-field label="Drug Establishment Licence - Expiry Date">

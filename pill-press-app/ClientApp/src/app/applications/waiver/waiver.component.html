@@ -7,11 +7,11 @@
 
     <div class="col-lg-4 col-sm-12">
       <section class="step" style="display: block; background-color: #F1F4FA">
-        <h3 class="blue-header">EQUIPMENT NOTIFICATION</h3>
+        <h3 class="blue-header">WAIVER</h3>
         <section style="padding-top: 15px; padding-bottom: 20px;">
           <mat-vertical-stepper [linear]="true" (selectionChange)="selectionChange($event)" #stepper>
             <ng-template matStepperIcon="edit">
-              <mat-icon>done</mat-icon>
+              <i class="fas fa-check"></i>
             </ng-template>
             <ng-template matStepperIcon="number">
             </ng-template>
@@ -23,7 +23,7 @@
         </section>
       </section>
       <p></p>
-      <section class="submit-container">
+      <section  *ngIf="tab !== 'thank-you'" class="submit-container">
         <table>
           <tr>
             <td>
@@ -35,6 +35,15 @@
           </tr>
         </table>
         <div class="submit-content">
+          <p>What you need to know about:</p>
+          <ul class="arrow">
+            <li><a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-waiver-holder#ap"
+                target="blank" style="color: #fff;">The application process</a></li>
+            <li><a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-controlled-equipment#enp"
+                target="blank" style="color: #fff;">The equipment notification process</a></li>
+            <li><a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-waiver-holder#bts"
+                target="blank" style="color: #fff;"> Obligations and responsibilities of Waiver Holders</a></li>
+          </ul>
         </div>
       </section>
     </div>

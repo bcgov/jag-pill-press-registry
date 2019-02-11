@@ -51,6 +51,19 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         Denied = 845280001
     }
 
+    public enum GeographicalLocation {
+        Canada = 931490000,
+        [EnumMember(Value = "United States")]
+        UnitedStates = 931490001,
+
+        Europe = 931490002,
+        Asia = 931490003,
+        [EnumMember(Value = "South America")]
+        SouthAmerica = 931490004,
+        Africa = 931490005,
+
+    }
+
     public class Application
     {
         public string id { get; set; } //adoxio_applicationid
@@ -123,11 +136,6 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         /// </summary>
         public string manufacturingprocessdescription { get; set; }
 
-        // ### DECLARATIONS AND CONSENT ###
-        /// <summary>
-        /// Declaration that all information provided is correct, including the information on the Client Profile - Business Information page (which is incorporated into this application)
-        /// </summary>
-        public bool? declarationofcorrectinformation { get; set; }
 
         /// <summary>
         /// Consent that by submitting the application the applicant understands their information is being collected for FOIPPA purposes and may be released as per FOIPPA.
@@ -298,7 +306,8 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public ViewModels.CustomAddress OutsideBCSellersAddress { get; set; }
 
         [JsonProperty(PropertyName = "outsideBcSellersLocation")]
-        public string OutsideBcSellersLocation { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public GeographicalLocation? OutsideBcSellersLocation { get; set; }
 
         [JsonProperty(PropertyName = "dateOfPurchaseFromOutsideBcSeller")]
         public System.DateTimeOffset? DateOfPurchaseFromOutsideBcSeller { get; set; }
@@ -308,6 +317,9 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
 
         [JsonProperty(PropertyName = "importersAddress")]
         public ViewModels.CustomAddress ImportersAddress { get; set; }
+        
+        [JsonProperty(PropertyName = "addressofPersonBusiness")]
+        public ViewModels.CustomAddress AddressofPersonBusiness { get; set; }
 
         [JsonProperty(PropertyName = "importersRegistrationNumber")]
         public string ImportersRegistrationNumber { get; set; }
@@ -319,7 +331,8 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public ViewModels.CustomAddress OriginatingSellersAddress { get; set; }
 
         [JsonProperty(PropertyName = "originatingSellersLocation")]
-        public string OriginatingSellersLocation { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public GeographicalLocation? OriginatingSellersLocation { get; set; }
 
         [JsonProperty(PropertyName = "dateOfPurchaseFromImporter")]
         public System.DateTimeOffset? DateOfPurchaseFromImporter { get; set; }
@@ -404,5 +417,9 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         [JsonProperty(PropertyName = "equipmentLocation")]
         public Location EquipmentLocation { get; set; }
 
+        [JsonProperty(PropertyName = "settingDescription")]
+        public string SettingDescription { get; set; }
+
+        public List<Certificate> Certificates { get; set; }
     }
 }

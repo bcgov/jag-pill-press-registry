@@ -10,8 +10,10 @@
 
         <h3 class="blue-header">EQUIPMENT INFORMATION</h3>
         <section class="padded-section">
-          <app-field label="Do you currently own, use, or possess Controlled Equipment?" [required]="true"
-            [showChevrons]="false" errorMessage="Please select yes or no" [valid]="form.get('currentlyownusepossessequipment').valid || !form.get('currentlyownusepossessequipment').touched">
+          <app-field [showChevrons]="false" errorMessage="Please select yes or no" [valid]="form.get('currentlyownusepossessequipment').valid || !form.get('currentlyownusepossessequipment').touched">
+            <strong>Do you currently own, use, or possess <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-controlled-equipment"
+                target="blank">Controlled Equipment</a>? </strong>
+            <br>
             <input type="radio" [value]="true" name="currentlyownusepossessequipment" formControlName="currentlyownusepossessequipment">
             <span style="padding-right: 10px;">&nbsp;Yes</span>
             <input type="radio" [value]="false" name="currentlyownusepossessequipment" formControlName="currentlyownusepossessequipment">
@@ -85,7 +87,7 @@
               <i class="fas fa-info-circle" style="color: #38598A; margin-right: 10px;"></i>
               <span>A waiver will only be granted for the intended products and uses disclosed in this application.</span>
             </div>
-            <a href="javascript:void(0);" (click)="addCustomProduct({purpose: PRODUCTING_OWN_PRODUCT})" style="float: right">
+            <a href="javascript:void(0);" (click)="addCustomProduct({purpose: PRODUCING_OWN_PRODUCT})" style="float: right">
               <i class="fas fa-plus-circle" style="color: #669900;"></i>Add another product</a>
             <div style="clear: both;"></div>
           </section>
@@ -144,9 +146,10 @@
           </app-field>
 
           <section>
-            <label for="">If you have additional supporting documents, please upload them below.</label>
-            <app-file-uploader documentType="Waiver Documents" entityName="incident" [entityId]="waiverId" fileTypes="FILE MUST BE IN DOC, XLS, PDF, JPG OR PNG"
-              [extensions]="['pdf', 'jpg', 'jpeg', 'png', 'xls', 'doc']"></app-file-uploader>
+            <label for="">If you have additional <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/definition#sd"
+                target="blank">supporting documents</a>, please upload them below.</label>
+            <app-file-uploader documentType="Waiver Documents" entityName="incident" [entityId]="waiverId" fileTypes="FILE MUST BE IN DOC, DOCX, XLS, PDF, JPG OR PNG"
+              [extensions]="['pdf', 'jpg', 'jpeg', 'png', 'xls', 'doc', 'docx']"></app-file-uploader>
           </section>
         </section>
 

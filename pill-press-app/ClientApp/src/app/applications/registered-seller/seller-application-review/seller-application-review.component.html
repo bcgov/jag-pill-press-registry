@@ -86,14 +86,14 @@
   </table>
 
   <h3 class="blue-header">Owner/Manager Information</h3>
-  <table>
+  <table >
     <tr>
       <td class="table-row">
         <strong>Business owners and managers listed in this application:</strong>
       </td>
     </tr>
   </table>
-  <table>
+  <table class="summary-table">
     <tr>
       <th>FIRST NAME</th>
       <th>LAST NAME</th>
@@ -111,7 +111,9 @@
   <h3 class="blue-header">DECLARATION AND CONSENT</h3>
   <div [formGroup]="form" class="padded-section">
     <section style="display: flex">
-      <input type="checkbox" style="flex: 0 0 20px" formControlName="declarationofcorrectinformation">
+      <section style="flex: 0 0 20px">
+        <input type="checkbox"  formControlName="declarationOfCorrectInformation">
+      </section>
       <span>I certify that, to the best of my knowledge, the information I have provided on my Registered Seller
         application and will provide as necessary is complete, honest, and accurate. I understand that a false
         statement or omission of facts herein may lead to the a denial of a registration being granted. I am also
@@ -119,7 +121,7 @@
         of a registration or for being prosecuted under provincial law. <strong class="error-states">*</strong>
       </span>
     </section>
-    <div *ngIf="form.get('declarationofcorrectinformation').value !== true && form.touched" style="background-color: #F2F2F2; margin-top: 10px; border-radius: 5px; padding: 10px; font: 15px Myriad Pro Regular #494949;">
+    <div *ngIf="form.get('declarationOfCorrectInformation').value !== true && form.touched" style="background-color: #F2F2F2; margin-top: 10px; border-radius: 5px; padding: 10px; font: 15px Myriad Pro Regular #494949;">
       <i class="fas fa-exclamation-triangle error-states" style="margin-right: 10px;"></i>
       <span class="error-states">Please complete the declarations and consent section.</span>
     </div>
@@ -130,10 +132,10 @@
       <span class="error-states">*</span> <i>Required field</i>
     </section>
     <section>
-      <a href="javascript: void(0);" style="margin-right: 10px"><i class="fas fa-save"></i>Save & Close</a>
+      <a href="javascript: save(false);" (click)="save(false)" style="margin-right: 10px"><i class="fas fa-save"></i>Save & Close</a>
       <button class="btn btn-secondary" style="margin-right: 10px" routerLink="/registered-seller/application/{{waiverId}}">EDIT
         APPLICATION</button>
-      <button class="btn btn-primary" (click)="markAsTouched(); save(false)">SUBMIT</button>
+      <button class="btn btn-primary" (click)="markAsTouched(); save(true)">SUBMIT</button>
     </section>
   </div>
 </div>
