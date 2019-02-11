@@ -1,4 +1,4 @@
-LCLB Cannabis & Liquor - Licensing and Compliance System
+JAG Pill Press Registry
 =================
 
 ## Running in OpenShift
@@ -25,7 +25,7 @@ Differences can include:
 
 To target a different repo and branch, create a `settings.local.sh` file in your project's local `openshift` directory and override the GIT parameters, for example;
 ```
-export GIT_URI="https://github.com/bcgov/ag-lclb-cllc-public.git"
+export GIT_URI="https://github.com/bcgov/jag-pill-press-registry.git"
 export GIT_REF="openshift-updates"
 ```
 
@@ -43,18 +43,11 @@ The settings in these files will be specific to your local configuration and wil
 
 Before you deploy your local build configurations ...
 
-The application uses .Net 2.0 s2i images for the builds.  In the pathfinder environment these components utilize the `dotnet-20-rhel7` image which is available at registry.access.redhat.com/dotnet/dotnet-20-rhel7.  For local builds this image can still be downloaded, however you will receive errors during any builds (Docker builds) that try to use `yum` to install any additional packages.  
+The application uses .Net 2.0 s2i images for the builds.  In the pathfinder environment these components utilize the `dotnet-21-rhel7` image which is available at registry.access.redhat.com/dotnet/dotnet-21-rhel7.  
 
-To resolve this issue the project defines builds for `dotnet-20-runtime-centos7` and `dotnet-20-centos7`; which at the time of writing were not available in image form.  The `dotnet-20-centos7` s2i image is the CentOS equivalent of the `dotnet-20-rhel7` s2i image that can be used for local development.  These two images are not used in the Pathfinder environment and exist only to be used in a local environment.
+You can use the following command to import this image into your OpenShift project:
 
-To switch to the `dotnet-20-centos7` image for local deployment, open your `cllc-public.build.local.param` file and add the following 2 lines;
-
-```
-SOURCE_IMAGE_KIND=ImageStreamTag
-SOURCE_IMAGE_NAME=dotnet-20-centos7
-```
-
-Note that you may have to comment out variables in the .param files found in jag-lcrb-carla-public-openshift\openshift.
+`oc import-image dotnet-21-rhel7 --from registry.access.redhat.com/dotnet/dotnet-21-rhel7:latest --confirm`
 
 ### Preparing for local deployment
 
@@ -88,9 +81,9 @@ genBuilds.sh
 ```
 , and follow the instructions.
 
-Note that the script will stop mid-way through. Ensure builds are complete in the tools project. Also, cllc-public may hang without error. This is likely due to insufficient resources in your local.
+Note that the script will stop mid-way through. Ensure builds are complete in the tools project. Also, pill-press may hang without error. This is likely due to insufficient resources in your local.
 
-IMPORTANT: Sometimes cllc-public will fail while trying to build its image. The error will say that npm install failed. This is due to npm timing out. To fix this resources must be increased. Try increasing requested CPU to 2 cores and RAM to 2 GB.
+IMPORTANT: Sometimes pill-press will fail while trying to build its image. The error will say that npm install failed. This is due to npm timing out. To fix this resources must be increased. Try increasing requested CPU to 2 cores and RAM to 2 GB.
 
 All of the builds should start automatically as their dependencies are available, starting with builds with only docker image and source dependencies.
 
@@ -122,15 +115,14 @@ Click **Add webhook**
 
 ### UAT ###
 
-UAT is not currently supported by the process above.  To setup the UAT environment, change the console directory to the location of the public-app openshift directory, and execute the following.
+UAT is not currently supported by the process above.  To setup the UAT environment, change the console directory to the location of the pillpress-app/openshift directory, and execute the following.
+`oc project <tools project name>`
 
-`oc project lclb-cllc-tools`
-
-`oc process -f templates/cllc-public/cllc-public.build.json --param-file=cllc-public-build.uat.param`
+`oc process -f templates/pill-press/pill-press.build.json --param-file=pill-press-build.uat.param`
 
 `oc project lclb-cllc-test`
 
-`oc process -f templates/cllc-public/cllc-public-deploy.json --param-file=cllc-public-deploy.uat.param`
+`oc process -f templates/pill-press/pill-press-deploy.json --param-file=pill-press-deploy.uat.param`
 
 
 
@@ -138,6 +130,16 @@ Change directory to the directory containing the mssql server template, and exec
 
 `oc process -f sql-server-deploy.json --param-file=sql-server-deploy.uat.param | oc create -f -`
 
-### Mssql deployment on local ###
+### SharePoint Permissions ###
 
-To build an image for Mssql on a local instance of Openshift, Dockerfile.centos should be used. In jag-lcrb-carla-public/sql-server Dockerfile.centos should be renamed to Dockerfile. 
+SharePoint has a unique method for assigning permissions.
+
+Navigate to <SharePoint Site URL>/_layouts/15/appinv.aspx to assign permissions for an app registration.
+Enter the key for the app registration (same as the setting that is entered in the Environment for the application deployment), and click Lookup
+Populate the permissions request field with the following:
+
+<AppPermissionRequests AllowAppOnlyPolicy="true">
+ <AppPermissionRequest Scope="http://sharepoint/content/sitecollection/web" Right="FullControl" />
+</AppPermissionRequests>
+
+Note that if you do not have sufficient level of access to immediately approve the new permission, you will have to wait for the permission to be approved by an individual with sufficient access.

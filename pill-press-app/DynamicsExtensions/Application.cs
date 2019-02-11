@@ -7,7 +7,15 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
 {
     public static class ApplicationDynamicsExtensions
     {
-        
+
+        public static string GetSharePointFolderName(this MicrosoftDynamicsCRMincident application)
+        {
+
+            string applicationIdCleaned = application.Incidentid.ToString().ToUpper().Replace("-", "");
+            string folderName = $"{application.Title}_{applicationIdCleaned}";
+            return folderName;
+        }
+
         public static MicrosoftDynamicsCRMincident GetApplicationById(this IDynamicsClient system, Guid id)
         {
             MicrosoftDynamicsCRMincident result;
@@ -39,11 +47,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                 {
                     "bcgov_ApplicationTypeId","bcgov_incident_customproduct_RelatedApplication","customerid_account","bcgov_incident_businesscontact",
                     "bcgov_BCSellersAddress","bcgov_OutsideBCSellersAddress","bcgov_ImportersAddress","bcgov_OriginatingSellersAddress",
-                    "bcgov_AddressofBusinessthathasGivenorLoaned","bcgov_AddressofBusinessthathasRentedorLeased","bcgov_EquipmentLocation"        
+                    "bcgov_AddressofBusinessthathasGivenorLoaned","bcgov_AddressofBusinessthathasRentedorLeased","bcgov_EquipmentLocation", "bcgov_AddressofPersonBusiness",
+                    "bcgov_incident_bcgov_certificate_Application"
                 };
                 // fetch from Dynamics.
-                result = system.Incidents.GetByKey(incidentid: id, expand: expand);
-
+                result = system.Incidents.GetByKey(incidentid: id, expand: expand);               
                 // expand only goes one level deep - we need the "location address"
 
                 if (result.BcgovEquipmentLocation != null && result.BcgovEquipmentLocation._bcgovLocationaddressValue != null)

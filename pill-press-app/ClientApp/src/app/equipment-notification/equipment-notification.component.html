@@ -11,7 +11,7 @@
         <section style="padding-top: 15px; padding-bottom: 20px;">
           <mat-vertical-stepper [linear]="true" (selectionChange)="selectionChange($event)" #stepper>
             <ng-template matStepperIcon="edit">
-              <mat-icon>done</mat-icon>
+              <i class="fas fa-check"></i>
             </ng-template>
             <ng-template matStepperIcon="number">
             </ng-template>
@@ -31,6 +31,65 @@
           </mat-vertical-stepper>
         </section>
       </section>
+
+      <section *ngIf="tab !== 'thank-you'" class="step" style="display: block; background-color: #F1F4FA; margin-bottom: 20px;">
+        <h3 class="blue-header">EQUIPMENT SUBMISSIONS</h3>
+        <section style="padding: 15px; padding-bottom: 20px;">
+          <p>
+            The following Controlled Equipment notifications have been submitted most recently.
+          </p>
+          <table mat-table [dataSource]="equipment" class="mat-elevation-z0" style="width: 100%; border-spacing: 2px">
+
+            <!--- Note that these columns can be defined in any order.
+                    The actual rendered columns are set as a property on the row definition" -->
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="equipment">
+              <th mat-header-cell *matHeaderCellDef> EQUIPMENT </th>
+              <td mat-cell *matCellDef="let item">
+                <div>
+                  <span>{{item.equipmentType}}</span> <br>
+                  <span>Reference #: {{item.title}} </span> <span></span> <br>
+                  <span>Date Submitted: </span> <i>{{item.submittedDate | date : 'dd/MM/yyyy'}}</i> <br>
+                </div>
+              </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef> STATUS </th>
+              <td mat-cell *matCellDef="let element"> {{element.statuscode}} </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+
+        </section>
+      </section>
+
+      <section  *ngIf="tab !== 'thank-you'" class="submit-container">
+          <table>
+            <tr>
+              <td>
+                <h2 class="round-icon-wrapper"><i class="fas fa-address-card"></i></h2>
+              </td>
+              <td style="padding-left: 10px">
+                <h2>Useful Links & Information</h2>
+              </td>
+            </tr>
+          </table>
+          <div class="submit-content">
+            <p>What you need to know about:</p>
+            <ul class="arrow">
+              <li><a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-controlled-equipment#enp"
+                  target="blank" style="color: #fff;">The equipment notification process</a></li>
+              <li><a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-controlled-equipment#cce"
+                  target="blank" style="color: #fff;">Changes to Controlled Equipment</a></li>
+            </ul>
+          </div>
+        </section>
     </div>
   </div>
 </div>

@@ -77,12 +77,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <param name="system"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public static MicrosoftDynamicsCRMaccount GetAccountById(this IDynamicsClient system, Guid id)
+        public static MicrosoftDynamicsCRMaccount GetAccountByIdWithChildren(this IDynamicsClient system, Guid id)
         {
             List<string> expand = new List<string>()
             {
                 "primarycontactid",
-                "bcgov_AdditionalContact"
+                "bcgov_AdditionalContact",
+                "Account_SharepointDocumentLocation"
             };
 
             MicrosoftDynamicsCRMaccount result;
@@ -111,6 +112,55 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             return result;
         }
 
+        public static string GetServerUrl(this MicrosoftDynamicsCRMaccount account, SharePointFileManager _sharePointFileManager)
+        {
+            string result = "";
+            // use the account document location if it exists.
+            if (account.AccountSharepointDocumentLocation != null && account.AccountSharepointDocumentLocation.Count > 0)
+            {
+                var location = account.AccountSharepointDocumentLocation.FirstOrDefault();
+                if (location != null)
+                {
+                    if (string.IsNullOrEmpty(location.Relativeurl))
+                    {
+                        if (!string.IsNullOrEmpty(location.Absoluteurl))
+                        {
+                            result = location.Absoluteurl;
+                        }
+                    }
+                    else
+                    {
+                        string serverRelativeUrl = "";
+
+                        if (!string.IsNullOrEmpty(_sharePointFileManager.WebName))
+                        {
+                            serverRelativeUrl += "/sites/" + _sharePointFileManager.WebName;
+                        }
+
+                        serverRelativeUrl += "/" + _sharePointFileManager.GetServerRelativeURL(SharePointFileManager.AccountDocumentListTitle, location.Relativeurl);
+
+                        result = serverRelativeUrl;
+                    }
+                }                
+            }
+            if(string.IsNullOrEmpty(result))
+            {
+                string serverRelativeUrl = "";
+
+                if (!string.IsNullOrEmpty(_sharePointFileManager.WebName))
+                {
+                    serverRelativeUrl += "/sites/" + _sharePointFileManager.WebName;
+                }
+                string accountIdCleaned = account.Accountid.ToString().ToUpper().Replace("-", "");
+                string folderName = $"_{accountIdCleaned}";
+
+                serverRelativeUrl += "/" + _sharePointFileManager.GetServerRelativeURL(SharePointFileManager.AccountDocumentListTitle, folderName);
+
+                result = serverRelativeUrl;
+                
+            }
+            return result;
+        }
 
     }
 }
