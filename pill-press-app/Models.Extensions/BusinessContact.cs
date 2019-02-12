@@ -79,9 +79,6 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             
             return result;
         }
-            
         
-    
-
     }
 }

@@ -25,8 +25,8 @@ export class DashboardComponent implements OnInit {
   isPaid: Boolean;
   orgType = '';
 
-  inProgressEquipment: Application[] = [];
-  completedEquipment: Application[] = [];
+  inProgressEquipment: any[] = [];
+  completedEquipment: any[] = [];
   waiverApplication: any;
   authorizedOwnerApplication: Application;
   registeredSellerApplication: any;
@@ -54,6 +54,23 @@ export class DashboardComponent implements OnInit {
 
     this.busy = this.applicationDataService.getApplications()
       .subscribe((data: Application[]) => {
+
+        data.forEach((app: any) => {
+          app.certificates = app.certificates || [];
+          if (app.certificates.length > 0) {
+            app.certificates.sort(this.dateSort);
+            app.certificate = app.certificates[0];
+          }
+        });
+
+        data.forEach((app: any) => {
+          if (app.certificate) {
+            this.applicationDataService.doesCertificateExist(app.id).subscribe(result => {
+              app.hasCertificate = result;
+            });
+          }
+        });
+
         const authorizedOwners = data.filter(a => a.applicationtype === 'Authorized Owner');
         if (authorizedOwners.length > 0) {
           this.authorizedOwnerApplication = authorizedOwners[0];
@@ -62,35 +79,25 @@ export class DashboardComponent implements OnInit {
         const sellers = data.filter(a => a.applicationtype === 'Registered Seller');
         if (sellers.length > 0) {
           this.registeredSellerApplication = sellers[0];
-
-          this.registeredSellerApplication.certificates = this.registeredSellerApplication.certificates || [];
-          this.registeredSellerApplication.certificates.sort((a, b) => {
-            if (a.issueDate > b.issueDate) {
-              return 1;
-            } else {
-              return -1;
-            }
-          });
-          this.registeredSellerApplication.certificate = this.registeredSellerApplication.certificates[0];
         }
 
         const waivers = data.filter(a => a.applicationtype === 'Waiver');
         if (waivers.length > 0) {
           this.waiverApplication = waivers[0];
-          this.waiverApplication.certificates = this.waiverApplication.certificates || [];
-          this.waiverApplication.certificates.sort((a, b) => {
-            if (a.issueDate > b.issueDate) {
-              return 1;
-            } else {
-              return -1;
-            }
-          });
-          this.waiverApplication.certificate = this.waiverApplication.certificates[0];
         }
 
         this.inProgressEquipment = data.filter(a => a.applicationtype === 'Equipment Notification' && a.statuscode !== 'Approved');
         this.completedEquipment = data.filter(a => a.applicationtype === 'Equipment Notification' && a.statuscode === 'Approved');
+
       });
+  }
+
+  dateSort(a, b) {
+    if (a.issueDate > b.issueDate) {
+      return 1;
+    } else {
+      return -1;
+    }
   }
 
   isAuthorizedApplicationPending() {
@@ -176,6 +183,47 @@ export class DashboardComponent implements OnInit {
         this.snackBar.open('Error starting a New Equipment Notificatio Application',
           'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
         console.log('Error starting a Registered Seller Application');
+      }
+    );
+  }
+
+  reportSales(equipmentId: string) {
+    // TODO: Link the equipment to the application
+    // const newLicenceApplicationData: Application = <Application>{
+    //   statuscode: 'Draft',
+    //   typeOfChange: 'Sold',
+    //   equipmentRecord: {
+    //     id: equipmentId
+    //   }
+    // };
+    // this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Equipment Notification').subscribe(
+    //   data => {
+    const data = { id: 1 };
+    this.router.navigateByUrl(`/equipment-change/reporting-sales/details/${data.id}`);
+    //   },
+    //   err => {
+    //     this.snackBar.open('Error starting a Reporting Sales Application', 'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
+    //     console.log('Error starting Reporting Sales Application');
+    //   }
+    // );
+  }
+
+  reportLSD(equipmentId: string) {
+    const newLicenceApplicationData: Application = <Application>{
+      statuscode: 'Draft',
+      typeOfChange: 'Lost',
+      equipmentRecord: {
+        id: equipmentId
+      }
+    };
+    this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Equipment Notification').subscribe(
+      data => {
+        // const data = { id: 1 };
+        this.router.navigateByUrl(`//equipment-changes/report-changes/details/{{item.id}}>${data.id}`);
+      },
+      err => {
+        this.snackBar.open('Error starting a Reporting Sales Application', 'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
+        console.log('Error starting Reporting Sales Application');
       }
     );
   }
