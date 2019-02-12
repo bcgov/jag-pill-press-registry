@@ -108,6 +108,15 @@ import { EquipmentNotificationComponent } from './equipment-notification/equipme
 import { WaiverComponent } from './applications/waiver/waiver.component';
 import { RegisteredSellerComponent } from './applications/registered-seller/registered-seller.component';
 import { AuthorizedOwnerComponent } from './applications/authorized-owner/authorized-owner.component';
+import { LocationChangeComponent } from './equipment-changes/location-change/location-change.component';
+import { ReportChangesComponent } from './equipment-changes/report-changes/report-changes.component';
+import { EquipmentChangeFormComponent } from './equipment-changes/report-changes/equipment-change-form/equipment-change-form.component';
+import { EquipmentChangeReviewComponent } from './equipment-changes/report-changes/equipment-change-review/equipment-change-review.component';
+import { EquipmentChangeThankYouComponent } from './equipment-changes/report-changes/equipment-change-thank-you/equipment-change-thank-you.component';
+import { ReportingSalesFormComponent } from './equipment-changes/reporting-sales/reporting-sales-form/reporting-sales-form.component';
+import { ReportingSalesReviewComponent } from './equipment-changes/reporting-sales/reporting-sales-review/reporting-sales-review.component';
+import { ReportingSalesThankYouComponent } from './equipment-changes/reporting-sales/reporting-sales-thank-you/reporting-sales-thank-you.component';
+import { ReportingSalesComponent } from './equipment-changes/reporting-sales/reporting-sales.component';
 
 
 
@@ -148,7 +157,16 @@ import { AuthorizedOwnerComponent } from './applications/authorized-owner/author
     EquipmentNotificationComponent,
     WaiverComponent,
     RegisteredSellerComponent,
-    AuthorizedOwnerComponent
+    AuthorizedOwnerComponent,
+    LocationChangeComponent,
+    ReportChangesComponent,
+    EquipmentChangeFormComponent,
+    EquipmentChangeReviewComponent,
+    EquipmentChangeThankYouComponent,
+    ReportingSalesFormComponent,
+    ReportingSalesReviewComponent,
+    ReportingSalesThankYouComponent,
+    ReportingSalesComponent
   ],
   imports: [
     BrowserModule,
