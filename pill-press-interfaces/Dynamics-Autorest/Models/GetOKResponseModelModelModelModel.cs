@@ -12,7 +12,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
     using System.Linq;
 
     /// <summary>
-    /// Collection of bcgov_certificatetermsandconditionses
+    /// Collection of bcgov_certificates
     /// </summary>
     public partial class GetOKResponseModelModelModelModel
     {
@@ -29,7 +29,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// Initializes a new instance of the GetOKResponseModelModelModelModel
         /// class.
         /// </summary>
-        public GetOKResponseModelModelModelModel(IList<MicrosoftDynamicsCRMbcgovCertificatetermsandconditions> value = default(IList<MicrosoftDynamicsCRMbcgovCertificatetermsandconditions>))
+        public GetOKResponseModelModelModelModel(IList<MicrosoftDynamicsCRMbcgovCertificate> value = default(IList<MicrosoftDynamicsCRMbcgovCertificate>))
         {
             Value = value;
             CustomInit();
@@ -43,7 +43,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "value")]
-        public IList<MicrosoftDynamicsCRMbcgovCertificatetermsandconditions> Value { get; set; }
+        public IList<MicrosoftDynamicsCRMbcgovCertificate> Value { get; set; }
 
     }
 }
