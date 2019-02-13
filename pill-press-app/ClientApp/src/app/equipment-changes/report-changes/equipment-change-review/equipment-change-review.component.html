@@ -1,3 +1,298 @@
-<p>
-  equipment-change-review works!
-</p>
+<div class="">
+  <div class="" style="position: relative;">
+    <div [ngBusy]="[busy, busyPromise]"></div>
+    <h2 class="step">STEP 2</h2>
+    <h1>Report of Sale Review</h1>
+
+    <p>
+      You have provided the following information in your Report of Sale. In order to proceed, please confirm that these
+      details are correct. If they are not, please <a
+        routerLink="/equipment-notification/reporting-sales/details/{{equipmentRecord?.id}}">amend
+        your
+        answers</a>
+      before submitting the application.
+    </p>
+
+    <h2>Sold Equipment Identification</h2>
+    <div>
+      <section *ngIf="form.get('howWasEquipmentBuilt').value === 'Commercially Manufactured'" class="padded-section">
+        <div class="dark-row">Equipment Type&nbsp; <span class="error-states">*</span></div>
+        <div class="alt-row"> {{ notification?.equipmentType }}</div>
+
+        <div class="dark-row">Make <span class="error-states">*</span></div>
+        <div class="alt-row"> {{ notification?.equipmentMake }}</div>
+
+        <div class="dark-row">Model</div>
+        <div class="alt-row"> {{ notification?.equipmentModel }}</div>
+
+        <div class="dark-row">Serial Number</div>
+        <div class="alt-row"> {{ notification?.serialNumber }}</div>
+
+        <div class="dark-row">Equipment Resitry Number</div>
+        <div class="alt-row"> {{ notification?.certificate?.name }}</div>
+      </section>
+
+      <section *ngIf="form.get('howWasEquipmentBuilt').value !== 'Commercially Manufactured'" class="padded-section">
+        <div class="dark-row">Equipment Type&nbsp; <span class="error-states">*</span></div>
+        <div class="alt-row"> {{ notification?.equipmentType }}</div>
+
+        <div class="dark-row">Equipment Resitry Number</div>
+        <div class="alt-row"> {{ notification?.certificate?.name }}</div>
+      </section>
+    </div>
+
+    <h2>Details of Sale</h2>
+    <div class="padded-section">
+      <div class="dark-row">What is the date on which the sale was made? &nbsp; <span class="error-states">*</span>
+      </div>
+      <div class="alt-row"> {{ application?.equipmentType }}</div>
+
+      <div class="dark-row">Please indicate the type of sale for this piece of Controlled Equipment. &nbsp; <span
+          class="error-states">*</span></div>
+      <div class="alt-row"> {{ application?.equipmentType }}</div>
+
+      <div class="dark-row">Did you retain any rights to own, use, or possess this piece of equipment after the sale
+        transaction was completed?? &nbsp; <span class="error-states">*</span></div>
+      <div class="alt-row"> {{ application?.equipmentType }}</div>
+
+      <div class="dark-row">What was the method of payment used to purchase this piece of Controlled Equipment? &nbsp;
+        <span class="error-states">*</span></div>
+      <div class="alt-row"> {{ application?.equipmentType }}</div>
+
+      <div class="dark-row">Where will this piece of equipment reside after it is sold? &nbsp; <span
+          class="error-states">*</span></div>
+      <div class="alt-row"> {{ application?.equipmentType }}</div>
+
+      <div class="dark-row">What is the civic address at which the purchaser will ordinarily store this piece of
+        Controlled Equipment? &nbsp; <span class="error-states">*</span></div>
+      <div class="alt-row"> {{ application?.equipmentType }}</div>
+
+      <div class="dark-row">Is the address where the purchaser will ordinarily store this piece of equipment a private
+        dwelling house? &nbsp; <span class="error-states">*</span></div>
+      <div class="alt-row"> {{ application?.equipmentType }}</div>
+    </div>
+
+    <h2>Purchaser Information</h2>
+    <div class="padded-section">
+      <div class="dark-row">
+        Was this piece of Controlled Equipment purchased by an individual for their own personal use, or by a business?
+        &nbsp; <span class="error-states">*</span></div>
+      <div class="alt-row">
+        <ul>
+          <li>Business</li>
+        </ul>
+      </div>
+      <section class="padded-section">
+        <div class="dark-row">Please provide the legal name of the business who purchased this piece of Controlled
+          Equipment &nbsp; <span class="error-states">*</span></div>
+        <div class="alt-row"> {{ application?.equipmentType }}</div>
+
+        <div class="dark-row">What is the registration number (i.e. corporate registry number) for the purchaser? &nbsp;
+          <span class="error-states">*</span></div>
+        <div class="alt-row"> {{ application?.equipmentType }}</div>
+
+        <div class="dark-row">What is the name under which the purchaser ordinarily carries on business (i.e. a doing
+          business as name)? &nbsp; <span class="error-states">*</span></div>
+        <div class="alt-row"> {{ application?.equipmentType }}</div>
+
+        <div class="dark-row">Please provide the purchaser's business address &nbsp; <span class="error-states">*</span>
+        </div>
+        <div class="alt-row"> {{ application?.equipmentType }}</div>
+
+        <div class="dark-row">Please provide the legal name of the person responsible for making the purchase on behalf
+          of the business? &nbsp; <span class="error-states">*</span></div>
+        <div class="alt-row"> {{ application?.equipmentType }}</div>
+
+        <div class="dark-row">Please provide the business telephone number of the person responsible for making the
+          purchase on behalf of the business? &nbsp; <span class="error-states">*</span></div>
+        <div class="alt-row"> {{ application?.equipmentType }}</div>
+
+        <div class="dark-row">Please provide the business email address of the person responsible for making the
+          purchase on behalf of the business? &nbsp; <span class="error-states">*</span></div>
+        <div class="alt-row"> {{ application?.equipmentType }}</div>
+
+        <div class="dark-row">Please check the geographical location of business purchaser &nbsp; <span
+            class="error-states">*</span></div>
+        <div class="alt-row"> {{ application?.equipmentType }}</div>
+
+      </section>
+
+      <div class="alt-row">
+        <ul>
+          <li>Individual</li>
+        </ul>
+      </div>
+      <section class="padded-section">
+        <div class="dark-row">Please provide the legal name of the individual who purchased this piece of Controlled
+          Equipment &nbsp; <span class="error-states">*</span></div>
+        <div class="alt-row"> {{ application?.equipmentType }}</div>
+
+        <div class="dark-row">Please provide the purchaser's civic address &nbsp;
+          <span class="error-states">*</span></div>
+        <div class="alt-row"> {{ application?.equipmentType }}</div>
+
+        <div class="dark-row">Please provide the purchaser's telephone number &nbsp; <span class="error-states">*</span>
+        </div>
+        <div class="alt-row"> {{ application?.equipmentType }}</div>
+
+        <div class="dark-row">Please provide the purchaser's email address &nbsp; <span class="error-states">*</span>
+        </div>
+        <div class="alt-row"> {{ application?.equipmentType }}</div>
+
+        <div class="dark-row">Did you collect the number assigned to this purchaser's government issued photo ID? &nbsp;
+          <span class="error-states">*</span></div>
+        <div class="alt-row"> {{ application?.equipmentType }}</div>
+
+        <div class="dark-row">Please describe the type of ID from which you collected the number (i.e. driver's licence)
+          &nbsp; <span class="error-states">*</span></div>
+        <div class="alt-row"> {{ application?.equipmentType }}</div>
+      </section>
+    </div>
+
+    <h2>Purchaser Authorization</h2>
+    <div class="padded-section">
+      <div class="dark-row">Is the purchaser a "person in British Columbia"? &nbsp; <span class="error-states">*</span>
+      </div>
+      <div class="alt-row"> {{ application?.equipmentType }}</div>
+
+      <section class="padded-section">
+        <div class="dark-row">How is the purchaser authorized to own, use, or possess Controlled Equipment?
+          &nbsp; <span class="error-states">*</span></div>
+        <div class="alt-row">
+          <ul>
+            <li>Authorized Owner</li>
+          </ul>
+        </div>
+        <section class="padded-section">
+          <div class="dark-row">What kind of Health Canada licence does the purchaser have? &nbsp; <span
+              class="error-states">*</span></div>
+
+          <div class="alt-row">
+            <ul>
+              <li>Drug Establishment Licence</li>
+            </ul>
+          </div>
+          <section class="padded-section">
+            <div class="dark-row">What is the name shown on the purchaser's Drug Establishment Licence? &nbsp; <span
+                class="error-states">*</span></div>
+            <div class="alt-row"> {{ application?.equipmentType }}</div>
+
+            <div class="dark-row">What is the purchaser's Drug Establishment Licence number? &nbsp; <span
+                class="error-states">*</span></div>
+            <div class="alt-row"> {{ application?.equipmentType }}</div>
+
+            <div class="dark-row">What is the purchaser's Drug Establishment Licence expiry date? &nbsp; <span
+                class="error-states">*</span></div>
+            <div class="alt-row"> {{ application?.equipmentType }}</div>
+          </section>
+
+          <div class="alt-row">
+            <ul>
+              <li>Site Licence</li>
+            </ul>
+          </div>
+          <section class="padded-section">
+            <div class="dark-row">What is the name shown on the purchaser's Site Licence? &nbsp; <span
+                class="error-states">*</span></div>
+            <div class="alt-row"> {{ application?.equipmentType }}</div>
+
+            <div class="dark-row">What is the purchaser's Site Licence number? &nbsp; <span
+                class="error-states">*</span></div>
+            <div class="alt-row"> {{ application?.equipmentType }}</div>
+
+            <div class="dark-row">
+              What is the purchaser's Site Licence expiry date?</div>
+            <div class="alt-row"> {{ application?.equipmentType }}</div>
+          </section>
+
+        </section>
+
+
+        <div class="alt-row">
+          <ul>
+            <li>Waiver Holder</li>
+          </ul>
+        </div>
+        <section class="padded-section">
+          <div class="dark-row">What is the purchaser's Waiver number? &nbsp; <span class="error-states">*</span></div>
+
+          <div class="alt-row"> {{}} </div>
+        </section>
+
+        <div class="alt-row">
+          <ul>
+            <li>Registered Seller</li>
+          </ul>
+        </div>
+        <section class="padded-section">
+          <div class="dark-row">What is the purchaser's Registration number? &nbsp; <span class="error-states">*</span>
+          </div>
+
+          <div class="alt-row"> {{}} </div>
+        </section>
+
+        <div class="alt-row">
+          <ul>
+            <li>Other</li>
+          </ul>
+        </div>
+        <section class="padded-section">
+          <div class="dark-row">If Other, please specify &nbsp; <span class="error-states">*</span></div>
+
+          <div class="alt-row"> {{}} </div>
+        </section>
+
+      </section>
+
+    </div>
+
+
+    <h3 class="blue-header">DECLARATION AND CONSENT</h3>
+    <div [formGroup]="form" class="padded-section">
+      <section style="display: flex">
+        <div style="flex: 0 0 20px">
+          <input type="checkbox" formControlName="declarationOfCorrectInformation">
+        </div>
+        <span>
+          I certify that, to the best of my knowledge, the information I have provided in this Report of Sale (and will
+          provide as necessary) is complete, honest, and accurate. I am aware that later discovery of an omission or
+          misrepresentation may be grounds for any finding of suitability to be reversed or for being prosecuted under
+          provincial law. <span class="error-states">*</span>
+        </span>
+      </section>
+
+      <div
+        *ngIf="(form.get('declarationOfCorrectInformation').value !== true || form.get('confirmationOfAuthorizedUse').value !== true) && showErrors"
+        style="background-color: #F2F2F2; margin-top: 10px; border-radius: 5px; padding: 10px; font: 15px Myriad Pro Regular #494949;">
+        <fa-icon [icon]="faExclamationTriangle" class="error-states" style="margin-right: 10px;"></fa-icon>
+        <span class="error-states">Please complete the declarations and consent section.</span>
+      </div>
+    </div>
+
+    <div class="notes" style="display: flex; margin-top: 20px;">
+      <fa-icon [icon]="faExclamationCircle" style="color: #003366; margin-right: 10px;" size="lg"></fa-icon>
+      <p>
+        Please ensure you complete a submission for each piece of Controlled Equipment in your possession until your
+        entire inventory is listed.</p>
+    </div>
+
+    <div style="margin-top: 30px; display: flex; justify-content: space-between">
+      <section>
+        <!-- <span class="error-states">*</span> <i>Required field</i> -->
+        <a href="javascript: void(0);" (click)="saveAndExit()">
+          <fa-icon [icon]="faSave" style="margin-right: 5px"></fa-icon>
+          Save & Close
+        </a>
+      </section>
+      <section>
+        <button class="btn btn-secondary" style="margin-right: 15px"
+          routerLink="/equipment-notification/type-and-use/{{equipmentId}}">EDIT
+          EQUIPMENT</button>
+        <button class="btn btn-primary" style="margin-right: 15px" (click)="saveAndAddMore()">SUBMIT & ADD
+          ANOTHER</button>
+        <button class="btn btn-primary" (click)="save()">SUBMIT</button>
+      </section>
+    </div>
+  </div>
+
+</div>
