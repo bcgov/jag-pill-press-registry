@@ -5,7 +5,11 @@ import { StepperSelectionEvent } from '@angular/cdk/stepper';
 import { MatStepper } from '@angular/material';
 import { ApplicationDataService } from '../services/application-data.service';
 import { Application } from '../models/application.model';
-
+import {
+  faCheck,
+  faExclamationCircle,
+  faAddressCard
+} from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-equipment-notification',
   templateUrl: './equipment-notification.component.html',

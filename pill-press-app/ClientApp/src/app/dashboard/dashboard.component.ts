@@ -9,6 +9,20 @@ import { DynamicsAccount } from '../models/dynamics-account.model';
 import { Subscription } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
 
+import {
+  faExclamationCircle,
+  faFileAlt,
+  faPencilAlt,
+  faExclamationTriangle,
+  faShoppingCart,
+  faEye,
+  faMapMarkerAlt
+} from '@fortawesome/free-solid-svg-icons';
+
+import {
+  faFilePdf,
+} from '@fortawesome/free-regular-svg-icons';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -30,6 +44,15 @@ export class DashboardComponent implements OnInit {
   waiverApplication: any;
   authorizedOwnerApplication: Application;
   registeredSellerApplication: any;
+
+  faExclamationTriangle = faExclamationTriangle;
+  faShoppingCart = faShoppingCart;
+  faEye = faEye;
+  faMapMarkerAlt = faMapMarkerAlt;
+  faPencilAlt = faPencilAlt;
+  faFileAlt = faFileAlt;
+  faExclamationCircle = faExclamationCircle;
+  faFilePdf = faFilePdf;
 
   constructor(private userDataService: UserDataService, private router: Router,
     private dynamicsDataService: DynamicsDataService,

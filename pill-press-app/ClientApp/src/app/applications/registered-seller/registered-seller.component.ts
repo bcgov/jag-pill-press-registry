@@ -3,6 +3,8 @@ import { MatStepper } from '@angular/material';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 
+import { faCheck, faAddressCard } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-registered-seller',
   templateUrl: './registered-seller.component.html',

@@ -6,6 +6,8 @@ import { ApplicationDataService } from '../../services/application-data.service'
 import { Application } from '../../models/application.model';
 import { FormBase } from '../../shared/form-base';
 import { postalRegex } from '../../business-profile/business-profile/business-profile.component';
+import { faExclamationCircle, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faSave } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
   selector: 'app-equipment-identification',
@@ -17,6 +19,9 @@ export class EquipmentIdentificationComponent extends FormBase implements OnInit
   busy: Subscription;
   equipmentId: string;
   busyPromise: Promise<any>;
+  faExclamationCircle = faExclamationCircle;
+  faCheck = faCheck;
+  faSave = faSave;
 
   constructor(private route: ActivatedRoute,
     private router: Router,

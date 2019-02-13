@@ -5,6 +5,8 @@ import { ApplicationDataService } from '../../../services/application-data.servi
 import { ActivatedRoute, Router } from '@angular/router';
 import { DynamicsDataService } from '../../../services/dynamics-data.service';
 import { Application } from '../../../models/application.model';
+import { faTrashAlt, faInfoCircle, faPlusCircle} from '@fortawesome/free-solid-svg-icons';
+import { faSave } from '@fortawesome/free-regular-svg-icons';
 
 export const PRODUCING_OWN_PRODUCT = 'Producing Own Product';
 export const MANUFACTURING_FOR_OTHERS = 'Manufacturing For Others';
@@ -29,6 +31,12 @@ export class WaiverApplicationComponent implements OnInit {
   get productsForOthers(): FormArray {
     return <FormArray>this.form.get('productsForOthers');
   }
+
+  faSave = faSave;
+  faTrashAlt = faTrashAlt;
+  faInfoCircle = faInfoCircle;
+  faPlusCircle = faPlusCircle;
+  
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,
     private dynamicsDataService: DynamicsDataService,

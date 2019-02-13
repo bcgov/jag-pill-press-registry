@@ -12,7 +12,8 @@
 
         <p>There are three owner categories on the Pill Press Online Registry: Authorized Owners, Registered Sellers,
           and Waiver Holders. If a business holds one or more owner category, they are considered authorized under
-          <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/about-act" target="blank">the
+          <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/about-act"
+            target="blank">the
             Act</a> to own, use, or possess Controlled Equipment.
         </p>
 
@@ -44,7 +45,8 @@
             </td>
             <td class="status-container">
               <div>
-                <section *ngIf="!authorizedOwnerApplication || authorizedOwnerApplication?.statuscode === 'Cancelled' || authorizedOwnerApplication?.statuscode === 'Denied'">
+                <section
+                  *ngIf="!authorizedOwnerApplication || authorizedOwnerApplication?.statuscode === 'Cancelled' || authorizedOwnerApplication?.statuscode === 'Denied'">
                   <h4 class="status-blue">NO ACTIVE NOTIFICATION</h4>
                   <p>To become a Waiver Holder, please complete and submit an application form.</p>
                 </section>
@@ -78,14 +80,16 @@
             </td>
             <td class="status-container">
               <div>
-                <section *ngIf="!authorizedOwnerApplication || authorizedOwnerApplication?.statuscode === 'Cancelled' || authorizedOwnerApplication?.statuscode === 'Denied'">
+                <section
+                  *ngIf="!authorizedOwnerApplication || authorizedOwnerApplication?.statuscode === 'Cancelled' || authorizedOwnerApplication?.statuscode === 'Denied'">
                   <button class="btn btn-primary" (click)="startNewAuthorizedOwnerApplication()">NOTIFY
                     US</button>
                 </section>
                 <section *ngIf="authorizedOwnerApplication?.statuscode === 'Draft'">
-                  <a routerLink="/authorized-owner/profile-review/{{authorizedOwnerApplication.id}}"><i class="fas fa-exclamation-circle"
-                      style="color: #38598A; margin-right: 5px;"></i>Complete
-                    Application</a>
+                  <a routerLink="/authorized-owner/profile-review/{{authorizedOwnerApplication.id}}">
+                    <fa-icon [icon]="faExclamationTriangle" style="color: #38598A; margin-right: 5px;"></fa-icon>
+                    Complete Application
+                  </a>
                 </section>
                 <section *ngIf="isAuthorizedApplicationPending()">
                 </section>
@@ -182,9 +186,10 @@
                     NOW</button>
                 </section>
                 <section *ngIf="waiverApplication?.statuscode === 'Draft'">
-                  <a routerLink="/waiver/profile-review/{{waiverApplication.id}}"><i class="fas fa-exclamation-circle"
-                      style="color: #38598A; margin-right: 5px;"></i>Complete
-                    Application</a>
+                  <a routerLink="/waiver/profile-review/{{waiverApplication.id}}">
+                    <fa-icon [icon]="faExclamationCircle" style="color: #38598A; margin-right: 5px;"></fa-icon>
+                    Complete Application
+                  </a>
                 </section>
                 <section *ngIf="waiverApplication?.statuscode === 'Pending'">
                 </section>
@@ -193,9 +198,11 @@
                 <section *ngIf="isWaiverOrSellerUnderReview(waiverApplication?.statuscode)">
                 </section>
                 <section *ngIf="waiverApplication?.statuscode === 'Approved'">
-                  <a *ngIf="waiverApplication.hasCertificate" href="api/application/{{waiverApplication?.id}}/download-certificate"
-                    download><i class="fa fa-file-pdf" style="color: #38598A; margin-right: 5px;"></i>Download
-                    Certificate</a>
+                  <a *ngIf="waiverApplication.hasCertificate"
+                    href="api/application/{{waiverApplication?.id}}/download-certificate" download>
+                    <fa-icon [icon]="faFilePdf" style="color: #38598A; margin-right: 5px;"></fa-icon>
+                    Download Certificate
+                  </a>
                 </section>
                 <section *ngIf="waiverApplication?.statuscode === 'Denied'">
                   <button class="btn btn-primary" (click)="startNewWaiverApplication()">APPLY
@@ -300,9 +307,10 @@
                     NOW</button>
                 </section>
                 <section *ngIf="registeredSellerApplication?.statuscode === 'Draft'">
-                  <a routerLink="/registered-seller/profile-review/{{registeredSellerApplication.id}}"><i class="fas fa-exclamation-circle"
-                      style="color: #38598A; margin-right: 5px;"></i>Complete
-                    Application</a>
+                  <a routerLink="/registered-seller/profile-review/{{registeredSellerApplication.id}}">
+                    <fa-icon [icon]="faExclamationCircle" style="color: #38598A; margin-right: 5px;"></fa-icon>
+                    Complete Application
+                  </a>
                 </section>
                 <section *ngIf="registeredSellerApplication?.statuscode === 'Pending'">
                 </section>
@@ -311,9 +319,11 @@
                 <section *ngIf="isWaiverOrSellerUnderReview(registeredSellerApplication?.statuscode)">
                 </section>
                 <section *ngIf="registeredSellerApplication?.statuscode === 'Approved'">
-                  <a *ngIf="registeredSellerApplication.hasCertificate" href="api/application/{{registeredSellerApplication?.id}}/download-certificate"
-                    download><i class="fa fa-file-pdf" style="color: #38598A; margin-right: 5px;"></i>Download
-                    Certificate</a>
+                  <a *ngIf="registeredSellerApplication.hasCertificate"
+                    href="api/application/{{registeredSellerApplication?.id}}/download-certificate" download>
+                    <fa-icon [icon]="faFilePdf" style="color: #38598A; margin-right: 5px;"></fa-icon>
+                    Download Certificate
+                  </a>
                 </section>
                 <section *ngIf="registeredSellerApplication?.statuscode === 'Denied'">
                   <button class="btn btn-primary" (click)="startNewASellerApplication()">REGISTER
@@ -348,10 +358,11 @@
             </div>
             <p></p>
             <div class="notes" style="display: flex;">
-              <i class="fas fa-exclamation-circle fa-lg" style="color: #FFCC00; margin-right: 10px;"></i>
+              <fa-icon [icon]="faExclamationCircle" style="color: #FFCC00; margin-right: 10px;"></fa-icon>
               <span>
                 Once your owner application is approved, please ensure you register your Controlled Equipment within 10
-                days. <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-controlled-equipment#Equipment%20Notification%20Process"
+                days. <a
+                  href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-controlled-equipment#Equipment%20Notification%20Process"
                   target="_blank">
                   Find out how to start your equipment notification.</a></span>
             </div>
@@ -362,7 +373,8 @@
                 the status below.</p>
               <button class="btn btn-primary" (click)="addEquipment()">ADD MORE EQUIPMENT</button>
             </div>
-            <mat-tab-group [selectedIndex]="(inProgressEquipment?.length > 0 || completedEquipment?.length == 0) ? 0 : 1">
+            <mat-tab-group
+              [selectedIndex]="(inProgressEquipment?.length > 0 || completedEquipment?.length == 0) ? 0 : 1">
               <mat-tab label="IN PROGRESS">
                 <p>The list of Controlled Equipment notifications below have been submitted.</p>
                 <table class="eq-table">
@@ -400,19 +412,22 @@
                     <td style="background-color: #E1E8F2; padding: 10px;" valign="top">
                       <section *ngIf="item.statuscode === 'Draft'">
                         <a href="javascript: void(0);" routerLink="/equipment-notification/profile-review/{{item.id}}">
-                          <i class="fa fa-exclamation-circle" style="color: #003366; margin-right: 10px;"></i>Complete
-                          Application</a>
+                          <fa-icon [icon]="faExclamationCircle" style="color: #003366; margin-right: 10px;"></fa-icon>
+                          Complete Application
+                        </a>
                       </section>
                       <section *ngIf="item.statuscode !== 'Draft'">
                         <a href="javascript: void(0);" routerLink="/equipment-notification/profile-review/{{item.id}}">
-                          <i class="fa fa-eye" style="color: #003366; margin-right: 10px;"></i>View Submission</a>
+                          <fa-icon [icon]="faEye" style="color: #003366; margin-right: 10px;"></fa-icon>
+                          View Submission
+                        </a>
                       </section>
                     </td>
                   </tr>
                 </table>
                 <p></p>
                 <div class="notes" style="display: flex;">
-                  <i class="fas fa-exclamation-circle fa-lg" style="color: #003366; margin-right: 10px;"></i>
+                  <fa-icon [icon]="faExclamationCircle" size="lg" style="color: #003366; margin-right: 10px;"></fa-icon>
                   <span> Please ensure you fill out an equipment notification form for each individual piece of
                     Controlled
                     Equipment in your posession until your entire inventory is listed.</span>
@@ -437,8 +452,9 @@
                             available'}}</i> <br>
                           <span>Equipment Registry #: </span> {{item?.certificate?.name}}<span></span> <br>
                           <a *ngIf="item.hasCertificate" href="api/application/{{item?.id}}/download-certificate"
-                            download><i class="fa fa-file-pdf" style="color: #38598A; margin-right: 5px;"></i>Download
-                            Certificate</a>
+                            download>
+                            <fa-icon [icon]="faFilePdf" style="color: #38598A; margin-right: 5px;"></fa-icon>
+                            Download Certificate</a>
                         </div>
                       </div>
                     </td>
@@ -452,17 +468,23 @@
                       {{item?.equipmentLocation?.address?.postalCode}} <br>
                     </td>
                     <td style="background-color: #E1E8F2; padding: 10px;">
-                      <a href="javascript: void(0)"><i class="fas fa-eye" style="margin-right: 5px;"></i>View
-                        Submission</a>
+                      <a href="javascript: void(0)">
+                        <fa-icon [icon]="faEye" style="margin-right: 5px;"></fa-icon>
+                        View Submission
+                      </a>
                       <br>
                       <a routerLink="/equipment-changes/location-change/{{item.id}}">
-                        <i class="fas fa-map-marker-alt" style="margin-right: 5px;"></i>Change
-                        Location</a> <br>
-                      <a  javascript="void(0)" (click)="reportLSD(item.id)" ><i class="fas fa-exclamation-triangle"
-                          style="margin-right: 5px;"></i>Report
-                        Change (lost, stolen, destroyed)</a> <br>
-                      <a href="javascript: void(0)" (click)="reportSales(item.id)"><i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>Report
-                        Sale</a>
+                        <fa-icon [icon]="faMapMarkerAlt" style="margin-right: 5px;"></fa-icon>
+                        Change Location
+                      </a> <br>
+                      <a javascript="void(0)" (click)="reportLSD(item.id)">
+                        <fa-icon [icon]="faExclamationTriangle" style="margin-right: 5px;"></fa-icon>
+                        Report Change (lost, stolen, destroyed)
+                      </a> <br>
+                      <a href="javascript: void(0)" (click)="reportSales(item.id)">
+                        <fa-icon [icon]="faShoppingCart" style="margin-right: 5px;"></fa-icon>
+                        Report Sale
+                      </a>
                     </td>
                   </tr>
                 </table>
@@ -492,7 +514,8 @@
           </p>
           <div>
             <a routerLink="/business-profile" style="float: right;">
-              <i class="fas fa-pencil-alt" style="margin-right: 5px; "></i> Edit Business Profile</a>
+              <fa-icon [icon]="faPencilAlt" style="margin-right: 5px;"></fa-icon> Edit Business Profile
+            </a>
             <div style="clear: both;"></div>
           </div>
         </div>
@@ -502,7 +525,9 @@
         <table>
           <tr>
             <td>
-              <h2 class="round-icon-wrapper"><i class="fas fa-file-alt"></i></h2>
+              <h2 class="round-icon-wrapper">
+                <fa-icon [icon]="faFileAlt"></fa-icon>
+              </h2>
             </td>
             <td style="padding-left: 10px">
               <h2>Useful Links &amp; Information</h2>
@@ -535,8 +560,8 @@
           <p>You can also find more information on the Pill Press FAQs</p>
 
           <div class="row-reverse">
-            <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-faqs" style="background-color: #003366;"
-              target="blank" class="btn btn-primary">VIEW FAQs</a>
+            <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-faqs"
+              style="background-color: #003366;" target="blank" class="btn btn-primary">VIEW FAQs</a>
           </div>
 
         </div>

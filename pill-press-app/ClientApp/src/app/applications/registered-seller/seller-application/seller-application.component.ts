@@ -4,6 +4,8 @@ import { Subscription, Observable, zip } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DynamicsDataService } from '../../../services/dynamics-data.service';
 import { ApplicationDataService } from '../../../services/application-data.service';
+import { faExclamationCircle, faTrashAlt, faPencilAlt} from '@fortawesome/free-solid-svg-icons';
+import { faSave} from '@fortawesome/free-regular-svg-icons';
 
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
@@ -35,6 +37,10 @@ export const MY_FORMATS = {
   styleUrls: ['./seller-application.component.scss']
 })
 export class SellerApplicationComponent extends FormBase implements OnInit {
+  faSave = faSave;
+  faExclamationCircle = faExclamationCircle;
+  faTrashAlt = faTrashAlt;
+  faPencilAlt = faPencilAlt;
 
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,

@@ -10,7 +10,7 @@ import { UserDataService } from './../../services/user-data.service';
 import { DynamicsDataService } from './../../services/dynamics-data.service';
 import { FormBase } from './../../shared/form-base';
 import { postalRegex } from '../../business-profile/business-profile/business-profile.component';
-
+import { faExclamationCircle, faFileAlt, faTimes } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-location-change',
   templateUrl: './location-change.component.html',
@@ -21,6 +21,9 @@ export class LocationChangeComponent extends FormBase implements OnInit {
   busy: Subscription;
   equipmentId: string;
   busyPromise: Promise<any>;
+  faExclamationCircle = faExclamationCircle;
+  faFileAlt = faFileAlt;
+  faTimes = faTimes;
 
   locations: EquipmentLocation[] = [
     // <any>{

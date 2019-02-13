@@ -8,6 +8,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ValidatorFn, AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 import { Router, Route, ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
 
+import { faExclamation, faPencilAlt, faQuestion, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-profile-review',
   templateUrl: './profile-review.component.html',
@@ -26,6 +27,12 @@ export class ProfileReviewComponent implements OnInit {
   mode: string;
   id: string;
   nextRoute: string;
+
+  faExclamation = faExclamation;
+  faPencilAlt = faPencilAlt;
+  faQuestion = faQuestion;
+  faEnvelope = faEnvelope;
+
 
   constructor(private userDataService: UserDataService,
     private sanitizer: DomSanitizer,
