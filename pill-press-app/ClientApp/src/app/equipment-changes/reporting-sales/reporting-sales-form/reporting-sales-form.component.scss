@@ -1,0 +1,20 @@
+.notes ul {
+    list-style: none;
+    padding-left: 0px;
+}
+
+.notes ul li::before {
+    content: "\2022";
+    list-style: disc;
+    color: #003366;
+    font-weight: bold;
+    display: inline-block; /* Needed to add space between the bullet and the text */ 
+    width: 15px; /* Also needed for space (tweak if needed) */
+    font-size: 20px;
+    margin: -5px 0px;
+}
+
+.wide {
+    max-width: 120%;
+    margin-right: -50px;
+}
