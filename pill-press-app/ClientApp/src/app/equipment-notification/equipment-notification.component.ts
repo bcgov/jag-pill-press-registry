@@ -30,6 +30,10 @@ export class EquipmentNotificationComponent implements OnInit {
   displayedColumns: string[] = ['equipment', 'status'];
   equipment: Application[];
 
+  faCheck = faCheck;
+  faExclamationCircle = faExclamationCircle;
+  faAddressCard = faAddressCard;
+
   constructor(private route: ActivatedRoute,
     private router: Router,
     private applicationDataService: ApplicationDataService,
@@ -51,7 +55,9 @@ export class EquipmentNotificationComponent implements OnInit {
             this.loadEquipment();
           }
           this.tab = this.route.snapshot.firstChild.url[0].path;
-          this.stepper.selectedIndex = this.tabList.indexOf(this.tab);
+          if (this.tabList.indexOf(this.tab) !== -1) {
+            this.stepper.selectedIndex = this.tabList.indexOf(this.tab);
+          }
         }
       }
     });

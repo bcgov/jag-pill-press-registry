@@ -102,7 +102,7 @@ export class EquipmentChangeFormComponent extends FormBase implements OnInit {
           data.certificates.sort(this.dateSort);
           data.equipmentRegistryNumber = data.certificates[0].name;
         }
-        data.address = data.address || <any>{};
+        data.addressWhereEquipmentWasDestroyed = data.addressWhereEquipmentWasDestroyed || <any>{};
         this.form.patchValue(data);
       }, error => {
         // debugger;

@@ -9,6 +9,7 @@ import { ValidatorFn, AbstractControl, FormBuilder, FormGroup } from '@angular/f
 import { Router, Route, ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
 
 import { faExclamation, faPencilAlt, faQuestion, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faSave } from '@fortawesome/free-regular-svg-icons';
 @Component({
   selector: 'app-profile-review',
   templateUrl: './profile-review.component.html',
@@ -32,6 +33,7 @@ export class ProfileReviewComponent implements OnInit {
   faPencilAlt = faPencilAlt;
   faQuestion = faQuestion;
   faEnvelope = faEnvelope;
+  faSave = faSave;
 
 
   constructor(private userDataService: UserDataService,
