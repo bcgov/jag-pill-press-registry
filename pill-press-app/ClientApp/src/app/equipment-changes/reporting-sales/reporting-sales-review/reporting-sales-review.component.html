@@ -7,7 +7,7 @@
     <p>
       You have provided the following information in your Report of Sale. In order to proceed, please confirm that these details
       are correct. If they are not, please
-      <a routerLink="/equipment-changes/reporting-sales/review/{{equipmentId}}">amend your answers</a> before submitting the application.
+      <a routerLink="/equipment-changes/reporting-sales/detail/1">amend your answers</a> before submitting the application.
     </p>
 
     <h2>Sold Equipment Identification</h2>
@@ -546,14 +546,14 @@
 
       <div class="padded-section" style="margin-top: 25px; display: flex; justify-content: space-between">
         <section>
-          <a href="javascript: save(false);" (click)="save(false)" style="margin-right: 10px">
+          <a style="margin-right: 10px">
             <i class="fa fa-save" style="padding-right: 5px;"></i>Save & Close</a>
         </section>
         <section>
 
           <button class="btn btn-secondary" style="margin-right: 10px" routerLink="/registered-seller/application/{{waiverId}}">EDIT APPLICATION
           </button>
-          <button class="btn btn-primary" (click)="markAsTouched(); save(true)">SUBMIT</button>
+          <button class="btn btn-primary">SUBMIT</button>
         </section>
       </div>
     </table>
