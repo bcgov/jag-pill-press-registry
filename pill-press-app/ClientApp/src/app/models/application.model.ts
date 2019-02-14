@@ -189,9 +189,12 @@ export class Application {
   healthCanadaLicenseSiteLicense: Boolean;
   nameOnPurchasersDEL: string;
   purchasersDELNumber: string;
+  purchasersDELExpiryDate: string;
   nameOnPurchasersSiteLicense: string;
+  purchasersSiteLicenseNumber: string;
   purchasersSiteLicenseExpiryDate: string;
   purchasersWaiverNumber: string;
   purchasersRegistrationNumber: string;
   equipmentRecord: Equipment;
+  purchasersOther: string;
 }
