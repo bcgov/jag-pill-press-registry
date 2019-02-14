@@ -10,6 +10,8 @@ import { UserDataService } from './../../services/user-data.service';
 import { DynamicsDataService } from './../../services/dynamics-data.service';
 import { FormBase } from './../../shared/form-base';
 import { postalRegex } from '../../business-profile/business-profile/business-profile.component';
+import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import { faSave } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
   selector: 'app-equipment-location',
@@ -21,6 +23,8 @@ export class EquipmentLocationComponent extends FormBase implements OnInit {
   busy: Subscription;
   equipmentId: string;
   busyPromise: Promise<any>;
+  faExclamationCircle = faExclamationCircle;
+  faSave = faSave;
 
   locations: EquipmentLocation[] = [
     // <any>{

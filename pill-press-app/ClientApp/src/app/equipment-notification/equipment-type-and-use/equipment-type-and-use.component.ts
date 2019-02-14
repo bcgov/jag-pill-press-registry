@@ -5,6 +5,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApplicationDataService } from '../../services/application-data.service';
 import { Application } from '../../models/application.model';
 import { FormBase } from './../../shared/form-base';
+import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import { faSave } from '@fortawesome/free-regular-svg-icons';
+
 
 @Component({
   selector: 'app-equipment-type-and-use',
@@ -16,6 +19,8 @@ export class EquipmentTypeAndUseComponent extends FormBase implements OnInit {
   busy: Subscription;
   equipmentId: string;
   busyPromise: any;
+  faExclamationCircle = faExclamationCircle;
+  faSave = faSave;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
