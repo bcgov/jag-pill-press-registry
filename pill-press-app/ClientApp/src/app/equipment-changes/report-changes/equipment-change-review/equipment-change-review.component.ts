@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBase } from '@shared/form-base';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subscription, zip } from 'rxjs';
-import { faSave } from '@fortawesome/free-solid-svg-icons';
+import { faSave, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApplicationDataService } from '@services/application-data.service';
+
 
 @Component({
   selector: 'app-equipment-change-review',
@@ -19,6 +20,7 @@ export class EquipmentChangeReviewComponent extends FormBase implements OnInit {
   locations: any;
 
   faSave = faSave;
+  faExclamationCircle  = faExclamationCircle ;
   application: any;
 
   constructor(private route: ActivatedRoute,

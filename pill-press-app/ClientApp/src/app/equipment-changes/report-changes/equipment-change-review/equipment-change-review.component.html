@@ -15,7 +15,7 @@
 
     <h2>Equipment Identification</h2>
     <div>
-      <section *ngIf="form.get('howWasEquipmentBuilt').value === 'Commercially Manufactured'" class="padded-section">
+      <section *ngIf="application?.equipmentRecord?.howWasEquipmentBuilt === 'Commercially Manufactured'" class="padded-section">
         <div class="dark-row">Equipment Type&nbsp; <span class="error-states">*</span></div>
         <div class="alt-row"> {{ application?.equipmenRecord?.equipmentType }}</div>
 
@@ -32,7 +32,7 @@
         <div class="alt-row"> {{ application?.equipmenRecord?.certificate?.name }}</div>
       </section>
 
-      <section *ngIf="form.get('howWasEquipmentBuilt').value !== 'Commercially Manufactured'" class="padded-section">
+      <section *ngIf="application?.equipmentRecord?.howWasEquipmentBuilt !== 'Commercially Manufactured'" class="padded-section">
         <div class="dark-row">Equipment Type&nbsp; <span class="error-states">*</span></div>
         <div class="alt-row"> {{ application?.equipmenRecord?.equipmentType }}</div>
 
