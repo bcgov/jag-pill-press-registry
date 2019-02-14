@@ -5,7 +5,8 @@
       <h2 class="step">STEP 2</h2>
       <h1 style="margin-top: 0">Seller Registration Application</h1>
 
-      <p>A Registered Seller can sell the <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-controlled-equipment"
+      <p>A Registered Seller can sell the <a
+          href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-controlled-equipment"
           target="blank">Controlled Equipment</a> but can not use it for manufacturing. To be able to
         use the equipment, a seller must apply for a Waiver or be an Authorized Owner.</p>
 
@@ -14,35 +15,46 @@
 
       <h3 class="blue-header">EQUIPMENT INFORMATION</h3>
       <section class="padded-section">
-        <app-field label="Do you currently own, use, or possess Controlled Equipment?" [required]="true" [showChevrons]="false"
-          errorMessage="Please select yes or no" [valid]="form.get('currentlyownusepossessequipment').valid || !form.get('currentlyownusepossessequipment').touched">
-          <input type="radio" [value]="true" name="currentlyownusepossessequipment" formControlName="currentlyownusepossessequipment">
+        <app-field label="Do you currently own, use, or possess Controlled Equipment?" [required]="true"
+          [showChevrons]="false" errorMessage="Please select yes or no"
+          [valid]="form.get('currentlyownusepossessequipment').valid || !form.get('currentlyownusepossessequipment').touched">
+          <input type="radio" [value]="true" name="currentlyownusepossessequipment"
+            formControlName="currentlyownusepossessequipment">
           <span style="padding-right: 10px;">&nbsp;Yes</span>
-          <input type="radio" [value]="false" name="currentlyownusepossessequipment" formControlName="currentlyownusepossessequipment">
+          <input type="radio" [value]="false" name="currentlyownusepossessequipment"
+            formControlName="currentlyownusepossessequipment">
           <span>&nbsp;No</span>
         </app-field>
-        <app-field *ngIf="form.get('currentlyownusepossessequipment').value === false" label="Do you intend on purchasing Controlled Equipment in the future?"
-          [showChevrons]="false" errorMessage="Please select yes or no" [valid]="form.get('intendtopurchaseequipment').valid || !form.get('intendtopurchaseequipment').touched"
+        <app-field *ngIf="form.get('currentlyownusepossessequipment').value === false"
+          label="Do you intend on purchasing Controlled Equipment in the future?" [showChevrons]="false"
+          errorMessage="Please select yes or no"
+          [valid]="form.get('intendtopurchaseequipment').valid || !form.get('intendtopurchaseequipment').touched"
           [required]="true">
-          <input type="radio" [value]="true" name="intendtopurchaseequipment" formControlName="intendtopurchaseequipment">
+          <input type="radio" [value]="true" name="intendtopurchaseequipment"
+            formControlName="intendtopurchaseequipment">
           <span style="padding-right: 10px;">&nbsp;Yes</span>
-          <input type="radio" [value]="false" name="intendtopurchaseequipment" formControlName="intendtopurchaseequipment">
+          <input type="radio" [value]="false" name="intendtopurchaseequipment"
+            formControlName="intendtopurchaseequipment">
           <span>&nbsp;No</span>
         </app-field>
       </section>
 
       <h3 class="blue-header">PURPOSE OF CONTROLLED EQUIPMENT</h3>
       <section class="padded-section">
-        <app-field label="Do you intend on owning, using, or possessing Controlled Equipment for the purposes of producing a product?"
-          [showChevrons]="false" errorMessage="Please select yes or no" [valid]="form.get('ownusepossesstoproduceaproduct').valid || !form.get('ownusepossesstoproduceaproduct').touched"
+        <app-field
+          label="Do you intend on owning, using, or possessing Controlled Equipment for the purposes of producing a product?"
+          [showChevrons]="false" errorMessage="Please select yes or no"
+          [valid]="form.get('ownusepossesstoproduceaproduct').valid || !form.get('ownusepossesstoproduceaproduct').touched"
           [required]="true">
-          <input type="radio" [value]="true" name="ownusepossesstoproduceaproduct" formControlName="ownusepossesstoproduceaproduct">
+          <input type="radio" [value]="true" name="ownusepossesstoproduceaproduct"
+            formControlName="ownusepossesstoproduceaproduct">
           <span style="padding-right: 10px;">&nbsp;Yes</span>
-          <input type="radio" [value]="false" name="ownusepossesstoproduceaproduct" formControlName="ownusepossesstoproduceaproduct">
+          <input type="radio" [value]="false" name="ownusepossesstoproduceaproduct"
+            formControlName="ownusepossesstoproduceaproduct">
           <span>&nbsp;No</span>
         </app-field>
         <div class="notes" style="display: flex;" *ngIf="form.get('ownusepossesstoproduceaproduct').value === true">
-          <i class="fas fa-exclamation-circle" style="color: #fcba19; margin-right: 10px;"></i>
+          <fa-icon [icon]="faExclamationCircle" style="color: #fcba19; margin-right: 10px;"></fa-icon>
           <section>
             <strong>Note: </strong>
             <span>A Registered Seller is only permitted to sell Controlled Equipment. If you want to produce a
@@ -51,15 +63,18 @@
           </section>
         </div>
         <app-field label="Do you intend on renting or leasing Controlled Equipment to others?" [showChevrons]="false"
-          errorMessage="Please select yes or no" [valid]="form.get('intendonrentingleasingtoothers').valid || !form.get('intendonrentingleasingtoothers').touched"
+          errorMessage="Please select yes or no"
+          [valid]="form.get('intendonrentingleasingtoothers').valid || !form.get('intendonrentingleasingtoothers').touched"
           [required]="true">
-          <input type="radio" [value]="true" name="intendonrentingleasingtoothers" formControlName="intendonrentingleasingtoothers">
+          <input type="radio" [value]="true" name="intendonrentingleasingtoothers"
+            formControlName="intendonrentingleasingtoothers">
           <span style="padding-right: 10px;">&nbsp;Yes</span>
-          <input type="radio" [value]="false" name="intendonrentingleasingtoothers" formControlName="intendonrentingleasingtoothers">
+          <input type="radio" [value]="false" name="intendonrentingleasingtoothers"
+            formControlName="intendonrentingleasingtoothers">
           <span>&nbsp;No</span>
         </app-field>
         <div class="notes" style="display: flex;" *ngIf="form.get('intendonrentingleasingtoothers').value === true">
-          <i class="fas fa-exclamation-circle" style="color: #fcba19; margin-right: 10px;"></i>
+          <fa-icon [icon]="faExclamationCircle" style="color: #fcba19; margin-right: 10px;"></fa-icon>
           <section>
             <strong>Note: </strong>
             <span>If you are renting, leasing (or otherwise lending) Controlled Equipment to other businesses, they
@@ -71,16 +86,20 @@
       <h3 class="blue-header">SELLER BUSINESS DETAILS</h3>
       <section class="padded-section">
         <p></p>
-        <app-field label="Do you intend on selling Controlled Equipment to others?" [required]="true" [showChevrons]="false"
-          errorMessage="Please select yes or no" [valid]="form.get('intendonsellingequipmenttoothers').valid || !form.get('intendonsellingequipmenttoothers').touched">
-          <input type="radio" [value]="true" name="intendonsellingequipmenttoothers" formControlName="intendonsellingequipmenttoothers">
+        <app-field label="Do you intend on selling Controlled Equipment to others?" [required]="true"
+          [showChevrons]="false" errorMessage="Please select yes or no"
+          [valid]="form.get('intendonsellingequipmenttoothers').valid || !form.get('intendonsellingequipmenttoothers').touched">
+          <input type="radio" [value]="true" name="intendonsellingequipmenttoothers"
+            formControlName="intendonsellingequipmenttoothers">
           <span style="padding-right: 10px;">&nbsp;Yes</span>
-          <input type="radio" [value]="false" name="intendonsellingequipmenttoothers" formControlName="intendonsellingequipmenttoothers">
+          <input type="radio" [value]="false" name="intendonsellingequipmenttoothers"
+            formControlName="intendonsellingequipmenttoothers">
           <span>&nbsp;No</span>
         </app-field>
 
-        <app-field label="What type of seller are you?" [showChevrons]="false" errorMessage="Please indicate what type of seller you are"
-          [valid]="!showErrorMessages || isSellerTypeValid()" [required]="true">
+        <app-field label="What type of seller are you?" [showChevrons]="false"
+          errorMessage="Please indicate what type of seller you are" [valid]="!showErrorMessages || isSellerTypeValid()"
+          [required]="true">
           <p>Please select all the options that apply.</p>
           <input type="checkbox" style="margin-right: 10px;" formControlName="manufacturerofcontrolledequipment">
           <span>Manufacturer of Controlled Equipment</span> <br>
@@ -91,14 +110,16 @@
           <input type="checkbox" formControlName="typeofsellerothercheck" style="margin-right: 10px;">
           <span>Other</span> <br>
           <section style="padding-left: 20px" *ngIf="form.get('typeofsellerothercheck').value === true">
-            <app-field errorMessage="Please specify what 'other' type of seller you are" [required]="true" [valid]="form.get('typeofsellerother').value || !form.get('typeofsellerother').touched">
+            <app-field errorMessage="Please specify what 'other' type of seller you are" [required]="true"
+              [valid]="form.get('typeofsellerother').value || !form.get('typeofsellerother').touched">
               <i>If Other, Please specify</i>&nbsp;<strong class="error-states">*</strong>
               <br>
               <input type="text" class="form-control" formControlName="typeofsellerother" style="width: 340px">
             </app-field>
           </section>
         </app-field>
-        <app-field label="What type of Controlled Equipment do you intend to sell?" [showChevrons]="false" errorMessage="Please indicate what type of controlled equipment you intend to sell"
+        <app-field label="What type of Controlled Equipment do you intend to sell?" [showChevrons]="false"
+          errorMessage="Please indicate what type of controlled equipment you intend to sell"
           [valid]="!showErrorMessages || isEquipmentTypeValid()" [required]="true">
           <p>Please select all the options that apply.</p>
           <input type="checkbox" style="margin-right: 10px;" formControlName="intendtosellpillpress">
@@ -121,20 +142,23 @@
           </section>
         </app-field>
         <app-field label="Please tell us more about your business as it relates to selling Controlled Equipment?">
-          <textarea class="form-control" rows="5" formControlName="additionalbusinessinformationaboutseller" maxlength="1000"></textarea>
+          <textarea class="form-control" rows="5" formControlName="additionalbusinessinformationaboutseller"
+            maxlength="1000"></textarea>
         </app-field>
       </section>
 
       <h3 class="blue-header">OWNER/MANAGER INFORMATION</h3>
       <section class="padded-section">
 
-        <p>As part of the application process for a Registered Seller, business <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/definition#om"
+        <p>As part of the application process for a Registered Seller, business <a
+            href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/definition#om"
             target="blank">owners and managers</a> are requested to
-          consent to criminal record, police information, and correctional service information checks (<a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-registered-seller#sc"
+          consent to criminal record, police information, and correctional service information checks (<a
+            href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-registered-seller#sc"
             target="blank">Prescribed Checks</a>).</p>
 
         <div class="notes" style="display: flex;">
-          <i class="fas fa-exclamation-circle" style="color: #fcba19; margin-right: 10px;"></i>
+          <fa-icon [icon]="faExclamationCircle" style="color: #fcba19; margin-right: 10px;"></fa-icon>
           <span>Please be advised that your application is not considered complete until all the listed business
             owners and managers have separately consented to Prescribed Checks.</span>
         </div>
@@ -143,13 +167,14 @@
           submit this application.</p>
 
         <div class="notes" style="display: flex;">
-          <i class="fas fa-exclamation-circle" style="color: #003366; margin-right: 10px;"></i>
+          <fa-icon [icon]="faExclamationCircle" style="color: #003366; margin-right: 10px;"></fa-icon>
           <span><a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/definition#om"
-            target="blank"> Find more information </a> on the definitions of "owner" and "manager"</span>
+              target="blank"> Find more information </a> on the definitions of "owner" and "manager"</span>
         </div>
 
         <section style="display: flex; flex-direction: row-reverse; margin-bottom: 10px;">
-          <button class="btn btn-secondary" (click)="currentOwner = {}; form2.reset(); staticModal.show()">ADD AN OWNER/MANAGER</button>
+          <button class="btn btn-secondary" (click)="currentOwner = {}; form2.reset(); staticModal.show()">ADD AN
+            OWNER/MANAGER</button>
         </section>
 
         <table class="summary-table" style="width: 100%;">
@@ -171,8 +196,9 @@
               Email: {{item?.contact?.email}}
             </td>
             <td [ngClass]="{'row-alt': i%2 == 0}">
-              <i class="fas fa-pencil-alt" style="cursor: pointer; margin-right: 10px;" (click)="currentOwner = item; form2.patchValue(item); staticModal.show()"></i>
-              <i class="fas fa-trash-alt" style="cursor: pointer;" (click)="deleteOwnerOrManager(item)"></i>
+              <fa-icon [icon]="faPencilAlt" style="cursor: pointer; margin-right: 10px;"
+                (click)="currentOwner = item; form2.patchValue(item); staticModal.show()"></fa-icon>
+              <fa-icon [icon]="faTrashAlt" style="cursor: pointer;" (click)="deleteOwnerOrManager(item)"></fa-icon>
             </td>
           </tr>
         </table>
@@ -184,8 +210,9 @@
 
       <section style="display: flex; justify-content: space-between; padding-top: 30px;">
         <!-- <div><span class="error-states">*</span> <i>Required field</i></div> -->
-        <a href="javascript: void(0);" (click)="save(false);"><i style="margin-right: 5px" class="fa fa-save"></i>Save
-          & Close</a>
+        <a href="javascript: void(0);" (click)="save(false);">
+          <fa-icon [icon]="faSave" style="margin-right: 5px"></fa-icon>
+          Save & Close</a>
         <div>
           <button class="btn btn-primary" (click)="markAsTouched(); save(true);">SAVE & CONTINUE</button>
         </div>
@@ -194,64 +221,72 @@
   </div>
 
   <div [formGroup]="form2">
-      <section style="display: inline-block;">
-          <div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}"
-               tabindex="-1" role="dialog" aria-labelledby="dialog-static-name">
-            <div class="modal-dialog modal-md">
-              <div class="modal-content">
-                <!-- <div class="modal-header">
+    <section style="display: inline-block;">
+      <div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1"
+        role="dialog" aria-labelledby="dialog-static-name">
+        <div class="modal-dialog modal-md">
+          <div class="modal-content">
+            <!-- <div class="modal-header">
                   <h4 id="dialog-static-name" class="modal-title pull-left">Static modal</h4>
                   <button type="button" class="close pull-right" aria-label="Close" (click)="staticModal.hide()">
                     <span aria-hidden="true">&times;</span>
                   </button> 
                 </div>-->
-                <div class="modal-body">
-             
-                    <h2>Add Owner or Manager</h2>
-                    <section>
-                
-                      <app-field label="Type of management role" [valid]="(form2.get('registeredSellerOwnerManager').valid || !form2.get('registeredSellerOwnerManager').touched)"
-                                 [required]="true" [showChevrons]="false" errorMessage="Please indicate your type of management role">
-                        <input type="radio" formControlName="registeredSellerOwnerManager" name="registeredSellerOwnerManager" [value]="'Owner'">&nbsp;<span style="margin-right: 20px;">Owner</span>
-                        <input type="radio" formControlName="registeredSellerOwnerManager" name="registeredSellerOwnerManager" [value]="'Manager'">&nbsp;<span>Manager</span>
-                      </app-field>
-                      <div formGroupName="contact">
-                        <app-field label="First Name" [required]="true" errorMessage="Please enter your owner/manager's first name"
-                                   [valid]="form2.get('contact.firstName').valid || !form2.get('contact.firstName').touched">
-                          <input type="text" class="form-control" style="width: 400px" formControlName="firstName">
-                        </app-field>
-                
-                        <app-field label="Last Name" [required]="true" errorMessage="Please enter your owner/manager's last name"
-                                   [valid]="form2.get('contact.lastName').valid || !form2.get('contact.lastName').touched">
-                          <input type="text" class="form-control" style="width: 400px" formControlName="lastName">
-                        </app-field>
-                      </div>
-                
-                      <app-field label="Title/ Position">
-                        <input type="text" class="form-control" style="width: 300px" formControlName="jobTitle">
-                      </app-field>
-                
-                      <div formGroupName="contact">
-                        <app-field label="Phone Number" [required]="true" errorMessage="Please enter your owner/manager's phone number"
-                                   [valid]="form2.get('contact.phoneNumber').valid || !form2.get('contact.phoneNumber').touched">
-                          <input type="text" class="form-control" style="width: 300px" formControlName="phoneNumber" maxlength="10"
-                                 (keydown)="rejectIfNotDigitOrBackSpace($event)">
-                        </app-field>
-                
-                        <app-field label="Email" [required]="true" errorMessage="Please enter your owner/manager's email address"
-                                   [valid]="form2.get('contact.email').valid || !form2.get('contact.email').touched">
-                          <input type="text" class="form-control" style="width: 300px" formControlName="email">
-                        </app-field>
-                      </div>
-                    </section>
-                      <div>
-                          <button class="btn btn-secondary" style="margin-right: 10px;" (click)="staticModal.hide()">Cancel</button>
-                          <button class="btn btn-primary" (click)="addOwner(form2.value, staticModal)">OK</button>
-                      </div>
+            <div class="modal-body">
+
+              <h2>Add Owner or Manager</h2>
+              <section>
+
+                <app-field label="Type of management role"
+                  [valid]="(form2.get('registeredSellerOwnerManager').valid || !form2.get('registeredSellerOwnerManager').touched)"
+                  [required]="true" [showChevrons]="false" errorMessage="Please indicate your type of management role">
+                  <input type="radio" formControlName="registeredSellerOwnerManager" name="registeredSellerOwnerManager"
+                    [value]="'Owner'">&nbsp;<span style="margin-right: 20px;">Owner</span>
+                  <input type="radio" formControlName="registeredSellerOwnerManager" name="registeredSellerOwnerManager"
+                    [value]="'Manager'">&nbsp;<span>Manager</span>
+                </app-field>
+                <div formGroupName="contact">
+                  <app-field label="First Name" [required]="true"
+                    errorMessage="Please enter your owner/manager's first name"
+                    [valid]="form2.get('contact.firstName').valid || !form2.get('contact.firstName').touched">
+                    <input type="text" class="form-control" style="width: 400px" formControlName="firstName">
+                  </app-field>
+
+                  <app-field label="Last Name" [required]="true"
+                    errorMessage="Please enter your owner/manager's last name"
+                    [valid]="form2.get('contact.lastName').valid || !form2.get('contact.lastName').touched">
+                    <input type="text" class="form-control" style="width: 400px" formControlName="lastName">
+                  </app-field>
                 </div>
+
+                <app-field label="Title/ Position">
+                  <input type="text" class="form-control" style="width: 300px" formControlName="jobTitle">
+                </app-field>
+
+                <div formGroupName="contact">
+                  <app-field label="Phone Number" [required]="true"
+                    errorMessage="Please enter your owner/manager's phone number"
+                    [valid]="form2.get('contact.phoneNumber').valid || !form2.get('contact.phoneNumber').touched">
+                    <input type="text" class="form-control" style="width: 300px" formControlName="phoneNumber"
+                      maxlength="10" (keydown)="rejectIfNotDigitOrBackSpace($event)">
+                  </app-field>
+
+                  <app-field label="Email" [required]="true"
+                    errorMessage="Please enter your owner/manager's email address"
+                    [valid]="form2.get('contact.email').valid || !form2.get('contact.email').touched">
+                    <input type="text" class="form-control" style="width: 300px" formControlName="email">
+                  </app-field>
+                </div>
+              </section>
+              <div>
+                <button class="btn btn-secondary" style="margin-right: 10px;"
+                  (click)="staticModal.hide()">Cancel</button>
+                <button class="btn btn-primary" (click)="addOwner(form2.value, staticModal)">OK</button>
               </div>
             </div>
           </div>
-      </section>
+        </div>
+      </div>
+    </section>
   </div>
 </div>

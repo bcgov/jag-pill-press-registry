@@ -6,6 +6,7 @@ import { ApplicationDataService } from '../../../services/application-data.servi
 import { Application } from '../../../models/application.model';
 import { FormBase } from '../../../shared/form-base';
 import { postalRegex } from '../../../business-profile/business-profile/business-profile.component';
+import { faSave } from '@fortawesome/free-regular-svg-icons';
 import * as _moment from 'moment';
 // tslint:disable-next-line:no-duplicate-imports
 import { defaultFormat as _rollupMoment } from 'moment';
@@ -36,6 +37,8 @@ export class EquipmentChangeFormComponent extends FormBase implements OnInit {
   busyPromise: Promise<any>;
   locations: any;
 
+  faSave = faSave;
+
   constructor(private route: ActivatedRoute,
     private router: Router,
     private applicationDataService: ApplicationDataService,
@@ -47,8 +50,8 @@ export class EquipmentChangeFormComponent extends FormBase implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       id: [],
-      typeOfChange: [''],
-      dateOfEquipmentChange: [''],
+      typeOfChange: ['', Validators.required],
+      dateOfEquipmentChange: ['', Validators.required],
       circumstancesOfLoss: [''],
       policeNotified: [''],
       policeReportDate: [''],
@@ -66,11 +69,11 @@ export class EquipmentChangeFormComponent extends FormBase implements OnInit {
       }),
       equipmentRecord: this.fb.group({
         id: [],
-        equipmentType: ['', Validators.required],
-        equipmentRegistryNumber: ['', Validators.required],
-        howWasEquipmentBuilt: ['', Validators.required],
-        dateLost: ['', Validators.required],
-        dateReported: ['', Validators.required],
+        equipmentType: [''],
+        equipmentRegistryNumber: [''],
+        howWasEquipmentBuilt: [''],
+        dateLost: [''],
+        dateReported: [''],
         howWasEquipmentBuiltOther: [],
         howWasEquipmentBuiltOtherCheck: [],
         nameOfManufacturer: [''],
@@ -93,13 +96,12 @@ export class EquipmentChangeFormComponent extends FormBase implements OnInit {
   reloadData() {
     this.busy = this.applicationDataService.getApplicationById(this.equipmentId)
       .subscribe((data: any) => {
-
         data.certificates = data.certificates || [];
         if (data.certificates.length > 0) {
           data.certificates.sort(this.dateSort);
           data.equipmentRegistryNumber = data.certificates[0].name;
         }
-        data.address = data.address || <any>{};
+        data.addressWhereEquipmentWasDestroyed = data.addressWhereEquipmentWasDestroyed || <any>{};
         this.form.patchValue(data);
       }, error => {
         // debugger;
@@ -114,17 +116,49 @@ export class EquipmentChangeFormComponent extends FormBase implements OnInit {
     }
   }
   clearHiddenFields() {
-    this.form.get('howWasEquipmentBuilt').valueChanges
+    this.form.get('typeOfChange').valueChanges
       .subscribe((value) => {
-        if (value === 'Commercially Manufactured') {
-          this.form.get('address').reset();
+        this.form.get('circumstancesOfLoss').clearValidators();
+        this.form.get('circumstancesOfLoss').reset();
+        this.form.get('policeNotified').clearValidators();
+        this.form.get('policeNotified').reset();
+        this.form.get('circumstancesOfStolenEquipment').clearValidators();
+        this.form.get('circumstancesOfStolenEquipment').reset();
+        this.form.get('circumstancesOfDestroyedEquipment').clearValidators();
+        this.form.get('circumstancesOfDestroyedEquipment').reset();
+
+        this.form.get('addressWhereEquipmentWasDestroyed.streetLine1').clearValidators();
+        this.form.get('addressWhereEquipmentWasDestroyed.city').clearValidators();
+        this.form.get('addressWhereEquipmentWasDestroyed.province').clearValidators();
+        this.form.get('addressWhereEquipmentWasDestroyed.country').clearValidators();
+        this.form.get('addressWhereEquipmentWasDestroyed.postalCode').clearValidators();
+        this.form.get('addressWhereEquipmentWasDestroyed').reset();
+        if (value === 'Lost') {
+          this.form.get('circumstancesOfLoss').setValidators([Validators.required]);
+          this.form.get('policeNotified').setValidators([Validators.required]);
+        } else if (value === 'Sold') {
+          this.form.get('circumstancesOfStolenEquipment').setValidators([Validators.required]);
+          this.form.get('policeNotified').setValidators([Validators.required]);
+        } if (value === 'Destroyed') {
+          this.form.get('circumstancesOfDestroyedEquipment').setValidators([Validators.required]);
+          this.form.get('addressWhereEquipmentWasDestroyed.streetLine1').setValidators([Validators.required]);
+          this.form.get('addressWhereEquipmentWasDestroyed.city').setValidators([Validators.required]);
+          this.form.get('addressWhereEquipmentWasDestroyed.province').setValidators([Validators.required]);
+          this.form.get('addressWhereEquipmentWasDestroyed.country').setValidators([Validators.required]);
+          this.form.get('addressWhereEquipmentWasDestroyed.postalCode')
+            .setValidators([Validators.required, Validators.pattern(postalRegex)]);
         }
-        for (const field in this.form.controls) {
-          if (field !== 'id'
-            && field !== 'province'
-            && field !== 'howWasEquipmentBuilt') {
-            this.form.get(field).reset();
-          }
+      });
+    this.form.get('policeNotified').valueChanges
+      .subscribe((value) => {
+        if (value) {
+          this.form.get('policeReportDate').setValidators([Validators.required]);
+          this.form.get('policeFileNumber').setValidators([Validators.required]);
+        } else {
+          this.form.get('policeReportDate').clearValidators();
+          this.form.get('policeFileNumber').clearValidators();
+          this.form.get('policeReportDate').reset();
+          this.form.get('policeFileNumber').reset();
         }
       });
   }
@@ -132,13 +166,16 @@ export class EquipmentChangeFormComponent extends FormBase implements OnInit {
   save(goToReview: boolean) {
     if (this.form.valid || goToReview === false) {
       const value = this.form.value;
-      value.address.country = 'Canada';
+      if (value.addressWhereEquipmentWasDestroyed) {
+        value.addressWhereEquipmentWasDestroyed.province = 'British Columbia';
+        value.addressWhereEquipmentWasDestroyed.country = 'Canada';
+      }
       const saveList = [this.applicationDataService.updateApplication(value)];
       this.busyPromise = zip(...saveList)
         .toPromise()
         .then(res => {
           if (goToReview) {
-            this.router.navigateByUrl(`/equipment-notification/source/${this.equipmentId}`);
+            this.router.navigateByUrl(`/equipment-changes/reporting-changes/review/${this.equipmentId}`);
           } else {
             this.router.navigateByUrl(`/dashboard`);
             // this.reloadData();

@@ -51,9 +51,28 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         Denied = 845280001
     }
 
-    public enum EquipmentChangeType { }
-    public enum TypeOfSale { }
-    public enum MethodOfPayment { }
+    public enum EquipmentChangeType
+    {
+        Lost = 931490001,
+        Stolen,
+        Destroyed,
+        Sold
+    }
+    public enum TypeOfSale
+    {
+        Sold = 931490000,
+        Rented,
+        Leased,
+        [EnumMember(Value = "Given/Loaned")]
+        GivenOrLoaned,
+        Other
+    }
+    public enum MethodOfPayment {
+        CreditCard = 931490000,
+        DebitCard,
+        Cheque,
+        Other
+    }
 
     public enum GeographicalLocation
     {
