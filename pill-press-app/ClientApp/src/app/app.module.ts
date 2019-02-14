@@ -117,6 +117,7 @@ import { ReportingSalesFormComponent } from './equipment-changes/reporting-sales
 import { ReportingSalesReviewComponent } from './equipment-changes/reporting-sales/reporting-sales-review/reporting-sales-review.component';
 import { ReportingSalesThankYouComponent } from './equipment-changes/reporting-sales/reporting-sales-thank-you/reporting-sales-thank-you.component';
 import { ReportingSalesComponent } from './equipment-changes/reporting-sales/reporting-sales.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
@@ -171,6 +172,7 @@ import { ReportingSalesComponent } from './equipment-changes/reporting-sales/rep
   imports: [
     BrowserModule,
     FormsModule,
+    FontAwesomeModule,
     ReactiveFormsModule,
     HttpModule,
     HttpClientModule,

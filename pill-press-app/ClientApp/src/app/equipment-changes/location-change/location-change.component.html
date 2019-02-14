@@ -11,7 +11,7 @@
 
         <section class="padded-section">
           <div class="notes" style="display: flex;">
-            <i class="fas fa-exclamation-circle" style="color: #FCBA19; margin-right: 10px;"></i>
+            <fa-icon [icon]="faExclamationCircle" style="color: #FCBA19; margin-right: 10px;"></fa-icon>
             <span>
               You have an ongoing obligation to keep current the location at which you ordinarily store each piece of
               Controlled Equipment in your inventory. To update the current location for this piece of equipment,
@@ -161,8 +161,9 @@
         <div style="margin-top: 30px; display: flex; justify-content: space-between">
           <section>
             <!-- <strong class="error-states">*</strong> <i>Required field</i> -->
-            <a routerLink="/dashboard"><i class="fa fa-times" style="margin-right: 5px"></i>Cancel
-              & Close</a>
+            <a routerLink="/dashboard">
+              <fa-icon [icon]="faTimes" style="margin-right: 5px"></fa-icon>
+              Cancel & Close</a>
           </section>
           <section>
             <button class="btn btn-primary" (click)="markAsTouched(); save(true)">SAVE LOCATION</button>
@@ -176,7 +177,9 @@
         <table>
           <tr>
             <td>
-              <h2 class="round-icon-wrapper"><i class="fas fa-file-alt"></i></h2>
+              <h2 class="round-icon-wrapper">
+                <fa-icon [icon]="faFileAlt"></fa-icon>
+              </h2>
             </td>
             <td style="padding-left: 10px">
               <h2>Useful Links &amp; Information</h2>

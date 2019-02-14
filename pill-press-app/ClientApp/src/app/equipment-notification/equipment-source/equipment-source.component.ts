@@ -4,6 +4,7 @@ import { Subscription, zip } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApplicationDataService } from '../../services/application-data.service';
 import { Application } from '../../models/application.model';
+import { faSave } from '@fortawesome/free-regular-svg-icons';
 
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
@@ -39,6 +40,7 @@ export class EquipmentSourceComponent extends FormBase implements OnInit {
   busy: Subscription;
   equipmentId: string;
   busyPromise: Promise<void>;
+  faSave = faSave;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
