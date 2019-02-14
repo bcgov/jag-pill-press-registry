@@ -452,17 +452,18 @@
                       {{item?.equipmentLocation?.address?.postalCode}} <br>
                     </td>
                     <td style="background-color: #E1E8F2; padding: 10px;">
-                      <a href="javascript: void(0)"><i class="fas fa-eye" style="margin-right: 5px;"></i>View
-                        Submission</a>
-                      <br>
+                      <a href="javascript: void(0)">
+                      <i class="fas fa-eye" style="margin-right: 5px;"></i>
+                      View Submission</a><br>
                       <a routerLink="/equipment-changes/location-change/{{item.id}}">
-                        <i class="fas fa-map-marker-alt" style="margin-right: 5px;"></i>Change
-                        Location</a> <br>
-                      <a  javascript="void(0)" (click)="reportLSD(item.id)" ><i class="fas fa-exclamation-triangle"
-                          style="margin-right: 5px;"></i>Report
-                        Change (lost, stolen, destroyed)</a> <br>
-                      <a href="javascript: void(0)" (click)="reportSales(item.id)"><i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>Report
-                        Sale</a>
+                      <i class="fas fa-map-marker-alt" style="margin-right: 5px;"></i>
+                      Change Location</a><br>
+                      <a href="javascript: void(0)" (click)="reportLSD(item.id)">
+                      <i class="fas fa-exclamation-triangle" style="margin-right: 5px;"></i>
+                      Report Change (lost, stolen, destroyed)</a><br>
+                      <a href="javascript: void(0)" (click)="reportSales(item.id)">
+                      <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>
+                      Report Sale</a>
                     </td>
                   </tr>
                 </table>
