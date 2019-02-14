@@ -4,6 +4,7 @@ import { Subscription, Observable, zip } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DynamicsDataService } from '../../../services/dynamics-data.service';
 import { ApplicationDataService } from '../../../services/application-data.service';
+import { faSave, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
@@ -38,6 +39,9 @@ export class SellerApplicationReviewComponent implements OnInit {
   formData: any;
   busy: Subscription;
   waiverId: string;
+
+  faSave = faSave;
+  faExclamationTriangle = faExclamationTriangle;
 
   ownersAndManagers: any[] = [];
   equipmentInformation: string[];
