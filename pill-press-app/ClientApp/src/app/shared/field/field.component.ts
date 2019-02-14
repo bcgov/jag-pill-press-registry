@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-field',
@@ -12,6 +13,7 @@ export class FieldComponent implements OnInit {
   @Input() label: string;
   @Input() leadingText: string;
   @Input() errorMessage: string;
+  faChevronLeft = faChevronLeft;
 
   constructor() { }
 

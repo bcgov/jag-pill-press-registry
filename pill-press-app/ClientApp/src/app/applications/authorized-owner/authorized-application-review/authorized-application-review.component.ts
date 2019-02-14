@@ -8,6 +8,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { PRODUCING_OWN_PRODUCT, MANUFACTURING_FOR_OTHERS } from '../../waiver/waiver-application/waiver-application.component';
 import { Application } from '../../../models/application.model';
 
+import { faSave } from '@fortawesome/free-regular-svg-icons';
+import { faExclamation } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-authorized-application-review',
@@ -15,6 +18,8 @@ import { Application } from '../../../models/application.model';
   styleUrls: ['./authorized-application-review.component.scss']
 })
 export class AuthorizedApplicationReviewComponent implements OnInit {
+  faSave = faSave;
+  faExclamation = faExclamation;
   form: FormGroup;
   waiverId: string;
 

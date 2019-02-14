@@ -39,5 +39,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         [JsonProperty(PropertyName = "bcgov_ApplicationTypeId@odata.bind")]
         public string ApplicationTypeIdODataBind { get; set; }
+
+        [JsonProperty(PropertyName = "bcgov_EquipmentRecord@odata.bind")]
+        public string EquipmentRecordODataBind { get; set; }
     }
 }
