@@ -3,6 +3,8 @@ import { MatStepper } from '@angular/material';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 
+import { faCheck, faAddressCard } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-authorized-owner',
   templateUrl: './authorized-owner.component.html',
@@ -17,6 +19,9 @@ export class AuthorizedOwnerComponent implements OnInit {
     'application',
     'review'
   ];
+
+  faCheck = faCheck;
+  faAddressCard = faAddressCard;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
