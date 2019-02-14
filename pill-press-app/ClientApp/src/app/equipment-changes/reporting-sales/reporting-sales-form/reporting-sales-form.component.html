@@ -1,9 +1,9 @@
 <div class="form-wrapper" style="position: relative;">
-  <div [ngBusy]="[busy, busy2]"></div>
+  <div [ngBusy]="[busy]"></div>
   <div class="row" [formGroup]="form">
     <div class="col-lg-8 col-sm-12">
       <div [formGroup]="form">
-        <div *ngIf="dataLoaded || true">
+        <div>
           <section>
             <h2 class="step">Step 1</h2>
             <h1>
