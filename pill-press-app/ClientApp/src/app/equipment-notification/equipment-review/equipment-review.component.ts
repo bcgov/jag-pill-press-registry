@@ -5,7 +5,8 @@ import { Application } from '../../models/application.model';
 import { ApplicationDataService } from '../../services/application-data.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { zip } from 'rxjs';
-
+import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import { faSave } from '@fortawesome/free-regular-svg-icons';
 @Component({
   selector: 'app-equipment-review',
   templateUrl: './equipment-review.component.html',
@@ -18,6 +19,8 @@ export class EquipmentReviewComponent implements OnInit {
   form: FormGroup;
   busyPromise: Promise<any>;
   showErrors: boolean;
+  faSave = faSave;
+  faExclamationCircle = faExclamationCircle;
 
   constructor(private applicationDataService: ApplicationDataService,
     private fb: FormBuilder,

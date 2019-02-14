@@ -84,7 +84,7 @@
       </section>
 
       <div class="notes" style="display: flex;" *ngIf="form.get('equipmentType').value === 'Die, Mould or Punch'">
-        <i class="fas fa-exclamation-circle" style="color: #003366; margin-right: 10px;"></i>
+        <fa-icon [icon]="faExclamationCircle" style="color: #003366; margin-right: 10px;"></fa-icon>
         <span>
           Although dies, moulds, and punches are considered Controlled Equipment, the notification requirements in
           the legislation do not apply to these pieces of equipment. Therefore, you do not need to provide
@@ -136,8 +136,9 @@
     <div style="margin-top: 30px; display: flex; justify-content: space-between">
       <section>
         <!-- <strong class="error-states">*</strong> <i>Required field</i> -->
-        <a href="javascript: void(0);" (click)="save(false)"><i class="fa fa-save" style="margin-right: 5px"></i>Save
-          & Close</a>
+        <a href="javascript: void(0);" (click)="save(false)">
+          <fa-icon [icon]="faSave" style="margin-right: 5px"></fa-icon>
+          Save & Close</a>
       </section>
       <section>
         <button class="btn btn-secondary" style="margin-right: 10px" routerLink="/equipment-notification/profile-review/{{equipmentId}}">BACK

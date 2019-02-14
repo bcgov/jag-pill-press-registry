@@ -7,7 +7,8 @@
     <p>
       You have provided the following information in your business profile. In order to proceed, please confirm that
       these
-      details are correct. If they are not, please return to the Business Profile form and <a routerLink="/business-profile">update
+      details are correct. If they are not, please return to the Business Profile form and <a
+        routerLink="/business-profile">update
         your
         information</a>.
     </p>
@@ -59,15 +60,19 @@
       </section>
     </div>
 
-    <div *ngIf="!declarationsValid() && form.touched" style="background-color: #F2F2F2; margin-top: 10px; border-radius: 5px; padding: 10px; font: 15px Myriad Pro Regular #494949;">
-      <i class="fas fa-exclamation-triangle error-states" style="margin-right: 10px;"></i>
+    <div *ngIf="!declarationsValid() && form.touched"
+      style="background-color: #F2F2F2; margin-top: 10px; border-radius: 5px; padding: 10px; font: 15px Myriad Pro Regular #494949;">
+      <fa-icon [icon]="faExclamationTriangle" class="error-states" style="margin-right: 10px;"></fa-icon>
       <span class="error-states">Please complete the declarations and consent section.</span>
     </div>
 
 
     <div style="margin-top: 30px; display: flex; justify-content: space-between; position: relative;">
       <section>
-        <a routerLink="/business-profile"><i class="fas fa-pencil-alt"></i> Edit Business Profile</a>
+        <a routerLink="/business-profile">
+          <fa-icon [icon]="faPencilAlt"></fa-icon>
+          Edit Business Profile
+        </a>
       </section>
       <section>
         <div [ngBusy]="busy2"></div>
@@ -84,7 +89,9 @@
       <table>
         <tr>
           <td>
-            <h2 class="round-icon-wrapper"><i class="fas fa-question"></i></h2>
+            <h2 class="round-icon-wrapper">
+              <fa-icon [icon]="faQuestion"></fa-icon>
+            </h2>
           </td>
           <td style="padding-left: 10px">
             <h2>Update your personal information</h2>
@@ -97,7 +104,7 @@
           this information, you must contact BCeID to correct it.
         </p>
         <div>
-          <i class="fas fa-phone" style="margin-right: 10px"></i>
+          <fa-icon [icon]="faPhone" style="margin-right: 10px"></fa-icon>
           <strong>Phone</strong>
           <br>
           <span>1 888 356-2741 (Canada and USA toll free)</span>
@@ -105,12 +112,14 @@
           <span>604 660-2355 (Within lower mainland or outside Canada and USA)</span>
         </div>
         <div>
-          <i class="fas fa-envelope" style="margin-right: 10px"></i>
+          <fa-icon [icon]="faEnvelope" style="margin-right: 10px"></fa-icon>
           <strong>Email</strong>
           <br>
-          <span>Contact us using our <a href="https://www.bceid.ca/help_request/default.aspx?referrer=AB%2f2" style="color:white">online
+          <span>Contact us using our <a href="https://www.bceid.ca/help_request/default.aspx?referrer=AB%2f2"
+              style="color:white">online
               form</a> or at
-            <a href="mailto:BCeIDREgistrationDesk@gov.bc.ca" style="color:white">BCeIDRegistrationDesk@gov.bc.ca</a></span>
+            <a href="mailto:BCeIDREgistrationDesk@gov.bc.ca"
+              style="color:white">BCeIDRegistrationDesk@gov.bc.ca</a></span>
         </div>
         <p>
           All other information can be changed on this Business Profile page.

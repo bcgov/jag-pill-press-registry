@@ -8,8 +8,8 @@
         <ng-content></ng-content>
       </td>
       <td *ngIf="!valid && showChevrons" style="width: 20px;"><span>
-          <i class="fas fa-chevron-left error-states" style="margin-left: 3px"></i>
-          <i class="fas fa-chevron-left error-states" style="margin-left: -5px"></i>
+          <fa-icon [icon]="faChevronLeft" class="error-states" style="margin-left: 3px"></fa-icon>
+          <fa-icon [icon]="faChevronLeft" class="error-states" style="margin-left: -5px"></fa-icon>
         </span></td>
     </tr>
   </table>

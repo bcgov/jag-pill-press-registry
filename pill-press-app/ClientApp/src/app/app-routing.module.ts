@@ -184,7 +184,7 @@ const routes: Routes = [
     component: LocationChangeComponent
   },
   {
-    path: 'equipment-changes/report-changes',
+    path: 'equipment-changes/reporting-changes',
     canActivate: [BCeidAuthGuard],
     component: ReportChangesComponent,
     children: [
