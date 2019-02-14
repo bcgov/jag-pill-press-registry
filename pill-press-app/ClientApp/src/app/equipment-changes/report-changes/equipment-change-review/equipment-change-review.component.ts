@@ -22,6 +22,7 @@ export class EquipmentChangeReviewComponent extends FormBase implements OnInit {
   faSave = faSave;
   faExclamationCircle  = faExclamationCircle ;
   application: any;
+  showErrors: boolean;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -82,6 +83,8 @@ export class EquipmentChangeReviewComponent extends FormBase implements OnInit {
         }, err => {
           // todo: show errors;
         });
+    } else {
+      this.showErrors = true;
     }
   }
 
