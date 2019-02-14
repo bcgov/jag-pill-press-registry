@@ -6,6 +6,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DynamicsDataService } from '../../../services/dynamics-data.service';
 import { ApplicationDataService } from '../../../services/application-data.service';
 import { FormBase } from './../../../shared/form-base';
+import { faSave } from '@fortawesome/free-regular-svg-icons';
+import { faExclamationTriangle, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+
 
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
@@ -47,6 +50,10 @@ export class AuthorizedApplicationComponent extends FormBase implements OnInit {
   form: FormGroup;
   busy: Subscription;
   waiverId: string;
+
+  faExclamationTriangle = faExclamationTriangle;
+  faTrashAlt = faTrashAlt;
+  faSave = faSave;
 
   deletedProducts: any[] = [];
   PRODUCING_OWN_PRODUCT = PRODUCING_OWN_PRODUCT;

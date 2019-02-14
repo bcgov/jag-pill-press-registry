@@ -101,8 +101,13 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             {
                 dynamicsApplicationList = _dynamicsClient.Incidents.Get(filter: filter, orderby: new List<string> { "modifiedon desc" }).Value;
             }
-            catch (OdataerrorException)
+            catch (OdataerrorException odee)
             {
+                _logger.LogError(LoggingEvents.Error, "Error getting Application");
+                _logger.LogError("Request:");
+                _logger.LogError(odee.Request.Content);
+                _logger.LogError("Response:");
+                _logger.LogError(odee.Response.Content);
                 dynamicsApplicationList = null;
             }
             
@@ -657,6 +662,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 {
                     application.ApplicationTypeIdODataBind = _dynamicsClient.GetEntityURI("bcgov_applicationtypes", applicationTypeId);
                 }                
+            }
+
+            if (item?.EquipmentRecord?.Id != null)
+            {
+                application.EquipmentRecordODataBind = _dynamicsClient.GetEntityURI("bcgov_equipments", item?.EquipmentRecord?.Id);
             }
 
             // set the author based on the current user.

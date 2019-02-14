@@ -4,6 +4,7 @@ import { Application } from '@models/application.model';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { ApplicationDataService } from '@services/application-data.service';
 import { FormBuilder } from '@angular/forms';
+import { faCheck, faAddressCard } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-reporting-sales',
@@ -20,6 +21,8 @@ export class ReportingSalesComponent implements OnInit {
   ];
   displayedColumns: string[] = ['equipment', 'status'];
   equipment: Application[];
+  faCheck = faCheck;
+  faAddressCard = faAddressCard;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
