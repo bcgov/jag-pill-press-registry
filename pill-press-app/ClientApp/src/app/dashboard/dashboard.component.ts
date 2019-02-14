@@ -109,10 +109,15 @@ export class DashboardComponent implements OnInit {
           this.waiverApplication = waivers[0];
         }
 
-        this.inProgressEquipment = data.filter(a => a.applicationtype === 'Equipment Notification' && a.statuscode !== 'Approved');
-        this.completedEquipment = data.filter(a => a.applicationtype === 'Equipment Notification' && a.statuscode === 'Approved');
+        this.inProgressEquipment = data.filter(a => this.isEquipmentApplication(a) && a.statuscode !== 'Approved');
+        this.completedEquipment = data.filter(a => this.isEquipmentApplication(a) && a.statuscode === 'Approved');
 
       });
+  }
+
+  isEquipmentApplication(application: Application) {
+    return application.applicationtype === 'Equipment Notification'
+      && ['Lost', 'Stolen', 'Destroyed', 'Sold'].indexOf(application.typeOfSale) === -1;
   }
 
   dateSort(a, b) {
@@ -212,22 +217,22 @@ export class DashboardComponent implements OnInit {
 
   reportSales(equipmentId: string) {
     // TODO: Link the equipment to the application
-     const newLicenceApplicationData: Application = <Application>{
-       statuscode: 'Draft',
-       typeOfChange: 'Sold',
-       equipmentRecord: {
-         id: equipmentId
-       }
-     };
-     this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Equipment Notification').subscribe(
-       data => {
-    this.router.navigateByUrl(`/equipment-change/reporting-sales/details/${data.id}`);
-       },
-       err => {
-         this.snackBar.open('Error starting a Reporting Sales Application', 'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
-         console.log('Error starting Reporting Sales Application');
-       }
-     );
+    const newLicenceApplicationData: Application = <Application>{
+      statuscode: 'Draft',
+      typeOfChange: 'Sold',
+      equipmentRecord: {
+        id: equipmentId
+      }
+    };
+    this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Equipment Notification').subscribe(
+      data => {
+        this.router.navigateByUrl(`/equipment-change/reporting-sales/details/${data.id}`);
+      },
+      err => {
+        this.snackBar.open('Error starting a Reporting Sales Application', 'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
+        console.log('Error starting Reporting Sales Application');
+      }
+    );
   }
 
   reportLSD(equipmentId: string) {

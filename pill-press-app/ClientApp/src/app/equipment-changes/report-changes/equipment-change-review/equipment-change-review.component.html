@@ -166,18 +166,17 @@
     <div style="margin-top: 30px; display: flex; justify-content: space-between">
       <section>
         <!-- <span class="error-states">*</span> <i>Required field</i> -->
-        <a href="javascript: void(0);" (click)="saveAndExit()">
+        <a href="javascript: void(0);" (click)="save(false)">
           <fa-icon [icon]="faSave" style="margin-right: 5px"></fa-icon>
           Save & Close
         </a>
       </section>
       <section>
         <button class="btn btn-secondary" style="margin-right: 15px"
-          routerLink="/equipment-notification/type-and-use/{{equipmentId}}">EDIT
-          EQUIPMENT</button>
-        <button class="btn btn-primary" style="margin-right: 15px" (click)="saveAndAddMore()">SUBMIT & ADD
-          ANOTHER</button>
-        <button class="btn btn-primary" (click)="save()">SUBMIT</button>
+          routerLink="/equipment-notification/reporting-changes/details/{{applicationId}}">EDIT
+          APPLICATION</button>
+
+        <button class="btn btn-primary" (click)="save(true)">SUBMIT</button>
       </section>
     </div>
   </div>
