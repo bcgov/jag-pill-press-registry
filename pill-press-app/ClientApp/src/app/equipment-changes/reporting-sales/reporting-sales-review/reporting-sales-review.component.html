@@ -1,297 +1,561 @@
-<!-- <div class="">
+<div class="">
   <div class="" style="position: relative;">
-    <div [ngBusy]="[busy, busyPromise]"></div>
+    <div [ngBusy]="busy"></div>
     <h2 class="step">STEP 2</h2>
     <h1>Report of Sale Review</h1>
 
     <p>
-      You have provided the following information in your Report of Sale. In order to proceed, please confirm that these
-      details are correct. If they are not, please <a
-        routerLink="/equipment-notification/reporting-sales/details/{{equipmentRecord?.id}}">amend
-        your
-        answers</a>
-      before submitting the application.
+      You have provided the following information in your Report of Sale. In order to proceed, please confirm that these details
+      are correct. If they are not, please
+      <a routerLink="/equipment-changes/reporting-sales/review/{{equipmentId}}">amend your answers</a> before submitting the application.
     </p>
 
     <h2>Sold Equipment Identification</h2>
-    <div>
-      <section *ngIf="form.get('howWasEquipmentBuilt').value === 'Commercially Manufactured'" class="padded-section">
-        <div class="dark-row">Equipment Type&nbsp; <span class="error-states">*</span></div>
-        <div class="alt-row"> {{ notification?.equipmentType }}</div>
-
-        <div class="dark-row">Make <span class="error-states">*</span></div>
-        <div class="alt-row"> {{ notification?.equipmentMake }}</div>
-
-        <div class="dark-row">Model</div>
-        <div class="alt-row"> {{ notification?.equipmentModel }}</div>
-
-        <div class="dark-row">Serial Number</div>
-        <div class="alt-row"> {{ notification?.serialNumber }}</div>
-
-        <div class="dark-row">Equipment Resitry Number</div>
-        <div class="alt-row"> {{ notification?.certificate?.name }}</div>
-      </section>
-
-      <section *ngIf="form.get('howWasEquipmentBuilt').value !== 'Commercially Manufactured'" class="padded-section">
-        <div class="dark-row">Equipment Type&nbsp; <span class="error-states">*</span></div>
-        <div class="alt-row"> {{ notification?.equipmentType }}</div>
-
-        <div class="dark-row">Equipment Resitry Number</div>
-        <div class="alt-row"> {{ notification?.certificate?.name }}</div>
-      </section>
-    </div>
+    <table class="summary-table" style="width:100%">
+      <tr *ngFor="let item of equipmentIdentification; let i = index;">
+        <td [ngClass]="{ 'row-alt': i%2==1 }">
+          <strong *ngIf="i%2 === 0">{{item}} <span>*</span></strong>
+          <span *ngIf="i%2 === 1">{{item}}</span>
+        </td>
+      </tr>
+    </table>
 
     <h2>Details of Sale</h2>
-    <div class="padded-section">
-      <div class="dark-row">What is the date on which the sale was made? &nbsp; <span class="error-states">*</span>
-      </div>
-      <div class="alt-row"> {{ application?.equipmentType }}</div>
-
-      <div class="dark-row">Please indicate the type of sale for this piece of Controlled Equipment. &nbsp; <span
-          class="error-states">*</span></div>
-      <div class="alt-row"> {{ application?.equipmentType }}</div>
-
-      <div class="dark-row">Did you retain any rights to own, use, or possess this piece of equipment after the sale
-        transaction was completed?? &nbsp; <span class="error-states">*</span></div>
-      <div class="alt-row"> {{ application?.equipmentType }}</div>
-
-      <div class="dark-row">What was the method of payment used to purchase this piece of Controlled Equipment? &nbsp;
-        <span class="error-states">*</span></div>
-      <div class="alt-row"> {{ application?.equipmentType }}</div>
-
-      <div class="dark-row">Where will this piece of equipment reside after it is sold? &nbsp; <span
-          class="error-states">*</span></div>
-      <div class="alt-row"> {{ application?.equipmentType }}</div>
-
-      <div class="dark-row">What is the civic address at which the purchaser will ordinarily store this piece of
-        Controlled Equipment? &nbsp; <span class="error-states">*</span></div>
-      <div class="alt-row"> {{ application?.equipmentType }}</div>
-
-      <div class="dark-row">Is the address where the purchaser will ordinarily store this piece of equipment a private
-        dwelling house? &nbsp; <span class="error-states">*</span></div>
-      <div class="alt-row"> {{ application?.equipmentType }}</div>
-    </div>
+    <table class="summary-table">
+      <tr>
+        <td class="table-row">
+          <strong>What is the date on which the sale was made
+            <span >*</span>
+          </strong>
+        </td>
+      </tr>
+      <tr>
+        <td class="row-alt">
+          {{formData?.dateOfSale}}
+        </td>
+      </tr>
+      <tr>
+        <td class="table-row">
+          <strong>Please indicate the type of sale for this piece of Controlled Equipment
+            <span >*</span>
+          </strong>
+        </td>
+      </tr>
+      <tr>
+        <td class="row-alt">
+          {{formData?.typeOfSale}}
+        </td>
+      </tr>
+      <tr>
+        <td class="table-row">
+          <strong>
+            Did you retain any rights to own, use, or possess this piece of equipment after the sale transaction was completed?
+            <span >*</span>
+          </strong>
+        </td>
+      </tr>
+      <tr>
+        <td class="row-alt">
+          {{formData?.rightsToOwnuseOrPossessRetained}}
+        </td>
+      </tr>
+      <tr>
+        <td class="table-row">
+          <strong>
+            What was the method of payment used to purchase this piece of Controlled Equipment
+            <span >*</span>
+          </strong>
+        </td>
+      </tr>
+      <tr>
+        <td class="row-alt">
+          {{formData?.methodOfPayment}}
+        </td>
+      </tr>
+      <tr>
+        <td class="table-row">
+          <strong>
+            Where will this piece of equipment reside after it is sold?
+            <span >*</span>
+          </strong>
+        </td>
+      </tr>
+      <tr>
+        <td class="row-alt">
+          {{formData?.whereWillEquipmentReside}}
+        </td>
+      </tr>
+      <tr>
+        <td class="table-row">
+          <strong>
+            What is the civic address at which the purchaser will ordinarily store this piece of Controlled Equipment?</strong>
+        </td>
+      </tr>
+      <tr>
+        <td class="row-alt">
+          <div>{{formData?.civicAddressOfPurchaser?.streetLine1}}</div>
+          <div>{{formData?.civicAddressOfPurchaser?.city}}</div>
+          <div>{{formData?.civicAddressOfPurchaser?.province}}</div>
+          <div>{{formData?.civicAddressOfPurchaser?.postalCode}}</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="table-row">
+          <strong>
+            Is the address where the purchaser will ordinarily store this piece of equipment a private dwelling house?</strong>
+        </td>
+      </tr>
+      <tr>
+        <td class="row-alt">
+          {{formData?.privateDwelling}}
+        </td>
+      </tr>
+    </table>
 
     <h2>Purchaser Information</h2>
-    <div class="padded-section">
-      <div class="dark-row">
-        Was this piece of Controlled Equipment purchased by an individual for their own personal use, or by a business?
-        &nbsp; <span class="error-states">*</span></div>
-      <div class="alt-row">
-        <ul>
-          <li>Business</li>
-        </ul>
-      </div>
-      <section class="padded-section">
-        <div class="dark-row">Please provide the legal name of the business who purchased this piece of Controlled
-          Equipment &nbsp; <span class="error-states">*</span></div>
-        <div class="alt-row"> {{ application?.equipmentType }}</div>
-
-        <div class="dark-row">What is the registration number (i.e. corporate registry number) for the purchaser? &nbsp;
-          <span class="error-states">*</span></div>
-        <div class="alt-row"> {{ application?.equipmentType }}</div>
-
-        <div class="dark-row">What is the name under which the purchaser ordinarily carries on business (i.e. a doing
-          business as name)? &nbsp; <span class="error-states">*</span></div>
-        <div class="alt-row"> {{ application?.equipmentType }}</div>
-
-        <div class="dark-row">Please provide the purchaser's business address &nbsp; <span class="error-states">*</span>
-        </div>
-        <div class="alt-row"> {{ application?.equipmentType }}</div>
-
-        <div class="dark-row">Please provide the legal name of the person responsible for making the purchase on behalf
-          of the business? &nbsp; <span class="error-states">*</span></div>
-        <div class="alt-row"> {{ application?.equipmentType }}</div>
-
-        <div class="dark-row">Please provide the business telephone number of the person responsible for making the
-          purchase on behalf of the business? &nbsp; <span class="error-states">*</span></div>
-        <div class="alt-row"> {{ application?.equipmentType }}</div>
-
-        <div class="dark-row">Please provide the business email address of the person responsible for making the
-          purchase on behalf of the business? &nbsp; <span class="error-states">*</span></div>
-        <div class="alt-row"> {{ application?.equipmentType }}</div>
-
-        <div class="dark-row">Please check the geographical location of business purchaser &nbsp; <span
-            class="error-states">*</span></div>
-        <div class="alt-row"> {{ application?.equipmentType }}</div>
-
-      </section>
-
-      <div class="alt-row">
-        <ul>
-          <li>Individual</li>
-        </ul>
-      </div>
-      <section class="padded-section">
-        <div class="dark-row">Please provide the legal name of the individual who purchased this piece of Controlled
-          Equipment &nbsp; <span class="error-states">*</span></div>
-        <div class="alt-row"> {{ application?.equipmentType }}</div>
-
-        <div class="dark-row">Please provide the purchaser's civic address &nbsp;
-          <span class="error-states">*</span></div>
-        <div class="alt-row"> {{ application?.equipmentType }}</div>
-
-        <div class="dark-row">Please provide the purchaser's telephone number &nbsp; <span class="error-states">*</span>
-        </div>
-        <div class="alt-row"> {{ application?.equipmentType }}</div>
-
-        <div class="dark-row">Please provide the purchaser's email address &nbsp; <span class="error-states">*</span>
-        </div>
-        <div class="alt-row"> {{ application?.equipmentType }}</div>
-
-        <div class="dark-row">Did you collect the number assigned to this purchaser's government issued photo ID? &nbsp;
-          <span class="error-states">*</span></div>
-        <div class="alt-row"> {{ application?.equipmentType }}</div>
-
-        <div class="dark-row">Please describe the type of ID from which you collected the number (i.e. driver's licence)
-          &nbsp; <span class="error-states">*</span></div>
-        <div class="alt-row"> {{ application?.equipmentType }}</div>
-      </section>
-    </div>
-
+    <table class="summary-table">
+      <tr>
+        <td class="table-row">
+          <strong>Was this piece of Controlled Equipment purchased by an individual for their own personal use, or by a business?
+            <span >*</span>
+          </strong>
+        </td>
+      </tr>
+      <tr>
+        <td class="row-alt bulleted-list-item">
+          {{formData?.purchasedByIndividualOrBusiness}}
+        </td>
+      </tr>
+      <tr *ngIf="formData?.purchasedByIndividualOrBusiness === 'Business'">
+        <td style="padding-left: 25px; background-color: transparent;">
+          <table class="summary-table">
+            <tr>
+              <td class="table-row">
+                <strong>Please provide the legal name of the business who purchased this piece of Controlled Equipment
+                  <span >*</span>
+                </strong>
+              </td>
+            </tr>
+            <tr>
+              <td class="row-alt">
+                {{formData?.nameOfPurchaserBusiness}}
+              </td>
+            </tr>
+            <tr>
+              <td class="table-row">
+                <strong>What is the registration number (i.e. corporate registry number) for the purchaser?</strong>
+              </td>
+            </tr>
+            <tr>
+              <td class="row-alt">
+                {{formData?.purchaserRegistrationNumber}}
+              </td>
+            </tr>
+            <tr>
+              <td class="table-row">
+                <strong>What is the name under which the purchaser ordinarily carries on business (i.e. a doing business as name)?</strong>
+              </td>
+            </tr>
+            <tr>
+              <td class="row-alt">
+                {{formData?.purchaserdBaName}}
+              </td>
+            </tr>
+            <tr>
+              <td class="table-row">
+                <strong>Please provide the purchaser's business address</strong>
+              </td>
+            </tr>
+            <tr>
+              <td class="row-alt">
+                <div>{{formData?.purchasersBusinessAddress?.streetLine1}}</div>
+                <div>{{formData?.purchasersBusinessAddress?.city}}</div>
+                <div>{{formData?.purchasersBusinessAddress?.province}}</div>
+                <div>{{formData?.purchasersBusinessAddress?.postalCode}}</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="table-row">
+                <strong>
+                  Please provide the legal name of the person responsible for making the purchase on behalf of the business?
+                  <span >*</span>
+                </strong>
+              </td>
+            </tr>
+            <tr>
+              <td class="row-alt">
+                {{formData?.legalNameOfPersonResponsibleForBusiness}}
+              </td>
+            </tr>
+            <tr>
+              <td class="table-row">
+                <strong>
+                  Please provide the business telephone number of the person responsible for making the purchase on behalf of the business?
+                  <span >*</span>
+                </strong>
+              </td>
+            </tr>
+            <tr>
+              <td class="row-alt">
+                {{formData?.phoneNumberOfPersonResponsibleForBusiness}}
+              </td>
+            </tr>
+            <tr>
+              <td class="table-row">
+                <strong>
+                  Please provide the business email address of the person responsible for making the purchase on behalf of the business?
+                  <span >*</span>
+                </strong>
+              </td>
+            </tr>
+            <tr>
+              <td class="row-alt">
+                {{formData?.emailOfPersonResponsibleForBusiness}}
+              </td>
+            </tr>
+            <tr>
+              <td class="table-row">
+                <strong>
+                  Please check the geographical location of business purchaser</strong>
+              </td>
+            </tr>
+            <tr>
+              <td class="row-alt">
+                {{formData?.geographicalLocationOfBusinessPurchaser}}
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr *ngIf="formData?.purchasedByIndividualOrBusiness === 'Individual'">
+        <td style="padding-left: 25px; background-color: transparent;">
+          <table class="summary-table">
+            <tr>
+              <td class="table-row">
+                <strong>
+                  Please provide the legal name of the individual who purchased this piece of Controlled Equipment
+                  <span >*</span>
+                </strong>
+              </td>
+            </tr>
+            <tr>
+              <td class="row-alt">
+                {{formData?.legalNameOfPurchaserIndividual}}
+              </td>
+            </tr>
+            <tr>
+              <td class="table-row">
+                <strong>
+                  Please provide the purchaser's civic address
+                  <span >*</span>
+                </strong>
+              </td>
+            </tr>
+            <tr>
+              <td class="row-alt">
+                <div>{{formData?.purchasersCivicAddress?.streetLine1}}</div>
+                <div>{{formData?.purchasersCivicAddress?.city}}</div>
+                <div>{{formData?.purchasersCivicAddress?.province}}</div>
+                <div>{{formData?.purchasersCivicAddress?.postalCode}}</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="table-row">
+                <strong>
+                  Please provide the purchaser's telephone number
+                  <span >*</span>
+                </strong>
+              </td>
+            </tr>
+            <tr>
+              <td class="row-alt">
+                {{formData?.purchasersTelephoneNumber}}
+              </td>
+            </tr>
+            <tr>
+              <td class="table-row">
+                <strong>
+                  Please provide the purchaser's email address
+                  <span >*</span>
+                </strong>
+              </td>
+            </tr>
+            <tr>
+              <td class="row-alt">
+                {{formData?.purchasersEmailAddress}}
+              </td>
+            </tr>
+            <tr>
+              <td class="table-row">
+                <strong>
+                  Did you collect the number assigned to this purchaser's government issued photo ID?
+                  <span >*</span>
+                </strong>
+              </td>
+            </tr>
+            <tr>
+              <td class="row-alt">
+                {{formData?.idNumberCollected}}
+              </td>
+            </tr>
+            <tr>
+              <td class="table-row">
+                <strong>
+                  Please describe the type of ID from which you collected the number (i.e. driver's licence)
+                  <span >*</span>
+                </strong>
+              </td>
+            </tr>
+            <tr>
+              <td class="row-alt">
+                {{formData?.typeOfIdNumberCollected}}
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
     <h2>Purchaser Authorization</h2>
-    <div class="padded-section">
-      <div class="dark-row">Is the purchaser a "person in British Columbia"? &nbsp; <span class="error-states">*</span>
-      </div>
-      <div class="alt-row"> {{ application?.equipmentType }}</div>
+    <table class="summary-table">
+      <tr>
+        <td class="table-row">
+          <strong>Is the purchaser a "person in British Columbia"?
+            <span >*</span>
+          </strong>
+        </td>
+      </tr>
+      <tr>
+        <td class="row-alt">
+          {{formData?.isPurchaserAPersonOfBC}}
+        </td>
+      </tr>
+      <tr *ngIf="formData?.isPurchaserAPersonOfBC === 'Yes'">
+        <td style="padding-left: 25px; background-color: transparent;">
+          <table class="summary-table">
+            <tr>
+              <td class="table-row">
+                <strong>How is the purchaser authorized to own, use, or possess Controlled Equipment?
+                  <span >*</span>
+                </strong>
+              </td>
+            </tr>
+            <tr *ngIf="formData?.howIsPurchaseAuthorizedAO">
+              <td class="row-alt bulleted-list-item">
+                Authorized Owner
+              </td>
+            </tr>
+            <tr *ngIf="formData?.howIsPurchaseAuthorizedAO">
+              <td style="padding-left: 25px; background-color: transparent;">
+                <table class="summary-table">
+                  <tr>
+                    <td class="table-row">
+                      <strong>
+                        What kind of Health Canada licence does the purchaser have?
+                        <span >*</span>
+                      </strong>
+                    </td>
+                  </tr>
+                  <tr *ngIf="formData?.healthCanadaLicenseDEL">
+                    <td style="font-weight: normal;" class="row-alt bulleted-list-item">
+                      Drug Establishment Licence
+                    </td>
+                  </tr>
+                  <tr *ngIf="formData?.healthCanadaLicenseDEL">
+                    <td style="padding-left: 25px; background-color: transparent;">
+                      <table class="summary-table">
+                        <tr>
+                          <td class="table-row">
+                            <strong>What is the name shown on the purchaser's Drug Establishment Licence?
+                              <span >*</span>
+                            </strong>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="row-alt">
+                            {{formData?.nameOnPurchasersDEL}}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="table-row">
+                            <strong>What is the purchaser's Drug Establishment Licence number?
+                              <span >*</span>
+                            </strong>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="row-alt">
+                            {{formData?.purchasersDELNumber}}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="table-row">
+                            <strong>What is the purchaser's Drug Establishment Licence expiry date?</strong>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="row-alt">
+                            {{formData?.purchasersDELExpiryDate}}
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr *ngIf="formData?.healthCanadaLicenseSiteLicense">
+                    <td style="font-weight: normal;" class="row-alt bulleted-list-item">
+                      Site Licence
+                    </td>
+                  </tr>
+                  <tr *ngIf="formData?.healthCanadaLicenseSiteLicense">
+                    <td style="padding-left: 25px; background-color: transparent;">
+                      <table class="summary-table">
+                        <tr>
+                          <td class="table-row">
+                            <strong>What is the name shown on the purchaser's Site Licence?
+                              <span >*</span>
+                            </strong>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="row-alt">
+                            {{formData?.nameOnPurchasersSiteLicense}}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="table-row">
+                            <strong>
+                              What is the purchaser's Site Licence number?
+                              <span >*</span>
+                            </strong>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="row-alt">
+                            {{formData?.purchasersSiteLicenseNumber}}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="table-row">
+                            <strong>What is the purchaser's Site Licence expiry date?
+                              <span >*</span>
+                            </strong>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="row-alt">
+                            {{formData?.purchasersSiteLicenseExpiryDate}}
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr *ngIf="formData?.howIsPurchaserAuthorizedWaiver">
+              <td class="row-alt bulleted-list-item">
+                Waiver Holder
+              </td>
+            </tr>
+            <tr *ngIf="formData?.howIsPurchaserAuthorizedWaiver">
+              <td style="padding-left: 25px; background-color: transparent;">
+                <table class="summary-table">
+                  <tr>
+                    <td class="table-row">
+                      <strong>What is the purchaser's Waiver number?
+                        <span >*</span>
+                      </strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="row-alt">
+                      {{formData?.purchasersWaiverNumber}}
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr *ngIf="formData?.howIsPurchaserAuthorizedRegisteredSeller">
+              <td class="row-alt bulleted-list-item">
+                Registered Seller
+              </td>
+            </tr>
+            <tr *ngIf="formData?.howIsPurchaserAuthorizedRegisteredSeller">
+              <td style="padding-left: 25px; background-color: transparent;">
+                <table class="summary-table">
+                  <tr>
+                    <td class="table-row">
+                      <strong>
+                        What is the purchaser's Registration number?
+                        <span >*</span>
+                      </strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="row-alt">
+                      {{formData?.purchasersRegistrationNumber}}
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr *ngIf="formData?.howIsPurchaserAuthorizedOther">
+              <td class="row-alt bulleted-list-item">
+                Other
+              </td>
+            </tr>
+            <tr *ngIf="formData?.howIsPurchaserAuthorizedOther">
+              <td style="padding-left: 25px; background-color: transparent;">
+                <table class="summary-table">
+                  <tr>
+                    <td class="table-row">
+                      <strong>If Other, please specify</strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="row-alt">
+                      {{formData?.purchasersOther}}
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
 
-      <section class="padded-section">
-        <div class="dark-row">How is the purchaser authorized to own, use, or possess Controlled Equipment?
-          &nbsp; <span class="error-states">*</span></div>
-        <div class="alt-row">
-          <ul>
-            <li>Authorized Owner</li>
-          </ul>
-        </div>
-        <section class="padded-section">
-          <div class="dark-row">What kind of Health Canada licence does the purchaser have? &nbsp; <span
-              class="error-states">*</span></div>
 
-          <div class="alt-row">
-            <ul>
-              <li>Drug Establishment Licence</li>
-            </ul>
-          </div>
-          <section class="padded-section">
-            <div class="dark-row">What is the name shown on the purchaser's Drug Establishment Licence? &nbsp; <span
-                class="error-states">*</span></div>
-            <div class="alt-row"> {{ application?.equipmentType }}</div>
-
-            <div class="dark-row">What is the purchaser's Drug Establishment Licence number? &nbsp; <span
-                class="error-states">*</span></div>
-            <div class="alt-row"> {{ application?.equipmentType }}</div>
-
-            <div class="dark-row">What is the purchaser's Drug Establishment Licence expiry date? &nbsp; <span
-                class="error-states">*</span></div>
-            <div class="alt-row"> {{ application?.equipmentType }}</div>
+      <h3 class="blue-header">DECLARATION AND CONSENT</h3>
+      <div [formGroup]="form" class="padded-section">
+        <section style="display: flex">
+          <section style="flex: 0 0 20px">
+            <input type="checkbox" formControlName="declarationOfCorrectInformation">
           </section>
-
-          <div class="alt-row">
-            <ul>
-              <li>Site Licence</li>
-            </ul>
-          </div>
-          <section class="padded-section">
-            <div class="dark-row">What is the name shown on the purchaser's Site Licence? &nbsp; <span
-                class="error-states">*</span></div>
-            <div class="alt-row"> {{ application?.equipmentType }}</div>
-
-            <div class="dark-row">What is the purchaser's Site Licence number? &nbsp; <span
-                class="error-states">*</span></div>
-            <div class="alt-row"> {{ application?.equipmentType }}</div>
-
-            <div class="dark-row">
-              What is the purchaser's Site Licence expiry date?</div>
-            <div class="alt-row"> {{ application?.equipmentType }}</div>
-          </section>
-
+          <span>I certify that, to the best of my knowledge, the information I have provided on my Registered Seller application
+            and will provide as necessary is complete, honest, and accurate. I understand that a false statement or omission
+            of facts herein may lead to the a denial of a registration being granted. I am also aware that later discovery
+            of an omission or misrepresentation may be grounds for suspension or cancellation of a registration or for being
+            prosecuted under provincial law.
+            <strong class="error-states">*</strong>
+          </span>
         </section>
-
-
-        <div class="alt-row">
-          <ul>
-            <li>Waiver Holder</li>
-          </ul>
+        <div *ngIf="form.get('declarationOfCorrectInformation').value !== true && form.touched" style="background-color: #F2F2F2; margin-top: 10px; border-radius: 5px; padding: 10px; font: 15px Myriad Pro Regular #494949;">
+          <i class="fas fa-exclamation-triangle error-states" style="margin-right: 10px;"></i>
+          <span class="error-states">Please complete the declarations and consent section.</span>
         </div>
-        <section class="padded-section">
-          <div class="dark-row">What is the purchaser's Waiver number? &nbsp; <span class="error-states">*</span></div>
-
-          <div class="alt-row"> {{}} </div>
-        </section>
-
-        <div class="alt-row">
-          <ul>
-            <li>Registered Seller</li>
-          </ul>
-        </div>
-        <section class="padded-section">
-          <div class="dark-row">What is the purchaser's Registration number? &nbsp; <span class="error-states">*</span>
-          </div>
-
-          <div class="alt-row"> {{}} </div>
-        </section>
-
-        <div class="alt-row">
-          <ul>
-            <li>Other</li>
-          </ul>
-        </div>
-        <section class="padded-section">
-          <div class="dark-row">If Other, please specify &nbsp; <span class="error-states">*</span></div>
-
-          <div class="alt-row"> {{}} </div>
-        </section>
-
-      </section>
-
-    </div>
-
-
-    <h3 class="blue-header">DECLARATION AND CONSENT</h3>
-    <div [formGroup]="form" class="padded-section">
-      <section style="display: flex">
-        <div style="flex: 0 0 20px">
-          <input type="checkbox" formControlName="declarationOfCorrectInformation">
-        </div>
-        <span>
-          I certify that, to the best of my knowledge, the information I have provided in this Report of Sale (and will
-          provide as necessary) is complete, honest, and accurate. I am aware that later discovery of an omission or
-          misrepresentation may be grounds for any finding of suitability to be reversed or for being prosecuted under
-          provincial law. <span class="error-states">*</span>
-        </span>
-      </section>
-
-      <div
-        *ngIf="(form.get('declarationOfCorrectInformation').value !== true || form.get('confirmationOfAuthorizedUse').value !== true) && showErrors"
-        style="background-color: #F2F2F2; margin-top: 10px; border-radius: 5px; padding: 10px; font: 15px Myriad Pro Regular #494949;">
-        <fa-icon [icon]="faExclamationTriangle" class="error-states" style="margin-right: 10px;"></fa-icon>
-        <span class="error-states">Please complete the declarations and consent section.</span>
       </div>
-    </div>
 
-    <div class="notes" style="display: flex; margin-top: 20px;">
-      <fa-icon [icon]="faExclamationCircle" style="color: #003366; margin-right: 10px;" size="lg"></fa-icon>
-      <p>
-        Please ensure you complete a submission for each piece of Controlled Equipment in your possession until your
-        entire inventory is listed.</p>
-    </div>
+      <div class="padded-section" style="margin-top: 25px; display: flex; justify-content: space-between">
+        <section>
+          <a href="javascript: save(false);" (click)="save(false)" style="margin-right: 10px">
+            <i class="fa fa-save" style="padding-right: 5px;"></i>Save & Close</a>
+        </section>
+        <section>
 
-    <div style="margin-top: 30px; display: flex; justify-content: space-between">
-      <section>
-        <a href="javascript: void(0);" (click)="saveAndExit()">
-          <fa-icon [icon]="faSave" style="margin-right: 5px"></fa-icon>
-          Save & Close
-        </a>
-      </section>
-      <section>
-        <button class="btn btn-secondary" style="margin-right: 15px"
-          routerLink="/equipment-notification/type-and-use/{{equipmentId}}">EDIT
-          EQUIPMENT</button>
-        <button class="btn btn-primary" style="margin-right: 15px" (click)="saveAndAddMore()">SUBMIT & ADD
-          ANOTHER</button>
-        <button class="btn btn-primary" (click)="save()">SUBMIT</button>
-      </section>
-    </div>
+          <button class="btn btn-secondary" style="margin-right: 10px" routerLink="/registered-seller/application/{{waiverId}}">EDIT APPLICATION
+          </button>
+          <button class="btn btn-primary" (click)="markAsTouched(); save(true)">SUBMIT</button>
+        </section>
+      </div>
+    </table>
   </div>
-
-</div> -->
+</div>
