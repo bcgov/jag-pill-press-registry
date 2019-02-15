@@ -109,16 +109,10 @@ export class DashboardComponent implements OnInit {
           this.waiverApplication = waivers[0];
         }
 
-        this.inProgressEquipment = data.filter(a => this.isEquipmentApplication(a) && a.statuscode !== 'Approved');
-        this.completedEquipment = data.filter(a => this.isEquipmentApplication(a) && a.statuscode === 'Approved');
+        this.inProgressEquipment = data.filter(a => a.applicationtype === 'Equipment Notification' && a.statuscode !== 'Approved');
+        this.completedEquipment = data.filter(a => a.applicationtype === 'Equipment Notification' && a.statuscode === 'Approved');
 
       });
-  }
-
-  isEquipmentApplication(application: Application) {
-    const result =  application.applicationtype === 'Equipment Notification'
-      && ['Lost', 'Stolen', 'Destroyed', 'Sold'].indexOf(application.typeOfChange) === -1;
-      return result;
   }
 
   dateSort(a, b) {
