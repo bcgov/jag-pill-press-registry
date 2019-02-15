@@ -81,7 +81,7 @@
         </app-field>
 
         <div class="notes" style="display: flex;">
-          <i class="fas fa-lg fa-exclamation-circle" style="color: #FCBA19; margin-right: 10px;"></i>
+          <fa-icon [icon]="faExclamationCircle" style="color: #FCBA19; margin-right: 10px;"></fa-icon>
           <span>
             The Pill Press registry requires a unique identifier for this piece of Controlled Equipment. If there is no
             manufacturer serial number for this piece of equipment, you are requested to provide a "key part" serial
@@ -125,8 +125,9 @@
     <div style="margin-top: 30px; display: flex; justify-content: space-between">
       <section>
         <!-- <strong class="error-states">*</strong> <i>Required field</i> -->
-        <a href="javascript: void(0);" (click)="save(false)"><i class="fa fa-save" style="margin-right: 5px"></i>Save
-          & Close</a>
+        <a href="javascript: void(0);" (click)="save(false)">
+          <fa-icon [icon]="faSave" style="margin-right: 5px"></fa-icon>
+          Save & Close</a>
       </section>
       <section>
         <button class="btn btn-secondary" style="margin-right: 10px" routerLink="/equipment-notification/type-and-use/{{equipmentId}}">BACK

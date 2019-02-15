@@ -258,6 +258,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     result.EquipmentLocation = incident?.BcgovEquipmentLocation.ToViewModel();
                 }
 
+                if (incident?.BcgovEquipmentRecord != null)
+                {
+                    result.EquipmentRecord = incident?.BcgovEquipmentRecord.ToViewModel();
+                }
+
                 if (incident?.BcgovAddressWhereEquipmentWasDestroyed != null)
                 {
                     result.addressWhereEquipmentWasDestroyed = incident?.BcgovAddressWhereEquipmentWasDestroyed.ToViewModel();

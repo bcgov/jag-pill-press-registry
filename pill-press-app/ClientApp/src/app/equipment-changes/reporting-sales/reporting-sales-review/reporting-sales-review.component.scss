@@ -1,0 +1,33 @@
+.bulleted-list-item::before {
+    content: "\2022";
+    list-style: disc;
+    font-weight: bold;
+    display: inline-block; /* Needed to add space between the bullet and the text */ 
+    width: 15px; /* Also needed for space (tweak if needed) */
+    margin: -5px 0px;
+}
+
+.bulleted-list-item {
+    font-weight: bold;
+}
+
+.summary-table {
+    border-collapse: inherit;
+    border-spacing: 5px;
+    margin-left: -5px;
+}
+
+/*spacing specific to nested tables*/
+.summary-table .summary-table {
+    margin: -10px 10px;
+    padding-bottom: 0px;
+}
+
+.summary-table td {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+strong span {
+    color: red;
+}
