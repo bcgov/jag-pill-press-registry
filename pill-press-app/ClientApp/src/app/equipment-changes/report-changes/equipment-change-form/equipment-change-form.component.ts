@@ -64,31 +64,29 @@ export class EquipmentChangeFormComponent extends FormBase implements OnInit {
         streetLine1: [''],
         streetLine2: [],
         city: [''],
-        province: [],
+        province: ['British Columbia'],
         postalCode: [''],
       }),
       equipmentRecord: this.fb.group({
         id: [],
         equipmentType: [''],
-        equipmentRegistryNumber: [''],
+        equipmentTypeOther: [''],
+        name: [''],
+        pillpressEncapsulatorSize: [''],
+        pillpressEncapsulatorSizeOther: [''],
+        levelOfEquipmentAutomation: [''],
+        pillpressMaxCapacity: [''],
         howWasEquipmentBuilt: [''],
-        dateLost: [''],
-        dateReported: [''],
-        howWasEquipmentBuiltOther: [],
-        howWasEquipmentBuiltOtherCheck: [],
+        HhwWasEquipmentBuiltOther: [''],
         nameOfManufacturer: [''],
         equipmentMake: [''],
         equipmentModel: [''],
         serialNumber: [''],
-        howEquipmentBuiltDescription: [''],
-        personBusinessThatBuiltEquipment: [''],
-        serialNumberForCustomBuilt: [''],
+        encapsulatorMaxCapacity: [''],
         customBuiltSerialNumber: [''],
-        serialNumberKeyPartDescription: []
-      }),
-
+      })
     });
-    // this.clearHiddenFields();
+    this.clearHiddenFields();
     this.reloadData();
 
   }
@@ -126,11 +124,12 @@ export class EquipmentChangeFormComponent extends FormBase implements OnInit {
         this.form.get('circumstancesOfStolenEquipment').reset();
         this.form.get('circumstancesOfDestroyedEquipment').clearValidators();
         this.form.get('circumstancesOfDestroyedEquipment').reset();
+        this.form.get('whoDestroyedEquipment').clearValidators();
+        this.form.get('whoDestroyedEquipment').reset();
 
         this.form.get('addressWhereEquipmentWasDestroyed.streetLine1').clearValidators();
         this.form.get('addressWhereEquipmentWasDestroyed.city').clearValidators();
         this.form.get('addressWhereEquipmentWasDestroyed.province').clearValidators();
-        this.form.get('addressWhereEquipmentWasDestroyed.country').clearValidators();
         this.form.get('addressWhereEquipmentWasDestroyed.postalCode').clearValidators();
         this.form.get('addressWhereEquipmentWasDestroyed').reset();
         if (value === 'Lost') {
@@ -144,7 +143,7 @@ export class EquipmentChangeFormComponent extends FormBase implements OnInit {
           this.form.get('addressWhereEquipmentWasDestroyed.streetLine1').setValidators([Validators.required]);
           this.form.get('addressWhereEquipmentWasDestroyed.city').setValidators([Validators.required]);
           this.form.get('addressWhereEquipmentWasDestroyed.province').setValidators([Validators.required]);
-          this.form.get('addressWhereEquipmentWasDestroyed.country').setValidators([Validators.required]);
+          this.form.get('addressWhereEquipmentWasDestroyed.province').setValue('British Columbia');
           this.form.get('addressWhereEquipmentWasDestroyed.postalCode')
             .setValidators([Validators.required, Validators.pattern(postalRegex)]);
         }
