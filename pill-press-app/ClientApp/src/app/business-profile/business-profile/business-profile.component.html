@@ -225,7 +225,7 @@
 
             <section>
               <a style="float: right;" href="javascript:void(0);" (click)="hideAdditionalContact()">
-                <i class="fas fa-trash-alt"></i>
+                <fa-icon [icon]="faTrashAlt"></fa-icon>
                 Delete Contact</a>
             </section>
           </div>
@@ -233,17 +233,17 @@
           <p></p>
 
           <div *ngIf="!form.valid && form.touched" class="error-summary">
-            <i class="fas fa-exclamation-triangle" style="margin-right: 10px;"></i>
+            <fa-icon [icon]="faExclamationTriangle" style="margin-right: 10px;"></fa-icon>
             <span>Some required fields have not been completed</span>
           </div>
           <section style="position: relative;">
             <div [ngBusy]="[busy3]"></div>
             <a routerLink="/dashboard">
-              <i class="fas fa-trash-alt" style="margin-right: 10px;"></i>Cancel & Close</a>
+              <fa-icon [icon]="faTrashAlt" style="margin-right: 10px;"></fa-icon>Cancel & Close</a>
             <span style="float: right;">
               <button style="margin-left: 10px" (click)="gotoReview()" class="btn btn-primary">SAVE &
                 CONTINUE
-                <i class="fas fa-chevron-right"></i></button>
+                <fa-icon [icon]="faChevronRight"></fa-icon></button>
             </span>
           </section>
         </div>
@@ -256,7 +256,9 @@
         <table>
           <tr>
             <td>
-              <h2 class="round-icon-wrapper"><i class="fas fa-address-card"></i></h2>
+              <h2 class="round-icon-wrapper">
+                <fa-icon [icon]="faAddressCard"></fa-icon>
+              </h2>
             </td>
             <td style="padding-left: 10px">
               <h2>Update your BCeID information</h2>
@@ -269,7 +271,7 @@
             this information, you must contact BCeID to correct it.
           </p>
           <div>
-            <i class="fas fa-phone" style="margin-right: 10px"></i>
+            <fa-icon [icon]="faPhone" style="margin-right: 10px"></fa-icon>
             <strong>Phone</strong>
             <br>
             <span>1 888 356-2741 (Canada and USA toll free)</span>
@@ -277,7 +279,7 @@
             <span>604 660-2355 (Within lower mainland or outside Canada and USA)</span>
           </div>
           <div>
-            <i class="fas fa-envelope" style="margin-right: 10px"></i>
+            <fa-icon [icon]="faEnvelope" style="margin-right: 10px"></fa-icon>
             <strong>Email</strong>
             <br>
             <span>Contact us using our <a href="https://www.bceid.ca/help_request/default.aspx?referrer=AB%2f2" style="color:white">online

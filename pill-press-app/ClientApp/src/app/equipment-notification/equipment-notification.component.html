@@ -11,7 +11,7 @@
         <section style="padding-top: 15px; padding-bottom: 20px;">
           <mat-vertical-stepper [linear]="true" (selectionChange)="selectionChange($event)" #stepper>
             <ng-template matStepperIcon="edit">
-              <i class="fas fa-check"></i>
+              <fa-icon [icon]="faCheck"></fa-icon>
             </ng-template>
             <ng-template matStepperIcon="number">
             </ng-template>
@@ -73,7 +73,9 @@
           <table>
             <tr>
               <td>
-                <h2 class="round-icon-wrapper"><i class="fas fa-address-card"></i></h2>
+                <h2 class="round-icon-wrapper">
+                  <fa-icon [icon]="faAddressCard"></fa-icon>
+                </h2>
               </td>
               <td style="padding-left: 10px">
                 <h2>Useful Links & Information</h2>

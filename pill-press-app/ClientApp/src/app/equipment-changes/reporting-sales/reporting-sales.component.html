@@ -11,7 +11,7 @@
         <section style="padding-top: 15px; padding-bottom: 20px;">
           <mat-vertical-stepper [linear]="true" (selectionChange)="selectionChange($event)" #stepper>
             <ng-template matStepperIcon="edit">
-              <i class="fas fa-check"></i>
+              <fa-icon [icon]="faCheck"></fa-icon>
             </ng-template>
             <ng-template matStepperIcon="number">
             </ng-template>
@@ -29,7 +29,9 @@
         <table>
           <tr>
             <td>
-              <h2 class="round-icon-wrapper"><i class="fas fa-address-card"></i></h2>
+              <h2 class="round-icon-wrapper">
+                <fa-icon [icon]="faAddressCard"></fa-icon>
+              </h2>
             </td>
             <td style="padding-left: 10px">
               <h2>Useful Links & Information</h2>
@@ -39,10 +41,18 @@
         <div class="submit-content">
           <p>What you need to know about:</p>
           <ul class="arrow">
-            <li><a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-controlled-equipment#enp"
-                target="blank" style="color: #fff;">The equipment notification process</a></li>
-            <li><a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-controlled-equipment#cce"
-                target="blank" style="color: #fff;">Changes to Controlled Equipment</a></li>
+            <li>
+              <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-waiver-holder#ap" target="blank"
+                style="color: #fff;">The application process</a>
+            </li>
+            <li>
+              <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-controlled-equipment#enp"
+                target="blank" style="color: #fff;">The equipment notification process</a>
+            </li>
+            <li>
+              <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-waiver-holder#bts" target="blank"
+                style="color: #fff;"> Obligations and responsibilities of Waiver Holders</a>
+            </li>
           </ul>
         </div>
       </section>
