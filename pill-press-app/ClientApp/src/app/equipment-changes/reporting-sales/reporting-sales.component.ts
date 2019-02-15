@@ -52,7 +52,7 @@ export class ReportingSalesComponent implements OnInit {
 
 
   selectionChange(event) {
-    this.router.navigateByUrl(`/equipment-changes/report-sales/${this.tabList[event.selectedIndex]}/${this.equipmentId}`);
+    this.router.navigateByUrl(`/equipment-changes/reporting-sales/${this.tabList[event.selectedIndex]}/${this.equipmentId}`);
   }
 
 }

@@ -46,7 +46,9 @@ export class ReportChangesComponent implements OnInit {
             this.stepper.reset();
           }
           this.tab = this.route.snapshot.firstChild.url[0].path;
-          this.stepper.selectedIndex = this.tabList.indexOf(this.tab);
+          if (this.tabList.indexOf(this.tab) !== -1) {
+            this.stepper.selectedIndex = this.tabList.indexOf(this.tab);
+          }
         }
       }
     });
@@ -55,7 +57,7 @@ export class ReportChangesComponent implements OnInit {
 
 
   selectionChange(event) {
-    this.router.navigateByUrl(`/equipment-changes/report-changes/${this.tabList[event.selectedIndex]}/${this.equipmentId}`);
+    this.router.navigateByUrl(`/equipment-changes/reporting-changes/${this.tabList[event.selectedIndex]}/${this.equipmentId}`);
   }
 
 }
