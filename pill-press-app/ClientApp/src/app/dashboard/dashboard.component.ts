@@ -116,8 +116,9 @@ export class DashboardComponent implements OnInit {
   }
 
   isEquipmentApplication(application: Application) {
-    return application.applicationtype === 'Equipment Notification'
-      && ['Lost', 'Stolen', 'Destroyed', 'Sold'].indexOf(application.typeOfSale) === -1;
+    const result =  application.applicationtype === 'Equipment Notification'
+      && ['Lost', 'Stolen', 'Destroyed', 'Sold'].indexOf(application.typeOfChange) === -1;
+      return result;
   }
 
   dateSort(a, b) {
@@ -224,9 +225,9 @@ export class DashboardComponent implements OnInit {
         id: equipmentId
       }
     };
-    this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Equipment Notification').subscribe(
+    this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Equipment Change').subscribe(
       data => {
-        this.router.navigateByUrl(`/equipment-change/reporting-sales/details/${data.id}`);
+        this.router.navigateByUrl(`/equipment-changes/reporting-sales/details/${data.id}`);
       },
       err => {
         this.snackBar.open('Error starting a Reporting Sales Application', 'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
@@ -243,9 +244,9 @@ export class DashboardComponent implements OnInit {
         id: equipmentId
       }
     };
-    this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Equipment Notification').subscribe(
+    this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Equipment Change').subscribe(
       data => {
-        this.router.navigateByUrl(`/equipment-changes/report-changes/details/${data.id}`);
+        this.router.navigateByUrl(`/equipment-changes/reporting-changes/details/${data.id}`);
       },
       err => {
         this.snackBar.open('Error starting a Reporting Sales Application', 'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
