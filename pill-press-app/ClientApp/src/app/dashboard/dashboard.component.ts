@@ -199,7 +199,7 @@ export class DashboardComponent implements OnInit {
     // this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Equipment Notification').subscribe(
     //   data => {
     const data = { id: 1 };
-    this.router.navigateByUrl(`/equipment-change/reporting-sales/details/${data.id}`);
+    this.router.navigateByUrl('/equipment-change/reporting-sales/details/${data.id}');
     //   },
     //   err => {
     //     this.snackBar.open('Error starting a Reporting Sales Application', 'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
@@ -216,14 +216,14 @@ export class DashboardComponent implements OnInit {
         id: equipmentId
       }
     };
-    this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Equipment Notification').subscribe(
+    this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Equipment Change').subscribe(
       data => {
-        // const data = { id: 1 };
-        this.router.navigateByUrl(`//equipment-changes/report-changes/details/{{item.id}}>${data.id}`);
+        // const data = { id: 1 }; 
+        this.router.navigateByUrl('/equipment-changes/report-changes/details/{{item.id}}>${data.id}');
       },
       err => {
-        this.snackBar.open('Error starting a Reporting Sales Application', 'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
-        console.log('Error starting Reporting Sales Application');
+        this.snackBar.open('Error Reporting Equipment Change', 'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
+        console.log('Error Reporting Equipment Change');
       }
     );
   }
