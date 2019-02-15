@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatStepper } from '@angular/material';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
+import { faCheck, faAddressCard } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-waiver',
@@ -17,6 +18,9 @@ export class WaiverComponent implements OnInit {
     'application',
     'review',
   ];
+
+  faCheck = faCheck;
+  faAddressCard = faAddressCard;
 
   constructor(private route: ActivatedRoute,
     private router: Router,

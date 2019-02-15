@@ -1,3 +1,184 @@
-<p>
-  equipment-change-review works!
-</p>
+<div class="">
+  <div class="" style="position: relative;">
+    <div [ngBusy]="[busy, busyPromise]"></div>
+    <h2 class="step">STEP 2</h2>
+    <h1>Report of Change Review</h1>
+
+    <p>
+      You have provided the following information in your Waiver application. In order to proceed, please confirm that
+      these details are correct. If they are not, please <a
+        routerLink="/equipment-notification/reporting-changes/details/{{applicationId}}">amend
+        your
+        answers</a>
+      before submitting the application.
+    </p>
+
+    <h2>Equipment Identification</h2>
+    <div>
+      <section *ngIf="application?.equipmentRecord?.howWasEquipmentBuilt === 'Commercially Manufactured'" class="padded-section">
+        <div class="dark-row">Equipment Type&nbsp; <span class="error-states">*</span></div>
+        <div class="alt-row"> {{ application?.equipmenRecord?.equipmentType }}</div>
+
+        <div class="dark-row">Make <span class="error-states">*</span></div>
+        <div class="alt-row"> {{ application?.equipmenRecord?.equipmentMake }}</div>
+
+        <div class="dark-row">Model</div>
+        <div class="alt-row"> {{ application?.equipmenRecord?.equipmentModel }}</div>
+
+        <div class="dark-row">Serial Number</div>
+        <div class="alt-row"> {{ application?.equipmenRecord?.serialNumber }}</div>
+
+        <div class="dark-row">Equipment Resitry Number</div>
+        <div class="alt-row"> {{ application?.equipmenRecord?.certificate?.name }}</div>
+      </section>
+
+      <section *ngIf="application?.equipmentRecord?.howWasEquipmentBuilt !== 'Commercially Manufactured'" class="padded-section">
+        <div class="dark-row">Equipment Type&nbsp; <span class="error-states">*</span></div>
+        <div class="alt-row"> {{ application?.equipmenRecord?.equipmentType }}</div>
+
+        <div class="dark-row">Equipment Resitry Number</div>
+        <div class="alt-row"> {{ application?.equipmenRecord?.certificate?.name }}</div>
+      </section>
+    </div>
+
+
+    <h2>Details of Equipment Change</h2>
+    <div class="padded-section">
+      <div class="dark-row">Please indicate the type of change to this piece of Controlled Equipment
+        &nbsp; <span class="error-states">*</span></div>
+      <div *ngIf="application?.typeOfChange === 'Lost'" class="alt-row">
+        <ul>
+          <li>Lost</li>
+        </ul>
+      </div>
+      <section *ngIf="application?.typeOfChange === 'Lost'" class="padded-section">
+        <div class="dark-row">What was the date on which this piece of equipment was lost? &nbsp; <span
+            class="error-states">*</span></div>
+        <div class="alt-row"> {{ application?.dateOfEquipmentChange }}</div>
+
+        <div class="dark-row">Describe the circumstances under which this piece of equipment was lost? &nbsp;
+          <span class="error-states">*</span></div>
+        <div class="alt-row"> {{ application?.circumstancesOfLoss }}</div>
+
+        <div class="dark-row">Did you notify the police that this piece of equipment was lost? &nbsp; <span
+            class="error-states">*</span></div>
+        <div class="alt-row"> {{ application?.policeNotified }}</div>
+
+        <section *ngIf="application?.policeNotified" class="padded-section">
+          <div class="dark-row">On what date did you report the loss to police? &nbsp; <span
+              class="error-states">*</span></div>
+          <div class="alt-row"> {{ application?.policeReportDate }}</div>
+
+          <div class="dark-row">What is the police file number? &nbsp; <span class="error-states">*</span></div>
+          <div class="alt-row"> {{ application?.policeFileNumber }}</div>
+        </section>
+      </section>
+
+      <div *ngIf="application?.typeOfChange === 'Stolen'" class="alt-row">
+        <ul>
+          <li>Stolen</li>
+        </ul>
+      </div>
+      <section *ngIf="application?.typeOfChange === 'Stolen'" class="padded-section">
+        <div class="dark-row">What was the date on which this piece of equipment was stolen? &nbsp; <span
+            class="error-states">*</span></div>
+        <div class="alt-row"> {{ application?.dateOfEquipmentChange }}</div>
+
+        <div class="dark-row">Describe the circumstances under which this piece of equipment was stolen? &nbsp;
+          <span class="error-states">*</span></div>
+        <div class="alt-row"> {{ application?.circumstancesOfStolenEquipment }}</div>
+
+        <div class="dark-row">Did you notify the police that this piece of equipment was stolen? &nbsp; <span
+            class="error-states">*</span></div>
+        <div class="alt-row"> {{ application?.policeNotified }}</div>
+
+        <section *ngIf="application?.policeNotified" class="padded-section">
+          <div class="dark-row">On what date did you report the theft to police? &nbsp; <span
+              class="error-states">*</span></div>
+          <div class="alt-row"> {{ application?.policeReportDate }}</div>
+
+          <div class="dark-row">What is the police file number? &nbsp; <span class="error-states">*</span></div>
+          <div class="alt-row"> {{ application?.policeFileNumber }}</div>
+        </section>
+      </section>
+
+      <div *ngIf="application?.typeOfChange === 'Destroyed'" class="alt-row">
+        <ul>
+          <li>Destroyed</li>
+        </ul>
+      </div>
+      <section *ngIf="application?.typeOfChange === 'Destroyed'" class="padded-section">
+        <div class="dark-row">What was the date on which this piece of equipment was destroyed? &nbsp; <span
+            class="error-states">*</span></div>
+        <div class="alt-row"> {{ application?.dateOfEquipmentChange }}</div>
+
+        <div class="dark-row">Describe the circumstances under which this piece of equipment was destroyed? &nbsp;
+          <span class="error-states">*</span></div>
+        <div class="alt-row"> {{ application?.circumstancesOfDestroyedEquipment }}</div>
+
+        <div class="dark-row">What is the address where this piece of equipment was destroyed? &nbsp; <span
+            class="error-states">*</span></div>
+        <div class="alt-row">
+          <div>{{ application?.addressWhereEquipmentWasDestroyed?.streetLine1 }}</div>
+          <div *ngIf="application?.addressWhereEquipmentWasDestroyed?.streetLine2">
+            {{ application?.addressWhereEquipmentWasDestroyed?.streetLine2 }}
+          </div>
+          <div>{{ application?.addressWhereEquipmentWasDestroyed?.city }}</div>
+          <div>{{ application?.addressWhereEquipmentWasDestroyed?.province }}</div>
+          <div>{{ application?.addressWhereEquipmentWasDestroyed?.postalCode }}</div>
+          <div>{{ application?.addressWhereEquipmentWasDestroyed?.country }}</div>
+        </div>
+      </section>
+    </div>
+
+
+
+
+    <h3 class="blue-header">DECLARATION AND CONSENT</h3>
+    <div [formGroup]="form" class="padded-section">
+      <section style="display: flex">
+        <div style="flex: 0 0 20px">
+          <input type="checkbox" formControlName="declarationOfCorrectInformation">
+        </div>
+        <span>
+          I certify that, to the best of my knowledge, the information I have provided in this Report Change - lost,
+          stolen, destroyed form (and will provide as necessary) is complete, honest, and accurate. I am aware that
+          later discovery of an omission or misrepresentation may be grounds for any finding of suitability to be
+          reversed or for being prosecuted under provincial law. <span class="error-states">*</span>
+        </span>
+      </section>
+
+      <div
+        *ngIf="(form.get('declarationOfCorrectInformation').value !== true || form.get('confirmationOfAuthorizedUse').value !== true) && showErrors"
+        style="background-color: #F2F2F2; margin-top: 10px; border-radius: 5px; padding: 10px; font: 15px Myriad Pro Regular #494949;">
+        <fa-icon [icon]="faExclamationTriangle" class="error-states" style="margin-right: 10px;"></fa-icon>
+        <span class="error-states">Please complete the declarations and consent section.</span>
+      </div>
+    </div>
+
+    <div class="notes" style="display: flex; margin-top: 20px;">
+      <fa-icon [icon]="faExclamationCircle" style="color: #003366; margin-right: 10px;" size="lg"></fa-icon>
+      <p>
+        Please ensure you complete a submission for each piece of Controlled Equipment in your possession until your
+        entire inventory is listed.</p>
+    </div>
+
+    <div style="margin-top: 30px; display: flex; justify-content: space-between">
+      <section>
+        <!-- <span class="error-states">*</span> <i>Required field</i> -->
+        <a href="javascript: void(0);" (click)="save(false)">
+          <fa-icon [icon]="faSave" style="margin-right: 5px"></fa-icon>
+          Save & Close
+        </a>
+      </section>
+      <section>
+        <button class="btn btn-secondary" style="margin-right: 15px"
+          routerLink="/equipment-notification/reporting-changes/details/{{applicationId}}">EDIT
+          APPLICATION</button>
+
+        <button class="btn btn-primary" (click)="save(true)">SUBMIT</button>
+      </section>
+    </div>
+  </div>
+
+</div>

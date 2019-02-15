@@ -6,6 +6,8 @@ import { MatStepper } from '@angular/material';
 import { ApplicationDataService } from '../../services/application-data.service';
 import { Application } from '../../models/application.model';
 
+import { faCheck, faAddressCard } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-report-changes',
   templateUrl: './report-changes.component.html',
@@ -21,6 +23,9 @@ export class ReportChangesComponent implements OnInit {
   ];
   displayedColumns: string[] = ['equipment', 'status'];
   equipment: Application[];
+
+  faCheck = faCheck;
+  faAddressCard = faAddressCard;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -41,7 +46,9 @@ export class ReportChangesComponent implements OnInit {
             this.stepper.reset();
           }
           this.tab = this.route.snapshot.firstChild.url[0].path;
-          this.stepper.selectedIndex = this.tabList.indexOf(this.tab);
+          if (this.tabList.indexOf(this.tab) !== -1) {
+            this.stepper.selectedIndex = this.tabList.indexOf(this.tab);
+          }
         }
       }
     });
@@ -50,7 +57,7 @@ export class ReportChangesComponent implements OnInit {
 
 
   selectionChange(event) {
-    this.router.navigateByUrl(`/equipment-changes/report-changes/${this.tabList[event.selectedIndex]}/${this.equipmentId}`);
+    this.router.navigateByUrl(`/equipment-changes/reporting-changes/${this.tabList[event.selectedIndex]}/${this.equipmentId}`);
   }
 
 }
