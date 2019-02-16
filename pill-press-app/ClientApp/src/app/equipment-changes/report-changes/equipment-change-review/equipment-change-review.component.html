@@ -7,7 +7,7 @@
     <p>
       You have provided the following information in your Waiver application. In order to proceed, please confirm that
       these details are correct. If they are not, please <a
-        routerLink="/equipment-notification/reporting-changes/details/{{applicationId}}">amend
+        routerLink="/equipment-changes/reporting-changes/details/{{applicationId}}">amend
         your
         answers</a>
       before submitting the application.
@@ -40,7 +40,7 @@
         <div class="alt-row"> {{ application?.equipmenRecord?.certificate?.name }}</div>
       </section>
     </div>
-
+{{application?.typeOfChange}}
 
     <h2>Details of Equipment Change</h2>
     <div class="padded-section">
@@ -173,7 +173,7 @@
       </section>
       <section>
         <button class="btn btn-secondary" style="margin-right: 15px"
-          routerLink="/equipment-notification/reporting-changes/details/{{applicationId}}">EDIT
+          routerLink="/equipment-changes/reporting-changes/details/{{applicationId}}">EDIT
           APPLICATION</button>
 
         <button class="btn btn-primary" (click)="save(true)">SUBMIT</button>
