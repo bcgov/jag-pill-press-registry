@@ -54,7 +54,7 @@
       </section>
 
       <app-field label="Equipment Registry Number" [valid]="true" errorMessage="Please specify the make" [required]="true">
-        <input type="text" class="form-control" readonly formControlName="equipmentRegistryNumber" style="width: 680px"
+        <input type="text" class="form-control" readonly formControlName="name" style="width: 680px"
           maxlength="100">
       </app-field>
 
@@ -150,10 +150,9 @@
           <textarea rows="5" class="form-control" formControlName="circumstancesOfDestroyedEquipment"></textarea>
         </app-field>
 
-        <app-field label="Did you notify the police that this piece of equipment was stolen?" [valid]="form.get('policeNotified').valid || !form.get('policeNotified').touched"
+        <app-field label="Who destroyed this piece of equipment?" [valid]="form.get('policeNotified').valid || !form.get('policeNotified').touched"
           errorMessage="Please specify a date" [required]="true">
-          <input type="radio" name="policeNotified" formControlName="policeNotified" [value]="1"> Yes &nbsp;
-          <input type="radio" name="policeNotified" formControlName="policeNotified" [value]="0"> No
+          <input type="text" formControlName="whoDestroyedEquipment" class="form-control">
         </app-field>
 
         <div>
