@@ -84,6 +84,10 @@ export class DashboardComponent implements OnInit {
             app.certificates.sort(this.dateSort);
             app.certificate = app.certificates[0];
           }
+
+          const changeIsPending = (data.filter(a => a.equipmentRecord && app.equipmentRecord
+            && a.equipmentRecord.id === app.equipmentRecord.id && !a.submittedDate).length > 0);
+          app.hasChangePending = changeIsPending;
         });
 
         data.forEach((app: any) => {
