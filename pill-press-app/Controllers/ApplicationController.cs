@@ -178,6 +178,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 var AddressofBusinessthathasGivenorLoaned = CreateOrUpdateAddress(item.AddressofBusinessthathasGivenorLoaned);
                 var AddressofBusinessThatHasRentedorLeased = CreateOrUpdateAddress(item.AddressofBusinessThatHasRentedorLeased);
                 var AddressofPersonBusiness = CreateOrUpdateAddress(item.AddressofPersonBusiness);
+                var AddressWhereEquipmentWasDestroyed = CreateOrUpdateAddress(item.AddressWhereEquipmentWasDestroyed);
 
                 var EquipmentLocation = CreateOrUpdateLocation(id, item.EquipmentLocation, userSettings.AccountId);
 
@@ -203,6 +204,17 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                         _dynamicsClient.Incidents.RemoveReference(id, "bcgov_BCSellersAddress", null);
                     }
                     patchApplication.BCSellersAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", BCSellersAddress.BcgovCustomaddressid);
+                }
+
+                if (AddressWhereEquipmentWasDestroyed.HasValue() && AddressWhereEquipmentWasDestroyed.BcgovCustomaddressid != null &&
+                    (application._bcgovAddresswhereequipmentwasdestroyedValue == null || application._bcgovAddresswhereequipmentwasdestroyedValue != AddressWhereEquipmentWasDestroyed.BcgovCustomaddressid))
+                {
+                    if (application._bcgovAddresswhereequipmentwasdestroyedValue != null)
+                    {
+                        // delete an existing reference.
+                        _dynamicsClient.Incidents.RemoveReference(id, "bcgov_AddressWhereEquipmentWasDestroyed", null);
+                    }
+                    patchApplication.BcgovAddressWhereEquipmentWasDestroyedODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", AddressWhereEquipmentWasDestroyed.BcgovCustomaddressid);
                 }
 
                 if (AddressofPersonBusiness.HasValue() && AddressofPersonBusiness.BcgovCustomaddressid != null &&
@@ -646,6 +658,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             var AddressofBusinessthathasGivenorLoaned = CreateOrUpdateAddress(item.AddressofBusinessthathasGivenorLoaned);
             var AddressofBusinessThatHasRentedorLeased = CreateOrUpdateAddress(item.AddressofBusinessThatHasRentedorLeased);
             var AddressofPersonBusiness = CreateOrUpdateAddress(item.AddressofPersonBusiness);
+            var AddressWhereEquipmentWasDestroyed = CreateOrUpdateAddress(item.AddressWhereEquipmentWasDestroyed);
 
             // create a new Application.
             MicrosoftDynamicsCRMincident application = new MicrosoftDynamicsCRMincident();
@@ -706,12 +719,17 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             {
                 application.AddressofBusinessThatHasRentedorLeasedODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", AddressofBusinessThatHasRentedorLeased.BcgovCustomaddressid);
             }
-            
+
             if (AddressofPersonBusiness.HasValue())
             {
                 application.AddressofPersonBusinessODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", AddressofPersonBusiness.BcgovCustomaddressid);
             }
-            
+
+            if (AddressWhereEquipmentWasDestroyed.HasValue())
+            {
+                application.BcgovAddressWhereEquipmentWasDestroyedODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", AddressWhereEquipmentWasDestroyed.BcgovCustomaddressid);
+            }
+
 
             application.Statuscode = (int?) ViewModels.ApplicationStatusCodes.Draft;
             try

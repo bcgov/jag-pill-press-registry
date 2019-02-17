@@ -457,7 +457,7 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public string circumstancesOfStolenEquipment { get; set; }
         public string circumstancesOfDestroyedEquipment { get; set; }
         public string whoDestroyedEquipment { get; set; }
-        public ViewModels.CustomAddress addressWhereEquipmentWasDestroyed { get; set; }
+        public ViewModels.CustomAddress AddressWhereEquipmentWasDestroyed { get; set; }
 
 
         // reporting sales

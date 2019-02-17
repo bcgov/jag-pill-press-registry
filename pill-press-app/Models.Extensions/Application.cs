@@ -161,12 +161,12 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     // Lost Stolen and Destroyed fields
                     typeOfChange = (EquipmentChangeType?)incident.BcgovTypeofchange,
                     dateOfEquipmentChange = incident.BcgovDateofequipmentchange,
-                    circumstancesOfLoss = incident.BcgovCircumstancesofloss,
+                    circumstancesOfLoss = incident.BcgovCircumstancesloss,
                     policeNotified = incident.BcgovPolicenotified,
                     policeReportDate = incident.BcgovPolicereportdate,
                     policeFileNumber = incident.BcgovPolicefilenumber,
-                    circumstancesOfStolenEquipment = incident.BcgovCircumstancesofstolenequipment,
-                    circumstancesOfDestroyedEquipment = incident.BcgovCircumstancesofdestroyedequipment,
+                    circumstancesOfStolenEquipment = incident.BcgovCircumstancesstolenequipment,
+                    circumstancesOfDestroyedEquipment = incident.BcgovCircumstancesdestroyedequipment,
                     whoDestroyedEquipment = incident.BcgovWhodestroyedequipment
                 };
 
@@ -265,7 +265,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
 
                 if (incident?.BcgovAddressWhereEquipmentWasDestroyed != null)
                 {
-                    result.addressWhereEquipmentWasDestroyed = incident?.BcgovAddressWhereEquipmentWasDestroyed.ToViewModel();
+                    result.AddressWhereEquipmentWasDestroyed = incident?.BcgovAddressWhereEquipmentWasDestroyed.ToViewModel();
                 }
 
                 result.OutsideBcSellersLocation = (GeographicalLocation?)incident.BcgovOutsidebcsellerslocation;
@@ -416,12 +416,12 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
 
             to.BcgovTypeofchange = (int?)from.typeOfChange;
             to.BcgovDateofequipmentchange = from.dateOfEquipmentChange;
-            to.BcgovCircumstancesofloss = from.circumstancesOfLoss;
+            to.BcgovCircumstancesloss = from.circumstancesOfLoss;
             to.BcgovPolicenotified = from.policeNotified;
             to.BcgovPolicereportdate = from.policeReportDate;
             to.BcgovPolicefilenumber = from.policeFileNumber;
-            to.BcgovCircumstancesofstolenequipment = from.circumstancesOfStolenEquipment;
-            to.BcgovCircumstancesofdestroyedequipment = from.circumstancesOfDestroyedEquipment;
+            to.BcgovCircumstancesstolenequipment = from.circumstancesOfStolenEquipment;
+            to.BcgovCircumstancesdestroyedequipment = from.circumstancesOfDestroyedEquipment;
             to.BcgovWhodestroyedequipment = from.whoDestroyedEquipment;
         }
     }
