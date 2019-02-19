@@ -473,15 +473,15 @@
                         View Submission
                       </a>
                       <br>
-                      <a routerLink="/equipment-changes/location-change/{{item.id}}">
+                      <a routerLink="/equipment-changes/location-change/{{item.id}}" [ngClass]="{ 'disabled' : item.hasChangePending }">
                         <fa-icon [icon]="faMapMarkerAlt" style="margin-right: 5px;"></fa-icon>
                         Change Location
                       </a> <br>
-                      <a href="javascript: void(0)" (click)="reportLSD(item?.equipmentRecord?.id)">
+                      <a href="javascript: void(0)" [ngClass]="{ 'disabled' : item.hasChangePending }" (click)="reportLSD(item?.equipmentRecord?.id)">
                         <fa-icon [icon]="faExclamationTriangle" style="margin-right: 5px;"></fa-icon>
                         Report Change (lost, stolen, destroyed)
                       </a> <br>
-                      <a href="javascript: void(0)" (click)="reportSales(item?.equipmentRecord?.id)">
+                      <a href="javascript: void(0)" [ngClass]="{ 'disabled' : item.hasChangePending }" (click)="reportSales(item?.equipmentRecord?.id)">
                         <fa-icon [icon]="faShoppingCart" style="margin-right: 5px;"></fa-icon>
                         Report Sale
                       </a>

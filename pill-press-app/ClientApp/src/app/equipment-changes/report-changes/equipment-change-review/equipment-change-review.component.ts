@@ -35,7 +35,15 @@ export class EquipmentChangeReviewComponent extends FormBase implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       id: [],
-      declarationOfCorrectInformation: ['', ],
+      declarationOfCorrectInformation: [''],
+      addressWhereEquipmentWasDestroyed: this.fb.group({
+        id: [],
+        streetLine1: [''],
+        streetLine2: [],
+        city: [''],
+        province: ['British Columbia'],
+        postalCode: [''],
+      }),
     });
 
     this.reloadData();
@@ -69,13 +77,13 @@ export class EquipmentChangeReviewComponent extends FormBase implements OnInit {
   save(goToReview: boolean) {
     if (this.form.valid || goToReview === false) {
       const value = this.form.value;
-      value.address.country = 'Canada';
+      value.addressWhereEquipmentWasDestroyed.country = 'Canada';
       const saveList = [this.applicationDataService.updateApplication(value)];
       this.busyPromise = zip(...saveList)
         .toPromise()
         .then(res => {
           if (goToReview) {
-            this.router.navigateByUrl(`/equipment-notification/source/${this.applicationId}`);
+            this.router.navigateByUrl(`/equipment-changes/reporting-changes/thank-you/${this.applicationId}`);
           } else {
             this.router.navigateByUrl(`/dashboard`);
             // this.reloadData();

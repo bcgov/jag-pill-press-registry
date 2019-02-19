@@ -48,7 +48,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                     "bcgov_ApplicationTypeId","bcgov_incident_customproduct_RelatedApplication","customerid_account","bcgov_incident_businesscontact",
                     "bcgov_BCSellersAddress","bcgov_OutsideBCSellersAddress","bcgov_ImportersAddress","bcgov_OriginatingSellersAddress",
                     "bcgov_AddressofBusinessthathasGivenorLoaned","bcgov_AddressofBusinessthathasRentedorLeased","bcgov_EquipmentLocation", "bcgov_AddressofPersonBusiness",
-                    "bcgov_incident_bcgov_certificate_Application", "bcgov_EquipmentRecord"
+                    "bcgov_incident_bcgov_certificate_Application", "bcgov_EquipmentRecord", "bcgov_AddressWhereEquipmentWasDestroyed", "bcgov_CivicAddressofPurchaser",
+                    "bcgov_PurchasersCivicAddress", "bcgov_PurchasersBusinessAddress"
                 };
                 // fetch from Dynamics.
                 result = system.Incidents.GetByKey(incidentid: id, expand: expand);               
