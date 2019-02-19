@@ -17,23 +17,60 @@
 
 
           <h3 class="blue-header">SOLD EQUIPMENT IDENTIFICATION</h3>
-          <section class="padded-section">
-            <div class="notes" style="display: flex;">
-              <i class="fas fa-info-circle" style="color: #003366; margin-right: 10px;"></i>
-              <span>Only Registered Sellers can sell Controlled Equipment in BC. If you don't have a Registered Sellers certificate
-                and wish to sell Controlled Equipment, please apply for the Registered Seller owner category.</span>
-            </div>
+          <section formGroupName="equipmentRecord" class="padded-section">
 
-            <app-field label="Equipment Type" [required]="true" [valid]="form.get('typeOfIdNumberCollected').valid || !form.get('typeOfIdNumberCollected').touched"
-              errorMessage="Please enter the equipment type">
-              <input class="form-control" style="width: 500px" type="text" readonly>
-            </app-field>
-
-            <app-field label="Equipment Registry Number" [required]="true" [valid]="form.get('idNumberCollected').valid || !form.get('idNumberCollected').touched"
-              errorMessage="Please enter the equipment registry number">
-              <input class="form-control" style="width: 500px" type="text" readonly>
-            </app-field>
-          </section>
+              <app-field label="Equipment Type" [valid]="true" errorMessage="Please specify the make" [required]="true">
+                <input type="text" class="form-control" readonly formControlName="equipmentType" style="width: 680px" maxlength="100">
+              </app-field>
+        
+        
+              <!-- <app-field label="How was this piece of Controlled Equipment built?" [valid]="form.get('howWasEquipmentBuilt').valid || !form.get('howWasEquipmentBuilt').touched"
+                  errorMessage="Please indicate how this controlled equipment was built" [required]="true">
+                  <select class="form-control" formControlName="howWasEquipmentBuilt" style="width: 300px;">
+                    <option value="">Please select an option</option>
+                    <option value="Commercially Manufactured">Commercially Manufactured</option>
+                    <option value="Custom-built">Custom Built (i.e. built out of spare parts)</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </app-field> -->
+        
+              <section *ngIf="form.get('equipmentRecord.howWasEquipmentBuilt').value === 'Commercially Manufactured'">
+        
+                <app-field label="Make" [valid]="form.get('equipmentRecord.equipmentMake').valid || !form.get('equipmentRecord.equipmentMake').touched"
+                  errorMessage="Please specify the make" [required]="true">
+                  <input type="text" class="form-control" readonly formControlName="equipmentMake" style="width: 680px"
+                    maxlength="100">
+                </app-field>
+        
+                <app-field label="Model" [valid]="form.get('equipmentRecord.equipmentModel').valid || !form.get('equipmentRecord.equipmentModel').touched"
+                  errorMessage="Please specify the model" [required]="true">
+                  <input type="text" class="form-control" readonly formControlName="equipmentModel" style="width: 680px"
+                    maxlength="100">
+                </app-field>
+        
+                <app-field label="Serial Number" [valid]="form.get('equipmentRecord.serialNumber').valid || !form.get('equipmentRecord.serialNumber').touched"
+                  errorMessage="Please provide the serial number" [required]="true">
+                  <input type="text" class="form-control" readonly formControlName="serialNumber" style="width: 680px"
+                    maxlength="100">
+                </app-field>
+        
+              </section>
+        
+              <section *ngIf="form.get('equipmentRecord.howWasEquipmentBuilt').value === 'Custom-built' || form.get('equipmentRecord.howWasEquipmentBuilt').value === 'Other'">
+        
+                <app-field label="Key Part Serial Number" errorMessage="Please provide an answer to the question above" [valid]="form.get('equipmentRecord.customBuiltSerialNumber').valid || !form.get('customBuiltSerialNumber').touched"
+                  [required]="true">
+                  <input type="text" readonly formControlName="customBuiltSerialNumber" class="form-control" style="width: 680px">
+                </app-field>
+        
+              </section>
+        
+              <app-field label="Equipment Registry Number" [valid]="true" errorMessage="Please specify the make" [required]="true">
+                <input type="text" class="form-control" readonly formControlName="name" style="width: 680px"
+                  maxlength="100">
+              </app-field>
+        
+            </section>
 
           <h3 class="blue-header">DETAILS OF SALE</h3>
           <section class="padded-section">
@@ -55,13 +92,13 @@
               errorMessage="Please provide the type of sale for this piece of Controlled Equipment.">
               <select class="form-control" style="width: 250px;" formControlName="typeOfSale">
                 <option value="">Please select an option</option>
-                <option value="sold">Sold</option>
-                <option value="rented">Rented</option>
-                <option value="leased">Leased</option>
-                <option value="givenLoaned">Given/Loaned</option>
-                <option value="other">Other</option>
+                <option value="Sold">Sold</option>
+                <option value="Rented">Rented</option>
+                <option value="Leased">Leased</option>
+                <option value="GivenLoaned">Given/Loaned</option>
+                <option value="Other">Other</option>
               </select>
-              <section style="padding-top: 10px" *ngIf="form.get('typeOfSale').value === 'other'">
+              <section style="padding-top: 10px" *ngIf="form.get('typeOfSale').value === 'Other'">
                 <app-field [valid]="form.get('typeOfSaleOther').valid || !form.get('typeOfSaleOther').touched" errorMessage='Please specify the "other" type of sale'>
                   <i>If Other, Please specify</i>&nbsp;
                   <span class="error-states">*</span>
@@ -84,12 +121,12 @@
               [valid]="form.get('methodOfPayment').valid || !form.get('methodOfPayment').touched" errorMessage="Please indicate the method of payment that was used">
               <select class="form-control" style="width: 250px;" formControlName="methodOfPayment">
                 <option value="">Please select an option</option>
-                <option value="creditCard">Credit Card</option>
-                <option value="debitCard">Debit Card</option>
-                <option value="cheque">Cheque</option>
-                <option value="other">Other</option>
+                <option value="CreditCard">Credit Card</option>
+                <option value="DebitCard">Debit Card</option>
+                <option value="Cheque">Cheque</option>
+                <option value="Other">Other</option>
               </select>
-              <section *ngIf="form.get('methodOfPayment').value === 'other'">
+              <section *ngIf="form.get('methodOfPayment').value === 'Other'">
                 <app-field [valid]="form.get('methodOfPaymentOther').valid || !form.get('methodOfPaymentOther').touched" errorMessage='Please specify what "other" method of payment was used'>
                   <i>If Other, Please specify</i>&nbsp;
                   <span class="error-states">*</span>
@@ -103,8 +140,8 @@
               errorMessage="Please indicate where this piece of equipment will reside">
               <select class="form-control" style="width: 250px;" formControlName="whereWillEquipmentReside">
                 <option value="">Please select an option</option>
-                <option value="BC">BC</option>
-                <option value="OutsideOfBc">Outside of BC</option>
+                <option [value]="true">BC</option>
+                <option [value]="false">Outside of BC</option>
               </select>
             </app-field>
 
@@ -145,11 +182,11 @@
 
             <app-field label="Is the address where the purchaser will ordinarily store this piece of equipment a private dwelling house?"
               [showChevrons]="false" errorMessage="Please select yes or no" [valid]="form.get('privateDwelling').valid || !form.get('privateDwelling').touched">
-              <input type="radio" name="privateDwelling" formControlName="privateDwelling" value="Yes">
+              <input type="radio" name="privateDwelling" formControlName="privateDwelling" [value]="1">
               <span style="padding-right: 20px;">&nbsp;Yes</span>
-              <input type="radio" name="privateDwelling" formControlName="privateDwelling" value="No">
+              <input type="radio" name="privateDwelling" formControlName="privateDwelling" [value]="0">
               <span style="padding-right: 20px;">&nbsp;No</span>
-              <input type="radio" name="privateDwelling" formControlName="privateDwelling" value="Unknown">
+              <input type="radio" name="privateDwelling" formControlName="privateDwelling" [value]="null">
               <span>&nbsp;Unknown</span>
             </app-field>
 
@@ -167,11 +204,11 @@
             <app-field label="Was this piece of Controlled Equipment purchased by an individual (for their own personal use), or by a business?"
               errorMessage="Please select an option above" [valid]="form.get('purchasedByIndividualOrBusiness').valid || !form.get('purchasedByIndividualOrBusiness').touched"
               [showChevrons]="false" [required]="true">
-              <input type="radio" name="purchasedByIndividualOrBusiness" formControlName="purchasedByIndividualOrBusiness" value="Business"> Business &nbsp;
-              <input type="radio" name="purchasedByIndividualOrBusiness" formControlName="purchasedByIndividualOrBusiness" value="Individual"> Individual
+              <input type="radio" name="purchasedByIndividualOrBusiness" formControlName="purchasedByIndividualOrBusiness" [value]="true"> Business &nbsp;
+              <input type="radio" name="purchasedByIndividualOrBusiness" formControlName="purchasedByIndividualOrBusiness" [value]="false"> Individual
             </app-field>
 
-            <section *ngIf="form.get('purchasedByIndividualOrBusiness').value === 'Business'">
+            <section *ngIf="form.get('purchasedByIndividualOrBusiness').value === true">
               <app-field label="Please provide the name of the business that purchased this piece of Controlled Equipment." [required]="true"
                 [valid]="form.get('nameOfPurchaserBusiness').valid || !form.get('nameOfPurchaserBusiness').touched" errorMessage="Please provide an answer to the question above">
                 <input class="form-control" maxlength="100" style="width: 500px" type="text" formControlName="nameOfPurchaserBusiness">
@@ -248,19 +285,18 @@
                   errorMessage="Please indicate the geographical location">
                   <select class="form-control" style="width: 250px;" formControlName="geographicalLocationOfBusinessPurchaser">
                     <option value="">Please select an option</option>
-                    <option value="bc">BC</option>
-                    <option value="canada">Canada</option>
-                    <option value="unitedStates">United States</option>
+                    <option value="Canada">Canada</option>
+                    <option value="UnitedStates">United States</option>
                     <option value="europe">Europe</option>
-                    <option value="asia">Asia</option>
-                    <option value="southAmerica">South America</option>
-                    <option value="africa">Africa</option>
+                    <option value="Asia">Asia</option>
+                    <option value="SouthAmerica">South America</option>
+                    <option value="Africa">Africa</option>
                   </select>
                 </app-field>
               </div>
             </section>
 
-            <section *ngIf="form.get('purchasedByIndividualOrBusiness').value === 'Individual'">
+            <section *ngIf="form.get('purchasedByIndividualOrBusiness').value === false">
               <app-field label="Please provide an answer to the question above?" [required]="true" [valid]="form.get('legalNameOfPurchaserIndividual').valid || !form.get('legalNameOfPurchaserIndividual').touched"
                 errorMessage="Please enter the purchaser's legal name">
                 <input class="form-control" style="width:500px" maxlength="100" type="text" formControlName="legalNameOfPurchaserIndividual">

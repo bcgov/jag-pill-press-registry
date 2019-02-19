@@ -149,7 +149,7 @@
       </section>
 
       <div
-        *ngIf="(form.get('declarationOfCorrectInformation').value !== true || form.get('confirmationOfAuthorizedUse').value !== true) && showErrors"
+        *ngIf="form.get('declarationOfCorrectInformation').value !== true && showErrors"
         style="background-color: #F2F2F2; margin-top: 10px; border-radius: 5px; padding: 10px; font: 15px Myriad Pro Regular #494949;">
         <fa-icon [icon]="faExclamationTriangle" class="error-states" style="margin-right: 10px;"></fa-icon>
         <span class="error-states">Please complete the declarations and consent section.</span>

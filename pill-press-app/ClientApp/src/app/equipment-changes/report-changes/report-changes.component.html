@@ -5,7 +5,7 @@
       <router-outlet></router-outlet>
     </div>
 
-    <div class="col-lg-4 col-sm-12">
+    <div *ngIf="tab !== 'thank-you'"  class="col-lg-4 col-sm-12">
       <section class="step" style="display: block; background-color: #F1F4FA">
         <h3 class="blue-header">REPORT OF EQUIPMENT CHANGE</h3>
         <section style="padding-top: 15px; padding-bottom: 20px;">
