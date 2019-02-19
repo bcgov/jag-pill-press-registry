@@ -345,3 +345,9 @@ ul.arrow>li:before {
     background-color: #f1f4fa;
     font-weight: normal;
 }
+
+a.disabled {
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+ }

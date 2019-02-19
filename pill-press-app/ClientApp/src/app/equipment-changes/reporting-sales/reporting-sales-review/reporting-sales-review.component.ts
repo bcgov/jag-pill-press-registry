@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { Subscription } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { Subscription, zip } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ApplicationDataService } from '@services/application-data.service';
+import { faSave } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-reporting-sales-review',
   templateUrl: './reporting-sales-review.component.html',
@@ -11,14 +13,20 @@ export class ReportingSalesReviewComponent implements OnInit {
   form: FormGroup;
   formData: any;
   busy: Subscription;
-  waiverId: string;
+  applicationId: string;
 
   ownersAndManagers: any[] = [];
   equipmentIdentification: string[];
+  application: any;
+  busyPromise: any;
+  showErrors: boolean;
+  faSave = faSave;
 
   constructor(private fb: FormBuilder,
+    private applicationDataService: ApplicationDataService,
+    private router: Router,
     private route: ActivatedRoute) {
-    this.waiverId = this.route.snapshot.params.id;
+    this.applicationId = this.route.snapshot.params.id;
   }
 
   ngOnInit() {
@@ -31,90 +39,47 @@ export class ReportingSalesReviewComponent implements OnInit {
   }
 
   reloadData() {
-      this.formData = {
-        id: 0,
-        dateOfSale: '10-25-2019',
-        typeOfSale: 'Rented',
-        typeOfSaleOther: 'Other type of sale',
-        rightsToOwnuseOrPossessRetained: true,
-        methodOfPayment: 'Visa',
-        methodOfPaymentOther: 'Other method of payment',
-        whereWillEquipmentReside: 'Outside of BC',
-        civicAddressOfPurchaser: {
-          id: 0,
-          streetLine1: '123 civicaddressofpurchaser st.',
-          streetLine2: '',
-          city: 'city civicaddressofpurchaser',
-          province: 'BC civicaddressofpurchaser',
-          postalCode: 'v8p-3l9 civicaddressofpurchaser',
-          country: 'Canada civicaddressofpurchaser',
-        },
-        privateDwelling: 'Yes',
-        purchasedByIndividualOrBusiness: 'Business',
-        legalNameOfPurchaserIndividual: 'Purchaser Business legal name',
-        purchasersCivicAddress: {
-          id: '',
-          streetLine1: '123 purchasersCivicAddress st.',
-          streetLine2: '',
-          city: 'city purchasersCivicAddress',
-          province: 'province purchasersCivicAddress',
-          postalCode: 'v8p-3l0 purchasersCivicAddress',
-          country: 'Canada purchasersCivicAddress',
-        },
-        purchasersTelephoneNumber: '250-360-6111',
-        purchasersEmailAddress: 'purchaser@test.com',
-        idNumberCollected: 'Yes',
-        typeOfIdNumberCollected: 'Drivers Licence',
-        nameOfPurchaserBusiness: 'name of purchaser business',
-        purchaserRegistrationNumber: 'purchaser reg number 1234',
-        purchaserdBaName: 'dba name',
-        purchasersBusinessAddress: {
-          id: '',
-          streetLine1: '123 purchasersBusinessAddress st.',
-          streetLine2: '',
-          city: 'city purchasersBusinessAddress',
-          province: 'province purchasersBusinessAddress',
-          postalCode: 'v8p-3l0 purchasersBusinessAddress',
-          country: 'Canada purchasersBusinessAddress',
-        },
-        legalNameOfPersonResponsibleForBusiness: 'legal name of person responsible',
-        phoneNumberOfPersonResponsibleForBusiness: '250-360-6222',
-        emailOfPersonResponsibleForBusiness: 'personresponsible@test.com',
-        geographicalLocationOfBusinessPurchaser: 'Asia',
-        isPurchaserAPersonOfBC: 'Yes',
-        howIsPurchaseAuthorizedAO: true,
-        howIsPurchaserAuthorizedWaiver: true,
-        howIsPurchaserAuthorizedRegisteredSeller: true,
-        howIsPurchaserAuthorizedOther: true,
-        healthCanadaLicenseDEL: true,
-        healthCanadaLicenseSiteLicense: true,
-        nameOnPurchasersDEL: 'Elias Petterson',
-        purchasersDELNumber: '132654798',
-        purchasersDELExpiryDate: 'mm-dd-yyyy',
-        nameOnPurchasersSiteLicense: 'Elias Petterson',
-        purchasersSiteLicenseNumber: '132654798',
-        purchasersSiteLicenseExpiryDate: 'mm-dd-yyyy',
-        purchasersWaiverNumber: '11112222',
-        purchasersRegistrationNumber: '11112223',
-        purchasersOther: 'purchaserOther',
-      };
+    this.busy = this.applicationDataService.getApplicationById(this.applicationId)
+      .subscribe((data: any) => {
 
-      this.equipmentIdentification = [
-        'Equipment Type',
-        'Equipment type will pre-populate here, i.e. Pill Press',
-        'Make',
-        'Make will pre-populate here',
-        'Model',
-        'Model will pre-populate here',
-        'Serial Number',
-        'Serial Number will pre-populate here',
-        'Key Part Serial Number',
-        'Key Part Serial Number will pre-populate here',
-        'Equipment Registry Number',
-        'Equipment Registry Number will pre-populate here'
-      ];
+        data.certificates = data.certificates || [];
+        if (data.certificates.length > 0) {
+          data.certificates.sort(this.dateSort);
+          data.equipmentRegistryNumber = data.certificates[0].name;
+        }
+        data.civicAddressOfPurchaser = data.civicAddressOfPurchaser || <any>{};
+        data.purchasersCivicAddress = data.purchasersCivicAddress || <any>{};
+        data.purchasersBusinessAddress = data.purchasersBusinessAddress || <any>{};
+        this.application = data;
+        this.form.patchValue(data);
+      }, error => {
+        // debugger;
+      });
+  }
 
-      this.form.patchValue(this.formData);
+  dateSort(a, b) {
+    if (a.issueDate > b.issueDate) {
+      return 1;
+    } else {
+      return -1;
+    }
+  }
+
+  save() {
+    if (this.form.valid) {
+      const value = this.form.value;
+      value.addressWhereEquipmentWasDestroyed.country = 'Canada';
+      const saveList = [this.applicationDataService.updateApplication(value)];
+      this.busyPromise = zip(...saveList)
+        .toPromise()
+        .then(res => {
+            this.router.navigateByUrl(`/equipment-changes/reporting-changes/thank-you/${this.applicationId}`);
+        }, err => {
+          // todo: show errors;
+        });
+    } else {
+      this.showErrors = true;
+    }
   }
 
 }

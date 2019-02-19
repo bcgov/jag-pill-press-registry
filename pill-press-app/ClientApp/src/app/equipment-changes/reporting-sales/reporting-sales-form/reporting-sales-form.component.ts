@@ -5,6 +5,7 @@ import { Subscription, zip } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApplicationDataService } from '../../../services/application-data.service';
 import { postalRegex } from '../../../business-profile/business-profile/business-profile.component';
+import { faInfoCircle, faExclamationCircle, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-reporting-sales-form',
@@ -14,27 +15,49 @@ import { postalRegex } from '../../../business-profile/business-profile/business
 export class ReportingSalesFormComponent extends FormBase implements OnInit {
   form: FormGroup;
   busy: Subscription;
-  equipmentId: string;
+  applicationId: string;
   busyPromise: Promise<any>;
   locations: any;
+
+  faInfoCircle = faInfoCircle;
+  faExclamationCircle = faExclamationCircle;
+  faExclamationTriangle = faExclamationTriangle;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
     private applicationDataService: ApplicationDataService,
     private fb: FormBuilder) {
     super();
-    this.equipmentId = this.route.snapshot.params.id;
+    this.applicationId = this.route.snapshot.params.id;
   }
 
   ngOnInit() {
     this.form = this.fb.group({
       id: [],
+      equipmentRecord: this.fb.group({
+        id: [],
+        equipmentType: [''],
+        equipmentTypeOther: [''],
+        name: [''],
+        pillpressEncapsulatorSize: [''],
+        pillpressEncapsulatorSizeOther: [''],
+        levelOfEquipmentAutomation: [''],
+        pillpressMaxCapacity: [''],
+        howWasEquipmentBuilt: [''],
+        HhwWasEquipmentBuiltOther: [''],
+        nameOfManufacturer: [''],
+        equipmentMake: [''],
+        equipmentModel: [''],
+        serialNumber: [''],
+        encapsulatorMaxCapacity: [''],
+        customBuiltSerialNumber: [''],
+      }),
       dateOfSale: ['', Validators.required],
       typeOfSale: ['', Validators.required],
-      typeOfSaleOther: ['', this.requiredSelectChildValidator('typeOfSale', ['other'])],
+      typeOfSaleOther: ['', this.requiredSelectChildValidator('typeOfSale', ['Other'])],
       rightsToOwnuseOrPossessRetained: ['', Validators.required],
       methodOfPayment: ['', Validators.required],
-      methodOfPaymentOther: ['', this.requiredSelectChildValidator('methodOfPayment', ['other'])],
+      methodOfPaymentOther: ['', this.requiredSelectChildValidator('methodOfPayment', ['Other'])],
       whereWillEquipmentReside: ['', Validators.required],
       civicAddressOfPurchaser: this.fb.group({
         id: [],
@@ -95,13 +118,12 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
       purchasersOther: [''],
     });
 
-    
     this.clearHiddenFields();
     this.reloadData();
   }
 
   reloadData() {
-    this.busy = this.applicationDataService.getApplicationById(this.equipmentId)
+    this.busy = this.applicationDataService.getApplicationById(this.applicationId)
       .subscribe((data: any) => {
 
         data.certificates = data.certificates || [];
@@ -109,7 +131,9 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
           data.certificates.sort(this.dateSort);
           data.equipmentRegistryNumber = data.certificates[0].name;
         }
-        data.address = data.address || <any>{};
+        data.civicAddressOfPurchaser = data.civicAddressOfPurchaser || <any>{};
+        data.purchasersCivicAddress = data.purchasersCivicAddress || <any>{};
+        data.purchasersBusinessAddress = data.purchasersBusinessAddress || <any>{};
         this.form.patchValue(data);
       }, error => {
         // debugger;
@@ -123,11 +147,12 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
       return -1;
     }
   }
+
   clearHiddenFields() {
 
     this.form.get('whereWillEquipmentReside').valueChanges
       .subscribe(value => {
-        if(value === 'BC') {
+        if (value === 'BC') {
           this.form.get('civicAddressOfPurchaser.province').reset();
           this.form.get('civicAddressOfPurchaser.province').setValue('British Columbia');
           this.form.get('civicAddressOfPurchaser.province').disable();
@@ -140,7 +165,7 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
     this.form.get('purchasedByIndividualOrBusiness').valueChanges
       .subscribe(value => {
         const individualGroup = ['legalNameOfPurchaserIndividual', 'purchasersCivicAddress', 'purchasersTelephoneNumber',
-          'purchasersEmailAddress', 'idNumberCollected', 'typeOfIdNumberCollected']
+          'purchasersEmailAddress', 'idNumberCollected', 'typeOfIdNumberCollected'];
         const businessGroup = ['nameOfPurchaserBusiness',
           'purchaserRegistrationNumber', 'purchaserdBaName', 'purchasersBusinessAddress', 'legalNameOfPersonResponsibleForBusiness',
           'phoneNumberOfPersonResponsibleForBusiness', 'emailOfPersonResponsibleForBusiness', 'geographicalLocationOfBusinessPurchaser'];
@@ -155,25 +180,28 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
           this.form.get(field).reset();
         });
 
-        if (value === 'Individual') {
+        if (value === false) {
           this.form.get('legalNameOfPurchaserIndividual').setValidators([Validators.required]);
           this.form.get('purchasersCivicAddress').get('streetLine1').setValidators(Validators.required);
           this.form.get('purchasersCivicAddress').get('city').setValidators(Validators.required);
           this.form.get('purchasersCivicAddress').get('postalCode').setValidators([Validators.required, Validators.pattern(postalRegex)]);
           this.form.get('purchasersCivicAddress').get('province').setValidators(Validators.required);
           this.form.get('purchasersCivicAddress').get('country').setValidators(Validators.required);
-          this.form.get('purchasersTelephoneNumber').setValidators([Validators.required, Validators.minLength(10), Validators.maxLength(10)]);
+          this.form.get('purchasersTelephoneNumber')
+            .setValidators([Validators.required, Validators.minLength(10), Validators.maxLength(10)]);
           this.form.get('purchasersEmailAddress').setValidators([Validators.required, Validators.email]);
           this.form.get('idNumberCollected').setValidators([Validators.required]);
         } else {
           this.form.get('nameOfPurchaserBusiness').setValidators([Validators.required]);
           this.form.get('purchasersBusinessAddress').get('streetLine1').setValidators(Validators.required);
           this.form.get('purchasersBusinessAddress').get('city').setValidators(Validators.required);
-          this.form.get('purchasersBusinessAddress').get('postalCode').setValidators([Validators.required, Validators.pattern(postalRegex)]);
+          this.form.get('purchasersBusinessAddress').get('postalCode')
+            .setValidators([Validators.required, Validators.pattern(postalRegex)]);
           this.form.get('purchasersBusinessAddress').get('province').setValidators(Validators.required);
           this.form.get('purchasersBusinessAddress').get('country').setValidators(Validators.required);
           this.form.get('legalNameOfPersonResponsibleForBusiness').setValidators([Validators.required]);
-          this.form.get('phoneNumberOfPersonResponsibleForBusiness').setValidators([Validators.required, Validators.minLength(10), Validators.maxLength(10)]);
+          this.form.get('phoneNumberOfPersonResponsibleForBusiness')
+            .setValidators([Validators.required, Validators.minLength(10), Validators.maxLength(10)]);
           this.form.get('emailOfPersonResponsibleForBusiness').setValidators([Validators.required, Validators.email]);
           this.form.get('geographicalLocationOfBusinessPurchaser').setValidators([Validators.required]);
         }
@@ -245,7 +273,7 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
 
     this.form.get('typeOfSale').valueChanges
       .subscribe(value => {
-        if (value == 'other') {
+        if (value === 'Other') {
           this.form.get('typeOfSaleOther').setValidators(Validators.required);
         } else {
           this.form.get('typeOfSaleOther').clearValidators();
@@ -255,7 +283,7 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
 
     this.form.get('methodOfPayment').valueChanges
       .subscribe(value => {
-        if (value == 'other') {
+        if (value === 'Other') {
           this.form.get('methodOfPaymentOther').setValidators(Validators.required);
         } else {
           this.form.get('methodOfPaymentOther').clearValidators();
@@ -266,7 +294,8 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
     this.form.get('howIsPurchaserAuthorizedOther').valueChanges
       .subscribe(value => {
         if (value) {
-          this.form.get('purchasersOther').setValidators([Validators.required, this.requiredCheckboxChildValidator('howIsPurchaserAuthorizedOther')]);
+          this.form.get('purchasersOther')
+            .setValidators([Validators.required, this.requiredCheckboxChildValidator('howIsPurchaserAuthorizedOther')]);
         } else {
           this.form.get('purchasersOther').clearValidators();
           this.form.get('purchasersOther').reset();
@@ -277,36 +306,50 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
   save(goToReview: boolean) {
     if (this.form.valid || goToReview === false) {
       const value = this.form.value;
-      value.address.country = 'Canada';
+      // value.address.country = 'Canada';
       const saveList = [this.applicationDataService.updateApplication(value)];
       this.busyPromise = zip(...saveList)
         .toPromise()
         .then(res => {
           if (goToReview) {
-            this.router.navigateByUrl(`/equipment-changes/reporting-sales/review/${this.equipmentId}`);
+            this.router.navigateByUrl(`/equipment-changes/reporting-sales/review/${this.applicationId}`);
           } else {
             this.router.navigateByUrl(`/dashboard`);
-            // this.reloadData();
           }
         }, err => {
           // todo: show errors;
         });
+    } else {
+      this.markAsTouched();
     }
   }
 
   markAsTouched() {
-    //   let controls = this.form.controls;
-    //   for (const c in controls) {
-    //     if (typeof (controls[c].markAsTouched) === 'function') {
-    //       controls[c].markAsTouched();
-    //     }
-    //   }
+    let controls = this.form.controls;
+    for (const c in controls) {
+      if (typeof (controls[c].markAsTouched) === 'function') {
+        controls[c].markAsTouched();
+      }
+    }
 
-    //   controls = (<FormGroup>this.form.get('address')).controls;
-    //   for (const c in controls) {
-    //     if (typeof (controls[c].markAsTouched) === 'function') {
-    //       controls[c].markAsTouched();
-    //     }
-    //   }
+    controls = (<FormGroup>this.form.get('purchasersCivicAddress')).controls;
+    for (const c in controls) {
+      if (typeof (controls[c].markAsTouched) === 'function') {
+        controls[c].markAsTouched();
+      }
+    }
+    controls = (<FormGroup>this.form.get('civicAddressOfPurchaser')).controls;
+    for (const c in controls) {
+      if (typeof (controls[c].markAsTouched) === 'function') {
+        controls[c].markAsTouched();
+      }
+    }
+    controls = (<FormGroup>this.form.get('purchasersBusinessAddress')).controls;
+    for (const c in controls) {
+      if (typeof (controls[c].markAsTouched) === 'function') {
+        controls[c].markAsTouched();
+      }
+    }
+    this.form.updateValueAndValidity();
   }
 }
