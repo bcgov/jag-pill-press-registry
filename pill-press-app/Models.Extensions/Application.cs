@@ -202,7 +202,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     nameOnPurchasersDEL = incident.BcgovNameonpurchasersdel,
                     purchasersDELNumber = incident.BcgovPurchasersdelnumber,
                     nameOnPurchasersSiteLicense = incident.BcgovNameonpurchaserssitelicense,
-                    PurchasersSiteLicenseExpiryDate = DateTime.Parse(incident.BcgovPurchaserssitelicenseexpirydate),
+                    PurchasersSiteLicenseExpiryDate = incident.BcgovPurchaserssitelicenseexpirydate  != null ?(DateTimeOffset?)DateTime.Parse(incident.BcgovPurchaserssitelicenseexpirydate) : null,
                     PurchasersDELExpiryDate = incident.BcgovPurchasersdelexpirydate,
                     purchasersWaiverNumber = incident.BcgovPurchaserswaivernumber,
                     purchasersRegistrationNumber = incident.BcgovPurchasersregistrationnumber,
