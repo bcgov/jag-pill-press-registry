@@ -46,6 +46,16 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         [JsonProperty(PropertyName = "bcgov_AddressWhereEquipmentWasDestroyed@odata.bind")]
         public string BcgovAddressWhereEquipmentWasDestroyedODataBind { get; set; }
 
+        [JsonProperty(PropertyName = "bcgov_CivicAddressofPurchaser@odata.bind")]
+        public string BcgovCivicAddressofPurchaserODataBind { get; set; }
+
+        [JsonProperty(PropertyName = "bcgov_PurchasersCivicAddress@odata.bind")]
+        public string BcgovPurchasersCivicAddressODataBind { get; set; }
+
+        [JsonProperty(PropertyName = "bcgov_PurchasersBusinessAddress@odata.bind")]
+        public string BcgovPurchasersBusinessAddressODataBind { get; set; }
+
+
         [JsonProperty(PropertyName = "bcgov_circumstancesloss")]
         public string BcgovCircumstancesloss { get; set; }
 

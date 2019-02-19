@@ -140,8 +140,8 @@
               errorMessage="Please indicate where this piece of equipment will reside">
               <select class="form-control" style="width: 250px;" formControlName="whereWillEquipmentReside">
                 <option value="">Please select an option</option>
-                <option value="BC">BC</option>
-                <option value="OutsideOfBc">Outside of BC</option>
+                <option [value]="true">BC</option>
+                <option [value]="false">Outside of BC</option>
               </select>
             </app-field>
 
@@ -182,11 +182,11 @@
 
             <app-field label="Is the address where the purchaser will ordinarily store this piece of equipment a private dwelling house?"
               [showChevrons]="false" errorMessage="Please select yes or no" [valid]="form.get('privateDwelling').valid || !form.get('privateDwelling').touched">
-              <input type="radio" name="privateDwelling" formControlName="privateDwelling" value="Yes">
+              <input type="radio" name="privateDwelling" formControlName="privateDwelling" [value]="1">
               <span style="padding-right: 20px;">&nbsp;Yes</span>
-              <input type="radio" name="privateDwelling" formControlName="privateDwelling" value="No">
+              <input type="radio" name="privateDwelling" formControlName="privateDwelling" [value]="0">
               <span style="padding-right: 20px;">&nbsp;No</span>
-              <input type="radio" name="privateDwelling" formControlName="privateDwelling" value="Unknown">
+              <input type="radio" name="privateDwelling" formControlName="privateDwelling" [value]="null">
               <span>&nbsp;Unknown</span>
             </app-field>
 
@@ -204,11 +204,11 @@
             <app-field label="Was this piece of Controlled Equipment purchased by an individual (for their own personal use), or by a business?"
               errorMessage="Please select an option above" [valid]="form.get('purchasedByIndividualOrBusiness').valid || !form.get('purchasedByIndividualOrBusiness').touched"
               [showChevrons]="false" [required]="true">
-              <input type="radio" name="purchasedByIndividualOrBusiness" formControlName="purchasedByIndividualOrBusiness" value="Business"> Business &nbsp;
-              <input type="radio" name="purchasedByIndividualOrBusiness" formControlName="purchasedByIndividualOrBusiness" value="Individual"> Individual
+              <input type="radio" name="purchasedByIndividualOrBusiness" formControlName="purchasedByIndividualOrBusiness" [value]="true"> Business &nbsp;
+              <input type="radio" name="purchasedByIndividualOrBusiness" formControlName="purchasedByIndividualOrBusiness" [value]="false"> Individual
             </app-field>
 
-            <section *ngIf="form.get('purchasedByIndividualOrBusiness').value === 'Business'">
+            <section *ngIf="form.get('purchasedByIndividualOrBusiness').value === true">
               <app-field label="Please provide the name of the business that purchased this piece of Controlled Equipment." [required]="true"
                 [valid]="form.get('nameOfPurchaserBusiness').valid || !form.get('nameOfPurchaserBusiness').touched" errorMessage="Please provide an answer to the question above">
                 <input class="form-control" maxlength="100" style="width: 500px" type="text" formControlName="nameOfPurchaserBusiness">
@@ -285,19 +285,18 @@
                   errorMessage="Please indicate the geographical location">
                   <select class="form-control" style="width: 250px;" formControlName="geographicalLocationOfBusinessPurchaser">
                     <option value="">Please select an option</option>
-                    <option value="bc">BC</option>
-                    <option value="canada">Canada</option>
-                    <option value="unitedStates">United States</option>
+                    <option value="Canada">Canada</option>
+                    <option value="UnitedStates">United States</option>
                     <option value="europe">Europe</option>
-                    <option value="asia">Asia</option>
-                    <option value="southAmerica">South America</option>
-                    <option value="africa">Africa</option>
+                    <option value="Asia">Asia</option>
+                    <option value="SouthAmerica">South America</option>
+                    <option value="Africa">Africa</option>
                   </select>
                 </app-field>
               </div>
             </section>
 
-            <section *ngIf="form.get('purchasedByIndividualOrBusiness').value === 'Individual'">
+            <section *ngIf="form.get('purchasedByIndividualOrBusiness').value === false">
               <app-field label="Please provide an answer to the question above?" [required]="true" [valid]="form.get('legalNameOfPurchaserIndividual').valid || !form.get('legalNameOfPurchaserIndividual').touched"
                 errorMessage="Please enter the purchaser's legal name">
                 <input class="form-control" style="width:500px" maxlength="100" type="text" formControlName="legalNameOfPurchaserIndividual">

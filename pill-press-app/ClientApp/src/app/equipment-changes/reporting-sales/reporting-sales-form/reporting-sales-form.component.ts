@@ -14,7 +14,7 @@ import { postalRegex } from '../../../business-profile/business-profile/business
 export class ReportingSalesFormComponent extends FormBase implements OnInit {
   form: FormGroup;
   busy: Subscription;
-  equipmentId: string;
+  applicationId: string;
   busyPromise: Promise<any>;
   locations: any;
 
@@ -23,7 +23,7 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
     private applicationDataService: ApplicationDataService,
     private fb: FormBuilder) {
     super();
-    this.equipmentId = this.route.snapshot.params.id;
+    this.applicationId = this.route.snapshot.params.id;
   }
 
   ngOnInit() {
@@ -118,7 +118,7 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
   }
 
   reloadData() {
-    this.busy = this.applicationDataService.getApplicationById(this.equipmentId)
+    this.busy = this.applicationDataService.getApplicationById(this.applicationId)
       .subscribe((data: any) => {
 
         data.certificates = data.certificates || [];
@@ -298,15 +298,15 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
   }
 
   save(goToReview: boolean) {
-    if (this.form.valid || goToReview === false) {
+    // if (this.form.valid || goToReview === false) {
       const value = this.form.value;
-      value.address.country = 'Canada';
+      // value.address.country = 'Canada';
       const saveList = [this.applicationDataService.updateApplication(value)];
       this.busyPromise = zip(...saveList)
         .toPromise()
         .then(res => {
           if (goToReview) {
-            this.router.navigateByUrl(`/equipment-changes/reporting-sales/review/${this.equipmentId}`);
+            this.router.navigateByUrl(`/equipment-changes/reporting-sales/review/${this.applicationId}`);
           } else {
             this.router.navigateByUrl(`/dashboard`);
             // this.reloadData();
@@ -314,7 +314,7 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
         }, err => {
           // todo: show errors;
         });
-    }
+    // }
   }
 
   markAsTouched() {
