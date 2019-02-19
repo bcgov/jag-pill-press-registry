@@ -147,7 +147,7 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
       return -1;
     }
   }
-  
+
   clearHiddenFields() {
 
     this.form.get('whereWillEquipmentReside').valueChanges
