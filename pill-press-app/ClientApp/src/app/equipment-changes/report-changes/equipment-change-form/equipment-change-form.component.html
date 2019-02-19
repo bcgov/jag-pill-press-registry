@@ -12,45 +12,36 @@
       </app-field>
 
 
-      <!-- <app-field label="How was this piece of Controlled Equipment built?" [valid]="form.get('howWasEquipmentBuilt').valid || !form.get('howWasEquipmentBuilt').touched"
-          errorMessage="Please indicate how this controlled equipment was built" [required]="true">
-          <select class="form-control" formControlName="howWasEquipmentBuilt" style="width: 300px;">
-            <option value="">Please select an option</option>
-            <option value="Commercially Manufactured">Commercially Manufactured</option>
-            <option value="Custom-built">Custom Built (i.e. built out of spare parts)</option>
-            <option value="Other">Other</option>
-          </select>
-        </app-field> -->
-
       <section *ngIf="form.get('equipmentRecord.howWasEquipmentBuilt').value === 'Commercially Manufactured'">
-
-        <app-field label="Make" [valid]="form.get('equipmentRecord.equipmentMake').valid || !form.get('equipmentRecord.equipmentMake').touched"
+        <app-field label="Make"
+          [valid]="form.get('equipmentRecord.equipmentMake').valid || !form.get('equipmentRecord.equipmentMake').touched"
           errorMessage="Please specify the make" [required]="true">
           <input type="text" class="form-control" readonly formControlName="equipmentMake" style="width: 680px"
             maxlength="100">
         </app-field>
 
-        <app-field label="Model" [valid]="form.get('equipmentRecord.equipmentModel').valid || !form.get('equipmentRecord.equipmentModel').touched"
+        <app-field label="Model"
+          [valid]="form.get('equipmentRecord.equipmentModel').valid || !form.get('equipmentRecord.equipmentModel').touched"
           errorMessage="Please specify the model" [required]="true">
           <input type="text" class="form-control" readonly formControlName="equipmentModel" style="width: 680px"
             maxlength="100">
         </app-field>
 
-        <app-field label="Serial Number" [valid]="form.get('equipmentRecord.serialNumber').valid || !form.get('equipmentRecord.serialNumber').touched"
+        <app-field label="Serial Number"
+          [valid]="form.get('equipmentRecord.serialNumber').valid || !form.get('equipmentRecord.serialNumber').touched"
           errorMessage="Please provide the serial number" [required]="true">
           <input type="text" class="form-control" readonly formControlName="serialNumber" style="width: 680px"
             maxlength="100">
         </app-field>
-
       </section>
 
-      <section *ngIf="form.get('equipmentRecord.howWasEquipmentBuilt').value === 'Custom-built' || form.get('equipmentRecord.howWasEquipmentBuilt').value === 'Other'">
-
-        <app-field label="Key Part Serial Number" errorMessage="Please provide an answer to the question above" [valid]="form.get('equipmentRecord.customBuiltSerialNumber').valid || !form.get('customBuiltSerialNumber').touched"
+      <section *ngIf="form.get('equipmentRecord.customBuiltSerialNumber').value">
+        <app-field label="Key Part Serial Number" errorMessage="Please provide an answer to the question above"
+          [valid]="form.get('equipmentRecord.customBuiltSerialNumber').valid || !form.get('customBuiltSerialNumber').touched"
           [required]="true">
-          <input type="text" readonly formControlName="customBuiltSerialNumber" class="form-control" style="width: 680px">
+          <input type="text" readonly formControlName="customBuiltSerialNumber" class="form-control"
+            style="width: 680px">
         </app-field>
-
       </section>
 
       <app-field label="Equipment Registry Number" [valid]="true" errorMessage="Please specify the make" [required]="true">

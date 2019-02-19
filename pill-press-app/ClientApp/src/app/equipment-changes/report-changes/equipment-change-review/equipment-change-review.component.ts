@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBase } from '@shared/form-base';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subscription, zip } from 'rxjs';
-import { faSave, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import { faSave, faExclamationCircle, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApplicationDataService } from '@services/application-data.service';
 
@@ -21,6 +21,7 @@ export class EquipmentChangeReviewComponent extends FormBase implements OnInit {
 
   faSave = faSave;
   faExclamationCircle  = faExclamationCircle ;
+  faExclamationTriangle  = faExclamationTriangle ;
   application: any;
   showErrors: boolean;
 
@@ -35,7 +36,15 @@ export class EquipmentChangeReviewComponent extends FormBase implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       id: [],
-      declarationOfCorrectInformation: ['', ],
+      declarationOfCorrectInformation: [''],
+      addressWhereEquipmentWasDestroyed: this.fb.group({
+        id: [],
+        streetLine1: [''],
+        streetLine2: [],
+        city: [''],
+        province: ['British Columbia'],
+        postalCode: [''],
+      }),
     });
 
     this.reloadData();
@@ -69,13 +78,13 @@ export class EquipmentChangeReviewComponent extends FormBase implements OnInit {
   save(goToReview: boolean) {
     if (this.form.valid || goToReview === false) {
       const value = this.form.value;
-      value.address.country = 'Canada';
+      value.addressWhereEquipmentWasDestroyed.country = 'Canada';
       const saveList = [this.applicationDataService.updateApplication(value)];
       this.busyPromise = zip(...saveList)
         .toPromise()
         .then(res => {
           if (goToReview) {
-            this.router.navigateByUrl(`/equipment-notification/source/${this.applicationId}`);
+            this.router.navigateByUrl(`/equipment-changes/reporting-changes/thank-you/${this.applicationId}`);
           } else {
             this.router.navigateByUrl(`/dashboard`);
             // this.reloadData();
