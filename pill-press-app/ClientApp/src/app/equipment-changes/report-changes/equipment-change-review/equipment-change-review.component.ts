@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBase } from '@shared/form-base';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subscription, zip } from 'rxjs';
-import { faSave, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import { faSave, faExclamationCircle, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApplicationDataService } from '@services/application-data.service';
 
@@ -21,6 +21,7 @@ export class EquipmentChangeReviewComponent extends FormBase implements OnInit {
 
   faSave = faSave;
   faExclamationCircle  = faExclamationCircle ;
+  faExclamationTriangle  = faExclamationTriangle ;
   application: any;
   showErrors: boolean;
 
