@@ -6,6 +6,7 @@ import { BusinessContact } from './business-contact.model';
 import { CustomAddress } from './custom-address.model';
 import { EquipmentLocation } from './equipment-location.model';
 import { Certificate } from './certificate.model';
+import { Equipment } from './equipment.model';
 
 export class Application {
   id: string;
@@ -141,4 +142,59 @@ export class Application {
   equipmentLocation: EquipmentLocation;
 
   certificates: Certificate[];
+
+  // lost stolen and destroyed
+  typeOfChange: string;
+  dateOfEquipmentChange: Date;
+  circumstancesOfLoss: string;
+  policeNotified: Boolean;
+  policeReportDate: Date;
+  policeFileNumber: string;
+  circumstancesOfStolenEquipment: string;
+  circumstancesOfDestroyedEquipment: string;
+  whoDestroyedEquipment: string;
+  addressWhereEquipmentWasDestroyed: CustomAddress;
+
+  // reporting sales
+  dateOfSale: Date;
+  typeOfSale: string;
+  typeOfSaleOther: string;
+  rightsToOwnuseOrPossessRetained: Boolean;
+  methodOfPayment: string;
+  methodOfPaymentOther: string;
+  whereWillEquipmentReside: Boolean;
+  civicAddressOfPurchaser: CustomAddress;
+  privateDwelling: string;
+  purchasedByIndividualOrBusiness: Boolean;
+  legalNameOfPurchaserIndividual: string;
+  purchasersCivicAddress: CustomAddress;
+  purchasersTelephoneNumber: string;
+  purchasersEmailAddress: string;
+  idNumberCollected: string;
+  typeOfIdNumberCollected: string;
+  nameOfPurchaserBusiness: string;
+  purchaserRegistrationNumber: string;
+  purchaserdBaName: string;
+  purchasersBusinessAddress: CustomAddress;
+  legalNameOfPersonResponsibleForBusiness: string;
+  phoneNumberOfPersonResponsibleForBusiness: string;
+  emailOfPersonResponsibleForBusiness: string;
+  geographicalLocationOfBusinessPurchaser: string;
+  isPurchaserAPersonOfBC: Boolean;
+  howIsPurchaseAuthorizedAO: Boolean;
+  howIsPurchaserAuthorizedWaiver: Boolean;
+  howIsPurchaserAuthorizedRegisteredSeller: Boolean;
+  howIsPurchaserAuthorizedOther: string;
+  healthCanadaLicenseDEL: Boolean;
+  healthCanadaLicenseSiteLicense: Boolean;
+  nameOnPurchasersDEL: string;
+  purchasersDELNumber: string;
+  purchasersDELExpiryDate: string;
+  nameOnPurchasersSiteLicense: string;
+  purchasersSiteLicenseNumber: string;
+  purchasersSiteLicenseExpiryDate: string;
+  purchasersWaiverNumber: string;
+  purchasersRegistrationNumber: string;
+  equipmentRecord: Equipment;
+  purchasersOther: string;
 }
