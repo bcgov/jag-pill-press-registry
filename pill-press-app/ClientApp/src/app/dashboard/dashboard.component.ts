@@ -9,6 +9,20 @@ import { DynamicsAccount } from '../models/dynamics-account.model';
 import { Subscription } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
 
+import {
+  faExclamationCircle,
+  faFileAlt,
+  faPencilAlt,
+  faExclamationTriangle,
+  faShoppingCart,
+  faEye,
+  faMapMarkerAlt
+} from '@fortawesome/free-solid-svg-icons';
+
+import {
+  faFilePdf,
+} from '@fortawesome/free-regular-svg-icons';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -30,6 +44,15 @@ export class DashboardComponent implements OnInit {
   waiverApplication: any;
   authorizedOwnerApplication: Application;
   registeredSellerApplication: any;
+
+  faExclamationTriangle = faExclamationTriangle;
+  faShoppingCart = faShoppingCart;
+  faEye = faEye;
+  faMapMarkerAlt = faMapMarkerAlt;
+  faPencilAlt = faPencilAlt;
+  faFileAlt = faFileAlt;
+  faExclamationCircle = faExclamationCircle;
+  faFilePdf = faFilePdf;
 
   constructor(private userDataService: UserDataService, private router: Router,
     private dynamicsDataService: DynamicsDataService,
@@ -60,6 +83,20 @@ export class DashboardComponent implements OnInit {
           if (app.certificates.length > 0) {
             app.certificates.sort(this.dateSort);
             app.certificate = app.certificates[0];
+          }
+
+          const pendingChanges = data.filter(a => a.equipmentRecord && app.equipmentRecord
+            && a.equipmentRecord.id === app.equipmentRecord.id && !a.submittedDate && a.applicationtype === 'Equipment Change');
+          app.hasChangePending = (pendingChanges.length > 0);
+          if (pendingChanges.length > 0) {
+            const lsdChanges = pendingChanges.filter(c => ['Lost', 'Stolen', 'Destroyed'].indexOf(c.typeOfChange) !== -1);
+            if (lsdChanges.length > 0) {
+              app.lsdLinkId = lsdChanges[0].id;
+            }
+            const soldChanges = pendingChanges.filter(c => ['Sold'].indexOf(c.typeOfChange) !== -1);
+            if (soldChanges.length > 0) {
+              app.soldLinkId = soldChanges[0].id;
+            }
           }
         });
 
@@ -183,6 +220,45 @@ export class DashboardComponent implements OnInit {
         this.snackBar.open('Error starting a New Equipment Notificatio Application',
           'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
         console.log('Error starting a Registered Seller Application');
+      }
+    );
+  }
+
+  reportSales(equipmentId: string) {
+    // TODO: Link the equipment to the application
+    const newLicenceApplicationData: Application = <Application>{
+      statuscode: 'Draft',
+      typeOfChange: 'Sold',
+      equipmentRecord: {
+        id: equipmentId
+      }
+    };
+    this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Equipment Change').subscribe(
+      data => {
+        this.router.navigateByUrl(`/equipment-changes/reporting-sales/details/${data.id}`);
+      },
+      err => {
+        this.snackBar.open('Error starting a Reporting Sales Application', 'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
+        console.log('Error starting Reporting Sales Application');
+      }
+    );
+  }
+
+  reportLSD(equipmentId: string) {
+    const newLicenceApplicationData: Application = <Application>{
+      statuscode: 'Draft',
+      typeOfChange: 'Lost',
+      equipmentRecord: {
+        id: equipmentId
+      }
+    };
+    this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Equipment Change').subscribe(
+      data => {
+        this.router.navigateByUrl(`/equipment-changes/reporting-changes/details/${data.id}`);
+      },
+      err => {
+        this.snackBar.open('Error starting a Reporting Sales Application', 'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
+        console.log('Error starting Reporting Sales Application');
       }
     );
   }

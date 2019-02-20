@@ -90,9 +90,9 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
 
                     PillpressEncapsulatorSizeOtherCheck = incident.BcgovPillpressencapsulatorsizeothercheck,
                     PillpressEncapsulatorSizeOther = incident.BcgovPillpressencapsulatorsizeother,
-                    
+
                     ExplanationOfEquipmentUse = incident.BcgovExplanationofequipmentuse,
-                    
+
                     HowWasEquipmentBuiltOtherCheck = incident.BcgovHowwasequipmentbuiltothercheck,
                     HowWasEquipmentBuiltOther = incident.BcgovHowwasequipmentbuiltother,
                     NameOfManufacturer = incident.BcgovNameofmanufacturer,
@@ -100,7 +100,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     EquipmentModel = incident.BcgovEquipmentmodel,
                     SerialNumber = incident.BcgovSerialnumber,
                     HowEquipmentBuiltDescription = incident.BcgovHowequipmentbuiltdescription,
-                    PersonBusinessThatBuiltEquipment = incident.BcgovPersonbusinessthatbuiltequipment,                    
+                    PersonBusinessThatBuiltEquipment = incident.BcgovPersonbusinessthatbuiltequipment,
                     SerialNumberForCustomBuilt = incident.BcgovSerialnumberforcustombuilt,
                     CustomBuiltSerialNumber = incident.BcgovCustombuiltserialnumber,
                     SerialNumberKeyPartDescription = incident.BcgovSerialnumberkeypartdescription,
@@ -112,17 +112,17 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     IAssembledItMyself = incident.BcgovIassembleditmyself,
                     HowCameIntoPossessionOtherCheck = incident.BcgovHowcameintopossessionothercheck,
                     HowCameIntoPossessionOther = incident.BcgovHowcameintopossessionother,
-                    NameOfBcSeller = incident.BcgovNameofbcseller,                    
+                    NameOfBcSeller = incident.BcgovNameofbcseller,
                     Dateofpurchasefrombcseller = incident.BcgovDateofpurchasefrombcseller,
                     BcSellersRegistrationNumber = incident.BcgovBcsellersregistrationnumber,
                     BcSellersContactPhoneNumber = incident.BcgovBcsellerscontactphonenumber,
                     BcSellersContactEmail = incident.BcgovBcsellerscontactemail,
                     OutsideBcSellersName = incident.BcgovOutsidebcsellersname,
                     DateOfPurchaseFromOutsideBcSeller = incident.BcgovDateofpurchasefromoutsidebcseller,
-                    NameOfImporter = incident.BcgovNameofimporter,                    
+                    NameOfImporter = incident.BcgovNameofimporter,
                     ImportersRegistrationNumber = incident.BcgovImportersregistrationnumber,
                     Nameoforiginatingseller = incident.BcgovNameoforiginatingseller,
-                                        
+
                     DateOfPurchaseFromImporter = incident.BcgovDateofpurchasefromimporter,
                     PossessUntilICanSell = incident.BcgovPossessuntilicansell,
                     GiveNorLoanedToMe = incident.BcgovGivenorloanedtome,
@@ -132,12 +132,12 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     UsingToManufactureAProduct = incident.BcgovUsingtomanufactureaproduct,
                     AreYouARegisteredSeller = incident.BcgovAreyouaregisteredseller,
                     NameOfBusinessThatHasGivenOrLoaned = incident.BcgovNameofbusinessthathasgivenorloaned,
-                    
+
                     PhoneOfBusinessThatHasGivenOrLoaned = incident.BcgovPhoneofbusinessthathasgivenorloaned,
                     EmailOfTheBusinessThatHasGivenOrLoaned = incident.BcgovEmailofthebusinessthathasgivenorloaned,
                     WhyAHaveYouAcceptedOrBorrowed = incident.BcgovWhyhaveyouacceptedorborrowed,
                     NameOfBusinessThatHasRentedOrLeased = incident.BcgovNameofbusinessthathasrentedorleased,
-                    
+
                     PhoneOfBusinessThatHasRentedOrLeased = incident.BcgovPhoneofbusinessthathasrentedorleased,
                     EmailOfBusinessThatHasRentedOrLeased = incident.BcgovEmailofbusinessthathasrentedorleased,
                     WhyHaveYouRentedOrLeased = incident.BcgovWhyhaveyourentedorleased,
@@ -155,8 +155,58 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     PillpressMaxCapacity = incident.BcgovPillpressmaxcapacity,
                     EncapsulatorMaxCapacity = incident.BcgovEncapsulatormaxcapacity,
                     HowWasEquipmentBuilt = (Howwasequipmentbuilt?)incident.BcgovHowwasequipmentbuilt,
-                    
-                    SettingDescription = incident.BcgovSettingdescription
+
+                    SettingDescription = incident.BcgovSettingdescription,
+
+                    // Lost Stolen and Destroyed fields
+                    typeOfChange = (EquipmentChangeType?)incident.BcgovTypeofchange,
+                    dateOfEquipmentChange = incident.BcgovDateofequipmentchange,
+                    circumstancesOfLoss = incident.BcgovCircumstancesloss,
+                    policeNotified = incident.BcgovPolicenotified,
+                    policeReportDate = incident.BcgovPolicereportdate,
+                    policeFileNumber = incident.BcgovPolicefilenumber,
+                    circumstancesOfStolenEquipment = incident.BcgovCircumstancesstolenequipment,
+                    circumstancesOfDestroyedEquipment = incident.BcgovCircumstancesdestroyedequipment,
+                    whoDestroyedEquipment = incident.BcgovWhodestroyedequipment,
+
+
+                    // Reporting Sales fields
+                    dateOfSale = incident.BcgovDateofsale,
+                    typeOfSale = (TypeOfSale?) incident.BcgovTypeofsale,
+                    typeOfSaleOther = incident.BcgovTypeofsaleother,
+                    rightsToOwnuseOrPossessRetained = incident.BcgovRightstoownuseorpossessretained,
+                    methodOfPayment = (MethodOfPayment?)incident.BcgovMethodofpayment,
+                    methodOfPaymentOther = incident.BcgovMethodofpaymentother,
+                    whereWillEquipmentReside = incident.BcgovWherewillequipmentreside,
+                    privateDwelling = (PrivateDwellingOptions?)incident.BcgovPrivatedwelling,
+                    purchasedByIndividualOrBusiness = incident.BcgovPurchasedbyindividualorbusiness,
+                    legalNameOfPurchaserIndividual = incident.BcgovLegalnameofpurchaserindividual,
+                    purchasersTelephoneNumber = incident.BcgovPurchaserstelephonenumber,
+                    purchasersEmailAddress = incident.BcgovPurchasersemailaddress,
+                    idNumberCollected = incident.BcgovIdnumbercollected,
+                    typeOfIdNumberCollected = incident.BcgovTypeofidnumbercollected,
+                    nameOfPurchaserBusiness = incident.BcgovNameofpurchaserbusiness,
+                    purchaserRegistrationNumber = incident.BcgovPurchasersregistrationnumber,
+                    purchaserdBaName = incident.BcgovPurchaserdbaname,
+                    legalNameOfPersonResponsibleForBusiness = incident.BcgovLegalnameofpersonresponsibleforbusiness,
+                    phoneNumberOfPersonResponsibleForBusiness = incident.BcgovPhonenumberofpersonresponsibleforbusiness,
+                    emailOfPersonResponsibleForBusiness = incident.BcgovEmailofpersonresponsibleforbusiness,
+                    geographicalLocationOfBusinessPurchaser = (GeographicalLocation?)incident.BcgovGeographicallocationofbusinesspurchaser,
+                    isPurchaserAPersonOfBC = incident.BcgovIspurchaserapersonofbc,
+                    howIsPurchaseAuthorizedAO = incident.BcgovHowispurchaseauthorizedao,
+                    howIsPurchaserAuthorizedWaiver = incident.BcgovHowispurchaserauthorizedwaiver,
+                    howIsPurchaserAuthorizedRegisteredSeller = incident.BcgovHowispurchaserauthorizedregisteredseller,
+                    howIsPurchaserAuthorizedOther = incident.BcgovHowispurchaserauthorizedother,
+                    healthCanadaLicenseDEL = incident.BcgovHealthcanadalicensedel,
+                    healthCanadaLicenseSiteLicense = incident.BcgovHealthcanadalicensesitelicense,
+                    nameOnPurchasersDEL = incident.BcgovNameonpurchasersdel,
+                    purchasersDELNumber = incident.BcgovPurchasersdelnumber,
+                    nameOnPurchasersSiteLicense = incident.BcgovNameonpurchaserssitelicense,
+                    PurchasersSiteLicenseExpiryDate = incident.BcgovPurchaserssitelicenseexpirydate  != null ?(DateTimeOffset?)DateTime.Parse(incident.BcgovPurchaserssitelicenseexpirydate) : null,
+                    PurchasersDELExpiryDate = incident.BcgovPurchasersdelexpirydate,
+                    purchasersWaiverNumber = incident.BcgovPurchaserswaivernumber,
+                    purchasersRegistrationNumber = incident.BcgovPurchasersregistrationnumber,
+                    PurchasersSiteLicenseNumber = incident.BcgovPurchaserssitelicensenumber,
                 };
 
                 if (incident.BcgovApplicationTypeId != null)
@@ -247,8 +297,33 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     result.EquipmentLocation = incident?.BcgovEquipmentLocation.ToViewModel();
                 }
 
-                 result.OutsideBcSellersLocation = (GeographicalLocation?)incident.BcgovOutsidebcsellerslocation;              
-                 result.OriginatingSellersLocation = (GeographicalLocation?)incident.BcgovOriginatingsellerslocation;              
+                if (incident?.BcgovEquipmentRecord != null)
+                {
+                    result.EquipmentRecord = incident?.BcgovEquipmentRecord.ToViewModel();
+                }
+
+                if (incident?.BcgovAddressWhereEquipmentWasDestroyed != null)
+                {
+                    result.AddressWhereEquipmentWasDestroyed = incident?.BcgovAddressWhereEquipmentWasDestroyed.ToViewModel();
+                }
+
+                if (incident?.BcgovPurchasersCivicAddress != null)
+                {
+                    result.purchasersCivicAddress = incident?.BcgovPurchasersCivicAddress.ToViewModel();
+                }
+
+                if (incident?.BcgovCivicAddressofPurchaser != null)
+                {
+                    result.civicAddressOfPurchaser = incident?.BcgovCivicAddressofPurchaser.ToViewModel();
+                }
+
+                if (incident?.BcgovPurchasersBusinessAddress != null)
+                {
+                    result.purchasersBusinessAddress = incident?.BcgovPurchasersBusinessAddress.ToViewModel();
+                }
+
+                result.OutsideBcSellersLocation = (GeographicalLocation?)incident.BcgovOutsidebcsellerslocation;
+                result.OriginatingSellersLocation = (GeographicalLocation?)incident.BcgovOriginatingsellerslocation;
 
             }
             return result;
@@ -307,11 +382,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             to.BcgovIntendtosellencapsulator = from.intendtosellencapsulator;
             to.BcgovIntendtoselldiemouldorpunch = from.intendtoselldiemouldorpunch;
             to.BcgovIntendtosellpharmaceuticalmixerorblender = from.intendtosellpharmaceuticalmixerorblender;
-            to.BcgovIntendtosellothercheck  = from.intendtosellothercheck;
+            to.BcgovIntendtosellothercheck = from.intendtosellothercheck;
             to.BcgovIntendtosellother = from.intendtosellother;
             to.BcgovBcgovLegislativeauthorityothercheck = from.legislativeauthorityothercheck;
-            to.BcgovKindsofproductothercheck = from.kindsofproductsothercheck  ;
-            to.BcgovOtherlicencecheck = from.otherlicencecheck  ;
+            to.BcgovKindsofproductothercheck = from.kindsofproductsothercheck;
+            to.BcgovOtherlicencecheck = from.otherlicencecheck;
 
             to.BcgovAdditionalbusinessinformationaboutseller = from.additionalbusinessinformationaboutseller;
 
@@ -343,7 +418,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             to.BcgovIassembleditmyself = from.IAssembledItMyself;
             to.BcgovHowcameintopossessionothercheck = from.HowCameIntoPossessionOtherCheck;
             to.BcgovHowcameintopossessionother = from.HowCameIntoPossessionOther;
-            to.BcgovNameofbcseller = from.NameOfBcSeller;  
+            to.BcgovNameofbcseller = from.NameOfBcSeller;
             to.BcgovDateofpurchasefrombcseller = from.Dateofpurchasefrombcseller;
             to.BcgovBcsellersregistrationnumber = from.BcSellersRegistrationNumber;
             to.BcgovBcsellerscontactphonenumber = from.BcSellersContactPhoneNumber;
@@ -390,8 +465,57 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             to.BcgovHowwasequipmentbuilt = (int?)from.HowWasEquipmentBuilt;
 
             to.BcgovSettingdescription = from.SettingDescription;
-            to.BcgovOutsidebcsellerslocation =  (int?)from.OutsideBcSellersLocation; 
-            to.BcgovOriginatingsellerslocation =  (int?)from.OriginatingSellersLocation; 
+            to.BcgovOutsidebcsellerslocation = (int?)from.OutsideBcSellersLocation;
+            to.BcgovOriginatingsellerslocation = (int?)from.OriginatingSellersLocation;
+
+            to.BcgovTypeofchange = (int?)from.typeOfChange;
+            to.BcgovDateofequipmentchange = from.dateOfEquipmentChange;
+            to.BcgovCircumstancesloss = from.circumstancesOfLoss;
+            to.BcgovPolicenotified = from.policeNotified;
+            to.BcgovPolicereportdate = from.policeReportDate;
+            to.BcgovPolicefilenumber = from.policeFileNumber;
+            to.BcgovCircumstancesstolenequipment = from.circumstancesOfStolenEquipment;
+            to.BcgovCircumstancesdestroyedequipment = from.circumstancesOfDestroyedEquipment;
+            to.BcgovWhodestroyedequipment = from.whoDestroyedEquipment;
+
+
+            // Reporting Sales fields
+            to.BcgovDateofsale = from.dateOfSale ;
+            to.BcgovTypeofsale = (int?)from.typeOfSale ;
+            to.BcgovTypeofsaleother = from.typeOfSaleOther ;
+            to.BcgovRightstoownuseorpossessretained = from.rightsToOwnuseOrPossessRetained ;
+            to.BcgovMethodofpayment = (int?)from.methodOfPayment ;
+            to.BcgovMethodofpaymentother = from.methodOfPaymentOther ;
+            to.BcgovWherewillequipmentreside = from.whereWillEquipmentReside ;
+            to.BcgovPrivatedwelling = (int?)from.privateDwelling ;
+            to.BcgovPurchasedbyindividualorbusiness = from.purchasedByIndividualOrBusiness ;
+            to.BcgovLegalnameofpurchaserindividual = from.legalNameOfPurchaserIndividual ;
+            to.BcgovPurchaserstelephonenumber = from.purchasersTelephoneNumber ;
+            to.BcgovPurchasersemailaddress = from.purchasersEmailAddress ;
+            to.BcgovIdnumbercollected = from.idNumberCollected ;
+            to.BcgovTypeofidnumbercollected = from.typeOfIdNumberCollected ;
+            to.BcgovNameofpurchaserbusiness = from.nameOfPurchaserBusiness ;
+            to.BcgovPurchasersregistrationnumber = from.purchaserRegistrationNumber ;
+            to.BcgovPurchaserdbaname = from.purchaserdBaName ;
+            to.BcgovLegalnameofpersonresponsibleforbusiness = from.legalNameOfPersonResponsibleForBusiness ;
+            to.BcgovPhonenumberofpersonresponsibleforbusiness = from.phoneNumberOfPersonResponsibleForBusiness ;
+            to.BcgovEmailofpersonresponsibleforbusiness = from.emailOfPersonResponsibleForBusiness ;
+            to.BcgovGeographicallocationofbusinesspurchaser = (int?)from.geographicalLocationOfBusinessPurchaser ;
+            to.BcgovIspurchaserapersonofbc = from.isPurchaserAPersonOfBC ;
+            to.BcgovHowispurchaseauthorizedao = from.howIsPurchaseAuthorizedAO ;
+            to.BcgovHowispurchaserauthorizedwaiver = from.howIsPurchaserAuthorizedWaiver ;
+            to.BcgovHowispurchaserauthorizedregisteredseller = from.howIsPurchaserAuthorizedRegisteredSeller ;
+            to.BcgovHowispurchaserauthorizedother = from.howIsPurchaserAuthorizedOther ;
+            to.BcgovHealthcanadalicensedel = from.healthCanadaLicenseDEL ;
+            to.BcgovHealthcanadalicensesitelicense = from.healthCanadaLicenseSiteLicense ;
+            to.BcgovNameonpurchasersdel = from.nameOnPurchasersDEL ;
+            to.BcgovPurchaserssitelicensenumber = from.PurchasersSiteLicenseNumber;
+            to.BcgovPurchasersdelnumber = from.purchasersDELNumber ;
+            to.BcgovNameonpurchaserssitelicense = from.nameOnPurchasersSiteLicense ;
+            to.BcgovPurchaserssitelicenseexpirydate = from.PurchasersSiteLicenseExpiryDate.ToString() ;
+            to.BcgovPurchasersdelexpirydate = from.PurchasersDELExpiryDate;
+            to.BcgovPurchaserswaivernumber = from.purchasersWaiverNumber ;
+            to.BcgovPurchasersregistrationnumber = from.purchasersRegistrationNumber ;
         }
     }
 }

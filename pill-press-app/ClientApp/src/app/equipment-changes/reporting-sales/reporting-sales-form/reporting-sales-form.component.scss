@@ -1,0 +1,93 @@
+.notes ul {
+    list-style: none;
+    padding-left: 0px;
+}
+
+.notes ul li::before {
+    content: "\2022";
+    list-style: disc;
+    color: #003366;
+    font-weight: bold;
+    display: inline-block; /* Needed to add space between the bullet and the text */ 
+    width: 15px; /* Also needed for space (tweak if needed) */
+    font-size: 20px;
+    margin: -5px 0px;
+}
+
+.wide {
+    max-width: 120%;
+    margin-right: -50px;
+}
+
+
+::ng-deep .mat-calendar-body-selected {
+    background-color: #337AB7;
+    color: #000 !important;
+}
+
+::ng-deep .mat-calendar-body-cell-content {
+    color: #54708b;
+}
+
+::ng-deep .mat-calendar-header {
+    background-color: #337AB7;
+    color: #fff;
+}
+
+::ng-deep .mat-vertical-stepper-header {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+
+::ng-deep .mat-vertical-content {
+    padding: 0 !important;
+}
+
+::ng-deep .mat-stepper-vertical {
+    background-color: #F1F4FA !important;
+}
+
+::ng-deep .mat-step-header .mat-step-icon {
+    border: 2px solid #ccc !important;
+    background-color: #fff !important;
+}
+
+::ng-deep .mat-step-header .mat-step-icon-selected {
+    border: 3px solid #7495C7 !important;
+    background-color: #fff !important;
+}
+
+::ng-deep .mat-step-header .mat-step-icon-state-done,
+::ng-deep .mat-step-header .mat-step-icon-state-edit {
+    background-color: #7495C7 !important;
+    color: #fff !important;
+}
+
+::ng-deep .mat-step-header .mat-step-icon-state-edit {
+    border: none !important;
+}
+
+::ng-deep .mat-stepper-vertical-line::before {
+    top: -5px !important;
+    border-left-width: 2px !important;
+}
+
+::ng-deep .mat-step-label-selected {
+    font-weight: bold;
+}
+
+.mat-column-status,
+.mat-column-equipment {
+    background-color: #E1E8F2;
+    padding: 10px;
+    border: 2px solid #F1F4FA;
+}
+
+.mat-header-cell{
+    background-color: #fff;
+    font-weight: 600;
+}
+
+.mat-cell {
+    border: 2px solid #F1F4FA;
+}

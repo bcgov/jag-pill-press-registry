@@ -101,8 +101,13 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             {
                 dynamicsApplicationList = _dynamicsClient.Incidents.Get(filter: filter, orderby: new List<string> { "modifiedon desc" }).Value;
             }
-            catch (OdataerrorException)
+            catch (OdataerrorException odee)
             {
+                _logger.LogError(LoggingEvents.Error, "Error getting Application");
+                _logger.LogError("Request:");
+                _logger.LogError(odee.Request.Content);
+                _logger.LogError("Response:");
+                _logger.LogError(odee.Response.Content);
                 dynamicsApplicationList = null;
             }
             
@@ -141,6 +146,10 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateApplication([FromBody] ViewModels.Application item, string id)
         {
+            if (!ModelState.IsValid)
+            {
+                int j = 0;
+            }
             if (!string.IsNullOrEmpty(id) && Guid.TryParse(id, out Guid applicationId))
             {
                 // get the Application
@@ -173,6 +182,10 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 var AddressofBusinessthathasGivenorLoaned = CreateOrUpdateAddress(item.AddressofBusinessthathasGivenorLoaned);
                 var AddressofBusinessThatHasRentedorLeased = CreateOrUpdateAddress(item.AddressofBusinessThatHasRentedorLeased);
                 var AddressofPersonBusiness = CreateOrUpdateAddress(item.AddressofPersonBusiness);
+                var AddressWhereEquipmentWasDestroyed = CreateOrUpdateAddress(item.AddressWhereEquipmentWasDestroyed);
+                var CivicAddressOfPurchaser = CreateOrUpdateAddress(item.civicAddressOfPurchaser);
+                var PurchasersCivicAddress = CreateOrUpdateAddress(item.purchasersCivicAddress);
+                var PurchasersBusinessAddress = CreateOrUpdateAddress(item.purchasersBusinessAddress);
 
                 var EquipmentLocation = CreateOrUpdateLocation(id, item.EquipmentLocation, userSettings.AccountId);
 
@@ -198,6 +211,17 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                         _dynamicsClient.Incidents.RemoveReference(id, "bcgov_BCSellersAddress", null);
                     }
                     patchApplication.BCSellersAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", BCSellersAddress.BcgovCustomaddressid);
+                }
+
+                if (AddressWhereEquipmentWasDestroyed.HasValue() && AddressWhereEquipmentWasDestroyed.BcgovCustomaddressid != null &&
+                    (application._bcgovAddresswhereequipmentwasdestroyedValue == null || application._bcgovAddresswhereequipmentwasdestroyedValue != AddressWhereEquipmentWasDestroyed.BcgovCustomaddressid))
+                {
+                    if (application._bcgovAddresswhereequipmentwasdestroyedValue != null)
+                    {
+                        // delete an existing reference.
+                        _dynamicsClient.Incidents.RemoveReference(id, "bcgov_AddressWhereEquipmentWasDestroyed", null);
+                    }
+                    patchApplication.BcgovAddressWhereEquipmentWasDestroyedODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", AddressWhereEquipmentWasDestroyed.BcgovCustomaddressid);
                 }
 
                 if (AddressofPersonBusiness.HasValue() && AddressofPersonBusiness.BcgovCustomaddressid != null &&
@@ -266,6 +290,42 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                         _dynamicsClient.Incidents.RemoveReference(id, "bcgov_AddressofBusinessthathasRentedorLeased", null);
                     }
                     patchApplication.AddressofBusinessThatHasRentedorLeasedODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", AddressofBusinessThatHasRentedorLeased.BcgovCustomaddressid);
+                }
+
+
+                if (PurchasersCivicAddress.HasValue() &&
+                    (application._bcgovCivicaddressofpurchaserValue == null || application._bcgovCivicaddressofpurchaserValue != PurchasersCivicAddress.BcgovCustomaddressid))
+                {
+                    if (application._bcgovCivicaddressofpurchaserValue != null)
+                    {
+                        // delete an existing reference.
+                        _dynamicsClient.Incidents.RemoveReference(id, "bcgov_PurchasersCivicAddress", null);
+                    }
+                    patchApplication.BcgovPurchasersCivicAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", PurchasersCivicAddress.BcgovCustomaddressid);
+                }
+
+
+                if (CivicAddressOfPurchaser.HasValue() &&
+                    (application._bcgovCivicaddressofpurchaserValue == null || application._bcgovCivicaddressofpurchaserValue != CivicAddressOfPurchaser.BcgovCustomaddressid))
+                {
+                    if (application._bcgovCivicaddressofpurchaserValue != null)
+                    {
+                        // delete an existing reference.
+                        _dynamicsClient.Incidents.RemoveReference(id, "bcgov_CivicAddressofPurchaser", null);
+                    }
+                    patchApplication.BcgovCivicAddressofPurchaserODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", CivicAddressOfPurchaser.BcgovCustomaddressid);
+                }
+
+
+                if (PurchasersBusinessAddress.HasValue() &&
+                    (application._bcgovPurchasersbusinessaddressValue == null || application._bcgovPurchasersbusinessaddressValue != PurchasersBusinessAddress.BcgovCustomaddressid))
+                {
+                    if (application._bcgovPurchasersbusinessaddressValue != null)
+                    {
+                        // delete an existing reference.
+                        _dynamicsClient.Incidents.RemoveReference(id, "bcgov_PurchasersBusinessAddress", null);
+                    }
+                    patchApplication.BcgovPurchasersBusinessAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", PurchasersBusinessAddress.BcgovCustomaddressid);
                 }
 
                 if (EquipmentLocation.HasValue() &&
@@ -617,7 +677,6 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         [HttpPost("{applicationType}")]
         public async Task<IActionResult> CreateApplication(string applicationType, [FromBody] ViewModels.Application item)
         {
-
             // get UserSettings from the session
             string temp = _httpContextAccessor.HttpContext.Session.GetString("UserSettings");
             UserSettings userSettings = JsonConvert.DeserializeObject<UserSettings>(temp);
@@ -638,6 +697,10 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             var AddressofBusinessthathasGivenorLoaned = CreateOrUpdateAddress(item.AddressofBusinessthathasGivenorLoaned);
             var AddressofBusinessThatHasRentedorLeased = CreateOrUpdateAddress(item.AddressofBusinessThatHasRentedorLeased);
             var AddressofPersonBusiness = CreateOrUpdateAddress(item.AddressofPersonBusiness);
+            var AddressWhereEquipmentWasDestroyed = CreateOrUpdateAddress(item.AddressWhereEquipmentWasDestroyed);
+            var CivicAddressOfPurchaser = CreateOrUpdateAddress(item.civicAddressOfPurchaser);
+            var PurchasersCivicAddress = CreateOrUpdateAddress(item.purchasersCivicAddress);
+            var PurchasersBusinessAddress = CreateOrUpdateAddress(item.purchasersBusinessAddress);
 
             // create a new Application.
             MicrosoftDynamicsCRMincident application = new MicrosoftDynamicsCRMincident();
@@ -654,6 +717,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 {
                     application.ApplicationTypeIdODataBind = _dynamicsClient.GetEntityURI("bcgov_applicationtypes", applicationTypeId);
                 }                
+            }
+
+            if (item?.EquipmentRecord?.Id != null)
+            {
+                application.EquipmentRecordODataBind = _dynamicsClient.GetEntityURI("bcgov_equipments", item?.EquipmentRecord?.Id);
             }
 
             // set the author based on the current user.
@@ -693,12 +761,32 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             {
                 application.AddressofBusinessThatHasRentedorLeasedODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", AddressofBusinessThatHasRentedorLeased.BcgovCustomaddressid);
             }
-            
+
             if (AddressofPersonBusiness.HasValue())
             {
                 application.AddressofPersonBusinessODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", AddressofPersonBusiness.BcgovCustomaddressid);
             }
-            
+
+            if (AddressWhereEquipmentWasDestroyed.HasValue())
+            {
+                application.BcgovAddressWhereEquipmentWasDestroyedODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", AddressWhereEquipmentWasDestroyed.BcgovCustomaddressid);
+            }
+
+            if (CivicAddressOfPurchaser.HasValue())
+            {
+                application.BcgovCivicAddressofPurchaserODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", CivicAddressOfPurchaser.BcgovCustomaddressid);
+            }
+
+            if (PurchasersCivicAddress.HasValue())
+            {
+                application.BcgovPurchasersCivicAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", PurchasersCivicAddress.BcgovCustomaddressid);
+            }
+
+            if (PurchasersBusinessAddress.HasValue())
+            {
+                application.BcgovPurchasersBusinessAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", PurchasersBusinessAddress.BcgovCustomaddressid);
+            }
+
 
             application.Statuscode = (int?) ViewModels.ApplicationStatusCodes.Draft;
             try
