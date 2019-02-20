@@ -36,8 +36,6 @@ export class ReportChangesComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    this.stepper.selectedIndex = this.tabList.indexOf(this.tab);
     this.router.events.forEach((event) => {
       if (event instanceof NavigationEnd) {
         if (this.route.snapshot.firstChild.url.length > 0) {

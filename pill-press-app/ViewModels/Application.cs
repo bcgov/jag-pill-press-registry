@@ -88,6 +88,13 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
 
     }
 
+    public enum PrivateDwellingOptions
+    {
+        Yes = 931490000,
+        No,
+        Unkwown
+    }
+
     public class Application
     {
         public string id { get; set; } //adoxio_applicationid
@@ -472,7 +479,8 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public string methodOfPaymentOther { get; set; }
         public bool? whereWillEquipmentReside { get; set; }
         public CustomAddress civicAddressOfPurchaser { get; set; }
-        public int? privateDwelling { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public PrivateDwellingOptions? privateDwelling { get; set; }
         public bool? purchasedByIndividualOrBusiness { get; set; }
         public string legalNameOfPurchaserIndividual { get; set; }
         public CustomAddress purchasersCivicAddress { get; set; }
