@@ -526,11 +526,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         [JsonProperty(PropertyName = "_bcgov_bcsellersaddress_value")]
         public string _bcgovBcsellersaddressValue { get; set; }
 
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "bcgov_circumstancesstolenequipment")]
-        public string BcgovCircumstancesstolenequipment { get; set; }
-
+        
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "processid")]
