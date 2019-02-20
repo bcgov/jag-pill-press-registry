@@ -25,7 +25,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                 {
                     Id = location.BcgovLocationid,
                     Name = location.BcgovName,
-                    PrivateDwelling = location.BcgovPrivatedwelling,
+                    //PrivateDwelling = location.BcgovPrivatedwelling,
                     SettingDescription = location.BcgovSettingdescription
                 };
                 
@@ -40,7 +40,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
         public static void CopyValues(this MicrosoftDynamicsCRMbcgovLocation to, ViewModels.Location from)
         {
             to.BcgovName = from.Name;
-            to.BcgovPrivatedwelling = from.PrivateDwelling;
+            //to.BcgovPrivatedwelling = from.PrivateDwelling;
             to.BcgovSettingdescription = from.SettingDescription;
         }
 
@@ -52,7 +52,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                 result = new MicrosoftDynamicsCRMbcgovLocation()
                 {
                     BcgovLocationid = location.Id,
-                    BcgovPrivatedwelling = location.PrivateDwelling,
+                    //BcgovPrivatedwelling = location.PrivateDwelling,
                     BcgovSettingdescription = location.SettingDescription,
                 };    
                                 

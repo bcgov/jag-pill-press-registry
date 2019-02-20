@@ -16,8 +16,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
     using System.Net.Http;
 
     /// <summary>
-    /// This OData service is located at
-    /// https://pillspressdev.api.crm3.dynamics.com/api/data/v8.2/
+    /// This OData service is located at https://localhost:8888/dynamics/
     /// </summary>
     public partial class DynamicsClient : ServiceClient<DynamicsClient>, IDynamicsClient
     {
@@ -97,6 +96,16 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual IIncidentbusinesscontactset Incidentbusinesscontactset { get; private set; }
 
         /// <summary>
+        /// Gets the IInspectionownershipcategories.
+        /// </summary>
+        public virtual IInspectionownershipcategories Inspectionownershipcategories { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspections.
+        /// </summary>
+        public virtual IInspections Inspections { get; private set; }
+
+        /// <summary>
         /// Gets the ILocationequipmentset.
         /// </summary>
         public virtual ILocationequipmentset Locationequipmentset { get; private set; }
@@ -140,6 +149,16 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// Gets the IMsdyncustomaddressknowledgebasereset.
         /// </summary>
         public virtual IMsdyncustomaddressknowledgebasereset Msdyncustomaddressknowledgebasereset { get; private set; }
+
+        /// <summary>
+        /// Gets the IMsdyninspectionownershipcategory1set.
+        /// </summary>
+        public virtual IMsdyninspectionownershipcategory1set Msdyninspectionownershipcategory1set { get; private set; }
+
+        /// <summary>
+        /// Gets the IMsdyninspectionownershipcategorykset.
+        /// </summary>
+        public virtual IMsdyninspectionownershipcategorykset Msdyninspectionownershipcategorykset { get; private set; }
 
         /// <summary>
         /// Gets the ISharepointdocumentlocations.
@@ -413,6 +432,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             Equipmentlocations = new Equipmentlocations(this);
             Equipments = new Equipments(this);
             Incidentbusinesscontactset = new Incidentbusinesscontactset(this);
+            Inspectionownershipcategories = new Inspectionownershipcategories(this);
+            Inspections = new Inspections(this);
             Locationequipmentset = new Locationequipmentset(this);
             Locations = new Locations(this);
             Riskassessments = new Riskassessments(this);
@@ -422,11 +443,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             Invoices = new Invoices(this);
             Msdyncustomaddressknowledgearticlset = new Msdyncustomaddressknowledgearticlset(this);
             Msdyncustomaddressknowledgebasereset = new Msdyncustomaddressknowledgebasereset(this);
+            Msdyninspectionownershipcategory1set = new Msdyninspectionownershipcategory1set(this);
+            Msdyninspectionownershipcategorykset = new Msdyninspectionownershipcategorykset(this);
             Sharepointdocumentlocations = new Sharepointdocumentlocations(this);
             Sharepointsites = new Sharepointsites(this);
             Entitydefinitions = new Entitydefinitions(this);
             Globaloptionsetdefinitions = new Globaloptionsetdefinitions(this);
-            BaseUri = new System.Uri("https://pillspressdev.api.crm3.dynamics.com/api/data/v8.2");
+            BaseUri = new System.Uri("https://localhost:8888/dynamics");
             SerializationSettings = new JsonSerializerSettings
             {
                 Formatting = Newtonsoft.Json.Formatting.Indented,
