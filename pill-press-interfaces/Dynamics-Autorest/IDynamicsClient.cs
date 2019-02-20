@@ -11,8 +11,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
     using Newtonsoft.Json;
 
     /// <summary>
-    /// This OData service is located at
-    /// https://pillspressdev.api.crm3.dynamics.com/api/data/v8.2/
+    /// This OData service is located at https://localhost:8888/dynamics/
     /// </summary>
     public partial interface IDynamicsClient : System.IDisposable
     {
@@ -94,6 +93,16 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         IIncidentbusinesscontactset Incidentbusinesscontactset { get; }
 
         /// <summary>
+        /// Gets the IInspectionownershipcategories.
+        /// </summary>
+        IInspectionownershipcategories Inspectionownershipcategories { get; }
+
+        /// <summary>
+        /// Gets the IInspections.
+        /// </summary>
+        IInspections Inspections { get; }
+
+        /// <summary>
         /// Gets the ILocationequipmentset.
         /// </summary>
         ILocationequipmentset Locationequipmentset { get; }
@@ -137,6 +146,16 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// Gets the IMsdyncustomaddressknowledgebasereset.
         /// </summary>
         IMsdyncustomaddressknowledgebasereset Msdyncustomaddressknowledgebasereset { get; }
+
+        /// <summary>
+        /// Gets the IMsdyninspectionownershipcategory1set.
+        /// </summary>
+        IMsdyninspectionownershipcategory1set Msdyninspectionownershipcategory1set { get; }
+
+        /// <summary>
+        /// Gets the IMsdyninspectionownershipcategorykset.
+        /// </summary>
+        IMsdyninspectionownershipcategorykset Msdyninspectionownershipcategorykset { get; }
 
         /// <summary>
         /// Gets the ISharepointdocumentlocations.
