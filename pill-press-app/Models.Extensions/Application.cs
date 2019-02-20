@@ -178,7 +178,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     methodOfPayment = (MethodOfPayment?)incident.BcgovMethodofpayment,
                     methodOfPaymentOther = incident.BcgovMethodofpaymentother,
                     whereWillEquipmentReside = incident.BcgovWherewillequipmentreside,
-                    privateDwelling = incident.BcgovPrivatedwelling,
+                    privateDwelling = (PrivateDwellingOptions?)incident.BcgovPrivatedwelling,
                     purchasedByIndividualOrBusiness = incident.BcgovPurchasedbyindividualorbusiness,
                     legalNameOfPurchaserIndividual = incident.BcgovLegalnameofpurchaserindividual,
                     purchasersTelephoneNumber = incident.BcgovPurchaserstelephonenumber,
@@ -487,7 +487,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             to.BcgovMethodofpayment = (int?)from.methodOfPayment ;
             to.BcgovMethodofpaymentother = from.methodOfPaymentOther ;
             to.BcgovWherewillequipmentreside = from.whereWillEquipmentReside ;
-            to.BcgovPrivatedwelling = from.privateDwelling ;
+            to.BcgovPrivatedwelling = (int?)from.privateDwelling ;
             to.BcgovPurchasedbyindividualorbusiness = from.purchasedByIndividualOrBusiness ;
             to.BcgovLegalnameofpurchaserindividual = from.legalNameOfPurchaserIndividual ;
             to.BcgovPurchaserstelephonenumber = from.purchasersTelephoneNumber ;
