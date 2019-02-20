@@ -75,7 +75,7 @@ export class ReportingSalesReviewComponent implements OnInit {
       this.busyPromise = zip(...saveList)
         .toPromise()
         .then(res => {
-            this.router.navigateByUrl(`/equipment-changes/reporting-changes/thank-you/${this.applicationId}`);
+            this.router.navigateByUrl(`/equipment-changes/reporting-sales/thank-you/${this.applicationId}`);
         }, err => {
           // todo: show errors;
         });
