@@ -97,7 +97,6 @@ import {
 import {
   AuthorizedApplicationThanksComponent
 } from './applications/authorized-owner/authorized-application-thanks/authorized-application-thanks.component';
-import { VersionInfoDialog } from './version-info/version-info.component';
 import { EquipmentTypeAndUseComponent } from './equipment-notification/equipment-type-and-use/equipment-type-and-use.component';
 import { EquipmentIdentificationComponent } from './equipment-notification/equipment-identification/equipment-identification.component';
 import { EquipmentSourceComponent } from './equipment-notification/equipment-source/equipment-source.component';
@@ -148,7 +147,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AuthorizedApplicationReviewComponent,
     AuthorizedApplicationThanksComponent,
     SellerOwnerDialogComponent,
-    VersionInfoDialog,
     EquipmentTypeAndUseComponent,
     EquipmentIdentificationComponent,
     EquipmentSourceComponent,
@@ -280,7 +278,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   ],
   entryComponents: [
     SellerOwnerDialogComponent,
-    VersionInfoDialog
   ],
   bootstrap: [AppComponent]
 })
