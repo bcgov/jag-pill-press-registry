@@ -29,7 +29,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// Initializes a new instance of the MicrosoftDynamicsCRMincident
         /// class.
         /// </summary>
-        public MicrosoftDynamicsCRMincident(string bcgovPurchaserssitelicensenumber = default(string), string _slainvokedidValue = default(string), System.DateTimeOffset? bcgovSubmitteddate = default(System.DateTimeOffset?), string bcgovEquipmentmake = default(string), int? statuscode = default(int?), System.DateTimeOffset? followupby = default(System.DateTimeOffset?), string bcgovPhoneofbusinessthathasgivenorloaned = default(string), int? onholdtime = default(int?), double? influencescore = default(double?), string bcgovHowispurchaserauthorizedother = default(string), string _kbarticleidValue = default(string), string bcgovLegislativeauthorityother = default(string), string bcgovManufacturingprocessdescription = default(string), System.DateTimeOffset? bcgovCancelledstatusdate = default(System.DateTimeOffset?), string _contactidValue = default(string), bool? bcgovIntendtosellpillpress = default(bool?), bool? bcgovIncompletecycle3 = default(bool?), string _createdbyexternalpartyValue = default(string), int? actualserviceunits = default(int?), string bcgovEquipmenttypeother = default(string), long? versionnumber = default(long?), string entityimageUrl = default(string), string bcgovPillpressencapsulatorsizeother = default(string), bool? bcgovUsingtomanufactureaproduct = default(bool?), string _bcgovBcsellersaddressValue = default(string), string processid = default(string), string bcgovCircumstancesofloss = default(string), string _firstresponsebykpiidValue = default(string), bool? bcgovConfirmationofauthorizeduse = default(bool?), string bcgovMainbusinessfocus = default(string), System.DateTimeOffset? bcgovApprovedstatusdate = default(System.DateTimeOffset?), string bcgovHowcameintopossessionother = default(string), string bcgovCircumstancesofdestroyedequipment = default(string), string _modifiedonbehalfbyValue = default(string), bool? bcgovFoodanddrugact = default(bool?), System.DateTimeOffset? createdon = default(System.DateTimeOffset?), string _transactioncurrencyidValue = default(string), bool? bcgovSitelicence = default(bool?), bool? bcgovImportedtobcbyathirdparty = default(bool?), int? billedserviceunits = default(int?), bool? bcgovHowispurchaserauthorizedwaiver = default(bool?), bool? bcgovHowispurchaserauthorizedregisteredseller = default(bool?), string bcgovLegalnameofpersonresponsibleforbusiness = default(string), string bcgovTypeofsaleother = default(string), System.DateTimeOffset? bcgovHearingstatusdate = default(System.DateTimeOffset?), System.DateTimeOffset? bcgovPolicereportdate = default(System.DateTimeOffset?), string bcgovNameonpurchaserssitelicense = default(string), bool? bcgovHealthcanadalicensedel = default(bool?), bool? decremententitlementterm = default(bool?), bool? customercontacted = default(bool?), System.DateTimeOffset? bcgovIncompletestatusdate = default(System.DateTimeOffset?), bool? bcgovHowispurchaseauthorizedao = default(bool?), System.DateTimeOffset? bcgovDateofpurchasefrombcseller = default(System.DateTimeOffset?), System.DateTimeOffset? bcgovDraftstatusdate = default(System.DateTimeOffset?), string bcgovOutsidebcsellersname = default(string), string _modifiedbyexternalpartyValue = default(string), string _bcgovOriginatingsellersaddressValue = default(string), int? caseorigincode = default(int?), string bcgovPurchasersemailaddress = default(string), string _owningbusinessunitValue = default(string), string bcgovPurchaserstelephonenumber = default(string), int? bcgovEncapsulatormaxcapacity = default(int?), string bcgovNameofbusinessthathasgivenorloaned = default(string), bool? bcgovProvidingmanufacturingtoothers = default(bool?), bool? bcgovPolicenotified = default(bool?), bool? isescalated = default(bool?), string _bcgovImportersaddressValue = default(string), int? bcgovLevelofequipmentautomation = default(int?), System.DateTimeOffset? lastonholdtime = default(System.DateTimeOffset?), bool? merged = default(bool?), bool? bcgovKindsofproductothercheck = default(bool?), bool? bcgovKindsofproductsdrugs = default(bool?), string _primarycontactidValue = default(string), string bcgovBcsellersregistrationnumber = default(string), bool? bcgovKindofalternateownershipothercheck = default(bool?), string bcgovWhyhaveyourentedorleased = default(string), int? servicestage = default(int?), string bcgovDrugestablishmentlicencenumber = default(string), bool? bcgovWherewillequipmentreside = default(bool?), bool? bcgovIntendonrentingleasingtoothers = default(bool?), string _customeridValue = default(string), System.DateTimeOffset? modifiedon = default(System.DateTimeOffset?), System.DateTimeOffset? bcgovWithdrawnstatusdate = default(System.DateTimeOffset?), bool? bcgovIdnumbercollected = default(bool?), bool? bcgovHealthcanadalicensesitelicense = default(bool?), bool? bcgovIntendtoselldiemouldorpunch = default(bool?), string traversedpath = default(string), string bcgovSettingdescription = default(string), string bcgovNameoforiginatingseller = default(string), string _createdbyValue = default(string), bool? bcgovOnetimesellerofowncontrolledequipment = default(bool?), string bcgovWhyhaveyouacceptedorborrowed = default(string), string _modifiedbyValue = default(string), string _contractdetailidValue = default(string), bool? bcgovKindsofproductsnaturalhealthproducts = default(bool?), string _entitlementidValue = default(string), string bcgovEquipmentmodel = default(string), string _parentcaseidValue = default(string), string _bcgovSubmitterValue = default(string), string stageid = default(string), System.DateTimeOffset? bcgovDateofpurchasefromoutsidebcseller = default(System.DateTimeOffset?), bool? bcgovRetailerofcontrolledequipment = default(bool?), string bcgovPhonenumberofpersonresponsibleforbusiness = default(string), System.DateTimeOffset? bcgovDrugestablishmentlicenceexpirydate = default(System.DateTimeOffset?), System.DateTimeOffset? bcgovDeniedstatusdate = default(System.DateTimeOffset?), string bcgovNameofmanufacturer = default(string), bool? bcgovProducingownproduct = default(bool?), string _masteridValue = default(string), System.DateTimeOffset? bcgovUnderreviewstatusdate = default(System.DateTimeOffset?), string bcgovEmailofthebusinessthathasgivenorloaned = default(string), bool? bcgovPurchasedfromselleroutsideofbc = default(bool?), bool? bcgovIassembleditmyself = default(bool?), string _owningteamValue = default(string), bool? bcgovIntendtosellencapsulator = default(bool?), string bcgovPersonbusinessthatbuiltequipment = default(string), bool? bcgovDeclarationofcorrectinformation = default(bool?), System.DateTimeOffset? bcgovWithriskassessmentstatusdate = default(System.DateTimeOffset?), bool? checkemail = default(bool?), string productserialnumber = default(string), string bcgovKindofalternateownershipother = default(string), int? firstresponseslastatus = default(int?), string bcgovWhodestroyedequipment = default(string), int? timezoneruleversionnumber = default(int?), string bcgovCustombuiltserialnumber = default(string), bool? bcgovGivenorloanedtome = default(bool?), string bcgovOtherlicencebusinessname = default(string), string _productidValue = default(string), string bcgovEmailofpersonresponsibleforbusiness = default(string), string bcgovWheredidyouobtainparts = default(string), int? statecode = default(int?), bool? bcgovOwnedbeforejan2019 = default(bool?), string bcgovTypeofidnumbercollected = default(string), bool? bcgovIncompletecycle2 = default(bool?), int? bcgovPillpressmaxcapacity = default(int?), bool? bcgovManufacturerofcontrolledequipment = default(bool?), int? bcgovOriginatingsellerslocation = default(int?), string bcgovKindsofproductsother = default(string), string bcgovLegalnameofpurchaserindividual = default(string), string _bcgovAddresswhereequipmentwasdestroyedValue = default(string), System.DateTimeOffset? resolveby = default(System.DateTimeOffset?), string _owninguserValue = default(string), bool? routecase = default(bool?), string bcgovPurchaserssitelicenseexpirydate = default(string), bool? isdecrementing = default(bool?), string _slaidValue = default(string), bool? activitiescomplete = default(bool?), string bcgovNameofimporter = default(string), int? messagetypecode = default(int?), string _contractidValue = default(string), string bcgovPolicefilenumber = default(string), System.DateTimeOffset? bcgovDateofpurchasefromimporter = default(System.DateTimeOffset?), bool? bcgovOwnusepossesstoproduceaproduct = default(bool?), string _subjectidValue = default(string), bool? bcgovSellequipment = default(bool?), bool? bcgovPillpressencapsulatorsizeothercheck = default(bool?), string description = default(string), string _existingcaseValue = default(string), bool? bcgovComplete = default(bool?), string bcgovDelbusinessname = default(string), string bcgovNameofpurchaserbusiness = default(string), string bcgovOtherlicence = default(string), string bcgovPurchaserswaivernumber = default(string), int? contractservicelevelcode = default(int?), string entityimageid = default(string), System.DateTimeOffset? bcgovDateofsale = default(System.DateTimeOffset?), int? severitycode = default(int?), System.DateTimeOffset? bcgovWithdeputyregistrarstatusdate = default(System.DateTimeOffset?), string _bcgovAddressofbusinessthathasgivenorloanedValue = default(string), string bcgovPurchaserregistrationnumber = default(string), bool? bcgovPurchasedbyindividualorbusiness = default(bool?), string bcgovNameonpurchasersdel = default(string), string _bcgovPurchasersbusinessaddressValue = default(string), string incidentid = default(string), string bcgovOtherlicencenumber = default(string), string bcgovNameofbcseller = default(string), int? bcgovOutsidebcsellerslocation = default(int?), int? bcgovMethodofpayment = default(int?), string _bcgovAssociatedriskassessmentrecordValue = default(string), string bcgovSitelicencebusinessname = default(string), System.DateTimeOffset? bcgovDateofequipmentchange = default(System.DateTimeOffset?), string _bcgovCivicaddressofpurchaserValue = default(string), int? bcgovEquipmenttype = default(int?), int? bcgovGeographicallocationofbusinesspurchaser = default(int?), string _accountidValue = default(string), int? utcconversiontimezonecode = default(int?), bool? bcgovIntendtosellpharmaceuticalmixerorblender = default(bool?), int? bcgovApplicationstep = default(int?), System.DateTimeOffset? bcgovCompletestatusdate = default(System.DateTimeOffset?), string bcgovEmailofbusinessthathasrentedorleased = default(string), System.DateTimeOffset? bcgovOtherlicenceexpirydate = default(System.DateTimeOffset?), System.DateTimeOffset? bcgovPendingstatusdate = default(System.DateTimeOffset?), bool? bcgovOwnintendtoownequipmentforbusinessuse = default(bool?), string bcgovPhoneofbusinessthathasrentedorleased = default(string), int? customersatisfactioncode = default(int?), long? entityimageTimestamp = default(long?), string bcgovHowwasequipmentbuiltother = default(string), string _bcgovPurchaserscivicaddressValue = default(string), bool? followuptaskcreated = default(bool?), string _bcgovEquipmentrecordValue = default(string), string _owneridValue = default(string), int? bcgovTypeofsale = default(int?), bool? bcgovConsentforemailcorrespondence = default(bool?), string bcgovCircumstancesofstolenequipment = default(string), System.DateTimeOffset? overriddencreatedon = default(System.DateTimeOffset?), string _bcgovApplicationtypeidValue = default(string), int? bcgovApplicationreason = default(int?), bool? firstresponsesent = default(bool?), string bcgovBcsellerscontactemail = default(string), bool? bcgovRightstoownuseorpossessretained = default(bool?), int? prioritycode = default(int?), System.DateTimeOffset? bcgovPurchasersdelexpirydate = default(System.DateTimeOffset?), string _bcgovAddressofpersonbusinessValue = default(string), string bcgovSitelicencenumber = default(string), string ticketnumber = default(string), string bcgovImportersregistrationnumber = default(string), int? casetypecode = default(int?), bool? bcgovCurrentlyownusepossessequipment = default(bool?), int? incidentstagecode = default(int?), bool? bcgovBorrowrentleaseequipment = default(bool?), string bcgovExplanationofequipmentuse = default(string), bool? bcgovOtherlicencecheck = default(bool?), bool? bcgovHowcameintopossessionothercheck = default(bool?), string bcgovHowequipmentbuiltdescription = default(string), bool? bcgovIncomplete = default(bool?), bool? bcgovRentingorleasingfromanotherbusiness = default(bool?), System.DateTimeOffset? bcgovWhendidyouassembleequipment = default(System.DateTimeOffset?), string bcgovIntendtosellother = default(string), string bcgovTypeofsellerother = default(string), bool? bcgovDrugestablishmentlicence = default(bool?), int? bcgovPrivatedwelling = default(int?), string _socialprofileidValue = default(string), int? bcgovHowwasequipmentbuilt = default(int?), bool? bcgovAllownermanagerscreeningconsentsreceived = default(bool?), string _bcgovRelatedapplicationsidValue = default(string), object exchangerate = default(object), string bcgovBcsellerscontactphonenumber = default(string), bool? bcgovDoyouassembleforotherbusinesses = default(bool?), object entityimage = default(object), int? numberofchildincidents = default(int?), bool? bcgovFoippaconsent = default(bool?), System.DateTimeOffset? responseby = default(System.DateTimeOffset?), System.DateTimeOffset? bcgovSitelicenceexpirydate = default(System.DateTimeOffset?), string _bcgovAddressofbusinessthathasrentedorleasedValue = default(string), bool? bcgovIspurchaserapersonofbc = default(bool?), System.DateTimeOffset? escalatedon = default(System.DateTimeOffset?), string bcgovSerialnumber = default(string), bool? bcgovHowwasequipmentbuiltothercheck = default(bool?), string title = default(string), bool? bcgovBcgovLegislativeauthorityothercheck = default(bool?), int? resolvebyslastatus = default(int?), string bcgovDetailsofassemblyforotherbusinesses = default(string), int? bcgovPillpressencapsulatorsize = default(int?), string _bcgovEquipmentlocationValue = default(string), bool? bcgovAlternativeownershiparrangement = default(bool?), int? importsequencenumber = default(int?), string _bcgovOutsidebcsellersaddressValue = default(string), bool? bcgovIntendtopurchaseequipment = default(bool?), int? bcgovTypeofchange = default(int?), bool? bcgovPurchasedfrombcseller = default(bool?), bool? blockedprofile = default(bool?), bool? bcgovIntendonsellingequipmenttoothers = default(bool?), string _createdonbehalfbyValue = default(string), double? sentimentvalue = default(double?), string bcgovPurchaserdbaname = default(string), string bcgovSerialnumberkeypartdescription = default(string), System.DateTimeOffset? bcgovWithceinvestigationsstatusdate = default(System.DateTimeOffset?), string bcgovDetailsofhowequipmentcameintopossession = default(string), bool? bcgovPossessuntilicansell = default(bool?), string bcgovPurchasersdelnumber = default(string), bool? bcgovTypeofsellerothercheck = default(bool?), bool? bcgovSerialnumberforcustombuilt = default(bool?), string bcgovMethodofpaymentother = default(string), string bcgovNameofbusinessthathasrentedorleased = default(string), string _resolvebykpiidValue = default(string), string bcgovPurchasersregistrationnumber = default(string), bool? bcgovAreyouaregisteredseller = default(bool?), bool? bcgovIntendtosellothercheck = default(bool?), string bcgovAdditionalbusinessinformationaboutseller = default(string), IList<MicrosoftDynamicsCRMpostregarding> incidentPostRegardings = default(IList<MicrosoftDynamicsCRMpostregarding>), IList<MicrosoftDynamicsCRMpostfollow> incidentPostFollows = default(IList<MicrosoftDynamicsCRMpostfollow>), MicrosoftDynamicsCRMincident masterid = default(MicrosoftDynamicsCRMincident), IList<MicrosoftDynamicsCRMincident> incidentMasterIncident = default(IList<MicrosoftDynamicsCRMincident>), IList<MicrosoftDynamicsCRMlead> originatingCaseLead = default(IList<MicrosoftDynamicsCRMlead>), MicrosoftDynamicsCRMincident parentcaseid = default(MicrosoftDynamicsCRMincident), IList<MicrosoftDynamicsCRMincident> incidentParentIncident = default(IList<MicrosoftDynamicsCRMincident>), MicrosoftDynamicsCRMsystemuser modifiedonbehalfby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMactivityparty> incidentActivityParties = default(IList<MicrosoftDynamicsCRMactivityparty>), MicrosoftDynamicsCRMsla slainvokedidSla = default(MicrosoftDynamicsCRMsla), MicrosoftDynamicsCRMtransactioncurrency transactioncurrencyid = default(MicrosoftDynamicsCRMtransactioncurrency), IList<MicrosoftDynamicsCRMsocialactivity> incidentSocialActivities = default(IList<MicrosoftDynamicsCRMsocialactivity>), MicrosoftDynamicsCRMslakpiinstance firstresponsebykpiid = default(MicrosoftDynamicsCRMslakpiinstance), MicrosoftDynamicsCRMsla slaidSla = default(MicrosoftDynamicsCRMsla), MicrosoftDynamicsCRMproduct productid = default(MicrosoftDynamicsCRMproduct), IList<MicrosoftDynamicsCRMslakpiinstance> slakpiinstanceIncident = default(IList<MicrosoftDynamicsCRMslakpiinstance>), IList<MicrosoftDynamicsCRMactioncard> incidentActioncard = default(IList<MicrosoftDynamicsCRMactioncard>), IList<MicrosoftDynamicsCRMappointment> incidentAppointments = default(IList<MicrosoftDynamicsCRMappointment>), IList<MicrosoftDynamicsCRMconnection> incidentConnections2 = default(IList<MicrosoftDynamicsCRMconnection>), IList<MicrosoftDynamicsCRMserviceappointment> incidentServiceAppointments = default(IList<MicrosoftDynamicsCRMserviceappointment>), MicrosoftDynamicsCRMteam owningteam = default(MicrosoftDynamicsCRMteam), MicrosoftDynamicsCRMcontractdetail contractdetailid = default(MicrosoftDynamicsCRMcontractdetail), MicrosoftDynamicsCRMincident existingcase = default(MicrosoftDynamicsCRMincident), IList<MicrosoftDynamicsCRMincident> incidentExistingcase = default(IList<MicrosoftDynamicsCRMincident>), IList<MicrosoftDynamicsCRMqueueitem> incidentQueueItem = default(IList<MicrosoftDynamicsCRMqueueitem>), IList<MicrosoftDynamicsCRMknowledgebaserecord> knowledgeBaseRecordIncident = default(IList<MicrosoftDynamicsCRMknowledgebaserecord>), IList<MicrosoftDynamicsCRMphonetocaseprocess> incidentPhonetocaseprocess = default(IList<MicrosoftDynamicsCRMphonetocaseprocess>), IList<MicrosoftDynamicsCRMincidentresolution> incidentIncidentResolutions = default(IList<MicrosoftDynamicsCRMincidentresolution>), IList<MicrosoftDynamicsCRMemail> incidentEmails = default(IList<MicrosoftDynamicsCRMemail>), MicrosoftDynamicsCRMprocessstage stageidProcessstage = default(MicrosoftDynamicsCRMprocessstage), IList<MicrosoftDynamicsCRMasyncoperation> incidentAsyncOperations = default(IList<MicrosoftDynamicsCRMasyncoperation>), IList<MicrosoftDynamicsCRMduplicaterecord> incidentDuplicateMatchingRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMphonecall> incidentPhonecalls = default(IList<MicrosoftDynamicsCRMphonecall>), IList<MicrosoftDynamicsCRMconnection> incidentConnections1 = default(IList<MicrosoftDynamicsCRMconnection>), MicrosoftDynamicsCRMbusinessunit owningbusinessunit = default(MicrosoftDynamicsCRMbusinessunit), MicrosoftDynamicsCRMcontact customeridContact = default(MicrosoftDynamicsCRMcontact), MicrosoftDynamicsCRMsubject subjectid = default(MicrosoftDynamicsCRMsubject), MicrosoftDynamicsCRMentitlement entitlementid = default(MicrosoftDynamicsCRMentitlement), IList<MicrosoftDynamicsCRMannotation> incidentAnnotation = default(IList<MicrosoftDynamicsCRMannotation>), IList<MicrosoftDynamicsCRMrecurringappointmentmaster> incidentRecurringAppointmentMasters = default(IList<MicrosoftDynamicsCRMrecurringappointmentmaster>), MicrosoftDynamicsCRMsocialprofile socialprofileid = default(MicrosoftDynamicsCRMsocialprofile), MicrosoftDynamicsCRMsystemuser createdby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMactivitypointer> incidentActivityPointers = default(IList<MicrosoftDynamicsCRMactivitypointer>), IList<MicrosoftDynamicsCRMbulkdeletefailure> incidentBulkDeleteFailures = default(IList<MicrosoftDynamicsCRMbulkdeletefailure>), MicrosoftDynamicsCRMaccount customeridAccount = default(MicrosoftDynamicsCRMaccount), MicrosoftDynamicsCRMsystemuser owninguser = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMslakpiinstance resolvebykpiid = default(MicrosoftDynamicsCRMslakpiinstance), MicrosoftDynamicsCRMcontact primarycontactid = default(MicrosoftDynamicsCRMcontact), MicrosoftDynamicsCRMcontact responsiblecontactid = default(MicrosoftDynamicsCRMcontact), MicrosoftDynamicsCRMsystemuser createdonbehalfby = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMprincipal ownerid = default(MicrosoftDynamicsCRMprincipal), IList<MicrosoftDynamicsCRMletter> incidentLetters = default(IList<MicrosoftDynamicsCRMletter>), IList<MicrosoftDynamicsCRMsyncerror> incidentSyncErrors = default(IList<MicrosoftDynamicsCRMsyncerror>), MicrosoftDynamicsCRMsystemuser modifiedby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMfax> incidentFaxes = default(IList<MicrosoftDynamicsCRMfax>), MicrosoftDynamicsCRMcontract contractid = default(MicrosoftDynamicsCRMcontract), IList<MicrosoftDynamicsCRMknowledgearticleincident> knowledgearticleIncidents = default(IList<MicrosoftDynamicsCRMknowledgearticleincident>), IList<MicrosoftDynamicsCRMduplicaterecord> incidentDuplicateBaseRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMtask> incidentTasks = default(IList<MicrosoftDynamicsCRMtask>), MicrosoftDynamicsCRMkbarticle kbarticleid = default(MicrosoftDynamicsCRMkbarticle), IList<MicrosoftDynamicsCRMabsScheduledprocessexecution> incidentAbsScheduledprocessexecutions = default(IList<MicrosoftDynamicsCRMabsScheduledprocessexecution>), IList<MicrosoftDynamicsCRMsharepointdocumentlocation> incidentSharePointDocumentLocations = default(IList<MicrosoftDynamicsCRMsharepointdocumentlocation>), MicrosoftDynamicsCRMbcgovApplicationtype bcgovApplicationTypeId = default(MicrosoftDynamicsCRMbcgovApplicationtype), MicrosoftDynamicsCRMbcgovCustomaddress bcgovAddressofBusinessthathasRentedorLeased = default(MicrosoftDynamicsCRMbcgovCustomaddress), MicrosoftDynamicsCRMcontact bcgovSubmitter = default(MicrosoftDynamicsCRMcontact), MicrosoftDynamicsCRMbcgovCustomaddress bcgovAddressofBusinessthathasGivenorLoaned = default(MicrosoftDynamicsCRMbcgovCustomaddress), MicrosoftDynamicsCRMbcgovCustomaddress bcgovAddressofPersonBusiness = default(MicrosoftDynamicsCRMbcgovCustomaddress), MicrosoftDynamicsCRMbcgovCustomaddress bcgovBCSellersAddress = default(MicrosoftDynamicsCRMbcgovCustomaddress), MicrosoftDynamicsCRMbcgovCustomaddress bcgovImportersAddress = default(MicrosoftDynamicsCRMbcgovCustomaddress), MicrosoftDynamicsCRMbcgovCustomaddress bcgovOriginatingSellersAddress = default(MicrosoftDynamicsCRMbcgovCustomaddress), MicrosoftDynamicsCRMbcgovCustomaddress bcgovOutsideBCSellersAddress = default(MicrosoftDynamicsCRMbcgovCustomaddress), MicrosoftDynamicsCRMbcgovEquipment bcgovRelatedApplicationsId = default(MicrosoftDynamicsCRMbcgovEquipment), MicrosoftDynamicsCRMbcgovEquipment bcgovEquipmentRecord = default(MicrosoftDynamicsCRMbcgovEquipment), IList<MicrosoftDynamicsCRMbcgovCertificate> bcgovIncidentBcgovCertificateApplication = default(IList<MicrosoftDynamicsCRMbcgovCertificate>), IList<MicrosoftDynamicsCRMbcgovRiskassessment> bcgovIncidentBcgovRiskassessmentApplicationID = default(IList<MicrosoftDynamicsCRMbcgovRiskassessment>), IList<MicrosoftDynamicsCRMbcgovBusinesscontact> bcgovIncidentBusinesscontact = default(IList<MicrosoftDynamicsCRMbcgovBusinesscontact>), IList<MicrosoftDynamicsCRMbcgovCustomproduct> bcgovIncidentCustomproductRelatedApplication = default(IList<MicrosoftDynamicsCRMbcgovCustomproduct>), IList<MicrosoftDynamicsCRMbcgovLocation> bcgovIncidentLocationAssociatedApplication = default(IList<MicrosoftDynamicsCRMbcgovLocation>), MicrosoftDynamicsCRMbcgovLocation bcgovEquipmentLocation = default(MicrosoftDynamicsCRMbcgovLocation), MicrosoftDynamicsCRMbcgovRiskassessment bcgovAssociatedRiskAssessmentRecord = default(MicrosoftDynamicsCRMbcgovRiskassessment), MicrosoftDynamicsCRMbcgovCustomaddress bcgovAddressWhereEquipmentWasDestroyed = default(MicrosoftDynamicsCRMbcgovCustomaddress), MicrosoftDynamicsCRMbcgovCustomaddress bcgovCivicAddressofPurchaser = default(MicrosoftDynamicsCRMbcgovCustomaddress), MicrosoftDynamicsCRMbcgovCustomaddress bcgovPurchasersCivicAddress = default(MicrosoftDynamicsCRMbcgovCustomaddress), MicrosoftDynamicsCRMbcgovCustomaddress bcgovPurchasersBusinessAddress = default(MicrosoftDynamicsCRMbcgovCustomaddress))
+        public MicrosoftDynamicsCRMincident(string bcgovPurchaserssitelicensenumber = default(string), string _slainvokedidValue = default(string), System.DateTimeOffset? bcgovSubmitteddate = default(System.DateTimeOffset?), string bcgovEquipmentmake = default(string), int? statuscode = default(int?), System.DateTimeOffset? followupby = default(System.DateTimeOffset?), string bcgovPhoneofbusinessthathasgivenorloaned = default(string), int? onholdtime = default(int?), double? influencescore = default(double?), string bcgovHowispurchaserauthorizedother = default(string), string _kbarticleidValue = default(string), string bcgovLegislativeauthorityother = default(string), string bcgovManufacturingprocessdescription = default(string), System.DateTimeOffset? bcgovCancelledstatusdate = default(System.DateTimeOffset?), string _contactidValue = default(string), bool? bcgovIntendtosellpillpress = default(bool?), bool? bcgovIncompletecycle3 = default(bool?), string _createdbyexternalpartyValue = default(string), int? actualserviceunits = default(int?), string bcgovEquipmenttypeother = default(string), long? versionnumber = default(long?), string entityimageUrl = default(string), string bcgovPillpressencapsulatorsizeother = default(string), bool? bcgovUsingtomanufactureaproduct = default(bool?), string _bcgovBcsellersaddressValue = default(string), string bcgovCircumstancesstolenequipment = default(string), string processid = default(string), System.DateTimeOffset? bcgovDraftstatusdate = default(System.DateTimeOffset?), bool? bcgovDoyouassembleforotherbusinesses = default(bool?), string _firstresponsebykpiidValue = default(string), bool? bcgovConfirmationofauthorizeduse = default(bool?), string bcgovMainbusinessfocus = default(string), System.DateTimeOffset? bcgovApprovedstatusdate = default(System.DateTimeOffset?), string bcgovHowcameintopossessionother = default(string), string _modifiedonbehalfbyValue = default(string), bool? bcgovFoodanddrugact = default(bool?), System.DateTimeOffset? createdon = default(System.DateTimeOffset?), string _transactioncurrencyidValue = default(string), bool? bcgovSitelicence = default(bool?), bool? bcgovImportedtobcbyathirdparty = default(bool?), int? billedserviceunits = default(int?), bool? bcgovHowispurchaserauthorizedwaiver = default(bool?), bool? bcgovHowispurchaserauthorizedregisteredseller = default(bool?), string bcgovLegalnameofpersonresponsibleforbusiness = default(string), string bcgovTypeofsaleother = default(string), System.DateTimeOffset? bcgovHearingstatusdate = default(System.DateTimeOffset?), System.DateTimeOffset? bcgovPolicereportdate = default(System.DateTimeOffset?), string bcgovNameonpurchaserssitelicense = default(string), bool? bcgovConsentforemailcorrespondence = default(bool?), bool? bcgovHealthcanadalicensedel = default(bool?), bool? decremententitlementterm = default(bool?), bool? customercontacted = default(bool?), System.DateTimeOffset? bcgovIncompletestatusdate = default(System.DateTimeOffset?), bool? bcgovHowispurchaseauthorizedao = default(bool?), System.DateTimeOffset? bcgovDateofpurchasefrombcseller = default(System.DateTimeOffset?), string bcgovOutsidebcsellersname = default(string), string _modifiedbyexternalpartyValue = default(string), string _bcgovOriginatingsellersaddressValue = default(string), int? caseorigincode = default(int?), string bcgovPurchasersemailaddress = default(string), string _owningbusinessunitValue = default(string), string bcgovPurchaserstelephonenumber = default(string), int? bcgovEncapsulatormaxcapacity = default(int?), bool? bcgovProvidingmanufacturingtoothers = default(bool?), bool? bcgovPolicenotified = default(bool?), bool? isescalated = default(bool?), string _bcgovImportersaddressValue = default(string), int? bcgovLevelofequipmentautomation = default(int?), System.DateTimeOffset? lastonholdtime = default(System.DateTimeOffset?), bool? merged = default(bool?), bool? bcgovKindsofproductothercheck = default(bool?), bool? bcgovKindsofproductsdrugs = default(bool?), string _primarycontactidValue = default(string), string bcgovBcsellersregistrationnumber = default(string), bool? bcgovKindofalternateownershipothercheck = default(bool?), string bcgovWhyhaveyourentedorleased = default(string), int? servicestage = default(int?), string bcgovDrugestablishmentlicencenumber = default(string), bool? bcgovWherewillequipmentreside = default(bool?), bool? bcgovIntendonrentingleasingtoothers = default(bool?), string _customeridValue = default(string), bool? bcgovIassembleditmyself = default(bool?), System.DateTimeOffset? modifiedon = default(System.DateTimeOffset?), System.DateTimeOffset? bcgovWithdrawnstatusdate = default(System.DateTimeOffset?), bool? bcgovIdnumbercollected = default(bool?), bool? bcgovHealthcanadalicensesitelicense = default(bool?), bool? bcgovIntendtoselldiemouldorpunch = default(bool?), string traversedpath = default(string), string bcgovSettingdescription = default(string), string bcgovNameoforiginatingseller = default(string), string _createdbyValue = default(string), bool? bcgovOnetimesellerofowncontrolledequipment = default(bool?), string bcgovWhyhaveyouacceptedorborrowed = default(string), string _modifiedbyValue = default(string), string _contractdetailidValue = default(string), bool? bcgovKindsofproductsnaturalhealthproducts = default(bool?), string _entitlementidValue = default(string), string bcgovEquipmentmodel = default(string), string _parentcaseidValue = default(string), string _bcgovSubmitterValue = default(string), string stageid = default(string), System.DateTimeOffset? bcgovDateofpurchasefromoutsidebcseller = default(System.DateTimeOffset?), bool? bcgovRetailerofcontrolledequipment = default(bool?), string bcgovPhonenumberofpersonresponsibleforbusiness = default(string), System.DateTimeOffset? bcgovDrugestablishmentlicenceexpirydate = default(System.DateTimeOffset?), System.DateTimeOffset? bcgovDeniedstatusdate = default(System.DateTimeOffset?), string bcgovNameofmanufacturer = default(string), bool? bcgovProducingownproduct = default(bool?), string _masteridValue = default(string), System.DateTimeOffset? bcgovUnderreviewstatusdate = default(System.DateTimeOffset?), string _bcgovPurchaserscivicaddressValue = default(string), string bcgovEmailofthebusinessthathasgivenorloaned = default(string), bool? bcgovPurchasedfromselleroutsideofbc = default(bool?), string bcgovSerialnumber = default(string), string _owningteamValue = default(string), bool? bcgovIntendtosellencapsulator = default(bool?), string bcgovPersonbusinessthatbuiltequipment = default(string), bool? bcgovDeclarationofcorrectinformation = default(bool?), System.DateTimeOffset? bcgovWithriskassessmentstatusdate = default(System.DateTimeOffset?), bool? checkemail = default(bool?), string productserialnumber = default(string), string bcgovKindofalternateownershipother = default(string), int? firstresponseslastatus = default(int?), string bcgovWhodestroyedequipment = default(string), int? timezoneruleversionnumber = default(int?), string bcgovCustombuiltserialnumber = default(string), bool? bcgovGivenorloanedtome = default(bool?), string bcgovOtherlicencebusinessname = default(string), string _productidValue = default(string), string bcgovEmailofpersonresponsibleforbusiness = default(string), string bcgovWheredidyouobtainparts = default(string), int? statecode = default(int?), bool? bcgovOwnedbeforejan2019 = default(bool?), string bcgovTypeofidnumbercollected = default(string), bool? bcgovIncompletecycle2 = default(bool?), int? bcgovPillpressmaxcapacity = default(int?), bool? bcgovManufacturerofcontrolledequipment = default(bool?), int? bcgovOriginatingsellerslocation = default(int?), string bcgovKindsofproductsother = default(string), string bcgovLegalnameofpurchaserindividual = default(string), string _bcgovAddresswhereequipmentwasdestroyedValue = default(string), System.DateTimeOffset? resolveby = default(System.DateTimeOffset?), string _owninguserValue = default(string), bool? routecase = default(bool?), string bcgovPurchaserssitelicenseexpirydate = default(string), bool? isdecrementing = default(bool?), string _slaidValue = default(string), bool? activitiescomplete = default(bool?), string bcgovNameofimporter = default(string), int? messagetypecode = default(int?), string _contractidValue = default(string), string bcgovPolicefilenumber = default(string), System.DateTimeOffset? bcgovDateofpurchasefromimporter = default(System.DateTimeOffset?), bool? bcgovOwnusepossesstoproduceaproduct = default(bool?), string bcgovCircumstancesloss = default(string), string _subjectidValue = default(string), bool? bcgovSellequipment = default(bool?), bool? bcgovPillpressencapsulatorsizeothercheck = default(bool?), string description = default(string), string _existingcaseValue = default(string), bool? bcgovComplete = default(bool?), string bcgovDelbusinessname = default(string), string bcgovNameofpurchaserbusiness = default(string), string bcgovOtherlicence = default(string), string bcgovPurchaserswaivernumber = default(string), int? contractservicelevelcode = default(int?), string entityimageid = default(string), System.DateTimeOffset? bcgovDateofsale = default(System.DateTimeOffset?), int? severitycode = default(int?), System.DateTimeOffset? bcgovWithdeputyregistrarstatusdate = default(System.DateTimeOffset?), string _bcgovAddressofbusinessthathasgivenorloanedValue = default(string), string bcgovPurchaserregistrationnumber = default(string), bool? bcgovPurchasedbyindividualorbusiness = default(bool?), string bcgovNameonpurchasersdel = default(string), string _bcgovPurchasersbusinessaddressValue = default(string), string incidentid = default(string), string bcgovOtherlicencenumber = default(string), string bcgovNameofbcseller = default(string), int? bcgovOutsidebcsellerslocation = default(int?), int? bcgovMethodofpayment = default(int?), string _bcgovAssociatedriskassessmentrecordValue = default(string), string bcgovSitelicencebusinessname = default(string), System.DateTimeOffset? bcgovDateofequipmentchange = default(System.DateTimeOffset?), string _bcgovCivicaddressofpurchaserValue = default(string), int? bcgovEquipmenttype = default(int?), int? bcgovGeographicallocationofbusinesspurchaser = default(int?), string _accountidValue = default(string), int? utcconversiontimezonecode = default(int?), bool? bcgovIntendtosellpharmaceuticalmixerorblender = default(bool?), int? bcgovApplicationstep = default(int?), System.DateTimeOffset? bcgovCompletestatusdate = default(System.DateTimeOffset?), string bcgovEmailofbusinessthathasrentedorleased = default(string), System.DateTimeOffset? bcgovOtherlicenceexpirydate = default(System.DateTimeOffset?), System.DateTimeOffset? bcgovPendingstatusdate = default(System.DateTimeOffset?), bool? bcgovOwnintendtoownequipmentforbusinessuse = default(bool?), string bcgovPhoneofbusinessthathasrentedorleased = default(string), int? customersatisfactioncode = default(int?), long? entityimageTimestamp = default(long?), string bcgovHowwasequipmentbuiltother = default(string), bool? followuptaskcreated = default(bool?), string _bcgovEquipmentrecordValue = default(string), string _owneridValue = default(string), int? bcgovTypeofsale = default(int?), bool? bcgovFoippaconsent = default(bool?), System.DateTimeOffset? overriddencreatedon = default(System.DateTimeOffset?), string _bcgovApplicationtypeidValue = default(string), int? bcgovApplicationreason = default(int?), string bcgovCircumstancesdestroyedequipment = default(string), bool? firstresponsesent = default(bool?), string bcgovBcsellerscontactemail = default(string), bool? bcgovRightstoownuseorpossessretained = default(bool?), int? prioritycode = default(int?), System.DateTimeOffset? bcgovPurchasersdelexpirydate = default(System.DateTimeOffset?), string _bcgovAddressofpersonbusinessValue = default(string), string bcgovSitelicencenumber = default(string), string ticketnumber = default(string), string bcgovImportersregistrationnumber = default(string), int? casetypecode = default(int?), bool? bcgovCurrentlyownusepossessequipment = default(bool?), int? incidentstagecode = default(int?), bool? bcgovBorrowrentleaseequipment = default(bool?), string bcgovExplanationofequipmentuse = default(string), bool? bcgovOtherlicencecheck = default(bool?), bool? bcgovHowcameintopossessionothercheck = default(bool?), string bcgovHowequipmentbuiltdescription = default(string), bool? bcgovIncomplete = default(bool?), bool? bcgovRentingorleasingfromanotherbusiness = default(bool?), System.DateTimeOffset? bcgovWhendidyouassembleequipment = default(System.DateTimeOffset?), string bcgovIntendtosellother = default(string), string bcgovTypeofsellerother = default(string), bool? bcgovDrugestablishmentlicence = default(bool?), int? bcgovPrivatedwelling = default(int?), string _socialprofileidValue = default(string), int? bcgovHowwasequipmentbuilt = default(int?), bool? bcgovAllownermanagerscreeningconsentsreceived = default(bool?), string _bcgovRelatedapplicationsidValue = default(string), object exchangerate = default(object), string bcgovBcsellerscontactphonenumber = default(string), string bcgovNameofbusinessthathasgivenorloaned = default(string), object entityimage = default(object), int? numberofchildincidents = default(int?), bool? bcgovIntendtopurchaseequipment = default(bool?), System.DateTimeOffset? responseby = default(System.DateTimeOffset?), System.DateTimeOffset? bcgovSitelicenceexpirydate = default(System.DateTimeOffset?), string _bcgovAddressofbusinessthathasrentedorleasedValue = default(string), bool? bcgovIspurchaserapersonofbc = default(bool?), System.DateTimeOffset? escalatedon = default(System.DateTimeOffset?), bool? bcgovHowwasequipmentbuiltothercheck = default(bool?), string title = default(string), bool? bcgovBcgovLegislativeauthorityothercheck = default(bool?), int? resolvebyslastatus = default(int?), string bcgovDetailsofassemblyforotherbusinesses = default(string), int? bcgovPillpressencapsulatorsize = default(int?), string _bcgovEquipmentlocationValue = default(string), bool? bcgovAlternativeownershiparrangement = default(bool?), int? importsequencenumber = default(int?), string _bcgovOutsidebcsellersaddressValue = default(string), int? bcgovTypeofchange = default(int?), bool? bcgovPurchasedfrombcseller = default(bool?), bool? blockedprofile = default(bool?), bool? bcgovIntendonsellingequipmenttoothers = default(bool?), string _createdonbehalfbyValue = default(string), double? sentimentvalue = default(double?), string bcgovPurchaserdbaname = default(string), string bcgovSerialnumberkeypartdescription = default(string), System.DateTimeOffset? bcgovWithceinvestigationsstatusdate = default(System.DateTimeOffset?), string bcgovDetailsofhowequipmentcameintopossession = default(string), bool? bcgovPossessuntilicansell = default(bool?), string bcgovPurchasersdelnumber = default(string), bool? bcgovTypeofsellerothercheck = default(bool?), bool? bcgovSerialnumberforcustombuilt = default(bool?), string bcgovMethodofpaymentother = default(string), string bcgovNameofbusinessthathasrentedorleased = default(string), string _resolvebykpiidValue = default(string), string bcgovPurchasersregistrationnumber = default(string), bool? bcgovAreyouaregisteredseller = default(bool?), bool? bcgovIntendtosellothercheck = default(bool?), string bcgovAdditionalbusinessinformationaboutseller = default(string), IList<MicrosoftDynamicsCRMpostregarding> incidentPostRegardings = default(IList<MicrosoftDynamicsCRMpostregarding>), IList<MicrosoftDynamicsCRMpostfollow> incidentPostFollows = default(IList<MicrosoftDynamicsCRMpostfollow>), MicrosoftDynamicsCRMincident masterid = default(MicrosoftDynamicsCRMincident), IList<MicrosoftDynamicsCRMincident> incidentMasterIncident = default(IList<MicrosoftDynamicsCRMincident>), IList<MicrosoftDynamicsCRMlead> originatingCaseLead = default(IList<MicrosoftDynamicsCRMlead>), MicrosoftDynamicsCRMincident parentcaseid = default(MicrosoftDynamicsCRMincident), IList<MicrosoftDynamicsCRMincident> incidentParentIncident = default(IList<MicrosoftDynamicsCRMincident>), MicrosoftDynamicsCRMsystemuser modifiedonbehalfby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMactivityparty> incidentActivityParties = default(IList<MicrosoftDynamicsCRMactivityparty>), MicrosoftDynamicsCRMsla slainvokedidSla = default(MicrosoftDynamicsCRMsla), MicrosoftDynamicsCRMtransactioncurrency transactioncurrencyid = default(MicrosoftDynamicsCRMtransactioncurrency), IList<MicrosoftDynamicsCRMsocialactivity> incidentSocialActivities = default(IList<MicrosoftDynamicsCRMsocialactivity>), MicrosoftDynamicsCRMslakpiinstance firstresponsebykpiid = default(MicrosoftDynamicsCRMslakpiinstance), MicrosoftDynamicsCRMsla slaidSla = default(MicrosoftDynamicsCRMsla), MicrosoftDynamicsCRMproduct productid = default(MicrosoftDynamicsCRMproduct), IList<MicrosoftDynamicsCRMslakpiinstance> slakpiinstanceIncident = default(IList<MicrosoftDynamicsCRMslakpiinstance>), IList<MicrosoftDynamicsCRMactioncard> incidentActioncard = default(IList<MicrosoftDynamicsCRMactioncard>), IList<MicrosoftDynamicsCRMappointment> incidentAppointments = default(IList<MicrosoftDynamicsCRMappointment>), IList<MicrosoftDynamicsCRMconnection> incidentConnections2 = default(IList<MicrosoftDynamicsCRMconnection>), IList<MicrosoftDynamicsCRMserviceappointment> incidentServiceAppointments = default(IList<MicrosoftDynamicsCRMserviceappointment>), MicrosoftDynamicsCRMteam owningteam = default(MicrosoftDynamicsCRMteam), MicrosoftDynamicsCRMcontractdetail contractdetailid = default(MicrosoftDynamicsCRMcontractdetail), MicrosoftDynamicsCRMincident existingcase = default(MicrosoftDynamicsCRMincident), IList<MicrosoftDynamicsCRMincident> incidentExistingcase = default(IList<MicrosoftDynamicsCRMincident>), IList<MicrosoftDynamicsCRMqueueitem> incidentQueueItem = default(IList<MicrosoftDynamicsCRMqueueitem>), IList<MicrosoftDynamicsCRMknowledgebaserecord> knowledgeBaseRecordIncident = default(IList<MicrosoftDynamicsCRMknowledgebaserecord>), IList<MicrosoftDynamicsCRMphonetocaseprocess> incidentPhonetocaseprocess = default(IList<MicrosoftDynamicsCRMphonetocaseprocess>), IList<MicrosoftDynamicsCRMincidentresolution> incidentIncidentResolutions = default(IList<MicrosoftDynamicsCRMincidentresolution>), IList<MicrosoftDynamicsCRMemail> incidentEmails = default(IList<MicrosoftDynamicsCRMemail>), MicrosoftDynamicsCRMprocessstage stageidProcessstage = default(MicrosoftDynamicsCRMprocessstage), IList<MicrosoftDynamicsCRMasyncoperation> incidentAsyncOperations = default(IList<MicrosoftDynamicsCRMasyncoperation>), IList<MicrosoftDynamicsCRMduplicaterecord> incidentDuplicateMatchingRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMphonecall> incidentPhonecalls = default(IList<MicrosoftDynamicsCRMphonecall>), IList<MicrosoftDynamicsCRMconnection> incidentConnections1 = default(IList<MicrosoftDynamicsCRMconnection>), MicrosoftDynamicsCRMbusinessunit owningbusinessunit = default(MicrosoftDynamicsCRMbusinessunit), MicrosoftDynamicsCRMcontact customeridContact = default(MicrosoftDynamicsCRMcontact), MicrosoftDynamicsCRMsubject subjectid = default(MicrosoftDynamicsCRMsubject), MicrosoftDynamicsCRMentitlement entitlementid = default(MicrosoftDynamicsCRMentitlement), IList<MicrosoftDynamicsCRMannotation> incidentAnnotation = default(IList<MicrosoftDynamicsCRMannotation>), IList<MicrosoftDynamicsCRMrecurringappointmentmaster> incidentRecurringAppointmentMasters = default(IList<MicrosoftDynamicsCRMrecurringappointmentmaster>), MicrosoftDynamicsCRMsocialprofile socialprofileid = default(MicrosoftDynamicsCRMsocialprofile), MicrosoftDynamicsCRMsystemuser createdby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMactivitypointer> incidentActivityPointers = default(IList<MicrosoftDynamicsCRMactivitypointer>), IList<MicrosoftDynamicsCRMbulkdeletefailure> incidentBulkDeleteFailures = default(IList<MicrosoftDynamicsCRMbulkdeletefailure>), MicrosoftDynamicsCRMaccount customeridAccount = default(MicrosoftDynamicsCRMaccount), MicrosoftDynamicsCRMsystemuser owninguser = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMslakpiinstance resolvebykpiid = default(MicrosoftDynamicsCRMslakpiinstance), MicrosoftDynamicsCRMcontact primarycontactid = default(MicrosoftDynamicsCRMcontact), MicrosoftDynamicsCRMcontact responsiblecontactid = default(MicrosoftDynamicsCRMcontact), MicrosoftDynamicsCRMsystemuser createdonbehalfby = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMprincipal ownerid = default(MicrosoftDynamicsCRMprincipal), IList<MicrosoftDynamicsCRMletter> incidentLetters = default(IList<MicrosoftDynamicsCRMletter>), IList<MicrosoftDynamicsCRMsyncerror> incidentSyncErrors = default(IList<MicrosoftDynamicsCRMsyncerror>), MicrosoftDynamicsCRMsystemuser modifiedby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMfax> incidentFaxes = default(IList<MicrosoftDynamicsCRMfax>), MicrosoftDynamicsCRMcontract contractid = default(MicrosoftDynamicsCRMcontract), IList<MicrosoftDynamicsCRMknowledgearticleincident> knowledgearticleIncidents = default(IList<MicrosoftDynamicsCRMknowledgearticleincident>), IList<MicrosoftDynamicsCRMduplicaterecord> incidentDuplicateBaseRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMtask> incidentTasks = default(IList<MicrosoftDynamicsCRMtask>), MicrosoftDynamicsCRMkbarticle kbarticleid = default(MicrosoftDynamicsCRMkbarticle), IList<MicrosoftDynamicsCRMabsScheduledprocessexecution> incidentAbsScheduledprocessexecutions = default(IList<MicrosoftDynamicsCRMabsScheduledprocessexecution>), IList<MicrosoftDynamicsCRMsharepointdocumentlocation> incidentSharePointDocumentLocations = default(IList<MicrosoftDynamicsCRMsharepointdocumentlocation>), MicrosoftDynamicsCRMbcgovApplicationtype bcgovApplicationTypeId = default(MicrosoftDynamicsCRMbcgovApplicationtype), MicrosoftDynamicsCRMbcgovCustomaddress bcgovAddressofBusinessthathasRentedorLeased = default(MicrosoftDynamicsCRMbcgovCustomaddress), MicrosoftDynamicsCRMcontact bcgovSubmitter = default(MicrosoftDynamicsCRMcontact), MicrosoftDynamicsCRMbcgovCustomaddress bcgovAddressofBusinessthathasGivenorLoaned = default(MicrosoftDynamicsCRMbcgovCustomaddress), MicrosoftDynamicsCRMbcgovCustomaddress bcgovAddressofPersonBusiness = default(MicrosoftDynamicsCRMbcgovCustomaddress), MicrosoftDynamicsCRMbcgovCustomaddress bcgovBCSellersAddress = default(MicrosoftDynamicsCRMbcgovCustomaddress), MicrosoftDynamicsCRMbcgovCustomaddress bcgovImportersAddress = default(MicrosoftDynamicsCRMbcgovCustomaddress), MicrosoftDynamicsCRMbcgovCustomaddress bcgovOriginatingSellersAddress = default(MicrosoftDynamicsCRMbcgovCustomaddress), MicrosoftDynamicsCRMbcgovCustomaddress bcgovOutsideBCSellersAddress = default(MicrosoftDynamicsCRMbcgovCustomaddress), MicrosoftDynamicsCRMbcgovEquipment bcgovRelatedApplicationsId = default(MicrosoftDynamicsCRMbcgovEquipment), MicrosoftDynamicsCRMbcgovEquipment bcgovEquipmentRecord = default(MicrosoftDynamicsCRMbcgovEquipment), IList<MicrosoftDynamicsCRMbcgovCertificate> bcgovIncidentBcgovCertificateApplication = default(IList<MicrosoftDynamicsCRMbcgovCertificate>), IList<MicrosoftDynamicsCRMbcgovRiskassessment> bcgovIncidentBcgovRiskassessmentApplicationID = default(IList<MicrosoftDynamicsCRMbcgovRiskassessment>), IList<MicrosoftDynamicsCRMbcgovBusinesscontact> bcgovIncidentBusinesscontact = default(IList<MicrosoftDynamicsCRMbcgovBusinesscontact>), IList<MicrosoftDynamicsCRMbcgovCustomproduct> bcgovIncidentCustomproductRelatedApplication = default(IList<MicrosoftDynamicsCRMbcgovCustomproduct>), IList<MicrosoftDynamicsCRMbcgovLocation> bcgovIncidentLocationAssociatedApplication = default(IList<MicrosoftDynamicsCRMbcgovLocation>), MicrosoftDynamicsCRMbcgovLocation bcgovEquipmentLocation = default(MicrosoftDynamicsCRMbcgovLocation), MicrosoftDynamicsCRMbcgovRiskassessment bcgovAssociatedRiskAssessmentRecord = default(MicrosoftDynamicsCRMbcgovRiskassessment), MicrosoftDynamicsCRMbcgovCustomaddress bcgovAddressWhereEquipmentWasDestroyed = default(MicrosoftDynamicsCRMbcgovCustomaddress), MicrosoftDynamicsCRMbcgovCustomaddress bcgovCivicAddressofPurchaser = default(MicrosoftDynamicsCRMbcgovCustomaddress), MicrosoftDynamicsCRMbcgovCustomaddress bcgovPurchasersCivicAddress = default(MicrosoftDynamicsCRMbcgovCustomaddress), MicrosoftDynamicsCRMbcgovCustomaddress bcgovPurchasersBusinessAddress = default(MicrosoftDynamicsCRMbcgovCustomaddress))
         {
             BcgovPurchaserssitelicensenumber = bcgovPurchaserssitelicensenumber;
             this._slainvokedidValue = _slainvokedidValue;
@@ -56,14 +56,15 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
             BcgovPillpressencapsulatorsizeother = bcgovPillpressencapsulatorsizeother;
             BcgovUsingtomanufactureaproduct = bcgovUsingtomanufactureaproduct;
             this._bcgovBcsellersaddressValue = _bcgovBcsellersaddressValue;
+            BcgovCircumstancesstolenequipment = bcgovCircumstancesstolenequipment;
             Processid = processid;
-            BcgovCircumstancesofloss = bcgovCircumstancesofloss;
+            BcgovDraftstatusdate = bcgovDraftstatusdate;
+            BcgovDoyouassembleforotherbusinesses = bcgovDoyouassembleforotherbusinesses;
             this._firstresponsebykpiidValue = _firstresponsebykpiidValue;
             BcgovConfirmationofauthorizeduse = bcgovConfirmationofauthorizeduse;
             BcgovMainbusinessfocus = bcgovMainbusinessfocus;
             BcgovApprovedstatusdate = bcgovApprovedstatusdate;
             BcgovHowcameintopossessionother = bcgovHowcameintopossessionother;
-            BcgovCircumstancesofdestroyedequipment = bcgovCircumstancesofdestroyedequipment;
             this._modifiedonbehalfbyValue = _modifiedonbehalfbyValue;
             BcgovFoodanddrugact = bcgovFoodanddrugact;
             Createdon = createdon;
@@ -78,13 +79,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
             BcgovHearingstatusdate = bcgovHearingstatusdate;
             BcgovPolicereportdate = bcgovPolicereportdate;
             BcgovNameonpurchaserssitelicense = bcgovNameonpurchaserssitelicense;
+            BcgovConsentforemailcorrespondence = bcgovConsentforemailcorrespondence;
             BcgovHealthcanadalicensedel = bcgovHealthcanadalicensedel;
             Decremententitlementterm = decremententitlementterm;
             Customercontacted = customercontacted;
             BcgovIncompletestatusdate = bcgovIncompletestatusdate;
             BcgovHowispurchaseauthorizedao = bcgovHowispurchaseauthorizedao;
             BcgovDateofpurchasefrombcseller = bcgovDateofpurchasefrombcseller;
-            BcgovDraftstatusdate = bcgovDraftstatusdate;
             BcgovOutsidebcsellersname = bcgovOutsidebcsellersname;
             this._modifiedbyexternalpartyValue = _modifiedbyexternalpartyValue;
             this._bcgovOriginatingsellersaddressValue = _bcgovOriginatingsellersaddressValue;
@@ -93,7 +94,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
             this._owningbusinessunitValue = _owningbusinessunitValue;
             BcgovPurchaserstelephonenumber = bcgovPurchaserstelephonenumber;
             BcgovEncapsulatormaxcapacity = bcgovEncapsulatormaxcapacity;
-            BcgovNameofbusinessthathasgivenorloaned = bcgovNameofbusinessthathasgivenorloaned;
             BcgovProvidingmanufacturingtoothers = bcgovProvidingmanufacturingtoothers;
             BcgovPolicenotified = bcgovPolicenotified;
             Isescalated = isescalated;
@@ -112,6 +112,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
             BcgovWherewillequipmentreside = bcgovWherewillequipmentreside;
             BcgovIntendonrentingleasingtoothers = bcgovIntendonrentingleasingtoothers;
             this._customeridValue = _customeridValue;
+            BcgovIassembleditmyself = bcgovIassembleditmyself;
             Modifiedon = modifiedon;
             BcgovWithdrawnstatusdate = bcgovWithdrawnstatusdate;
             BcgovIdnumbercollected = bcgovIdnumbercollected;
@@ -140,9 +141,10 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
             BcgovProducingownproduct = bcgovProducingownproduct;
             this._masteridValue = _masteridValue;
             BcgovUnderreviewstatusdate = bcgovUnderreviewstatusdate;
+            this._bcgovPurchaserscivicaddressValue = _bcgovPurchaserscivicaddressValue;
             BcgovEmailofthebusinessthathasgivenorloaned = bcgovEmailofthebusinessthathasgivenorloaned;
             BcgovPurchasedfromselleroutsideofbc = bcgovPurchasedfromselleroutsideofbc;
-            BcgovIassembleditmyself = bcgovIassembleditmyself;
+            BcgovSerialnumber = bcgovSerialnumber;
             this._owningteamValue = _owningteamValue;
             BcgovIntendtosellencapsulator = bcgovIntendtosellencapsulator;
             BcgovPersonbusinessthatbuiltequipment = bcgovPersonbusinessthatbuiltequipment;
@@ -183,6 +185,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
             BcgovPolicefilenumber = bcgovPolicefilenumber;
             BcgovDateofpurchasefromimporter = bcgovDateofpurchasefromimporter;
             BcgovOwnusepossesstoproduceaproduct = bcgovOwnusepossesstoproduceaproduct;
+            BcgovCircumstancesloss = bcgovCircumstancesloss;
             this._subjectidValue = _subjectidValue;
             BcgovSellequipment = bcgovSellequipment;
             BcgovPillpressencapsulatorsizeothercheck = bcgovPillpressencapsulatorsizeothercheck;
@@ -227,16 +230,15 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
             Customersatisfactioncode = customersatisfactioncode;
             EntityimageTimestamp = entityimageTimestamp;
             BcgovHowwasequipmentbuiltother = bcgovHowwasequipmentbuiltother;
-            this._bcgovPurchaserscivicaddressValue = _bcgovPurchaserscivicaddressValue;
             Followuptaskcreated = followuptaskcreated;
             this._bcgovEquipmentrecordValue = _bcgovEquipmentrecordValue;
             this._owneridValue = _owneridValue;
             BcgovTypeofsale = bcgovTypeofsale;
-            BcgovConsentforemailcorrespondence = bcgovConsentforemailcorrespondence;
-            BcgovCircumstancesofstolenequipment = bcgovCircumstancesofstolenequipment;
+            BcgovFoippaconsent = bcgovFoippaconsent;
             Overriddencreatedon = overriddencreatedon;
             this._bcgovApplicationtypeidValue = _bcgovApplicationtypeidValue;
             BcgovApplicationreason = bcgovApplicationreason;
+            BcgovCircumstancesdestroyedequipment = bcgovCircumstancesdestroyedequipment;
             Firstresponsesent = firstresponsesent;
             BcgovBcsellerscontactemail = bcgovBcsellerscontactemail;
             BcgovRightstoownuseorpossessretained = bcgovRightstoownuseorpossessretained;
@@ -267,16 +269,15 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
             this._bcgovRelatedapplicationsidValue = _bcgovRelatedapplicationsidValue;
             Exchangerate = exchangerate;
             BcgovBcsellerscontactphonenumber = bcgovBcsellerscontactphonenumber;
-            BcgovDoyouassembleforotherbusinesses = bcgovDoyouassembleforotherbusinesses;
+            BcgovNameofbusinessthathasgivenorloaned = bcgovNameofbusinessthathasgivenorloaned;
             Entityimage = entityimage;
             Numberofchildincidents = numberofchildincidents;
-            BcgovFoippaconsent = bcgovFoippaconsent;
+            BcgovIntendtopurchaseequipment = bcgovIntendtopurchaseequipment;
             Responseby = responseby;
             BcgovSitelicenceexpirydate = bcgovSitelicenceexpirydate;
             this._bcgovAddressofbusinessthathasrentedorleasedValue = _bcgovAddressofbusinessthathasrentedorleasedValue;
             BcgovIspurchaserapersonofbc = bcgovIspurchaserapersonofbc;
             Escalatedon = escalatedon;
-            BcgovSerialnumber = bcgovSerialnumber;
             BcgovHowwasequipmentbuiltothercheck = bcgovHowwasequipmentbuiltothercheck;
             Title = title;
             BcgovBcgovLegislativeauthorityothercheck = bcgovBcgovLegislativeauthorityothercheck;
@@ -287,7 +288,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
             BcgovAlternativeownershiparrangement = bcgovAlternativeownershiparrangement;
             Importsequencenumber = importsequencenumber;
             this._bcgovOutsidebcsellersaddressValue = _bcgovOutsidebcsellersaddressValue;
-            BcgovIntendtopurchaseequipment = bcgovIntendtopurchaseequipment;
             BcgovTypeofchange = bcgovTypeofchange;
             BcgovPurchasedfrombcseller = bcgovPurchasedfrombcseller;
             Blockedprofile = blockedprofile;
@@ -528,13 +528,23 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "bcgov_circumstancesstolenequipment")]
+        public string BcgovCircumstancesstolenequipment { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "processid")]
         public string Processid { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "bcgov_circumstancesofloss")]
-        public string BcgovCircumstancesofloss { get; set; }
+        [JsonProperty(PropertyName = "bcgov_draftstatusdate")]
+        public System.DateTimeOffset? BcgovDraftstatusdate { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_doyouassembleforotherbusinesses")]
+        public bool? BcgovDoyouassembleforotherbusinesses { get; set; }
 
         /// <summary>
         /// </summary>
@@ -560,11 +570,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "bcgov_howcameintopossessionother")]
         public string BcgovHowcameintopossessionother { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "bcgov_circumstancesofdestroyedequipment")]
-        public string BcgovCircumstancesofdestroyedequipment { get; set; }
 
         /// <summary>
         /// </summary>
@@ -638,6 +643,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "bcgov_consentforemailcorrespondence")]
+        public bool? BcgovConsentforemailcorrespondence { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "bcgov_healthcanadalicensedel")]
         public bool? BcgovHealthcanadalicensedel { get; set; }
 
@@ -665,11 +675,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "bcgov_dateofpurchasefrombcseller")]
         public System.DateTimeOffset? BcgovDateofpurchasefrombcseller { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "bcgov_draftstatusdate")]
-        public System.DateTimeOffset? BcgovDraftstatusdate { get; set; }
 
         /// <summary>
         /// </summary>
@@ -710,11 +715,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "bcgov_encapsulatormaxcapacity")]
         public int? BcgovEncapsulatormaxcapacity { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "bcgov_nameofbusinessthathasgivenorloaned")]
-        public string BcgovNameofbusinessthathasgivenorloaned { get; set; }
 
         /// <summary>
         /// </summary>
@@ -805,6 +805,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "_customerid_value")]
         public string _customeridValue { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_iassembleditmyself")]
+        public bool? BcgovIassembleditmyself { get; set; }
 
         /// <summary>
         /// </summary>
@@ -948,6 +953,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "_bcgov_purchaserscivicaddress_value")]
+        public string _bcgovPurchaserscivicaddressValue { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "bcgov_emailofthebusinessthathasgivenorloaned")]
         public string BcgovEmailofthebusinessthathasgivenorloaned { get; set; }
 
@@ -958,8 +968,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "bcgov_iassembleditmyself")]
-        public bool? BcgovIassembleditmyself { get; set; }
+        [JsonProperty(PropertyName = "bcgov_serialnumber")]
+        public string BcgovSerialnumber { get; set; }
 
         /// <summary>
         /// </summary>
@@ -1160,6 +1170,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "bcgov_ownusepossesstoproduceaproduct")]
         public bool? BcgovOwnusepossesstoproduceaproduct { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_circumstancesloss")]
+        public string BcgovCircumstancesloss { get; set; }
 
         /// <summary>
         /// </summary>
@@ -1383,11 +1398,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "_bcgov_purchaserscivicaddress_value")]
-        public string _bcgovPurchaserscivicaddressValue { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "followuptaskcreated")]
         public bool? Followuptaskcreated { get; set; }
 
@@ -1408,13 +1418,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "bcgov_consentforemailcorrespondence")]
-        public bool? BcgovConsentforemailcorrespondence { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "bcgov_circumstancesofstolenequipment")]
-        public string BcgovCircumstancesofstolenequipment { get; set; }
+        [JsonProperty(PropertyName = "bcgov_foippaconsent")]
+        public bool? BcgovFoippaconsent { get; set; }
 
         /// <summary>
         /// </summary>
@@ -1430,6 +1435,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "bcgov_applicationreason")]
         public int? BcgovApplicationreason { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_circumstancesdestroyedequipment")]
+        public string BcgovCircumstancesdestroyedequipment { get; set; }
 
         /// <summary>
         /// </summary>
@@ -1583,8 +1593,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "bcgov_doyouassembleforotherbusinesses")]
-        public bool? BcgovDoyouassembleforotherbusinesses { get; set; }
+        [JsonProperty(PropertyName = "bcgov_nameofbusinessthathasgivenorloaned")]
+        public string BcgovNameofbusinessthathasgivenorloaned { get; set; }
 
         /// <summary>
         /// </summary>
@@ -1598,8 +1608,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "bcgov_foippaconsent")]
-        public bool? BcgovFoippaconsent { get; set; }
+        [JsonProperty(PropertyName = "bcgov_intendtopurchaseequipment")]
+        public bool? BcgovIntendtopurchaseequipment { get; set; }
 
         /// <summary>
         /// </summary>
@@ -1625,11 +1635,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "escalatedon")]
         public System.DateTimeOffset? Escalatedon { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "bcgov_serialnumber")]
-        public string BcgovSerialnumber { get; set; }
 
         /// <summary>
         /// </summary>
@@ -1680,11 +1685,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "_bcgov_outsidebcsellersaddress_value")]
         public string _bcgovOutsidebcsellersaddressValue { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "bcgov_intendtopurchaseequipment")]
-        public bool? BcgovIntendtopurchaseequipment { get; set; }
 
         /// <summary>
         /// </summary>
