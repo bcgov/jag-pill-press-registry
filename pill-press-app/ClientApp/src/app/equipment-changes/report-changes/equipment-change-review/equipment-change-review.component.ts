@@ -78,7 +78,8 @@ export class EquipmentChangeReviewComponent extends FormBase implements OnInit {
   save(goToReview: boolean) {
     if (this.form.valid || goToReview === false) {
       const value = this.form.value;
-      value.addressWhereEquipmentWasDestroyed.country = 'Canada';
+      value.statuscode = 'Pending';
+      value.submittedDate = new Date();
       const saveList = [this.applicationDataService.updateApplication(value)];
       this.busyPromise = zip(...saveList)
         .toPromise()

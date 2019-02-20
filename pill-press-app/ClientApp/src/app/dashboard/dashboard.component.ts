@@ -85,9 +85,19 @@ export class DashboardComponent implements OnInit {
             app.certificate = app.certificates[0];
           }
 
-          const changeIsPending = (data.filter(a => a.equipmentRecord && app.equipmentRecord
-            && a.equipmentRecord.id === app.equipmentRecord.id && !a.submittedDate).length > 0);
-          app.hasChangePending = changeIsPending;
+          const pendingChanges = data.filter(a => a.equipmentRecord && app.equipmentRecord
+            && a.equipmentRecord.id === app.equipmentRecord.id && !a.submittedDate && a.applicationtype === 'Equipment Change');
+          app.hasChangePending = (pendingChanges.length > 0);
+          if (pendingChanges.length > 0) {
+            const lsdChanges = pendingChanges.filter(c => ['Lost', 'Stolen', 'Destroyed'].indexOf(c.typeOfChange) !== -1);
+            if (lsdChanges.length > 0) {
+              app.lsdLinkId = lsdChanges[0].id;
+            }
+            const soldChanges = pendingChanges.filter(c => ['Sold'].indexOf(c.typeOfChange) !== -1);
+            if (soldChanges.length > 0) {
+              app.soldLinkId = soldChanges[0].id;
+            }
+          }
         });
 
         data.forEach((app: any) => {
