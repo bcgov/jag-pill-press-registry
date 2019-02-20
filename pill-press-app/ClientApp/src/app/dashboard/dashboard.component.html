@@ -477,11 +477,20 @@
                         <fa-icon [icon]="faMapMarkerAlt" style="margin-right: 5px;"></fa-icon>
                         Change Location
                       </a> <br>
-                      <a href="javascript: void(0)" [ngClass]="{ 'disabled' : item.hasChangePending }" (click)="reportLSD(item?.equipmentRecord?.id)">
+                      <a *ngIf="!item?.lsdLinkId" href="javascript: void(0)" [ngClass]="{ 'disabled' : item.hasChangePending }" (click)="reportLSD(item?.equipmentRecord?.id)">
                         <fa-icon [icon]="faExclamationTriangle" style="margin-right: 5px;"></fa-icon>
                         Report Change (lost, stolen, destroyed)
-                      </a> <br>
-                      <a href="javascript: void(0)" [ngClass]="{ 'disabled' : item.hasChangePending }" (click)="reportSales(item?.equipmentRecord?.id)">
+                      </a>
+                      <a *ngIf="item?.lsdLinkId" routerLink="/equipment-changes/reporting-changes/details/{{item?.lsdLinkId}}">
+                        <fa-icon [icon]="faExclamationTriangle" style="margin-right: 5px;"></fa-icon>
+                        Report Change (lost, stolen, destroyed)
+                      </a>                      
+                      <br>
+                      <a *ngIf="!item?.soldLinkId" href="javascript: void(0)" [ngClass]="{ 'disabled' : item.hasChangePending }" (click)="reportSales(item?.equipmentRecord?.id)">
+                        <fa-icon [icon]="faShoppingCart" style="margin-right: 5px;"></fa-icon>
+                        Report Sale
+                      </a>
+                      <a *ngIf="item?.soldLinkId"  routerLink="/equipment-changes/reporting-sales/details/{{item?.soldLinkId}}">
                         <fa-icon [icon]="faShoppingCart" style="margin-right: 5px;"></fa-icon>
                         Report Sale
                       </a>

@@ -144,9 +144,9 @@
     <div formGroupName="equipmentLocation">
       <app-field label="Is this piece of equipment ordinarily stored at a private dwelling?" [valid]="isValidOrNotTouched('equipmentLocation.privateDwelling')"
         errorMessage="Please select yes or no" [showChevrons]="false" [required]="true">
-        <input type="radio"  [value]="true" name="privateDwelling" formControlName="privateDwelling">
+        <input type="radio"  value="Yes" name="privateDwelling" formControlName="privateDwelling">
         <span style="padding-right: 10px;">&nbsp;Yes</span>
-        <input type="radio" [value]="false" name="privateDwelling" formControlName="privateDwelling">
+        <input type="radio" value="No" name="privateDwelling" formControlName="privateDwelling">
         <span>&nbsp;No</span>
       </app-field>
     </div>
