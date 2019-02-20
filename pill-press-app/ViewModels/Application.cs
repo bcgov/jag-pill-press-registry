@@ -35,8 +35,8 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         Draft = 931490005,
         Pending = 931490000,
         [EnumMember(Value = "Under Review")]
-        UnderReview = 931490001,        
-        Cancelled = 931490014        
+        UnderReview = 931490001,
+        Cancelled = 931490014
     }
 
     public enum UserApplicationStatusCodes
@@ -51,7 +51,31 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         Denied = 845280001
     }
 
-    public enum GeographicalLocation {
+    public enum EquipmentChangeType
+    {
+        Lost = 931490001,
+        Stolen,
+        Destroyed,
+        Sold
+    }
+    public enum TypeOfSale
+    {
+        Sold = 931490000,
+        Rented,
+        Leased,
+        [EnumMember(Value = "Given/Loaned")]
+        GivenOrLoaned,
+        Other
+    }
+    public enum MethodOfPayment {
+        CreditCard = 931490000,
+        DebitCard,
+        Cheque,
+        Other
+    }
+
+    public enum GeographicalLocation
+    {
         Canada = 931490000,
         [EnumMember(Value = "United States")]
         UnitedStates = 931490001,
@@ -62,6 +86,13 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         SouthAmerica = 931490004,
         Africa = 931490005,
 
+    }
+
+    public enum PrivateDwellingOptions
+    {
+        Yes = 931490000,
+        No,
+        Unkwown
     }
 
     public class Application
@@ -294,7 +325,7 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public string BcSellersContactEmail { get; set; }
 
         [JsonProperty(PropertyName = "dateOfPurchaseFromBcSeller")]
-        public System.DateTimeOffset? Dateofpurchasefrombcseller { get; set; }
+        public DateTimeOffset? Dateofpurchasefrombcseller { get; set; }
 
         [JsonProperty(PropertyName = "bcSellersRegistrationNumber")]
         public string BcSellersRegistrationNumber { get; set; }
@@ -310,14 +341,14 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public GeographicalLocation? OutsideBcSellersLocation { get; set; }
 
         [JsonProperty(PropertyName = "dateOfPurchaseFromOutsideBcSeller")]
-        public System.DateTimeOffset? DateOfPurchaseFromOutsideBcSeller { get; set; }
+        public DateTimeOffset? DateOfPurchaseFromOutsideBcSeller { get; set; }
 
         [JsonProperty(PropertyName = "nameOfImporter")]
         public string NameOfImporter { get; set; }
 
         [JsonProperty(PropertyName = "importersAddress")]
         public ViewModels.CustomAddress ImportersAddress { get; set; }
-        
+
         [JsonProperty(PropertyName = "addressofPersonBusiness")]
         public ViewModels.CustomAddress AddressofPersonBusiness { get; set; }
 
@@ -335,7 +366,7 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public GeographicalLocation? OriginatingSellersLocation { get; set; }
 
         [JsonProperty(PropertyName = "dateOfPurchaseFromImporter")]
-        public System.DateTimeOffset? DateOfPurchaseFromImporter { get; set; }
+        public DateTimeOffset? DateOfPurchaseFromImporter { get; set; }
 
         [JsonProperty(PropertyName = "possessUntilICanSell")]
         public bool? PossessUntilICanSell { get; set; }
@@ -389,7 +420,7 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public string WhyHaveYouRentedOrLeased { get; set; }
 
         [JsonProperty(PropertyName = "whenDidYouAssembleEquipment")]
-        public System.DateTimeOffset? WhenDidYouAssembleEquipment { get; set; }
+        public DateTimeOffset? WhenDidYouAssembleEquipment { get; set; }
 
         [JsonProperty(PropertyName = "whereDidYouObtainParts")]
         public string WhereDidYouObtainParts { get; set; }
@@ -412,7 +443,7 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         List<Contact> OwnersAndManagers { get; set; }
 
         [JsonProperty(PropertyName = "submittedDate")]
-        public System.DateTimeOffset? SubmittedDate { get; set; }
+        public DateTimeOffset? SubmittedDate { get; set; }
 
         [JsonProperty(PropertyName = "equipmentLocation")]
         public Location EquipmentLocation { get; set; }
@@ -421,5 +452,67 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public string SettingDescription { get; set; }
 
         public List<Certificate> Certificates { get; set; }
+
+        // Lost Stolen and Destroyed
+        [JsonConverter(typeof(StringEnumConverter))]
+        public EquipmentChangeType? typeOfChange { get; set; }
+        public DateTimeOffset? dateOfEquipmentChange { get; set; }
+        public string circumstancesOfLoss { get; set; }
+        public bool? policeNotified { get; set; }
+        public DateTimeOffset? policeReportDate { get; set; }
+        public string policeFileNumber { get; set; }
+        public string circumstancesOfStolenEquipment { get; set; }
+        public string circumstancesOfDestroyedEquipment { get; set; }
+        public string whoDestroyedEquipment { get; set; }
+        public ViewModels.CustomAddress AddressWhereEquipmentWasDestroyed { get; set; }
+
+
+        // reporting sales
+        public DateTimeOffset? dateOfSale { get; set; }
+
+        [JsonConverter(typeof(StringEnumConverter))]
+        public TypeOfSale? typeOfSale { get; set; }
+        public string typeOfSaleOther { get; set; }
+        public bool? rightsToOwnuseOrPossessRetained { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public MethodOfPayment? methodOfPayment { get; set; }
+        public string methodOfPaymentOther { get; set; }
+        public bool? whereWillEquipmentReside { get; set; }
+        public CustomAddress civicAddressOfPurchaser { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public PrivateDwellingOptions? privateDwelling { get; set; }
+        public bool? purchasedByIndividualOrBusiness { get; set; }
+        public string legalNameOfPurchaserIndividual { get; set; }
+        public CustomAddress purchasersCivicAddress { get; set; }
+        public string purchasersTelephoneNumber { get; set; }
+        public string purchasersEmailAddress { get; set; }
+        public bool? idNumberCollected { get; set; }
+        public string typeOfIdNumberCollected { get; set; }
+        public string nameOfPurchaserBusiness { get; set; }
+        public string purchaserRegistrationNumber { get; set; }
+        public string purchaserdBaName { get; set; }
+        public CustomAddress purchasersBusinessAddress { get; set; }
+        public string legalNameOfPersonResponsibleForBusiness { get; set; }
+        public string phoneNumberOfPersonResponsibleForBusiness { get; set; }
+        public string emailOfPersonResponsibleForBusiness { get; set; }
+
+        [JsonConverter(typeof(StringEnumConverter))]
+        public GeographicalLocation? geographicalLocationOfBusinessPurchaser { get; set; }
+        public bool? isPurchaserAPersonOfBC { get; set; }
+        public bool? howIsPurchaseAuthorizedAO { get; set; }
+        public bool? howIsPurchaserAuthorizedWaiver { get; set; }
+        public bool? howIsPurchaserAuthorizedRegisteredSeller { get; set; }
+        public string howIsPurchaserAuthorizedOther { get; set; }
+        public bool? healthCanadaLicenseDEL { get; set; }
+        public bool? healthCanadaLicenseSiteLicense { get; set; }
+        public string nameOnPurchasersDEL { get; set; }
+        public string purchasersDELNumber { get; set; }
+        public string PurchasersSiteLicenseNumber { get; set; }
+        public string nameOnPurchasersSiteLicense { get; set; }
+        public DateTimeOffset? PurchasersSiteLicenseExpiryDate { get; set; }
+        public DateTimeOffset? PurchasersDELExpiryDate { get; set; }
+        public string purchasersWaiverNumber { get; set; }
+        public string purchasersRegistrationNumber { get; set; }
+        public Equipment EquipmentRecord { get; set; }
     }
 }

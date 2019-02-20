@@ -7,6 +7,9 @@ import { DynamicsDataService } from '../../../services/dynamics-data.service';
 import { ApplicationDataService } from '../../../services/application-data.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+import { faSave } from '@fortawesome/free-regular-svg-icons';
+import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-waiver-review',
   templateUrl: './waiver-review.component.html',
@@ -22,6 +25,9 @@ export class WaiverReviewComponent implements OnInit {
   purposeExplanation: any[] = [];
   attachmentURL: string;
   busyPromise: Promise<any>;
+
+  faSave = faSave;
+  faExclamationTriangle = faExclamationTriangle;
 
   get ownProducts(): FormArray {
     return <FormArray>this.form.get('ownProducts');
