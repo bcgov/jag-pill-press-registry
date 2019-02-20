@@ -34,7 +34,7 @@
       </section>
 
       <div class="dark-row"><strong>Equipment Resitry Number</strong></div>
-      <div class="alt-row"> {{ application?.equipmentRecord?.certificate?.name }}</div>
+      <div class="alt-row"> {{ application?.equipmentRecord?.name }}</div>
     </div>
 
     <h2>Details of Sale</h2>
@@ -144,10 +144,10 @@
       </tr>
       <tr>
         <td class="row-alt bulleted-list-item">
-          {{application?.purchasedByIndividualOrBusiness ? 'Individual' : 'Business'}}
+          {{application?.purchasedByIndividualOrBusiness ? 'Business' : 'Individual'}}
         </td>
       </tr>
-      <tr *ngIf="!application?.purchasedByIndividualOrBusiness">
+      <tr *ngIf="application?.purchasedByIndividualOrBusiness">
         <td style="padding-left: 25px; background-color: transparent;">
           <table class="summary-table">
             <tr>
@@ -252,7 +252,7 @@
           </table>
         </td>
       </tr>
-      <tr *ngIf="application?.purchasedByIndividualOrBusiness">
+      <tr *ngIf="!application?.purchasedByIndividualOrBusiness">
         <td style="padding-left: 25px; background-color: transparent;">
           <table class="summary-table">
             <tr>
@@ -320,10 +320,10 @@
             </tr>
             <tr>
               <td class="row-alt">
-                {{application?.idNumberCollected}}
+                {{application?.idNumberCollected ? 'Yes' : 'No'}}
               </td>
             </tr>
-            <tr>
+            <tr *ngIf="application?.idNumberCollected">
               <td class="table-row">
                 <strong>
                   Please describe the type of ID from which you collected the number (i.e. driver's licence)
@@ -569,7 +569,7 @@
         </section>
         <div *ngIf="form.get('declarationOfCorrectInformation').value !== true && showErrors"
           style="background-color: #F2F2F2; margin-top: 10px; border-radius: 5px; padding: 10px; font: 15px Myriad Pro Regular #494949;">
-          <i class="fas fa-exclamation-triangle error-states" style="margin-right: 10px;"></i>
+          <fa-icon [icon]="faExclamationTriangle" class="error-states" style="margin-right: 10px;"></fa-icon>
           <span class="error-states">Please complete the declarations and consent section.</span>
         </div>
       </div>
@@ -579,7 +579,7 @@
           <button class="btn btn-secondary" style="margin-right: 10px" (click)="save()"
             routerLink="/equipment-changes/reporting-sales/details/{{applicationId}}">EDIT APPLICATION
           </button>
-          <button class="btn btn-primary">SUBMIT</button>
+          <button class="btn btn-primary" (click)="save()">SUBMIT</button>
         </section>
       </div>
     </table>

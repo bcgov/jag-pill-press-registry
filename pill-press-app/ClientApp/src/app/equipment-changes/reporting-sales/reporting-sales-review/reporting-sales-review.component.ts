@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { Subscription, zip } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApplicationDataService } from '@services/application-data.service';
-import { faSave } from '@fortawesome/free-solid-svg-icons';
+import { faSave, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-reporting-sales-review',
   templateUrl: './reporting-sales-review.component.html',
@@ -21,6 +21,7 @@ export class ReportingSalesReviewComponent implements OnInit {
   busyPromise: any;
   showErrors: boolean;
   faSave = faSave;
+  faExclamationTriangle = faExclamationTriangle;
 
   constructor(private fb: FormBuilder,
     private applicationDataService: ApplicationDataService,
@@ -66,9 +67,10 @@ export class ReportingSalesReviewComponent implements OnInit {
   }
 
   save() {
-    if (this.form.valid) {
-      const value = this.form.value;
-      value.addressWhereEquipmentWasDestroyed.country = 'Canada';
+    if (this.form.get('declarationOfCorrectInformation').value) {
+      const value = {...this.application, ...this.form.value};
+      value.statuscode = 'Pending';
+      value.submittedDate = new Date();
       const saveList = [this.applicationDataService.updateApplication(value)];
       this.busyPromise = zip(...saveList)
         .toPromise()
