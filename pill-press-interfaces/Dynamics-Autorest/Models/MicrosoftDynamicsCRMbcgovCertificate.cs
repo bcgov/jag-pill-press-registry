@@ -29,27 +29,28 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// Initializes a new instance of the
         /// MicrosoftDynamicsCRMbcgovCertificate class.
         /// </summary>
-        public MicrosoftDynamicsCRMbcgovCertificate(int? statecode = default(int?), string _owningteamValue = default(string), string bcgovExpirydatelongdatestring = default(string), string bcgovCertificateholder = default(string), string bcgovIssueddatelongdatestring = default(string), string _createdonbehalfbyValue = default(string), string _owninguserValue = default(string), int? utcconversiontimezonecode = default(int?), string bcgovBusinessaddresscountry = default(string), int? importsequencenumber = default(int?), System.DateTimeOffset? modifiedon = default(System.DateTimeOffset?), int? statuscode = default(int?), string _owningbusinessunitValue = default(string), string bcgovBusinessaddressstreet = default(string), string bcgovBusinessaddresspostalcode = default(string), System.DateTimeOffset? bcgovIssueddate = default(System.DateTimeOffset?), string _modifiedbyValue = default(string), string _bcgovCertificatetypeValue = default(string), string bcgovBusinessaddresscity = default(string), long? versionnumber = default(long?), string bcgovCertificateid = default(string), string _bcgovApplicationValue = default(string), string bcgovBusinessaddressprovince = default(string), string _owneridValue = default(string), string _createdbyValue = default(string), System.DateTimeOffset? overriddencreatedon = default(System.DateTimeOffset?), string _bcgovCertificateholderbusinessValue = default(string), string bcgovName = default(string), string _modifiedonbehalfbyValue = default(string), System.DateTimeOffset? createdon = default(System.DateTimeOffset?), System.DateTimeOffset? bcgovExpirydate = default(System.DateTimeOffset?), string _bcgovEquipmentValue = default(string), int? timezoneruleversionnumber = default(int?), MicrosoftDynamicsCRMsystemuser createdbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser createdonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser owninguser = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMteam owningteam = default(MicrosoftDynamicsCRMteam), MicrosoftDynamicsCRMprincipal ownerid = default(MicrosoftDynamicsCRMprincipal), MicrosoftDynamicsCRMbusinessunit owningbusinessunit = default(MicrosoftDynamicsCRMbusinessunit), IList<MicrosoftDynamicsCRMsyncerror> bcgovCertificateSyncErrors = default(IList<MicrosoftDynamicsCRMsyncerror>), IList<MicrosoftDynamicsCRMduplicaterecord> bcgovCertificateDuplicateMatchingRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMduplicaterecord> bcgovCertificateDuplicateBaseRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMasyncoperation> bcgovCertificateAsyncOperations = default(IList<MicrosoftDynamicsCRMasyncoperation>), IList<MicrosoftDynamicsCRMbulkdeletefailure> bcgovCertificateBulkDeleteFailures = default(IList<MicrosoftDynamicsCRMbulkdeletefailure>), MicrosoftDynamicsCRMaccount bcgovCertificateHolderBusiness = default(MicrosoftDynamicsCRMaccount), MicrosoftDynamicsCRMbcgovApplicationtype bcgovCertificateType = default(MicrosoftDynamicsCRMbcgovApplicationtype), IList<MicrosoftDynamicsCRMbcgovCertificateapprovedproduct> bcgovCertificateBcgovCertificateapprovedproductCertificateId = default(IList<MicrosoftDynamicsCRMbcgovCertificateapprovedproduct>), IList<MicrosoftDynamicsCRMbcgovCertificatetermsandconditions> bcgovCertificateBcgovCertificatetermsandconditionsCertificate = default(IList<MicrosoftDynamicsCRMbcgovCertificatetermsandconditions>), MicrosoftDynamicsCRMbcgovEquipment bcgovEquipment = default(MicrosoftDynamicsCRMbcgovEquipment), MicrosoftDynamicsCRMincident bcgovApplication = default(MicrosoftDynamicsCRMincident))
+        public MicrosoftDynamicsCRMbcgovCertificate(int? statecode = default(int?), string _owningteamValue = default(string), string bcgovExpirydatelongdatestring = default(string), string bcgovCertificateholder = default(string), string bcgovIssueddatelongdatestring = default(string), string _bcgovCertificatetypeValue = default(string), string _owningbusinessunitValue = default(string), string _createdonbehalfbyValue = default(string), string _owninguserValue = default(string), int? utcconversiontimezonecode = default(int?), string bcgovBusinessaddresscountry = default(string), int? statuscode = default(int?), int? importsequencenumber = default(int?), string bcgovBusinessaddressstreet = default(string), System.DateTimeOffset? modifiedon = default(System.DateTimeOffset?), string bcgovBusinessaddresspostalcode = default(string), System.DateTimeOffset? bcgovIssueddate = default(System.DateTimeOffset?), bool? bcgovWaiverexpirynotificationsent = default(bool?), string bcgovBusinessaddresscity = default(string), string _modifiedbyValue = default(string), long? versionnumber = default(long?), string bcgovCertificateid = default(string), string _bcgovApplicationValue = default(string), string bcgovBusinessaddressprovince = default(string), string _owneridValue = default(string), string _createdbyValue = default(string), System.DateTimeOffset? overriddencreatedon = default(System.DateTimeOffset?), string _bcgovCertificateholderbusinessValue = default(string), string bcgovName = default(string), string _modifiedonbehalfbyValue = default(string), System.DateTimeOffset? createdon = default(System.DateTimeOffset?), bool? bcgovRegisteredsellerexpirynotificationsent = default(bool?), System.DateTimeOffset? bcgovExpirydate = default(System.DateTimeOffset?), string _bcgovEquipmentValue = default(string), int? timezoneruleversionnumber = default(int?), MicrosoftDynamicsCRMsystemuser createdbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser createdonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser owninguser = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMteam owningteam = default(MicrosoftDynamicsCRMteam), MicrosoftDynamicsCRMprincipal ownerid = default(MicrosoftDynamicsCRMprincipal), MicrosoftDynamicsCRMbusinessunit owningbusinessunit = default(MicrosoftDynamicsCRMbusinessunit), IList<MicrosoftDynamicsCRMsyncerror> bcgovCertificateSyncErrors = default(IList<MicrosoftDynamicsCRMsyncerror>), IList<MicrosoftDynamicsCRMduplicaterecord> bcgovCertificateDuplicateMatchingRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMduplicaterecord> bcgovCertificateDuplicateBaseRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMasyncoperation> bcgovCertificateAsyncOperations = default(IList<MicrosoftDynamicsCRMasyncoperation>), IList<MicrosoftDynamicsCRMbulkdeletefailure> bcgovCertificateBulkDeleteFailures = default(IList<MicrosoftDynamicsCRMbulkdeletefailure>), MicrosoftDynamicsCRMaccount bcgovCertificateHolderBusiness = default(MicrosoftDynamicsCRMaccount), MicrosoftDynamicsCRMbcgovApplicationtype bcgovCertificateType = default(MicrosoftDynamicsCRMbcgovApplicationtype), IList<MicrosoftDynamicsCRMbcgovCertificateapprovedproduct> bcgovCertificateBcgovCertificateapprovedproductCertificateId = default(IList<MicrosoftDynamicsCRMbcgovCertificateapprovedproduct>), IList<MicrosoftDynamicsCRMbcgovCertificatetermsandconditions> bcgovCertificateBcgovCertificatetermsandconditionsCertificate = default(IList<MicrosoftDynamicsCRMbcgovCertificatetermsandconditions>), MicrosoftDynamicsCRMbcgovEquipment bcgovEquipment = default(MicrosoftDynamicsCRMbcgovEquipment), MicrosoftDynamicsCRMincident bcgovApplication = default(MicrosoftDynamicsCRMincident))
         {
             Statecode = statecode;
             this._owningteamValue = _owningteamValue;
             BcgovExpirydatelongdatestring = bcgovExpirydatelongdatestring;
             BcgovCertificateholder = bcgovCertificateholder;
             BcgovIssueddatelongdatestring = bcgovIssueddatelongdatestring;
+            this._bcgovCertificatetypeValue = _bcgovCertificatetypeValue;
+            this._owningbusinessunitValue = _owningbusinessunitValue;
             this._createdonbehalfbyValue = _createdonbehalfbyValue;
             this._owninguserValue = _owninguserValue;
             Utcconversiontimezonecode = utcconversiontimezonecode;
             BcgovBusinessaddresscountry = bcgovBusinessaddresscountry;
-            Importsequencenumber = importsequencenumber;
-            Modifiedon = modifiedon;
             Statuscode = statuscode;
-            this._owningbusinessunitValue = _owningbusinessunitValue;
+            Importsequencenumber = importsequencenumber;
             BcgovBusinessaddressstreet = bcgovBusinessaddressstreet;
+            Modifiedon = modifiedon;
             BcgovBusinessaddresspostalcode = bcgovBusinessaddresspostalcode;
             BcgovIssueddate = bcgovIssueddate;
-            this._modifiedbyValue = _modifiedbyValue;
-            this._bcgovCertificatetypeValue = _bcgovCertificatetypeValue;
+            BcgovWaiverexpirynotificationsent = bcgovWaiverexpirynotificationsent;
             BcgovBusinessaddresscity = bcgovBusinessaddresscity;
+            this._modifiedbyValue = _modifiedbyValue;
             Versionnumber = versionnumber;
             BcgovCertificateid = bcgovCertificateid;
             this._bcgovApplicationValue = _bcgovApplicationValue;
@@ -61,6 +62,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
             BcgovName = bcgovName;
             this._modifiedonbehalfbyValue = _modifiedonbehalfbyValue;
             Createdon = createdon;
+            BcgovRegisteredsellerexpirynotificationsent = bcgovRegisteredsellerexpirynotificationsent;
             BcgovExpirydate = bcgovExpirydate;
             this._bcgovEquipmentValue = _bcgovEquipmentValue;
             Timezoneruleversionnumber = timezoneruleversionnumber;
@@ -118,6 +120,16 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "_bcgov_certificatetype_value")]
+        public string _bcgovCertificatetypeValue { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "_owningbusinessunit_value")]
+        public string _owningbusinessunitValue { get; set; }
+
+        /// <summary>
+        /// </summary>
         [JsonProperty(PropertyName = "_createdonbehalfby_value")]
         public string _createdonbehalfbyValue { get; set; }
 
@@ -138,28 +150,23 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "importsequencenumber")]
-        public int? Importsequencenumber { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "modifiedon")]
-        public System.DateTimeOffset? Modifiedon { get; set; }
-
-        /// <summary>
-        /// </summary>
         [JsonProperty(PropertyName = "statuscode")]
         public int? Statuscode { get; set; }
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "_owningbusinessunit_value")]
-        public string _owningbusinessunitValue { get; set; }
+        [JsonProperty(PropertyName = "importsequencenumber")]
+        public int? Importsequencenumber { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "bcgov_businessaddressstreet")]
         public string BcgovBusinessaddressstreet { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "modifiedon")]
+        public System.DateTimeOffset? Modifiedon { get; set; }
 
         /// <summary>
         /// </summary>
@@ -173,18 +180,18 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "_modifiedby_value")]
-        public string _modifiedbyValue { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "_bcgov_certificatetype_value")]
-        public string _bcgovCertificatetypeValue { get; set; }
+        [JsonProperty(PropertyName = "bcgov_waiverexpirynotificationsent")]
+        public bool? BcgovWaiverexpirynotificationsent { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "bcgov_businessaddresscity")]
         public string BcgovBusinessaddresscity { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "_modifiedby_value")]
+        public string _modifiedbyValue { get; set; }
 
         /// <summary>
         /// </summary>
@@ -240,6 +247,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "createdon")]
         public System.DateTimeOffset? Createdon { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_registeredsellerexpirynotificationsent")]
+        public bool? BcgovRegisteredsellerexpirynotificationsent { get; set; }
 
         /// <summary>
         /// </summary>
