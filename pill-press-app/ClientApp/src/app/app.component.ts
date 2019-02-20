@@ -17,7 +17,6 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 import * as CurrentUserActions from './app-state/actions/current-user.action';
 import { filter } from 'rxjs/operators';
-import { VersionInfoDialog } from './version-info/version-info.component';
 
 @Component({
   selector: 'app-root',
@@ -118,8 +117,8 @@ export class AppComponent implements OnInit {
   }
 
   showVersionInfo(): void {
-    this.dialog.open(VersionInfoDialog, {
-      data: this.versionInfo
-    });
+    //this.dialog.open(VersionInfoDialog, {
+    //  data: this.versionInfo
+    //});
   }
 }
