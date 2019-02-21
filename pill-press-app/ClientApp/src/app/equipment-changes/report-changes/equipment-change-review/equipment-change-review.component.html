@@ -50,7 +50,7 @@
       <section *ngIf="application?.typeOfChange === 'Lost'" class="padded-section">
         <div class="dark-row">What was the date on which this piece of equipment was lost? &nbsp; <span
             class="error-states">*</span></div>
-        <div class="alt-row"> {{ application?.dateOfEquipmentChange }}</div>
+        <div class="alt-row"> {{ application?.dateOfEquipmentChange | date:'MM-dd-yyyy' }}</div>
 
         <div class="dark-row">Describe the circumstances under which this piece of equipment was lost? &nbsp;
           <span class="error-states">*</span></div>
@@ -63,7 +63,7 @@
         <section *ngIf="application?.policeNotified" class="padded-section">
           <div class="dark-row">On what date did you report the loss to police? &nbsp; <span
               class="error-states">*</span></div>
-          <div class="alt-row"> {{ application?.policeReportDate }}</div>
+          <div class="alt-row"> {{ application?.policeReportDate | date:'MM-dd-yyyy' }}</div>
 
           <div class="dark-row">What is the police file number? &nbsp; <span class="error-states">*</span></div>
           <div class="alt-row"> {{ application?.policeFileNumber }}</div>
@@ -78,7 +78,7 @@
       <section *ngIf="application?.typeOfChange === 'Stolen'" class="padded-section">
         <div class="dark-row">What was the date on which this piece of equipment was stolen? &nbsp; <span
             class="error-states">*</span></div>
-        <div class="alt-row"> {{ application?.dateOfEquipmentChange }}</div>
+        <div class="alt-row"> {{ application?.dateOfEquipmentChange | date:'MM-dd-yyyy' }}</div>
 
         <div class="dark-row">Describe the circumstances under which this piece of equipment was stolen? &nbsp;
           <span class="error-states">*</span></div>
@@ -91,7 +91,7 @@
         <section *ngIf="application?.policeNotified" class="padded-section">
           <div class="dark-row">On what date did you report the theft to police? &nbsp; <span
               class="error-states">*</span></div>
-          <div class="alt-row"> {{ application?.policeReportDate }}</div>
+          <div class="alt-row"> {{ application?.policeReportDate | date:'MM-dd-yyyy' }}</div>
 
           <div class="dark-row">What is the police file number? &nbsp; <span class="error-states">*</span></div>
           <div class="alt-row"> {{ application?.policeFileNumber }}</div>
@@ -106,7 +106,7 @@
       <section *ngIf="application?.typeOfChange === 'Destroyed'" class="padded-section">
         <div class="dark-row">What was the date on which this piece of equipment was destroyed? &nbsp; <span
             class="error-states">*</span></div>
-        <div class="alt-row"> {{ application?.dateOfEquipmentChange }}</div>
+        <div class="alt-row"> {{ application?.dateOfEquipmentChange | date:'MM-dd-yyyy' }}</div>
 
         <div class="dark-row">Describe the circumstances under which this piece of equipment was destroyed? &nbsp;
           <span class="error-states">*</span></div>
