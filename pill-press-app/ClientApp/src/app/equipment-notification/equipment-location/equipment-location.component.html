@@ -134,19 +134,18 @@
           </section>
         </div>
       </app-field>
-    </div>
+  
+      <app-field label="Please describe the setting in which this piece of equipment is ordinarily stored (i.e. manufacturing floor, storage room, outbuilding etc.)"
+                 [valid]="isValidOrNotTouched('equipmentLocation.settingDescription')" errorMessage="Please answer the question above"
+                 [showChevrons]="false" [required]="true">
+        <textarea rows="5" formControlName="settingDescription" maxlength="500" class="form-control"></textarea>
+      </app-field>
 
-    <app-field label="Please describe the setting in which this piece of equipment is ordinarily stored (i.e. manufacturing floor, storage room, outbuilding etc.)"
-      [valid]="isValidOrNotTouched('settingDescription')" errorMessage="Please answer the question above"
-      [showChevrons]="false" [required]="true">
-      <textarea rows="5" formControlName="settingDescription" maxlength="500" class="form-control"></textarea>
-    </app-field>
-    <div formGroupName="equipmentLocation">
       <app-field label="Is this piece of equipment ordinarily stored at a private dwelling?" [valid]="isValidOrNotTouched('equipmentLocation.privateDwelling')"
-        errorMessage="Please select yes or no" [showChevrons]="false" [required]="true">
-        <input type="radio"  value="Yes" name="privateDwelling" formControlName="privateDwelling">
+                 errorMessage="Please select yes or no" [showChevrons]="false" [required]="true">
+        <input type="radio" value="true" name="privateDwelling" formControlName="privateDwelling">
         <span style="padding-right: 10px;">&nbsp;Yes</span>
-        <input type="radio" value="No" name="privateDwelling" formControlName="privateDwelling">
+        <input type="radio" value="false" name="privateDwelling" formControlName="privateDwelling">
         <span>&nbsp;No</span>
       </app-field>
     </div>

@@ -148,7 +148,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         {
             if (!ModelState.IsValid)
             {
-                int j = 0;
+                return BadRequest("Invalid Model");
             }
             if (!string.IsNullOrEmpty(id) && Guid.TryParse(id, out Guid applicationId))
             {
