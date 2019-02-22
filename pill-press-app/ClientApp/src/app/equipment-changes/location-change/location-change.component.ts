@@ -95,7 +95,7 @@ export class LocationChangeComponent extends FormBase implements OnInit {
           ])
             .toPromise()
             .then((result) => {
-              const application = <Application>(result[0]);
+              const application = <Application>result[0];
               application.equipmentLocation = application.equipmentLocation || <EquipmentLocation>{ address: {} };
               this.form.patchValue(application);
               this.locations = <EquipmentLocation[]>result[1];
