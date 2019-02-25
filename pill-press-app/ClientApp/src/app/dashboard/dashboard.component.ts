@@ -22,6 +22,7 @@ import {
 import {
   faFilePdf,
 } from '@fortawesome/free-regular-svg-icons';
+import { Certificate } from '../models/certificate.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -53,6 +54,8 @@ export class DashboardComponent implements OnInit {
   faFileAlt = faFileAlt;
   faExclamationCircle = faExclamationCircle;
   faFilePdf = faFilePdf;
+  sellerCertificate: Certificate;
+  waiverHolderCertificate: Certificate;
 
   constructor(private userDataService: UserDataService, private router: Router,
     private dynamicsDataService: DynamicsDataService,
@@ -83,6 +86,7 @@ export class DashboardComponent implements OnInit {
           if (app.certificates.length > 0) {
             app.certificates.sort(this.dateSort);
             app.certificate = app.certificates[0];
+            app.certificate.hasExpired = (new Date(app.certificate.expiryDate) < new Date());
           }
 
           const pendingChanges = data.filter(a => a.equipmentRecord && app.equipmentRecord
@@ -110,23 +114,60 @@ export class DashboardComponent implements OnInit {
 
         const authorizedOwners = data.filter(a => a.applicationtype === 'Authorized Owner');
         if (authorizedOwners.length > 0) {
-          this.authorizedOwnerApplication = authorizedOwners[0];
+          // get latest application
+          this.authorizedOwnerApplication = authorizedOwners.sort((a, b) => a.createdon > b.createdon ? -1 : 1)[0];
         }
 
         const sellers = data.filter(a => a.applicationtype === 'Registered Seller');
+        this.sellerCertificate = this.getLatestCertificate(sellers);
         if (sellers.length > 0) {
-          this.registeredSellerApplication = sellers[0];
+          // get latest application
+          this.registeredSellerApplication = sellers.sort((a, b) => a.createdon > b.createdon ? -1 : 1)[0];
+          // overide status if certificate has expired
+          if (this.registeredSellerApplication.certificate && this.registeredSellerApplication.certificate.hasExpired) {
+            this.registeredSellerApplication.statuscode = 'Expired';
+          }
         }
 
         const waivers = data.filter(a => a.applicationtype === 'Waiver');
+        this.waiverHolderCertificate = this.getLatestCertificate(waivers);
         if (waivers.length > 0) {
-          this.waiverApplication = waivers[0];
+          // get latest application
+          this.waiverApplication = waivers.sort((a, b) => a.createdon > b.createdon ? -1 : 1)[0];
+          // overide status if certificate has expired
+          if (this.waiverApplication.certificate && this.waiverApplication.certificate.hasExpired) {
+            this.waiverApplication.statuscode = 'Expired';
+          }
         }
 
         this.inProgressEquipment = data.filter(a => a.applicationtype === 'Equipment Notification' && a.statuscode !== 'Approved');
         this.completedEquipment = data.filter(a => a.applicationtype === 'Equipment Notification' && a.statuscode === 'Approved');
 
       });
+  }
+
+  getLatestCertificate(applications: any[]): Certificate {
+    applications = applications || [];
+    const certificates = [];
+    applications.forEach(app => {
+      if (app.certificate) {
+        certificates.push({ applicationId: app.id, certificate: app.certificate });
+      }
+    });
+
+    if (certificates.length > 0) {
+      // get latest certificate
+      const latest = certificates.sort((a, b) => a.certificate.issueDate > b.certificate.issueDate ? -1 : 1)[0];
+      const certificate: Certificate = latest.certificate;
+      // check if the certificate is downloadable
+      this.applicationDataService.doesCertificateExist(latest.applicationId).subscribe(result => {
+        certificate.hasCertificate = result;
+      });
+      return certificate;
+    } else {
+      return null;
+    }
+
   }
 
   dateSort(a, b) {

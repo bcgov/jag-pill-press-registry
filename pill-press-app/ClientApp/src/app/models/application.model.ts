@@ -11,6 +11,7 @@ import { Equipment } from './equipment.model';
 export class Application {
   id: string;
   statuscode: string;
+  createdon: Date;
   title: string;
   applicationtype: string;
   submittedDate: Date;
