@@ -27,7 +27,8 @@
     margin-bottom: 20px;
     padding: 30px;
     padding-top: 20px;
-    h2,a {
+    h2,
+    a {
         color: #fff;
     }
 }
@@ -91,7 +92,6 @@
     flex-direction: row-reverse;
 }
 
-
 ::ng-deep .mat-tab-label {
     background-color: #E1E8F2 !important;
     color: #000;
@@ -134,8 +134,7 @@
     font-weight: 600;
 }
 
-.status-blue,
-    {
+.status-blue {
     color: #1A5A96;
 }
 
@@ -149,4 +148,31 @@
 
 .status-green {
     color: #669933;
+}
+
+
+
+.status-table {
+    width: 100%;
+    border-spacing: 2px 5px;
+    border-collapse: separate;
+    th {
+        background-color: #F1F4FA;
+        padding: 7px;
+    }
+    .lead-column {
+        background-color: #E1E8F2;
+        padding: 5px;
+    }  
+    
+    .denied {
+        background-color: #D8292F;
+    }
+    
+    .approved {
+        background-color: #669933;
+    }  
+    .on-hold {
+        background-color: #FF9900;
+    }
 }
