@@ -33,6 +33,9 @@ export class DynamicsAccount {
   pstNumber: string;
   submittedDate: Date;
   websiteAddress: string;
+  authorizedOwnerAdministrativeHold: boolean;
+  waiverAdministrativeHold: boolean;
+  registeredSellerAdministrativeHold: boolean;
 
   // related entities
   additionalContact: DynamicsContact;
