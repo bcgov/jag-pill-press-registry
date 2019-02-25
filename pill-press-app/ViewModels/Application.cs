@@ -101,6 +101,8 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
 
         public string title { get; set; }
 
+        public DateTimeOffset? Createdon { get; set; }
+
         /// <summary>
         /// The related business
         /// </summary>

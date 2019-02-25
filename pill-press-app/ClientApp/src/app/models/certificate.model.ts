@@ -5,5 +5,8 @@ export class Certificate {
   issueDate: Date;
   issueDateString: string;
   expiryDate: Date;
-  expiryDateString: string
+  expiryDateString: string;
+
+  hasCertificate: boolean; // used to indicate that the certificate exists in sharepoint (not returned by API)
+  hasExpired: boolean; // (not returned by API)
 }

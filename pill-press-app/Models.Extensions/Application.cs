@@ -23,6 +23,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                 result = new ViewModels.Application()
                 {
                     id = incident.Incidentid,
+                    Createdon = incident.Createdon,
                     // Equipment Information
                     currentlyownusepossessequipment = incident.BcgovCurrentlyownusepossessequipment,
                     intendtopurchaseequipment = incident.BcgovIntendtopurchaseequipment,

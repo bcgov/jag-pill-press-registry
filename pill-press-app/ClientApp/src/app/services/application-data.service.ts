@@ -46,8 +46,8 @@ export class ApplicationDataService {
    * Get a Dynamics Application by application ID
    * @param applicationId
    */
-  doesCertificateExist(applicationId: string): Observable<Application> {
-    return this.http.get<Application>(`${this.apiPath}${applicationId}/certificate-exists`, { headers: this.jsonHeaders })
+  doesCertificateExist(applicationId: string): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiPath}${applicationId}/certificate-exists`, { headers: this.jsonHeaders })
       .pipe(catchError(this.handleError));
   }
 
