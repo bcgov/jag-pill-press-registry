@@ -12,7 +12,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
     using System.Linq;
 
     /// <summary>
-    /// Collection of msdyn_bcgov_customaddress_knowledgebasereset
+    /// Collection of invoices
     /// </summary>
     public partial class GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModel
     {
@@ -31,7 +31,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModel
         /// class.
         /// </summary>
-        public GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModel(IList<MicrosoftDynamicsCRMmsdynBcgovCustomaddressKnowledgebasere> value = default(IList<MicrosoftDynamicsCRMmsdynBcgovCustomaddressKnowledgebasere>))
+        public GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModel(IList<MicrosoftDynamicsCRMinvoice> value = default(IList<MicrosoftDynamicsCRMinvoice>))
         {
             Value = value;
             CustomInit();
@@ -45,7 +45,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "value")]
-        public IList<MicrosoftDynamicsCRMmsdynBcgovCustomaddressKnowledgebasere> Value { get; set; }
+        public IList<MicrosoftDynamicsCRMinvoice> Value { get; set; }
 
     }
 }

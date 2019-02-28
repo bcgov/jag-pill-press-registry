@@ -12,7 +12,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
     using System.Linq;
 
     /// <summary>
-    /// Collection of bcgov_termsconditionspresets
+    /// Collection of bcgov_regions
     /// </summary>
     public partial class GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModel
     {
@@ -31,7 +31,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModel
         /// class.
         /// </summary>
-        public GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModel(IList<MicrosoftDynamicsCRMbcgovTermsconditionspreset> value = default(IList<MicrosoftDynamicsCRMbcgovTermsconditionspreset>))
+        public GetOKResponseModelModelModelModelModelModelModelModelModelModelModelModelModelModelModelModel(IList<MicrosoftDynamicsCRMbcgovRegion> value = default(IList<MicrosoftDynamicsCRMbcgovRegion>))
         {
             Value = value;
             CustomInit();
@@ -45,7 +45,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "value")]
-        public IList<MicrosoftDynamicsCRMbcgovTermsconditionspreset> Value { get; set; }
+        public IList<MicrosoftDynamicsCRMbcgovRegion> Value { get; set; }
 
     }
 }

@@ -11,7 +11,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
     using Newtonsoft.Json;
 
     /// <summary>
-    /// This OData service is located at https://localhost:8888/dynamics/
+    /// This OData service is located at
+    /// https://wsgw.dev.jag.gov.bc.ca/pillpress/dev/api/data/v8.2/
     /// </summary>
     public partial interface IDynamicsClient : System.IDisposable
     {
@@ -113,6 +114,16 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         ILocations Locations { get; }
 
         /// <summary>
+        /// Gets the IPostalcodes.
+        /// </summary>
+        IPostalcodes Postalcodes { get; }
+
+        /// <summary>
+        /// Gets the IRegions.
+        /// </summary>
+        IRegions Regions { get; }
+
+        /// <summary>
         /// Gets the IRiskassessments.
         /// </summary>
         IRiskassessments Riskassessments { get; }
@@ -146,16 +157,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// Gets the IMsdyncustomaddressknowledgebasereset.
         /// </summary>
         IMsdyncustomaddressknowledgebasereset Msdyncustomaddressknowledgebasereset { get; }
-
-        /// <summary>
-        /// Gets the IMsdyninspectionownershipcategory1set.
-        /// </summary>
-        IMsdyninspectionownershipcategory1set Msdyninspectionownershipcategory1set { get; }
-
-        /// <summary>
-        /// Gets the IMsdyninspectionownershipcategorykset.
-        /// </summary>
-        IMsdyninspectionownershipcategorykset Msdyninspectionownershipcategorykset { get; }
 
         /// <summary>
         /// Gets the ISharepointdocumentlocations.
