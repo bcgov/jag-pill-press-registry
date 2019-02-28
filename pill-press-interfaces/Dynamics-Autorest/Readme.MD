@@ -22,7 +22,7 @@ You can use this tool to convert from Openapi V3 to V2.  Autorest currently requ
 1. `npm install -g api-spec-converter`
 
 #### Autorest ####
-npm install -g autorest@preview
+1. npm install -g autorest@preview
 2. autorest --reset
 	1. This will remove any old model / language modules that may be present.
 3. Find the location where your autorest.cmd / autorest shell script is located.  Edit the file to increase the amount of RAM available to autorest.  For example, on Windows, it will be:
