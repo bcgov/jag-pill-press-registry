@@ -16,7 +16,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
     using System.Net.Http;
 
     /// <summary>
-    /// This OData service is located at https://localhost:8888/dynamics/
+    /// This OData service is located at
+    /// https://wsgw.dev.jag.gov.bc.ca/pillpress/dev/api/data/v8.2/
     /// </summary>
     public partial class DynamicsClient : ServiceClient<DynamicsClient>, IDynamicsClient
     {
@@ -116,6 +117,16 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual ILocations Locations { get; private set; }
 
         /// <summary>
+        /// Gets the IPostalcodes.
+        /// </summary>
+        public virtual IPostalcodes Postalcodes { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegions.
+        /// </summary>
+        public virtual IRegions Regions { get; private set; }
+
+        /// <summary>
         /// Gets the IRiskassessments.
         /// </summary>
         public virtual IRiskassessments Riskassessments { get; private set; }
@@ -149,16 +160,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// Gets the IMsdyncustomaddressknowledgebasereset.
         /// </summary>
         public virtual IMsdyncustomaddressknowledgebasereset Msdyncustomaddressknowledgebasereset { get; private set; }
-
-        /// <summary>
-        /// Gets the IMsdyninspectionownershipcategory1set.
-        /// </summary>
-        public virtual IMsdyninspectionownershipcategory1set Msdyninspectionownershipcategory1set { get; private set; }
-
-        /// <summary>
-        /// Gets the IMsdyninspectionownershipcategorykset.
-        /// </summary>
-        public virtual IMsdyninspectionownershipcategorykset Msdyninspectionownershipcategorykset { get; private set; }
 
         /// <summary>
         /// Gets the ISharepointdocumentlocations.
@@ -436,6 +437,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             Inspections = new Inspections(this);
             Locationequipmentset = new Locationequipmentset(this);
             Locations = new Locations(this);
+            Postalcodes = new Postalcodes(this);
+            Regions = new Regions(this);
             Riskassessments = new Riskassessments(this);
             Termsconditionspresets = new Termsconditionspresets(this);
             Contacts = new Contacts(this);
@@ -443,13 +446,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             Invoices = new Invoices(this);
             Msdyncustomaddressknowledgearticlset = new Msdyncustomaddressknowledgearticlset(this);
             Msdyncustomaddressknowledgebasereset = new Msdyncustomaddressknowledgebasereset(this);
-            Msdyninspectionownershipcategory1set = new Msdyninspectionownershipcategory1set(this);
-            Msdyninspectionownershipcategorykset = new Msdyninspectionownershipcategorykset(this);
             Sharepointdocumentlocations = new Sharepointdocumentlocations(this);
             Sharepointsites = new Sharepointsites(this);
             Entitydefinitions = new Entitydefinitions(this);
             Globaloptionsetdefinitions = new Globaloptionsetdefinitions(this);
-            BaseUri = new System.Uri("https://localhost:8888/dynamics");
+            BaseUri = new System.Uri("https://wsgw.dev.jag.gov.bc.ca/pillpress/dev/api/data/v8.2");
             SerializationSettings = new JsonSerializerSettings
             {
                 Formatting = Newtonsoft.Json.Formatting.Indented,

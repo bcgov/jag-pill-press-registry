@@ -55,8 +55,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         [JsonProperty(PropertyName = "bcgov_PurchasersBusinessAddress@odata.bind")]
         public string BcgovPurchasersBusinessAddressODataBind { get; set; }
 
-        
-        [JsonProperty(PropertyName = "bcgov_circumstancesstolenequipment")]
-        public string BcgovCircumstancesstolenequipment { get; set; }
+       
     }
 }
