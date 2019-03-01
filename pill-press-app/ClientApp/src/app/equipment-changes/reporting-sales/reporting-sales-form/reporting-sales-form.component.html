@@ -58,10 +58,10 @@
               </app-field>
             </section>
 
-            <app-field label="Equipment Registry Number" [valid]="true" errorMessage="Please specify the make"
-              [required]="true">
-              <input type="text" class="form-control" readonly formControlName="name" style="width: 680px"
-                maxlength="100">
+            <app-field [valid]="true" [required]="true" errorMessage="Please specify the Equipment Registry Number">
+              <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/definition#ern" target="_blank"><strong>Equipment Registry Number</strong></a>
+              <span class="error-states"> *</span>
+              <input type="text" class="form-control" readonly formControlName="name" style="width: 680px" maxlength="100">
             </app-field>
 
           </section>
@@ -477,14 +477,30 @@
 
             <section *ngIf="form.get('howIsPurchaseAuthorizedAO').value === true">
               <h3 style="color: #38598A">Authorized Owner</h3>
+              <div class="notes" style="display: flex;">
+                <fa-icon [icon]="faInfoCircle" style="color: #003366; margin-right: 10px;"></fa-icon>
+                <span>
+                  Learn more about the following licences:
+                  <ul>
+                    <li>
+                      <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/definition#del"
+                         target="_blank">Drug Establishment Licence</a>
+                    </li>
+                    <li>
+                      <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/definition#sl"
+                         target="_blank">Site Licence</a>
+                    </li>
+                  </ul>
+                </span>
+              </div>
               <app-field label="What kind of Health Canada licence does the purchaser have?"
-                errorMessage="Please select an answer to the question above" [showChevrons]="false" [required]="true">
+                         errorMessage="Please select an answer to the question above" [showChevrons]="false" [required]="true">
                 <p>Please select all the options that apply.</p>
                 <input type="checkbox" formControlName="healthCanadaLicenseDEL" style="margin-right: 10px;">
                 <span>Drug Establishment Licence</span>
                 <br>
                 <input type="checkbox" formControlName="healthCanadaLicenseSiteLicense"
-                  (change)="form.updateValueAndValidity()" style="margin-right: 10px;">
+                       (change)="form.updateValueAndValidity()" style="margin-right: 10px;">
                 <span>Site Licence</span>
               </app-field>
               <hr>
