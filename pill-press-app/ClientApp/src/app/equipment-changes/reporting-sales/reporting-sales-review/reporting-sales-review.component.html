@@ -48,7 +48,7 @@
       </tr>
       <tr>
         <td class="row-alt">
-          {{application?.dateOfSale | date : 'dd MMM yyyy'}}
+          {{application?.dateOfSale | date : 'MM-dd-yyyy'}}
         </td>
       </tr>
       <tr>
@@ -120,9 +120,7 @@
       </tr>
       <tr>
         <td class="table-row">
-          <strong>
-            Is the address where the purchaser will ordinarily store this piece of equipment a private dwelling
-            house?</strong>
+          <strong>Is the address where the purchaser will ordinarily store this piece of equipment a private dwelling house?</strong>
         </td>
       </tr>
       <tr>
@@ -323,19 +321,21 @@
                 {{application?.idNumberCollected ? 'Yes' : 'No'}}
               </td>
             </tr>
-            <tr *ngIf="application?.idNumberCollected">
-              <td class="table-row">
-                <strong>
-                  Please describe the type of ID from which you collected the number (i.e. driver's licence)
-                  <span>*</span>
-                </strong>
-              </td>
-            </tr>
-            <tr>
-              <td class="row-alt">
-                {{application?.typeOfIdNumberCollected}}
-              </td>
-            </tr>
+            <tbody *ngIf="application?.idNumberCollected">
+              <tr>
+                <td class="table-row">
+                  <strong>
+                    Please describe the type of ID from which you collected the number (i.e. driver's licence)
+                    <span>*</span>
+                  </strong>
+                </td>
+              </tr>
+              <tr>
+                <td class="row-alt">
+                  {{application?.typeOfIdNumberCollected}}
+                </td>
+              </tr>
+            </tbody>
           </table>
         </td>
       </tr>
