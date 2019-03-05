@@ -152,7 +152,7 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
 
     this.form.get('whereWillEquipmentReside').valueChanges
       .subscribe(value => {
-        if (value === 'BC') {
+        if (value === "true") { //BC --> true
           this.form.get('civicAddressOfPurchaser.province').reset();
           this.form.get('civicAddressOfPurchaser.province').setValue('British Columbia');
           this.form.get('civicAddressOfPurchaser.province').disable();
@@ -191,8 +191,11 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
             .setValidators([Validators.required, Validators.minLength(10), Validators.maxLength(10)]);
           this.form.get('purchasersEmailAddress').setValidators([Validators.required, Validators.email]);
           this.form.get('idNumberCollected').setValidators([Validators.required]);
+          this.form.get('typeOfIdNumberCollected').setValidators([Validators.required]);
         } else {
           this.form.get('nameOfPurchaserBusiness').setValidators([Validators.required]);
+          this.form.get('purchaserRegistrationNumber').setValidators([Validators.required]);
+          this.form.get('purchaserdBaName').setValidators([Validators.required]);
           this.form.get('purchasersBusinessAddress').get('streetLine1').setValidators(Validators.required);
           this.form.get('purchasersBusinessAddress').get('city').setValidators(Validators.required);
           this.form.get('purchasersBusinessAddress').get('postalCode')

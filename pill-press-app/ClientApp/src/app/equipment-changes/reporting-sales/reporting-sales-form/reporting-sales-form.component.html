@@ -235,14 +235,15 @@
                 <input class="form-control" maxlength="100" style="width: 500px" type="text" formControlName="nameOfPurchaserBusiness">
               </app-field>
               <app-field label="What is the registration number (i.e. corporate registry number) for the purchaser?"
-                [required]="true"
+                [required]="true" errorMessage="Please provide the registration number for the purchaser"
                 [valid]="form.get('purchaserRegistrationNumber').valid || !form.get('purchaserRegistrationNumber').touched">
                 <input class="form-control" maxlength="10" style="width: 150px;" type="text"
                   formControlName="purchaserRegistrationNumber">
               </app-field>
               <app-field
                 label='What is the name under which the purchaser ordinarily carries on business (i.e. a "doing business as" name)?'
-                [required]="true" [valid]="form.get('purchaserdBaName').valid || !form.get('purchaserdBaName').touched">
+                [required]="true" errorMessage="Please provide the name under which the purchaser ordinarily carries on business"
+                [valid]="form.get('purchaserdBaName').valid || !form.get('purchaserdBaName').touched">
                 <input class="form-control" maxlength="100" style="width: 500px" type="text"
                   formControlName="purchaserdBaName">
               </app-field>
