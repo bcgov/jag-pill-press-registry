@@ -180,7 +180,7 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
           this.form.get(field).reset();
         });
 
-        if (value === false) {
+        if (value === true) { //business = false, individual = true
           this.form.get('legalNameOfPurchaserIndividual').setValidators([Validators.required]);
           this.form.get('purchasersCivicAddress').get('streetLine1').setValidators(Validators.required);
           this.form.get('purchasersCivicAddress').get('city').setValidators(Validators.required);
@@ -227,7 +227,7 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
           this.form.get(field).clearValidators();
           this.form.get(field).reset();
           if (value) {
-            this.form.get(field).setValidators([Validators.required, this.requiredCheckboxGroupValidator(group)]);
+            this.form.get(field).setValidators([this.requiredCheckboxGroupValidator(group)]);
           }
         });
       });
@@ -236,7 +236,7 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
       .subscribe(value => {
         const group = ['nameOnPurchasersDEL', 'purchasersDELNumber', 'purchasersDELExpiryDate'];
         group.forEach(field => {
-          this.form.get(field).clearValidators();
+            this.form.get(field).clearValidators();
           this.form.get(field).reset();
           if (value) {
             this.form.get(field).setValidators([Validators.required]);
@@ -248,7 +248,7 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
       .subscribe(value => {
         const group = ['nameOnPurchasersSiteLicense', 'purchasersSiteLicenseNumber', 'purchasersSiteLicenseExpiryDate'];
         group.forEach(field => {
-          this.form.get(field).clearValidators();
+            this.form.get(field).clearValidators();
           this.form.get(field).reset();
           if (value) {
             this.form.get(field).setValidators([Validators.required]);
@@ -304,12 +304,24 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
           this.form.get('purchasersOther').reset();
         }
       });
+
+    this.form.get('idNumberCollected').valueChanges
+      .subscribe(value => {
+        if (value === true) {
+          this.form.get('typeOfIdNumberCollected').setValidators(Validators.required);
+        } else {
+          this.form.get('typeOfIdNumberCollected').clearValidators();
+          this.form.get('typeOfIdNumberCollected').reset();
+        }
+      });
   }
 
   save(goToReview: boolean) {
+    
     if (this.form.valid || goToReview === false) {
       const value = this.form.value;
-      // value.address.country = 'Canada';
+      console.log('valid');
+      /*
       const saveList = [this.applicationDataService.updateApplication(value)];
       this.busyPromise = zip(...saveList)
         .toPromise()
@@ -322,8 +334,10 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
         }, err => {
           // todo: show errors;
         });
+        */
     } else {
       this.markAsTouched();
+      for (var c in this.form.controls) { if (!this.form.get(c).valid) { console.log('Invalid: ' + c) } };
     }
   }
 
