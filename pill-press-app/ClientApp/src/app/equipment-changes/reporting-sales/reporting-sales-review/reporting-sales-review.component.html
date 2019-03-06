@@ -354,7 +354,7 @@
           {{application?.isPurchaserAPersonOfBC ? 'Yes' : 'No'}}
         </td>
       </tr>
-      <tr *ngIf="application?.isPurchaserAPersonOfBC === 'Yes'">
+      <tr *ngIf="application?.isPurchaserAPersonOfBC === true">
         <td style="padding-left: 25px; background-color: transparent;">
           <table class="summary-table">
             <tr>
@@ -419,7 +419,7 @@
                         </tr>
                         <tr>
                           <td class="row-alt">
-                            {{application?.purchasersDELExpiryDate}}
+                            {{application?.purchasersDELExpiryDate | date : 'MM-dd-yyyy'}}
                           </td>
                         </tr>
                       </table>
@@ -467,7 +467,7 @@
                         </tr>
                         <tr>
                           <td class="row-alt">
-                            {{application?.purchasersSiteLicenseExpiryDate}}
+                            {{application?.purchasersSiteLicenseExpiryDate | date : 'MM-dd-yyyy'}}
                           </td>
                         </tr>
                       </table>

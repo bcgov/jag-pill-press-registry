@@ -1,5 +1,5 @@
 <div class="form-wrapper" style="position: relative;">
-  <div [ngBusy]="[busy]"></div>
+  <div [ngBusy]="[busy] || [busyPromise]"></div>
   <div class="row" [formGroup]="form">
     <div class="col-lg-12 col-sm-12">
       <div [formGroup]="form">
@@ -617,9 +617,8 @@
       </div>
       <div style="margin-top: 30px; display: flex; justify-content: space-between">
         <section>
-          <!-- <strong class="error-states">*</strong> <i>Required field</i> -->
-          <a href="javascript: void(0);" (click)="save(false)">
-            <i class="fa fa-save" style="margin-right: 5px"></i>Save & Close</a>
+          <!--<a href="javascript: void(0);" (click)="save(false)">
+            <i class="fa fa-save" style="margin-right: 5px"></i>Save & Close</a>-->
         </section>
         <section>
           <button class="btn btn-primary" (click)="markAsTouched(); save(true)">SAVE & CONTINUE</button>
