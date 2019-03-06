@@ -214,56 +214,57 @@
           <section class="padded-section">
             <div class="notes">
               <fa-icon [icon]="faInfoCircle" style="color: #003366; margin-right: 10px;"></fa-icon>
-              <span>The term "purchaser" includes any person or business to which this piece of Controlled Equipment was
+              <span>
+                The term "purchaser" includes any person or business to which this piece of Controlled Equipment was
                 sold,
-                rented, leased, given, loaned, or otherwise distributed.</span>
+                rented, leased, given, loaned, or otherwise distributed.
+              </span>
             </div>
 
 
-            <app-field
-              label="Was this piece of Controlled Equipment purchased by an individual (for their own personal use), or by a business?"
-              errorMessage="Please select an option above"
-              [valid]="form.get('purchasedByIndividualOrBusiness').valid || !form.get('purchasedByIndividualOrBusiness').touched"
-              [showChevrons]="false" [required]="true">
-              <input type="radio" name="purchasedByIndividualOrBusiness" formControlName="purchasedByIndividualOrBusiness" [value]="true"> Business &nbsp;
-              <input type="radio" name="purchasedByIndividualOrBusiness" formControlName="purchasedByIndividualOrBusiness" [value]="false"> Individual
+            <app-field label="Was this piece of Controlled Equipment purchased by an individual (for their own personal use), or by a business?"
+                       errorMessage="Please select an option above"
+                       [valid]="form.get('purchasedByIndividualOrBusiness').valid || !form.get('purchasedByIndividualOrBusiness').touched"
+                       [showChevrons]="false" [required]="true">
+              <input type="radio" name="purchasedByIndividualOrBusiness" formControlName="purchasedByIndividualOrBusiness" [value]="false"> Business &nbsp;
+              <input type="radio" name="purchasedByIndividualOrBusiness" formControlName="purchasedByIndividualOrBusiness" [value]="true"> Individual
             </app-field>
 
-            <section *ngIf="form.get('purchasedByIndividualOrBusiness').value === true">
+            <!-- Business -->
+            <section *ngIf="form.get('purchasedByIndividualOrBusiness').value === false">
               <app-field label="Please provide the name of the business that purchased this piece of Controlled Equipment." [required]="true"
-                [valid]="form.get('nameOfPurchaserBusiness').valid || !form.get('nameOfPurchaserBusiness').touched" errorMessage="Please provide an answer to the question above">
+                         [valid]="form.get('nameOfPurchaserBusiness').valid || !form.get('nameOfPurchaserBusiness').touched" errorMessage="Please provide an answer to the question above">
                 <input class="form-control" maxlength="100" style="width: 500px" type="text" formControlName="nameOfPurchaserBusiness">
               </app-field>
               <app-field label="What is the registration number (i.e. corporate registry number) for the purchaser?"
-                [required]="true" errorMessage="Please provide the registration number for the purchaser"
-                [valid]="form.get('purchaserRegistrationNumber').valid || !form.get('purchaserRegistrationNumber').touched">
+                         [required]="true" errorMessage="Please provide the registration number for the purchaser"
+                         [valid]="form.get('purchaserRegistrationNumber').valid || !form.get('purchaserRegistrationNumber').touched">
                 <input class="form-control" maxlength="10" style="width: 150px;" type="text"
-                  formControlName="purchaserRegistrationNumber">
+                       formControlName="purchaserRegistrationNumber">
               </app-field>
-              <app-field
-                label='What is the name under which the purchaser ordinarily carries on business (i.e. a "doing business as" name)?'
-                [required]="true" errorMessage="Please provide the name under which the purchaser ordinarily carries on business"
-                [valid]="form.get('purchaserdBaName').valid || !form.get('purchaserdBaName').touched">
+              <app-field label='What is the name under which the purchaser ordinarily carries on business (i.e. a "doing business as" name)?'
+                         [required]="true" errorMessage="Please provide the name under which the purchaser ordinarily carries on business"
+                         [valid]="form.get('purchaserdBaName').valid || !form.get('purchaserdBaName').touched">
                 <input class="form-control" maxlength="100" style="width: 500px" type="text"
-                  formControlName="purchaserdBaName">
+                       formControlName="purchaserdBaName">
               </app-field>
 
               <app-field formGroupName="purchasersBusinessAddress"
-                label="Please provide the purchaser's civic address.">
+                         label="Please provide the purchaser's civic address.">
                 <p></p>
                 <div class="row">
                   <section class="col-md-6 col-xs-12">
                     <app-field label="Street Address 1"
-                      [valid]="isValidOrNotTouched('purchasersBusinessAddress.streetLine1')"
-                      errorMessage="Please enter the street address" [required]="true">
+                               [valid]="isValidOrNotTouched('purchasersBusinessAddress.streetLine1')"
+                               errorMessage="Please enter the street address" [required]="true">
                       <input type="text" formControlName="streetLine1" class="form-control">
                     </app-field>
                     <app-field label="City" [valid]="isValidOrNotTouched('purchasersBusinessAddress.city')"
-                      errorMessage="Please enter the city or town" [required]="true">
+                               errorMessage="Please enter the city or town" [required]="true">
                       <input type="text" formControlName="city" class="form-control">
                     </app-field>
                     <app-field label="Country" [valid]="isValidOrNotTouched('purchasersBusinessAddress.country')"
-                      errorMessage=" Please enter the country" [required]="true">
+                               errorMessage=" Please enter the country" [required]="true">
                       <input type="text" formControlName="country" class="form-control">
                     </app-field>
                   </section>
@@ -274,15 +275,15 @@
                     <div class="row">
                       <section class="col-md-6 col-xs-12">
                         <app-field label="Province/State"
-                          [valid]="isValidOrNotTouched('purchasersBusinessAddress.province')"
-                          errorMessage=" Please enter a province/state" [required]="true">
+                                   [valid]="isValidOrNotTouched('purchasersBusinessAddress.province')"
+                                   errorMessage=" Please enter a province/state" [required]="true">
                           <input type="text" formControlName="province" class="form-control">
                         </app-field>
                       </section>
                       <section class="col-md-6 col-xs-12">
                         <app-field label="Postal/Zip Code"
-                          [valid]="isValidOrNotTouched('purchasersBusinessAddress.postalCode')"
-                          errorMessage="Please enter a Canadian postal code" [required]="true">
+                                   [valid]="isValidOrNotTouched('purchasersBusinessAddress.postalCode')"
+                                   errorMessage="Please enter a Canadian postal code" [required]="true">
                           <input type="text" formControlName="postalCode" class="form-control">
                         </app-field>
                       </section>
@@ -291,39 +292,37 @@
                 </div>
               </app-field>
               <div class="wide">
-                <app-field
-                  label="Please provide the legal name of the person responsible for making the purchase on behalf of the business?"
-                  [required]="true"
-                  [valid]="form.get('legalNameOfPersonResponsibleForBusiness').valid || !form.get('legalNameOfPersonResponsibleForBusiness').touched"
-                  errorMessage="Please provide an answer to the question above">
+                <app-field label="Please provide the legal name of the person responsible for making the purchase on behalf of the business?"
+                           [required]="true"
+                           [valid]="form.get('legalNameOfPersonResponsibleForBusiness').valid || !form.get('legalNameOfPersonResponsibleForBusiness').touched"
+                           errorMessage="Please provide an answer to the question above">
                   <input class="form-control" style="width:500px" maxlength="100" type="text"
-                    formControlName="legalNameOfPersonResponsibleForBusiness">
+                         formControlName="legalNameOfPersonResponsibleForBusiness">
                 </app-field>
-                <app-field
-                  label="Please provide the business telephone number of the person responsible for making the purchase on behalf of the business?"
-                  [required]="true"
-                  [valid]="form.get('phoneNumberOfPersonResponsibleForBusiness').valid || !form.get('phoneNumberOfPersonResponsibleForBusiness').touched"
-                  errorMessage="Please enter your 10-digit business phone number, without including any spaces">
+                <app-field label="Please provide the business telephone number of the person responsible for making the purchase on behalf of the business?"
+                           [required]="true"
+                           [valid]="form.get('phoneNumberOfPersonResponsibleForBusiness').valid || !form.get('phoneNumberOfPersonResponsibleForBusiness').touched"
+                           errorMessage="Please enter your 10-digit business phone number, without including any spaces">
                   <input type="text" formControlName="phoneNumberOfPersonResponsibleForBusiness" class="form-control"
-                    style="width: 250px;" maxlength="10" (keydown)="rejectIfNotDigitOrBackSpace($event)">
+                         style="width: 250px;" maxlength="10" (keydown)="rejectIfNotDigitOrBackSpace($event)">
                 </app-field>
-                <app-field
-                  label="Please provide the business email address of the person responsible for making the purchase on behalf of the business?"
-                  [required]="true"
-                  [valid]="form.get('emailOfPersonResponsibleForBusiness').valid || !form.get('emailOfPersonResponsibleForBusiness').touched"
-                  errorMessage="Please enter a valid email address">
+                <app-field label="Please provide the business email address of the person responsible for making the purchase on behalf of the business?"
+                           [required]="true"
+                           [valid]="form.get('emailOfPersonResponsibleForBusiness').valid || !form.get('emailOfPersonResponsibleForBusiness').touched"
+                           errorMessage="Please enter a valid email address">
                   <input type="text" formControlName="emailOfPersonResponsibleForBusiness" class="form-control"
-                    style="width:500px" maxlength="100">
+                         style="width:500px" maxlength="100">
                 </app-field>
                 <div class="notes">
-                  <fa-icon [icon]="faExclamationCircle" style="color: #fcba19; margin-right: 10px;"></fa-icon>
+                  <!--<fa-icon [icon]="faExclamationCircle" style="color: #fcba19; margin-right: 10px;"></fa-icon>-->
+                  <fa-icon [icon]="faInfoCircle" style="color: #003366; margin-right: 10px;"></fa-icon>
                   <span>You are required to keep records related to this sale for two years.</span>
                 </div>
                 <app-field label="Please check the geographical location of business purchaser:" [required]="true"
-                  [valid]="form.get('geographicalLocationOfBusinessPurchaser').valid || !form.get('geographicalLocationOfBusinessPurchaser').touched"
-                  errorMessage="Please indicate the geographical location">
+                           [valid]="form.get('geographicalLocationOfBusinessPurchaser').valid || !form.get('geographicalLocationOfBusinessPurchaser').touched"
+                           errorMessage="Please indicate the geographical location">
                   <select class="form-control" style="width: 250px;"
-                    formControlName="geographicalLocationOfBusinessPurchaser">
+                          formControlName="geographicalLocationOfBusinessPurchaser">
                     <option value="">Please select an option</option>
                     <option value="Canada">Canada</option>
                     <option value="UnitedStates">United States</option>
@@ -336,29 +335,30 @@
               </div>
             </section>
 
-            <section *ngIf="form.get('purchasedByIndividualOrBusiness').value === false">
+            <!-- Individual -->
+            <section *ngIf="form.get('purchasedByIndividualOrBusiness').value === true">
               <app-field label="Please provide the legal name of the individual who purchased the Controlled Equipment."
-                [required]="true"
-                [valid]="form.get('legalNameOfPurchaserIndividual').valid || !form.get('legalNameOfPurchaserIndividual').touched"
-                errorMessage="Please enter the purchaser's legal name">
+                         [required]="true"
+                         [valid]="form.get('legalNameOfPurchaserIndividual').valid || !form.get('legalNameOfPurchaserIndividual').touched"
+                         errorMessage="Please enter the purchaser's legal name">
                 <input class="form-control" style="width:500px" maxlength="100" type="text"
-                  formControlName="legalNameOfPurchaserIndividual">
+                       formControlName="legalNameOfPurchaserIndividual">
               </app-field>
-              <app-field formGroupName="purchasersCivicAddress" label="Please enter the street address">
+              <app-field formGroupName="purchasersCivicAddress" label="Please provide the purchaser's civic address.">
                 <p></p>
                 <div class="row">
                   <section class="col-md-6 col-xs-12">
                     <app-field label="Street Address 1"
-                      [valid]="isValidOrNotTouched('purchasersCivicAddress.streetLine1')"
-                      errorMessage="Please enter your street address" [required]="true">
+                               [valid]="isValidOrNotTouched('purchasersCivicAddress.streetLine1')"
+                               errorMessage="Please enter your street address" [required]="true">
                       <input type="text" formControlName="streetLine1" class="form-control">
                     </app-field>
                     <app-field label="City" [valid]="isValidOrNotTouched('purchasersCivicAddress.city')"
-                      errorMessage="Please enter the city or town" [required]="true">
+                               errorMessage="Please enter the city or town" [required]="true">
                       <input type="text" formControlName="city" class="form-control">
                     </app-field>
                     <app-field label="Country" [valid]="isValidOrNotTouched('purchasersCivicAddress.country')"
-                      errorMessage=" Please enter the country" [required]="true">
+                               errorMessage=" Please enter the country" [required]="true">
                       <input type="text" formControlName="country" class="form-control">
                     </app-field>
                   </section>
@@ -369,15 +369,15 @@
                     <div class="row">
                       <section class="col-md-6 col-xs-12">
                         <app-field label="Province/State"
-                          [valid]="isValidOrNotTouched('purchasersCivicAddress.province')"
-                          errorMessage=" Please enter a province/state" [required]="true">
+                                   [valid]="isValidOrNotTouched('purchasersCivicAddress.province')"
+                                   errorMessage=" Please enter a province/state" [required]="true">
                           <input type="text" formControlName="province" class="form-control">
                         </app-field>
                       </section>
                       <section class="col-md-6 col-xs-12">
                         <app-field label="Postal/Zip Code"
-                          [valid]="isValidOrNotTouched('purchasersCivicAddress.postalCode')"
-                          errorMessage="Please enter a postal/zip code" [required]="true">
+                                   [valid]="isValidOrNotTouched('purchasersCivicAddress.postalCode')"
+                                   errorMessage="Please enter a postal/zip code" [required]="true">
                           <input type="text" formControlName="postalCode" class="form-control">
                         </app-field>
                       </section>
@@ -386,46 +386,50 @@
                 </div>
               </app-field>
               <app-field label="Please provide the purchaser's telephone number." [required]="true"
-                [valid]="form.get('purchasersTelephoneNumber').valid || !form.get('purchasersTelephoneNumber').touched"
-                errorMessage="Please enter your 10-digit business phone number, without including any spaces">
+                         [valid]="form.get('purchasersTelephoneNumber').valid || !form.get('purchasersTelephoneNumber').touched"
+                         errorMessage="Please enter your 10-digit business phone number, without including any spaces">
                 <input type="text" formControlName="purchasersTelephoneNumber" class="form-control"
-                  style="width: 250px;" maxlength="10" (keydown)="rejectIfNotDigitOrBackSpace($event)">
+                       style="width: 250px;" maxlength="10" (keydown)="rejectIfNotDigitOrBackSpace($event)">
               </app-field>
               <app-field label="Please provide the purchaser's email address. " [required]="true"
-                [valid]="form.get('purchasersEmailAddress').valid || !form.get('purchasersEmailAddress').touched"
-                errorMessage="Please enter a valid email address">
+                         [valid]="form.get('purchasersEmailAddress').valid || !form.get('purchasersEmailAddress').touched"
+                         errorMessage="Please enter a valid email address">
                 <input type="text" formControlName="purchasersEmailAddress" class="form-control" style="width:500px"
-                  maxlength="100">
+                       maxlength="100">
               </app-field>
               <div class="notes">
                 <fa-icon [icon]="faInfoCircle" style="color: #003366; margin-right: 10px;"></fa-icon>
-                <span>If selling Controlled Equipment to an individual, the seller must collect a unique alphanumeric
+                <span>
+                  If selling Controlled Equipment to an individual, the seller must collect a unique alphanumeric
                   number from
                   a piece of identification (ID) which: is issued to the purchaser by a government, shows the
                   purchaser's
-                  photograph and legal name, and is not expired.</span>
+                  photograph and legal name, and is not expired.
+                </span>
               </div>
               <app-field label="Did you collect the number assigned to this purchaser's government issued photo ID?"
-                errorMessage="Please select yes or no"
-                [valid]="form.get('idNumberCollected').valid || !form.get('idNumberCollected').touched"
-                [required]="true">
+                         errorMessage="Please select yes or no"
+                         [valid]="form.get('idNumberCollected').valid || !form.get('idNumberCollected').touched"
+                         [required]="true">
                 <input type="radio" [value]="true" name="idNumberCollected" formControlName="idNumberCollected">
                 <span style="padding-right: 10px;">&nbsp;Yes</span>
                 <input type="radio" [value]="false" name="idNumberCollected" formControlName="idNumberCollected">
                 <span>&nbsp;No</span>
               </app-field>
               <app-field *ngIf="form.get('idNumberCollected').value === true"
-                label="Please describe the type of ID from which you collected the number (i.e. driver's licence). "
-                [required]="true"
-                [valid]="form.get('typeOfIdNumberCollected').valid || !form.get('typeOfIdNumberCollected').touched"
-                errorMessage="Please provide an answer to the question above">
+                         label="Please describe the type of ID from which you collected the number (i.e. driver's licence). "
+                         [required]="true"
+                         [valid]="form.get('typeOfIdNumberCollected').valid || !form.get('typeOfIdNumberCollected').touched"
+                         errorMessage="Please provide an answer to the question above">
                 <input type="text" formControlName="typeOfIdNumberCollected" class="form-control" style="width:500px"
-                  maxlength="100">
+                       maxlength="100">
               </app-field>
-              <div class="notes">
+              <div class="notes" *ngIf="form.get('idNumberCollected').value === true">
                 <fa-icon [icon]="faExclamationCircle" style="color: #fcba19; margin-right: 10px;"></fa-icon>
-                <span>Note: You are required to keep records related to this sale, including ID information, for two
-                  years.</span>
+                <span>
+                  Note: You are required to keep records related to this sale, including ID information, for two
+                  years.
+                </span>
               </div>
             </section>
 
@@ -434,7 +438,8 @@
           <section class="padded-section">
             <div class="notes">
               <fa-icon [icon]="faInfoCircle" style="color: #003366; margin-right: 10px;"></fa-icon>
-              <span>A "person in British Columbia" may include:
+              <span>
+                A "person in British Columbia" may include:
                 <ul>
                   <li>an individual purchaser who resides or carries on business in BC;</li>
                   <li>a non-individual purchaser registered in or carrying on business in BC;</li>
@@ -445,31 +450,31 @@
             </div>
 
             <app-field label='Is the purchaser a "person in British Columbia"?' errorMessage="Please select yes or no"
-              [valid]="form.get('isPurchaserAPersonOfBC').valid || !form.get('isPurchaserAPersonOfBC').touched"
-              [showChevrons]="false" [required]="true">
+                       [valid]="form.get('isPurchaserAPersonOfBC').valid || !form.get('isPurchaserAPersonOfBC').touched"
+                       [showChevrons]="false" [required]="true">
               <input type="radio" [value]="true" name="isPurchaserAPersonOfBC" formControlName="isPurchaserAPersonOfBC">
               <span style="padding-right: 10px;">&nbsp;Yes</span>
               <input type="radio" [value]="false" name="isPurchaserAPersonOfBC"
-                formControlName="isPurchaserAPersonOfBC">
+                     formControlName="isPurchaserAPersonOfBC">
               <span>&nbsp;No</span>
             </app-field>
             <section *ngIf="form.get('isPurchaserAPersonOfBC').value === true">
               <app-field label="How is the purchaser authorized to own, use, or possess Controlled Equipment?"
-                errorMessage="Please select all the options that apply" [required]="true">
+                         errorMessage="Please select all the options that apply" [required]="true">
                 <p>Please select all the options that apply.</p>
                 <input type="checkbox" formControlName="howIsPurchaseAuthorizedAO" style="margin-right: 10px;">
                 <span>Authorized Owner (i.e. drug establishment or site licence issued by Health Canada)</span>
                 <br>
                 <input type="checkbox" formControlName="howIsPurchaserAuthorizedWaiver"
-                  (change)="form.updateValueAndValidity()" style="margin-right: 10px;">
+                       (change)="form.updateValueAndValidity()" style="margin-right: 10px;">
                 <span>Waiver holder</span>
                 <br>
                 <input type="checkbox" formControlName="howIsPurchaserAuthorizedRegisteredSeller"
-                  (change)="form.updateValueAndValidity()" style="margin-right: 10px;">
+                       (change)="form.updateValueAndValidity()" style="margin-right: 10px;">
                 <span>Registered Seller</span>
                 <br>
                 <input type="checkbox" formControlName="howIsPurchaserAuthorizedOther"
-                  (change)="form.updateValueAndValidity()" style="margin-right: 10px;">
+                       (change)="form.updateValueAndValidity()" style="margin-right: 10px;">
                 <span>Other</span>
                 <br>
                 <br>
@@ -507,41 +512,29 @@
               <hr>
             </section>
 
-            <section *ngIf="form.get('howIsPurchaserAuthorizedOther').value === true">
-              <app-field [showChevrons]="false"
-                [valid]="form.get('purchasersOther').valid || !form.get('purchasersOther').touched"
-                errorMessage='Please specify the "other" authorization'>
-                <i>If Other, Please specify</i>&nbsp;
-                <span class="error-states">*</span>
-                <br>
-                <input type="text" class="form-control" formControlName="purchasersOther" style="width: 340px">
-              </app-field>
-              <hr>
-            </section>
-
             <section *ngIf="form.get('healthCanadaLicenseDEL').value === true" class="padded-section">
               <app-field label="What is the name shown on the purchaser's Drug Establishment Licence?"
-                [showChevrons]="false" [required]="true"
-                [valid]="form.get('nameOnPurchasersDEL').valid || !form.get('nameOnPurchasersDEL').touched"
-                errorMessage="Please provide an answer to the question above">
+                         [showChevrons]="false" [required]="true"
+                         [valid]="form.get('nameOnPurchasersDEL').valid || !form.get('nameOnPurchasersDEL').touched"
+                         errorMessage="Please provide an answer to the question above">
                 <input class="form-control" maxlength="100" style="width: 500px" type="text"
-                  formControlName="nameOnPurchasersDEL">
+                       formControlName="nameOnPurchasersDEL">
               </app-field>
 
               <app-field label="What is the purchaser's Drug Establishment Licence number?" [showChevrons]="false"
-                [required]="true"
-                [valid]="form.get('purchasersDELNumber').valid || !form.get('purchasersDELNumber').touched"
-                errorMessage="Please provide an answer to the question above">
+                         [required]="true"
+                         [valid]="form.get('purchasersDELNumber').valid || !form.get('purchasersDELNumber').touched"
+                         errorMessage="Please provide an answer to the question above">
                 <input class="form-control" maxlength="100" style="width: 500px" type="text"
-                  formControlName="purchasersDELNumber">
+                       formControlName="purchasersDELNumber">
               </app-field>
 
               <app-field label="What is the purchaser's Drug Establishment Licence expiry date?" [showChevrons]="false"
-                [valid]="form.get('purchasersDELExpiryDate').valid || !form.get('purchasersDELExpiryDate').touched"
-                errorMessage="Please provide the expiry date">
+                         [valid]="form.get('purchasersDELExpiryDate').valid || !form.get('purchasersDELExpiryDate').touched"
+                         errorMessage="Please provide the expiry date">
                 <input type="text" class="form-control" formControlName="purchasersDELExpiryDate"
-                  placeholder="mm-dd-yyyy" [matDatepicker]="picker" (focus)="picker.open()" (click)="picker.open()"
-                  readonly style="width: 200px; background-color: #fff;">
+                       placeholder="mm-dd-yyyy" [matDatepicker]="picker" (focus)="picker.open()" (click)="picker.open()"
+                       readonly style="width: 200px; background-color: #fff;">
                 <mat-datepicker #picker></mat-datepicker>
               </app-field>
               <hr>
@@ -549,26 +542,26 @@
 
             <section *ngIf="form.get('healthCanadaLicenseSiteLicense').value === true" class="padded-section">
               <app-field label="What is the name shown on the purchaser's Site Licence?" [showChevrons]="false"
-                [required]="true"
-                [valid]="form.get('nameOnPurchasersSiteLicense').valid || !form.get('nameOnPurchasersSiteLicense').touched"
-                errorMessage="Please provide an answer to the question above">
+                         [required]="true"
+                         [valid]="form.get('nameOnPurchasersSiteLicense').valid || !form.get('nameOnPurchasersSiteLicense').touched"
+                         errorMessage="Please provide an answer to the question above">
                 <input class="form-control" maxlength="100" style="width: 500px" type="text"
-                  formControlName="nameOnPurchasersSiteLicense">
+                       formControlName="nameOnPurchasersSiteLicense">
               </app-field>
 
               <app-field label="What is the purchaser's Site Licence number?" [showChevrons]="false" [required]="true"
-                [valid]="form.get('purchasersSiteLicenseNumber').valid || !form.get('purchasersSiteLicenseNumber').touched"
-                errorMessage="Please provide an answer to the question above">
+                         [valid]="form.get('purchasersSiteLicenseNumber').valid || !form.get('purchasersSiteLicenseNumber').touched"
+                         errorMessage="Please provide an answer to the question above">
                 <input class="form-control" maxlength="100" style="width: 500px" type="text"
-                  formControlName="purchasersSiteLicenseNumber">
+                       formControlName="purchasersSiteLicenseNumber">
               </app-field>
 
               <app-field label="What is the purchaser's Site Licence expiry date?" [showChevrons]="false"
-                [valid]="form.get('purchasersSiteLicenseExpiryDate').valid || !form.get('purchasersSiteLicenseExpiryDate').touched"
-                errorMessage="Please provide the expiry date">
+                         [valid]="form.get('purchasersSiteLicenseExpiryDate').valid || !form.get('purchasersSiteLicenseExpiryDate').touched"
+                         errorMessage="Please provide the expiry date">
                 <input type="text" class="form-control" formControlName="purchasersSiteLicenseExpiryDate"
-                  placeholder="mm-dd-yyyy" [matDatepicker]="picker" (focus)="picker.open()" (click)="picker.open()"
-                  readonly style="width: 200px; background-color: #fff;">
+                       placeholder="mm-dd-yyyy" [matDatepicker]="picker" (focus)="picker.open()" (click)="picker.open()"
+                       readonly style="width: 200px; background-color: #fff;">
                 <mat-datepicker #picker></mat-datepicker>
               </app-field>
               <hr>
@@ -577,10 +570,10 @@
             <section *ngIf="form.get('howIsPurchaserAuthorizedWaiver').value === true">
               <h3 style="color: #38598A">Waiver Holder</h3>
               <app-field label="What is the purchaser's Waiver number?" [required]="true" [showChevrons]="false"
-                [valid]="form.get('purchasersWaiverNumber').valid || !form.get('purchasersWaiverNumber').touched"
-                errorMessage="Please provide the purchaser's Waiver number">
+                         [valid]="form.get('purchasersWaiverNumber').valid || !form.get('purchasersWaiverNumber').touched"
+                         errorMessage="Please provide the purchaser's Waiver number">
                 <input class="form-control" maxlength="100" style="width: 500px" type="text"
-                  formControlName="purchasersWaiverNumber">
+                       formControlName="purchasersWaiverNumber">
               </app-field>
               <hr>
             </section>
@@ -588,19 +581,31 @@
             <section *ngIf="form.get('howIsPurchaserAuthorizedRegisteredSeller').value === true">
               <h3 style="color: #38598A">Registered Seller</h3>
               <app-field label="What is the purchaser's Registration number?" [required]="true" [showChevrons]="false"
-                [valid]="form.get('purchasersRegistrationNumber').valid || !form.get('purchasersRegistrationNumber').touched"
-                errorMessage="Please provide the purchaser's Registration number">
+                         [valid]="form.get('purchasersRegistrationNumber').valid || !form.get('purchasersRegistrationNumber').touched"
+                         errorMessage="Please provide the purchaser's Registration number">
                 <input class="form-control" maxlength="100" style="width: 500px" type="text"
-                  formControlName="purchasersRegistrationNumber" (keydown)="rejectIfNotDigitOrBackSpace($event)">
+                       formControlName="purchasersRegistrationNumber" (keydown)="rejectIfNotDigitOrBackSpace($event)">
+              </app-field>
+              <hr>
+            </section>
+
+            <section *ngIf="form.get('howIsPurchaserAuthorizedOther').value === true">
+              <app-field [showChevrons]="false"
+                         [valid]="form.get('purchasersOther').valid || !form.get('purchasersOther').touched"
+                         errorMessage='Please specify the "other" authorization'>
+                <i>If Other, Please specify</i>&nbsp;
+                <span class="error-states">*</span>
+                <br>
+                <input type="text" class="form-control" formControlName="purchasersOther" style="width: 340px">
               </app-field>
               <hr>
             </section>
 
             <div class="notes">
               <fa-icon [icon]="faInfoCircle" style="color: #003366; margin-right: 10px;"></fa-icon>
-              <span>If you have sold more than one piece of Controlled Equipment, please report the sale separately for
-                each piece
-                of equipment.</span>
+              <span>
+                If you have sold more than one piece of Controlled Equipment, please report the sale separately for each piece of equipment.
+              </span>
             </div>
 
             <div *ngIf="!form.valid && form.touched" class="error-summary">

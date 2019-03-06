@@ -142,10 +142,10 @@
       </tr>
       <tr>
         <td class="row-alt bulleted-list-item">
-          {{application?.purchasedByIndividualOrBusiness ? 'Business' : 'Individual'}}
+          {{application?.purchasedByIndividualOrBusiness ? 'Individual' : 'Business'}}
         </td>
       </tr>
-      <tr *ngIf="application?.purchasedByIndividualOrBusiness">
+      <tr *ngIf="!application?.purchasedByIndividualOrBusiness">
         <td style="padding-left: 25px; background-color: transparent;">
           <table class="summary-table">
             <tr>
@@ -250,7 +250,7 @@
           </table>
         </td>
       </tr>
-      <tr *ngIf="!application?.purchasedByIndividualOrBusiness">
+      <tr *ngIf="application?.purchasedByIndividualOrBusiness">
         <td style="padding-left: 25px; background-color: transparent;">
           <table class="summary-table">
             <tr>
