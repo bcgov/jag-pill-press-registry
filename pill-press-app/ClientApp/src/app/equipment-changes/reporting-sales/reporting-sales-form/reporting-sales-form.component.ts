@@ -227,7 +227,7 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
           this.form.get(field).clearValidators();
           this.form.get(field).reset();
           if (value) {
-            this.form.get(field).setValidators([this.requiredCheckboxGroupValidator(group)]);
+            //this.form.get(field).setValidators([this.requiredCheckboxGroupValidator(group)]);
           }
         });
       });
@@ -239,7 +239,7 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
             this.form.get(field).clearValidators();
           this.form.get(field).reset();
           if (value) {
-            this.form.get(field).setValidators([Validators.required]);
+            //this.form.get(field).setValidators([Validators.required]);
           }
         });
       });
@@ -251,7 +251,7 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
             this.form.get(field).clearValidators();
           this.form.get(field).reset();
           if (value) {
-            this.form.get(field).setValidators([Validators.required]);
+            //this.form.get(field).setValidators([Validators.required]);
           }
         });
       });
@@ -274,6 +274,15 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
         }
       });
 
+    this.form.get('howIsPurchaserAuthorizedOther').valueChanges
+      .subscribe(value => {
+        this.form.get('purchasersOther').clearValidators();
+        this.form.get('purchasersOther').reset();
+        if (value) {
+          this.form.get('purchasersOther').setValidators([Validators.required]);
+        };
+      });
+
     this.form.get('typeOfSale').valueChanges
       .subscribe(value => {
         if (value === 'Other') {
@@ -294,17 +303,6 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
         }
       });
 
-    this.form.get('howIsPurchaserAuthorizedOther').valueChanges
-      .subscribe(value => {
-        if (value) {
-          this.form.get('purchasersOther')
-            .setValidators([Validators.required, this.requiredCheckboxChildValidator('howIsPurchaserAuthorizedOther')]);
-        } else {
-          this.form.get('purchasersOther').clearValidators();
-          this.form.get('purchasersOther').reset();
-        }
-      });
-
     this.form.get('idNumberCollected').valueChanges
       .subscribe(value => {
         if (value === true) {
@@ -317,7 +315,6 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
   }
 
   save(goToReview: boolean) {
-    
     if (this.form.valid || goToReview === false) {
       const value = this.form.value;
       console.log('valid');
