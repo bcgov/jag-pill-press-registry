@@ -34,7 +34,9 @@ export class ReportingSalesComponent implements OnInit {
 
   ngOnInit() {
 
-    this.stepper.selectedIndex = this.tabList.indexOf(this.tab);
+    //if (this.tabList.indexOf(this.tab) !== -1) {
+    //  this.stepper.selectedIndex = this.tabList.indexOf(this.tab);
+    //}
     this.router.events.forEach((event) => {
       if (event instanceof NavigationEnd) {
         if (this.route.snapshot.firstChild.url.length > 0) {
@@ -43,7 +45,9 @@ export class ReportingSalesComponent implements OnInit {
             this.stepper.reset();
           }
           this.tab = this.route.snapshot.firstChild.url[0].path;
-          this.stepper.selectedIndex = this.tabList.indexOf(this.tab);
+          if (this.tabList.indexOf(this.tab) !== -1) {
+            this.stepper.selectedIndex = this.tabList.indexOf(this.tab);
+          }
         }
       }
     });
