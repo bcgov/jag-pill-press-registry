@@ -148,7 +148,30 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
     }
   }
 
+  /**
+   * Clear child and hidden fields
+   */
   clearHiddenFields() {
+
+    const individualGroup = ['legalNameOfPurchaserIndividual', 'purchasersCivicAddress', 'purchasersTelephoneNumber',
+      'purchasersEmailAddress', 'idNumberCollected', 'typeOfIdNumberCollected'];
+
+    const businessGroup = ['nameOfPurchaserBusiness',
+      'purchaserRegistrationNumber', 'purchaserdBaName', 'purchasersBusinessAddress', 'legalNameOfPersonResponsibleForBusiness',
+      'phoneNumberOfPersonResponsibleForBusiness', 'emailOfPersonResponsibleForBusiness', 'geographicalLocationOfBusinessPurchaser'];
+
+    const purchaserAPersonOfBCGroup = ['howIsPurchaseAuthorizedAO', 'howIsPurchaserAuthorizedWaiver',
+      'howIsPurchaserAuthorizedRegisteredSeller', 'howIsPurchaserAuthorizedOther'];
+
+    const purchaseAuthorizedAOGroup = ['healthCanadaLicenseDEL', 'healthCanadaLicenseSiteLicense'];
+
+    const childPurchaseAuthorizedAOGroup = ['nameOnPurchasersDEL', 'purchasersDELNumber', 'purchasersDELExpiryDate',
+      'nameOnPurchasersSiteLicense', 'purchasersSiteLicenseNumber', 'purchasersSiteLicenseExpiryDate'];
+
+    const healthCanadaLicenseDELGroup = ['nameOnPurchasersDEL', 'purchasersDELNumber', 'purchasersDELExpiryDate'];
+
+    const healthCanadaLicenseSiteLicenseGroup = ['nameOnPurchasersSiteLicense', 'purchasersSiteLicenseNumber', 'purchasersSiteLicenseExpiryDate'];
+
 
     this.form.get('whereWillEquipmentReside').valueChanges
       .subscribe(value => {
@@ -164,11 +187,6 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
 
     this.form.get('purchasedByIndividualOrBusiness').valueChanges
       .subscribe(value => {
-        const individualGroup = ['legalNameOfPurchaserIndividual', 'purchasersCivicAddress', 'purchasersTelephoneNumber',
-          'purchasersEmailAddress', 'idNumberCollected', 'typeOfIdNumberCollected'];
-        const businessGroup = ['nameOfPurchaserBusiness',
-          'purchaserRegistrationNumber', 'purchaserdBaName', 'purchasersBusinessAddress', 'legalNameOfPersonResponsibleForBusiness',
-          'phoneNumberOfPersonResponsibleForBusiness', 'emailOfPersonResponsibleForBusiness', 'geographicalLocationOfBusinessPurchaser'];
 
         individualGroup.forEach(field => {
           this.form.get(field).clearValidators();
@@ -209,9 +227,7 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
 
     this.form.get('isPurchaserAPersonOfBC').valueChanges
       .subscribe(value => {
-        const group = ['howIsPurchaseAuthorizedAO', 'howIsPurchaserAuthorizedWaiver', 'howIsPurchaserAuthorizedRegisteredSeller',
-          'howIsPurchaserAuthorizedOther'];
-        group.forEach(field => {
+        purchaserAPersonOfBCGroup.forEach(field => {
           this.form.get(field).clearValidators();
           this.form.get(field).reset();
         });
@@ -219,17 +235,14 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
 
     this.form.get('howIsPurchaseAuthorizedAO').valueChanges
       .subscribe(value => {
-        const parentGroup = ['healthCanadaLicenseDEL', 'healthCanadaLicenseSiteLicense'];
-        parentGroup.forEach(field => {
+        purchaseAuthorizedAOGroup.forEach(field => {
           this.form.get(field).clearValidators();
           this.form.get(field).reset();
           if (value) {
             //this.form.get(field).setValidators([this.requiredCheckboxGroupValidator(group)]);
           }
         });
-        const childGroup = ['nameOnPurchasersDEL', 'purchasersDELNumber', 'purchasersDELExpiryDate',
-          'nameOnPurchasersSiteLicense', 'purchasersSiteLicenseNumber', 'purchasersSiteLicenseExpiryDate'];
-        childGroup.forEach(field => {
+        childPurchaseAuthorizedAOGroup.forEach(field => {
           this.form.get(field).clearValidators();
           this.form.get(field).reset();
           if (value) {
@@ -240,8 +253,7 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
 
     this.form.get('healthCanadaLicenseDEL').valueChanges
       .subscribe(value => {
-        const group = ['nameOnPurchasersDEL', 'purchasersDELNumber', 'purchasersDELExpiryDate'];
-        group.forEach(field => {
+        healthCanadaLicenseDELGroup.forEach(field => {
             this.form.get(field).clearValidators();
           this.form.get(field).reset();
           if (value) {
@@ -252,8 +264,7 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
 
     this.form.get('healthCanadaLicenseSiteLicense').valueChanges
       .subscribe(value => {
-        const group = ['nameOnPurchasersSiteLicense', 'purchasersSiteLicenseNumber', 'purchasersSiteLicenseExpiryDate'];
-        group.forEach(field => {
+        healthCanadaLicenseSiteLicenseGroup.forEach(field => {
             this.form.get(field).clearValidators();
           this.form.get(field).reset();
           if (value) {
@@ -320,6 +331,10 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
       });
   }
 
+  /**
+   * Save form values in dynamics
+   * @param goToReview
+   */
   save(goToReview: boolean) {
     if (this.form.valid || goToReview === false) {
       const value = this.form.value;
