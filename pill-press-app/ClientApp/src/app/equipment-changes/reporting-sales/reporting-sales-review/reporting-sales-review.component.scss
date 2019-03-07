@@ -1,0 +1,77 @@
+.bulleted-list-item::before {
+    content: "\2022";
+    list-style: disc;
+    font-weight: bold;
+    display: inline-block; /* Needed to add space between the bullet and the text */ 
+    width: 15px; /* Also needed for space (tweak if needed) */
+    margin: -5px 0px;
+}
+
+.bulleted-list-item {
+    font-weight: bold;
+}
+
+.summary-table {
+    width: 100%;
+    border-collapse: inherit;
+    border-spacing: 5px;
+    margin-left: -5px;
+}
+
+/*spacing specific to nested tables*/
+.summary-table .summary-table {
+    margin: -10px 10px;
+    padding-bottom: 0px;
+}
+
+.summary-table td {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+strong span {
+    color: red;
+}
+
+
+::ng-deep .mat-vertical-stepper-header {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+
+::ng-deep .mat-vertical-content {
+    padding: 0 !important;
+}
+
+::ng-deep .mat-stepper-vertical {
+    background-color: #F1F4FA !important;
+}
+
+::ng-deep .mat-step-header .mat-step-icon {
+    border: 2px solid #ccc !important;
+    background-color: #fff !important;
+}
+
+::ng-deep .mat-step-header .mat-step-icon-selected {
+    border: 3px solid #7495C7 !important;
+    background-color: #fff !important;
+}
+
+::ng-deep .mat-step-header .mat-step-icon-state-done,
+::ng-deep .mat-step-header .mat-step-icon-state-edit {
+    background-color: #7495C7 !important;
+    color: #fff !important;
+}
+
+::ng-deep .mat-step-header .mat-step-icon-state-edit {
+    border: none !important;
+}
+
+::ng-deep .mat-stepper-vertical-line::before {
+    top: -5px !important;
+    border-left-width: 2px !important;
+}
+
+::ng-deep .mat-step-label-selected {
+    font-weight: bold;
+}

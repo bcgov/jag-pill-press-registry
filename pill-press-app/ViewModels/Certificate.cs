@@ -12,10 +12,7 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public string Id { get; set; }
 
         [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
-
-        [JsonProperty(PropertyName = "approvedIntendedUse")]
-        public string ApprovedIntendedUse { get; set; }
+        public string Name { get; set; }        
 
         [JsonProperty(PropertyName = "issueDate")]
         public DateTimeOffset? IssueDate { get; set; }
@@ -28,5 +25,7 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
 
         [JsonProperty(PropertyName = "expiryDateString")]
         public string ExpiryDateString { get; set; }
+
+        public List<CertificateApprovedProduct> ApprovedProducts { get; set; }
     }
 }

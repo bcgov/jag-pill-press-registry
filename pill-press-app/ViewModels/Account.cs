@@ -104,6 +104,10 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public string pstNumber { get; set; }
         public string websiteAddress { get; set; }
 
+        public bool? AuthorizedOwnerAdministrativeHold { get; set; }
+        public bool? WaiverAdministrativeHold { get; set; }
+        public bool? RegisteredSellerAdministrativeHold { get; set; }
+
         [JsonProperty(PropertyName = "submittedDate")]
         public System.DateTimeOffset? SubmittedDate { get; set; }
     }

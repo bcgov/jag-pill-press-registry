@@ -4,7 +4,7 @@ import { Application } from './application.model';
 export interface EquipmentLocation {
     id: string;
     address: CustomAddress;
-    application: Application;
+    //application: Application;
     name: string;
     privateDwelling: boolean;
     settingDescription: string;

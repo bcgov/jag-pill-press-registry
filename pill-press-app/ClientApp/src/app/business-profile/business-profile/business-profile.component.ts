@@ -12,6 +12,15 @@ import { PreviousAddressDataService } from '../../services/previous-address-data
 import { ActivatedRoute, Router } from '@angular/router';
 import { COUNTRIES } from './country-list';
 
+import {
+  faTrashAlt,
+  faExclamationTriangle,
+  faChevronRight,
+  faAddressCard,
+  faPhone,
+  faEnvelope
+} from '@fortawesome/free-solid-svg-icons';
+
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import * as _moment from 'moment';
@@ -66,6 +75,13 @@ export class BusinessProfileComponent extends FormBase implements OnInit {
   saveFormData: any;
   _showAdditionalAddress: boolean;
   _showAdditionalContact: boolean;
+
+  faTrashAlt = faTrashAlt;
+  faExclamationTriangle = faExclamationTriangle;
+  faChevronRight = faChevronRight;
+  faAddressCard = faAddressCard;
+  faPhone = faPhone;
+  faEnvelope = faEnvelope;
 
 
   public get contacts(): FormArray {

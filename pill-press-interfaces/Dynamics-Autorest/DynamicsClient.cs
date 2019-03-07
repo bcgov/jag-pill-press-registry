@@ -17,7 +17,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
 
     /// <summary>
     /// This OData service is located at
-    /// https://pillspressdev.api.crm3.dynamics.com/api/data/v8.2/
+    /// https://wsgw.dev.jag.gov.bc.ca/pillpress/dev/api/data/v8.2/
     /// </summary>
     public partial class DynamicsClient : ServiceClient<DynamicsClient>, IDynamicsClient
     {
@@ -57,6 +57,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual IBusinesscontacts Businesscontacts { get; private set; }
 
         /// <summary>
+        /// Gets the ICertificateapprovedproducts.
+        /// </summary>
+        public virtual ICertificateapprovedproducts Certificateapprovedproducts { get; private set; }
+
+        /// <summary>
         /// Gets the ICertificates.
         /// </summary>
         public virtual ICertificates Certificates { get; private set; }
@@ -92,6 +97,16 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual IIncidentbusinesscontactset Incidentbusinesscontactset { get; private set; }
 
         /// <summary>
+        /// Gets the IInspectionownershipcategories.
+        /// </summary>
+        public virtual IInspectionownershipcategories Inspectionownershipcategories { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspections.
+        /// </summary>
+        public virtual IInspections Inspections { get; private set; }
+
+        /// <summary>
         /// Gets the ILocationequipmentset.
         /// </summary>
         public virtual ILocationequipmentset Locationequipmentset { get; private set; }
@@ -100,6 +115,16 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// Gets the ILocations.
         /// </summary>
         public virtual ILocations Locations { get; private set; }
+
+        /// <summary>
+        /// Gets the IPostalcodes.
+        /// </summary>
+        public virtual IPostalcodes Postalcodes { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegions.
+        /// </summary>
+        public virtual IRegions Regions { get; private set; }
 
         /// <summary>
         /// Gets the IRiskassessments.
@@ -400,6 +425,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             Accounts = new Accounts(this);
             Applicationtypes = new Applicationtypes(this);
             Businesscontacts = new Businesscontacts(this);
+            Certificateapprovedproducts = new Certificateapprovedproducts(this);
             Certificates = new Certificates(this);
             Certificatetermsandconditionses = new Certificatetermsandconditionses(this);
             Customaddresses = new Customaddresses(this);
@@ -407,8 +433,12 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             Equipmentlocations = new Equipmentlocations(this);
             Equipments = new Equipments(this);
             Incidentbusinesscontactset = new Incidentbusinesscontactset(this);
+            Inspectionownershipcategories = new Inspectionownershipcategories(this);
+            Inspections = new Inspections(this);
             Locationequipmentset = new Locationequipmentset(this);
             Locations = new Locations(this);
+            Postalcodes = new Postalcodes(this);
+            Regions = new Regions(this);
             Riskassessments = new Riskassessments(this);
             Termsconditionspresets = new Termsconditionspresets(this);
             Contacts = new Contacts(this);
@@ -420,7 +450,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             Sharepointsites = new Sharepointsites(this);
             Entitydefinitions = new Entitydefinitions(this);
             Globaloptionsetdefinitions = new Globaloptionsetdefinitions(this);
-            BaseUri = new System.Uri("https://pillspressdev.api.crm3.dynamics.com/api/data/v8.2");
+            BaseUri = new System.Uri("https://wsgw.dev.jag.gov.bc.ca/pillpress/dev/api/data/v8.2");
             SerializationSettings = new JsonSerializerSettings
             {
                 Formatting = Newtonsoft.Json.Formatting.Indented,

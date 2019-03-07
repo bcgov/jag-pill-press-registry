@@ -26,8 +26,8 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         [JsonProperty(PropertyName = "address")]
         public CustomAddress Address { get; set; }
 
-        [JsonProperty(PropertyName = "application")]
-        public Application Application { get; set; }
+        //[JsonProperty(PropertyName = "application")]
+        //public Application Application { get; set; }
 
     }
 }
