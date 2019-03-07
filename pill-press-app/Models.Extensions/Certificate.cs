@@ -28,9 +28,19 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     ExpiryDateString = certificate.BcgovExpirydatelongdatestring,
                     ExpiryDate = certificate.BcgovExpirydate,
                     IssueDate = certificate.BcgovIssueddate,
-                    IssueDateString = certificate.BcgovIssueddatelongdatestring,
-                    ApprovedIntendedUse = certificate.BcgovApprovedintendeduse
-                };                                
+                    IssueDateString = certificate.BcgovIssueddatelongdatestring,                    
+                };
+
+                // add the CertificateApprovedProducts
+                if (certificate?.BcgovCertificateBcgovCertificateapprovedproductCertificateId?.Count > 0)
+                {
+                    result.ApprovedProducts = new List<CertificateApprovedProduct>();
+                    foreach (var product in certificate.BcgovCertificateBcgovCertificateapprovedproductCertificateId)
+                    {
+                        result.ApprovedProducts.Add(product.ToViewModel());
+                    }
+                }
+
             }
             return result;
         }

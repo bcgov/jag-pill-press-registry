@@ -9,6 +9,21 @@ import { DynamicsAccount } from '../models/dynamics-account.model';
 import { Subscription } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
 
+import {
+  faExclamationCircle,
+  faFileAlt,
+  faPencilAlt,
+  faExclamationTriangle,
+  faShoppingCart,
+  faEye,
+  faMapMarkerAlt
+} from '@fortawesome/free-solid-svg-icons';
+
+import {
+  faFilePdf,
+} from '@fortawesome/free-regular-svg-icons';
+import { Certificate } from '../models/certificate.model';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -25,11 +40,22 @@ export class DashboardComponent implements OnInit {
   isPaid: Boolean;
   orgType = '';
 
-  inProgressEquipment: Application[] = [];
-  completedEquipment: Application[] = [];
+  inProgressEquipment: any[] = [];
+  completedEquipment: any[] = [];
   waiverApplication: any;
   authorizedOwnerApplication: Application;
   registeredSellerApplication: any;
+
+  faExclamationTriangle = faExclamationTriangle;
+  faShoppingCart = faShoppingCart;
+  faEye = faEye;
+  faMapMarkerAlt = faMapMarkerAlt;
+  faPencilAlt = faPencilAlt;
+  faFileAlt = faFileAlt;
+  faExclamationCircle = faExclamationCircle;
+  faFilePdf = faFilePdf;
+  sellerCertificate: Certificate;
+  waiverHolderCertificate: Certificate;
 
   constructor(private userDataService: UserDataService, private router: Router,
     private dynamicsDataService: DynamicsDataService,
@@ -54,43 +80,102 @@ export class DashboardComponent implements OnInit {
 
     this.busy = this.applicationDataService.getApplications()
       .subscribe((data: Application[]) => {
+
+        data.forEach((app: any) => {
+          app.certificates = app.certificates || [];
+          if (app.certificates.length > 0) {
+            app.certificates.sort(this.dateSort);
+            app.certificate = app.certificates[0];
+            app.certificate.hasExpired = (new Date(app.certificate.expiryDate) < new Date());
+          }
+
+          const pendingChanges = data.filter(a => a.equipmentRecord && app.equipmentRecord
+            && a.equipmentRecord.id === app.equipmentRecord.id && !a.submittedDate && a.applicationtype === 'Equipment Change');
+          app.hasChangePending = (pendingChanges.length > 0);
+          if (pendingChanges.length > 0) {
+            const lsdChanges = pendingChanges.filter(c => ['Lost', 'Stolen', 'Destroyed'].indexOf(c.typeOfChange) !== -1);
+            if (lsdChanges.length > 0) {
+              app.lsdLinkId = lsdChanges[0].id;
+            }
+            const soldChanges = pendingChanges.filter(c => ['Sold'].indexOf(c.typeOfChange) !== -1);
+            if (soldChanges.length > 0) {
+              app.soldLinkId = soldChanges[0].id;
+            }
+          }
+        });
+
+        data.forEach((app: any) => {
+          if (app.certificate) {
+            this.applicationDataService.doesCertificateExist(app.id).subscribe(result => {
+              app.hasCertificate = result;
+            });
+          }
+        });
+
         const authorizedOwners = data.filter(a => a.applicationtype === 'Authorized Owner');
         if (authorizedOwners.length > 0) {
-          this.authorizedOwnerApplication = authorizedOwners[0];
+          // get latest application
+          this.authorizedOwnerApplication = authorizedOwners.sort((a, b) => a.createdon > b.createdon ? -1 : 1)[0];
         }
 
         const sellers = data.filter(a => a.applicationtype === 'Registered Seller');
+        this.sellerCertificate = this.getLatestCertificate(sellers);
         if (sellers.length > 0) {
-          this.registeredSellerApplication = sellers[0];
-
-          this.registeredSellerApplication.certificates = this.registeredSellerApplication.certificates || [];
-          this.registeredSellerApplication.certificates.sort((a, b) => {
-            if (a.issueDate > b.issueDate) {
-              return 1;
-            } else {
-              return -1;
-            }
-          });
-          this.registeredSellerApplication.certificate = this.registeredSellerApplication.certificates[0];
+          // get latest application
+          this.registeredSellerApplication = sellers.sort((a, b) => a.createdon > b.createdon ? -1 : 1)[0];
+          // overide status if certificate has expired
+          if (this.registeredSellerApplication.certificate && this.registeredSellerApplication.certificate.hasExpired) {
+            this.registeredSellerApplication.statuscode = 'Expired';
+          }
         }
 
         const waivers = data.filter(a => a.applicationtype === 'Waiver');
+        this.waiverHolderCertificate = this.getLatestCertificate(waivers);
         if (waivers.length > 0) {
-          this.waiverApplication = waivers[0];
-          this.waiverApplication.certificates = this.waiverApplication.certificates || [];
-          this.waiverApplication.certificates.sort((a, b) => {
-            if (a.issueDate > b.issueDate) {
-              return 1;
-            } else {
-              return -1;
-            }
-          });
-          this.waiverApplication.certificate = this.waiverApplication.certificates[0];
+          // get latest application
+          this.waiverApplication = waivers.sort((a, b) => a.createdon > b.createdon ? -1 : 1)[0];
+          // overide status if certificate has expired
+          if (this.waiverApplication.certificate && this.waiverApplication.certificate.hasExpired) {
+            this.waiverApplication.statuscode = 'Expired';
+          }
         }
 
         this.inProgressEquipment = data.filter(a => a.applicationtype === 'Equipment Notification' && a.statuscode !== 'Approved');
         this.completedEquipment = data.filter(a => a.applicationtype === 'Equipment Notification' && a.statuscode === 'Approved');
+
       });
+  }
+
+  getLatestCertificate(applications: any[]): Certificate {
+    applications = applications || [];
+    const certificates = [];
+    applications.forEach(app => {
+      if (app.certificate) {
+        certificates.push({ applicationId: app.id, certificate: app.certificate });
+      }
+    });
+
+    if (certificates.length > 0) {
+      // get latest certificate
+      const latest = certificates.sort((a, b) => a.certificate.issueDate > b.certificate.issueDate ? -1 : 1)[0];
+      const certificate: Certificate = latest.certificate;
+      // check if the certificate is downloadable
+      this.applicationDataService.doesCertificateExist(latest.applicationId).subscribe(result => {
+        certificate.hasCertificate = result;
+      });
+      return certificate;
+    } else {
+      return null;
+    }
+
+  }
+
+  dateSort(a, b) {
+    if (a.issueDate > b.issueDate) {
+      return 1;
+    } else {
+      return -1;
+    }
   }
 
   isAuthorizedApplicationPending() {
@@ -176,6 +261,45 @@ export class DashboardComponent implements OnInit {
         this.snackBar.open('Error starting a New Equipment Notificatio Application',
           'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
         console.log('Error starting a Registered Seller Application');
+      }
+    );
+  }
+
+  reportSales(equipmentId: string) {
+    // TODO: Link the equipment to the application
+    const newLicenceApplicationData: Application = <Application>{
+      statuscode: 'Draft',
+      typeOfChange: 'Sold',
+      equipmentRecord: {
+        id: equipmentId
+      }
+    };
+    this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Equipment Change').subscribe(
+      data => {
+        this.router.navigateByUrl(`/equipment-changes/reporting-sales/details/${data.id}`);
+      },
+      err => {
+        this.snackBar.open('Error starting a Reporting Sales Application', 'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
+        console.log('Error starting Reporting Sales Application');
+      }
+    );
+  }
+
+  reportLSD(equipmentId: string) {
+    const newLicenceApplicationData: Application = <Application>{
+      statuscode: 'Draft',
+      typeOfChange: 'Lost',
+      equipmentRecord: {
+        id: equipmentId
+      }
+    };
+    this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Equipment Change').subscribe(
+      data => {
+        this.router.navigateByUrl(`/equipment-changes/reporting-changes/details/${data.id}`);
+      },
+      err => {
+        this.snackBar.open('Error starting a Reporting Sales Application', 'Fail', { duration: 3500, panelClass: ['red-snackbar'] });
+        console.log('Error starting Reporting Sales Application');
       }
     );
   }
