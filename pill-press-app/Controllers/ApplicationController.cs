@@ -14,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Gov.Jag.PillPressRegistry.Public.Controllers
@@ -100,8 +101,13 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             {
                 dynamicsApplicationList = _dynamicsClient.Incidents.Get(filter: filter, orderby: new List<string> { "modifiedon desc" }).Value;
             }
-            catch (OdataerrorException)
+            catch (OdataerrorException odee)
             {
+                _logger.LogError(LoggingEvents.Error, "Error getting Application");
+                _logger.LogError("Request:");
+                _logger.LogError(odee.Request.Content);
+                _logger.LogError("Response:");
+                _logger.LogError(odee.Response.Content);
                 dynamicsApplicationList = null;
             }
             
@@ -140,6 +146,10 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateApplication([FromBody] ViewModels.Application item, string id)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("Invalid Model");
+            }
             if (!string.IsNullOrEmpty(id) && Guid.TryParse(id, out Guid applicationId))
             {
                 // get the Application
@@ -172,6 +182,10 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 var AddressofBusinessthathasGivenorLoaned = CreateOrUpdateAddress(item.AddressofBusinessthathasGivenorLoaned);
                 var AddressofBusinessThatHasRentedorLeased = CreateOrUpdateAddress(item.AddressofBusinessThatHasRentedorLeased);
                 var AddressofPersonBusiness = CreateOrUpdateAddress(item.AddressofPersonBusiness);
+                var AddressWhereEquipmentWasDestroyed = CreateOrUpdateAddress(item.AddressWhereEquipmentWasDestroyed);
+                var CivicAddressOfPurchaser = CreateOrUpdateAddress(item.civicAddressOfPurchaser);
+                var PurchasersCivicAddress = CreateOrUpdateAddress(item.purchasersCivicAddress);
+                var PurchasersBusinessAddress = CreateOrUpdateAddress(item.purchasersBusinessAddress);
 
                 var EquipmentLocation = CreateOrUpdateLocation(id, item.EquipmentLocation, userSettings.AccountId);
 
@@ -197,6 +211,17 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                         _dynamicsClient.Incidents.RemoveReference(id, "bcgov_BCSellersAddress", null);
                     }
                     patchApplication.BCSellersAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", BCSellersAddress.BcgovCustomaddressid);
+                }
+
+                if (AddressWhereEquipmentWasDestroyed.HasValue() && AddressWhereEquipmentWasDestroyed.BcgovCustomaddressid != null &&
+                    (application._bcgovAddresswhereequipmentwasdestroyedValue == null || application._bcgovAddresswhereequipmentwasdestroyedValue != AddressWhereEquipmentWasDestroyed.BcgovCustomaddressid))
+                {
+                    if (application._bcgovAddresswhereequipmentwasdestroyedValue != null)
+                    {
+                        // delete an existing reference.
+                        _dynamicsClient.Incidents.RemoveReference(id, "bcgov_AddressWhereEquipmentWasDestroyed", null);
+                    }
+                    patchApplication.BcgovAddressWhereEquipmentWasDestroyedODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", AddressWhereEquipmentWasDestroyed.BcgovCustomaddressid);
                 }
 
                 if (AddressofPersonBusiness.HasValue() && AddressofPersonBusiness.BcgovCustomaddressid != null &&
@@ -265,6 +290,42 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                         _dynamicsClient.Incidents.RemoveReference(id, "bcgov_AddressofBusinessthathasRentedorLeased", null);
                     }
                     patchApplication.AddressofBusinessThatHasRentedorLeasedODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", AddressofBusinessThatHasRentedorLeased.BcgovCustomaddressid);
+                }
+
+
+                if (PurchasersCivicAddress.HasValue() &&
+                    (application._bcgovCivicaddressofpurchaserValue == null || application._bcgovCivicaddressofpurchaserValue != PurchasersCivicAddress.BcgovCustomaddressid))
+                {
+                    if (application._bcgovCivicaddressofpurchaserValue != null)
+                    {
+                        // delete an existing reference.
+                        _dynamicsClient.Incidents.RemoveReference(id, "bcgov_PurchasersCivicAddress", null);
+                    }
+                    patchApplication.BcgovPurchasersCivicAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", PurchasersCivicAddress.BcgovCustomaddressid);
+                }
+
+
+                if (CivicAddressOfPurchaser.HasValue() &&
+                    (application._bcgovCivicaddressofpurchaserValue == null || application._bcgovCivicaddressofpurchaserValue != CivicAddressOfPurchaser.BcgovCustomaddressid))
+                {
+                    if (application._bcgovCivicaddressofpurchaserValue != null)
+                    {
+                        // delete an existing reference.
+                        _dynamicsClient.Incidents.RemoveReference(id, "bcgov_CivicAddressofPurchaser", null);
+                    }
+                    patchApplication.BcgovCivicAddressofPurchaserODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", CivicAddressOfPurchaser.BcgovCustomaddressid);
+                }
+
+
+                if (PurchasersBusinessAddress.HasValue() &&
+                    (application._bcgovPurchasersbusinessaddressValue == null || application._bcgovPurchasersbusinessaddressValue != PurchasersBusinessAddress.BcgovCustomaddressid))
+                {
+                    if (application._bcgovPurchasersbusinessaddressValue != null)
+                    {
+                        // delete an existing reference.
+                        _dynamicsClient.Incidents.RemoveReference(id, "bcgov_PurchasersBusinessAddress", null);
+                    }
+                    patchApplication.BcgovPurchasersBusinessAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", PurchasersBusinessAddress.BcgovCustomaddressid);
                 }
 
                 if (EquipmentLocation.HasValue() &&
@@ -616,7 +677,6 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         [HttpPost("{applicationType}")]
         public async Task<IActionResult> CreateApplication(string applicationType, [FromBody] ViewModels.Application item)
         {
-
             // get UserSettings from the session
             string temp = _httpContextAccessor.HttpContext.Session.GetString("UserSettings");
             UserSettings userSettings = JsonConvert.DeserializeObject<UserSettings>(temp);
@@ -637,6 +697,10 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             var AddressofBusinessthathasGivenorLoaned = CreateOrUpdateAddress(item.AddressofBusinessthathasGivenorLoaned);
             var AddressofBusinessThatHasRentedorLeased = CreateOrUpdateAddress(item.AddressofBusinessThatHasRentedorLeased);
             var AddressofPersonBusiness = CreateOrUpdateAddress(item.AddressofPersonBusiness);
+            var AddressWhereEquipmentWasDestroyed = CreateOrUpdateAddress(item.AddressWhereEquipmentWasDestroyed);
+            var CivicAddressOfPurchaser = CreateOrUpdateAddress(item.civicAddressOfPurchaser);
+            var PurchasersCivicAddress = CreateOrUpdateAddress(item.purchasersCivicAddress);
+            var PurchasersBusinessAddress = CreateOrUpdateAddress(item.purchasersBusinessAddress);
 
             // create a new Application.
             MicrosoftDynamicsCRMincident application = new MicrosoftDynamicsCRMincident();
@@ -653,6 +717,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 {
                     application.ApplicationTypeIdODataBind = _dynamicsClient.GetEntityURI("bcgov_applicationtypes", applicationTypeId);
                 }                
+            }
+
+            if (item?.EquipmentRecord?.Id != null)
+            {
+                application.EquipmentRecordODataBind = _dynamicsClient.GetEntityURI("bcgov_equipments", item?.EquipmentRecord?.Id);
             }
 
             // set the author based on the current user.
@@ -692,12 +761,32 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             {
                 application.AddressofBusinessThatHasRentedorLeasedODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", AddressofBusinessThatHasRentedorLeased.BcgovCustomaddressid);
             }
-            
+
             if (AddressofPersonBusiness.HasValue())
             {
                 application.AddressofPersonBusinessODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", AddressofPersonBusiness.BcgovCustomaddressid);
             }
-            
+
+            if (AddressWhereEquipmentWasDestroyed.HasValue())
+            {
+                application.BcgovAddressWhereEquipmentWasDestroyedODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", AddressWhereEquipmentWasDestroyed.BcgovCustomaddressid);
+            }
+
+            if (CivicAddressOfPurchaser.HasValue())
+            {
+                application.BcgovCivicAddressofPurchaserODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", CivicAddressOfPurchaser.BcgovCustomaddressid);
+            }
+
+            if (PurchasersCivicAddress.HasValue())
+            {
+                application.BcgovPurchasersCivicAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", PurchasersCivicAddress.BcgovCustomaddressid);
+            }
+
+            if (PurchasersBusinessAddress.HasValue())
+            {
+                application.BcgovPurchasersBusinessAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", PurchasersBusinessAddress.BcgovCustomaddressid);
+            }
+
 
             application.Statuscode = (int?) ViewModels.ApplicationStatusCodes.Draft;
             try
@@ -858,98 +947,148 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             if (!string.IsNullOrEmpty(id) && Guid.TryParse(id, out Guid applicationId))
             {
 
-                // verify the currently logged in user has access to this account
+                string serverRelativeUrl = getCertificateServerRelativeUrl(applicationId);
 
-                MicrosoftDynamicsCRMincident application = _dynamicsClient.GetApplicationByIdWithChildren(applicationId);
-                if (application == null)
+                if (serverRelativeUrl == null)
                 {
-                    _logger.LogWarning(LoggingEvents.NotFound, "Application NOT found.");
                     return new NotFoundResult();
                 }
+                string fileName = "";
 
-                if (!UserDynamicsExtensions.CurrentUserHasAccessToApplication(applicationId, _httpContextAccessor, _dynamicsClient))
+                Regex regex = new Regex(@"/([^/]+)$");
+                Match match = regex.Match(serverRelativeUrl);
+                if (match.Success)
                 {
-                    _logger.LogWarning(LoggingEvents.NotFound, "Current user has NO access to the application.");
+                    fileName = match.Groups[1].Value;
+                }
+                 
+
+                try
+                {
+                    byte[] fileContents = await _sharePointFileManager.DownloadFile(serverRelativeUrl);
+                    return new FileContentResult(fileContents, "application/octet-stream")
+                    {
+                        FileDownloadName = fileName
+                    };
+                }
+                catch (Exception e)
+                {
+                    _logger.LogError(LoggingEvents.HttpGet, "Error downloading certificate for application: ");
+                    _logger.LogError(LoggingEvents.HttpGet, e.Message);
+                    _logger.LogError(LoggingEvents.HttpGet, serverRelativeUrl);
                     return new NotFoundResult();
                 }
-
-                string applicationTypeName = application.BcgovApplicationTypeId.BcgovName;
-                string filePrefix = "";
-
-                /*             
-                 * File name format is
-                 * WA_CERTIFICATE_<CERTIFICATE_NUMBER> (for Waiver)
-                 * RS_CERTIFICATE_<CERTIFICATE_NUMBER> (for Registered Seller)
-                 * EC_CERTIFICATE_<CERTIFICATE_NUMBER> (For Equipment Notification)
-                 * 
-                 */
-                
-                if (Guid.TryParse(application._customeridValue, out Guid accountId))
-                {
-                    var account = _dynamicsClient.GetAccountByIdWithChildren(accountId);
-
-                    switch (applicationTypeName)
-                    {
-                        case "Waiver":
-                            filePrefix = "WA_CERTIFICATE_";
-                            break;
-                        case "Registered Seller":
-                            filePrefix = "RS_CERTIFICATE_";
-                            break;
-                        case "Equipment Notification":
-                            filePrefix = "EC_CERTIFICATE_";
-                            break;
-                    }
-
-                    // get the latest certificate
-
-                    DateTimeOffset? dto = null;
-                    string certificateName = "";
-
-                    foreach (var certificate in application.BcgovIncidentBcgovCertificateApplication)
-                    {
-                        if (dto == null || dto < certificate.BcgovIssueddate)
-                        {
-                            dto = certificate.BcgovIssueddate;
-                            certificateName = certificate.BcgovName;
-                        }
-                    }
-
-                    string serverRelativeUrl = account.GetServerUrl(_sharePointFileManager);
-                
-                    
-                    serverRelativeUrl += $"/{filePrefix}{certificateName}.pdf";
-
-                    try
-                    {
-                        byte[] fileContents = await _sharePointFileManager.DownloadFile(serverRelativeUrl);
-                        return new FileContentResult(fileContents, "application/octet-stream")
-                        {
-                            FileDownloadName = $"{filePrefix}{certificateName}.pdf"
-                        };
-                    }
-                    catch (Exception e)
-                    {
-                        _logger.LogError(LoggingEvents.HttpGet, "Error downloading certificate for application: ");
-                        _logger.LogError(LoggingEvents.HttpGet, e.Message);
-                        _logger.LogError(LoggingEvents.HttpGet, serverRelativeUrl);
-                        return new NotFoundResult();
-                    }
-
-                }
-                else
-                {
-                    _logger.LogError(LoggingEvents.HttpGet, "Unable to get account from application."); 
-                    return BadRequest();
-                }
-                
-
-                
             }
             else
             {
                 return BadRequest();
             }
+        }
+
+
+        [HttpGet("{id}/certificate-exists")]
+        public async Task<IActionResult> CertificateExists(string id)
+        {
+            _logger.LogDebug(LoggingEvents.HttpPost, "Begin method " + this.GetType().Name + "." + MethodBase.GetCurrentMethod().ReflectedType.Name);
+            bool fileExists = false;
+
+            if (!string.IsNullOrEmpty(id) && Guid.TryParse(id, out Guid applicationId))
+            {
+                string serverRelativeUrl = getCertificateServerRelativeUrl(applicationId);
+
+                try
+                {
+                    byte[] fileContents = await _sharePointFileManager.DownloadFile(serverRelativeUrl);
+                    if (fileContents.Length > 0)
+                    {
+                        fileExists = true;
+                    }
+                    return new JsonResult(fileExists);
+                }
+                catch (Exception e)
+                {
+                    _logger.LogError(LoggingEvents.HttpGet, "Error downloading certificate for application: ");
+                    _logger.LogError(LoggingEvents.HttpGet, e.Message);
+                    _logger.LogError(LoggingEvents.HttpGet, serverRelativeUrl);
+                    return new JsonResult(false);
+                }
+
+            }
+            else
+            {
+                _logger.LogError(LoggingEvents.HttpGet, "Unable to get account from application.");
+                return BadRequest();
+            }
+        }
+
+        private string getCertificateServerRelativeUrl(Guid applicationId)
+        {
+            string relativeUrl = null;
+
+            // verify the currently logged in user has access to this account
+
+            MicrosoftDynamicsCRMincident application = _dynamicsClient.GetApplicationByIdWithChildren(applicationId);
+            if (application == null)
+            {
+                _logger.LogWarning(LoggingEvents.NotFound, "Application NOT found.");
+                return null;
+            }
+
+            if (!UserDynamicsExtensions.CurrentUserHasAccessToApplication(applicationId, _httpContextAccessor, _dynamicsClient))
+            {
+                _logger.LogWarning(LoggingEvents.NotFound, "Current user has NO access to the application.");
+                return null;
+            }
+
+
+            string applicationTypeName = application.BcgovApplicationTypeId.BcgovName;
+            string filePrefix = "";
+
+            /*             
+             * File name format is
+             * WA_CERTIFICATE_<CERTIFICATE_NUMBER> (for Waiver)
+             * RS_CERTIFICATE_<CERTIFICATE_NUMBER> (for Registered Seller)
+             * EC_CERTIFICATE_<CERTIFICATE_NUMBER> (For Equipment Notification)
+             * 
+             */
+
+            if (Guid.TryParse(application._customeridValue, out Guid accountId))
+            {
+                var account = _dynamicsClient.GetAccountByIdWithChildren(accountId);
+
+                switch (applicationTypeName)
+                {
+                    case "Waiver":
+                        filePrefix = "WA_CERTIFICATE_";
+                        break;
+                    case "Registered Seller":
+                        filePrefix = "RS_CERTIFICATE_";
+                        break;
+                    case "Equipment Notification":
+                        filePrefix = "EC_CERTIFICATE_";
+                        break;
+                }
+
+                // get the latest certificate
+
+                DateTimeOffset? dto = null;
+                string certificateName = "";
+
+                foreach (var certificate in application.BcgovIncidentBcgovCertificateApplication)
+                {
+                    if (dto == null || dto < certificate.BcgovIssueddate)
+                    {
+                        dto = certificate.BcgovIssueddate;
+                        certificateName = certificate.BcgovName;
+                    }
+                }
+
+                relativeUrl = account.GetServerUrl(_sharePointFileManager);
+
+
+                relativeUrl += $"/{filePrefix}{certificateName}.pdf";
+            }
+            return relativeUrl;
         }
 
         /// <summary>

@@ -207,6 +207,9 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     websiteAddress = account.Websiteurl,
                     declarationofcorrectinformation = account.BcgovDeclarationofcorrectinformation,
                     foippaconsent = account.BcgovFoippaconsent,
+                    AuthorizedOwnerAdministrativeHold = account.BcgovAoadministrativehold,
+                    WaiverAdministrativeHold = account.BcgovWaiveradministrativehold,
+                    RegisteredSellerAdministrativeHold = account.BcgovRegisteredselleradministrativehold,
 
                     SubmittedDate = account.BcgovSubmitteddate
 

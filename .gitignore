@@ -14,3 +14,4 @@ one-stop-service/obj/
 pdf-service/.vscode/*
 one-stop-service/.vs/one-stop-service/
 cllc-public-app/.vscode/*
+/node_modules/.staging/autorest-63f255e3

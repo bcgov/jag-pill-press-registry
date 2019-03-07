@@ -10,6 +10,8 @@ import { UserDataService } from './../../services/user-data.service';
 import { DynamicsDataService } from './../../services/dynamics-data.service';
 import { FormBase } from './../../shared/form-base';
 import { postalRegex } from '../../business-profile/business-profile/business-profile.component';
+import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import { faSave } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
   selector: 'app-equipment-location',
@@ -21,6 +23,8 @@ export class EquipmentLocationComponent extends FormBase implements OnInit {
   busy: Subscription;
   equipmentId: string;
   busyPromise: Promise<any>;
+  faExclamationCircle = faExclamationCircle;
+  faSave = faSave;
 
   locations: EquipmentLocation[] = [
     // <any>{
@@ -55,6 +59,112 @@ export class EquipmentLocationComponent extends FormBase implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       id: [],
+      ownedBeforeJan2019: [],
+
+      // First level checkboxes
+      purchasedFromBcSeller: [],
+      purchasedFromSellerOutsideOfBc: [],
+      importedToBcByAThirdParty: [],
+      alternativeOwnershipArrangement: [],
+      iAssembledItMyself: [],
+      howCameIntoPossessionOtherCheck: [],
+
+      // BC Seller fields
+      nameOfBcSeller: [],
+      bcSellersContactPhoneNumber: [],
+      bcSellersContactEmail: [],
+      dateOfPurchaseFromBcSeller: [],
+      bcSellersRegistrationNumber: [],
+
+      // Outside BC seller fields
+      outsideBcSellersName: [],
+      outsideBcSellersLocation: [],
+      dateOfPurchaseFromOutsideBcSeller: [],
+
+      // Imported to BC by a third party
+      nameOfImporter: [],
+      importersRegistrationNumber: [],
+      nameOfOriginatingSeller: [],
+      originatingSellersLocation: [],
+      dateOfPurchaseFromImporter: [],
+
+      // Alternative Ownership Arrangement fields
+      kindOfAlternateOwnershipOtherCheck: [],
+      kindOfAlternateOwnershipOther: [],
+      possessUntilICanSell: [],
+      giveNorLoanedToMe: [],
+      rentingOrLeasingFromAnotherBusiness: [],
+      usingToManufactureAProduct: [],
+      areYouARegisteredSeller: [],
+      emailOfTheBusinessThatHasGivenOrLoaned: [],
+      phoneofbusinessthathasgivenorloaned: [],
+      emailOfBusinessThatHasRentedOrLeased: [],
+      phoneOfBusinessThatHasRentedOrLeased: [],
+      whyHaveYouRentedOrLeased: [],
+      whyHaveYouAcceptedOrBorrowed: [],
+      nameOfBusinessThatHasGivenOrLoaned: [],
+      NameOfBusinessThatHasRentedOrLeased: [],
+
+      // I assembled it myself fields
+      whenDidYouAssembleEquipment: [],
+      whereDidYouObtainParts: [],
+      doYouAssembleForOtherBusinesses: [],
+      detailsOfAssemblyForOtherBusinesses: [],
+      detailsOfHowEquipmentCameIntoPossession: [],
+
+      addressofBusinessthathasGivenorLoaned: this.fb.group({
+        id: [],
+        streetLine1: [],
+        streetLine2: [],
+        city: [],
+        country: [],
+        province: [],
+        postalCode: [],
+      }),
+      addressOfBusinessThatHasRentedorLeased: this.fb.group({
+        id: [],
+        streetLine1: [],
+        streetLine2: [],
+        city: [],
+        country: [],
+        province: [],
+        postalCode: [],
+      }),
+      bcSellersAddress: this.fb.group({
+        id: [],
+        streetLine1: [],
+        streetLine2: [],
+        city: [],
+        province: [],
+        postalCode: [],
+      }),
+      importersAddress: this.fb.group({
+        id: [],
+        streetLine1: [],
+        streetLine2: [],
+        city: [],
+        country: [],
+        province: [],
+        postalCode: [],
+      }),
+      outsideBcSellersAddress: this.fb.group({
+        id: [],
+        streetLine1: [],
+        streetLine2: [],
+        city: [],
+        country: [],
+        province: [],
+        postalCode: [],
+      }),
+      OriginatingSellersAddress: this.fb.group({
+        id: [],
+        streetLine1: [],
+        streetLine2: [],
+        city: [],
+        country: [],
+        province: [],
+        postalCode: [],
+      }),
       equipmentLocation: this.fb.group({
         id: [],
         address: this.fb.group({
@@ -66,9 +176,11 @@ export class EquipmentLocationComponent extends FormBase implements OnInit {
           postalCode: ['', [Validators.required, Validators.pattern(postalRegex)]],
         }),
         privateDwelling: ['', Validators.required],
+        settingDescription: ['', Validators.required],
       }),
-      settingDescription: ['', Validators.required]
+      
     });
+   
 
     this.form.get('equipmentLocation.id').valueChanges
       .subscribe(value => {
@@ -92,8 +204,8 @@ export class EquipmentLocationComponent extends FormBase implements OnInit {
           ])
             .toPromise()
             .then((result) => {
-              const application = <Application>(result[0]);
-              application.equipmentLocation = application.equipmentLocation || <EquipmentLocation>{ address: {} };
+              const application = <Application>result[0];              
+              //application.equipmentLocation = application.equipmentLocation || <EquipmentLocation>{ address: {} };              
               this.form.patchValue(application);
               this.locations = <EquipmentLocation[]>result[1];
             });
@@ -102,7 +214,7 @@ export class EquipmentLocationComponent extends FormBase implements OnInit {
   }
 
   markAsTouched() {
-    this.form.get('settingDescription').markAsTouched();
+    this.form.get('equipmentLocation.settingDescription').markAsTouched();
     this.form.get('equipmentLocation.privateDwelling').markAsTouched();
 
     const controls = (<FormGroup>this.form.get('equipmentLocation.address')).controls;

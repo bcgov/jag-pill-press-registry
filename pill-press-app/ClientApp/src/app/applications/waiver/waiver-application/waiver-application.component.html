@@ -75,8 +75,8 @@
                       <label>Product {{i === 0 ? '': i +1}} Description and Intended Use</label>
                       <span class="error-states">*</span>
                     </section>
-                    <a href="javascript:void(0);" *ngIf="ownProducts.controls.length > 1" (click)="deleteCustomProduct(i, item.get('purpose').value)"><i
-                        class="fas fa-trash-alt"></i>Delete Product</a>
+                    <a href="javascript:void(0);" *ngIf="ownProducts.controls.length > 1" (click)="deleteCustomProduct(i, item.get('purpose').value)">
+                      <fa-icon [icon]="faTrashAlt"></fa-icon>Delete Product</a>
                   </div>
                   <textarea class="form-control" formControlName="productdescriptionandintendeduse" maxlength="1000"
                     rows="5"></textarea>
@@ -84,11 +84,11 @@
               </section>
             </div>
             <div style="background-color: #F2F2F2; border: solid 1px transparent; border-radius: 5px; padding: 10px; margin-bottom: 10px;">
-              <i class="fas fa-info-circle" style="color: #38598A; margin-right: 10px;"></i>
+              <fa-icon [icon]="faInfoCircle" style="color: #38598A; margin-right: 10px;"></fa-icon>
               <span>A waiver will only be granted for the intended products and uses disclosed in this application.</span>
             </div>
             <a href="javascript:void(0);" (click)="addCustomProduct({purpose: PRODUCING_OWN_PRODUCT})" style="float: right">
-              <i class="fas fa-plus-circle" style="color: #669900;"></i>Add another product</a>
+              <fa-icon [icon]="faPlusCircle" style="color: #669900;"></fa-icon>Add another product</a>
             <div style="clear: both;"></div>
           </section>
           <app-field label="Do you own, use, or possess (or intend to own) Controlled Equipment for the purposes of providing manufacturing services to others?"
@@ -114,8 +114,8 @@
                       <label>Product {{i === 0 ? '': i +1}} Description and Intended Use</label>
                       <span class="error-states">*</span>
                     </section>
-                    <a href="javascript:void(0);" *ngIf="productsForOthers.controls.length > 1" (click)="deleteCustomProduct(i, item.get('purpose').value)"><i
-                        class="fas fa-trash-alt"></i>Delete Product</a>
+                    <a href="javascript:void(0);" *ngIf="productsForOthers.controls.length > 1" (click)="deleteCustomProduct(i, item.get('purpose').value)">
+                      <fa-icon [icon]="faTrashAlt"></fa-icon>Delete Product</a>
                   </div>
                   <textarea class="form-control" formControlName="productdescriptionandintendeduse" maxlength="1000"
                     rows="5"></textarea>
@@ -123,11 +123,11 @@
               </section>
             </div>
             <div style="background-color: #F2F2F2; border: solid 1px transparent; border-radius: 5px; padding: 10px; margin-bottom: 10px;">
-              <i class="fas fa-info-circle" style="color: #38598A; margin-right: 10px;"></i>
+              <fa-icon [icon]="faInfoCircle" style="color: #38598A; margin-right: 10px;"></fa-icon>
               <span>A waiver will only be granted for the intended products and uses disclosed in this application.</span>
             </div>
             <a href="javascript:void(0);" (click)="addCustomProduct({purpose: MANUFACTURING_FOR_OTHERS})" style="float: right">
-              <i class="fas fa-plus-circle" style="color: #669900;"></i>Add another product</a>
+              <fa-icon [icon]="faPlusCircle" style="color: #669900;"></fa-icon>Add another product</a>
             <div style="clear: both;"></div>
           </section>
         </section>
@@ -156,7 +156,8 @@
         <section style="display: flex; justify-content: space-between; padding-top: 30px;">
           <!-- <div><span class="error-states">*</span> <i>Required field</i></div> -->
           <a href="javascript: void(0);" (click)="save(false);" style="margin-right: 10px">
-            <i class="fa fa-save" style="margin-right: 5px;"></i>Save & Close</a>
+            <fa-icon [icon]="faSave" style="margin-right: 5px;"></fa-icon>
+            Save & Close</a>
           <div>
             <button class="btn btn-primary" (click)="markAsTouched(); save(true);">SAVE & CONTINUE</button>
           </div>

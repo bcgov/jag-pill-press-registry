@@ -12,267 +12,397 @@
 
         <p>There are three owner categories on the Pill Press Online Registry: Authorized Owners, Registered Sellers,
           and Waiver Holders. If a business holds one or more owner category, they are considered authorized under
-          <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/about-act" target="blank">the
+          <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/about-act"
+            target="blank">the
             Act</a> to own, use, or possess Controlled Equipment.
         </p>
 
-        <div class="space-between">
-          <section style="margin-right: 10px;  flex: 1">
-            <div style="background-color: #F1F4FA; padding: 15px;">
-              <section class="user-header">
-                <h3>Authorized Owner</h3>
-                <img alt="" src="assets/icon-pillpress-owner-ao.png">
-              </section>
-              <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-authorized-owner"
-                target="blank">Find out whether the Authorized Owner category applies to you</a>
+        <table class="status-table">
+          <tr>
+            <td></td>
+            <th>OWNERSHIP CATEGORY</th>
+            <th>APPLICATION STATUS</th>
+            <th>ACTIONS</th>
+          </tr>
 
-            </div>
-            <div class="status-container">
-              <section *ngIf="!authorizedOwnerApplication || authorizedOwnerApplication?.statuscode === 'Cancelled' || authorizedOwnerApplication?.statuscode === 'Denied'">
-                <h4 class="status">STATUS:</h4> &nbsp;
-                <h4 class="status-blue">NO ACTIVE NOTIFICATION</h4>
-                <p>To become a Waiver Holder, please complete and submit an application form.</p>
-                <div style="display: flex; flex-direction: row-reverse">
+          <tr>
+            <td class="lead-column"
+              [ngClass]="{'on-hold': account?.authorizedOwnerAdministrativeHold, 'approved': authorizedOwnerApplication?.statuscode === 'Approved'}">
+            </td>
+            <td style="background-color: #F1F4FA; padding: 15px;">
+              <div>
+                <section class="user-header">
+                  <div style="padding-right: 5px;">
+                    <img alt="" src="assets/icon-pillpress-owner-ao.png">
+                  </div>
+                  <div>
+                    <h3>Authorized Owner</h3>
+                    <a *ngIf="!account?.authorizedOwnerAdministrativeHold && authorizedOwnerApplication?.statuscode !== 'Approved'"
+                      href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-authorized-owner"
+                      target="blank">Find out whether the Authorized Owner category applies to you</a>
+                    <div *ngIf="account?.authorizedOwnerAdministrativeHold" class="status-orange">ON ADMINISTRATIVE
+                      HOLD</div>
+                    <div *ngIf="authorizedOwnerApplication?.statuscode === 'Approved'">
+                      Confirmation Date:
+                    </div>
+                  </div>
+                </section>
+
+              </div>
+            </td>
+            <td class="status-container">
+              <div *ngIf="!account?.authorizedOwnerAdministrativeHold">
+                <section
+                  *ngIf="!authorizedOwnerApplication || authorizedOwnerApplication?.statuscode === 'Cancelled' || authorizedOwnerApplication?.statuscode === 'Denied'">
+                  <h4 class="status-blue">NO ACTIVE NOTIFICATION</h4>
+                  <p>To inform us that you are an Authorized Owner, please complete and submit a notification form.</p>
+                </section>
+                <section *ngIf="authorizedOwnerApplication?.statuscode === 'Draft'">
+                  <h4 class="status-orange">DRAFT</h4>
+                  <p>You have started a notification but not submitted it yet.</p>
+                </section>
+                <section *ngIf="isAuthorizedApplicationPending()">
+                  <h4 class="status-blue">PENDING</h4>
+                  <p>Your notification has been submitted. No further action is required..</p>
+                  <p>
+                    <strong>Reference #:&nbsp;</strong>{{authorizedOwnerApplication?.title}}
+                  </p>
+                </section>
+                <section *ngIf="authorizedOwnerApplication?.statuscode === 'Approved'">
+                  <h4 class="status-green">COMPLETED</h4>
+                  <p>Your Authorized Owner notification has been confirmed.</p>
+                  <p>
+                    <strong>Reference #:&nbsp;</strong>{{authorizedOwnerApplication?.title}}
+                  </p>
+                </section>
+                <section *ngIf="authorizedOwnerApplication?.statuscode === 'Withdrawn'">
+                  <h4 class="status-orange">WITHDRAWN</h4>
+                  <p>You have asked to withdraw your notification, so we have ceased processing it.</p>
+                </section>
+              </div>
+            </td>
+            <td class="status-container"  style="text-align: center;">
+              <div *ngIf="account?.authorizedOwnerAdministrativeHold" style="text-align: left;">
+                <span>Please contact </span> <br>
+                <span><a href="mailto:PillPressLicensing@gov.bc.ca">PillPressLicensing@gov.bc.ca</a> for further
+                  information.</span>
+              </div>
+              <div *ngIf="!account?.authorizedOwnerAdministrativeHold">
+                <section
+                  *ngIf="!authorizedOwnerApplication || authorizedOwnerApplication?.statuscode === 'Cancelled' || authorizedOwnerApplication?.statuscode === 'Denied'">
                   <button class="btn btn-primary" (click)="startNewAuthorizedOwnerApplication()">NOTIFY
                     US</button>
-                </div>
-              </section>
-              <section *ngIf="authorizedOwnerApplication?.statuscode === 'Draft'">
-                <h4 class="status">STATUS:</h4> &nbsp;
-                <h4 class="status-orange">DRAFT</h4>
-                <p>You have started an application but not submitted it yet.</p>
-                <a routerLink="/authorized-owner/profile-review/{{authorizedOwnerApplication.id}}"><i class="fas fa-exclamation-circle"
-                    style="color: #38598A; margin-right: 5px;"></i>Complete
-                  Application</a>
-              </section>
-              <section *ngIf="isAuthorizedApplicationPending()">
-                <h4 class="status">STATUS:</h4> &nbsp;
-                <h4 class="status-blue">PENDING</h4>
-                <p>Your application has been submitted. No further action currently required.</p>
-                <p>
-                  <strong>Reference #:&nbsp;</strong>{{authorizedOwnerApplication?.title}}
-                </p>
-              </section>
-              <section *ngIf="authorizedOwnerApplication?.statuscode === 'Approved'">
-                <h4 class="status">STATUS:</h4> &nbsp;
-                <h4 class="status-green">COMPLETED</h4>
-                <p>
-                  <strong>Confirmation Date:&nbsp;</strong>{{authorizedOwnerApplication?.submittedDate | date : 'dd MMM yyyy'}}
-                </p>
-                <p>
-                  <strong>Reference #:&nbsp;</strong>{{authorizedOwnerApplication?.title}}
-                </p>
-              </section>
-              <section *ngIf="authorizedOwnerApplication?.statuscode === 'Withdrawn'">
-                <h4 class="status">STATUS:</h4> &nbsp;
-                <h4 class="status-orange">WITHDRAWN</h4>
-                <p>You have withdrawn your application. We will cease all processing activities.</p>
-                <div style="display: flex; flex-direction: row-reverse">
+                </section>
+                <section *ngIf="authorizedOwnerApplication?.statuscode === 'Draft'">
+                  <button class="btn btn-primary"
+                    routerLink="/authorized-owner/profile-review/{{authorizedOwnerApplication.id}}">
+                    COMPLETE NOTIFICATION
+                  </button>
+                </section>
+                <section *ngIf="isAuthorizedApplicationPending()">
+                </section>
+                <section *ngIf="authorizedOwnerApplication?.statuscode === 'Approved'">
+                  <button class="btn btn-primary" (click)="startNewAuthorizedOwnerApplication()">RE-NOTIFY</button>
+                  <span>Amend information provided in original notification</span>
+                </section>
+                <section *ngIf="authorizedOwnerApplication?.statuscode === 'Withdrawn'">
                   <button class="btn btn-primary" (click)="startNewAuthorizedOwnerApplication()">NOTIFY
                     US AGAIN</button>
-                </div>
-              </section>
-            </div>
-          </section>
-
-          <section style="margin-right: 10px; flex: 1">
-            <div style="background-color: #F1F4FA; padding: 15px;">
-              <section class="user-header">
-                <h3>Waiver Holder</h3>
-                <img alt="" src="assets/icon-pillpress-owner-wh.png">
-              </section>
-              <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-waiver-holder"
-                target="blank">Find
-                out whether the Waiver Holder category applies to you</a>
-
-            </div>
-            <div class="status-container">
-              <section *ngIf="!waiverApplication">
-                <h4 class="status">STATUS:</h4> &nbsp;
-                <h4 class="status-blue">NO ACTION TAKEN YET</h4>
-                <p>To become a Waiver Holder, please complete and submit an application form.</p>
-                <button class="btn btn-primary" style="float:right" (click)="startNewWaiverApplication()">APPLY
-                  NOW</button>
-                <div style="clear: both;"></div>
-              </section>
-              <section *ngIf="waiverApplication?.statuscode === 'Draft'">
-                <h4 class="status">STATUS:</h4> &nbsp;
-                <h4 class="status-orange">DRAFT</h4>
-                <p>You have started an application but not submitted it yet.</p>
-                <a routerLink="/waiver/profile-review/{{waiverApplication.id}}"><i class="fas fa-exclamation-circle"
-                    style="color: #38598A; margin-right: 5px;"></i>Complete
-                  Application</a>
-              </section>
-              <section *ngIf="waiverApplication?.statuscode === 'Pending'">
-                <h4 class="status">STATUS:</h4> &nbsp;
-                <h4 class="status-blue">PENDING</h4>
-                <p>Your application has been submitted. No further action currently required.</p>
-                <p>
-                  <strong>Application #:&nbsp;</strong> {{waiverApplication?.title}}
-                </p>
-              </section>
-              <section *ngIf="waiverApplication?.statuscode === 'Incomplete'">
-                <h4 class="status">STATUS:</h4> &nbsp;
-                <h4 class="status-red">INCOMPLETE</h4>
-                <p>Your application has missing or inaccurate information. Our team will contact you.</p>
-                <p>
-                  <strong>Application #:&nbsp;</strong> {{waiverApplication?.title}}
-                </p>
-              </section>
-              <section *ngIf="isWaiverOrSellerUnderReview(waiverApplication?.statuscode)">
-                <h4 class="status">STATUS:</h4> &nbsp;
-                <h4 class="status-blue">UNDER REVIEW</h4>
-                <p>Your application is currently under review. No further action currently required.</p>
-                <p>
-                  <strong>Application #:&nbsp;</strong> {{waiverApplication?.title}}
-                </p>
-              </section>
-              <section *ngIf="waiverApplication?.statuscode === 'Approved'">
-                <h4 class="status">STATUS:</h4> &nbsp;
-                <h4 class="status-green">APPROVED</h4>
-                <p>
-                  <strong>Issue Date:&nbsp;</strong> {{waiverApplication?.certificate?.issueDate | date : 'dd MMM yyyy'}}
+                </section>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="lead-column"
+              [ngClass]="{'on-hold': account?.waiverAdministrativeHold, 'approved': waiverApplication?.statuscode === 'Approved'}">
+            </td>
+            <td style="background-color: #F1F4FA; padding: 15px;">
+              <div>
+                <section class="user-header">
+                  <div style="padding-right: 5px;">
+                    <img alt="" src="assets/icon-pillpress-owner-wh.png">
+                  </div>
+                  <div>
+                    <h3>Waiver Holder</h3>
+                    <a *ngIf="!account?.waiverAdministrativeHold && waiverApplication?.statuscode !== 'Approved'"
+                      href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-waiver-holder"
+                      target="blank">Find
+                      out whether the Waiver Holder category applies to you</a>
+                    <div *ngIf="account?.waiverAdministrativeHold" class="status-orange">ON ADMINISTRATIVE
+                      HOLD</div>
+                    <section *ngIf="!account?.waiverAdministrativeHold && waiverHolderCertificate?.hasExpired"
+                      class="status-red">
+                      EXPIRED
+                    </section>
+                    <a *ngIf="waiverHolderCertificate?.hasCertificate && !waiverHolderCertificate?.hasExpired"
+                      href="api/application/{{waiverApplication?.id}}/download-certificate" download>
+                      <!-- <fa-icon [icon]="faFilePdf" style="color: #38598A; margin-right: 5px;"></fa-icon> -->
+                      Download Certificate
+                    </a>
+                    <p *ngIf="waiverHolderCertificate">
+                      <strong>Issue Date:&nbsp;</strong> {{waiverHolderCertificate?.issueDate | date : 'dd MMM
+                          yyyy'}}
+                      <br>
+                      <strong>Expiry Date:&nbsp;</strong> {{waiverHolderCertificate?.expiryDate | date : 'dd MMM
+                          yyyy'}}
+                      <br>
+                    </p>
+                  </div>
+                </section>
+              </div>
+            </td>
+            <td class="status-container">
+              <div *ngIf="!account?.waiverAdministrativeHold">
+                <section *ngIf="!waiverApplication">
+                  <h4 class="status-blue">NO ACTIVE APPLICATION</h4>
+                  <p>To become a Waiver Holder, please complete and submit an application form.</p>
+                </section>
+                <section *ngIf="waiverApplication?.statuscode === 'Draft'">
+                  <h4 class="status-orange">DRAFT</h4>
+                  <p>You have started an application but not submitted it yet.</p>
+                </section>
+                <section *ngIf="waiverApplication?.statuscode === 'Pending'">
+                  <h4 class="status-blue">PENDING</h4>
+                  <p>Your application has been submitted. No further action currently required.</p>
+                  <p>
+                    <strong>Application #:&nbsp;</strong> {{waiverApplication?.title}}
+                  </p>
+                </section>
+                <section *ngIf="waiverApplication?.statuscode === 'Incomplete'">
+                  <h4 class="status-red">INCOMPLETE</h4>
+                  <p>Your application has missing or inaccurate data. Our team will contact you for further information.
+                  </p>
+                  <p>
+                    <strong>Application #:&nbsp;</strong> {{waiverApplication?.title}}
+                  </p>
+                </section>
+                <section *ngIf="isWaiverOrSellerUnderReview(waiverApplication?.statuscode)">
+                  <h4 class="status-blue">UNDER REVIEW</h4>
+                  <p>Your application is currently under review. No further action is required.</p>
+                  <p>
+                    <strong>Application #:&nbsp;</strong> {{waiverApplication?.title}}
+                  </p>
+                </section>
+                <section *ngIf="waiverApplication?.statuscode === 'Approved'">
+                  <h4 class="status-green">APPROVED</h4>
+                  <p>Your Registered Seller application has been approved.
+                    An email has been sent to you with further instructions.
+                  </p>
+                </section>
+                <section *ngIf="waiverApplication?.statuscode === 'Denied'">
+                  <h4 class="status-red">DENIED</h4>
+                  <p>Your application has been denied. Reasons for this decision to deny have been sent to you.</p>
+                </section>
+                <section *ngIf="waiverApplication?.statuscode === 'Withdrawn'">
+                  <h4 class="status-orange">WITHDRAWN</h4>
+                  <p>You have asked to withdraw your application, so we have ceased processing it.</p>
+                </section>
+                <section *ngIf="waiverApplication?.statuscode === 'Cancelled'">
+                  <h4 class="status-red">CANCELLED</h4>
+                  <p>Your application has been cancelled. An explanatory email has been sent to you.</p>
+                </section>
+                <section *ngIf="waiverApplication?.statuscode === 'Expired'">
+                  <h4 class="status-orange">EXPIRED</h4>
+                  <p>Your Waiver certificate has expired. Please submit a new application.</p>
+                </section>
+              </div>
+            </td>
+            <td class="status-container">
+              <div *ngIf="account?.waiverAdministrativeHold" style="text-align: left;">
+                <span>Please contact </span> <br>
+                <span><a href="mailto:PillPressLicensing@gov.bc.ca">PillPressLicensing@gov.bc.ca</a> for further
+                  information.</span>
+              </div>
+              <div *ngIf="!account?.waiverAdministrativeHold"  style="text-align: center;">
+                <section *ngIf="!waiverApplication">
+                  <button class="btn btn-primary" (click)="startNewWaiverApplication()">APPLY
+                    NOW</button>
+                </section>
+                <section *ngIf="waiverApplication?.statuscode === 'Draft'">
+                  <button class="btn btn-primary" routerLink="/waiver/profile-review/{{waiverApplication.id}}">
+                    COMPLETE APPLICATION
+                  </button>
+                </section>
+                <section *ngIf="waiverApplication?.statuscode === 'Pending'">
+                </section>
+                <section *ngIf="waiverApplication?.statuscode === 'Incomplete'">
+                </section>
+                <section *ngIf="isWaiverOrSellerUnderReview(waiverApplication?.statuscode)">
+                </section>
+                <section *ngIf="waiverApplication?.statuscode === 'Approved'">
+                  <button class="btn btn-primary" (click)="startNewWaiverApplication()">RENEW OR RE-APPLY</button>
                   <br>
-                  <strong>Expiry Date:&nbsp;</strong> {{waiverApplication?.certificate?.expiryDate | date : 'dd MMM yyyy'}}
+                  <span style=" font-size: 11px; padding-top: 7px;">Apply for renewal or amend information provided in
+                    original application</span>
+                </section>
+                <section *ngIf="waiverApplication?.statuscode === 'Denied'">
+                  <button class="btn btn-primary" (click)="startNewWaiverApplication()">APPLY
+                    AGAIN</button>
+                </section>
+                <section *ngIf="waiverApplication?.statuscode === 'Withdrawn'">
+                  <button class="btn btn-primary" (click)="startNewWaiverApplication()">APPLY
+                    AGAIN</button>
+                </section>
+                <section *ngIf="waiverApplication?.statuscode === 'Cancelled'">
+                  <button class="btn btn-primary" (click)="startNewWaiverApplication()">APPLY
+                    AGAIN</button>
+                </section>
+                <section *ngIf="waiverApplication?.statuscode === 'Expired'">
+                  <button class="btn btn-primary">APPLY NOW</button>
+                </section>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="lead-column"
+              [ngClass]="{'on-hold': account?.registeredSellerAdministrativeHold, 'approved': registeredSellerApplication?.statuscode === 'Approved'}">
+            </td>
+            <td style="background-color: #F1F4FA; padding: 15px;">
+              <div>
+                <section class="user-header">
+                  <div style="padding-right: 5px;">
+                    <img alt="" src="assets/icon-pillpress-owner-rs.png">
+                  </div>
+                  <div>
+                    <h3>Registered Seller</h3>
+                    <a *ngIf="!account?.registeredSellerAdministrativeHold && !sellerCertificate?.hasExpired"
+                      href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-registered-seller"
+                      target="blank">Find
+                      out whether the Registered Seller category applies to you</a>
+                    <div *ngIf="account?.registeredSellerAdministrativeHold" class="status-orange">ON ADMINISTRATIVE
+                      HOLD</div>
+                    <section *ngIf="sellerCertificate?.hasCertificate && !sellerCertificate?.hasExpired">
+                      <a href="api/application/{{sellerCertificate?.applicationId}}/download-certificate" download>
+                        <!-- <fa-icon [icon]="faFilePdf" style="color: #38598A; margin-right: 5px;"></fa-icon> -->
+                        Download Certificate
+                      </a>
+                      <p *ngIf="sellerCertificate">
+                        <strong>Issue Date:&nbsp;</strong> {{ sellerCertificate?.issueDate | date : 'dd MMM yyyy'}}
+                        <br>
+                        <strong>Expiry Date:&nbsp;</strong> {{ sellerCertificate?.expiryDate | date : 'dd MMM yyyy'}}
+                        <br>
+                        <br>
+                      </p>
+                    </section>
+                    <section *ngIf="!account?.registeredSellerAdministrativeHold && sellerCertificate?.hasExpired"
+                      class="status-red">
+                      EXPIRED
+                    </section>
+                  </div>
+                </section>
+              </div>
+            </td>
+            <td class="status-container">
+              <div *ngIf="!account?.registeredSellerAdministrativeHold">
+                <section *ngIf="!registeredSellerApplication">
+                  <h4 class="status-blue">NO ACTIVE APPLICATION</h4>
+                  <p>To become a Registered Seller, please complete and submit an application form.</p>
+                </section>
+                <section *ngIf="registeredSellerApplication?.statuscode === 'Draft'">
+                  <h4 class="status-orange">DRAFT</h4>
+                  <p>You have started an application but not submitted it yet.</p>
+                </section>
+                <section *ngIf="registeredSellerApplication?.statuscode === 'Pending'">
+                  <h4 class="status-blue">PENDING</h4>
+                  <p>Your application has been submitted. No further action is required.</p>
+                  <p>
+                    <strong>Application #:&nbsp;</strong> {{registeredSellerApplication?.title}}
+                  </p>
+                </section>
+                <section *ngIf="registeredSellerApplication?.statuscode === 'Incomplete'">
+                  <h4 class="status-red">INCOMPLETE</h4>
+                  <p>Your application has missing or inaccurate data. Our team will contact you for further information.
+                  </p>
+                  <p>
+                    <strong>Application #:&nbsp;</strong> {{registeredSellerApplication?.title}}
+                  </p>
+                </section>
+                <section *ngIf="isWaiverOrSellerUnderReview(registeredSellerApplication?.statuscode)">
+                  <h4 class="status-blue">UNDER REVIEW</h4>
+                  <p>Your application is currently under review. No further action is required.</p>
+                  <p>
+                    <strong>Application #:&nbsp;</strong> {{registeredSellerApplication?.title}}
+                  </p>
+                </section>
+                <section *ngIf="registeredSellerApplication?.statuscode === 'Approved'">
+                  <h4 class="status-green">APPROVED</h4>
+                  <p>
+                    Your Registered Seller application has been approved.
+                    An email has been sent to you with further instructions.
+                  </p>
+                </section>
+                <section *ngIf="registeredSellerApplication?.statuscode === 'Denied'">
+                  <h4 class="status-red">DENIED</h4>
+                  <p>Your application has been denied. Reasons for this decision to deny have been sent to you.</p>
+                </section>
+                <section *ngIf="registeredSellerApplication?.statuscode === 'Withdrawn'">
+                  <h4 class="status-orange">WITHDRAWN</h4>
+                  <p>You have asked to withdraw your application, so we have ceased processing it.</p>
+                </section>
+                <section *ngIf="registeredSellerApplication?.statuscode === 'Cancelled'">
+                  <h4 class="status-red">CANCELLED</h4>
+                  <p>Your application has been cancelled. An explanatory email has been sent to you.</p>
+                </section>
+                <section *ngIf="registeredSellerApplication?.statuscode === 'Expired'">
+                  <h4 class="status-orange">EXPIRED</h4>
+                  <p>
+                    Your Registered Seller certificate has expired.
+                    Please submit a new application.</p>
+                </section>
+              </div>
+            </td>
+            <td class="status-container">
+              <div *ngIf="account?.registeredSellerAdministrativeHold" style="text-align: left;">
+                <span>Please contact </span> <br>
+                <span><a href="mailto:PillPressLicensing@gov.bc.ca">PillPressLicensing@gov.bc.ca</a> for further
+                  information.</span>
+              </div>
+              <div *ngIf="!account?.registeredSellerAdministrativeHold" style="text-align: center;">
+                <section *ngIf="!registeredSellerApplication">
+                  <button class="btn btn-primary" (click)="startNewASellerApplication()">REGISTER
+                    NOW</button>
+                </section>
+                <section *ngIf="registeredSellerApplication?.statuscode === 'Draft'">
+                  <button class="btn btn-primary"
+                    routerLink="/registered-seller/profile-review/{{registeredSellerApplication.id}}">
+                    <!-- <fa-icon [icon]="faExclamationCircle" style="color: #38598A; margin-right: 5px;"></fa-icon> -->
+                    COMPLETE APPLICATION
+                  </button>
+                </section>
+                <section *ngIf="registeredSellerApplication?.statuscode === 'Pending'">
+                </section>
+                <section *ngIf="registeredSellerApplication?.statuscode === 'Incomplete'">
+                </section>
+                <section *ngIf="isWaiverOrSellerUnderReview(registeredSellerApplication?.statuscode)">
+                </section>
+                <section *ngIf="registeredSellerApplication?.statuscode === 'Approved'">
+                  <button class="btn btn-primary" (click)="startNewASellerApplication()">RENEW OR
+                    RE-APPLY</button>
                   <br>
-                </p>
-                <a href="api/application/{{waiverApplication?.id}}/download-certificate" download><i class="fa fa-file-pdf"
-                    style="color: #38598A; margin-right: 5px;"></i>Download
-                  Certificate</a>
-              </section>
-              <section *ngIf="waiverApplication?.statuscode === 'Denied'">
-                <h4 class="status">STATUS:</h4> &nbsp;
-                <h4 class="status-red">DENIED</h4>
-                <p>Your application has been denied. No further action required.</p>
-                <button class="btn btn-primary" style="float:right" (click)="startNewWaiverApplication()">APPLY
-                  AGAIN</button>
-                <div style="clear: both;"></div>
-              </section>
-              <section *ngIf="waiverApplication?.statuscode === 'Withdrawn'">
-                <h4 class="status">STATUS:</h4> &nbsp;
-                <h4 class="status-orange">WITHDRAWN</h4>
-                <p>You have withdrawn your application. We will cease all processing activities.</p>
-                <button class="btn btn-primary" style="float:right" (click)="startNewWaiverApplication()">APPLY
-                  AGAIN</button>
-                <div style="clear: both;"></div>
-              </section>
-              <section *ngIf="waiverApplication?.statuscode === 'Cancelled'">
-                <h4 class="status">STATUS:</h4> &nbsp;
-                <h4 class="status-red">CANCELLED</h4>
-                <p>Your application has been cancelled. No further action required.</p>
-                <button class="btn btn-primary" style="float:right" (click)="startNewWaiverApplication()">APPLY
-                  AGAIN</button>
-                <div style="clear: both;"></div>
-              </section>
-              <section *ngIf="waiverApplication?.statuscode === 'Expired'">
-                <h4 class="status">STATUS:</h4> &nbsp;
-                <h4 class="status-orange">EXPIRED</h4>
-                <p>Your waiver has expired. Please submit a renewal application.</p>
-                <button class="btn btn-primary" style="float:right">RENEW APPLICATION</button>
-                <div style="clear: both;"></div>
-              </section>
-            </div>
-          </section>
+                  <span style=" font-size: 11px; padding-top: 7px;">
+                    Apply for renewal or amend information provided in original application
+                  </span>
+                </section>
+                <section *ngIf="registeredSellerApplication?.statuscode === 'Denied'">
+                  <button class="btn btn-primary" (click)="startNewASellerApplication()">REGISTER
+                    NOW</button>
+                </section>
+                <section *ngIf="registeredSellerApplication?.statuscode === 'Withdrawn'">
+                  <button class="btn btn-primary" (click)="startNewASellerApplication()">REGISTER
+                    NOW</button>
+                </section>
+                <section *ngIf="registeredSellerApplication?.statuscode === 'Cancelled'">
+                  <button class="btn btn-primary" (click)="startNewASellerApplication()">
+                    AGAIN</button>
+                </section>
+                <section *ngIf="registeredSellerApplication?.statuscode === 'Expired'">
+                  <button class="btn btn-primary">REGISTER NOW</button>
+                </section>
+              </div>
+            </td>
+          </tr>
+        </table>
 
-          <section style=" flex: 1">
-            <div style="background-color: #F1F4FA; padding: 15px;">
-              <section class="user-header">
-                <h3>Registered Seller</h3>
-                <img alt="" src="assets/icon-pillpress-owner-rs.png">
-              </section>
-              <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-registered-seller"
-                target="blank">Find
-                out whether the Registered Seller category applies to you</a>
-
-            </div>
-            <div class="status-container">
-              <section *ngIf="!registeredSellerApplication">
-                <h4 class="status">STATUS:</h4> &nbsp;
-                <h4 class="status-blue">NO ACTION TAKEN YET</h4>
-                <p>To become a Registered Seller, please complete and submit an application form.</p>
-                <button class="btn btn-primary" style="float:right" (click)="startNewASellerApplication()">REGISTER
-                  NOW</button>
-                <div style="clear: both;"></div>
-              </section>
-              <section *ngIf="registeredSellerApplication?.statuscode === 'Draft'">
-                <h4 class="status">STATUS:</h4> &nbsp;
-                <h4 class="status-orange">DRAFT</h4>
-                <p>You have started an application but not submitted it yet.</p>
-                <a routerLink="/registered-seller/profile-review/{{registeredSellerApplication.id}}"><i class="fas fa-exclamation-circle"
-                    style="color: #38598A; margin-right: 5px;"></i>Complete
-                  Application</a>
-              </section>
-              <section *ngIf="registeredSellerApplication?.statuscode === 'Pending'">
-                <h4 class="status">STATUS:</h4> &nbsp;
-                <h4 class="status-blue">PENDING</h4>
-                <p>Your application has been submitted. No further action currently required.</p>
-                <p>
-                  <strong>Application #:&nbsp;</strong> {{registeredSellerApplication?.title}}
-                </p>
-              </section>
-              <section *ngIf="registeredSellerApplication?.statuscode === 'Incomplete'">
-                <h4 class="status">STATUS:</h4> &nbsp;
-                <h4 class="status-red">INCOMPLETE</h4>
-                <p>Your application has missing or inaccurate information. Our team will contact you.</p>
-                <p>
-                  <strong>Application #:&nbsp;</strong> {{registeredSellerApplication?.title}}
-                </p>
-              </section>
-              <section *ngIf="isWaiverOrSellerUnderReview(registeredSellerApplication?.statuscode)">
-                <h4 class="status">STATUS:</h4> &nbsp;
-                <h4 class="status-blue">UNDER REVIEW</h4>
-                <p>Your application is currently under review. No further action currently required.</p>
-                <p>
-                  <strong>Application #:&nbsp;</strong> {{registeredSellerApplication?.title}}
-                </p>
-              </section>
-              <section *ngIf="registeredSellerApplication?.statuscode === 'Approved'">
-                <h4 class="status">STATUS:</h4> &nbsp;
-                <h4 class="status-green">APPROVED</h4>
-                <p>
-                  <strong>Issue Date:&nbsp;</strong> {{registeredSellerApplication?.certificate?.issueDate | date : 'dd MMM yyyy'}}
-                  <br>
-                  <strong>Expiry Date:&nbsp;</strong> {{registeredSellerApplication?.certificate?.expiryDate | date : 'dd MMM yyyy'}}
-                  <br>
-                </p>
-                <a href="api/application/{{registeredSellerApplication?.id}}/download-certificate" download><i class="fa fa-file-pdf"
-                    style="color: #38598A; margin-right: 5px;"></i>Download
-                  Certificate</a>
-              </section>
-              <section *ngIf="registeredSellerApplication?.statuscode === 'Denied'">
-                <h4 class="status">STATUS:</h4> &nbsp;
-                <h4 class="status-red">DENIED</h4>
-                <p>Your application has been denied. No further action required.</p>
-                <button class="btn btn-primary" style="float:right" (click)="startNewASellerApplication()">REGISTER
-                  NOW</button>
-                <div style="clear: both;"></div>
-              </section>
-              <section *ngIf="registeredSellerApplication?.statuscode === 'Withdrawn'">
-                <h4 class="status">STATUS:</h4> &nbsp;
-                <h4 class="status-orange">WITHDRAWN</h4>
-                <p>You have withdrawn your application. We will cease all processing activities.</p>
-                <button class="btn btn-primary" style="float:right" (click)="startNewASellerApplication()">REGISTER
-                  NOW</button>
-                <div style="clear: both;"></div>
-              </section>
-              <section *ngIf="registeredSellerApplication?.statuscode === 'Cancelled'">
-                <h4 class="status">STATUS:</h4> &nbsp;
-                <h4 class="status-red">CANCELLED</h4>
-                <p>Your application has been cancelled. No further action required.</p>
-                <button class="btn btn-primary" style="float:right" (click)="startNewASellerApplication()">REGISTER
-                  AGAIN</button>
-                <div style="clear: both;"></div>
-              </section>
-              <section *ngIf="registeredSellerApplication?.statuscode === 'Expired'">
-                <h4 class="status">STATUS:</h4> &nbsp;
-                <h4 class="status-orange">EXPIRED</h4>
-                <p>Your waiver has expired. Please submit a renewal application.</p>
-                <button class="btn btn-primary" style="float:right">RENEW REGISTRATION</button>
-                <div style="clear: both;"></div>
-              </section>
-            </div>
-          </section>
-        </div>
       </section>
 
       <p></p>
@@ -286,19 +416,23 @@
             </div>
             <p></p>
             <div class="notes" style="display: flex;">
-              <i class="fas fa-exclamation-circle fa-lg" style="color: #FFCC00; margin-right: 10px;"></i>
+              <fa-icon [icon]="faExclamationCircle" style="color: #FFCC00; margin-right: 10px;"></fa-icon>
               <span>
                 Once your owner application is approved, please ensure you register your Controlled Equipment within 10
-                days. <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-controlled-equipment#Equipment%20Notification%20Process" target="_blank">
-                Find out how to start your equipment notification.</a></span>
+                days. <a
+                  href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-controlled-equipment#Equipment%20Notification%20Process"
+                  target="_blank">
+                  Find out how to start your equipment notification.</a></span>
             </div>
           </section>
           <section *ngIf="inProgressEquipment?.length > 0 || completedEquipment?.length > 0">
             <div class="space-between" style="padding: 10px;">
-              <p>Submit an Equipment Notification for each piece of Controlled Equipment in your inventory, and track the status below.</p>
+              <p>Submit an Equipment Notification for each piece of Controlled Equipment in your inventory, and track
+                the status below.</p>
               <button class="btn btn-primary" (click)="addEquipment()">ADD MORE EQUIPMENT</button>
             </div>
-            <mat-tab-group [selectedIndex]="(inProgressEquipment?.length > 0 || completedEquipment?.length == 0) ? 0 : 1">
+            <mat-tab-group
+              [selectedIndex]="(inProgressEquipment?.length > 0 || completedEquipment?.length == 0) ? 0 : 1">
               <mat-tab label="IN PROGRESS">
                 <p>The list of Controlled Equipment notifications below have been submitted.</p>
                 <table class="eq-table">
@@ -314,7 +448,8 @@
                         <span style="background-color: #E1E8F2; padding: 10px;">{{i+1}}</span>
                         <div style="background-color: #F1F4FA; padding: 10px; padding-bottom: 15px;">
                           <span>{{item.equipmentType}}</span> <br>
-                          <span>Serial #: </span> <i>{{item.serialNumber || item.customBuiltSerialNumber || 'Not available'}}</i> <br>
+                          <span>Serial #: </span> <i>{{item.serialNumber || item.customBuiltSerialNumber || 'Not
+                            available'}}</i> <br>
                           <span>Reference #: {{item.title}} </span> <span></span> <br>
                         </div>
                       </div>
@@ -335,19 +470,22 @@
                     <td style="background-color: #E1E8F2; padding: 10px;" valign="top">
                       <section *ngIf="item.statuscode === 'Draft'">
                         <a href="javascript: void(0);" routerLink="/equipment-notification/profile-review/{{item.id}}">
-                          <i class="fa fa-exclamation-circle" style="color: #003366; margin-right: 10px;"></i>Complete
-                          Application</a>
+                          <fa-icon [icon]="faExclamationCircle" style="color: #003366; margin-right: 10px;"></fa-icon>
+                          Complete Application
+                        </a>
                       </section>
                       <section *ngIf="item.statuscode !== 'Draft'">
                         <a href="javascript: void(0);" routerLink="/equipment-notification/profile-review/{{item.id}}">
-                          <i class="fa fa-eye" style="color: #003366; margin-right: 10px;"></i>View Submission</a>
+                          <fa-icon [icon]="faEye" style="color: #003366; margin-right: 10px;"></fa-icon>
+                          View Submission
+                        </a>
                       </section>
                     </td>
                   </tr>
                 </table>
                 <p></p>
                 <div class="notes" style="display: flex;">
-                  <i class="fas fa-exclamation-circle fa-lg" style="color: #003366; margin-right: 10px;"></i>
+                  <fa-icon [icon]="faExclamationCircle" size="lg" style="color: #003366; margin-right: 10px;"></fa-icon>
                   <span> Please ensure you fill out an equipment notification form for each individual piece of
                     Controlled
                     Equipment in your posession until your entire inventory is listed.</span>
@@ -368,10 +506,14 @@
                         <span style="background-color: #E1E8F2; padding: 10px;">{{i+1}}</span>
                         <div style="background-color: #F1F4FA; padding: 10px; padding-bottom: 15px;">
                           <span>{{item.equipmentType}}</span> <br>
-                          <span>Serial #: </span> <i>{{item.serialNumber || item.customBuiltSerialNumber || 'Not available'}}</i> <br>
-                          <span>Equipment Registry #: </span> <span></span> <br>
-                          <a href=""><i class="fa fa-file-pdf" style="color: #38598A; margin-right: 5px;"></i>Download
-                            Certificate</a>
+                          <span>Serial #: </span> <i>{{item.serialNumber || item.customBuiltSerialNumber || 'Not
+                            available'}}</i> <br>
+                          <span>Equipment Registry #: </span> {{item?.certificate?.name}}<span></span> <br>
+                          <a *ngIf="item.hasCertificate" href="api/application/{{item?.id}}/download-certificate"
+                            download>
+                            <fa-icon [icon]="faFilePdf" style="color: #38598A; margin-right: 5px;"></fa-icon>
+                            Download Certificate
+                          </a>
                         </div>
                       </div>
                     </td>
@@ -385,15 +527,39 @@
                       {{item?.equipmentLocation?.address?.postalCode}} <br>
                     </td>
                     <td style="background-color: #E1E8F2; padding: 10px;">
-                      <a href="javascript: void(0)"><i class="fas fa-eye" style="margin-right: 5px;"></i>View
-                        Submission</a>
+                      <a href="javascript: void(0)">
+                        <fa-icon [icon]="faEye" style="margin-right: 5px;"></fa-icon>
+                        View Submission
+                      </a>
                       <br>
-                      <a href="javascript: void(0)"><i class="fas fa-map-marker-alt" style="margin-right: 5px;"></i>Edit
-                        Location</a> <br>
-                      <a href="javascript: void(0)"><i class="fas fa-exclamation-triangle" style="margin-right: 5px;"></i>Report
-                        Change (lost, stolen, destroyed)</a> <br>
-                      <a href="javascript: void(0)"><i class="fas fa-shopping-cart" style="margin-right: 5px;"></i>Report
-                        Sale</a>
+                      <a routerLink="/equipment-changes/location-change/{{item.id}}"
+                        [ngClass]="{ 'disabled' : item.hasChangePending }">
+                        <fa-icon [icon]="faMapMarkerAlt" style="margin-right: 5px;"></fa-icon>
+                        Change Location
+                      </a> <br>
+                      <a *ngIf="!item?.lsdLinkId" href="javascript: void(0)"
+                        [ngClass]="{ 'disabled' : item.hasChangePending }"
+                        (click)="reportLSD(item?.equipmentRecord?.id)">
+                        <fa-icon [icon]="faExclamationTriangle" style="margin-right: 5px;"></fa-icon>
+                        Report Change (lost, stolen, destroyed)
+                      </a>
+                      <a *ngIf="item?.lsdLinkId"
+                        routerLink="/equipment-changes/reporting-changes/details/{{item?.lsdLinkId}}">
+                        <fa-icon [icon]="faExclamationTriangle" style="margin-right: 5px;"></fa-icon>
+                        Report Change (lost, stolen, destroyed)
+                      </a>
+                      <br>
+                      <a *ngIf="!item?.soldLinkId" href="javascript: void(0)"
+                        [ngClass]="{ 'disabled' : item.hasChangePending }"
+                        (click)="reportSales(item?.equipmentRecord?.id)">
+                        <fa-icon [icon]="faShoppingCart" style="margin-right: 5px;"></fa-icon>
+                        Report Sale
+                      </a>
+                      <a *ngIf="item?.soldLinkId"
+                        routerLink="/equipment-changes/reporting-sales/details/{{item?.soldLinkId}}">
+                        <fa-icon [icon]="faShoppingCart" style="margin-right: 5px;"></fa-icon>
+                        Report Sale
+                      </a>
                     </td>
                   </tr>
                 </table>
@@ -423,7 +589,8 @@
           </p>
           <div>
             <a routerLink="/business-profile" style="float: right;">
-              <i class="fas fa-pencil-alt" style="margin-right: 5px; "></i> Edit Business Profile</a>
+              <fa-icon [icon]="faPencilAlt" style="margin-right: 5px;"></fa-icon> Edit Business Profile
+            </a>
             <div style="clear: both;"></div>
           </div>
         </div>
@@ -433,7 +600,9 @@
         <table>
           <tr>
             <td>
-              <h2 class="round-icon-wrapper"><i class="fas fa-file-alt"></i></h2>
+              <h2 class="round-icon-wrapper">
+                <fa-icon [icon]="faFileAlt"></fa-icon>
+              </h2>
             </td>
             <td style="padding-left: 10px">
               <h2>Useful Links &amp; Information</h2>
@@ -466,8 +635,8 @@
           <p>You can also find more information on the Pill Press FAQs</p>
 
           <div class="row-reverse">
-            <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-faqs" style="background-color: #003366;"
-              target="blank" class="btn btn-primary">VIEW FAQs</a>
+            <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-faqs"
+              style="background-color: #003366;" target="blank" class="btn btn-primary">VIEW FAQs</a>
           </div>
 
         </div>

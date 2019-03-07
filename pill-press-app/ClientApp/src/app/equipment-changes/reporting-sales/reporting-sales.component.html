@@ -1,0 +1,69 @@
+<div class="form-wrapper" style="position: relative;">
+  <div class="row">
+
+    <div class="col-lg-8 col-sm-12">
+      <router-outlet></router-outlet>
+    </div>
+
+    <div *ngIf="tab !== 'thank-you'"  class="col-lg-4 col-sm-12">
+      <section class="step" style="display: block; background-color: #F1F4FA">
+        <h3 class="blue-header">REPORTING SALES</h3>
+        <section style="padding-top: 15px; padding-bottom: 20px;">
+          <mat-vertical-stepper [linear]="true" (selectionChange)="selectionChange($event)" #stepper>
+            <ng-template matStepperIcon="edit">
+              <fa-icon [icon]="faCheck"></fa-icon>
+            </ng-template>
+            <ng-template matStepperIcon="number">
+            </ng-template>
+
+            <mat-step label="STEP 1: Reporting Sales">
+            </mat-step>
+            <mat-step label="STEP 2: Review, Declaration & Consent">
+            </mat-step>
+          </mat-vertical-stepper>
+        </section>
+      </section>
+
+      <p></p>
+      <section *ngIf="tab !== 'thank-you'" class="submit-container">
+        <table>
+          <tr>
+            <td>
+              <h2 class="round-icon-wrapper">
+                <fa-icon [icon]="faAddressCard"></fa-icon>
+              </h2>
+            </td>
+            <td style="padding-left: 10px">
+              <h2>Useful Links & Information</h2>
+            </td>
+          </tr>
+        </table>
+        <div class="submit-content">
+          <p>What you need to know about:</p>
+          <ul class="arrow">
+            <li>
+              <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-registered-seller" target="blank"
+                 style="color: #fff;">Who can sell controlled equipment</a>
+            </li>
+            <li>
+              <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/reporting-guidelines"
+                 target="blank" style="color: #fff;">Reporting of Sales guidelines</a>
+            </li>
+            <li>
+              <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-registered-seller#ros" target="blank"
+                 style="color: #fff;">Recording of sale</a>
+            </li>
+            <li>
+              <a href="https://www2.gov.bc.ca/assets/gov/employment-business-and-economic-development/business-management/pill-press/forms-and-documents/record-of-sales-form-business.pdf" target="blank"
+                 style="color: #fff;">Report of sale form – BUSINESS</a>
+            </li>
+            <li>
+              <a href="https://www2.gov.bc.ca/assets/gov/employment-business-and-economic-development/business-management/pill-press/forms-and-documents/record-of-sales-form-individual.pdf" target="blank"
+                 style="color: #fff;">Report of sale form – INDIVIDUAL</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

@@ -3,6 +3,8 @@ import { MatStepper } from '@angular/material';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 
+import { faCheck, faAddressCard } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-registered-seller',
   templateUrl: './registered-seller.component.html',
@@ -18,6 +20,9 @@ export class RegisteredSellerComponent implements OnInit {
     'review'
   ];
 
+  faCheck = faCheck;
+  faAddressCard = faAddressCard;
+
   constructor(private route: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder) {
@@ -32,14 +37,16 @@ export class RegisteredSellerComponent implements OnInit {
         if (this.route.snapshot.firstChild.url.length > 0) {
           this.equipmentId = this.route.snapshot.firstChild.params.id;
           this.tab = this.route.snapshot.firstChild.url[0].path;
-          this.stepper.selectedIndex = this.tabList.indexOf(this.tab);
+          if (this.tabList.indexOf(this.tab) !== -1) {
+            this.stepper.selectedIndex = this.tabList.indexOf(this.tab);
+          }
         }
       }
     });
   }
 
   selectionChange(event) {
-      this.router.navigateByUrl(`/registered-seller/${this.tabList[event.selectedIndex]}/${this.equipmentId}`);
+    this.router.navigateByUrl(`/registered-seller/${this.tabList[event.selectedIndex]}/${this.equipmentId}`);
   }
 
 }
