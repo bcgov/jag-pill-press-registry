@@ -75,7 +75,7 @@
 
 .user-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     h3 {
         // display: inline-block;
@@ -175,4 +175,19 @@
     .on-hold {
         background-color: #FF9900;
     }
+}
+
+.column-spacing {
+  column-width: 2px;
+  background-color: white;
+  color:white;
+}
+
+.download-link-spacing {
+  padding-bottom: 5px;
+}
+
+.actions-text {
+  font-size: 11px;
+  padding-top: 7px;
 }

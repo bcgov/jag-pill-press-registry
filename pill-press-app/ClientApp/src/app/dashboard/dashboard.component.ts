@@ -160,7 +160,7 @@ export class DashboardComponent implements OnInit {
       const latest = certificates.sort((a, b) => a.certificate.issueDate > b.certificate.issueDate ? -1 : 1)[0];
       const certificate: Certificate = latest.certificate;
       // check if the certificate is downloadable
-      this.applicationDataService.doesCertificateExist(latest.applicationId).subscribe(result => {
+      this.busy = this.applicationDataService.doesCertificateExist(latest.applicationId).subscribe(result => {
         certificate.hasCertificate = result;
       });
       return certificate;
