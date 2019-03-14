@@ -37,7 +37,11 @@
           <!-- Authorized Owner -->
           <tr>
             <td class="lead-column"
-                [ngClass]="{'on-hold': account?.authorizedOwnerAdministrativeHold, 'approved': authorizedOwnerApplication?.statuscode === 'Approved'}"></td>
+                [ngClass]="{'on-hold': account?.authorizedOwnerAdministrativeHold, 'approved': authorizedOwnerApplication?.statuscode === 'Approved'}">
+            </td>
+
+            <!-- AO Ownership Category -->
+
             <td style="background-color: #F1F4FA; padding: 0px;">
               <div>
                 <section class="user-header">
@@ -53,15 +57,19 @@
                       ON ADMINISTRATIVE HOLD
                     </div>
                     <div *ngIf="authorizedOwnerApplication?.statuscode === 'Approved'">
-                      Confirmation Date:
+                      <!--Confirmation Date: {{authorizedOwnerApplication?.title}}-->
+                      <!--<strong>Confirmation Date:&nbsp;</strong> {{authorizedOwnerApplication?.issueDate | date : 'dd MMM yyyy'}}-->
                     </div>
                   </div>
                 </section>
-
               </div>
             </td>
+
+            <!-- AO spacing -->
             <td class="column-spacing"></td>
-            <!-- Application Status -->
+
+            <!-- AO Application Status -->
+
             <td class="status-container">
               <div *ngIf="!account?.authorizedOwnerAdministrativeHold">
                 <section *ngIf="!authorizedOwnerApplication || authorizedOwnerApplication?.statuscode === 'Cancelled' || authorizedOwnerApplication?.statuscode === 'Denied'">
@@ -75,16 +83,12 @@
                 <section *ngIf="isAuthorizedApplicationPending()">
                   <h4 class="status-blue">PENDING</h4>
                   <p>Your notification has been submitted. No further action is required..</p>
-                  <p>
-                    <strong>Reference #:&nbsp;</strong>{{authorizedOwnerApplication?.title}}
-                  </p>
+                  <p><strong>Reference #:&nbsp;</strong>{{authorizedOwnerApplication?.title}}</p>
                 </section>
                 <section *ngIf="authorizedOwnerApplication?.statuscode === 'Approved'">
                   <h4 class="status-green">COMPLETED</h4>
                   <p>Your Authorized Owner notification has been confirmed.</p>
-                  <p>
-                    <strong>Reference #:&nbsp;</strong>{{authorizedOwnerApplication?.title}}
-                  </p>
+                  <p><strong>Reference #:&nbsp;</strong>{{authorizedOwnerApplication?.title}}</p>
                 </section>
                 <section *ngIf="authorizedOwnerApplication?.statuscode === 'Withdrawn'">
                   <h4 class="status-orange">WITHDRAWN</h4>
@@ -92,7 +96,9 @@
                 </section>
               </div>
             </td>
-            <!-- Actions -->
+
+            <!-- AO Actions -->
+
             <td class="status-container" style="text-align: center;">
               <div *ngIf="account?.authorizedOwnerAdministrativeHold" style="text-align: left;">
                 <span>Please contact </span> <br>
@@ -100,34 +106,39 @@
               </div>
               <div *ngIf="!account?.authorizedOwnerAdministrativeHold">
                 <section *ngIf="!authorizedOwnerApplication || authorizedOwnerApplication?.statuscode === 'Cancelled' || authorizedOwnerApplication?.statuscode === 'Denied'">
-                  <button class="btn btn-primary" (click)="startNewAuthorizedOwnerApplication()">
+                  <button class="btn btn-primary" (click)="startNewAuthorizedOwnerApplication('New')">
                     NOTIFY US
                   </button>
                 </section>
                 <section *ngIf="authorizedOwnerApplication?.statuscode === 'Draft'">
-                  <button class="btn btn-primary"
-                          routerLink="/authorized-owner/profile-review/{{authorizedOwnerApplication.id}}">
+                  <button class="btn btn-primary" routerLink="/authorized-owner/profile-review/{{authorizedOwnerApplication.id}}">
                     COMPLETE NOTIFICATION
                   </button>
                 </section>
                 <section *ngIf="isAuthorizedApplicationPending()"></section>
                 <section *ngIf="authorizedOwnerApplication?.statuscode === 'Approved'">
-                  <button class="btn btn-primary" (click)="startNewAuthorizedOwnerApplication()">RE-NOTIFY</button><br />
+                  <button class="btn btn-primary" (click)="startNewAuthorizedOwnerApplication('Re-Notify')">RE-NOTIFY</button><br />
                   <span class="actions-text">Amend information provided in original notification</span>
                 </section>
                 <section *ngIf="authorizedOwnerApplication?.statuscode === 'Withdrawn'">
-                  <button class="btn btn-primary" (click)="startNewAuthorizedOwnerApplication()">NOTIFY US AGAIN</button>
+                  <button class="btn btn-primary" (click)="startNewAuthorizedOwnerApplication('Re-Notify')">NOTIFY US AGAIN</button>
                 </section>
               </div>
             </td>
           </tr>
+
+          <!-- Waiver Holder -->
+
           <tr>
             <td class="lead-column"
                 [ngClass]="{'on-hold': account?.waiverAdministrativeHold, 'approved': waiverApplication?.statuscode === 'Approved'}"></td>
+
+            <!-- WH Ownership Category -->
+
             <td style="background-color: #F1F4FA; padding: 0px;">
               <div>
                 <section class="user-header">
-                  <div style="padding-left: 5px;">
+                  <div style="padding-right: 5px;">
                     <img alt="" src="assets/icon-pillpress-owner-wh.png">
                   </div>
                   <div style="text-align:left;">
@@ -154,13 +165,17 @@
                       <strong>Issue Date:&nbsp;</strong> {{waiverHolderCertificate?.issueDate | date : 'dd MMM yyyy'}}
                       <br>
                       <strong>Expiry Date:&nbsp;</strong> {{waiverHolderCertificate?.expiryDate | date : 'dd MMM yyyy'}}
-                      <br>
                     </p>
                   </div>
                 </section>
               </div>
             </td>
+
+            <!-- WH Spacing -->
             <td class="column-spacing"></td>
+
+            <!-- WH Application Status -->
+
             <td class="status-container">
               <div *ngIf="!account?.waiverAdministrativeHold">
                 <section *ngIf="!waiverApplication">
@@ -219,6 +234,9 @@
                 </section>
               </div>
             </td>
+
+            <!-- WH Actions -->
+
             <td class="status-container">
               <div *ngIf="account?.waiverAdministrativeHold" style="text-align: left;">
                 <span>Please contact </span> <br>
@@ -226,7 +244,7 @@
               </div>
               <div *ngIf="!account?.waiverAdministrativeHold" style="text-align: center;">
                 <section *ngIf="!waiverApplication">
-                  <button class="btn btn-primary" (click)="startNewWaiverApplication()">APPLY NOW</button>
+                  <button class="btn btn-primary" (click)="startNewWaiverApplication('New')">APPLY NOW</button>
                 </section>
                 <section *ngIf="waiverApplication?.statuscode === 'Draft'">
                   <button class="btn btn-primary" routerLink="/waiver/profile-review/{{waiverApplication.id}}">
@@ -237,17 +255,17 @@
                 <section *ngIf="waiverApplication?.statuscode === 'Incomplete'"></section>
                 <section *ngIf="isWaiverOrSellerUnderReview(waiverApplication?.statuscode)"></section>
                 <section *ngIf="waiverApplication?.statuscode === 'Approved'">
-                  <button class="btn btn-primary" (click)="startNewWaiverApplication()">RENEW OR RE-APPLY</button>
+                  <button class="btn btn-primary" (click)="startNewWaiverApplication('Renew')">RENEW OR RE-APPLY</button>
                   <br>
                   <span class="actions-text">
                     Apply for renewal or amend information provided in original application
                   </span>
                 </section>
                 <section *ngIf="waiverApplication?.statuscode === 'Denied'">
-                  <button class="btn btn-primary" (click)="startNewWaiverApplication()">APPLY AGAIN</button>
+                  <button class="btn btn-primary" (click)="startNewWaiverApplication('Renew')">APPLY AGAIN</button>
                 </section>
                 <section *ngIf="waiverApplication?.statuscode === 'Withdrawn'">
-                  <button class="btn btn-primary" (click)="startNewWaiverApplication()">APPLY AGAIN</button>
+                  <button class="btn btn-primary" (click)="startNewWaiverApplication('Renew')">APPLY AGAIN</button>
                 </section>
                 <section *ngIf="waiverApplication?.statuscode === 'Cancelled'">
                   <button class="btn btn-primary" (click)="startNewWaiverApplication()">APPLY AGAIN</button>
@@ -258,9 +276,15 @@
               </div>
             </td>
           </tr>
+
+          <!-- Registered Seller -->
+
           <tr>
             <td class="lead-column"
                 [ngClass]="{'on-hold': account?.registeredSellerAdministrativeHold, 'approved': registeredSellerApplication?.statuscode === 'Approved'}"></td>
+
+            <!--RS Ownership Category-->
+
             <td style="background-color: #F1F4FA; padding: 0px;">
               <div>
                 <section class="user-header">
@@ -269,11 +293,9 @@
                   </div>
                   <div>
                     <h3>Registered Seller</h3>
-                    <a *ngIf="!account?.registeredSellerAdministrativeHold && !sellerCertificate?.hasExpired"
+                    <a *ngIf="!account?.registeredSellerAdministrativeHold && registeredSellerApplication?.statuscode !== 'Approved'"
                        href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-registered-seller"
-                       target="blank">
-                      Find
-                      out whether the Registered Seller category applies to you
+                       target="blank">Find out whether the Registered Seller category applies to you
                     </a>
                     <div *ngIf="account?.registeredSellerAdministrativeHold" class="status-orange">
                       ON ADMINISTRATIVE HOLD
@@ -285,11 +307,11 @@
                           Download Certificate
                         </a>
                       </div>
-                      <p *ngIf="sellerCertificate">
-                        <strong>Issue Date:&nbsp;</strong> {{ sellerCertificate?.issueDate | date : 'dd MMM yyyy'}}<br>
-                        <strong>Expiry Date:&nbsp;</strong> {{ sellerCertificate?.expiryDate | date : 'dd MMM yyyy'}}<br><br>
-                      </p>
                     </section>
+                    <p *ngIf="sellerCertificate">
+                      <strong>Issue Date:&nbsp;</strong> {{ sellerCertificate?.issueDate | date : 'dd MMM yyyy'}}<br>
+                      <strong>Expiry Date:&nbsp;</strong> {{ sellerCertificate?.expiryDate | date : 'dd MMM yyyy'}}<br><br>
+                    </p>
                     <section *ngIf="!account?.registeredSellerAdministrativeHold && sellerCertificate?.hasExpired" class="status-red">
                       EXPIRED
                     </section>
@@ -297,7 +319,12 @@
                 </section>
               </div>
             </td>
+
+            <!--Spacing-->
             <td class="column-spacing"></td>
+
+            <!--RS Application Status-->
+
             <td class="status-container">
               <div *ngIf="!account?.registeredSellerAdministrativeHold">
                 <section *ngIf="!registeredSellerApplication">
@@ -349,6 +376,9 @@
                 </section>
               </div>
             </td>
+
+            <!-- RS Actions -->
+
             <td class="status-container">
               <div *ngIf="account?.registeredSellerAdministrativeHold" style="text-align: left;">
                 <span>Please contact </span> <br>
