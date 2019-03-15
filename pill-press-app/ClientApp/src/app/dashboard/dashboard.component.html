@@ -131,7 +131,9 @@
 
           <tr>
             <td class="lead-column"
-                [ngClass]="{'on-hold': account?.waiverAdministrativeHold, 'approved': waiverApplication?.statuscode === 'Approved'}"></td>
+                [ngClass]="{'on-hold': account?.waiverAdministrativeHold, 'approved': waiverApplication?.statuscode === 'Approved',
+                  'expired': waiverHolderCertificate?.hasExpired}">
+            </td>
 
             <!-- WH Ownership Category -->
 
@@ -143,7 +145,8 @@
                   </div>
                   <div style="text-align:left;">
                     <h3>Waiver Holder</h3>
-                    <a *ngIf="!account?.waiverAdministrativeHold && waiverApplication?.statuscode !== 'Approved'"
+                    <a *ngIf="!account?.waiverAdministrativeHold && waiverApplication?.statuscode !== 'Approved'
+                       && !waiverHolderCertificate?.hasExpired"
                        href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-waiver-holder"
                        target="blank">
                       Find out whether the Waiver Holder category applies to you
@@ -189,32 +192,21 @@
                 <section *ngIf="waiverApplication?.statuscode === 'Pending'">
                   <h4 class="status-blue">PENDING</h4>
                   <p>Your application has been submitted. No further action currently required.</p>
-                  <p>
-                    <strong>Application #:&nbsp;</strong> {{waiverApplication?.title}}
-                  </p>
+                  <p><strong>Application #:&nbsp;</strong> {{waiverApplication?.title}}</p>
                 </section>
                 <section *ngIf="waiverApplication?.statuscode === 'Incomplete'">
                   <h4 class="status-red">INCOMPLETE</h4>
-                  <p>
-                    Your application has missing or inaccurate data. Our team will contact you for further information.
-                  </p>
-                  <p>
-                    <strong>Application #:&nbsp;</strong> {{waiverApplication?.title}}
-                  </p>
+                  <p>Your application has missing or inaccurate data. Our team will contact you for further information.</p>
+                  <p><strong>Application #:&nbsp;</strong> {{waiverApplication?.title}}</p>
                 </section>
                 <section *ngIf="isWaiverOrSellerUnderReview(waiverApplication?.statuscode)">
                   <h4 class="status-blue">UNDER REVIEW</h4>
                   <p>Your application is currently under review. No further action is required.</p>
-                  <p>
-                    <strong>Application #:&nbsp;</strong> {{waiverApplication?.title}}
-                  </p>
+                  <p><strong>Application #:&nbsp;</strong> {{waiverApplication?.title}}</p>
                 </section>
                 <section *ngIf="waiverApplication?.statuscode === 'Approved'">
                   <h4 class="status-green">APPROVED</h4>
-                  <p>
-                    Your Registered Seller application has been approved.
-                    An email has been sent to you with further instructions.
-                  </p>
+                  <p>Your Registered Seller application has been approved. An email has been sent to you with further instructions.</p>
                 </section>
                 <section *ngIf="waiverApplication?.statuscode === 'Denied'">
                   <h4 class="status-red">DENIED</h4>
@@ -229,7 +221,7 @@
                   <p>Your application has been cancelled. An explanatory email has been sent to you.</p>
                 </section>
                 <section *ngIf="waiverApplication?.statuscode === 'Expired'">
-                  <h4 class="status-orange">EXPIRED</h4>
+                  <h4 class="status-red">EXPIRED</h4>
                   <p>Your Waiver certificate has expired. Please submit a new application.</p>
                 </section>
               </div>
@@ -262,16 +254,16 @@
                   </span>
                 </section>
                 <section *ngIf="waiverApplication?.statuscode === 'Denied'">
-                  <button class="btn btn-primary" (click)="startNewWaiverApplication('Renew')">APPLY AGAIN</button>
+                  <button class="btn btn-primary" (click)="startNewWaiverApplication('New')">APPLY AGAIN</button>
                 </section>
                 <section *ngIf="waiverApplication?.statuscode === 'Withdrawn'">
-                  <button class="btn btn-primary" (click)="startNewWaiverApplication('Renew')">APPLY AGAIN</button>
+                  <button class="btn btn-primary" (click)="startNewWaiverApplication('New')">APPLY AGAIN</button>
                 </section>
                 <section *ngIf="waiverApplication?.statuscode === 'Cancelled'">
-                  <button class="btn btn-primary" (click)="startNewWaiverApplication()">APPLY AGAIN</button>
+                  <button class="btn btn-primary" (click)="startNewWaiverApplication('New')">APPLY AGAIN</button>
                 </section>
                 <section *ngIf="waiverApplication?.statuscode === 'Expired'">
-                  <button class="btn btn-primary">APPLY NOW</button>
+                  <button class="btn btn-primary" (click)="startNewWaiverApplication('New')">APPLY NOW</button>
                 </section>
               </div>
             </td>
@@ -281,7 +273,10 @@
 
           <tr>
             <td class="lead-column"
-                [ngClass]="{'on-hold': account?.registeredSellerAdministrativeHold, 'approved': registeredSellerApplication?.statuscode === 'Approved'}"></td>
+                [ngClass]="{'on-hold': account?.registeredSellerAdministrativeHold,
+                            'approved': registeredSellerApplication?.statuscode === 'Approved',
+                            'expired': sellerCertificate?.hasExpired}">
+            </td>
 
             <!--RS Ownership Category-->
 
@@ -293,7 +288,8 @@
                   </div>
                   <div>
                     <h3>Registered Seller</h3>
-                    <a *ngIf="!account?.registeredSellerAdministrativeHold && registeredSellerApplication?.statuscode !== 'Approved'"
+                    <a *ngIf="!account?.registeredSellerAdministrativeHold && registeredSellerApplication?.statuscode !== 'Approved'
+                       && !sellerCertificate?.hasExpired"
                        href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-registered-seller"
                        target="blank">Find out whether the Registered Seller category applies to you
                     </a>
@@ -342,9 +338,7 @@
                 </section>
                 <section *ngIf="registeredSellerApplication?.statuscode === 'Incomplete'">
                   <h4 class="status-red">INCOMPLETE</h4>
-                  <p>
-                    Your application has missing or inaccurate data. Our team will contact you for further information.
-                  </p>
+                  <p>Your application has missing or inaccurate data. Our team will contact you for further information.</p>
                   <p><strong>Application #:&nbsp;</strong> {{registeredSellerApplication?.title}}</p>
                 </section>
                 <section *ngIf="isWaiverOrSellerUnderReview(registeredSellerApplication?.statuscode)">
@@ -354,9 +348,7 @@
                 </section>
                 <section *ngIf="registeredSellerApplication?.statuscode === 'Approved'">
                   <h4 class="status-green">APPROVED</h4>
-                  <p>
-                    Your Registered Seller application has been approved. An email has been sent to you with further instructions.
-                  </p>
+                  <p>Your Registered Seller application has been approved. An email has been sent to you with further instructions.</p>
                 </section>
                 <section *ngIf="registeredSellerApplication?.statuscode === 'Denied'">
                   <h4 class="status-red">DENIED</h4>
@@ -371,7 +363,7 @@
                   <p>Your application has been cancelled. An explanatory email has been sent to you.</p>
                 </section>
                 <section *ngIf="registeredSellerApplication?.statuscode === 'Expired'">
-                  <h4 class="status-orange">EXPIRED</h4>
+                  <h4 class="status-red">EXPIRED</h4>
                   <p>Your Registered Seller certificate has expired. Please submit a new application.</p>
                 </section>
               </div>
@@ -386,7 +378,7 @@
               </div>
               <div *ngIf="!account?.registeredSellerAdministrativeHold" style="text-align: center;">
                 <section *ngIf="!registeredSellerApplication">
-                  <button class="btn btn-primary" (click)="startNewASellerApplication()">REGISTER NOW</button>
+                  <button class="btn btn-primary" (click)="startNewASellerApplication('New')">REGISTER NOW</button>
                 </section>
                 <section *ngIf="registeredSellerApplication?.statuscode === 'Draft'">
                   <button class="btn btn-primary"
@@ -399,23 +391,23 @@
                 <section *ngIf="registeredSellerApplication?.statuscode === 'Incomplete'"></section>
                 <section *ngIf="isWaiverOrSellerUnderReview(registeredSellerApplication?.statuscode)"></section>
                 <section *ngIf="registeredSellerApplication?.statuscode === 'Approved'">
-                  <button class="btn btn-primary" (click)="startNewASellerApplication()">RENEW OR RE-APPLY</button>
+                  <button class="btn btn-primary" (click)="startNewASellerApplication('Renew')">RENEW OR RE-APPLY</button>
                   <br>
                   <span style=" font-size: 11px; padding-top: 7px;">
                     Apply for renewal or amend information provided in original application
                   </span>
                 </section>
                 <section *ngIf="registeredSellerApplication?.statuscode === 'Denied'">
-                  <button class="btn btn-primary" (click)="startNewASellerApplication()">REGISTER NOW</button>
+                  <button class="btn btn-primary" (click)="startNewASellerApplication('New')">REGISTER NOW</button>
                 </section>
                 <section *ngIf="registeredSellerApplication?.statuscode === 'Withdrawn'">
-                  <button class="btn btn-primary" (click)="startNewASellerApplication()">REGISTER NOW</button>
+                  <button class="btn btn-primary" (click)="startNewASellerApplication('New')">REGISTER NOW</button>
                 </section>
                 <section *ngIf="registeredSellerApplication?.statuscode === 'Cancelled'">
-                  <button class="btn btn-primary" (click)="startNewASellerApplication()">REGISTER AGAIN</button>
+                  <button class="btn btn-primary" (click)="startNewASellerApplication('New')">REGISTER AGAIN</button>
                 </section>
                 <section *ngIf="registeredSellerApplication?.statuscode === 'Expired'">
-                  <button class="btn btn-primary">REGISTER NOW</button>
+                  <button class="btn btn-primary" (click)="startNewASellerApplication('New')">REGISTER NOW</button>
                 </section>
               </div>
             </td>
