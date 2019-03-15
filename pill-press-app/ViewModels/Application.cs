@@ -9,6 +9,17 @@ using System.Threading.Tasks;
 
 namespace Gov.Jag.PillPressRegistry.Public.ViewModels
 {
+
+    public enum ApplicationReasonsCodes
+    {
+        [EnumMember(Value = "Substantial Change")]
+        SubstantialChange = 931490003,
+        New = 931490000,
+        [EnumMember(Value = "Re-Notify")]
+        ReNotify = 931490001,
+        Renew = 931490002
+    }
+
     public enum ApplicationStatusCodes
     {
         Draft = 931490005,
@@ -198,6 +209,9 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         [JsonConverter(typeof(StringEnumConverter))]
         public ApplicationStatusCodes statuscode { get; set; }
         public string applicationtype { get; set; }
+
+        [JsonConverter(typeof(StringEnumConverter))]
+        public ApplicationReasonsCodes? applicationreasoncode { get; set; }
 
         public bool? ownusepossesstoproduceaproduct { get; set; }
         public bool? intendonrentingleasingtoothers { get; set; }
