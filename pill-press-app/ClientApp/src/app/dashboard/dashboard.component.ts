@@ -62,6 +62,9 @@ export class DashboardComponent implements OnInit {
     private applicationDataService: ApplicationDataService,
     public snackBar: MatSnackBar) { }
 
+  /**
+   *
+   */
   ngOnInit(): void {
     this.busy = this.userDataService.getCurrentUser()
       .subscribe((data) => {
@@ -146,6 +149,10 @@ export class DashboardComponent implements OnInit {
       });
   }
 
+  /**
+   * 
+   * @param applications
+   */
   getLatestCertificate(applications: any[]): Certificate {
     applications = applications || [];
     const certificates = [];
@@ -160,7 +167,7 @@ export class DashboardComponent implements OnInit {
       const latest = certificates.sort((a, b) => a.certificate.issueDate > b.certificate.issueDate ? -1 : 1)[0];
       const certificate: Certificate = latest.certificate;
       // check if the certificate is downloadable
-      this.applicationDataService.doesCertificateExist(latest.applicationId).subscribe(result => {
+      this.busy = this.applicationDataService.doesCertificateExist(latest.applicationId).subscribe(result => {
         certificate.hasCertificate = result;
       });
       return certificate;
@@ -170,6 +177,11 @@ export class DashboardComponent implements OnInit {
 
   }
 
+  /**
+   * 
+   * @param a
+   * @param b
+   */
   dateSort(a, b) {
     if (a.issueDate > b.issueDate) {
       return 1;
@@ -178,6 +190,9 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+  /**
+   *
+   */
   isAuthorizedApplicationPending() {
     return this.authorizedOwnerApplication
       && this.authorizedOwnerApplication.statuscode !== 'Draft'
@@ -187,6 +202,10 @@ export class DashboardComponent implements OnInit {
       && this.authorizedOwnerApplication.statuscode !== 'Denied';
   }
 
+  /**
+   * Is Waiver or Seller Under Review
+   * @param statuscode
+   */
   isWaiverOrSellerUnderReview(statuscode: string) {
     return statuscode
       && (
@@ -197,9 +216,15 @@ export class DashboardComponent implements OnInit {
       );
   }
 
-  startNewWaiverApplication() {
+  /**
+   * Create a waiver application.
+   * Status initiates as draft
+   * @param applicationReasoncode
+   */
+  startNewWaiverApplication(applicationReasoncode: string) {
     const newLicenceApplicationData: Application = <Application>{
-      statuscode: 'Draft'
+      statuscode: 'Draft', // initiate as draft
+      applicationreasoncode: applicationReasoncode // first time = 'New', next times = 'Renew'
     };
     this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Waiver').subscribe(
       data => {
@@ -212,9 +237,15 @@ export class DashboardComponent implements OnInit {
     );
   }
 
-  startNewAuthorizedOwnerApplication() {
+  /**
+   * Create an authorized owner application.
+   * Status initiates as draft
+   * @param applicationReasoncode
+   */
+  startNewAuthorizedOwnerApplication(applicationReasoncode: string) {
     const newLicenceApplicationData: Application = <Application>{
-      statuscode: 'Draft'
+      statuscode: 'Draft', // initiate as draft
+      applicationreasoncode: applicationReasoncode // first time = 'New', next times = 'Re-Notify'
     };
     this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Authorized Owner').subscribe(
       data => {
@@ -227,9 +258,15 @@ export class DashboardComponent implements OnInit {
     );
   }
 
-  startNewASellerApplication() {
+  /**
+   * Create a registerd seller application.
+   * Status initiates as draft
+   * @param applicationReasoncode
+   */
+  startNewASellerApplication(applicationReasoncode: string) {
     const newLicenceApplicationData: Application = <Application>{
-      statuscode: 'Draft'
+      statuscode: 'Draft', // initiate as draft
+      applicationreasoncode: applicationReasoncode // first time = 'New', next times = 'Renew'
     };
     this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Registered Seller').subscribe(
       data => {

@@ -82,6 +82,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
 
                     additionalbusinessinformationaboutseller = incident.BcgovAdditionalbusinessinformationaboutseller,
                     statuscode = (ApplicationStatusCodes)incident.Statuscode,
+                    applicationreasoncode = (ApplicationReasonsCodes?)incident.BcgovApplicationreason, // added on 20190313
 
                     title = incident.Title,
 
@@ -338,7 +339,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             to.BcgovOwnintendtoownequipmentforbusinessuse = from.ownintendtoownequipmentforbusinessuse;
             to.BcgovBorrowrentleaseequipment = from.borrowrentleaseequipment;
             to.BcgovSellequipment = from.sellequipment;
-
+            
             // Purchase of Controlled Equipment
             to.BcgovProducingownproduct = from.producingownproduct;
             to.BcgovProvidingmanufacturingtoothers = from.providingmanufacturingtoothers;
@@ -364,6 +365,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             to.BcgovOtherlicencebusinessname = from.otherlicencebusinessname;
             to.BcgovOtherlicencenumber = from.otherlicencenumber;
             to.BcgovOtherlicenceexpirydate = from.otherlicenceexpirydate;
+
+            to.BcgovApplicationreason = (int?)from.applicationreasoncode; // added on 20190313
 
             // Declarations and Consent
             to.BcgovDeclarationofcorrectinformation = from.DeclarationOfCorrectInformation;
