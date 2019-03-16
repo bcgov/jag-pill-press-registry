@@ -42,7 +42,7 @@
 
             <!-- AO Ownership Category -->
 
-            <td style="background-color: #F1F4FA; padding: 0px;">
+            <td style="background-color: #F1F4FA; padding: 0px; ">
               <div>
                 <section class="user-header">
                   <div style="padding-right: 5px;">
@@ -118,7 +118,7 @@
                 <section *ngIf="isAuthorizedApplicationPending()"></section>
                 <section *ngIf="authorizedOwnerApplication?.statuscode === 'Approved'">
                   <button class="btn btn-primary" (click)="startNewAuthorizedOwnerApplication('Re-Notify')">RE-NOTIFY</button><br />
-                  <span class="actions-text">Amend information provided in original notification</span>
+                  <div class="actions-text">Amend information provided in original notification</div>
                 </section>
                 <section *ngIf="authorizedOwnerApplication?.statuscode === 'Withdrawn'">
                   <button class="btn btn-primary" (click)="startNewAuthorizedOwnerApplication('Re-Notify')">NOTIFY US AGAIN</button>
@@ -148,8 +148,7 @@
                     <a *ngIf="!account?.waiverAdministrativeHold && waiverApplication?.statuscode !== 'Approved'
                        && !waiverHolderCertificate?.hasExpired"
                        href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-waiver-holder"
-                       target="blank">
-                      Find out whether the Waiver Holder category applies to you
+                       target="blank">Find out whether the Waiver Holder category applies to you
                     </a>
                     <div *ngIf="account?.waiverAdministrativeHold" class="status-orange">
                       ON ADMINISTRATIVE HOLD
@@ -206,7 +205,7 @@
                 </section>
                 <section *ngIf="waiverApplication?.statuscode === 'Approved'">
                   <h4 class="status-green">APPROVED</h4>
-                  <p>Your Registered Seller application has been approved. An email has been sent to you with further instructions.</p>
+                  <p>Your Waiver Holder application has been approved. An email has been sent to you with further instructions.</p>
                 </section>
                 <section *ngIf="waiverApplication?.statuscode === 'Denied'">
                   <h4 class="status-red">DENIED</h4>
@@ -248,10 +247,9 @@
                 <section *ngIf="isWaiverOrSellerUnderReview(waiverApplication?.statuscode)"></section>
                 <section *ngIf="waiverApplication?.statuscode === 'Approved'">
                   <button class="btn btn-primary" (click)="startNewWaiverApplication('Renew')">RENEW OR RE-APPLY</button>
-                  <br>
-                  <span class="actions-text">
+                  <div class="actions-text">
                     Apply for renewal or amend information provided in original application
-                  </span>
+                  </div>
                 </section>
                 <section *ngIf="waiverApplication?.statuscode === 'Denied'">
                   <button class="btn btn-primary" (click)="startNewWaiverApplication('New')">APPLY AGAIN</button>
@@ -393,9 +391,9 @@
                 <section *ngIf="registeredSellerApplication?.statuscode === 'Approved'">
                   <button class="btn btn-primary" (click)="startNewASellerApplication('Renew')">RENEW OR RE-APPLY</button>
                   <br>
-                  <span style=" font-size: 11px; padding-top: 7px;">
+                  <div class="actions-text">
                     Apply for renewal or amend information provided in original application
-                  </span>
+                  </div>
                 </section>
                 <section *ngIf="registeredSellerApplication?.statuscode === 'Denied'">
                   <button class="btn btn-primary" (click)="startNewASellerApplication('New')">REGISTER NOW</button>
@@ -464,12 +462,8 @@
                         <span style="background-color: #E1E8F2; padding: 10px;">{{i+1}}</span>
                         <div style="background-color: #F1F4FA; padding: 10px; padding-bottom: 15px;">
                           <span>{{item.equipmentType}}</span> <br>
-                          <span>Serial #: </span> <i>
-                            {{
-item.serialNumber || item.customBuiltSerialNumber || 'Not
-                            available'
-                            }}
-                          </i> <br>
+                          <span>Serial #: </span>
+                          <i>{{item.serialNumber || item.customBuiltSerialNumber || 'Not available'}}</i> <br>
                           <span>Reference #: {{item.title}} </span> <span></span> <br>
                         </div>
                       </div>
@@ -508,8 +502,7 @@ item.serialNumber || item.customBuiltSerialNumber || 'Not
                   <fa-icon [icon]="faExclamationCircle" size="lg" style="color: #003366; margin-right: 10px;"></fa-icon>
                   <span>
                     Please ensure you fill out an equipment notification form for each individual piece of
-                    Controlled
-                    Equipment in your posession until your entire inventory is listed.
+                    Controlled Equipment in your posession until your entire inventory is listed.
                   </span>
                 </div>
               </mat-tab>
@@ -519,11 +512,8 @@ item.serialNumber || item.customBuiltSerialNumber || 'Not
                   <tr>
                     <th style="width: 335px">EQUIPMENT</th>
                     <th>LOCATION <span style="font-weight: normal;">(where equipment ordinarily stored)</span></th>
-                    <th style="width: 335px">
-                      STATUS CHANGES <span style="font-weight: normal;">
-                        (for each piece of
-                        equipment)
-                      </span>
+                    <th style="width: 335px">STATUS CHANGES
+                    <span style="font-weight: normal;">(for each piece of equipment)</span>
                     </th>
                   </tr>
                   <tr *ngFor="let item of completedEquipment; let i = index;" style="border: 1px solid #ccc; ">
@@ -532,12 +522,8 @@ item.serialNumber || item.customBuiltSerialNumber || 'Not
                         <span style="background-color: #E1E8F2; padding: 10px;">{{i+1}}</span>
                         <div style="background-color: #F1F4FA; padding: 10px; padding-bottom: 15px;">
                           <span>{{item.equipmentType}}</span> <br>
-                          <span>Serial #: </span> <i>
-                            {{
-item.serialNumber || item.customBuiltSerialNumber || 'Not
-                            available'
-                            }}
-                          </i> <br>
+                          <span>Serial #: </span>
+                          <i>{{item.serialNumber || item.customBuiltSerialNumber || 'Not available'}}</i> <br>
                           <span>Equipment Registry #: </span> {{item?.certificate?.name}}<span></span> <br>
                           <a *ngIf="item.hasCertificate" href="api/application/{{item?.id}}/download-certificate" download>
                             <fa-icon [icon]="faFilePdf" style="color: #38598A; margin-right: 5px;"></fa-icon>
@@ -595,11 +581,11 @@ item.serialNumber || item.customBuiltSerialNumber || 'Not
               </mat-tab>
             </mat-tab-group>
           </section>
-
         </section>
-      </div>
+      </div> <!-- end show equipment table-->
       <p></p>
     </div>
+
     <div class="col-lg-4 col-sm-12" style="position: relative">
       <div [ngBusy]="busy"></div>
 

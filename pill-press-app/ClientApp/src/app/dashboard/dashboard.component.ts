@@ -279,6 +279,9 @@ export class DashboardComponent implements OnInit {
     );
   }
 
+  /**
+   * Determine if Equipment data (table) should be displayed for the business profile
+   */
   showEquipmentTables() {
     const show = (this.authorizedOwnerApplication && this.authorizedOwnerApplication.statuscode === 'Approved')
       || (this.waiverApplication && this.waiverApplication.statuscode === 'Approved')
@@ -286,6 +289,9 @@ export class DashboardComponent implements OnInit {
     return show;
   }
 
+  /**
+   * Add new equipment to the business profile
+   */
   addEquipment() {
     const newLicenceApplicationData: Application = <Application>{
       statuscode: 'Draft'
