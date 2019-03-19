@@ -447,6 +447,9 @@
               <button class="btn btn-primary" (click)="addEquipment()">ADD MORE EQUIPMENT</button>
             </div>
             <mat-tab-group [selectedIndex]="(inProgressEquipment?.length > 0 || completedEquipment?.length == 0) ? 0 : 1">
+
+              <!--Equipment In Progress-->
+
               <mat-tab label="IN PROGRESS">
                 <p>The list of Controlled Equipment notifications below have been submitted.</p>
                 <table class="eq-table">
@@ -506,17 +509,22 @@
                   </span>
                 </div>
               </mat-tab>
+
+              <!--Equipment Completed-->
+
               <mat-tab label="COMPLETED">
                 <p>The inventory of Controlled Equipment notifications below have been completed.</p>
                 <table class="eq-table">
                   <tr>
                     <th style="width: 335px">EQUIPMENT</th>
                     <th>LOCATION <span style="font-weight: normal;">(where equipment ordinarily stored)</span></th>
-                    <th style="width: 335px">STATUS CHANGES
-                    <span style="font-weight: normal;">(for each piece of equipment)</span>
+                    <th style="width: 335px">
+                      STATUS CHANGES
+                      <span style="font-weight: normal;">(for each piece of equipment)</span>
                     </th>
                   </tr>
-                  <tr *ngFor="let item of completedEquipment; let i = index;" style="border: 1px solid #ccc; ">
+                  <tr *ngFor="let item of completedEquipment; let i = index;" style="border: 1px solid #ccc;">
+                    <!--Equipment column-->
                     <td style="padding: 0; position: relative;">
                       <div style="display: flex;position: absolute;top: 0;bottom:  0;right:  0;left: 0;">
                         <span style="background-color: #E1E8F2; padding: 10px;">{{i+1}}</span>
@@ -532,6 +540,7 @@
                         </div>
                       </div>
                     </td>
+                    <!--Equipment location column-->
                     <td style="padding: 10px;">
                       {{item?.equipmentLocation?.address?.streetLine1}} <br>
                       <div *ngIf="item?.equipmentLocation?.address?.streetLine2">
@@ -541,37 +550,34 @@
                       {{item?.equipmentLocation?.address?.province}} <br>
                       {{item?.equipmentLocation?.address?.postalCode}} <br>
                     </td>
+                    <!--Equipment status changes column-->
                     <td style="background-color: #E1E8F2; padding: 10px;">
-                      <a href="javascript: void(0)">
+                      <!-- Submission -->
+                      <a href="javascript: void(0)"
+                        (click)="viewSubmission()">
                         <fa-icon [icon]="faEye" style="margin-right: 5px;"></fa-icon>
                         View Submission
                       </a>
                       <br>
-                      <a routerLink="/equipment-changes/location-change/{{item.id}}"
-                         [ngClass]="{ 'disabled' : item.hasChangePending }">
+                      <!-- Change Location -->
+                      <a [ngClass]="{ 'disabled' : item.hasChangePending }"
+                        routerLink="/equipment-changes/location-change/{{item.id}}">
                         <fa-icon [icon]="faMapMarkerAlt" style="margin-right: 5px;"></fa-icon>
                         Change Location
-                      </a> <br>
-                      <a *ngIf="!item?.lsdLinkId" href="javascript: void(0)"
-                         [ngClass]="{ 'disabled' : item.hasChangePending }"
-                         (click)="reportLSD(item?.equipmentRecord?.id)">
-                        <fa-icon [icon]="faExclamationTriangle" style="margin-right: 5px;"></fa-icon>
-                        Report Change (lost, stolen, destroyed)
                       </a>
-                      <a *ngIf="item?.lsdLinkId"
-                         routerLink="/equipment-changes/reporting-changes/details/{{item?.lsdLinkId}}">
+                      <br>
+                      <!-- Report Change LSD -->
+                      <a [ngClass]="{ 'disabled' : item.hasChangePending }"
+                         href="javascript: void(0)"
+                         (click)="newReportChangeLSD(item?.equipmentRecord?.id)">
                         <fa-icon [icon]="faExclamationTriangle" style="margin-right: 5px;"></fa-icon>
                         Report Change (lost, stolen, destroyed)
                       </a>
                       <br>
-                      <a *ngIf="!item?.soldLinkId" href="javascript: void(0)"
-                         [ngClass]="{ 'disabled' : item.hasChangePending }"
-                         (click)="reportSales(item?.equipmentRecord?.id)">
-                        <fa-icon [icon]="faShoppingCart" style="margin-right: 5px;"></fa-icon>
-                        Report Sale
-                      </a>
-                      <a *ngIf="item?.soldLinkId"
-                         routerLink="/equipment-changes/reporting-sales/details/{{item?.soldLinkId}}">
+                      <!-- Report Sale -->
+                      <a [ngClass]="{ 'disabled' : item.hasChangePending }"
+                         href="javascript: void(0)"
+                         (click)="newReportSale(item?.equipmentRecord?.id)">
                         <fa-icon [icon]="faShoppingCart" style="margin-right: 5px;"></fa-icon>
                         Report Sale
                       </a>

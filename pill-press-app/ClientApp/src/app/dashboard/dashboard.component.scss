@@ -193,3 +193,18 @@
   font-size: 11px;
   padding-top: 7px;
 }
+
+.darkClass {
+  background-color: white;
+  filter: alpha(opacity=50); /* IE */
+  opacity: 0.5; /* Safari, Opera */
+  -moz-opacity: 0.50; /* FireFox */
+  z-index: 20;
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  /*top: 0px;
+  left: 0px;*/
+}

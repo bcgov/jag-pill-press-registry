@@ -93,7 +93,7 @@ export class DashboardComponent implements OnInit {
           }
 
           const pendingChanges = data.filter(a => a.equipmentRecord && app.equipmentRecord
-            && a.equipmentRecord.id === app.equipmentRecord.id && !a.submittedDate && a.applicationtype === 'Equipment Change');
+            && a.equipmentRecord.id === app.equipmentRecord.id && a.applicationtype === 'Equipment Change'); //&& a.statuscode!=='Denied'
           app.hasChangePending = (pendingChanges.length > 0);
           if (pendingChanges.length > 0) {
             const lsdChanges = pendingChanges.filter(c => ['Lost', 'Stolen', 'Destroyed'].indexOf(c.typeOfChange) !== -1);
@@ -308,7 +308,11 @@ export class DashboardComponent implements OnInit {
     );
   }
 
-  reportSales(equipmentId: string) {
+  /**
+   * New report sale
+   * @param equipmentId
+   */
+  newReportSale(equipmentId: string) {
     // TODO: Link the equipment to the application
     const newLicenceApplicationData: Application = <Application>{
       statuscode: 'Draft',
@@ -328,7 +332,11 @@ export class DashboardComponent implements OnInit {
     );
   }
 
-  reportLSD(equipmentId: string) {
+  /**
+   * New Report Change LSD (Lost, Stolen, Destroyed)
+   * @param equipmentId
+   */
+  newReportChangeLSD(equipmentId: string) {
     const newLicenceApplicationData: Application = <Application>{
       statuscode: 'Draft',
       typeOfChange: 'Lost',
@@ -345,6 +353,10 @@ export class DashboardComponent implements OnInit {
         console.log('Error starting Reporting Sales Application');
       }
     );
+  }
+
+  viewSubmission() {
+    alert("view submission");
   }
 
 }
