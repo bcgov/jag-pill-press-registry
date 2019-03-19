@@ -146,6 +146,7 @@ export class DashboardComponent implements OnInit {
         this.inProgressEquipment = data.filter(a => a.applicationtype === 'Equipment Notification' && a.statuscode !== 'Approved');
         this.completedEquipment = data.filter(a => a.applicationtype === 'Equipment Notification' && a.statuscode === 'Approved');
 
+        //document.getElementById("EquipmentCompletedRow").className = '';
       });
   }
 
@@ -355,8 +356,13 @@ export class DashboardComponent implements OnInit {
     );
   }
 
-  viewSubmission() {
-    alert("view submission");
+  /**
+   * Navigate to the equipment notification application
+   * @param applicationId
+   */
+  viewSubmission(applicationId) {
+    alert("View submission " + applicationId);
+    this.router.navigateByUrl('/equipment-notification/review/' + applicationId);
   }
 
 }
