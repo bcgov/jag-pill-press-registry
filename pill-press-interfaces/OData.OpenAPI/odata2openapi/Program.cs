@@ -340,6 +340,8 @@ namespace odata2openapi
                     }
 
                     // adjustments to response
+                    // TODO changes to fix the “GetOkResponseModelModelModel…” generated models
+                    // Compare to Cannabis solution https://github.com/bcgov/jag-lcrb-carla-public/blob/master/cllc-interfaces/OData.OpenAPI/odata2openapi/Program.cs line 342
 
                     foreach (var response in operation.Operation.Responses)
                     {
