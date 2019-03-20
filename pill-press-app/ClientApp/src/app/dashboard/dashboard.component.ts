@@ -93,7 +93,7 @@ export class DashboardComponent implements OnInit {
           }
 
           const pendingChanges = data.filter(a => a.equipmentRecord && app.equipmentRecord
-            && a.equipmentRecord.id === app.equipmentRecord.id && !a.submittedDate && a.applicationtype === 'Equipment Change');
+            && a.equipmentRecord.id === app.equipmentRecord.id && a.applicationtype === 'Equipment Change'); //&& a.statuscode!=='Denied'
           app.hasChangePending = (pendingChanges.length > 0);
           if (pendingChanges.length > 0) {
             const lsdChanges = pendingChanges.filter(c => ['Lost', 'Stolen', 'Destroyed'].indexOf(c.typeOfChange) !== -1);
@@ -146,6 +146,7 @@ export class DashboardComponent implements OnInit {
         this.inProgressEquipment = data.filter(a => a.applicationtype === 'Equipment Notification' && a.statuscode !== 'Approved');
         this.completedEquipment = data.filter(a => a.applicationtype === 'Equipment Notification' && a.statuscode === 'Approved');
 
+        //document.getElementById("EquipmentCompletedRow").className = '';
       });
   }
 
@@ -279,6 +280,9 @@ export class DashboardComponent implements OnInit {
     );
   }
 
+  /**
+   * Determine if Equipment data (table) should be displayed for the business profile
+   */
   showEquipmentTables() {
     const show = (this.authorizedOwnerApplication && this.authorizedOwnerApplication.statuscode === 'Approved')
       || (this.waiverApplication && this.waiverApplication.statuscode === 'Approved')
@@ -286,6 +290,9 @@ export class DashboardComponent implements OnInit {
     return show;
   }
 
+  /**
+   * Add new equipment to the business profile
+   */
   addEquipment() {
     const newLicenceApplicationData: Application = <Application>{
       statuscode: 'Draft'
@@ -302,7 +309,11 @@ export class DashboardComponent implements OnInit {
     );
   }
 
-  reportSales(equipmentId: string) {
+  /**
+   * New report sale
+   * @param equipmentId
+   */
+  newReportSale(equipmentId: string) {
     // TODO: Link the equipment to the application
     const newLicenceApplicationData: Application = <Application>{
       statuscode: 'Draft',
@@ -322,7 +333,11 @@ export class DashboardComponent implements OnInit {
     );
   }
 
-  reportLSD(equipmentId: string) {
+  /**
+   * New Report Change LSD (Lost, Stolen, Destroyed)
+   * @param equipmentId
+   */
+  newReportChangeLSD(equipmentId: string) {
     const newLicenceApplicationData: Application = <Application>{
       statuscode: 'Draft',
       typeOfChange: 'Lost',
@@ -339,6 +354,15 @@ export class DashboardComponent implements OnInit {
         console.log('Error starting Reporting Sales Application');
       }
     );
+  }
+
+  /**
+   * Navigate to the equipment notification application
+   * @param applicationId
+   */
+  viewSubmission(applicationId) {
+    alert("View submission " + applicationId);
+    this.router.navigateByUrl('/equipment-notification/review/' + applicationId);
   }
 
 }
