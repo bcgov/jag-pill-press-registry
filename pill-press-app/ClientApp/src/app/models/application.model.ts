@@ -14,6 +14,7 @@ export class Application {
   createdon: Date;
   title: string;
   applicationtype: string;
+  applicationreasoncode: string;
   submittedDate: Date;
   settingDescription: string;
   additionalbusinessinformationaboutseller: string;
