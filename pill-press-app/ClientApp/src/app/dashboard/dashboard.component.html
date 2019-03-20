@@ -457,12 +457,12 @@
                     <tr *ngFor="let item of inProgressEquipment; let i = index;" style="border: 1px solid #ccc; ">
                       <td style="padding: 0;">
                         <div style="display: flex;">
-                          <span style="background-color: #E1E8F2; padding: 10px;">{{i+1}}</span>
+                          <span style="background-color: #E1E8F2; padding: 10px;"><strong>{{i+1}}</strong></span>
                           <div style="background-color: #F1F4FA; padding: 10px; padding-bottom: 15px;">
-                            <span>{{item.equipmentType}}</span> <br>
-                            <span>Serial #: </span>
-                            <i>{{item.serialNumber || item.customBuiltSerialNumber || 'Not available'}}</i> <br>
-                            <span>Reference #: {{item.title}} </span> <span></span> <br>
+                            <strong>{{item.equipmentType}}</strong> <br />
+                            <strong>Serial #: </strong>
+                            <i>{{item.serialNumber || item.customBuiltSerialNumber || 'Not available'}}</i> <br />
+                            <strong>Reference #: </strong>{{item.title}} <br />
                           </div>
                         </div>
                       </td>
@@ -472,11 +472,11 @@
                       <td style="background-color: #E1E8F2; padding: 10px;">
                         <section *ngIf="item.statuscode === 'Draft'">
                           <span class="status-orange">DRAFT</span>
-                          <p>You have started an application but not submitted it yet.</p>
+                          <p>You have started a notification but not submitted it yet.</p>
                         </section>
                         <section *ngIf="item.statuscode !== 'Draft'">
                           <span class="status-blue">PENDING</span>
-                          <p>Your application has been submitted.</p>
+                          <p>Your notification has been submitted.</p>
                         </section>
                       </td>
                       <td style="background-color: #E1E8F2; padding: 10px;" valign="top">
@@ -489,8 +489,9 @@
                         <section *ngIf="item.statuscode !== 'Draft'">
                           <a href="javascript: void(0);" routerLink="/equipment-notification/profile-review/{{item.id}}">
                             <fa-icon [icon]="faEye" style="color: #003366; margin-right: 10px;"></fa-icon>
-                            View Submission
+                            View Original Notification
                           </a>
+                          <p><i>No further action required</i></p>
                         </section>
                       </td>
                     </tr>
