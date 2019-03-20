@@ -53,7 +53,7 @@
 }
 
 .eq-table {
-    border-spacing: 1px 5px;
+    border-spacing: 3px 7px;
     border-collapse: separate;
     width: 100%;
 }
@@ -75,7 +75,7 @@
 
 .user-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     h3 {
         // display: inline-block;
@@ -150,29 +150,61 @@
     color: #669933;
 }
 
-
-
 .status-table {
-    width: 100%;
-    border-spacing: 2px 5px;
-    border-collapse: separate;
-    th {
-        background-color: #F1F4FA;
-        padding: 7px;
-    }
-    .lead-column {
-        background-color: #E1E8F2;
-        padding: 5px;
-    }  
-    
-    .denied {
-        background-color: #D8292F;
-    }
-    
-    .approved {
-        background-color: #669933;
-    }  
-    .on-hold {
-        background-color: #FF9900;
-    }
+  width: 100%;
+  border-spacing: 2px 5px;
+  border-collapse: separate;
+  font-weight: 600;
+  th {
+    background-color: #F1F4FA;
+    padding: 7px;
+  }
+
+  .lead-column {
+    background-color: #E1E8F2;
+    padding: 5px;
+  }
+
+  .denied,
+  .expired {
+    background-color: #D8292F;
+  }
+
+  .approved {
+    background-color: #669933;
+  }
+
+  .on-hold {
+    background-color: #FF9900;
+  }
+}
+
+.column-spacing {
+  column-width: 2px;
+  background-color: white;
+  color:white;
+}
+
+.download-link-spacing {
+  padding-bottom: 5px;
+}
+
+.actions-text {
+  font-size: 11px;
+  padding-top: 7px;
+}
+
+.grayOut {
+  background-color: white;
+  filter: alpha(opacity=50); /* IE */
+  opacity: 0.5; /* Safari, Opera */
+  -moz-opacity: 0.50; /* FireFox */
+  z-index: 20;
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  /*top: 0px;
+  left: 0px;*/
 }
