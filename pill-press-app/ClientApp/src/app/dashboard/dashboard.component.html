@@ -80,7 +80,7 @@
                   </section>
                   <section *ngIf="isAuthorizedApplicationPending()">
                     <h4 class="status-blue">PENDING</h4>
-                    <p>Your notification has been submitted. No further action is required..</p>
+                    <p>Your notification has been submitted. No further action is required.</p>
                     <p><strong>Reference #:&nbsp;</strong>{{authorizedOwnerApplication?.title}}</p>
                   </section>
                   <section *ngIf="authorizedOwnerApplication?.statuscode === 'Approved'">
