@@ -455,6 +455,7 @@
                       <th>ACTIONS</th>
                     </tr>
                     <tr *ngFor="let item of inProgressEquipment; let i = index;" style="border: 1px solid #ccc; ">
+                      <!--Equipment column-->
                       <td style="padding: 0;">
                         <div style="display: flex;">
                           <span style="background-color: #E1E8F2; padding: 10px;"><strong>{{i+1}}</strong></span>
@@ -466,9 +467,11 @@
                           </div>
                         </div>
                       </td>
+                      <!--Equipment submitted column-->
                       <td style="padding: 10px; width: 110px;" valign="top">
                         {{item.submittedDate | date: 'dd MMM yyyy'}}
                       </td>
+                      <!--Equipment status column-->
                       <td style="background-color: #E1E8F2; padding: 10px;">
                         <section *ngIf="item.statuscode === 'Draft'">
                           <span class="status-orange">DRAFT</span>
@@ -479,6 +482,7 @@
                           <p>Your notification has been submitted.</p>
                         </section>
                       </td>
+                      <!--Equipment actions column-->
                       <td style="background-color: #E1E8F2; padding: 10px;" valign="top">
                         <section *ngIf="item.statuscode === 'Draft'">
                           <a href="javascript: void(0);" routerLink="/equipment-notification/profile-review/{{item.id}}">
@@ -487,7 +491,7 @@
                           </a>
                         </section>
                         <section *ngIf="item.statuscode !== 'Draft'">
-                          <a href="javascript: void(0);" routerLink="/equipment-notification/profile-review/{{item.id}}">
+                          <a href="javascript: void(0);" routerLink="/equipment-notification/review/{{item.id}}">
                             <fa-icon [icon]="faEye" style="color: #003366; margin-right: 10px;"></fa-icon>
                             View Original Notification
                           </a>
