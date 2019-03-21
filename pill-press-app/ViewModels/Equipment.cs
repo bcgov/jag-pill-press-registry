@@ -64,5 +64,8 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
 
         public string EmailAddress { get; set; }
 
+        [JsonProperty(PropertyName = "bcgovCurrentBusinessOwner")]
+        public Account BcgovCurrentBusinessOwner { get; set; }
+
     }
 }

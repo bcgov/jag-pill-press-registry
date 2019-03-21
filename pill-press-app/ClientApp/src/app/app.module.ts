@@ -43,6 +43,7 @@ import {
 } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
 
+import { EquipmentDataService } from './services/equipment-data-service';
 import { AccountDataService } from './services/account-data.service';
 import { ContactDataService } from './services/contact-data.service';
 import { ApplicationDataService } from './services/application-data.service';
@@ -275,6 +276,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     BCeidAuthGuard,
     ServiceCardAuthGuard,
     BsModalService,
+    EquipmentDataService,
   ],
   entryComponents: [
     SellerOwnerDialogComponent,
