@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Application } from '../models/application.model';
 import { DynamicsDataService } from '../services/dynamics-data.service';
 import { ApplicationDataService } from '../services/application-data.service';
+import { EquipmentDataService } from '../services/equipment-data-service';
 import { DynamicsAccount } from '../models/dynamics-account.model';
 import { Subscription } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
@@ -41,6 +42,7 @@ export class DashboardComponent implements OnInit {
   orgType = '';
 
   inProgressEquipment: any[] = [];
+  UnfilteredcompletedEquipment: any[] = [];
   completedEquipment: any[] = [];
   waiverApplication: any;
   authorizedOwnerApplication: Application;
@@ -60,6 +62,7 @@ export class DashboardComponent implements OnInit {
   constructor(private userDataService: UserDataService, private router: Router,
     private dynamicsDataService: DynamicsDataService,
     private applicationDataService: ApplicationDataService,
+    private equipmentDataService: EquipmentDataService,
     public snackBar: MatSnackBar) { }
 
   /**
@@ -144,14 +147,38 @@ export class DashboardComponent implements OnInit {
         }
 
         this.inProgressEquipment = data.filter(a => a.applicationtype === 'Equipment Notification' && a.statuscode !== 'Approved');
-        this.completedEquipment = data.filter(a => a.applicationtype === 'Equipment Notification' && a.statuscode === 'Approved');
+        this.UnfilteredcompletedEquipment = data.filter(a => a.applicationtype === 'Equipment Notification' && a.statuscode === 'Approved');
 
-        //document.getElementById("EquipmentCompletedRow").className = '';
+        /* When equipment is lost, stolen, destroyed or sold and the application is approved then the equipment is assinged
+         * to a different business profile (account).
+         * Because the application (equipment notification) will always have the intial business profile associated with the equipment,
+         * it's required to check if the equipment is still associated with the same business profile (account).
+         */
+
+        //remove equipment that doesn't belong anymore to this business profile
+        this.filterCompletedEquipment(this.UnfilteredcompletedEquipment);
+
       });
   }
 
   /**
-   * 
+   * Filter from array the completed equipment that doesn't belong to this business profile (account) anymore
+   * because it was lost, stolen, destroyed or sold and assigned to another account
+   * @param completedEquipmentArray
+   */
+  filterCompletedEquipment(UnfilteredcompletedEquipmentAppArray: any[]) {
+    UnfilteredcompletedEquipmentAppArray.forEach((equipmentApp: any, index) => {
+      this.busy = this.equipmentDataService.getEquipment(equipmentApp.equipmentRecord.id).subscribe(equipmentResponse => {
+        if (equipmentResponse.bcgovCurrentBusinessOwner.id === this.currentUser.accountid) {
+          //only add completed equipment that belong to this business profile (account)
+          this.completedEquipment.push(equipmentApp);
+        }
+      });
+    });
+  }
+
+  /**
+   * Get the latest certificate
    * @param applications
    */
   getLatestCertificate(applications: any[]): Certificate {
@@ -361,7 +388,7 @@ export class DashboardComponent implements OnInit {
    * @param applicationId
    */
   viewSubmission(applicationId) {
-    alert("View submission " + applicationId);
+    //alert("View submission " + applicationId);
     this.router.navigateByUrl('/equipment-notification/review/' + applicationId);
   }
 

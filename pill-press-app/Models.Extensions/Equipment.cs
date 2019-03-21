@@ -39,7 +39,14 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     SerialNumber = equipment.BcgovSerialnumber,
                     EncapsulatorMaxCapacity = equipment.BcgovEncapsulatormaxcapacity,
                     CustomBuiltSerialNumber = equipment.BcgovCustombuiltorkeypartserialnumber,
+                    //BcgovCurrentBusinessOwner = equipment.BcgovCurrentBusinessOwner
                 };
+
+                // business profile (account)
+                if (equipment.BcgovCurrentBusinessOwner != null)
+                {
+                    result.BcgovCurrentBusinessOwner = equipment.BcgovCurrentBusinessOwner.ToViewModel();
+                }
 
             }
             return result;
