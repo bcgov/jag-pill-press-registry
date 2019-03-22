@@ -15,6 +15,7 @@ import { faSave } from '@fortawesome/free-regular-svg-icons';
 export class EquipmentReviewComponent implements OnInit {
   busy: any;
   equipmentId: string;
+  reviewOnly: boolean;
   notification: Application;
   form: FormGroup;
   busyPromise: Promise<any>;
@@ -27,6 +28,7 @@ export class EquipmentReviewComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute) {
     this.equipmentId = this.route.snapshot.params.id;
+    this.reviewOnly = this.route.snapshot.params.reviewOnly === 'true';
   }
 
   ngOnInit() {

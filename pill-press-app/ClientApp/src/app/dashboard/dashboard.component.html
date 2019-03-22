@@ -80,7 +80,7 @@
                   </section>
                   <section *ngIf="isAuthorizedApplicationPending()">
                     <h4 class="status-blue">PENDING</h4>
-                    <p>Your notification has been submitted. No further action is required..</p>
+                    <p>Your notification has been submitted. No further action is required.</p>
                     <p><strong>Reference #:&nbsp;</strong>{{authorizedOwnerApplication?.title}}</p>
                   </section>
                   <section *ngIf="authorizedOwnerApplication?.statuscode === 'Approved'">
@@ -450,16 +450,16 @@
                   <table class="eq-table">
                     <tr>
                       <th>EQUIPMENT</th>
-                      <th style="width: 95px">SUMBITTED</th>
-                      <th style="width: 235px">STATUS</th>
+                      <th style="min-width: 95px">SUMBITTED</th>
+                      <th style="min-width: 235px">STATUS</th>
                       <th>ACTIONS</th>
                     </tr>
                     <tr *ngFor="let item of inProgressEquipment; let i = index;" style="border: 1px solid #ccc; ">
                       <!--Equipment column-->
                       <td style="padding: 0;">
                         <div style="display: flex;">
-                          <span style="background-color: #E1E8F2; padding: 10px;"><strong>{{i+1}}</strong></span>
-                          <div style="background-color: #F1F4FA; padding: 10px; padding-bottom: 15px;">
+                          <span style="background-color: #E1E8F2; padding: 8px;"><strong>{{i+1}}</strong></span>
+                          <div style="background-color: #F1F4FA; padding: 8px; padding-bottom: 8px;">
                             <strong>{{item.equipmentType}}</strong> <br />
                             <strong>Serial #: </strong>
                             <i>{{item.serialNumber || item.customBuiltSerialNumber || 'Not available'}}</i> <br />
@@ -468,11 +468,11 @@
                         </div>
                       </td>
                       <!--Equipment submitted column-->
-                      <td style="padding: 10px; width: 110px;" valign="top">
+                      <td style="padding: 8px; width: 110px;" valign="top">
                         {{item.submittedDate | date: 'dd MMM yyyy'}}
                       </td>
                       <!--Equipment status column-->
-                      <td style="background-color: #E1E8F2; padding: 10px;">
+                      <td style="background-color: #E1E8F2; padding: 8px;">
                         <section *ngIf="item.statuscode === 'Draft'">
                           <span class="status-orange">DRAFT</span>
                           <p>You have started a notification but not submitted it yet.</p>
@@ -483,15 +483,15 @@
                         </section>
                       </td>
                       <!--Equipment actions column-->
-                      <td style="background-color: #E1E8F2; padding: 10px;" valign="top">
+                      <td style="background-color: #E1E8F2; padding: 8px;" valign="top">
                         <section *ngIf="item.statuscode === 'Draft'">
-                          <a href="javascript: void(0);" routerLink="/equipment-notification/profile-review/{{item.id}}">
+                          <a routerLink="/equipment-notification/profile-review/{{item.id}}">
                             <fa-icon [icon]="faExclamationCircle" style="color: #003366; margin-right: 10px;"></fa-icon>
                             Complete Application
                           </a>
                         </section>
                         <section *ngIf="item.statuscode !== 'Draft'">
-                          <a href="javascript: void(0);" routerLink="/equipment-notification/review/{{item.id}}">
+                          <a href="javascript: void(0);" [routerLink]="['/equipment-notification/review/'+ item.id, {reviewOnly:true}]">
                             <fa-icon [icon]="faEye" style="color: #003366; margin-right: 10px;"></fa-icon>
                             View Original Notification
                           </a>
@@ -516,20 +516,17 @@
                   <p>The inventory of Controlled Equipment notifications below have been completed.</p>
                   <table class="eq-table">
                     <tr>
-                      <th style="width: 335px">EQUIPMENT</th>
+                      <th style="min-width:250px;">EQUIPMENT</th>
                       <th>LOCATION <span style="font-weight: normal;">(where equipment ordinarily stored)</span></th>
-                      <th style="width: 335px">
-                        STATUS CHANGES
-                        <span style="font-weight: normal;">(for each piece of equipment)</span>
-                      </th>
+                      <th style="min-width:200px;">STATUS CHANGES<span style="font-weight: normal;">(for each piece of equipment)</span></th> <!-- style="width:250px;"-->
                     </tr>
                     <tr *ngFor="let item of completedEquipment; let i = index;" style="border: 1px solid #ccc;" id="EquipmentCompletedRow"
-                         [ngClass]="{ 'grayOut' : item.hasChangePending }">
+                        [ngClass]="{ 'grayOut' : item.hasChangePending }">
                       <!--Equipment column-->
                       <td style="padding: 0; position: relative;">
                         <div style="display: flex;position: absolute;top: 0;bottom:  0;right:  0;left: 0;">
-                          <div style="background-color: #E1E8F2; padding: 10px;"><strong>{{i+1}}</strong></div>
-                          <div style="background-color: #F1F4FA; padding: 10px; padding-bottom: 15px;">
+                          <div style="background-color: #E1E8F2; padding: 8px;"><strong>{{i+1}}</strong></div>
+                          <div style="background-color: #F1F4FA; padding: 8px; padding-bottom: 8px;">
                             <strong>{{item.equipmentType}}</strong> <br />
                             <strong>Serial #: </strong><i>{{item.serialNumber || item.customBuiltSerialNumber || 'Not available'}}</i> <br />
                             <strong>Equipment Registry #: </strong>{{item?.equipmentRecord?.name}} <br />
@@ -541,7 +538,7 @@
                         </div>
                       </td>
                       <!--Equipment location column-->
-                      <td style="padding: 10px;">
+                      <td style="padding: 8px;">
                         {{item?.equipmentLocation?.address?.streetLine1}} <br>
                         <div *ngIf="item?.equipmentLocation?.address?.streetLine2">
                           {{item?.equipmentLocation?.address?.streetLine2}}
@@ -551,35 +548,30 @@
                         {{item?.equipmentLocation?.address?.postalCode}} <br>
                       </td>
                       <!--Equipment status changes column-->
-                      <td style="background-color: #E1E8F2; padding: 10px;">
-                        <!-- Submission -->
-                        <a href="javascript: void(0)"
-                           (click)="viewSubmission(item?.id)">
-                          <fa-icon [icon]="faEye" style="margin-right: 5px;"></fa-icon>
-                          View Submission
+                      <td style="background-color: #E1E8F2; padding: 8px;">
+                        <!-- Original Notification -->
+                        <a href="javascript: void(0);" [routerLink]="['/equipment-notification/review/'+ item.id, {reviewOnly:true}]">
+                          <fa-icon [icon]="faEye" style="color: #003366; margin-right: 5px;"></fa-icon>View Original Notification
                         </a>
                         <br>
                         <!-- Change Location -->
                         <a [ngClass]="{ 'disabled' : item.hasChangePending }"
                            routerLink="/equipment-changes/location-change/{{item.id}}">
-                          <fa-icon [icon]="faMapMarkerAlt" style="margin-right: 5px;"></fa-icon>
-                          Change Location
+                          <fa-icon [icon]="faMapMarkerAlt" style="margin-left: 3px;margin-right: 7px;"></fa-icon>Change Location
                         </a>
                         <br>
                         <!-- Report Change LSD -->
                         <a [ngClass]="{ 'disabled' : item.hasChangePending }"
                            href="javascript: void(0)"
                            (click)="newReportChangeLSD(item?.equipmentRecord?.id)">
-                          <fa-icon [icon]="faExclamationTriangle" style="margin-right: 5px;"></fa-icon>
-                          Report Change (lost, stolen, destroyed)
+                          <fa-icon [icon]="faExclamationTriangle" style="margin-right: 5px;"></fa-icon>Report Change (lost, stolen, destroyed)
                         </a>
                         <br>
                         <!-- Report Sale -->
                         <a [ngClass]="{ 'disabled' : item.hasChangePending }"
                            href="javascript: void(0)"
                            (click)="newReportSale(item?.equipmentRecord?.id)">
-                          <fa-icon [icon]="faShoppingCart" style="margin-right: 5px;"></fa-icon>
-                          Report Sale
+                          <fa-icon [icon]="faShoppingCart" style="margin-right: 5px;"></fa-icon>Report Sale
                         </a>
                       </td>
                     </tr>
