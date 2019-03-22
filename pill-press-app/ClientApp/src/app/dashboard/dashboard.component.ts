@@ -300,12 +300,14 @@ export class DashboardComponent implements OnInit {
 
   /**
    * Determine if Equipment data (table) should be displayed for the business profile
+   *
+   * Don't show equipment if no approved ownership category or an equipment notification has been completed ???
    */
   showEquipmentTables() {
     const show = (this.authorizedOwnerApplication && this.authorizedOwnerApplication.statuscode === 'Approved')
       || (this.waiverApplication && this.waiverApplication.statuscode === 'Approved')
       || (this.registeredSellerApplication && this.registeredSellerApplication.statuscode === 'Approved')
-      || (this.inProgressEquipment.length > 0)
+      //|| (this.inProgressEquipment.length > 0)
       || (this.completedEquipment.length > 0);
     return show;
   }
