@@ -195,10 +195,9 @@
     </section>
     <div style="margin-top: 30px; display: flex; justify-content: space-between">
       <section>
-        <!-- <strong class="error-states">*</strong> <i>Required field</i> -->
         <a href="javascript: void(0);" (click)="save(false)">
-          <fa-icon [icon]="faSave" style="margin-right: 5px"></fa-icon>
-          Save & Close</a>
+          <fa-icon [icon]="faSave" style="margin-right: 5px"></fa-icon>Cancel & Close
+        </a>
       </section>
       <section>
         <button class="btn btn-primary" (click)="markAsTouched(); save(true)">SAVE & CONTINUE</button>
