@@ -8,7 +8,7 @@
     <section formGroupName="equipmentRecord" class="padded-section">
 
       <app-field label="Equipment Type" [valid]="true" errorMessage="Please specify the make" [required]="true">
-        <input type="text" class="form-control" readonly formControlName="equipmentType" style="width: 680px" maxlength="100">
+        <input type="text" class="form-control" readonly formControlName="equipmentType" style="min-width: 150px" maxlength="100">
       </app-field>
 
 
@@ -16,22 +16,19 @@
         <app-field label="Make"
                    [valid]="form.get('equipmentRecord.equipmentMake').valid || !form.get('equipmentRecord.equipmentMake').touched"
                    errorMessage="Please specify the make" [required]="true">
-          <input type="text" class="form-control" readonly formControlName="equipmentMake" style="width: 680px"
-                 maxlength="100">
+          <input type="text" class="form-control" readonly formControlName="equipmentMake" style="min-width: 150px" maxlength="100">
         </app-field>
 
         <app-field label="Model"
                    [valid]="form.get('equipmentRecord.equipmentModel').valid || !form.get('equipmentRecord.equipmentModel').touched"
                    errorMessage="Please specify the model" [required]="true">
-          <input type="text" class="form-control" readonly formControlName="equipmentModel" style="width: 680px"
-                 maxlength="100">
+          <input type="text" class="form-control" readonly formControlName="equipmentModel" style="min-width: 150px" maxlength="100">
         </app-field>
 
         <app-field label="Serial Number"
                    [valid]="form.get('equipmentRecord.serialNumber').valid || !form.get('equipmentRecord.serialNumber').touched"
                    errorMessage="Please provide the serial number" [required]="true">
-          <input type="text" class="form-control" readonly formControlName="serialNumber" style="width: 680px"
-                 maxlength="100">
+          <input type="text" class="form-control" readonly formControlName="serialNumber" style="min-width: 150px" maxlength="100">
         </app-field>
       </section>
 
@@ -39,15 +36,14 @@
         <app-field label="Key Part Serial Number" errorMessage="Please provide an answer to the question above"
                    [valid]="form.get('equipmentRecord.customBuiltSerialNumber').valid || !form.get('customBuiltSerialNumber').touched"
                    [required]="true">
-          <input type="text" readonly formControlName="customBuiltSerialNumber" class="form-control"
-                 style="width: 680px">
+          <input type="text" readonly formControlName="customBuiltSerialNumber" class="form-control" style="min-width: 150px">
         </app-field>
       </section>
 
       <app-field [valid]="true" [required]="true" errorMessage="Please specify the Equipment Registry Number">
         <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/definition#ern" target="_blank"><strong>Equipment Registry Number</strong></a>
         <span class="error-states"> *</span><br />
-        <input type="text" class="form-control" readonly formControlName="name" style="width: 680px" maxlength="100">
+        <input type="text" class="form-control" readonly formControlName="name" style="min-width: 150px" maxlength="100">
       </app-field>
 
 
@@ -187,9 +183,8 @@
           </div>
       </section>
 
-      <label>If you have any supporting documents, please upload them below.</label>
-        <br>
-        <app-file-uploader documentType="Equipment Change Documents" entityName="incident" [entityId]="equipmentId" fileTypes="FILE MUST BE IN DOC, DOCX, XLS, PDF, JPG OR PNG"
+      <p><strong>If you have any <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/definition#sd" target="_blank">supporting documents</a>, please upload them below.</strong></p>
+      <app-file-uploader documentType="Equipment Change Documents" entityName="incident" [entityId]="equipmentId" fileTypes="FILE MUST BE IN DOC, DOCX, XLS, PDF, JPG OR PNG"
           [extensions]="['pdf', 'jpg', 'jpeg', 'png', 'xls', 'doc', 'docx']"></app-file-uploader>
 
     </section>
