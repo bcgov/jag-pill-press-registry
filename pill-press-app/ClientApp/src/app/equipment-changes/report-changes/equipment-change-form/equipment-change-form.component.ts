@@ -47,6 +47,9 @@ export class EquipmentChangeFormComponent extends FormBase implements OnInit {
     this.equipmentId = this.route.snapshot.params.id;
   }
 
+  /**
+   *
+   */
   ngOnInit() {
     this.form = this.fb.group({
       id: [],
@@ -91,6 +94,9 @@ export class EquipmentChangeFormComponent extends FormBase implements OnInit {
 
   }
 
+  /**
+   *
+   */
   reloadData() {
     this.busy = this.applicationDataService.getApplicationById(this.equipmentId)
       .subscribe((data: any) => {
@@ -106,6 +112,11 @@ export class EquipmentChangeFormComponent extends FormBase implements OnInit {
       });
   }
 
+  /**
+   * 
+   * @param a
+   * @param b
+   */
   dateSort(a, b) {
     if (a.issueDate > b.issueDate) {
       return 1;
@@ -113,33 +124,41 @@ export class EquipmentChangeFormComponent extends FormBase implements OnInit {
       return -1;
     }
   }
+
+  /**
+   *
+   */
   clearHiddenFields() {
     this.form.get('typeOfChange').valueChanges
       .subscribe((value) => {
         this.form.get('circumstancesOfLoss').clearValidators();
         this.form.get('circumstancesOfLoss').reset();
-        this.form.get('policeNotified').clearValidators();
-        this.form.get('policeNotified').reset();
         this.form.get('circumstancesOfStolenEquipment').clearValidators();
         this.form.get('circumstancesOfStolenEquipment').reset();
         this.form.get('circumstancesOfDestroyedEquipment').clearValidators();
         this.form.get('circumstancesOfDestroyedEquipment').reset();
+        this.form.get('policeNotified').clearValidators();
+        this.form.get('policeNotified').reset();
         this.form.get('whoDestroyedEquipment').clearValidators();
         this.form.get('whoDestroyedEquipment').reset();
 
         this.form.get('addressWhereEquipmentWasDestroyed.streetLine1').clearValidators();
+        this.form.get('addressWhereEquipmentWasDestroyed.streetLine1').reset();
         this.form.get('addressWhereEquipmentWasDestroyed.city').clearValidators();
         this.form.get('addressWhereEquipmentWasDestroyed.province').clearValidators();
         this.form.get('addressWhereEquipmentWasDestroyed.postalCode').clearValidators();
         this.form.get('addressWhereEquipmentWasDestroyed').reset();
+
         if (value === 'Lost') {
           this.form.get('circumstancesOfLoss').setValidators([Validators.required]);
           this.form.get('policeNotified').setValidators([Validators.required]);
-        } else if (value === 'Sold') {
+        } else if (value === 'Stolen') {
           this.form.get('circumstancesOfStolenEquipment').setValidators([Validators.required]);
           this.form.get('policeNotified').setValidators([Validators.required]);
         } if (value === 'Destroyed') {
           this.form.get('circumstancesOfDestroyedEquipment').setValidators([Validators.required]);
+          this.form.get('whoDestroyedEquipment').setValidators([Validators.required]);
+          //this.form.get('addressWhereEquipmentWasDestroyed').setValidators([Validators.required]);
           this.form.get('addressWhereEquipmentWasDestroyed.streetLine1').setValidators([Validators.required]);
           this.form.get('addressWhereEquipmentWasDestroyed.city').setValidators([Validators.required]);
           this.form.get('addressWhereEquipmentWasDestroyed.province').setValidators([Validators.required]);
@@ -148,6 +167,7 @@ export class EquipmentChangeFormComponent extends FormBase implements OnInit {
             .setValidators([Validators.required, Validators.pattern(postalRegex)]);
         }
       });
+
     this.form.get('policeNotified').valueChanges
       .subscribe((value) => {
         if (value) {
@@ -162,6 +182,10 @@ export class EquipmentChangeFormComponent extends FormBase implements OnInit {
       });
   }
 
+  /**
+   * 
+   * @param goToReview
+   */
   save(goToReview: boolean) {
     if (this.form.valid || goToReview === false) {
       const value = this.form.value;
@@ -185,6 +209,9 @@ export class EquipmentChangeFormComponent extends FormBase implements OnInit {
     }
   }
 
+  /**
+   *
+   */
   markAsTouched() {
     const controls = this.form.controls;
     for (const c in controls) {
@@ -199,5 +226,19 @@ export class EquipmentChangeFormComponent extends FormBase implements OnInit {
     //     controls[c].markAsTouched();
     //   }
     // }
+  }
+
+  /**
+ * Marks all controls in a form group as touched
+ * @param formGroup - The form group to touch
+ */
+  private markFormGroupTouched(formGroup: FormGroup) {
+    (<any>Object).values(formGroup.controls).forEach(control => {
+      control.markAsTouched();
+
+      if (control.controls) {
+        this.markFormGroupTouched(control);
+      }
+    });
   }
 }
