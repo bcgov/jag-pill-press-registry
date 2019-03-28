@@ -3,6 +3,7 @@
   <div [formGroup]="form">
     <h2 class="step">STEP 1</h2>
     <h1 style="margin-top: 0;">Report of Equipment Change</h1>
+    <p>Please complete the equipment change notification below.  Your information will only be saved once you click the Save & Continue button at the end of the page.</p>
 
     <h3 class="blue-header">EQUIPMENT IDENTIFICATION</h3>
     <section formGroupName="equipmentRecord" class="padded-section">
@@ -51,8 +52,10 @@
 
     <h3 class="blue-header">DETAILS OF EQUIPMENT CHANGE</h3>
     <section class="padded-section">
-      <app-field label="Please indicate the type of change to this piece of Controlled Equipment" [valid]="true"
-        errorMessage="Please provide an answer to the question above" [required]="true">
+      <app-field label="Please indicate the type of change to this piece of Controlled Equipment"
+                 [valid]="form.get('typeOfChange').valid || !form.get('typeOfChange').touched"
+                 errorMessage="Please provide an answer to the question above"
+                 [required]="true">
         <input type="radio" name="typeOfChange" formControlName="typeOfChange" value="Lost"> Lost &nbsp;
         <input type="radio" name="typeOfChange" formControlName="typeOfChange" value="Stolen"> Stolen &nbsp;
         <input type="radio" name="typeOfChange" formControlName="typeOfChange" value="Destroyed"> Destroyed
@@ -235,7 +238,7 @@
 
     <div style="margin-top: 30px; display: flex; justify-content: space-between">
       <section>
-        <a href="javascript: void(0);" (click)="save(false)">
+        <a href="javascript: void(0);" (click)="cancelAndclose()">
           <fa-icon [icon]="faSave" style="margin-right: 5px"></fa-icon>Cancel & Close
         </a>
       </section>

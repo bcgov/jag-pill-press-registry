@@ -67,7 +67,7 @@ export class EquipmentChangeFormComponent extends FormBase implements OnInit {
         streetLine1: [''],
         streetLine2: [],
         city: [''],
-        province: ['British Columbia'],
+        province: [''],
         postalCode: [''],
       }),
       equipmentRecord: this.fb.group({
@@ -189,9 +189,12 @@ export class EquipmentChangeFormComponent extends FormBase implements OnInit {
   save(goToReview: boolean) {
     if (this.form.valid || goToReview === false) {
       const value = this.form.value;
-      if (value.addressWhereEquipmentWasDestroyed) {
+      // address streetline1 is mandatory for Destroyed equipment, if it has a value then set the province and country otherwise set the address to null
+      if (value.addressWhereEquipmentWasDestroyed.streetLine1) {
         value.addressWhereEquipmentWasDestroyed.province = 'British Columbia';
         value.addressWhereEquipmentWasDestroyed.country = 'Canada';
+      } else {
+        value.addressWhereEquipmentWasDestroyed = null;
       }
       const saveList = [this.applicationDataService.updateApplication(value)];
       this.busyPromise = zip(...saveList)
@@ -207,6 +210,13 @@ export class EquipmentChangeFormComponent extends FormBase implements OnInit {
           // todo: show errors;
         });
     }
+  }
+
+  /**
+   * Close the application without saving any data and navigate to dashboard
+   */
+  cancelAndclose() {
+    this.router.navigateByUrl(`/dashboard`);
   }
 
   /**

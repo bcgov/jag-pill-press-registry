@@ -39,8 +39,8 @@
     <div class="padded-section">
       <div class="dark-row">Please indicate the type of change to this piece of Controlled Equipment
         &nbsp; <span class="error-states">*</span></div>
-      <div *ngIf="application?.typeOfChange === 'Lost'" class="alt-row">
-        <ul>
+      <div *ngIf="application?.typeOfChange === 'Lost'" class="alt-row" style="padding-bottom: 0px;">
+        <ul style="margin-bottom: 3px;">
           <li>Lost</li>
         </ul>
       </div>
@@ -55,7 +55,7 @@
 
         <div class="dark-row">Did you notify the police that this piece of equipment was lost? &nbsp; <span
             class="error-states">*</span></div>
-        <div class="alt-row"> {{ application?.policeNotified }}</div>
+        <div class="alt-row"> {{ application?.policeNotified? 'Yes' : 'No' }}</div>
 
         <section *ngIf="application?.policeNotified" class="padded-section">
           <div class="dark-row">On what date did you report the loss to police? &nbsp; <span
@@ -67,8 +67,8 @@
         </section>
       </section>
 
-      <div *ngIf="application?.typeOfChange === 'Stolen'" class="alt-row">
-        <ul>
+      <div *ngIf="application?.typeOfChange === 'Stolen'" class="alt-row" style="padding-bottom: 0px;">
+        <ul style="margin-bottom: 3px;">
           <li>Stolen</li>
         </ul>
       </div>
@@ -96,11 +96,11 @@
       </section>
 
       <div *ngIf="application?.typeOfChange === 'Destroyed'" class="alt-row">
-        <ul>
+        <ul style="margin-bottom: 3px;">
           <li>Destroyed</li>
         </ul>
       </div>
-      <section *ngIf="application?.typeOfChange === 'Destroyed'" class="padded-section">
+      <section *ngIf="application?.typeOfChange === 'Destroyed'" class="padded-section" style="padding-bottom: 0px;">
         <div class="dark-row">What was the date on which this piece of equipment was destroyed? &nbsp; <span
             class="error-states">*</span></div>
         <div class="alt-row"> {{ application?.dateOfEquipmentChange | date:'MM-dd-yyyy' }}</div>
