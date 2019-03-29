@@ -6,6 +6,6 @@ export interface EquipmentLocation {
     address: CustomAddress;
     //application: Application;
     name: string;
-    privateDwelling: boolean;
+    privateDwelling: string;
     settingDescription: string;
 }
