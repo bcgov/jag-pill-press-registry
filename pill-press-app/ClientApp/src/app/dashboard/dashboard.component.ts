@@ -362,7 +362,7 @@ export class DashboardComponent implements OnInit {
   newReportChangeLSD(equipmentId: string) {
     const newLicenceApplicationData: Application = <Application>{
       statuscode: 'Draft',
-      typeOfChange: 'Lost',
+      //typeOfChange: 'Lost',
       equipmentRecord: {
         id: equipmentId
       }
