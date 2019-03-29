@@ -242,7 +242,7 @@ export class EquipmentChangeFormComponent extends FormBase implements OnInit {
  * Marks all controls in a form group as touched
  * @param formGroup - The form group to touch
  */
-  private markFormGroupTouched(formGroup: FormGroup) {
+  markFormGroupTouched(formGroup: FormGroup) {
     (<any>Object).values(formGroup.controls).forEach(control => {
       control.markAsTouched();
 
