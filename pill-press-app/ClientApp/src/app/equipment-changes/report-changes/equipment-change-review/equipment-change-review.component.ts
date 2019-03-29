@@ -37,14 +37,6 @@ export class EquipmentChangeReviewComponent extends FormBase implements OnInit {
     this.form = this.fb.group({
       id: [],
       declarationOfCorrectInformation: [''],
-      addressWhereEquipmentWasDestroyed: this.fb.group({
-        id: [],
-        streetLine1: [''],
-        streetLine2: [],
-        city: [''],
-        province: ['British Columbia'],
-        postalCode: [''],
-      }),
     });
 
     this.reloadData();
