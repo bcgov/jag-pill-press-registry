@@ -6345,9 +6345,7 @@
                 "versionnumber",
                 "versionnumber desc",
                 "bcgov_cebestinspectionhours",
-                "bcgov_cebestinspectionhours desc",
-                "bcgov_privatedwellingoptionset",
-                "bcgov_privatedwellingoptionset desc"
+                "bcgov_cebestinspectionhours desc"
               ]
             }
           },
@@ -6391,8 +6389,7 @@
                 "traversedpath",
                 "createdon",
                 "versionnumber",
-                "bcgov_cebestinspectionhours",
-                "bcgov_privatedwellingoptionset"
+                "bcgov_cebestinspectionhours"
               ]
             }
           },
@@ -6565,8 +6562,7 @@
                 "traversedpath",
                 "createdon",
                 "versionnumber",
-                "bcgov_cebestinspectionhours",
-                "bcgov_privatedwellingoptionset"
+                "bcgov_cebestinspectionhours"
               ]
             }
           },
@@ -21426,10 +21422,6 @@
         },
         "bcgov_cebestinspectionhours": {
           "type": "string",
-          "x-nullable": true
-        },
-        "bcgov_privatedwellingoptionset": {
-          "type": "integer",
           "x-nullable": true
         },
         "createdbyname": {

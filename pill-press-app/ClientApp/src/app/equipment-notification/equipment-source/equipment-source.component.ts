@@ -529,6 +529,7 @@ export class EquipmentSourceComponent extends FormBase implements OnInit {
           }
         }, err => {
           // todo: show errors;
+          alert('error saving source')
         });
     }
   }
