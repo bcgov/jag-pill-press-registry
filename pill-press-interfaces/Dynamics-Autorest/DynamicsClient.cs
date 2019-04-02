@@ -47,14 +47,34 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual IAccounts Accounts { get; private set; }
 
         /// <summary>
+        /// Gets the IActregulationreferences.
+        /// </summary>
+        public virtual IActregulationreferences Actregulationreferences { get; private set; }
+
+        /// <summary>
         /// Gets the IApplicationtypes.
         /// </summary>
         public virtual IApplicationtypes Applicationtypes { get; private set; }
 
         /// <summary>
+        /// Gets the IAreas.
+        /// </summary>
+        public virtual IAreas Areas { get; private set; }
+
+        /// <summary>
         /// Gets the IBusinesscontacts.
         /// </summary>
         public virtual IBusinesscontacts Businesscontacts { get; private set; }
+
+        /// <summary>
+        /// Gets the ICecontacts.
+        /// </summary>
+        public virtual ICecontacts Cecontacts { get; private set; }
+
+        /// <summary>
+        /// Gets the ICecontacttypes.
+        /// </summary>
+        public virtual ICecontacttypes Cecontacttypes { get; private set; }
 
         /// <summary>
         /// Gets the ICertificateapprovedproducts.
@@ -72,6 +92,16 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual ICertificatetermsandconditionses Certificatetermsandconditionses { get; private set; }
 
         /// <summary>
+        /// Gets the IComplaintcecontactset.
+        /// </summary>
+        public virtual IComplaintcecontactset Complaintcecontactset { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaints.
+        /// </summary>
+        public virtual IComplaints Complaints { get; private set; }
+
+        /// <summary>
         /// Gets the ICustomaddresses.
         /// </summary>
         public virtual ICustomaddresses Customaddresses { get; private set; }
@@ -80,6 +110,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// Gets the ICustomproducts.
         /// </summary>
         public virtual ICustomproducts Customproducts { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomusers.
+        /// </summary>
+        public virtual ICustomusers Customusers { get; private set; }
 
         /// <summary>
         /// Gets the IEquipmentlocations.
@@ -97,14 +132,54 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual IIncidentbusinesscontactset Incidentbusinesscontactset { get; private set; }
 
         /// <summary>
+        /// Gets the IInspectionactregulationrefset.
+        /// </summary>
+        public virtual IInspectionactregulationrefset Inspectionactregulationrefset { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectioninspectionchecklset.
+        /// </summary>
+        public virtual IInspectioninspectionchecklset Inspectioninspectionchecklset { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionchecklistactreguset.
+        /// </summary>
+        public virtual IInspectionchecklistactreguset Inspectionchecklistactreguset { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionchecklists.
+        /// </summary>
+        public virtual IInspectionchecklists Inspectionchecklists { get; private set; }
+
+        /// <summary>
         /// Gets the IInspectionownershipcategories.
         /// </summary>
         public virtual IInspectionownershipcategories Inspectionownershipcategories { get; private set; }
 
         /// <summary>
+        /// Gets the IInspectionprocessflows.
+        /// </summary>
+        public virtual IInspectionprocessflows Inspectionprocessflows { get; private set; }
+
+        /// <summary>
         /// Gets the IInspections.
         /// </summary>
         public virtual IInspections Inspections { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigations.
+        /// </summary>
+        public virtual IInvestigations Investigations { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationstepcecontactset.
+        /// </summary>
+        public virtual IInvestigationstepcecontactset Investigationstepcecontactset { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationsteps.
+        /// </summary>
+        public virtual IInvestigationsteps Investigationsteps { get; private set; }
 
         /// <summary>
         /// Gets the ILocationequipmentset.
@@ -132,9 +207,19 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual IRiskassessments Riskassessments { get; private set; }
 
         /// <summary>
+        /// Gets the IRoles.
+        /// </summary>
+        public virtual IRoles Roles { get; private set; }
+
+        /// <summary>
         /// Gets the ITermsconditionspresets.
         /// </summary>
         public virtual ITermsconditionspresets Termsconditionspresets { get; private set; }
+
+        /// <summary>
+        /// Gets the IViolationtickets.
+        /// </summary>
+        public virtual IViolationtickets Violationtickets { get; private set; }
 
         /// <summary>
         /// Gets the IContacts.
@@ -423,24 +508,41 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         private void Initialize()
         {
             Accounts = new Accounts(this);
+            Actregulationreferences = new Actregulationreferences(this);
             Applicationtypes = new Applicationtypes(this);
+            Areas = new Areas(this);
             Businesscontacts = new Businesscontacts(this);
+            Cecontacts = new Cecontacts(this);
+            Cecontacttypes = new Cecontacttypes(this);
             Certificateapprovedproducts = new Certificateapprovedproducts(this);
             Certificates = new Certificates(this);
             Certificatetermsandconditionses = new Certificatetermsandconditionses(this);
+            Complaintcecontactset = new Complaintcecontactset(this);
+            Complaints = new Complaints(this);
             Customaddresses = new Customaddresses(this);
             Customproducts = new Customproducts(this);
+            Customusers = new Customusers(this);
             Equipmentlocations = new Equipmentlocations(this);
             Equipments = new Equipments(this);
             Incidentbusinesscontactset = new Incidentbusinesscontactset(this);
+            Inspectionactregulationrefset = new Inspectionactregulationrefset(this);
+            Inspectioninspectionchecklset = new Inspectioninspectionchecklset(this);
+            Inspectionchecklistactreguset = new Inspectionchecklistactreguset(this);
+            Inspectionchecklists = new Inspectionchecklists(this);
             Inspectionownershipcategories = new Inspectionownershipcategories(this);
+            Inspectionprocessflows = new Inspectionprocessflows(this);
             Inspections = new Inspections(this);
+            Investigations = new Investigations(this);
+            Investigationstepcecontactset = new Investigationstepcecontactset(this);
+            Investigationsteps = new Investigationsteps(this);
             Locationequipmentset = new Locationequipmentset(this);
             Locations = new Locations(this);
             Postalcodes = new Postalcodes(this);
             Regions = new Regions(this);
             Riskassessments = new Riskassessments(this);
+            Roles = new Roles(this);
             Termsconditionspresets = new Termsconditionspresets(this);
+            Violationtickets = new Violationtickets(this);
             Contacts = new Contacts(this);
             Incidents = new Incidents(this);
             Invoices = new Invoices(this);
