@@ -17,13 +17,9 @@
         <div formGroupName="equipmentLocation">
           <app-field label="If this equipment is stored at a previously added location, please select it from the dropdown list below. ">
             <select class="form-control" formControlName="id" (change)="updateLocation($event)">
-              <option value="">Choose an existing location</option>
-              <option *ngFor="let item of locations" [value]="item.id">
-                <span>{{item?.address?.streetLine1}} </span>
-                <span *ngIf="item?.address?.streetLine2">, {{item?.address?.streetLine2}} </span>
-                <span>, {{item?.address?.city}} </span>
-                <span>, {{item?.address?.province}} </span>
-                <span>, {{item?.address?.postalCode}} </span>
+              <!--<option value="">Choose an existing location</option>-->
+              <option *ngFor="let item of locations; index as i" [value]="item.id">
+                {{item?.address?.streetLine1}}, {{item?.address?.streetLine2}}, {{item?.address?.city}}, {{item?.address?.province}}, {{item?.address?.postalCode}}
               </option>
             </select>
           </app-field>
@@ -169,12 +165,14 @@
       <app-field label="Is this piece of equipment ordinarily stored at a private dwelling?"
                  [valid]="isValidOrNotTouched('equipmentLocation.privateDwelling')"
                  errorMessage="Please select yes or no"
-                 [showChevrons]="false" [
-                 required]="true">
-        <input type="radio" value="true" name="privateDwelling" formControlName="privateDwelling">
+                 [showChevrons]="false"
+                 [required]="true">
+        <input type="radio" value="Yes" name="privateDwelling" formControlName="privateDwelling">
         <span style="padding-right: 10px;">&nbsp;Yes</span>
-        <input type="radio" value="false" name="privateDwelling" formControlName="privateDwelling">
-        <span>&nbsp;No</span>
+        <input type="radio" value="No" name="privateDwelling" formControlName="privateDwelling">
+        <span style="padding-right: 10px;">&nbsp;No</span>
+        <input type="radio" value="Unknown" name="privateDwelling" formControlName="privateDwelling">
+        <span style="padding-right: 10px;">&nbsp;Unknown</span>
       </app-field>
     </div>
   </section>
