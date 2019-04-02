@@ -167,6 +167,8 @@ export class EquipmentLocationComponent extends FormBase implements OnInit {
       }),
       equipmentLocation: this.fb.group({
         id: [],
+        privateDwelling: ['', Validators.required],
+        settingDescription: ['', Validators.required],
         address: this.fb.group({
           id: [],
           streetLine1: ['', Validators.required],
@@ -175,10 +177,7 @@ export class EquipmentLocationComponent extends FormBase implements OnInit {
           province: ['British Columbia'],
           postalCode: ['', [Validators.required, Validators.pattern(postalRegex)]],
         }),
-        privateDwelling: ['', Validators.required],
-        settingDescription: ['', Validators.required],
       }),
-      
     });
    
 
@@ -206,8 +205,8 @@ export class EquipmentLocationComponent extends FormBase implements OnInit {
             .then((result) => {
               const application = <Application>result[0];              
               //application.equipmentLocation = application.equipmentLocation || <EquipmentLocation>{ address: {} };              
-              this.form.patchValue(application);
               this.locations = <EquipmentLocation[]>result[1];
+              this.form.patchValue(application);
             });
         }
       });
