@@ -18,7 +18,8 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public string Name { get; set; }
 
         [JsonProperty(PropertyName = "privateDwelling")]
-        public bool? PrivateDwelling { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public PrivateDwellingOptions? PrivateDwelling { get; set; }
 
         [JsonProperty(PropertyName = "settingDescription")]
         public string SettingDescription { get; set; }
