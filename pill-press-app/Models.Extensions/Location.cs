@@ -25,18 +25,9 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                 {
                     Id = location.BcgovLocationid,
                     Name = location.BcgovName,
-                    //PrivateDwelling = location.BcgovPrivatedwelling,
+                    PrivateDwelling = (PrivateDwellingOptions?)location.BcgovPrvtdwelling,
                     SettingDescription = location.BcgovSettingdescription
                 };
-                
-                if (location.BcgovPrivatedwellingoptionset == 931490000)
-                {
-                    result.PrivateDwelling = true;
-                }
-                else if (location.BcgovPrivatedwellingoptionset == 931490001)
-                {
-                    result.PrivateDwelling = false;
-                }
 
                 if (location.BcgovLocationAddress != null)
                 {
@@ -65,19 +56,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     BcgovSettingdescription = location.SettingDescription,
                 };
 
-                if (location.PrivateDwelling == null)
-                {
-                    result.BcgovPrivatedwellingoptionset = 931490002;
-                }
-                else if (location.PrivateDwelling == true)
-                {
-                    result.BcgovPrivatedwellingoptionset = 931490000;                 
-                }
-                else if (location.PrivateDwelling == false)
-                {
-                    result.BcgovPrivatedwellingoptionset = 931490000;
-                }
-                
+                result.BcgovPrvtdwelling = (int?)location.PrivateDwelling;
+
             }
             return result;
         }

@@ -42,7 +42,7 @@ export class DashboardComponent implements OnInit {
   orgType = '';
 
   inProgressEquipment: any[] = [];
-  UnfilteredcompletedEquipment: any[] = [];
+  allCompletedEquipment: any[] = [];
   completedEquipment: any[] = [];
   waiverApplication: any;
   authorizedOwnerApplication: Application;
@@ -147,7 +147,7 @@ export class DashboardComponent implements OnInit {
         }
 
         this.inProgressEquipment = data.filter(a => a.applicationtype === 'Equipment Notification' && a.statuscode !== 'Approved');
-        this.UnfilteredcompletedEquipment = data.filter(a => a.applicationtype === 'Equipment Notification' && a.statuscode === 'Approved');
+        this.allCompletedEquipment = data.filter(a => a.applicationtype === 'Equipment Notification' && a.statuscode === 'Approved');
 
         /* When equipment is lost, stolen, destroyed or sold and the application is approved then the equipment is assinged
          * to a different business profile (account).
@@ -155,26 +155,17 @@ export class DashboardComponent implements OnInit {
          * it's required to check if the equipment is still associated with the same business profile (account).
          */
 
-        //remove equipment that doesn't belong anymore to this business profile
-        this.filterCompletedEquipment(this.UnfilteredcompletedEquipment);
-
+        //only add equipment applications to the completedEquipment array
+        //when the current equipment business profile matches the application business profile
+        this.allCompletedEquipment.forEach((equipmentApp: any, index) => {
+          this.busy = this.equipmentDataService.getEquipment(equipmentApp.equipmentRecord.id).subscribe(equipmentResponse => {
+            if (equipmentResponse.bcgovCurrentBusinessOwner.id === this.currentUser.accountid) {
+              //only add completed equipment that belong to this business profile (account)
+              this.completedEquipment.push(equipmentApp);
+            }
+          });
+        });
       });
-  }
-
-  /**
-   * Filter from array the completed equipment that doesn't belong to this business profile (account) anymore
-   * because it was lost, stolen, destroyed or sold and assigned to another account
-   * @param completedEquipmentArray
-   */
-  filterCompletedEquipment(UnfilteredcompletedEquipmentAppArray: any[]) {
-    UnfilteredcompletedEquipmentAppArray.forEach((equipmentApp: any, index) => {
-      this.busy = this.equipmentDataService.getEquipment(equipmentApp.equipmentRecord.id).subscribe(equipmentResponse => {
-        if (equipmentResponse.bcgovCurrentBusinessOwner.id === this.currentUser.accountid) {
-          //only add completed equipment that belong to this business profile (account)
-          this.completedEquipment.push(equipmentApp);
-        }
-      });
-    });
   }
 
   /**
@@ -309,11 +300,15 @@ export class DashboardComponent implements OnInit {
 
   /**
    * Determine if Equipment data (table) should be displayed for the business profile
+   *
+   * Don't show equipment if no approved ownership category or an equipment notification has been completed ???
    */
   showEquipmentTables() {
     const show = (this.authorizedOwnerApplication && this.authorizedOwnerApplication.statuscode === 'Approved')
       || (this.waiverApplication && this.waiverApplication.statuscode === 'Approved')
-      || (this.registeredSellerApplication && this.registeredSellerApplication.statuscode === 'Approved');
+      || (this.registeredSellerApplication && this.registeredSellerApplication.statuscode === 'Approved')
+      //|| (this.inProgressEquipment.length > 0)
+      || (this.completedEquipment.length > 0);
     return show;
   }
 
@@ -367,7 +362,7 @@ export class DashboardComponent implements OnInit {
   newReportChangeLSD(equipmentId: string) {
     const newLicenceApplicationData: Application = <Application>{
       statuscode: 'Draft',
-      typeOfChange: 'Lost',
+      //typeOfChange: 'Lost',
       equipmentRecord: {
         id: equipmentId
       }

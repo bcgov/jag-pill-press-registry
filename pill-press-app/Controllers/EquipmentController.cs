@@ -69,7 +69,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
 
 
         /// <summary>
-        /// Update a legal entity
+        /// Update an Equipment entity
         /// </summary>
         /// <param name="item"></param>
         /// <param name="id"></param>
@@ -117,6 +117,57 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 return BadRequest();
             }
         }
+
+        /// <summary>
+        /// Change Equipment Location
+        /// </summary>
+        /// <param name="applicationVM"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPut("{id}")]
+        public async Task<IActionResult> ChangeEquipmentLocation([FromBody] ViewModels.Application applicationVM, string id)
+        {
+            if (!string.IsNullOrEmpty(id) && Guid.TryParse(id, out Guid equipmentId))
+            {
+                // get the Equipment
+                MicrosoftDynamicsCRMbcgovEquipment equipment = _dynamicsClient.GetEquipmentByIdWithChildren(equipmentId);
+                if (equipment == null)
+                {
+                    return new NotFoundResult();
+                }
+
+                // get UserSettings from the session
+                string temp = _httpContextAccessor.HttpContext.Session.GetString("UserSettings");
+                UserSettings userSettings = JsonConvert.DeserializeObject<UserSettings>(temp);
+
+                // Get the current account
+                var account = _dynamicsClient.GetAccountByIdWithChildren(Guid.Parse(userSettings.AccountId));
+
+                MicrosoftDynamicsCRMbcgovEquipment patchEquipment = new MicrosoftDynamicsCRMbcgovEquipment();
+                patchEquipment.CopyValues(applicationVM.EquipmentRecord);
+
+                try
+                {
+                    await _dynamicsClient.Equipments.UpdateAsync(equipmentId.ToString(), patchEquipment);
+                }
+                catch (OdataerrorException odee)
+                {
+                    _logger.LogError("Error updating Equipment");
+                    _logger.LogError("Request:");
+                    _logger.LogError(odee.Request.Content);
+                    _logger.LogError("Response:");
+                    _logger.LogError(odee.Response.Content);
+                }
+
+                equipment = _dynamicsClient.GetEquipmentByIdWithChildren(equipmentId);
+                return Json(equipment.ToViewModel());
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
 
         /// <summary>
         /// Create an Equipment
