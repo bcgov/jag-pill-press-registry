@@ -2,15 +2,12 @@
   <div class="" style="position: relative;">
     <div [ngBusy]="[busy, busyPromise]"></div>
     <h2 class="step">STEP 2</h2>
-    <h1>Report of Change Review</h1>
+    <h1>Report of Equipment Change Review</h1>
 
     <p>
-      You have provided the following information in your Waiver application. In order to proceed, please confirm that
-      these details are correct. If they are not, please <a
-        routerLink="/equipment-changes/reporting-changes/details/{{applicationId}}">amend
-        your
-        answers</a>
-      before submitting the application.
+      You have provided the following information in your Report of Equipment Change. In order to proceed, please confirm that
+      these details are correct. If they are not, please
+      <a routerLink="/equipment-changes/reporting-changes/details/{{applicationId}}">amend your answers</a> before submitting the application.
     </p>
 
     <h2>Equipment Identification</h2>
@@ -42,8 +39,8 @@
     <div class="padded-section">
       <div class="dark-row">Please indicate the type of change to this piece of Controlled Equipment
         &nbsp; <span class="error-states">*</span></div>
-      <div *ngIf="application?.typeOfChange === 'Lost'" class="alt-row">
-        <ul>
+      <div *ngIf="application?.typeOfChange === 'Lost'" class="alt-row" style="padding-bottom: 0px;">
+        <ul style="margin-bottom: 3px;">
           <li>Lost</li>
         </ul>
       </div>
@@ -58,7 +55,7 @@
 
         <div class="dark-row">Did you notify the police that this piece of equipment was lost? &nbsp; <span
             class="error-states">*</span></div>
-        <div class="alt-row"> {{ application?.policeNotified }}</div>
+        <div class="alt-row"> {{ application?.policeNotified? 'Yes' : 'No' }}</div>
 
         <section *ngIf="application?.policeNotified" class="padded-section">
           <div class="dark-row">On what date did you report the loss to police? &nbsp; <span
@@ -70,8 +67,8 @@
         </section>
       </section>
 
-      <div *ngIf="application?.typeOfChange === 'Stolen'" class="alt-row">
-        <ul>
+      <div *ngIf="application?.typeOfChange === 'Stolen'" class="alt-row" style="padding-bottom: 0px;">
+        <ul style="margin-bottom: 3px;">
           <li>Stolen</li>
         </ul>
       </div>
@@ -99,11 +96,11 @@
       </section>
 
       <div *ngIf="application?.typeOfChange === 'Destroyed'" class="alt-row">
-        <ul>
+        <ul style="margin-bottom: 3px;">
           <li>Destroyed</li>
         </ul>
       </div>
-      <section *ngIf="application?.typeOfChange === 'Destroyed'" class="padded-section">
+      <section *ngIf="application?.typeOfChange === 'Destroyed'" class="padded-section" style="padding-bottom: 0px;">
         <div class="dark-row">What was the date on which this piece of equipment was destroyed? &nbsp; <span
             class="error-states">*</span></div>
         <div class="alt-row"> {{ application?.dateOfEquipmentChange | date:'MM-dd-yyyy' }}</div>

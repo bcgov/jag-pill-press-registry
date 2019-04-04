@@ -340,22 +340,45 @@ namespace odata2openapi
                     }
 
                     // adjustments to response
-                    // TODO changes to fix the “GetOkResponseModelModelModel…” generated models
-                    // Compare to Cannabis solution https://github.com/bcgov/jag-lcrb-carla-public/blob/master/cllc-interfaces/OData.OpenAPI/odata2openapi/Program.cs line 342
+                    // changes to fix the “GetOkResponseModelModelModel…” generated models
+                    // Based on Cannabis solution https://github.com/bcgov/jag-lcrb-carla-public/blob/master/cllc-interfaces/OData.OpenAPI/odata2openapi/Program.cs line 342
 
                     foreach (var response in operation.Operation.Responses)
                     {
                         var val = response.Value;
-                        if (val != null && 
-                            val.Reference != null && 
-                            val.Reference.Description != null &&
-                            val.Reference.Description.Equals("ok"))
+                        if (val != null && val.Reference == null && val.Schema != null)
                         {
+                            bool hasValue = false;
                             var schema = val.Schema;
-                           
+
+                            foreach (var property in val.Schema.Properties)
+                            {
+                                if (property.Key.Equals("value"))
+                                {
+                                    hasValue = true;
+                                    break;
+                                }
+                            }
+
+                            if (hasValue)
+                            {
+                                string resultName = operation.Operation.OperationId + "ResponseModel";
+
+                                if (!swaggerDocument.Definitions.ContainsKey(resultName))
+                                {
+                                    // move the inline schema to defs.
+                                    swaggerDocument.Definitions.Add(resultName, val.Schema);
+
+                                    val.Schema = new JsonSchema4();
+                                    val.Schema.Reference = swaggerDocument.Definitions[resultName];
+                                    val.Schema.Type = JsonObjectType.None;
+                                }
+                            }
+
                         }
-                        
-                    }
+
+                    } // end of adjustments to response
+
                 }
                 
                 foreach (var opDelete in itemsToRemove)

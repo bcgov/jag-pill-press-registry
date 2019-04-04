@@ -29,7 +29,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// Initializes a new instance of the
         /// MicrosoftDynamicsCRMbcgovPostalcode class.
         /// </summary>
-        public MicrosoftDynamicsCRMbcgovPostalcode(string _owninguserValue = default(string), System.DateTimeOffset? modifiedon = default(System.DateTimeOffset?), string _owneridValue = default(string), string _bcgovRegionValue = default(string), int? statecode = default(int?), string bcgovPostalcodeid = default(string), int? utcconversiontimezonecode = default(int?), int? statuscode = default(int?), System.DateTimeOffset? createdon = default(System.DateTimeOffset?), string _createdonbehalfbyValue = default(string), int? importsequencenumber = default(int?), long? versionnumber = default(long?), string _modifiedonbehalfbyValue = default(string), string _owningteamValue = default(string), string bcgovName = default(string), int? timezoneruleversionnumber = default(int?), string _owningbusinessunitValue = default(string), System.DateTimeOffset? overriddencreatedon = default(System.DateTimeOffset?), string _modifiedbyValue = default(string), string _createdbyValue = default(string), MicrosoftDynamicsCRMsystemuser createdbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser createdonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser owninguser = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMteam owningteam = default(MicrosoftDynamicsCRMteam), MicrosoftDynamicsCRMprincipal ownerid = default(MicrosoftDynamicsCRMprincipal), MicrosoftDynamicsCRMbusinessunit owningbusinessunit = default(MicrosoftDynamicsCRMbusinessunit), IList<MicrosoftDynamicsCRMsyncerror> bcgovPostalcodeSyncErrors = default(IList<MicrosoftDynamicsCRMsyncerror>), IList<MicrosoftDynamicsCRMduplicaterecord> bcgovPostalcodeDuplicateMatchingRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMduplicaterecord> bcgovPostalcodeDuplicateBaseRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMasyncoperation> bcgovPostalcodeAsyncOperations = default(IList<MicrosoftDynamicsCRMasyncoperation>), IList<MicrosoftDynamicsCRMbulkdeletefailure> bcgovPostalcodeBulkDeleteFailures = default(IList<MicrosoftDynamicsCRMbulkdeletefailure>), MicrosoftDynamicsCRMbcgovRegion bcgovRegion = default(MicrosoftDynamicsCRMbcgovRegion))
+        public MicrosoftDynamicsCRMbcgovPostalcode(string _owninguserValue = default(string), System.DateTimeOffset? modifiedon = default(System.DateTimeOffset?), string _owneridValue = default(string), string _bcgovRegionValue = default(string), int? statecode = default(int?), string bcgovPostalcodeid = default(string), int? utcconversiontimezonecode = default(int?), int? statuscode = default(int?), System.DateTimeOffset? createdon = default(System.DateTimeOffset?), string _createdonbehalfbyValue = default(string), string _bcgovAreaValue = default(string), int? importsequencenumber = default(int?), long? versionnumber = default(long?), string _modifiedonbehalfbyValue = default(string), string _owningteamValue = default(string), string bcgovName = default(string), int? timezoneruleversionnumber = default(int?), string _owningbusinessunitValue = default(string), System.DateTimeOffset? overriddencreatedon = default(System.DateTimeOffset?), string _modifiedbyValue = default(string), string _createdbyValue = default(string), MicrosoftDynamicsCRMsystemuser createdbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser createdonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser owninguser = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMteam owningteam = default(MicrosoftDynamicsCRMteam), MicrosoftDynamicsCRMprincipal ownerid = default(MicrosoftDynamicsCRMprincipal), MicrosoftDynamicsCRMbusinessunit owningbusinessunit = default(MicrosoftDynamicsCRMbusinessunit), IList<MicrosoftDynamicsCRMsyncerror> bcgovPostalcodeSyncErrors = default(IList<MicrosoftDynamicsCRMsyncerror>), IList<MicrosoftDynamicsCRMduplicaterecord> bcgovPostalcodeDuplicateMatchingRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMduplicaterecord> bcgovPostalcodeDuplicateBaseRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMasyncoperation> bcgovPostalcodeAsyncOperations = default(IList<MicrosoftDynamicsCRMasyncoperation>), IList<MicrosoftDynamicsCRMbulkdeletefailure> bcgovPostalcodeBulkDeleteFailures = default(IList<MicrosoftDynamicsCRMbulkdeletefailure>), MicrosoftDynamicsCRMbcgovRegion bcgovRegion = default(MicrosoftDynamicsCRMbcgovRegion), MicrosoftDynamicsCRMbcgovArea bcgovArea = default(MicrosoftDynamicsCRMbcgovArea))
         {
             this._owninguserValue = _owninguserValue;
             Modifiedon = modifiedon;
@@ -41,6 +41,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
             Statuscode = statuscode;
             Createdon = createdon;
             this._createdonbehalfbyValue = _createdonbehalfbyValue;
+            this._bcgovAreaValue = _bcgovAreaValue;
             Importsequencenumber = importsequencenumber;
             Versionnumber = versionnumber;
             this._modifiedonbehalfbyValue = _modifiedonbehalfbyValue;
@@ -65,6 +66,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
             BcgovPostalcodeAsyncOperations = bcgovPostalcodeAsyncOperations;
             BcgovPostalcodeBulkDeleteFailures = bcgovPostalcodeBulkDeleteFailures;
             BcgovRegion = bcgovRegion;
+            BcgovArea = bcgovArea;
             CustomInit();
         }
 
@@ -122,6 +124,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "_createdonbehalfby_value")]
         public string _createdonbehalfbyValue { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "_bcgov_area_value")]
+        public string _bcgovAreaValue { get; set; }
 
         /// <summary>
         /// </summary>
@@ -242,6 +249,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "bcgov_Region")]
         public MicrosoftDynamicsCRMbcgovRegion BcgovRegion { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_Area")]
+        public MicrosoftDynamicsCRMbcgovArea BcgovArea { get; set; }
 
     }
 }
