@@ -12,22 +12,24 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
     using System.Linq;
 
     /// <summary>
-    /// Collection of accounts
+    /// Collection of campaignitems
     /// </summary>
-    public partial class GetOKResponse
+    public partial class CampaignitemsGetResponseModel
     {
         /// <summary>
-        /// Initializes a new instance of the GetOKResponse class.
+        /// Initializes a new instance of the CampaignitemsGetResponseModel
+        /// class.
         /// </summary>
-        public GetOKResponse()
+        public CampaignitemsGetResponseModel()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the GetOKResponse class.
+        /// Initializes a new instance of the CampaignitemsGetResponseModel
+        /// class.
         /// </summary>
-        public GetOKResponse(IList<MicrosoftDynamicsCRMaccount> value = default(IList<MicrosoftDynamicsCRMaccount>))
+        public CampaignitemsGetResponseModel(IList<MicrosoftDynamicsCRMcampaignitem> value = default(IList<MicrosoftDynamicsCRMcampaignitem>))
         {
             Value = value;
             CustomInit();
@@ -41,7 +43,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "value")]
-        public IList<MicrosoftDynamicsCRMaccount> Value { get; set; }
+        public IList<MicrosoftDynamicsCRMcampaignitem> Value { get; set; }
 
     }
 }

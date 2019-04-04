@@ -44,14 +44,34 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         IAccounts Accounts { get; }
 
         /// <summary>
+        /// Gets the IActregulationreferences.
+        /// </summary>
+        IActregulationreferences Actregulationreferences { get; }
+
+        /// <summary>
         /// Gets the IApplicationtypes.
         /// </summary>
         IApplicationtypes Applicationtypes { get; }
 
         /// <summary>
+        /// Gets the IAreas.
+        /// </summary>
+        IAreas Areas { get; }
+
+        /// <summary>
         /// Gets the IBusinesscontacts.
         /// </summary>
         IBusinesscontacts Businesscontacts { get; }
+
+        /// <summary>
+        /// Gets the ICecontacts.
+        /// </summary>
+        ICecontacts Cecontacts { get; }
+
+        /// <summary>
+        /// Gets the ICecontacttypes.
+        /// </summary>
+        ICecontacttypes Cecontacttypes { get; }
 
         /// <summary>
         /// Gets the ICertificateapprovedproducts.
@@ -69,6 +89,16 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         ICertificatetermsandconditionses Certificatetermsandconditionses { get; }
 
         /// <summary>
+        /// Gets the IComplaintcecontactset.
+        /// </summary>
+        IComplaintcecontactset Complaintcecontactset { get; }
+
+        /// <summary>
+        /// Gets the IComplaints.
+        /// </summary>
+        IComplaints Complaints { get; }
+
+        /// <summary>
         /// Gets the ICustomaddresses.
         /// </summary>
         ICustomaddresses Customaddresses { get; }
@@ -77,6 +107,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// Gets the ICustomproducts.
         /// </summary>
         ICustomproducts Customproducts { get; }
+
+        /// <summary>
+        /// Gets the ICustomusers.
+        /// </summary>
+        ICustomusers Customusers { get; }
 
         /// <summary>
         /// Gets the IEquipmentlocations.
@@ -94,14 +129,54 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         IIncidentbusinesscontactset Incidentbusinesscontactset { get; }
 
         /// <summary>
+        /// Gets the IInspectionactregulationrefset.
+        /// </summary>
+        IInspectionactregulationrefset Inspectionactregulationrefset { get; }
+
+        /// <summary>
+        /// Gets the IInspectioninspectionchecklset.
+        /// </summary>
+        IInspectioninspectionchecklset Inspectioninspectionchecklset { get; }
+
+        /// <summary>
+        /// Gets the IInspectionchecklistactreguset.
+        /// </summary>
+        IInspectionchecklistactreguset Inspectionchecklistactreguset { get; }
+
+        /// <summary>
+        /// Gets the IInspectionchecklists.
+        /// </summary>
+        IInspectionchecklists Inspectionchecklists { get; }
+
+        /// <summary>
         /// Gets the IInspectionownershipcategories.
         /// </summary>
         IInspectionownershipcategories Inspectionownershipcategories { get; }
 
         /// <summary>
+        /// Gets the IInspectionprocessflows.
+        /// </summary>
+        IInspectionprocessflows Inspectionprocessflows { get; }
+
+        /// <summary>
         /// Gets the IInspections.
         /// </summary>
         IInspections Inspections { get; }
+
+        /// <summary>
+        /// Gets the IInvestigations.
+        /// </summary>
+        IInvestigations Investigations { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationstepcecontactset.
+        /// </summary>
+        IInvestigationstepcecontactset Investigationstepcecontactset { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationsteps.
+        /// </summary>
+        IInvestigationsteps Investigationsteps { get; }
 
         /// <summary>
         /// Gets the ILocationequipmentset.
@@ -129,9 +204,19 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         IRiskassessments Riskassessments { get; }
 
         /// <summary>
+        /// Gets the IRoles.
+        /// </summary>
+        IRoles Roles { get; }
+
+        /// <summary>
         /// Gets the ITermsconditionspresets.
         /// </summary>
         ITermsconditionspresets Termsconditionspresets { get; }
+
+        /// <summary>
+        /// Gets the IViolationtickets.
+        /// </summary>
+        IViolationtickets Violationtickets { get; }
 
         /// <summary>
         /// Gets the IContacts.

@@ -103,7 +103,7 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
     {
         Yes = 931490000,
         No,
-        Unkwown
+        Unknown
     }
 
     public class Application
