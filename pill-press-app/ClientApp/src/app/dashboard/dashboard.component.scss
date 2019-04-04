@@ -53,9 +53,10 @@
 }
 
 .eq-table {
-    border-spacing: 3px 7px;
-    border-collapse: separate;
-    width: 100%;
+  border-spacing: 3px 7px;
+  border-collapse: separate;
+  width: 100%;
+  font-family: MyriadWebPro, Calibri, Arial, "sans serif";
 }
 
 .eq-table td,
@@ -65,7 +66,7 @@
 }
 
 .eq-table th {
-    padding: 10px;
+    padding: 8px;
 }
 
 .space-between {
