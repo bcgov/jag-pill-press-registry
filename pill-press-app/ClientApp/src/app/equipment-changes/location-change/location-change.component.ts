@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subscription, zip, forkJoin } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApplicationDataService } from '../../services/application-data.service';
+import { EquipmentDataService } from '../../services/equipment-data-service';
 import { Application } from '../../models/application.model';
 import { EquipmentLocation } from '../../models/equipment-location.model';
 import { idLocale } from 'ngx-bootstrap';
@@ -19,40 +20,34 @@ import { faExclamationCircle, faFileAlt, faTimes } from '@fortawesome/free-solid
 export class LocationChangeComponent extends FormBase implements OnInit {
   form: FormGroup;
   busy: Subscription;
-  equipmentId: string;
+  applicationId: string;
   busyPromise: Promise<any>;
   faExclamationCircle = faExclamationCircle;
   faFileAlt = faFileAlt;
   faTimes = faTimes;
-
-  locations: EquipmentLocation[] = [
-    // <any>{
-    //   id: '1',
-    //   address: <any>{
-    //     id: '1',
-    //     streetLine1: '880 Douglas',
-    //     streetLine2: 'suite 102',
-    //     city: 'Victoria',
-    //     province: 'British Columbia',
-    //     postalCode: 'V8B 6F1',
-    //   }
-    // }
-  ];
+  application: Application;
+  locations: EquipmentLocation[] = [];
 
   constructor(private route: ActivatedRoute,
     private router: Router,
     private applicationDataService: ApplicationDataService,
     private dynamicsDataService: DynamicsDataService,
     private userDataService: UserDataService,
+    private equipmentDataService: EquipmentDataService,
     private fb: FormBuilder) {
     super();
-    this.equipmentId = this.route.snapshot.params.id;
+    this.applicationId = this.route.snapshot.params.id;
   }
 
   updateLocation(event) {
     const loc = this.locations.filter(i => i.id === event.target.value)[0];
-    loc.address.province = 'British Columbia';
-    this.form.get('equipmentLocation').patchValue(loc);
+    if (loc) {
+      loc.address.province = 'British Columbia';
+      this.form.get('equipmentLocation').patchValue(loc);
+    } else {
+      var x = this.form.get('equipmentLocation');
+      this.form.get('equipmentLocation').reset;
+    }
   }
 
   ngOnInit() {
@@ -60,6 +55,8 @@ export class LocationChangeComponent extends FormBase implements OnInit {
       id: [],
       equipmentLocation: this.fb.group({
         id: [],
+        privateDwelling: ['', Validators.required],
+        settingDescription: ['', Validators.required],
         address: this.fb.group({
           id: [],
           streetLine1: ['', Validators.required],
@@ -68,17 +65,17 @@ export class LocationChangeComponent extends FormBase implements OnInit {
           province: ['British Columbia'],
           postalCode: ['', [Validators.required, Validators.pattern(postalRegex)]],
         }),
-        privateDwelling: ['', Validators.required],
       }),
-      settingDescription: ['', Validators.required]
     });
 
     this.form.get('equipmentLocation.id').valueChanges
       .subscribe(value => {
-        if (value) {
+        if (value || value === '') {
           this.form.get('equipmentLocation.privateDwelling').disable();
+          this.form.get('equipmentLocation.settingDescription').disable();
         } else {
           this.form.get('equipmentLocation.privateDwelling').enable();
+          this.form.get('equipmentLocation.settingDescription').enable();
         }
       });
 
@@ -90,14 +87,14 @@ export class LocationChangeComponent extends FormBase implements OnInit {
       .subscribe((data) => {
         if (data.accountid != null) {
           this.busyPromise = forkJoin([
-            this.applicationDataService.getApplicationById(this.equipmentId),
+            this.applicationDataService.getApplicationById(this.applicationId),
             this.dynamicsDataService.getRecord(`account/${data.accountid}/locations`, ''),
           ])
             .toPromise()
             .then((result) => {
-              const application = <Application>result[0];
-              application.equipmentLocation = application.equipmentLocation || <EquipmentLocation>{ address: {} };
-              this.form.patchValue(application);
+              this.application = <Application>result[0];
+              this.application.equipmentLocation = this.application.equipmentLocation || <EquipmentLocation>{ address: {} };
+              this.form.patchValue(this.application);
               this.locations = <EquipmentLocation[]>result[1];
             });
         }
@@ -105,7 +102,7 @@ export class LocationChangeComponent extends FormBase implements OnInit {
   }
 
   markAsTouched() {
-    this.form.get('settingDescription').markAsTouched();
+    this.form.get('equipmentLocation.settingDescription').markAsTouched();
     this.form.get('equipmentLocation.privateDwelling').markAsTouched();
 
     const controls = (<FormGroup>this.form.get('equipmentLocation.address')).controls;
@@ -124,10 +121,12 @@ export class LocationChangeComponent extends FormBase implements OnInit {
   }
 
 
-  save(goToReview: boolean) {
-    if (this.form.valid || goToReview === false) {
+  save() {
+    if (this.form.valid) {
       const value = this.form.value;
-      const saveList = [this.applicationDataService.updateApplication(value)];
+      //const saveList = [this.applicationDataService.updateApplication(value)];
+      this.application.equipmentLocation = value.equipmentLocation;
+      const saveList = [this.equipmentDataService.changeEquipmentLocation(this.application)];
       this.busyPromise = zip(...saveList)
         .toPromise()
         .then(res => {
