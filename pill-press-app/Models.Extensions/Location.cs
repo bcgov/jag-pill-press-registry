@@ -14,7 +14,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
     public static class LocationExtensions
     {
         /// <summary>
-        /// Convert a given BusinessContact to a ViewModel
+        /// Convert a Location to a ViewModel
         /// </summary>        
         public static ViewModels.Location ToViewModel(this MicrosoftDynamicsCRMbcgovLocation location)
         {
@@ -26,7 +26,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     Id = location.BcgovLocationid,
                     Name = location.BcgovName,
                     PrivateDwelling = (PrivateDwellingOptions?)location.BcgovPrvtdwelling,
-                    SettingDescription = location.BcgovSettingdescription
+                    //SettingDescription = location.BcgovSettingdescription
                 };
 
                 if (location.BcgovLocationAddress != null)
@@ -37,26 +37,36 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             return result;
         }
 
+        /// <summary>
+        /// copy values from a view model location to a model location
+        /// </summary>
+        /// <param name="to"></param>
+        /// <param name="from"></param>
         public static void CopyValues(this MicrosoftDynamicsCRMbcgovLocation to, ViewModels.Location from)
         {
             to.BcgovName = from.Name;
-            //to.BcgovPrivatedwelling = from.PrivateDwelling;
-            to.BcgovSettingdescription = from.SettingDescription;
+            to.BcgovPrvtdwelling = (int?)from.PrivateDwelling;
+            //to.BcgovSettingdescription = from.SettingDescription;
         }
 
-        public static MicrosoftDynamicsCRMbcgovLocation ToModel(this ViewModels.Location location)
+        /// <summary>
+        /// Convert a view model location to a model location
+        /// </summary>
+        /// <param name="locationVM"></param>
+        /// <returns></returns>
+        public static MicrosoftDynamicsCRMbcgovLocation ToModel(this ViewModels.Location locationVM)
         {
             MicrosoftDynamicsCRMbcgovLocation result = null;
-            if (location != null)
+            if (locationVM != null)
             {
                 result = new MicrosoftDynamicsCRMbcgovLocation()
                 {
-                    BcgovLocationid = location.Id,
-                    //BcgovPrivatedwelling = location.PrivateDwelling,
-                    BcgovSettingdescription = location.SettingDescription,
+                    BcgovLocationid = locationVM.Id,
+                    BcgovPrvtdwelling = (int?)locationVM.PrivateDwelling
+                    //BcgovSettingdescription = location.SettingDescription,
                 };
 
-                result.BcgovPrvtdwelling = (int?)location.PrivateDwelling;
+                result.BcgovPrvtdwelling = (int?)locationVM.PrivateDwelling;
 
             }
             return result;

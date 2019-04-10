@@ -1,10 +1,4 @@
-﻿using Gov.Jag.PillPressRegistry.Interfaces;
-using Gov.Jag.PillPressRegistry.Interfaces.Models;
-using Gov.Jag.PillPressRegistry.Public.ViewModels;
-using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Gov.Jag.PillPressRegistry.Interfaces.Models;
 
 namespace Gov.Jag.PillPressRegistry.Public.Models
 {
@@ -24,7 +18,9 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                 result = new ViewModels.EquipmentLocation()
                 {
                     Id = equipmentLocation.BcgovEquipmentlocationid,
-                    Name = equipmentLocation.BcgovName
+                    Name = equipmentLocation.BcgovName,
+                    SettingDescription = equipmentLocation.BcgovSettingdescription,
+                    FromWhen = equipmentLocation.BcgovFromwhen
                 };
                 
 
@@ -37,9 +33,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             return result;
         }
 
-        public static void CopyValues(this MicrosoftDynamicsCRMbcgovEquipmentlocation to, ViewModels.Location from)
+        public static void CopyValues(this MicrosoftDynamicsCRMbcgovEquipmentlocation to, ViewModels.EquipmentLocation from)
         {
-            to.BcgovName = from.Name;                
+            to.BcgovName = from.Name;
+            to.BcgovFromwhen = from.FromWhen;
+            to.BcgovSettingdescription = from.SettingDescription;
         }
 
     

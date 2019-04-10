@@ -86,13 +86,6 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     return new NotFoundResult();
                 }
 
-                // get UserSettings from the session
-                string temp = _httpContextAccessor.HttpContext.Session.GetString("UserSettings");
-                UserSettings userSettings = JsonConvert.DeserializeObject<UserSettings>(temp);
-
-                // Get the current account
-                var account = _dynamicsClient.GetAccountByIdWithChildren(Guid.Parse(userSettings.AccountId));
-
                 MicrosoftDynamicsCRMbcgovEquipment patchEquipment = new MicrosoftDynamicsCRMbcgovEquipment();
                 patchEquipment.CopyValues(item);
 
@@ -124,43 +117,106 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         /// <param name="applicationVM"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpPut("{id}")]
-        public async Task<IActionResult> ChangeEquipmentLocation([FromBody] ViewModels.Application applicationVM, string id)
+        [HttpPut("{id}/changeEquipmentLocation")]
+        public IActionResult ChangeEquipmentLocation([FromBody] ViewModels.Application applicationVM, string id)
         {
+            MicrosoftDynamicsCRMbcgovLocation location = null;
+            MicrosoftDynamicsCRMbcgovEquipmentlocation equipmentLocation = null;
+
             if (!string.IsNullOrEmpty(id) && Guid.TryParse(id, out Guid equipmentId))
             {
-                // get the Equipment
-                MicrosoftDynamicsCRMbcgovEquipment equipment = _dynamicsClient.GetEquipmentByIdWithChildren(equipmentId);
+                // Get the Equipment
+                MicrosoftDynamicsCRMbcgovEquipment equipment = _dynamicsClient.GetEquipmentById(equipmentId);
                 if (equipment == null)
                 {
                     return new NotFoundResult();
                 }
 
-                // get UserSettings from the session
-                string temp = _httpContextAccessor.HttpContext.Session.GetString("UserSettings");
-                UserSettings userSettings = JsonConvert.DeserializeObject<UserSettings>(temp);
+                // Create or Get the location
+                if (string.IsNullOrEmpty(applicationVM.EquipmentLocation.Id))
+                {
+                    // Create a new location
+                    location = applicationVM.EquipmentLocation.ToModel();
+                    try
+                    {
+                        location = _dynamicsClient.Locations.Create(location);
+                        applicationVM.EquipmentLocation.Id = location.BcgovLocationid;
+                    }
+                    catch (OdataerrorException odee)
+                    {
+                        _logger.LogError(LoggingEvents.Error, "Error creating location");
+                        _logger.LogError("Request:");
+                        _logger.LogError(odee.Request.Content);
+                        _logger.LogError("Response:");
+                        _logger.LogError(odee.Response.Content);
+                        throw new OdataerrorException("Error creating the location");
+                    }
+                }
+                else
+                {
+                    // Get existing location
+                    Guid.TryParse(applicationVM.EquipmentLocation.Id, out Guid locationId);
+                    location = _dynamicsClient.GetLocationById(locationId);
+                }
 
-                // Get the current account
-                var account = _dynamicsClient.GetAccountByIdWithChildren(Guid.Parse(userSettings.AccountId));
-
-                MicrosoftDynamicsCRMbcgovEquipment patchEquipment = new MicrosoftDynamicsCRMbcgovEquipment();
-                patchEquipment.CopyValues(applicationVM.EquipmentRecord);
-
+                // Equipment Location record
+                // set values
+                equipmentLocation = new MicrosoftDynamicsCRMbcgovEquipmentlocation();
+                equipmentLocation.BcgovName = applicationVM.EquipmentLocation.Name;
+                equipmentLocation.BcgovFromwhen = DateTime.Now;   // should come from applicationVM.EquipmentLocation.FromWhen;
+                if (string.IsNullOrEmpty(applicationVM.EquipmentLocation.SettingDescription))
+                {
+                    equipmentLocation.BcgovSettingdescription = "Setting Description value was null - " + DateTime.Now.ToLocalTime();
+                }
+                else
+                {
+                    equipmentLocation.BcgovSettingdescription = applicationVM.EquipmentLocation.SettingDescription;
+                }
+                //bind Equipment and Location records
+                equipmentLocation.EquipmentODataBind = _dynamicsClient.GetEntityURI("bcgov_equipments", equipment.BcgovEquipmentid);
+                equipmentLocation.LocationODataBind = _dynamicsClient.GetEntityURI("bcgov_locations", location.BcgovLocationid);
+                // create new Equipment Location record
                 try
                 {
-                    await _dynamicsClient.Equipments.UpdateAsync(equipmentId.ToString(), patchEquipment);
+                    equipmentLocation = _dynamicsClient.Equipmentlocations.Create(equipmentLocation);
+                    applicationVM.EquipmentLocation.Id = location.BcgovLocationid;
                 }
                 catch (OdataerrorException odee)
                 {
-                    _logger.LogError("Error updating Equipment");
+                    _logger.LogError(LoggingEvents.Error, "Error creating Equipment location record");
                     _logger.LogError("Request:");
                     _logger.LogError(odee.Request.Content);
                     _logger.LogError("Response:");
                     _logger.LogError(odee.Response.Content);
+                    throw new OdataerrorException("Error creating the Equipment location record");
                 }
 
-                equipment = _dynamicsClient.GetEquipmentByIdWithChildren(equipmentId);
-                return Json(equipment.ToViewModel());
+                // Update Equipment record with current location
+                //TODO
+                /*
+                if (equipment._bcgovCurrentlocationValue != null)
+                {
+                    // delete an existing reference.
+                    
+                    _dynamicsClient.Equipments.RemoveReference(id, "bcgov_locations", null);
+                }
+                equipment.CurrentLocationODataBind = _dynamicsClient.GetEntityURI("bcgov_locations", location.BcgovLocationid);
+                try
+                {
+                    _dynamicsClient.Equipments.Update(equipment.BcgovEquipmentid.ToString(), equipment);
+                }
+                catch (OdataerrorException odee)
+                {
+                    _logger.LogError("Error updating Equipment with current location");
+                    _logger.LogError("Request:");
+                    _logger.LogError(odee.Request.Content);
+                    _logger.LogError("Response:");
+                    _logger.LogError(odee.Response.Content);
+                    throw new OdataerrorException("Error updating Equipment with current location");
+                }
+                */
+
+                return Json(equipmentLocation.ToViewModel());
             }
             else
             {
