@@ -93,6 +93,8 @@ export class LocationChangeComponent extends FormBase implements OnInit {
             .toPromise()
             .then((result) => {
               this.application = <Application>result[0];
+              //TODO
+              // get the current equipment location, not the equipment location linked to the application (it might have changed)
               this.application.equipmentLocation = this.application.equipmentLocation || <EquipmentLocation>{ address: {} };
               this.form.patchValue(this.application);
               this.locations = <EquipmentLocation[]>result[1];

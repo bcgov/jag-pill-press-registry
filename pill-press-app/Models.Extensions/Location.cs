@@ -26,7 +26,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     Id = location.BcgovLocationid,
                     Name = location.BcgovName,
                     PrivateDwelling = (PrivateDwellingOptions?)location.BcgovPrvtdwelling,
-                    //SettingDescription = location.BcgovSettingdescription
+                    //SettingDescription = location.BcgovSettingdescription //moved to EquipmentLocation
                 };
 
                 if (location.BcgovLocationAddress != null)

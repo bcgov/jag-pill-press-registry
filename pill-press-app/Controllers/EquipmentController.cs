@@ -125,20 +125,32 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
 
             if (!string.IsNullOrEmpty(id) && Guid.TryParse(id, out Guid equipmentId))
             {
-                // Get the Equipment
+                // Get the Equipment passed as parameter
                 MicrosoftDynamicsCRMbcgovEquipment equipment = _dynamicsClient.GetEquipmentById(equipmentId);
                 if (equipment == null)
                 {
                     return new NotFoundResult();
                 }
 
-                // Create or Get the location
+                // Create or Get the location passed as parameter
                 if (string.IsNullOrEmpty(applicationVM.EquipmentLocation.Id))
                 {
-                    // Create a new location
+                    // Create a new address and location
                     location = applicationVM.EquipmentLocation.ToModel();
                     try
                     {
+                        var address = CreateOrUpdateAddress(applicationVM.EquipmentLocation.Address);
+                        //applicationVM.EquipmentLocation.Address = address.ToViewModel();
+
+                        if (address != null)
+                        {
+                            // bind the address.
+                            location.LocationAddressODataBind = _dynamicsClient.GetEntityURI("bcgov_customaddresses", address.BcgovCustomaddressid);
+                        }
+
+                        // bind the address to the current account.
+                        location.BusinessProfileODataBind = _dynamicsClient.GetEntityURI("accounts", applicationVM.applicant.id);
+
                         location = _dynamicsClient.Locations.Create(location);
                         applicationVM.EquipmentLocation.Id = location.BcgovLocationid;
                     }
@@ -157,9 +169,13 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     // Get existing location
                     Guid.TryParse(applicationVM.EquipmentLocation.Id, out Guid locationId);
                     location = _dynamicsClient.GetLocationById(locationId);
+                    if (location == null)
+                    {
+                        return new NotFoundResult();
+                    }
                 }
 
-                // Equipment Location record
+                // Equipment Location record creation
                 // set values
                 equipmentLocation = new MicrosoftDynamicsCRMbcgovEquipmentlocation();
                 equipmentLocation.BcgovName = applicationVM.EquipmentLocation.Name;
@@ -191,30 +207,26 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     throw new OdataerrorException("Error creating the Equipment location record");
                 }
 
-                // Update Equipment record with current location
-                //TODO
-                /*
-                if (equipment._bcgovCurrentlocationValue != null)
-                {
-                    // delete an existing reference.
-                    
-                    _dynamicsClient.Equipments.RemoveReference(id, "bcgov_locations", null);
-                }
-                equipment.CurrentLocationODataBind = _dynamicsClient.GetEntityURI("bcgov_locations", location.BcgovLocationid);
+                // Set current location of the Equipment record
                 try
                 {
-                    _dynamicsClient.Equipments.Update(equipment.BcgovEquipmentid.ToString(), equipment);
+                    OdataId odataId = new OdataId()
+                    {
+                        OdataIdProperty = _dynamicsClient.GetEntityURI("bcgov_equipments", applicationVM.EquipmentRecord.Id)
+                    };
+
+                    _dynamicsClient.Locations.AddReference(location.BcgovLocationid, "bcgov_location_equipment_CurrentLocation", odataId);
+
                 }
                 catch (OdataerrorException odee)
                 {
-                    _logger.LogError("Error updating Equipment with current location");
+                    _logger.LogError(LoggingEvents.Error, "Error binding current location of the Equipment record");
                     _logger.LogError("Request:");
                     _logger.LogError(odee.Request.Content);
                     _logger.LogError("Response:");
                     _logger.LogError(odee.Response.Content);
-                    throw new OdataerrorException("Error updating Equipment with current location");
+                    throw new OdataerrorException("Error binding current location of the Equipment record");
                 }
-                */
 
                 return Json(equipmentLocation.ToViewModel());
             }
@@ -318,6 +330,60 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             {
                 return BadRequest();
             }
+        }
+
+        private MicrosoftDynamicsCRMbcgovCustomaddress CreateOrUpdateAddress(ViewModels.CustomAddress ca)
+        {
+            MicrosoftDynamicsCRMbcgovCustomaddress address = null;
+            if (ca != null)
+            {
+                address = ca.ToModel();
+                if (address.HasValue())
+                {
+                    if (string.IsNullOrEmpty(ca.Id))
+                    {
+                        // create an address.                        
+                        try
+                        {
+                            address = _dynamicsClient.Customaddresses.Create(address);
+                            ca.Id = address.BcgovCustomaddressid;
+                        }
+                        catch (OdataerrorException odee)
+                        {
+                            _logger.LogError(LoggingEvents.Error, "Error creating custom address");
+                            _logger.LogError("Request:");
+                            _logger.LogError(odee.Request.Content);
+                            _logger.LogError("Response:");
+                            _logger.LogError(odee.Response.Content);
+                            throw new OdataerrorException("Error creating the custom address");
+                        }
+                    }
+                    else
+                    {
+                        // update
+                        try
+                        {
+                            _dynamicsClient.Customaddresses.Update(ca.Id, address);
+                        }
+                        catch (OdataerrorException odee)
+                        {
+                            _logger.LogError(LoggingEvents.Error, "Error updating custom address");
+                            _logger.LogError("Request:");
+                            _logger.LogError(odee.Request.Content);
+                            _logger.LogError("Response:");
+                            _logger.LogError(odee.Response.Content);
+                            throw new OdataerrorException("Error updating the custom address");
+                        }
+                    }
+                }
+            }
+            else
+            {
+                _logger.LogError(LoggingEvents.Error, "ViewModels.CustomAddress object cannot be null");
+                throw new Exception("ViewModels.CustomAddress object cannot be null");
+            }
+
+            return address;
         }
     }
 }
