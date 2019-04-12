@@ -1,11 +1,14 @@
 import { CustomAddress } from './custom-address.model';
-import { Application } from './application.model';
+import { Equipment } from './equipment.model';
+import { Location } from './location.model';
 
 export interface EquipmentLocation {
-    id: string;
-    address: CustomAddress;
-    //application: Application;
-    name: string;
-    privateDwelling: string;
-    settingDescription: string;
+  id: string;
+  name: string;
+  privateDwelling: string;
+  settingDescription: string;
+  fromWhen: Date;
+  address: CustomAddress;
+  equipment: Equipment,
+  location: Location
 }

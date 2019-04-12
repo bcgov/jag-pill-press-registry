@@ -27,5 +27,20 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             }
             return result;
         }
+
+        public static MicrosoftDynamicsCRMbcgovLocation GetLocationById(this IDynamicsClient system, Guid id)
+        {
+            MicrosoftDynamicsCRMbcgovLocation result;
+            try
+            {
+                // fetch from Dynamics.
+                result = system.Locations.GetByKey(id.ToString());
+            }
+            catch (OdataerrorException)
+            {
+                result = null;
+            }
+            return result;
+        }
     }
 }
