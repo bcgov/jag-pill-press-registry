@@ -36,7 +36,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         }
 
         /// <summary>
-        /// Get a specific legal entity
+        /// Get an Equipment record by Id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -53,6 +53,34 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 if (equipment != null)
                 {
                     result = equipment.ToViewModel();
+                }
+                else
+                {
+                    return new NotFoundResult();
+                }
+            }
+            else
+            {
+                return BadRequest();
+            }
+
+            return Json(result);
+        }
+
+        [HttpGet("{id}/{locationId}")]
+        public IActionResult GetEquipmentLocation(string id, string locaId)
+        {
+            ViewModels.Equipmentlocation result = null;
+
+            if ((!string.IsNullOrEmpty(id) && Guid.TryParse(id, out Guid equipmentId)) && (!string.IsNullOrEmpty(locaId) && Guid.TryParse(locaId, out Guid locationId)))
+            {
+                // query the Dynamics system to get the Equipment Location record.
+                //MicrosoftDynamicsCRMbcgovEquipment equipment = _dynamicsClient.GetEquipmentByIdWithChildren(equipmentId);
+                MicrosoftDynamicsCRMbcgovEquipmentlocation equipmentlocation = _dynamicsClient.GetEquipmentLocationByBothIds(equipmentId, locationId);
+
+                if (equipmentlocation != null)
+                {
+                    result = equipmentlocation.ToViewModel();
                 }
                 else
                 {
@@ -332,6 +360,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ca"></param>
+        /// <returns></returns>
         private MicrosoftDynamicsCRMbcgovCustomaddress CreateOrUpdateAddress(ViewModels.CustomAddress ca)
         {
             MicrosoftDynamicsCRMbcgovCustomaddress address = null;

@@ -12,6 +12,7 @@ import { DynamicsDataService } from './../../services/dynamics-data.service';
 import { FormBase } from './../../shared/form-base';
 import { postalRegex } from '../../business-profile/business-profile/business-profile.component';
 import { faExclamationCircle, faFileAlt, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { Equipment } from '@app/models/equipment.model';
 @Component({
   selector: 'app-location-change',
   templateUrl: './location-change.component.html',
@@ -27,6 +28,7 @@ export class LocationChangeComponent extends FormBase implements OnInit {
   faTimes = faTimes;
   application: Application;
   locations: EquipmentLocation[] = [];
+  equipment: Equipment;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -93,13 +95,19 @@ export class LocationChangeComponent extends FormBase implements OnInit {
             .toPromise()
             .then((result) => {
               this.application = <Application>result[0];
+              this.locations = <EquipmentLocation[]>result[1];
+              this.application.equipmentLocation = this.application.equipmentLocation || <EquipmentLocation>{ address: {} };
               //TODO
               // get the current equipment location, not the equipment location linked to the application (it might have changed)
-              this.application.equipmentLocation = this.application.equipmentLocation || <EquipmentLocation>{ address: {} };
+
               this.form.patchValue(this.application);
-              this.locations = <EquipmentLocation[]>result[1];
+            }).then((data2) => {
+              var x2 = data2;
+              this.equipmentDataService.getEquipment(this.application.equipmentRecord.id).subscribe((data3) => {
+                var x3 = data3;
+              });
             });
-        }
+        };
       });
   }
 

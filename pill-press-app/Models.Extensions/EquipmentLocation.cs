@@ -1,21 +1,22 @@
 ﻿using Gov.Jag.PillPressRegistry.Interfaces.Models;
 
 namespace Gov.Jag.PillPressRegistry.Public.Models
+
 {
     /// <summary>
     /// ViewModel transforms.
     /// </summary>
-    public static class EquipmentLocationExtensions
+    public static class EquipmentlocationExtensions
     {
         /// <summary>
-        /// Convert a given BusinessContact to a ViewModel
+        /// Convert a given Equipmentlocation to a ViewModel
         /// </summary>        
-        public static ViewModels.EquipmentLocation ToViewModel(this MicrosoftDynamicsCRMbcgovEquipmentlocation equipmentLocation)
+        public static ViewModels.Equipmentlocation ToViewModel(this MicrosoftDynamicsCRMbcgovEquipmentlocation equipmentLocation)
         {
-            ViewModels.EquipmentLocation result = null;
+            ViewModels.Equipmentlocation result = null;
             if (equipmentLocation != null)
             {
-                result = new ViewModels.EquipmentLocation()
+                result = new ViewModels.Equipmentlocation()
                 {
                     Id = equipmentLocation.BcgovEquipmentlocationid,
                     Name = equipmentLocation.BcgovName,
@@ -33,16 +34,12 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             return result;
         }
 
-        public static void CopyValues(this MicrosoftDynamicsCRMbcgovEquipmentlocation to, ViewModels.EquipmentLocation from)
+        public static void CopyValues(this MicrosoftDynamicsCRMbcgovEquipmentlocation to, ViewModels.Equipmentlocation from)
         {
             to.BcgovName = from.Name;
             to.BcgovFromwhen = from.FromWhen;
             to.BcgovSettingdescription = from.SettingDescription;
         }
-
-    
-        
-    
 
     }
 }
