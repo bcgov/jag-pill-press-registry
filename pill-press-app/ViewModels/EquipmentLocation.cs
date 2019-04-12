@@ -17,6 +17,12 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
+        [JsonProperty(PropertyName = "settingDescription")]
+        public string SettingDescription { get; set; }
+
+        [JsonProperty(PropertyName = "fromWhen")]
+        public DateTimeOffset? FromWhen { get; set; }
+
         [JsonProperty(PropertyName = "equipment")]
         public Equipment Equipment { get; set; }
 

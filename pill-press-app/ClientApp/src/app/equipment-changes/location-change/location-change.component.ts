@@ -56,7 +56,7 @@ export class LocationChangeComponent extends FormBase implements OnInit {
       equipmentLocation: this.fb.group({
         id: [],
         privateDwelling: ['', Validators.required],
-        settingDescription: ['', Validators.required],
+        settingDescription: [''], //Validators.required
         address: this.fb.group({
           id: [],
           streetLine1: ['', Validators.required],
@@ -93,6 +93,8 @@ export class LocationChangeComponent extends FormBase implements OnInit {
             .toPromise()
             .then((result) => {
               this.application = <Application>result[0];
+              //TODO
+              // get the current equipment location, not the equipment location linked to the application (it might have changed)
               this.application.equipmentLocation = this.application.equipmentLocation || <EquipmentLocation>{ address: {} };
               this.form.patchValue(this.application);
               this.locations = <EquipmentLocation[]>result[1];
@@ -124,9 +126,9 @@ export class LocationChangeComponent extends FormBase implements OnInit {
   save() {
     if (this.form.valid) {
       const value = this.form.value;
-      const saveList = [this.applicationDataService.updateApplication(value)];
-      //this.application.equipmentLocation = value.equipmentLocation;
-      //const saveList = [this.equipmentDataService.changeEquipmentLocation(this.application)];
+      //const saveList = [this.applicationDataService.updateApplication(value)];
+      this.application.equipmentLocation = value.equipmentLocation;
+      const saveList = [this.equipmentDataService.changeEquipmentLocation(this.application)];
       this.busyPromise = zip(...saveList)
         .toPromise()
         .then(res => {
