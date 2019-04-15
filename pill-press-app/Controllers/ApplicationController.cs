@@ -986,6 +986,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         }
 
 
+        /// <summary>
+        /// Check if Certificate File exists for the application
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}/certificate-exists")]
         public async Task<IActionResult> CertificateExists(string id)
         {
@@ -1007,16 +1012,14 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 }
                 catch (Exception e)
                 {
-                    _logger.LogError(LoggingEvents.HttpGet, "Error downloading certificate for application: ");
-                    _logger.LogError(LoggingEvents.HttpGet, e.Message);
-                    _logger.LogError(LoggingEvents.HttpGet, serverRelativeUrl);
-                    return new JsonResult(false);
+                    _logger.LogWarning(LoggingEvents.HttpGet, "Certificate does NOT exist for Application Id: " + id);
+                    return new JsonResult(fileExists);
                 }
 
             }
             else
             {
-                _logger.LogError(LoggingEvents.HttpGet, "Unable to get account from application.");
+                _logger.LogError(LoggingEvents.HttpGet, "Application Id is null or empty.");
                 return BadRequest();
             }
         }

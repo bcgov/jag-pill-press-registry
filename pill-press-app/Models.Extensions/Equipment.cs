@@ -1,9 +1,5 @@
 ﻿using Gov.Jag.PillPressRegistry.Interfaces.Models;
 using Gov.Jag.PillPressRegistry.Public.ViewModels;
-using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Gov.Jag.PillPressRegistry.Public.Models
 {
@@ -39,13 +35,18 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     SerialNumber = equipment.BcgovSerialnumber,
                     EncapsulatorMaxCapacity = equipment.BcgovEncapsulatormaxcapacity,
                     CustomBuiltSerialNumber = equipment.BcgovCustombuiltorkeypartserialnumber,
-                    //BcgovCurrentBusinessOwner = equipment.BcgovCurrentBusinessOwner
                 };
 
                 // business profile (account)
                 if (equipment.BcgovCurrentBusinessOwner != null)
                 {
                     result.BcgovCurrentBusinessOwner = equipment.BcgovCurrentBusinessOwner.ToViewModel();
+                }
+
+                // current location
+                if (equipment.BcgovCurrentLocation != null)
+                {
+                    result.BcgovCurrentLocation = equipment.BcgovCurrentLocation.ToViewModel();
                 }
 
             }
