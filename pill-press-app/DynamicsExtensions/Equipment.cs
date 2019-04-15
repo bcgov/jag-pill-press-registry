@@ -34,14 +34,17 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                 };
                 // fetch from Dynamics.
                 result = system.Equipments.GetByKey(bcgovEquipmentid: id.ToString(), expand: expand);
-
-               
             }
             catch (OdataerrorException)
             {
                 result = null;
             }
-                        
+
+            // add the address to the current location
+            if (result.BcgovCurrentLocation != null && result.BcgovCurrentLocation._bcgovLocationaddressValue != null)
+            {
+                result.BcgovCurrentLocation.BcgovLocationAddress = system.GetCustomAddressById(result.BcgovCurrentLocation._bcgovLocationaddressValue);
+            }
 
             return result;
         }

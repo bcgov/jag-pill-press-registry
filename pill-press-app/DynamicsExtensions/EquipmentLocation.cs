@@ -48,6 +48,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             {
                 result = null;
             }
+
+            // add the address to the location
+            if (result.BcgovLocation != null && result.BcgovLocation._bcgovLocationaddressValue != null)
+            {
+                result.BcgovLocation.BcgovLocationAddress = system.GetCustomAddressById(result.BcgovLocation._bcgovLocationaddressValue);
+            }
+
             return result;
         }
 

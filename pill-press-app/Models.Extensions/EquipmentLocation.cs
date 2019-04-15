@@ -30,6 +30,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     result.Location = equipmentLocation.BcgovLocation.ToViewModel();
                 }
 
+                if (equipmentLocation.BcgovEquipment != null)
+                {
+                    result.Equipment = equipmentLocation.BcgovEquipment.ToViewModel();
+                }
+
             }
             return result;
         }
