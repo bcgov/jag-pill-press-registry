@@ -161,6 +161,8 @@ export class DashboardComponent implements OnInit {
           this.busy = this.equipmentDataService.getEquipment(equipmentApp.equipmentRecord.id).subscribe(equipmentResponse => {
             if (equipmentResponse.bcgovCurrentBusinessOwner.id === this.currentUser.accountid) {
               //only add completed equipment that belong to this business profile (account)
+              //set the location to the equipment current location (the original application might be different because of a location change)
+              equipmentApp.equipmentLocation = equipmentResponse.bcgovCurrentLocation;
               this.completedEquipment.push(equipmentApp);
             }
           });

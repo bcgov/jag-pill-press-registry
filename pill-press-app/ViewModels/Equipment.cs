@@ -67,5 +67,8 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         [JsonProperty(PropertyName = "bcgovCurrentBusinessOwner")]
         public Account BcgovCurrentBusinessOwner { get; set; }
 
+        [JsonProperty(PropertyName = "bcgovCurrentLocation")]
+        public Location BcgovCurrentLocation { get; set; }
+
     }
 }

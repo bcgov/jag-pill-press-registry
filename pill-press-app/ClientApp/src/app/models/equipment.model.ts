@@ -1,4 +1,4 @@
-
+import { Location } from './location.model';
 
 export interface Equipment {
   id: string;
@@ -18,4 +18,5 @@ export interface Equipment {
   encapsulatorMaxCapacity: Number;
   customBuiltSerialNumber: string;
   bcgovCurrentBusinessOwner: Account;
+  bcgovCurrentLocation: Location;
 }
