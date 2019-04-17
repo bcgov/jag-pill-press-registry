@@ -617,8 +617,9 @@
       </div>
       <div style="margin-top: 30px; display: flex; justify-content: space-between">
         <section>
-          <!--<a href="javascript: void(0);" (click)="save(false)">
-            <i class="fa fa-save" style="margin-right: 5px"></i>Save & Close</a>-->
+          <a href="javascript: void(0);" (click)="cancelAndclose()">
+            <fa-icon [icon]="faSave" style="margin-right: 5px"></fa-icon>Cancel & Close
+          </a>
         </section>
         <section>
           <button class="btn btn-primary" (click)="markAsTouched(); save(true)">SAVE & CONTINUE</button>
