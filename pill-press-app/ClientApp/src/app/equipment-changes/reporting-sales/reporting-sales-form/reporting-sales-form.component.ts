@@ -359,6 +359,13 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
     }
   }
 
+  /**
+   * Close the application without saving any data and navigate to dashboard
+   */
+  cancelAndclose() {
+    this.router.navigateByUrl(`/dashboard`);
+  }
+
   markAsTouched() {
     let controls = this.form.controls;
     for (const c in controls) {
