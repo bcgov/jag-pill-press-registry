@@ -36,7 +36,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         }
 
         /// <summary>
-        /// Get a specific legal entity
+        /// Get an Equipment record by Id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -62,6 +62,106 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             else
             {
                 return BadRequest();
+            }
+
+            return Json(result);
+        }
+
+        [HttpGet("{id}/{locaId}")]
+        public IActionResult GetEquipmentLocation(string id, string locaId)
+        {
+            ViewModels.Equipmentlocation result = null;
+
+            if ((!string.IsNullOrEmpty(id) && Guid.TryParse(id, out Guid equipmentId)) && (!string.IsNullOrEmpty(locaId) && Guid.TryParse(locaId, out Guid locationId)))
+            {
+                // query the Dynamics system to get the Equipment Location record.
+                //MicrosoftDynamicsCRMbcgovEquipment equipment = _dynamicsClient.GetEquipmentByIdWithChildren(equipmentId);
+                MicrosoftDynamicsCRMbcgovEquipmentlocation equipmentlocation = _dynamicsClient.GetEquipmentLocationByBothIds(equipmentId, locationId);
+
+                if (equipmentlocation != null)
+                {
+                    result = equipmentlocation.ToViewModel();
+                }
+                else
+                {
+                    return new NotFoundResult();
+                }
+            }
+            else
+            {
+                return BadRequest();
+            }
+
+            return Json(result);
+        }
+
+        /// <summary>
+        /// Get the Equipment location record based on the current locaion of an equipment
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("{id}/currentequipmentlocation")]
+        public IActionResult GetEquipmentLocationFromEquipmentCurrentLocation(string id)
+        {
+            ViewModels.Equipmentlocation result = null;
+
+            //validate parameter
+            if (string.IsNullOrEmpty(id) || !Guid.TryParse(id, out Guid equipmentId))
+            {
+                return BadRequest();
+            }
+
+            //first get the current location of the equipment
+            MicrosoftDynamicsCRMbcgovEquipment equipment = _dynamicsClient.GetEquipmentByIdWithChildren(equipmentId);
+            var currentLocaId = equipment.BcgovCurrentLocation.BcgovLocationid;
+            
+            //validate current location id
+            if (string.IsNullOrEmpty(currentLocaId) || !Guid.TryParse(currentLocaId, out Guid currentLocationId))
+            {
+                return new NotFoundResult();
+            }
+
+            // get the Equipmentlocation record
+            MicrosoftDynamicsCRMbcgovEquipmentlocation equipmentlocation = _dynamicsClient.GetEquipmentLocationByBothIds(equipmentId, currentLocationId);
+            if (equipmentlocation != null)
+            {
+                result = equipmentlocation.ToViewModel();
+            }
+            else
+            {
+                return new NotFoundResult();
+            }
+
+            return Json(result);
+        }
+
+        /// <summary>
+        /// Get the current location of an Equipment
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("{id}/currentlocation")]
+        public IActionResult GetEquipmentCurrentLocation(string id)
+        {
+            ViewModels.Location result = null;
+
+            //validate parameter
+            if (string.IsNullOrEmpty(id) || !Guid.TryParse(id, out Guid equipmentId))
+            {
+                return BadRequest();
+            }
+
+            // get the equipment
+            MicrosoftDynamicsCRMbcgovEquipment equipment = _dynamicsClient.GetEquipmentByIdWithChildren(equipmentId);
+
+            if (equipment.BcgovCurrentLocation != null)
+            {
+                // get the view model of the current location of the equipment
+                result = equipment.BcgovCurrentLocation.ToViewModel();
+            }
+            else
+            {
+                return new NotFoundResult();
             }
 
             return Json(result);
@@ -332,6 +432,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ca"></param>
+        /// <returns></returns>
         private MicrosoftDynamicsCRMbcgovCustomaddress CreateOrUpdateAddress(ViewModels.CustomAddress ca)
         {
             MicrosoftDynamicsCRMbcgovCustomaddress address = null;
