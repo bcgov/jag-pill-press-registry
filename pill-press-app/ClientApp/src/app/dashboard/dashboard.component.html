@@ -155,13 +155,13 @@
                         EXPIRED
                       </section>
                       <div class="download-link-spacing">
-                        <a *ngIf="waiverHolderCertificate?.hasCertificate && !waiverHolderCertificate?.hasExpired"
+                        <a *ngIf="!account?.waiverAdministrativeHold && !waiverHolderCertificate?.hasExpired && waiverHolderCertificate?.hasCertificate && !waiverHolderCertificate?.hasExpired"
                            href="api/application/{{waiverApplication?.id}}/download-certificate" download>
                           <!-- <fa-icon [icon]="faFilePdf" style="color: #38598A; margin-right: 5px;"></fa-icon> -->
                           Download Certificate
                         </a>
                       </div>
-                      <p *ngIf="waiverHolderCertificate">
+                      <p *ngIf="!account?.waiverAdministrativeHold && !waiverHolderCertificate?.hasExpired && waiverHolderCertificate">
                         <strong>Issue Date:&nbsp;</strong> {{waiverHolderCertificate?.issueDate | date : 'dd MMM yyyy'}}
                         <br>
                         <strong>Expiry Date:&nbsp;</strong> {{waiverHolderCertificate?.expiryDate | date : 'dd MMM yyyy'}}
@@ -292,7 +292,8 @@
                       <div *ngIf="account?.registeredSellerAdministrativeHold" class="status-orange">
                         ON ADMINISTRATIVE HOLD
                       </div>
-                      <section *ngIf="sellerCertificate?.hasCertificate && !sellerCertificate?.hasExpired">
+                      <section *ngIf="!account?.registeredSellerAdministrativeHold && !waiverHolderCertificate?.hasExpired
+                               && sellerCertificate?.hasCertificate && !sellerCertificate?.hasExpired">
                         <div class="download-link-spacing">
                           <a href="api/application/{{sellerCertificate?.applicationId}}/download-certificate" download>
                             <!-- <fa-icon [icon]="faFilePdf" style="color: #38598A; margin-right: 5px;"></fa-icon> -->
@@ -300,7 +301,7 @@
                           </a>
                         </div>
                       </section>
-                      <p *ngIf="sellerCertificate">
+                      <p *ngIf="sellerCertificate && !account?.registeredSellerAdministrativeHold && !waiverHolderCertificate?.hasExpired ">
                         <strong>Issue Date:&nbsp;</strong> {{ sellerCertificate?.issueDate | date : 'dd MMM yyyy'}}<br>
                         <strong>Expiry Date:&nbsp;</strong> {{ sellerCertificate?.expiryDate | date : 'dd MMM yyyy'}}<br><br>
                       </p>
@@ -359,7 +360,6 @@
                     <p>Your application has been cancelled. An explanatory email has been sent to you.</p>
                   </section>
                   <section *ngIf="registeredSellerApplication?.statuscode === 'Expired'">
-                    <h4 class="status-red">EXPIRED</h4>
                     <p>Your Registered Seller certificate has expired. Please submit a new application.</p>
                   </section>
                 </div>
