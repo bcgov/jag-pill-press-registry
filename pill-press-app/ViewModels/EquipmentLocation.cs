@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Gov.Jag.PillPressRegistry.Public.ViewModels
 {
-    public class EquipmentLocation
+    public class Equipmentlocation
     {
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
