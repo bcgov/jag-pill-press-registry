@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApplicationDataService } from '../../../services/application-data.service';
 import { postalRegex } from '../../../business-profile/business-profile/business-profile.component';
 import { faInfoCircle, faExclamationCircle, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
+import { faSave } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
   selector: 'app-reporting-sales-form',
@@ -22,6 +23,7 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
   faInfoCircle = faInfoCircle;
   faExclamationCircle = faExclamationCircle;
   faExclamationTriangle = faExclamationTriangle;
+  faSave = faSave;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
