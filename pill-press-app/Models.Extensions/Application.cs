@@ -188,7 +188,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     idNumberCollected = incident.BcgovIdnumbercollected,
                     typeOfIdNumberCollected = incident.BcgovTypeofidnumbercollected,
                     nameOfPurchaserBusiness = incident.BcgovNameofpurchaserbusiness,
-                    purchaserRegistrationNumber = incident.BcgovPurchasersregistrationnumber,
+                    purchaserRegistrationNumber = incident.BcgovPurchaserregistrationnumber,
                     purchaserdBaName = incident.BcgovPurchaserdbaname,
                     legalNameOfPersonResponsibleForBusiness = incident.BcgovLegalnameofpersonresponsibleforbusiness,
                     phoneNumberOfPersonResponsibleForBusiness = incident.BcgovPhonenumberofpersonresponsibleforbusiness,
@@ -499,7 +499,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             to.BcgovIdnumbercollected = from.idNumberCollected ;
             to.BcgovTypeofidnumbercollected = from.typeOfIdNumberCollected ;
             to.BcgovNameofpurchaserbusiness = from.nameOfPurchaserBusiness ;
-            to.BcgovPurchasersregistrationnumber = from.purchaserRegistrationNumber ;
+            to.BcgovPurchaserregistrationnumber = from.purchaserRegistrationNumber ;
             to.BcgovPurchaserdbaname = from.purchaserdBaName ;
             to.BcgovLegalnameofpersonresponsibleforbusiness = from.legalNameOfPersonResponsibleForBusiness ;
             to.BcgovPhonenumberofpersonresponsibleforbusiness = from.phoneNumberOfPersonResponsibleForBusiness ;

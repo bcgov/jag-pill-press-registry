@@ -198,7 +198,7 @@
 
             <app-field
               label="Is the address where the purchaser will ordinarily store this piece of equipment a private dwelling house?"
-              [showChevrons]="false" errorMessage="Please select yes or no"
+              [showChevrons]="false" errorMessage="Please provide an answer to the question above"
               [valid]="form.get('privateDwelling').value || !form.get('privateDwelling').touched">
               <input type="radio" name="privateDwelling" formControlName="privateDwelling" value="Yes">
               <span style="padding-right: 20px;">&nbsp;Yes</span>
