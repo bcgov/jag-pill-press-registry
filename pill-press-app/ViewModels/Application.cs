@@ -525,7 +525,7 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public string purchasersDELNumber { get; set; }
         public string PurchasersSiteLicenseNumber { get; set; }
         public string nameOnPurchasersSiteLicense { get; set; }
-        public DateTimeOffset? PurchasersSiteLicenseExpiryDate { get; set; }
+        public DateTimeOffset? PurchasersSiteLicenseExpDate { get; set; }
         public DateTimeOffset? PurchasersDELExpiryDate { get; set; }
         public string purchasersWaiverNumber { get; set; }
         public string purchasersRegistrationNumber { get; set; }

@@ -557,9 +557,9 @@
               </app-field>
 
               <app-field label="What is the purchaser's Site Licence expiry date?" [showChevrons]="false"
-                         [valid]="form.get('purchasersSiteLicenseExpiryDate').valid || !form.get('purchasersSiteLicenseExpiryDate').touched"
+                         [valid]="form.get('purchasersSiteLicenseExpDate').valid || !form.get('purchasersSiteLicenseExpDate').touched"
                          errorMessage="Please provide the expiry date">
-                <input type="text" class="form-control" formControlName="purchasersSiteLicenseExpiryDate"
+                <input type="text" class="form-control" formControlName="purchasersSiteLicenseExpDate"
                        placeholder="mm-dd-yyyy" [matDatepicker]="picker" (focus)="picker.open()" (click)="picker.open()"
                        readonly style="width: 200px; background-color: #fff;">
                 <mat-datepicker #picker></mat-datepicker>
