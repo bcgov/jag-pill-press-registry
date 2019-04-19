@@ -168,7 +168,7 @@ export class EquipmentLocationComponent extends FormBase implements OnInit {
       equipmentLocation: this.fb.group({
         id: [],
         privateDwelling: ['', Validators.required],
-        settingDescription: ['', Validators.required],
+        settingDescription: [''], //Validators.required
         address: this.fb.group({
           id: [],
           streetLine1: ['', Validators.required],

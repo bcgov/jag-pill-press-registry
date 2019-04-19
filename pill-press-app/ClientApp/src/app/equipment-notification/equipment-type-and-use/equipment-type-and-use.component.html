@@ -31,7 +31,6 @@
             <option value="Automated">Automated</option>
             <option value="Capable of Being Automated">Capable of Being Automated</option>
             <option value="Manual">Manual</option>
-            <option value="Other">Other</option>
           </select>
         </app-field>
 
@@ -49,7 +48,7 @@
         <app-field label="Please indicate your Pill Press maximum capacity in number of pills/tablets per hour."
           [valid]="form.get('pillpressmaxcapacity').valid || !form.get('pillpressmaxcapacity').touched " errorMessage="Please indicate the maximum capacity of this Pill Press"
           [required]="true">
-          <input type="text" class="form-control" formControlName="pillpressmaxcapacity" style="width: 150px">
+          <input type="number" class="form-control" formControlName="pillpressmaxcapacity" style="width: 150px">
         </app-field>
       </section>
 
@@ -62,7 +61,6 @@
             <option value="Automated">Automated</option>
             <option value="Capable of Being Automated">Capable of Being Automated</option>
             <option value="Manual">Manual</option>
-            <option value="Other">Other</option>
           </select>
         </app-field>
 
@@ -101,7 +99,6 @@
             <option value="Automated">Automated</option>
             <option value="Capable of Being Automated">Capable of Being Automated</option>
             <option value="Manual">Manual</option>
-            <option value="Other">Other</option>
           </select>
         </app-field>
       </section>
@@ -121,7 +118,6 @@
             <option value="Automated">Automated</option>
             <option value="Capable of Being Automated">Capable of Being Automated</option>
             <option value="Manual">Manual</option>
-            <option value="Other">Other</option>
           </select>
         </app-field>
       </section>

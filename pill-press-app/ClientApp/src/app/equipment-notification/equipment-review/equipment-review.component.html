@@ -139,7 +139,7 @@
     <div>
       <div class="dark-row">Did you already own this piece of Controlled Equipment before January 2019?</div>
       <div class="alt-row"> {{ notification?.ownedBeforeJan2019 === true ? 'Yes' : 'No' }}</div>
-      <section class="padded-section">
+      <section *ngIf="notification?.ownedBeforeJan2019 !== true" class="padded-section">
         <div class="dark-row">How did this piece of equipment come into your possession (after January 2019)?</div>
 
         <section *ngIf="notification?.purchasedFromBcSeller === true">
