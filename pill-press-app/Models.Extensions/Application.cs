@@ -188,7 +188,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     idNumberCollected = incident.BcgovIdnumbercollected,
                     typeOfIdNumberCollected = incident.BcgovTypeofidnumbercollected,
                     nameOfPurchaserBusiness = incident.BcgovNameofpurchaserbusiness,
-                    purchaserRegistrationNumber = incident.BcgovPurchasersregistrationnumber,
+                    purchaserRegistrationNumber = incident.BcgovPurchaserregistrationnumber,
                     purchaserdBaName = incident.BcgovPurchaserdbaname,
                     legalNameOfPersonResponsibleForBusiness = incident.BcgovLegalnameofpersonresponsibleforbusiness,
                     phoneNumberOfPersonResponsibleForBusiness = incident.BcgovPhonenumberofpersonresponsibleforbusiness,
@@ -204,7 +204,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     nameOnPurchasersDEL = incident.BcgovNameonpurchasersdel,
                     purchasersDELNumber = incident.BcgovPurchasersdelnumber,
                     nameOnPurchasersSiteLicense = incident.BcgovNameonpurchaserssitelicense,
-                    PurchasersSiteLicenseExpiryDate = incident.BcgovPurchaserssitelicenseexpirydate  != null ?(DateTimeOffset?)DateTime.Parse(incident.BcgovPurchaserssitelicenseexpirydate) : null,
+                    PurchasersSiteLicenseExpDate = incident.BcgovPurchaserssitelicenceexpdate,
                     PurchasersDELExpiryDate = incident.BcgovPurchasersdelexpirydate,
                     purchasersWaiverNumber = incident.BcgovPurchaserswaivernumber,
                     purchasersRegistrationNumber = incident.BcgovPurchasersregistrationnumber,
@@ -499,7 +499,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             to.BcgovIdnumbercollected = from.idNumberCollected ;
             to.BcgovTypeofidnumbercollected = from.typeOfIdNumberCollected ;
             to.BcgovNameofpurchaserbusiness = from.nameOfPurchaserBusiness ;
-            to.BcgovPurchasersregistrationnumber = from.purchaserRegistrationNumber ;
+            to.BcgovPurchaserregistrationnumber = from.purchaserRegistrationNumber ;
             to.BcgovPurchaserdbaname = from.purchaserdBaName ;
             to.BcgovLegalnameofpersonresponsibleforbusiness = from.legalNameOfPersonResponsibleForBusiness ;
             to.BcgovPhonenumberofpersonresponsibleforbusiness = from.phoneNumberOfPersonResponsibleForBusiness ;
@@ -516,7 +516,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             to.BcgovPurchaserssitelicensenumber = from.PurchasersSiteLicenseNumber;
             to.BcgovPurchasersdelnumber = from.purchasersDELNumber ;
             to.BcgovNameonpurchaserssitelicense = from.nameOnPurchasersSiteLicense ;
-            to.BcgovPurchaserssitelicenseexpirydate = from.PurchasersSiteLicenseExpiryDate.ToString() ;
+            to.BcgovPurchaserssitelicenceexpdate = from.PurchasersSiteLicenseExpDate ;
             to.BcgovPurchasersdelexpirydate = from.PurchasersDELExpiryDate;
             to.BcgovPurchaserswaivernumber = from.purchasersWaiverNumber ;
             to.BcgovPurchasersregistrationnumber = from.purchasersRegistrationNumber ;

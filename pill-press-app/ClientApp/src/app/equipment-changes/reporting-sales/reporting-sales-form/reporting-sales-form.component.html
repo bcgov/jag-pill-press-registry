@@ -198,7 +198,7 @@
 
             <app-field
               label="Is the address where the purchaser will ordinarily store this piece of equipment a private dwelling house?"
-              [showChevrons]="false" errorMessage="Please select yes or no"
+              [showChevrons]="false" errorMessage="Please provide an answer to the question above"
               [valid]="form.get('privateDwelling').value || !form.get('privateDwelling').touched">
               <input type="radio" name="privateDwelling" formControlName="privateDwelling" value="Yes">
               <span style="padding-right: 20px;">&nbsp;Yes</span>
@@ -557,9 +557,9 @@
               </app-field>
 
               <app-field label="What is the purchaser's Site Licence expiry date?" [showChevrons]="false"
-                         [valid]="form.get('purchasersSiteLicenseExpiryDate').valid || !form.get('purchasersSiteLicenseExpiryDate').touched"
+                         [valid]="form.get('purchasersSiteLicenseExpDate').valid || !form.get('purchasersSiteLicenseExpDate').touched"
                          errorMessage="Please provide the expiry date">
-                <input type="text" class="form-control" formControlName="purchasersSiteLicenseExpiryDate"
+                <input type="text" class="form-control" formControlName="purchasersSiteLicenseExpDate"
                        placeholder="mm-dd-yyyy" [matDatepicker]="picker" (focus)="picker.open()" (click)="picker.open()"
                        readonly style="width: 200px; background-color: #fff;">
                 <mat-datepicker #picker></mat-datepicker>

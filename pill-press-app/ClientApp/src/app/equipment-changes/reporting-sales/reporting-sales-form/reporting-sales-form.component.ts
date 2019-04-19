@@ -114,7 +114,7 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
       purchasersDELExpiryDate: [''],
       nameOnPurchasersSiteLicense: [''],
       purchasersSiteLicenseNumber: [''],
-      purchasersSiteLicenseExpiryDate: [''],
+      purchasersSiteLicenseExpDate: [''],
       purchasersWaiverNumber: [''],
       purchasersRegistrationNumber: [''],
       purchasersOther: [''],
@@ -168,11 +168,11 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
     const purchaseAuthorizedAOGroup = ['healthCanadaLicenseDEL', 'healthCanadaLicenseSiteLicense'];
 
     const childPurchaseAuthorizedAOGroup = ['nameOnPurchasersDEL', 'purchasersDELNumber', 'purchasersDELExpiryDate',
-      'nameOnPurchasersSiteLicense', 'purchasersSiteLicenseNumber', 'purchasersSiteLicenseExpiryDate'];
+      'nameOnPurchasersSiteLicense', 'purchasersSiteLicenseNumber', 'purchasersSiteLicenseExpDate'];
 
     const healthCanadaLicenseDELGroup = ['nameOnPurchasersDEL', 'purchasersDELNumber', 'purchasersDELExpiryDate'];
 
-    const healthCanadaLicenseSiteLicenseGroup = ['nameOnPurchasersSiteLicense', 'purchasersSiteLicenseNumber', 'purchasersSiteLicenseExpiryDate'];
+    const healthCanadaLicenseSiteLicenseGroup = ['nameOnPurchasersSiteLicense', 'purchasersSiteLicenseNumber', 'purchasersSiteLicenseExpDate'];
 
 
     this.form.get('whereWillEquipmentReside').valueChanges
