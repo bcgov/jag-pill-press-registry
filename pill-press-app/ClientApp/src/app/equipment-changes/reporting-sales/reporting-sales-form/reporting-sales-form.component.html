@@ -473,7 +473,7 @@
                        (change)="form.updateValueAndValidity()" style="margin-right: 10px;">
                 <span>Registered Seller</span>
                 <br>
-                <input type="checkbox" formControlName="howIsPurchaserAuthorizedOther"
+                <input type="checkbox" formControlName="howIsPurchaserAuthorizedOtherCheck"
                        (change)="form.updateValueAndValidity()" style="margin-right: 10px;">
                 <span>Other</span>
                 <br>
@@ -589,14 +589,14 @@
               <hr>
             </section>
 
-            <section *ngIf="form.get('howIsPurchaserAuthorizedOther').value === true">
+            <section *ngIf="form.get('howIsPurchaserAuthorizedOtherCheck').value === true">
               <app-field [showChevrons]="false"
-                         [valid]="form.get('purchasersOther').valid || !form.get('purchasersOther').touched"
+                         [valid]="form.get('howIsPurchaserAuthorizedOther').valid || !form.get('howIsPurchaserAuthorizedOther').touched"
                          errorMessage='Please specify the "other" authorization'>
                 <i>If Other, Please specify</i>&nbsp;
                 <span class="error-states">*</span>
                 <br>
-                <input type="text" class="form-control" formControlName="purchasersOther" style="width: 340px">
+                <input type="text" class="form-control" formControlName="howIsPurchaserAuthorizedOther" style="width: 340px">
               </app-field>
               <hr>
             </section>

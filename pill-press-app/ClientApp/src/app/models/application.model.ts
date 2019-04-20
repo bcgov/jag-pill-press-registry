@@ -186,6 +186,7 @@ export class Application {
   howIsPurchaseAuthorizedAO: Boolean;
   howIsPurchaserAuthorizedWaiver: Boolean;
   howIsPurchaserAuthorizedRegisteredSeller: Boolean;
+  howIsPurchaserAuthorizedOtherCheck: Boolean;
   howIsPurchaserAuthorizedOther: string;
   healthCanadaLicenseDEL: Boolean;
   healthCanadaLicenseSiteLicense: Boolean;
@@ -198,5 +199,4 @@ export class Application {
   purchasersWaiverNumber: string;
   purchasersRegistrationNumber: string;
   equipmentRecord: Equipment;
-  purchasersOther: string;
 }
