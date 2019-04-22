@@ -95,7 +95,7 @@
                 <option value="Sold">Sold</option>
                 <option value="Rented">Rented</option>
                 <option value="Leased">Leased</option>
-                <option value="GivenOrLoaned">Given/Loaned</option>
+                <option value="Given/Loaned">Given/Loaned</option>
                 <option value="Other">Other</option>
               </select>
               <section style="padding-top: 10px" *ngIf="form.get('typeOfSale').value === 'Other'">
@@ -438,7 +438,7 @@
           <section class="padded-section">
             <div class="notes">
               <fa-icon [icon]="faInfoCircle" style="color: #003366; margin-right: 10px;"></fa-icon>
-              <span>
+              <div>
                 A "person in British Columbia" may include:
                 <ul>
                   <li>an individual purchaser who resides or carries on business in BC;</li>
@@ -446,7 +446,7 @@
                   <li>a purchaser who ships the equipment to a BC location;</li>
                   <li>a purchaser who ordinarily stores equipment at a BC location.</li>
                 </ul>
-              </span>
+              </div>
             </div>
 
             <app-field label='Is the purchaser a "person in British Columbia"?' errorMessage="Please select yes or no"
@@ -462,7 +462,8 @@
               <app-field label="How is the purchaser authorized to own, use, or possess Controlled Equipment?"
                          errorMessage="Please select all the options that apply" [required]="true">
                 <p>Please select all the options that apply.</p>
-                <input type="checkbox" formControlName="howIsPurchaseAuthorizedAO" style="margin-right: 10px;">
+                <input type="checkbox" formControlName="howIsPurchaseAuthorizedAO"
+                       (change)="form.updateValueAndValidity()" style="margin-right: 10px;">
                 <span>Authorized Owner (i.e. drug establishment or site licence issued by Health Canada)</span>
                 <br>
                 <input type="checkbox" formControlName="howIsPurchaserAuthorizedWaiver"
