@@ -198,6 +198,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     howIsPurchaseAuthorizedAO = incident.BcgovHowispurchaseauthorizedao,
                     howIsPurchaserAuthorizedWaiver = incident.BcgovHowispurchaserauthorizedwaiver,
                     howIsPurchaserAuthorizedRegisteredSeller = incident.BcgovHowispurchaserauthorizedregisteredseller,
+                    howIsPurchaserAuthorizedOtherCheck = incident.BcgovHowispurchaserauthorizedothercheck,
                     howIsPurchaserAuthorizedOther = incident.BcgovHowispurchaserauthorizedother,
                     healthCanadaLicenseDEL = incident.BcgovHealthcanadalicensedel,
                     healthCanadaLicenseSiteLicense = incident.BcgovHealthcanadalicensesitelicense,
@@ -509,7 +510,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             to.BcgovHowispurchaseauthorizedao = from.howIsPurchaseAuthorizedAO ;
             to.BcgovHowispurchaserauthorizedwaiver = from.howIsPurchaserAuthorizedWaiver ;
             to.BcgovHowispurchaserauthorizedregisteredseller = from.howIsPurchaserAuthorizedRegisteredSeller ;
-            to.BcgovHowispurchaserauthorizedother = from.howIsPurchaserAuthorizedOther ;
+            to.BcgovHowispurchaserauthorizedothercheck = from.howIsPurchaserAuthorizedOtherCheck ;
+            to.BcgovHowispurchaserauthorizedother = from.howIsPurchaserAuthorizedOther;
             to.BcgovHealthcanadalicensedel = from.healthCanadaLicenseDEL ;
             to.BcgovHealthcanadalicensesitelicense = from.healthCanadaLicenseSiteLicense ;
             to.BcgovNameonpurchasersdel = from.nameOnPurchasersDEL ;
