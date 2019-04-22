@@ -106,6 +106,7 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
       howIsPurchaseAuthorizedAO: [''],
       howIsPurchaserAuthorizedWaiver: [''],
       howIsPurchaserAuthorizedRegisteredSeller: [''],
+      howIsPurchaserAuthorizedOtherCheck: [''],
       howIsPurchaserAuthorizedOther: [''],
       healthCanadaLicenseDEL: [''],
       healthCanadaLicenseSiteLicense: [''],
@@ -117,7 +118,6 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
       purchasersSiteLicenseExpDate: [''],
       purchasersWaiverNumber: [''],
       purchasersRegistrationNumber: [''],
-      purchasersOther: [''],
     });
 
     this.clearHiddenFields();
@@ -163,7 +163,7 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
       'phoneNumberOfPersonResponsibleForBusiness', 'emailOfPersonResponsibleForBusiness', 'geographicalLocationOfBusinessPurchaser'];
 
     const purchaserAPersonOfBCGroup = ['howIsPurchaseAuthorizedAO', 'howIsPurchaserAuthorizedWaiver',
-      'howIsPurchaserAuthorizedRegisteredSeller', 'howIsPurchaserAuthorizedOther'];
+      'howIsPurchaserAuthorizedRegisteredSeller', 'howIsPurchaserAuthorizedOtherCheck'];
 
     const purchaseAuthorizedAOGroup = ['healthCanadaLicenseDEL', 'healthCanadaLicenseSiteLicense'];
 
@@ -293,12 +293,12 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
         }
       });
 
-    this.form.get('howIsPurchaserAuthorizedOther').valueChanges
+    this.form.get('howIsPurchaserAuthorizedOtherCheck').valueChanges
       .subscribe(value => {
-        this.form.get('purchasersOther').clearValidators();
-        this.form.get('purchasersOther').reset();
+        this.form.get('howIsPurchaserAuthorizedOther').clearValidators();
+        this.form.get('howIsPurchaserAuthorizedOther').reset();
         if (value) {
-          this.form.get('purchasersOther').setValidators([Validators.required]);
+          this.form.get('howIsPurchaserAuthorizedOther').setValidators([Validators.required]);
         };
       });
 
