@@ -95,7 +95,7 @@
                 <option value="Sold">Sold</option>
                 <option value="Rented">Rented</option>
                 <option value="Leased">Leased</option>
-                <option value="GivenLoaned">Given/Loaned</option>
+                <option value="Given/Loaned">Given/Loaned</option>
                 <option value="Other">Other</option>
               </select>
               <section style="padding-top: 10px" *ngIf="form.get('typeOfSale').value === 'Other'">
@@ -198,7 +198,7 @@
 
             <app-field
               label="Is the address where the purchaser will ordinarily store this piece of equipment a private dwelling house?"
-              [showChevrons]="false" errorMessage="Please select yes or no"
+              [showChevrons]="false" errorMessage="Please provide an answer to the question above"
               [valid]="form.get('privateDwelling').value || !form.get('privateDwelling').touched">
               <input type="radio" name="privateDwelling" formControlName="privateDwelling" value="Yes">
               <span style="padding-right: 20px;">&nbsp;Yes</span>
@@ -438,7 +438,7 @@
           <section class="padded-section">
             <div class="notes">
               <fa-icon [icon]="faInfoCircle" style="color: #003366; margin-right: 10px;"></fa-icon>
-              <span>
+              <div>
                 A "person in British Columbia" may include:
                 <ul>
                   <li>an individual purchaser who resides or carries on business in BC;</li>
@@ -446,7 +446,7 @@
                   <li>a purchaser who ships the equipment to a BC location;</li>
                   <li>a purchaser who ordinarily stores equipment at a BC location.</li>
                 </ul>
-              </span>
+              </div>
             </div>
 
             <app-field label='Is the purchaser a "person in British Columbia"?' errorMessage="Please select yes or no"
@@ -462,7 +462,8 @@
               <app-field label="How is the purchaser authorized to own, use, or possess Controlled Equipment?"
                          errorMessage="Please select all the options that apply" [required]="true">
                 <p>Please select all the options that apply.</p>
-                <input type="checkbox" formControlName="howIsPurchaseAuthorizedAO" style="margin-right: 10px;">
+                <input type="checkbox" formControlName="howIsPurchaseAuthorizedAO"
+                       (change)="form.updateValueAndValidity()" style="margin-right: 10px;">
                 <span>Authorized Owner (i.e. drug establishment or site licence issued by Health Canada)</span>
                 <br>
                 <input type="checkbox" formControlName="howIsPurchaserAuthorizedWaiver"
@@ -473,7 +474,7 @@
                        (change)="form.updateValueAndValidity()" style="margin-right: 10px;">
                 <span>Registered Seller</span>
                 <br>
-                <input type="checkbox" formControlName="howIsPurchaserAuthorizedOther"
+                <input type="checkbox" formControlName="howIsPurchaserAuthorizedOtherCheck"
                        (change)="form.updateValueAndValidity()" style="margin-right: 10px;">
                 <span>Other</span>
                 <br>
@@ -557,9 +558,9 @@
               </app-field>
 
               <app-field label="What is the purchaser's Site Licence expiry date?" [showChevrons]="false"
-                         [valid]="form.get('purchasersSiteLicenseExpiryDate').valid || !form.get('purchasersSiteLicenseExpiryDate').touched"
+                         [valid]="form.get('purchasersSiteLicenseExpDate').valid || !form.get('purchasersSiteLicenseExpDate').touched"
                          errorMessage="Please provide the expiry date">
-                <input type="text" class="form-control" formControlName="purchasersSiteLicenseExpiryDate"
+                <input type="text" class="form-control" formControlName="purchasersSiteLicenseExpDate"
                        placeholder="mm-dd-yyyy" [matDatepicker]="picker" (focus)="picker.open()" (click)="picker.open()"
                        readonly style="width: 200px; background-color: #fff;">
                 <mat-datepicker #picker></mat-datepicker>
@@ -589,14 +590,14 @@
               <hr>
             </section>
 
-            <section *ngIf="form.get('howIsPurchaserAuthorizedOther').value === true">
+            <section *ngIf="form.get('howIsPurchaserAuthorizedOtherCheck').value === true">
               <app-field [showChevrons]="false"
-                         [valid]="form.get('purchasersOther').valid || !form.get('purchasersOther').touched"
+                         [valid]="form.get('howIsPurchaserAuthorizedOther').valid || !form.get('howIsPurchaserAuthorizedOther').touched"
                          errorMessage='Please specify the "other" authorization'>
                 <i>If Other, Please specify</i>&nbsp;
                 <span class="error-states">*</span>
                 <br>
-                <input type="text" class="form-control" formControlName="purchasersOther" style="width: 340px">
+                <input type="text" class="form-control" formControlName="howIsPurchaserAuthorizedOther" style="width: 340px">
               </app-field>
               <hr>
             </section>
