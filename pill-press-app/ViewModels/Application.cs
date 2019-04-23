@@ -482,7 +482,6 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public string whoDestroyedEquipment { get; set; }
         public ViewModels.CustomAddress AddressWhereEquipmentWasDestroyed { get; set; }
 
-
         // reporting sales
         public DateTimeOffset? dateOfSale { get; set; }
 
@@ -518,6 +517,7 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public bool? howIsPurchaseAuthorizedAO { get; set; }
         public bool? howIsPurchaserAuthorizedWaiver { get; set; }
         public bool? howIsPurchaserAuthorizedRegisteredSeller { get; set; }
+        public bool? howIsPurchaserAuthorizedOtherCheck { get; set; }
         public string howIsPurchaserAuthorizedOther { get; set; }
         public bool? healthCanadaLicenseDEL { get; set; }
         public bool? healthCanadaLicenseSiteLicense { get; set; }
@@ -525,7 +525,7 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public string purchasersDELNumber { get; set; }
         public string PurchasersSiteLicenseNumber { get; set; }
         public string nameOnPurchasersSiteLicense { get; set; }
-        public DateTimeOffset? PurchasersSiteLicenseExpiryDate { get; set; }
+        public DateTimeOffset? PurchasersSiteLicenseExpDate { get; set; }
         public DateTimeOffset? PurchasersDELExpiryDate { get; set; }
         public string purchasersWaiverNumber { get; set; }
         public string purchasersRegistrationNumber { get; set; }
