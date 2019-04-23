@@ -188,7 +188,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     idNumberCollected = incident.BcgovIdnumbercollected,
                     typeOfIdNumberCollected = incident.BcgovTypeofidnumbercollected,
                     nameOfPurchaserBusiness = incident.BcgovNameofpurchaserbusiness,
-                    purchaserRegistrationNumber = incident.BcgovPurchasersregistrationnumber,
+                    purchaserRegistrationNumber = incident.BcgovPurchaserregistrationnumber,
                     purchaserdBaName = incident.BcgovPurchaserdbaname,
                     legalNameOfPersonResponsibleForBusiness = incident.BcgovLegalnameofpersonresponsibleforbusiness,
                     phoneNumberOfPersonResponsibleForBusiness = incident.BcgovPhonenumberofpersonresponsibleforbusiness,
@@ -198,13 +198,14 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     howIsPurchaseAuthorizedAO = incident.BcgovHowispurchaseauthorizedao,
                     howIsPurchaserAuthorizedWaiver = incident.BcgovHowispurchaserauthorizedwaiver,
                     howIsPurchaserAuthorizedRegisteredSeller = incident.BcgovHowispurchaserauthorizedregisteredseller,
+                    howIsPurchaserAuthorizedOtherCheck = incident.BcgovHowispurchaserauthorizedothercheck,
                     howIsPurchaserAuthorizedOther = incident.BcgovHowispurchaserauthorizedother,
                     healthCanadaLicenseDEL = incident.BcgovHealthcanadalicensedel,
                     healthCanadaLicenseSiteLicense = incident.BcgovHealthcanadalicensesitelicense,
                     nameOnPurchasersDEL = incident.BcgovNameonpurchasersdel,
                     purchasersDELNumber = incident.BcgovPurchasersdelnumber,
                     nameOnPurchasersSiteLicense = incident.BcgovNameonpurchaserssitelicense,
-                    PurchasersSiteLicenseExpiryDate = incident.BcgovPurchaserssitelicenseexpirydate  != null ?(DateTimeOffset?)DateTime.Parse(incident.BcgovPurchaserssitelicenseexpirydate) : null,
+                    PurchasersSiteLicenseExpDate = incident.BcgovPurchaserssitelicenceexpdate,
                     PurchasersDELExpiryDate = incident.BcgovPurchasersdelexpirydate,
                     purchasersWaiverNumber = incident.BcgovPurchaserswaivernumber,
                     purchasersRegistrationNumber = incident.BcgovPurchasersregistrationnumber,
@@ -499,7 +500,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             to.BcgovIdnumbercollected = from.idNumberCollected ;
             to.BcgovTypeofidnumbercollected = from.typeOfIdNumberCollected ;
             to.BcgovNameofpurchaserbusiness = from.nameOfPurchaserBusiness ;
-            to.BcgovPurchasersregistrationnumber = from.purchaserRegistrationNumber ;
+            to.BcgovPurchaserregistrationnumber = from.purchaserRegistrationNumber ;
             to.BcgovPurchaserdbaname = from.purchaserdBaName ;
             to.BcgovLegalnameofpersonresponsibleforbusiness = from.legalNameOfPersonResponsibleForBusiness ;
             to.BcgovPhonenumberofpersonresponsibleforbusiness = from.phoneNumberOfPersonResponsibleForBusiness ;
@@ -509,14 +510,15 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             to.BcgovHowispurchaseauthorizedao = from.howIsPurchaseAuthorizedAO ;
             to.BcgovHowispurchaserauthorizedwaiver = from.howIsPurchaserAuthorizedWaiver ;
             to.BcgovHowispurchaserauthorizedregisteredseller = from.howIsPurchaserAuthorizedRegisteredSeller ;
-            to.BcgovHowispurchaserauthorizedother = from.howIsPurchaserAuthorizedOther ;
+            to.BcgovHowispurchaserauthorizedothercheck = from.howIsPurchaserAuthorizedOtherCheck ;
+            to.BcgovHowispurchaserauthorizedother = from.howIsPurchaserAuthorizedOther;
             to.BcgovHealthcanadalicensedel = from.healthCanadaLicenseDEL ;
             to.BcgovHealthcanadalicensesitelicense = from.healthCanadaLicenseSiteLicense ;
             to.BcgovNameonpurchasersdel = from.nameOnPurchasersDEL ;
             to.BcgovPurchaserssitelicensenumber = from.PurchasersSiteLicenseNumber;
             to.BcgovPurchasersdelnumber = from.purchasersDELNumber ;
             to.BcgovNameonpurchaserssitelicense = from.nameOnPurchasersSiteLicense ;
-            to.BcgovPurchaserssitelicenseexpirydate = from.PurchasersSiteLicenseExpiryDate.ToString() ;
+            to.BcgovPurchaserssitelicenceexpdate = from.PurchasersSiteLicenseExpDate ;
             to.BcgovPurchasersdelexpirydate = from.PurchasersDELExpiryDate;
             to.BcgovPurchaserswaivernumber = from.purchasersWaiverNumber ;
             to.BcgovPurchasersregistrationnumber = from.purchasersRegistrationNumber ;
