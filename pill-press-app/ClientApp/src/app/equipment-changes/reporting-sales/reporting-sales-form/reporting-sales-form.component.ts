@@ -7,6 +7,7 @@ import { ApplicationDataService } from '../../../services/application-data.servi
 import { postalRegex } from '../../../business-profile/business-profile/business-profile.component';
 import { faInfoCircle, faExclamationCircle, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 import { faSave } from '@fortawesome/free-regular-svg-icons';
+import { startWith, tap, delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-reporting-sales-form',
@@ -38,21 +39,21 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
       id: [],
       equipmentRecord: this.fb.group({
         id: [],
-        equipmentType: [''],
-        equipmentTypeOther: [''],
-        name: [''],
-        pillpressEncapsulatorSize: [''],
-        pillpressEncapsulatorSizeOther: [''],
-        levelOfEquipmentAutomation: [''],
-        pillpressMaxCapacity: [''],
-        howWasEquipmentBuilt: [''],
-        HhwWasEquipmentBuiltOther: [''],
-        nameOfManufacturer: [''],
-        equipmentMake: [''],
-        equipmentModel: [''],
-        serialNumber: [''],
-        encapsulatorMaxCapacity: [''],
-        customBuiltSerialNumber: [''],
+        equipmentType: [],
+        equipmentTypeOther: [],
+        name: [],
+        pillpressEncapsulatorSize: [],
+        pillpressEncapsulatorSizeOther: [],
+        levelOfEquipmentAutomation: [],
+        pillpressMaxCapacity: [],
+        howWasEquipmentBuilt: [],
+        HhwWasEquipmentBuiltOther: [],
+        nameOfManufacturer: [],
+        equipmentMake: [],
+        equipmentModel: [],
+        serialNumber: [],
+        encapsulatorMaxCapacity: [],
+        customBuiltSerialNumber: [],
       }),
       dateOfSale: ['', Validators.required],
       typeOfSale: ['', Validators.required],
@@ -66,62 +67,62 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
         streetLine1: ['', Validators.required],
         streetLine2: [],
         city: ['', Validators.required],
-        province: [''],
+        province: [],
         postalCode: ['', [Validators.required, Validators.pattern(postalRegex)]],
-        country: [''],
+        country: [],
       }),
-      privateDwelling: [''],
+      privateDwelling: [],
       purchasedByIndividualOrBusiness: ['', Validators.required],
-      legalNameOfPurchaserIndividual: [''],
+      legalNameOfPurchaserIndividual: [],
       purchasersCivicAddress: this.fb.group({
         id: [],
-        streetLine1: [''],
+        streetLine1: [],
         streetLine2: [],
-        city: [''],
-        province: [''],
-        postalCode: [''],
-        country: [''],
+        city: [],
+        province: [],
+        postalCode: [],
+        country: [],
       }),
-      purchasersTelephoneNumber: [''],
-      purchasersEmailAddress: [''],
-      idNumberCollected: [''],
-      typeOfIdNumberCollected: [''],
-      nameOfPurchaserBusiness: [''],
-      purchaserRegistrationNumber: [''],
-      purchaserdBaName: [''],
+      purchasersTelephoneNumber: [],
+      purchasersEmailAddress: [],
+      idNumberCollected: [],
+      typeOfIdNumberCollected: [],
+      nameOfPurchaserBusiness: [],
+      purchaserRegistrationNumber: [],
+      purchaserdBaName: [],
       purchasersBusinessAddress: this.fb.group({
         id: [],
-        streetLine1: [''],
+        streetLine1: [],
         streetLine2: [],
-        city: [''],
-        province: [''],
-        postalCode: [''],
-        country: [''],
+        city: [],
+        province: [],
+        postalCode: [],
+        country: [],
       }),
-      legalNameOfPersonResponsibleForBusiness: [''],
-      phoneNumberOfPersonResponsibleForBusiness: [''],
-      emailOfPersonResponsibleForBusiness: [''],
-      geographicalLocationOfBusinessPurchaser: [''],
-      isPurchaserAPersonOfBC: [''],
-      howIsPurchaseAuthorizedAO: [''],
-      howIsPurchaserAuthorizedWaiver: [''],
-      howIsPurchaserAuthorizedRegisteredSeller: [''],
-      howIsPurchaserAuthorizedOtherCheck: [''],
-      howIsPurchaserAuthorizedOther: [''],
-      healthCanadaLicenseDEL: [''],
-      healthCanadaLicenseSiteLicense: [''],
-      nameOnPurchasersDEL: [''],
-      purchasersDELNumber: [''],
-      purchasersDELExpiryDate: [''],
-      nameOnPurchasersSiteLicense: [''],
-      purchasersSiteLicenseNumber: [''],
-      purchasersSiteLicenseExpDate: [''],
-      purchasersWaiverNumber: [''],
-      purchasersRegistrationNumber: [''],
+      legalNameOfPersonResponsibleForBusiness: [],
+      phoneNumberOfPersonResponsibleForBusiness: [],
+      emailOfPersonResponsibleForBusiness: [],
+      geographicalLocationOfBusinessPurchaser: [],
+      isPurchaserAPersonOfBC: [],
+      howIsPurchaseAuthorizedAO: [],
+      howIsPurchaserAuthorizedWaiver: [],
+      howIsPurchaserAuthorizedRegisteredSeller: [],
+      howIsPurchaserAuthorizedOtherCheck: [],
+      howIsPurchaserAuthorizedOther: [],
+      healthCanadaLicenseDEL: [],
+      healthCanadaLicenseSiteLicense: [],
+      nameOnPurchasersDEL: [],
+      purchasersDELNumber: [],
+      purchasersDELExpiryDate: [],
+      nameOnPurchasersSiteLicense: [],
+      purchasersSiteLicenseNumber: [],
+      purchasersSiteLicenseExpDate: [],
+      purchasersWaiverNumber: [],
+      purchasersRegistrationNumber: [],
     });
 
-    this.clearHiddenFields();
     this.reloadData();
+    this.clearHiddenFields();
   }
 
   reloadData() {
@@ -155,52 +156,52 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
    */
   clearHiddenFields() {
 
-    const individualGroup = ['legalNameOfPurchaserIndividual', 'purchasersCivicAddress', 'purchasersTelephoneNumber',
-      'purchasersEmailAddress', 'idNumberCollected', 'typeOfIdNumberCollected'];
-
-    const businessGroup = ['nameOfPurchaserBusiness',
-      'purchaserRegistrationNumber', 'purchaserdBaName', 'purchasersBusinessAddress', 'legalNameOfPersonResponsibleForBusiness',
-      'phoneNumberOfPersonResponsibleForBusiness', 'emailOfPersonResponsibleForBusiness', 'geographicalLocationOfBusinessPurchaser'];
-
-    const purchaserAPersonOfBCGroup = ['howIsPurchaseAuthorizedAO', 'howIsPurchaserAuthorizedWaiver',
-      'howIsPurchaserAuthorizedRegisteredSeller', 'howIsPurchaserAuthorizedOtherCheck'];
-
-    const purchaseAuthorizedAOGroup = ['healthCanadaLicenseDEL', 'healthCanadaLicenseSiteLicense'];
-
-    const childPurchaseAuthorizedAOGroup = ['nameOnPurchasersDEL', 'purchasersDELNumber', 'purchasersDELExpiryDate',
-      'nameOnPurchasersSiteLicense', 'purchasersSiteLicenseNumber', 'purchasersSiteLicenseExpDate'];
-
-    const healthCanadaLicenseDELGroup = ['nameOnPurchasersDEL', 'purchasersDELNumber', 'purchasersDELExpiryDate'];
-
-    const healthCanadaLicenseSiteLicenseGroup = ['nameOnPurchasersSiteLicense', 'purchasersSiteLicenseNumber', 'purchasersSiteLicenseExpDate'];
-
-
     this.form.get('whereWillEquipmentReside').valueChanges
       .subscribe(value => {
-        if (value === "true") { //BC --> true
-          this.form.get('civicAddressOfPurchaser.province').reset();
-          this.form.get('civicAddressOfPurchaser.province').setValue('British Columbia');
-          this.form.get('civicAddressOfPurchaser.province').disable();
+        const field = 'civicAddressOfPurchaser.province';
+        if (value === "true" || value === true) { //BC --> true
+          this.form.get(field).reset();
+          this.form.get(field).setValue('British Columbia');
+          this.form.get(field).markAsTouched();
+          //this.form.get(field).disable();
+          //this.form.get(field).clearValidators();
+          //this.form.get(field).clearAsyncValidators();
+          this.form.get(field).updateValueAndValidity();
         } else {
-          this.form.get('civicAddressOfPurchaser.province').reset();
-          this.form.get('civicAddressOfPurchaser.province').enable();
+          this.form.get(field).reset();
+          //this.form.get(field).enable();
+          this.form.get(field).setValidators(Validators.required);
+          this.form.get(field).updateValueAndValidity();
         }
       });
 
+    //**********************
     this.form.get('purchasedByIndividualOrBusiness').valueChanges
       .subscribe(value => {
 
-        individualGroup.forEach(field => {
-          this.form.get(field).clearValidators();
-          this.form.get(field).reset();
-        });
+        const individualGroup = ['legalNameOfPurchaserIndividual', 'purchasersCivicAddress', 'purchasersTelephoneNumber',
+          'purchasersEmailAddress', 'idNumberCollected', 'typeOfIdNumberCollected'];
+        const businessGroup = ['nameOfPurchaserBusiness', 'purchaserRegistrationNumber', 'purchaserdBaName',
+          'purchasersBusinessAddress', 'legalNameOfPersonResponsibleForBusiness',
+          'phoneNumberOfPersonResponsibleForBusiness', 'emailOfPersonResponsibleForBusiness',
+          'geographicalLocationOfBusinessPurchaser'];
+        const purchasersCivicAddressGroup = ['purchasersCivicAddress.streetLine1', 'purchasersCivicAddress.city',
+          'purchasersCivicAddress.postalCode', 'purchasersCivicAddress.province', 'purchasersCivicAddress.country'];
+        const purchasersBusinessAddressGroup = ['purchasersBusinessAddress.streetLine1', 'purchasersBusinessAddress.city',
+          'purchasersBusinessAddress.postalCode', 'purchasersBusinessAddress.province', 'purchasersBusinessAddress.country'];
 
-        businessGroup.forEach(field => {
-          this.form.get(field).clearValidators();
-          this.form.get(field).reset();
-        });
-
-        if (value === true) { //business = false, individual = true
+        if (value === true) { // individual = true, business = false
+          // clear all business fields and set required by individual
+          businessGroup.forEach(field => {
+            this.form.get(field).clearValidators();
+            this.form.get(field).reset();
+            this.form.get(field).updateValueAndValidity();
+          });
+          purchasersBusinessAddressGroup.forEach(field => {
+            this.form.get(field).clearValidators();
+            this.form.get(field).reset();
+            this.form.get(field).updateValueAndValidity();
+          });
           this.form.get('legalNameOfPurchaserIndividual').setValidators([Validators.required]);
           this.form.get('purchasersCivicAddress').get('streetLine1').setValidators(Validators.required);
           this.form.get('purchasersCivicAddress').get('city').setValidators(Validators.required);
@@ -211,7 +212,24 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
           this.form.get('purchasersEmailAddress').setValidators([Validators.required, Validators.email]);
           this.form.get('idNumberCollected').setValidators([Validators.required]);
           this.form.get('typeOfIdNumberCollected').setValidators([Validators.required]);
+          individualGroup.forEach(field => {
+            this.form.get(field).updateValueAndValidity();
+          });
+          purchasersCivicAddressGroup.forEach(field => {
+            this.form.get(field).updateValueAndValidity();
+          });
         } else {
+          // clear all individual fields and set required by business
+          individualGroup.forEach(field => {
+            this.form.get(field).clearValidators();
+            this.form.get(field).reset();
+            this.form.get(field).updateValueAndValidity();
+          });
+          purchasersCivicAddressGroup.forEach(field => {
+            this.form.get(field).clearValidators();
+            this.form.get(field).reset();
+            this.form.get(field).updateValueAndValidity();
+          });
           this.form.get('nameOfPurchaserBusiness').setValidators([Validators.required]);
           this.form.get('purchaserRegistrationNumber').setValidators([Validators.required]);
           this.form.get('purchaserdBaName').setValidators([Validators.required]);
@@ -224,113 +242,215 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
           this.form.get('phoneNumberOfPersonResponsibleForBusiness').setValidators([Validators.required, Validators.minLength(10), Validators.maxLength(10)]);
           this.form.get('emailOfPersonResponsibleForBusiness').setValidators([Validators.required, Validators.email]);
           this.form.get('geographicalLocationOfBusinessPurchaser').setValidators([Validators.required]);
+          businessGroup.forEach(field => {
+            this.form.get(field).updateValueAndValidity();
+          });
+          purchasersBusinessAddressGroup.forEach(field => {
+            this.form.get(field).updateValueAndValidity();
+          });
         }
       });
 
+    //**********************
     this.form.get('isPurchaserAPersonOfBC').valueChanges
       .subscribe(value => {
-        purchaserAPersonOfBCGroup.forEach(field => {
-          this.form.get(field).clearValidators();
-          this.form.get(field).reset();
-        });
+
+        const purchaserAPersonOfBCGroup = ['howIsPurchaseAuthorizedAO', 'howIsPurchaserAuthorizedWaiver',
+          'howIsPurchaserAuthorizedRegisteredSeller', 'howIsPurchaserAuthorizedOtherCheck'];
+
+        if (!value) {
+          purchaserAPersonOfBCGroup.forEach(field => {
+            this.form.get(field).clearValidators();
+            this.form.get(field).reset();
+            this.form.get(field).updateValueAndValidity();
+          });
+        } else {
+          purchaserAPersonOfBCGroup.forEach(field => {
+            this.form.get(field).setValidators([this.requiredCheckboxGroupValidator(purchaserAPersonOfBCGroup)]);
+            this.form.get(field).updateValueAndValidity();
+          });
+        }
       });
 
+    //**********************
     this.form.get('howIsPurchaseAuthorizedAO').valueChanges
       .subscribe(value => {
-        purchaseAuthorizedAOGroup.forEach(field => {
-          this.form.get(field).clearValidators();
-          this.form.get(field).reset();
-          if (value) {
-            //this.form.get(field).setValidators([this.requiredCheckboxGroupValidator(group)]);
-          }
-        });
-        childPurchaseAuthorizedAOGroup.forEach(field => {
-          this.form.get(field).clearValidators();
-          this.form.get(field).reset();
-          if (value) {
-            //this.form.get(field).setValidators([this.requiredCheckboxGroupValidator(group)]);
-          }
-        });
+
+        const purchaseAuthorizedAOGroup = ['healthCanadaLicenseDEL', 'healthCanadaLicenseSiteLicense'];
+
+        if (!value) {
+          purchaseAuthorizedAOGroup.forEach(field => {
+            this.form.get(field).clearValidators();
+            this.form.get(field).reset();
+            this.form.get(field).updateValueAndValidity();
+          });
+        } else {
+          purchaseAuthorizedAOGroup.forEach(field => {
+            this.form.get(field).setValidators(this.requiredCheckboxGroupValidator(purchaseAuthorizedAOGroup));
+            this.form.get(field).updateValueAndValidity();
+          });
+        }
+
       });
 
+    //**********************
     this.form.get('healthCanadaLicenseDEL').valueChanges
       .subscribe(value => {
-        healthCanadaLicenseDELGroup.forEach(field => {
+
+        const healthCanadaLicenseDELGroup = ['nameOnPurchasersDEL', 'purchasersDELNumber', 'purchasersDELExpiryDate'];
+
+        if (!value) {
+          healthCanadaLicenseDELGroup.forEach(field => {
             this.form.get(field).clearValidators();
-          this.form.get(field).reset();
-          if (value) {
-            //this.form.get(field).setValidators([Validators.required]);
-          }
-        });
+            this.form.get(field).reset();
+            this.form.get(field).updateValueAndValidity();
+          });
+        } else {
+          healthCanadaLicenseDELGroup.forEach(field => {
+            this.form.get(field).setValidators(Validators.required);
+            this.form.get(field).updateValueAndValidity();
+          });
+        }
+
       });
 
+    //**********************
     this.form.get('healthCanadaLicenseSiteLicense').valueChanges
       .subscribe(value => {
-        healthCanadaLicenseSiteLicenseGroup.forEach(field => {
+
+        const healthCanadaLicenseSiteLicenseGroup = ['nameOnPurchasersSiteLicense', 'purchasersSiteLicenseNumber',
+          'purchasersSiteLicenseExpDate'];
+
+        if (!value) {
+          healthCanadaLicenseSiteLicenseGroup.forEach(field => {
             this.form.get(field).clearValidators();
-          this.form.get(field).reset();
-          if (value) {
-            //this.form.get(field).setValidators([Validators.required]);
-          }
-        });
+            this.form.get(field).reset();
+            this.form.get(field).updateValueAndValidity();
+          });
+        } else {
+          healthCanadaLicenseSiteLicenseGroup.forEach(field => {
+            this.form.get(field).setValidators(Validators.required);
+            this.form.get(field).updateValueAndValidity();
+          });
+        }
+
       });
 
+    //**********************
     this.form.get('howIsPurchaserAuthorizedWaiver').valueChanges
       .subscribe(value => {
-        this.form.get('purchasersWaiverNumber').clearValidators();
-        this.form.get('purchasersWaiverNumber').reset();
-        if (value) {
-          this.form.get('purchasersWaiverNumber').setValidators(Validators.required);
+        const field = 'purchasersWaiverNumber';
+        if (!value) {
+          this.form.get(field).clearValidators();
+          this.form.get(field).reset();
+          this.form.get(field).updateValueAndValidity();
+        } else {
+          this.form.get(field).setValidators(Validators.required);
+          this.form.get(field).updateValueAndValidity();
         }
       });
 
+    //**********************
     this.form.get('howIsPurchaserAuthorizedRegisteredSeller').valueChanges
       .subscribe(value => {
-        this.form.get('purchasersRegistrationNumber').clearValidators();
-        this.form.get('purchasersRegistrationNumber').reset();
-        if (value) {
-          this.form.get('purchasersRegistrationNumber').setValidators(Validators.required);
+        const field = 'purchasersRegistrationNumber';
+        if (!value) {
+          this.form.get(field).clearValidators();
+          this.form.get(field).reset();
+          this.form.get(field).updateValueAndValidity();
+        } else {
+          this.form.get(field).setValidators(Validators.required);
+          this.form.get(field).updateValueAndValidity();
         }
       });
 
+    //**********************
     this.form.get('howIsPurchaserAuthorizedOtherCheck').valueChanges
       .subscribe(value => {
-        this.form.get('howIsPurchaserAuthorizedOther').clearValidators();
-        this.form.get('howIsPurchaserAuthorizedOther').reset();
-        if (value) {
-          this.form.get('howIsPurchaserAuthorizedOther').setValidators([Validators.required]);
-        };
-      });
-
-    this.form.get('typeOfSale').valueChanges
-      .subscribe(value => {
-        if (value === 'Other') {
-          this.form.get('typeOfSaleOther').setValidators(Validators.required);
+        const field = 'howIsPurchaserAuthorizedOther';
+        if (!value) {
+          this.form.get(field).clearValidators();
+          this.form.get(field).reset();
+          this.form.get(field).updateValueAndValidity();
         } else {
-          this.form.get('typeOfSaleOther').clearValidators();
-          this.form.get('typeOfSaleOther').reset();
+          this.form.get(field).setValidators([Validators.required]);
+          this.form.get(field).updateValueAndValidity();
         }
       });
 
+    //**********************
+    this.form.get('typeOfSale').valueChanges
+      .subscribe(value => {
+        const field = 'typeOfSaleOther';
+        if (value === 'Other') {
+          this.form.get(field).setValidators([Validators.required]);
+          this.form.get(field).updateValueAndValidity();
+        } else {
+          this.form.get(field).clearValidators();
+          this.form.get(field).reset();
+          this.form.get(field).updateValueAndValidity();
+        }
+      });
+
+    //**********************
     this.form.get('methodOfPayment').valueChanges
       .subscribe(value => {
         if (value === 'Other') {
           this.form.get('methodOfPaymentOther').setValidators(Validators.required);
+          this.form.get('methodOfPaymentOther').updateValueAndValidity();
         } else {
           this.form.get('methodOfPaymentOther').clearValidators();
           this.form.get('methodOfPaymentOther').reset();
+          this.form.get('methodOfPaymentOther').updateValueAndValidity();
         }
       });
 
+    //**********************
     this.form.get('idNumberCollected').valueChanges
       .subscribe(value => {
         if (value === true) {
           this.form.get('typeOfIdNumberCollected').setValidators(Validators.required);
+          this.form.get('typeOfIdNumberCollected').updateValueAndValidity();
         } else {
           this.form.get('typeOfIdNumberCollected').clearValidators();
           this.form.get('typeOfIdNumberCollected').reset();
+          this.form.get('typeOfIdNumberCollected').updateValueAndValidity();
         }
       });
+  }
+
+  /**
+   * Validate that at least one checkbox has been selected
+   */
+  howIsPurchaserAuthorizedValid() {
+    const result = (
+      this.form.get('howIsPurchaseAuthorizedAO').valid
+      || this.form.get('howIsPurchaserAuthorizedWaiver').valid
+      || this.form.get('howIsPurchaserAuthorizedRegisteredSeller').valid
+      || this.form.get('howIsPurchaserAuthorizedOtherCheck').valid
+    )
+      ||
+      !(this.form.get('howIsPurchaseAuthorizedAO').touched
+      || this.form.get('howIsPurchaserAuthorizedWaiver').touched
+      || this.form.get('howIsPurchaserAuthorizedRegisteredSeller').touched
+      || this.form.get('howIsPurchaserAuthorizedOtherCheck').touched);
+    //console.log('howIsPurchaserAuthorizedValid: ' + result);
+    return result;
+  }
+
+  /**
+   * Validate that at least one checkbox has been selected
+   */
+  isPurchaserHealthCanadaLicenceValid() {
+    const result = (
+      this.form.get('healthCanadaLicenseDEL').valid
+      || this.form.get('healthCanadaLicenseSiteLicense').valid
+    )
+      ||
+      !(this.form.get('healthCanadaLicenseDEL').touched
+      || this.form.get('healthCanadaLicenseSiteLicense').touched);
+    //console.log('isPurchaserHealthCanadaLicenceValid: ' + result);
+    return result;
   }
 
   /**
@@ -339,9 +459,9 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
    */
   save(goToReview: boolean) {
     if (this.form.valid || goToReview === false) {
+      //console.log('valid');
+      //for (var c in this.form.controls) { console.log(c + '= ' + this.form.get(c).value) };
       const value = this.form.value;
-      console.log('valid');
-      ///* 
       const saveList = [this.applicationDataService.updateApplication(value)];
       this.busyPromise = zip(...saveList)
         .toPromise()
@@ -354,10 +474,9 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
         }, err => {
           // todo: show errors;
         });
-        //*/
+        
     } else {
-      this.markAsTouched();
-      for (var c in this.form.controls) { if (!this.form.get(c).valid) { console.log('Invalid: ' + c) } };
+      //for (var c in this.form.controls) { if (!this.form.get(c).valid) { console.log('Invalid: ' + c) } };
     }
   }
 
@@ -368,32 +487,33 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
     this.router.navigateByUrl(`/dashboard`);
   }
 
+  /**
+   *
+   */
   markAsTouched() {
+    
     let controls = this.form.controls;
     for (const c in controls) {
-      if (typeof (controls[c].markAsTouched) === 'function') {
-        controls[c].markAsTouched();
-      }
+      controls[c].markAsTouched();
+      controls[c].updateValueAndValidity();
     }
 
-    controls = (<FormGroup>this.form.get('purchasersCivicAddress')).controls;
-    for (const c in controls) {
-      if (typeof (controls[c].markAsTouched) === 'function') {
-        controls[c].markAsTouched();
-      }
-    }
     controls = (<FormGroup>this.form.get('civicAddressOfPurchaser')).controls;
     for (const c in controls) {
-      if (typeof (controls[c].markAsTouched) === 'function') {
-        controls[c].markAsTouched();
-      }
+      controls[c].markAsTouched();
+      controls[c].updateValueAndValidity();
+    }
+    controls = (<FormGroup>this.form.get('purchasersCivicAddress')).controls;
+    for (const c in controls) {
+      controls[c].markAsTouched();
+      controls[c].updateValueAndValidity();
     }
     controls = (<FormGroup>this.form.get('purchasersBusinessAddress')).controls;
     for (const c in controls) {
-      if (typeof (controls[c].markAsTouched) === 'function') {
-        controls[c].markAsTouched();
-      }
+      controls[c].markAsTouched();
+      controls[c].updateValueAndValidity();
     }
-    this.form.updateValueAndValidity();
+
   }
+
 }

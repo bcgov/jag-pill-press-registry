@@ -454,13 +454,14 @@
                        [showChevrons]="false" [required]="true">
               <input type="radio" [value]="true" name="isPurchaserAPersonOfBC" formControlName="isPurchaserAPersonOfBC">
               <span style="padding-right: 10px;">&nbsp;Yes</span>
-              <input type="radio" [value]="false" name="isPurchaserAPersonOfBC"
-                     formControlName="isPurchaserAPersonOfBC">
+              <input type="radio" [value]="false" name="isPurchaserAPersonOfBC" formControlName="isPurchaserAPersonOfBC">
               <span>&nbsp;No</span>
             </app-field>
             <section *ngIf="form.get('isPurchaserAPersonOfBC').value === true">
               <app-field label="How is the purchaser authorized to own, use, or possess Controlled Equipment?"
-                         errorMessage="Please select all the options that apply" [required]="true">
+                         [valid]="howIsPurchaserAuthorizedValid()"
+                         errorMessage="Please select all the options that apply"
+                         [required]="true">
                 <p>Please select all the options that apply.</p>
                 <input type="checkbox" formControlName="howIsPurchaseAuthorizedAO"
                        (change)="form.updateValueAndValidity()" style="margin-right: 10px;">
@@ -486,7 +487,7 @@
               <h3 style="color: #38598A">Authorized Owner</h3>
               <div class="notes">
                 <fa-icon [icon]="faInfoCircle" style="color: #003366; margin-right: 10px;"></fa-icon>
-                <span>
+                <div>
                   Learn more about the following licences:
                   <ul>
                     <li>
@@ -498,10 +499,13 @@
                          target="_blank">Site Licence</a>
                     </li>
                   </ul>
-                </span>
+                </div>
               </div>
               <app-field label="What kind of Health Canada licence does the purchaser have?"
-                         errorMessage="Please select an answer to the question above" [showChevrons]="false" [required]="true">
+                         [valid]="isPurchaserHealthCanadaLicenceValid()"
+                         errorMessage="Please select an answer to the question above"
+                         [showChevrons]="false"
+                         [required]="true">
                 <p>Please select all the options that apply.</p>
                 <input type="checkbox" formControlName="healthCanadaLicenseDEL" style="margin-right: 10px;">
                 <span>Drug Establishment Licence</span>
@@ -609,10 +613,10 @@
               </span>
             </div>
 
-            <div *ngIf="!form.valid && form.touched" class="error-summary">
+            <!--<div *ngIf="!form.valid" class="error-summary"> 
               <fa-icon [icon]="faExclamationTriangle" style=" margin-right: 10px;"></fa-icon>
               <span>Some required fields have not been completed</span>
-            </div>
+            </div>-->
           </section>
         </div>
       </div>
