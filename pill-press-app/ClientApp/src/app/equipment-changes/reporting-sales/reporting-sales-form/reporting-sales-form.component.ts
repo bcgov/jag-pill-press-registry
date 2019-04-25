@@ -376,6 +376,7 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
           this.form.get(field).setValidators([Validators.required]);
           this.form.get(field).updateValueAndValidity();
         }
+
       });
 
     //**********************
