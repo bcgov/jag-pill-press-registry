@@ -295,7 +295,7 @@
                       <section *ngIf="!account?.registeredSellerAdministrativeHold && !waiverHolderCertificate?.hasExpired
                                && sellerCertificate?.hasCertificate && !sellerCertificate?.hasExpired">
                         <div class="download-link-spacing">
-                          <a href="api/application/{{sellerCertificate?.applicationId}}/download-certificate" download>
+                          <a href="api/application/{{registeredSellerApplication?.id}}/download-certificate" download>
                             <!-- <fa-icon [icon]="faFilePdf" style="color: #38598A; margin-right: 5px;"></fa-icon> -->
                             Download Certificate
                           </a>
