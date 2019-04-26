@@ -168,7 +168,7 @@ export class EquipmentLocationComponent extends FormBase implements OnInit {
       equipmentLocation: this.fb.group({
         id: [],
         privateDwelling: ['', Validators.required],
-        settingDescription: [''], //Validators.required
+        settingDescription: ['', Validators.required],
         address: this.fb.group({
           id: [],
           streetLine1: ['', Validators.required],
@@ -178,17 +178,19 @@ export class EquipmentLocationComponent extends FormBase implements OnInit {
           postalCode: ['', [Validators.required, Validators.pattern(postalRegex)]],
         }),
       }),
+      //settingDescription needs to be defined twice, at the application level and the equipmentLocation
+      settingDescription: []
     });
    
 
-    this.form.get('equipmentLocation.id').valueChanges
-      .subscribe(value => {
-        if (value) {
-          this.form.get('equipmentLocation.privateDwelling').disable();
-        } else {
-          this.form.get('equipmentLocation.privateDwelling').enable();
-        }
-      });
+    //this.form.get('equipmentLocation.id').valueChanges
+    //  .subscribe(value => {
+    //    if (value) {
+    //      this.form.get('equipmentLocation.privateDwelling').disable();
+    //    } else {
+    //      this.form.get('equipmentLocation.privateDwelling').enable();
+    //    }
+    //  });
 
     this.reloadData();
   }
@@ -207,6 +209,8 @@ export class EquipmentLocationComponent extends FormBase implements OnInit {
               //application.equipmentLocation = application.equipmentLocation || <EquipmentLocation>{ address: {} };              
               this.locations = <EquipmentLocation[]>result[1];
               this.form.patchValue(application);
+              const setdesc = this.form.get('settingDescription').value;
+              this.form.get('equipmentLocation.settingDescription').setValue(setdesc);
             });
         }
       });
@@ -234,6 +238,9 @@ export class EquipmentLocationComponent extends FormBase implements OnInit {
 
   save(goToReview: boolean) {
     if (this.form.valid || goToReview === false) {
+      //copy the value from equipmentLocation.settingDescription to settingDescription
+      const setdesc = this.form.get('equipmentLocation.settingDescription').value; 
+      this.form.get('settingDescription').setValue(setdesc);
       const value = this.form.value;
       const saveList = [this.applicationDataService.updateApplication(value)];
       this.busyPromise = zip(...saveList)
