@@ -58,7 +58,7 @@ export class LocationChangeComponent extends FormBase implements OnInit {
       equipmentLocation: this.fb.group({
         id: [],
         privateDwelling: ['', Validators.required],
-        settingDescription: [''], //Validators.required
+        settingDescription: ['', Validators.required],
         address: this.fb.group({
           id: [],
           streetLine1: ['', Validators.required],
@@ -70,16 +70,16 @@ export class LocationChangeComponent extends FormBase implements OnInit {
       }),
     });
 
-    this.form.get('equipmentLocation.id').valueChanges
-      .subscribe(value => {
-        if (value || value === '') {
-          this.form.get('equipmentLocation.privateDwelling').disable();
-          this.form.get('equipmentLocation.settingDescription').disable();
-        } else {
-          this.form.get('equipmentLocation.privateDwelling').enable();
-          this.form.get('equipmentLocation.settingDescription').enable();
-        }
-      });
+    //this.form.get('equipmentLocation.id').valueChanges
+    //  .subscribe(value => {
+    //    if (value || value === '') {
+    //      this.form.get('equipmentLocation.privateDwelling').disable();
+    //      this.form.get('equipmentLocation.settingDescription').disable();
+    //    } else {
+    //      this.form.get('equipmentLocation.privateDwelling').enable();
+    //      this.form.get('equipmentLocation.settingDescription').enable();
+    //    }
+    //  });
 
     this.reloadData();
   }
