@@ -236,7 +236,7 @@
                          [valid]="form.get('nameOfPurchaserBusiness').valid || !form.get('nameOfPurchaserBusiness').touched" errorMessage="Please provide an answer to the question above">
                 <input class="form-control" maxlength="100" style="width: 500px" type="text" formControlName="nameOfPurchaserBusiness">
               </app-field>
-              <app-field label="What is the registration number (i.e. corporate registry number) for the purchaser?"
+              <app-field label="What is the business number (i.e. corporate registry number) for the purchaser?"
                          [required]="true" errorMessage="Please provide the registration number for the purchaser"
                          [valid]="form.get('purchaserRegistrationNumber').valid || !form.get('purchaserRegistrationNumber').touched">
                 <input class="form-control" maxlength="10" style="width: 150px;" type="text"
@@ -585,7 +585,7 @@
 
             <section *ngIf="form.get('howIsPurchaserAuthorizedRegisteredSeller').value === true">
               <h3 style="color: #38598A">Registered Seller</h3>
-              <app-field label="What is the purchaser's Registration number?" [required]="true" [showChevrons]="false"
+              <app-field label="What is the purchaser's Registered Seller number?" [required]="true" [showChevrons]="false"
                          [valid]="form.get('purchasersRegistrationNumber').valid || !form.get('purchasersRegistrationNumber').touched"
                          errorMessage="Please provide the purchaser's Registration number">
                 <input class="form-control" maxlength="100" style="width: 500px" type="text"
