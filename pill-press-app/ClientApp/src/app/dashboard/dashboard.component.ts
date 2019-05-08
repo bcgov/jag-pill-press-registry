@@ -96,7 +96,8 @@ export class DashboardComponent implements OnInit {
           }
 
           const pendingChanges = data.filter(a => a.equipmentRecord && app.equipmentRecord
-            && a.equipmentRecord.id === app.equipmentRecord.id && a.applicationtype === 'Equipment Change'); //&& a.statuscode!=='Denied'
+            && a.equipmentRecord.id === app.equipmentRecord.id && a.applicationtype === 'Equipment Change'
+            && a.statuscode !== 'Draft' && a.statuscode !== 'Cancelled'); //&& a.statuscode!=='Denied'
           app.hasChangePending = (pendingChanges.length > 0);
           if (pendingChanges.length > 0) {
             const lsdChanges = pendingChanges.filter(c => ['Lost', 'Stolen', 'Destroyed'].indexOf(c.typeOfChange) !== -1);

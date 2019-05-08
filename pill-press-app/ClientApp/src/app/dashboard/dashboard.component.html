@@ -522,6 +522,8 @@
                     </tr>
                     <tr *ngFor="let item of completedEquipment; let i = index;" style="border: 1px solid #ccc;" id="EquipmentCompletedRow"
                         [ngClass]="{ 'grayOut' : item.hasChangePending }">
+                      <!--{ 'grayOut' : item.hasChangePending }-->
+                      <!--{ 'grayOut' : item.hasChangePending && item.statuscode!=='Draft' && item.statuscode!=='Cancelled' }-->
                       <!--Equipment column-->
                       <td style="padding: 0; position: relative;">
                         <div style="display: flex;position: absolute;top: 0;bottom:  0;right:  0;left: 0;">
