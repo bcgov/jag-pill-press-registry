@@ -132,6 +132,7 @@ export class LocationChangeComponent extends FormBase implements OnInit {
     if (this.form.valid) {
       const value = this.form.value;
       //const saveList = [this.applicationDataService.updateApplication(value)];
+      value.equipmentLocation.address.addresstype = "Location";
       this.application.equipmentLocation = value.equipmentLocation;
       const saveList = [this.equipmentDataService.changeEquipmentLocation(this.application)];
       this.busyPromise = zip(...saveList)

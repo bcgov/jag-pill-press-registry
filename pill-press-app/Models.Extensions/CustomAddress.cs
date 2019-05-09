@@ -45,7 +45,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                 result = new MicrosoftDynamicsCRMbcgovCustomaddress()
                 {
                     Emailaddress = customAddress.Emailaddress,
-                    BcgovAddresstype = customAddress.BcgovAddresstype,
+                    BcgovAddresstype = (int?)customAddress.BcgovAddresstype,
                     BcgovName = customAddress.StreetLine1,
                     BcgovStreetline2 = customAddress.StreetLine2,
                     BcgovStreetline3 = customAddress.StreetLine3,
@@ -75,7 +75,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                 result = new ViewModels.CustomAddress()
                 {
                     Emailaddress = customAddress.Emailaddress,
-                    BcgovAddresstype = customAddress.BcgovAddresstype,
+                    BcgovAddresstype = (AddressTypes?)customAddress.BcgovAddresstype,
                     StreetLine1 = customAddress.BcgovName,
                     StreetLine2 = customAddress.BcgovStreetline2,
                     StreetLine3 = customAddress.BcgovStreetline3,
@@ -97,7 +97,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
         public static void CopyValues(this MicrosoftDynamicsCRMbcgovCustomaddress to, ViewModels.CustomAddress from)
         {
             to.Emailaddress = from.Emailaddress;
-            to.BcgovAddresstype = from.BcgovAddresstype;
+            to.BcgovAddresstype = (int?)from.BcgovAddresstype;
             to.BcgovName = from.StreetLine1;
             to.BcgovStreetline2 = from.StreetLine2;
             to.BcgovStreetline3 = from.StreetLine3;
