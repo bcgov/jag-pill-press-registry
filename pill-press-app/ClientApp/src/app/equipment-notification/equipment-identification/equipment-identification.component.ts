@@ -76,12 +76,12 @@ export class EquipmentIdentificationComponent extends FormBase implements OnInit
       .subscribe((value) => {
         if (value === 'Commercially Manufactured') {
           this.form.get('addressofPersonBusiness').reset();
+          this.form.get('addressofPersonBusiness').updateValueAndValidity();
         }
         for (const field in this.form.controls) {
-          if (field !== 'id'
-            && field !== 'province'
-            && field !== 'howWasEquipmentBuilt') {
+          if (field !== 'id' && field !== 'province' && field !== 'howWasEquipmentBuilt') {
             this.form.get(field).reset();
+            this.form.get(field).updateValueAndValidity();
           }
         }
       });
@@ -90,7 +90,10 @@ export class EquipmentIdentificationComponent extends FormBase implements OnInit
   save(goToReview: boolean) {
     if (this.form.valid || goToReview === false) {
       const value = this.form.value;
-      value.addressofPersonBusiness.country = 'Canada';
+      // country is not a field captured on the screen. By adding it an address record gets created that only has the country
+      //if (value.addressofPersonBusiness.streetLine1) {
+      //  value.addressofPersonBusiness.country = 'Canada';
+      //}
       const saveList = [this.applicationDataService.updateApplication(value)];
       this.busyPromise = zip(...saveList)
         .toPromise()
