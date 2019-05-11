@@ -29,6 +29,7 @@ export class LocationChangeComponent extends FormBase implements OnInit {
   application: Application;
   locations: EquipmentLocation[] = [];
   equipment: Equipment;
+  editable: boolean = false;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -64,22 +65,11 @@ export class LocationChangeComponent extends FormBase implements OnInit {
           streetLine1: ['', Validators.required],
           streetLine2: [],
           city: ['', Validators.required],
-          province: ['British Columbia'],
-          postalCode: ['', [Validators.required, Validators.pattern(postalRegex)]],
+          province: [''],
+          postalCode: ['', [Validators.required]],
         }),
       }),
     });
-
-    //this.form.get('equipmentLocation.id').valueChanges
-    //  .subscribe(value => {
-    //    if (value || value === '') {
-    //      this.form.get('equipmentLocation.privateDwelling').disable();
-    //      this.form.get('equipmentLocation.settingDescription').disable();
-    //    } else {
-    //      this.form.get('equipmentLocation.privateDwelling').enable();
-    //      this.form.get('equipmentLocation.settingDescription').enable();
-    //    }
-    //  });
 
     this.reloadData();
   }
@@ -123,7 +113,12 @@ export class LocationChangeComponent extends FormBase implements OnInit {
   tabChanged(event: any) {
     if (event.tab.textLabel === 'ADD A NEW LOCATION') {
       this.form.get('equipmentLocation').reset();
-      this.form.get('equipmentLocation.address.province').setValue('British Columbia');
+      //this.form.get('equipmentLocation.address.province').setValue('British Columbia');
+      this.form.get('equipmentLocation.address.province').enable();
+      this.editable = true;
+    } else {
+      this.form.get('equipmentLocation.address.province').disable();
+      this.editable = false;
     }
   }
 

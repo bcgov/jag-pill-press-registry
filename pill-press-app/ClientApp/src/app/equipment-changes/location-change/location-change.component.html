@@ -52,7 +52,7 @@
                         <section class="col-md-6 col-xs-12">
                           <app-field label="Province"
                                      [required]="false">
-                            <input type="text" readonly formControlName="province" class="form-control">
+                            <input type="text" [readonly]="!editable" formControlName="province" class="form-control">
                           </app-field>
                         </section>
                         <section class="col-md-6 col-xs-12">
