@@ -517,6 +517,9 @@ export class EquipmentSourceComponent extends FormBase implements OnInit {
   save(goToReview: boolean) {
     if (this.form.valid || goToReview === false) {
       const value = this.form.value;
+      if (!value.bcSellersAddress.streetLine1) {
+        value.bcSellersAddress.province = null;
+      }
       const saveList = [this.applicationDataService.updateApplication(value)];
       this.busyPromise = zip(...saveList)
         .toPromise()

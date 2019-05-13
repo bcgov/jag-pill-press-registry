@@ -4,12 +4,9 @@
   <h1>Seller Registration Application Review</h1>
 
   <p>
-    You have provided the following information in your Authorized Owner confirmation. In order to proceed, please
-    confirm that
-    these details are correct. If they are not, please <a routerLink="/registered-seller/application/{{waiverId}}">amend
-      your
-      answers</a>
-    before submitting the application.
+    You have provided the following information in your Seller Registration application. In order to proceed, please
+    confirm that these details are correct. If they are not, please
+    <a routerLink="/registered-seller/application/{{waiverId}}"> amend your answers</a> before submitting the application.
   </p>
 
   <h2>Equipment Information</h2>
@@ -18,7 +15,6 @@
       <td [ngClass]="{ 'row-alt': i%2==1 }">
         <span *ngIf="i%2 === 1">{{item}}</span>
         <strong *ngIf="i%2 === 0">{{item}}</strong>
-
       </td>
     </tr>
   </table>

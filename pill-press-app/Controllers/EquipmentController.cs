@@ -239,7 +239,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     location = applicationVM.EquipmentLocation.ToModel();
                     try
                     {
-                        var address = CreateOrUpdateAddress(applicationVM.EquipmentLocation.Address);
+                        var address = CreateOrUpdateAddress(applicationVM.EquipmentLocation.Address, applicationVM.applicant.id);
                         //applicationVM.EquipmentLocation.Address = address.ToViewModel();
 
                         if (address != null)
@@ -280,11 +280,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 equipmentLocation = new MicrosoftDynamicsCRMbcgovEquipmentlocation();
                 equipmentLocation.BcgovName = applicationVM.EquipmentLocation.Name;
                 equipmentLocation.BcgovFromwhen = DateTime.Now;   // should come from applicationVM.EquipmentLocation.FromWhen;
-                if (string.IsNullOrEmpty(applicationVM.EquipmentLocation.SettingDescription))
-                {
-                    equipmentLocation.BcgovSettingdescription = "Setting Description value was null - " + DateTime.Now.ToLocalTime();
-                }
-                else
+                if (!string.IsNullOrEmpty(applicationVM.EquipmentLocation.SettingDescription))
                 {
                     equipmentLocation.BcgovSettingdescription = applicationVM.EquipmentLocation.SettingDescription;
                 }
@@ -437,7 +433,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         /// </summary>
         /// <param name="ca"></param>
         /// <returns></returns>
-        private MicrosoftDynamicsCRMbcgovCustomaddress CreateOrUpdateAddress(ViewModels.CustomAddress ca)
+        private MicrosoftDynamicsCRMbcgovCustomaddress CreateOrUpdateAddress(ViewModels.CustomAddress ca, string accountId = null)
         {
             MicrosoftDynamicsCRMbcgovCustomaddress address = null;
             if (ca != null)
@@ -450,6 +446,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                         // create an address.                        
                         try
                         {
+                            // bind the business profile if included 
+                            if (!string.IsNullOrEmpty(accountId))
+                            {
+                                address.BusinessProfileODataBind = _dynamicsClient.GetEntityURI("accounts", accountId);
+                            }
                             address = _dynamicsClient.Customaddresses.Create(address);
                             ca.Id = address.BcgovCustomaddressid;
                         }
@@ -468,6 +469,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                         // update
                         try
                         {
+                            // bind the business profile if included 
+                            if (!string.IsNullOrEmpty(accountId))
+                            {
+                                address.BusinessProfileODataBind = _dynamicsClient.GetEntityURI("accounts", accountId);
+                            }
                             _dynamicsClient.Customaddresses.Update(ca.Id, address);
                         }
                         catch (OdataerrorException odee)
