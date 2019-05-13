@@ -29,7 +29,6 @@ export class LocationChangeComponent extends FormBase implements OnInit {
   application: Application;
   locations: EquipmentLocation[] = [];
   equipment: Equipment;
-  editable: boolean = false;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -65,7 +64,7 @@ export class LocationChangeComponent extends FormBase implements OnInit {
           streetLine1: ['', Validators.required],
           streetLine2: [],
           city: ['', Validators.required],
-          province: [''],
+          province: ['', Validators.required],
           postalCode: ['', [Validators.required]],
         }),
       }),
@@ -114,11 +113,6 @@ export class LocationChangeComponent extends FormBase implements OnInit {
     if (event.tab.textLabel === 'ADD A NEW LOCATION') {
       this.form.get('equipmentLocation').reset();
       //this.form.get('equipmentLocation.address.province').setValue('British Columbia');
-      this.form.get('equipmentLocation.address.province').enable();
-      this.editable = true;
-    } else {
-      this.form.get('equipmentLocation.address.province').disable();
-      this.editable = false;
     }
   }
 
