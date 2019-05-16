@@ -10,6 +10,7 @@ import {
   faExclamationCircle,
   faAddressCard
 } from '@fortawesome/free-solid-svg-icons';
+import { Observable, Subscription } from 'rxjs';
 @Component({
   selector: 'app-equipment-notification',
   templateUrl: './equipment-notification.component.html',
@@ -33,6 +34,7 @@ export class EquipmentNotificationComponent implements OnInit {
   faCheck = faCheck;
   faExclamationCircle = faExclamationCircle;
   faAddressCard = faAddressCard;
+  busy: Subscription;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -46,6 +48,7 @@ export class EquipmentNotificationComponent implements OnInit {
     this.loadEquipment();
 
     this.stepper.selectedIndex = this.tabList.indexOf(this.tab);
+    //this.stepper.selected.editable = true;
     this.router.events.forEach((event) => {
       if (event instanceof NavigationEnd) {
         if (this.route.snapshot.firstChild.url.length > 0) {
@@ -64,7 +67,7 @@ export class EquipmentNotificationComponent implements OnInit {
   }
 
   loadEquipment() {
-    this.applicationDataService.getApplications()
+    this.busy = this.applicationDataService.getApplications()
       .subscribe((data: Application[]) => {
         this.equipment = data.filter(a => a.applicationtype === 'Equipment Notification' && a.statuscode !== 'Draft');
       });

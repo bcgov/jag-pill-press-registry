@@ -324,8 +324,7 @@ export class AuthorizedApplicationComponent extends FormBase implements OnInit {
     if (this.form.valid || goToReview === false) {
       const value = { ...this.form.value };
       const saveList = [this.applicationDataService.updateApplication(value), ...this.saveCustomProducts()];
-      zip(...saveList)
-        .subscribe(res => {
+      this.busy = zip(...saveList).subscribe(res => {
           if (goToReview) {
             this.router.navigateByUrl(`/authorized-owner/review/${this.waiverId}`);
           } else {
