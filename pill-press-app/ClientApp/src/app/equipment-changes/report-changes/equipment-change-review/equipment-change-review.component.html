@@ -37,29 +37,36 @@
 
     <h2>Details of Equipment Change</h2>
     <div class="padded-section">
-      <div class="dark-row">Please indicate the type of change to this piece of Controlled Equipment
-        &nbsp; <span class="error-states">*</span></div>
+      <div class="dark-row">
+        Please indicate the type of change to this piece of Controlled Equipment
+        &nbsp; <span class="error-states">*</span>
+      </div>
       <div *ngIf="application?.typeOfChange === 'Lost'" class="alt-row" style="padding-bottom: 0px;">
         <ul style="margin-bottom: 3px;">
           <li>Lost</li>
         </ul>
       </div>
       <section *ngIf="application?.typeOfChange === 'Lost'" class="padded-section">
-        <div class="dark-row">What was the date on which this piece of equipment was lost? &nbsp; <span
-            class="error-states">*</span></div>
+        <div class="dark-row">
+          What was the date on which this piece of equipment was lost? &nbsp; <span class="error-states">*</span>
+        </div>
         <div class="alt-row"> {{ application?.dateOfEquipmentChange | date:'MM-dd-yyyy' }}</div>
 
-        <div class="dark-row">Describe the circumstances under which this piece of equipment was lost? &nbsp;
-          <span class="error-states">*</span></div>
+        <div class="dark-row">
+          Describe the circumstances under which this piece of equipment was lost? &nbsp;
+          <span class="error-states">*</span>
+        </div>
         <div class="alt-row"> {{ application?.circumstancesOfLoss }}</div>
 
-        <div class="dark-row">Did you notify the police that this piece of equipment was lost? &nbsp; <span
-            class="error-states">*</span></div>
+        <div class="dark-row">
+          Did you notify the police that this piece of equipment was lost? &nbsp; <span class="error-states">*</span>
+        </div>
         <div class="alt-row"> {{ application?.policeNotified? 'Yes' : 'No' }}</div>
 
         <section *ngIf="application?.policeNotified" class="padded-section">
-          <div class="dark-row">On what date did you report the loss to police? &nbsp; <span
-              class="error-states">*</span></div>
+          <div class="dark-row">
+            On what date did you report the loss to police? &nbsp; <span class="error-states">*</span>
+          </div>
           <div class="alt-row"> {{ application?.policeReportDate | date:'MM-dd-yyyy' }}</div>
 
           <div class="dark-row">What is the police file number? &nbsp; <span class="error-states">*</span></div>
@@ -73,21 +80,26 @@
         </ul>
       </div>
       <section *ngIf="application?.typeOfChange === 'Stolen'" class="padded-section">
-        <div class="dark-row">What was the date on which this piece of equipment was stolen? &nbsp; <span
-            class="error-states">*</span></div>
+        <div class="dark-row">
+          What was the date on which this piece of equipment was stolen? &nbsp; <span class="error-states">*</span>
+        </div>
         <div class="alt-row"> {{ application?.dateOfEquipmentChange | date:'MM-dd-yyyy' }}</div>
 
-        <div class="dark-row">Describe the circumstances under which this piece of equipment was stolen? &nbsp;
-          <span class="error-states">*</span></div>
+        <div class="dark-row">
+          Describe the circumstances under which this piece of equipment was stolen? &nbsp;
+          <span class="error-states">*</span>
+        </div>
         <div class="alt-row"> {{ application?.circumstancesOfStolenEquipment }}</div>
 
-        <div class="dark-row">Did you notify the police that this piece of equipment was stolen? &nbsp; <span
-            class="error-states">*</span></div>
+        <div class="dark-row">
+          Did you notify the police that this piece of equipment was stolen? &nbsp; <span class="error-states">*</span>
+        </div>
         <div class="alt-row"> {{ application?.policeNotified }}</div>
 
         <section *ngIf="application?.policeNotified" class="padded-section">
-          <div class="dark-row">On what date did you report the theft to police? &nbsp; <span
-              class="error-states">*</span></div>
+          <div class="dark-row">
+            On what date did you report the theft to police? &nbsp; <span class="error-states">*</span>
+          </div>
           <div class="alt-row"> {{ application?.policeReportDate | date:'MM-dd-yyyy' }}</div>
 
           <div class="dark-row">What is the police file number? &nbsp; <span class="error-states">*</span></div>
@@ -101,16 +113,20 @@
         </ul>
       </div>
       <section *ngIf="application?.typeOfChange === 'Destroyed'" class="padded-section" style="padding-bottom: 0px;">
-        <div class="dark-row">What was the date on which this piece of equipment was destroyed? &nbsp; <span
-            class="error-states">*</span></div>
+        <div class="dark-row">
+          What was the date on which this piece of equipment was destroyed? &nbsp; <span class="error-states">*</span>
+        </div>
         <div class="alt-row"> {{ application?.dateOfEquipmentChange | date:'MM-dd-yyyy' }}</div>
 
-        <div class="dark-row">Describe the circumstances under which this piece of equipment was destroyed? &nbsp;
-          <span class="error-states">*</span></div>
+        <div class="dark-row">
+          Describe the circumstances under which this piece of equipment was destroyed? &nbsp;
+          <span class="error-states">*</span>
+        </div>
         <div class="alt-row"> {{ application?.circumstancesOfDestroyedEquipment }}</div>
 
-        <div class="dark-row">What is the address where this piece of equipment was destroyed? &nbsp; <span
-            class="error-states">*</span></div>
+        <div class="dark-row">
+          What is the address where this piece of equipment was destroyed? &nbsp; <span class="error-states">*</span>
+        </div>
         <div class="alt-row">
           <div>{{ application?.addressWhereEquipmentWasDestroyed?.streetLine1 }}</div>
           <div *ngIf="application?.addressWhereEquipmentWasDestroyed?.streetLine2">
@@ -124,8 +140,13 @@
       </section>
     </div>
 
-
-
+    <!-- documents attached to this application -->
+    <div class="dark-row" style="margin-top: 30px;">
+      <strong>Additional Supporting Documents</strong>
+    </div>
+    <div class="alt-row" *ngFor="let file of files; let i = index;">
+      {{ file.name}} <span style="float:right; color:#A9A9A9"><i>{{ file.size}} kb</i></span>
+    </div>
 
     <h3 class="blue-header">DECLARATION AND CONSENT</h3>
     <div [formGroup]="form" class="padded-section">
@@ -142,7 +163,7 @@
       </section>
 
       <div *ngIf="form.get('declarationOfCorrectInformation').value !== true && showErrors"
-        style="background-color: #F2F2F2; margin-top: 10px; border-radius: 5px; padding: 10px; font: 15px Myriad Pro Regular #494949;">
+           style="background-color: #F2F2F2; margin-top: 10px; border-radius: 5px; padding: 10px; font: 15px Myriad Pro Regular #494949;">
         <fa-icon [icon]="faExclamationTriangle" class="error-states" style="margin-right: 10px;"></fa-icon>
         <span class="error-states">Please complete the declarations and consent section.</span>
       </div>
@@ -152,7 +173,8 @@
       <fa-icon [icon]="faExclamationCircle" style="color: #003366; margin-right: 10px;" size="lg"></fa-icon>
       <p>
         Please ensure you complete a submission for each piece of Controlled Equipment in your possession until your
-        entire inventory is listed.</p>
+        entire inventory is listed.
+      </p>
     </div>
 
     <div style="margin-top: 30px; display: flex; justify-content: space-between">
@@ -165,9 +187,9 @@
       </section>
       <section>
         <button class="btn btn-secondary" style="margin-right: 15px"
-          routerLink="/equipment-changes/reporting-changes/details/{{applicationId}}">EDIT
-          APPLICATION</button>
-
+                routerLink="/equipment-changes/reporting-changes/details/{{applicationId}}">
+          EDIT APPLICATION
+        </button>
         <button class="btn btn-primary" (click)="save(true)">SUBMIT</button>
       </section>
     </div>
