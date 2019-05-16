@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
-import { Subscription, zip, Observable } from 'rxjs';
+import { Subscription, zip } from 'rxjs';
 import { PRODUCING_OWN_PRODUCT, MANUFACTURING_FOR_OTHERS } from '../waiver-application/waiver-application.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DynamicsDataService } from '../../../services/dynamics-data.service';
 import { ApplicationDataService } from '../../../services/application-data.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { FileSystemItem } from '../../../models/file-system-item.model';
 
 import { faSave } from '@fortawesome/free-regular-svg-icons';
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
@@ -25,6 +26,8 @@ export class WaiverReviewComponent implements OnInit {
   purposeExplanation: any[] = [];
   attachmentURL: string;
   busyPromise: Promise<any>;
+  files: FileSystemItem[];
+  documentType: string = 'Waiver Documents';
 
   faSave = faSave;
   faExclamationTriangle = faExclamationTriangle;
@@ -121,28 +124,27 @@ export class WaiverReviewComponent implements OnInit {
           waiver.manufacturingprocessdescription
         ];
 
+        this.busy = this.getUploadedFileData().subscribe((data: FileSystemItem[]) => {
+          data.forEach((entry) => {
+            entry.size = Math.ceil(entry.size / 1024);
+          });
+          this.files = data;
+        });
+
       }, error => {
         // todo: show errors;
       });
   }
 
+  /**
+   * get documents attached to this application
+   */
   getUploadedFileData() {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
     const getFileURL = this.attachmentURL + '/Waiver Documents';
     return this.http.get(getFileURL, { headers: headers });
-    // .pipe(map((data: Response) => <FileSystemItem[]>data.json()))
-    // .subscribe((data) => {
-    //   // convert bytes to KB
-    //   data.forEach((entry) => {
-    //     entry.size = Math.ceil(entry.size / 1024);
-    //     entry.downloadUrl = `api/file/${this.entityId}/download-file/${this.entityName}/${entry.name}`;
-    //     entry.downloadUrl += `?serverRelativeUrl=${encodeURIComponent(entry.serverrelativeurl)}&documentType=${this.documentType}`;
-    //   });
-    //   this.files = data;
-    // },
-    //   err => alert('Failed to get files'));
   }
 
   markAsTouched() {
