@@ -12,6 +12,10 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
 
     public enum AddressTypes
     {
+        [EnumMember(Value = "Business Physical Address")]
+        BusinessPhysicalAddress = 931490000,
+        [EnumMember(Value = "Business Mailing  Address")]
+        BusinessMailingAddress = 931490001,
         Location = 931490002
     }
 
@@ -24,7 +28,8 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         public string Emailaddress { get; set; }
 
         [JsonProperty(PropertyName = "addresstype")]
-        public int? BcgovAddresstype { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public AddressTypes? BcgovAddresstype { get; set; }
 
         [JsonProperty(PropertyName = "streetLine1")]
         public string StreetLine1 { get; set; }
