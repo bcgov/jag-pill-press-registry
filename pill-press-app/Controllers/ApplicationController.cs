@@ -538,7 +538,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             {
                 location = item.ToModel();
                 // handle the address.
-                var address = CreateOrUpdateAddress(item.Address);
+                var address = CreateOrUpdateAddress(item.Address, accountId);
                 item.Address = address.ToViewModel();
 
                 // There are cases where only the child address has a value
@@ -619,7 +619,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         }
 
 
-        private MicrosoftDynamicsCRMbcgovCustomaddress CreateOrUpdateAddress(ViewModels.CustomAddress ca)
+        private MicrosoftDynamicsCRMbcgovCustomaddress CreateOrUpdateAddress(ViewModels.CustomAddress ca, string accountId = null)
         {
             MicrosoftDynamicsCRMbcgovCustomaddress address = null;
             // Primary Contact
@@ -633,6 +633,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                         // create an address.                        
                         try
                         {
+                            // bind the business profile if included 
+                            if (!string.IsNullOrEmpty(accountId))
+                            {
+                                address.BusinessProfileODataBind = _dynamicsClient.GetEntityURI("accounts", accountId);
+                            }
                             address = _dynamicsClient.Customaddresses.Create(address);
                             ca.Id = address.BcgovCustomaddressid;
                         }
@@ -651,6 +656,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                         // update
                         try
                         {
+                            // bind the business profile if included 
+                            if (!string.IsNullOrEmpty(accountId))
+                            {
+                                address.BusinessProfileODataBind = _dynamicsClient.GetEntityURI("accounts", accountId);
+                            }
                             _dynamicsClient.Customaddresses.Update(ca.Id, address);
                         }
                         catch (OdataerrorException odee)

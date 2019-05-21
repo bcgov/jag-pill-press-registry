@@ -95,8 +95,11 @@ export class DashboardComponent implements OnInit {
             app.certificate.hasExpired = (new Date(app.certificate.expiryDate) < new Date());
           }
 
+          // an equipment record on the dashboard must be grayed out when the corresponding application status
+          // is NOT "Draft" or "Cancelled" and the application type is an equipment change.
           const pendingChanges = data.filter(a => a.equipmentRecord && app.equipmentRecord
-            && a.equipmentRecord.id === app.equipmentRecord.id && a.applicationtype === 'Equipment Change'); //&& a.statuscode!=='Denied'
+            && a.equipmentRecord.id === app.equipmentRecord.id && a.applicationtype === 'Equipment Change'
+            && a.statuscode !== 'Draft' && a.statuscode !== 'Cancelled');
           app.hasChangePending = (pendingChanges.length > 0);
           if (pendingChanges.length > 0) {
             const lsdChanges = pendingChanges.filter(c => ['Lost', 'Stolen', 'Destroyed'].indexOf(c.typeOfChange) !== -1);

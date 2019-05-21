@@ -5,6 +5,8 @@ import { Subscription, zip } from 'rxjs';
 import { faSave, faExclamationCircle, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApplicationDataService } from '@services/application-data.service';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { FileSystemItem } from '@app/models/file-system-item.model';
 
 
 @Component({
@@ -18,6 +20,7 @@ export class EquipmentChangeReviewComponent extends FormBase implements OnInit {
   applicationId: string;
   busyPromise: Promise<any>;
   locations: any;
+  files: FileSystemItem[];
 
   faSave = faSave;
   faExclamationCircle  = faExclamationCircle ;
@@ -28,6 +31,7 @@ export class EquipmentChangeReviewComponent extends FormBase implements OnInit {
   constructor(private route: ActivatedRoute,
     private router: Router,
     private applicationDataService: ApplicationDataService,
+    private http: HttpClient,
     private fb: FormBuilder) {
     super();
     this.applicationId = this.route.snapshot.params.id;
@@ -54,9 +58,28 @@ export class EquipmentChangeReviewComponent extends FormBase implements OnInit {
         }
         this.application = data;
         this.form.patchValue(data);
+
+        this.busy = this.getUploadedFileData().subscribe((data: FileSystemItem[]) => {
+          data.forEach((entry) => {
+            entry.size = Math.ceil(entry.size / 1024);
+          });
+          this.files = data;
+        });
       }, error => {
         // debugger;
       });
+  }
+
+  /**
+   * get documents attached to this application
+   */
+  getUploadedFileData() {
+    const attachmentURL = `api/file/${this.application.id}/attachments/incident`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    const getFileURL = attachmentURL + '/Equipment Change Documents';
+    return this.http.get(getFileURL, { headers: headers });
   }
 
   dateSort(a, b) {

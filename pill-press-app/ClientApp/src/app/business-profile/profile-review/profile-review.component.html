@@ -6,11 +6,8 @@
 
     <p>
       You have provided the following information in your business profile. In order to proceed, please confirm that
-      these
-      details are correct. If they are not, please return to the Business Profile form and <a
-        routerLink="/business-profile">update
-        your
-        information</a>.
+      these details are correct. If they are not, please return to the Business Profile form and
+      <a routerLink="/business-profile">update your information</a>.
     </p>
 
     <h2>Business Information</h2>
@@ -52,11 +49,9 @@
       <section style="display: flex">
         <input type="checkbox" formControlName="declarationofcorrectinformation">
         <span class="error-states">*</span>
-        <div style="padding-left: 10px;"> I certify that, to the best of my knowledge, the information I have provided
-          on
-          my Business Profile is
-          complete, honest, and accurate. I am aware that later discovery of an omission or misrepresentation may be
-          grounds for any finding of suitability to be reversed or for being prosecuted under provincial law.</div>
+        <div style="padding-left: 10px;"> I certify that, to the best of my knowledge, the information I have provided on my
+        Business Profile is complete, honest, and accurate. I am aware that later discovery of an omission or misrepresentation
+        may be grounds for any finding of suitability to be reversed or for being prosecuted under provincial law.</div>
       </section>
     </div>
 
@@ -65,7 +60,6 @@
       <fa-icon [icon]="faExclamationTriangle" class="error-states" style="margin-right: 10px;"></fa-icon>
       <span class="error-states">Please complete the declarations and consent section.</span>
     </div>
-
 
     <div style="margin-top: 30px; display: flex; justify-content: space-between; position: relative;">
       <section>
@@ -76,8 +70,8 @@
       </section>
       <section>
         <div [ngBusy]="busy2"></div>
-        <button *ngIf="nextRoute" class="btn btn-primary" (click)="router.navigateByUrl(nextRoute + '/' + id)">CONTINUE
-          TO APPLICATION</button>
+        <button *ngIf="nextRoute" class="btn btn-primary" (click)="router.navigateByUrl(nextRoute + '/' + id)">
+        CONTINUE TO APPLICATION</button>
         <button *ngIf="!nextRoute" class="btn btn-primary" (click)="markAsTouched(); save()">SAVE</button>
       </section>
     </div>
@@ -116,9 +110,7 @@
           <strong>Email</strong>
           <br>
           <span>Contact us using our <a href="https://www.bceid.ca/help_request/default.aspx?referrer=AB%2f2"
-              style="color:white">online
-              form</a> or at
-            <a href="mailto:BCeIDREgistrationDesk@gov.bc.ca"
+              style="color:white">online form</a> or at <a href="mailto:BCeIDREgistrationDesk@gov.bc.ca"
               style="color:white">BCeIDRegistrationDesk@gov.bc.ca</a></span>
         </div>
         <p>
