@@ -242,6 +242,8 @@ export class EquipmentLocationComponent extends FormBase implements OnInit {
       const setdesc = this.form.get('equipmentLocation.settingDescription').value; 
       this.form.get('settingDescription').setValue(setdesc);
       const value = this.form.value;
+      //set the address type to "Location"
+      value.equipmentLocation.address.addresstype = "Location";
       const saveList = [this.applicationDataService.updateApplication(value)];
       this.busyPromise = zip(...saveList)
         .toPromise()
