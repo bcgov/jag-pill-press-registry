@@ -26,6 +26,8 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
   faExclamationTriangle = faExclamationTriangle;
   faSave = faSave;
 
+  postalCanadaRegex = '(^[A-Za-z][0-9][A-Za-z]\\s?[0-9][A-Za-z][0-9]$)';
+
   constructor(private route: ActivatedRoute,
     private router: Router,
     private applicationDataService: ApplicationDataService,
@@ -68,7 +70,7 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
         streetLine2: [],
         city: ['', Validators.required],
         province: [],
-        postalCode: ['', [Validators.required, Validators.pattern(postalRegex)]],
+        postalCode: ['', [Validators.required, Validators.pattern(this.postalCanadaRegex)]],
         country: [],
       }),
       privateDwelling: [],
@@ -158,20 +160,21 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
 
     this.form.get('whereWillEquipmentReside').valueChanges
       .subscribe(value => {
-        const field = 'civicAddressOfPurchaser.province';
+        const provField = 'civicAddressOfPurchaser.province';
         if (value === "true" || value === true) { //BC --> true
-          this.form.get(field).reset();
-          this.form.get(field).setValue('British Columbia');
-          this.form.get(field).markAsTouched();
-          //this.form.get(field).disable();
-          //this.form.get(field).clearValidators();
-          //this.form.get(field).clearAsyncValidators();
-          this.form.get(field).updateValueAndValidity();
-        } else {
-          this.form.get(field).reset();
-          //this.form.get(field).enable();
-          this.form.get(field).setValidators(Validators.required);
-          this.form.get(field).updateValueAndValidity();
+          this.form.get(provField).reset();
+          this.form.get(provField).setValue('British Columbia');
+          this.form.get(provField).markAsTouched();
+          this.form.get(provField).updateValueAndValidity();
+          this.form.get("civicAddressOfPurchaser.postalCode").setValidators([Validators.required, Validators.pattern(this.postalCanadaRegex)]);
+          this.form.get("civicAddressOfPurchaser.postalCode").updateValueAndValidity();
+        } else { // outside BC
+          this.form.get(provField).reset();
+          this.form.get(provField).setValidators(Validators.required);
+          this.form.get(provField).updateValueAndValidity();
+          this.form.get("civicAddressOfPurchaser.postalCode").setValidators(Validators.required); //clearValidators();
+          this.form.get("civicAddressOfPurchaser.postalCode").setErrors(null);
+          this.form.get("civicAddressOfPurchaser.postalCode").updateValueAndValidity();
         }
       });
 
@@ -205,7 +208,7 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
           this.form.get('legalNameOfPurchaserIndividual').setValidators([Validators.required]);
           this.form.get('purchasersCivicAddress').get('streetLine1').setValidators(Validators.required);
           this.form.get('purchasersCivicAddress').get('city').setValidators(Validators.required);
-          this.form.get('purchasersCivicAddress').get('postalCode').setValidators([Validators.required, Validators.pattern(postalRegex)]);
+          this.form.get('purchasersCivicAddress').get('postalCode').setValidators([Validators.required]);
           this.form.get('purchasersCivicAddress').get('province').setValidators(Validators.required);
           this.form.get('purchasersCivicAddress').get('country').setValidators(Validators.required);
           this.form.get('purchasersTelephoneNumber').setValidators([Validators.required, Validators.minLength(10), Validators.maxLength(10)]);
@@ -235,7 +238,7 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
           this.form.get('purchaserdBaName').setValidators([Validators.required]);
           this.form.get('purchasersBusinessAddress').get('streetLine1').setValidators(Validators.required);
           this.form.get('purchasersBusinessAddress').get('city').setValidators(Validators.required);
-          this.form.get('purchasersBusinessAddress').get('postalCode').setValidators([Validators.required, Validators.pattern(postalRegex)]);
+          this.form.get('purchasersBusinessAddress').get('postalCode').setValidators([Validators.required]);
           this.form.get('purchasersBusinessAddress').get('province').setValidators(Validators.required);
           this.form.get('purchasersBusinessAddress').get('country').setValidators(Validators.required);
           this.form.get('legalNameOfPersonResponsibleForBusiness').setValidators([Validators.required]);
