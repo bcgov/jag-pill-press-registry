@@ -95,7 +95,7 @@
                   <section class="col-md-6 col-xs-12">
                     <app-field label="Postal/Zip Code"
                                [valid]="isValidOrNotTouched('equipmentLocation.address.postalCode')"
-                               errorMessage="Please enter a postal/zip code"
+                               errorMessage="Please enter a valid postal/zip code"
                                [required]="true">
                       <input type="text" formControlName="postalCode" class="form-control">
                     </app-field>
@@ -136,7 +136,7 @@
               <section class="col-md-6 col-xs-12">
                 <app-field label="Province/State"
                            [valid]="isValidOrNotTouched('equipmentLocation.address.province')"
-                           errorMessage=" Please enter a province/state"
+                           errorMessage=" Please enter a valid province/state"
                            [required]="true">
                   <input type="text" readonly formControlName="province" class="form-control">
                 </app-field>

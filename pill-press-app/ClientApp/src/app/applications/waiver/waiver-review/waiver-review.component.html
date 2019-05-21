@@ -5,8 +5,10 @@
 
   <p>
     You have provided the following information in your Waiver application. In order to proceed, please confirm that
-    these details are correct. If they are not, please <a routerLink="/waiver/application/{{waiverId}}">amend your
-      answers</a>
+    these details are correct. If they are not, please <a routerLink="/waiver/application/{{waiverId}}">
+      amend your
+      answers
+    </a>
     before submitting the application.
   </p>
 
@@ -31,11 +33,22 @@
     </tr>
   </table>
 
+  <!-- documents attached to this application -->
+  <h2></h2>
+  <table class="summary-table">
+    <tr>
+      <td [ngClass]="{'row-alt': false }"><strong>Additional Supporting Documents</strong></td>
+    </tr>
+    <tr *ngFor="let file of files; let i = index;">
+      <td [ngClass]="{'row-alt': true }">{{ file.name}} <span style="float:right; color:#A9A9A9"><i>{{ file.size}} kb</i></span></td>
+    </tr>
+  </table>
+
   <h3 class="blue-header">DECLARATION AND CONSENT</h3>
   <div [formGroup]="form" class="padded-section">
     <section style="display: flex">
-      <div style="flex: 0 0 20px" >
-        <input type="checkbox"formControlName="declarationOfCorrectInformation">
+      <div style="flex: 0 0 20px">
+        <input type="checkbox" formControlName="declarationOfCorrectInformation">
       </div>
       <span>
         I certify that, to the best of my knowledge, the information I have provided on my Waiver application and
@@ -58,11 +71,14 @@
       <!-- <strong class="error-states">*</strong> <i>Required field</i> -->
       <a href="javascript: void(0);" (click)="save(false)">
         <fa-icon [icon]="faSave" style="margin-right: 5px"></fa-icon>Save &
-        Close</a>
+        Close
+      </a>
     </section>
     <section>
-      <button class="btn btn-secondary" style="margin-right: 10px" routerLink="/waiver/application/{{waiverId}}">EDIT
-        APPLICATION</button>
+      <button class="btn btn-secondary" style="margin-right: 10px" routerLink="/waiver/application/{{waiverId}}">
+        EDIT
+        APPLICATION
+      </button>
       <button class="btn btn-primary" (click)="markAsTouched(); save(true)">SUBMIT</button>
     </section>
   </div>
