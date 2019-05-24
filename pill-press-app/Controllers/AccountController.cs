@@ -276,7 +276,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     _logger.LogWarning(LoggingEvents.NotFound, "Current user has NO access to account.");
                     return new NotFoundResult();
                 }
-                List<string> expand = new List<string> { "bcgov_contact_bcgov_businesscontact_Contact", "bcgov_account_bcgov_businesscontact_BusinessProfile" };
+                List<string> expand = new List<string> { "bcgov_Contact" };
                 try
                 {
                     string filter = $"_bcgov_businessprofile_value eq {id}";
@@ -284,7 +284,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     {
                         filter = filter + $" and bcgov_registeredsellerownermanager eq {ownermanagercode}";
                     }
-                        var query = _dynamicsClient.Businesscontacts.Get(filter: filter); //, expand: expand
+                        var query = _dynamicsClient.Businesscontacts.Get(filter: filter, expand: expand); //, expand: expand
 
                     foreach (var item in query.Value)
                     {
