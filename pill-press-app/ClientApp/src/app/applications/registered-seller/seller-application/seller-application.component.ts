@@ -4,6 +4,7 @@ import { Subscription, Observable, zip } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DynamicsDataService } from '../../../services/dynamics-data.service';
 import { ApplicationDataService } from '../../../services/application-data.service';
+import { AccountDataService } from '../../../services/account-data.service';
 import { faExclamationCircle, faTrashAlt, faPencilAlt} from '@fortawesome/free-solid-svg-icons';
 import { faSave} from '@fortawesome/free-regular-svg-icons';
 
@@ -47,6 +48,7 @@ export class SellerApplicationComponent extends FormBase implements OnInit {
     private router: Router,
     private dialog: MatDialog,
     private dynamicsDataService: DynamicsDataService,
+    private accountDataService: AccountDataService,
     private applicationDataService: ApplicationDataService) {
     super();
     this.waiverId = this.route.snapshot.params.id;
@@ -57,6 +59,7 @@ export class SellerApplicationComponent extends FormBase implements OnInit {
   waiverId: string;
 
   ownersAndManagers: any[] = [];
+  accountOwnersManager: BusinessContact;
   showErrorMessages: boolean;
   form2: FormGroup;
 
@@ -106,10 +109,24 @@ export class SellerApplicationComponent extends FormBase implements OnInit {
     this.clearHiddenFields();
   }
 
+  /**
+   * reload data
+   */
   reloadData() {
     this.busy = this.applicationDataService.getApplicationById(this.waiverId).subscribe(data => {
       this.form.patchValue(data);
       this.ownersAndManagers = data.businessContacts || [];
+      this.busy = this.accountDataService.getAccountBusinessContacts(data.applicant.id, 0).subscribe(businessContacts => {
+        businessContacts.forEach(businessContact => {
+          // only add owners or managers that are linked to the business profile but have not been added to this application
+          if (businessContact.registeredSellerOwnerManager === "Owner" || businessContact.registeredSellerOwnerManager === "Manager") {
+            const index = this.ownersAndManagers.findIndex(ownMgr => ownMgr.id === businessContact.id);
+            if (index < 0) {
+              this.ownersAndManagers.push(businessContact);
+            }
+          }
+        });
+      });
     }, error => {
       // todo: show errors;
     });

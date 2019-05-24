@@ -175,7 +175,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         }
 
         /// <summary>
-        /// Get a specific legal entity
+        /// Get the locations associated to an account
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -235,6 +235,80 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             }
 
             _logger.LogDebug(LoggingEvents.HttpGet, "Account result: " +
+                JsonConvert.SerializeObject(result, Formatting.Indented, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore }));
+            return Json(result);
+        }
+
+        /// <summary>
+        /// Get the business contacts associated to an account
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="ownermanagercode"></param>
+        /// <returns></returns>
+        [HttpGet("{id}/businesscontacts/{ownermanagercode}")]
+        public IActionResult GetAccountBusinessContacts(string id, int ownermanagercode = 0)
+        {
+            _logger.LogInformation(LoggingEvents.HttpGet, "Begin method " + this.GetType().Name + "." + MethodBase.GetCurrentMethod().ReflectedType.Name);
+            _logger.LogDebug(LoggingEvents.HttpGet, "id: " + id);
+
+            Boolean userAccessToAccount = false;
+            List<ViewModels.BusinessContact> result = new List<BusinessContact>();
+
+            // query the Dynamics system to get the account record.
+            if (!string.IsNullOrEmpty(id) && Guid.TryParse(id, out Guid accountId))
+            {
+                // verify the currently logged in user has access to this account
+                try
+                {
+                    userAccessToAccount = UserDynamicsExtensions.CurrentUserHasAccessToAccount(accountId, _httpContextAccessor, _dynamicsClient);
+                }
+                catch (OdataerrorException odee)
+                {
+                    _logger.LogError(LoggingEvents.Error, "Error while checking if current user has access to account.");
+                    _logger.LogError("Request:");
+                    _logger.LogError(odee.Request.Content);
+                    _logger.LogError("Response:");
+                    _logger.LogError(odee.Response.Content);
+                }
+
+                if (!userAccessToAccount)
+                {
+                    _logger.LogWarning(LoggingEvents.NotFound, "Current user has NO access to account.");
+                    return new NotFoundResult();
+                }
+                List<string> expand = new List<string> { "bcgov_contact_bcgov_businesscontact_Contact", "bcgov_account_bcgov_businesscontact_BusinessProfile" };
+                try
+                {
+                    string filter = $"_bcgov_businessprofile_value eq {id}";
+                    if (ownermanagercode > 0) 
+                    {
+                        filter = filter + $" and bcgov_registeredsellerownermanager eq {ownermanagercode}";
+                    }
+                        var query = _dynamicsClient.Businesscontacts.Get(filter: filter); //, expand: expand
+
+                    foreach (var item in query.Value)
+                    {
+                        result.Add(item.ToViewModel());
+                    }
+                }
+                catch (OdataerrorException odee)
+                {
+                    _logger.LogDebug("Error occured obtaining account business contacts.");
+                    _logger.LogError("Request:");
+                    _logger.LogError(odee.Request.Content);
+                    _logger.LogError("Response:");
+                    _logger.LogError(odee.Response.Content);
+                    return new NotFoundResult();
+                }
+
+            }
+            else
+            {
+                _logger.LogWarning(LoggingEvents.BadRequest, "Bad Request.");
+                return BadRequest();
+            }
+
+            _logger.LogDebug(LoggingEvents.HttpGet, "Account Business Contacts result: " +
                 JsonConvert.SerializeObject(result, Formatting.Indented, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore }));
             return Json(result);
         }
