@@ -46,7 +46,8 @@ export class RegisteredSellerComponent implements OnInit {
   }
 
   selectionChange(event) {
-    this.router.navigateByUrl(`/registered-seller/${this.tabList[event.selectedIndex]}/${this.equipmentId}`);
+    // disable navigation to other pages
+    //this.router.navigateByUrl(`/registered-seller/${this.tabList[event.selectedIndex]}/${this.equipmentId}`);
   }
 
 }

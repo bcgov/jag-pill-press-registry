@@ -55,7 +55,8 @@ export class ReportChangesComponent implements OnInit {
 
 
   selectionChange(event) {
-    this.router.navigateByUrl(`/equipment-changes/reporting-changes/${this.tabList[event.selectedIndex]}/${this.equipmentId}`);
+    // disable navigation to other pages
+    //this.router.navigateByUrl(`/equipment-changes/reporting-changes/${this.tabList[event.selectedIndex]}/${this.equipmentId}`);
   }
 
 }
