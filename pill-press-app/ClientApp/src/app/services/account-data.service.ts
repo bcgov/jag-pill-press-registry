@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { DynamicsAccount } from '../models/dynamics-account.model';
+import { BusinessContact } from '../models/business-contact.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ProfileValidation } from '../models/profile-validation.model';
 import { Observable } from 'rxjs';
@@ -18,6 +19,10 @@ export class AccountDataService {
 
   public getAccount(accountId: string): Observable<DynamicsAccount>{
     return this.http.get<DynamicsAccount>(this.apiPath + accountId, { headers: this.headers });
+  }
+
+  public getAccountBusinessContacts(accountId: string, ownermanagercode: number): Observable<BusinessContact[]> {
+    return this.http.get<BusinessContact[]>(this.apiPath + accountId + '/businesscontacts/' + ownermanagercode, { headers: this.headers });
   }
 
   public getCurrentAccount() {

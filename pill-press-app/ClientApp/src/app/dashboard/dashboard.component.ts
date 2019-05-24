@@ -37,7 +37,7 @@ export class DashboardComponent implements OnInit {
 
   contactId: string = null;
   account: DynamicsAccount;
-  busy: Subscription;
+  busy; busy2: Subscription;
   isPaid: Boolean;
   orgType = '';
 
@@ -324,7 +324,7 @@ export class DashboardComponent implements OnInit {
     const newLicenceApplicationData: Application = <Application>{
       statuscode: 'Draft'
     };
-    this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Equipment Notification').subscribe(
+    this.busy2 = this.applicationDataService.createApplication(newLicenceApplicationData, 'Equipment Notification').subscribe(
       data => {
         this.router.navigateByUrl(`/equipment-notification/profile-review/${data.id}`);
       },
@@ -349,7 +349,7 @@ export class DashboardComponent implements OnInit {
         id: equipmentId
       }
     };
-    this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Equipment Change').subscribe(
+    this.busy2 = this.applicationDataService.createApplication(newLicenceApplicationData, 'Equipment Change').subscribe(
       data => {
         this.router.navigateByUrl(`/equipment-changes/reporting-sales/details/${data.id}`);
       },
@@ -372,7 +372,7 @@ export class DashboardComponent implements OnInit {
         id: equipmentId
       }
     };
-    this.busy = this.applicationDataService.createApplication(newLicenceApplicationData, 'Equipment Change').subscribe(
+    this.busy2 = this.applicationDataService.createApplication(newLicenceApplicationData, 'Equipment Change').subscribe(
       data => {
         this.router.navigateByUrl(`/equipment-changes/reporting-changes/details/${data.id}`);
       },
