@@ -40,8 +40,9 @@ export class WaiverComponent implements OnInit {
     });
   }
 
-  selectionChange(event) {
-    this.router.navigateByUrl(`/waiver/${this.tabList[event.selectedIndex]}/${this.equipmentId}`);
+  selectionChange(event: MatStepper) {
+    // disable navigation to other pages
+    //this.router.navigateByUrl(`/waiver/${this.tabList[event.selectedIndex]}/${this.equipmentId}`);
   }
 
 }
