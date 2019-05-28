@@ -43,8 +43,10 @@ export class AuthorizedOwnerComponent implements OnInit {
     });
   }
 
-  selectionChange(event) {
-    this.router.navigateByUrl(`/authorized-owner/${this.tabList[event.selectedIndex]}/${this.equipmentId}`);
+  selectionChange(event: MatStepper) {
+    // disable navigation to other pages
+    //this.router.navigateByUrl(`/authorized-owner/${this.tabList[event.selectedIndex]}/${this.equipmentId}`);
+    //event.
   }
 
 }
