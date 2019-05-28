@@ -3,12 +3,14 @@
   <div [formGroup]="form">
     <div>
       <h2 class="step">STEP 2</h2>
-      <h1 style="margin-top: 0">Seller Registration Application</h1>
+      <h1 style="margin-top: 0">Registered Seller Application</h1>
 
-      <p>A Registered Seller can sell the <a
-          href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-controlled-equipment"
-          target="blank">Controlled Equipment</a> but can not use it for manufacturing. To be able to
-        use the equipment, a seller must apply for a Waiver or be an Authorized Owner.</p>
+      <p>A Registered Seller can sell the
+        <a href="https://www2.gov.bc.ca/gov/content/employment-business/business/pill-press/pill-press-controlled-equipment"
+            target="blank">Controlled Equipment
+        </a> but can not use it for manufacturing. To be able to use the equipment, a seller must apply for a Waiver
+        or be an Authorized Owner.
+      </p>
 
       <p>When a Registered Seller rents/leases their equipment to others, these individuals must hold a Waiver to use
         the Controlled Equipment or be an Authorized Owner.</p>
@@ -173,35 +175,41 @@
         </div>
 
         <section style="display: flex; flex-direction: row-reverse; margin-bottom: 10px;">
-          <button class="btn btn-secondary" (click)="currentOwner = {}; form2.reset(); staticModal.show()">ADD AN
-            OWNER/MANAGER</button>
+          <button class="btn btn-secondary" (click)="currentOwner = {}; form2.reset(); staticModal.show()">
+            ADD AN OWNER/MANAGER
+          </button>
         </section>
 
-        <table class="summary-table" style="width: 100%;">
-          <tr>
-            <th>FIRST NAME</th>
-            <th>LAST NAME</th>
-            <th>TYPE</th>
-            <th>TITLE/POSITION</th>
-            <th>CONTACT DETAILS</th>
-            <th style="background-color: transparent; width: 50px"></th>
-          </tr>
-          <tr *ngFor="let item of ownersAndManagers; let i = index;" [ngClass]="{cssClass: expression}">
-            <td [ngClass]="{'row-alt': i%2 == 0}">{{item?.contact?.firstName}}</td>
-            <td [ngClass]="{'row-alt': i%2 == 0}">{{item?.contact?.lastName}}</td>
-            <td [ngClass]="{'row-alt': i%2 == 0}">{{item.registeredSellerOwnerManager}}</td>
-            <td [ngClass]="{'row-alt': i%2 == 0}">{{item.jobTitle}}</td>
-            <td [ngClass]="{'row-alt': i%2 == 0}">
-              Phone: {{item?.contact?.phoneNumber}} <br>
-              Email: {{item?.contact?.email}}
-            </td>
-            <td [ngClass]="{'row-alt': i%2 == 0}">
-              <fa-icon [icon]="faPencilAlt" style="cursor: pointer; margin-right: 10px;"
-                (click)="currentOwner = item; form2.patchValue(item); staticModal.show()"></fa-icon>
-              <fa-icon [icon]="faTrashAlt" style="cursor: pointer;" (click)="deleteOwnerOrManager(item)"></fa-icon>
-            </td>
-          </tr>
-        </table>
+        <div *ngIf="ownersAndManagers.length > 0">
+
+          <p>Confirm this is the current list of owners and managers. Add or remove a contact where applicable.</p>
+
+          <table class="summary-table" style="width: 100%;">
+            <tr>
+              <th>FIRST NAME</th>
+              <th>LAST NAME</th>
+              <th>TYPE</th>
+              <th>TITLE/POSITION</th>
+              <th>CONTACT DETAILS</th>
+              <th style="background-color: transparent; width: 50px"></th>
+            </tr>
+            <tr *ngFor="let item of ownersAndManagers; let i = index;" [ngClass]="{cssClass: expression}">
+              <td [ngClass]="{'row-alt': i%2 == 0}">{{item?.contact?.firstName}}</td>
+              <td [ngClass]="{'row-alt': i%2 == 0}">{{item?.contact?.lastName}}</td>
+              <td [ngClass]="{'row-alt': i%2 == 0}">{{item.registeredSellerOwnerManager}}</td>
+              <td [ngClass]="{'row-alt': i%2 == 0}">{{item.jobTitle}}</td>
+              <td [ngClass]="{'row-alt': i%2 == 0}">
+                Phone: {{item?.contact?.phoneNumber}} <br>
+                Email: {{item?.contact?.email}}
+              </td>
+              <td [ngClass]="{'row-alt': i%2 == 0}">
+                <fa-icon [icon]="faPencilAlt" style="cursor: pointer; margin-right: 10px;"
+                         (click)="currentOwner = item; form2.patchValue(item); staticModal.show()"></fa-icon>
+                <fa-icon [icon]="faTrashAlt" style="cursor: pointer;" (click)="deleteOwnerOrManager(item)"></fa-icon>
+              </td>
+            </tr>
+          </table>
+        </div>
         <p *ngIf="showErrorMessages && ownersAndManagers.length < 1" class="error-states">
           Please add a manager or an owner
         </p>
