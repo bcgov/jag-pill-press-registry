@@ -45,7 +45,7 @@ export class RegisteredSellerComponent implements OnInit {
     });
   }
 
-  selectionChange(event) {
+  selectionChange(event: MatStepper) {
     // disable navigation to other pages
     //this.router.navigateByUrl(`/registered-seller/${this.tabList[event.selectedIndex]}/${this.equipmentId}`);
   }
