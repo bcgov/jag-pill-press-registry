@@ -55,8 +55,9 @@ export class ReportingSalesComponent implements OnInit {
 
 
 
-  selectionChange(event) {
-    this.router.navigateByUrl(`/equipment-changes/reporting-sales/${this.tabList[event.selectedIndex]}/${this.equipmentId}`);
+  selectionChange(event: MatStepper) {
+    // disable navigation to other pages
+    //this.router.navigateByUrl(`/equipment-changes/reporting-sales/${this.tabList[event.selectedIndex]}/${this.equipmentId}`);
   }
 
 }
