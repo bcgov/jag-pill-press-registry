@@ -68,17 +68,20 @@
         <div *ngIf="formData?.intendtosellothercheck">Other: {{formData?.intendtosellother}}</div>
       </td>
     </tr>
-    <tr>
-      <td class="table-row">
-        <strong>
-          Please tell us more about your business as it relates to selling Controlled Equipment?</strong>
-      </td>
-    </tr>
-    <tr>
-      <td class="row-alt">
-        {{formData?.additionalbusinessinformationaboutseller}}
-      </td>
-    </tr>
+    <tbody *ngIf="formData?.additionalbusinessinformationaboutseller">
+      <tr>
+        <td class="table-row">
+          <strong>
+            Please tell us more about your business as it relates to selling Controlled Equipment?
+          </strong>
+        </td>
+      </tr>
+      <tr>
+        <td class="row-alt">
+          {{formData?.additionalbusinessinformationaboutseller}}
+        </td>
+      </tr>
+    </tbody>
   </table>
 
   <h3 class="blue-header">Owner/Manager Information</h3>

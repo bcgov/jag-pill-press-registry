@@ -87,7 +87,7 @@ export class SellerApplicationComponent extends FormBase implements OnInit {
       intendtosellothercheck: [],
       intendtosellother: [],
 
-      additionalbusinessinformationaboutseller: ['', Validators.required],
+      additionalbusinessinformationaboutseller: [],
       registeredsellerownermanager: [],
     });
 
