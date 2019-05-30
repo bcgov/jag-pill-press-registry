@@ -408,6 +408,27 @@ namespace DemoTool
                 }
             }
 
+            // remove Violation Tickets
+
+            var violationtickets = _dynamicsClient.Violationtickets.Get().Value;
+
+            foreach (var item in violationtickets)
+            {
+                try
+                {
+                    _dynamicsClient.Violationtickets.Delete(item.BcgovViolationticketid);
+                    Console.Out.WriteLine("Deleted violationticket " + item.BcgovViolationticketid);
+                }
+                catch (OdataerrorException odee)
+                {
+                    Console.Out.WriteLine("Error deleting violationtickets");
+                    Console.Out.WriteLine("Request:");
+                    Console.Out.WriteLine(odee.Request.Content);
+                    Console.Out.WriteLine("Response:");
+                    Console.Out.WriteLine(odee.Response.Content);
+                }
+            }
+
 
 
         }
