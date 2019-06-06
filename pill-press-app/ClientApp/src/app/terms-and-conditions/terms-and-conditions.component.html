@@ -191,9 +191,8 @@
   <div class="footer">
     <div [ngBusy]="{busy: childBusy}"></div>
     <section>
-      <input type="checkbox" [checked]="_termsAccepted" (change)="_termsAccepted = !_termsAccepted" />&nbsp;I have read
-      and accept the above terms and conditions.
-      <br>
+      <input type="checkbox" [checked]="_termsAccepted" (change)="_termsAccepted = !_termsAccepted" />
+      &nbsp;I have read and accept the above terms of use. <br>
     </section>
     <section class="buttons">
       <button class="btn btn-primary" (click)="this.termsAccepted.emit(true);" [disabled]="!_termsAccepted">Continue</button>
