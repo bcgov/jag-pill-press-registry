@@ -47,12 +47,16 @@
             <h3>Physical Address</h3>
             <div class="row">
               <section class="col-md-6 col-xs-12">
-                <app-field label="Street Address 1" [required]="true" [valid]="form.get('businessProfile.physicalAddressLine1').valid || !form.get('businessProfile.physicalAddressLine1').touched"
-                  errorMessage="Please enter your street address">
+                <app-field label="Street Address 1"
+                           [required]="true"
+                           [valid]="form.get('businessProfile.physicalAddressLine1').valid || !form.get('businessProfile.physicalAddressLine1').touched"
+                           errorMessage="Please enter your street address">
                   <input class="form-control" style="width: 400px;" type="text" formControlName="physicalAddressLine1">
                 </app-field>
-                <app-field label="City" [required]="true" [valid]="form.get('businessProfile.physicalAddressCity').valid || !form.get('businessProfile.physicalAddressCity').touched"
-                  errorMessage="Please enter your city">
+                <app-field label="City"
+                           [required]="true"
+                           [valid]="form.get('businessProfile.physicalAddressCity').valid || !form.get('businessProfile.physicalAddressCity').touched"
+                           errorMessage="Please enter your city">
                   <input class="form-control" style="width: 350px;" type="text" formControlName="physicalAddressCity">
                 </app-field>
                 <app-field label="Country">
@@ -70,8 +74,10 @@
                     </app-field>
                   </section>
                   <section class="col-md-6 col-xs-12">
-                    <app-field label="Postal Code" [required]="true" [valid]="form.get('businessProfile.physicalAddressPostalCode').valid || !form.get('businessProfile.physicalAddressPostalCode').touched"
-                      errorMessage="Please enter your postal code">
+                    <app-field label="Postal Code"
+                               [required]="true"
+                               [valid]="form.get('businessProfile.physicalAddressPostalCode').valid || !form.get('businessProfile.physicalAddressPostalCode').touched"
+                               errorMessage="Please enter your postal code">
                       <input class="form-control" style="width: 200px;" type="text" formControlName="physicalAddressPostalCode">
                     </app-field>
                   </section>
@@ -88,28 +94,44 @@
               </section>
               <div class="row">
                 <section class="col-md-6 col-xs-12">
-                  <app-field label="PO Box or Street Address 1" [required]="true">
+                  <app-field label="PO Box or Street Address 1"
+                             [required]="true"
+                             errorMessage="Please enter your street address"
+                             [valid]="form.get('businessProfile.mailingAddressLine1').valid || !form.get('businessProfile.mailingAddressLine1').touched">
                     <input type="text" formControlName="mailingAddressLine1" class="form-control">
                   </app-field>
-                  <app-field label="City" [required]="true">
+                  <app-field label="City"
+                             [required]="true"
+                             [valid]="form.get('businessProfile.mailingAddressCity').valid || !form.get('businessProfile.mailingAddressCity').touched"
+                             errorMessage="Please enter your city">
                     <input type="text" formControlName="mailingAddressCity" class="form-control">
                   </app-field>
-                  <app-field label="Country" [required]="true">
+                  <app-field label="Country"
+                             [required]="true"
+                             [valid]="form.get('businessProfile.mailingAddressCountry').valid || !form.get('businessProfile.mailingAddressCountry').touched"
+                             errorMessage="Please enter your Country">
                     <input type="text" formControlName="mailingAddressCountry" class="form-control">
                   </app-field>
                 </section>
                 <section class="col-md-6 col-xs-12">
-                  <app-field label="PO Box or Street Address 2" [required]="false">
+                  <app-field label="PO Box or Street Address 2"
+                             [required]="false">
                     <input type="text" formControlName="mailingAddressLine2" class="form-control">
                   </app-field>
                   <div class="row">
                     <section class="col-md-6 col-xs-12">
-                      <app-field label="Province/State" [required]="false">
+                      <app-field label="Province/State"
+                                 [required]="true"
+                                 [valid]="form.get('businessProfile.mailingAddressProvince').valid || !form.get('businessProfile.mailingAddressProvince').touched"
+                                 errorMessage="Please enter your Province/State">
                         <input type="text" formControlName="mailingAddressProvince" class="form-control">
                       </app-field>
                     </section>
                     <section class="col-md-6 col-xs-12">
-                      <app-field label="Postal /Zip Code" [required]="true">
+                      <app-field label="Postal /Zip Code"
+                                 [required]="true"
+                                 [valid]="form.get('businessProfile.mailingAddressPostalCode').valid || !form.get('businessProfile.mailingAddressPostalCode').touched"
+                                 errorMessage="Please enter your postal code">
                         <input type="text" formControlName="mailingAddressPostalCode" class="form-control">
                       </app-field>
                     </section>
