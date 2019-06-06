@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBase } from '@shared/form-base';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subscription, zip } from 'rxjs';
-import { faSave, faExclamationCircle, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
+import { faSave, faExclamationCircle, faExclamationTriangle, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApplicationDataService } from '@services/application-data.service';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
@@ -24,7 +24,8 @@ export class EquipmentChangeReviewComponent extends FormBase implements OnInit {
 
   faSave = faSave;
   faExclamationCircle  = faExclamationCircle ;
-  faExclamationTriangle  = faExclamationTriangle ;
+  faExclamationTriangle = faExclamationTriangle;
+  faTrashAlt = faTrashAlt;
   application: any;
   showErrors: boolean;
 
@@ -121,4 +122,12 @@ export class EquipmentChangeReviewComponent extends FormBase implements OnInit {
       }
     }
   }
+
+  /**
+   * Close the application without saving any data and navigate to dashboard
+   */
+  cancelAndclose() {
+    this.router.navigateByUrl(`/dashboard`);
+  }
+
 }
