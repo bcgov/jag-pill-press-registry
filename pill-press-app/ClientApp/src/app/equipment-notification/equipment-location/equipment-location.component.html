@@ -180,13 +180,14 @@
   <div style="margin-top: 30px; display: flex; justify-content: space-between">
     <section>
       <!-- <strong class="error-states">*</strong> <i>Required field</i> -->
-      <a href="javascript: void(0);" (click)="save(false)">
+      <a href="javascript: void(0);" (click)="markAsTouched(); save(true)">
         <fa-icon [icon]="faSave" style="margin-right: 5px"></fa-icon>
         Save & Close</a>
     </section>
     <section>
-      <button class="btn btn-secondary" style="margin-right: 10px" routerLink="/equipment-notification/source/{{equipmentId}}">BACK
-        TO STEP 4</button>
+      <button class="btn btn-secondary" style="margin-right: 10px" routerLink="/equipment-notification/source/{{equipmentId}}">
+        BACK TO STEP 4
+      </button>
       <button class="btn btn-primary" (click)="markAsTouched(); save(true)">SAVE & CONTINUE</button>
     </section>
   </div>

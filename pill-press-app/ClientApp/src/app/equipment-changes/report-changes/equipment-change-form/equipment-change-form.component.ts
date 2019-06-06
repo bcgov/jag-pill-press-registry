@@ -6,7 +6,7 @@ import { ApplicationDataService } from '../../../services/application-data.servi
 import { Application } from '../../../models/application.model';
 import { FormBase } from '../../../shared/form-base';
 import { postalRegex } from '../../../business-profile/business-profile/business-profile.component';
-import { faSave } from '@fortawesome/free-regular-svg-icons';
+import { faSave, faTrashAlt } from '@fortawesome/free-regular-svg-icons';
 import * as _moment from 'moment';
 // tslint:disable-next-line:no-duplicate-imports
 import { defaultFormat as _rollupMoment } from 'moment';
@@ -38,6 +38,7 @@ export class EquipmentChangeFormComponent extends FormBase implements OnInit {
   locations: any;
 
   faSave = faSave;
+  faTrashAlt = faTrashAlt;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
