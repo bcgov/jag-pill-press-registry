@@ -132,6 +132,14 @@
           <div class="alt-row"> {{ notification?.serialNumberKeyPartDescription }}</div>
         </div>
 
+        <!-- documents attached to this application -->
+        <div class="dark-row" style="margin-top: 30px;">
+          <strong>Additional Supporting Documents</strong>
+        </div>
+        <div class="alt-row" *ngFor="let file of files; let i = index;">
+          {{ file.name}} <span style="float:right; color:#A9A9A9"><i>{{ file.size}} kb</i></span>
+        </div>
+
       </section>
     </div>
 
