@@ -236,8 +236,8 @@ export class EquipmentLocationComponent extends FormBase implements OnInit {
   }
 
 
-  save(goToReview: boolean) {
-    if (this.form.valid || goToReview === false) {
+  save(goToReview: boolean) { //|| goToReview === false
+    if (this.form.valid) {
       //copy the value from equipmentLocation.settingDescription to settingDescription
       const setdesc = this.form.get('equipmentLocation.settingDescription').value; 
       this.form.get('settingDescription').setValue(setdesc);
