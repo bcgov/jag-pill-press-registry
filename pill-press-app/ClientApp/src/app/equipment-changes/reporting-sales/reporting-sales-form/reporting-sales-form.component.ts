@@ -169,9 +169,10 @@ export class ReportingSalesFormComponent extends FormBase implements OnInit {
           this.form.get("civicAddressOfPurchaser.postalCode").setValidators([Validators.required, Validators.pattern(this.postalCanadaRegex)]);
           this.form.get("civicAddressOfPurchaser.postalCode").updateValueAndValidity();
         } else { // outside BC
-          this.form.get(provField).reset();
-          this.form.get(provField).setValidators(Validators.required);
-          this.form.get(provField).updateValueAndValidity();
+          //this.form.get(provField).reset();
+          //this.form.get(provField).setValidators(Validators.required);
+          //this.form.get(provField).markAsTouched();
+          //this.form.get(provField).updateValueAndValidity();
           this.form.get("civicAddressOfPurchaser.postalCode").setValidators(Validators.required); //clearValidators();
           this.form.get("civicAddressOfPurchaser.postalCode").setErrors(null);
           this.form.get("civicAddressOfPurchaser.postalCode").updateValueAndValidity();
