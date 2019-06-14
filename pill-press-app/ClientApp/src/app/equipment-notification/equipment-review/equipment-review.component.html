@@ -132,6 +132,14 @@
           <div class="alt-row"> {{ notification?.serialNumberKeyPartDescription }}</div>
         </div>
 
+        <!-- documents attached to this application -->
+        <div class="dark-row" style="margin-top: 30px;">
+          <strong>Additional Supporting Documents</strong>
+        </div>
+        <div class="alt-row" *ngFor="let file of files; let i = index;">
+          {{ file.name}} <span style="float:right; color:#A9A9A9"><i>{{ file.size}} kb</i></span>
+        </div>
+
       </section>
     </div>
 
@@ -384,7 +392,7 @@
           </div>
           <section class="padded-section">
             <div class="dark-row">When did you assemble this piece of Controlled Equipment?</div>
-            <div class="alt-row">{{ notification?.whenDidYouAssembleEquipment}}</div>
+            <div class="alt-row">{{ notification?.whenDidYouAssembleEquipment | date : 'MM/dd/yyyy'}}</div>
 
 
             <div class="dark-row">Do you assemble Controlled Equipment for other businesses to use?</div>
