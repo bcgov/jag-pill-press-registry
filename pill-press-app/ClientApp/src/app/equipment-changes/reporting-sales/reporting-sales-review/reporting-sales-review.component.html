@@ -6,8 +6,7 @@
 
     <p>
       You have provided the following information in your Report of Sale. In order to proceed, please confirm that these
-      details
-      are correct. If they are not, please
+      details are correct. If they are not, please
       <a routerLink="/equipment-changes/reporting-sales/details/{{applicationId}}">amend your answers</a> before
       submitting the application.
     </p>
@@ -41,7 +40,8 @@
     <table class="summary-table">
       <tr>
         <td class="table-row">
-          <strong>What is the date on which the sale was made
+          <strong>
+            What is the date on which the sale was made
             <span>*</span>
           </strong>
         </td>
@@ -53,7 +53,8 @@
       </tr>
       <tr>
         <td class="table-row">
-          <strong>Please indicate the type of sale for this piece of Controlled Equipment
+          <strong>
+            Please indicate the type of sale for this piece of Controlled Equipment
             <span>*</span>
           </strong>
         </td>
@@ -107,7 +108,8 @@
         <td class="table-row">
           <strong>
             What is the civic address at which the purchaser will ordinarily store this piece of Controlled
-            Equipment?</strong>
+            Equipment?
+          </strong>
         </td>
       </tr>
       <tr>
@@ -134,7 +136,8 @@
     <table class="summary-table">
       <tr>
         <td class="table-row">
-          <strong>Was this piece of Controlled Equipment purchased by an individual for their own personal use, or by a
+          <strong>
+            Was this piece of Controlled Equipment purchased by an individual for their own personal use, or by a
             business?
             <span>*</span>
           </strong>
@@ -150,7 +153,8 @@
           <table class="summary-table">
             <tr>
               <td class="table-row">
-                <strong>Please provide the legal name of the business who purchased this piece of Controlled Equipment
+                <strong>
+                  Please provide the legal name of the business who purchased this piece of Controlled Equipment
                   <span>*</span>
                 </strong>
               </td>
@@ -172,8 +176,10 @@
             </tr>
             <tr>
               <td class="table-row">
-                <strong>What is the name under which the purchaser ordinarily carries on business (i.e. a doing business
-                  as name)?</strong>
+                <strong>
+                  What is the name under which the purchaser ordinarily carries on business (i.e. a doing business
+                  as name)?
+                </strong>
               </td>
             </tr>
             <tr>
@@ -239,7 +245,8 @@
             <tr>
               <td class="table-row">
                 <strong>
-                  Please check the geographical location of business purchaser</strong>
+                  Please check the geographical location of business purchaser
+                </strong>
               </td>
             </tr>
             <tr>
@@ -344,7 +351,8 @@
     <table class="summary-table">
       <tr>
         <td class="table-row">
-          <strong>Is the purchaser a "person in British Columbia"?
+          <strong>
+            Is the purchaser a "person in British Columbia"?
             <span>*</span>
           </strong>
         </td>
@@ -359,7 +367,8 @@
           <table class="summary-table">
             <tr>
               <td class="table-row">
-                <strong>How is the purchaser authorized to own, use, or possess Controlled Equipment?
+                <strong>
+                  How is the purchaser authorized to own, use, or possess Controlled Equipment?
                   <span>*</span>
                 </strong>
               </td>
@@ -390,7 +399,8 @@
                       <table class="summary-table">
                         <tr>
                           <td class="table-row">
-                            <strong>What is the name shown on the purchaser's Drug Establishment Licence?
+                            <strong>
+                              What is the name shown on the purchaser's Drug Establishment Licence?
                               <span>*</span>
                             </strong>
                           </td>
@@ -402,7 +412,8 @@
                         </tr>
                         <tr>
                           <td class="table-row">
-                            <strong>What is the purchaser's Drug Establishment Licence number?
+                            <strong>
+                              What is the purchaser's Drug Establishment Licence number?
                               <span>*</span>
                             </strong>
                           </td>
@@ -435,7 +446,8 @@
                       <table class="summary-table">
                         <tr>
                           <td class="table-row">
-                            <strong>What is the name shown on the purchaser's Site Licence?
+                            <strong>
+                              What is the name shown on the purchaser's Site Licence?
                               <span>*</span>
                             </strong>
                           </td>
@@ -460,7 +472,8 @@
                         </tr>
                         <tr>
                           <td class="table-row">
-                            <strong>What is the purchaser's Site Licence expiry date?
+                            <strong>
+                              What is the purchaser's Site Licence expiry date?
                               <span>*</span>
                             </strong>
                           </td>
@@ -486,7 +499,8 @@
                 <table class="summary-table">
                   <tr>
                     <td class="table-row">
-                      <strong>What is the purchaser's Waiver number?
+                      <strong>
+                        What is the purchaser's Waiver number?
                         <span>*</span>
                       </strong>
                     </td>
@@ -552,33 +566,36 @@
           <section style="flex: 0 0 20px">
             <input type="checkbox" formControlName="declarationOfCorrectInformation">
           </section>
-          <span>I certify that, to the best of my knowledge, the information I have provided on my Registered Seller
-            application
-            and will provide as necessary is complete, honest, and accurate. I understand that a false statement or
-            omission
-            of facts herein may lead to the a denial of a registration being granted. I am also aware that later
-            discovery
-            of an omission or misrepresentation may be grounds for suspension or cancellation of a registration or for
-            being
-            prosecuted under provincial law.
+          <span>
+            I certify that, to the best of my knowledge, the information I have provided on my Registered Seller
+            application and will provide as necessary is complete, honest, and accurate. I understand that a false statement or
+            omission of facts herein may lead to the a denial of a registration being granted. I am also aware that later
+            discovery of an omission or misrepresentation may be grounds for suspension or cancellation of a registration or for
+            being prosecuted under provincial law.
             <strong class="error-states">*</strong>
           </span>
         </section>
         <div *ngIf="form.get('declarationOfCorrectInformation').value !== true && showErrors"
-          style="background-color: #F2F2F2; margin-top: 10px; border-radius: 5px; padding: 10px; font: 15px Myriad Pro Regular #494949;">
+             style="background-color: #F2F2F2; margin-top: 10px; border-radius: 5px; padding: 10px; font: 15px Myriad Pro Regular #494949;">
           <fa-icon [icon]="faExclamationTriangle" class="error-states" style="margin-right: 10px;"></fa-icon>
           <span class="error-states">Please complete the declarations and consent section.</span>
         </div>
       </div>
-
-      <div class="padded-section" style="margin-top: 25px; display: flex; flex-direction: row-reverse;">
-        <section>
-          <button class="btn btn-secondary" style="margin-right: 10px" (click)="save()"
-            routerLink="/equipment-changes/reporting-sales/details/{{applicationId}}">EDIT APPLICATION
-          </button>
-          <button class="btn btn-primary" (click)="save()">SUBMIT</button>
-        </section>
-      </div>
     </table>
+    <div style="margin-top: 25px; display: flex; justify-content: space-between">
+      <section>
+        <a href="javascript: void(0);" (click)="cancelAndclose()">
+          <fa-icon [icon]="faSave" style="margin-right: 5px"></fa-icon>Cancel & Close
+        </a>
+      </section>
+      <section style="margin-right:10px;">
+        <button class="btn btn-secondary" style="margin-right: 10px" (click)="save()"
+                routerLink="/equipment-changes/reporting-sales/details/{{applicationId}}">
+          EDIT APPLICATION
+        </button>
+        <button class="btn btn-primary" (click)="save()">SUBMIT</button>
+      </section>
+
+    </div>
   </div>
 </div>

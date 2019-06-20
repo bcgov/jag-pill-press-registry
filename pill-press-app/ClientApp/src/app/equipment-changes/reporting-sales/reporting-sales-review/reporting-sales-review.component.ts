@@ -84,4 +84,12 @@ export class ReportingSalesReviewComponent implements OnInit {
     }
   }
 
+  /**
+ * Close the application without saving any data and navigate to dashboard
+ */
+  cancelAndclose() {
+    this.router.navigateByUrl(`/dashboard`);
+  }
+
+
 }
