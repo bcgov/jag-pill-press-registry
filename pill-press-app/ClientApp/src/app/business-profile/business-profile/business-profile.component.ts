@@ -283,6 +283,13 @@ export class BusinessProfileComponent extends FormBase implements OnInit {
       additionalContact: this.form.get('additionalContact').value
     };
 
+    /** 20190619
+     *  When a user changes the primary & additional contacts on a BP, the previous contacts should remain as contacts associated to the BP
+     *  Removing the contact id so a new one is created in the account controller instead of updated (required for history of business contacts)
+     */
+    value.primaryContact.id = null;
+    value.additionalContact.id = null;
+
     this.busy = this.accountDataService.updateAccount(value)
       .toPromise()
       .then(res => {

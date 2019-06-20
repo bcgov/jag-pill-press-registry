@@ -541,8 +541,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     throw new OdataerrorException("Error updating the account.");
                 }
 
-                // purge any existing non bceid accounts.
-                _dynamicsClient.DeleteNonBceidBusinessContactLinkForAccount(_logger, accountId.ToString());
+                // commenting out the purge of any existing non bceid accounts. They should remain  as part of business contacts history
+                //_dynamicsClient.DeleteNonBceidBusinessContactLinkForAccount(_logger, accountId.ToString());
 
                 // create the business contact links.
                 if (item.primaryContact != null)

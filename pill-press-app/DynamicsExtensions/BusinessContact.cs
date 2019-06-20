@@ -54,7 +54,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                             BcgovContacttype = contactType,
                             ContactODataBind = system.GetEntityURI("contacts", contactId),
                             AccountODataBind = system.GetEntityURI("accounts", accountId),
-                            BcgovJobtitle = jobTitle
+                            BcgovJobtitle = jobTitle,
+                            BcgovFromdate = DateTimeOffset.Now
                         };                        
 
                         if (!string.IsNullOrEmpty(jobtitle))
