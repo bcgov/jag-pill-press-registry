@@ -37,5 +37,9 @@ namespace Gov.Jag.PillPressRegistry.Public.ViewModels
         [JsonConverter(typeof(StringEnumConverter))]
         public OwnerManagerCodes registeredSellerOwnerManager { get; set; }
 
+        public DateTimeOffset? fromdate { get; set; }
+
+        public DateTimeOffset? enddate { get; set; }
+
     }
 }
