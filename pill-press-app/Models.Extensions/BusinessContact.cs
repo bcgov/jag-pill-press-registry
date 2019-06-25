@@ -48,6 +48,16 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                     result.account = businessContact.BcgovBusinessProfile.ToViewModel();
                 }
 
+                if (businessContact.BcgovFromdate != null)
+                {
+                    result.fromdate = businessContact.BcgovFromdate;
+                }
+
+                if (businessContact.BcgovEnddate != null)
+                {
+                    result.enddate = businessContact.BcgovEnddate;
+                }
+
             }
             return result;
         }
@@ -57,7 +67,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
             to.BcgovJobtitle = from.jobTitle;
             to.BcgovContacttype = (int?) from.contactType;
             to.BcgovRegisteredsellerownermanager = (int?)from.registeredSellerOwnerManager;
-                        
+            to.BcgovFromdate = from.fromdate;
+            to.BcgovEnddate = from.enddate;
         }
 
 
@@ -70,8 +81,11 @@ namespace Gov.Jag.PillPressRegistry.Public.Models
                 ContactODataBind = system.GetEntityURI("contacts", from.contact.id),
                 AccountODataBind = system.GetEntityURI("accounts", from.account.id),
                 BcgovJobtitle = from.jobTitle,
-                BcgovRegisteredsellerownermanager = (int?)from.registeredSellerOwnerManager
+                BcgovRegisteredsellerownermanager = (int?)from.registeredSellerOwnerManager,
+                BcgovFromdate = from.fromdate,
+                BcgovEnddate = from.enddate
             };
+
             if (!string.IsNullOrEmpty(from.id))
             {
                 result.BcgovBusinesscontactid = from.id;
