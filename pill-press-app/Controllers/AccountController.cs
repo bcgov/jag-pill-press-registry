@@ -410,7 +410,10 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateAccount([FromBody] ViewModels.Account item, string id)
-        {            
+        {
+            bool isAdditionalContactDeleted = false;
+            string additionalContactDeletedId = null;
+
             if (!string.IsNullOrEmpty(id) && Guid.TryParse(id, out Guid accountId))
             {
                 _logger.LogInformation(LoggingEvents.HttpPut, "Begin method " + this.GetType().Name + "." + MethodBase.GetCurrentMethod().ReflectedType.Name);
@@ -432,6 +435,12 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 }
 
                 // handle the contacts.
+
+                if ( !string.IsNullOrEmpty(account._bcgovAdditionalcontactValue) && string.IsNullOrEmpty(item.additionalContact.id) )
+                {
+                    isAdditionalContactDeleted = true;
+                    additionalContactDeletedId = account._bcgovAdditionalcontactValue;
+                }
 
                 UpdateContacts(item);
 
@@ -512,7 +521,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                         // delete the contact.
                         try
                         {
-                            _dynamicsClient.Contacts.Delete(account._bcgovAdditionalcontactValue);
+                            // do not delete the contact. Should remain linked as business contact
+                            //_dynamicsClient.Contacts.Delete(account._bcgovAdditionalcontactValue);
                         }
                         catch (OdataerrorException odee)
                         {
@@ -544,16 +554,46 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 // commenting out the purge of any existing non bceid accounts. They should remain  as part of business contacts history
                 //_dynamicsClient.DeleteNonBceidBusinessContactLinkForAccount(_logger, accountId.ToString());
 
-                // create the business contact links.
+                // set the business contact links.
                 if (item.primaryContact != null)
                 {
                     _dynamicsClient.CreateBusinessContactLink(_logger, item.primaryContact.id, accountId.ToString(), null, (int?)ContactTypeCodes.Primary, item.primaryContact.title);
                 }
-                if (item.additionalContact != null)
+
+                if (item.additionalContact != null && item.additionalContact.HasValue())
                 {
                     _dynamicsClient.CreateBusinessContactLink(_logger, item.additionalContact.id, accountId.ToString(), null, (int?)ContactTypeCodes.Additional, item.additionalContact.title);
                 }
-                
+                else
+                {
+                    if (isAdditionalContactDeleted) {
+                        // find business contact record
+                        MicrosoftDynamicsCRMbcgovBusinesscontact businessContactLinked = _dynamicsClient.GetBusinessContactLink(_logger, additionalContactDeletedId, accountId.ToString());
+
+                        // set business contact record, enddate field with current date/time
+                        try
+                        {
+                            MicrosoftDynamicsCRMbcgovBusinesscontact businessContact = new MicrosoftDynamicsCRMbcgovBusinesscontact()
+                            {
+                                BcgovEnddate = DateTimeOffset.Now
+                            };
+
+                            _dynamicsClient.Businesscontacts.Update(businessContactLinked.BcgovBusinesscontactid, businessContact);
+                        }
+                        catch (OdataerrorException odee)
+                        {
+                            if (_logger != null)
+                            {
+                                _logger.LogError(LoggingEvents.Error, "Error updating business contact id: " + businessContactLinked.BcgovBusinesscontactid);
+                                _logger.LogError("Request:");
+                                _logger.LogError(odee.Request.Content);
+                                _logger.LogError("Response:");
+                                _logger.LogError(odee.Response.Content);
+                            }
+                        }
+                    }
+
+                }
 
                 // populate child items in the account.
                 patchAccount = _dynamicsClient.GetAccountByIdWithChildren(accountId);
