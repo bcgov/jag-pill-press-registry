@@ -12,7 +12,9 @@
     "build:ssr": "npm run build -- --app=ssr --output-hashing=media",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "private": true,
   "dependencies": {
@@ -57,7 +59,8 @@
     "rxjs-compat": "^6.3.3",
     "web-animations-js": "^2.3.1",
     "xmlhttprequest": "^1.8.0",
-    "zone.js": "^0.8.27"
+    "zone.js": "^0.8.27",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.12.1",
@@ -79,5 +82,6 @@
     "ts-node": "~7.0.0",
     "tslint": "^5.12.1",
     "typescript": "3.1.1"
-  }
+  },
+  "snyk": true
 }
