@@ -1,5 +1,5 @@
 # bash script to be sourced to set environment variables for OpenShift scripts
-export PROJECT_NAMESPACE="rqnyx8"
+export PROJECT_NAMESPACE="crraem"
 export PROJECT_OS_DIR=${PROJECT_OS_DIR:-../../openshift}
 
 # The templates that should not have their GIT referances(uri and ref) over-ridden
