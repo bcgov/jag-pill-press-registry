@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
-using Microsoft.Extensions.Caching.Redis;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 
 namespace Gov.Jag.PillPressRegistry.Public.Controllers
@@ -19,10 +19,10 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
     public class LoadTestController : Controller
     {
         private readonly IConfiguration Configuration;
-        private readonly IHostingEnvironment _env;
+        private readonly IWebHostEnvironment _env;
         private readonly SiteMinderAuthOptions _options = new SiteMinderAuthOptions();
 
-        public LoadTestController( IConfiguration configuration, IHostingEnvironment env)
+        public LoadTestController( IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
             _env = env;

@@ -4,28 +4,41 @@ using Gov.Jag.PillPressRegistry.Public.Authorization;
 using Gov.Jag.PillPressRegistry.Public.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.AspNetCore.DataProtection;
+using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
-using Microsoft.EntityFrameworkCore;
+
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.HealthChecks;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Net.Http.Headers;
-using Microsoft.Rest;
+using Newtonsoft.Json;
 using NWebsec.AspNetCore.Mvc;
 using NWebsec.AspNetCore.Mvc.Csp;
+using Serilog;
+using Serilog.Exceptions;
 using System;
 using System.IO;
+using System.Linq;
+using System.Net.Http;
+using System.Net.Mime;
 using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Extensions.Hosting;
+using System.Collections.Generic;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
+
+using System.Net;
+using Microsoft.Rest;
+using Microsoft.AspNetCore.CookiePolicy;
 
 namespace Gov.Jag.PillPressRegistry.Public
 {
@@ -54,9 +67,11 @@ namespace Gov.Jag.PillPressRegistry.Public
             // Add a memory cache
             services.AddMemoryCache();
 
+
             // for security reasons, the following headers are set.
             services.AddMvc(opts =>
             {
+                opts.EnableEndpointRouting = false;
                 // default deny
                 var policy = new AuthorizationPolicyBuilder()
                  .RequireAuthenticatedUser()
@@ -73,17 +88,17 @@ namespace Gov.Jag.PillPressRegistry.Public
                 opts.Filters.Add(typeof(CspReportOnlyAttribute));
                 opts.Filters.Add(new CspScriptSrcReportOnlyAttribute { None = true });
             })
-            .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
-            .AddJsonOptions(
-                opts =>
-                {
-                    opts.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
-                    opts.SerializerSettings.DateFormatHandling = Newtonsoft.Json.DateFormatHandling.IsoDateFormat;
-                    opts.SerializerSettings.DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Utc;
+            .AddNewtonsoftJson(opts =>
+            {
+                opts.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
+                opts.SerializerSettings.DateFormatHandling = Newtonsoft.Json.DateFormatHandling.IsoDateFormat;
+                opts.SerializerSettings.DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Utc;
 
-                    // ReferenceLoopHandling is set to Ignore to prevent JSON parser issues with the user / roles model.
-                    opts.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-                });
+                // ReferenceLoopHandling is set to Ignore to prevent JSON parser issues with the user / roles model.
+                opts.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            })
+            .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+
 
 
             // setup siteminder authentication (core 2.0)
@@ -100,7 +115,7 @@ namespace Gov.Jag.PillPressRegistry.Public
             services.AddAuthorization(options =>
             {    
                 options.AddPolicy("Business-User", policy =>
-                                  policy.RequireClaim(User.UserTypeClaim, "Business"));
+                                  policy.RequireClaim(Models.User.UserTypeClaim, "Business"));
             });
             services.RegisterPermissionHandler();
 
@@ -121,17 +136,15 @@ namespace Gov.Jag.PillPressRegistry.Public
             {
                 options.MultipartBodyLengthLimit = 1073741824; // 1 GB
             });
-            
+
             // health checks
-            services.AddHealthChecks(checks =>
-            {
-                checks.AddValueTaskCheck("HTTP Endpoint", () => new ValueTask<IHealthCheckResult>(HealthCheckResult.Healthy("Ok")));
-                                
-            });
+            services.AddHealthChecks()
+                .AddCheck("pillpress_app", () => HealthCheckResult.Healthy());
+               
 
             services.AddSession();
-
         }
+
 
         private void SetupDynamics(IServiceCollection services)
         {
@@ -228,7 +241,7 @@ namespace Gov.Jag.PillPressRegistry.Public
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             var log = loggerFactory.CreateLogger("Startup");
 

@@ -23,10 +23,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// </summary>
         /// <param name='top'>
         /// </param>
-        /// <param name='skip'>
-        /// </param>
-        /// <param name='search'>
-        /// </param>
         /// <param name='filter'>
         /// </param>
         /// <param name='count'>
@@ -46,13 +42,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="OdataerrorException">
+        /// <exception cref="Microsoft.Rest.HttpOperationException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        Task<HttpOperationResponse<CertificateapprovedproductsGetResponseModel>> GetWithHttpMessagesAsync(int? top = default(int?), int? skip = default(int?), string search = default(string), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<MicrosoftDynamicsCRMbcgovCertificateapprovedproductCollection>> GetWithHttpMessagesAsync(int? top = default(int?), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Add new entity to bcgov_certificateapprovedproducts
         /// </summary>
@@ -69,7 +65,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="OdataerrorException">
+        /// <exception cref="Microsoft.Rest.HttpOperationException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -83,7 +79,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// Get entity from bcgov_certificateapprovedproducts by key
         /// </summary>
         /// <param name='bcgovCertificateapprovedproductid'>
-        /// key: bcgov_certificateapprovedproductid
+        /// key: bcgov_certificateapprovedproductid of
+        /// bcgov_certificateapprovedproduct
         /// </param>
         /// <param name='select'>
         /// Select properties to be returned
@@ -97,7 +94,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="OdataerrorException">
+        /// <exception cref="Microsoft.Rest.HttpOperationException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -108,32 +105,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// </exception>
         Task<HttpOperationResponse<MicrosoftDynamicsCRMbcgovCertificateapprovedproduct>> GetByKeyWithHttpMessagesAsync(string bcgovCertificateapprovedproductid, IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Delete entity from bcgov_certificateapprovedproducts
-        /// </summary>
-        /// <param name='bcgovCertificateapprovedproductid'>
-        /// key: bcgov_certificateapprovedproductid
-        /// </param>
-        /// <param name='ifMatch'>
-        /// ETag
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="OdataerrorException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<HttpOperationResponse> DeleteWithHttpMessagesAsync(string bcgovCertificateapprovedproductid, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
         /// Update entity in bcgov_certificateapprovedproducts
         /// </summary>
         /// <param name='bcgovCertificateapprovedproductid'>
-        /// key: bcgov_certificateapprovedproductid
+        /// key: bcgov_certificateapprovedproductid of
+        /// bcgov_certificateapprovedproduct
         /// </param>
         /// <param name='body'>
         /// New property values
@@ -144,12 +120,35 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="OdataerrorException">
+        /// <exception cref="Microsoft.Rest.HttpOperationException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
         Task<HttpOperationResponse> UpdateWithHttpMessagesAsync(string bcgovCertificateapprovedproductid, MicrosoftDynamicsCRMbcgovCertificateapprovedproduct body, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Delete entity from bcgov_certificateapprovedproducts
+        /// </summary>
+        /// <param name='bcgovCertificateapprovedproductid'>
+        /// key: bcgov_certificateapprovedproductid of
+        /// bcgov_certificateapprovedproduct
+        /// </param>
+        /// <param name='ifMatch'>
+        /// ETag
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.HttpOperationException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<HttpOperationResponse> DeleteWithHttpMessagesAsync(string bcgovCertificateapprovedproductid, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
