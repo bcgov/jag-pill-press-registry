@@ -2,6 +2,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace Gov.Jag.PillPressRegistry.Public
 {
@@ -14,24 +15,30 @@ namespace Gov.Jag.PillPressRegistry.Public
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+            
             WebHost.CreateDefaultBuilder(args)
                 .UseKestrel(c => c.AddServerHeader = false)
-                .UseHealthChecks("/hc")
                 .ConfigureAppConfiguration((hostingContext, config) =>
                 {
-                    var env = hostingContext.HostingEnvironment;
+            var env = hostingContext.HostingEnvironment;
 
-                    config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                            .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
-                    config.AddEnvironmentVariables();
-                })
+            config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                  .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
+            config.AddEnvironmentVariables();
+        })
                 .ConfigureLogging((hostingContext, logging) =>
                 {
-                    logging.AddConsole(options => options.IncludeScopes = true);
-                    logging.SetMinimumLevel(LogLevel.Debug);
-                    logging.AddDebug();
-                    logging.AddEventSourceLogger();
-                })
+            logging.ClearProviders();
+            logging.AddConsole(x =>
+            {
+                x.TimestampFormat = "yyyy-MM-dd HH:mm:ss ";
+                x.IncludeScopes = true;
+            });
+            logging.SetMinimumLevel(LogLevel.Debug);
+            logging.AddDebug();
+            logging.AddEventSourceLogger();
+        })
+                .UseSerilog()
                 .UseStartup<Startup>();
     }
 }
