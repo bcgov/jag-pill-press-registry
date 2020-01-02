@@ -11,8 +11,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
     using Newtonsoft.Json;
 
     /// <summary>
-    /// This OData service is located at
-    /// https://wsgw.dev.jag.gov.bc.ca/pillpress/dev/api/data/v8.2/
+    /// This OData service is located at http://localhost
     /// </summary>
     public partial interface IDynamicsClient : System.IDisposable
     {
@@ -32,6 +31,31 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         JsonSerializerSettings DeserializationSettings { get; }
 
         /// <summary>
+        /// Show only the first n items
+        /// </summary>
+        int? Top { get; set; }
+
+        /// <summary>
+        /// Skip the first n items
+        /// </summary>
+        int? Skip { get; set; }
+
+        /// <summary>
+        /// Include count of items
+        /// </summary>
+        bool? Count { get; set; }
+
+        /// <summary>
+        /// Filter items by property values
+        /// </summary>
+        string Filter { get; set; }
+
+        /// <summary>
+        /// Search items by search phrases
+        /// </summary>
+        string Search { get; set; }
+
+        /// <summary>
         /// Subscription credentials which uniquely identify client
         /// subscription.
         /// </summary>
@@ -44,9 +68,439 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         IAccounts Accounts { get; }
 
         /// <summary>
+        /// Gets the IAccountbcgovbusinesscontactbusinessprofile.
+        /// </summary>
+        IAccountbcgovbusinesscontactbusinessprofile Accountbcgovbusinesscontactbusinessprofile { get; }
+
+        /// <summary>
+        /// Gets the IAccountbcgovcertificatecertificateholderbusiness.
+        /// </summary>
+        IAccountbcgovcertificatecertificateholderbusiness Accountbcgovcertificatecertificateholderbusiness { get; }
+
+        /// <summary>
+        /// Gets the IAccountbcgovcomplaintbusinesslegalname.
+        /// </summary>
+        IAccountbcgovcomplaintbusinesslegalname Accountbcgovcomplaintbusinesslegalname { get; }
+
+        /// <summary>
+        /// Gets the IAccountcontactbusinesslegalname.
+        /// </summary>
+        IAccountcontactbusinesslegalname Accountcontactbusinesslegalname { get; }
+
+        /// <summary>
+        /// Gets the IAccountcustomaddress.
+        /// </summary>
+        IAccountcustomaddress Accountcustomaddress { get; }
+
+        /// <summary>
+        /// Gets the IAccountcustomaddressbusinessprofile.
+        /// </summary>
+        IAccountcustomaddressbusinessprofile Accountcustomaddressbusinessprofile { get; }
+
+        /// <summary>
+        /// Gets the IAccountequipmentcurrentbusinessowner.
+        /// </summary>
+        IAccountequipmentcurrentbusinessowner Accountequipmentcurrentbusinessowner { get; }
+
+        /// <summary>
+        /// Gets the IAccountinspectionbusinesslegalname.
+        /// </summary>
+        IAccountinspectionbusinesslegalname Accountinspectionbusinesslegalname { get; }
+
+        /// <summary>
+        /// Gets the IAccountinspectionownercategory.
+        /// </summary>
+        IAccountinspectionownercategory Accountinspectionownercategory { get; }
+
+        /// <summary>
+        /// Gets the IAccountlocationbusinessprofile.
+        /// </summary>
+        IAccountlocationbusinessprofile Accountlocationbusinessprofile { get; }
+
+        /// <summary>
+        /// Gets the IAdditionalcontact.
+        /// </summary>
+        IAdditionalcontact Additionalcontact { get; }
+
+        /// <summary>
+        /// Gets the ICurrentbusinessmailingaddress.
+        /// </summary>
+        ICurrentbusinessmailingaddress Currentbusinessmailingaddress { get; }
+
+        /// <summary>
+        /// Gets the ICurrentbusinessphysicaladdress.
+        /// </summary>
+        ICurrentbusinessphysicaladdress Currentbusinessphysicaladdress { get; }
+
+        /// <summary>
+        /// Gets the ICurrentregisteredsellercertificate.
+        /// </summary>
+        ICurrentregisteredsellercertificate Currentregisteredsellercertificate { get; }
+
+        /// <summary>
+        /// Gets the ICurrentwaivercertificate.
+        /// </summary>
+        ICurrentwaivercertificate Currentwaivercertificate { get; }
+
+        /// <summary>
+        /// Gets the IPartyidbcgovcomplaint.
+        /// </summary>
+        IPartyidbcgovcomplaint Partyidbcgovcomplaint { get; }
+
+        /// <summary>
+        /// Gets the IPartyidbcgovcustomaddress.
+        /// </summary>
+        IPartyidbcgovcustomaddress Partyidbcgovcustomaddress { get; }
+
+        /// <summary>
+        /// Gets the IPartyidbcgovcustomproduct.
+        /// </summary>
+        IPartyidbcgovcustomproduct Partyidbcgovcustomproduct { get; }
+
+        /// <summary>
+        /// Gets the IPartyidbcgovequipment.
+        /// </summary>
+        IPartyidbcgovequipment Partyidbcgovequipment { get; }
+
+        /// <summary>
+        /// Gets the IPartyidbcgovequipmentlocation.
+        /// </summary>
+        IPartyidbcgovequipmentlocation Partyidbcgovequipmentlocation { get; }
+
+        /// <summary>
+        /// Gets the IPartyidbcgovinspection.
+        /// </summary>
+        IPartyidbcgovinspection Partyidbcgovinspection { get; }
+
+        /// <summary>
+        /// Gets the IPartyidbcgovinvestigation.
+        /// </summary>
+        IPartyidbcgovinvestigation Partyidbcgovinvestigation { get; }
+
+        /// <summary>
+        /// Gets the IPartyidbcgovlocation.
+        /// </summary>
+        IPartyidbcgovlocation Partyidbcgovlocation { get; }
+
+        /// <summary>
+        /// Gets the IPartyidbcgovriskassessment.
+        /// </summary>
+        IPartyidbcgovriskassessment Partyidbcgovriskassessment { get; }
+
+        /// <summary>
+        /// Gets the IPartyidbcgovviolationticket.
+        /// </summary>
+        IPartyidbcgovviolationticket Partyidbcgovviolationticket { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcomplaint.
+        /// </summary>
+        IRegardingobjectidbcgovcomplaint Regardingobjectidbcgovcomplaint { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomaddress.
+        /// </summary>
+        IRegardingobjectidbcgovcustomaddress Regardingobjectidbcgovcustomaddress { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomproduct.
+        /// </summary>
+        IRegardingobjectidbcgovcustomproduct Regardingobjectidbcgovcustomproduct { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipment.
+        /// </summary>
+        IRegardingobjectidbcgovequipment Regardingobjectidbcgovequipment { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmentlocation.
+        /// </summary>
+        IRegardingobjectidbcgovequipmentlocation Regardingobjectidbcgovequipmentlocation { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinspection.
+        /// </summary>
+        IRegardingobjectidbcgovinspection Regardingobjectidbcgovinspection { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigation.
+        /// </summary>
+        IRegardingobjectidbcgovinvestigation Regardingobjectidbcgovinvestigation { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationstep.
+        /// </summary>
+        IRegardingobjectidbcgovinvestigationstep Regardingobjectidbcgovinvestigationstep { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovlocation.
+        /// </summary>
+        IRegardingobjectidbcgovlocation Regardingobjectidbcgovlocation { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovriskassessment.
+        /// </summary>
+        IRegardingobjectidbcgovriskassessment Regardingobjectidbcgovriskassessment { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovviolationticket.
+        /// </summary>
+        IRegardingobjectidbcgovviolationticket Regardingobjectidbcgovviolationticket { get; }
+
+        /// <summary>
+        /// Gets the IObjectidbcgovcomplaint.
+        /// </summary>
+        IObjectidbcgovcomplaint Objectidbcgovcomplaint { get; }
+
+        /// <summary>
+        /// Gets the IObjectidbcgovcustomaddress.
+        /// </summary>
+        IObjectidbcgovcustomaddress Objectidbcgovcustomaddress { get; }
+
+        /// <summary>
+        /// Gets the IObjectidbcgovequipment.
+        /// </summary>
+        IObjectidbcgovequipment Objectidbcgovequipment { get; }
+
+        /// <summary>
+        /// Gets the IObjectidbcgovequipmentlocation.
+        /// </summary>
+        IObjectidbcgovequipmentlocation Objectidbcgovequipmentlocation { get; }
+
+        /// <summary>
+        /// Gets the IObjectidbcgovinspection.
+        /// </summary>
+        IObjectidbcgovinspection Objectidbcgovinspection { get; }
+
+        /// <summary>
+        /// Gets the IObjectidbcgovinvestigation.
+        /// </summary>
+        IObjectidbcgovinvestigation Objectidbcgovinvestigation { get; }
+
+        /// <summary>
+        /// Gets the IObjectidbcgovinvestigationstep.
+        /// </summary>
+        IObjectidbcgovinvestigationstep Objectidbcgovinvestigationstep { get; }
+
+        /// <summary>
+        /// Gets the IObjectidbcgovlocation.
+        /// </summary>
+        IObjectidbcgovlocation Objectidbcgovlocation { get; }
+
+        /// <summary>
+        /// Gets the IObjectidbcgovriskassessment.
+        /// </summary>
+        IObjectidbcgovriskassessment Objectidbcgovriskassessment { get; }
+
+        /// <summary>
+        /// Gets the IObjectidbcgovviolationticket.
+        /// </summary>
+        IObjectidbcgovviolationticket Objectidbcgovviolationticket { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcomplaintappointment.
+        /// </summary>
+        IRegardingobjectidbcgovcomplaintappointment Regardingobjectidbcgovcomplaintappointment { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomaddressappointment.
+        /// </summary>
+        IRegardingobjectidbcgovcustomaddressappointment Regardingobjectidbcgovcustomaddressappointment { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomproductappointment.
+        /// </summary>
+        IRegardingobjectidbcgovcustomproductappointment Regardingobjectidbcgovcustomproductappointment { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmentappointment.
+        /// </summary>
+        IRegardingobjectidbcgovequipmentappointment Regardingobjectidbcgovequipmentappointment { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmentlocationappointment.
+        /// </summary>
+        IRegardingobjectidbcgovequipmentlocationappointment Regardingobjectidbcgovequipmentlocationappointment { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinspectionappointment.
+        /// </summary>
+        IRegardingobjectidbcgovinspectionappointment Regardingobjectidbcgovinspectionappointment { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationappointment.
+        /// </summary>
+        IRegardingobjectidbcgovinvestigationappointment Regardingobjectidbcgovinvestigationappointment { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationstepappointment.
+        /// </summary>
+        IRegardingobjectidbcgovinvestigationstepappointment Regardingobjectidbcgovinvestigationstepappointment { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovlocationappointment.
+        /// </summary>
+        IRegardingobjectidbcgovlocationappointment Regardingobjectidbcgovlocationappointment { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovriskassessmentappointment.
+        /// </summary>
+        IRegardingobjectidbcgovriskassessmentappointment Regardingobjectidbcgovriskassessmentappointment { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovviolationticketappointment.
+        /// </summary>
+        IRegardingobjectidbcgovviolationticketappointment Regardingobjectidbcgovviolationticketappointment { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovactregulationreference.
+        /// </summary>
+        IRegardingobjectidbcgovactregulationreference Regardingobjectidbcgovactregulationreference { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovapplicationtype.
+        /// </summary>
+        IRegardingobjectidbcgovapplicationtype Regardingobjectidbcgovapplicationtype { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovarea.
+        /// </summary>
+        IRegardingobjectidbcgovarea Regardingobjectidbcgovarea { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovbusinesscontact.
+        /// </summary>
+        IRegardingobjectidbcgovbusinesscontact Regardingobjectidbcgovbusinesscontact { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcecontact.
+        /// </summary>
+        IRegardingobjectidbcgovcecontact Regardingobjectidbcgovcecontact { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcecontacttype.
+        /// </summary>
+        IRegardingobjectidbcgovcecontacttype Regardingobjectidbcgovcecontacttype { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcertificate.
+        /// </summary>
+        IRegardingobjectidbcgovcertificate Regardingobjectidbcgovcertificate { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcertificateapprovedproduct.
+        /// </summary>
+        IRegardingobjectidbcgovcertificateapprovedproduct Regardingobjectidbcgovcertificateapprovedproduct { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcertificatetermsandconditions.
+        /// </summary>
+        IRegardingobjectidbcgovcertificatetermsandconditions Regardingobjectidbcgovcertificatetermsandconditions { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcomplaintchecklist.
+        /// </summary>
+        IRegardingobjectidbcgovcomplaintchecklist Regardingobjectidbcgovcomplaintchecklist { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcomplaintcomplaintprocessflow.
+        /// </summary>
+        IRegardingobjectidbcgovcomplaintcomplaintprocessflow Regardingobjectidbcgovcomplaintcomplaintprocessflow { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomuser.
+        /// </summary>
+        IRegardingobjectidbcgovcustomuser Regardingobjectidbcgovcustomuser { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinspectionchecklist.
+        /// </summary>
+        IRegardingobjectidbcgovinspectionchecklist Regardingobjectidbcgovinspectionchecklist { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinspectionownershipcategory.
+        /// </summary>
+        IRegardingobjectidbcgovinspectionownershipcategory Regardingobjectidbcgovinspectionownershipcategory { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinspectionprocessflow.
+        /// </summary>
+        IRegardingobjectidbcgovinspectionprocessflow Regardingobjectidbcgovinspectionprocessflow { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovpostalcode.
+        /// </summary>
+        IRegardingobjectidbcgovpostalcode Regardingobjectidbcgovpostalcode { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovregion.
+        /// </summary>
+        IRegardingobjectidbcgovregion Regardingobjectidbcgovregion { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovrole.
+        /// </summary>
+        IRegardingobjectidbcgovrole Regardingobjectidbcgovrole { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovtermsconditionspreset.
+        /// </summary>
+        IRegardingobjectidbcgovtermsconditionspreset Regardingobjectidbcgovtermsconditionspreset { get; }
+
+        /// <summary>
         /// Gets the IActregulationreferences.
         /// </summary>
         IActregulationreferences Actregulationreferences { get; }
+
+        /// <summary>
+        /// Gets the IActregulationreferenceasyncoperations.
+        /// </summary>
+        IActregulationreferenceasyncoperations Actregulationreferenceasyncoperations { get; }
+
+        /// <summary>
+        /// Gets the IActregulationreferencebulkdeletefailures.
+        /// </summary>
+        IActregulationreferencebulkdeletefailures Actregulationreferencebulkdeletefailures { get; }
+
+        /// <summary>
+        /// Gets the IActregulationreferencecomplaintchecklistactregulationreference.
+        /// </summary>
+        IActregulationreferencecomplaintchecklistactregulationreference Actregulationreferencecomplaintchecklistactregulationreference { get; }
+
+        /// <summary>
+        /// Gets the IActregulationreferenceduplicatebaserecord.
+        /// </summary>
+        IActregulationreferenceduplicatebaserecord Actregulationreferenceduplicatebaserecord { get; }
+
+        /// <summary>
+        /// Gets the IActregulationreferenceduplicatematchingrecord.
+        /// </summary>
+        IActregulationreferenceduplicatematchingrecord Actregulationreferenceduplicatematchingrecord { get; }
+
+        /// <summary>
+        /// Gets the IActregulationreferenceinspectionchecklistactregulationreference.
+        /// </summary>
+        IActregulationreferenceinspectionchecklistactregulationreference Actregulationreferenceinspectionchecklistactregulationreference { get; }
+
+        /// <summary>
+        /// Gets the IActregulationreferenceinvestigationstepactregulationreference.
+        /// </summary>
+        IActregulationreferenceinvestigationstepactregulationreference Actregulationreferenceinvestigationstepactregulationreference { get; }
+
+        /// <summary>
+        /// Gets the IActregulationreferencesyncerrors.
+        /// </summary>
+        IActregulationreferencesyncerrors Actregulationreferencesyncerrors { get; }
+
+        /// <summary>
+        /// Gets the IInspectionactregulationrefer.
+        /// </summary>
+        IInspectionactregulationrefer Inspectionactregulationrefer { get; }
+
+        /// <summary>
+        /// Gets the IInspectionchecklistactregula.
+        /// </summary>
+        IInspectionchecklistactregula Inspectionchecklistactregula { get; }
 
         /// <summary>
         /// Gets the IApplicationtypes.
@@ -54,9 +508,94 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         IApplicationtypes Applicationtypes { get; }
 
         /// <summary>
+        /// Gets the IApplicationtypeasyncoperations.
+        /// </summary>
+        IApplicationtypeasyncoperations Applicationtypeasyncoperations { get; }
+
+        /// <summary>
+        /// Gets the IApplicationtypebcgovcertificatecertificatetype.
+        /// </summary>
+        IApplicationtypebcgovcertificatecertificatetype Applicationtypebcgovcertificatecertificatetype { get; }
+
+        /// <summary>
+        /// Gets the IApplicationtypebcgovcertificatetermsandconditionscertificatetype.
+        /// </summary>
+        IApplicationtypebcgovcertificatetermsandconditionscertificatetype Applicationtypebcgovcertificatetermsandconditionscertificatetype { get; }
+
+        /// <summary>
+        /// Gets the IApplicationtypebcgovtermsconditionspresetapplicationtype.
+        /// </summary>
+        IApplicationtypebcgovtermsconditionspresetapplicationtype Applicationtypebcgovtermsconditionspresetapplicationtype { get; }
+
+        /// <summary>
+        /// Gets the IApplicationtypebulkdeletefailures.
+        /// </summary>
+        IApplicationtypebulkdeletefailures Applicationtypebulkdeletefailures { get; }
+
+        /// <summary>
+        /// Gets the IApplicationtypeduplicatebaserecord.
+        /// </summary>
+        IApplicationtypeduplicatebaserecord Applicationtypeduplicatebaserecord { get; }
+
+        /// <summary>
+        /// Gets the IApplicationtypeduplicatematchingrecord.
+        /// </summary>
+        IApplicationtypeduplicatematchingrecord Applicationtypeduplicatematchingrecord { get; }
+
+        /// <summary>
+        /// Gets the IApplicationtypeincidentapplicationtypeid.
+        /// </summary>
+        IApplicationtypeincidentapplicationtypeid Applicationtypeincidentapplicationtypeid { get; }
+
+        /// <summary>
+        /// Gets the IApplicationtypesyncerrors.
+        /// </summary>
+        IApplicationtypesyncerrors Applicationtypesyncerrors { get; }
+
+        /// <summary>
         /// Gets the IAreas.
         /// </summary>
         IAreas Areas { get; }
+
+        /// <summary>
+        /// Gets the IAreaasyncoperations.
+        /// </summary>
+        IAreaasyncoperations Areaasyncoperations { get; }
+
+        /// <summary>
+        /// Gets the IAreabcgovpostalcodearea.
+        /// </summary>
+        IAreabcgovpostalcodearea Areabcgovpostalcodearea { get; }
+
+        /// <summary>
+        /// Gets the IAreabulkdeletefailures.
+        /// </summary>
+        IAreabulkdeletefailures Areabulkdeletefailures { get; }
+
+        /// <summary>
+        /// Gets the IAreaduplicatebaserecord.
+        /// </summary>
+        IAreaduplicatebaserecord Areaduplicatebaserecord { get; }
+
+        /// <summary>
+        /// Gets the IAreaduplicatematchingrecord.
+        /// </summary>
+        IAreaduplicatematchingrecord Areaduplicatematchingrecord { get; }
+
+        /// <summary>
+        /// Gets the IArealocationlocationarea.
+        /// </summary>
+        IArealocationlocationarea Arealocationlocationarea { get; }
+
+        /// <summary>
+        /// Gets the IAreasyncerrors.
+        /// </summary>
+        IAreasyncerrors Areasyncerrors { get; }
+
+        /// <summary>
+        /// Gets the IRegion.
+        /// </summary>
+        IRegion Region { get; }
 
         /// <summary>
         /// Gets the IBusinesscontacts.
@@ -64,9 +603,99 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         IBusinesscontacts Businesscontacts { get; }
 
         /// <summary>
+        /// Gets the IBusinesscontactasyncoperations.
+        /// </summary>
+        IBusinesscontactasyncoperations Businesscontactasyncoperations { get; }
+
+        /// <summary>
+        /// Gets the IBusinesscontactbulkdeletefailures.
+        /// </summary>
+        IBusinesscontactbulkdeletefailures Businesscontactbulkdeletefailures { get; }
+
+        /// <summary>
+        /// Gets the IBusinesscontactduplicatebaserecord.
+        /// </summary>
+        IBusinesscontactduplicatebaserecord Businesscontactduplicatebaserecord { get; }
+
+        /// <summary>
+        /// Gets the IBusinesscontactduplicatematchingrecord.
+        /// </summary>
+        IBusinesscontactduplicatematchingrecord Businesscontactduplicatematchingrecord { get; }
+
+        /// <summary>
+        /// Gets the IBusinesscontactsyncerrors.
+        /// </summary>
+        IBusinesscontactsyncerrors Businesscontactsyncerrors { get; }
+
+        /// <summary>
+        /// Gets the IBusinessprofile.
+        /// </summary>
+        IBusinessprofile Businessprofile { get; }
+
+        /// <summary>
+        /// Gets the IContact.
+        /// </summary>
+        IContact Contact { get; }
+
+        /// <summary>
+        /// Gets the IIncidentbusinesscontact.
+        /// </summary>
+        IIncidentbusinesscontact Incidentbusinesscontact { get; }
+
+        /// <summary>
         /// Gets the ICecontacts.
         /// </summary>
         ICecontacts Cecontacts { get; }
+
+        /// <summary>
+        /// Gets the ICecontactasyncoperations.
+        /// </summary>
+        ICecontactasyncoperations Cecontactasyncoperations { get; }
+
+        /// <summary>
+        /// Gets the ICecontactbulkdeletefailures.
+        /// </summary>
+        ICecontactbulkdeletefailures Cecontactbulkdeletefailures { get; }
+
+        /// <summary>
+        /// Gets the ICecontactduplicatebaserecord.
+        /// </summary>
+        ICecontactduplicatebaserecord Cecontactduplicatebaserecord { get; }
+
+        /// <summary>
+        /// Gets the ICecontactduplicatematchingrecord.
+        /// </summary>
+        ICecontactduplicatematchingrecord Cecontactduplicatematchingrecord { get; }
+
+        /// <summary>
+        /// Gets the ICecontactsyncerrors.
+        /// </summary>
+        ICecontactsyncerrors Cecontactsyncerrors { get; }
+
+        /// <summary>
+        /// Gets the ICecontacttype.
+        /// </summary>
+        ICecontacttype Cecontacttype { get; }
+
+        /// <summary>
+        /// Gets the IComplaint.
+        /// </summary>
+        IComplaint Complaint { get; }
+
+        /// <summary>
+        /// Gets the IContactid.
+        /// </summary>
+        IContactid Contactid { get; }
+
+        /// <summary>
+        /// Gets the IInvestigation.
+        /// </summary>
+        IInvestigation Investigation { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationcecontact.
+        /// </summary>
+        IInvestigationcecontact Investigationcecontact { get; }
 
         /// <summary>
         /// Gets the ICecontacttypes.
@@ -74,9 +703,69 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         ICecontacttypes Cecontacttypes { get; }
 
         /// <summary>
+        /// Gets the ICecontacttypeasyncoperations.
+        /// </summary>
+        ICecontacttypeasyncoperations Cecontacttypeasyncoperations { get; }
+
+        /// <summary>
+        /// Gets the ICecontacttypebulkdeletefailures.
+        /// </summary>
+        ICecontacttypebulkdeletefailures Cecontacttypebulkdeletefailures { get; }
+
+        /// <summary>
+        /// Gets the ICecontacttypececontactcecontacttype.
+        /// </summary>
+        ICecontacttypececontactcecontacttype Cecontacttypececontactcecontacttype { get; }
+
+        /// <summary>
+        /// Gets the ICecontacttypeduplicatebaserecord.
+        /// </summary>
+        ICecontacttypeduplicatebaserecord Cecontacttypeduplicatebaserecord { get; }
+
+        /// <summary>
+        /// Gets the ICecontacttypeduplicatematchingrecord.
+        /// </summary>
+        ICecontacttypeduplicatematchingrecord Cecontacttypeduplicatematchingrecord { get; }
+
+        /// <summary>
+        /// Gets the ICecontacttypesyncerrors.
+        /// </summary>
+        ICecontacttypesyncerrors Cecontacttypesyncerrors { get; }
+
+        /// <summary>
         /// Gets the ICertificateapprovedproducts.
         /// </summary>
         ICertificateapprovedproducts Certificateapprovedproducts { get; }
+
+        /// <summary>
+        /// Gets the ICertificateapprovedproductasyncoperations.
+        /// </summary>
+        ICertificateapprovedproductasyncoperations Certificateapprovedproductasyncoperations { get; }
+
+        /// <summary>
+        /// Gets the ICertificateapprovedproductbulkdeletefailures.
+        /// </summary>
+        ICertificateapprovedproductbulkdeletefailures Certificateapprovedproductbulkdeletefailures { get; }
+
+        /// <summary>
+        /// Gets the ICertificateapprovedproductduplicatebaserecord.
+        /// </summary>
+        ICertificateapprovedproductduplicatebaserecord Certificateapprovedproductduplicatebaserecord { get; }
+
+        /// <summary>
+        /// Gets the ICertificateapprovedproductduplicatematchingrecord.
+        /// </summary>
+        ICertificateapprovedproductduplicatematchingrecord Certificateapprovedproductduplicatematchingrecord { get; }
+
+        /// <summary>
+        /// Gets the ICertificateapprovedproductsyncerrors.
+        /// </summary>
+        ICertificateapprovedproductsyncerrors Certificateapprovedproductsyncerrors { get; }
+
+        /// <summary>
+        /// Gets the ICertificateid.
+        /// </summary>
+        ICertificateid Certificateid { get; }
 
         /// <summary>
         /// Gets the ICertificates.
@@ -84,14 +773,184 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         ICertificates Certificates { get; }
 
         /// <summary>
+        /// Gets the IApplication.
+        /// </summary>
+        IApplication Application { get; }
+
+        /// <summary>
+        /// Gets the ICertificateaccountcurrentregisteredsellercertificate.
+        /// </summary>
+        ICertificateaccountcurrentregisteredsellercertificate Certificateaccountcurrentregisteredsellercertificate { get; }
+
+        /// <summary>
+        /// Gets the ICertificateaccountcurrentwaivercertificate.
+        /// </summary>
+        ICertificateaccountcurrentwaivercertificate Certificateaccountcurrentwaivercertificate { get; }
+
+        /// <summary>
+        /// Gets the ICertificateasyncoperations.
+        /// </summary>
+        ICertificateasyncoperations Certificateasyncoperations { get; }
+
+        /// <summary>
+        /// Gets the ICertificatebcgovcertificateapprovedproductcertificateid.
+        /// </summary>
+        ICertificatebcgovcertificateapprovedproductcertificateid Certificatebcgovcertificateapprovedproductcertificateid { get; }
+
+        /// <summary>
+        /// Gets the ICertificatebcgovcertificatetermsandconditionscertificate.
+        /// </summary>
+        ICertificatebcgovcertificatetermsandconditionscertificate Certificatebcgovcertificatetermsandconditionscertificate { get; }
+
+        /// <summary>
+        /// Gets the ICertificatebulkdeletefailures.
+        /// </summary>
+        ICertificatebulkdeletefailures Certificatebulkdeletefailures { get; }
+
+        /// <summary>
+        /// Gets the ICertificateduplicatebaserecord.
+        /// </summary>
+        ICertificateduplicatebaserecord Certificateduplicatebaserecord { get; }
+
+        /// <summary>
+        /// Gets the ICertificateduplicatematchingrecord.
+        /// </summary>
+        ICertificateduplicatematchingrecord Certificateduplicatematchingrecord { get; }
+
+        /// <summary>
+        /// Gets the ICertificatesyncerrors.
+        /// </summary>
+        ICertificatesyncerrors Certificatesyncerrors { get; }
+
+        /// <summary>
+        /// Gets the ICertificateholderbusiness.
+        /// </summary>
+        ICertificateholderbusiness Certificateholderbusiness { get; }
+
+        /// <summary>
+        /// Gets the ICertificatetype.
+        /// </summary>
+        ICertificatetype Certificatetype { get; }
+
+        /// <summary>
+        /// Gets the IEquipment.
+        /// </summary>
+        IEquipment Equipment { get; }
+
+        /// <summary>
         /// Gets the ICertificatetermsandconditionses.
         /// </summary>
         ICertificatetermsandconditionses Certificatetermsandconditionses { get; }
 
         /// <summary>
-        /// Gets the IComplaintcecontactset.
+        /// Gets the ICertificate.
         /// </summary>
-        IComplaintcecontactset Complaintcecontactset { get; }
+        ICertificate Certificate { get; }
+
+        /// <summary>
+        /// Gets the ICertificatetermsandconditionsasyncoperations.
+        /// </summary>
+        ICertificatetermsandconditionsasyncoperations Certificatetermsandconditionsasyncoperations { get; }
+
+        /// <summary>
+        /// Gets the ICertificatetermsandconditionsbulkdeletefailures.
+        /// </summary>
+        ICertificatetermsandconditionsbulkdeletefailures Certificatetermsandconditionsbulkdeletefailures { get; }
+
+        /// <summary>
+        /// Gets the ICertificatetermsandconditionsduplicatebaserecord.
+        /// </summary>
+        ICertificatetermsandconditionsduplicatebaserecord Certificatetermsandconditionsduplicatebaserecord { get; }
+
+        /// <summary>
+        /// Gets the ICertificatetermsandconditionsduplicatematchingrecord.
+        /// </summary>
+        ICertificatetermsandconditionsduplicatematchingrecord Certificatetermsandconditionsduplicatematchingrecord { get; }
+
+        /// <summary>
+        /// Gets the ICertificatetermsandconditionssyncerrors.
+        /// </summary>
+        ICertificatetermsandconditionssyncerrors Certificatetermsandconditionssyncerrors { get; }
+
+        /// <summary>
+        /// Gets the IPresetterms.
+        /// </summary>
+        IPresetterms Presetterms { get; }
+
+        /// <summary>
+        /// Gets the IComplaintequipmentset.
+        /// </summary>
+        IComplaintequipmentset Complaintequipmentset { get; }
+
+        /// <summary>
+        /// Gets the IComplaintinspectioncheckliset.
+        /// </summary>
+        IComplaintinspectioncheckliset Complaintinspectioncheckliset { get; }
+
+        /// <summary>
+        /// Gets the IComplaintchecklists.
+        /// </summary>
+        IComplaintchecklists Complaintchecklists { get; }
+
+        /// <summary>
+        /// Gets the IActregulationreference.
+        /// </summary>
+        IActregulationreference Actregulationreference { get; }
+
+        /// <summary>
+        /// Gets the IComplaintchecklistasyncoperations.
+        /// </summary>
+        IComplaintchecklistasyncoperations Complaintchecklistasyncoperations { get; }
+
+        /// <summary>
+        /// Gets the IComplaintchecklistbulkdeletefailures.
+        /// </summary>
+        IComplaintchecklistbulkdeletefailures Complaintchecklistbulkdeletefailures { get; }
+
+        /// <summary>
+        /// Gets the IComplaintchecklistduplicatebaserecord.
+        /// </summary>
+        IComplaintchecklistduplicatebaserecord Complaintchecklistduplicatebaserecord { get; }
+
+        /// <summary>
+        /// Gets the IComplaintchecklistduplicatematchingrecord.
+        /// </summary>
+        IComplaintchecklistduplicatematchingrecord Complaintchecklistduplicatematchingrecord { get; }
+
+        /// <summary>
+        /// Gets the IComplaintchecklistsyncerrors.
+        /// </summary>
+        IComplaintchecklistsyncerrors Complaintchecklistsyncerrors { get; }
+
+        /// <summary>
+        /// Gets the IComplaintcomplaintprocessflows.
+        /// </summary>
+        IComplaintcomplaintprocessflows Complaintcomplaintprocessflows { get; }
+
+        /// <summary>
+        /// Gets the IComplaintcomplaintprocessflowasyncoperations.
+        /// </summary>
+        IComplaintcomplaintprocessflowasyncoperations Complaintcomplaintprocessflowasyncoperations { get; }
+
+        /// <summary>
+        /// Gets the IComplaintcomplaintprocessflowbulkdeletefailures.
+        /// </summary>
+        IComplaintcomplaintprocessflowbulkdeletefailures Complaintcomplaintprocessflowbulkdeletefailures { get; }
+
+        /// <summary>
+        /// Gets the IComplaintcomplaintprocessflowsyncerrors.
+        /// </summary>
+        IComplaintcomplaintprocessflowsyncerrors Complaintcomplaintprocessflowsyncerrors { get; }
+
+        /// <summary>
+        /// Gets the IComplaintcomplaintprocessflowworkflowlogs.
+        /// </summary>
+        IComplaintcomplaintprocessflowworkflowlogs Complaintcomplaintprocessflowworkflowlogs { get; }
+
+        /// <summary>
+        /// Gets the IBpfbcgovcomplaintid.
+        /// </summary>
+        IBpfbcgovcomplaintid Bpfbcgovcomplaintid { get; }
 
         /// <summary>
         /// Gets the IComplaints.
@@ -99,9 +958,374 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         IComplaints Complaints { get; }
 
         /// <summary>
+        /// Gets the IAssignto.
+        /// </summary>
+        IAssignto Assignto { get; }
+
+        /// <summary>
+        /// Gets the IBusinesslegalname.
+        /// </summary>
+        IBusinesslegalname Businesslegalname { get; }
+
+        /// <summary>
+        /// Gets the IComplainant.
+        /// </summary>
+        IComplainant Complainant { get; }
+
+        /// <summary>
+        /// Gets the IComplaintactivityparties.
+        /// </summary>
+        IComplaintactivityparties Complaintactivityparties { get; }
+
+        /// <summary>
+        /// Gets the IComplaintactivitypointers.
+        /// </summary>
+        IComplaintactivitypointers Complaintactivitypointers { get; }
+
+        /// <summary>
+        /// Gets the IComplaintannotations.
+        /// </summary>
+        IComplaintannotations Complaintannotations { get; }
+
+        /// <summary>
+        /// Gets the IComplaintappointments.
+        /// </summary>
+        IComplaintappointments Complaintappointments { get; }
+
+        /// <summary>
+        /// Gets the IComplaintasyncoperations.
+        /// </summary>
+        IComplaintasyncoperations Complaintasyncoperations { get; }
+
+        /// <summary>
+        /// Gets the IComplaintbulkdeletefailures.
+        /// </summary>
+        IComplaintbulkdeletefailures Complaintbulkdeletefailures { get; }
+
+        /// <summary>
+        /// Gets the IComplaintcecontactcomplaint.
+        /// </summary>
+        IComplaintcecontactcomplaint Complaintcecontactcomplaint { get; }
+
+        /// <summary>
+        /// Gets the IComplaintcomplaintchecklistcomplaint.
+        /// </summary>
+        IComplaintcomplaintchecklistcomplaint Complaintcomplaintchecklistcomplaint { get; }
+
+        /// <summary>
+        /// Gets the IComplaintconnections1.
+        /// </summary>
+        IComplaintconnections1 Complaintconnections1 { get; }
+
+        /// <summary>
+        /// Gets the IComplaintconnections2.
+        /// </summary>
+        IComplaintconnections2 Complaintconnections2 { get; }
+
+        /// <summary>
+        /// Gets the IComplaintduplicatebaserecord.
+        /// </summary>
+        IComplaintduplicatebaserecord Complaintduplicatebaserecord { get; }
+
+        /// <summary>
+        /// Gets the IComplaintduplicatematchingrecord.
+        /// </summary>
+        IComplaintduplicatematchingrecord Complaintduplicatematchingrecord { get; }
+
+        /// <summary>
+        /// Gets the IComplaintemails.
+        /// </summary>
+        IComplaintemails Complaintemails { get; }
+
+        /// <summary>
+        /// Gets the IComplaintequipment.
+        /// </summary>
+        IComplaintequipment Complaintequipment { get; }
+
+        /// <summary>
+        /// Gets the IComplaintfaxes.
+        /// </summary>
+        IComplaintfaxes Complaintfaxes { get; }
+
+        /// <summary>
+        /// Gets the IComplaintinspectionchecklist.
+        /// </summary>
+        IComplaintinspectionchecklist Complaintinspectionchecklist { get; }
+
+        /// <summary>
+        /// Gets the IComplaintinvestigationcomplaint.
+        /// </summary>
+        IComplaintinvestigationcomplaint Complaintinvestigationcomplaint { get; }
+
+        /// <summary>
+        /// Gets the IComplaintletters.
+        /// </summary>
+        IComplaintletters Complaintletters { get; }
+
+        /// <summary>
+        /// Gets the IComplaintphonecalls.
+        /// </summary>
+        IComplaintphonecalls Complaintphonecalls { get; }
+
+        /// <summary>
+        /// Gets the IComplaintqueueitems.
+        /// </summary>
+        IComplaintqueueitems Complaintqueueitems { get; }
+
+        /// <summary>
+        /// Gets the IComplaintrecurringappointmentmasters.
+        /// </summary>
+        IComplaintrecurringappointmentmasters Complaintrecurringappointmentmasters { get; }
+
+        /// <summary>
+        /// Gets the IComplaintriskassessmentcomplaint.
+        /// </summary>
+        IComplaintriskassessmentcomplaint Complaintriskassessmentcomplaint { get; }
+
+        /// <summary>
+        /// Gets the IComplaintserviceappointments.
+        /// </summary>
+        IComplaintserviceappointments Complaintserviceappointments { get; }
+
+        /// <summary>
+        /// Gets the IComplaintsharepointdocumentlocations.
+        /// </summary>
+        IComplaintsharepointdocumentlocations Complaintsharepointdocumentlocations { get; }
+
+        /// <summary>
+        /// Gets the IComplaintsocialactivities.
+        /// </summary>
+        IComplaintsocialactivities Complaintsocialactivities { get; }
+
+        /// <summary>
+        /// Gets the IComplaintsyncerrors.
+        /// </summary>
+        IComplaintsyncerrors Complaintsyncerrors { get; }
+
+        /// <summary>
+        /// Gets the IComplainttasks.
+        /// </summary>
+        IComplainttasks Complainttasks { get; }
+
+        /// <summary>
+        /// Gets the ILocation.
+        /// </summary>
+        ILocation Location { get; }
+
+        /// <summary>
+        /// Gets the IRiskassessment.
+        /// </summary>
+        IRiskassessment Riskassessment { get; }
+
+        /// <summary>
+        /// Gets the IBpfbcgovcomplaintbcgovcomplaintcomplaintprocessflow.
+        /// </summary>
+        IBpfbcgovcomplaintbcgovcomplaintcomplaintprocessflow Bpfbcgovcomplaintbcgovcomplaintcomplaintprocessflow { get; }
+
+        /// <summary>
         /// Gets the ICustomaddresses.
         /// </summary>
         ICustomaddresses Customaddresses { get; }
+
+        /// <summary>
+        /// Gets the IAddressesid.
+        /// </summary>
+        IAddressesid Addressesid { get; }
+
+        /// <summary>
+        /// Gets the IBcgovcustomaddressaccountcurrentbusinessmailingaddress.
+        /// </summary>
+        IBcgovcustomaddressaccountcurrentbusinessmailingaddress Bcgovcustomaddressaccountcurrentbusinessmailingaddress { get; }
+
+        /// <summary>
+        /// Gets the IBcgovcustomaddressaccountcurrentbusinessphysicaladdress.
+        /// </summary>
+        IBcgovcustomaddressaccountcurrentbusinessphysicaladdress Bcgovcustomaddressaccountcurrentbusinessphysicaladdress { get; }
+
+        /// <summary>
+        /// Gets the IBcgovcustomaddressincidentaddressofbusinessthathasrentedorleased.
+        /// </summary>
+        IBcgovcustomaddressincidentaddressofbusinessthathasrentedorleased Bcgovcustomaddressincidentaddressofbusinessthathasrentedorleased { get; }
+
+        /// <summary>
+        /// Gets the ICustomaddressactivityparties.
+        /// </summary>
+        ICustomaddressactivityparties Customaddressactivityparties { get; }
+
+        /// <summary>
+        /// Gets the ICustomaddressactivitypointers.
+        /// </summary>
+        ICustomaddressactivitypointers Customaddressactivitypointers { get; }
+
+        /// <summary>
+        /// Gets the ICustomaddressannotations.
+        /// </summary>
+        ICustomaddressannotations Customaddressannotations { get; }
+
+        /// <summary>
+        /// Gets the ICustomaddressappointments.
+        /// </summary>
+        ICustomaddressappointments Customaddressappointments { get; }
+
+        /// <summary>
+        /// Gets the ICustomaddressasyncoperations.
+        /// </summary>
+        ICustomaddressasyncoperations Customaddressasyncoperations { get; }
+
+        /// <summary>
+        /// Gets the ICustomaddressbulkdeletefailures.
+        /// </summary>
+        ICustomaddressbulkdeletefailures Customaddressbulkdeletefailures { get; }
+
+        /// <summary>
+        /// Gets the ICustomaddressconnections1.
+        /// </summary>
+        ICustomaddressconnections1 Customaddressconnections1 { get; }
+
+        /// <summary>
+        /// Gets the ICustomaddressconnections2.
+        /// </summary>
+        ICustomaddressconnections2 Customaddressconnections2 { get; }
+
+        /// <summary>
+        /// Gets the ICustomaddresscontactaddress.
+        /// </summary>
+        ICustomaddresscontactaddress Customaddresscontactaddress { get; }
+
+        /// <summary>
+        /// Gets the ICustomaddresscontactbusinessaddress.
+        /// </summary>
+        ICustomaddresscontactbusinessaddress Customaddresscontactbusinessaddress { get; }
+
+        /// <summary>
+        /// Gets the ICustomaddressduplicatebaserecord.
+        /// </summary>
+        ICustomaddressduplicatebaserecord Customaddressduplicatebaserecord { get; }
+
+        /// <summary>
+        /// Gets the ICustomaddressduplicatematchingrecord.
+        /// </summary>
+        ICustomaddressduplicatematchingrecord Customaddressduplicatematchingrecord { get; }
+
+        /// <summary>
+        /// Gets the ICustomaddressemails.
+        /// </summary>
+        ICustomaddressemails Customaddressemails { get; }
+
+        /// <summary>
+        /// Gets the ICustomaddressfaxes.
+        /// </summary>
+        ICustomaddressfaxes Customaddressfaxes { get; }
+
+        /// <summary>
+        /// Gets the ICustomaddressfeedback.
+        /// </summary>
+        ICustomaddressfeedback Customaddressfeedback { get; }
+
+        /// <summary>
+        /// Gets the ICustomaddressincidentaddressofbusinessthathasgivenorloaned.
+        /// </summary>
+        ICustomaddressincidentaddressofbusinessthathasgivenorloaned Customaddressincidentaddressofbusinessthathasgivenorloaned { get; }
+
+        /// <summary>
+        /// Gets the ICustomaddressincidentaddressofpersonbusiness.
+        /// </summary>
+        ICustomaddressincidentaddressofpersonbusiness Customaddressincidentaddressofpersonbusiness { get; }
+
+        /// <summary>
+        /// Gets the ICustomaddressincidentaddresswhereequipmentwasdestroyed.
+        /// </summary>
+        ICustomaddressincidentaddresswhereequipmentwasdestroyed Customaddressincidentaddresswhereequipmentwasdestroyed { get; }
+
+        /// <summary>
+        /// Gets the ICustomaddressincidentbcsellersaddress.
+        /// </summary>
+        ICustomaddressincidentbcsellersaddress Customaddressincidentbcsellersaddress { get; }
+
+        /// <summary>
+        /// Gets the ICustomaddressincidentcivicaddressofpurchaser.
+        /// </summary>
+        ICustomaddressincidentcivicaddressofpurchaser Customaddressincidentcivicaddressofpurchaser { get; }
+
+        /// <summary>
+        /// Gets the ICustomaddressincidentimportersaddress.
+        /// </summary>
+        ICustomaddressincidentimportersaddress Customaddressincidentimportersaddress { get; }
+
+        /// <summary>
+        /// Gets the ICustomaddressincidentoriginatingsellersaddress.
+        /// </summary>
+        ICustomaddressincidentoriginatingsellersaddress Customaddressincidentoriginatingsellersaddress { get; }
+
+        /// <summary>
+        /// Gets the ICustomaddressincidentoutsidebcsellersaddress.
+        /// </summary>
+        ICustomaddressincidentoutsidebcsellersaddress Customaddressincidentoutsidebcsellersaddress { get; }
+
+        /// <summary>
+        /// Gets the ICustomaddressincidentpurchasersbusinessaddress.
+        /// </summary>
+        ICustomaddressincidentpurchasersbusinessaddress Customaddressincidentpurchasersbusinessaddress { get; }
+
+        /// <summary>
+        /// Gets the ICustomaddressincidentpurchaserscivicaddress.
+        /// </summary>
+        ICustomaddressincidentpurchaserscivicaddress Customaddressincidentpurchaserscivicaddress { get; }
+
+        /// <summary>
+        /// Gets the ICustomaddressknowledgebaserecord.
+        /// </summary>
+        ICustomaddressknowledgebaserecord Customaddressknowledgebaserecord { get; }
+
+        /// <summary>
+        /// Gets the ICustomaddressletters.
+        /// </summary>
+        ICustomaddressletters Customaddressletters { get; }
+
+        /// <summary>
+        /// Gets the ICustomaddresslocationlocationaddress.
+        /// </summary>
+        ICustomaddresslocationlocationaddress Customaddresslocationlocationaddress { get; }
+
+        /// <summary>
+        /// Gets the ICustomaddressphonecalls.
+        /// </summary>
+        ICustomaddressphonecalls Customaddressphonecalls { get; }
+
+        /// <summary>
+        /// Gets the ICustomaddressqueueitems.
+        /// </summary>
+        ICustomaddressqueueitems Customaddressqueueitems { get; }
+
+        /// <summary>
+        /// Gets the ICustomaddressrecurringappointmentmasters.
+        /// </summary>
+        ICustomaddressrecurringappointmentmasters Customaddressrecurringappointmentmasters { get; }
+
+        /// <summary>
+        /// Gets the ICustomaddressserviceappointments.
+        /// </summary>
+        ICustomaddressserviceappointments Customaddressserviceappointments { get; }
+
+        /// <summary>
+        /// Gets the ICustomaddressslakpiinstances.
+        /// </summary>
+        ICustomaddressslakpiinstances Customaddressslakpiinstances { get; }
+
+        /// <summary>
+        /// Gets the ICustomaddresssocialactivities.
+        /// </summary>
+        ICustomaddresssocialactivities Customaddresssocialactivities { get; }
+
+        /// <summary>
+        /// Gets the ICustomaddresssyncerrors.
+        /// </summary>
+        ICustomaddresssyncerrors Customaddresssyncerrors { get; }
+
+        /// <summary>
+        /// Gets the ICustomaddresstasks.
+        /// </summary>
+        ICustomaddresstasks Customaddresstasks { get; }
 
         /// <summary>
         /// Gets the ICustomproducts.
@@ -109,9 +1333,144 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         ICustomproducts Customproducts { get; }
 
         /// <summary>
+        /// Gets the ICustomproductactivityparties.
+        /// </summary>
+        ICustomproductactivityparties Customproductactivityparties { get; }
+
+        /// <summary>
+        /// Gets the ICustomproductactivitypointers.
+        /// </summary>
+        ICustomproductactivitypointers Customproductactivitypointers { get; }
+
+        /// <summary>
+        /// Gets the ICustomproductappointments.
+        /// </summary>
+        ICustomproductappointments Customproductappointments { get; }
+
+        /// <summary>
+        /// Gets the ICustomproductasyncoperations.
+        /// </summary>
+        ICustomproductasyncoperations Customproductasyncoperations { get; }
+
+        /// <summary>
+        /// Gets the ICustomproductbulkdeletefailures.
+        /// </summary>
+        ICustomproductbulkdeletefailures Customproductbulkdeletefailures { get; }
+
+        /// <summary>
+        /// Gets the ICustomproductconnections1.
+        /// </summary>
+        ICustomproductconnections1 Customproductconnections1 { get; }
+
+        /// <summary>
+        /// Gets the ICustomproductconnections2.
+        /// </summary>
+        ICustomproductconnections2 Customproductconnections2 { get; }
+
+        /// <summary>
+        /// Gets the ICustomproductduplicatebaserecord.
+        /// </summary>
+        ICustomproductduplicatebaserecord Customproductduplicatebaserecord { get; }
+
+        /// <summary>
+        /// Gets the ICustomproductduplicatematchingrecord.
+        /// </summary>
+        ICustomproductduplicatematchingrecord Customproductduplicatematchingrecord { get; }
+
+        /// <summary>
+        /// Gets the ICustomproductemails.
+        /// </summary>
+        ICustomproductemails Customproductemails { get; }
+
+        /// <summary>
+        /// Gets the ICustomproductfaxes.
+        /// </summary>
+        ICustomproductfaxes Customproductfaxes { get; }
+
+        /// <summary>
+        /// Gets the ICustomproductletters.
+        /// </summary>
+        ICustomproductletters Customproductletters { get; }
+
+        /// <summary>
+        /// Gets the ICustomproductphonecalls.
+        /// </summary>
+        ICustomproductphonecalls Customproductphonecalls { get; }
+
+        /// <summary>
+        /// Gets the ICustomproductqueueitems.
+        /// </summary>
+        ICustomproductqueueitems Customproductqueueitems { get; }
+
+        /// <summary>
+        /// Gets the ICustomproductrecurringappointmentmasters.
+        /// </summary>
+        ICustomproductrecurringappointmentmasters Customproductrecurringappointmentmasters { get; }
+
+        /// <summary>
+        /// Gets the ICustomproductserviceappointments.
+        /// </summary>
+        ICustomproductserviceappointments Customproductserviceappointments { get; }
+
+        /// <summary>
+        /// Gets the ICustomproductsocialactivities.
+        /// </summary>
+        ICustomproductsocialactivities Customproductsocialactivities { get; }
+
+        /// <summary>
+        /// Gets the ICustomproductsyncerrors.
+        /// </summary>
+        ICustomproductsyncerrors Customproductsyncerrors { get; }
+
+        /// <summary>
+        /// Gets the ICustomproducttasks.
+        /// </summary>
+        ICustomproducttasks Customproducttasks { get; }
+
+        /// <summary>
+        /// Gets the IRelatedapplication.
+        /// </summary>
+        IRelatedapplication Relatedapplication { get; }
+
+        /// <summary>
         /// Gets the ICustomusers.
         /// </summary>
         ICustomusers Customusers { get; }
+
+        /// <summary>
+        /// Gets the ICustomuserasyncoperations.
+        /// </summary>
+        ICustomuserasyncoperations Customuserasyncoperations { get; }
+
+        /// <summary>
+        /// Gets the ICustomuserbulkdeletefailures.
+        /// </summary>
+        ICustomuserbulkdeletefailures Customuserbulkdeletefailures { get; }
+
+        /// <summary>
+        /// Gets the ICustomuserduplicatebaserecord.
+        /// </summary>
+        ICustomuserduplicatebaserecord Customuserduplicatebaserecord { get; }
+
+        /// <summary>
+        /// Gets the ICustomuserduplicatematchingrecord.
+        /// </summary>
+        ICustomuserduplicatematchingrecord Customuserduplicatematchingrecord { get; }
+
+        /// <summary>
+        /// Gets the ICustomusersyncerrors.
+        /// </summary>
+        ICustomusersyncerrors Customusersyncerrors { get; }
+
+        /// <summary>
+        /// Gets the IRole.
+        /// </summary>
+        IRole Role { get; }
+
+        /// <summary>
+        /// Gets the IUser.
+        /// </summary>
+        IUser User { get; }
 
         /// <summary>
         /// Gets the IEquipmentlocations.
@@ -119,9 +1478,249 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         IEquipmentlocations Equipmentlocations { get; }
 
         /// <summary>
+        /// Gets the IEquipmentlocationactivityparties.
+        /// </summary>
+        IEquipmentlocationactivityparties Equipmentlocationactivityparties { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationactivitypointers.
+        /// </summary>
+        IEquipmentlocationactivitypointers Equipmentlocationactivitypointers { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationannotations.
+        /// </summary>
+        IEquipmentlocationannotations Equipmentlocationannotations { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationappointments.
+        /// </summary>
+        IEquipmentlocationappointments Equipmentlocationappointments { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationasyncoperations.
+        /// </summary>
+        IEquipmentlocationasyncoperations Equipmentlocationasyncoperations { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationbulkdeletefailures.
+        /// </summary>
+        IEquipmentlocationbulkdeletefailures Equipmentlocationbulkdeletefailures { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationconnections1.
+        /// </summary>
+        IEquipmentlocationconnections1 Equipmentlocationconnections1 { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationconnections2.
+        /// </summary>
+        IEquipmentlocationconnections2 Equipmentlocationconnections2 { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationduplicatebaserecord.
+        /// </summary>
+        IEquipmentlocationduplicatebaserecord Equipmentlocationduplicatebaserecord { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationduplicatematchingrecord.
+        /// </summary>
+        IEquipmentlocationduplicatematchingrecord Equipmentlocationduplicatematchingrecord { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationemails.
+        /// </summary>
+        IEquipmentlocationemails Equipmentlocationemails { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationfaxes.
+        /// </summary>
+        IEquipmentlocationfaxes Equipmentlocationfaxes { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationletters.
+        /// </summary>
+        IEquipmentlocationletters Equipmentlocationletters { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationphonecalls.
+        /// </summary>
+        IEquipmentlocationphonecalls Equipmentlocationphonecalls { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationqueueitems.
+        /// </summary>
+        IEquipmentlocationqueueitems Equipmentlocationqueueitems { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationrecurringappointmentmasters.
+        /// </summary>
+        IEquipmentlocationrecurringappointmentmasters Equipmentlocationrecurringappointmentmasters { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationserviceappointments.
+        /// </summary>
+        IEquipmentlocationserviceappointments Equipmentlocationserviceappointments { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationsocialactivities.
+        /// </summary>
+        IEquipmentlocationsocialactivities Equipmentlocationsocialactivities { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationsyncerrors.
+        /// </summary>
+        IEquipmentlocationsyncerrors Equipmentlocationsyncerrors { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationtasks.
+        /// </summary>
+        IEquipmentlocationtasks Equipmentlocationtasks { get; }
+
+        /// <summary>
         /// Gets the IEquipments.
         /// </summary>
         IEquipments Equipments { get; }
+
+        /// <summary>
+        /// Gets the ICurrentbusinessowner.
+        /// </summary>
+        ICurrentbusinessowner Currentbusinessowner { get; }
+
+        /// <summary>
+        /// Gets the ICurrentlocation.
+        /// </summary>
+        ICurrentlocation Currentlocation { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentactivityparties.
+        /// </summary>
+        IEquipmentactivityparties Equipmentactivityparties { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentactivitypointers.
+        /// </summary>
+        IEquipmentactivitypointers Equipmentactivitypointers { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentannotations.
+        /// </summary>
+        IEquipmentannotations Equipmentannotations { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentappointments.
+        /// </summary>
+        IEquipmentappointments Equipmentappointments { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentasyncoperations.
+        /// </summary>
+        IEquipmentasyncoperations Equipmentasyncoperations { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentbcgovcertificateequipment.
+        /// </summary>
+        IEquipmentbcgovcertificateequipment Equipmentbcgovcertificateequipment { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentbulkdeletefailures.
+        /// </summary>
+        IEquipmentbulkdeletefailures Equipmentbulkdeletefailures { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentconnections1.
+        /// </summary>
+        IEquipmentconnections1 Equipmentconnections1 { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentconnections2.
+        /// </summary>
+        IEquipmentconnections2 Equipmentconnections2 { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentduplicatebaserecord.
+        /// </summary>
+        IEquipmentduplicatebaserecord Equipmentduplicatebaserecord { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentduplicatematchingrecord.
+        /// </summary>
+        IEquipmentduplicatematchingrecord Equipmentduplicatematchingrecord { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentemails.
+        /// </summary>
+        IEquipmentemails Equipmentemails { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentequipmentlocationequipment.
+        /// </summary>
+        IEquipmentequipmentlocationequipment Equipmentequipmentlocationequipment { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentfaxes.
+        /// </summary>
+        IEquipmentfaxes Equipmentfaxes { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentincident.
+        /// </summary>
+        IEquipmentincident Equipmentincident { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentincidentequipmentrecord.
+        /// </summary>
+        IEquipmentincidentequipmentrecord Equipmentincidentequipmentrecord { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentinspectionequipmentrecord.
+        /// </summary>
+        IEquipmentinspectionequipmentrecord Equipmentinspectionequipmentrecord { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentletters.
+        /// </summary>
+        IEquipmentletters Equipmentletters { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentphonecalls.
+        /// </summary>
+        IEquipmentphonecalls Equipmentphonecalls { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentqueueitems.
+        /// </summary>
+        IEquipmentqueueitems Equipmentqueueitems { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentrecurringappointmentmasters.
+        /// </summary>
+        IEquipmentrecurringappointmentmasters Equipmentrecurringappointmentmasters { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentserviceappointments.
+        /// </summary>
+        IEquipmentserviceappointments Equipmentserviceappointments { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentsocialactivities.
+        /// </summary>
+        IEquipmentsocialactivities Equipmentsocialactivities { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentsyncerrors.
+        /// </summary>
+        IEquipmentsyncerrors Equipmentsyncerrors { get; }
+
+        /// <summary>
+        /// Gets the IEquipmenttasks.
+        /// </summary>
+        IEquipmenttasks Equipmenttasks { get; }
+
+        /// <summary>
+        /// Gets the ILocationequipment.
+        /// </summary>
+        ILocationequipment Locationequipment { get; }
 
         /// <summary>
         /// Gets the IIncidentbusinesscontactset.
@@ -149,9 +1748,94 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         IInspectionchecklists Inspectionchecklists { get; }
 
         /// <summary>
+        /// Gets the IInspection.
+        /// </summary>
+        IInspection Inspection { get; }
+
+        /// <summary>
+        /// Gets the IInspectioninspectionchecklis.
+        /// </summary>
+        IInspectioninspectionchecklis Inspectioninspectionchecklis { get; }
+
+        /// <summary>
+        /// Gets the IInspectionchecklistasyncoperations.
+        /// </summary>
+        IInspectionchecklistasyncoperations Inspectionchecklistasyncoperations { get; }
+
+        /// <summary>
+        /// Gets the IInspectionchecklistbulkdeletefailures.
+        /// </summary>
+        IInspectionchecklistbulkdeletefailures Inspectionchecklistbulkdeletefailures { get; }
+
+        /// <summary>
+        /// Gets the IInspectionchecklistduplicatebaserecord.
+        /// </summary>
+        IInspectionchecklistduplicatebaserecord Inspectionchecklistduplicatebaserecord { get; }
+
+        /// <summary>
+        /// Gets the IInspectionchecklistduplicatematchingrecord.
+        /// </summary>
+        IInspectionchecklistduplicatematchingrecord Inspectionchecklistduplicatematchingrecord { get; }
+
+        /// <summary>
+        /// Gets the IInspectionchecklistsyncerrors.
+        /// </summary>
+        IInspectionchecklistsyncerrors Inspectionchecklistsyncerrors { get; }
+
+        /// <summary>
+        /// Gets the IInspectionchecklistviolationticketactregulationviolated.
+        /// </summary>
+        IInspectionchecklistviolationticketactregulationviolated Inspectionchecklistviolationticketactregulationviolated { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationinspectioncheck.
+        /// </summary>
+        IInvestigationinspectioncheck Investigationinspectioncheck { get; }
+
+        /// <summary>
+        /// Gets the IViolationticket.
+        /// </summary>
+        IViolationticket Violationticket { get; }
+
+        /// <summary>
         /// Gets the IInspectionownershipcategories.
         /// </summary>
         IInspectionownershipcategories Inspectionownershipcategories { get; }
+
+        /// <summary>
+        /// Gets the IInspectionownershipcategoryasyncoperations.
+        /// </summary>
+        IInspectionownershipcategoryasyncoperations Inspectionownershipcategoryasyncoperations { get; }
+
+        /// <summary>
+        /// Gets the IInspectionownershipcategorybulkdeletefailures.
+        /// </summary>
+        IInspectionownershipcategorybulkdeletefailures Inspectionownershipcategorybulkdeletefailures { get; }
+
+        /// <summary>
+        /// Gets the IInspectionownershipcategoryduplicatebaserecord.
+        /// </summary>
+        IInspectionownershipcategoryduplicatebaserecord Inspectionownershipcategoryduplicatebaserecord { get; }
+
+        /// <summary>
+        /// Gets the IInspectionownershipcategoryduplicatematchingrecord.
+        /// </summary>
+        IInspectionownershipcategoryduplicatematchingrecord Inspectionownershipcategoryduplicatematchingrecord { get; }
+
+        /// <summary>
+        /// Gets the IInspectionownershipcategoryinspectioninspectionownershipcategory.
+        /// </summary>
+        IInspectionownershipcategoryinspectioninspectionownershipcategory Inspectionownershipcategoryinspectioninspectionownershipcategory { get; }
+
+        /// <summary>
+        /// Gets the IInspectionownershipcategorylocationinspectionownershipcategory.
+        /// </summary>
+        IInspectionownershipcategorylocationinspectionownershipcategory Inspectionownershipcategorylocationinspectionownershipcategory { get; }
+
+        /// <summary>
+        /// Gets the IInspectionownershipcategorysyncerrors.
+        /// </summary>
+        IInspectionownershipcategorysyncerrors Inspectionownershipcategorysyncerrors { get; }
 
         /// <summary>
         /// Gets the IInspectionprocessflows.
@@ -159,9 +1843,179 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         IInspectionprocessflows Inspectionprocessflows { get; }
 
         /// <summary>
+        /// Gets the IInspectionprocessflowasyncoperations.
+        /// </summary>
+        IInspectionprocessflowasyncoperations Inspectionprocessflowasyncoperations { get; }
+
+        /// <summary>
+        /// Gets the IInspectionprocessflowbulkdeletefailures.
+        /// </summary>
+        IInspectionprocessflowbulkdeletefailures Inspectionprocessflowbulkdeletefailures { get; }
+
+        /// <summary>
+        /// Gets the IInspectionprocessflowsyncerrors.
+        /// </summary>
+        IInspectionprocessflowsyncerrors Inspectionprocessflowsyncerrors { get; }
+
+        /// <summary>
+        /// Gets the IInspectionprocessflowworkflowlogs.
+        /// </summary>
+        IInspectionprocessflowworkflowlogs Inspectionprocessflowworkflowlogs { get; }
+
+        /// <summary>
+        /// Gets the IBpfbcgovinspectionid.
+        /// </summary>
+        IBpfbcgovinspectionid Bpfbcgovinspectionid { get; }
+
+        /// <summary>
         /// Gets the IInspections.
         /// </summary>
         IInspections Inspections { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentrecord.
+        /// </summary>
+        IEquipmentrecord Equipmentrecord { get; }
+
+        /// <summary>
+        /// Gets the IInspectionactivityparties.
+        /// </summary>
+        IInspectionactivityparties Inspectionactivityparties { get; }
+
+        /// <summary>
+        /// Gets the IInspectionactivitypointers.
+        /// </summary>
+        IInspectionactivitypointers Inspectionactivitypointers { get; }
+
+        /// <summary>
+        /// Gets the IInspectionannotations.
+        /// </summary>
+        IInspectionannotations Inspectionannotations { get; }
+
+        /// <summary>
+        /// Gets the IInspectionappointments.
+        /// </summary>
+        IInspectionappointments Inspectionappointments { get; }
+
+        /// <summary>
+        /// Gets the IInspectionasyncoperations.
+        /// </summary>
+        IInspectionasyncoperations Inspectionasyncoperations { get; }
+
+        /// <summary>
+        /// Gets the IInspectionbulkdeletefailures.
+        /// </summary>
+        IInspectionbulkdeletefailures Inspectionbulkdeletefailures { get; }
+
+        /// <summary>
+        /// Gets the IInspectionduplicatebaserecord.
+        /// </summary>
+        IInspectionduplicatebaserecord Inspectionduplicatebaserecord { get; }
+
+        /// <summary>
+        /// Gets the IInspectionduplicatematchingrecord.
+        /// </summary>
+        IInspectionduplicatematchingrecord Inspectionduplicatematchingrecord { get; }
+
+        /// <summary>
+        /// Gets the IInspectionemails.
+        /// </summary>
+        IInspectionemails Inspectionemails { get; }
+
+        /// <summary>
+        /// Gets the IInspectionfaxes.
+        /// </summary>
+        IInspectionfaxes Inspectionfaxes { get; }
+
+        /// <summary>
+        /// Gets the IInspectionincidentnewinspectionrecord.
+        /// </summary>
+        IInspectionincidentnewinspectionrecord Inspectionincidentnewinspectionrecord { get; }
+
+        /// <summary>
+        /// Gets the IInspectioninspectionchecklistinspection.
+        /// </summary>
+        IInspectioninspectionchecklistinspection Inspectioninspectionchecklistinspection { get; }
+
+        /// <summary>
+        /// Gets the IInspectionletters.
+        /// </summary>
+        IInspectionletters Inspectionletters { get; }
+
+        /// <summary>
+        /// Gets the IInspectionphonecalls.
+        /// </summary>
+        IInspectionphonecalls Inspectionphonecalls { get; }
+
+        /// <summary>
+        /// Gets the IInspectionqueueitems.
+        /// </summary>
+        IInspectionqueueitems Inspectionqueueitems { get; }
+
+        /// <summary>
+        /// Gets the IInspectionrecurringappointmentmasters.
+        /// </summary>
+        IInspectionrecurringappointmentmasters Inspectionrecurringappointmentmasters { get; }
+
+        /// <summary>
+        /// Gets the IInspectionserviceappointments.
+        /// </summary>
+        IInspectionserviceappointments Inspectionserviceappointments { get; }
+
+        /// <summary>
+        /// Gets the IInspectionsharepointdocumentlocations.
+        /// </summary>
+        IInspectionsharepointdocumentlocations Inspectionsharepointdocumentlocations { get; }
+
+        /// <summary>
+        /// Gets the IInspectionsocialactivities.
+        /// </summary>
+        IInspectionsocialactivities Inspectionsocialactivities { get; }
+
+        /// <summary>
+        /// Gets the IInspectionsyncerrors.
+        /// </summary>
+        IInspectionsyncerrors Inspectionsyncerrors { get; }
+
+        /// <summary>
+        /// Gets the IInspectiontasks.
+        /// </summary>
+        IInspectiontasks Inspectiontasks { get; }
+
+        /// <summary>
+        /// Gets the IInspectionviolationticketinspection.
+        /// </summary>
+        IInspectionviolationticketinspection Inspectionviolationticketinspection { get; }
+
+        /// <summary>
+        /// Gets the IInspectionownershipcategory.
+        /// </summary>
+        IInspectionownershipcategory Inspectionownershipcategory { get; }
+
+        /// <summary>
+        /// Gets the ILocationcontact.
+        /// </summary>
+        ILocationcontact Locationcontact { get; }
+
+        /// <summary>
+        /// Gets the IOwnercategory.
+        /// </summary>
+        IOwnercategory Ownercategory { get; }
+
+        /// <summary>
+        /// Gets the IBpfbcgovinspectionbcgovinspectionprocessflow.
+        /// </summary>
+        IBpfbcgovinspectionbcgovinspectionprocessflow Bpfbcgovinspectionbcgovinspectionprocessflow { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationcecontactset.
+        /// </summary>
+        IInvestigationcecontactset Investigationcecontactset { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationinspectioncheckset.
+        /// </summary>
+        IInvestigationinspectioncheckset Investigationinspectioncheckset { get; }
 
         /// <summary>
         /// Gets the IInvestigations.
@@ -169,14 +2023,234 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         IInvestigations Investigations { get; }
 
         /// <summary>
-        /// Gets the IInvestigationstepcecontactset.
+        /// Gets the IInvestigationactivityparties.
         /// </summary>
-        IInvestigationstepcecontactset Investigationstepcecontactset { get; }
+        IInvestigationactivityparties Investigationactivityparties { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationactivitypointers.
+        /// </summary>
+        IInvestigationactivitypointers Investigationactivitypointers { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationannotations.
+        /// </summary>
+        IInvestigationannotations Investigationannotations { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationappointments.
+        /// </summary>
+        IInvestigationappointments Investigationappointments { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationasyncoperations.
+        /// </summary>
+        IInvestigationasyncoperations Investigationasyncoperations { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationbcgovinvestigationstepincludeininvestigation.
+        /// </summary>
+        IInvestigationbcgovinvestigationstepincludeininvestigation Investigationbcgovinvestigationstepincludeininvestigation { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationbulkdeletefailures.
+        /// </summary>
+        IInvestigationbulkdeletefailures Investigationbulkdeletefailures { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationcecontactinvestigation.
+        /// </summary>
+        IInvestigationcecontactinvestigation Investigationcecontactinvestigation { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationcomplaintinvestigation.
+        /// </summary>
+        IInvestigationcomplaintinvestigation Investigationcomplaintinvestigation { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationconnections1.
+        /// </summary>
+        IInvestigationconnections1 Investigationconnections1 { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationconnections2.
+        /// </summary>
+        IInvestigationconnections2 Investigationconnections2 { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationduplicatebaserecord.
+        /// </summary>
+        IInvestigationduplicatebaserecord Investigationduplicatebaserecord { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationduplicatematchingrecord.
+        /// </summary>
+        IInvestigationduplicatematchingrecord Investigationduplicatematchingrecord { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationemails.
+        /// </summary>
+        IInvestigationemails Investigationemails { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationfaxes.
+        /// </summary>
+        IInvestigationfaxes Investigationfaxes { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationinspectionchecklistinvestigation.
+        /// </summary>
+        IInvestigationinspectionchecklistinvestigation Investigationinspectionchecklistinvestigation { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationinvestigationstepinvestigation.
+        /// </summary>
+        IInvestigationinvestigationstepinvestigation Investigationinvestigationstepinvestigation { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationletters.
+        /// </summary>
+        IInvestigationletters Investigationletters { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationphonecalls.
+        /// </summary>
+        IInvestigationphonecalls Investigationphonecalls { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationqueueitems.
+        /// </summary>
+        IInvestigationqueueitems Investigationqueueitems { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationrecurringappointmentmasters.
+        /// </summary>
+        IInvestigationrecurringappointmentmasters Investigationrecurringappointmentmasters { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationserviceappointments.
+        /// </summary>
+        IInvestigationserviceappointments Investigationserviceappointments { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationsharepointdocumentlocations.
+        /// </summary>
+        IInvestigationsharepointdocumentlocations Investigationsharepointdocumentlocations { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationsocialactivities.
+        /// </summary>
+        IInvestigationsocialactivities Investigationsocialactivities { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationsyncerrors.
+        /// </summary>
+        IInvestigationsyncerrors Investigationsyncerrors { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationtasks.
+        /// </summary>
+        IInvestigationtasks Investigationtasks { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationviolationticketinvestigation.
+        /// </summary>
+        IInvestigationviolationticketinvestigation Investigationviolationticketinvestigation { get; }
 
         /// <summary>
         /// Gets the IInvestigationsteps.
         /// </summary>
         IInvestigationsteps Investigationsteps { get; }
+
+        /// <summary>
+        /// Gets the IIncludeininvestigation.
+        /// </summary>
+        IIncludeininvestigation Includeininvestigation { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationstepactivitypointers.
+        /// </summary>
+        IInvestigationstepactivitypointers Investigationstepactivitypointers { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationstepannotations.
+        /// </summary>
+        IInvestigationstepannotations Investigationstepannotations { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationstepappointments.
+        /// </summary>
+        IInvestigationstepappointments Investigationstepappointments { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationstepasyncoperations.
+        /// </summary>
+        IInvestigationstepasyncoperations Investigationstepasyncoperations { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationstepbulkdeletefailures.
+        /// </summary>
+        IInvestigationstepbulkdeletefailures Investigationstepbulkdeletefailures { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationstepduplicatebaserecord.
+        /// </summary>
+        IInvestigationstepduplicatebaserecord Investigationstepduplicatebaserecord { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationstepduplicatematchingrecord.
+        /// </summary>
+        IInvestigationstepduplicatematchingrecord Investigationstepduplicatematchingrecord { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationstepemails.
+        /// </summary>
+        IInvestigationstepemails Investigationstepemails { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationstepfaxes.
+        /// </summary>
+        IInvestigationstepfaxes Investigationstepfaxes { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationstepletters.
+        /// </summary>
+        IInvestigationstepletters Investigationstepletters { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationstepphonecalls.
+        /// </summary>
+        IInvestigationstepphonecalls Investigationstepphonecalls { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationsteprecurringappointmentmasters.
+        /// </summary>
+        IInvestigationsteprecurringappointmentmasters Investigationsteprecurringappointmentmasters { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationstepserviceappointments.
+        /// </summary>
+        IInvestigationstepserviceappointments Investigationstepserviceappointments { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationstepsharepointdocumentlocations.
+        /// </summary>
+        IInvestigationstepsharepointdocumentlocations Investigationstepsharepointdocumentlocations { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationstepsocialactivities.
+        /// </summary>
+        IInvestigationstepsocialactivities Investigationstepsocialactivities { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationstepsyncerrors.
+        /// </summary>
+        IInvestigationstepsyncerrors Investigationstepsyncerrors { get; }
+
+        /// <summary>
+        /// Gets the IInvestigationsteptasks.
+        /// </summary>
+        IInvestigationsteptasks Investigationsteptasks { get; }
 
         /// <summary>
         /// Gets the ILocationequipmentset.
@@ -189,9 +2263,184 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         ILocations Locations { get; }
 
         /// <summary>
+        /// Gets the IAssociatedapplication.
+        /// </summary>
+        IAssociatedapplication Associatedapplication { get; }
+
+        /// <summary>
+        /// Gets the IBcgovlocationbcgovcomplaintlocation.
+        /// </summary>
+        IBcgovlocationbcgovcomplaintlocation Bcgovlocationbcgovcomplaintlocation { get; }
+
+        /// <summary>
+        /// Gets the ILocationactivityparties.
+        /// </summary>
+        ILocationactivityparties Locationactivityparties { get; }
+
+        /// <summary>
+        /// Gets the ILocationactivitypointers.
+        /// </summary>
+        ILocationactivitypointers Locationactivitypointers { get; }
+
+        /// <summary>
+        /// Gets the ILocationannotations.
+        /// </summary>
+        ILocationannotations Locationannotations { get; }
+
+        /// <summary>
+        /// Gets the ILocationappointments.
+        /// </summary>
+        ILocationappointments Locationappointments { get; }
+
+        /// <summary>
+        /// Gets the ILocationasyncoperations.
+        /// </summary>
+        ILocationasyncoperations Locationasyncoperations { get; }
+
+        /// <summary>
+        /// Gets the ILocationbulkdeletefailures.
+        /// </summary>
+        ILocationbulkdeletefailures Locationbulkdeletefailures { get; }
+
+        /// <summary>
+        /// Gets the ILocationconnections1.
+        /// </summary>
+        ILocationconnections1 Locationconnections1 { get; }
+
+        /// <summary>
+        /// Gets the ILocationconnections2.
+        /// </summary>
+        ILocationconnections2 Locationconnections2 { get; }
+
+        /// <summary>
+        /// Gets the ILocationduplicatebaserecord.
+        /// </summary>
+        ILocationduplicatebaserecord Locationduplicatebaserecord { get; }
+
+        /// <summary>
+        /// Gets the ILocationduplicatematchingrecord.
+        /// </summary>
+        ILocationduplicatematchingrecord Locationduplicatematchingrecord { get; }
+
+        /// <summary>
+        /// Gets the ILocationemails.
+        /// </summary>
+        ILocationemails Locationemails { get; }
+
+        /// <summary>
+        /// Gets the ILocationequipmentcurrentlocation.
+        /// </summary>
+        ILocationequipmentcurrentlocation Locationequipmentcurrentlocation { get; }
+
+        /// <summary>
+        /// Gets the ILocationequipmentlocationlocation.
+        /// </summary>
+        ILocationequipmentlocationlocation Locationequipmentlocationlocation { get; }
+
+        /// <summary>
+        /// Gets the ILocationfaxes.
+        /// </summary>
+        ILocationfaxes Locationfaxes { get; }
+
+        /// <summary>
+        /// Gets the ILocationincidentequipmentlocation.
+        /// </summary>
+        ILocationincidentequipmentlocation Locationincidentequipmentlocation { get; }
+
+        /// <summary>
+        /// Gets the ILocationinspectionlocation.
+        /// </summary>
+        ILocationinspectionlocation Locationinspectionlocation { get; }
+
+        /// <summary>
+        /// Gets the ILocationletters.
+        /// </summary>
+        ILocationletters Locationletters { get; }
+
+        /// <summary>
+        /// Gets the ILocationphonecalls.
+        /// </summary>
+        ILocationphonecalls Locationphonecalls { get; }
+
+        /// <summary>
+        /// Gets the ILocationqueueitems.
+        /// </summary>
+        ILocationqueueitems Locationqueueitems { get; }
+
+        /// <summary>
+        /// Gets the ILocationrecurringappointmentmasters.
+        /// </summary>
+        ILocationrecurringappointmentmasters Locationrecurringappointmentmasters { get; }
+
+        /// <summary>
+        /// Gets the ILocationserviceappointments.
+        /// </summary>
+        ILocationserviceappointments Locationserviceappointments { get; }
+
+        /// <summary>
+        /// Gets the ILocationsocialactivities.
+        /// </summary>
+        ILocationsocialactivities Locationsocialactivities { get; }
+
+        /// <summary>
+        /// Gets the ILocationsyncerrors.
+        /// </summary>
+        ILocationsyncerrors Locationsyncerrors { get; }
+
+        /// <summary>
+        /// Gets the ILocationtasks.
+        /// </summary>
+        ILocationtasks Locationtasks { get; }
+
+        /// <summary>
+        /// Gets the ILocationaddress.
+        /// </summary>
+        ILocationaddress Locationaddress { get; }
+
+        /// <summary>
+        /// Gets the ILocationarea.
+        /// </summary>
+        ILocationarea Locationarea { get; }
+
+        /// <summary>
+        /// Gets the ILocationregion.
+        /// </summary>
+        ILocationregion Locationregion { get; }
+
+        /// <summary>
         /// Gets the IPostalcodes.
         /// </summary>
         IPostalcodes Postalcodes { get; }
+
+        /// <summary>
+        /// Gets the IArea.
+        /// </summary>
+        IArea Area { get; }
+
+        /// <summary>
+        /// Gets the IPostalcodeasyncoperations.
+        /// </summary>
+        IPostalcodeasyncoperations Postalcodeasyncoperations { get; }
+
+        /// <summary>
+        /// Gets the IPostalcodebulkdeletefailures.
+        /// </summary>
+        IPostalcodebulkdeletefailures Postalcodebulkdeletefailures { get; }
+
+        /// <summary>
+        /// Gets the IPostalcodeduplicatebaserecord.
+        /// </summary>
+        IPostalcodeduplicatebaserecord Postalcodeduplicatebaserecord { get; }
+
+        /// <summary>
+        /// Gets the IPostalcodeduplicatematchingrecord.
+        /// </summary>
+        IPostalcodeduplicatematchingrecord Postalcodeduplicatematchingrecord { get; }
+
+        /// <summary>
+        /// Gets the IPostalcodesyncerrors.
+        /// </summary>
+        IPostalcodesyncerrors Postalcodesyncerrors { get; }
 
         /// <summary>
         /// Gets the IRegions.
@@ -199,9 +2448,174 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         IRegions Regions { get; }
 
         /// <summary>
+        /// Gets the IInspector.
+        /// </summary>
+        IInspector Inspector { get; }
+
+        /// <summary>
+        /// Gets the IRegionasyncoperations.
+        /// </summary>
+        IRegionasyncoperations Regionasyncoperations { get; }
+
+        /// <summary>
+        /// Gets the IRegionbcgovarearegion.
+        /// </summary>
+        IRegionbcgovarearegion Regionbcgovarearegion { get; }
+
+        /// <summary>
+        /// Gets the IRegionbcgovpostalcoderegion.
+        /// </summary>
+        IRegionbcgovpostalcoderegion Regionbcgovpostalcoderegion { get; }
+
+        /// <summary>
+        /// Gets the IRegionbulkdeletefailures.
+        /// </summary>
+        IRegionbulkdeletefailures Regionbulkdeletefailures { get; }
+
+        /// <summary>
+        /// Gets the IRegionduplicatebaserecord.
+        /// </summary>
+        IRegionduplicatebaserecord Regionduplicatebaserecord { get; }
+
+        /// <summary>
+        /// Gets the IRegionduplicatematchingrecord.
+        /// </summary>
+        IRegionduplicatematchingrecord Regionduplicatematchingrecord { get; }
+
+        /// <summary>
+        /// Gets the IRegionlocationlocationregion.
+        /// </summary>
+        IRegionlocationlocationregion Regionlocationlocationregion { get; }
+
+        /// <summary>
+        /// Gets the IRegionsyncerrors.
+        /// </summary>
+        IRegionsyncerrors Regionsyncerrors { get; }
+
+        /// <summary>
         /// Gets the IRiskassessments.
         /// </summary>
         IRiskassessments Riskassessments { get; }
+
+        /// <summary>
+        /// Gets the IApplicationidlookup.
+        /// </summary>
+        IApplicationidlookup Applicationidlookup { get; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentactivityparties.
+        /// </summary>
+        IRiskassessmentactivityparties Riskassessmentactivityparties { get; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentactivitypointers.
+        /// </summary>
+        IRiskassessmentactivitypointers Riskassessmentactivitypointers { get; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentannotations.
+        /// </summary>
+        IRiskassessmentannotations Riskassessmentannotations { get; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentappointments.
+        /// </summary>
+        IRiskassessmentappointments Riskassessmentappointments { get; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentasyncoperations.
+        /// </summary>
+        IRiskassessmentasyncoperations Riskassessmentasyncoperations { get; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentbulkdeletefailures.
+        /// </summary>
+        IRiskassessmentbulkdeletefailures Riskassessmentbulkdeletefailures { get; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentcomplaintriskassessment.
+        /// </summary>
+        IRiskassessmentcomplaintriskassessment Riskassessmentcomplaintriskassessment { get; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentconnections1.
+        /// </summary>
+        IRiskassessmentconnections1 Riskassessmentconnections1 { get; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentconnections2.
+        /// </summary>
+        IRiskassessmentconnections2 Riskassessmentconnections2 { get; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentduplicatebaserecord.
+        /// </summary>
+        IRiskassessmentduplicatebaserecord Riskassessmentduplicatebaserecord { get; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentduplicatematchingrecord.
+        /// </summary>
+        IRiskassessmentduplicatematchingrecord Riskassessmentduplicatematchingrecord { get; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentemails.
+        /// </summary>
+        IRiskassessmentemails Riskassessmentemails { get; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentfaxes.
+        /// </summary>
+        IRiskassessmentfaxes Riskassessmentfaxes { get; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentincidentassociatedriskassessmentrecord.
+        /// </summary>
+        IRiskassessmentincidentassociatedriskassessmentrecord Riskassessmentincidentassociatedriskassessmentrecord { get; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentletters.
+        /// </summary>
+        IRiskassessmentletters Riskassessmentletters { get; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentphonecalls.
+        /// </summary>
+        IRiskassessmentphonecalls Riskassessmentphonecalls { get; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentqueueitems.
+        /// </summary>
+        IRiskassessmentqueueitems Riskassessmentqueueitems { get; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentrecurringappointmentmasters.
+        /// </summary>
+        IRiskassessmentrecurringappointmentmasters Riskassessmentrecurringappointmentmasters { get; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentserviceappointments.
+        /// </summary>
+        IRiskassessmentserviceappointments Riskassessmentserviceappointments { get; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentsharepointdocumentlocations.
+        /// </summary>
+        IRiskassessmentsharepointdocumentlocations Riskassessmentsharepointdocumentlocations { get; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentsocialactivities.
+        /// </summary>
+        IRiskassessmentsocialactivities Riskassessmentsocialactivities { get; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentsyncerrors.
+        /// </summary>
+        IRiskassessmentsyncerrors Riskassessmentsyncerrors { get; }
+
+        /// <summary>
+        /// Gets the IRiskassessmenttasks.
+        /// </summary>
+        IRiskassessmenttasks Riskassessmenttasks { get; }
 
         /// <summary>
         /// Gets the IRoles.
@@ -209,9 +2623,74 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         IRoles Roles { get; }
 
         /// <summary>
+        /// Gets the IRoleasyncoperations.
+        /// </summary>
+        IRoleasyncoperations Roleasyncoperations { get; }
+
+        /// <summary>
+        /// Gets the IRolebulkdeletefailures.
+        /// </summary>
+        IRolebulkdeletefailures Rolebulkdeletefailures { get; }
+
+        /// <summary>
+        /// Gets the IRolecustomuserrole.
+        /// </summary>
+        IRolecustomuserrole Rolecustomuserrole { get; }
+
+        /// <summary>
+        /// Gets the IRoleduplicatebaserecord.
+        /// </summary>
+        IRoleduplicatebaserecord Roleduplicatebaserecord { get; }
+
+        /// <summary>
+        /// Gets the IRoleduplicatematchingrecord.
+        /// </summary>
+        IRoleduplicatematchingrecord Roleduplicatematchingrecord { get; }
+
+        /// <summary>
+        /// Gets the IRolesyncerrors.
+        /// </summary>
+        IRolesyncerrors Rolesyncerrors { get; }
+
+        /// <summary>
         /// Gets the ITermsconditionspresets.
         /// </summary>
         ITermsconditionspresets Termsconditionspresets { get; }
+
+        /// <summary>
+        /// Gets the IApplicationtype.
+        /// </summary>
+        IApplicationtype Applicationtype { get; }
+
+        /// <summary>
+        /// Gets the ITermsconditionspresetasyncoperations.
+        /// </summary>
+        ITermsconditionspresetasyncoperations Termsconditionspresetasyncoperations { get; }
+
+        /// <summary>
+        /// Gets the ITermsconditionspresetbcgovcertificatetermsandconditionspresetterms.
+        /// </summary>
+        ITermsconditionspresetbcgovcertificatetermsandconditionspresetterms Termsconditionspresetbcgovcertificatetermsandconditionspresetterms { get; }
+
+        /// <summary>
+        /// Gets the ITermsconditionspresetbulkdeletefailures.
+        /// </summary>
+        ITermsconditionspresetbulkdeletefailures Termsconditionspresetbulkdeletefailures { get; }
+
+        /// <summary>
+        /// Gets the ITermsconditionspresetduplicatebaserecord.
+        /// </summary>
+        ITermsconditionspresetduplicatebaserecord Termsconditionspresetduplicatebaserecord { get; }
+
+        /// <summary>
+        /// Gets the ITermsconditionspresetduplicatematchingrecord.
+        /// </summary>
+        ITermsconditionspresetduplicatematchingrecord Termsconditionspresetduplicatematchingrecord { get; }
+
+        /// <summary>
+        /// Gets the ITermsconditionspresetsyncerrors.
+        /// </summary>
+        ITermsconditionspresetsyncerrors Termsconditionspresetsyncerrors { get; }
 
         /// <summary>
         /// Gets the IViolationtickets.
@@ -219,9 +2698,779 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         IViolationtickets Violationtickets { get; }
 
         /// <summary>
+        /// Gets the IActregulationviolated.
+        /// </summary>
+        IActregulationviolated Actregulationviolated { get; }
+
+        /// <summary>
+        /// Gets the IViolationticketactivityparties.
+        /// </summary>
+        IViolationticketactivityparties Violationticketactivityparties { get; }
+
+        /// <summary>
+        /// Gets the IViolationticketactivitypointers.
+        /// </summary>
+        IViolationticketactivitypointers Violationticketactivitypointers { get; }
+
+        /// <summary>
+        /// Gets the IViolationticketannotations.
+        /// </summary>
+        IViolationticketannotations Violationticketannotations { get; }
+
+        /// <summary>
+        /// Gets the IViolationticketappointments.
+        /// </summary>
+        IViolationticketappointments Violationticketappointments { get; }
+
+        /// <summary>
+        /// Gets the IViolationticketasyncoperations.
+        /// </summary>
+        IViolationticketasyncoperations Violationticketasyncoperations { get; }
+
+        /// <summary>
+        /// Gets the IViolationticketbulkdeletefailures.
+        /// </summary>
+        IViolationticketbulkdeletefailures Violationticketbulkdeletefailures { get; }
+
+        /// <summary>
+        /// Gets the IViolationticketduplicatebaserecord.
+        /// </summary>
+        IViolationticketduplicatebaserecord Violationticketduplicatebaserecord { get; }
+
+        /// <summary>
+        /// Gets the IViolationticketduplicatematchingrecord.
+        /// </summary>
+        IViolationticketduplicatematchingrecord Violationticketduplicatematchingrecord { get; }
+
+        /// <summary>
+        /// Gets the IViolationticketemails.
+        /// </summary>
+        IViolationticketemails Violationticketemails { get; }
+
+        /// <summary>
+        /// Gets the IViolationticketfaxes.
+        /// </summary>
+        IViolationticketfaxes Violationticketfaxes { get; }
+
+        /// <summary>
+        /// Gets the IViolationticketinspectionchecklistviolationticket.
+        /// </summary>
+        IViolationticketinspectionchecklistviolationticket Violationticketinspectionchecklistviolationticket { get; }
+
+        /// <summary>
+        /// Gets the IViolationticketletters.
+        /// </summary>
+        IViolationticketletters Violationticketletters { get; }
+
+        /// <summary>
+        /// Gets the IViolationticketphonecalls.
+        /// </summary>
+        IViolationticketphonecalls Violationticketphonecalls { get; }
+
+        /// <summary>
+        /// Gets the IViolationticketrecurringappointmentmasters.
+        /// </summary>
+        IViolationticketrecurringappointmentmasters Violationticketrecurringappointmentmasters { get; }
+
+        /// <summary>
+        /// Gets the IViolationticketserviceappointments.
+        /// </summary>
+        IViolationticketserviceappointments Violationticketserviceappointments { get; }
+
+        /// <summary>
+        /// Gets the IViolationticketsharepointdocumentlocations.
+        /// </summary>
+        IViolationticketsharepointdocumentlocations Violationticketsharepointdocumentlocations { get; }
+
+        /// <summary>
+        /// Gets the IViolationticketsocialactivities.
+        /// </summary>
+        IViolationticketsocialactivities Violationticketsocialactivities { get; }
+
+        /// <summary>
+        /// Gets the IViolationticketsyncerrors.
+        /// </summary>
+        IViolationticketsyncerrors Violationticketsyncerrors { get; }
+
+        /// <summary>
+        /// Gets the IViolationtickettasks.
+        /// </summary>
+        IViolationtickettasks Violationtickettasks { get; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovactregulationreference.
+        /// </summary>
+        IBusinessunitbcgovactregulationreference Businessunitbcgovactregulationreference { get; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovapplicationtype.
+        /// </summary>
+        IBusinessunitbcgovapplicationtype Businessunitbcgovapplicationtype { get; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovarea.
+        /// </summary>
+        IBusinessunitbcgovarea Businessunitbcgovarea { get; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovbusinesscontact.
+        /// </summary>
+        IBusinessunitbcgovbusinesscontact Businessunitbcgovbusinesscontact { get; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovcecontact.
+        /// </summary>
+        IBusinessunitbcgovcecontact Businessunitbcgovcecontact { get; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovcecontacttype.
+        /// </summary>
+        IBusinessunitbcgovcecontacttype Businessunitbcgovcecontacttype { get; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovcertificate.
+        /// </summary>
+        IBusinessunitbcgovcertificate Businessunitbcgovcertificate { get; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovcertificateapprovedproduct.
+        /// </summary>
+        IBusinessunitbcgovcertificateapprovedproduct Businessunitbcgovcertificateapprovedproduct { get; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovcertificatetermsandconditions.
+        /// </summary>
+        IBusinessunitbcgovcertificatetermsandconditions Businessunitbcgovcertificatetermsandconditions { get; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovcomplaint.
+        /// </summary>
+        IBusinessunitbcgovcomplaint Businessunitbcgovcomplaint { get; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovcomplaintchecklist.
+        /// </summary>
+        IBusinessunitbcgovcomplaintchecklist Businessunitbcgovcomplaintchecklist { get; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovcustomaddress.
+        /// </summary>
+        IBusinessunitbcgovcustomaddress Businessunitbcgovcustomaddress { get; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovcustomproduct.
+        /// </summary>
+        IBusinessunitbcgovcustomproduct Businessunitbcgovcustomproduct { get; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovcustomuser.
+        /// </summary>
+        IBusinessunitbcgovcustomuser Businessunitbcgovcustomuser { get; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovequipment.
+        /// </summary>
+        IBusinessunitbcgovequipment Businessunitbcgovequipment { get; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovequipmentlocation.
+        /// </summary>
+        IBusinessunitbcgovequipmentlocation Businessunitbcgovequipmentlocation { get; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovinspection.
+        /// </summary>
+        IBusinessunitbcgovinspection Businessunitbcgovinspection { get; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovinspectionchecklist.
+        /// </summary>
+        IBusinessunitbcgovinspectionchecklist Businessunitbcgovinspectionchecklist { get; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovinspectionownershipcategory.
+        /// </summary>
+        IBusinessunitbcgovinspectionownershipcategory Businessunitbcgovinspectionownershipcategory { get; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovinvestigation.
+        /// </summary>
+        IBusinessunitbcgovinvestigation Businessunitbcgovinvestigation { get; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovinvestigationstep.
+        /// </summary>
+        IBusinessunitbcgovinvestigationstep Businessunitbcgovinvestigationstep { get; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovlocation.
+        /// </summary>
+        IBusinessunitbcgovlocation Businessunitbcgovlocation { get; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovpostalcode.
+        /// </summary>
+        IBusinessunitbcgovpostalcode Businessunitbcgovpostalcode { get; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovregion.
+        /// </summary>
+        IBusinessunitbcgovregion Businessunitbcgovregion { get; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovriskassessment.
+        /// </summary>
+        IBusinessunitbcgovriskassessment Businessunitbcgovriskassessment { get; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovrole.
+        /// </summary>
+        IBusinessunitbcgovrole Businessunitbcgovrole { get; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovtermsconditionspreset.
+        /// </summary>
+        IBusinessunitbcgovtermsconditionspreset Businessunitbcgovtermsconditionspreset { get; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovviolationticket.
+        /// </summary>
+        IBusinessunitbcgovviolationticket Businessunitbcgovviolationticket { get; }
+
+        /// <summary>
+        /// Gets the IRecord1idbcgovcomplaint.
+        /// </summary>
+        IRecord1idbcgovcomplaint Record1idbcgovcomplaint { get; }
+
+        /// <summary>
+        /// Gets the IRecord1idbcgovcustomaddress.
+        /// </summary>
+        IRecord1idbcgovcustomaddress Record1idbcgovcustomaddress { get; }
+
+        /// <summary>
+        /// Gets the IRecord1idbcgovcustomproduct.
+        /// </summary>
+        IRecord1idbcgovcustomproduct Record1idbcgovcustomproduct { get; }
+
+        /// <summary>
+        /// Gets the IRecord1idbcgovequipment.
+        /// </summary>
+        IRecord1idbcgovequipment Record1idbcgovequipment { get; }
+
+        /// <summary>
+        /// Gets the IRecord1idbcgovequipmentlocation.
+        /// </summary>
+        IRecord1idbcgovequipmentlocation Record1idbcgovequipmentlocation { get; }
+
+        /// <summary>
+        /// Gets the IRecord1idbcgovinvestigation.
+        /// </summary>
+        IRecord1idbcgovinvestigation Record1idbcgovinvestigation { get; }
+
+        /// <summary>
+        /// Gets the IRecord1idbcgovlocation.
+        /// </summary>
+        IRecord1idbcgovlocation Record1idbcgovlocation { get; }
+
+        /// <summary>
+        /// Gets the IRecord1idbcgovriskassessment.
+        /// </summary>
+        IRecord1idbcgovriskassessment Record1idbcgovriskassessment { get; }
+
+        /// <summary>
+        /// Gets the IRecord2idbcgovcomplaint.
+        /// </summary>
+        IRecord2idbcgovcomplaint Record2idbcgovcomplaint { get; }
+
+        /// <summary>
+        /// Gets the IRecord2idbcgovcustomaddress.
+        /// </summary>
+        IRecord2idbcgovcustomaddress Record2idbcgovcustomaddress { get; }
+
+        /// <summary>
+        /// Gets the IRecord2idbcgovcustomproduct.
+        /// </summary>
+        IRecord2idbcgovcustomproduct Record2idbcgovcustomproduct { get; }
+
+        /// <summary>
+        /// Gets the IRecord2idbcgovequipment.
+        /// </summary>
+        IRecord2idbcgovequipment Record2idbcgovequipment { get; }
+
+        /// <summary>
+        /// Gets the IRecord2idbcgovequipmentlocation.
+        /// </summary>
+        IRecord2idbcgovequipmentlocation Record2idbcgovequipmentlocation { get; }
+
+        /// <summary>
+        /// Gets the IRecord2idbcgovinvestigation.
+        /// </summary>
+        IRecord2idbcgovinvestigation Record2idbcgovinvestigation { get; }
+
+        /// <summary>
+        /// Gets the IRecord2idbcgovlocation.
+        /// </summary>
+        IRecord2idbcgovlocation Record2idbcgovlocation { get; }
+
+        /// <summary>
+        /// Gets the IRecord2idbcgovriskassessment.
+        /// </summary>
+        IRecord2idbcgovriskassessment Record2idbcgovriskassessment { get; }
+
+        /// <summary>
         /// Gets the IContacts.
         /// </summary>
         IContacts Contacts { get; }
+
+        /// <summary>
+        /// Gets the IAddress.
+        /// </summary>
+        IAddress Address { get; }
+
+        /// <summary>
+        /// Gets the IBusinessaddress.
+        /// </summary>
+        IBusinessaddress Businessaddress { get; }
+
+        /// <summary>
+        /// Gets the IContactaccountadditionalcontact.
+        /// </summary>
+        IContactaccountadditionalcontact Contactaccountadditionalcontact { get; }
+
+        /// <summary>
+        /// Gets the IContactbcgovbusinesscontactcontact.
+        /// </summary>
+        IContactbcgovbusinesscontactcontact Contactbcgovbusinesscontactcontact { get; }
+
+        /// <summary>
+        /// Gets the IContactbcgovinspectionlocationcontact.
+        /// </summary>
+        IContactbcgovinspectionlocationcontact Contactbcgovinspectionlocationcontact { get; }
+
+        /// <summary>
+        /// Gets the IContactcecontact.
+        /// </summary>
+        IContactcecontact Contactcecontact { get; }
+
+        /// <summary>
+        /// Gets the IContactcomplaintcomplainant.
+        /// </summary>
+        IContactcomplaintcomplainant Contactcomplaintcomplainant { get; }
+
+        /// <summary>
+        /// Gets the IContactincidentsubmitter.
+        /// </summary>
+        IContactincidentsubmitter Contactincidentsubmitter { get; }
+
+        /// <summary>
+        /// Gets the IContactinvestigationcomplainant.
+        /// </summary>
+        IContactinvestigationcomplainant Contactinvestigationcomplainant { get; }
+
+        /// <summary>
+        /// Gets the IContactlocationlocationcontact.
+        /// </summary>
+        IContactlocationlocationcontact Contactlocationlocationcontact { get; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovactregulationreference.
+        /// </summary>
+        IBaserecordidbcgovactregulationreference Baserecordidbcgovactregulationreference { get; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovapplicationtype.
+        /// </summary>
+        IBaserecordidbcgovapplicationtype Baserecordidbcgovapplicationtype { get; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovarea.
+        /// </summary>
+        IBaserecordidbcgovarea Baserecordidbcgovarea { get; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovbusinesscontact.
+        /// </summary>
+        IBaserecordidbcgovbusinesscontact Baserecordidbcgovbusinesscontact { get; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovcecontact.
+        /// </summary>
+        IBaserecordidbcgovcecontact Baserecordidbcgovcecontact { get; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovcecontacttype.
+        /// </summary>
+        IBaserecordidbcgovcecontacttype Baserecordidbcgovcecontacttype { get; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovcertificate.
+        /// </summary>
+        IBaserecordidbcgovcertificate Baserecordidbcgovcertificate { get; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovcertificateapprovedproduct.
+        /// </summary>
+        IBaserecordidbcgovcertificateapprovedproduct Baserecordidbcgovcertificateapprovedproduct { get; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovcertificatetermsandconditions.
+        /// </summary>
+        IBaserecordidbcgovcertificatetermsandconditions Baserecordidbcgovcertificatetermsandconditions { get; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovcomplaint.
+        /// </summary>
+        IBaserecordidbcgovcomplaint Baserecordidbcgovcomplaint { get; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovcomplaintchecklist.
+        /// </summary>
+        IBaserecordidbcgovcomplaintchecklist Baserecordidbcgovcomplaintchecklist { get; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovcustomaddress.
+        /// </summary>
+        IBaserecordidbcgovcustomaddress Baserecordidbcgovcustomaddress { get; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovcustomproduct.
+        /// </summary>
+        IBaserecordidbcgovcustomproduct Baserecordidbcgovcustomproduct { get; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovcustomuser.
+        /// </summary>
+        IBaserecordidbcgovcustomuser Baserecordidbcgovcustomuser { get; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovequipment.
+        /// </summary>
+        IBaserecordidbcgovequipment Baserecordidbcgovequipment { get; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovequipmentlocation.
+        /// </summary>
+        IBaserecordidbcgovequipmentlocation Baserecordidbcgovequipmentlocation { get; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovinspection.
+        /// </summary>
+        IBaserecordidbcgovinspection Baserecordidbcgovinspection { get; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovinspectionchecklist.
+        /// </summary>
+        IBaserecordidbcgovinspectionchecklist Baserecordidbcgovinspectionchecklist { get; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovinspectionownershipcategory.
+        /// </summary>
+        IBaserecordidbcgovinspectionownershipcategory Baserecordidbcgovinspectionownershipcategory { get; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovinvestigation.
+        /// </summary>
+        IBaserecordidbcgovinvestigation Baserecordidbcgovinvestigation { get; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovinvestigationstep.
+        /// </summary>
+        IBaserecordidbcgovinvestigationstep Baserecordidbcgovinvestigationstep { get; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovlocation.
+        /// </summary>
+        IBaserecordidbcgovlocation Baserecordidbcgovlocation { get; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovpostalcode.
+        /// </summary>
+        IBaserecordidbcgovpostalcode Baserecordidbcgovpostalcode { get; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovregion.
+        /// </summary>
+        IBaserecordidbcgovregion Baserecordidbcgovregion { get; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovriskassessment.
+        /// </summary>
+        IBaserecordidbcgovriskassessment Baserecordidbcgovriskassessment { get; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovrole.
+        /// </summary>
+        IBaserecordidbcgovrole Baserecordidbcgovrole { get; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovtermsconditionspreset.
+        /// </summary>
+        IBaserecordidbcgovtermsconditionspreset Baserecordidbcgovtermsconditionspreset { get; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovviolationticket.
+        /// </summary>
+        IBaserecordidbcgovviolationticket Baserecordidbcgovviolationticket { get; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovactregulationreference.
+        /// </summary>
+        IDuplicaterecordidbcgovactregulationreference Duplicaterecordidbcgovactregulationreference { get; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovapplicationtype.
+        /// </summary>
+        IDuplicaterecordidbcgovapplicationtype Duplicaterecordidbcgovapplicationtype { get; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovarea.
+        /// </summary>
+        IDuplicaterecordidbcgovarea Duplicaterecordidbcgovarea { get; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovbusinesscontact.
+        /// </summary>
+        IDuplicaterecordidbcgovbusinesscontact Duplicaterecordidbcgovbusinesscontact { get; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovcecontact.
+        /// </summary>
+        IDuplicaterecordidbcgovcecontact Duplicaterecordidbcgovcecontact { get; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovcecontacttype.
+        /// </summary>
+        IDuplicaterecordidbcgovcecontacttype Duplicaterecordidbcgovcecontacttype { get; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovcertificate.
+        /// </summary>
+        IDuplicaterecordidbcgovcertificate Duplicaterecordidbcgovcertificate { get; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovcertificateapprovedproduct.
+        /// </summary>
+        IDuplicaterecordidbcgovcertificateapprovedproduct Duplicaterecordidbcgovcertificateapprovedproduct { get; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovcertificatetermsandconditions.
+        /// </summary>
+        IDuplicaterecordidbcgovcertificatetermsandconditions Duplicaterecordidbcgovcertificatetermsandconditions { get; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovcomplaint.
+        /// </summary>
+        IDuplicaterecordidbcgovcomplaint Duplicaterecordidbcgovcomplaint { get; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovcomplaintchecklist.
+        /// </summary>
+        IDuplicaterecordidbcgovcomplaintchecklist Duplicaterecordidbcgovcomplaintchecklist { get; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovcustomaddress.
+        /// </summary>
+        IDuplicaterecordidbcgovcustomaddress Duplicaterecordidbcgovcustomaddress { get; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovcustomproduct.
+        /// </summary>
+        IDuplicaterecordidbcgovcustomproduct Duplicaterecordidbcgovcustomproduct { get; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovcustomuser.
+        /// </summary>
+        IDuplicaterecordidbcgovcustomuser Duplicaterecordidbcgovcustomuser { get; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovequipment.
+        /// </summary>
+        IDuplicaterecordidbcgovequipment Duplicaterecordidbcgovequipment { get; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovequipmentlocation.
+        /// </summary>
+        IDuplicaterecordidbcgovequipmentlocation Duplicaterecordidbcgovequipmentlocation { get; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovinspection.
+        /// </summary>
+        IDuplicaterecordidbcgovinspection Duplicaterecordidbcgovinspection { get; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovinspectionchecklist.
+        /// </summary>
+        IDuplicaterecordidbcgovinspectionchecklist Duplicaterecordidbcgovinspectionchecklist { get; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovinspectionownershipcategory.
+        /// </summary>
+        IDuplicaterecordidbcgovinspectionownershipcategory Duplicaterecordidbcgovinspectionownershipcategory { get; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovinvestigation.
+        /// </summary>
+        IDuplicaterecordidbcgovinvestigation Duplicaterecordidbcgovinvestigation { get; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovinvestigationstep.
+        /// </summary>
+        IDuplicaterecordidbcgovinvestigationstep Duplicaterecordidbcgovinvestigationstep { get; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovlocation.
+        /// </summary>
+        IDuplicaterecordidbcgovlocation Duplicaterecordidbcgovlocation { get; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovpostalcode.
+        /// </summary>
+        IDuplicaterecordidbcgovpostalcode Duplicaterecordidbcgovpostalcode { get; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovregion.
+        /// </summary>
+        IDuplicaterecordidbcgovregion Duplicaterecordidbcgovregion { get; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovriskassessment.
+        /// </summary>
+        IDuplicaterecordidbcgovriskassessment Duplicaterecordidbcgovriskassessment { get; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovrole.
+        /// </summary>
+        IDuplicaterecordidbcgovrole Duplicaterecordidbcgovrole { get; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovtermsconditionspreset.
+        /// </summary>
+        IDuplicaterecordidbcgovtermsconditionspreset Duplicaterecordidbcgovtermsconditionspreset { get; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovviolationticket.
+        /// </summary>
+        IDuplicaterecordidbcgovviolationticket Duplicaterecordidbcgovviolationticket { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcomplaintemail.
+        /// </summary>
+        IRegardingobjectidbcgovcomplaintemail Regardingobjectidbcgovcomplaintemail { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomaddressemail.
+        /// </summary>
+        IRegardingobjectidbcgovcustomaddressemail Regardingobjectidbcgovcustomaddressemail { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomproductemail.
+        /// </summary>
+        IRegardingobjectidbcgovcustomproductemail Regardingobjectidbcgovcustomproductemail { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmentemail.
+        /// </summary>
+        IRegardingobjectidbcgovequipmentemail Regardingobjectidbcgovequipmentemail { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmentlocationemail.
+        /// </summary>
+        IRegardingobjectidbcgovequipmentlocationemail Regardingobjectidbcgovequipmentlocationemail { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinspectionemail.
+        /// </summary>
+        IRegardingobjectidbcgovinspectionemail Regardingobjectidbcgovinspectionemail { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationemail.
+        /// </summary>
+        IRegardingobjectidbcgovinvestigationemail Regardingobjectidbcgovinvestigationemail { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationstepemail.
+        /// </summary>
+        IRegardingobjectidbcgovinvestigationstepemail Regardingobjectidbcgovinvestigationstepemail { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovlocationemail.
+        /// </summary>
+        IRegardingobjectidbcgovlocationemail Regardingobjectidbcgovlocationemail { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovriskassessmentemail.
+        /// </summary>
+        IRegardingobjectidbcgovriskassessmentemail Regardingobjectidbcgovriskassessmentemail { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovviolationticketemail.
+        /// </summary>
+        IRegardingobjectidbcgovviolationticketemail Regardingobjectidbcgovviolationticketemail { get; }
+
+        /// <summary>
+        /// Gets the IEntitydefinitions.
+        /// </summary>
+        IEntitydefinitions Entitydefinitions { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcomplaintfax.
+        /// </summary>
+        IRegardingobjectidbcgovcomplaintfax Regardingobjectidbcgovcomplaintfax { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomaddressfax.
+        /// </summary>
+        IRegardingobjectidbcgovcustomaddressfax Regardingobjectidbcgovcustomaddressfax { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomproductfax.
+        /// </summary>
+        IRegardingobjectidbcgovcustomproductfax Regardingobjectidbcgovcustomproductfax { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmentfax.
+        /// </summary>
+        IRegardingobjectidbcgovequipmentfax Regardingobjectidbcgovequipmentfax { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmentlocationfax.
+        /// </summary>
+        IRegardingobjectidbcgovequipmentlocationfax Regardingobjectidbcgovequipmentlocationfax { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinspectionfax.
+        /// </summary>
+        IRegardingobjectidbcgovinspectionfax Regardingobjectidbcgovinspectionfax { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationfax.
+        /// </summary>
+        IRegardingobjectidbcgovinvestigationfax Regardingobjectidbcgovinvestigationfax { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationstepfax.
+        /// </summary>
+        IRegardingobjectidbcgovinvestigationstepfax Regardingobjectidbcgovinvestigationstepfax { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovlocationfax.
+        /// </summary>
+        IRegardingobjectidbcgovlocationfax Regardingobjectidbcgovlocationfax { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovriskassessmentfax.
+        /// </summary>
+        IRegardingobjectidbcgovriskassessmentfax Regardingobjectidbcgovriskassessmentfax { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovviolationticketfax.
+        /// </summary>
+        IRegardingobjectidbcgovviolationticketfax Regardingobjectidbcgovviolationticketfax { get; }
+
+        /// <summary>
+        /// Gets the IGlobaloptionsetdefinitions.
+        /// </summary>
+        IGlobaloptionsetdefinitions Globaloptionsetdefinitions { get; }
 
         /// <summary>
         /// Gets the IIncidents.
@@ -229,19 +3478,419 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         IIncidents Incidents { get; }
 
         /// <summary>
+        /// Gets the IAddressofbusinessthathasgivenorloaned.
+        /// </summary>
+        IAddressofbusinessthathasgivenorloaned Addressofbusinessthathasgivenorloaned { get; }
+
+        /// <summary>
+        /// Gets the IAddressofbusinessthathasrentedorleased.
+        /// </summary>
+        IAddressofbusinessthathasrentedorleased Addressofbusinessthathasrentedorleased { get; }
+
+        /// <summary>
+        /// Gets the IAddressofpersonbusiness.
+        /// </summary>
+        IAddressofpersonbusiness Addressofpersonbusiness { get; }
+
+        /// <summary>
+        /// Gets the IAddresswhereequipmentwasdestroyed.
+        /// </summary>
+        IAddresswhereequipmentwasdestroyed Addresswhereequipmentwasdestroyed { get; }
+
+        /// <summary>
+        /// Gets the IApplicationtypeid.
+        /// </summary>
+        IApplicationtypeid Applicationtypeid { get; }
+
+        /// <summary>
+        /// Gets the IAssociatedriskassessmentrecord.
+        /// </summary>
+        IAssociatedriskassessmentrecord Associatedriskassessmentrecord { get; }
+
+        /// <summary>
+        /// Gets the IBcsellersaddress.
+        /// </summary>
+        IBcsellersaddress Bcsellersaddress { get; }
+
+        /// <summary>
+        /// Gets the ICivicaddressofpurchaser.
+        /// </summary>
+        ICivicaddressofpurchaser Civicaddressofpurchaser { get; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocation.
+        /// </summary>
+        IEquipmentlocation Equipmentlocation { get; }
+
+        /// <summary>
+        /// Gets the IImportersaddress.
+        /// </summary>
+        IImportersaddress Importersaddress { get; }
+
+        /// <summary>
+        /// Gets the IIncidentbcgovcertificateapplication.
+        /// </summary>
+        IIncidentbcgovcertificateapplication Incidentbcgovcertificateapplication { get; }
+
+        /// <summary>
+        /// Gets the IIncidentbcgovriskassessmentapplicationid.
+        /// </summary>
+        IIncidentbcgovriskassessmentapplicationid Incidentbcgovriskassessmentapplicationid { get; }
+
+        /// <summary>
+        /// Gets the IIncidentcustomproductrelatedapplication.
+        /// </summary>
+        IIncidentcustomproductrelatedapplication Incidentcustomproductrelatedapplication { get; }
+
+        /// <summary>
+        /// Gets the IIncidentlocationassociatedapplication.
+        /// </summary>
+        IIncidentlocationassociatedapplication Incidentlocationassociatedapplication { get; }
+
+        /// <summary>
+        /// Gets the INewinspectionrecord.
+        /// </summary>
+        INewinspectionrecord Newinspectionrecord { get; }
+
+        /// <summary>
+        /// Gets the IOriginatingsellersaddress.
+        /// </summary>
+        IOriginatingsellersaddress Originatingsellersaddress { get; }
+
+        /// <summary>
+        /// Gets the IOutsidebcsellersaddress.
+        /// </summary>
+        IOutsidebcsellersaddress Outsidebcsellersaddress { get; }
+
+        /// <summary>
+        /// Gets the IPurchasersbusinessaddress.
+        /// </summary>
+        IPurchasersbusinessaddress Purchasersbusinessaddress { get; }
+
+        /// <summary>
+        /// Gets the IPurchaserscivicaddress.
+        /// </summary>
+        IPurchaserscivicaddress Purchaserscivicaddress { get; }
+
+        /// <summary>
+        /// Gets the IRelatedapplicationsid.
+        /// </summary>
+        IRelatedapplicationsid Relatedapplicationsid { get; }
+
+        /// <summary>
+        /// Gets the ISubmitter.
+        /// </summary>
+        ISubmitter Submitter { get; }
+
+        /// <summary>
         /// Gets the IInvoices.
         /// </summary>
         IInvoices Invoices { get; }
 
         /// <summary>
-        /// Gets the IMsdyncustomaddressknowledgearticlset.
+        /// Gets the ILeads.
         /// </summary>
-        IMsdyncustomaddressknowledgearticlset Msdyncustomaddressknowledgearticlset { get; }
+        ILeads Leads { get; }
 
         /// <summary>
-        /// Gets the IMsdyncustomaddressknowledgebasereset.
+        /// Gets the IRegardingobjectidbcgovcomplaintletter.
         /// </summary>
-        IMsdyncustomaddressknowledgebasereset Msdyncustomaddressknowledgebasereset { get; }
+        IRegardingobjectidbcgovcomplaintletter Regardingobjectidbcgovcomplaintletter { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomaddressletter.
+        /// </summary>
+        IRegardingobjectidbcgovcustomaddressletter Regardingobjectidbcgovcustomaddressletter { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomproductletter.
+        /// </summary>
+        IRegardingobjectidbcgovcustomproductletter Regardingobjectidbcgovcustomproductletter { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmentletter.
+        /// </summary>
+        IRegardingobjectidbcgovequipmentletter Regardingobjectidbcgovequipmentletter { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmentlocationletter.
+        /// </summary>
+        IRegardingobjectidbcgovequipmentlocationletter Regardingobjectidbcgovequipmentlocationletter { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinspectionletter.
+        /// </summary>
+        IRegardingobjectidbcgovinspectionletter Regardingobjectidbcgovinspectionletter { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationletter.
+        /// </summary>
+        IRegardingobjectidbcgovinvestigationletter Regardingobjectidbcgovinvestigationletter { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationstepletter.
+        /// </summary>
+        IRegardingobjectidbcgovinvestigationstepletter Regardingobjectidbcgovinvestigationstepletter { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovlocationletter.
+        /// </summary>
+        IRegardingobjectidbcgovlocationletter Regardingobjectidbcgovlocationletter { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovriskassessmentletter.
+        /// </summary>
+        IRegardingobjectidbcgovriskassessmentletter Regardingobjectidbcgovriskassessmentletter { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovviolationticketletter.
+        /// </summary>
+        IRegardingobjectidbcgovviolationticketletter Regardingobjectidbcgovviolationticketletter { get; }
+
+        /// <summary>
+        /// Gets the ILists.
+        /// </summary>
+        ILists Lists { get; }
+
+        /// <summary>
+        /// Gets the IOrganizationbcgovcomplaintcomplaintprocessflow.
+        /// </summary>
+        IOrganizationbcgovcomplaintcomplaintprocessflow Organizationbcgovcomplaintcomplaintprocessflow { get; }
+
+        /// <summary>
+        /// Gets the IOrganizationbcgovinspectionprocessflow.
+        /// </summary>
+        IOrganizationbcgovinspectionprocessflow Organizationbcgovinspectionprocessflow { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcomplaintphonecall.
+        /// </summary>
+        IRegardingobjectidbcgovcomplaintphonecall Regardingobjectidbcgovcomplaintphonecall { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomaddressphonecall.
+        /// </summary>
+        IRegardingobjectidbcgovcustomaddressphonecall Regardingobjectidbcgovcustomaddressphonecall { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomproductphonecall.
+        /// </summary>
+        IRegardingobjectidbcgovcustomproductphonecall Regardingobjectidbcgovcustomproductphonecall { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmentphonecall.
+        /// </summary>
+        IRegardingobjectidbcgovequipmentphonecall Regardingobjectidbcgovequipmentphonecall { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmentlocationphonecall.
+        /// </summary>
+        IRegardingobjectidbcgovequipmentlocationphonecall Regardingobjectidbcgovequipmentlocationphonecall { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinspectionphonecall.
+        /// </summary>
+        IRegardingobjectidbcgovinspectionphonecall Regardingobjectidbcgovinspectionphonecall { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationphonecall.
+        /// </summary>
+        IRegardingobjectidbcgovinvestigationphonecall Regardingobjectidbcgovinvestigationphonecall { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationstepphonecall.
+        /// </summary>
+        IRegardingobjectidbcgovinvestigationstepphonecall Regardingobjectidbcgovinvestigationstepphonecall { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovlocationphonecall.
+        /// </summary>
+        IRegardingobjectidbcgovlocationphonecall Regardingobjectidbcgovlocationphonecall { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovriskassessmentphonecall.
+        /// </summary>
+        IRegardingobjectidbcgovriskassessmentphonecall Regardingobjectidbcgovriskassessmentphonecall { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovviolationticketphonecall.
+        /// </summary>
+        IRegardingobjectidbcgovviolationticketphonecall Regardingobjectidbcgovviolationticketphonecall { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcomplaintcomplaintprocessflowactivestageid.
+        /// </summary>
+        ILkbcgovcomplaintcomplaintprocessflowactivestageid Lkbcgovcomplaintcomplaintprocessflowactivestageid { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinspectionprocessflowactivestageid.
+        /// </summary>
+        ILkbcgovinspectionprocessflowactivestageid Lkbcgovinspectionprocessflowactivestageid { get; }
+
+        /// <summary>
+        /// Gets the IProcessstagebcgovcomplaint.
+        /// </summary>
+        IProcessstagebcgovcomplaint Processstagebcgovcomplaint { get; }
+
+        /// <summary>
+        /// Gets the IProcessstagebcgovcustomaddress.
+        /// </summary>
+        IProcessstagebcgovcustomaddress Processstagebcgovcustomaddress { get; }
+
+        /// <summary>
+        /// Gets the IProcessstagebcgovcustomproduct.
+        /// </summary>
+        IProcessstagebcgovcustomproduct Processstagebcgovcustomproduct { get; }
+
+        /// <summary>
+        /// Gets the IProcessstagebcgovequipment.
+        /// </summary>
+        IProcessstagebcgovequipment Processstagebcgovequipment { get; }
+
+        /// <summary>
+        /// Gets the IProcessstagebcgovinspection.
+        /// </summary>
+        IProcessstagebcgovinspection Processstagebcgovinspection { get; }
+
+        /// <summary>
+        /// Gets the IProcessstagebcgovinvestigation.
+        /// </summary>
+        IProcessstagebcgovinvestigation Processstagebcgovinvestigation { get; }
+
+        /// <summary>
+        /// Gets the IProcessstagebcgovinvestigationstep.
+        /// </summary>
+        IProcessstagebcgovinvestigationstep Processstagebcgovinvestigationstep { get; }
+
+        /// <summary>
+        /// Gets the IProcessstagebcgovlocation.
+        /// </summary>
+        IProcessstagebcgovlocation Processstagebcgovlocation { get; }
+
+        /// <summary>
+        /// Gets the IProcessstagebcgovviolationticket.
+        /// </summary>
+        IProcessstagebcgovviolationticket Processstagebcgovviolationticket { get; }
+
+        /// <summary>
+        /// Gets the IObjectidbcgovcustomproduct.
+        /// </summary>
+        IObjectidbcgovcustomproduct Objectidbcgovcustomproduct { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcomplaintrecurringappointmentmaster.
+        /// </summary>
+        IRegardingobjectidbcgovcomplaintrecurringappointmentmaster Regardingobjectidbcgovcomplaintrecurringappointmentmaster { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomaddressrecurringappointmentmaster.
+        /// </summary>
+        IRegardingobjectidbcgovcustomaddressrecurringappointmentmaster Regardingobjectidbcgovcustomaddressrecurringappointmentmaster { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomproductrecurringappointmentmaster.
+        /// </summary>
+        IRegardingobjectidbcgovcustomproductrecurringappointmentmaster Regardingobjectidbcgovcustomproductrecurringappointmentmaster { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmentrecurringappointmentmaster.
+        /// </summary>
+        IRegardingobjectidbcgovequipmentrecurringappointmentmaster Regardingobjectidbcgovequipmentrecurringappointmentmaster { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmentlocationrecurringappointmentmaster.
+        /// </summary>
+        IRegardingobjectidbcgovequipmentlocationrecurringappointmentmaster Regardingobjectidbcgovequipmentlocationrecurringappointmentmaster { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinspectionrecurringappointmentmaster.
+        /// </summary>
+        IRegardingobjectidbcgovinspectionrecurringappointmentmaster Regardingobjectidbcgovinspectionrecurringappointmentmaster { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationrecurringappointmentmaster.
+        /// </summary>
+        IRegardingobjectidbcgovinvestigationrecurringappointmentmaster Regardingobjectidbcgovinvestigationrecurringappointmentmaster { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationsteprecurringappointmentmaster.
+        /// </summary>
+        IRegardingobjectidbcgovinvestigationsteprecurringappointmentmaster Regardingobjectidbcgovinvestigationsteprecurringappointmentmaster { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovlocationrecurringappointmentmaster.
+        /// </summary>
+        IRegardingobjectidbcgovlocationrecurringappointmentmaster Regardingobjectidbcgovlocationrecurringappointmentmaster { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovriskassessmentrecurringappointmentmaster.
+        /// </summary>
+        IRegardingobjectidbcgovriskassessmentrecurringappointmentmaster Regardingobjectidbcgovriskassessmentrecurringappointmentmaster { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovviolationticketrecurringappointmentmaster.
+        /// </summary>
+        IRegardingobjectidbcgovviolationticketrecurringappointmentmaster Regardingobjectidbcgovviolationticketrecurringappointmentmaster { get; }
+
+        /// <summary>
+        /// Gets the ISavedqueries.
+        /// </summary>
+        ISavedqueries Savedqueries { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcomplaintserviceappointment.
+        /// </summary>
+        IRegardingobjectidbcgovcomplaintserviceappointment Regardingobjectidbcgovcomplaintserviceappointment { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomaddressserviceappointment.
+        /// </summary>
+        IRegardingobjectidbcgovcustomaddressserviceappointment Regardingobjectidbcgovcustomaddressserviceappointment { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomproductserviceappointment.
+        /// </summary>
+        IRegardingobjectidbcgovcustomproductserviceappointment Regardingobjectidbcgovcustomproductserviceappointment { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmentserviceappointment.
+        /// </summary>
+        IRegardingobjectidbcgovequipmentserviceappointment Regardingobjectidbcgovequipmentserviceappointment { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmentlocationserviceappointment.
+        /// </summary>
+        IRegardingobjectidbcgovequipmentlocationserviceappointment Regardingobjectidbcgovequipmentlocationserviceappointment { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinspectionserviceappointment.
+        /// </summary>
+        IRegardingobjectidbcgovinspectionserviceappointment Regardingobjectidbcgovinspectionserviceappointment { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationserviceappointment.
+        /// </summary>
+        IRegardingobjectidbcgovinvestigationserviceappointment Regardingobjectidbcgovinvestigationserviceappointment { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationstepserviceappointment.
+        /// </summary>
+        IRegardingobjectidbcgovinvestigationstepserviceappointment Regardingobjectidbcgovinvestigationstepserviceappointment { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovlocationserviceappointment.
+        /// </summary>
+        IRegardingobjectidbcgovlocationserviceappointment Regardingobjectidbcgovlocationserviceappointment { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovriskassessmentserviceappointment.
+        /// </summary>
+        IRegardingobjectidbcgovriskassessmentserviceappointment Regardingobjectidbcgovriskassessmentserviceappointment { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovviolationticketserviceappointment.
+        /// </summary>
+        IRegardingobjectidbcgovviolationticketserviceappointment Regardingobjectidbcgovviolationticketserviceappointment { get; }
 
         /// <summary>
         /// Gets the ISharepointdocumentlocations.
@@ -254,14 +3903,1044 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         ISharepointsites Sharepointsites { get; }
 
         /// <summary>
-        /// Gets the IEntitydefinitions.
+        /// Gets the IRegardingbcgovcustomaddress.
         /// </summary>
-        IEntitydefinitions Entitydefinitions { get; }
+        IRegardingbcgovcustomaddress Regardingbcgovcustomaddress { get; }
 
         /// <summary>
-        /// Gets the IGlobaloptionsetdefinitions.
+        /// Gets the IManualslabcgovcustomaddress.
         /// </summary>
-        IGlobaloptionsetdefinitions Globaloptionsetdefinitions { get; }
+        IManualslabcgovcustomaddress Manualslabcgovcustomaddress { get; }
+
+        /// <summary>
+        /// Gets the ISlabcgovcustomaddress.
+        /// </summary>
+        ISlabcgovcustomaddress Slabcgovcustomaddress { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcomplaintsocialactivity.
+        /// </summary>
+        IRegardingobjectidbcgovcomplaintsocialactivity Regardingobjectidbcgovcomplaintsocialactivity { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomaddresssocialactivity.
+        /// </summary>
+        IRegardingobjectidbcgovcustomaddresssocialactivity Regardingobjectidbcgovcustomaddresssocialactivity { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomproductsocialactivity.
+        /// </summary>
+        IRegardingobjectidbcgovcustomproductsocialactivity Regardingobjectidbcgovcustomproductsocialactivity { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmentsocialactivity.
+        /// </summary>
+        IRegardingobjectidbcgovequipmentsocialactivity Regardingobjectidbcgovequipmentsocialactivity { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmentlocationsocialactivity.
+        /// </summary>
+        IRegardingobjectidbcgovequipmentlocationsocialactivity Regardingobjectidbcgovequipmentlocationsocialactivity { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinspectionsocialactivity.
+        /// </summary>
+        IRegardingobjectidbcgovinspectionsocialactivity Regardingobjectidbcgovinspectionsocialactivity { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationsocialactivity.
+        /// </summary>
+        IRegardingobjectidbcgovinvestigationsocialactivity Regardingobjectidbcgovinvestigationsocialactivity { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationstepsocialactivity.
+        /// </summary>
+        IRegardingobjectidbcgovinvestigationstepsocialactivity Regardingobjectidbcgovinvestigationstepsocialactivity { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovlocationsocialactivity.
+        /// </summary>
+        IRegardingobjectidbcgovlocationsocialactivity Regardingobjectidbcgovlocationsocialactivity { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovriskassessmentsocialactivity.
+        /// </summary>
+        IRegardingobjectidbcgovriskassessmentsocialactivity Regardingobjectidbcgovriskassessmentsocialactivity { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovviolationticketsocialactivity.
+        /// </summary>
+        IRegardingobjectidbcgovviolationticketsocialactivity Regardingobjectidbcgovviolationticketsocialactivity { get; }
+
+        /// <summary>
+        /// Gets the ISystemuserbcgovcomplaintassignto.
+        /// </summary>
+        ISystemuserbcgovcomplaintassignto Systemuserbcgovcomplaintassignto { get; }
+
+        /// <summary>
+        /// Gets the ISystemuserbcgovregioninspector.
+        /// </summary>
+        ISystemuserbcgovregioninspector Systemuserbcgovregioninspector { get; }
+
+        /// <summary>
+        /// Gets the ISystemusercustomuseruser.
+        /// </summary>
+        ISystemusercustomuseruser Systemusercustomuseruser { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovactregulationreferencecreatedby.
+        /// </summary>
+        ILkbcgovactregulationreferencecreatedby Lkbcgovactregulationreferencecreatedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovactregulationreferencecreatedonbehalfby.
+        /// </summary>
+        ILkbcgovactregulationreferencecreatedonbehalfby Lkbcgovactregulationreferencecreatedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovactregulationreferencemodifiedby.
+        /// </summary>
+        ILkbcgovactregulationreferencemodifiedby Lkbcgovactregulationreferencemodifiedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovactregulationreferencemodifiedonbehalfby.
+        /// </summary>
+        ILkbcgovactregulationreferencemodifiedonbehalfby Lkbcgovactregulationreferencemodifiedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovapplicationtypecreatedby.
+        /// </summary>
+        ILkbcgovapplicationtypecreatedby Lkbcgovapplicationtypecreatedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovapplicationtypecreatedonbehalfby.
+        /// </summary>
+        ILkbcgovapplicationtypecreatedonbehalfby Lkbcgovapplicationtypecreatedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovapplicationtypemodifiedby.
+        /// </summary>
+        ILkbcgovapplicationtypemodifiedby Lkbcgovapplicationtypemodifiedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovapplicationtypemodifiedonbehalfby.
+        /// </summary>
+        ILkbcgovapplicationtypemodifiedonbehalfby Lkbcgovapplicationtypemodifiedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovareacreatedby.
+        /// </summary>
+        ILkbcgovareacreatedby Lkbcgovareacreatedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovareacreatedonbehalfby.
+        /// </summary>
+        ILkbcgovareacreatedonbehalfby Lkbcgovareacreatedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovareamodifiedby.
+        /// </summary>
+        ILkbcgovareamodifiedby Lkbcgovareamodifiedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovareamodifiedonbehalfby.
+        /// </summary>
+        ILkbcgovareamodifiedonbehalfby Lkbcgovareamodifiedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovbusinesscontactcreatedby.
+        /// </summary>
+        ILkbcgovbusinesscontactcreatedby Lkbcgovbusinesscontactcreatedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovbusinesscontactcreatedonbehalfby.
+        /// </summary>
+        ILkbcgovbusinesscontactcreatedonbehalfby Lkbcgovbusinesscontactcreatedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovbusinesscontactmodifiedby.
+        /// </summary>
+        ILkbcgovbusinesscontactmodifiedby Lkbcgovbusinesscontactmodifiedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovbusinesscontactmodifiedonbehalfby.
+        /// </summary>
+        ILkbcgovbusinesscontactmodifiedonbehalfby Lkbcgovbusinesscontactmodifiedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcecontactcreatedby.
+        /// </summary>
+        ILkbcgovcecontactcreatedby Lkbcgovcecontactcreatedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcecontactcreatedonbehalfby.
+        /// </summary>
+        ILkbcgovcecontactcreatedonbehalfby Lkbcgovcecontactcreatedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcecontactmodifiedby.
+        /// </summary>
+        ILkbcgovcecontactmodifiedby Lkbcgovcecontactmodifiedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcecontactmodifiedonbehalfby.
+        /// </summary>
+        ILkbcgovcecontactmodifiedonbehalfby Lkbcgovcecontactmodifiedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcecontacttypecreatedby.
+        /// </summary>
+        ILkbcgovcecontacttypecreatedby Lkbcgovcecontacttypecreatedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcecontacttypecreatedonbehalfby.
+        /// </summary>
+        ILkbcgovcecontacttypecreatedonbehalfby Lkbcgovcecontacttypecreatedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcecontacttypemodifiedby.
+        /// </summary>
+        ILkbcgovcecontacttypemodifiedby Lkbcgovcecontacttypemodifiedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcecontacttypemodifiedonbehalfby.
+        /// </summary>
+        ILkbcgovcecontacttypemodifiedonbehalfby Lkbcgovcecontacttypemodifiedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcertificatecreatedby.
+        /// </summary>
+        ILkbcgovcertificatecreatedby Lkbcgovcertificatecreatedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcertificatecreatedonbehalfby.
+        /// </summary>
+        ILkbcgovcertificatecreatedonbehalfby Lkbcgovcertificatecreatedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcertificatemodifiedby.
+        /// </summary>
+        ILkbcgovcertificatemodifiedby Lkbcgovcertificatemodifiedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcertificatemodifiedonbehalfby.
+        /// </summary>
+        ILkbcgovcertificatemodifiedonbehalfby Lkbcgovcertificatemodifiedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcertificateapprovedproductcreatedby.
+        /// </summary>
+        ILkbcgovcertificateapprovedproductcreatedby Lkbcgovcertificateapprovedproductcreatedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcertificateapprovedproductcreatedonbehalfby.
+        /// </summary>
+        ILkbcgovcertificateapprovedproductcreatedonbehalfby Lkbcgovcertificateapprovedproductcreatedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcertificateapprovedproductmodifiedby.
+        /// </summary>
+        ILkbcgovcertificateapprovedproductmodifiedby Lkbcgovcertificateapprovedproductmodifiedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcertificateapprovedproductmodifiedonbehalfby.
+        /// </summary>
+        ILkbcgovcertificateapprovedproductmodifiedonbehalfby Lkbcgovcertificateapprovedproductmodifiedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcertificatetermsandconditionscreatedby.
+        /// </summary>
+        ILkbcgovcertificatetermsandconditionscreatedby Lkbcgovcertificatetermsandconditionscreatedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcertificatetermsandconditionscreatedonbehalfby.
+        /// </summary>
+        ILkbcgovcertificatetermsandconditionscreatedonbehalfby Lkbcgovcertificatetermsandconditionscreatedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcertificatetermsandconditionsmodifiedby.
+        /// </summary>
+        ILkbcgovcertificatetermsandconditionsmodifiedby Lkbcgovcertificatetermsandconditionsmodifiedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcertificatetermsandconditionsmodifiedonbehalfby.
+        /// </summary>
+        ILkbcgovcertificatetermsandconditionsmodifiedonbehalfby Lkbcgovcertificatetermsandconditionsmodifiedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcomplaintcreatedby.
+        /// </summary>
+        ILkbcgovcomplaintcreatedby Lkbcgovcomplaintcreatedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcomplaintcreatedonbehalfby.
+        /// </summary>
+        ILkbcgovcomplaintcreatedonbehalfby Lkbcgovcomplaintcreatedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcomplaintmodifiedby.
+        /// </summary>
+        ILkbcgovcomplaintmodifiedby Lkbcgovcomplaintmodifiedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcomplaintmodifiedonbehalfby.
+        /// </summary>
+        ILkbcgovcomplaintmodifiedonbehalfby Lkbcgovcomplaintmodifiedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcomplaintchecklistcreatedby.
+        /// </summary>
+        ILkbcgovcomplaintchecklistcreatedby Lkbcgovcomplaintchecklistcreatedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcomplaintchecklistcreatedonbehalfby.
+        /// </summary>
+        ILkbcgovcomplaintchecklistcreatedonbehalfby Lkbcgovcomplaintchecklistcreatedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcomplaintchecklistmodifiedby.
+        /// </summary>
+        ILkbcgovcomplaintchecklistmodifiedby Lkbcgovcomplaintchecklistmodifiedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcomplaintchecklistmodifiedonbehalfby.
+        /// </summary>
+        ILkbcgovcomplaintchecklistmodifiedonbehalfby Lkbcgovcomplaintchecklistmodifiedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcomplaintcomplaintprocessflowcreatedby.
+        /// </summary>
+        ILkbcgovcomplaintcomplaintprocessflowcreatedby Lkbcgovcomplaintcomplaintprocessflowcreatedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcomplaintcomplaintprocessflowcreatedonbehalfby.
+        /// </summary>
+        ILkbcgovcomplaintcomplaintprocessflowcreatedonbehalfby Lkbcgovcomplaintcomplaintprocessflowcreatedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcomplaintcomplaintprocessflowmodifiedby.
+        /// </summary>
+        ILkbcgovcomplaintcomplaintprocessflowmodifiedby Lkbcgovcomplaintcomplaintprocessflowmodifiedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcomplaintcomplaintprocessflowmodifiedonbehalfby.
+        /// </summary>
+        ILkbcgovcomplaintcomplaintprocessflowmodifiedonbehalfby Lkbcgovcomplaintcomplaintprocessflowmodifiedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcustomaddresscreatedby.
+        /// </summary>
+        ILkbcgovcustomaddresscreatedby Lkbcgovcustomaddresscreatedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcustomaddresscreatedonbehalfby.
+        /// </summary>
+        ILkbcgovcustomaddresscreatedonbehalfby Lkbcgovcustomaddresscreatedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcustomaddressmodifiedby.
+        /// </summary>
+        ILkbcgovcustomaddressmodifiedby Lkbcgovcustomaddressmodifiedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcustomaddressmodifiedonbehalfby.
+        /// </summary>
+        ILkbcgovcustomaddressmodifiedonbehalfby Lkbcgovcustomaddressmodifiedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcustomproductcreatedby.
+        /// </summary>
+        ILkbcgovcustomproductcreatedby Lkbcgovcustomproductcreatedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcustomproductcreatedonbehalfby.
+        /// </summary>
+        ILkbcgovcustomproductcreatedonbehalfby Lkbcgovcustomproductcreatedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcustomproductmodifiedby.
+        /// </summary>
+        ILkbcgovcustomproductmodifiedby Lkbcgovcustomproductmodifiedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcustomproductmodifiedonbehalfby.
+        /// </summary>
+        ILkbcgovcustomproductmodifiedonbehalfby Lkbcgovcustomproductmodifiedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcustomusercreatedby.
+        /// </summary>
+        ILkbcgovcustomusercreatedby Lkbcgovcustomusercreatedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcustomusercreatedonbehalfby.
+        /// </summary>
+        ILkbcgovcustomusercreatedonbehalfby Lkbcgovcustomusercreatedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcustomusermodifiedby.
+        /// </summary>
+        ILkbcgovcustomusermodifiedby Lkbcgovcustomusermodifiedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcustomusermodifiedonbehalfby.
+        /// </summary>
+        ILkbcgovcustomusermodifiedonbehalfby Lkbcgovcustomusermodifiedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovequipmentcreatedby.
+        /// </summary>
+        ILkbcgovequipmentcreatedby Lkbcgovequipmentcreatedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovequipmentcreatedonbehalfby.
+        /// </summary>
+        ILkbcgovequipmentcreatedonbehalfby Lkbcgovequipmentcreatedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovequipmentmodifiedby.
+        /// </summary>
+        ILkbcgovequipmentmodifiedby Lkbcgovequipmentmodifiedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovequipmentmodifiedonbehalfby.
+        /// </summary>
+        ILkbcgovequipmentmodifiedonbehalfby Lkbcgovequipmentmodifiedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovequipmentlocationcreatedby.
+        /// </summary>
+        ILkbcgovequipmentlocationcreatedby Lkbcgovequipmentlocationcreatedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovequipmentlocationcreatedonbehalfby.
+        /// </summary>
+        ILkbcgovequipmentlocationcreatedonbehalfby Lkbcgovequipmentlocationcreatedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovequipmentlocationmodifiedby.
+        /// </summary>
+        ILkbcgovequipmentlocationmodifiedby Lkbcgovequipmentlocationmodifiedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovequipmentlocationmodifiedonbehalfby.
+        /// </summary>
+        ILkbcgovequipmentlocationmodifiedonbehalfby Lkbcgovequipmentlocationmodifiedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinspectioncreatedby.
+        /// </summary>
+        ILkbcgovinspectioncreatedby Lkbcgovinspectioncreatedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinspectioncreatedonbehalfby.
+        /// </summary>
+        ILkbcgovinspectioncreatedonbehalfby Lkbcgovinspectioncreatedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinspectionmodifiedby.
+        /// </summary>
+        ILkbcgovinspectionmodifiedby Lkbcgovinspectionmodifiedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinspectionmodifiedonbehalfby.
+        /// </summary>
+        ILkbcgovinspectionmodifiedonbehalfby Lkbcgovinspectionmodifiedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinspectionchecklistcreatedby.
+        /// </summary>
+        ILkbcgovinspectionchecklistcreatedby Lkbcgovinspectionchecklistcreatedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinspectionchecklistcreatedonbehalfby.
+        /// </summary>
+        ILkbcgovinspectionchecklistcreatedonbehalfby Lkbcgovinspectionchecklistcreatedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinspectionchecklistmodifiedby.
+        /// </summary>
+        ILkbcgovinspectionchecklistmodifiedby Lkbcgovinspectionchecklistmodifiedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinspectionchecklistmodifiedonbehalfby.
+        /// </summary>
+        ILkbcgovinspectionchecklistmodifiedonbehalfby Lkbcgovinspectionchecklistmodifiedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinspectionownershipcategorycreatedby.
+        /// </summary>
+        ILkbcgovinspectionownershipcategorycreatedby Lkbcgovinspectionownershipcategorycreatedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinspectionownershipcategorycreatedonbehalfby.
+        /// </summary>
+        ILkbcgovinspectionownershipcategorycreatedonbehalfby Lkbcgovinspectionownershipcategorycreatedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinspectionownershipcategorymodifiedby.
+        /// </summary>
+        ILkbcgovinspectionownershipcategorymodifiedby Lkbcgovinspectionownershipcategorymodifiedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinspectionownershipcategorymodifiedonbehalfby.
+        /// </summary>
+        ILkbcgovinspectionownershipcategorymodifiedonbehalfby Lkbcgovinspectionownershipcategorymodifiedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinspectionprocessflowcreatedby.
+        /// </summary>
+        ILkbcgovinspectionprocessflowcreatedby Lkbcgovinspectionprocessflowcreatedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinspectionprocessflowcreatedonbehalfby.
+        /// </summary>
+        ILkbcgovinspectionprocessflowcreatedonbehalfby Lkbcgovinspectionprocessflowcreatedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinspectionprocessflowmodifiedby.
+        /// </summary>
+        ILkbcgovinspectionprocessflowmodifiedby Lkbcgovinspectionprocessflowmodifiedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinspectionprocessflowmodifiedonbehalfby.
+        /// </summary>
+        ILkbcgovinspectionprocessflowmodifiedonbehalfby Lkbcgovinspectionprocessflowmodifiedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinvestigationcreatedby.
+        /// </summary>
+        ILkbcgovinvestigationcreatedby Lkbcgovinvestigationcreatedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinvestigationcreatedonbehalfby.
+        /// </summary>
+        ILkbcgovinvestigationcreatedonbehalfby Lkbcgovinvestigationcreatedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinvestigationmodifiedby.
+        /// </summary>
+        ILkbcgovinvestigationmodifiedby Lkbcgovinvestigationmodifiedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinvestigationmodifiedonbehalfby.
+        /// </summary>
+        ILkbcgovinvestigationmodifiedonbehalfby Lkbcgovinvestigationmodifiedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinvestigationstepcreatedby.
+        /// </summary>
+        ILkbcgovinvestigationstepcreatedby Lkbcgovinvestigationstepcreatedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinvestigationstepcreatedonbehalfby.
+        /// </summary>
+        ILkbcgovinvestigationstepcreatedonbehalfby Lkbcgovinvestigationstepcreatedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinvestigationstepmodifiedby.
+        /// </summary>
+        ILkbcgovinvestigationstepmodifiedby Lkbcgovinvestigationstepmodifiedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinvestigationstepmodifiedonbehalfby.
+        /// </summary>
+        ILkbcgovinvestigationstepmodifiedonbehalfby Lkbcgovinvestigationstepmodifiedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovlocationcreatedby.
+        /// </summary>
+        ILkbcgovlocationcreatedby Lkbcgovlocationcreatedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovlocationcreatedonbehalfby.
+        /// </summary>
+        ILkbcgovlocationcreatedonbehalfby Lkbcgovlocationcreatedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovlocationmodifiedby.
+        /// </summary>
+        ILkbcgovlocationmodifiedby Lkbcgovlocationmodifiedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovlocationmodifiedonbehalfby.
+        /// </summary>
+        ILkbcgovlocationmodifiedonbehalfby Lkbcgovlocationmodifiedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovpostalcodecreatedby.
+        /// </summary>
+        ILkbcgovpostalcodecreatedby Lkbcgovpostalcodecreatedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovpostalcodecreatedonbehalfby.
+        /// </summary>
+        ILkbcgovpostalcodecreatedonbehalfby Lkbcgovpostalcodecreatedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovpostalcodemodifiedby.
+        /// </summary>
+        ILkbcgovpostalcodemodifiedby Lkbcgovpostalcodemodifiedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovpostalcodemodifiedonbehalfby.
+        /// </summary>
+        ILkbcgovpostalcodemodifiedonbehalfby Lkbcgovpostalcodemodifiedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovregioncreatedby.
+        /// </summary>
+        ILkbcgovregioncreatedby Lkbcgovregioncreatedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovregioncreatedonbehalfby.
+        /// </summary>
+        ILkbcgovregioncreatedonbehalfby Lkbcgovregioncreatedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovregionmodifiedby.
+        /// </summary>
+        ILkbcgovregionmodifiedby Lkbcgovregionmodifiedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovregionmodifiedonbehalfby.
+        /// </summary>
+        ILkbcgovregionmodifiedonbehalfby Lkbcgovregionmodifiedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovriskassessmentcreatedby.
+        /// </summary>
+        ILkbcgovriskassessmentcreatedby Lkbcgovriskassessmentcreatedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovriskassessmentcreatedonbehalfby.
+        /// </summary>
+        ILkbcgovriskassessmentcreatedonbehalfby Lkbcgovriskassessmentcreatedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovriskassessmentmodifiedby.
+        /// </summary>
+        ILkbcgovriskassessmentmodifiedby Lkbcgovriskassessmentmodifiedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovriskassessmentmodifiedonbehalfby.
+        /// </summary>
+        ILkbcgovriskassessmentmodifiedonbehalfby Lkbcgovriskassessmentmodifiedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovrolecreatedby.
+        /// </summary>
+        ILkbcgovrolecreatedby Lkbcgovrolecreatedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovrolecreatedonbehalfby.
+        /// </summary>
+        ILkbcgovrolecreatedonbehalfby Lkbcgovrolecreatedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovrolemodifiedby.
+        /// </summary>
+        ILkbcgovrolemodifiedby Lkbcgovrolemodifiedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovrolemodifiedonbehalfby.
+        /// </summary>
+        ILkbcgovrolemodifiedonbehalfby Lkbcgovrolemodifiedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovtermsconditionspresetcreatedby.
+        /// </summary>
+        ILkbcgovtermsconditionspresetcreatedby Lkbcgovtermsconditionspresetcreatedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovtermsconditionspresetcreatedonbehalfby.
+        /// </summary>
+        ILkbcgovtermsconditionspresetcreatedonbehalfby Lkbcgovtermsconditionspresetcreatedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovtermsconditionspresetmodifiedby.
+        /// </summary>
+        ILkbcgovtermsconditionspresetmodifiedby Lkbcgovtermsconditionspresetmodifiedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovtermsconditionspresetmodifiedonbehalfby.
+        /// </summary>
+        ILkbcgovtermsconditionspresetmodifiedonbehalfby Lkbcgovtermsconditionspresetmodifiedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovviolationticketcreatedby.
+        /// </summary>
+        ILkbcgovviolationticketcreatedby Lkbcgovviolationticketcreatedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovviolationticketcreatedonbehalfby.
+        /// </summary>
+        ILkbcgovviolationticketcreatedonbehalfby Lkbcgovviolationticketcreatedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovviolationticketmodifiedby.
+        /// </summary>
+        ILkbcgovviolationticketmodifiedby Lkbcgovviolationticketmodifiedby { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovviolationticketmodifiedonbehalfby.
+        /// </summary>
+        ILkbcgovviolationticketmodifiedonbehalfby Lkbcgovviolationticketmodifiedonbehalfby { get; }
+
+        /// <summary>
+        /// Gets the IUserbcgovactregulationreference.
+        /// </summary>
+        IUserbcgovactregulationreference Userbcgovactregulationreference { get; }
+
+        /// <summary>
+        /// Gets the IUserbcgovapplicationtype.
+        /// </summary>
+        IUserbcgovapplicationtype Userbcgovapplicationtype { get; }
+
+        /// <summary>
+        /// Gets the IUserbcgovarea.
+        /// </summary>
+        IUserbcgovarea Userbcgovarea { get; }
+
+        /// <summary>
+        /// Gets the IUserbcgovbusinesscontact.
+        /// </summary>
+        IUserbcgovbusinesscontact Userbcgovbusinesscontact { get; }
+
+        /// <summary>
+        /// Gets the IUserbcgovcecontact.
+        /// </summary>
+        IUserbcgovcecontact Userbcgovcecontact { get; }
+
+        /// <summary>
+        /// Gets the IUserbcgovcecontacttype.
+        /// </summary>
+        IUserbcgovcecontacttype Userbcgovcecontacttype { get; }
+
+        /// <summary>
+        /// Gets the IUserbcgovcertificate.
+        /// </summary>
+        IUserbcgovcertificate Userbcgovcertificate { get; }
+
+        /// <summary>
+        /// Gets the IUserbcgovcertificateapprovedproduct.
+        /// </summary>
+        IUserbcgovcertificateapprovedproduct Userbcgovcertificateapprovedproduct { get; }
+
+        /// <summary>
+        /// Gets the IUserbcgovcertificatetermsandconditions.
+        /// </summary>
+        IUserbcgovcertificatetermsandconditions Userbcgovcertificatetermsandconditions { get; }
+
+        /// <summary>
+        /// Gets the IUserbcgovcomplaint.
+        /// </summary>
+        IUserbcgovcomplaint Userbcgovcomplaint { get; }
+
+        /// <summary>
+        /// Gets the IUserbcgovcomplaintchecklist.
+        /// </summary>
+        IUserbcgovcomplaintchecklist Userbcgovcomplaintchecklist { get; }
+
+        /// <summary>
+        /// Gets the IUserbcgovcustomaddress.
+        /// </summary>
+        IUserbcgovcustomaddress Userbcgovcustomaddress { get; }
+
+        /// <summary>
+        /// Gets the IUserbcgovcustomproduct.
+        /// </summary>
+        IUserbcgovcustomproduct Userbcgovcustomproduct { get; }
+
+        /// <summary>
+        /// Gets the IUserbcgovcustomuser.
+        /// </summary>
+        IUserbcgovcustomuser Userbcgovcustomuser { get; }
+
+        /// <summary>
+        /// Gets the IUserbcgovequipment.
+        /// </summary>
+        IUserbcgovequipment Userbcgovequipment { get; }
+
+        /// <summary>
+        /// Gets the IUserbcgovequipmentlocation.
+        /// </summary>
+        IUserbcgovequipmentlocation Userbcgovequipmentlocation { get; }
+
+        /// <summary>
+        /// Gets the IUserbcgovinspection.
+        /// </summary>
+        IUserbcgovinspection Userbcgovinspection { get; }
+
+        /// <summary>
+        /// Gets the IUserbcgovinspectionchecklist.
+        /// </summary>
+        IUserbcgovinspectionchecklist Userbcgovinspectionchecklist { get; }
+
+        /// <summary>
+        /// Gets the IUserbcgovinspectionownershipcategory.
+        /// </summary>
+        IUserbcgovinspectionownershipcategory Userbcgovinspectionownershipcategory { get; }
+
+        /// <summary>
+        /// Gets the IUserbcgovinvestigation.
+        /// </summary>
+        IUserbcgovinvestigation Userbcgovinvestigation { get; }
+
+        /// <summary>
+        /// Gets the IUserbcgovinvestigationstep.
+        /// </summary>
+        IUserbcgovinvestigationstep Userbcgovinvestigationstep { get; }
+
+        /// <summary>
+        /// Gets the IUserbcgovlocation.
+        /// </summary>
+        IUserbcgovlocation Userbcgovlocation { get; }
+
+        /// <summary>
+        /// Gets the IUserbcgovpostalcode.
+        /// </summary>
+        IUserbcgovpostalcode Userbcgovpostalcode { get; }
+
+        /// <summary>
+        /// Gets the IUserbcgovregion.
+        /// </summary>
+        IUserbcgovregion Userbcgovregion { get; }
+
+        /// <summary>
+        /// Gets the IUserbcgovriskassessment.
+        /// </summary>
+        IUserbcgovriskassessment Userbcgovriskassessment { get; }
+
+        /// <summary>
+        /// Gets the IUserbcgovrole.
+        /// </summary>
+        IUserbcgovrole Userbcgovrole { get; }
+
+        /// <summary>
+        /// Gets the IUserbcgovtermsconditionspreset.
+        /// </summary>
+        IUserbcgovtermsconditionspreset Userbcgovtermsconditionspreset { get; }
+
+        /// <summary>
+        /// Gets the IUserbcgovviolationticket.
+        /// </summary>
+        IUserbcgovviolationticket Userbcgovviolationticket { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcomplainttask.
+        /// </summary>
+        IRegardingobjectidbcgovcomplainttask Regardingobjectidbcgovcomplainttask { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomaddresstask.
+        /// </summary>
+        IRegardingobjectidbcgovcustomaddresstask Regardingobjectidbcgovcustomaddresstask { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomproducttask.
+        /// </summary>
+        IRegardingobjectidbcgovcustomproducttask Regardingobjectidbcgovcustomproducttask { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmenttask.
+        /// </summary>
+        IRegardingobjectidbcgovequipmenttask Regardingobjectidbcgovequipmenttask { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmentlocationtask.
+        /// </summary>
+        IRegardingobjectidbcgovequipmentlocationtask Regardingobjectidbcgovequipmentlocationtask { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinspectiontask.
+        /// </summary>
+        IRegardingobjectidbcgovinspectiontask Regardingobjectidbcgovinspectiontask { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationtask.
+        /// </summary>
+        IRegardingobjectidbcgovinvestigationtask Regardingobjectidbcgovinvestigationtask { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationsteptask.
+        /// </summary>
+        IRegardingobjectidbcgovinvestigationsteptask Regardingobjectidbcgovinvestigationsteptask { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovlocationtask.
+        /// </summary>
+        IRegardingobjectidbcgovlocationtask Regardingobjectidbcgovlocationtask { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovriskassessmenttask.
+        /// </summary>
+        IRegardingobjectidbcgovriskassessmenttask Regardingobjectidbcgovriskassessmenttask { get; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovviolationtickettask.
+        /// </summary>
+        IRegardingobjectidbcgovviolationtickettask Regardingobjectidbcgovviolationtickettask { get; }
+
+        /// <summary>
+        /// Gets the ITeambcgovactregulationreference.
+        /// </summary>
+        ITeambcgovactregulationreference Teambcgovactregulationreference { get; }
+
+        /// <summary>
+        /// Gets the ITeambcgovapplicationtype.
+        /// </summary>
+        ITeambcgovapplicationtype Teambcgovapplicationtype { get; }
+
+        /// <summary>
+        /// Gets the ITeambcgovarea.
+        /// </summary>
+        ITeambcgovarea Teambcgovarea { get; }
+
+        /// <summary>
+        /// Gets the ITeambcgovbusinesscontact.
+        /// </summary>
+        ITeambcgovbusinesscontact Teambcgovbusinesscontact { get; }
+
+        /// <summary>
+        /// Gets the ITeambcgovcecontact.
+        /// </summary>
+        ITeambcgovcecontact Teambcgovcecontact { get; }
+
+        /// <summary>
+        /// Gets the ITeambcgovcecontacttype.
+        /// </summary>
+        ITeambcgovcecontacttype Teambcgovcecontacttype { get; }
+
+        /// <summary>
+        /// Gets the ITeambcgovcertificate.
+        /// </summary>
+        ITeambcgovcertificate Teambcgovcertificate { get; }
+
+        /// <summary>
+        /// Gets the ITeambcgovcertificateapprovedproduct.
+        /// </summary>
+        ITeambcgovcertificateapprovedproduct Teambcgovcertificateapprovedproduct { get; }
+
+        /// <summary>
+        /// Gets the ITeambcgovcertificatetermsandconditions.
+        /// </summary>
+        ITeambcgovcertificatetermsandconditions Teambcgovcertificatetermsandconditions { get; }
+
+        /// <summary>
+        /// Gets the ITeambcgovcomplaint.
+        /// </summary>
+        ITeambcgovcomplaint Teambcgovcomplaint { get; }
+
+        /// <summary>
+        /// Gets the ITeambcgovcomplaintchecklist.
+        /// </summary>
+        ITeambcgovcomplaintchecklist Teambcgovcomplaintchecklist { get; }
+
+        /// <summary>
+        /// Gets the ITeambcgovcustomaddress.
+        /// </summary>
+        ITeambcgovcustomaddress Teambcgovcustomaddress { get; }
+
+        /// <summary>
+        /// Gets the ITeambcgovcustomproduct.
+        /// </summary>
+        ITeambcgovcustomproduct Teambcgovcustomproduct { get; }
+
+        /// <summary>
+        /// Gets the ITeambcgovcustomuser.
+        /// </summary>
+        ITeambcgovcustomuser Teambcgovcustomuser { get; }
+
+        /// <summary>
+        /// Gets the ITeambcgovequipment.
+        /// </summary>
+        ITeambcgovequipment Teambcgovequipment { get; }
+
+        /// <summary>
+        /// Gets the ITeambcgovequipmentlocation.
+        /// </summary>
+        ITeambcgovequipmentlocation Teambcgovequipmentlocation { get; }
+
+        /// <summary>
+        /// Gets the ITeambcgovinspection.
+        /// </summary>
+        ITeambcgovinspection Teambcgovinspection { get; }
+
+        /// <summary>
+        /// Gets the ITeambcgovinspectionchecklist.
+        /// </summary>
+        ITeambcgovinspectionchecklist Teambcgovinspectionchecklist { get; }
+
+        /// <summary>
+        /// Gets the ITeambcgovinspectionownershipcategory.
+        /// </summary>
+        ITeambcgovinspectionownershipcategory Teambcgovinspectionownershipcategory { get; }
+
+        /// <summary>
+        /// Gets the ITeambcgovinvestigation.
+        /// </summary>
+        ITeambcgovinvestigation Teambcgovinvestigation { get; }
+
+        /// <summary>
+        /// Gets the ITeambcgovinvestigationstep.
+        /// </summary>
+        ITeambcgovinvestigationstep Teambcgovinvestigationstep { get; }
+
+        /// <summary>
+        /// Gets the ITeambcgovlocation.
+        /// </summary>
+        ITeambcgovlocation Teambcgovlocation { get; }
+
+        /// <summary>
+        /// Gets the ITeambcgovpostalcode.
+        /// </summary>
+        ITeambcgovpostalcode Teambcgovpostalcode { get; }
+
+        /// <summary>
+        /// Gets the ITeambcgovregion.
+        /// </summary>
+        ITeambcgovregion Teambcgovregion { get; }
+
+        /// <summary>
+        /// Gets the ITeambcgovriskassessment.
+        /// </summary>
+        ITeambcgovriskassessment Teambcgovriskassessment { get; }
+
+        /// <summary>
+        /// Gets the ITeambcgovrole.
+        /// </summary>
+        ITeambcgovrole Teambcgovrole { get; }
+
+        /// <summary>
+        /// Gets the ITeambcgovtermsconditionspreset.
+        /// </summary>
+        ITeambcgovtermsconditionspreset Teambcgovtermsconditionspreset { get; }
+
+        /// <summary>
+        /// Gets the ITeambcgovviolationticket.
+        /// </summary>
+        ITeambcgovviolationticket Teambcgovviolationticket { get; }
+
+        /// <summary>
+        /// Gets the IAsyncoperationidbcgovcomplaintcomplaintprocessflow.
+        /// </summary>
+        IAsyncoperationidbcgovcomplaintcomplaintprocessflow Asyncoperationidbcgovcomplaintcomplaintprocessflow { get; }
+
+        /// <summary>
+        /// Gets the IAsyncoperationidbcgovinspectionprocessflow.
+        /// </summary>
+        IAsyncoperationidbcgovinspectionprocessflow Asyncoperationidbcgovinspectionprocessflow { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcomplaintcomplaintprocessflowprocessid.
+        /// </summary>
+        ILkbcgovcomplaintcomplaintprocessflowprocessid Lkbcgovcomplaintcomplaintprocessflowprocessid { get; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinspectionprocessflowprocessid.
+        /// </summary>
+        ILkbcgovinspectionprocessflowprocessid Lkbcgovinspectionprocessflowprocessid { get; }
 
     }
 }

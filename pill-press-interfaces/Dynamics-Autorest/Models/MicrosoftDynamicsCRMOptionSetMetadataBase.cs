@@ -10,7 +10,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
     using System.Linq;
 
     /// <summary>
-    /// OptionSetMetadataBase
+    /// Microsoft.Dynamics.CRM.OptionSetMetadataBase
     /// </summary>
     public partial class MicrosoftDynamicsCRMOptionSetMetadataBase
     {
@@ -27,9 +27,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// Initializes a new instance of the
         /// MicrosoftDynamicsCRMOptionSetMetadataBase class.
         /// </summary>
-        /// <param name="optionSetType">Possible values include: 'Picklist',
-        /// 'State', 'Status', 'Boolean'</param>
-        public MicrosoftDynamicsCRMOptionSetMetadataBase(MicrosoftDynamicsCRMLabel description = default(MicrosoftDynamicsCRMLabel), MicrosoftDynamicsCRMLabel displayName = default(MicrosoftDynamicsCRMLabel), bool? isCustomOptionSet = default(bool?), bool? isGlobal = default(bool?), bool? isManaged = default(bool?), MicrosoftDynamicsCRMBooleanManagedProperty isCustomizable = default(MicrosoftDynamicsCRMBooleanManagedProperty), string name = default(string), string optionSetType = default(string), string introducedVersion = default(string))
+        public MicrosoftDynamicsCRMOptionSetMetadataBase(string description = default(string), string displayName = default(string), bool? isCustomOptionSet = default(bool?), bool? isGlobal = default(bool?), bool? isManaged = default(bool?), string isCustomizable = default(string), string name = default(string), string optionSetType = default(string), string introducedVersion = default(string))
         {
             Description = description;
             DisplayName = displayName;
@@ -51,12 +49,12 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "Description")]
-        public MicrosoftDynamicsCRMLabel Description { get; set; }
+        public string Description { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "DisplayName")]
-        public MicrosoftDynamicsCRMLabel DisplayName { get; set; }
+        public string DisplayName { get; set; }
 
         /// <summary>
         /// </summary>
@@ -76,7 +74,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "IsCustomizable")]
-        public MicrosoftDynamicsCRMBooleanManagedProperty IsCustomizable { get; set; }
+        public string IsCustomizable { get; set; }
 
         /// <summary>
         /// </summary>
@@ -84,8 +82,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets possible values include: 'Picklist', 'State',
-        /// 'Status', 'Boolean'
         /// </summary>
         [JsonProperty(PropertyName = "OptionSetType")]
         public string OptionSetType { get; set; }

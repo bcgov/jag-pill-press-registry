@@ -186,7 +186,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             _logger.LogDebug(LoggingEvents.HttpGet, "id: " + id);
 
             Boolean userAccessToAccount = false;
-            List<ViewModels.Location> result = new List<Location>();
+            List<ViewModels.Location> result = new List<ViewModels.Location>();
 
             // query the Dynamics system to get the account record.
             if (!string.IsNullOrEmpty(id) && Guid.TryParse(id, out Guid accountId))
