@@ -16,8 +16,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
     using System.Net.Http;
 
     /// <summary>
-    /// This OData service is located at
-    /// https://wsgw.dev.jag.gov.bc.ca/pillpress/dev/api/data/v8.2/
+    /// This OData service is located at http://localhost
     /// </summary>
     public partial class DynamicsClient : ServiceClient<DynamicsClient>, IDynamicsClient
     {
@@ -37,6 +36,31 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public JsonSerializerSettings DeserializationSettings { get; private set; }
 
         /// <summary>
+        /// Show only the first n items
+        /// </summary>
+        public int? Top { get; set; }
+
+        /// <summary>
+        /// Skip the first n items
+        /// </summary>
+        public int? Skip { get; set; }
+
+        /// <summary>
+        /// Include count of items
+        /// </summary>
+        public bool? Count { get; set; }
+
+        /// <summary>
+        /// Filter items by property values
+        /// </summary>
+        public string Filter { get; set; }
+
+        /// <summary>
+        /// Search items by search phrases
+        /// </summary>
+        public string Search { get; set; }
+
+        /// <summary>
         /// Subscription credentials which uniquely identify client subscription.
         /// </summary>
         public ServiceClientCredentials Credentials { get; private set; }
@@ -47,9 +71,439 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual IAccounts Accounts { get; private set; }
 
         /// <summary>
+        /// Gets the IAccountbcgovbusinesscontactbusinessprofile.
+        /// </summary>
+        public virtual IAccountbcgovbusinesscontactbusinessprofile Accountbcgovbusinesscontactbusinessprofile { get; private set; }
+
+        /// <summary>
+        /// Gets the IAccountbcgovcertificatecertificateholderbusiness.
+        /// </summary>
+        public virtual IAccountbcgovcertificatecertificateholderbusiness Accountbcgovcertificatecertificateholderbusiness { get; private set; }
+
+        /// <summary>
+        /// Gets the IAccountbcgovcomplaintbusinesslegalname.
+        /// </summary>
+        public virtual IAccountbcgovcomplaintbusinesslegalname Accountbcgovcomplaintbusinesslegalname { get; private set; }
+
+        /// <summary>
+        /// Gets the IAccountcontactbusinesslegalname.
+        /// </summary>
+        public virtual IAccountcontactbusinesslegalname Accountcontactbusinesslegalname { get; private set; }
+
+        /// <summary>
+        /// Gets the IAccountcustomaddress.
+        /// </summary>
+        public virtual IAccountcustomaddress Accountcustomaddress { get; private set; }
+
+        /// <summary>
+        /// Gets the IAccountcustomaddressbusinessprofile.
+        /// </summary>
+        public virtual IAccountcustomaddressbusinessprofile Accountcustomaddressbusinessprofile { get; private set; }
+
+        /// <summary>
+        /// Gets the IAccountequipmentcurrentbusinessowner.
+        /// </summary>
+        public virtual IAccountequipmentcurrentbusinessowner Accountequipmentcurrentbusinessowner { get; private set; }
+
+        /// <summary>
+        /// Gets the IAccountinspectionbusinesslegalname.
+        /// </summary>
+        public virtual IAccountinspectionbusinesslegalname Accountinspectionbusinesslegalname { get; private set; }
+
+        /// <summary>
+        /// Gets the IAccountinspectionownercategory.
+        /// </summary>
+        public virtual IAccountinspectionownercategory Accountinspectionownercategory { get; private set; }
+
+        /// <summary>
+        /// Gets the IAccountlocationbusinessprofile.
+        /// </summary>
+        public virtual IAccountlocationbusinessprofile Accountlocationbusinessprofile { get; private set; }
+
+        /// <summary>
+        /// Gets the IAdditionalcontact.
+        /// </summary>
+        public virtual IAdditionalcontact Additionalcontact { get; private set; }
+
+        /// <summary>
+        /// Gets the ICurrentbusinessmailingaddress.
+        /// </summary>
+        public virtual ICurrentbusinessmailingaddress Currentbusinessmailingaddress { get; private set; }
+
+        /// <summary>
+        /// Gets the ICurrentbusinessphysicaladdress.
+        /// </summary>
+        public virtual ICurrentbusinessphysicaladdress Currentbusinessphysicaladdress { get; private set; }
+
+        /// <summary>
+        /// Gets the ICurrentregisteredsellercertificate.
+        /// </summary>
+        public virtual ICurrentregisteredsellercertificate Currentregisteredsellercertificate { get; private set; }
+
+        /// <summary>
+        /// Gets the ICurrentwaivercertificate.
+        /// </summary>
+        public virtual ICurrentwaivercertificate Currentwaivercertificate { get; private set; }
+
+        /// <summary>
+        /// Gets the IPartyidbcgovcomplaint.
+        /// </summary>
+        public virtual IPartyidbcgovcomplaint Partyidbcgovcomplaint { get; private set; }
+
+        /// <summary>
+        /// Gets the IPartyidbcgovcustomaddress.
+        /// </summary>
+        public virtual IPartyidbcgovcustomaddress Partyidbcgovcustomaddress { get; private set; }
+
+        /// <summary>
+        /// Gets the IPartyidbcgovcustomproduct.
+        /// </summary>
+        public virtual IPartyidbcgovcustomproduct Partyidbcgovcustomproduct { get; private set; }
+
+        /// <summary>
+        /// Gets the IPartyidbcgovequipment.
+        /// </summary>
+        public virtual IPartyidbcgovequipment Partyidbcgovequipment { get; private set; }
+
+        /// <summary>
+        /// Gets the IPartyidbcgovequipmentlocation.
+        /// </summary>
+        public virtual IPartyidbcgovequipmentlocation Partyidbcgovequipmentlocation { get; private set; }
+
+        /// <summary>
+        /// Gets the IPartyidbcgovinspection.
+        /// </summary>
+        public virtual IPartyidbcgovinspection Partyidbcgovinspection { get; private set; }
+
+        /// <summary>
+        /// Gets the IPartyidbcgovinvestigation.
+        /// </summary>
+        public virtual IPartyidbcgovinvestigation Partyidbcgovinvestigation { get; private set; }
+
+        /// <summary>
+        /// Gets the IPartyidbcgovlocation.
+        /// </summary>
+        public virtual IPartyidbcgovlocation Partyidbcgovlocation { get; private set; }
+
+        /// <summary>
+        /// Gets the IPartyidbcgovriskassessment.
+        /// </summary>
+        public virtual IPartyidbcgovriskassessment Partyidbcgovriskassessment { get; private set; }
+
+        /// <summary>
+        /// Gets the IPartyidbcgovviolationticket.
+        /// </summary>
+        public virtual IPartyidbcgovviolationticket Partyidbcgovviolationticket { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcomplaint.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcomplaint Regardingobjectidbcgovcomplaint { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomaddress.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcustomaddress Regardingobjectidbcgovcustomaddress { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomproduct.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcustomproduct Regardingobjectidbcgovcustomproduct { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipment.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovequipment Regardingobjectidbcgovequipment { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmentlocation.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovequipmentlocation Regardingobjectidbcgovequipmentlocation { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinspection.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovinspection Regardingobjectidbcgovinspection { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigation.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovinvestigation Regardingobjectidbcgovinvestigation { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationstep.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovinvestigationstep Regardingobjectidbcgovinvestigationstep { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovlocation.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovlocation Regardingobjectidbcgovlocation { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovriskassessment.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovriskassessment Regardingobjectidbcgovriskassessment { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovviolationticket.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovviolationticket Regardingobjectidbcgovviolationticket { get; private set; }
+
+        /// <summary>
+        /// Gets the IObjectidbcgovcomplaint.
+        /// </summary>
+        public virtual IObjectidbcgovcomplaint Objectidbcgovcomplaint { get; private set; }
+
+        /// <summary>
+        /// Gets the IObjectidbcgovcustomaddress.
+        /// </summary>
+        public virtual IObjectidbcgovcustomaddress Objectidbcgovcustomaddress { get; private set; }
+
+        /// <summary>
+        /// Gets the IObjectidbcgovequipment.
+        /// </summary>
+        public virtual IObjectidbcgovequipment Objectidbcgovequipment { get; private set; }
+
+        /// <summary>
+        /// Gets the IObjectidbcgovequipmentlocation.
+        /// </summary>
+        public virtual IObjectidbcgovequipmentlocation Objectidbcgovequipmentlocation { get; private set; }
+
+        /// <summary>
+        /// Gets the IObjectidbcgovinspection.
+        /// </summary>
+        public virtual IObjectidbcgovinspection Objectidbcgovinspection { get; private set; }
+
+        /// <summary>
+        /// Gets the IObjectidbcgovinvestigation.
+        /// </summary>
+        public virtual IObjectidbcgovinvestigation Objectidbcgovinvestigation { get; private set; }
+
+        /// <summary>
+        /// Gets the IObjectidbcgovinvestigationstep.
+        /// </summary>
+        public virtual IObjectidbcgovinvestigationstep Objectidbcgovinvestigationstep { get; private set; }
+
+        /// <summary>
+        /// Gets the IObjectidbcgovlocation.
+        /// </summary>
+        public virtual IObjectidbcgovlocation Objectidbcgovlocation { get; private set; }
+
+        /// <summary>
+        /// Gets the IObjectidbcgovriskassessment.
+        /// </summary>
+        public virtual IObjectidbcgovriskassessment Objectidbcgovriskassessment { get; private set; }
+
+        /// <summary>
+        /// Gets the IObjectidbcgovviolationticket.
+        /// </summary>
+        public virtual IObjectidbcgovviolationticket Objectidbcgovviolationticket { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcomplaintappointment.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcomplaintappointment Regardingobjectidbcgovcomplaintappointment { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomaddressappointment.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcustomaddressappointment Regardingobjectidbcgovcustomaddressappointment { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomproductappointment.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcustomproductappointment Regardingobjectidbcgovcustomproductappointment { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmentappointment.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovequipmentappointment Regardingobjectidbcgovequipmentappointment { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmentlocationappointment.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovequipmentlocationappointment Regardingobjectidbcgovequipmentlocationappointment { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinspectionappointment.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovinspectionappointment Regardingobjectidbcgovinspectionappointment { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationappointment.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovinvestigationappointment Regardingobjectidbcgovinvestigationappointment { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationstepappointment.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovinvestigationstepappointment Regardingobjectidbcgovinvestigationstepappointment { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovlocationappointment.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovlocationappointment Regardingobjectidbcgovlocationappointment { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovriskassessmentappointment.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovriskassessmentappointment Regardingobjectidbcgovriskassessmentappointment { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovviolationticketappointment.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovviolationticketappointment Regardingobjectidbcgovviolationticketappointment { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovactregulationreference.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovactregulationreference Regardingobjectidbcgovactregulationreference { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovapplicationtype.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovapplicationtype Regardingobjectidbcgovapplicationtype { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovarea.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovarea Regardingobjectidbcgovarea { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovbusinesscontact.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovbusinesscontact Regardingobjectidbcgovbusinesscontact { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcecontact.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcecontact Regardingobjectidbcgovcecontact { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcecontacttype.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcecontacttype Regardingobjectidbcgovcecontacttype { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcertificate.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcertificate Regardingobjectidbcgovcertificate { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcertificateapprovedproduct.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcertificateapprovedproduct Regardingobjectidbcgovcertificateapprovedproduct { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcertificatetermsandconditions.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcertificatetermsandconditions Regardingobjectidbcgovcertificatetermsandconditions { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcomplaintchecklist.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcomplaintchecklist Regardingobjectidbcgovcomplaintchecklist { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcomplaintcomplaintprocessflow.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcomplaintcomplaintprocessflow Regardingobjectidbcgovcomplaintcomplaintprocessflow { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomuser.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcustomuser Regardingobjectidbcgovcustomuser { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinspectionchecklist.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovinspectionchecklist Regardingobjectidbcgovinspectionchecklist { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinspectionownershipcategory.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovinspectionownershipcategory Regardingobjectidbcgovinspectionownershipcategory { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinspectionprocessflow.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovinspectionprocessflow Regardingobjectidbcgovinspectionprocessflow { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovpostalcode.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovpostalcode Regardingobjectidbcgovpostalcode { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovregion.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovregion Regardingobjectidbcgovregion { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovrole.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovrole Regardingobjectidbcgovrole { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovtermsconditionspreset.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovtermsconditionspreset Regardingobjectidbcgovtermsconditionspreset { get; private set; }
+
+        /// <summary>
         /// Gets the IActregulationreferences.
         /// </summary>
         public virtual IActregulationreferences Actregulationreferences { get; private set; }
+
+        /// <summary>
+        /// Gets the IActregulationreferenceasyncoperations.
+        /// </summary>
+        public virtual IActregulationreferenceasyncoperations Actregulationreferenceasyncoperations { get; private set; }
+
+        /// <summary>
+        /// Gets the IActregulationreferencebulkdeletefailures.
+        /// </summary>
+        public virtual IActregulationreferencebulkdeletefailures Actregulationreferencebulkdeletefailures { get; private set; }
+
+        /// <summary>
+        /// Gets the IActregulationreferencecomplaintchecklistactregulationreference.
+        /// </summary>
+        public virtual IActregulationreferencecomplaintchecklistactregulationreference Actregulationreferencecomplaintchecklistactregulationreference { get; private set; }
+
+        /// <summary>
+        /// Gets the IActregulationreferenceduplicatebaserecord.
+        /// </summary>
+        public virtual IActregulationreferenceduplicatebaserecord Actregulationreferenceduplicatebaserecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IActregulationreferenceduplicatematchingrecord.
+        /// </summary>
+        public virtual IActregulationreferenceduplicatematchingrecord Actregulationreferenceduplicatematchingrecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IActregulationreferenceinspectionchecklistactregulationreference.
+        /// </summary>
+        public virtual IActregulationreferenceinspectionchecklistactregulationreference Actregulationreferenceinspectionchecklistactregulationreference { get; private set; }
+
+        /// <summary>
+        /// Gets the IActregulationreferenceinvestigationstepactregulationreference.
+        /// </summary>
+        public virtual IActregulationreferenceinvestigationstepactregulationreference Actregulationreferenceinvestigationstepactregulationreference { get; private set; }
+
+        /// <summary>
+        /// Gets the IActregulationreferencesyncerrors.
+        /// </summary>
+        public virtual IActregulationreferencesyncerrors Actregulationreferencesyncerrors { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionactregulationrefer.
+        /// </summary>
+        public virtual IInspectionactregulationrefer Inspectionactregulationrefer { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionchecklistactregula.
+        /// </summary>
+        public virtual IInspectionchecklistactregula Inspectionchecklistactregula { get; private set; }
 
         /// <summary>
         /// Gets the IApplicationtypes.
@@ -57,9 +511,94 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual IApplicationtypes Applicationtypes { get; private set; }
 
         /// <summary>
+        /// Gets the IApplicationtypeasyncoperations.
+        /// </summary>
+        public virtual IApplicationtypeasyncoperations Applicationtypeasyncoperations { get; private set; }
+
+        /// <summary>
+        /// Gets the IApplicationtypebcgovcertificatecertificatetype.
+        /// </summary>
+        public virtual IApplicationtypebcgovcertificatecertificatetype Applicationtypebcgovcertificatecertificatetype { get; private set; }
+
+        /// <summary>
+        /// Gets the IApplicationtypebcgovcertificatetermsandconditionscertificatetype.
+        /// </summary>
+        public virtual IApplicationtypebcgovcertificatetermsandconditionscertificatetype Applicationtypebcgovcertificatetermsandconditionscertificatetype { get; private set; }
+
+        /// <summary>
+        /// Gets the IApplicationtypebcgovtermsconditionspresetapplicationtype.
+        /// </summary>
+        public virtual IApplicationtypebcgovtermsconditionspresetapplicationtype Applicationtypebcgovtermsconditionspresetapplicationtype { get; private set; }
+
+        /// <summary>
+        /// Gets the IApplicationtypebulkdeletefailures.
+        /// </summary>
+        public virtual IApplicationtypebulkdeletefailures Applicationtypebulkdeletefailures { get; private set; }
+
+        /// <summary>
+        /// Gets the IApplicationtypeduplicatebaserecord.
+        /// </summary>
+        public virtual IApplicationtypeduplicatebaserecord Applicationtypeduplicatebaserecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IApplicationtypeduplicatematchingrecord.
+        /// </summary>
+        public virtual IApplicationtypeduplicatematchingrecord Applicationtypeduplicatematchingrecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IApplicationtypeincidentapplicationtypeid.
+        /// </summary>
+        public virtual IApplicationtypeincidentapplicationtypeid Applicationtypeincidentapplicationtypeid { get; private set; }
+
+        /// <summary>
+        /// Gets the IApplicationtypesyncerrors.
+        /// </summary>
+        public virtual IApplicationtypesyncerrors Applicationtypesyncerrors { get; private set; }
+
+        /// <summary>
         /// Gets the IAreas.
         /// </summary>
         public virtual IAreas Areas { get; private set; }
+
+        /// <summary>
+        /// Gets the IAreaasyncoperations.
+        /// </summary>
+        public virtual IAreaasyncoperations Areaasyncoperations { get; private set; }
+
+        /// <summary>
+        /// Gets the IAreabcgovpostalcodearea.
+        /// </summary>
+        public virtual IAreabcgovpostalcodearea Areabcgovpostalcodearea { get; private set; }
+
+        /// <summary>
+        /// Gets the IAreabulkdeletefailures.
+        /// </summary>
+        public virtual IAreabulkdeletefailures Areabulkdeletefailures { get; private set; }
+
+        /// <summary>
+        /// Gets the IAreaduplicatebaserecord.
+        /// </summary>
+        public virtual IAreaduplicatebaserecord Areaduplicatebaserecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IAreaduplicatematchingrecord.
+        /// </summary>
+        public virtual IAreaduplicatematchingrecord Areaduplicatematchingrecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IArealocationlocationarea.
+        /// </summary>
+        public virtual IArealocationlocationarea Arealocationlocationarea { get; private set; }
+
+        /// <summary>
+        /// Gets the IAreasyncerrors.
+        /// </summary>
+        public virtual IAreasyncerrors Areasyncerrors { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegion.
+        /// </summary>
+        public virtual IRegion Region { get; private set; }
 
         /// <summary>
         /// Gets the IBusinesscontacts.
@@ -67,9 +606,99 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual IBusinesscontacts Businesscontacts { get; private set; }
 
         /// <summary>
+        /// Gets the IBusinesscontactasyncoperations.
+        /// </summary>
+        public virtual IBusinesscontactasyncoperations Businesscontactasyncoperations { get; private set; }
+
+        /// <summary>
+        /// Gets the IBusinesscontactbulkdeletefailures.
+        /// </summary>
+        public virtual IBusinesscontactbulkdeletefailures Businesscontactbulkdeletefailures { get; private set; }
+
+        /// <summary>
+        /// Gets the IBusinesscontactduplicatebaserecord.
+        /// </summary>
+        public virtual IBusinesscontactduplicatebaserecord Businesscontactduplicatebaserecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IBusinesscontactduplicatematchingrecord.
+        /// </summary>
+        public virtual IBusinesscontactduplicatematchingrecord Businesscontactduplicatematchingrecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IBusinesscontactsyncerrors.
+        /// </summary>
+        public virtual IBusinesscontactsyncerrors Businesscontactsyncerrors { get; private set; }
+
+        /// <summary>
+        /// Gets the IBusinessprofile.
+        /// </summary>
+        public virtual IBusinessprofile Businessprofile { get; private set; }
+
+        /// <summary>
+        /// Gets the IContact.
+        /// </summary>
+        public virtual IContact Contact { get; private set; }
+
+        /// <summary>
+        /// Gets the IIncidentbusinesscontact.
+        /// </summary>
+        public virtual IIncidentbusinesscontact Incidentbusinesscontact { get; private set; }
+
+        /// <summary>
         /// Gets the ICecontacts.
         /// </summary>
         public virtual ICecontacts Cecontacts { get; private set; }
+
+        /// <summary>
+        /// Gets the ICecontactasyncoperations.
+        /// </summary>
+        public virtual ICecontactasyncoperations Cecontactasyncoperations { get; private set; }
+
+        /// <summary>
+        /// Gets the ICecontactbulkdeletefailures.
+        /// </summary>
+        public virtual ICecontactbulkdeletefailures Cecontactbulkdeletefailures { get; private set; }
+
+        /// <summary>
+        /// Gets the ICecontactduplicatebaserecord.
+        /// </summary>
+        public virtual ICecontactduplicatebaserecord Cecontactduplicatebaserecord { get; private set; }
+
+        /// <summary>
+        /// Gets the ICecontactduplicatematchingrecord.
+        /// </summary>
+        public virtual ICecontactduplicatematchingrecord Cecontactduplicatematchingrecord { get; private set; }
+
+        /// <summary>
+        /// Gets the ICecontactsyncerrors.
+        /// </summary>
+        public virtual ICecontactsyncerrors Cecontactsyncerrors { get; private set; }
+
+        /// <summary>
+        /// Gets the ICecontacttype.
+        /// </summary>
+        public virtual ICecontacttype Cecontacttype { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaint.
+        /// </summary>
+        public virtual IComplaint Complaint { get; private set; }
+
+        /// <summary>
+        /// Gets the IContactid.
+        /// </summary>
+        public virtual IContactid Contactid { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigation.
+        /// </summary>
+        public virtual IInvestigation Investigation { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationcecontact.
+        /// </summary>
+        public virtual IInvestigationcecontact Investigationcecontact { get; private set; }
 
         /// <summary>
         /// Gets the ICecontacttypes.
@@ -77,9 +706,69 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual ICecontacttypes Cecontacttypes { get; private set; }
 
         /// <summary>
+        /// Gets the ICecontacttypeasyncoperations.
+        /// </summary>
+        public virtual ICecontacttypeasyncoperations Cecontacttypeasyncoperations { get; private set; }
+
+        /// <summary>
+        /// Gets the ICecontacttypebulkdeletefailures.
+        /// </summary>
+        public virtual ICecontacttypebulkdeletefailures Cecontacttypebulkdeletefailures { get; private set; }
+
+        /// <summary>
+        /// Gets the ICecontacttypececontactcecontacttype.
+        /// </summary>
+        public virtual ICecontacttypececontactcecontacttype Cecontacttypececontactcecontacttype { get; private set; }
+
+        /// <summary>
+        /// Gets the ICecontacttypeduplicatebaserecord.
+        /// </summary>
+        public virtual ICecontacttypeduplicatebaserecord Cecontacttypeduplicatebaserecord { get; private set; }
+
+        /// <summary>
+        /// Gets the ICecontacttypeduplicatematchingrecord.
+        /// </summary>
+        public virtual ICecontacttypeduplicatematchingrecord Cecontacttypeduplicatematchingrecord { get; private set; }
+
+        /// <summary>
+        /// Gets the ICecontacttypesyncerrors.
+        /// </summary>
+        public virtual ICecontacttypesyncerrors Cecontacttypesyncerrors { get; private set; }
+
+        /// <summary>
         /// Gets the ICertificateapprovedproducts.
         /// </summary>
         public virtual ICertificateapprovedproducts Certificateapprovedproducts { get; private set; }
+
+        /// <summary>
+        /// Gets the ICertificateapprovedproductasyncoperations.
+        /// </summary>
+        public virtual ICertificateapprovedproductasyncoperations Certificateapprovedproductasyncoperations { get; private set; }
+
+        /// <summary>
+        /// Gets the ICertificateapprovedproductbulkdeletefailures.
+        /// </summary>
+        public virtual ICertificateapprovedproductbulkdeletefailures Certificateapprovedproductbulkdeletefailures { get; private set; }
+
+        /// <summary>
+        /// Gets the ICertificateapprovedproductduplicatebaserecord.
+        /// </summary>
+        public virtual ICertificateapprovedproductduplicatebaserecord Certificateapprovedproductduplicatebaserecord { get; private set; }
+
+        /// <summary>
+        /// Gets the ICertificateapprovedproductduplicatematchingrecord.
+        /// </summary>
+        public virtual ICertificateapprovedproductduplicatematchingrecord Certificateapprovedproductduplicatematchingrecord { get; private set; }
+
+        /// <summary>
+        /// Gets the ICertificateapprovedproductsyncerrors.
+        /// </summary>
+        public virtual ICertificateapprovedproductsyncerrors Certificateapprovedproductsyncerrors { get; private set; }
+
+        /// <summary>
+        /// Gets the ICertificateid.
+        /// </summary>
+        public virtual ICertificateid Certificateid { get; private set; }
 
         /// <summary>
         /// Gets the ICertificates.
@@ -87,14 +776,184 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual ICertificates Certificates { get; private set; }
 
         /// <summary>
+        /// Gets the IApplication.
+        /// </summary>
+        public virtual IApplication Application { get; private set; }
+
+        /// <summary>
+        /// Gets the ICertificateaccountcurrentregisteredsellercertificate.
+        /// </summary>
+        public virtual ICertificateaccountcurrentregisteredsellercertificate Certificateaccountcurrentregisteredsellercertificate { get; private set; }
+
+        /// <summary>
+        /// Gets the ICertificateaccountcurrentwaivercertificate.
+        /// </summary>
+        public virtual ICertificateaccountcurrentwaivercertificate Certificateaccountcurrentwaivercertificate { get; private set; }
+
+        /// <summary>
+        /// Gets the ICertificateasyncoperations.
+        /// </summary>
+        public virtual ICertificateasyncoperations Certificateasyncoperations { get; private set; }
+
+        /// <summary>
+        /// Gets the ICertificatebcgovcertificateapprovedproductcertificateid.
+        /// </summary>
+        public virtual ICertificatebcgovcertificateapprovedproductcertificateid Certificatebcgovcertificateapprovedproductcertificateid { get; private set; }
+
+        /// <summary>
+        /// Gets the ICertificatebcgovcertificatetermsandconditionscertificate.
+        /// </summary>
+        public virtual ICertificatebcgovcertificatetermsandconditionscertificate Certificatebcgovcertificatetermsandconditionscertificate { get; private set; }
+
+        /// <summary>
+        /// Gets the ICertificatebulkdeletefailures.
+        /// </summary>
+        public virtual ICertificatebulkdeletefailures Certificatebulkdeletefailures { get; private set; }
+
+        /// <summary>
+        /// Gets the ICertificateduplicatebaserecord.
+        /// </summary>
+        public virtual ICertificateduplicatebaserecord Certificateduplicatebaserecord { get; private set; }
+
+        /// <summary>
+        /// Gets the ICertificateduplicatematchingrecord.
+        /// </summary>
+        public virtual ICertificateduplicatematchingrecord Certificateduplicatematchingrecord { get; private set; }
+
+        /// <summary>
+        /// Gets the ICertificatesyncerrors.
+        /// </summary>
+        public virtual ICertificatesyncerrors Certificatesyncerrors { get; private set; }
+
+        /// <summary>
+        /// Gets the ICertificateholderbusiness.
+        /// </summary>
+        public virtual ICertificateholderbusiness Certificateholderbusiness { get; private set; }
+
+        /// <summary>
+        /// Gets the ICertificatetype.
+        /// </summary>
+        public virtual ICertificatetype Certificatetype { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipment.
+        /// </summary>
+        public virtual IEquipment Equipment { get; private set; }
+
+        /// <summary>
         /// Gets the ICertificatetermsandconditionses.
         /// </summary>
         public virtual ICertificatetermsandconditionses Certificatetermsandconditionses { get; private set; }
 
         /// <summary>
-        /// Gets the IComplaintcecontactset.
+        /// Gets the ICertificate.
         /// </summary>
-        public virtual IComplaintcecontactset Complaintcecontactset { get; private set; }
+        public virtual ICertificate Certificate { get; private set; }
+
+        /// <summary>
+        /// Gets the ICertificatetermsandconditionsasyncoperations.
+        /// </summary>
+        public virtual ICertificatetermsandconditionsasyncoperations Certificatetermsandconditionsasyncoperations { get; private set; }
+
+        /// <summary>
+        /// Gets the ICertificatetermsandconditionsbulkdeletefailures.
+        /// </summary>
+        public virtual ICertificatetermsandconditionsbulkdeletefailures Certificatetermsandconditionsbulkdeletefailures { get; private set; }
+
+        /// <summary>
+        /// Gets the ICertificatetermsandconditionsduplicatebaserecord.
+        /// </summary>
+        public virtual ICertificatetermsandconditionsduplicatebaserecord Certificatetermsandconditionsduplicatebaserecord { get; private set; }
+
+        /// <summary>
+        /// Gets the ICertificatetermsandconditionsduplicatematchingrecord.
+        /// </summary>
+        public virtual ICertificatetermsandconditionsduplicatematchingrecord Certificatetermsandconditionsduplicatematchingrecord { get; private set; }
+
+        /// <summary>
+        /// Gets the ICertificatetermsandconditionssyncerrors.
+        /// </summary>
+        public virtual ICertificatetermsandconditionssyncerrors Certificatetermsandconditionssyncerrors { get; private set; }
+
+        /// <summary>
+        /// Gets the IPresetterms.
+        /// </summary>
+        public virtual IPresetterms Presetterms { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintequipmentset.
+        /// </summary>
+        public virtual IComplaintequipmentset Complaintequipmentset { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintinspectioncheckliset.
+        /// </summary>
+        public virtual IComplaintinspectioncheckliset Complaintinspectioncheckliset { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintchecklists.
+        /// </summary>
+        public virtual IComplaintchecklists Complaintchecklists { get; private set; }
+
+        /// <summary>
+        /// Gets the IActregulationreference.
+        /// </summary>
+        public virtual IActregulationreference Actregulationreference { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintchecklistasyncoperations.
+        /// </summary>
+        public virtual IComplaintchecklistasyncoperations Complaintchecklistasyncoperations { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintchecklistbulkdeletefailures.
+        /// </summary>
+        public virtual IComplaintchecklistbulkdeletefailures Complaintchecklistbulkdeletefailures { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintchecklistduplicatebaserecord.
+        /// </summary>
+        public virtual IComplaintchecklistduplicatebaserecord Complaintchecklistduplicatebaserecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintchecklistduplicatematchingrecord.
+        /// </summary>
+        public virtual IComplaintchecklistduplicatematchingrecord Complaintchecklistduplicatematchingrecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintchecklistsyncerrors.
+        /// </summary>
+        public virtual IComplaintchecklistsyncerrors Complaintchecklistsyncerrors { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintcomplaintprocessflows.
+        /// </summary>
+        public virtual IComplaintcomplaintprocessflows Complaintcomplaintprocessflows { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintcomplaintprocessflowasyncoperations.
+        /// </summary>
+        public virtual IComplaintcomplaintprocessflowasyncoperations Complaintcomplaintprocessflowasyncoperations { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintcomplaintprocessflowbulkdeletefailures.
+        /// </summary>
+        public virtual IComplaintcomplaintprocessflowbulkdeletefailures Complaintcomplaintprocessflowbulkdeletefailures { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintcomplaintprocessflowsyncerrors.
+        /// </summary>
+        public virtual IComplaintcomplaintprocessflowsyncerrors Complaintcomplaintprocessflowsyncerrors { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintcomplaintprocessflowworkflowlogs.
+        /// </summary>
+        public virtual IComplaintcomplaintprocessflowworkflowlogs Complaintcomplaintprocessflowworkflowlogs { get; private set; }
+
+        /// <summary>
+        /// Gets the IBpfbcgovcomplaintid.
+        /// </summary>
+        public virtual IBpfbcgovcomplaintid Bpfbcgovcomplaintid { get; private set; }
 
         /// <summary>
         /// Gets the IComplaints.
@@ -102,9 +961,374 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual IComplaints Complaints { get; private set; }
 
         /// <summary>
+        /// Gets the IAssignto.
+        /// </summary>
+        public virtual IAssignto Assignto { get; private set; }
+
+        /// <summary>
+        /// Gets the IBusinesslegalname.
+        /// </summary>
+        public virtual IBusinesslegalname Businesslegalname { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplainant.
+        /// </summary>
+        public virtual IComplainant Complainant { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintactivityparties.
+        /// </summary>
+        public virtual IComplaintactivityparties Complaintactivityparties { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintactivitypointers.
+        /// </summary>
+        public virtual IComplaintactivitypointers Complaintactivitypointers { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintannotations.
+        /// </summary>
+        public virtual IComplaintannotations Complaintannotations { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintappointments.
+        /// </summary>
+        public virtual IComplaintappointments Complaintappointments { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintasyncoperations.
+        /// </summary>
+        public virtual IComplaintasyncoperations Complaintasyncoperations { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintbulkdeletefailures.
+        /// </summary>
+        public virtual IComplaintbulkdeletefailures Complaintbulkdeletefailures { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintcecontactcomplaint.
+        /// </summary>
+        public virtual IComplaintcecontactcomplaint Complaintcecontactcomplaint { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintcomplaintchecklistcomplaint.
+        /// </summary>
+        public virtual IComplaintcomplaintchecklistcomplaint Complaintcomplaintchecklistcomplaint { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintconnections1.
+        /// </summary>
+        public virtual IComplaintconnections1 Complaintconnections1 { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintconnections2.
+        /// </summary>
+        public virtual IComplaintconnections2 Complaintconnections2 { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintduplicatebaserecord.
+        /// </summary>
+        public virtual IComplaintduplicatebaserecord Complaintduplicatebaserecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintduplicatematchingrecord.
+        /// </summary>
+        public virtual IComplaintduplicatematchingrecord Complaintduplicatematchingrecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintemails.
+        /// </summary>
+        public virtual IComplaintemails Complaintemails { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintequipment.
+        /// </summary>
+        public virtual IComplaintequipment Complaintequipment { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintfaxes.
+        /// </summary>
+        public virtual IComplaintfaxes Complaintfaxes { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintinspectionchecklist.
+        /// </summary>
+        public virtual IComplaintinspectionchecklist Complaintinspectionchecklist { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintinvestigationcomplaint.
+        /// </summary>
+        public virtual IComplaintinvestigationcomplaint Complaintinvestigationcomplaint { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintletters.
+        /// </summary>
+        public virtual IComplaintletters Complaintletters { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintphonecalls.
+        /// </summary>
+        public virtual IComplaintphonecalls Complaintphonecalls { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintqueueitems.
+        /// </summary>
+        public virtual IComplaintqueueitems Complaintqueueitems { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintrecurringappointmentmasters.
+        /// </summary>
+        public virtual IComplaintrecurringappointmentmasters Complaintrecurringappointmentmasters { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintriskassessmentcomplaint.
+        /// </summary>
+        public virtual IComplaintriskassessmentcomplaint Complaintriskassessmentcomplaint { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintserviceappointments.
+        /// </summary>
+        public virtual IComplaintserviceappointments Complaintserviceappointments { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintsharepointdocumentlocations.
+        /// </summary>
+        public virtual IComplaintsharepointdocumentlocations Complaintsharepointdocumentlocations { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintsocialactivities.
+        /// </summary>
+        public virtual IComplaintsocialactivities Complaintsocialactivities { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplaintsyncerrors.
+        /// </summary>
+        public virtual IComplaintsyncerrors Complaintsyncerrors { get; private set; }
+
+        /// <summary>
+        /// Gets the IComplainttasks.
+        /// </summary>
+        public virtual IComplainttasks Complainttasks { get; private set; }
+
+        /// <summary>
+        /// Gets the ILocation.
+        /// </summary>
+        public virtual ILocation Location { get; private set; }
+
+        /// <summary>
+        /// Gets the IRiskassessment.
+        /// </summary>
+        public virtual IRiskassessment Riskassessment { get; private set; }
+
+        /// <summary>
+        /// Gets the IBpfbcgovcomplaintbcgovcomplaintcomplaintprocessflow.
+        /// </summary>
+        public virtual IBpfbcgovcomplaintbcgovcomplaintcomplaintprocessflow Bpfbcgovcomplaintbcgovcomplaintcomplaintprocessflow { get; private set; }
+
+        /// <summary>
         /// Gets the ICustomaddresses.
         /// </summary>
         public virtual ICustomaddresses Customaddresses { get; private set; }
+
+        /// <summary>
+        /// Gets the IAddressesid.
+        /// </summary>
+        public virtual IAddressesid Addressesid { get; private set; }
+
+        /// <summary>
+        /// Gets the IBcgovcustomaddressaccountcurrentbusinessmailingaddress.
+        /// </summary>
+        public virtual IBcgovcustomaddressaccountcurrentbusinessmailingaddress Bcgovcustomaddressaccountcurrentbusinessmailingaddress { get; private set; }
+
+        /// <summary>
+        /// Gets the IBcgovcustomaddressaccountcurrentbusinessphysicaladdress.
+        /// </summary>
+        public virtual IBcgovcustomaddressaccountcurrentbusinessphysicaladdress Bcgovcustomaddressaccountcurrentbusinessphysicaladdress { get; private set; }
+
+        /// <summary>
+        /// Gets the IBcgovcustomaddressincidentaddressofbusinessthathasrentedorleased.
+        /// </summary>
+        public virtual IBcgovcustomaddressincidentaddressofbusinessthathasrentedorleased Bcgovcustomaddressincidentaddressofbusinessthathasrentedorleased { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomaddressactivityparties.
+        /// </summary>
+        public virtual ICustomaddressactivityparties Customaddressactivityparties { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomaddressactivitypointers.
+        /// </summary>
+        public virtual ICustomaddressactivitypointers Customaddressactivitypointers { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomaddressannotations.
+        /// </summary>
+        public virtual ICustomaddressannotations Customaddressannotations { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomaddressappointments.
+        /// </summary>
+        public virtual ICustomaddressappointments Customaddressappointments { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomaddressasyncoperations.
+        /// </summary>
+        public virtual ICustomaddressasyncoperations Customaddressasyncoperations { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomaddressbulkdeletefailures.
+        /// </summary>
+        public virtual ICustomaddressbulkdeletefailures Customaddressbulkdeletefailures { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomaddressconnections1.
+        /// </summary>
+        public virtual ICustomaddressconnections1 Customaddressconnections1 { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomaddressconnections2.
+        /// </summary>
+        public virtual ICustomaddressconnections2 Customaddressconnections2 { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomaddresscontactaddress.
+        /// </summary>
+        public virtual ICustomaddresscontactaddress Customaddresscontactaddress { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomaddresscontactbusinessaddress.
+        /// </summary>
+        public virtual ICustomaddresscontactbusinessaddress Customaddresscontactbusinessaddress { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomaddressduplicatebaserecord.
+        /// </summary>
+        public virtual ICustomaddressduplicatebaserecord Customaddressduplicatebaserecord { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomaddressduplicatematchingrecord.
+        /// </summary>
+        public virtual ICustomaddressduplicatematchingrecord Customaddressduplicatematchingrecord { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomaddressemails.
+        /// </summary>
+        public virtual ICustomaddressemails Customaddressemails { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomaddressfaxes.
+        /// </summary>
+        public virtual ICustomaddressfaxes Customaddressfaxes { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomaddressfeedback.
+        /// </summary>
+        public virtual ICustomaddressfeedback Customaddressfeedback { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomaddressincidentaddressofbusinessthathasgivenorloaned.
+        /// </summary>
+        public virtual ICustomaddressincidentaddressofbusinessthathasgivenorloaned Customaddressincidentaddressofbusinessthathasgivenorloaned { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomaddressincidentaddressofpersonbusiness.
+        /// </summary>
+        public virtual ICustomaddressincidentaddressofpersonbusiness Customaddressincidentaddressofpersonbusiness { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomaddressincidentaddresswhereequipmentwasdestroyed.
+        /// </summary>
+        public virtual ICustomaddressincidentaddresswhereequipmentwasdestroyed Customaddressincidentaddresswhereequipmentwasdestroyed { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomaddressincidentbcsellersaddress.
+        /// </summary>
+        public virtual ICustomaddressincidentbcsellersaddress Customaddressincidentbcsellersaddress { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomaddressincidentcivicaddressofpurchaser.
+        /// </summary>
+        public virtual ICustomaddressincidentcivicaddressofpurchaser Customaddressincidentcivicaddressofpurchaser { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomaddressincidentimportersaddress.
+        /// </summary>
+        public virtual ICustomaddressincidentimportersaddress Customaddressincidentimportersaddress { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomaddressincidentoriginatingsellersaddress.
+        /// </summary>
+        public virtual ICustomaddressincidentoriginatingsellersaddress Customaddressincidentoriginatingsellersaddress { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomaddressincidentoutsidebcsellersaddress.
+        /// </summary>
+        public virtual ICustomaddressincidentoutsidebcsellersaddress Customaddressincidentoutsidebcsellersaddress { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomaddressincidentpurchasersbusinessaddress.
+        /// </summary>
+        public virtual ICustomaddressincidentpurchasersbusinessaddress Customaddressincidentpurchasersbusinessaddress { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomaddressincidentpurchaserscivicaddress.
+        /// </summary>
+        public virtual ICustomaddressincidentpurchaserscivicaddress Customaddressincidentpurchaserscivicaddress { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomaddressknowledgebaserecord.
+        /// </summary>
+        public virtual ICustomaddressknowledgebaserecord Customaddressknowledgebaserecord { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomaddressletters.
+        /// </summary>
+        public virtual ICustomaddressletters Customaddressletters { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomaddresslocationlocationaddress.
+        /// </summary>
+        public virtual ICustomaddresslocationlocationaddress Customaddresslocationlocationaddress { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomaddressphonecalls.
+        /// </summary>
+        public virtual ICustomaddressphonecalls Customaddressphonecalls { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomaddressqueueitems.
+        /// </summary>
+        public virtual ICustomaddressqueueitems Customaddressqueueitems { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomaddressrecurringappointmentmasters.
+        /// </summary>
+        public virtual ICustomaddressrecurringappointmentmasters Customaddressrecurringappointmentmasters { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomaddressserviceappointments.
+        /// </summary>
+        public virtual ICustomaddressserviceappointments Customaddressserviceappointments { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomaddressslakpiinstances.
+        /// </summary>
+        public virtual ICustomaddressslakpiinstances Customaddressslakpiinstances { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomaddresssocialactivities.
+        /// </summary>
+        public virtual ICustomaddresssocialactivities Customaddresssocialactivities { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomaddresssyncerrors.
+        /// </summary>
+        public virtual ICustomaddresssyncerrors Customaddresssyncerrors { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomaddresstasks.
+        /// </summary>
+        public virtual ICustomaddresstasks Customaddresstasks { get; private set; }
 
         /// <summary>
         /// Gets the ICustomproducts.
@@ -112,9 +1336,144 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual ICustomproducts Customproducts { get; private set; }
 
         /// <summary>
+        /// Gets the ICustomproductactivityparties.
+        /// </summary>
+        public virtual ICustomproductactivityparties Customproductactivityparties { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomproductactivitypointers.
+        /// </summary>
+        public virtual ICustomproductactivitypointers Customproductactivitypointers { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomproductappointments.
+        /// </summary>
+        public virtual ICustomproductappointments Customproductappointments { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomproductasyncoperations.
+        /// </summary>
+        public virtual ICustomproductasyncoperations Customproductasyncoperations { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomproductbulkdeletefailures.
+        /// </summary>
+        public virtual ICustomproductbulkdeletefailures Customproductbulkdeletefailures { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomproductconnections1.
+        /// </summary>
+        public virtual ICustomproductconnections1 Customproductconnections1 { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomproductconnections2.
+        /// </summary>
+        public virtual ICustomproductconnections2 Customproductconnections2 { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomproductduplicatebaserecord.
+        /// </summary>
+        public virtual ICustomproductduplicatebaserecord Customproductduplicatebaserecord { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomproductduplicatematchingrecord.
+        /// </summary>
+        public virtual ICustomproductduplicatematchingrecord Customproductduplicatematchingrecord { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomproductemails.
+        /// </summary>
+        public virtual ICustomproductemails Customproductemails { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomproductfaxes.
+        /// </summary>
+        public virtual ICustomproductfaxes Customproductfaxes { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomproductletters.
+        /// </summary>
+        public virtual ICustomproductletters Customproductletters { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomproductphonecalls.
+        /// </summary>
+        public virtual ICustomproductphonecalls Customproductphonecalls { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomproductqueueitems.
+        /// </summary>
+        public virtual ICustomproductqueueitems Customproductqueueitems { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomproductrecurringappointmentmasters.
+        /// </summary>
+        public virtual ICustomproductrecurringappointmentmasters Customproductrecurringappointmentmasters { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomproductserviceappointments.
+        /// </summary>
+        public virtual ICustomproductserviceappointments Customproductserviceappointments { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomproductsocialactivities.
+        /// </summary>
+        public virtual ICustomproductsocialactivities Customproductsocialactivities { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomproductsyncerrors.
+        /// </summary>
+        public virtual ICustomproductsyncerrors Customproductsyncerrors { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomproducttasks.
+        /// </summary>
+        public virtual ICustomproducttasks Customproducttasks { get; private set; }
+
+        /// <summary>
+        /// Gets the IRelatedapplication.
+        /// </summary>
+        public virtual IRelatedapplication Relatedapplication { get; private set; }
+
+        /// <summary>
         /// Gets the ICustomusers.
         /// </summary>
         public virtual ICustomusers Customusers { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomuserasyncoperations.
+        /// </summary>
+        public virtual ICustomuserasyncoperations Customuserasyncoperations { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomuserbulkdeletefailures.
+        /// </summary>
+        public virtual ICustomuserbulkdeletefailures Customuserbulkdeletefailures { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomuserduplicatebaserecord.
+        /// </summary>
+        public virtual ICustomuserduplicatebaserecord Customuserduplicatebaserecord { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomuserduplicatematchingrecord.
+        /// </summary>
+        public virtual ICustomuserduplicatematchingrecord Customuserduplicatematchingrecord { get; private set; }
+
+        /// <summary>
+        /// Gets the ICustomusersyncerrors.
+        /// </summary>
+        public virtual ICustomusersyncerrors Customusersyncerrors { get; private set; }
+
+        /// <summary>
+        /// Gets the IRole.
+        /// </summary>
+        public virtual IRole Role { get; private set; }
+
+        /// <summary>
+        /// Gets the IUser.
+        /// </summary>
+        public virtual IUser User { get; private set; }
 
         /// <summary>
         /// Gets the IEquipmentlocations.
@@ -122,9 +1481,249 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual IEquipmentlocations Equipmentlocations { get; private set; }
 
         /// <summary>
+        /// Gets the IEquipmentlocationactivityparties.
+        /// </summary>
+        public virtual IEquipmentlocationactivityparties Equipmentlocationactivityparties { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationactivitypointers.
+        /// </summary>
+        public virtual IEquipmentlocationactivitypointers Equipmentlocationactivitypointers { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationannotations.
+        /// </summary>
+        public virtual IEquipmentlocationannotations Equipmentlocationannotations { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationappointments.
+        /// </summary>
+        public virtual IEquipmentlocationappointments Equipmentlocationappointments { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationasyncoperations.
+        /// </summary>
+        public virtual IEquipmentlocationasyncoperations Equipmentlocationasyncoperations { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationbulkdeletefailures.
+        /// </summary>
+        public virtual IEquipmentlocationbulkdeletefailures Equipmentlocationbulkdeletefailures { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationconnections1.
+        /// </summary>
+        public virtual IEquipmentlocationconnections1 Equipmentlocationconnections1 { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationconnections2.
+        /// </summary>
+        public virtual IEquipmentlocationconnections2 Equipmentlocationconnections2 { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationduplicatebaserecord.
+        /// </summary>
+        public virtual IEquipmentlocationduplicatebaserecord Equipmentlocationduplicatebaserecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationduplicatematchingrecord.
+        /// </summary>
+        public virtual IEquipmentlocationduplicatematchingrecord Equipmentlocationduplicatematchingrecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationemails.
+        /// </summary>
+        public virtual IEquipmentlocationemails Equipmentlocationemails { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationfaxes.
+        /// </summary>
+        public virtual IEquipmentlocationfaxes Equipmentlocationfaxes { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationletters.
+        /// </summary>
+        public virtual IEquipmentlocationletters Equipmentlocationletters { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationphonecalls.
+        /// </summary>
+        public virtual IEquipmentlocationphonecalls Equipmentlocationphonecalls { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationqueueitems.
+        /// </summary>
+        public virtual IEquipmentlocationqueueitems Equipmentlocationqueueitems { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationrecurringappointmentmasters.
+        /// </summary>
+        public virtual IEquipmentlocationrecurringappointmentmasters Equipmentlocationrecurringappointmentmasters { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationserviceappointments.
+        /// </summary>
+        public virtual IEquipmentlocationserviceappointments Equipmentlocationserviceappointments { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationsocialactivities.
+        /// </summary>
+        public virtual IEquipmentlocationsocialactivities Equipmentlocationsocialactivities { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationsyncerrors.
+        /// </summary>
+        public virtual IEquipmentlocationsyncerrors Equipmentlocationsyncerrors { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocationtasks.
+        /// </summary>
+        public virtual IEquipmentlocationtasks Equipmentlocationtasks { get; private set; }
+
+        /// <summary>
         /// Gets the IEquipments.
         /// </summary>
         public virtual IEquipments Equipments { get; private set; }
+
+        /// <summary>
+        /// Gets the ICurrentbusinessowner.
+        /// </summary>
+        public virtual ICurrentbusinessowner Currentbusinessowner { get; private set; }
+
+        /// <summary>
+        /// Gets the ICurrentlocation.
+        /// </summary>
+        public virtual ICurrentlocation Currentlocation { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentactivityparties.
+        /// </summary>
+        public virtual IEquipmentactivityparties Equipmentactivityparties { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentactivitypointers.
+        /// </summary>
+        public virtual IEquipmentactivitypointers Equipmentactivitypointers { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentannotations.
+        /// </summary>
+        public virtual IEquipmentannotations Equipmentannotations { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentappointments.
+        /// </summary>
+        public virtual IEquipmentappointments Equipmentappointments { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentasyncoperations.
+        /// </summary>
+        public virtual IEquipmentasyncoperations Equipmentasyncoperations { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentbcgovcertificateequipment.
+        /// </summary>
+        public virtual IEquipmentbcgovcertificateequipment Equipmentbcgovcertificateequipment { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentbulkdeletefailures.
+        /// </summary>
+        public virtual IEquipmentbulkdeletefailures Equipmentbulkdeletefailures { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentconnections1.
+        /// </summary>
+        public virtual IEquipmentconnections1 Equipmentconnections1 { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentconnections2.
+        /// </summary>
+        public virtual IEquipmentconnections2 Equipmentconnections2 { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentduplicatebaserecord.
+        /// </summary>
+        public virtual IEquipmentduplicatebaserecord Equipmentduplicatebaserecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentduplicatematchingrecord.
+        /// </summary>
+        public virtual IEquipmentduplicatematchingrecord Equipmentduplicatematchingrecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentemails.
+        /// </summary>
+        public virtual IEquipmentemails Equipmentemails { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentequipmentlocationequipment.
+        /// </summary>
+        public virtual IEquipmentequipmentlocationequipment Equipmentequipmentlocationequipment { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentfaxes.
+        /// </summary>
+        public virtual IEquipmentfaxes Equipmentfaxes { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentincident.
+        /// </summary>
+        public virtual IEquipmentincident Equipmentincident { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentincidentequipmentrecord.
+        /// </summary>
+        public virtual IEquipmentincidentequipmentrecord Equipmentincidentequipmentrecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentinspectionequipmentrecord.
+        /// </summary>
+        public virtual IEquipmentinspectionequipmentrecord Equipmentinspectionequipmentrecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentletters.
+        /// </summary>
+        public virtual IEquipmentletters Equipmentletters { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentphonecalls.
+        /// </summary>
+        public virtual IEquipmentphonecalls Equipmentphonecalls { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentqueueitems.
+        /// </summary>
+        public virtual IEquipmentqueueitems Equipmentqueueitems { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentrecurringappointmentmasters.
+        /// </summary>
+        public virtual IEquipmentrecurringappointmentmasters Equipmentrecurringappointmentmasters { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentserviceappointments.
+        /// </summary>
+        public virtual IEquipmentserviceappointments Equipmentserviceappointments { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentsocialactivities.
+        /// </summary>
+        public virtual IEquipmentsocialactivities Equipmentsocialactivities { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentsyncerrors.
+        /// </summary>
+        public virtual IEquipmentsyncerrors Equipmentsyncerrors { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmenttasks.
+        /// </summary>
+        public virtual IEquipmenttasks Equipmenttasks { get; private set; }
+
+        /// <summary>
+        /// Gets the ILocationequipment.
+        /// </summary>
+        public virtual ILocationequipment Locationequipment { get; private set; }
 
         /// <summary>
         /// Gets the IIncidentbusinesscontactset.
@@ -152,9 +1751,94 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual IInspectionchecklists Inspectionchecklists { get; private set; }
 
         /// <summary>
+        /// Gets the IInspection.
+        /// </summary>
+        public virtual IInspection Inspection { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectioninspectionchecklis.
+        /// </summary>
+        public virtual IInspectioninspectionchecklis Inspectioninspectionchecklis { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionchecklistasyncoperations.
+        /// </summary>
+        public virtual IInspectionchecklistasyncoperations Inspectionchecklistasyncoperations { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionchecklistbulkdeletefailures.
+        /// </summary>
+        public virtual IInspectionchecklistbulkdeletefailures Inspectionchecklistbulkdeletefailures { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionchecklistduplicatebaserecord.
+        /// </summary>
+        public virtual IInspectionchecklistduplicatebaserecord Inspectionchecklistduplicatebaserecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionchecklistduplicatematchingrecord.
+        /// </summary>
+        public virtual IInspectionchecklistduplicatematchingrecord Inspectionchecklistduplicatematchingrecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionchecklistsyncerrors.
+        /// </summary>
+        public virtual IInspectionchecklistsyncerrors Inspectionchecklistsyncerrors { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionchecklistviolationticketactregulationviolated.
+        /// </summary>
+        public virtual IInspectionchecklistviolationticketactregulationviolated Inspectionchecklistviolationticketactregulationviolated { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationinspectioncheck.
+        /// </summary>
+        public virtual IInvestigationinspectioncheck Investigationinspectioncheck { get; private set; }
+
+        /// <summary>
+        /// Gets the IViolationticket.
+        /// </summary>
+        public virtual IViolationticket Violationticket { get; private set; }
+
+        /// <summary>
         /// Gets the IInspectionownershipcategories.
         /// </summary>
         public virtual IInspectionownershipcategories Inspectionownershipcategories { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionownershipcategoryasyncoperations.
+        /// </summary>
+        public virtual IInspectionownershipcategoryasyncoperations Inspectionownershipcategoryasyncoperations { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionownershipcategorybulkdeletefailures.
+        /// </summary>
+        public virtual IInspectionownershipcategorybulkdeletefailures Inspectionownershipcategorybulkdeletefailures { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionownershipcategoryduplicatebaserecord.
+        /// </summary>
+        public virtual IInspectionownershipcategoryduplicatebaserecord Inspectionownershipcategoryduplicatebaserecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionownershipcategoryduplicatematchingrecord.
+        /// </summary>
+        public virtual IInspectionownershipcategoryduplicatematchingrecord Inspectionownershipcategoryduplicatematchingrecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionownershipcategoryinspectioninspectionownershipcategory.
+        /// </summary>
+        public virtual IInspectionownershipcategoryinspectioninspectionownershipcategory Inspectionownershipcategoryinspectioninspectionownershipcategory { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionownershipcategorylocationinspectionownershipcategory.
+        /// </summary>
+        public virtual IInspectionownershipcategorylocationinspectionownershipcategory Inspectionownershipcategorylocationinspectionownershipcategory { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionownershipcategorysyncerrors.
+        /// </summary>
+        public virtual IInspectionownershipcategorysyncerrors Inspectionownershipcategorysyncerrors { get; private set; }
 
         /// <summary>
         /// Gets the IInspectionprocessflows.
@@ -162,9 +1846,179 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual IInspectionprocessflows Inspectionprocessflows { get; private set; }
 
         /// <summary>
+        /// Gets the IInspectionprocessflowasyncoperations.
+        /// </summary>
+        public virtual IInspectionprocessflowasyncoperations Inspectionprocessflowasyncoperations { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionprocessflowbulkdeletefailures.
+        /// </summary>
+        public virtual IInspectionprocessflowbulkdeletefailures Inspectionprocessflowbulkdeletefailures { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionprocessflowsyncerrors.
+        /// </summary>
+        public virtual IInspectionprocessflowsyncerrors Inspectionprocessflowsyncerrors { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionprocessflowworkflowlogs.
+        /// </summary>
+        public virtual IInspectionprocessflowworkflowlogs Inspectionprocessflowworkflowlogs { get; private set; }
+
+        /// <summary>
+        /// Gets the IBpfbcgovinspectionid.
+        /// </summary>
+        public virtual IBpfbcgovinspectionid Bpfbcgovinspectionid { get; private set; }
+
+        /// <summary>
         /// Gets the IInspections.
         /// </summary>
         public virtual IInspections Inspections { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentrecord.
+        /// </summary>
+        public virtual IEquipmentrecord Equipmentrecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionactivityparties.
+        /// </summary>
+        public virtual IInspectionactivityparties Inspectionactivityparties { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionactivitypointers.
+        /// </summary>
+        public virtual IInspectionactivitypointers Inspectionactivitypointers { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionannotations.
+        /// </summary>
+        public virtual IInspectionannotations Inspectionannotations { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionappointments.
+        /// </summary>
+        public virtual IInspectionappointments Inspectionappointments { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionasyncoperations.
+        /// </summary>
+        public virtual IInspectionasyncoperations Inspectionasyncoperations { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionbulkdeletefailures.
+        /// </summary>
+        public virtual IInspectionbulkdeletefailures Inspectionbulkdeletefailures { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionduplicatebaserecord.
+        /// </summary>
+        public virtual IInspectionduplicatebaserecord Inspectionduplicatebaserecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionduplicatematchingrecord.
+        /// </summary>
+        public virtual IInspectionduplicatematchingrecord Inspectionduplicatematchingrecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionemails.
+        /// </summary>
+        public virtual IInspectionemails Inspectionemails { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionfaxes.
+        /// </summary>
+        public virtual IInspectionfaxes Inspectionfaxes { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionincidentnewinspectionrecord.
+        /// </summary>
+        public virtual IInspectionincidentnewinspectionrecord Inspectionincidentnewinspectionrecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectioninspectionchecklistinspection.
+        /// </summary>
+        public virtual IInspectioninspectionchecklistinspection Inspectioninspectionchecklistinspection { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionletters.
+        /// </summary>
+        public virtual IInspectionletters Inspectionletters { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionphonecalls.
+        /// </summary>
+        public virtual IInspectionphonecalls Inspectionphonecalls { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionqueueitems.
+        /// </summary>
+        public virtual IInspectionqueueitems Inspectionqueueitems { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionrecurringappointmentmasters.
+        /// </summary>
+        public virtual IInspectionrecurringappointmentmasters Inspectionrecurringappointmentmasters { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionserviceappointments.
+        /// </summary>
+        public virtual IInspectionserviceappointments Inspectionserviceappointments { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionsharepointdocumentlocations.
+        /// </summary>
+        public virtual IInspectionsharepointdocumentlocations Inspectionsharepointdocumentlocations { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionsocialactivities.
+        /// </summary>
+        public virtual IInspectionsocialactivities Inspectionsocialactivities { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionsyncerrors.
+        /// </summary>
+        public virtual IInspectionsyncerrors Inspectionsyncerrors { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectiontasks.
+        /// </summary>
+        public virtual IInspectiontasks Inspectiontasks { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionviolationticketinspection.
+        /// </summary>
+        public virtual IInspectionviolationticketinspection Inspectionviolationticketinspection { get; private set; }
+
+        /// <summary>
+        /// Gets the IInspectionownershipcategory.
+        /// </summary>
+        public virtual IInspectionownershipcategory Inspectionownershipcategory { get; private set; }
+
+        /// <summary>
+        /// Gets the ILocationcontact.
+        /// </summary>
+        public virtual ILocationcontact Locationcontact { get; private set; }
+
+        /// <summary>
+        /// Gets the IOwnercategory.
+        /// </summary>
+        public virtual IOwnercategory Ownercategory { get; private set; }
+
+        /// <summary>
+        /// Gets the IBpfbcgovinspectionbcgovinspectionprocessflow.
+        /// </summary>
+        public virtual IBpfbcgovinspectionbcgovinspectionprocessflow Bpfbcgovinspectionbcgovinspectionprocessflow { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationcecontactset.
+        /// </summary>
+        public virtual IInvestigationcecontactset Investigationcecontactset { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationinspectioncheckset.
+        /// </summary>
+        public virtual IInvestigationinspectioncheckset Investigationinspectioncheckset { get; private set; }
 
         /// <summary>
         /// Gets the IInvestigations.
@@ -172,14 +2026,234 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual IInvestigations Investigations { get; private set; }
 
         /// <summary>
-        /// Gets the IInvestigationstepcecontactset.
+        /// Gets the IInvestigationactivityparties.
         /// </summary>
-        public virtual IInvestigationstepcecontactset Investigationstepcecontactset { get; private set; }
+        public virtual IInvestigationactivityparties Investigationactivityparties { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationactivitypointers.
+        /// </summary>
+        public virtual IInvestigationactivitypointers Investigationactivitypointers { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationannotations.
+        /// </summary>
+        public virtual IInvestigationannotations Investigationannotations { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationappointments.
+        /// </summary>
+        public virtual IInvestigationappointments Investigationappointments { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationasyncoperations.
+        /// </summary>
+        public virtual IInvestigationasyncoperations Investigationasyncoperations { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationbcgovinvestigationstepincludeininvestigation.
+        /// </summary>
+        public virtual IInvestigationbcgovinvestigationstepincludeininvestigation Investigationbcgovinvestigationstepincludeininvestigation { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationbulkdeletefailures.
+        /// </summary>
+        public virtual IInvestigationbulkdeletefailures Investigationbulkdeletefailures { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationcecontactinvestigation.
+        /// </summary>
+        public virtual IInvestigationcecontactinvestigation Investigationcecontactinvestigation { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationcomplaintinvestigation.
+        /// </summary>
+        public virtual IInvestigationcomplaintinvestigation Investigationcomplaintinvestigation { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationconnections1.
+        /// </summary>
+        public virtual IInvestigationconnections1 Investigationconnections1 { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationconnections2.
+        /// </summary>
+        public virtual IInvestigationconnections2 Investigationconnections2 { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationduplicatebaserecord.
+        /// </summary>
+        public virtual IInvestigationduplicatebaserecord Investigationduplicatebaserecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationduplicatematchingrecord.
+        /// </summary>
+        public virtual IInvestigationduplicatematchingrecord Investigationduplicatematchingrecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationemails.
+        /// </summary>
+        public virtual IInvestigationemails Investigationemails { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationfaxes.
+        /// </summary>
+        public virtual IInvestigationfaxes Investigationfaxes { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationinspectionchecklistinvestigation.
+        /// </summary>
+        public virtual IInvestigationinspectionchecklistinvestigation Investigationinspectionchecklistinvestigation { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationinvestigationstepinvestigation.
+        /// </summary>
+        public virtual IInvestigationinvestigationstepinvestigation Investigationinvestigationstepinvestigation { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationletters.
+        /// </summary>
+        public virtual IInvestigationletters Investigationletters { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationphonecalls.
+        /// </summary>
+        public virtual IInvestigationphonecalls Investigationphonecalls { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationqueueitems.
+        /// </summary>
+        public virtual IInvestigationqueueitems Investigationqueueitems { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationrecurringappointmentmasters.
+        /// </summary>
+        public virtual IInvestigationrecurringappointmentmasters Investigationrecurringappointmentmasters { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationserviceappointments.
+        /// </summary>
+        public virtual IInvestigationserviceappointments Investigationserviceappointments { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationsharepointdocumentlocations.
+        /// </summary>
+        public virtual IInvestigationsharepointdocumentlocations Investigationsharepointdocumentlocations { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationsocialactivities.
+        /// </summary>
+        public virtual IInvestigationsocialactivities Investigationsocialactivities { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationsyncerrors.
+        /// </summary>
+        public virtual IInvestigationsyncerrors Investigationsyncerrors { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationtasks.
+        /// </summary>
+        public virtual IInvestigationtasks Investigationtasks { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationviolationticketinvestigation.
+        /// </summary>
+        public virtual IInvestigationviolationticketinvestigation Investigationviolationticketinvestigation { get; private set; }
 
         /// <summary>
         /// Gets the IInvestigationsteps.
         /// </summary>
         public virtual IInvestigationsteps Investigationsteps { get; private set; }
+
+        /// <summary>
+        /// Gets the IIncludeininvestigation.
+        /// </summary>
+        public virtual IIncludeininvestigation Includeininvestigation { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationstepactivitypointers.
+        /// </summary>
+        public virtual IInvestigationstepactivitypointers Investigationstepactivitypointers { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationstepannotations.
+        /// </summary>
+        public virtual IInvestigationstepannotations Investigationstepannotations { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationstepappointments.
+        /// </summary>
+        public virtual IInvestigationstepappointments Investigationstepappointments { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationstepasyncoperations.
+        /// </summary>
+        public virtual IInvestigationstepasyncoperations Investigationstepasyncoperations { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationstepbulkdeletefailures.
+        /// </summary>
+        public virtual IInvestigationstepbulkdeletefailures Investigationstepbulkdeletefailures { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationstepduplicatebaserecord.
+        /// </summary>
+        public virtual IInvestigationstepduplicatebaserecord Investigationstepduplicatebaserecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationstepduplicatematchingrecord.
+        /// </summary>
+        public virtual IInvestigationstepduplicatematchingrecord Investigationstepduplicatematchingrecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationstepemails.
+        /// </summary>
+        public virtual IInvestigationstepemails Investigationstepemails { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationstepfaxes.
+        /// </summary>
+        public virtual IInvestigationstepfaxes Investigationstepfaxes { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationstepletters.
+        /// </summary>
+        public virtual IInvestigationstepletters Investigationstepletters { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationstepphonecalls.
+        /// </summary>
+        public virtual IInvestigationstepphonecalls Investigationstepphonecalls { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationsteprecurringappointmentmasters.
+        /// </summary>
+        public virtual IInvestigationsteprecurringappointmentmasters Investigationsteprecurringappointmentmasters { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationstepserviceappointments.
+        /// </summary>
+        public virtual IInvestigationstepserviceappointments Investigationstepserviceappointments { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationstepsharepointdocumentlocations.
+        /// </summary>
+        public virtual IInvestigationstepsharepointdocumentlocations Investigationstepsharepointdocumentlocations { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationstepsocialactivities.
+        /// </summary>
+        public virtual IInvestigationstepsocialactivities Investigationstepsocialactivities { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationstepsyncerrors.
+        /// </summary>
+        public virtual IInvestigationstepsyncerrors Investigationstepsyncerrors { get; private set; }
+
+        /// <summary>
+        /// Gets the IInvestigationsteptasks.
+        /// </summary>
+        public virtual IInvestigationsteptasks Investigationsteptasks { get; private set; }
 
         /// <summary>
         /// Gets the ILocationequipmentset.
@@ -192,9 +2266,184 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual ILocations Locations { get; private set; }
 
         /// <summary>
+        /// Gets the IAssociatedapplication.
+        /// </summary>
+        public virtual IAssociatedapplication Associatedapplication { get; private set; }
+
+        /// <summary>
+        /// Gets the IBcgovlocationbcgovcomplaintlocation.
+        /// </summary>
+        public virtual IBcgovlocationbcgovcomplaintlocation Bcgovlocationbcgovcomplaintlocation { get; private set; }
+
+        /// <summary>
+        /// Gets the ILocationactivityparties.
+        /// </summary>
+        public virtual ILocationactivityparties Locationactivityparties { get; private set; }
+
+        /// <summary>
+        /// Gets the ILocationactivitypointers.
+        /// </summary>
+        public virtual ILocationactivitypointers Locationactivitypointers { get; private set; }
+
+        /// <summary>
+        /// Gets the ILocationannotations.
+        /// </summary>
+        public virtual ILocationannotations Locationannotations { get; private set; }
+
+        /// <summary>
+        /// Gets the ILocationappointments.
+        /// </summary>
+        public virtual ILocationappointments Locationappointments { get; private set; }
+
+        /// <summary>
+        /// Gets the ILocationasyncoperations.
+        /// </summary>
+        public virtual ILocationasyncoperations Locationasyncoperations { get; private set; }
+
+        /// <summary>
+        /// Gets the ILocationbulkdeletefailures.
+        /// </summary>
+        public virtual ILocationbulkdeletefailures Locationbulkdeletefailures { get; private set; }
+
+        /// <summary>
+        /// Gets the ILocationconnections1.
+        /// </summary>
+        public virtual ILocationconnections1 Locationconnections1 { get; private set; }
+
+        /// <summary>
+        /// Gets the ILocationconnections2.
+        /// </summary>
+        public virtual ILocationconnections2 Locationconnections2 { get; private set; }
+
+        /// <summary>
+        /// Gets the ILocationduplicatebaserecord.
+        /// </summary>
+        public virtual ILocationduplicatebaserecord Locationduplicatebaserecord { get; private set; }
+
+        /// <summary>
+        /// Gets the ILocationduplicatematchingrecord.
+        /// </summary>
+        public virtual ILocationduplicatematchingrecord Locationduplicatematchingrecord { get; private set; }
+
+        /// <summary>
+        /// Gets the ILocationemails.
+        /// </summary>
+        public virtual ILocationemails Locationemails { get; private set; }
+
+        /// <summary>
+        /// Gets the ILocationequipmentcurrentlocation.
+        /// </summary>
+        public virtual ILocationequipmentcurrentlocation Locationequipmentcurrentlocation { get; private set; }
+
+        /// <summary>
+        /// Gets the ILocationequipmentlocationlocation.
+        /// </summary>
+        public virtual ILocationequipmentlocationlocation Locationequipmentlocationlocation { get; private set; }
+
+        /// <summary>
+        /// Gets the ILocationfaxes.
+        /// </summary>
+        public virtual ILocationfaxes Locationfaxes { get; private set; }
+
+        /// <summary>
+        /// Gets the ILocationincidentequipmentlocation.
+        /// </summary>
+        public virtual ILocationincidentequipmentlocation Locationincidentequipmentlocation { get; private set; }
+
+        /// <summary>
+        /// Gets the ILocationinspectionlocation.
+        /// </summary>
+        public virtual ILocationinspectionlocation Locationinspectionlocation { get; private set; }
+
+        /// <summary>
+        /// Gets the ILocationletters.
+        /// </summary>
+        public virtual ILocationletters Locationletters { get; private set; }
+
+        /// <summary>
+        /// Gets the ILocationphonecalls.
+        /// </summary>
+        public virtual ILocationphonecalls Locationphonecalls { get; private set; }
+
+        /// <summary>
+        /// Gets the ILocationqueueitems.
+        /// </summary>
+        public virtual ILocationqueueitems Locationqueueitems { get; private set; }
+
+        /// <summary>
+        /// Gets the ILocationrecurringappointmentmasters.
+        /// </summary>
+        public virtual ILocationrecurringappointmentmasters Locationrecurringappointmentmasters { get; private set; }
+
+        /// <summary>
+        /// Gets the ILocationserviceappointments.
+        /// </summary>
+        public virtual ILocationserviceappointments Locationserviceappointments { get; private set; }
+
+        /// <summary>
+        /// Gets the ILocationsocialactivities.
+        /// </summary>
+        public virtual ILocationsocialactivities Locationsocialactivities { get; private set; }
+
+        /// <summary>
+        /// Gets the ILocationsyncerrors.
+        /// </summary>
+        public virtual ILocationsyncerrors Locationsyncerrors { get; private set; }
+
+        /// <summary>
+        /// Gets the ILocationtasks.
+        /// </summary>
+        public virtual ILocationtasks Locationtasks { get; private set; }
+
+        /// <summary>
+        /// Gets the ILocationaddress.
+        /// </summary>
+        public virtual ILocationaddress Locationaddress { get; private set; }
+
+        /// <summary>
+        /// Gets the ILocationarea.
+        /// </summary>
+        public virtual ILocationarea Locationarea { get; private set; }
+
+        /// <summary>
+        /// Gets the ILocationregion.
+        /// </summary>
+        public virtual ILocationregion Locationregion { get; private set; }
+
+        /// <summary>
         /// Gets the IPostalcodes.
         /// </summary>
         public virtual IPostalcodes Postalcodes { get; private set; }
+
+        /// <summary>
+        /// Gets the IArea.
+        /// </summary>
+        public virtual IArea Area { get; private set; }
+
+        /// <summary>
+        /// Gets the IPostalcodeasyncoperations.
+        /// </summary>
+        public virtual IPostalcodeasyncoperations Postalcodeasyncoperations { get; private set; }
+
+        /// <summary>
+        /// Gets the IPostalcodebulkdeletefailures.
+        /// </summary>
+        public virtual IPostalcodebulkdeletefailures Postalcodebulkdeletefailures { get; private set; }
+
+        /// <summary>
+        /// Gets the IPostalcodeduplicatebaserecord.
+        /// </summary>
+        public virtual IPostalcodeduplicatebaserecord Postalcodeduplicatebaserecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IPostalcodeduplicatematchingrecord.
+        /// </summary>
+        public virtual IPostalcodeduplicatematchingrecord Postalcodeduplicatematchingrecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IPostalcodesyncerrors.
+        /// </summary>
+        public virtual IPostalcodesyncerrors Postalcodesyncerrors { get; private set; }
 
         /// <summary>
         /// Gets the IRegions.
@@ -202,9 +2451,174 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual IRegions Regions { get; private set; }
 
         /// <summary>
+        /// Gets the IInspector.
+        /// </summary>
+        public virtual IInspector Inspector { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegionasyncoperations.
+        /// </summary>
+        public virtual IRegionasyncoperations Regionasyncoperations { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegionbcgovarearegion.
+        /// </summary>
+        public virtual IRegionbcgovarearegion Regionbcgovarearegion { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegionbcgovpostalcoderegion.
+        /// </summary>
+        public virtual IRegionbcgovpostalcoderegion Regionbcgovpostalcoderegion { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegionbulkdeletefailures.
+        /// </summary>
+        public virtual IRegionbulkdeletefailures Regionbulkdeletefailures { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegionduplicatebaserecord.
+        /// </summary>
+        public virtual IRegionduplicatebaserecord Regionduplicatebaserecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegionduplicatematchingrecord.
+        /// </summary>
+        public virtual IRegionduplicatematchingrecord Regionduplicatematchingrecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegionlocationlocationregion.
+        /// </summary>
+        public virtual IRegionlocationlocationregion Regionlocationlocationregion { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegionsyncerrors.
+        /// </summary>
+        public virtual IRegionsyncerrors Regionsyncerrors { get; private set; }
+
+        /// <summary>
         /// Gets the IRiskassessments.
         /// </summary>
         public virtual IRiskassessments Riskassessments { get; private set; }
+
+        /// <summary>
+        /// Gets the IApplicationidlookup.
+        /// </summary>
+        public virtual IApplicationidlookup Applicationidlookup { get; private set; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentactivityparties.
+        /// </summary>
+        public virtual IRiskassessmentactivityparties Riskassessmentactivityparties { get; private set; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentactivitypointers.
+        /// </summary>
+        public virtual IRiskassessmentactivitypointers Riskassessmentactivitypointers { get; private set; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentannotations.
+        /// </summary>
+        public virtual IRiskassessmentannotations Riskassessmentannotations { get; private set; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentappointments.
+        /// </summary>
+        public virtual IRiskassessmentappointments Riskassessmentappointments { get; private set; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentasyncoperations.
+        /// </summary>
+        public virtual IRiskassessmentasyncoperations Riskassessmentasyncoperations { get; private set; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentbulkdeletefailures.
+        /// </summary>
+        public virtual IRiskassessmentbulkdeletefailures Riskassessmentbulkdeletefailures { get; private set; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentcomplaintriskassessment.
+        /// </summary>
+        public virtual IRiskassessmentcomplaintriskassessment Riskassessmentcomplaintriskassessment { get; private set; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentconnections1.
+        /// </summary>
+        public virtual IRiskassessmentconnections1 Riskassessmentconnections1 { get; private set; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentconnections2.
+        /// </summary>
+        public virtual IRiskassessmentconnections2 Riskassessmentconnections2 { get; private set; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentduplicatebaserecord.
+        /// </summary>
+        public virtual IRiskassessmentduplicatebaserecord Riskassessmentduplicatebaserecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentduplicatematchingrecord.
+        /// </summary>
+        public virtual IRiskassessmentduplicatematchingrecord Riskassessmentduplicatematchingrecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentemails.
+        /// </summary>
+        public virtual IRiskassessmentemails Riskassessmentemails { get; private set; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentfaxes.
+        /// </summary>
+        public virtual IRiskassessmentfaxes Riskassessmentfaxes { get; private set; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentincidentassociatedriskassessmentrecord.
+        /// </summary>
+        public virtual IRiskassessmentincidentassociatedriskassessmentrecord Riskassessmentincidentassociatedriskassessmentrecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentletters.
+        /// </summary>
+        public virtual IRiskassessmentletters Riskassessmentletters { get; private set; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentphonecalls.
+        /// </summary>
+        public virtual IRiskassessmentphonecalls Riskassessmentphonecalls { get; private set; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentqueueitems.
+        /// </summary>
+        public virtual IRiskassessmentqueueitems Riskassessmentqueueitems { get; private set; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentrecurringappointmentmasters.
+        /// </summary>
+        public virtual IRiskassessmentrecurringappointmentmasters Riskassessmentrecurringappointmentmasters { get; private set; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentserviceappointments.
+        /// </summary>
+        public virtual IRiskassessmentserviceappointments Riskassessmentserviceappointments { get; private set; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentsharepointdocumentlocations.
+        /// </summary>
+        public virtual IRiskassessmentsharepointdocumentlocations Riskassessmentsharepointdocumentlocations { get; private set; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentsocialactivities.
+        /// </summary>
+        public virtual IRiskassessmentsocialactivities Riskassessmentsocialactivities { get; private set; }
+
+        /// <summary>
+        /// Gets the IRiskassessmentsyncerrors.
+        /// </summary>
+        public virtual IRiskassessmentsyncerrors Riskassessmentsyncerrors { get; private set; }
+
+        /// <summary>
+        /// Gets the IRiskassessmenttasks.
+        /// </summary>
+        public virtual IRiskassessmenttasks Riskassessmenttasks { get; private set; }
 
         /// <summary>
         /// Gets the IRoles.
@@ -212,9 +2626,74 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual IRoles Roles { get; private set; }
 
         /// <summary>
+        /// Gets the IRoleasyncoperations.
+        /// </summary>
+        public virtual IRoleasyncoperations Roleasyncoperations { get; private set; }
+
+        /// <summary>
+        /// Gets the IRolebulkdeletefailures.
+        /// </summary>
+        public virtual IRolebulkdeletefailures Rolebulkdeletefailures { get; private set; }
+
+        /// <summary>
+        /// Gets the IRolecustomuserrole.
+        /// </summary>
+        public virtual IRolecustomuserrole Rolecustomuserrole { get; private set; }
+
+        /// <summary>
+        /// Gets the IRoleduplicatebaserecord.
+        /// </summary>
+        public virtual IRoleduplicatebaserecord Roleduplicatebaserecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IRoleduplicatematchingrecord.
+        /// </summary>
+        public virtual IRoleduplicatematchingrecord Roleduplicatematchingrecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IRolesyncerrors.
+        /// </summary>
+        public virtual IRolesyncerrors Rolesyncerrors { get; private set; }
+
+        /// <summary>
         /// Gets the ITermsconditionspresets.
         /// </summary>
         public virtual ITermsconditionspresets Termsconditionspresets { get; private set; }
+
+        /// <summary>
+        /// Gets the IApplicationtype.
+        /// </summary>
+        public virtual IApplicationtype Applicationtype { get; private set; }
+
+        /// <summary>
+        /// Gets the ITermsconditionspresetasyncoperations.
+        /// </summary>
+        public virtual ITermsconditionspresetasyncoperations Termsconditionspresetasyncoperations { get; private set; }
+
+        /// <summary>
+        /// Gets the ITermsconditionspresetbcgovcertificatetermsandconditionspresetterms.
+        /// </summary>
+        public virtual ITermsconditionspresetbcgovcertificatetermsandconditionspresetterms Termsconditionspresetbcgovcertificatetermsandconditionspresetterms { get; private set; }
+
+        /// <summary>
+        /// Gets the ITermsconditionspresetbulkdeletefailures.
+        /// </summary>
+        public virtual ITermsconditionspresetbulkdeletefailures Termsconditionspresetbulkdeletefailures { get; private set; }
+
+        /// <summary>
+        /// Gets the ITermsconditionspresetduplicatebaserecord.
+        /// </summary>
+        public virtual ITermsconditionspresetduplicatebaserecord Termsconditionspresetduplicatebaserecord { get; private set; }
+
+        /// <summary>
+        /// Gets the ITermsconditionspresetduplicatematchingrecord.
+        /// </summary>
+        public virtual ITermsconditionspresetduplicatematchingrecord Termsconditionspresetduplicatematchingrecord { get; private set; }
+
+        /// <summary>
+        /// Gets the ITermsconditionspresetsyncerrors.
+        /// </summary>
+        public virtual ITermsconditionspresetsyncerrors Termsconditionspresetsyncerrors { get; private set; }
 
         /// <summary>
         /// Gets the IViolationtickets.
@@ -222,9 +2701,779 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual IViolationtickets Violationtickets { get; private set; }
 
         /// <summary>
+        /// Gets the IActregulationviolated.
+        /// </summary>
+        public virtual IActregulationviolated Actregulationviolated { get; private set; }
+
+        /// <summary>
+        /// Gets the IViolationticketactivityparties.
+        /// </summary>
+        public virtual IViolationticketactivityparties Violationticketactivityparties { get; private set; }
+
+        /// <summary>
+        /// Gets the IViolationticketactivitypointers.
+        /// </summary>
+        public virtual IViolationticketactivitypointers Violationticketactivitypointers { get; private set; }
+
+        /// <summary>
+        /// Gets the IViolationticketannotations.
+        /// </summary>
+        public virtual IViolationticketannotations Violationticketannotations { get; private set; }
+
+        /// <summary>
+        /// Gets the IViolationticketappointments.
+        /// </summary>
+        public virtual IViolationticketappointments Violationticketappointments { get; private set; }
+
+        /// <summary>
+        /// Gets the IViolationticketasyncoperations.
+        /// </summary>
+        public virtual IViolationticketasyncoperations Violationticketasyncoperations { get; private set; }
+
+        /// <summary>
+        /// Gets the IViolationticketbulkdeletefailures.
+        /// </summary>
+        public virtual IViolationticketbulkdeletefailures Violationticketbulkdeletefailures { get; private set; }
+
+        /// <summary>
+        /// Gets the IViolationticketduplicatebaserecord.
+        /// </summary>
+        public virtual IViolationticketduplicatebaserecord Violationticketduplicatebaserecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IViolationticketduplicatematchingrecord.
+        /// </summary>
+        public virtual IViolationticketduplicatematchingrecord Violationticketduplicatematchingrecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IViolationticketemails.
+        /// </summary>
+        public virtual IViolationticketemails Violationticketemails { get; private set; }
+
+        /// <summary>
+        /// Gets the IViolationticketfaxes.
+        /// </summary>
+        public virtual IViolationticketfaxes Violationticketfaxes { get; private set; }
+
+        /// <summary>
+        /// Gets the IViolationticketinspectionchecklistviolationticket.
+        /// </summary>
+        public virtual IViolationticketinspectionchecklistviolationticket Violationticketinspectionchecklistviolationticket { get; private set; }
+
+        /// <summary>
+        /// Gets the IViolationticketletters.
+        /// </summary>
+        public virtual IViolationticketletters Violationticketletters { get; private set; }
+
+        /// <summary>
+        /// Gets the IViolationticketphonecalls.
+        /// </summary>
+        public virtual IViolationticketphonecalls Violationticketphonecalls { get; private set; }
+
+        /// <summary>
+        /// Gets the IViolationticketrecurringappointmentmasters.
+        /// </summary>
+        public virtual IViolationticketrecurringappointmentmasters Violationticketrecurringappointmentmasters { get; private set; }
+
+        /// <summary>
+        /// Gets the IViolationticketserviceappointments.
+        /// </summary>
+        public virtual IViolationticketserviceappointments Violationticketserviceappointments { get; private set; }
+
+        /// <summary>
+        /// Gets the IViolationticketsharepointdocumentlocations.
+        /// </summary>
+        public virtual IViolationticketsharepointdocumentlocations Violationticketsharepointdocumentlocations { get; private set; }
+
+        /// <summary>
+        /// Gets the IViolationticketsocialactivities.
+        /// </summary>
+        public virtual IViolationticketsocialactivities Violationticketsocialactivities { get; private set; }
+
+        /// <summary>
+        /// Gets the IViolationticketsyncerrors.
+        /// </summary>
+        public virtual IViolationticketsyncerrors Violationticketsyncerrors { get; private set; }
+
+        /// <summary>
+        /// Gets the IViolationtickettasks.
+        /// </summary>
+        public virtual IViolationtickettasks Violationtickettasks { get; private set; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovactregulationreference.
+        /// </summary>
+        public virtual IBusinessunitbcgovactregulationreference Businessunitbcgovactregulationreference { get; private set; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovapplicationtype.
+        /// </summary>
+        public virtual IBusinessunitbcgovapplicationtype Businessunitbcgovapplicationtype { get; private set; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovarea.
+        /// </summary>
+        public virtual IBusinessunitbcgovarea Businessunitbcgovarea { get; private set; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovbusinesscontact.
+        /// </summary>
+        public virtual IBusinessunitbcgovbusinesscontact Businessunitbcgovbusinesscontact { get; private set; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovcecontact.
+        /// </summary>
+        public virtual IBusinessunitbcgovcecontact Businessunitbcgovcecontact { get; private set; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovcecontacttype.
+        /// </summary>
+        public virtual IBusinessunitbcgovcecontacttype Businessunitbcgovcecontacttype { get; private set; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovcertificate.
+        /// </summary>
+        public virtual IBusinessunitbcgovcertificate Businessunitbcgovcertificate { get; private set; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovcertificateapprovedproduct.
+        /// </summary>
+        public virtual IBusinessunitbcgovcertificateapprovedproduct Businessunitbcgovcertificateapprovedproduct { get; private set; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovcertificatetermsandconditions.
+        /// </summary>
+        public virtual IBusinessunitbcgovcertificatetermsandconditions Businessunitbcgovcertificatetermsandconditions { get; private set; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovcomplaint.
+        /// </summary>
+        public virtual IBusinessunitbcgovcomplaint Businessunitbcgovcomplaint { get; private set; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovcomplaintchecklist.
+        /// </summary>
+        public virtual IBusinessunitbcgovcomplaintchecklist Businessunitbcgovcomplaintchecklist { get; private set; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovcustomaddress.
+        /// </summary>
+        public virtual IBusinessunitbcgovcustomaddress Businessunitbcgovcustomaddress { get; private set; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovcustomproduct.
+        /// </summary>
+        public virtual IBusinessunitbcgovcustomproduct Businessunitbcgovcustomproduct { get; private set; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovcustomuser.
+        /// </summary>
+        public virtual IBusinessunitbcgovcustomuser Businessunitbcgovcustomuser { get; private set; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovequipment.
+        /// </summary>
+        public virtual IBusinessunitbcgovequipment Businessunitbcgovequipment { get; private set; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovequipmentlocation.
+        /// </summary>
+        public virtual IBusinessunitbcgovequipmentlocation Businessunitbcgovequipmentlocation { get; private set; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovinspection.
+        /// </summary>
+        public virtual IBusinessunitbcgovinspection Businessunitbcgovinspection { get; private set; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovinspectionchecklist.
+        /// </summary>
+        public virtual IBusinessunitbcgovinspectionchecklist Businessunitbcgovinspectionchecklist { get; private set; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovinspectionownershipcategory.
+        /// </summary>
+        public virtual IBusinessunitbcgovinspectionownershipcategory Businessunitbcgovinspectionownershipcategory { get; private set; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovinvestigation.
+        /// </summary>
+        public virtual IBusinessunitbcgovinvestigation Businessunitbcgovinvestigation { get; private set; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovinvestigationstep.
+        /// </summary>
+        public virtual IBusinessunitbcgovinvestigationstep Businessunitbcgovinvestigationstep { get; private set; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovlocation.
+        /// </summary>
+        public virtual IBusinessunitbcgovlocation Businessunitbcgovlocation { get; private set; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovpostalcode.
+        /// </summary>
+        public virtual IBusinessunitbcgovpostalcode Businessunitbcgovpostalcode { get; private set; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovregion.
+        /// </summary>
+        public virtual IBusinessunitbcgovregion Businessunitbcgovregion { get; private set; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovriskassessment.
+        /// </summary>
+        public virtual IBusinessunitbcgovriskassessment Businessunitbcgovriskassessment { get; private set; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovrole.
+        /// </summary>
+        public virtual IBusinessunitbcgovrole Businessunitbcgovrole { get; private set; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovtermsconditionspreset.
+        /// </summary>
+        public virtual IBusinessunitbcgovtermsconditionspreset Businessunitbcgovtermsconditionspreset { get; private set; }
+
+        /// <summary>
+        /// Gets the IBusinessunitbcgovviolationticket.
+        /// </summary>
+        public virtual IBusinessunitbcgovviolationticket Businessunitbcgovviolationticket { get; private set; }
+
+        /// <summary>
+        /// Gets the IRecord1idbcgovcomplaint.
+        /// </summary>
+        public virtual IRecord1idbcgovcomplaint Record1idbcgovcomplaint { get; private set; }
+
+        /// <summary>
+        /// Gets the IRecord1idbcgovcustomaddress.
+        /// </summary>
+        public virtual IRecord1idbcgovcustomaddress Record1idbcgovcustomaddress { get; private set; }
+
+        /// <summary>
+        /// Gets the IRecord1idbcgovcustomproduct.
+        /// </summary>
+        public virtual IRecord1idbcgovcustomproduct Record1idbcgovcustomproduct { get; private set; }
+
+        /// <summary>
+        /// Gets the IRecord1idbcgovequipment.
+        /// </summary>
+        public virtual IRecord1idbcgovequipment Record1idbcgovequipment { get; private set; }
+
+        /// <summary>
+        /// Gets the IRecord1idbcgovequipmentlocation.
+        /// </summary>
+        public virtual IRecord1idbcgovequipmentlocation Record1idbcgovequipmentlocation { get; private set; }
+
+        /// <summary>
+        /// Gets the IRecord1idbcgovinvestigation.
+        /// </summary>
+        public virtual IRecord1idbcgovinvestigation Record1idbcgovinvestigation { get; private set; }
+
+        /// <summary>
+        /// Gets the IRecord1idbcgovlocation.
+        /// </summary>
+        public virtual IRecord1idbcgovlocation Record1idbcgovlocation { get; private set; }
+
+        /// <summary>
+        /// Gets the IRecord1idbcgovriskassessment.
+        /// </summary>
+        public virtual IRecord1idbcgovriskassessment Record1idbcgovriskassessment { get; private set; }
+
+        /// <summary>
+        /// Gets the IRecord2idbcgovcomplaint.
+        /// </summary>
+        public virtual IRecord2idbcgovcomplaint Record2idbcgovcomplaint { get; private set; }
+
+        /// <summary>
+        /// Gets the IRecord2idbcgovcustomaddress.
+        /// </summary>
+        public virtual IRecord2idbcgovcustomaddress Record2idbcgovcustomaddress { get; private set; }
+
+        /// <summary>
+        /// Gets the IRecord2idbcgovcustomproduct.
+        /// </summary>
+        public virtual IRecord2idbcgovcustomproduct Record2idbcgovcustomproduct { get; private set; }
+
+        /// <summary>
+        /// Gets the IRecord2idbcgovequipment.
+        /// </summary>
+        public virtual IRecord2idbcgovequipment Record2idbcgovequipment { get; private set; }
+
+        /// <summary>
+        /// Gets the IRecord2idbcgovequipmentlocation.
+        /// </summary>
+        public virtual IRecord2idbcgovequipmentlocation Record2idbcgovequipmentlocation { get; private set; }
+
+        /// <summary>
+        /// Gets the IRecord2idbcgovinvestigation.
+        /// </summary>
+        public virtual IRecord2idbcgovinvestigation Record2idbcgovinvestigation { get; private set; }
+
+        /// <summary>
+        /// Gets the IRecord2idbcgovlocation.
+        /// </summary>
+        public virtual IRecord2idbcgovlocation Record2idbcgovlocation { get; private set; }
+
+        /// <summary>
+        /// Gets the IRecord2idbcgovriskassessment.
+        /// </summary>
+        public virtual IRecord2idbcgovriskassessment Record2idbcgovriskassessment { get; private set; }
+
+        /// <summary>
         /// Gets the IContacts.
         /// </summary>
         public virtual IContacts Contacts { get; private set; }
+
+        /// <summary>
+        /// Gets the IAddress.
+        /// </summary>
+        public virtual IAddress Address { get; private set; }
+
+        /// <summary>
+        /// Gets the IBusinessaddress.
+        /// </summary>
+        public virtual IBusinessaddress Businessaddress { get; private set; }
+
+        /// <summary>
+        /// Gets the IContactaccountadditionalcontact.
+        /// </summary>
+        public virtual IContactaccountadditionalcontact Contactaccountadditionalcontact { get; private set; }
+
+        /// <summary>
+        /// Gets the IContactbcgovbusinesscontactcontact.
+        /// </summary>
+        public virtual IContactbcgovbusinesscontactcontact Contactbcgovbusinesscontactcontact { get; private set; }
+
+        /// <summary>
+        /// Gets the IContactbcgovinspectionlocationcontact.
+        /// </summary>
+        public virtual IContactbcgovinspectionlocationcontact Contactbcgovinspectionlocationcontact { get; private set; }
+
+        /// <summary>
+        /// Gets the IContactcecontact.
+        /// </summary>
+        public virtual IContactcecontact Contactcecontact { get; private set; }
+
+        /// <summary>
+        /// Gets the IContactcomplaintcomplainant.
+        /// </summary>
+        public virtual IContactcomplaintcomplainant Contactcomplaintcomplainant { get; private set; }
+
+        /// <summary>
+        /// Gets the IContactincidentsubmitter.
+        /// </summary>
+        public virtual IContactincidentsubmitter Contactincidentsubmitter { get; private set; }
+
+        /// <summary>
+        /// Gets the IContactinvestigationcomplainant.
+        /// </summary>
+        public virtual IContactinvestigationcomplainant Contactinvestigationcomplainant { get; private set; }
+
+        /// <summary>
+        /// Gets the IContactlocationlocationcontact.
+        /// </summary>
+        public virtual IContactlocationlocationcontact Contactlocationlocationcontact { get; private set; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovactregulationreference.
+        /// </summary>
+        public virtual IBaserecordidbcgovactregulationreference Baserecordidbcgovactregulationreference { get; private set; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovapplicationtype.
+        /// </summary>
+        public virtual IBaserecordidbcgovapplicationtype Baserecordidbcgovapplicationtype { get; private set; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovarea.
+        /// </summary>
+        public virtual IBaserecordidbcgovarea Baserecordidbcgovarea { get; private set; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovbusinesscontact.
+        /// </summary>
+        public virtual IBaserecordidbcgovbusinesscontact Baserecordidbcgovbusinesscontact { get; private set; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovcecontact.
+        /// </summary>
+        public virtual IBaserecordidbcgovcecontact Baserecordidbcgovcecontact { get; private set; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovcecontacttype.
+        /// </summary>
+        public virtual IBaserecordidbcgovcecontacttype Baserecordidbcgovcecontacttype { get; private set; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovcertificate.
+        /// </summary>
+        public virtual IBaserecordidbcgovcertificate Baserecordidbcgovcertificate { get; private set; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovcertificateapprovedproduct.
+        /// </summary>
+        public virtual IBaserecordidbcgovcertificateapprovedproduct Baserecordidbcgovcertificateapprovedproduct { get; private set; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovcertificatetermsandconditions.
+        /// </summary>
+        public virtual IBaserecordidbcgovcertificatetermsandconditions Baserecordidbcgovcertificatetermsandconditions { get; private set; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovcomplaint.
+        /// </summary>
+        public virtual IBaserecordidbcgovcomplaint Baserecordidbcgovcomplaint { get; private set; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovcomplaintchecklist.
+        /// </summary>
+        public virtual IBaserecordidbcgovcomplaintchecklist Baserecordidbcgovcomplaintchecklist { get; private set; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovcustomaddress.
+        /// </summary>
+        public virtual IBaserecordidbcgovcustomaddress Baserecordidbcgovcustomaddress { get; private set; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovcustomproduct.
+        /// </summary>
+        public virtual IBaserecordidbcgovcustomproduct Baserecordidbcgovcustomproduct { get; private set; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovcustomuser.
+        /// </summary>
+        public virtual IBaserecordidbcgovcustomuser Baserecordidbcgovcustomuser { get; private set; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovequipment.
+        /// </summary>
+        public virtual IBaserecordidbcgovequipment Baserecordidbcgovequipment { get; private set; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovequipmentlocation.
+        /// </summary>
+        public virtual IBaserecordidbcgovequipmentlocation Baserecordidbcgovequipmentlocation { get; private set; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovinspection.
+        /// </summary>
+        public virtual IBaserecordidbcgovinspection Baserecordidbcgovinspection { get; private set; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovinspectionchecklist.
+        /// </summary>
+        public virtual IBaserecordidbcgovinspectionchecklist Baserecordidbcgovinspectionchecklist { get; private set; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovinspectionownershipcategory.
+        /// </summary>
+        public virtual IBaserecordidbcgovinspectionownershipcategory Baserecordidbcgovinspectionownershipcategory { get; private set; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovinvestigation.
+        /// </summary>
+        public virtual IBaserecordidbcgovinvestigation Baserecordidbcgovinvestigation { get; private set; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovinvestigationstep.
+        /// </summary>
+        public virtual IBaserecordidbcgovinvestigationstep Baserecordidbcgovinvestigationstep { get; private set; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovlocation.
+        /// </summary>
+        public virtual IBaserecordidbcgovlocation Baserecordidbcgovlocation { get; private set; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovpostalcode.
+        /// </summary>
+        public virtual IBaserecordidbcgovpostalcode Baserecordidbcgovpostalcode { get; private set; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovregion.
+        /// </summary>
+        public virtual IBaserecordidbcgovregion Baserecordidbcgovregion { get; private set; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovriskassessment.
+        /// </summary>
+        public virtual IBaserecordidbcgovriskassessment Baserecordidbcgovriskassessment { get; private set; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovrole.
+        /// </summary>
+        public virtual IBaserecordidbcgovrole Baserecordidbcgovrole { get; private set; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovtermsconditionspreset.
+        /// </summary>
+        public virtual IBaserecordidbcgovtermsconditionspreset Baserecordidbcgovtermsconditionspreset { get; private set; }
+
+        /// <summary>
+        /// Gets the IBaserecordidbcgovviolationticket.
+        /// </summary>
+        public virtual IBaserecordidbcgovviolationticket Baserecordidbcgovviolationticket { get; private set; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovactregulationreference.
+        /// </summary>
+        public virtual IDuplicaterecordidbcgovactregulationreference Duplicaterecordidbcgovactregulationreference { get; private set; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovapplicationtype.
+        /// </summary>
+        public virtual IDuplicaterecordidbcgovapplicationtype Duplicaterecordidbcgovapplicationtype { get; private set; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovarea.
+        /// </summary>
+        public virtual IDuplicaterecordidbcgovarea Duplicaterecordidbcgovarea { get; private set; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovbusinesscontact.
+        /// </summary>
+        public virtual IDuplicaterecordidbcgovbusinesscontact Duplicaterecordidbcgovbusinesscontact { get; private set; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovcecontact.
+        /// </summary>
+        public virtual IDuplicaterecordidbcgovcecontact Duplicaterecordidbcgovcecontact { get; private set; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovcecontacttype.
+        /// </summary>
+        public virtual IDuplicaterecordidbcgovcecontacttype Duplicaterecordidbcgovcecontacttype { get; private set; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovcertificate.
+        /// </summary>
+        public virtual IDuplicaterecordidbcgovcertificate Duplicaterecordidbcgovcertificate { get; private set; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovcertificateapprovedproduct.
+        /// </summary>
+        public virtual IDuplicaterecordidbcgovcertificateapprovedproduct Duplicaterecordidbcgovcertificateapprovedproduct { get; private set; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovcertificatetermsandconditions.
+        /// </summary>
+        public virtual IDuplicaterecordidbcgovcertificatetermsandconditions Duplicaterecordidbcgovcertificatetermsandconditions { get; private set; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovcomplaint.
+        /// </summary>
+        public virtual IDuplicaterecordidbcgovcomplaint Duplicaterecordidbcgovcomplaint { get; private set; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovcomplaintchecklist.
+        /// </summary>
+        public virtual IDuplicaterecordidbcgovcomplaintchecklist Duplicaterecordidbcgovcomplaintchecklist { get; private set; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovcustomaddress.
+        /// </summary>
+        public virtual IDuplicaterecordidbcgovcustomaddress Duplicaterecordidbcgovcustomaddress { get; private set; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovcustomproduct.
+        /// </summary>
+        public virtual IDuplicaterecordidbcgovcustomproduct Duplicaterecordidbcgovcustomproduct { get; private set; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovcustomuser.
+        /// </summary>
+        public virtual IDuplicaterecordidbcgovcustomuser Duplicaterecordidbcgovcustomuser { get; private set; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovequipment.
+        /// </summary>
+        public virtual IDuplicaterecordidbcgovequipment Duplicaterecordidbcgovequipment { get; private set; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovequipmentlocation.
+        /// </summary>
+        public virtual IDuplicaterecordidbcgovequipmentlocation Duplicaterecordidbcgovequipmentlocation { get; private set; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovinspection.
+        /// </summary>
+        public virtual IDuplicaterecordidbcgovinspection Duplicaterecordidbcgovinspection { get; private set; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovinspectionchecklist.
+        /// </summary>
+        public virtual IDuplicaterecordidbcgovinspectionchecklist Duplicaterecordidbcgovinspectionchecklist { get; private set; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovinspectionownershipcategory.
+        /// </summary>
+        public virtual IDuplicaterecordidbcgovinspectionownershipcategory Duplicaterecordidbcgovinspectionownershipcategory { get; private set; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovinvestigation.
+        /// </summary>
+        public virtual IDuplicaterecordidbcgovinvestigation Duplicaterecordidbcgovinvestigation { get; private set; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovinvestigationstep.
+        /// </summary>
+        public virtual IDuplicaterecordidbcgovinvestigationstep Duplicaterecordidbcgovinvestigationstep { get; private set; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovlocation.
+        /// </summary>
+        public virtual IDuplicaterecordidbcgovlocation Duplicaterecordidbcgovlocation { get; private set; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovpostalcode.
+        /// </summary>
+        public virtual IDuplicaterecordidbcgovpostalcode Duplicaterecordidbcgovpostalcode { get; private set; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovregion.
+        /// </summary>
+        public virtual IDuplicaterecordidbcgovregion Duplicaterecordidbcgovregion { get; private set; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovriskassessment.
+        /// </summary>
+        public virtual IDuplicaterecordidbcgovriskassessment Duplicaterecordidbcgovriskassessment { get; private set; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovrole.
+        /// </summary>
+        public virtual IDuplicaterecordidbcgovrole Duplicaterecordidbcgovrole { get; private set; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovtermsconditionspreset.
+        /// </summary>
+        public virtual IDuplicaterecordidbcgovtermsconditionspreset Duplicaterecordidbcgovtermsconditionspreset { get; private set; }
+
+        /// <summary>
+        /// Gets the IDuplicaterecordidbcgovviolationticket.
+        /// </summary>
+        public virtual IDuplicaterecordidbcgovviolationticket Duplicaterecordidbcgovviolationticket { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcomplaintemail.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcomplaintemail Regardingobjectidbcgovcomplaintemail { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomaddressemail.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcustomaddressemail Regardingobjectidbcgovcustomaddressemail { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomproductemail.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcustomproductemail Regardingobjectidbcgovcustomproductemail { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmentemail.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovequipmentemail Regardingobjectidbcgovequipmentemail { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmentlocationemail.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovequipmentlocationemail Regardingobjectidbcgovequipmentlocationemail { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinspectionemail.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovinspectionemail Regardingobjectidbcgovinspectionemail { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationemail.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovinvestigationemail Regardingobjectidbcgovinvestigationemail { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationstepemail.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovinvestigationstepemail Regardingobjectidbcgovinvestigationstepemail { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovlocationemail.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovlocationemail Regardingobjectidbcgovlocationemail { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovriskassessmentemail.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovriskassessmentemail Regardingobjectidbcgovriskassessmentemail { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovviolationticketemail.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovviolationticketemail Regardingobjectidbcgovviolationticketemail { get; private set; }
+
+        /// <summary>
+        /// Gets the IEntitydefinitions.
+        /// </summary>
+        public virtual IEntitydefinitions Entitydefinitions { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcomplaintfax.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcomplaintfax Regardingobjectidbcgovcomplaintfax { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomaddressfax.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcustomaddressfax Regardingobjectidbcgovcustomaddressfax { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomproductfax.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcustomproductfax Regardingobjectidbcgovcustomproductfax { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmentfax.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovequipmentfax Regardingobjectidbcgovequipmentfax { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmentlocationfax.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovequipmentlocationfax Regardingobjectidbcgovequipmentlocationfax { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinspectionfax.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovinspectionfax Regardingobjectidbcgovinspectionfax { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationfax.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovinvestigationfax Regardingobjectidbcgovinvestigationfax { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationstepfax.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovinvestigationstepfax Regardingobjectidbcgovinvestigationstepfax { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovlocationfax.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovlocationfax Regardingobjectidbcgovlocationfax { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovriskassessmentfax.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovriskassessmentfax Regardingobjectidbcgovriskassessmentfax { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovviolationticketfax.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovviolationticketfax Regardingobjectidbcgovviolationticketfax { get; private set; }
+
+        /// <summary>
+        /// Gets the IGlobaloptionsetdefinitions.
+        /// </summary>
+        public virtual IGlobaloptionsetdefinitions Globaloptionsetdefinitions { get; private set; }
 
         /// <summary>
         /// Gets the IIncidents.
@@ -232,19 +3481,419 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual IIncidents Incidents { get; private set; }
 
         /// <summary>
+        /// Gets the IAddressofbusinessthathasgivenorloaned.
+        /// </summary>
+        public virtual IAddressofbusinessthathasgivenorloaned Addressofbusinessthathasgivenorloaned { get; private set; }
+
+        /// <summary>
+        /// Gets the IAddressofbusinessthathasrentedorleased.
+        /// </summary>
+        public virtual IAddressofbusinessthathasrentedorleased Addressofbusinessthathasrentedorleased { get; private set; }
+
+        /// <summary>
+        /// Gets the IAddressofpersonbusiness.
+        /// </summary>
+        public virtual IAddressofpersonbusiness Addressofpersonbusiness { get; private set; }
+
+        /// <summary>
+        /// Gets the IAddresswhereequipmentwasdestroyed.
+        /// </summary>
+        public virtual IAddresswhereequipmentwasdestroyed Addresswhereequipmentwasdestroyed { get; private set; }
+
+        /// <summary>
+        /// Gets the IApplicationtypeid.
+        /// </summary>
+        public virtual IApplicationtypeid Applicationtypeid { get; private set; }
+
+        /// <summary>
+        /// Gets the IAssociatedriskassessmentrecord.
+        /// </summary>
+        public virtual IAssociatedriskassessmentrecord Associatedriskassessmentrecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IBcsellersaddress.
+        /// </summary>
+        public virtual IBcsellersaddress Bcsellersaddress { get; private set; }
+
+        /// <summary>
+        /// Gets the ICivicaddressofpurchaser.
+        /// </summary>
+        public virtual ICivicaddressofpurchaser Civicaddressofpurchaser { get; private set; }
+
+        /// <summary>
+        /// Gets the IEquipmentlocation.
+        /// </summary>
+        public virtual IEquipmentlocation Equipmentlocation { get; private set; }
+
+        /// <summary>
+        /// Gets the IImportersaddress.
+        /// </summary>
+        public virtual IImportersaddress Importersaddress { get; private set; }
+
+        /// <summary>
+        /// Gets the IIncidentbcgovcertificateapplication.
+        /// </summary>
+        public virtual IIncidentbcgovcertificateapplication Incidentbcgovcertificateapplication { get; private set; }
+
+        /// <summary>
+        /// Gets the IIncidentbcgovriskassessmentapplicationid.
+        /// </summary>
+        public virtual IIncidentbcgovriskassessmentapplicationid Incidentbcgovriskassessmentapplicationid { get; private set; }
+
+        /// <summary>
+        /// Gets the IIncidentcustomproductrelatedapplication.
+        /// </summary>
+        public virtual IIncidentcustomproductrelatedapplication Incidentcustomproductrelatedapplication { get; private set; }
+
+        /// <summary>
+        /// Gets the IIncidentlocationassociatedapplication.
+        /// </summary>
+        public virtual IIncidentlocationassociatedapplication Incidentlocationassociatedapplication { get; private set; }
+
+        /// <summary>
+        /// Gets the INewinspectionrecord.
+        /// </summary>
+        public virtual INewinspectionrecord Newinspectionrecord { get; private set; }
+
+        /// <summary>
+        /// Gets the IOriginatingsellersaddress.
+        /// </summary>
+        public virtual IOriginatingsellersaddress Originatingsellersaddress { get; private set; }
+
+        /// <summary>
+        /// Gets the IOutsidebcsellersaddress.
+        /// </summary>
+        public virtual IOutsidebcsellersaddress Outsidebcsellersaddress { get; private set; }
+
+        /// <summary>
+        /// Gets the IPurchasersbusinessaddress.
+        /// </summary>
+        public virtual IPurchasersbusinessaddress Purchasersbusinessaddress { get; private set; }
+
+        /// <summary>
+        /// Gets the IPurchaserscivicaddress.
+        /// </summary>
+        public virtual IPurchaserscivicaddress Purchaserscivicaddress { get; private set; }
+
+        /// <summary>
+        /// Gets the IRelatedapplicationsid.
+        /// </summary>
+        public virtual IRelatedapplicationsid Relatedapplicationsid { get; private set; }
+
+        /// <summary>
+        /// Gets the ISubmitter.
+        /// </summary>
+        public virtual ISubmitter Submitter { get; private set; }
+
+        /// <summary>
         /// Gets the IInvoices.
         /// </summary>
         public virtual IInvoices Invoices { get; private set; }
 
         /// <summary>
-        /// Gets the IMsdyncustomaddressknowledgearticlset.
+        /// Gets the ILeads.
         /// </summary>
-        public virtual IMsdyncustomaddressknowledgearticlset Msdyncustomaddressknowledgearticlset { get; private set; }
+        public virtual ILeads Leads { get; private set; }
 
         /// <summary>
-        /// Gets the IMsdyncustomaddressknowledgebasereset.
+        /// Gets the IRegardingobjectidbcgovcomplaintletter.
         /// </summary>
-        public virtual IMsdyncustomaddressknowledgebasereset Msdyncustomaddressknowledgebasereset { get; private set; }
+        public virtual IRegardingobjectidbcgovcomplaintletter Regardingobjectidbcgovcomplaintletter { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomaddressletter.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcustomaddressletter Regardingobjectidbcgovcustomaddressletter { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomproductletter.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcustomproductletter Regardingobjectidbcgovcustomproductletter { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmentletter.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovequipmentletter Regardingobjectidbcgovequipmentletter { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmentlocationletter.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovequipmentlocationletter Regardingobjectidbcgovequipmentlocationletter { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinspectionletter.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovinspectionletter Regardingobjectidbcgovinspectionletter { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationletter.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovinvestigationletter Regardingobjectidbcgovinvestigationletter { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationstepletter.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovinvestigationstepletter Regardingobjectidbcgovinvestigationstepletter { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovlocationletter.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovlocationletter Regardingobjectidbcgovlocationletter { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovriskassessmentletter.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovriskassessmentletter Regardingobjectidbcgovriskassessmentletter { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovviolationticketletter.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovviolationticketletter Regardingobjectidbcgovviolationticketletter { get; private set; }
+
+        /// <summary>
+        /// Gets the ILists.
+        /// </summary>
+        public virtual ILists Lists { get; private set; }
+
+        /// <summary>
+        /// Gets the IOrganizationbcgovcomplaintcomplaintprocessflow.
+        /// </summary>
+        public virtual IOrganizationbcgovcomplaintcomplaintprocessflow Organizationbcgovcomplaintcomplaintprocessflow { get; private set; }
+
+        /// <summary>
+        /// Gets the IOrganizationbcgovinspectionprocessflow.
+        /// </summary>
+        public virtual IOrganizationbcgovinspectionprocessflow Organizationbcgovinspectionprocessflow { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcomplaintphonecall.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcomplaintphonecall Regardingobjectidbcgovcomplaintphonecall { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomaddressphonecall.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcustomaddressphonecall Regardingobjectidbcgovcustomaddressphonecall { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomproductphonecall.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcustomproductphonecall Regardingobjectidbcgovcustomproductphonecall { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmentphonecall.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovequipmentphonecall Regardingobjectidbcgovequipmentphonecall { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmentlocationphonecall.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovequipmentlocationphonecall Regardingobjectidbcgovequipmentlocationphonecall { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinspectionphonecall.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovinspectionphonecall Regardingobjectidbcgovinspectionphonecall { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationphonecall.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovinvestigationphonecall Regardingobjectidbcgovinvestigationphonecall { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationstepphonecall.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovinvestigationstepphonecall Regardingobjectidbcgovinvestigationstepphonecall { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovlocationphonecall.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovlocationphonecall Regardingobjectidbcgovlocationphonecall { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovriskassessmentphonecall.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovriskassessmentphonecall Regardingobjectidbcgovriskassessmentphonecall { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovviolationticketphonecall.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovviolationticketphonecall Regardingobjectidbcgovviolationticketphonecall { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcomplaintcomplaintprocessflowactivestageid.
+        /// </summary>
+        public virtual ILkbcgovcomplaintcomplaintprocessflowactivestageid Lkbcgovcomplaintcomplaintprocessflowactivestageid { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinspectionprocessflowactivestageid.
+        /// </summary>
+        public virtual ILkbcgovinspectionprocessflowactivestageid Lkbcgovinspectionprocessflowactivestageid { get; private set; }
+
+        /// <summary>
+        /// Gets the IProcessstagebcgovcomplaint.
+        /// </summary>
+        public virtual IProcessstagebcgovcomplaint Processstagebcgovcomplaint { get; private set; }
+
+        /// <summary>
+        /// Gets the IProcessstagebcgovcustomaddress.
+        /// </summary>
+        public virtual IProcessstagebcgovcustomaddress Processstagebcgovcustomaddress { get; private set; }
+
+        /// <summary>
+        /// Gets the IProcessstagebcgovcustomproduct.
+        /// </summary>
+        public virtual IProcessstagebcgovcustomproduct Processstagebcgovcustomproduct { get; private set; }
+
+        /// <summary>
+        /// Gets the IProcessstagebcgovequipment.
+        /// </summary>
+        public virtual IProcessstagebcgovequipment Processstagebcgovequipment { get; private set; }
+
+        /// <summary>
+        /// Gets the IProcessstagebcgovinspection.
+        /// </summary>
+        public virtual IProcessstagebcgovinspection Processstagebcgovinspection { get; private set; }
+
+        /// <summary>
+        /// Gets the IProcessstagebcgovinvestigation.
+        /// </summary>
+        public virtual IProcessstagebcgovinvestigation Processstagebcgovinvestigation { get; private set; }
+
+        /// <summary>
+        /// Gets the IProcessstagebcgovinvestigationstep.
+        /// </summary>
+        public virtual IProcessstagebcgovinvestigationstep Processstagebcgovinvestigationstep { get; private set; }
+
+        /// <summary>
+        /// Gets the IProcessstagebcgovlocation.
+        /// </summary>
+        public virtual IProcessstagebcgovlocation Processstagebcgovlocation { get; private set; }
+
+        /// <summary>
+        /// Gets the IProcessstagebcgovviolationticket.
+        /// </summary>
+        public virtual IProcessstagebcgovviolationticket Processstagebcgovviolationticket { get; private set; }
+
+        /// <summary>
+        /// Gets the IObjectidbcgovcustomproduct.
+        /// </summary>
+        public virtual IObjectidbcgovcustomproduct Objectidbcgovcustomproduct { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcomplaintrecurringappointmentmaster.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcomplaintrecurringappointmentmaster Regardingobjectidbcgovcomplaintrecurringappointmentmaster { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomaddressrecurringappointmentmaster.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcustomaddressrecurringappointmentmaster Regardingobjectidbcgovcustomaddressrecurringappointmentmaster { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomproductrecurringappointmentmaster.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcustomproductrecurringappointmentmaster Regardingobjectidbcgovcustomproductrecurringappointmentmaster { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmentrecurringappointmentmaster.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovequipmentrecurringappointmentmaster Regardingobjectidbcgovequipmentrecurringappointmentmaster { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmentlocationrecurringappointmentmaster.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovequipmentlocationrecurringappointmentmaster Regardingobjectidbcgovequipmentlocationrecurringappointmentmaster { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinspectionrecurringappointmentmaster.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovinspectionrecurringappointmentmaster Regardingobjectidbcgovinspectionrecurringappointmentmaster { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationrecurringappointmentmaster.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovinvestigationrecurringappointmentmaster Regardingobjectidbcgovinvestigationrecurringappointmentmaster { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationsteprecurringappointmentmaster.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovinvestigationsteprecurringappointmentmaster Regardingobjectidbcgovinvestigationsteprecurringappointmentmaster { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovlocationrecurringappointmentmaster.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovlocationrecurringappointmentmaster Regardingobjectidbcgovlocationrecurringappointmentmaster { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovriskassessmentrecurringappointmentmaster.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovriskassessmentrecurringappointmentmaster Regardingobjectidbcgovriskassessmentrecurringappointmentmaster { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovviolationticketrecurringappointmentmaster.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovviolationticketrecurringappointmentmaster Regardingobjectidbcgovviolationticketrecurringappointmentmaster { get; private set; }
+
+        /// <summary>
+        /// Gets the ISavedqueries.
+        /// </summary>
+        public virtual ISavedqueries Savedqueries { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcomplaintserviceappointment.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcomplaintserviceappointment Regardingobjectidbcgovcomplaintserviceappointment { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomaddressserviceappointment.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcustomaddressserviceappointment Regardingobjectidbcgovcustomaddressserviceappointment { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomproductserviceappointment.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcustomproductserviceappointment Regardingobjectidbcgovcustomproductserviceappointment { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmentserviceappointment.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovequipmentserviceappointment Regardingobjectidbcgovequipmentserviceappointment { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmentlocationserviceappointment.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovequipmentlocationserviceappointment Regardingobjectidbcgovequipmentlocationserviceappointment { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinspectionserviceappointment.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovinspectionserviceappointment Regardingobjectidbcgovinspectionserviceappointment { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationserviceappointment.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovinvestigationserviceappointment Regardingobjectidbcgovinvestigationserviceappointment { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationstepserviceappointment.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovinvestigationstepserviceappointment Regardingobjectidbcgovinvestigationstepserviceappointment { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovlocationserviceappointment.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovlocationserviceappointment Regardingobjectidbcgovlocationserviceappointment { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovriskassessmentserviceappointment.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovriskassessmentserviceappointment Regardingobjectidbcgovriskassessmentserviceappointment { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovviolationticketserviceappointment.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovviolationticketserviceappointment Regardingobjectidbcgovviolationticketserviceappointment { get; private set; }
 
         /// <summary>
         /// Gets the ISharepointdocumentlocations.
@@ -257,14 +3906,1044 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public virtual ISharepointsites Sharepointsites { get; private set; }
 
         /// <summary>
-        /// Gets the IEntitydefinitions.
+        /// Gets the IRegardingbcgovcustomaddress.
         /// </summary>
-        public virtual IEntitydefinitions Entitydefinitions { get; private set; }
+        public virtual IRegardingbcgovcustomaddress Regardingbcgovcustomaddress { get; private set; }
 
         /// <summary>
-        /// Gets the IGlobaloptionsetdefinitions.
+        /// Gets the IManualslabcgovcustomaddress.
         /// </summary>
-        public virtual IGlobaloptionsetdefinitions Globaloptionsetdefinitions { get; private set; }
+        public virtual IManualslabcgovcustomaddress Manualslabcgovcustomaddress { get; private set; }
+
+        /// <summary>
+        /// Gets the ISlabcgovcustomaddress.
+        /// </summary>
+        public virtual ISlabcgovcustomaddress Slabcgovcustomaddress { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcomplaintsocialactivity.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcomplaintsocialactivity Regardingobjectidbcgovcomplaintsocialactivity { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomaddresssocialactivity.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcustomaddresssocialactivity Regardingobjectidbcgovcustomaddresssocialactivity { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomproductsocialactivity.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcustomproductsocialactivity Regardingobjectidbcgovcustomproductsocialactivity { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmentsocialactivity.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovequipmentsocialactivity Regardingobjectidbcgovequipmentsocialactivity { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmentlocationsocialactivity.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovequipmentlocationsocialactivity Regardingobjectidbcgovequipmentlocationsocialactivity { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinspectionsocialactivity.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovinspectionsocialactivity Regardingobjectidbcgovinspectionsocialactivity { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationsocialactivity.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovinvestigationsocialactivity Regardingobjectidbcgovinvestigationsocialactivity { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationstepsocialactivity.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovinvestigationstepsocialactivity Regardingobjectidbcgovinvestigationstepsocialactivity { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovlocationsocialactivity.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovlocationsocialactivity Regardingobjectidbcgovlocationsocialactivity { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovriskassessmentsocialactivity.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovriskassessmentsocialactivity Regardingobjectidbcgovriskassessmentsocialactivity { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovviolationticketsocialactivity.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovviolationticketsocialactivity Regardingobjectidbcgovviolationticketsocialactivity { get; private set; }
+
+        /// <summary>
+        /// Gets the ISystemuserbcgovcomplaintassignto.
+        /// </summary>
+        public virtual ISystemuserbcgovcomplaintassignto Systemuserbcgovcomplaintassignto { get; private set; }
+
+        /// <summary>
+        /// Gets the ISystemuserbcgovregioninspector.
+        /// </summary>
+        public virtual ISystemuserbcgovregioninspector Systemuserbcgovregioninspector { get; private set; }
+
+        /// <summary>
+        /// Gets the ISystemusercustomuseruser.
+        /// </summary>
+        public virtual ISystemusercustomuseruser Systemusercustomuseruser { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovactregulationreferencecreatedby.
+        /// </summary>
+        public virtual ILkbcgovactregulationreferencecreatedby Lkbcgovactregulationreferencecreatedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovactregulationreferencecreatedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovactregulationreferencecreatedonbehalfby Lkbcgovactregulationreferencecreatedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovactregulationreferencemodifiedby.
+        /// </summary>
+        public virtual ILkbcgovactregulationreferencemodifiedby Lkbcgovactregulationreferencemodifiedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovactregulationreferencemodifiedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovactregulationreferencemodifiedonbehalfby Lkbcgovactregulationreferencemodifiedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovapplicationtypecreatedby.
+        /// </summary>
+        public virtual ILkbcgovapplicationtypecreatedby Lkbcgovapplicationtypecreatedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovapplicationtypecreatedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovapplicationtypecreatedonbehalfby Lkbcgovapplicationtypecreatedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovapplicationtypemodifiedby.
+        /// </summary>
+        public virtual ILkbcgovapplicationtypemodifiedby Lkbcgovapplicationtypemodifiedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovapplicationtypemodifiedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovapplicationtypemodifiedonbehalfby Lkbcgovapplicationtypemodifiedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovareacreatedby.
+        /// </summary>
+        public virtual ILkbcgovareacreatedby Lkbcgovareacreatedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovareacreatedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovareacreatedonbehalfby Lkbcgovareacreatedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovareamodifiedby.
+        /// </summary>
+        public virtual ILkbcgovareamodifiedby Lkbcgovareamodifiedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovareamodifiedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovareamodifiedonbehalfby Lkbcgovareamodifiedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovbusinesscontactcreatedby.
+        /// </summary>
+        public virtual ILkbcgovbusinesscontactcreatedby Lkbcgovbusinesscontactcreatedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovbusinesscontactcreatedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovbusinesscontactcreatedonbehalfby Lkbcgovbusinesscontactcreatedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovbusinesscontactmodifiedby.
+        /// </summary>
+        public virtual ILkbcgovbusinesscontactmodifiedby Lkbcgovbusinesscontactmodifiedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovbusinesscontactmodifiedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovbusinesscontactmodifiedonbehalfby Lkbcgovbusinesscontactmodifiedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcecontactcreatedby.
+        /// </summary>
+        public virtual ILkbcgovcecontactcreatedby Lkbcgovcecontactcreatedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcecontactcreatedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovcecontactcreatedonbehalfby Lkbcgovcecontactcreatedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcecontactmodifiedby.
+        /// </summary>
+        public virtual ILkbcgovcecontactmodifiedby Lkbcgovcecontactmodifiedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcecontactmodifiedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovcecontactmodifiedonbehalfby Lkbcgovcecontactmodifiedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcecontacttypecreatedby.
+        /// </summary>
+        public virtual ILkbcgovcecontacttypecreatedby Lkbcgovcecontacttypecreatedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcecontacttypecreatedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovcecontacttypecreatedonbehalfby Lkbcgovcecontacttypecreatedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcecontacttypemodifiedby.
+        /// </summary>
+        public virtual ILkbcgovcecontacttypemodifiedby Lkbcgovcecontacttypemodifiedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcecontacttypemodifiedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovcecontacttypemodifiedonbehalfby Lkbcgovcecontacttypemodifiedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcertificatecreatedby.
+        /// </summary>
+        public virtual ILkbcgovcertificatecreatedby Lkbcgovcertificatecreatedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcertificatecreatedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovcertificatecreatedonbehalfby Lkbcgovcertificatecreatedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcertificatemodifiedby.
+        /// </summary>
+        public virtual ILkbcgovcertificatemodifiedby Lkbcgovcertificatemodifiedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcertificatemodifiedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovcertificatemodifiedonbehalfby Lkbcgovcertificatemodifiedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcertificateapprovedproductcreatedby.
+        /// </summary>
+        public virtual ILkbcgovcertificateapprovedproductcreatedby Lkbcgovcertificateapprovedproductcreatedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcertificateapprovedproductcreatedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovcertificateapprovedproductcreatedonbehalfby Lkbcgovcertificateapprovedproductcreatedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcertificateapprovedproductmodifiedby.
+        /// </summary>
+        public virtual ILkbcgovcertificateapprovedproductmodifiedby Lkbcgovcertificateapprovedproductmodifiedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcertificateapprovedproductmodifiedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovcertificateapprovedproductmodifiedonbehalfby Lkbcgovcertificateapprovedproductmodifiedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcertificatetermsandconditionscreatedby.
+        /// </summary>
+        public virtual ILkbcgovcertificatetermsandconditionscreatedby Lkbcgovcertificatetermsandconditionscreatedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcertificatetermsandconditionscreatedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovcertificatetermsandconditionscreatedonbehalfby Lkbcgovcertificatetermsandconditionscreatedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcertificatetermsandconditionsmodifiedby.
+        /// </summary>
+        public virtual ILkbcgovcertificatetermsandconditionsmodifiedby Lkbcgovcertificatetermsandconditionsmodifiedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcertificatetermsandconditionsmodifiedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovcertificatetermsandconditionsmodifiedonbehalfby Lkbcgovcertificatetermsandconditionsmodifiedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcomplaintcreatedby.
+        /// </summary>
+        public virtual ILkbcgovcomplaintcreatedby Lkbcgovcomplaintcreatedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcomplaintcreatedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovcomplaintcreatedonbehalfby Lkbcgovcomplaintcreatedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcomplaintmodifiedby.
+        /// </summary>
+        public virtual ILkbcgovcomplaintmodifiedby Lkbcgovcomplaintmodifiedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcomplaintmodifiedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovcomplaintmodifiedonbehalfby Lkbcgovcomplaintmodifiedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcomplaintchecklistcreatedby.
+        /// </summary>
+        public virtual ILkbcgovcomplaintchecklistcreatedby Lkbcgovcomplaintchecklistcreatedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcomplaintchecklistcreatedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovcomplaintchecklistcreatedonbehalfby Lkbcgovcomplaintchecklistcreatedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcomplaintchecklistmodifiedby.
+        /// </summary>
+        public virtual ILkbcgovcomplaintchecklistmodifiedby Lkbcgovcomplaintchecklistmodifiedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcomplaintchecklistmodifiedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovcomplaintchecklistmodifiedonbehalfby Lkbcgovcomplaintchecklistmodifiedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcomplaintcomplaintprocessflowcreatedby.
+        /// </summary>
+        public virtual ILkbcgovcomplaintcomplaintprocessflowcreatedby Lkbcgovcomplaintcomplaintprocessflowcreatedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcomplaintcomplaintprocessflowcreatedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovcomplaintcomplaintprocessflowcreatedonbehalfby Lkbcgovcomplaintcomplaintprocessflowcreatedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcomplaintcomplaintprocessflowmodifiedby.
+        /// </summary>
+        public virtual ILkbcgovcomplaintcomplaintprocessflowmodifiedby Lkbcgovcomplaintcomplaintprocessflowmodifiedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcomplaintcomplaintprocessflowmodifiedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovcomplaintcomplaintprocessflowmodifiedonbehalfby Lkbcgovcomplaintcomplaintprocessflowmodifiedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcustomaddresscreatedby.
+        /// </summary>
+        public virtual ILkbcgovcustomaddresscreatedby Lkbcgovcustomaddresscreatedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcustomaddresscreatedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovcustomaddresscreatedonbehalfby Lkbcgovcustomaddresscreatedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcustomaddressmodifiedby.
+        /// </summary>
+        public virtual ILkbcgovcustomaddressmodifiedby Lkbcgovcustomaddressmodifiedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcustomaddressmodifiedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovcustomaddressmodifiedonbehalfby Lkbcgovcustomaddressmodifiedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcustomproductcreatedby.
+        /// </summary>
+        public virtual ILkbcgovcustomproductcreatedby Lkbcgovcustomproductcreatedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcustomproductcreatedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovcustomproductcreatedonbehalfby Lkbcgovcustomproductcreatedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcustomproductmodifiedby.
+        /// </summary>
+        public virtual ILkbcgovcustomproductmodifiedby Lkbcgovcustomproductmodifiedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcustomproductmodifiedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovcustomproductmodifiedonbehalfby Lkbcgovcustomproductmodifiedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcustomusercreatedby.
+        /// </summary>
+        public virtual ILkbcgovcustomusercreatedby Lkbcgovcustomusercreatedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcustomusercreatedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovcustomusercreatedonbehalfby Lkbcgovcustomusercreatedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcustomusermodifiedby.
+        /// </summary>
+        public virtual ILkbcgovcustomusermodifiedby Lkbcgovcustomusermodifiedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcustomusermodifiedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovcustomusermodifiedonbehalfby Lkbcgovcustomusermodifiedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovequipmentcreatedby.
+        /// </summary>
+        public virtual ILkbcgovequipmentcreatedby Lkbcgovequipmentcreatedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovequipmentcreatedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovequipmentcreatedonbehalfby Lkbcgovequipmentcreatedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovequipmentmodifiedby.
+        /// </summary>
+        public virtual ILkbcgovequipmentmodifiedby Lkbcgovequipmentmodifiedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovequipmentmodifiedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovequipmentmodifiedonbehalfby Lkbcgovequipmentmodifiedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovequipmentlocationcreatedby.
+        /// </summary>
+        public virtual ILkbcgovequipmentlocationcreatedby Lkbcgovequipmentlocationcreatedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovequipmentlocationcreatedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovequipmentlocationcreatedonbehalfby Lkbcgovequipmentlocationcreatedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovequipmentlocationmodifiedby.
+        /// </summary>
+        public virtual ILkbcgovequipmentlocationmodifiedby Lkbcgovequipmentlocationmodifiedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovequipmentlocationmodifiedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovequipmentlocationmodifiedonbehalfby Lkbcgovequipmentlocationmodifiedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinspectioncreatedby.
+        /// </summary>
+        public virtual ILkbcgovinspectioncreatedby Lkbcgovinspectioncreatedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinspectioncreatedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovinspectioncreatedonbehalfby Lkbcgovinspectioncreatedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinspectionmodifiedby.
+        /// </summary>
+        public virtual ILkbcgovinspectionmodifiedby Lkbcgovinspectionmodifiedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinspectionmodifiedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovinspectionmodifiedonbehalfby Lkbcgovinspectionmodifiedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinspectionchecklistcreatedby.
+        /// </summary>
+        public virtual ILkbcgovinspectionchecklistcreatedby Lkbcgovinspectionchecklistcreatedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinspectionchecklistcreatedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovinspectionchecklistcreatedonbehalfby Lkbcgovinspectionchecklistcreatedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinspectionchecklistmodifiedby.
+        /// </summary>
+        public virtual ILkbcgovinspectionchecklistmodifiedby Lkbcgovinspectionchecklistmodifiedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinspectionchecklistmodifiedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovinspectionchecklistmodifiedonbehalfby Lkbcgovinspectionchecklistmodifiedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinspectionownershipcategorycreatedby.
+        /// </summary>
+        public virtual ILkbcgovinspectionownershipcategorycreatedby Lkbcgovinspectionownershipcategorycreatedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinspectionownershipcategorycreatedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovinspectionownershipcategorycreatedonbehalfby Lkbcgovinspectionownershipcategorycreatedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinspectionownershipcategorymodifiedby.
+        /// </summary>
+        public virtual ILkbcgovinspectionownershipcategorymodifiedby Lkbcgovinspectionownershipcategorymodifiedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinspectionownershipcategorymodifiedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovinspectionownershipcategorymodifiedonbehalfby Lkbcgovinspectionownershipcategorymodifiedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinspectionprocessflowcreatedby.
+        /// </summary>
+        public virtual ILkbcgovinspectionprocessflowcreatedby Lkbcgovinspectionprocessflowcreatedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinspectionprocessflowcreatedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovinspectionprocessflowcreatedonbehalfby Lkbcgovinspectionprocessflowcreatedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinspectionprocessflowmodifiedby.
+        /// </summary>
+        public virtual ILkbcgovinspectionprocessflowmodifiedby Lkbcgovinspectionprocessflowmodifiedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinspectionprocessflowmodifiedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovinspectionprocessflowmodifiedonbehalfby Lkbcgovinspectionprocessflowmodifiedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinvestigationcreatedby.
+        /// </summary>
+        public virtual ILkbcgovinvestigationcreatedby Lkbcgovinvestigationcreatedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinvestigationcreatedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovinvestigationcreatedonbehalfby Lkbcgovinvestigationcreatedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinvestigationmodifiedby.
+        /// </summary>
+        public virtual ILkbcgovinvestigationmodifiedby Lkbcgovinvestigationmodifiedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinvestigationmodifiedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovinvestigationmodifiedonbehalfby Lkbcgovinvestigationmodifiedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinvestigationstepcreatedby.
+        /// </summary>
+        public virtual ILkbcgovinvestigationstepcreatedby Lkbcgovinvestigationstepcreatedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinvestigationstepcreatedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovinvestigationstepcreatedonbehalfby Lkbcgovinvestigationstepcreatedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinvestigationstepmodifiedby.
+        /// </summary>
+        public virtual ILkbcgovinvestigationstepmodifiedby Lkbcgovinvestigationstepmodifiedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinvestigationstepmodifiedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovinvestigationstepmodifiedonbehalfby Lkbcgovinvestigationstepmodifiedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovlocationcreatedby.
+        /// </summary>
+        public virtual ILkbcgovlocationcreatedby Lkbcgovlocationcreatedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovlocationcreatedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovlocationcreatedonbehalfby Lkbcgovlocationcreatedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovlocationmodifiedby.
+        /// </summary>
+        public virtual ILkbcgovlocationmodifiedby Lkbcgovlocationmodifiedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovlocationmodifiedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovlocationmodifiedonbehalfby Lkbcgovlocationmodifiedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovpostalcodecreatedby.
+        /// </summary>
+        public virtual ILkbcgovpostalcodecreatedby Lkbcgovpostalcodecreatedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovpostalcodecreatedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovpostalcodecreatedonbehalfby Lkbcgovpostalcodecreatedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovpostalcodemodifiedby.
+        /// </summary>
+        public virtual ILkbcgovpostalcodemodifiedby Lkbcgovpostalcodemodifiedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovpostalcodemodifiedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovpostalcodemodifiedonbehalfby Lkbcgovpostalcodemodifiedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovregioncreatedby.
+        /// </summary>
+        public virtual ILkbcgovregioncreatedby Lkbcgovregioncreatedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovregioncreatedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovregioncreatedonbehalfby Lkbcgovregioncreatedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovregionmodifiedby.
+        /// </summary>
+        public virtual ILkbcgovregionmodifiedby Lkbcgovregionmodifiedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovregionmodifiedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovregionmodifiedonbehalfby Lkbcgovregionmodifiedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovriskassessmentcreatedby.
+        /// </summary>
+        public virtual ILkbcgovriskassessmentcreatedby Lkbcgovriskassessmentcreatedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovriskassessmentcreatedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovriskassessmentcreatedonbehalfby Lkbcgovriskassessmentcreatedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovriskassessmentmodifiedby.
+        /// </summary>
+        public virtual ILkbcgovriskassessmentmodifiedby Lkbcgovriskassessmentmodifiedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovriskassessmentmodifiedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovriskassessmentmodifiedonbehalfby Lkbcgovriskassessmentmodifiedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovrolecreatedby.
+        /// </summary>
+        public virtual ILkbcgovrolecreatedby Lkbcgovrolecreatedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovrolecreatedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovrolecreatedonbehalfby Lkbcgovrolecreatedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovrolemodifiedby.
+        /// </summary>
+        public virtual ILkbcgovrolemodifiedby Lkbcgovrolemodifiedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovrolemodifiedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovrolemodifiedonbehalfby Lkbcgovrolemodifiedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovtermsconditionspresetcreatedby.
+        /// </summary>
+        public virtual ILkbcgovtermsconditionspresetcreatedby Lkbcgovtermsconditionspresetcreatedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovtermsconditionspresetcreatedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovtermsconditionspresetcreatedonbehalfby Lkbcgovtermsconditionspresetcreatedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovtermsconditionspresetmodifiedby.
+        /// </summary>
+        public virtual ILkbcgovtermsconditionspresetmodifiedby Lkbcgovtermsconditionspresetmodifiedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovtermsconditionspresetmodifiedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovtermsconditionspresetmodifiedonbehalfby Lkbcgovtermsconditionspresetmodifiedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovviolationticketcreatedby.
+        /// </summary>
+        public virtual ILkbcgovviolationticketcreatedby Lkbcgovviolationticketcreatedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovviolationticketcreatedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovviolationticketcreatedonbehalfby Lkbcgovviolationticketcreatedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovviolationticketmodifiedby.
+        /// </summary>
+        public virtual ILkbcgovviolationticketmodifiedby Lkbcgovviolationticketmodifiedby { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovviolationticketmodifiedonbehalfby.
+        /// </summary>
+        public virtual ILkbcgovviolationticketmodifiedonbehalfby Lkbcgovviolationticketmodifiedonbehalfby { get; private set; }
+
+        /// <summary>
+        /// Gets the IUserbcgovactregulationreference.
+        /// </summary>
+        public virtual IUserbcgovactregulationreference Userbcgovactregulationreference { get; private set; }
+
+        /// <summary>
+        /// Gets the IUserbcgovapplicationtype.
+        /// </summary>
+        public virtual IUserbcgovapplicationtype Userbcgovapplicationtype { get; private set; }
+
+        /// <summary>
+        /// Gets the IUserbcgovarea.
+        /// </summary>
+        public virtual IUserbcgovarea Userbcgovarea { get; private set; }
+
+        /// <summary>
+        /// Gets the IUserbcgovbusinesscontact.
+        /// </summary>
+        public virtual IUserbcgovbusinesscontact Userbcgovbusinesscontact { get; private set; }
+
+        /// <summary>
+        /// Gets the IUserbcgovcecontact.
+        /// </summary>
+        public virtual IUserbcgovcecontact Userbcgovcecontact { get; private set; }
+
+        /// <summary>
+        /// Gets the IUserbcgovcecontacttype.
+        /// </summary>
+        public virtual IUserbcgovcecontacttype Userbcgovcecontacttype { get; private set; }
+
+        /// <summary>
+        /// Gets the IUserbcgovcertificate.
+        /// </summary>
+        public virtual IUserbcgovcertificate Userbcgovcertificate { get; private set; }
+
+        /// <summary>
+        /// Gets the IUserbcgovcertificateapprovedproduct.
+        /// </summary>
+        public virtual IUserbcgovcertificateapprovedproduct Userbcgovcertificateapprovedproduct { get; private set; }
+
+        /// <summary>
+        /// Gets the IUserbcgovcertificatetermsandconditions.
+        /// </summary>
+        public virtual IUserbcgovcertificatetermsandconditions Userbcgovcertificatetermsandconditions { get; private set; }
+
+        /// <summary>
+        /// Gets the IUserbcgovcomplaint.
+        /// </summary>
+        public virtual IUserbcgovcomplaint Userbcgovcomplaint { get; private set; }
+
+        /// <summary>
+        /// Gets the IUserbcgovcomplaintchecklist.
+        /// </summary>
+        public virtual IUserbcgovcomplaintchecklist Userbcgovcomplaintchecklist { get; private set; }
+
+        /// <summary>
+        /// Gets the IUserbcgovcustomaddress.
+        /// </summary>
+        public virtual IUserbcgovcustomaddress Userbcgovcustomaddress { get; private set; }
+
+        /// <summary>
+        /// Gets the IUserbcgovcustomproduct.
+        /// </summary>
+        public virtual IUserbcgovcustomproduct Userbcgovcustomproduct { get; private set; }
+
+        /// <summary>
+        /// Gets the IUserbcgovcustomuser.
+        /// </summary>
+        public virtual IUserbcgovcustomuser Userbcgovcustomuser { get; private set; }
+
+        /// <summary>
+        /// Gets the IUserbcgovequipment.
+        /// </summary>
+        public virtual IUserbcgovequipment Userbcgovequipment { get; private set; }
+
+        /// <summary>
+        /// Gets the IUserbcgovequipmentlocation.
+        /// </summary>
+        public virtual IUserbcgovequipmentlocation Userbcgovequipmentlocation { get; private set; }
+
+        /// <summary>
+        /// Gets the IUserbcgovinspection.
+        /// </summary>
+        public virtual IUserbcgovinspection Userbcgovinspection { get; private set; }
+
+        /// <summary>
+        /// Gets the IUserbcgovinspectionchecklist.
+        /// </summary>
+        public virtual IUserbcgovinspectionchecklist Userbcgovinspectionchecklist { get; private set; }
+
+        /// <summary>
+        /// Gets the IUserbcgovinspectionownershipcategory.
+        /// </summary>
+        public virtual IUserbcgovinspectionownershipcategory Userbcgovinspectionownershipcategory { get; private set; }
+
+        /// <summary>
+        /// Gets the IUserbcgovinvestigation.
+        /// </summary>
+        public virtual IUserbcgovinvestigation Userbcgovinvestigation { get; private set; }
+
+        /// <summary>
+        /// Gets the IUserbcgovinvestigationstep.
+        /// </summary>
+        public virtual IUserbcgovinvestigationstep Userbcgovinvestigationstep { get; private set; }
+
+        /// <summary>
+        /// Gets the IUserbcgovlocation.
+        /// </summary>
+        public virtual IUserbcgovlocation Userbcgovlocation { get; private set; }
+
+        /// <summary>
+        /// Gets the IUserbcgovpostalcode.
+        /// </summary>
+        public virtual IUserbcgovpostalcode Userbcgovpostalcode { get; private set; }
+
+        /// <summary>
+        /// Gets the IUserbcgovregion.
+        /// </summary>
+        public virtual IUserbcgovregion Userbcgovregion { get; private set; }
+
+        /// <summary>
+        /// Gets the IUserbcgovriskassessment.
+        /// </summary>
+        public virtual IUserbcgovriskassessment Userbcgovriskassessment { get; private set; }
+
+        /// <summary>
+        /// Gets the IUserbcgovrole.
+        /// </summary>
+        public virtual IUserbcgovrole Userbcgovrole { get; private set; }
+
+        /// <summary>
+        /// Gets the IUserbcgovtermsconditionspreset.
+        /// </summary>
+        public virtual IUserbcgovtermsconditionspreset Userbcgovtermsconditionspreset { get; private set; }
+
+        /// <summary>
+        /// Gets the IUserbcgovviolationticket.
+        /// </summary>
+        public virtual IUserbcgovviolationticket Userbcgovviolationticket { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcomplainttask.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcomplainttask Regardingobjectidbcgovcomplainttask { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomaddresstask.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcustomaddresstask Regardingobjectidbcgovcustomaddresstask { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovcustomproducttask.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovcustomproducttask Regardingobjectidbcgovcustomproducttask { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmenttask.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovequipmenttask Regardingobjectidbcgovequipmenttask { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovequipmentlocationtask.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovequipmentlocationtask Regardingobjectidbcgovequipmentlocationtask { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinspectiontask.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovinspectiontask Regardingobjectidbcgovinspectiontask { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationtask.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovinvestigationtask Regardingobjectidbcgovinvestigationtask { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovinvestigationsteptask.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovinvestigationsteptask Regardingobjectidbcgovinvestigationsteptask { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovlocationtask.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovlocationtask Regardingobjectidbcgovlocationtask { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovriskassessmenttask.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovriskassessmenttask Regardingobjectidbcgovriskassessmenttask { get; private set; }
+
+        /// <summary>
+        /// Gets the IRegardingobjectidbcgovviolationtickettask.
+        /// </summary>
+        public virtual IRegardingobjectidbcgovviolationtickettask Regardingobjectidbcgovviolationtickettask { get; private set; }
+
+        /// <summary>
+        /// Gets the ITeambcgovactregulationreference.
+        /// </summary>
+        public virtual ITeambcgovactregulationreference Teambcgovactregulationreference { get; private set; }
+
+        /// <summary>
+        /// Gets the ITeambcgovapplicationtype.
+        /// </summary>
+        public virtual ITeambcgovapplicationtype Teambcgovapplicationtype { get; private set; }
+
+        /// <summary>
+        /// Gets the ITeambcgovarea.
+        /// </summary>
+        public virtual ITeambcgovarea Teambcgovarea { get; private set; }
+
+        /// <summary>
+        /// Gets the ITeambcgovbusinesscontact.
+        /// </summary>
+        public virtual ITeambcgovbusinesscontact Teambcgovbusinesscontact { get; private set; }
+
+        /// <summary>
+        /// Gets the ITeambcgovcecontact.
+        /// </summary>
+        public virtual ITeambcgovcecontact Teambcgovcecontact { get; private set; }
+
+        /// <summary>
+        /// Gets the ITeambcgovcecontacttype.
+        /// </summary>
+        public virtual ITeambcgovcecontacttype Teambcgovcecontacttype { get; private set; }
+
+        /// <summary>
+        /// Gets the ITeambcgovcertificate.
+        /// </summary>
+        public virtual ITeambcgovcertificate Teambcgovcertificate { get; private set; }
+
+        /// <summary>
+        /// Gets the ITeambcgovcertificateapprovedproduct.
+        /// </summary>
+        public virtual ITeambcgovcertificateapprovedproduct Teambcgovcertificateapprovedproduct { get; private set; }
+
+        /// <summary>
+        /// Gets the ITeambcgovcertificatetermsandconditions.
+        /// </summary>
+        public virtual ITeambcgovcertificatetermsandconditions Teambcgovcertificatetermsandconditions { get; private set; }
+
+        /// <summary>
+        /// Gets the ITeambcgovcomplaint.
+        /// </summary>
+        public virtual ITeambcgovcomplaint Teambcgovcomplaint { get; private set; }
+
+        /// <summary>
+        /// Gets the ITeambcgovcomplaintchecklist.
+        /// </summary>
+        public virtual ITeambcgovcomplaintchecklist Teambcgovcomplaintchecklist { get; private set; }
+
+        /// <summary>
+        /// Gets the ITeambcgovcustomaddress.
+        /// </summary>
+        public virtual ITeambcgovcustomaddress Teambcgovcustomaddress { get; private set; }
+
+        /// <summary>
+        /// Gets the ITeambcgovcustomproduct.
+        /// </summary>
+        public virtual ITeambcgovcustomproduct Teambcgovcustomproduct { get; private set; }
+
+        /// <summary>
+        /// Gets the ITeambcgovcustomuser.
+        /// </summary>
+        public virtual ITeambcgovcustomuser Teambcgovcustomuser { get; private set; }
+
+        /// <summary>
+        /// Gets the ITeambcgovequipment.
+        /// </summary>
+        public virtual ITeambcgovequipment Teambcgovequipment { get; private set; }
+
+        /// <summary>
+        /// Gets the ITeambcgovequipmentlocation.
+        /// </summary>
+        public virtual ITeambcgovequipmentlocation Teambcgovequipmentlocation { get; private set; }
+
+        /// <summary>
+        /// Gets the ITeambcgovinspection.
+        /// </summary>
+        public virtual ITeambcgovinspection Teambcgovinspection { get; private set; }
+
+        /// <summary>
+        /// Gets the ITeambcgovinspectionchecklist.
+        /// </summary>
+        public virtual ITeambcgovinspectionchecklist Teambcgovinspectionchecklist { get; private set; }
+
+        /// <summary>
+        /// Gets the ITeambcgovinspectionownershipcategory.
+        /// </summary>
+        public virtual ITeambcgovinspectionownershipcategory Teambcgovinspectionownershipcategory { get; private set; }
+
+        /// <summary>
+        /// Gets the ITeambcgovinvestigation.
+        /// </summary>
+        public virtual ITeambcgovinvestigation Teambcgovinvestigation { get; private set; }
+
+        /// <summary>
+        /// Gets the ITeambcgovinvestigationstep.
+        /// </summary>
+        public virtual ITeambcgovinvestigationstep Teambcgovinvestigationstep { get; private set; }
+
+        /// <summary>
+        /// Gets the ITeambcgovlocation.
+        /// </summary>
+        public virtual ITeambcgovlocation Teambcgovlocation { get; private set; }
+
+        /// <summary>
+        /// Gets the ITeambcgovpostalcode.
+        /// </summary>
+        public virtual ITeambcgovpostalcode Teambcgovpostalcode { get; private set; }
+
+        /// <summary>
+        /// Gets the ITeambcgovregion.
+        /// </summary>
+        public virtual ITeambcgovregion Teambcgovregion { get; private set; }
+
+        /// <summary>
+        /// Gets the ITeambcgovriskassessment.
+        /// </summary>
+        public virtual ITeambcgovriskassessment Teambcgovriskassessment { get; private set; }
+
+        /// <summary>
+        /// Gets the ITeambcgovrole.
+        /// </summary>
+        public virtual ITeambcgovrole Teambcgovrole { get; private set; }
+
+        /// <summary>
+        /// Gets the ITeambcgovtermsconditionspreset.
+        /// </summary>
+        public virtual ITeambcgovtermsconditionspreset Teambcgovtermsconditionspreset { get; private set; }
+
+        /// <summary>
+        /// Gets the ITeambcgovviolationticket.
+        /// </summary>
+        public virtual ITeambcgovviolationticket Teambcgovviolationticket { get; private set; }
+
+        /// <summary>
+        /// Gets the IAsyncoperationidbcgovcomplaintcomplaintprocessflow.
+        /// </summary>
+        public virtual IAsyncoperationidbcgovcomplaintcomplaintprocessflow Asyncoperationidbcgovcomplaintcomplaintprocessflow { get; private set; }
+
+        /// <summary>
+        /// Gets the IAsyncoperationidbcgovinspectionprocessflow.
+        /// </summary>
+        public virtual IAsyncoperationidbcgovinspectionprocessflow Asyncoperationidbcgovinspectionprocessflow { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovcomplaintcomplaintprocessflowprocessid.
+        /// </summary>
+        public virtual ILkbcgovcomplaintcomplaintprocessflowprocessid Lkbcgovcomplaintcomplaintprocessflowprocessid { get; private set; }
+
+        /// <summary>
+        /// Gets the ILkbcgovinspectionprocessflowprocessid.
+        /// </summary>
+        public virtual ILkbcgovinspectionprocessflowprocessid Lkbcgovinspectionprocessflowprocessid { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the DynamicsClient class.
@@ -508,51 +5187,982 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         private void Initialize()
         {
             Accounts = new Accounts(this);
+            Accountbcgovbusinesscontactbusinessprofile = new Accountbcgovbusinesscontactbusinessprofile(this);
+            Accountbcgovcertificatecertificateholderbusiness = new Accountbcgovcertificatecertificateholderbusiness(this);
+            Accountbcgovcomplaintbusinesslegalname = new Accountbcgovcomplaintbusinesslegalname(this);
+            Accountcontactbusinesslegalname = new Accountcontactbusinesslegalname(this);
+            Accountcustomaddress = new Accountcustomaddress(this);
+            Accountcustomaddressbusinessprofile = new Accountcustomaddressbusinessprofile(this);
+            Accountequipmentcurrentbusinessowner = new Accountequipmentcurrentbusinessowner(this);
+            Accountinspectionbusinesslegalname = new Accountinspectionbusinesslegalname(this);
+            Accountinspectionownercategory = new Accountinspectionownercategory(this);
+            Accountlocationbusinessprofile = new Accountlocationbusinessprofile(this);
+            Additionalcontact = new Additionalcontact(this);
+            Currentbusinessmailingaddress = new Currentbusinessmailingaddress(this);
+            Currentbusinessphysicaladdress = new Currentbusinessphysicaladdress(this);
+            Currentregisteredsellercertificate = new Currentregisteredsellercertificate(this);
+            Currentwaivercertificate = new Currentwaivercertificate(this);
+            Partyidbcgovcomplaint = new Partyidbcgovcomplaint(this);
+            Partyidbcgovcustomaddress = new Partyidbcgovcustomaddress(this);
+            Partyidbcgovcustomproduct = new Partyidbcgovcustomproduct(this);
+            Partyidbcgovequipment = new Partyidbcgovequipment(this);
+            Partyidbcgovequipmentlocation = new Partyidbcgovequipmentlocation(this);
+            Partyidbcgovinspection = new Partyidbcgovinspection(this);
+            Partyidbcgovinvestigation = new Partyidbcgovinvestigation(this);
+            Partyidbcgovlocation = new Partyidbcgovlocation(this);
+            Partyidbcgovriskassessment = new Partyidbcgovriskassessment(this);
+            Partyidbcgovviolationticket = new Partyidbcgovviolationticket(this);
+            Regardingobjectidbcgovcomplaint = new Regardingobjectidbcgovcomplaint(this);
+            Regardingobjectidbcgovcustomaddress = new Regardingobjectidbcgovcustomaddress(this);
+            Regardingobjectidbcgovcustomproduct = new Regardingobjectidbcgovcustomproduct(this);
+            Regardingobjectidbcgovequipment = new Regardingobjectidbcgovequipment(this);
+            Regardingobjectidbcgovequipmentlocation = new Regardingobjectidbcgovequipmentlocation(this);
+            Regardingobjectidbcgovinspection = new Regardingobjectidbcgovinspection(this);
+            Regardingobjectidbcgovinvestigation = new Regardingobjectidbcgovinvestigation(this);
+            Regardingobjectidbcgovinvestigationstep = new Regardingobjectidbcgovinvestigationstep(this);
+            Regardingobjectidbcgovlocation = new Regardingobjectidbcgovlocation(this);
+            Regardingobjectidbcgovriskassessment = new Regardingobjectidbcgovriskassessment(this);
+            Regardingobjectidbcgovviolationticket = new Regardingobjectidbcgovviolationticket(this);
+            Objectidbcgovcomplaint = new Objectidbcgovcomplaint(this);
+            Objectidbcgovcustomaddress = new Objectidbcgovcustomaddress(this);
+            Objectidbcgovequipment = new Objectidbcgovequipment(this);
+            Objectidbcgovequipmentlocation = new Objectidbcgovequipmentlocation(this);
+            Objectidbcgovinspection = new Objectidbcgovinspection(this);
+            Objectidbcgovinvestigation = new Objectidbcgovinvestigation(this);
+            Objectidbcgovinvestigationstep = new Objectidbcgovinvestigationstep(this);
+            Objectidbcgovlocation = new Objectidbcgovlocation(this);
+            Objectidbcgovriskassessment = new Objectidbcgovriskassessment(this);
+            Objectidbcgovviolationticket = new Objectidbcgovviolationticket(this);
+            Regardingobjectidbcgovcomplaintappointment = new Regardingobjectidbcgovcomplaintappointment(this);
+            Regardingobjectidbcgovcustomaddressappointment = new Regardingobjectidbcgovcustomaddressappointment(this);
+            Regardingobjectidbcgovcustomproductappointment = new Regardingobjectidbcgovcustomproductappointment(this);
+            Regardingobjectidbcgovequipmentappointment = new Regardingobjectidbcgovequipmentappointment(this);
+            Regardingobjectidbcgovequipmentlocationappointment = new Regardingobjectidbcgovequipmentlocationappointment(this);
+            Regardingobjectidbcgovinspectionappointment = new Regardingobjectidbcgovinspectionappointment(this);
+            Regardingobjectidbcgovinvestigationappointment = new Regardingobjectidbcgovinvestigationappointment(this);
+            Regardingobjectidbcgovinvestigationstepappointment = new Regardingobjectidbcgovinvestigationstepappointment(this);
+            Regardingobjectidbcgovlocationappointment = new Regardingobjectidbcgovlocationappointment(this);
+            Regardingobjectidbcgovriskassessmentappointment = new Regardingobjectidbcgovriskassessmentappointment(this);
+            Regardingobjectidbcgovviolationticketappointment = new Regardingobjectidbcgovviolationticketappointment(this);
+            Regardingobjectidbcgovactregulationreference = new Regardingobjectidbcgovactregulationreference(this);
+            Regardingobjectidbcgovapplicationtype = new Regardingobjectidbcgovapplicationtype(this);
+            Regardingobjectidbcgovarea = new Regardingobjectidbcgovarea(this);
+            Regardingobjectidbcgovbusinesscontact = new Regardingobjectidbcgovbusinesscontact(this);
+            Regardingobjectidbcgovcecontact = new Regardingobjectidbcgovcecontact(this);
+            Regardingobjectidbcgovcecontacttype = new Regardingobjectidbcgovcecontacttype(this);
+            Regardingobjectidbcgovcertificate = new Regardingobjectidbcgovcertificate(this);
+            Regardingobjectidbcgovcertificateapprovedproduct = new Regardingobjectidbcgovcertificateapprovedproduct(this);
+            Regardingobjectidbcgovcertificatetermsandconditions = new Regardingobjectidbcgovcertificatetermsandconditions(this);
+            Regardingobjectidbcgovcomplaintchecklist = new Regardingobjectidbcgovcomplaintchecklist(this);
+            Regardingobjectidbcgovcomplaintcomplaintprocessflow = new Regardingobjectidbcgovcomplaintcomplaintprocessflow(this);
+            Regardingobjectidbcgovcustomuser = new Regardingobjectidbcgovcustomuser(this);
+            Regardingobjectidbcgovinspectionchecklist = new Regardingobjectidbcgovinspectionchecklist(this);
+            Regardingobjectidbcgovinspectionownershipcategory = new Regardingobjectidbcgovinspectionownershipcategory(this);
+            Regardingobjectidbcgovinspectionprocessflow = new Regardingobjectidbcgovinspectionprocessflow(this);
+            Regardingobjectidbcgovpostalcode = new Regardingobjectidbcgovpostalcode(this);
+            Regardingobjectidbcgovregion = new Regardingobjectidbcgovregion(this);
+            Regardingobjectidbcgovrole = new Regardingobjectidbcgovrole(this);
+            Regardingobjectidbcgovtermsconditionspreset = new Regardingobjectidbcgovtermsconditionspreset(this);
             Actregulationreferences = new Actregulationreferences(this);
+            Actregulationreferenceasyncoperations = new Actregulationreferenceasyncoperations(this);
+            Actregulationreferencebulkdeletefailures = new Actregulationreferencebulkdeletefailures(this);
+            Actregulationreferencecomplaintchecklistactregulationreference = new Actregulationreferencecomplaintchecklistactregulationreference(this);
+            Actregulationreferenceduplicatebaserecord = new Actregulationreferenceduplicatebaserecord(this);
+            Actregulationreferenceduplicatematchingrecord = new Actregulationreferenceduplicatematchingrecord(this);
+            Actregulationreferenceinspectionchecklistactregulationreference = new Actregulationreferenceinspectionchecklistactregulationreference(this);
+            Actregulationreferenceinvestigationstepactregulationreference = new Actregulationreferenceinvestigationstepactregulationreference(this);
+            Actregulationreferencesyncerrors = new Actregulationreferencesyncerrors(this);
+            Inspectionactregulationrefer = new Inspectionactregulationrefer(this);
+            Inspectionchecklistactregula = new Inspectionchecklistactregula(this);
             Applicationtypes = new Applicationtypes(this);
+            Applicationtypeasyncoperations = new Applicationtypeasyncoperations(this);
+            Applicationtypebcgovcertificatecertificatetype = new Applicationtypebcgovcertificatecertificatetype(this);
+            Applicationtypebcgovcertificatetermsandconditionscertificatetype = new Applicationtypebcgovcertificatetermsandconditionscertificatetype(this);
+            Applicationtypebcgovtermsconditionspresetapplicationtype = new Applicationtypebcgovtermsconditionspresetapplicationtype(this);
+            Applicationtypebulkdeletefailures = new Applicationtypebulkdeletefailures(this);
+            Applicationtypeduplicatebaserecord = new Applicationtypeduplicatebaserecord(this);
+            Applicationtypeduplicatematchingrecord = new Applicationtypeduplicatematchingrecord(this);
+            Applicationtypeincidentapplicationtypeid = new Applicationtypeincidentapplicationtypeid(this);
+            Applicationtypesyncerrors = new Applicationtypesyncerrors(this);
             Areas = new Areas(this);
+            Areaasyncoperations = new Areaasyncoperations(this);
+            Areabcgovpostalcodearea = new Areabcgovpostalcodearea(this);
+            Areabulkdeletefailures = new Areabulkdeletefailures(this);
+            Areaduplicatebaserecord = new Areaduplicatebaserecord(this);
+            Areaduplicatematchingrecord = new Areaduplicatematchingrecord(this);
+            Arealocationlocationarea = new Arealocationlocationarea(this);
+            Areasyncerrors = new Areasyncerrors(this);
+            Region = new Region(this);
             Businesscontacts = new Businesscontacts(this);
+            Businesscontactasyncoperations = new Businesscontactasyncoperations(this);
+            Businesscontactbulkdeletefailures = new Businesscontactbulkdeletefailures(this);
+            Businesscontactduplicatebaserecord = new Businesscontactduplicatebaserecord(this);
+            Businesscontactduplicatematchingrecord = new Businesscontactduplicatematchingrecord(this);
+            Businesscontactsyncerrors = new Businesscontactsyncerrors(this);
+            Businessprofile = new Businessprofile(this);
+            Contact = new Contact(this);
+            Incidentbusinesscontact = new Incidentbusinesscontact(this);
             Cecontacts = new Cecontacts(this);
+            Cecontactasyncoperations = new Cecontactasyncoperations(this);
+            Cecontactbulkdeletefailures = new Cecontactbulkdeletefailures(this);
+            Cecontactduplicatebaserecord = new Cecontactduplicatebaserecord(this);
+            Cecontactduplicatematchingrecord = new Cecontactduplicatematchingrecord(this);
+            Cecontactsyncerrors = new Cecontactsyncerrors(this);
+            Cecontacttype = new Cecontacttype(this);
+            Complaint = new Complaint(this);
+            Contactid = new Contactid(this);
+            Investigation = new Investigation(this);
+            Investigationcecontact = new Investigationcecontact(this);
             Cecontacttypes = new Cecontacttypes(this);
+            Cecontacttypeasyncoperations = new Cecontacttypeasyncoperations(this);
+            Cecontacttypebulkdeletefailures = new Cecontacttypebulkdeletefailures(this);
+            Cecontacttypececontactcecontacttype = new Cecontacttypececontactcecontacttype(this);
+            Cecontacttypeduplicatebaserecord = new Cecontacttypeduplicatebaserecord(this);
+            Cecontacttypeduplicatematchingrecord = new Cecontacttypeduplicatematchingrecord(this);
+            Cecontacttypesyncerrors = new Cecontacttypesyncerrors(this);
             Certificateapprovedproducts = new Certificateapprovedproducts(this);
+            Certificateapprovedproductasyncoperations = new Certificateapprovedproductasyncoperations(this);
+            Certificateapprovedproductbulkdeletefailures = new Certificateapprovedproductbulkdeletefailures(this);
+            Certificateapprovedproductduplicatebaserecord = new Certificateapprovedproductduplicatebaserecord(this);
+            Certificateapprovedproductduplicatematchingrecord = new Certificateapprovedproductduplicatematchingrecord(this);
+            Certificateapprovedproductsyncerrors = new Certificateapprovedproductsyncerrors(this);
+            Certificateid = new Certificateid(this);
             Certificates = new Certificates(this);
+            Application = new Application(this);
+            Certificateaccountcurrentregisteredsellercertificate = new Certificateaccountcurrentregisteredsellercertificate(this);
+            Certificateaccountcurrentwaivercertificate = new Certificateaccountcurrentwaivercertificate(this);
+            Certificateasyncoperations = new Certificateasyncoperations(this);
+            Certificatebcgovcertificateapprovedproductcertificateid = new Certificatebcgovcertificateapprovedproductcertificateid(this);
+            Certificatebcgovcertificatetermsandconditionscertificate = new Certificatebcgovcertificatetermsandconditionscertificate(this);
+            Certificatebulkdeletefailures = new Certificatebulkdeletefailures(this);
+            Certificateduplicatebaserecord = new Certificateduplicatebaserecord(this);
+            Certificateduplicatematchingrecord = new Certificateduplicatematchingrecord(this);
+            Certificatesyncerrors = new Certificatesyncerrors(this);
+            Certificateholderbusiness = new Certificateholderbusiness(this);
+            Certificatetype = new Certificatetype(this);
+            Equipment = new Equipment(this);
             Certificatetermsandconditionses = new Certificatetermsandconditionses(this);
-            Complaintcecontactset = new Complaintcecontactset(this);
+            Certificate = new Certificate(this);
+            Certificatetermsandconditionsasyncoperations = new Certificatetermsandconditionsasyncoperations(this);
+            Certificatetermsandconditionsbulkdeletefailures = new Certificatetermsandconditionsbulkdeletefailures(this);
+            Certificatetermsandconditionsduplicatebaserecord = new Certificatetermsandconditionsduplicatebaserecord(this);
+            Certificatetermsandconditionsduplicatematchingrecord = new Certificatetermsandconditionsduplicatematchingrecord(this);
+            Certificatetermsandconditionssyncerrors = new Certificatetermsandconditionssyncerrors(this);
+            Presetterms = new Presetterms(this);
+            Complaintequipmentset = new Complaintequipmentset(this);
+            Complaintinspectioncheckliset = new Complaintinspectioncheckliset(this);
+            Complaintchecklists = new Complaintchecklists(this);
+            Actregulationreference = new Actregulationreference(this);
+            Complaintchecklistasyncoperations = new Complaintchecklistasyncoperations(this);
+            Complaintchecklistbulkdeletefailures = new Complaintchecklistbulkdeletefailures(this);
+            Complaintchecklistduplicatebaserecord = new Complaintchecklistduplicatebaserecord(this);
+            Complaintchecklistduplicatematchingrecord = new Complaintchecklistduplicatematchingrecord(this);
+            Complaintchecklistsyncerrors = new Complaintchecklistsyncerrors(this);
+            Complaintcomplaintprocessflows = new Complaintcomplaintprocessflows(this);
+            Complaintcomplaintprocessflowasyncoperations = new Complaintcomplaintprocessflowasyncoperations(this);
+            Complaintcomplaintprocessflowbulkdeletefailures = new Complaintcomplaintprocessflowbulkdeletefailures(this);
+            Complaintcomplaintprocessflowsyncerrors = new Complaintcomplaintprocessflowsyncerrors(this);
+            Complaintcomplaintprocessflowworkflowlogs = new Complaintcomplaintprocessflowworkflowlogs(this);
+            Bpfbcgovcomplaintid = new Bpfbcgovcomplaintid(this);
             Complaints = new Complaints(this);
+            Assignto = new Assignto(this);
+            Businesslegalname = new Businesslegalname(this);
+            Complainant = new Complainant(this);
+            Complaintactivityparties = new Complaintactivityparties(this);
+            Complaintactivitypointers = new Complaintactivitypointers(this);
+            Complaintannotations = new Complaintannotations(this);
+            Complaintappointments = new Complaintappointments(this);
+            Complaintasyncoperations = new Complaintasyncoperations(this);
+            Complaintbulkdeletefailures = new Complaintbulkdeletefailures(this);
+            Complaintcecontactcomplaint = new Complaintcecontactcomplaint(this);
+            Complaintcomplaintchecklistcomplaint = new Complaintcomplaintchecklistcomplaint(this);
+            Complaintconnections1 = new Complaintconnections1(this);
+            Complaintconnections2 = new Complaintconnections2(this);
+            Complaintduplicatebaserecord = new Complaintduplicatebaserecord(this);
+            Complaintduplicatematchingrecord = new Complaintduplicatematchingrecord(this);
+            Complaintemails = new Complaintemails(this);
+            Complaintequipment = new Complaintequipment(this);
+            Complaintfaxes = new Complaintfaxes(this);
+            Complaintinspectionchecklist = new Complaintinspectionchecklist(this);
+            Complaintinvestigationcomplaint = new Complaintinvestigationcomplaint(this);
+            Complaintletters = new Complaintletters(this);
+            Complaintphonecalls = new Complaintphonecalls(this);
+            Complaintqueueitems = new Complaintqueueitems(this);
+            Complaintrecurringappointmentmasters = new Complaintrecurringappointmentmasters(this);
+            Complaintriskassessmentcomplaint = new Complaintriskassessmentcomplaint(this);
+            Complaintserviceappointments = new Complaintserviceappointments(this);
+            Complaintsharepointdocumentlocations = new Complaintsharepointdocumentlocations(this);
+            Complaintsocialactivities = new Complaintsocialactivities(this);
+            Complaintsyncerrors = new Complaintsyncerrors(this);
+            Complainttasks = new Complainttasks(this);
+            Location = new Location(this);
+            Riskassessment = new Riskassessment(this);
+            Bpfbcgovcomplaintbcgovcomplaintcomplaintprocessflow = new Bpfbcgovcomplaintbcgovcomplaintcomplaintprocessflow(this);
             Customaddresses = new Customaddresses(this);
+            Addressesid = new Addressesid(this);
+            Bcgovcustomaddressaccountcurrentbusinessmailingaddress = new Bcgovcustomaddressaccountcurrentbusinessmailingaddress(this);
+            Bcgovcustomaddressaccountcurrentbusinessphysicaladdress = new Bcgovcustomaddressaccountcurrentbusinessphysicaladdress(this);
+            Bcgovcustomaddressincidentaddressofbusinessthathasrentedorleased = new Bcgovcustomaddressincidentaddressofbusinessthathasrentedorleased(this);
+            Customaddressactivityparties = new Customaddressactivityparties(this);
+            Customaddressactivitypointers = new Customaddressactivitypointers(this);
+            Customaddressannotations = new Customaddressannotations(this);
+            Customaddressappointments = new Customaddressappointments(this);
+            Customaddressasyncoperations = new Customaddressasyncoperations(this);
+            Customaddressbulkdeletefailures = new Customaddressbulkdeletefailures(this);
+            Customaddressconnections1 = new Customaddressconnections1(this);
+            Customaddressconnections2 = new Customaddressconnections2(this);
+            Customaddresscontactaddress = new Customaddresscontactaddress(this);
+            Customaddresscontactbusinessaddress = new Customaddresscontactbusinessaddress(this);
+            Customaddressduplicatebaserecord = new Customaddressduplicatebaserecord(this);
+            Customaddressduplicatematchingrecord = new Customaddressduplicatematchingrecord(this);
+            Customaddressemails = new Customaddressemails(this);
+            Customaddressfaxes = new Customaddressfaxes(this);
+            Customaddressfeedback = new Customaddressfeedback(this);
+            Customaddressincidentaddressofbusinessthathasgivenorloaned = new Customaddressincidentaddressofbusinessthathasgivenorloaned(this);
+            Customaddressincidentaddressofpersonbusiness = new Customaddressincidentaddressofpersonbusiness(this);
+            Customaddressincidentaddresswhereequipmentwasdestroyed = new Customaddressincidentaddresswhereequipmentwasdestroyed(this);
+            Customaddressincidentbcsellersaddress = new Customaddressincidentbcsellersaddress(this);
+            Customaddressincidentcivicaddressofpurchaser = new Customaddressincidentcivicaddressofpurchaser(this);
+            Customaddressincidentimportersaddress = new Customaddressincidentimportersaddress(this);
+            Customaddressincidentoriginatingsellersaddress = new Customaddressincidentoriginatingsellersaddress(this);
+            Customaddressincidentoutsidebcsellersaddress = new Customaddressincidentoutsidebcsellersaddress(this);
+            Customaddressincidentpurchasersbusinessaddress = new Customaddressincidentpurchasersbusinessaddress(this);
+            Customaddressincidentpurchaserscivicaddress = new Customaddressincidentpurchaserscivicaddress(this);
+            Customaddressknowledgebaserecord = new Customaddressknowledgebaserecord(this);
+            Customaddressletters = new Customaddressletters(this);
+            Customaddresslocationlocationaddress = new Customaddresslocationlocationaddress(this);
+            Customaddressphonecalls = new Customaddressphonecalls(this);
+            Customaddressqueueitems = new Customaddressqueueitems(this);
+            Customaddressrecurringappointmentmasters = new Customaddressrecurringappointmentmasters(this);
+            Customaddressserviceappointments = new Customaddressserviceappointments(this);
+            Customaddressslakpiinstances = new Customaddressslakpiinstances(this);
+            Customaddresssocialactivities = new Customaddresssocialactivities(this);
+            Customaddresssyncerrors = new Customaddresssyncerrors(this);
+            Customaddresstasks = new Customaddresstasks(this);
             Customproducts = new Customproducts(this);
+            Customproductactivityparties = new Customproductactivityparties(this);
+            Customproductactivitypointers = new Customproductactivitypointers(this);
+            Customproductappointments = new Customproductappointments(this);
+            Customproductasyncoperations = new Customproductasyncoperations(this);
+            Customproductbulkdeletefailures = new Customproductbulkdeletefailures(this);
+            Customproductconnections1 = new Customproductconnections1(this);
+            Customproductconnections2 = new Customproductconnections2(this);
+            Customproductduplicatebaserecord = new Customproductduplicatebaserecord(this);
+            Customproductduplicatematchingrecord = new Customproductduplicatematchingrecord(this);
+            Customproductemails = new Customproductemails(this);
+            Customproductfaxes = new Customproductfaxes(this);
+            Customproductletters = new Customproductletters(this);
+            Customproductphonecalls = new Customproductphonecalls(this);
+            Customproductqueueitems = new Customproductqueueitems(this);
+            Customproductrecurringappointmentmasters = new Customproductrecurringappointmentmasters(this);
+            Customproductserviceappointments = new Customproductserviceappointments(this);
+            Customproductsocialactivities = new Customproductsocialactivities(this);
+            Customproductsyncerrors = new Customproductsyncerrors(this);
+            Customproducttasks = new Customproducttasks(this);
+            Relatedapplication = new Relatedapplication(this);
             Customusers = new Customusers(this);
+            Customuserasyncoperations = new Customuserasyncoperations(this);
+            Customuserbulkdeletefailures = new Customuserbulkdeletefailures(this);
+            Customuserduplicatebaserecord = new Customuserduplicatebaserecord(this);
+            Customuserduplicatematchingrecord = new Customuserduplicatematchingrecord(this);
+            Customusersyncerrors = new Customusersyncerrors(this);
+            Role = new Role(this);
+            User = new User(this);
             Equipmentlocations = new Equipmentlocations(this);
+            Equipmentlocationactivityparties = new Equipmentlocationactivityparties(this);
+            Equipmentlocationactivitypointers = new Equipmentlocationactivitypointers(this);
+            Equipmentlocationannotations = new Equipmentlocationannotations(this);
+            Equipmentlocationappointments = new Equipmentlocationappointments(this);
+            Equipmentlocationasyncoperations = new Equipmentlocationasyncoperations(this);
+            Equipmentlocationbulkdeletefailures = new Equipmentlocationbulkdeletefailures(this);
+            Equipmentlocationconnections1 = new Equipmentlocationconnections1(this);
+            Equipmentlocationconnections2 = new Equipmentlocationconnections2(this);
+            Equipmentlocationduplicatebaserecord = new Equipmentlocationduplicatebaserecord(this);
+            Equipmentlocationduplicatematchingrecord = new Equipmentlocationduplicatematchingrecord(this);
+            Equipmentlocationemails = new Equipmentlocationemails(this);
+            Equipmentlocationfaxes = new Equipmentlocationfaxes(this);
+            Equipmentlocationletters = new Equipmentlocationletters(this);
+            Equipmentlocationphonecalls = new Equipmentlocationphonecalls(this);
+            Equipmentlocationqueueitems = new Equipmentlocationqueueitems(this);
+            Equipmentlocationrecurringappointmentmasters = new Equipmentlocationrecurringappointmentmasters(this);
+            Equipmentlocationserviceappointments = new Equipmentlocationserviceappointments(this);
+            Equipmentlocationsocialactivities = new Equipmentlocationsocialactivities(this);
+            Equipmentlocationsyncerrors = new Equipmentlocationsyncerrors(this);
+            Equipmentlocationtasks = new Equipmentlocationtasks(this);
             Equipments = new Equipments(this);
+            Currentbusinessowner = new Currentbusinessowner(this);
+            Currentlocation = new Currentlocation(this);
+            Equipmentactivityparties = new Equipmentactivityparties(this);
+            Equipmentactivitypointers = new Equipmentactivitypointers(this);
+            Equipmentannotations = new Equipmentannotations(this);
+            Equipmentappointments = new Equipmentappointments(this);
+            Equipmentasyncoperations = new Equipmentasyncoperations(this);
+            Equipmentbcgovcertificateequipment = new Equipmentbcgovcertificateequipment(this);
+            Equipmentbulkdeletefailures = new Equipmentbulkdeletefailures(this);
+            Equipmentconnections1 = new Equipmentconnections1(this);
+            Equipmentconnections2 = new Equipmentconnections2(this);
+            Equipmentduplicatebaserecord = new Equipmentduplicatebaserecord(this);
+            Equipmentduplicatematchingrecord = new Equipmentduplicatematchingrecord(this);
+            Equipmentemails = new Equipmentemails(this);
+            Equipmentequipmentlocationequipment = new Equipmentequipmentlocationequipment(this);
+            Equipmentfaxes = new Equipmentfaxes(this);
+            Equipmentincident = new Equipmentincident(this);
+            Equipmentincidentequipmentrecord = new Equipmentincidentequipmentrecord(this);
+            Equipmentinspectionequipmentrecord = new Equipmentinspectionequipmentrecord(this);
+            Equipmentletters = new Equipmentletters(this);
+            Equipmentphonecalls = new Equipmentphonecalls(this);
+            Equipmentqueueitems = new Equipmentqueueitems(this);
+            Equipmentrecurringappointmentmasters = new Equipmentrecurringappointmentmasters(this);
+            Equipmentserviceappointments = new Equipmentserviceappointments(this);
+            Equipmentsocialactivities = new Equipmentsocialactivities(this);
+            Equipmentsyncerrors = new Equipmentsyncerrors(this);
+            Equipmenttasks = new Equipmenttasks(this);
+            Locationequipment = new Locationequipment(this);
             Incidentbusinesscontactset = new Incidentbusinesscontactset(this);
             Inspectionactregulationrefset = new Inspectionactregulationrefset(this);
             Inspectioninspectionchecklset = new Inspectioninspectionchecklset(this);
             Inspectionchecklistactreguset = new Inspectionchecklistactreguset(this);
             Inspectionchecklists = new Inspectionchecklists(this);
+            Inspection = new Inspection(this);
+            Inspectioninspectionchecklis = new Inspectioninspectionchecklis(this);
+            Inspectionchecklistasyncoperations = new Inspectionchecklistasyncoperations(this);
+            Inspectionchecklistbulkdeletefailures = new Inspectionchecklistbulkdeletefailures(this);
+            Inspectionchecklistduplicatebaserecord = new Inspectionchecklistduplicatebaserecord(this);
+            Inspectionchecklistduplicatematchingrecord = new Inspectionchecklistduplicatematchingrecord(this);
+            Inspectionchecklistsyncerrors = new Inspectionchecklistsyncerrors(this);
+            Inspectionchecklistviolationticketactregulationviolated = new Inspectionchecklistviolationticketactregulationviolated(this);
+            Investigationinspectioncheck = new Investigationinspectioncheck(this);
+            Violationticket = new Violationticket(this);
             Inspectionownershipcategories = new Inspectionownershipcategories(this);
+            Inspectionownershipcategoryasyncoperations = new Inspectionownershipcategoryasyncoperations(this);
+            Inspectionownershipcategorybulkdeletefailures = new Inspectionownershipcategorybulkdeletefailures(this);
+            Inspectionownershipcategoryduplicatebaserecord = new Inspectionownershipcategoryduplicatebaserecord(this);
+            Inspectionownershipcategoryduplicatematchingrecord = new Inspectionownershipcategoryduplicatematchingrecord(this);
+            Inspectionownershipcategoryinspectioninspectionownershipcategory = new Inspectionownershipcategoryinspectioninspectionownershipcategory(this);
+            Inspectionownershipcategorylocationinspectionownershipcategory = new Inspectionownershipcategorylocationinspectionownershipcategory(this);
+            Inspectionownershipcategorysyncerrors = new Inspectionownershipcategorysyncerrors(this);
             Inspectionprocessflows = new Inspectionprocessflows(this);
+            Inspectionprocessflowasyncoperations = new Inspectionprocessflowasyncoperations(this);
+            Inspectionprocessflowbulkdeletefailures = new Inspectionprocessflowbulkdeletefailures(this);
+            Inspectionprocessflowsyncerrors = new Inspectionprocessflowsyncerrors(this);
+            Inspectionprocessflowworkflowlogs = new Inspectionprocessflowworkflowlogs(this);
+            Bpfbcgovinspectionid = new Bpfbcgovinspectionid(this);
             Inspections = new Inspections(this);
+            Equipmentrecord = new Equipmentrecord(this);
+            Inspectionactivityparties = new Inspectionactivityparties(this);
+            Inspectionactivitypointers = new Inspectionactivitypointers(this);
+            Inspectionannotations = new Inspectionannotations(this);
+            Inspectionappointments = new Inspectionappointments(this);
+            Inspectionasyncoperations = new Inspectionasyncoperations(this);
+            Inspectionbulkdeletefailures = new Inspectionbulkdeletefailures(this);
+            Inspectionduplicatebaserecord = new Inspectionduplicatebaserecord(this);
+            Inspectionduplicatematchingrecord = new Inspectionduplicatematchingrecord(this);
+            Inspectionemails = new Inspectionemails(this);
+            Inspectionfaxes = new Inspectionfaxes(this);
+            Inspectionincidentnewinspectionrecord = new Inspectionincidentnewinspectionrecord(this);
+            Inspectioninspectionchecklistinspection = new Inspectioninspectionchecklistinspection(this);
+            Inspectionletters = new Inspectionletters(this);
+            Inspectionphonecalls = new Inspectionphonecalls(this);
+            Inspectionqueueitems = new Inspectionqueueitems(this);
+            Inspectionrecurringappointmentmasters = new Inspectionrecurringappointmentmasters(this);
+            Inspectionserviceappointments = new Inspectionserviceappointments(this);
+            Inspectionsharepointdocumentlocations = new Inspectionsharepointdocumentlocations(this);
+            Inspectionsocialactivities = new Inspectionsocialactivities(this);
+            Inspectionsyncerrors = new Inspectionsyncerrors(this);
+            Inspectiontasks = new Inspectiontasks(this);
+            Inspectionviolationticketinspection = new Inspectionviolationticketinspection(this);
+            Inspectionownershipcategory = new Inspectionownershipcategory(this);
+            Locationcontact = new Locationcontact(this);
+            Ownercategory = new Ownercategory(this);
+            Bpfbcgovinspectionbcgovinspectionprocessflow = new Bpfbcgovinspectionbcgovinspectionprocessflow(this);
+            Investigationcecontactset = new Investigationcecontactset(this);
+            Investigationinspectioncheckset = new Investigationinspectioncheckset(this);
             Investigations = new Investigations(this);
-            Investigationstepcecontactset = new Investigationstepcecontactset(this);
+            Investigationactivityparties = new Investigationactivityparties(this);
+            Investigationactivitypointers = new Investigationactivitypointers(this);
+            Investigationannotations = new Investigationannotations(this);
+            Investigationappointments = new Investigationappointments(this);
+            Investigationasyncoperations = new Investigationasyncoperations(this);
+            Investigationbcgovinvestigationstepincludeininvestigation = new Investigationbcgovinvestigationstepincludeininvestigation(this);
+            Investigationbulkdeletefailures = new Investigationbulkdeletefailures(this);
+            Investigationcecontactinvestigation = new Investigationcecontactinvestigation(this);
+            Investigationcomplaintinvestigation = new Investigationcomplaintinvestigation(this);
+            Investigationconnections1 = new Investigationconnections1(this);
+            Investigationconnections2 = new Investigationconnections2(this);
+            Investigationduplicatebaserecord = new Investigationduplicatebaserecord(this);
+            Investigationduplicatematchingrecord = new Investigationduplicatematchingrecord(this);
+            Investigationemails = new Investigationemails(this);
+            Investigationfaxes = new Investigationfaxes(this);
+            Investigationinspectionchecklistinvestigation = new Investigationinspectionchecklistinvestigation(this);
+            Investigationinvestigationstepinvestigation = new Investigationinvestigationstepinvestigation(this);
+            Investigationletters = new Investigationletters(this);
+            Investigationphonecalls = new Investigationphonecalls(this);
+            Investigationqueueitems = new Investigationqueueitems(this);
+            Investigationrecurringappointmentmasters = new Investigationrecurringappointmentmasters(this);
+            Investigationserviceappointments = new Investigationserviceappointments(this);
+            Investigationsharepointdocumentlocations = new Investigationsharepointdocumentlocations(this);
+            Investigationsocialactivities = new Investigationsocialactivities(this);
+            Investigationsyncerrors = new Investigationsyncerrors(this);
+            Investigationtasks = new Investigationtasks(this);
+            Investigationviolationticketinvestigation = new Investigationviolationticketinvestigation(this);
             Investigationsteps = new Investigationsteps(this);
+            Includeininvestigation = new Includeininvestigation(this);
+            Investigationstepactivitypointers = new Investigationstepactivitypointers(this);
+            Investigationstepannotations = new Investigationstepannotations(this);
+            Investigationstepappointments = new Investigationstepappointments(this);
+            Investigationstepasyncoperations = new Investigationstepasyncoperations(this);
+            Investigationstepbulkdeletefailures = new Investigationstepbulkdeletefailures(this);
+            Investigationstepduplicatebaserecord = new Investigationstepduplicatebaserecord(this);
+            Investigationstepduplicatematchingrecord = new Investigationstepduplicatematchingrecord(this);
+            Investigationstepemails = new Investigationstepemails(this);
+            Investigationstepfaxes = new Investigationstepfaxes(this);
+            Investigationstepletters = new Investigationstepletters(this);
+            Investigationstepphonecalls = new Investigationstepphonecalls(this);
+            Investigationsteprecurringappointmentmasters = new Investigationsteprecurringappointmentmasters(this);
+            Investigationstepserviceappointments = new Investigationstepserviceappointments(this);
+            Investigationstepsharepointdocumentlocations = new Investigationstepsharepointdocumentlocations(this);
+            Investigationstepsocialactivities = new Investigationstepsocialactivities(this);
+            Investigationstepsyncerrors = new Investigationstepsyncerrors(this);
+            Investigationsteptasks = new Investigationsteptasks(this);
             Locationequipmentset = new Locationequipmentset(this);
             Locations = new Locations(this);
+            Associatedapplication = new Associatedapplication(this);
+            Bcgovlocationbcgovcomplaintlocation = new Bcgovlocationbcgovcomplaintlocation(this);
+            Locationactivityparties = new Locationactivityparties(this);
+            Locationactivitypointers = new Locationactivitypointers(this);
+            Locationannotations = new Locationannotations(this);
+            Locationappointments = new Locationappointments(this);
+            Locationasyncoperations = new Locationasyncoperations(this);
+            Locationbulkdeletefailures = new Locationbulkdeletefailures(this);
+            Locationconnections1 = new Locationconnections1(this);
+            Locationconnections2 = new Locationconnections2(this);
+            Locationduplicatebaserecord = new Locationduplicatebaserecord(this);
+            Locationduplicatematchingrecord = new Locationduplicatematchingrecord(this);
+            Locationemails = new Locationemails(this);
+            Locationequipmentcurrentlocation = new Locationequipmentcurrentlocation(this);
+            Locationequipmentlocationlocation = new Locationequipmentlocationlocation(this);
+            Locationfaxes = new Locationfaxes(this);
+            Locationincidentequipmentlocation = new Locationincidentequipmentlocation(this);
+            Locationinspectionlocation = new Locationinspectionlocation(this);
+            Locationletters = new Locationletters(this);
+            Locationphonecalls = new Locationphonecalls(this);
+            Locationqueueitems = new Locationqueueitems(this);
+            Locationrecurringappointmentmasters = new Locationrecurringappointmentmasters(this);
+            Locationserviceappointments = new Locationserviceappointments(this);
+            Locationsocialactivities = new Locationsocialactivities(this);
+            Locationsyncerrors = new Locationsyncerrors(this);
+            Locationtasks = new Locationtasks(this);
+            Locationaddress = new Locationaddress(this);
+            Locationarea = new Locationarea(this);
+            Locationregion = new Locationregion(this);
             Postalcodes = new Postalcodes(this);
+            Area = new Area(this);
+            Postalcodeasyncoperations = new Postalcodeasyncoperations(this);
+            Postalcodebulkdeletefailures = new Postalcodebulkdeletefailures(this);
+            Postalcodeduplicatebaserecord = new Postalcodeduplicatebaserecord(this);
+            Postalcodeduplicatematchingrecord = new Postalcodeduplicatematchingrecord(this);
+            Postalcodesyncerrors = new Postalcodesyncerrors(this);
             Regions = new Regions(this);
+            Inspector = new Inspector(this);
+            Regionasyncoperations = new Regionasyncoperations(this);
+            Regionbcgovarearegion = new Regionbcgovarearegion(this);
+            Regionbcgovpostalcoderegion = new Regionbcgovpostalcoderegion(this);
+            Regionbulkdeletefailures = new Regionbulkdeletefailures(this);
+            Regionduplicatebaserecord = new Regionduplicatebaserecord(this);
+            Regionduplicatematchingrecord = new Regionduplicatematchingrecord(this);
+            Regionlocationlocationregion = new Regionlocationlocationregion(this);
+            Regionsyncerrors = new Regionsyncerrors(this);
             Riskassessments = new Riskassessments(this);
+            Applicationidlookup = new Applicationidlookup(this);
+            Riskassessmentactivityparties = new Riskassessmentactivityparties(this);
+            Riskassessmentactivitypointers = new Riskassessmentactivitypointers(this);
+            Riskassessmentannotations = new Riskassessmentannotations(this);
+            Riskassessmentappointments = new Riskassessmentappointments(this);
+            Riskassessmentasyncoperations = new Riskassessmentasyncoperations(this);
+            Riskassessmentbulkdeletefailures = new Riskassessmentbulkdeletefailures(this);
+            Riskassessmentcomplaintriskassessment = new Riskassessmentcomplaintriskassessment(this);
+            Riskassessmentconnections1 = new Riskassessmentconnections1(this);
+            Riskassessmentconnections2 = new Riskassessmentconnections2(this);
+            Riskassessmentduplicatebaserecord = new Riskassessmentduplicatebaserecord(this);
+            Riskassessmentduplicatematchingrecord = new Riskassessmentduplicatematchingrecord(this);
+            Riskassessmentemails = new Riskassessmentemails(this);
+            Riskassessmentfaxes = new Riskassessmentfaxes(this);
+            Riskassessmentincidentassociatedriskassessmentrecord = new Riskassessmentincidentassociatedriskassessmentrecord(this);
+            Riskassessmentletters = new Riskassessmentletters(this);
+            Riskassessmentphonecalls = new Riskassessmentphonecalls(this);
+            Riskassessmentqueueitems = new Riskassessmentqueueitems(this);
+            Riskassessmentrecurringappointmentmasters = new Riskassessmentrecurringappointmentmasters(this);
+            Riskassessmentserviceappointments = new Riskassessmentserviceappointments(this);
+            Riskassessmentsharepointdocumentlocations = new Riskassessmentsharepointdocumentlocations(this);
+            Riskassessmentsocialactivities = new Riskassessmentsocialactivities(this);
+            Riskassessmentsyncerrors = new Riskassessmentsyncerrors(this);
+            Riskassessmenttasks = new Riskassessmenttasks(this);
             Roles = new Roles(this);
+            Roleasyncoperations = new Roleasyncoperations(this);
+            Rolebulkdeletefailures = new Rolebulkdeletefailures(this);
+            Rolecustomuserrole = new Rolecustomuserrole(this);
+            Roleduplicatebaserecord = new Roleduplicatebaserecord(this);
+            Roleduplicatematchingrecord = new Roleduplicatematchingrecord(this);
+            Rolesyncerrors = new Rolesyncerrors(this);
             Termsconditionspresets = new Termsconditionspresets(this);
+            Applicationtype = new Applicationtype(this);
+            Termsconditionspresetasyncoperations = new Termsconditionspresetasyncoperations(this);
+            Termsconditionspresetbcgovcertificatetermsandconditionspresetterms = new Termsconditionspresetbcgovcertificatetermsandconditionspresetterms(this);
+            Termsconditionspresetbulkdeletefailures = new Termsconditionspresetbulkdeletefailures(this);
+            Termsconditionspresetduplicatebaserecord = new Termsconditionspresetduplicatebaserecord(this);
+            Termsconditionspresetduplicatematchingrecord = new Termsconditionspresetduplicatematchingrecord(this);
+            Termsconditionspresetsyncerrors = new Termsconditionspresetsyncerrors(this);
             Violationtickets = new Violationtickets(this);
+            Actregulationviolated = new Actregulationviolated(this);
+            Violationticketactivityparties = new Violationticketactivityparties(this);
+            Violationticketactivitypointers = new Violationticketactivitypointers(this);
+            Violationticketannotations = new Violationticketannotations(this);
+            Violationticketappointments = new Violationticketappointments(this);
+            Violationticketasyncoperations = new Violationticketasyncoperations(this);
+            Violationticketbulkdeletefailures = new Violationticketbulkdeletefailures(this);
+            Violationticketduplicatebaserecord = new Violationticketduplicatebaserecord(this);
+            Violationticketduplicatematchingrecord = new Violationticketduplicatematchingrecord(this);
+            Violationticketemails = new Violationticketemails(this);
+            Violationticketfaxes = new Violationticketfaxes(this);
+            Violationticketinspectionchecklistviolationticket = new Violationticketinspectionchecklistviolationticket(this);
+            Violationticketletters = new Violationticketletters(this);
+            Violationticketphonecalls = new Violationticketphonecalls(this);
+            Violationticketrecurringappointmentmasters = new Violationticketrecurringappointmentmasters(this);
+            Violationticketserviceappointments = new Violationticketserviceappointments(this);
+            Violationticketsharepointdocumentlocations = new Violationticketsharepointdocumentlocations(this);
+            Violationticketsocialactivities = new Violationticketsocialactivities(this);
+            Violationticketsyncerrors = new Violationticketsyncerrors(this);
+            Violationtickettasks = new Violationtickettasks(this);
+            Businessunitbcgovactregulationreference = new Businessunitbcgovactregulationreference(this);
+            Businessunitbcgovapplicationtype = new Businessunitbcgovapplicationtype(this);
+            Businessunitbcgovarea = new Businessunitbcgovarea(this);
+            Businessunitbcgovbusinesscontact = new Businessunitbcgovbusinesscontact(this);
+            Businessunitbcgovcecontact = new Businessunitbcgovcecontact(this);
+            Businessunitbcgovcecontacttype = new Businessunitbcgovcecontacttype(this);
+            Businessunitbcgovcertificate = new Businessunitbcgovcertificate(this);
+            Businessunitbcgovcertificateapprovedproduct = new Businessunitbcgovcertificateapprovedproduct(this);
+            Businessunitbcgovcertificatetermsandconditions = new Businessunitbcgovcertificatetermsandconditions(this);
+            Businessunitbcgovcomplaint = new Businessunitbcgovcomplaint(this);
+            Businessunitbcgovcomplaintchecklist = new Businessunitbcgovcomplaintchecklist(this);
+            Businessunitbcgovcustomaddress = new Businessunitbcgovcustomaddress(this);
+            Businessunitbcgovcustomproduct = new Businessunitbcgovcustomproduct(this);
+            Businessunitbcgovcustomuser = new Businessunitbcgovcustomuser(this);
+            Businessunitbcgovequipment = new Businessunitbcgovequipment(this);
+            Businessunitbcgovequipmentlocation = new Businessunitbcgovequipmentlocation(this);
+            Businessunitbcgovinspection = new Businessunitbcgovinspection(this);
+            Businessunitbcgovinspectionchecklist = new Businessunitbcgovinspectionchecklist(this);
+            Businessunitbcgovinspectionownershipcategory = new Businessunitbcgovinspectionownershipcategory(this);
+            Businessunitbcgovinvestigation = new Businessunitbcgovinvestigation(this);
+            Businessunitbcgovinvestigationstep = new Businessunitbcgovinvestigationstep(this);
+            Businessunitbcgovlocation = new Businessunitbcgovlocation(this);
+            Businessunitbcgovpostalcode = new Businessunitbcgovpostalcode(this);
+            Businessunitbcgovregion = new Businessunitbcgovregion(this);
+            Businessunitbcgovriskassessment = new Businessunitbcgovriskassessment(this);
+            Businessunitbcgovrole = new Businessunitbcgovrole(this);
+            Businessunitbcgovtermsconditionspreset = new Businessunitbcgovtermsconditionspreset(this);
+            Businessunitbcgovviolationticket = new Businessunitbcgovviolationticket(this);
+            Record1idbcgovcomplaint = new Record1idbcgovcomplaint(this);
+            Record1idbcgovcustomaddress = new Record1idbcgovcustomaddress(this);
+            Record1idbcgovcustomproduct = new Record1idbcgovcustomproduct(this);
+            Record1idbcgovequipment = new Record1idbcgovequipment(this);
+            Record1idbcgovequipmentlocation = new Record1idbcgovequipmentlocation(this);
+            Record1idbcgovinvestigation = new Record1idbcgovinvestigation(this);
+            Record1idbcgovlocation = new Record1idbcgovlocation(this);
+            Record1idbcgovriskassessment = new Record1idbcgovriskassessment(this);
+            Record2idbcgovcomplaint = new Record2idbcgovcomplaint(this);
+            Record2idbcgovcustomaddress = new Record2idbcgovcustomaddress(this);
+            Record2idbcgovcustomproduct = new Record2idbcgovcustomproduct(this);
+            Record2idbcgovequipment = new Record2idbcgovequipment(this);
+            Record2idbcgovequipmentlocation = new Record2idbcgovequipmentlocation(this);
+            Record2idbcgovinvestigation = new Record2idbcgovinvestigation(this);
+            Record2idbcgovlocation = new Record2idbcgovlocation(this);
+            Record2idbcgovriskassessment = new Record2idbcgovriskassessment(this);
             Contacts = new Contacts(this);
+            Address = new Address(this);
+            Businessaddress = new Businessaddress(this);
+            Contactaccountadditionalcontact = new Contactaccountadditionalcontact(this);
+            Contactbcgovbusinesscontactcontact = new Contactbcgovbusinesscontactcontact(this);
+            Contactbcgovinspectionlocationcontact = new Contactbcgovinspectionlocationcontact(this);
+            Contactcecontact = new Contactcecontact(this);
+            Contactcomplaintcomplainant = new Contactcomplaintcomplainant(this);
+            Contactincidentsubmitter = new Contactincidentsubmitter(this);
+            Contactinvestigationcomplainant = new Contactinvestigationcomplainant(this);
+            Contactlocationlocationcontact = new Contactlocationlocationcontact(this);
+            Baserecordidbcgovactregulationreference = new Baserecordidbcgovactregulationreference(this);
+            Baserecordidbcgovapplicationtype = new Baserecordidbcgovapplicationtype(this);
+            Baserecordidbcgovarea = new Baserecordidbcgovarea(this);
+            Baserecordidbcgovbusinesscontact = new Baserecordidbcgovbusinesscontact(this);
+            Baserecordidbcgovcecontact = new Baserecordidbcgovcecontact(this);
+            Baserecordidbcgovcecontacttype = new Baserecordidbcgovcecontacttype(this);
+            Baserecordidbcgovcertificate = new Baserecordidbcgovcertificate(this);
+            Baserecordidbcgovcertificateapprovedproduct = new Baserecordidbcgovcertificateapprovedproduct(this);
+            Baserecordidbcgovcertificatetermsandconditions = new Baserecordidbcgovcertificatetermsandconditions(this);
+            Baserecordidbcgovcomplaint = new Baserecordidbcgovcomplaint(this);
+            Baserecordidbcgovcomplaintchecklist = new Baserecordidbcgovcomplaintchecklist(this);
+            Baserecordidbcgovcustomaddress = new Baserecordidbcgovcustomaddress(this);
+            Baserecordidbcgovcustomproduct = new Baserecordidbcgovcustomproduct(this);
+            Baserecordidbcgovcustomuser = new Baserecordidbcgovcustomuser(this);
+            Baserecordidbcgovequipment = new Baserecordidbcgovequipment(this);
+            Baserecordidbcgovequipmentlocation = new Baserecordidbcgovequipmentlocation(this);
+            Baserecordidbcgovinspection = new Baserecordidbcgovinspection(this);
+            Baserecordidbcgovinspectionchecklist = new Baserecordidbcgovinspectionchecklist(this);
+            Baserecordidbcgovinspectionownershipcategory = new Baserecordidbcgovinspectionownershipcategory(this);
+            Baserecordidbcgovinvestigation = new Baserecordidbcgovinvestigation(this);
+            Baserecordidbcgovinvestigationstep = new Baserecordidbcgovinvestigationstep(this);
+            Baserecordidbcgovlocation = new Baserecordidbcgovlocation(this);
+            Baserecordidbcgovpostalcode = new Baserecordidbcgovpostalcode(this);
+            Baserecordidbcgovregion = new Baserecordidbcgovregion(this);
+            Baserecordidbcgovriskassessment = new Baserecordidbcgovriskassessment(this);
+            Baserecordidbcgovrole = new Baserecordidbcgovrole(this);
+            Baserecordidbcgovtermsconditionspreset = new Baserecordidbcgovtermsconditionspreset(this);
+            Baserecordidbcgovviolationticket = new Baserecordidbcgovviolationticket(this);
+            Duplicaterecordidbcgovactregulationreference = new Duplicaterecordidbcgovactregulationreference(this);
+            Duplicaterecordidbcgovapplicationtype = new Duplicaterecordidbcgovapplicationtype(this);
+            Duplicaterecordidbcgovarea = new Duplicaterecordidbcgovarea(this);
+            Duplicaterecordidbcgovbusinesscontact = new Duplicaterecordidbcgovbusinesscontact(this);
+            Duplicaterecordidbcgovcecontact = new Duplicaterecordidbcgovcecontact(this);
+            Duplicaterecordidbcgovcecontacttype = new Duplicaterecordidbcgovcecontacttype(this);
+            Duplicaterecordidbcgovcertificate = new Duplicaterecordidbcgovcertificate(this);
+            Duplicaterecordidbcgovcertificateapprovedproduct = new Duplicaterecordidbcgovcertificateapprovedproduct(this);
+            Duplicaterecordidbcgovcertificatetermsandconditions = new Duplicaterecordidbcgovcertificatetermsandconditions(this);
+            Duplicaterecordidbcgovcomplaint = new Duplicaterecordidbcgovcomplaint(this);
+            Duplicaterecordidbcgovcomplaintchecklist = new Duplicaterecordidbcgovcomplaintchecklist(this);
+            Duplicaterecordidbcgovcustomaddress = new Duplicaterecordidbcgovcustomaddress(this);
+            Duplicaterecordidbcgovcustomproduct = new Duplicaterecordidbcgovcustomproduct(this);
+            Duplicaterecordidbcgovcustomuser = new Duplicaterecordidbcgovcustomuser(this);
+            Duplicaterecordidbcgovequipment = new Duplicaterecordidbcgovequipment(this);
+            Duplicaterecordidbcgovequipmentlocation = new Duplicaterecordidbcgovequipmentlocation(this);
+            Duplicaterecordidbcgovinspection = new Duplicaterecordidbcgovinspection(this);
+            Duplicaterecordidbcgovinspectionchecklist = new Duplicaterecordidbcgovinspectionchecklist(this);
+            Duplicaterecordidbcgovinspectionownershipcategory = new Duplicaterecordidbcgovinspectionownershipcategory(this);
+            Duplicaterecordidbcgovinvestigation = new Duplicaterecordidbcgovinvestigation(this);
+            Duplicaterecordidbcgovinvestigationstep = new Duplicaterecordidbcgovinvestigationstep(this);
+            Duplicaterecordidbcgovlocation = new Duplicaterecordidbcgovlocation(this);
+            Duplicaterecordidbcgovpostalcode = new Duplicaterecordidbcgovpostalcode(this);
+            Duplicaterecordidbcgovregion = new Duplicaterecordidbcgovregion(this);
+            Duplicaterecordidbcgovriskassessment = new Duplicaterecordidbcgovriskassessment(this);
+            Duplicaterecordidbcgovrole = new Duplicaterecordidbcgovrole(this);
+            Duplicaterecordidbcgovtermsconditionspreset = new Duplicaterecordidbcgovtermsconditionspreset(this);
+            Duplicaterecordidbcgovviolationticket = new Duplicaterecordidbcgovviolationticket(this);
+            Regardingobjectidbcgovcomplaintemail = new Regardingobjectidbcgovcomplaintemail(this);
+            Regardingobjectidbcgovcustomaddressemail = new Regardingobjectidbcgovcustomaddressemail(this);
+            Regardingobjectidbcgovcustomproductemail = new Regardingobjectidbcgovcustomproductemail(this);
+            Regardingobjectidbcgovequipmentemail = new Regardingobjectidbcgovequipmentemail(this);
+            Regardingobjectidbcgovequipmentlocationemail = new Regardingobjectidbcgovequipmentlocationemail(this);
+            Regardingobjectidbcgovinspectionemail = new Regardingobjectidbcgovinspectionemail(this);
+            Regardingobjectidbcgovinvestigationemail = new Regardingobjectidbcgovinvestigationemail(this);
+            Regardingobjectidbcgovinvestigationstepemail = new Regardingobjectidbcgovinvestigationstepemail(this);
+            Regardingobjectidbcgovlocationemail = new Regardingobjectidbcgovlocationemail(this);
+            Regardingobjectidbcgovriskassessmentemail = new Regardingobjectidbcgovriskassessmentemail(this);
+            Regardingobjectidbcgovviolationticketemail = new Regardingobjectidbcgovviolationticketemail(this);
+            Entitydefinitions = new Entitydefinitions(this);
+            Regardingobjectidbcgovcomplaintfax = new Regardingobjectidbcgovcomplaintfax(this);
+            Regardingobjectidbcgovcustomaddressfax = new Regardingobjectidbcgovcustomaddressfax(this);
+            Regardingobjectidbcgovcustomproductfax = new Regardingobjectidbcgovcustomproductfax(this);
+            Regardingobjectidbcgovequipmentfax = new Regardingobjectidbcgovequipmentfax(this);
+            Regardingobjectidbcgovequipmentlocationfax = new Regardingobjectidbcgovequipmentlocationfax(this);
+            Regardingobjectidbcgovinspectionfax = new Regardingobjectidbcgovinspectionfax(this);
+            Regardingobjectidbcgovinvestigationfax = new Regardingobjectidbcgovinvestigationfax(this);
+            Regardingobjectidbcgovinvestigationstepfax = new Regardingobjectidbcgovinvestigationstepfax(this);
+            Regardingobjectidbcgovlocationfax = new Regardingobjectidbcgovlocationfax(this);
+            Regardingobjectidbcgovriskassessmentfax = new Regardingobjectidbcgovriskassessmentfax(this);
+            Regardingobjectidbcgovviolationticketfax = new Regardingobjectidbcgovviolationticketfax(this);
+            Globaloptionsetdefinitions = new Globaloptionsetdefinitions(this);
             Incidents = new Incidents(this);
+            Addressofbusinessthathasgivenorloaned = new Addressofbusinessthathasgivenorloaned(this);
+            Addressofbusinessthathasrentedorleased = new Addressofbusinessthathasrentedorleased(this);
+            Addressofpersonbusiness = new Addressofpersonbusiness(this);
+            Addresswhereequipmentwasdestroyed = new Addresswhereequipmentwasdestroyed(this);
+            Applicationtypeid = new Applicationtypeid(this);
+            Associatedriskassessmentrecord = new Associatedriskassessmentrecord(this);
+            Bcsellersaddress = new Bcsellersaddress(this);
+            Civicaddressofpurchaser = new Civicaddressofpurchaser(this);
+            Equipmentlocation = new Equipmentlocation(this);
+            Importersaddress = new Importersaddress(this);
+            Incidentbcgovcertificateapplication = new Incidentbcgovcertificateapplication(this);
+            Incidentbcgovriskassessmentapplicationid = new Incidentbcgovriskassessmentapplicationid(this);
+            Incidentcustomproductrelatedapplication = new Incidentcustomproductrelatedapplication(this);
+            Incidentlocationassociatedapplication = new Incidentlocationassociatedapplication(this);
+            Newinspectionrecord = new Newinspectionrecord(this);
+            Originatingsellersaddress = new Originatingsellersaddress(this);
+            Outsidebcsellersaddress = new Outsidebcsellersaddress(this);
+            Purchasersbusinessaddress = new Purchasersbusinessaddress(this);
+            Purchaserscivicaddress = new Purchaserscivicaddress(this);
+            Relatedapplicationsid = new Relatedapplicationsid(this);
+            Submitter = new Submitter(this);
             Invoices = new Invoices(this);
-            Msdyncustomaddressknowledgearticlset = new Msdyncustomaddressknowledgearticlset(this);
-            Msdyncustomaddressknowledgebasereset = new Msdyncustomaddressknowledgebasereset(this);
+            Leads = new Leads(this);
+            Regardingobjectidbcgovcomplaintletter = new Regardingobjectidbcgovcomplaintletter(this);
+            Regardingobjectidbcgovcustomaddressletter = new Regardingobjectidbcgovcustomaddressletter(this);
+            Regardingobjectidbcgovcustomproductletter = new Regardingobjectidbcgovcustomproductletter(this);
+            Regardingobjectidbcgovequipmentletter = new Regardingobjectidbcgovequipmentletter(this);
+            Regardingobjectidbcgovequipmentlocationletter = new Regardingobjectidbcgovequipmentlocationletter(this);
+            Regardingobjectidbcgovinspectionletter = new Regardingobjectidbcgovinspectionletter(this);
+            Regardingobjectidbcgovinvestigationletter = new Regardingobjectidbcgovinvestigationletter(this);
+            Regardingobjectidbcgovinvestigationstepletter = new Regardingobjectidbcgovinvestigationstepletter(this);
+            Regardingobjectidbcgovlocationletter = new Regardingobjectidbcgovlocationletter(this);
+            Regardingobjectidbcgovriskassessmentletter = new Regardingobjectidbcgovriskassessmentletter(this);
+            Regardingobjectidbcgovviolationticketletter = new Regardingobjectidbcgovviolationticketletter(this);
+            Lists = new Lists(this);
+            Organizationbcgovcomplaintcomplaintprocessflow = new Organizationbcgovcomplaintcomplaintprocessflow(this);
+            Organizationbcgovinspectionprocessflow = new Organizationbcgovinspectionprocessflow(this);
+            Regardingobjectidbcgovcomplaintphonecall = new Regardingobjectidbcgovcomplaintphonecall(this);
+            Regardingobjectidbcgovcustomaddressphonecall = new Regardingobjectidbcgovcustomaddressphonecall(this);
+            Regardingobjectidbcgovcustomproductphonecall = new Regardingobjectidbcgovcustomproductphonecall(this);
+            Regardingobjectidbcgovequipmentphonecall = new Regardingobjectidbcgovequipmentphonecall(this);
+            Regardingobjectidbcgovequipmentlocationphonecall = new Regardingobjectidbcgovequipmentlocationphonecall(this);
+            Regardingobjectidbcgovinspectionphonecall = new Regardingobjectidbcgovinspectionphonecall(this);
+            Regardingobjectidbcgovinvestigationphonecall = new Regardingobjectidbcgovinvestigationphonecall(this);
+            Regardingobjectidbcgovinvestigationstepphonecall = new Regardingobjectidbcgovinvestigationstepphonecall(this);
+            Regardingobjectidbcgovlocationphonecall = new Regardingobjectidbcgovlocationphonecall(this);
+            Regardingobjectidbcgovriskassessmentphonecall = new Regardingobjectidbcgovriskassessmentphonecall(this);
+            Regardingobjectidbcgovviolationticketphonecall = new Regardingobjectidbcgovviolationticketphonecall(this);
+            Lkbcgovcomplaintcomplaintprocessflowactivestageid = new Lkbcgovcomplaintcomplaintprocessflowactivestageid(this);
+            Lkbcgovinspectionprocessflowactivestageid = new Lkbcgovinspectionprocessflowactivestageid(this);
+            Processstagebcgovcomplaint = new Processstagebcgovcomplaint(this);
+            Processstagebcgovcustomaddress = new Processstagebcgovcustomaddress(this);
+            Processstagebcgovcustomproduct = new Processstagebcgovcustomproduct(this);
+            Processstagebcgovequipment = new Processstagebcgovequipment(this);
+            Processstagebcgovinspection = new Processstagebcgovinspection(this);
+            Processstagebcgovinvestigation = new Processstagebcgovinvestigation(this);
+            Processstagebcgovinvestigationstep = new Processstagebcgovinvestigationstep(this);
+            Processstagebcgovlocation = new Processstagebcgovlocation(this);
+            Processstagebcgovviolationticket = new Processstagebcgovviolationticket(this);
+            Objectidbcgovcustomproduct = new Objectidbcgovcustomproduct(this);
+            Regardingobjectidbcgovcomplaintrecurringappointmentmaster = new Regardingobjectidbcgovcomplaintrecurringappointmentmaster(this);
+            Regardingobjectidbcgovcustomaddressrecurringappointmentmaster = new Regardingobjectidbcgovcustomaddressrecurringappointmentmaster(this);
+            Regardingobjectidbcgovcustomproductrecurringappointmentmaster = new Regardingobjectidbcgovcustomproductrecurringappointmentmaster(this);
+            Regardingobjectidbcgovequipmentrecurringappointmentmaster = new Regardingobjectidbcgovequipmentrecurringappointmentmaster(this);
+            Regardingobjectidbcgovequipmentlocationrecurringappointmentmaster = new Regardingobjectidbcgovequipmentlocationrecurringappointmentmaster(this);
+            Regardingobjectidbcgovinspectionrecurringappointmentmaster = new Regardingobjectidbcgovinspectionrecurringappointmentmaster(this);
+            Regardingobjectidbcgovinvestigationrecurringappointmentmaster = new Regardingobjectidbcgovinvestigationrecurringappointmentmaster(this);
+            Regardingobjectidbcgovinvestigationsteprecurringappointmentmaster = new Regardingobjectidbcgovinvestigationsteprecurringappointmentmaster(this);
+            Regardingobjectidbcgovlocationrecurringappointmentmaster = new Regardingobjectidbcgovlocationrecurringappointmentmaster(this);
+            Regardingobjectidbcgovriskassessmentrecurringappointmentmaster = new Regardingobjectidbcgovriskassessmentrecurringappointmentmaster(this);
+            Regardingobjectidbcgovviolationticketrecurringappointmentmaster = new Regardingobjectidbcgovviolationticketrecurringappointmentmaster(this);
+            Savedqueries = new Savedqueries(this);
+            Regardingobjectidbcgovcomplaintserviceappointment = new Regardingobjectidbcgovcomplaintserviceappointment(this);
+            Regardingobjectidbcgovcustomaddressserviceappointment = new Regardingobjectidbcgovcustomaddressserviceappointment(this);
+            Regardingobjectidbcgovcustomproductserviceappointment = new Regardingobjectidbcgovcustomproductserviceappointment(this);
+            Regardingobjectidbcgovequipmentserviceappointment = new Regardingobjectidbcgovequipmentserviceappointment(this);
+            Regardingobjectidbcgovequipmentlocationserviceappointment = new Regardingobjectidbcgovequipmentlocationserviceappointment(this);
+            Regardingobjectidbcgovinspectionserviceappointment = new Regardingobjectidbcgovinspectionserviceappointment(this);
+            Regardingobjectidbcgovinvestigationserviceappointment = new Regardingobjectidbcgovinvestigationserviceappointment(this);
+            Regardingobjectidbcgovinvestigationstepserviceappointment = new Regardingobjectidbcgovinvestigationstepserviceappointment(this);
+            Regardingobjectidbcgovlocationserviceappointment = new Regardingobjectidbcgovlocationserviceappointment(this);
+            Regardingobjectidbcgovriskassessmentserviceappointment = new Regardingobjectidbcgovriskassessmentserviceappointment(this);
+            Regardingobjectidbcgovviolationticketserviceappointment = new Regardingobjectidbcgovviolationticketserviceappointment(this);
             Sharepointdocumentlocations = new Sharepointdocumentlocations(this);
             Sharepointsites = new Sharepointsites(this);
-            Entitydefinitions = new Entitydefinitions(this);
-            Globaloptionsetdefinitions = new Globaloptionsetdefinitions(this);
-            BaseUri = new System.Uri("https://wsgw.dev.jag.gov.bc.ca/pillpress/dev/api/data/v8.2");
+            Regardingbcgovcustomaddress = new Regardingbcgovcustomaddress(this);
+            Manualslabcgovcustomaddress = new Manualslabcgovcustomaddress(this);
+            Slabcgovcustomaddress = new Slabcgovcustomaddress(this);
+            Regardingobjectidbcgovcomplaintsocialactivity = new Regardingobjectidbcgovcomplaintsocialactivity(this);
+            Regardingobjectidbcgovcustomaddresssocialactivity = new Regardingobjectidbcgovcustomaddresssocialactivity(this);
+            Regardingobjectidbcgovcustomproductsocialactivity = new Regardingobjectidbcgovcustomproductsocialactivity(this);
+            Regardingobjectidbcgovequipmentsocialactivity = new Regardingobjectidbcgovequipmentsocialactivity(this);
+            Regardingobjectidbcgovequipmentlocationsocialactivity = new Regardingobjectidbcgovequipmentlocationsocialactivity(this);
+            Regardingobjectidbcgovinspectionsocialactivity = new Regardingobjectidbcgovinspectionsocialactivity(this);
+            Regardingobjectidbcgovinvestigationsocialactivity = new Regardingobjectidbcgovinvestigationsocialactivity(this);
+            Regardingobjectidbcgovinvestigationstepsocialactivity = new Regardingobjectidbcgovinvestigationstepsocialactivity(this);
+            Regardingobjectidbcgovlocationsocialactivity = new Regardingobjectidbcgovlocationsocialactivity(this);
+            Regardingobjectidbcgovriskassessmentsocialactivity = new Regardingobjectidbcgovriskassessmentsocialactivity(this);
+            Regardingobjectidbcgovviolationticketsocialactivity = new Regardingobjectidbcgovviolationticketsocialactivity(this);
+            Systemuserbcgovcomplaintassignto = new Systemuserbcgovcomplaintassignto(this);
+            Systemuserbcgovregioninspector = new Systemuserbcgovregioninspector(this);
+            Systemusercustomuseruser = new Systemusercustomuseruser(this);
+            Lkbcgovactregulationreferencecreatedby = new Lkbcgovactregulationreferencecreatedby(this);
+            Lkbcgovactregulationreferencecreatedonbehalfby = new Lkbcgovactregulationreferencecreatedonbehalfby(this);
+            Lkbcgovactregulationreferencemodifiedby = new Lkbcgovactregulationreferencemodifiedby(this);
+            Lkbcgovactregulationreferencemodifiedonbehalfby = new Lkbcgovactregulationreferencemodifiedonbehalfby(this);
+            Lkbcgovapplicationtypecreatedby = new Lkbcgovapplicationtypecreatedby(this);
+            Lkbcgovapplicationtypecreatedonbehalfby = new Lkbcgovapplicationtypecreatedonbehalfby(this);
+            Lkbcgovapplicationtypemodifiedby = new Lkbcgovapplicationtypemodifiedby(this);
+            Lkbcgovapplicationtypemodifiedonbehalfby = new Lkbcgovapplicationtypemodifiedonbehalfby(this);
+            Lkbcgovareacreatedby = new Lkbcgovareacreatedby(this);
+            Lkbcgovareacreatedonbehalfby = new Lkbcgovareacreatedonbehalfby(this);
+            Lkbcgovareamodifiedby = new Lkbcgovareamodifiedby(this);
+            Lkbcgovareamodifiedonbehalfby = new Lkbcgovareamodifiedonbehalfby(this);
+            Lkbcgovbusinesscontactcreatedby = new Lkbcgovbusinesscontactcreatedby(this);
+            Lkbcgovbusinesscontactcreatedonbehalfby = new Lkbcgovbusinesscontactcreatedonbehalfby(this);
+            Lkbcgovbusinesscontactmodifiedby = new Lkbcgovbusinesscontactmodifiedby(this);
+            Lkbcgovbusinesscontactmodifiedonbehalfby = new Lkbcgovbusinesscontactmodifiedonbehalfby(this);
+            Lkbcgovcecontactcreatedby = new Lkbcgovcecontactcreatedby(this);
+            Lkbcgovcecontactcreatedonbehalfby = new Lkbcgovcecontactcreatedonbehalfby(this);
+            Lkbcgovcecontactmodifiedby = new Lkbcgovcecontactmodifiedby(this);
+            Lkbcgovcecontactmodifiedonbehalfby = new Lkbcgovcecontactmodifiedonbehalfby(this);
+            Lkbcgovcecontacttypecreatedby = new Lkbcgovcecontacttypecreatedby(this);
+            Lkbcgovcecontacttypecreatedonbehalfby = new Lkbcgovcecontacttypecreatedonbehalfby(this);
+            Lkbcgovcecontacttypemodifiedby = new Lkbcgovcecontacttypemodifiedby(this);
+            Lkbcgovcecontacttypemodifiedonbehalfby = new Lkbcgovcecontacttypemodifiedonbehalfby(this);
+            Lkbcgovcertificatecreatedby = new Lkbcgovcertificatecreatedby(this);
+            Lkbcgovcertificatecreatedonbehalfby = new Lkbcgovcertificatecreatedonbehalfby(this);
+            Lkbcgovcertificatemodifiedby = new Lkbcgovcertificatemodifiedby(this);
+            Lkbcgovcertificatemodifiedonbehalfby = new Lkbcgovcertificatemodifiedonbehalfby(this);
+            Lkbcgovcertificateapprovedproductcreatedby = new Lkbcgovcertificateapprovedproductcreatedby(this);
+            Lkbcgovcertificateapprovedproductcreatedonbehalfby = new Lkbcgovcertificateapprovedproductcreatedonbehalfby(this);
+            Lkbcgovcertificateapprovedproductmodifiedby = new Lkbcgovcertificateapprovedproductmodifiedby(this);
+            Lkbcgovcertificateapprovedproductmodifiedonbehalfby = new Lkbcgovcertificateapprovedproductmodifiedonbehalfby(this);
+            Lkbcgovcertificatetermsandconditionscreatedby = new Lkbcgovcertificatetermsandconditionscreatedby(this);
+            Lkbcgovcertificatetermsandconditionscreatedonbehalfby = new Lkbcgovcertificatetermsandconditionscreatedonbehalfby(this);
+            Lkbcgovcertificatetermsandconditionsmodifiedby = new Lkbcgovcertificatetermsandconditionsmodifiedby(this);
+            Lkbcgovcertificatetermsandconditionsmodifiedonbehalfby = new Lkbcgovcertificatetermsandconditionsmodifiedonbehalfby(this);
+            Lkbcgovcomplaintcreatedby = new Lkbcgovcomplaintcreatedby(this);
+            Lkbcgovcomplaintcreatedonbehalfby = new Lkbcgovcomplaintcreatedonbehalfby(this);
+            Lkbcgovcomplaintmodifiedby = new Lkbcgovcomplaintmodifiedby(this);
+            Lkbcgovcomplaintmodifiedonbehalfby = new Lkbcgovcomplaintmodifiedonbehalfby(this);
+            Lkbcgovcomplaintchecklistcreatedby = new Lkbcgovcomplaintchecklistcreatedby(this);
+            Lkbcgovcomplaintchecklistcreatedonbehalfby = new Lkbcgovcomplaintchecklistcreatedonbehalfby(this);
+            Lkbcgovcomplaintchecklistmodifiedby = new Lkbcgovcomplaintchecklistmodifiedby(this);
+            Lkbcgovcomplaintchecklistmodifiedonbehalfby = new Lkbcgovcomplaintchecklistmodifiedonbehalfby(this);
+            Lkbcgovcomplaintcomplaintprocessflowcreatedby = new Lkbcgovcomplaintcomplaintprocessflowcreatedby(this);
+            Lkbcgovcomplaintcomplaintprocessflowcreatedonbehalfby = new Lkbcgovcomplaintcomplaintprocessflowcreatedonbehalfby(this);
+            Lkbcgovcomplaintcomplaintprocessflowmodifiedby = new Lkbcgovcomplaintcomplaintprocessflowmodifiedby(this);
+            Lkbcgovcomplaintcomplaintprocessflowmodifiedonbehalfby = new Lkbcgovcomplaintcomplaintprocessflowmodifiedonbehalfby(this);
+            Lkbcgovcustomaddresscreatedby = new Lkbcgovcustomaddresscreatedby(this);
+            Lkbcgovcustomaddresscreatedonbehalfby = new Lkbcgovcustomaddresscreatedonbehalfby(this);
+            Lkbcgovcustomaddressmodifiedby = new Lkbcgovcustomaddressmodifiedby(this);
+            Lkbcgovcustomaddressmodifiedonbehalfby = new Lkbcgovcustomaddressmodifiedonbehalfby(this);
+            Lkbcgovcustomproductcreatedby = new Lkbcgovcustomproductcreatedby(this);
+            Lkbcgovcustomproductcreatedonbehalfby = new Lkbcgovcustomproductcreatedonbehalfby(this);
+            Lkbcgovcustomproductmodifiedby = new Lkbcgovcustomproductmodifiedby(this);
+            Lkbcgovcustomproductmodifiedonbehalfby = new Lkbcgovcustomproductmodifiedonbehalfby(this);
+            Lkbcgovcustomusercreatedby = new Lkbcgovcustomusercreatedby(this);
+            Lkbcgovcustomusercreatedonbehalfby = new Lkbcgovcustomusercreatedonbehalfby(this);
+            Lkbcgovcustomusermodifiedby = new Lkbcgovcustomusermodifiedby(this);
+            Lkbcgovcustomusermodifiedonbehalfby = new Lkbcgovcustomusermodifiedonbehalfby(this);
+            Lkbcgovequipmentcreatedby = new Lkbcgovequipmentcreatedby(this);
+            Lkbcgovequipmentcreatedonbehalfby = new Lkbcgovequipmentcreatedonbehalfby(this);
+            Lkbcgovequipmentmodifiedby = new Lkbcgovequipmentmodifiedby(this);
+            Lkbcgovequipmentmodifiedonbehalfby = new Lkbcgovequipmentmodifiedonbehalfby(this);
+            Lkbcgovequipmentlocationcreatedby = new Lkbcgovequipmentlocationcreatedby(this);
+            Lkbcgovequipmentlocationcreatedonbehalfby = new Lkbcgovequipmentlocationcreatedonbehalfby(this);
+            Lkbcgovequipmentlocationmodifiedby = new Lkbcgovequipmentlocationmodifiedby(this);
+            Lkbcgovequipmentlocationmodifiedonbehalfby = new Lkbcgovequipmentlocationmodifiedonbehalfby(this);
+            Lkbcgovinspectioncreatedby = new Lkbcgovinspectioncreatedby(this);
+            Lkbcgovinspectioncreatedonbehalfby = new Lkbcgovinspectioncreatedonbehalfby(this);
+            Lkbcgovinspectionmodifiedby = new Lkbcgovinspectionmodifiedby(this);
+            Lkbcgovinspectionmodifiedonbehalfby = new Lkbcgovinspectionmodifiedonbehalfby(this);
+            Lkbcgovinspectionchecklistcreatedby = new Lkbcgovinspectionchecklistcreatedby(this);
+            Lkbcgovinspectionchecklistcreatedonbehalfby = new Lkbcgovinspectionchecklistcreatedonbehalfby(this);
+            Lkbcgovinspectionchecklistmodifiedby = new Lkbcgovinspectionchecklistmodifiedby(this);
+            Lkbcgovinspectionchecklistmodifiedonbehalfby = new Lkbcgovinspectionchecklistmodifiedonbehalfby(this);
+            Lkbcgovinspectionownershipcategorycreatedby = new Lkbcgovinspectionownershipcategorycreatedby(this);
+            Lkbcgovinspectionownershipcategorycreatedonbehalfby = new Lkbcgovinspectionownershipcategorycreatedonbehalfby(this);
+            Lkbcgovinspectionownershipcategorymodifiedby = new Lkbcgovinspectionownershipcategorymodifiedby(this);
+            Lkbcgovinspectionownershipcategorymodifiedonbehalfby = new Lkbcgovinspectionownershipcategorymodifiedonbehalfby(this);
+            Lkbcgovinspectionprocessflowcreatedby = new Lkbcgovinspectionprocessflowcreatedby(this);
+            Lkbcgovinspectionprocessflowcreatedonbehalfby = new Lkbcgovinspectionprocessflowcreatedonbehalfby(this);
+            Lkbcgovinspectionprocessflowmodifiedby = new Lkbcgovinspectionprocessflowmodifiedby(this);
+            Lkbcgovinspectionprocessflowmodifiedonbehalfby = new Lkbcgovinspectionprocessflowmodifiedonbehalfby(this);
+            Lkbcgovinvestigationcreatedby = new Lkbcgovinvestigationcreatedby(this);
+            Lkbcgovinvestigationcreatedonbehalfby = new Lkbcgovinvestigationcreatedonbehalfby(this);
+            Lkbcgovinvestigationmodifiedby = new Lkbcgovinvestigationmodifiedby(this);
+            Lkbcgovinvestigationmodifiedonbehalfby = new Lkbcgovinvestigationmodifiedonbehalfby(this);
+            Lkbcgovinvestigationstepcreatedby = new Lkbcgovinvestigationstepcreatedby(this);
+            Lkbcgovinvestigationstepcreatedonbehalfby = new Lkbcgovinvestigationstepcreatedonbehalfby(this);
+            Lkbcgovinvestigationstepmodifiedby = new Lkbcgovinvestigationstepmodifiedby(this);
+            Lkbcgovinvestigationstepmodifiedonbehalfby = new Lkbcgovinvestigationstepmodifiedonbehalfby(this);
+            Lkbcgovlocationcreatedby = new Lkbcgovlocationcreatedby(this);
+            Lkbcgovlocationcreatedonbehalfby = new Lkbcgovlocationcreatedonbehalfby(this);
+            Lkbcgovlocationmodifiedby = new Lkbcgovlocationmodifiedby(this);
+            Lkbcgovlocationmodifiedonbehalfby = new Lkbcgovlocationmodifiedonbehalfby(this);
+            Lkbcgovpostalcodecreatedby = new Lkbcgovpostalcodecreatedby(this);
+            Lkbcgovpostalcodecreatedonbehalfby = new Lkbcgovpostalcodecreatedonbehalfby(this);
+            Lkbcgovpostalcodemodifiedby = new Lkbcgovpostalcodemodifiedby(this);
+            Lkbcgovpostalcodemodifiedonbehalfby = new Lkbcgovpostalcodemodifiedonbehalfby(this);
+            Lkbcgovregioncreatedby = new Lkbcgovregioncreatedby(this);
+            Lkbcgovregioncreatedonbehalfby = new Lkbcgovregioncreatedonbehalfby(this);
+            Lkbcgovregionmodifiedby = new Lkbcgovregionmodifiedby(this);
+            Lkbcgovregionmodifiedonbehalfby = new Lkbcgovregionmodifiedonbehalfby(this);
+            Lkbcgovriskassessmentcreatedby = new Lkbcgovriskassessmentcreatedby(this);
+            Lkbcgovriskassessmentcreatedonbehalfby = new Lkbcgovriskassessmentcreatedonbehalfby(this);
+            Lkbcgovriskassessmentmodifiedby = new Lkbcgovriskassessmentmodifiedby(this);
+            Lkbcgovriskassessmentmodifiedonbehalfby = new Lkbcgovriskassessmentmodifiedonbehalfby(this);
+            Lkbcgovrolecreatedby = new Lkbcgovrolecreatedby(this);
+            Lkbcgovrolecreatedonbehalfby = new Lkbcgovrolecreatedonbehalfby(this);
+            Lkbcgovrolemodifiedby = new Lkbcgovrolemodifiedby(this);
+            Lkbcgovrolemodifiedonbehalfby = new Lkbcgovrolemodifiedonbehalfby(this);
+            Lkbcgovtermsconditionspresetcreatedby = new Lkbcgovtermsconditionspresetcreatedby(this);
+            Lkbcgovtermsconditionspresetcreatedonbehalfby = new Lkbcgovtermsconditionspresetcreatedonbehalfby(this);
+            Lkbcgovtermsconditionspresetmodifiedby = new Lkbcgovtermsconditionspresetmodifiedby(this);
+            Lkbcgovtermsconditionspresetmodifiedonbehalfby = new Lkbcgovtermsconditionspresetmodifiedonbehalfby(this);
+            Lkbcgovviolationticketcreatedby = new Lkbcgovviolationticketcreatedby(this);
+            Lkbcgovviolationticketcreatedonbehalfby = new Lkbcgovviolationticketcreatedonbehalfby(this);
+            Lkbcgovviolationticketmodifiedby = new Lkbcgovviolationticketmodifiedby(this);
+            Lkbcgovviolationticketmodifiedonbehalfby = new Lkbcgovviolationticketmodifiedonbehalfby(this);
+            Userbcgovactregulationreference = new Userbcgovactregulationreference(this);
+            Userbcgovapplicationtype = new Userbcgovapplicationtype(this);
+            Userbcgovarea = new Userbcgovarea(this);
+            Userbcgovbusinesscontact = new Userbcgovbusinesscontact(this);
+            Userbcgovcecontact = new Userbcgovcecontact(this);
+            Userbcgovcecontacttype = new Userbcgovcecontacttype(this);
+            Userbcgovcertificate = new Userbcgovcertificate(this);
+            Userbcgovcertificateapprovedproduct = new Userbcgovcertificateapprovedproduct(this);
+            Userbcgovcertificatetermsandconditions = new Userbcgovcertificatetermsandconditions(this);
+            Userbcgovcomplaint = new Userbcgovcomplaint(this);
+            Userbcgovcomplaintchecklist = new Userbcgovcomplaintchecklist(this);
+            Userbcgovcustomaddress = new Userbcgovcustomaddress(this);
+            Userbcgovcustomproduct = new Userbcgovcustomproduct(this);
+            Userbcgovcustomuser = new Userbcgovcustomuser(this);
+            Userbcgovequipment = new Userbcgovequipment(this);
+            Userbcgovequipmentlocation = new Userbcgovequipmentlocation(this);
+            Userbcgovinspection = new Userbcgovinspection(this);
+            Userbcgovinspectionchecklist = new Userbcgovinspectionchecklist(this);
+            Userbcgovinspectionownershipcategory = new Userbcgovinspectionownershipcategory(this);
+            Userbcgovinvestigation = new Userbcgovinvestigation(this);
+            Userbcgovinvestigationstep = new Userbcgovinvestigationstep(this);
+            Userbcgovlocation = new Userbcgovlocation(this);
+            Userbcgovpostalcode = new Userbcgovpostalcode(this);
+            Userbcgovregion = new Userbcgovregion(this);
+            Userbcgovriskassessment = new Userbcgovriskassessment(this);
+            Userbcgovrole = new Userbcgovrole(this);
+            Userbcgovtermsconditionspreset = new Userbcgovtermsconditionspreset(this);
+            Userbcgovviolationticket = new Userbcgovviolationticket(this);
+            Regardingobjectidbcgovcomplainttask = new Regardingobjectidbcgovcomplainttask(this);
+            Regardingobjectidbcgovcustomaddresstask = new Regardingobjectidbcgovcustomaddresstask(this);
+            Regardingobjectidbcgovcustomproducttask = new Regardingobjectidbcgovcustomproducttask(this);
+            Regardingobjectidbcgovequipmenttask = new Regardingobjectidbcgovequipmenttask(this);
+            Regardingobjectidbcgovequipmentlocationtask = new Regardingobjectidbcgovequipmentlocationtask(this);
+            Regardingobjectidbcgovinspectiontask = new Regardingobjectidbcgovinspectiontask(this);
+            Regardingobjectidbcgovinvestigationtask = new Regardingobjectidbcgovinvestigationtask(this);
+            Regardingobjectidbcgovinvestigationsteptask = new Regardingobjectidbcgovinvestigationsteptask(this);
+            Regardingobjectidbcgovlocationtask = new Regardingobjectidbcgovlocationtask(this);
+            Regardingobjectidbcgovriskassessmenttask = new Regardingobjectidbcgovriskassessmenttask(this);
+            Regardingobjectidbcgovviolationtickettask = new Regardingobjectidbcgovviolationtickettask(this);
+            Teambcgovactregulationreference = new Teambcgovactregulationreference(this);
+            Teambcgovapplicationtype = new Teambcgovapplicationtype(this);
+            Teambcgovarea = new Teambcgovarea(this);
+            Teambcgovbusinesscontact = new Teambcgovbusinesscontact(this);
+            Teambcgovcecontact = new Teambcgovcecontact(this);
+            Teambcgovcecontacttype = new Teambcgovcecontacttype(this);
+            Teambcgovcertificate = new Teambcgovcertificate(this);
+            Teambcgovcertificateapprovedproduct = new Teambcgovcertificateapprovedproduct(this);
+            Teambcgovcertificatetermsandconditions = new Teambcgovcertificatetermsandconditions(this);
+            Teambcgovcomplaint = new Teambcgovcomplaint(this);
+            Teambcgovcomplaintchecklist = new Teambcgovcomplaintchecklist(this);
+            Teambcgovcustomaddress = new Teambcgovcustomaddress(this);
+            Teambcgovcustomproduct = new Teambcgovcustomproduct(this);
+            Teambcgovcustomuser = new Teambcgovcustomuser(this);
+            Teambcgovequipment = new Teambcgovequipment(this);
+            Teambcgovequipmentlocation = new Teambcgovequipmentlocation(this);
+            Teambcgovinspection = new Teambcgovinspection(this);
+            Teambcgovinspectionchecklist = new Teambcgovinspectionchecklist(this);
+            Teambcgovinspectionownershipcategory = new Teambcgovinspectionownershipcategory(this);
+            Teambcgovinvestigation = new Teambcgovinvestigation(this);
+            Teambcgovinvestigationstep = new Teambcgovinvestigationstep(this);
+            Teambcgovlocation = new Teambcgovlocation(this);
+            Teambcgovpostalcode = new Teambcgovpostalcode(this);
+            Teambcgovregion = new Teambcgovregion(this);
+            Teambcgovriskassessment = new Teambcgovriskassessment(this);
+            Teambcgovrole = new Teambcgovrole(this);
+            Teambcgovtermsconditionspreset = new Teambcgovtermsconditionspreset(this);
+            Teambcgovviolationticket = new Teambcgovviolationticket(this);
+            Asyncoperationidbcgovcomplaintcomplaintprocessflow = new Asyncoperationidbcgovcomplaintcomplaintprocessflow(this);
+            Asyncoperationidbcgovinspectionprocessflow = new Asyncoperationidbcgovinspectionprocessflow(this);
+            Lkbcgovcomplaintcomplaintprocessflowprocessid = new Lkbcgovcomplaintcomplaintprocessflowprocessid(this);
+            Lkbcgovinspectionprocessflowprocessid = new Lkbcgovinspectionprocessflowprocessid(this);
+            BaseUri = new System.Uri("http://localhost");
             SerializationSettings = new JsonSerializerSettings
             {
                 Formatting = Newtonsoft.Json.Formatting.Indented,

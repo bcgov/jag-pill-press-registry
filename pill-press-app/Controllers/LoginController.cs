@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
-using Microsoft.Extensions.Caching.Redis;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -24,14 +24,14 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
     public class LoginController : Controller
     {
         private readonly IConfiguration Configuration;
-        private readonly IHostingEnvironment _env;
+        private readonly IWebHostEnvironment _env;
         private readonly SiteMinderAuthOptions _options = new SiteMinderAuthOptions();
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ILogger _logger;
         private readonly IDynamicsClient _dynamicsClient;
         const string BUSINESS_PROFILE_PAGE = "business-profile";
 
-        public LoginController(IConfiguration configuration, IDynamicsClient dynamicsClient, IHostingEnvironment env, IHttpContextAccessor httpContextAccessor, ILoggerFactory loggerFactory)
+        public LoginController(IConfiguration configuration, IDynamicsClient dynamicsClient, IWebHostEnvironment env, IHttpContextAccessor httpContextAccessor, ILoggerFactory loggerFactory)
         {
             Configuration = configuration;
             _env = env;

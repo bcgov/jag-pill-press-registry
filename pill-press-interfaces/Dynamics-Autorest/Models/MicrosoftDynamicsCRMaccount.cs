@@ -6,13 +6,15 @@
 
 namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 {
+    using Microsoft.Rest;
+    using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// account
+    /// Microsoft.Dynamics.CRM.account
     /// </summary>
     public partial class MicrosoftDynamicsCRMaccount
     {
@@ -29,7 +31,354 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// Initializes a new instance of the MicrosoftDynamicsCRMaccount
         /// class.
         /// </summary>
-        public MicrosoftDynamicsCRMaccount(object openrevenue = default(object), int? territorycode = default(int?), System.DateTimeOffset? lastusedincampaign = default(System.DateTimeOffset?), string address1Name = default(string), string address1Telephone2 = default(string), System.DateTimeOffset? overriddencreatedon = default(System.DateTimeOffset?), string bcgovAositelicencenumber = default(string), string entityimageid = default(string), int? ownershipcode = default(int?), int? customersizecode = default(int?), string bcgovBceid = default(string), string _bcgovCurrentbusinessphysicaladdressValue = default(string), System.DateTimeOffset? bcgovRegisteredsellercertificateexpirydate = default(System.DateTimeOffset?), object creditlimit = default(object), string _primarycontactidValue = default(string), long? versionnumber = default(long?), string address1County = default(string), long? entityimageTimestamp = default(long?), string telephone3 = default(string), System.DateTimeOffset? openrevenueDate = default(System.DateTimeOffset?), bool? bcgovWaiveradministrativehold = default(bool?), bool? donotbulkpostalmail = default(bool?), int? address1Freighttermscode = default(int?), string address2Line1 = default(string), int? onholdtime = default(int?), bool? donotpostalmail = default(bool?), string _createdbyexternalpartyValue = default(string), string telephone2 = default(string), string _owningbusinessunitValue = default(string), string primarysatoriid = default(string), int? shippingmethodcode = default(int?), string address1Addressid = default(string), bool? bcgovMailaddressdiffromphysaddress = default(bool?), string address2Telephone1 = default(string), string address1Fax = default(string), bool? bcgovDeclarationofcorrectinformation = default(bool?), string _owneridValue = default(string), string _createdonbehalfbyValue = default(string), int? preferredcontactmethodcode = default(int?), string address2City = default(string), double? address2Latitude = default(double?), string address2Composite = default(string), object creditlimitBase = default(object), string bcgovClientid = default(string), object aging90Base = default(object), string address2Postalcode = default(string), string address2Name = default(string), bool? merged = default(bool?), int? preferredappointmentdaycode = default(int?), string _owningteamValue = default(string), string address2Line3 = default(string), object revenueBase = default(object), string bcgovAodelbusinessname = default(string), object aging30 = default(object), string ftpsiteurl = default(string), bool? donotbulkemail = default(bool?), string _originatingleadidValue = default(string), string emailaddress3 = default(string), string _modifiedbyexternalpartyValue = default(string), int? paymenttermscode = default(int?), string websiteurl = default(string), object revenue = default(object), int? address1Shippingmethodcode = default(int?), System.DateTimeOffset? bcgovAositelicenceexpirydate = default(System.DateTimeOffset?), string description = default(string), string bcgovAositelicencebusinessname = default(string), int? bcgovRegisteredsellerstatus = default(int?), string tickersymbol = default(string), bool? bcgovAolicenceexpirynotificationsent = default(bool?), System.DateTimeOffset? lastonholdtime = default(System.DateTimeOffset?), string bcgovAootherlicencebusinessname = default(string), int? statuscode = default(int?), System.DateTimeOffset? bcgovWaivercertificateexpirydate = default(System.DateTimeOffset?), System.DateTimeOffset? bcgovLegislativeauthoritystatusdate = default(System.DateTimeOffset?), object marketcap = default(object), string _parentaccountidValue = default(string), string _owninguserValue = default(string), System.DateTimeOffset? bcgovSubmitteddate = default(System.DateTimeOffset?), string _bcgovAdditionalcontactValue = default(string), string address2Addressid = default(string), string _preferredsystemuseridValue = default(string), double? address2Longitude = default(double?), string _defaultpricelevelidValue = default(string), int? openrevenueState = default(int?), string address1Primarycontactname = default(string), bool? bcgovFoippaconsent = default(bool?), int? accountcategorycode = default(int?), int? statecode = default(int?), object marketcapBase = default(object), bool? donotfax = default(bool?), System.DateTimeOffset? bcgovLegislativeauthoritystatusnotificationdat = default(System.DateTimeOffset?), string address2Telephone3 = default(string), string address2Postofficebox = default(string), bool? marketingonly = default(bool?), string _preferredserviceidValue = default(string), bool? bcgovRegisteredselleradministrativehold = default(bool?), int? importsequencenumber = default(int?), string address1Upszone = default(string), string stageid = default(string), int? utcconversiontimezonecode = default(int?), bool? donotemail = default(bool?), object aging60 = default(object), string _bcgovCurrentbusinessmailingaddressValue = default(string), int? customertypecode = default(int?), string telephone1 = default(string), int? opendealsState = default(int?), string address1Postofficebox = default(string), string bcgovDoingbusinessasname = default(string), bool? bcgovAoadministrativehold = default(bool?), string _modifiedbyValue = default(string), int? bcgovBusinesstype = default(int?), string yominame = default(string), string bcgovBusinessnumber = default(string), string address2Country = default(string), bool? bcgovBusinessprofileupdate = default(bool?), string address1Line2 = default(string), bool? donotsendmm = default(bool?), string address1Postalcode = default(string), string traversedpath = default(string), string _transactioncurrencyidValue = default(string), string fax = default(string), int? numberofemployees = default(int?), System.DateTimeOffset? opendealsDate = default(System.DateTimeOffset?), string address2Upszone = default(string), int? address2Freighttermscode = default(int?), int? accountratingcode = default(int?), object aging90 = default(object), string _bcgovCurrentregisteredsellercertificateValue = default(string), double? address1Longitude = default(double?), bool? bcgovConsentforemailcommunication = default(bool?), bool? participatesinworkflow = default(bool?), string _bcgovCurrentwaivercertificateValue = default(string), int? bcgovWaiverstatus = default(int?), string emailaddress2 = default(string), string bcgovAootherlicencenumber = default(string), bool? creditonhold = default(bool?), string address1Telephone1 = default(string), System.DateTimeOffset? createdon = default(System.DateTimeOffset?), string name = default(string), object exchangerate = default(object), int? address2Addresstypecode = default(int?), string address1Stateorprovince = default(string), string address2Line2 = default(string), object entityimage = default(object), System.DateTimeOffset? bcgovAodelexpirydate = default(System.DateTimeOffset?), string primarytwitterid = default(string), string timespentbymeonemailandmeetings = default(string), string accountnumber = default(string), string address1Line1 = default(string), string _territoryidValue = default(string), string accountid = default(string), string address1Composite = default(string), string _slaidValue = default(string), string address2County = default(string), bool? followemail = default(bool?), bool? donotphone = default(bool?), int? accountclassificationcode = default(int?), string _preferredequipmentidValue = default(string), int? bcgovLegislativeauthoritylicensestatus = default(int?), string sic = default(string), string entityimageUrl = default(string), string processid = default(string), string address2Telephone2 = default(string), int? address1Addresstypecode = default(int?), int? address1Utcoffset = default(int?), string address2Fax = default(string), System.DateTimeOffset? bcgovAootherlicenceexpirydate = default(System.DateTimeOffset?), int? businesstypecode = default(int?), object aging60Base = default(object), string address1Country = default(string), string _modifiedonbehalfbyValue = default(string), int? address2Shippingmethodcode = default(int?), string stockexchange = default(string), string _createdbyValue = default(string), string address1Line3 = default(string), object aging30Base = default(object), object openrevenueBase = default(object), int? sharesoutstanding = default(int?), string _slainvokedidValue = default(string), string address1City = default(string), string address2Primarycontactname = default(string), string bcgovAodelnumber = default(string), double? address1Latitude = default(double?), System.DateTimeOffset? modifiedon = default(System.DateTimeOffset?), string _masteridValue = default(string), int? address2Utcoffset = default(int?), string emailaddress1 = default(string), int? timezoneruleversionnumber = default(int?), int? opendeals = default(int?), string address2Stateorprovince = default(string), int? preferredappointmenttimecode = default(int?), int? industrycode = default(int?), string address1Telephone3 = default(string), IList<MicrosoftDynamicsCRMlead> accountleadsAssociation = default(IList<MicrosoftDynamicsCRMlead>), IList<MicrosoftDynamicsCRMlist> listaccountAssociation = default(IList<MicrosoftDynamicsCRMlist>), IList<MicrosoftDynamicsCRMentitlement> accountEntitlementCustomer = default(IList<MicrosoftDynamicsCRMentitlement>), IList<MicrosoftDynamicsCRMentitlement> accountEntitlementAccount = default(IList<MicrosoftDynamicsCRMentitlement>), IList<MicrosoftDynamicsCRMbookableresource> accountBookableresourceAccountId = default(IList<MicrosoftDynamicsCRMbookableresource>), MicrosoftDynamicsCRMprincipal ownerid = default(MicrosoftDynamicsCRMprincipal), IList<MicrosoftDynamicsCRMactivitypointer> accountActivityPointers = default(IList<MicrosoftDynamicsCRMactivitypointer>), IList<MicrosoftDynamicsCRMserviceappointment> accountServiceAppointments = default(IList<MicrosoftDynamicsCRMserviceappointment>), IList<MicrosoftDynamicsCRMsyncerror> accountSyncErrors = default(IList<MicrosoftDynamicsCRMsyncerror>), MicrosoftDynamicsCRMsystemuser createdby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMlead> leadCustomerAccounts = default(IList<MicrosoftDynamicsCRMlead>), IList<MicrosoftDynamicsCRMemail> accountEmailSendersAccount = default(IList<MicrosoftDynamicsCRMemail>), IList<MicrosoftDynamicsCRMemail> accountEmailEmailSender = default(IList<MicrosoftDynamicsCRMemail>), IList<MicrosoftDynamicsCRMcontract> contractBillingcustomerAccounts = default(IList<MicrosoftDynamicsCRMcontract>), IList<MicrosoftDynamicsCRMannotation> accountAnnotation = default(IList<MicrosoftDynamicsCRMannotation>), IList<MicrosoftDynamicsCRMsharepointdocumentlocation> accountSharepointDocumentLocation = default(IList<MicrosoftDynamicsCRMsharepointdocumentlocation>), MicrosoftDynamicsCRMservice preferredserviceid = default(MicrosoftDynamicsCRMservice), MicrosoftDynamicsCRMsla slaAccountSla = default(MicrosoftDynamicsCRMsla), IList<MicrosoftDynamicsCRMconnection> accountConnections2 = default(IList<MicrosoftDynamicsCRMconnection>), MicrosoftDynamicsCRMsystemuser modifiedby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMpostfollow> accountPostFollows = default(IList<MicrosoftDynamicsCRMpostfollow>), IList<MicrosoftDynamicsCRMpostregarding> accountPostRegardings = default(IList<MicrosoftDynamicsCRMpostregarding>), IList<MicrosoftDynamicsCRMfax> accountFaxes = default(IList<MicrosoftDynamicsCRMfax>), MicrosoftDynamicsCRMaccount masterid = default(MicrosoftDynamicsCRMaccount), IList<MicrosoftDynamicsCRMaccount> accountMasterAccount = default(IList<MicrosoftDynamicsCRMaccount>), MicrosoftDynamicsCRMequipment preferredequipmentid = default(MicrosoftDynamicsCRMequipment), MicrosoftDynamicsCRMbusinessunit owningbusinessunit = default(MicrosoftDynamicsCRMbusinessunit), IList<MicrosoftDynamicsCRMasyncoperation> accountAsyncOperations = default(IList<MicrosoftDynamicsCRMasyncoperation>), MicrosoftDynamicsCRMtransactioncurrency transactioncurrencyid = default(MicrosoftDynamicsCRMtransactioncurrency), IList<MicrosoftDynamicsCRMduplicaterecord> accountDuplicateBaseRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), MicrosoftDynamicsCRMsystemuser preferredsystemuserid = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMbulkoperationlog> createdAccountBulkOperationLogs2 = default(IList<MicrosoftDynamicsCRMbulkoperationlog>), MicrosoftDynamicsCRMsystemuser createdonbehalfby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMrecurringappointmentmaster> accountRecurringAppointmentMasters = default(IList<MicrosoftDynamicsCRMrecurringappointmentmaster>), IList<MicrosoftDynamicsCRMphonecall> accountPhonecalls = default(IList<MicrosoftDynamicsCRMphonecall>), MicrosoftDynamicsCRMcontact primarycontactid = default(MicrosoftDynamicsCRMcontact), IList<MicrosoftDynamicsCRMsocialactivity> accountSocialActivities = default(IList<MicrosoftDynamicsCRMsocialactivity>), IList<MicrosoftDynamicsCRMsocialactivity> socialActivityPostAuthorAccountAccounts = default(IList<MicrosoftDynamicsCRMsocialactivity>), IList<MicrosoftDynamicsCRMopportunity> opportunityCustomerAccounts = default(IList<MicrosoftDynamicsCRMopportunity>), IList<MicrosoftDynamicsCRMbulkoperationlog> sourceAccountBulkOperationLogs = default(IList<MicrosoftDynamicsCRMbulkoperationlog>), IList<MicrosoftDynamicsCRMcustomeraddress> accountCustomerAddress = default(IList<MicrosoftDynamicsCRMcustomeraddress>), IList<MicrosoftDynamicsCRMslakpiinstance> slakpiinstanceAccount = default(IList<MicrosoftDynamicsCRMslakpiinstance>), MicrosoftDynamicsCRMlead originatingleadid = default(MicrosoftDynamicsCRMlead), IList<MicrosoftDynamicsCRMtask> accountTasks = default(IList<MicrosoftDynamicsCRMtask>), IList<MicrosoftDynamicsCRMopportunity> opportunityParentAccount = default(IList<MicrosoftDynamicsCRMopportunity>), MicrosoftDynamicsCRMsla slainvokedidAccountSla = default(MicrosoftDynamicsCRMsla), IList<MicrosoftDynamicsCRMbulkdeletefailure> accountBulkDeleteFailures = default(IList<MicrosoftDynamicsCRMbulkdeletefailure>), IList<MicrosoftDynamicsCRMquote> quoteCustomerAccounts = default(IList<MicrosoftDynamicsCRMquote>), IList<MicrosoftDynamicsCRMsocialactivity> socialActivityPostAuthorAccounts = default(IList<MicrosoftDynamicsCRMsocialactivity>), MicrosoftDynamicsCRMterritory territoryid = default(MicrosoftDynamicsCRMterritory), IList<MicrosoftDynamicsCRMcontact> contactCustomerAccounts = default(IList<MicrosoftDynamicsCRMcontact>), IList<MicrosoftDynamicsCRMincident> incidentCustomerAccounts = default(IList<MicrosoftDynamicsCRMincident>), IList<MicrosoftDynamicsCRMinvoice> invoiceCustomerAccounts = default(IList<MicrosoftDynamicsCRMinvoice>), IList<MicrosoftDynamicsCRMappointment> accountAppointments = default(IList<MicrosoftDynamicsCRMappointment>), IList<MicrosoftDynamicsCRMcontractdetail> contractlineitemCustomerAccounts = default(IList<MicrosoftDynamicsCRMcontractdetail>), IList<MicrosoftDynamicsCRMemail> accountEmails = default(IList<MicrosoftDynamicsCRMemail>), MicrosoftDynamicsCRMaccount parentaccountid = default(MicrosoftDynamicsCRMaccount), IList<MicrosoftDynamicsCRMaccount> accountParentAccount = default(IList<MicrosoftDynamicsCRMaccount>), IList<MicrosoftDynamicsCRMsocialprofile> socialprofileCustomerAccounts = default(IList<MicrosoftDynamicsCRMsocialprofile>), IList<MicrosoftDynamicsCRMduplicaterecord> accountDuplicateMatchingRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMactivityparty> accountActivityParties = default(IList<MicrosoftDynamicsCRMactivityparty>), IList<MicrosoftDynamicsCRMconnection> accountConnections1 = default(IList<MicrosoftDynamicsCRMconnection>), MicrosoftDynamicsCRMteam owningteam = default(MicrosoftDynamicsCRMteam), MicrosoftDynamicsCRMpricelevel defaultpricelevelid = default(MicrosoftDynamicsCRMpricelevel), IList<MicrosoftDynamicsCRMlead> leadParentAccount = default(IList<MicrosoftDynamicsCRMlead>), IList<MicrosoftDynamicsCRMcontract> contractCustomerAccounts = default(IList<MicrosoftDynamicsCRMcontract>), IList<MicrosoftDynamicsCRMactioncard> accountActioncard = default(IList<MicrosoftDynamicsCRMactioncard>), MicrosoftDynamicsCRMsystemuser owninguser = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMletter> accountLetters = default(IList<MicrosoftDynamicsCRMletter>), MicrosoftDynamicsCRMprocessstage stageidProcessstage = default(MicrosoftDynamicsCRMprocessstage), IList<MicrosoftDynamicsCRMsalesorder> orderCustomerAccounts = default(IList<MicrosoftDynamicsCRMsalesorder>), MicrosoftDynamicsCRMsystemuser modifiedonbehalfby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMabsScheduledprocessexecution> accountAbsScheduledprocessexecutions = default(IList<MicrosoftDynamicsCRMabsScheduledprocessexecution>), IList<MicrosoftDynamicsCRMknowledgebaserecord> accountKnowledgebaserecord = default(IList<MicrosoftDynamicsCRMknowledgebaserecord>), IList<MicrosoftDynamicsCRMknowledgearticle> msdynAccountKnowledgearticle = default(IList<MicrosoftDynamicsCRMknowledgearticle>), IList<MicrosoftDynamicsCRMqueueitem> accountQueueItems = default(IList<MicrosoftDynamicsCRMqueueitem>), IList<MicrosoftDynamicsCRMbcgovBusinesscontact> bcgovAccountBcgovBusinesscontactBusinessProfile = default(IList<MicrosoftDynamicsCRMbcgovBusinesscontact>), IList<MicrosoftDynamicsCRMbcgovCertificate> bcgovAccountBcgovCertificateCertificateHolderBusiness = default(IList<MicrosoftDynamicsCRMbcgovCertificate>), IList<MicrosoftDynamicsCRMcontact> bcgovAccountContactBusinessLegalName = default(IList<MicrosoftDynamicsCRMcontact>), IList<MicrosoftDynamicsCRMbcgovCustomaddress> bcgovAccountCustomaddress = default(IList<MicrosoftDynamicsCRMbcgovCustomaddress>), IList<MicrosoftDynamicsCRMbcgovCustomaddress> bcgovAccountCustomaddressBusinessProfile = default(IList<MicrosoftDynamicsCRMbcgovCustomaddress>), IList<MicrosoftDynamicsCRMbcgovEquipment> bcgovAccountEquipmentCurrentBusinessOwner = default(IList<MicrosoftDynamicsCRMbcgovEquipment>), IList<MicrosoftDynamicsCRMbcgovLocation> bcgovAccountLocationBusinessProfile = default(IList<MicrosoftDynamicsCRMbcgovLocation>), MicrosoftDynamicsCRMbcgovCustomaddress bcgovCurrentBusinessMailingAddress = default(MicrosoftDynamicsCRMbcgovCustomaddress), MicrosoftDynamicsCRMbcgovCustomaddress bcgovCurrentBusinessPhysicalAddress = default(MicrosoftDynamicsCRMbcgovCustomaddress), MicrosoftDynamicsCRMcontact bcgovAdditionalContact = default(MicrosoftDynamicsCRMcontact), IList<MicrosoftDynamicsCRMbcgovInspection> bcgovAccountInspectionBusinessLegalName = default(IList<MicrosoftDynamicsCRMbcgovInspection>), MicrosoftDynamicsCRMbcgovCertificate bcgovCurrentWaiverCertificate = default(MicrosoftDynamicsCRMbcgovCertificate), MicrosoftDynamicsCRMbcgovCertificate bcgovCurrentRegisteredSellerCertificate = default(MicrosoftDynamicsCRMbcgovCertificate), IList<MicrosoftDynamicsCRMbcgovInspection> bcgovAccountInspectionOwnerCategory = default(IList<MicrosoftDynamicsCRMbcgovInspection>), IList<MicrosoftDynamicsCRMbcgovComplaint> bcgovAccountBcgovComplaintBusinessLegalName = default(IList<MicrosoftDynamicsCRMbcgovComplaint>))
+        /// <param name="openrevenue">Sum of open revenue against an account
+        /// and its child accounts.</param>
+        /// <param name="territorycode">Select a region or territory for the
+        /// account for use in segmentation and analysis.</param>
+        /// <param name="lastusedincampaign">Shows the date when the account
+        /// was last included in a marketing campaign or quick
+        /// campaign.</param>
+        /// <param name="address1Name">Type a descriptive name for the primary
+        /// address, such as Corporate Headquarters.</param>
+        /// <param name="address1Telephone2">Type a second phone number
+        /// associated with the primary address.</param>
+        /// <param name="overriddencreatedon">Date and time that the record was
+        /// migrated.</param>
+        /// <param name="entityimageid">For internal use only.</param>
+        /// <param name="ownershipcode">Select the account's ownership
+        /// structure, such as public or private.</param>
+        /// <param name="customersizecode">Select the size category or range of
+        /// the account for segmentation and reporting purposes.</param>
+        /// <param name="creditlimit">Type the credit limit of the account.
+        /// This is a useful reference when you address invoice and accounting
+        /// issues with the customer.</param>
+        /// <param name="_primarycontactidValue">Choose the primary contact for
+        /// the business profile to provide quick access to contact
+        /// details.</param>
+        /// <param name="versionnumber">Version number of the account.</param>
+        /// <param name="address1County">Type the county for the primary
+        /// address.</param>
+        /// <param name="telephone3">Type a third phone number for this
+        /// account.</param>
+        /// <param name="openrevenueDate">The date time for Open
+        /// Revenue.</param>
+        /// <param name="donotbulkpostalmail">Select whether the account allows
+        /// bulk postal mail sent through marketing campaigns or quick
+        /// campaigns. If Do Not Allow is selected, the account can be added to
+        /// marketing lists, but will be excluded from the postal mail.</param>
+        /// <param name="address1Freighttermscode">Select the freight terms for
+        /// the primary address to make sure shipping orders are processed
+        /// correctly.</param>
+        /// <param name="address2Line1">Type the first line of the secondary
+        /// address.</param>
+        /// <param name="onholdtime">Shows how long, in minutes, that the
+        /// record was on hold.</param>
+        /// <param name="donotpostalmail">Select whether the account allows
+        /// direct mail. If Do Not Allow is selected, the account will be
+        /// excluded from letter activities distributed in marketing
+        /// campaigns.</param>
+        /// <param name="_createdbyexternalpartyValue">Shows the external party
+        /// who created the record.</param>
+        /// <param name="telephone2">Type a second phone number for this
+        /// account.</param>
+        /// <param name="_owningbusinessunitValue">Shows the business unit that
+        /// the record owner belongs to.</param>
+        /// <param name="primarysatoriid">Primary Satori ID for Account</param>
+        /// <param name="shippingmethodcode">Select a shipping method for
+        /// deliveries sent to the account's address to designate the preferred
+        /// carrier or other delivery option.</param>
+        /// <param name="address1Addressid">Unique identifier for address
+        /// 1.</param>
+        /// <param name="address2Telephone1">Type the main phone number
+        /// associated with the secondary address.</param>
+        /// <param name="address1Fax">Type the fax number associated with the
+        /// primary address.</param>
+        /// <param name="_owneridValue">Enter the user or team who is assigned
+        /// to manage the record. This field is updated every time the record
+        /// is assigned to a different user.</param>
+        /// <param name="_createdonbehalfbyValue">Shows who created the record
+        /// on behalf of another user.</param>
+        /// <param name="preferredcontactmethodcode">Select the preferred
+        /// method of contact.</param>
+        /// <param name="address2City">Type the city for the secondary
+        /// address.</param>
+        /// <param name="address2Latitude">Type the latitude value for the
+        /// secondary address for use in mapping and other
+        /// applications.</param>
+        /// <param name="address2Composite">Shows the complete secondary
+        /// address.</param>
+        /// <param name="creditlimitBase">Shows the credit limit converted to
+        /// the system's default base currency for reporting purposes.</param>
+        /// <param name="aging90Base">The base currency equivalent of the aging
+        /// 90 field.</param>
+        /// <param name="address2Postalcode">Type the ZIP Code or postal code
+        /// for the secondary address.</param>
+        /// <param name="address2Name">Type a descriptive name for the
+        /// secondary address, such as Corporate Headquarters.</param>
+        /// <param name="merged">Shows whether the account has been merged with
+        /// another account.</param>
+        /// <param name="preferredappointmentdaycode">Select the preferred day
+        /// of the week for service appointments.</param>
+        /// <param name="_owningteamValue">Unique identifier of the team who
+        /// owns the account.</param>
+        /// <param name="address2Line3">Type the third line of the secondary
+        /// address.</param>
+        /// <param name="revenueBase">Shows the annual revenue converted to the
+        /// system's default base currency. The calculations use the exchange
+        /// rate specified in the Currencies area.</param>
+        /// <param name="aging30">For system use only.</param>
+        /// <param name="ftpsiteurl">Type the URL for the account's FTP site to
+        /// enable users to access data and share documents.</param>
+        /// <param name="donotbulkemail">Select whether the account allows bulk
+        /// email sent through campaigns. If Do Not Allow is selected, the
+        /// account can be added to marketing lists, but is excluded from
+        /// email.</param>
+        /// <param name="_originatingleadidValue">Shows the lead that the
+        /// account was created from if the account was created by converting a
+        /// lead in Microsoft Dynamics 365. This is used to relate the account
+        /// to data on the originating lead for use in reporting and
+        /// analytics.</param>
+        /// <param name="emailaddress3">Type an alternate email address for the
+        /// account.</param>
+        /// <param name="_modifiedbyexternalpartyValue">Shows the external
+        /// party who modified the record.</param>
+        /// <param name="paymenttermscode">Select the payment terms to indicate
+        /// when the customer needs to pay the total amount.</param>
+        /// <param name="websiteurl">Type the business profile's website
+        /// URL.</param>
+        /// <param name="revenue">Type the annual revenue for the account, used
+        /// as an indicator in financial performance analysis.</param>
+        /// <param name="address1Shippingmethodcode">Select a shipping method
+        /// for deliveries sent to this address.</param>
+        /// <param name="description">Type additional information to describe
+        /// the account, such as an excerpt from the company's website.</param>
+        /// <param name="tickersymbol">Type the stock exchange symbol for the
+        /// account to track financial performance of the company. You can
+        /// click the code entered in this field to access the latest trading
+        /// information from MSN Money.</param>
+        /// <param name="lastonholdtime">Contains the date and time stamp of
+        /// the last on hold time.</param>
+        /// <param name="statuscode">Select the account's status.</param>
+        /// <param name="marketcap">Type the market capitalization of the
+        /// account to identify the company's equity, used as an indicator in
+        /// financial performance analysis.</param>
+        /// <param name="_parentaccountidValue">Choose the parent account
+        /// associated with this account to show parent and child businesses in
+        /// reporting and analytics.</param>
+        /// <param name="_owninguserValue">Unique identifier of the user who
+        /// owns the account.</param>
+        /// <param name="address2Addressid">Unique identifier for address
+        /// 2.</param>
+        /// <param name="_preferredsystemuseridValue">Choose the preferred
+        /// service representative for reference when you schedule service
+        /// activities for the account.</param>
+        /// <param name="address2Longitude">Type the longitude value for the
+        /// secondary address for use in mapping and other
+        /// applications.</param>
+        /// <param name="_defaultpricelevelidValue">Choose the default price
+        /// list associated with the account to make sure the correct product
+        /// prices for this customer are applied in sales opportunities,
+        /// quotes, and orders.</param>
+        /// <param name="openrevenueState">State of Open Revenue.</param>
+        /// <param name="address1Primarycontactname">Type the name of the main
+        /// contact at the account's primary address.</param>
+        /// <param name="accountcategorycode">Select a category to indicate
+        /// whether the customer account is standard or preferred.</param>
+        /// <param name="statecode">Shows whether the account is active or
+        /// inactive. Inactive accounts are read-only and can't be edited
+        /// unless they are reactivated.</param>
+        /// <param name="marketcapBase">Shows the market capitalization
+        /// converted to the system's default base currency.</param>
+        /// <param name="donotfax">Select whether the account allows faxes. If
+        /// Do Not Allow is selected, the account will be excluded from fax
+        /// activities distributed in marketing campaigns.</param>
+        /// <param name="address2Telephone3">Type a third phone number
+        /// associated with the secondary address.</param>
+        /// <param name="address2Postofficebox">Type the post office box number
+        /// of the secondary address.</param>
+        /// <param name="marketingonly">Whether is only for marketing</param>
+        /// <param name="_preferredserviceidValue">Choose the account's
+        /// preferred service for reference when you schedule service
+        /// activities.</param>
+        /// <param name="importsequencenumber">Unique identifier of the data
+        /// import or data migration that created this record.</param>
+        /// <param name="address1Upszone">Type the UPS zone of the primary
+        /// address to make sure shipping charges are calculated correctly and
+        /// deliveries are made promptly, if shipped by UPS.</param>
+        /// <param name="stageid">Shows the ID of the stage.</param>
+        /// <param name="utcconversiontimezonecode">Time zone code that was in
+        /// use when the record was created.</param>
+        /// <param name="donotemail">Select whether the account allows direct
+        /// email sent from Microsoft Dynamics 365.</param>
+        /// <param name="aging60">For system use only.</param>
+        /// <param name="customertypecode">Select the category that best
+        /// describes the relationship between the account and your
+        /// organization.</param>
+        /// <param name="telephone1">Type the main phone number for this
+        /// business profile.</param>
+        /// <param name="opendealsState">State of Open Deals.</param>
+        /// <param name="address1Postofficebox">Type the post office box number
+        /// of the primary address.</param>
+        /// <param name="_modifiedbyValue">Shows who last updated the
+        /// record.</param>
+        /// <param name="yominame">Type the phonetic spelling of the company
+        /// name, if specified in Japanese, to make sure the name is pronounced
+        /// correctly in phone calls and other communications.</param>
+        /// <param name="address2Country">Type the country or region for the
+        /// secondary address.</param>
+        /// <param name="address1Line2">Type the second line of the primary
+        /// address.</param>
+        /// <param name="donotsendmm">Select whether the account accepts
+        /// marketing materials, such as brochures or catalogs.</param>
+        /// <param name="address1Postalcode">Type the ZIP Code or postal code
+        /// for the primary address.</param>
+        /// <param name="traversedpath">For internal use only.</param>
+        /// <param name="_transactioncurrencyidValue">Choose the local currency
+        /// for the record to make sure budgets are reported in the correct
+        /// currency.</param>
+        /// <param name="fax">Type the fax number for the account.</param>
+        /// <param name="numberofemployees">Type the number of employees that
+        /// work at the account for use in marketing segmentation and
+        /// demographic analysis.</param>
+        /// <param name="opendealsDate">The date time for Open Deals.</param>
+        /// <param name="address2Upszone">Type the UPS zone of the secondary
+        /// address to make sure shipping charges are calculated correctly and
+        /// deliveries are made promptly, if shipped by UPS.</param>
+        /// <param name="address2Freighttermscode">Select the freight terms for
+        /// the secondary address to make sure shipping orders are processed
+        /// correctly.</param>
+        /// <param name="accountratingcode">Select a rating to indicate the
+        /// value of the customer account.</param>
+        /// <param name="aging90">For system use only.</param>
+        /// <param name="address1Longitude">Type the longitude value for the
+        /// primary address for use in mapping and other applications.</param>
+        /// <param name="participatesinworkflow">For system use only. Legacy
+        /// Microsoft Dynamics CRM 3.0 workflow data.</param>
+        /// <param name="emailaddress2">Type the secondary email address for
+        /// the account.</param>
+        /// <param name="creditonhold">Select whether the credit for the
+        /// account is on hold. This is a useful reference while addressing the
+        /// invoice and accounting issues with the customer.</param>
+        /// <param name="address1Telephone1">Type the main phone number
+        /// associated with the primary address.</param>
+        /// <param name="createdon">Shows the date and time when the record was
+        /// created. The date and time are displayed in the time zone selected
+        /// in Microsoft Dynamics 365 options.</param>
+        /// <param name="name">Type the company or business name.</param>
+        /// <param name="exchangerate">Shows the conversion rate of the
+        /// record's currency. The exchange rate is used to convert all money
+        /// fields in the record from the local currency to the system's
+        /// default currency.</param>
+        /// <param name="address2Addresstypecode">Select the secondary address
+        /// type.</param>
+        /// <param name="address1Stateorprovince">Type the state or province of
+        /// the primary address.</param>
+        /// <param name="address2Line2">Type the second line of the secondary
+        /// address.</param>
+        /// <param name="entityimage">Shows the default image for the
+        /// record.</param>
+        /// <param name="primarytwitterid">Primary Twitter ID for
+        /// Account</param>
+        /// <param name="timespentbymeonemailandmeetings">Total time spent for
+        /// emails (read and write) and meetings by me in relation to account
+        /// record.</param>
+        /// <param name="accountnumber">Type an ID number or code for the
+        /// account to quickly search and identify the account in system
+        /// views.</param>
+        /// <param name="address1Line1">Type the first line of the primary
+        /// address.</param>
+        /// <param name="_territoryidValue">Choose the sales region or
+        /// territory for the account to make sure the account is assigned to
+        /// the correct representative and for use in segmentation and
+        /// analysis.</param>
+        /// <param name="accountid">Unique identifier of the account.</param>
+        /// <param name="address1Composite">Shows the complete primary
+        /// address.</param>
+        /// <param name="_slaidValue">Choose the service level agreement (SLA)
+        /// that you want to apply to the Account record.</param>
+        /// <param name="address2County">Type the county for the secondary
+        /// address.</param>
+        /// <param name="followemail">Information about whether to allow
+        /// following email activity like opens, attachment views and link
+        /// clicks for emails sent to the account.</param>
+        /// <param name="donotphone">Select whether the account allows phone
+        /// calls. If Do Not Allow is selected, the account will be excluded
+        /// from phone call activities distributed in marketing
+        /// campaigns.</param>
+        /// <param name="accountclassificationcode">Select a classification
+        /// code to indicate the potential value of the customer account based
+        /// on the projected return on investment, cooperation level, sales
+        /// cycle length or other criteria.</param>
+        /// <param name="_preferredequipmentidValue">Choose the account's
+        /// preferred service facility or equipment to make sure services are
+        /// scheduled correctly for the customer.</param>
+        /// <param name="sic">Type the Standard Industrial Classification (SIC)
+        /// code that indicates the account's primary industry of business, for
+        /// use in marketing segmentation and demographic analysis.</param>
+        /// <param name="processid">Shows the ID of the process.</param>
+        /// <param name="address2Telephone2">Type a second phone number
+        /// associated with the secondary address.</param>
+        /// <param name="address1Addresstypecode">Select the primary address
+        /// type.</param>
+        /// <param name="address1Utcoffset">Select the time zone, or UTC
+        /// offset, for this address so that other people can reference it when
+        /// they contact someone at this address.</param>
+        /// <param name="address2Fax">Type the fax number associated with the
+        /// secondary address.</param>
+        /// <param name="businesstypecode">Select the legal designation of the
+        /// business profile.</param>
+        /// <param name="aging60Base">The base currency equivalent of the aging
+        /// 60 field.</param>
+        /// <param name="address1Country">Type the country or region for the
+        /// primary address.</param>
+        /// <param name="_modifiedonbehalfbyValue">Shows who created the record
+        /// on behalf of another user.</param>
+        /// <param name="address2Shippingmethodcode">Select a shipping method
+        /// for deliveries sent to this address.</param>
+        /// <param name="stockexchange">Type the stock exchange at which the
+        /// account is listed to track their stock and financial performance of
+        /// the company.</param>
+        /// <param name="_createdbyValue">Shows who created the record.</param>
+        /// <param name="address1Line3">Type the third line of the primary
+        /// address.</param>
+        /// <param name="aging30Base">The base currency equivalent of the aging
+        /// 30 field.</param>
+        /// <param name="openrevenueBase">Sum of open revenue against an
+        /// account and its child accounts.</param>
+        /// <param name="sharesoutstanding">Type the number of shares available
+        /// to the public for the account. This number is used as an indicator
+        /// in financial performance analysis.</param>
+        /// <param name="_slainvokedidValue">Last SLA that was applied to this
+        /// case. This field is for internal use only.</param>
+        /// <param name="address1City">Type the city for the primary
+        /// address.</param>
+        /// <param name="address2Primarycontactname">Type the name of the main
+        /// contact at the account's secondary address.</param>
+        /// <param name="address1Latitude">Type the latitude value for the
+        /// primary address for use in mapping and other applications.</param>
+        /// <param name="modifiedon">Shows the date and time when the record
+        /// was last updated. The date and time are displayed in the time zone
+        /// selected in Microsoft Dynamics 365 options.</param>
+        /// <param name="_masteridValue">Shows the master account that the
+        /// account was merged with.</param>
+        /// <param name="address2Utcoffset">Select the time zone, or UTC
+        /// offset, for this address so that other people can reference it when
+        /// they contact someone at this address.</param>
+        /// <param name="emailaddress1">Type the primary email address for the
+        /// business profile.</param>
+        /// <param name="timezoneruleversionnumber">For internal use
+        /// only.</param>
+        /// <param name="opendeals">Number of open opportunities against an
+        /// account and its child accounts.</param>
+        /// <param name="address2Stateorprovince">Type the state or province of
+        /// the secondary address.</param>
+        /// <param name="preferredappointmenttimecode">Select the preferred
+        /// time of day for service appointments.</param>
+        /// <param name="industrycode">Select the account's primary industry
+        /// for use in marketing segmentation and demographic analysis.</param>
+        /// <param name="address1Telephone3">Type a third phone number
+        /// associated with the primary address.</param>
+        public MicrosoftDynamicsCRMaccount(decimal? openrevenue = default(decimal?), int? territorycode = default(int?), System.DateTimeOffset? lastusedincampaign = default(System.DateTimeOffset?), string address1Name = default(string), string address1Telephone2 = default(string), System.DateTimeOffset? overriddencreatedon = default(System.DateTimeOffset?), string bcgovAositelicencenumber = default(string), string entityimageid = default(string), int? ownershipcode = default(int?), int? customersizecode = default(int?), string bcgovBceid = default(string), string _bcgovCurrentbusinessphysicaladdressValue = default(string), System.DateTimeOffset? bcgovRegisteredsellercertificateexpirydate = default(System.DateTimeOffset?), decimal? creditlimit = default(decimal?), string _primarycontactidValue = default(string), string versionnumber = default(string), string address1County = default(string), long? entityimageTimestamp = default(long?), string telephone3 = default(string), System.DateTimeOffset? openrevenueDate = default(System.DateTimeOffset?), bool? bcgovWaiveradministrativehold = default(bool?), bool? donotbulkpostalmail = default(bool?), int? address1Freighttermscode = default(int?), string address2Line1 = default(string), int? onholdtime = default(int?), bool? donotpostalmail = default(bool?), string _createdbyexternalpartyValue = default(string), string telephone2 = default(string), string _owningbusinessunitValue = default(string), string primarysatoriid = default(string), int? shippingmethodcode = default(int?), string address1Addressid = default(string), bool? bcgovMailaddressdiffromphysaddress = default(bool?), string address2Telephone1 = default(string), string address1Fax = default(string), bool? bcgovDeclarationofcorrectinformation = default(bool?), string _owneridValue = default(string), string _createdonbehalfbyValue = default(string), int? preferredcontactmethodcode = default(int?), string address2City = default(string), decimal? address2Latitude = default(decimal?), string address2Composite = default(string), decimal? creditlimitBase = default(decimal?), string bcgovClientid = default(string), decimal? aging90Base = default(decimal?), string address2Postalcode = default(string), string address2Name = default(string), bool? merged = default(bool?), int? preferredappointmentdaycode = default(int?), string _owningteamValue = default(string), string address2Line3 = default(string), decimal? revenueBase = default(decimal?), string bcgovAodelbusinessname = default(string), decimal? aging30 = default(decimal?), string ftpsiteurl = default(string), bool? donotbulkemail = default(bool?), string _originatingleadidValue = default(string), string emailaddress3 = default(string), string _modifiedbyexternalpartyValue = default(string), int? paymenttermscode = default(int?), string websiteurl = default(string), decimal? revenue = default(decimal?), int? address1Shippingmethodcode = default(int?), System.DateTimeOffset? bcgovAositelicenceexpirydate = default(System.DateTimeOffset?), string description = default(string), string bcgovAositelicencebusinessname = default(string), int? bcgovRegisteredsellerstatus = default(int?), string tickersymbol = default(string), bool? bcgovAolicenceexpirynotificationsent = default(bool?), System.DateTimeOffset? lastonholdtime = default(System.DateTimeOffset?), string bcgovAootherlicencebusinessname = default(string), int? statuscode = default(int?), System.DateTimeOffset? bcgovWaivercertificateexpirydate = default(System.DateTimeOffset?), System.DateTimeOffset? bcgovLegislativeauthoritystatusdate = default(System.DateTimeOffset?), decimal? marketcap = default(decimal?), string _parentaccountidValue = default(string), string _owninguserValue = default(string), System.DateTimeOffset? bcgovSubmitteddate = default(System.DateTimeOffset?), string _bcgovAdditionalcontactValue = default(string), string address2Addressid = default(string), string _preferredsystemuseridValue = default(string), decimal? address2Longitude = default(decimal?), string _defaultpricelevelidValue = default(string), int? openrevenueState = default(int?), string address1Primarycontactname = default(string), bool? bcgovFoippaconsent = default(bool?), int? accountcategorycode = default(int?), int? statecode = default(int?), decimal? marketcapBase = default(decimal?), bool? donotfax = default(bool?), System.DateTimeOffset? bcgovLegislativeauthoritystatusnotificationdat = default(System.DateTimeOffset?), string address2Telephone3 = default(string), string address2Postofficebox = default(string), bool? marketingonly = default(bool?), string _preferredserviceidValue = default(string), bool? bcgovRegisteredselleradministrativehold = default(bool?), int? importsequencenumber = default(int?), string address1Upszone = default(string), string stageid = default(string), int? utcconversiontimezonecode = default(int?), bool? donotemail = default(bool?), decimal? aging60 = default(decimal?), string _bcgovCurrentbusinessmailingaddressValue = default(string), int? customertypecode = default(int?), string telephone1 = default(string), int? opendealsState = default(int?), string address1Postofficebox = default(string), string bcgovDoingbusinessasname = default(string), bool? bcgovAoadministrativehold = default(bool?), string _modifiedbyValue = default(string), int? bcgovBusinesstype = default(int?), string yominame = default(string), string bcgovBusinessnumber = default(string), string address2Country = default(string), bool? bcgovBusinessprofileupdate = default(bool?), string address1Line2 = default(string), bool? donotsendmm = default(bool?), string address1Postalcode = default(string), string traversedpath = default(string), string _transactioncurrencyidValue = default(string), string fax = default(string), int? numberofemployees = default(int?), System.DateTimeOffset? opendealsDate = default(System.DateTimeOffset?), string address2Upszone = default(string), int? address2Freighttermscode = default(int?), int? accountratingcode = default(int?), decimal? aging90 = default(decimal?), string _bcgovCurrentregisteredsellercertificateValue = default(string), decimal? address1Longitude = default(decimal?), bool? bcgovConsentforemailcommunication = default(bool?), bool? participatesinworkflow = default(bool?), string _bcgovCurrentwaivercertificateValue = default(string), int? bcgovWaiverstatus = default(int?), string emailaddress2 = default(string), string bcgovAootherlicencenumber = default(string), bool? creditonhold = default(bool?), string address1Telephone1 = default(string), System.DateTimeOffset? createdon = default(System.DateTimeOffset?), string name = default(string), decimal? exchangerate = default(decimal?), int? address2Addresstypecode = default(int?), string address1Stateorprovince = default(string), string address2Line2 = default(string), byte[] entityimage = default(byte[]), System.DateTimeOffset? bcgovAodelexpirydate = default(System.DateTimeOffset?), string primarytwitterid = default(string), string timespentbymeonemailandmeetings = default(string), string accountnumber = default(string), string address1Line1 = default(string), string _territoryidValue = default(string), string accountid = default(string), string address1Composite = default(string), string _slaidValue = default(string), string address2County = default(string), bool? followemail = default(bool?), bool? donotphone = default(bool?), int? accountclassificationcode = default(int?), string _preferredequipmentidValue = default(string), int? bcgovLegislativeauthoritylicensestatus = default(int?), string sic = default(string), string entityimageUrl = default(string), string processid = default(string), string address2Telephone2 = default(string), int? address1Addresstypecode = default(int?), int? address1Utcoffset = default(int?), string address2Fax = default(string), System.DateTimeOffset? bcgovAootherlicenceexpirydate = default(System.DateTimeOffset?), int? businesstypecode = default(int?), decimal? aging60Base = default(decimal?), string address1Country = default(string), string _modifiedonbehalfbyValue = default(string), int? address2Shippingmethodcode = default(int?), string stockexchange = default(string), string _createdbyValue = default(string), string address1Line3 = default(string), decimal? aging30Base = default(decimal?), decimal? openrevenueBase = default(decimal?), int? sharesoutstanding = default(int?), string _slainvokedidValue = default(string), string address1City = default(string), string address2Primarycontactname = default(string), string bcgovAodelnumber = default(string), decimal? address1Latitude = default(decimal?), System.DateTimeOffset? modifiedon = default(System.DateTimeOffset?), string _masteridValue = default(string), int? address2Utcoffset = default(int?), string emailaddress1 = default(string), int? timezoneruleversionnumber = default(int?), int? opendeals = default(int?), string address2Stateorprovince = default(string), int? preferredappointmenttimecode = default(int?), int? industrycode = default(int?), string address1Telephone3 = default(string), IList<MicrosoftDynamicsCRMlead> accountleadsAssociation = default(IList<MicrosoftDynamicsCRMlead>), IList<MicrosoftDynamicsCRMlist> listaccountAssociation = default(IList<MicrosoftDynamicsCRMlist>), IList<MicrosoftDynamicsCRMentitlement> accountEntitlementCustomer = default(IList<MicrosoftDynamicsCRMentitlement>), IList<MicrosoftDynamicsCRMentitlement> accountEntitlementAccount = default(IList<MicrosoftDynamicsCRMentitlement>), IList<MicrosoftDynamicsCRMbookableresource> accountBookableresourceAccountId = default(IList<MicrosoftDynamicsCRMbookableresource>), MicrosoftDynamicsCRMprincipal ownerid = default(MicrosoftDynamicsCRMprincipal), IList<MicrosoftDynamicsCRMactivitypointer> accountActivityPointers = default(IList<MicrosoftDynamicsCRMactivitypointer>), IList<MicrosoftDynamicsCRMserviceappointment> accountServiceAppointments = default(IList<MicrosoftDynamicsCRMserviceappointment>), IList<MicrosoftDynamicsCRMsyncerror> accountSyncErrors = default(IList<MicrosoftDynamicsCRMsyncerror>), MicrosoftDynamicsCRMsystemuser createdby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMlead> leadCustomerAccounts = default(IList<MicrosoftDynamicsCRMlead>), IList<MicrosoftDynamicsCRMemail> accountEmailSendersAccount = default(IList<MicrosoftDynamicsCRMemail>), IList<MicrosoftDynamicsCRMemail> accountEmailEmailSender = default(IList<MicrosoftDynamicsCRMemail>), IList<MicrosoftDynamicsCRMcontract> contractBillingcustomerAccounts = default(IList<MicrosoftDynamicsCRMcontract>), IList<MicrosoftDynamicsCRMannotation> accountAnnotation = default(IList<MicrosoftDynamicsCRMannotation>), IList<MicrosoftDynamicsCRMsharepointdocumentlocation> accountSharepointDocumentLocation = default(IList<MicrosoftDynamicsCRMsharepointdocumentlocation>), MicrosoftDynamicsCRMservice preferredserviceid = default(MicrosoftDynamicsCRMservice), MicrosoftDynamicsCRMsla slaAccountSla = default(MicrosoftDynamicsCRMsla), IList<MicrosoftDynamicsCRMconnection> accountConnections2 = default(IList<MicrosoftDynamicsCRMconnection>), MicrosoftDynamicsCRMsystemuser modifiedby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMpostfollow> accountPostFollows = default(IList<MicrosoftDynamicsCRMpostfollow>), IList<MicrosoftDynamicsCRMpostregarding> accountPostRegardings = default(IList<MicrosoftDynamicsCRMpostregarding>), IList<MicrosoftDynamicsCRMfax> accountFaxes = default(IList<MicrosoftDynamicsCRMfax>), MicrosoftDynamicsCRMaccount masterid = default(MicrosoftDynamicsCRMaccount), IList<MicrosoftDynamicsCRMaccount> accountMasterAccount = default(IList<MicrosoftDynamicsCRMaccount>), MicrosoftDynamicsCRMequipment preferredequipmentid = default(MicrosoftDynamicsCRMequipment), MicrosoftDynamicsCRMbusinessunit owningbusinessunit = default(MicrosoftDynamicsCRMbusinessunit), IList<MicrosoftDynamicsCRMasyncoperation> accountAsyncOperations = default(IList<MicrosoftDynamicsCRMasyncoperation>), MicrosoftDynamicsCRMtransactioncurrency transactioncurrencyid = default(MicrosoftDynamicsCRMtransactioncurrency), IList<MicrosoftDynamicsCRMduplicaterecord> accountDuplicateBaseRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), MicrosoftDynamicsCRMsystemuser preferredsystemuserid = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMbulkoperationlog> createdAccountBulkOperationLogs2 = default(IList<MicrosoftDynamicsCRMbulkoperationlog>), MicrosoftDynamicsCRMsystemuser createdonbehalfby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMrecurringappointmentmaster> accountRecurringAppointmentMasters = default(IList<MicrosoftDynamicsCRMrecurringappointmentmaster>), IList<MicrosoftDynamicsCRMphonecall> accountPhonecalls = default(IList<MicrosoftDynamicsCRMphonecall>), MicrosoftDynamicsCRMcontact primarycontactid = default(MicrosoftDynamicsCRMcontact), IList<MicrosoftDynamicsCRMsocialactivity> accountSocialActivities = default(IList<MicrosoftDynamicsCRMsocialactivity>), IList<MicrosoftDynamicsCRMsocialactivity> socialActivityPostAuthorAccountAccounts = default(IList<MicrosoftDynamicsCRMsocialactivity>), IList<MicrosoftDynamicsCRMopportunity> opportunityCustomerAccounts = default(IList<MicrosoftDynamicsCRMopportunity>), IList<MicrosoftDynamicsCRMbulkoperationlog> sourceAccountBulkOperationLogs = default(IList<MicrosoftDynamicsCRMbulkoperationlog>), IList<MicrosoftDynamicsCRMcustomeraddress> accountCustomerAddress = default(IList<MicrosoftDynamicsCRMcustomeraddress>), IList<MicrosoftDynamicsCRMslakpiinstance> slakpiinstanceAccount = default(IList<MicrosoftDynamicsCRMslakpiinstance>), MicrosoftDynamicsCRMlead originatingleadid = default(MicrosoftDynamicsCRMlead), IList<MicrosoftDynamicsCRMtask> accountTasks = default(IList<MicrosoftDynamicsCRMtask>), IList<MicrosoftDynamicsCRMopportunity> opportunityParentAccount = default(IList<MicrosoftDynamicsCRMopportunity>), MicrosoftDynamicsCRMsla slainvokedidAccountSla = default(MicrosoftDynamicsCRMsla), IList<MicrosoftDynamicsCRMbulkdeletefailure> accountBulkDeleteFailures = default(IList<MicrosoftDynamicsCRMbulkdeletefailure>), IList<MicrosoftDynamicsCRMquote> quoteCustomerAccounts = default(IList<MicrosoftDynamicsCRMquote>), IList<MicrosoftDynamicsCRMsocialactivity> socialActivityPostAuthorAccounts = default(IList<MicrosoftDynamicsCRMsocialactivity>), MicrosoftDynamicsCRMterritory territoryid = default(MicrosoftDynamicsCRMterritory), IList<MicrosoftDynamicsCRMcontact> contactCustomerAccounts = default(IList<MicrosoftDynamicsCRMcontact>), IList<MicrosoftDynamicsCRMincident> incidentCustomerAccounts = default(IList<MicrosoftDynamicsCRMincident>), IList<MicrosoftDynamicsCRMinvoice> invoiceCustomerAccounts = default(IList<MicrosoftDynamicsCRMinvoice>), IList<MicrosoftDynamicsCRMappointment> accountAppointments = default(IList<MicrosoftDynamicsCRMappointment>), IList<MicrosoftDynamicsCRMcontractdetail> contractlineitemCustomerAccounts = default(IList<MicrosoftDynamicsCRMcontractdetail>), IList<MicrosoftDynamicsCRMemail> accountEmails = default(IList<MicrosoftDynamicsCRMemail>), MicrosoftDynamicsCRMaccount parentaccountid = default(MicrosoftDynamicsCRMaccount), IList<MicrosoftDynamicsCRMaccount> accountParentAccount = default(IList<MicrosoftDynamicsCRMaccount>), IList<MicrosoftDynamicsCRMsocialprofile> socialprofileCustomerAccounts = default(IList<MicrosoftDynamicsCRMsocialprofile>), IList<MicrosoftDynamicsCRMduplicaterecord> accountDuplicateMatchingRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMactivityparty> accountActivityParties = default(IList<MicrosoftDynamicsCRMactivityparty>), IList<MicrosoftDynamicsCRMconnection> accountConnections1 = default(IList<MicrosoftDynamicsCRMconnection>), MicrosoftDynamicsCRMteam owningteam = default(MicrosoftDynamicsCRMteam), MicrosoftDynamicsCRMpricelevel defaultpricelevelid = default(MicrosoftDynamicsCRMpricelevel), IList<MicrosoftDynamicsCRMlead> leadParentAccount = default(IList<MicrosoftDynamicsCRMlead>), IList<MicrosoftDynamicsCRMcontract> contractCustomerAccounts = default(IList<MicrosoftDynamicsCRMcontract>), IList<MicrosoftDynamicsCRMactioncard> accountActioncard = default(IList<MicrosoftDynamicsCRMactioncard>), MicrosoftDynamicsCRMsystemuser owninguser = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMletter> accountLetters = default(IList<MicrosoftDynamicsCRMletter>), MicrosoftDynamicsCRMprocessstage stageidProcessstage = default(MicrosoftDynamicsCRMprocessstage), IList<MicrosoftDynamicsCRMsalesorder> orderCustomerAccounts = default(IList<MicrosoftDynamicsCRMsalesorder>), MicrosoftDynamicsCRMsystemuser modifiedonbehalfby = default(MicrosoftDynamicsCRMsystemuser), IList<MicrosoftDynamicsCRMabsScheduledprocessexecution> accountAbsScheduledprocessexecutions = default(IList<MicrosoftDynamicsCRMabsScheduledprocessexecution>), IList<MicrosoftDynamicsCRMknowledgebaserecord> accountKnowledgebaserecord = default(IList<MicrosoftDynamicsCRMknowledgebaserecord>), IList<MicrosoftDynamicsCRMknowledgearticle> msdynAccountKnowledgearticle = default(IList<MicrosoftDynamicsCRMknowledgearticle>), IList<MicrosoftDynamicsCRMqueueitem> accountQueueItems = default(IList<MicrosoftDynamicsCRMqueueitem>), IList<MicrosoftDynamicsCRMbcgovBusinesscontact> bcgovAccountBcgovBusinesscontactBusinessProfile = default(IList<MicrosoftDynamicsCRMbcgovBusinesscontact>), IList<MicrosoftDynamicsCRMbcgovCertificate> bcgovAccountBcgovCertificateCertificateHolderBusiness = default(IList<MicrosoftDynamicsCRMbcgovCertificate>), IList<MicrosoftDynamicsCRMcontact> bcgovAccountContactBusinessLegalName = default(IList<MicrosoftDynamicsCRMcontact>), IList<MicrosoftDynamicsCRMbcgovCustomaddress> bcgovAccountCustomaddress = default(IList<MicrosoftDynamicsCRMbcgovCustomaddress>), IList<MicrosoftDynamicsCRMbcgovCustomaddress> bcgovAccountCustomaddressBusinessProfile = default(IList<MicrosoftDynamicsCRMbcgovCustomaddress>), IList<MicrosoftDynamicsCRMbcgovEquipment> bcgovAccountEquipmentCurrentBusinessOwner = default(IList<MicrosoftDynamicsCRMbcgovEquipment>), IList<MicrosoftDynamicsCRMbcgovLocation> bcgovAccountLocationBusinessProfile = default(IList<MicrosoftDynamicsCRMbcgovLocation>), MicrosoftDynamicsCRMbcgovCustomaddress bcgovCurrentBusinessMailingAddress = default(MicrosoftDynamicsCRMbcgovCustomaddress), MicrosoftDynamicsCRMbcgovCustomaddress bcgovCurrentBusinessPhysicalAddress = default(MicrosoftDynamicsCRMbcgovCustomaddress), MicrosoftDynamicsCRMcontact bcgovAdditionalContact = default(MicrosoftDynamicsCRMcontact), IList<MicrosoftDynamicsCRMbcgovInspection> bcgovAccountInspectionBusinessLegalName = default(IList<MicrosoftDynamicsCRMbcgovInspection>), MicrosoftDynamicsCRMbcgovCertificate bcgovCurrentWaiverCertificate = default(MicrosoftDynamicsCRMbcgovCertificate), MicrosoftDynamicsCRMbcgovCertificate bcgovCurrentRegisteredSellerCertificate = default(MicrosoftDynamicsCRMbcgovCertificate), IList<MicrosoftDynamicsCRMbcgovInspection> bcgovAccountInspectionOwnerCategory = default(IList<MicrosoftDynamicsCRMbcgovInspection>), IList<MicrosoftDynamicsCRMbcgovComplaint> bcgovAccountBcgovComplaintBusinessLegalName = default(IList<MicrosoftDynamicsCRMbcgovComplaint>))
         {
             Openrevenue = openrevenue;
             Territorycode = territorycode;
@@ -324,31 +673,42 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets sum of open revenue against an account and its child
+        /// accounts.
         /// </summary>
         [JsonProperty(PropertyName = "openrevenue")]
-        public object Openrevenue { get; set; }
+        public decimal? Openrevenue { get; set; }
 
         /// <summary>
+        /// Gets or sets select a region or territory for the account for use
+        /// in segmentation and analysis.
         /// </summary>
         [JsonProperty(PropertyName = "territorycode")]
         public int? Territorycode { get; set; }
 
         /// <summary>
+        /// Gets or sets shows the date when the account was last included in a
+        /// marketing campaign or quick campaign.
         /// </summary>
         [JsonProperty(PropertyName = "lastusedincampaign")]
         public System.DateTimeOffset? Lastusedincampaign { get; set; }
 
         /// <summary>
+        /// Gets or sets type a descriptive name for the primary address, such
+        /// as Corporate Headquarters.
         /// </summary>
         [JsonProperty(PropertyName = "address1_name")]
         public string Address1Name { get; set; }
 
         /// <summary>
+        /// Gets or sets type a second phone number associated with the primary
+        /// address.
         /// </summary>
         [JsonProperty(PropertyName = "address1_telephone2")]
         public string Address1Telephone2 { get; set; }
 
         /// <summary>
+        /// Gets or sets date and time that the record was migrated.
         /// </summary>
         [JsonProperty(PropertyName = "overriddencreatedon")]
         public System.DateTimeOffset? Overriddencreatedon { get; set; }
@@ -359,16 +719,21 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public string BcgovAositelicencenumber { get; set; }
 
         /// <summary>
+        /// Gets or sets for internal use only.
         /// </summary>
         [JsonProperty(PropertyName = "entityimageid")]
         public string Entityimageid { get; set; }
 
         /// <summary>
+        /// Gets or sets select the account's ownership structure, such as
+        /// public or private.
         /// </summary>
         [JsonProperty(PropertyName = "ownershipcode")]
         public int? Ownershipcode { get; set; }
 
         /// <summary>
+        /// Gets or sets select the size category or range of the account for
+        /// segmentation and reporting purposes.
         /// </summary>
         [JsonProperty(PropertyName = "customersizecode")]
         public int? Customersizecode { get; set; }
@@ -389,21 +754,28 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public System.DateTimeOffset? BcgovRegisteredsellercertificateexpirydate { get; set; }
 
         /// <summary>
+        /// Gets or sets type the credit limit of the account. This is a useful
+        /// reference when you address invoice and accounting issues with the
+        /// customer.
         /// </summary>
         [JsonProperty(PropertyName = "creditlimit")]
-        public object Creditlimit { get; set; }
+        public decimal? Creditlimit { get; set; }
 
         /// <summary>
+        /// Gets or sets choose the primary contact for the business profile to
+        /// provide quick access to contact details.
         /// </summary>
         [JsonProperty(PropertyName = "_primarycontactid_value")]
         public string _primarycontactidValue { get; set; }
 
         /// <summary>
+        /// Gets or sets version number of the account.
         /// </summary>
         [JsonProperty(PropertyName = "versionnumber")]
-        public long? Versionnumber { get; set; }
+        public string Versionnumber { get; set; }
 
         /// <summary>
+        /// Gets or sets type the county for the primary address.
         /// </summary>
         [JsonProperty(PropertyName = "address1_county")]
         public string Address1County { get; set; }
@@ -414,11 +786,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public long? EntityimageTimestamp { get; set; }
 
         /// <summary>
+        /// Gets or sets type a third phone number for this account.
         /// </summary>
         [JsonProperty(PropertyName = "telephone3")]
         public string Telephone3 { get; set; }
 
         /// <summary>
+        /// Gets or sets the date time for Open Revenue.
         /// </summary>
         [JsonProperty(PropertyName = "openrevenue_date")]
         public System.DateTimeOffset? OpenrevenueDate { get; set; }
@@ -429,56 +803,77 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public bool? BcgovWaiveradministrativehold { get; set; }
 
         /// <summary>
+        /// Gets or sets select whether the account allows bulk postal mail
+        /// sent through marketing campaigns or quick campaigns. If Do Not
+        /// Allow is selected, the account can be added to marketing lists, but
+        /// will be excluded from the postal mail.
         /// </summary>
         [JsonProperty(PropertyName = "donotbulkpostalmail")]
         public bool? Donotbulkpostalmail { get; set; }
 
         /// <summary>
+        /// Gets or sets select the freight terms for the primary address to
+        /// make sure shipping orders are processed correctly.
         /// </summary>
         [JsonProperty(PropertyName = "address1_freighttermscode")]
         public int? Address1Freighttermscode { get; set; }
 
         /// <summary>
+        /// Gets or sets type the first line of the secondary address.
         /// </summary>
         [JsonProperty(PropertyName = "address2_line1")]
         public string Address2Line1 { get; set; }
 
         /// <summary>
+        /// Gets or sets shows how long, in minutes, that the record was on
+        /// hold.
         /// </summary>
         [JsonProperty(PropertyName = "onholdtime")]
         public int? Onholdtime { get; set; }
 
         /// <summary>
+        /// Gets or sets select whether the account allows direct mail. If Do
+        /// Not Allow is selected, the account will be excluded from letter
+        /// activities distributed in marketing campaigns.
         /// </summary>
         [JsonProperty(PropertyName = "donotpostalmail")]
         public bool? Donotpostalmail { get; set; }
 
         /// <summary>
+        /// Gets or sets shows the external party who created the record.
         /// </summary>
         [JsonProperty(PropertyName = "_createdbyexternalparty_value")]
         public string _createdbyexternalpartyValue { get; set; }
 
         /// <summary>
+        /// Gets or sets type a second phone number for this account.
         /// </summary>
         [JsonProperty(PropertyName = "telephone2")]
         public string Telephone2 { get; set; }
 
         /// <summary>
+        /// Gets or sets shows the business unit that the record owner belongs
+        /// to.
         /// </summary>
         [JsonProperty(PropertyName = "_owningbusinessunit_value")]
         public string _owningbusinessunitValue { get; set; }
 
         /// <summary>
+        /// Gets or sets primary Satori ID for Account
         /// </summary>
         [JsonProperty(PropertyName = "primarysatoriid")]
         public string Primarysatoriid { get; set; }
 
         /// <summary>
+        /// Gets or sets select a shipping method for deliveries sent to the
+        /// account's address to designate the preferred carrier or other
+        /// delivery option.
         /// </summary>
         [JsonProperty(PropertyName = "shippingmethodcode")]
         public int? Shippingmethodcode { get; set; }
 
         /// <summary>
+        /// Gets or sets unique identifier for address 1.
         /// </summary>
         [JsonProperty(PropertyName = "address1_addressid")]
         public string Address1Addressid { get; set; }
@@ -489,11 +884,15 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public bool? BcgovMailaddressdiffromphysaddress { get; set; }
 
         /// <summary>
+        /// Gets or sets type the main phone number associated with the
+        /// secondary address.
         /// </summary>
         [JsonProperty(PropertyName = "address2_telephone1")]
         public string Address2Telephone1 { get; set; }
 
         /// <summary>
+        /// Gets or sets type the fax number associated with the primary
+        /// address.
         /// </summary>
         [JsonProperty(PropertyName = "address1_fax")]
         public string Address1Fax { get; set; }
@@ -504,39 +903,51 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public bool? BcgovDeclarationofcorrectinformation { get; set; }
 
         /// <summary>
+        /// Gets or sets enter the user or team who is assigned to manage the
+        /// record. This field is updated every time the record is assigned to
+        /// a different user.
         /// </summary>
         [JsonProperty(PropertyName = "_ownerid_value")]
         public string _owneridValue { get; set; }
 
         /// <summary>
+        /// Gets or sets shows who created the record on behalf of another
+        /// user.
         /// </summary>
         [JsonProperty(PropertyName = "_createdonbehalfby_value")]
         public string _createdonbehalfbyValue { get; set; }
 
         /// <summary>
+        /// Gets or sets select the preferred method of contact.
         /// </summary>
         [JsonProperty(PropertyName = "preferredcontactmethodcode")]
         public int? Preferredcontactmethodcode { get; set; }
 
         /// <summary>
+        /// Gets or sets type the city for the secondary address.
         /// </summary>
         [JsonProperty(PropertyName = "address2_city")]
         public string Address2City { get; set; }
 
         /// <summary>
+        /// Gets or sets type the latitude value for the secondary address for
+        /// use in mapping and other applications.
         /// </summary>
         [JsonProperty(PropertyName = "address2_latitude")]
-        public double? Address2Latitude { get; set; }
+        public decimal? Address2Latitude { get; set; }
 
         /// <summary>
+        /// Gets or sets shows the complete secondary address.
         /// </summary>
         [JsonProperty(PropertyName = "address2_composite")]
         public string Address2Composite { get; set; }
 
         /// <summary>
+        /// Gets or sets shows the credit limit converted to the system's
+        /// default base currency for reporting purposes.
         /// </summary>
         [JsonProperty(PropertyName = "creditlimit_base")]
-        public object CreditlimitBase { get; set; }
+        public decimal? CreditlimitBase { get; set; }
 
         /// <summary>
         /// </summary>
@@ -544,44 +955,58 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public string BcgovClientid { get; set; }
 
         /// <summary>
+        /// Gets or sets the base currency equivalent of the aging 90 field.
         /// </summary>
         [JsonProperty(PropertyName = "aging90_base")]
-        public object Aging90Base { get; set; }
+        public decimal? Aging90Base { get; set; }
 
         /// <summary>
+        /// Gets or sets type the ZIP Code or postal code for the secondary
+        /// address.
         /// </summary>
         [JsonProperty(PropertyName = "address2_postalcode")]
         public string Address2Postalcode { get; set; }
 
         /// <summary>
+        /// Gets or sets type a descriptive name for the secondary address,
+        /// such as Corporate Headquarters.
         /// </summary>
         [JsonProperty(PropertyName = "address2_name")]
         public string Address2Name { get; set; }
 
         /// <summary>
+        /// Gets or sets shows whether the account has been merged with another
+        /// account.
         /// </summary>
         [JsonProperty(PropertyName = "merged")]
         public bool? Merged { get; set; }
 
         /// <summary>
+        /// Gets or sets select the preferred day of the week for service
+        /// appointments.
         /// </summary>
         [JsonProperty(PropertyName = "preferredappointmentdaycode")]
         public int? Preferredappointmentdaycode { get; set; }
 
         /// <summary>
+        /// Gets or sets unique identifier of the team who owns the account.
         /// </summary>
         [JsonProperty(PropertyName = "_owningteam_value")]
         public string _owningteamValue { get; set; }
 
         /// <summary>
+        /// Gets or sets type the third line of the secondary address.
         /// </summary>
         [JsonProperty(PropertyName = "address2_line3")]
         public string Address2Line3 { get; set; }
 
         /// <summary>
+        /// Gets or sets shows the annual revenue converted to the system's
+        /// default base currency. The calculations use the exchange rate
+        /// specified in the Currencies area.
         /// </summary>
         [JsonProperty(PropertyName = "revenue_base")]
-        public object RevenueBase { get; set; }
+        public decimal? RevenueBase { get; set; }
 
         /// <summary>
         /// </summary>
@@ -589,51 +1014,70 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public string BcgovAodelbusinessname { get; set; }
 
         /// <summary>
+        /// Gets or sets for system use only.
         /// </summary>
         [JsonProperty(PropertyName = "aging30")]
-        public object Aging30 { get; set; }
+        public decimal? Aging30 { get; set; }
 
         /// <summary>
+        /// Gets or sets type the URL for the account's FTP site to enable
+        /// users to access data and share documents.
         /// </summary>
         [JsonProperty(PropertyName = "ftpsiteurl")]
         public string Ftpsiteurl { get; set; }
 
         /// <summary>
+        /// Gets or sets select whether the account allows bulk email sent
+        /// through campaigns. If Do Not Allow is selected, the account can be
+        /// added to marketing lists, but is excluded from email.
         /// </summary>
         [JsonProperty(PropertyName = "donotbulkemail")]
         public bool? Donotbulkemail { get; set; }
 
         /// <summary>
+        /// Gets or sets shows the lead that the account was created from if
+        /// the account was created by converting a lead in Microsoft Dynamics
+        /// 365. This is used to relate the account to data on the originating
+        /// lead for use in reporting and analytics.
         /// </summary>
         [JsonProperty(PropertyName = "_originatingleadid_value")]
         public string _originatingleadidValue { get; set; }
 
         /// <summary>
+        /// Gets or sets type an alternate email address for the account.
         /// </summary>
         [JsonProperty(PropertyName = "emailaddress3")]
         public string Emailaddress3 { get; set; }
 
         /// <summary>
+        /// Gets or sets shows the external party who modified the record.
         /// </summary>
         [JsonProperty(PropertyName = "_modifiedbyexternalparty_value")]
         public string _modifiedbyexternalpartyValue { get; set; }
 
         /// <summary>
+        /// Gets or sets select the payment terms to indicate when the customer
+        /// needs to pay the total amount.
         /// </summary>
         [JsonProperty(PropertyName = "paymenttermscode")]
         public int? Paymenttermscode { get; set; }
 
         /// <summary>
+        /// Gets or sets type the business profile's website URL.
         /// </summary>
         [JsonProperty(PropertyName = "websiteurl")]
         public string Websiteurl { get; set; }
 
         /// <summary>
+        /// Gets or sets type the annual revenue for the account, used as an
+        /// indicator in financial performance analysis.
         /// </summary>
         [JsonProperty(PropertyName = "revenue")]
-        public object Revenue { get; set; }
+        public decimal? Revenue { get; set; }
 
         /// <summary>
+        /// Gets or sets select a shipping method for deliveries sent to this
+        /// address.
         /// </summary>
         [JsonProperty(PropertyName = "address1_shippingmethodcode")]
         public int? Address1Shippingmethodcode { get; set; }
@@ -644,6 +1088,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public System.DateTimeOffset? BcgovAositelicenceexpirydate { get; set; }
 
         /// <summary>
+        /// Gets or sets type additional information to describe the account,
+        /// such as an excerpt from the company's website.
         /// </summary>
         [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
@@ -659,6 +1105,10 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public int? BcgovRegisteredsellerstatus { get; set; }
 
         /// <summary>
+        /// Gets or sets type the stock exchange symbol for the account to
+        /// track financial performance of the company. You can click the code
+        /// entered in this field to access the latest trading information from
+        /// MSN Money.
         /// </summary>
         [JsonProperty(PropertyName = "tickersymbol")]
         public string Tickersymbol { get; set; }
@@ -669,6 +1119,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public bool? BcgovAolicenceexpirynotificationsent { get; set; }
 
         /// <summary>
+        /// Gets or sets contains the date and time stamp of the last on hold
+        /// time.
         /// </summary>
         [JsonProperty(PropertyName = "lastonholdtime")]
         public System.DateTimeOffset? Lastonholdtime { get; set; }
@@ -679,6 +1131,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public string BcgovAootherlicencebusinessname { get; set; }
 
         /// <summary>
+        /// Gets or sets select the account's status.
         /// </summary>
         [JsonProperty(PropertyName = "statuscode")]
         public int? Statuscode { get; set; }
@@ -694,16 +1147,22 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public System.DateTimeOffset? BcgovLegislativeauthoritystatusdate { get; set; }
 
         /// <summary>
+        /// Gets or sets type the market capitalization of the account to
+        /// identify the company's equity, used as an indicator in financial
+        /// performance analysis.
         /// </summary>
         [JsonProperty(PropertyName = "marketcap")]
-        public object Marketcap { get; set; }
+        public decimal? Marketcap { get; set; }
 
         /// <summary>
+        /// Gets or sets choose the parent account associated with this account
+        /// to show parent and child businesses in reporting and analytics.
         /// </summary>
         [JsonProperty(PropertyName = "_parentaccountid_value")]
         public string _parentaccountidValue { get; set; }
 
         /// <summary>
+        /// Gets or sets unique identifier of the user who owns the account.
         /// </summary>
         [JsonProperty(PropertyName = "_owninguser_value")]
         public string _owninguserValue { get; set; }
@@ -719,31 +1178,42 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public string _bcgovAdditionalcontactValue { get; set; }
 
         /// <summary>
+        /// Gets or sets unique identifier for address 2.
         /// </summary>
         [JsonProperty(PropertyName = "address2_addressid")]
         public string Address2Addressid { get; set; }
 
         /// <summary>
+        /// Gets or sets choose the preferred service representative for
+        /// reference when you schedule service activities for the account.
         /// </summary>
         [JsonProperty(PropertyName = "_preferredsystemuserid_value")]
         public string _preferredsystemuseridValue { get; set; }
 
         /// <summary>
+        /// Gets or sets type the longitude value for the secondary address for
+        /// use in mapping and other applications.
         /// </summary>
         [JsonProperty(PropertyName = "address2_longitude")]
-        public double? Address2Longitude { get; set; }
+        public decimal? Address2Longitude { get; set; }
 
         /// <summary>
+        /// Gets or sets choose the default price list associated with the
+        /// account to make sure the correct product prices for this customer
+        /// are applied in sales opportunities, quotes, and orders.
         /// </summary>
         [JsonProperty(PropertyName = "_defaultpricelevelid_value")]
         public string _defaultpricelevelidValue { get; set; }
 
         /// <summary>
+        /// Gets or sets state of Open Revenue.
         /// </summary>
         [JsonProperty(PropertyName = "openrevenue_state")]
         public int? OpenrevenueState { get; set; }
 
         /// <summary>
+        /// Gets or sets type the name of the main contact at the account's
+        /// primary address.
         /// </summary>
         [JsonProperty(PropertyName = "address1_primarycontactname")]
         public string Address1Primarycontactname { get; set; }
@@ -754,21 +1224,31 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public bool? BcgovFoippaconsent { get; set; }
 
         /// <summary>
+        /// Gets or sets select a category to indicate whether the customer
+        /// account is standard or preferred.
         /// </summary>
         [JsonProperty(PropertyName = "accountcategorycode")]
         public int? Accountcategorycode { get; set; }
 
         /// <summary>
+        /// Gets or sets shows whether the account is active or inactive.
+        /// Inactive accounts are read-only and can't be edited unless they are
+        /// reactivated.
         /// </summary>
         [JsonProperty(PropertyName = "statecode")]
         public int? Statecode { get; set; }
 
         /// <summary>
+        /// Gets or sets shows the market capitalization converted to the
+        /// system's default base currency.
         /// </summary>
         [JsonProperty(PropertyName = "marketcap_base")]
-        public object MarketcapBase { get; set; }
+        public decimal? MarketcapBase { get; set; }
 
         /// <summary>
+        /// Gets or sets select whether the account allows faxes. If Do Not
+        /// Allow is selected, the account will be excluded from fax activities
+        /// distributed in marketing campaigns.
         /// </summary>
         [JsonProperty(PropertyName = "donotfax")]
         public bool? Donotfax { get; set; }
@@ -779,21 +1259,28 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public System.DateTimeOffset? BcgovLegislativeauthoritystatusnotificationdat { get; set; }
 
         /// <summary>
+        /// Gets or sets type a third phone number associated with the
+        /// secondary address.
         /// </summary>
         [JsonProperty(PropertyName = "address2_telephone3")]
         public string Address2Telephone3 { get; set; }
 
         /// <summary>
+        /// Gets or sets type the post office box number of the secondary
+        /// address.
         /// </summary>
         [JsonProperty(PropertyName = "address2_postofficebox")]
         public string Address2Postofficebox { get; set; }
 
         /// <summary>
+        /// Gets or sets whether is only for marketing
         /// </summary>
         [JsonProperty(PropertyName = "marketingonly")]
         public bool? Marketingonly { get; set; }
 
         /// <summary>
+        /// Gets or sets choose the account's preferred service for reference
+        /// when you schedule service activities.
         /// </summary>
         [JsonProperty(PropertyName = "_preferredserviceid_value")]
         public string _preferredserviceidValue { get; set; }
@@ -804,34 +1291,45 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public bool? BcgovRegisteredselleradministrativehold { get; set; }
 
         /// <summary>
+        /// Gets or sets unique identifier of the data import or data migration
+        /// that created this record.
         /// </summary>
         [JsonProperty(PropertyName = "importsequencenumber")]
         public int? Importsequencenumber { get; set; }
 
         /// <summary>
+        /// Gets or sets type the UPS zone of the primary address to make sure
+        /// shipping charges are calculated correctly and deliveries are made
+        /// promptly, if shipped by UPS.
         /// </summary>
         [JsonProperty(PropertyName = "address1_upszone")]
         public string Address1Upszone { get; set; }
 
         /// <summary>
+        /// Gets or sets shows the ID of the stage.
         /// </summary>
         [JsonProperty(PropertyName = "stageid")]
         public string Stageid { get; set; }
 
         /// <summary>
+        /// Gets or sets time zone code that was in use when the record was
+        /// created.
         /// </summary>
         [JsonProperty(PropertyName = "utcconversiontimezonecode")]
         public int? Utcconversiontimezonecode { get; set; }
 
         /// <summary>
+        /// Gets or sets select whether the account allows direct email sent
+        /// from Microsoft Dynamics 365.
         /// </summary>
         [JsonProperty(PropertyName = "donotemail")]
         public bool? Donotemail { get; set; }
 
         /// <summary>
+        /// Gets or sets for system use only.
         /// </summary>
         [JsonProperty(PropertyName = "aging60")]
-        public object Aging60 { get; set; }
+        public decimal? Aging60 { get; set; }
 
         /// <summary>
         /// </summary>
@@ -839,21 +1337,27 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public string _bcgovCurrentbusinessmailingaddressValue { get; set; }
 
         /// <summary>
+        /// Gets or sets select the category that best describes the
+        /// relationship between the account and your organization.
         /// </summary>
         [JsonProperty(PropertyName = "customertypecode")]
         public int? Customertypecode { get; set; }
 
         /// <summary>
+        /// Gets or sets type the main phone number for this business profile.
         /// </summary>
         [JsonProperty(PropertyName = "telephone1")]
         public string Telephone1 { get; set; }
 
         /// <summary>
+        /// Gets or sets state of Open Deals.
         /// </summary>
         [JsonProperty(PropertyName = "opendeals_state")]
         public int? OpendealsState { get; set; }
 
         /// <summary>
+        /// Gets or sets type the post office box number of the primary
+        /// address.
         /// </summary>
         [JsonProperty(PropertyName = "address1_postofficebox")]
         public string Address1Postofficebox { get; set; }
@@ -869,6 +1373,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public bool? BcgovAoadministrativehold { get; set; }
 
         /// <summary>
+        /// Gets or sets shows who last updated the record.
         /// </summary>
         [JsonProperty(PropertyName = "_modifiedby_value")]
         public string _modifiedbyValue { get; set; }
@@ -879,6 +1384,9 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public int? BcgovBusinesstype { get; set; }
 
         /// <summary>
+        /// Gets or sets type the phonetic spelling of the company name, if
+        /// specified in Japanese, to make sure the name is pronounced
+        /// correctly in phone calls and other communications.
         /// </summary>
         [JsonProperty(PropertyName = "yominame")]
         public string Yominame { get; set; }
@@ -889,6 +1397,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public string BcgovBusinessnumber { get; set; }
 
         /// <summary>
+        /// Gets or sets type the country or region for the secondary address.
         /// </summary>
         [JsonProperty(PropertyName = "address2_country")]
         public string Address2Country { get; set; }
@@ -899,64 +1408,84 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public bool? BcgovBusinessprofileupdate { get; set; }
 
         /// <summary>
+        /// Gets or sets type the second line of the primary address.
         /// </summary>
         [JsonProperty(PropertyName = "address1_line2")]
         public string Address1Line2 { get; set; }
 
         /// <summary>
+        /// Gets or sets select whether the account accepts marketing
+        /// materials, such as brochures or catalogs.
         /// </summary>
         [JsonProperty(PropertyName = "donotsendmm")]
         public bool? Donotsendmm { get; set; }
 
         /// <summary>
+        /// Gets or sets type the ZIP Code or postal code for the primary
+        /// address.
         /// </summary>
         [JsonProperty(PropertyName = "address1_postalcode")]
         public string Address1Postalcode { get; set; }
 
         /// <summary>
+        /// Gets or sets for internal use only.
         /// </summary>
         [JsonProperty(PropertyName = "traversedpath")]
         public string Traversedpath { get; set; }
 
         /// <summary>
+        /// Gets or sets choose the local currency for the record to make sure
+        /// budgets are reported in the correct currency.
         /// </summary>
         [JsonProperty(PropertyName = "_transactioncurrencyid_value")]
         public string _transactioncurrencyidValue { get; set; }
 
         /// <summary>
+        /// Gets or sets type the fax number for the account.
         /// </summary>
         [JsonProperty(PropertyName = "fax")]
         public string Fax { get; set; }
 
         /// <summary>
+        /// Gets or sets type the number of employees that work at the account
+        /// for use in marketing segmentation and demographic analysis.
         /// </summary>
         [JsonProperty(PropertyName = "numberofemployees")]
         public int? Numberofemployees { get; set; }
 
         /// <summary>
+        /// Gets or sets the date time for Open Deals.
         /// </summary>
         [JsonProperty(PropertyName = "opendeals_date")]
         public System.DateTimeOffset? OpendealsDate { get; set; }
 
         /// <summary>
+        /// Gets or sets type the UPS zone of the secondary address to make
+        /// sure shipping charges are calculated correctly and deliveries are
+        /// made promptly, if shipped by UPS.
         /// </summary>
         [JsonProperty(PropertyName = "address2_upszone")]
         public string Address2Upszone { get; set; }
 
         /// <summary>
+        /// Gets or sets select the freight terms for the secondary address to
+        /// make sure shipping orders are processed correctly.
         /// </summary>
         [JsonProperty(PropertyName = "address2_freighttermscode")]
         public int? Address2Freighttermscode { get; set; }
 
         /// <summary>
+        /// Gets or sets select a rating to indicate the value of the customer
+        /// account.
         /// </summary>
         [JsonProperty(PropertyName = "accountratingcode")]
         public int? Accountratingcode { get; set; }
 
         /// <summary>
+        /// Gets or sets for system use only.
         /// </summary>
         [JsonProperty(PropertyName = "aging90")]
-        public object Aging90 { get; set; }
+        public decimal? Aging90 { get; set; }
 
         /// <summary>
         /// </summary>
@@ -964,9 +1493,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public string _bcgovCurrentregisteredsellercertificateValue { get; set; }
 
         /// <summary>
+        /// Gets or sets type the longitude value for the primary address for
+        /// use in mapping and other applications.
         /// </summary>
         [JsonProperty(PropertyName = "address1_longitude")]
-        public double? Address1Longitude { get; set; }
+        public decimal? Address1Longitude { get; set; }
 
         /// <summary>
         /// </summary>
@@ -974,6 +1505,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public bool? BcgovConsentforemailcommunication { get; set; }
 
         /// <summary>
+        /// Gets or sets for system use only. Legacy Microsoft Dynamics CRM 3.0
+        /// workflow data.
         /// </summary>
         [JsonProperty(PropertyName = "participatesinworkflow")]
         public bool? Participatesinworkflow { get; set; }
@@ -989,6 +1522,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public int? BcgovWaiverstatus { get; set; }
 
         /// <summary>
+        /// Gets or sets type the secondary email address for the account.
         /// </summary>
         [JsonProperty(PropertyName = "emailaddress2")]
         public string Emailaddress2 { get; set; }
@@ -999,49 +1533,66 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public string BcgovAootherlicencenumber { get; set; }
 
         /// <summary>
+        /// Gets or sets select whether the credit for the account is on hold.
+        /// This is a useful reference while addressing the invoice and
+        /// accounting issues with the customer.
         /// </summary>
         [JsonProperty(PropertyName = "creditonhold")]
         public bool? Creditonhold { get; set; }
 
         /// <summary>
+        /// Gets or sets type the main phone number associated with the primary
+        /// address.
         /// </summary>
         [JsonProperty(PropertyName = "address1_telephone1")]
         public string Address1Telephone1 { get; set; }
 
         /// <summary>
+        /// Gets or sets shows the date and time when the record was created.
+        /// The date and time are displayed in the time zone selected in
+        /// Microsoft Dynamics 365 options.
         /// </summary>
         [JsonProperty(PropertyName = "createdon")]
         public System.DateTimeOffset? Createdon { get; set; }
 
         /// <summary>
+        /// Gets or sets type the company or business name.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
+        /// Gets or sets shows the conversion rate of the record's currency.
+        /// The exchange rate is used to convert all money fields in the record
+        /// from the local currency to the system's default currency.
         /// </summary>
         [JsonProperty(PropertyName = "exchangerate")]
-        public object Exchangerate { get; set; }
+        public decimal? Exchangerate { get; set; }
 
         /// <summary>
+        /// Gets or sets select the secondary address type.
         /// </summary>
         [JsonProperty(PropertyName = "address2_addresstypecode")]
         public int? Address2Addresstypecode { get; set; }
 
         /// <summary>
+        /// Gets or sets type the state or province of the primary address.
         /// </summary>
         [JsonProperty(PropertyName = "address1_stateorprovince")]
         public string Address1Stateorprovince { get; set; }
 
         /// <summary>
+        /// Gets or sets type the second line of the secondary address.
         /// </summary>
         [JsonProperty(PropertyName = "address2_line2")]
         public string Address2Line2 { get; set; }
 
         /// <summary>
+        /// Gets or sets shows the default image for the record.
         /// </summary>
+        [JsonConverter(typeof(Base64UrlJsonConverter))]
         [JsonProperty(PropertyName = "entityimage")]
-        public object Entityimage { get; set; }
+        public byte[] Entityimage { get; set; }
 
         /// <summary>
         /// </summary>
@@ -1049,66 +1600,93 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public System.DateTimeOffset? BcgovAodelexpirydate { get; set; }
 
         /// <summary>
+        /// Gets or sets primary Twitter ID for Account
         /// </summary>
         [JsonProperty(PropertyName = "primarytwitterid")]
         public string Primarytwitterid { get; set; }
 
         /// <summary>
+        /// Gets or sets total time spent for emails (read and write) and
+        /// meetings by me in relation to account record.
         /// </summary>
         [JsonProperty(PropertyName = "timespentbymeonemailandmeetings")]
         public string Timespentbymeonemailandmeetings { get; set; }
 
         /// <summary>
+        /// Gets or sets type an ID number or code for the account to quickly
+        /// search and identify the account in system views.
         /// </summary>
         [JsonProperty(PropertyName = "accountnumber")]
         public string Accountnumber { get; set; }
 
         /// <summary>
+        /// Gets or sets type the first line of the primary address.
         /// </summary>
         [JsonProperty(PropertyName = "address1_line1")]
         public string Address1Line1 { get; set; }
 
         /// <summary>
+        /// Gets or sets choose the sales region or territory for the account
+        /// to make sure the account is assigned to the correct representative
+        /// and for use in segmentation and analysis.
         /// </summary>
         [JsonProperty(PropertyName = "_territoryid_value")]
         public string _territoryidValue { get; set; }
 
         /// <summary>
+        /// Gets or sets unique identifier of the account.
         /// </summary>
         [JsonProperty(PropertyName = "accountid")]
         public string Accountid { get; set; }
 
         /// <summary>
+        /// Gets or sets shows the complete primary address.
         /// </summary>
         [JsonProperty(PropertyName = "address1_composite")]
         public string Address1Composite { get; set; }
 
         /// <summary>
+        /// Gets or sets choose the service level agreement (SLA) that you want
+        /// to apply to the Account record.
         /// </summary>
         [JsonProperty(PropertyName = "_slaid_value")]
         public string _slaidValue { get; set; }
 
         /// <summary>
+        /// Gets or sets type the county for the secondary address.
         /// </summary>
         [JsonProperty(PropertyName = "address2_county")]
         public string Address2County { get; set; }
 
         /// <summary>
+        /// Gets or sets information about whether to allow following email
+        /// activity like opens, attachment views and link clicks for emails
+        /// sent to the account.
         /// </summary>
         [JsonProperty(PropertyName = "followemail")]
         public bool? Followemail { get; set; }
 
         /// <summary>
+        /// Gets or sets select whether the account allows phone calls. If Do
+        /// Not Allow is selected, the account will be excluded from phone call
+        /// activities distributed in marketing campaigns.
         /// </summary>
         [JsonProperty(PropertyName = "donotphone")]
         public bool? Donotphone { get; set; }
 
         /// <summary>
+        /// Gets or sets select a classification code to indicate the potential
+        /// value of the customer account based on the projected return on
+        /// investment, cooperation level, sales cycle length or other
+        /// criteria.
         /// </summary>
         [JsonProperty(PropertyName = "accountclassificationcode")]
         public int? Accountclassificationcode { get; set; }
 
         /// <summary>
+        /// Gets or sets choose the account's preferred service facility or
+        /// equipment to make sure services are scheduled correctly for the
+        /// customer.
         /// </summary>
         [JsonProperty(PropertyName = "_preferredequipmentid_value")]
         public string _preferredequipmentidValue { get; set; }
@@ -1119,6 +1697,9 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public int? BcgovLegislativeauthoritylicensestatus { get; set; }
 
         /// <summary>
+        /// Gets or sets type the Standard Industrial Classification (SIC) code
+        /// that indicates the account's primary industry of business, for use
+        /// in marketing segmentation and demographic analysis.
         /// </summary>
         [JsonProperty(PropertyName = "sic")]
         public string Sic { get; set; }
@@ -1129,26 +1710,35 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public string EntityimageUrl { get; set; }
 
         /// <summary>
+        /// Gets or sets shows the ID of the process.
         /// </summary>
         [JsonProperty(PropertyName = "processid")]
         public string Processid { get; set; }
 
         /// <summary>
+        /// Gets or sets type a second phone number associated with the
+        /// secondary address.
         /// </summary>
         [JsonProperty(PropertyName = "address2_telephone2")]
         public string Address2Telephone2 { get; set; }
 
         /// <summary>
+        /// Gets or sets select the primary address type.
         /// </summary>
         [JsonProperty(PropertyName = "address1_addresstypecode")]
         public int? Address1Addresstypecode { get; set; }
 
         /// <summary>
+        /// Gets or sets select the time zone, or UTC offset, for this address
+        /// so that other people can reference it when they contact someone at
+        /// this address.
         /// </summary>
         [JsonProperty(PropertyName = "address1_utcoffset")]
         public int? Address1Utcoffset { get; set; }
 
         /// <summary>
+        /// Gets or sets type the fax number associated with the secondary
+        /// address.
         /// </summary>
         [JsonProperty(PropertyName = "address2_fax")]
         public string Address2Fax { get; set; }
@@ -1159,71 +1749,93 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public System.DateTimeOffset? BcgovAootherlicenceexpirydate { get; set; }
 
         /// <summary>
+        /// Gets or sets select the legal designation of the business profile.
         /// </summary>
         [JsonProperty(PropertyName = "businesstypecode")]
         public int? Businesstypecode { get; set; }
 
         /// <summary>
+        /// Gets or sets the base currency equivalent of the aging 60 field.
         /// </summary>
         [JsonProperty(PropertyName = "aging60_base")]
-        public object Aging60Base { get; set; }
+        public decimal? Aging60Base { get; set; }
 
         /// <summary>
+        /// Gets or sets type the country or region for the primary address.
         /// </summary>
         [JsonProperty(PropertyName = "address1_country")]
         public string Address1Country { get; set; }
 
         /// <summary>
+        /// Gets or sets shows who created the record on behalf of another
+        /// user.
         /// </summary>
         [JsonProperty(PropertyName = "_modifiedonbehalfby_value")]
         public string _modifiedonbehalfbyValue { get; set; }
 
         /// <summary>
+        /// Gets or sets select a shipping method for deliveries sent to this
+        /// address.
         /// </summary>
         [JsonProperty(PropertyName = "address2_shippingmethodcode")]
         public int? Address2Shippingmethodcode { get; set; }
 
         /// <summary>
+        /// Gets or sets type the stock exchange at which the account is listed
+        /// to track their stock and financial performance of the company.
         /// </summary>
         [JsonProperty(PropertyName = "stockexchange")]
         public string Stockexchange { get; set; }
 
         /// <summary>
+        /// Gets or sets shows who created the record.
         /// </summary>
         [JsonProperty(PropertyName = "_createdby_value")]
         public string _createdbyValue { get; set; }
 
         /// <summary>
+        /// Gets or sets type the third line of the primary address.
         /// </summary>
         [JsonProperty(PropertyName = "address1_line3")]
         public string Address1Line3 { get; set; }
 
         /// <summary>
+        /// Gets or sets the base currency equivalent of the aging 30 field.
         /// </summary>
         [JsonProperty(PropertyName = "aging30_base")]
-        public object Aging30Base { get; set; }
+        public decimal? Aging30Base { get; set; }
 
         /// <summary>
+        /// Gets or sets sum of open revenue against an account and its child
+        /// accounts.
         /// </summary>
         [JsonProperty(PropertyName = "openrevenue_base")]
-        public object OpenrevenueBase { get; set; }
+        public decimal? OpenrevenueBase { get; set; }
 
         /// <summary>
+        /// Gets or sets type the number of shares available to the public for
+        /// the account. This number is used as an indicator in financial
+        /// performance analysis.
         /// </summary>
         [JsonProperty(PropertyName = "sharesoutstanding")]
         public int? Sharesoutstanding { get; set; }
 
         /// <summary>
+        /// Gets or sets last SLA that was applied to this case. This field is
+        /// for internal use only.
         /// </summary>
         [JsonProperty(PropertyName = "_slainvokedid_value")]
         public string _slainvokedidValue { get; set; }
 
         /// <summary>
+        /// Gets or sets type the city for the primary address.
         /// </summary>
         [JsonProperty(PropertyName = "address1_city")]
         public string Address1City { get; set; }
 
         /// <summary>
+        /// Gets or sets type the name of the main contact at the account's
+        /// secondary address.
         /// </summary>
         [JsonProperty(PropertyName = "address2_primarycontactname")]
         public string Address2Primarycontactname { get; set; }
@@ -1234,56 +1846,78 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public string BcgovAodelnumber { get; set; }
 
         /// <summary>
+        /// Gets or sets type the latitude value for the primary address for
+        /// use in mapping and other applications.
         /// </summary>
         [JsonProperty(PropertyName = "address1_latitude")]
-        public double? Address1Latitude { get; set; }
+        public decimal? Address1Latitude { get; set; }
 
         /// <summary>
+        /// Gets or sets shows the date and time when the record was last
+        /// updated. The date and time are displayed in the time zone selected
+        /// in Microsoft Dynamics 365 options.
         /// </summary>
         [JsonProperty(PropertyName = "modifiedon")]
         public System.DateTimeOffset? Modifiedon { get; set; }
 
         /// <summary>
+        /// Gets or sets shows the master account that the account was merged
+        /// with.
         /// </summary>
         [JsonProperty(PropertyName = "_masterid_value")]
         public string _masteridValue { get; set; }
 
         /// <summary>
+        /// Gets or sets select the time zone, or UTC offset, for this address
+        /// so that other people can reference it when they contact someone at
+        /// this address.
         /// </summary>
         [JsonProperty(PropertyName = "address2_utcoffset")]
         public int? Address2Utcoffset { get; set; }
 
         /// <summary>
+        /// Gets or sets type the primary email address for the business
+        /// profile.
         /// </summary>
         [JsonProperty(PropertyName = "emailaddress1")]
         public string Emailaddress1 { get; set; }
 
         /// <summary>
+        /// Gets or sets for internal use only.
         /// </summary>
         [JsonProperty(PropertyName = "timezoneruleversionnumber")]
         public int? Timezoneruleversionnumber { get; set; }
 
         /// <summary>
+        /// Gets or sets number of open opportunities against an account and
+        /// its child accounts.
         /// </summary>
         [JsonProperty(PropertyName = "opendeals")]
         public int? Opendeals { get; set; }
 
         /// <summary>
+        /// Gets or sets type the state or province of the secondary address.
         /// </summary>
         [JsonProperty(PropertyName = "address2_stateorprovince")]
         public string Address2Stateorprovince { get; set; }
 
         /// <summary>
+        /// Gets or sets select the preferred time of day for service
+        /// appointments.
         /// </summary>
         [JsonProperty(PropertyName = "preferredappointmenttimecode")]
         public int? Preferredappointmenttimecode { get; set; }
 
         /// <summary>
+        /// Gets or sets select the account's primary industry for use in
+        /// marketing segmentation and demographic analysis.
         /// </summary>
         [JsonProperty(PropertyName = "industrycode")]
         public int? Industrycode { get; set; }
 
         /// <summary>
+        /// Gets or sets type a third phone number associated with the primary
+        /// address.
         /// </summary>
         [JsonProperty(PropertyName = "address1_telephone3")]
         public string Address1Telephone3 { get; set; }

@@ -33,7 +33,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Authentication
         /// <summary>
         /// AuthenticatedUser User Model
         /// </summary>
-        public User AuthenticatedUser { get; set; }
+        public Public.Models.User AuthenticatedUser { get; set; }
 
         public bool IsNewUserRegistration { get; set; }
 
