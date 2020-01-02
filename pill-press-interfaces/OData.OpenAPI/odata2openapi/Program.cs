@@ -1,29 +1,32 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using Microsoft.OData.OpenAPI;
-using NJsonSchema;
-using NSwag;
+
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Xml.Linq;
 
-/****
- * 
- * OData2OpenAPI - conversion tool used to convert from MS Dynamics to OpenAPI.
- * 
- *****/
+using System.Collections.Generic;
+using Microsoft.OData.Edm.Csdl;
+using Microsoft.OData.Edm;
+using Microsoft.OpenApi.OData;
+using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Extensions;
+using Microsoft.OpenApi;
+using Newtonsoft.Json;
+
+// online validator that seems to work - https://apitools.dev/swagger-parser/online/
 
 namespace odata2openapi
 {
     class Program
     {
-        
-        static string GetDynamicsMetadata (IConfiguration Configuration )
+        static string solutionPrefix;
+
+        static string GetDynamicsMetadata(IConfiguration Configuration)
         {
             string dynamicsOdataUri = Configuration["DYNAMICS_ODATA_URI"];
             string aadTenantId = Configuration["DYNAMICS_AAD_TENANT_ID"];
@@ -32,9 +35,16 @@ namespace odata2openapi
             string clientId = Configuration["DYNAMICS_CLIENT_ID"];
             string ssgUsername = Configuration["SSG_USERNAME"];
             string ssgPassword = Configuration["SSG_PASSWORD"];
+
+            // ensure the last character of the uri is a slash.
+            if (dynamicsOdataUri[dynamicsOdataUri.Length - 1] != '/')
+            {
+                dynamicsOdataUri += "/";
+            }
+
             var webRequest = WebRequest.Create(dynamicsOdataUri + "$metadata");
             HttpWebRequest request = (HttpWebRequest)webRequest;
-           
+
             if (string.IsNullOrEmpty(ssgUsername) || string.IsNullOrEmpty(ssgPassword))
             {
                 var authenticationContext = new AuthenticationContext(
@@ -48,11 +58,11 @@ namespace odata2openapi
             else
             {
                 String encoded = System.Convert.ToBase64String(System.Text.Encoding.GetEncoding("ISO-8859-1").GetBytes(ssgUsername + ":" + ssgPassword));
-                request.Headers.Add("Authorization", "Basic " + encoded); 
+                request.Headers.Add("Authorization", "Basic " + encoded);
             }
-            
+
             string result = null;
-            
+
             request.Method = "GET";
             request.PreAuthenticate = true;
             //request.Accept = "application/json;odata=verbose";
@@ -61,7 +71,7 @@ namespace odata2openapi
             // we need to add authentication to a HTTP Client to fetch the file.
             using (
                 MemoryStream ms = new MemoryStream())
-            {               
+            {
                 request.GetResponse().GetResponseStream().CopyTo(ms);
                 var buffer = ms.ToArray();
                 result = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
@@ -70,7 +80,7 @@ namespace odata2openapi
             return result;
 
         }
-
+        /*
         static void FixProperty (JsonSchema4 item , string name)
         {
             if (item.Properties.Keys.Contains(name))
@@ -86,373 +96,896 @@ namespace odata2openapi
 
             }
         }
+        */
+        static void CheckProperties(OpenApiDocument swaggerDocument, List<string> itemsToKeep, OpenApiSchema item)
+        {
+            if (item.Reference != null)
+            {
+                string title = item.Reference.Id;
+                if (title != null && !itemsToKeep.Contains(title))
+                {
+                    // recursive call.
+                    AddSubItems(swaggerDocument, itemsToKeep, title);
+                }
+            }
+            else
+            {
+                if (item.Type != null && (item.Type == "object" || item.Type == "array")
+                    && item.Items?.Reference?.Id != null)
+                {
+                    string title = item.Items.Reference.Id;
+                    if (title != null && !itemsToKeep.Contains(title))
+                    {
+                        // recursive call.
+                        AddSubItems(swaggerDocument, itemsToKeep, title);
+                    }
+                }
+            }
+            if (item.Properties != null)
+            {
+                foreach (var property in item.Properties)
+                {
+                    if (property.Value.Reference != null)
+                    {
+                        string title = property.Value.Reference.Id;
+                        if (title != null && !itemsToKeep.Contains(title))
+                        {
+                            // recursive call.
+                            AddSubItems(swaggerDocument, itemsToKeep, title);
+                        }
+                    }
+                    else
+                    {
+                        if ((property.Value.Type == "object" || property.Value.Type == "array")
+                            && property.Value.Items?.Reference?.Id != null)
+                        {
+                            string id = property.Value.Items.Reference.Id;
+                            if (id != null && !itemsToKeep.Contains(id))
+                            {
+                                // recursive call.
+                                AddSubItems(swaggerDocument, itemsToKeep, id);
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+        static void AddSubItems(OpenApiDocument swaggerDocument, List<string> itemsToKeep, string currentItem)
+        {
+            if (currentItem != null && !itemsToKeep.Contains(currentItem) && swaggerDocument.Components.Schemas.ContainsKey(currentItem))
+            {
+                itemsToKeep.Add(currentItem);
+                //Console.WriteLine($"Added {currentItem}");
+
+                OpenApiSchema item = swaggerDocument.Components.Schemas[currentItem];
+
+                CheckProperties(swaggerDocument, itemsToKeep, item);
+
+                if (item.AllOf != null)
+                {
+                    foreach (var allOfItem in item.AllOf)
+                    {
+                        CheckProperties(swaggerDocument, itemsToKeep, allOfItem);
+                    }
+                }
+
+            }
+        }
+
+
+        static void MergeSubItems(Dictionary<string, OpenApiSchema> dictionary, OpenApiSchema item)
+        {
+            if (item.AllOf != null)
+            {
+                foreach (var allOfItem in item.AllOf)
+                {
+                    MergeSubItems(dictionary, allOfItem);
+                }
+            }
+            if (item.Properties != null)
+            {
+                foreach (var property in item.Properties)
+                {
+                    dictionary.Add(property.Key, property.Value);
+                }
+            }
+        }
 
         static void Main(string[] args)
         {
-            bool getMetadata = true;
+            if (args.Length == 0)
+            {
+                Console.WriteLine("Please enter a solution prefix");
+            }
+            else
+            {
+                solutionPrefix = args[0];
+            }
+
+            bool generatePaths = false;
+
+            if (args.Length > 1)
+            {
+                if (args[1] == "generatePaths")
+                {
+                    generatePaths = true;
+                }
+            }
+
+            // Feature flags
+
+            // True if we use the Autorest Odata extension
+            bool enableOdataExtension = false;
+
+            // True if we get metadata from Dynamics
+            bool getMetadata = false;
+
+            // True if we use strings instead of guids primary keys.
+            bool useStringForGuid = true;
+
+            bool disableCustomErrorClass = true;
+
+
+            List<string> defsToKeep = new List<string>();
+
+
+
 
             // start by getting secrets.
-            var builder = new ConfigurationBuilder()                
+            var builder = new ConfigurationBuilder()
                 .AddEnvironmentVariables();
 
-            builder.AddUserSecrets<Program>();           
+            builder.AddUserSecrets<Program>();
             var Configuration = builder.Build();
             string csdl;
             // get the metadata.
             if (getMetadata)
             {
-                csdl = GetDynamicsMetadata(Configuration);
-                File.WriteAllText("dynamics-metadata.xml", csdl);
+                try
+                {
+                    csdl = GetDynamicsMetadata(Configuration);
+                    File.WriteAllText("dynamics-metadata.xml", csdl);
+                }
+                catch (System.Net.WebException)
+                {
+                    csdl = File.ReadAllText("dynamics-metadata.xml");
+                }
+
             }
             else
             {
                 csdl = File.ReadAllText("dynamics-metadata.xml");
-            }               
+            }
 
             // fix the csdl.
 
             csdl = csdl.Replace("ConcurrencyMode=\"Fixed\"", "");
 
-            Microsoft.OData.Edm.IEdmModel model = Microsoft.OData.Edm.Csdl.CsdlReader.Parse(XElement.Parse(csdl).CreateReader());
+            IEdmModel model = CsdlReader.Parse(XElement.Parse(csdl).CreateReader());
 
             // fix dates.
+            /*
             OpenApiTarget target = OpenApiTarget.Json;
             OpenApiWriterSettings settings = new OpenApiWriterSettings
             {
                 BaseUri = new Uri(Configuration["DYNAMICS_ODATA_URI"])
             };
-           
+            */
+
             string swagger = null;
 
-            using (MemoryStream ms = new MemoryStream())
+            OpenApiConvertSettings openApiSettings = new OpenApiConvertSettings
             {
-                model.WriteOpenApi(ms, target, settings);
-                var buffer = ms.ToArray();
-                string temp = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
+                // configuration
+            };
+            OpenApiDocument swaggerDocument = model.ConvertToOpenApi(openApiSettings);
 
-                // The Microsoft OpenAPI.Net library doesn't seem to work with MS Dynamics metadata, so we use NSwag here.
-
-                var runner = SwaggerDocument.FromJsonAsync(temp);
-                runner.Wait();
-                var swaggerDocument = runner.Result;
-
-                List<string> allops = new List<string>();
-                Dictionary<string, SwaggerPathItem> itemsToRemove = new Dictionary<string, SwaggerPathItem>();
-                // fix the operationIds.
-                foreach (var operation in swaggerDocument.Operations)
+            if (generatePaths)
+            {
+                List<string> paths = new List<string>();
+                foreach (var path in swaggerDocument.Paths)
                 {
-                    string suffix = "";
-                    switch (operation.Method)
+
+                    string subPath = path.Key.Substring(path.Key.LastIndexOf("/") + 1);
+                    if (subPath.Contains("("))
                     {
-                        case SwaggerOperationMethod.Post:
-                            suffix = "Create";
-                            // for creates we also want to add a header parameter to ensure we get the new object back.
-                            SwaggerParameter swaggerParameter = new SwaggerParameter()
-                            {
-                                Type = JsonObjectType.String,
-                                Name = "Prefer",
-                                Default = "return=representation",
-                                Description = "Required in order for the service to return a JSON representation of the object.",
-                                Kind = SwaggerParameterKind.Header
-                            };
-                            operation.Operation.Parameters.Add(swaggerParameter);
-                            break;
-
-                        case SwaggerOperationMethod.Patch:
-                            suffix = "Update";
-                            break;
-
-                        case SwaggerOperationMethod.Put:
-                            suffix = "Put";
-                            break;
-
-                        case SwaggerOperationMethod.Delete:
-                            suffix = "Delete";
-                            break;
-
-                        case SwaggerOperationMethod.Get:
-                            if (operation.Path.Contains("{"))
-                            {
-                                suffix = "GetByKey";
-                            }
-                            else
-                            {
-                                suffix = "Get";
-                            }                            
-                            break;
+                        subPath = subPath.Substring(0, subPath.IndexOf("("));
                     }
 
-                    string prefix = "Unknown";
-                    string firstTag = operation.Operation.Tags.FirstOrDefault();
+                    string pathSample = path.Key.Substring(1, subPath.Length);
+                    if (pathSample != subPath)
+                    {
+                        paths.Add(path.Key);
+                    }
+
+
+                }
+                File.WriteAllText("paths-excluded.json", JsonConvert.SerializeObject(paths));
+            }
+            else
+            {
+                List<string> itemsToRemove = new List<string>();
+                if (File.Exists("paths-excluded.json"))
+                {
+                    string pathsExcluded = File.ReadAllText("paths-excluded.json");
+                    itemsToRemove = JsonConvert.DeserializeObject<List<string>>(pathsExcluded);
+                }
+
+
+                List<string> allops = new List<string>();
+
+                // fix the operationIds.
+                foreach (var path in swaggerDocument.Paths)
+                {
+                    if (itemsToRemove.Contains(path.Key))
+                    {
+                        continue;
+                    }
+                    if (path.Key.Contains("transactioncurrencyid"))
+                    {
+                        itemsToRemove.Add(path.Key);
+                        continue;
+                    }
+                    if (path.Key.Contains("scheduledprocessexecution"))
+                    {
+                        itemsToRemove.Add(path.Key);
+                        continue;
+                    }
+
+                    // determine if this is a get by key, or a get by key with additional .
+                    string subPath = "";
+
+                    string temp = path.Key.Substring(path.Key.LastIndexOf("/") + 1);
+                    if (temp.Contains("("))
+                    {
+                        temp = temp.Substring(0, temp.IndexOf("("));
+                        string pathSample = path.Key.Substring(1, temp.Length);
+                        if (pathSample != temp)
+                        {
+                            subPath = temp;
+                        }
+
+                        subPath += "ByKey";
+                    }
+
+                    OpenApiTag firstTag = null; // operation.Value.Tags.FirstOrDefault();
+                    string firstTagLower = "";
 
                     if (firstTag == null)
                     {
-                        firstTag = operation.Path.Substring(1);
+                        firstTag = new OpenApiTag() { Name = temp };
                     }
 
-                    
+                    string prefix = "Unknown";
+
                     if (firstTag != null)
                     {
                         bool ok2Delete = true;
-                        string firstTagLower = firstTag.ToLower();
-
-                        // || firstTagLower.Equals("equipments")
+                        firstTagLower = firstTag.Name.ToLower();
+                        //Console.Out.WriteLine(firstTagLower);
+                        if (firstTagLower.Equals("contacts") ||
+                            firstTagLower.Equals("accounts") ||
+                            firstTagLower.Equals("invoices") ||
+                            firstTagLower.Equals("leads") ||
+                            firstTagLower.Equals("lists") ||
+                            firstTagLower.Equals("sharepointsites") ||
+                            firstTagLower.Equals("savedqueries") ||
+                            firstTagLower.Equals("sharepointdocumentlocations") ||
+                            firstTagLower.Equals("entitydefinitions") ||
+                            firstTagLower.Equals("globaloptionsetdefinitions") ||
+                            firstTagLower.Equals("memoattributemetadata")
+                            )
+                        {
+                            ok2Delete = false;
+                            //Console.Out.WriteLine($"NOT ok to delete {firstTagLower}");
+                        }
 
                         if (firstTagLower.Equals("incidents") || firstTagLower.Equals("sharepointdocumentlocations") || firstTagLower.Equals("sharepointsites") || firstTagLower.Equals("contacts") || firstTagLower.Equals("accounts") || firstTagLower.Equals("invoices") || firstTagLower.Equals("entitydefinitions") || firstTagLower.Equals("globaloptionsetdefinitions"))
                         {
+                            ok2Delete = false;                           
+                        }
+
+                        if (!firstTagLower.StartsWith("msdyn") && !firstTagLower.StartsWith("abs_") && firstTagLower.IndexOf(solutionPrefix) != -1)
+                        {
+                            //Console.Out.WriteLine($"NOT ok to delete {firstTagLower}");
                             ok2Delete = false;
                         }
-                        if (firstTagLower.IndexOf ("bcgov") != -1)
-                        {
-                            ok2Delete = false;
-                            firstTagLower = firstTagLower.Replace("bcgov_", "");
-                            firstTagLower = firstTagLower.Replace("bcgov", "");
-                            operation.Operation.Tags.Clear();
-                            operation.Operation.Tags.Add(firstTagLower);
-                        }                        
 
-                            if (ok2Delete)
+                        if (ok2Delete)
                         {
-                            if (! itemsToRemove.Keys.Contains(operation.Path))
+                            //Console.Out.WriteLine($"ok to delete {firstTagLower}");
+                            if (!itemsToRemove.Contains(path.Key))
                             {
-                                itemsToRemove.Add(operation.Path, operation.Operation.Parent);                                
-                            }                            
+                                itemsToRemove.Add(path.Key);
+                            }
+                            continue;
                         }
 
-                        if (!allops.Contains(firstTag))
+                        if (!allops.Contains(firstTag.Name))
                         {
-                            allops.Add(firstTag);
+                            allops.Add(firstTag.Name);
                         }
                         prefix = firstTagLower;
                         // Capitalize the first character.
 
-
-                        if (prefix.Length > 0)
+                        if (prefix.Length > 0 && prefix.Length > solutionPrefix.Length)
                         {
-                            prefix.Replace("bcgov", "");
-                            prefix = ("" + prefix[0]).ToUpper() + prefix.Substring(1);
+                            if (prefix.ToUpper().Substring(0, solutionPrefix.Length) == solutionPrefix.ToUpper())
+                            {
+                                prefix = prefix.Substring(solutionPrefix.Length);
+                            }
+                            prefix = prefix.Substring(0, 1).ToUpper() + prefix.Substring(1);
                         }
                         // remove any underscores.
                         prefix = prefix.Replace("_", "");
+
                     }
 
-                    operation.Operation.OperationId = prefix + "_" + suffix;
-
-                    // adjustments to operation parameters
-
-                    foreach (var parameter in operation.Operation.Parameters)
+                    foreach (var operation in path.Value.Operations)
                     {
-                        string name = parameter.Name;
-                        if (name == null)
+
+                        if (!firstTagLower.StartsWith("msdyn") && !firstTagLower.StartsWith("abs_") && firstTagLower.IndexOf(solutionPrefix) != -1)
                         {
-                            name = parameter.ActualParameter.Name;
-                        }
-                        if (name != null)
-                        {                            
-                            if (name == "$top")
-                            {
-                                parameter.Kind = SwaggerParameterKind.Query;
-                                parameter.Reference = null;
-                                parameter.Schema = null;
-                                parameter.Type = JsonObjectType.Integer;
-                            }
-                            if (name == "$skip")
-                            {
-                                parameter.Kind = SwaggerParameterKind.Query;
-                                parameter.Reference = null;
-                                parameter.Schema = null;
-                                parameter.Type = JsonObjectType.Integer;
-                            }
-                            if (name == "$search")
-                            {
-                                parameter.Kind = SwaggerParameterKind.Query;
-                                parameter.Reference = null;
-                                parameter.Schema = null;
-                                parameter.Type = JsonObjectType.String;
-                            }
-                            if (name == "$filter")
-                            {
-                                parameter.Kind = SwaggerParameterKind.Query;
-                                parameter.Reference = null;
-                                parameter.Schema = null;
-                                parameter.Type = JsonObjectType.String;
-                            }
-                            if (name == "$count")
-                            {
-                                parameter.Kind = SwaggerParameterKind.Query;
-                                parameter.Reference = null;
-                                parameter.Schema = null;
-                                parameter.Type = JsonObjectType.Boolean;
-                            }
-                            if (name == "If-Match")
-                            {
-                                parameter.Reference = null;
-                                parameter.Schema = null;
-                            }
-                            if (string.IsNullOrEmpty(parameter.Name))
-                            {
-                                parameter.Name = name;
-                            }
-                        }
-                        //var parameter = loopParameter.ActualParameter;
-                        
-                        // get rid of style if it exists.
-                        if (parameter.Style != SwaggerParameterStyle.Undefined)
-                        {
-                            parameter.Style = SwaggerParameterStyle.Undefined;
+                            firstTagLower = firstTagLower.Replace($"{solutionPrefix}_", "");
+                            firstTagLower = firstTagLower.Replace(solutionPrefix, "");
+                            operation.Value.Tags.Clear();
+                            operation.Value.Tags.Add(new OpenApiTag() { Name = firstTagLower });
                         }
 
-                        // clear unique items
-                        if (parameter.UniqueItems)
+                        string suffix = "";
+
+
+                        switch (operation.Key)
                         {
-                            parameter.UniqueItems = false;
-                        }
-
-                        // we also need to align the schema if it exists.
-                        if (parameter.Schema != null && parameter.Schema.Item != null)
-                        {
-
-                            var schema = parameter.Schema;
-                            if (schema.Type == JsonObjectType.Array)
-                            {
-                                // move schema up a level.
-                                parameter.Item = schema.Item;
-                                parameter.Schema = null;
-                                parameter.Reference = null;
-                                parameter.Type = JsonObjectType.Array;
-                            }
-                            if (schema.Type == JsonObjectType.String)
-                            {
-                                parameter.Schema = null;
-                                parameter.Reference = null;
-                                parameter.Type = JsonObjectType.String;
-                            }
-                        }
-                        else
-                        {
-                            // many string parameters don't have the type defined.
-                            if (!(parameter.Kind == SwaggerParameterKind.Body) && !parameter.HasReference && (parameter.Type == JsonObjectType.Null || parameter.Type == JsonObjectType.None))
-                            {
-                                parameter.Schema = null;
-                                parameter.Type = JsonObjectType.String;
-                            }
-                        }
-                    }
-
-                    // adjustments to response
-                    // changes to fix the “GetOkResponseModelModelModel…” generated models
-                    // Based on Cannabis solution https://github.com/bcgov/jag-lcrb-carla-public/blob/master/cllc-interfaces/OData.OpenAPI/odata2openapi/Program.cs line 342
-
-                    foreach (var response in operation.Operation.Responses)
-                    {
-                        var val = response.Value;
-                        if (val != null && val.Reference == null && val.Schema != null)
-                        {
-                            bool hasValue = false;
-                            var schema = val.Schema;
-
-                            foreach (var property in val.Schema.Properties)
-                            {
-                                if (property.Key.Equals("value"))
+                            case OperationType.Post:
+                                suffix = "Create";
+                                // for creates we also want to add a header parameter to ensure we get the new object back.
+                                OpenApiParameter swaggerParameter = new OpenApiParameter()
                                 {
-                                    hasValue = true;
-                                    break;
+                                    Schema = new OpenApiSchema() { Type = "string", Default = new OpenApiString("return=representation") },
+                                    Name = "Prefer",
+                                    Description = "Required in order for the service to return a JSON representation of the object.",
+                                    In = ParameterLocation.Header
+                                };
+                                operation.Value.Parameters.Add(swaggerParameter);
+                                break;
+
+                            case OperationType.Patch:
+                                suffix = "Update";
+                                if (subPath == "ByKey")
+                                {
+                                    subPath = "";
+                                }
+                                break;
+
+                            case OperationType.Put:
+                                suffix = "Put";
+                                if (subPath == "ByKey")
+                                {
+                                    subPath = "";
+                                }
+                                break;
+
+                            case OperationType.Delete:
+                                suffix = "Delete";
+                                if (subPath == "ByKey")
+                                {
+                                    subPath = "";
+                                }
+                                break;
+
+                            case OperationType.Get:
+                                suffix = "Get";
+                                break;
+                        }
+
+                        if (suffix.Length >= solutionPrefix.Length && suffix.ToUpper().Substring(0, solutionPrefix.Length) == solutionPrefix.ToUpper())
+                        {
+                            suffix = suffix.Substring(solutionPrefix.Length);
+                        }
+
+                        operation.Value.OperationId = prefix + "_" + suffix;
+
+                        if (!firstTag.Name.Contains(subPath))
+                        {
+                            operation.Value.OperationId += subPath;
+                        }
+
+                        string operationDef = null;
+                        // adjustments to response
+
+                        foreach (var response in operation.Value.Responses)
+                        {
+                            var val = response.Value;
+                            if (response.Key == "default")
+                            {
+                                if (string.IsNullOrEmpty(response.Value.Description))
+                                {
+                                    response.Value.Description = "OData Error";
+                                };
+
+                                if (disableCustomErrorClass && response.Value.Reference != null)
+                                {
+                                    response.Value.Reference = null;
                                 }
                             }
 
-                            if (hasValue)
+                            if (val != null)
                             {
-                                string resultName = operation.Operation.OperationId + "ResponseModel";
-
-                                if (!swaggerDocument.Definitions.ContainsKey(resultName))
+                                bool hasValue = false;
+                                foreach (var schema in val.Content)
                                 {
-                                    // move the inline schema to defs.
-                                    swaggerDocument.Definitions.Add(resultName, val.Schema);
+                                    foreach (var property in schema.Value.Schema.Properties)
+                                    {
+                                        if (property.Key.Equals("value"))
+                                        {
+                                            hasValue = true;
+                                            break;
+                                        }
+                                    }
+                                    if (hasValue)
+                                    {
+                                        var newSchema = schema.Value.Schema.Properties["value"];
+                                        string resultName;
+                                        string itemName;
 
-                                    val.Schema = new JsonSchema4();
-                                    val.Schema.Reference = swaggerDocument.Definitions[resultName];
-                                    val.Schema.Type = JsonObjectType.None;
+                                        if (newSchema.Type == "array")
+                                        {
+                                            itemName = newSchema.Items.Reference.Id;
+                                            operationDef = itemName;
+                                            resultName = $"{itemName}Collection";
+                                        }
+                                        else
+                                        {
+                                            itemName = "!ERR";
+                                            resultName = "!ERR";
+                                        }
+
+
+
+                                        if (!swaggerDocument.Components.Schemas.ContainsKey(resultName))
+                                        {
+                                            // move the inline schema to defs.
+                                            swaggerDocument.Components.Schemas.Add(resultName, schema.Value.Schema);
+
+                                            //var newSchema = swaggerDocument.Components.Schemas[resultName].Properties["value"];
+                                            if (newSchema.Type == "array")
+                                            {
+                                                newSchema.Items = new OpenApiSchema() { Reference = new OpenApiReference() { Id = itemName, Type = ReferenceType.Schema }, Type = "none" };
+                                                AddSubItems(swaggerDocument, defsToKeep, itemName);
+                                            }
+                                            AddSubItems(swaggerDocument, defsToKeep, resultName);
+
+                                        }
+
+                                        schema.Value.Schema = new OpenApiSchema { Reference = new OpenApiReference() { Id = resultName, Type = ReferenceType.Schema }, Type = "none" };
+                                        // val.Reference = new OpenApiReference() { Id = resultName, Type = ReferenceType.Schema, ExternalResource = null };
+                                    }
+                                    else
+                                    {
+                                        if (schema.Value.Schema.Reference != null)
+                                        {
+                                            operationDef = schema.Value.Schema.Reference.Id;
+                                            AddSubItems(swaggerDocument, defsToKeep, operationDef);
+                                        }
+                                    }
                                 }
+                            }
+                        }
+
+
+
+
+
+                        // adjustments to operation parameters                        
+                        if (enableOdataExtension)
+                        {
+                            string[] oDataParameters = { "top", "skip", "search", "filter", "count", "$orderby", "$select", "$expand" };
+
+                            List<OpenApiParameter> parametersToRemove = new List<OpenApiParameter>();
+
+                            foreach (var oDataParameter in oDataParameters)
+                            {
+                                foreach (var parameter in operation.Value.Parameters)
+                                {
+                                    if (parameter.Name == oDataParameter)
+                                    {
+                                        parametersToRemove.Add(parameter);
+                                    }
+
+                                    if (parameter.Reference != null && parameter.Reference.Id == oDataParameter)
+                                    {
+                                        parametersToRemove.Add(parameter);
+                                    }
+
+                                }
+                            }
+                            foreach (var parameter in parametersToRemove)
+                            {
+                                operation.Value.Parameters.Remove(parameter);
                             }
 
                         }
 
-                    } // end of adjustments to response
+
+                        operation.Value.Extensions.Clear();
+
+
+                        if (operationDef != null && enableOdataExtension)
+                        {
+                            operation.Value.Extensions.Add("x-ms-odata", new OpenApiString($"#/definitions/{operationDef}"));
+                            AddSubItems(swaggerDocument, defsToKeep, operationDef);
+                        }
+
+                        foreach (var parameter in operation.Value.Parameters)
+                        {
+                            if (parameter.Reference != null)
+                            {
+                                if (parameter.Reference.Id == "top" || parameter.Reference.Id == "skip")
+                                {
+                                    parameter.Name = $"${parameter.Reference.Id}";
+                                    parameter.Reference = null;
+                                    parameter.In = ParameterLocation.Query;
+                                    parameter.Schema = new OpenApiSchema()
+                                    {
+                                        Type = "integer"
+
+                                    };
+                                }
+                                else if (parameter.Reference.Id == "search" || parameter.Reference.Id == "filter")
+                                {
+                                    parameter.Name = $"${parameter.Reference.Id}";
+                                    parameter.Reference = null;
+                                    parameter.In = ParameterLocation.Query;
+                                    parameter.Schema = new OpenApiSchema()
+                                    {
+                                        Type = "string"
+
+                                    };
+                                }
+                                else if (parameter.Reference.Id == "count")
+                                {
+                                    parameter.Name = $"${parameter.Reference.Id}";
+                                    parameter.Reference = null;
+                                    parameter.In = ParameterLocation.Query;
+                                    parameter.Schema = new OpenApiSchema()
+                                    {
+                                        Type = "boolean"
+
+                                    };
+                                }
+                            }
+                            else
+                            {
+                                string name = parameter.Name;
+                                if (name == null)
+                                {
+                                    name = parameter.Name;
+                                }
+
+                                if (name != null)
+                                {
+                                    if (name == "$top" || name == "$skip")
+                                    {
+                                        parameter.In = ParameterLocation.Query;
+                                        parameter.Reference = null;
+                                        parameter.Schema = new OpenApiSchema()
+                                        {
+                                            Type = "integer"
+
+                                        };
+                                    }
+                                    if (name == "$search" || name == "$filter")
+                                    {
+                                        parameter.In = ParameterLocation.Query;
+                                        parameter.Reference = null;
+                                        parameter.Schema = new OpenApiSchema()
+                                        {
+                                            Type = "string"
+                                        };
+                                    }
+                                    if (name == "$orderby" || name == "$select" || name == "$expand")
+                                    {
+                                        parameter.In = ParameterLocation.Query;
+                                        parameter.Reference = null;
+                                        parameter.Schema = new OpenApiSchema()
+                                        {
+                                            Type = "array",
+                                            Items = new OpenApiSchema()
+                                            {
+                                                Type = "string"
+                                            }
+
+                                        };
+                                        parameter.Extensions.Add("collectionFormat", new OpenApiString("csv"));
+
+                                    }
+                                    if (name == "$count")
+                                    {
+                                        parameter.In = ParameterLocation.Query;
+                                        parameter.Reference = null;
+                                        parameter.Schema = new OpenApiSchema()
+                                        {
+                                            Type = "boolean"
+                                        };
+                                    }
+                                    if (name == "If-Match")
+                                    {
+                                        parameter.Reference = null;
+                                        parameter.Schema = new OpenApiSchema()
+                                        {
+                                            Type = "string"
+                                        };
+                                    }
+
+                                    if (parameter.Extensions != null && parameter.Extensions.ContainsKey("x-ms-docs-key-type"))
+                                    {
+                                        parameter.Extensions.Remove("x-ms-docs-key-type");
+                                    }
+
+                                    if (string.IsNullOrEmpty(parameter.Name))
+                                    {
+                                        parameter.Name = name;
+                                    }
+
+                                }
+
+                            }
+
+                            // get rid of style if it exists.
+                            if (parameter.Style != ParameterStyle.Simple)
+                            {
+                                parameter.Style = ParameterStyle.Simple;
+                            }
+
+                            // get rid of guid type if it exists
+
+                            if (parameter.Schema?.Format != null && useStringForGuid && parameter.Schema.Format == "uuid")
+                            {
+                                parameter.Schema.Format = null;
+                                parameter.Schema.Pattern = null;
+                            }
+
+                            // may need to clear unique items here.
+
+                            // align the schema if it exists.
+                            if (parameter.Schema != null && parameter.Schema.Items != null)
+                            {
+
+                                var schema = parameter.Schema;
+                                if (schema.Type == "array" && parameter.Style == null)
+                                {
+
+                                    // may be a good idea to set collectionFormat to csv here.  It is also set below.
+
+                                    parameter.Style = ParameterStyle.Simple;
+                                }
+                            }
+                        }
+
+                    }
 
                 }
-                
+
                 foreach (var opDelete in itemsToRemove)
                 {
-                    Debug.WriteLine($"Removing {opDelete.Key}");
                     swaggerDocument.Paths.Remove(opDelete);
-                    
                 }
+
+                foreach (var path in swaggerDocument.Paths)
+                {
+                    foreach (var value in path.Value.Operations)
+                    {
+                        foreach (var response in value.Value.Responses)
+                        {
+                            if (response.Value.Reference != null)
+                            {
+                                var schema = response.Value.Reference;
+                                if (!string.IsNullOrEmpty(schema.Id) && (schema.Type.Value.GetDisplayName() == "array" || schema.Type.Value.GetDisplayName() == "object"))
+                                {
+                                    string title = schema.Id;
+                                    AddSubItems(swaggerDocument, defsToKeep, title);
+                                }
+                            }
+                        }
+                        foreach (var parameter in value.Value.Parameters)
+                        {
+                            if (parameter.Schema != null && parameter.Schema.Reference != null)
+                            {
+                                var schema = parameter.Schema.Reference;
+                                if (!string.IsNullOrEmpty(schema.Id) && (schema.Type.Value.GetDisplayName() == "array" || schema.Type.Value.GetDisplayName() == "object"))
+                                {
+                                    AddSubItems(swaggerDocument, defsToKeep, schema.Id);
+                                }
+                            }
+                        }
+
+                    }
+                }
+
+
+
+                // reverse the items to keep.
+
+                List<string> defsToRemove = new List<string>();
+
+
+                foreach (var definition in swaggerDocument.Components.Schemas)
+                {
+                    if (
+                        !definition.Key.Contains("odata.error") &&
+                        !definition.Key.Contains("crmbaseentity") &&
+                        !definition.Key.ToLower().Contains("optionmetadata") &&
+                        !defsToKeep.Contains(definition.Key))
+                    {
+                        defsToRemove.Add(definition.Key);
+                    }
+                }
+
+                foreach (string defToRemove in defsToRemove)
+                {
+                    //Console.Out.WriteLine($"Remove: {defToRemove}");
+                    if (!string.IsNullOrEmpty(defToRemove) && swaggerDocument.Components.Schemas.ContainsKey(defToRemove))
+                    {
+                        swaggerDocument.Components.Schemas.Remove(defToRemove);
+                    }
+
+                }
+                /*
+                List<string> responsesToRemove = new List<string>();
+
+                
+                foreach (string responseToRemove in responsesToRemove)
+                {
+                    Console.Out.WriteLine($"Remove Response: {responseToRemove}");
+                
+                    if (!string.IsNullOrEmpty(responseToRemove) && swaggerDocument.Components.Responses.ContainsKey(responseToRemove))
+                    {
+                        swaggerDocument.Components.Responses.Remove(responseToRemove);
+                    }
+                   
+
+                }
+
+                 */
 
                 /*
                  * Cleanup definitions.                 
                  */
 
-                foreach (var definition in swaggerDocument.Definitions)
-                {                    
+                foreach (var definition in swaggerDocument.Components.Schemas)
+                {
 
-
-                    foreach (var property in definition.Value.Properties)
+                    if (definition.Value.Description == null)
                     {
-                        if (property.Key.Equals("totalamount"))
-                        {
-                            property.Value.Type = JsonObjectType.Number;
-                            property.Value.Format = "decimal";
-                        }
+                        definition.Value.Description = definition.Key;
+                    }
 
+
+                    // consolidate AllOf
+                    if (definition.Value.AllOf != null && definition.Value.Type == null)
+                    {
+                        definition.Value.Type = "object";
+                    }
+
+                    var dictionary = new Dictionary<string, OpenApiSchema>();
+                    MergeSubItems(dictionary, definition.Value);
+                    definition.Value.Properties = dictionary;
+                    if (definition.Value.AllOf != null)
+                    {
+                        definition.Value.AllOf.Clear();
+                    }
+
+                    // Clear out the example if it exists
+
+                    if (definition.Value.Example != null)
+                    {
+                        definition.Value.Example = null;
+                    }
+                    /*
+                    if (definition.Value.Title != null)
+                    {
+                        definition.Value.Title = null;
+                    }
+
+                    if (definition.Value.Enum != null)
+                    {
+                        definition.Value.Enum.Clear();
+                    }
+                    */
+
+                    if (definition.Value != null && definition.Value.Properties != null)
+                    {
+                        foreach (var property in definition.Value.Properties)
+                        {
+                            // convert all dates to datetimeoffset.
+                            // special handling of the Dynamics "DATE (YYYY-MM-DD)" fields will need to be done with extensions.
+                            if (property.Value.Format != null && property.Value.Format == "date")
+                            {
+                                property.Value.Format = "date-time";
+                            }
+                            if (property.Value.Type == null)
+                            {
+                                property.Value.Type = "string";
+                            }
+
+                            // fix for doubles
+                            if (property.Value != null && property.Value.Format != null && property.Value.Format.Equals("double"))
+                            {
+                                property.Value.Format = "decimal";
+                                property.Value.Type = "number";
+                            }
+                            if (property.Key.Equals("totalamount"))
+                            {
+                                property.Value.Type = "number";
+                                property.Value.Format = "decimal";
+                            }
 
                             if (property.Key.Equals("versionnumber"))
-                        {                            
-                            // clear oneof.
-                            property.Value.OneOf.Clear();
-                            // force to string.
-                            property.Value.Type = JsonObjectType.String;
+                            {
+                                // clear oneof.
+                                if (property.Value.OneOf != null)
+                                {
+                                    property.Value.OneOf.Clear();
+                                }
+
+                                // force to string.
+                                property.Value.Type = "string";
+                            }
+
+                            if (property.Value.Minimum != null)
+                            {
+                                property.Value.Minimum = null;
+                            }
+                            if (property.Value.Maximum != null)
+                            {
+                                property.Value.Maximum = null;
+                            }
+                            if (property.Value.Pattern != null)
+                            {
+                                property.Value.Pattern = null;
+                            }
+
+
+                            if (property.Value.Format != null && property.Value.Format == "uuid" && useStringForGuid)
+                            {
+                                property.Value.Format = null;
+                            }
+
                         }
                     }
-                    
                 }
 
+
+                // remove extra tags.
+                swaggerDocument.Tags.Clear();
+
                 // cleanup parameters.
-                swaggerDocument.Parameters.Clear();
+                //swaggerDocument.Components.Parameters.Clear();
 
-                swagger = swaggerDocument.ToJson(SchemaType.Swagger2);
 
-                // fix up the swagger file.
+                //**************************************
 
-                swagger = swagger.Replace("('{", "({");
-                swagger = swagger.Replace("}')", "})");
+                // fix for "odata.error.main" - innererror property.
 
-                swagger = swagger.Replace("\"$ref\": \"#/responses/error\"", "\"schema\": { \"$ref\": \"#/definitions/odata.error\" }");
+                swaggerDocument.Components.Schemas["odata.error.main"].Properties.Remove("innererror");
 
-                // fix for problem with the base entity.
+                // fix for two entities that have links to everything else - this causes massive spikes in memory consumption.
 
-                swagger = swagger.Replace("        {\r\n          \"$ref\": \"#/definitions/Microsoft.Dynamics.CRM.crmbaseentity\"\r\n        },\r\n", "");
+                swaggerDocument.Components.Schemas.Remove("Microsoft.Dynamics.CRM.transactioncurrency");
+                swaggerDocument.Components.Schemas.Remove("Microsoft.Dynamics.CRM.syncerror");
 
-                // NSwag is almost able to generate the client as well.  It does it much faster than AutoRest but unfortunately can't do multiple files yet.                
+                Dictionary<string, OpenApiSchema> props = new Dictionary<string, OpenApiSchema>();
+                props.Add("nil", new OpenApiSchema() { Type = "string" });
+                swaggerDocument.Components.Schemas.Add("Microsoft.Dynamics.CRM.transactioncurrency", new OpenApiSchema() { Properties = props });
+                swaggerDocument.Components.Schemas.Add("Microsoft.Dynamics.CRM.syncerror", new OpenApiSchema() { Properties = props });
 
-                /*
-                var generatorSettings = new SwaggerToCSharpClientGeneratorSettings
-                {
-                    ClassName = "DynamicsClient",
-                    CSharpGeneratorSettings =
-                    {
-                        Namespace = "<namespace>"
-                    }
-                };                
 
-                var generator = new SwaggerToCSharpClientGenerator(swaggerDocument, generatorSettings);
-                var code = generator.GenerateFile();
-
-                File.WriteAllText("<filename>", code);
-                */
+                // swagger = swaggerDocument.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0); // ToJson(SchemaType.Swagger2);
+                swagger = swaggerDocument.SerializeAsJson(OpenApiSpecVersion.OpenApi2_0);
 
             }
-
-            // output the file.
 
             File.WriteAllText("dynamics-swagger.json", swagger);
 
