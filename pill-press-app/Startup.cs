@@ -4,28 +4,41 @@ using Gov.Jag.PillPressRegistry.Public.Authorization;
 using Gov.Jag.PillPressRegistry.Public.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.AspNetCore.DataProtection;
+using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
-using Microsoft.EntityFrameworkCore;
+
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.HealthChecks;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Net.Http.Headers;
-using Microsoft.Rest;
+using Newtonsoft.Json;
 using NWebsec.AspNetCore.Mvc;
 using NWebsec.AspNetCore.Mvc.Csp;
+using Serilog;
+using Serilog.Exceptions;
 using System;
 using System.IO;
+using System.Linq;
+using System.Net.Http;
+using System.Net.Mime;
 using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Extensions.Hosting;
+using System.Collections.Generic;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
+
+using System.Net;
+using Microsoft.Rest;
+using Microsoft.AspNetCore.CookiePolicy;
 
 namespace Gov.Jag.PillPressRegistry.Public
 {
@@ -51,12 +64,15 @@ namespace Gov.Jag.PillPressRegistry.Public
                 SetupDynamics(services);
             }
 
+
             // Add a memory cache
             services.AddMemoryCache();
+
 
             // for security reasons, the following headers are set.
             services.AddMvc(opts =>
             {
+                opts.EnableEndpointRouting = false;
                 // default deny
                 var policy = new AuthorizationPolicyBuilder()
                  .RequireAuthenticatedUser()
@@ -73,17 +89,17 @@ namespace Gov.Jag.PillPressRegistry.Public
                 opts.Filters.Add(typeof(CspReportOnlyAttribute));
                 opts.Filters.Add(new CspScriptSrcReportOnlyAttribute { None = true });
             })
-            .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
-            .AddJsonOptions(
-                opts =>
-                {
-                    opts.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
-                    opts.SerializerSettings.DateFormatHandling = Newtonsoft.Json.DateFormatHandling.IsoDateFormat;
-                    opts.SerializerSettings.DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Utc;
+            .AddNewtonsoftJson(opts =>
+            {
+                opts.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
+                opts.SerializerSettings.DateFormatHandling = Newtonsoft.Json.DateFormatHandling.IsoDateFormat;
+                opts.SerializerSettings.DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Utc;
 
-                    // ReferenceLoopHandling is set to Ignore to prevent JSON parser issues with the user / roles model.
-                    opts.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-                });
+                // ReferenceLoopHandling is set to Ignore to prevent JSON parser issues with the user / roles model.
+                opts.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            })
+            .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+
 
 
             // setup siteminder authentication (core 2.0)
@@ -100,7 +116,7 @@ namespace Gov.Jag.PillPressRegistry.Public
             services.AddAuthorization(options =>
             {    
                 options.AddPolicy("Business-User", policy =>
-                                  policy.RequireClaim(User.UserTypeClaim, "Business"));
+                                  policy.RequireClaim(Models.User.UserTypeClaim, "Business"));
             });
             services.RegisterPermissionHandler();
 
@@ -121,100 +137,31 @@ namespace Gov.Jag.PillPressRegistry.Public
             {
                 options.MultipartBodyLengthLimit = 1073741824; // 1 GB
             });
-            
+
             // health checks
-            services.AddHealthChecks(checks =>
-            {
-                checks.AddValueTaskCheck("HTTP Endpoint", () => new ValueTask<IHealthCheckResult>(HealthCheckResult.Healthy("Ok")));
-                                
-            });
+            services.AddHealthChecks()
+                .AddCheck("pillpress_app", () => HealthCheckResult.Healthy());
+               
 
             services.AddSession();
-
         }
+
 
         private void SetupDynamics(IServiceCollection services)
         {
 
-            string dynamicsOdataUri = Configuration["DYNAMICS_ODATA_URI"];
-            string aadTenantId = Configuration["DYNAMICS_AAD_TENANT_ID"];
-            string serverAppIdUri = Configuration["DYNAMICS_SERVER_APP_ID_URI"];
-            string clientKey = Configuration["DYNAMICS_CLIENT_KEY"];
-            string clientId = Configuration["DYNAMICS_CLIENT_ID"];
-
-            string ssgUsername = Configuration["SSG_USERNAME"];
-            string ssgPassword = Configuration["SSG_PASSWORD"];
-
-            AuthenticationResult authenticationResult = null;
-            // authenticate using ADFS.
-            if (string.IsNullOrEmpty(ssgUsername) || string.IsNullOrEmpty(ssgPassword))
+            services.AddTransient(serviceProvider =>
             {
-                var authenticationContext = new AuthenticationContext(
-                    "https://login.windows.net/" + aadTenantId);
-                ClientCredential clientCredential = new ClientCredential(clientId, clientKey);
-                var task = authenticationContext.AcquireTokenAsync(serverAppIdUri, clientCredential);
-                task.Wait();
-                authenticationResult = task.Result;
-            }
-
-            
-
-            services.AddTransient(new Func<IServiceProvider, IDynamicsClient>((serviceProvider) =>
-            {
-
-                ServiceClientCredentials serviceClientCredentials = null;
-
-                if (string.IsNullOrEmpty(ssgUsername) || string.IsNullOrEmpty(ssgPassword))
-                {
-                    var authenticationContext = new AuthenticationContext(
-                    "https://login.windows.net/" + aadTenantId);
-                    ClientCredential clientCredential = new ClientCredential(clientId, clientKey);
-                    var task = authenticationContext.AcquireTokenAsync(serverAppIdUri, clientCredential);
-                    task.Wait();
-                    authenticationResult = task.Result;
-                    string token = authenticationResult.CreateAuthorizationHeader().Substring("Bearer ".Length);
-                    serviceClientCredentials = new TokenCredentials(token);
-                }
-                else
-                {
-                    serviceClientCredentials = new BasicAuthenticationCredentials()
-                    {
-                        UserName = ssgUsername,
-                        Password = ssgPassword
-                    };
-                }
-
-                IDynamicsClient client = new DynamicsClient(new Uri(Configuration["DYNAMICS_ODATA_URI"]), serviceClientCredentials);
-
-
-                // set the native client URI
-                if (string.IsNullOrEmpty(Configuration["DYNAMICS_NATIVE_ODATA_URI"]))
-                {
-                    client.NativeBaseUri = new Uri(Configuration["DYNAMICS_ODATA_URI"]);
-                }
-                else
-                {
-                    client.NativeBaseUri = new Uri(Configuration["DYNAMICS_NATIVE_ODATA_URI"]);
-                }
-
+                IDynamicsClient client = DynamicsSetupUtil.SetupDynamics(Configuration);
                 return client;
-            }));
+            });
 
             // add SharePoint.
 
-            string sharePointServerAppIdUri = Configuration["SHAREPOINT_SERVER_APPID_URI"];
-            string sharePointOdataUri = Configuration["SHAREPOINT_ODATA_URI"];
-            string sharePointWebname = Configuration["SHAREPOINT_WEBNAME"];
-            string sharePointAadTenantId = Configuration["SHAREPOINT_AAD_TENANTID"];
-            string sharePointClientId = Configuration["SHAREPOINT_CLIENT_ID"];
-            string sharePointCertFileName = Configuration["SHAREPOINT_CERTIFICATE_FILENAME"];
-            string sharePointCertPassword = Configuration["SHAREPOINT_CERTIFICATE_PASSWORD"];
-            string sharePointNativeBaseURI = Configuration["SHAREPOINT_NATIVE_BASE_URI"];
-            if (! string.IsNullOrEmpty(sharePointOdataUri))
+            if (!string.IsNullOrEmpty(Configuration["SHAREPOINT_ODATA_URI"]))
             {
-                services.AddTransient<SharePointFileManager>(_ => new SharePointFileManager(sharePointServerAppIdUri, sharePointOdataUri, sharePointWebname, sharePointAadTenantId, sharePointClientId, sharePointCertFileName, sharePointCertPassword, ssgUsername, ssgPassword, sharePointNativeBaseURI));
+                services.AddTransient<SharePointFileManager>(_ => new SharePointFileManager(Configuration));
             }
-            
 
             // add BCeID Web Services
 
@@ -228,7 +175,7 @@ namespace Gov.Jag.PillPressRegistry.Public
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             var log = loggerFactory.CreateLogger("Startup");
 

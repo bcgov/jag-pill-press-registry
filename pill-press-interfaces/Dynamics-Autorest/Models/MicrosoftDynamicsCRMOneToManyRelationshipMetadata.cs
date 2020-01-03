@@ -10,7 +10,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
     using System.Linq;
 
     /// <summary>
-    /// OneToManyRelationshipMetadata
+    /// Microsoft.Dynamics.CRM.OneToManyRelationshipMetadata
     /// </summary>
     public partial class MicrosoftDynamicsCRMOneToManyRelationshipMetadata
     {
@@ -27,7 +27,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// Initializes a new instance of the
         /// MicrosoftDynamicsCRMOneToManyRelationshipMetadata class.
         /// </summary>
-        public MicrosoftDynamicsCRMOneToManyRelationshipMetadata(MicrosoftDynamicsCRMAssociatedMenuConfiguration associatedMenuConfiguration = default(MicrosoftDynamicsCRMAssociatedMenuConfiguration), MicrosoftDynamicsCRMCascadeConfiguration cascadeConfiguration = default(MicrosoftDynamicsCRMCascadeConfiguration), string referencedAttribute = default(string), string referencedEntity = default(string), string referencingAttribute = default(string), string referencingEntity = default(string), bool? isHierarchical = default(bool?), string referencedEntityNavigationPropertyName = default(string), string referencingEntityNavigationPropertyName = default(string), MicrosoftDynamicsCRMLookupAttributeMetadata lookup = default(MicrosoftDynamicsCRMLookupAttributeMetadata))
+        public MicrosoftDynamicsCRMOneToManyRelationshipMetadata(string associatedMenuConfiguration = default(string), string cascadeConfiguration = default(string), string referencedAttribute = default(string), string referencedEntity = default(string), string referencingAttribute = default(string), string referencingEntity = default(string), bool? isHierarchical = default(bool?), string referencedEntityNavigationPropertyName = default(string), string referencingEntityNavigationPropertyName = default(string), MicrosoftDynamicsCRMLookupAttributeMetadata lookup = default(MicrosoftDynamicsCRMLookupAttributeMetadata))
         {
             AssociatedMenuConfiguration = associatedMenuConfiguration;
             CascadeConfiguration = cascadeConfiguration;
@@ -50,12 +50,12 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "AssociatedMenuConfiguration")]
-        public MicrosoftDynamicsCRMAssociatedMenuConfiguration AssociatedMenuConfiguration { get; set; }
+        public string AssociatedMenuConfiguration { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "CascadeConfiguration")]
-        public MicrosoftDynamicsCRMCascadeConfiguration CascadeConfiguration { get; set; }
+        public string CascadeConfiguration { get; set; }
 
         /// <summary>
         /// </summary>
