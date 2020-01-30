@@ -287,6 +287,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             StringContent strContent = new StringContent(jsonString, Encoding.UTF8);
             strContent.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json;odata=verbose");
             endpointRequest.Content = strContent;
+            //add odata-version: 3.0, otherwise by default odata-version is 4.0 and an error will be thrown.
+            endpointRequest.Headers.TryAddWithoutValidation("odata-version", "3.0");
 
             // make the request.
             var response = await _Client.SendAsync(endpointRequest);
