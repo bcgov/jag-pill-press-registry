@@ -919,7 +919,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             {
                 try
                 {
-                    var folder = await _sharePointFileManager.CreateFolder(SharePointFileManager.AccountDocumentListTitle, folderName);
+                    await _sharePointFileManager.CreateFolder(SharePointFileManager.AccountDocumentListTitle, folderName);
                 }
                 catch (Exception e)
                 {
