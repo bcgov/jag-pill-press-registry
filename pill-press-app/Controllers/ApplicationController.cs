@@ -857,7 +857,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             {
                 try
                 {
-                    var folder = await _sharePointFileManager.CreateFolder(SharePointFileManager.ApplicationDocumentListTitle, folderName);
+                    await _sharePointFileManager.CreateFolder(SharePointFileManager.ApplicationDocumentListTitle, folderName);
                 }
                 catch (Exception e)
                 {
