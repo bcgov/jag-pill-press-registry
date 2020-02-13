@@ -49,6 +49,9 @@ namespace Gov.Jag.PillPressRegistry.Public
             Configuration = configuration;
         }
 
+
+        readonly string MyAllowSpecificOrigins = "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://apis.google.com https://maxcdn.bootstrapcdn.com https://cdnjs.cloudflare.com https://code.jquery.com https://stackpath.bootstrapcdn.com https://fonts.googleapis.com";
+
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -149,6 +152,19 @@ namespace Gov.Jag.PillPressRegistry.Public
 
         private void SetupDynamics(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                builder =>
+                {
+                    builder.WithOrigins("https://localhost",
+                                        "https://dev.justice.gov.bc.ca",
+                                        "https://test.justice.gov.bc.ca",
+                                        "https://justice.gov.bc.ca");
+                });
+            }); 
+ 
+
 
             services.AddTransient(serviceProvider =>
             {

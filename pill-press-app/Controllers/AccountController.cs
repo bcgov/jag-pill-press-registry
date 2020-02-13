@@ -9,10 +9,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.Rest;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Threading.Tasks;
 
@@ -955,6 +957,13 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 _logger.LogError(odee.Response.Content);
                 mdcsdl = null;
             }
+            catch (Exception e)
+            {
+                _logger.LogError("Error creating SharepointDocumentLocation");
+                _logger.LogError(e.ToString());
+                mdcsdl = null;
+            }
+
             if (mdcsdl != null)
             {
 
@@ -983,6 +992,20 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     _logger.LogError("Response:");
                     _logger.LogError(odee.Response.Content);
                 }
+                catch (WebException we)
+                {
+                    _logger.LogError("Error adding reference SharepointDocumentLocation to account");
+                    _logger.LogError("Response:");
+                    _logger.LogError(we.Response.ToString());
+                }
+                catch (RestException e)
+                {
+                    _logger.LogError("Error adding reference SharepointDocumentLocation to account");
+                    var error = ((Microsoft.Rest.HttpOperationException)e).Response.Content;
+                    _logger.LogError(error);
+                    mdcsdl = null;
+                }
+
 
                 string sharePointLocationData = _dynamicsClient.GetEntityURI("sharepointdocumentlocations", mdcsdl.Sharepointdocumentlocationid);
 
