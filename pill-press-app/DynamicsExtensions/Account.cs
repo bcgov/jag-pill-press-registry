@@ -96,6 +96,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             {
                 result = null;
             }
+            catch (Exception e)
+            {
+                var ex =  e;
+                result = null;
+            }
 
             // get the primary contact.
             if (result != null && result.Primarycontactid == null && result._primarycontactidValue != null)
@@ -105,6 +110,10 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
                     result.Primarycontactid = system.GetContactById(Guid.Parse(result._primarycontactidValue));
                 }
                 catch (OdataerrorException)
+                {
+                    result.Primarycontactid = null;
+                }
+                catch (Exception)
                 {
                     result.Primarycontactid = null;
                 }
