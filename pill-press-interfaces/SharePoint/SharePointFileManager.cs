@@ -868,18 +868,27 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         public async Task<byte[]> DownloadFile(string url)
         {
             byte[] result = null;
-            var webRequest = System.Net.WebRequest.Create(ApiEndpoint + "web/GetFileByServerRelativeUrl('" + EscapeApostrophe(url) + "')/$value");
-            HttpWebRequest request = (HttpWebRequest)webRequest;
-            request.PreAuthenticate = true;
-            request.Headers.Add("Authorization", Authorization);
-            request.Accept = "*";
 
-            // we need to add authentication to a HTTP Client to fetch the file.
-            using (
-                MemoryStream ms = new MemoryStream())
+            HttpRequestMessage endpointRequest = new HttpRequestMessage
             {
-                await request.GetResponse().GetResponseStream().CopyToAsync(ms);
-                result = ms.ToArray();
+                Method = HttpMethod.Get,
+                RequestUri = new Uri(ApiEndpoint + "web/GetFileByServerRelativeUrl('" + EscapeApostrophe(url) + "')/$value"),
+            };
+
+            // make the request.
+            try
+            {
+                var response = await _Client.SendAsync(endpointRequest);
+                using (
+                    MemoryStream ms = new MemoryStream())
+                {
+                    await response.Content.CopyToAsync(ms);
+                    result = ms.ToArray();
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
 
             return result;

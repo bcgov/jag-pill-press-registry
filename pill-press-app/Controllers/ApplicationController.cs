@@ -1022,7 +1022,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 }
                 catch (Exception e)
                 {
-                    _logger.LogWarning(LoggingEvents.HttpGet, "Certificate does NOT exist for Application Id: " + id);
+                    _logger.LogError(e.StackTrace);
+                    _logger.LogInformation(LoggingEvents.HttpGet, "Certificate does NOT exist for Application Id: " + id);
                     return new JsonResult(fileExists);
                 }
 
