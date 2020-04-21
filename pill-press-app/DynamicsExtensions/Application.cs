@@ -104,5 +104,14 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             return result;
         }
 
+        /// <summary>
+        /// Extended version of the string.Contains() method, 
+        /// accepting a [StringComparison] object to perform different kind of comparisons
+        /// </summary>
+        private static bool Contains(this string source, string value, StringComparison comparisonType)
+        {
+            return source?.IndexOf(value, comparisonType) >= 0;
+        }
+
     }
 }
