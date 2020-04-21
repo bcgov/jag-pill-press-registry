@@ -976,10 +976,18 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 try
                 {
                     byte[] fileContents = await _sharePointFileManager.DownloadFile(serverRelativeUrl);
-                    return new FileContentResult(fileContents, "application/octet-stream")
+                    string fileContentsString = System.Text.Encoding.Default.GetString(fileContents);
+                    if ((fileContentsString.Length > 0) & (fileContentsString.Contains("%PDF", StringComparison.InvariantCultureIgnoreCase)) )
                     {
-                        FileDownloadName = fileName
-                    };
+                        return new FileContentResult(fileContents, "application/octet-stream")
+                        {
+                            FileDownloadName = fileName
+                        };
+                    }
+                    else
+                    {
+                        return new NotFoundResult();
+                    }
                 }
                 catch (Exception e)
                 {
@@ -1014,7 +1022,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 try
                 {
                     byte[] fileContents = await _sharePointFileManager.DownloadFile(serverRelativeUrl);
-                    if (fileContents.Length > 0)
+                    string fileContentsString = System.Text.Encoding.Default.GetString(fileContents);
+                    if ((fileContents.Length > 0) & (fileContentsString.Contains("%PDF", StringComparison.InvariantCultureIgnoreCase)) )
                     {
                         fileExists = true;
                     }
