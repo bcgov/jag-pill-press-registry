@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 
 namespace Gov.Jag.PillPressRegistry.Public.Controllers
 {
@@ -12,10 +13,10 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
     public class LogoutController : Controller
     {
         private readonly IConfiguration Configuration;
-        private readonly IHostingEnvironment _env;
+        private readonly IWebHostEnvironment _env;
         private readonly SiteMinderAuthOptions _options = new SiteMinderAuthOptions();
 
-        public LogoutController( IConfiguration configuration, IHostingEnvironment env)
+        public LogoutController( IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
             _env = env;      

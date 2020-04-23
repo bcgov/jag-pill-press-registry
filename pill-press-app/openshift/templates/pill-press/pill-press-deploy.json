@@ -64,271 +64,110 @@
                   }
                 ],
                 "env": [
-                  {
-                    "name": "ASPNETCORE_ENVIRONMENT",
-                    "value": "${ASPNETCORE_ENVIRONMENT}"
-                  },
-                  {
-                    "name": "DB_USER",
-                    "valueFrom": {
-                      "secretKeyRef": {
-                        "key": "database-user",
-                        "name": "${DATABASE_SERVICE_NAME}"
-                      }
-                    }
-                  },
-                  {
-                    "name": "DB_PASSWORD",
-                    "valueFrom": {
-                      "secretKeyRef": {
-                        "key": "database-password",
-                        "name": "${DATABASE_SERVICE_NAME}"
-                      }
-                    }
-                  },
-                  {
-                    "name": "DB_ADMIN_PASSWORD",
-                    "valueFrom": {
-                      "secretKeyRef": {
-                        "key": "database-admin-password",
-                        "name": "${DATABASE_SERVICE_NAME}"
-                      }
-                    }
-                  },
-                  {
-                    "name": "DB_DATABASE",
-                    "valueFrom": {
-                      "secretKeyRef": {
-                        "key": "database-name",
-                        "name": "${DATABASE_SERVICE_NAME}"
-                      }
-                    }
-                  },
-                  {
-                    "name": "DATABASE_SERVICE_NAME",
-                    "valueFrom": {
-                      "secretKeyRef": {
-                        "key": "database-service-name",
-                        "name": "${SECRET_RESOURCE_NAME}"
-                      }
-                    }
-                  },
-                  {
-                    "name": "DYNAMICS_NATIVE_ODATA_URI",
-                    "valueFrom": {
-                      "secretKeyRef": {
-                        "key": "dynamics-native-odata-uri",
-                        "name": "${SECRET_RESOURCE_NAME}"
-                      }
-                    }
-                  },
-                  {
-                    "name": "PathBase",
-                    "valueFrom": {
-                      "secretKeyRef": {
-                        "key": "base-path",
-                        "name": "${SECRET_RESOURCE_NAME}"
-                      }
-                    }
-                  },
-                  {
-                    "name": "SMTP_HOST",
-                    "valueFrom": {
-                      "secretKeyRef": {
-                        "key": "smtp-host",
-                        "name": "${SECRET_RESOURCE_NAME}"
-                      }
-                    }
-                  },
-                  {
-                    "name": "SSG_USERNAME",
-                    "valueFrom": {
-                      "secretKeyRef": {
-                        "key": "ssg-username",
-                        "name": "${SECRET_RESOURCE_NAME}"
-                      }
-                    }
-                  },
-                  {
-                    "name": "SSG_PASSWORD",
-                    "valueFrom": {
-                      "secretKeyRef": {
-                        "key": "ssg-password",
-                        "name": "${SECRET_RESOURCE_NAME}"
-                      }
-                    }
-                  },
-                  {
-                    "name": "ENCRYPTION_KEY",
-                    "valueFrom": {
-                      "secretKeyRef": {
-                        "key": "encryption-key",
-                        "name": "${SECRET_RESOURCE_NAME}"
-                      }
-                    }
-                  },
-                  {
-                    "name": "BASE_URI",
+               {
+          "name": "ASPNETCORE_ENVIRONMENT",
+          "value": "${ASPNETCORE_ENVIRONMENT}"
+        },
+        {
+          "name": "BASE_PATH",
+		  "value": "${BASE_PATH}"
+        },
+        {
+          "name": "BASE_URI",
                     "valueFrom": {
                       "secretKeyRef": {
                         "key": "base-uri",
                         "name": "${SECRET_RESOURCE_NAME}"
                       }
                     }
-                  },
-                  {
-                    "name": "SHAREPOINT_SERVER_APPID_URI",
-                    "valueFrom": {
-                      "secretKeyRef": {
-                        "key": "sharepoint-server-appid-uri",
-                        "name": "${SECRET_RESOURCE_NAME}"
-                      }
-                    }
-                  },
-                  {
-                    "name": "SHAREPOINT_WEBNAME",
-                    "value": "${SHAREPOINT_WEBNAME}"
-                  },
-                  {
-                    "name": "SHAREPOINT_AAD_TENANTID",
-                    "value": "${SHAREPOINT_AAD_TENANTID}"
-                  },
-                  {
-                    "name": "SHAREPOINT_CLIENT_ID",
-                    "value": "${SHAREPOINT_CLIENT_ID}"
-                  },
-                  {
-                    "name": "SHAREPOINT_CERTIFICATE_PASSWORD",
-                    "value": "${SHAREPOINT_CERTIFICATE_PASSWORD}"
-                  },
-                  {
-                    "name": "SHAREPOINT_CERTIFICATE_FILENAME",
-                    "value": "${SHAREPOINT_CERTIFICATE_FILENAME}"
-                  },
-                  {
-                    "name": "REDIS_SERVER",
-                    "valueFrom": {
-                      "secretKeyRef": {
-                        "key": "redis-server",
-                        "name": "${SECRET_RESOURCE_NAME}"
-                      }
-                    }
-                  },
-                  {
-                    "name": "DYNAMICS_ODATA_URI",
-                    "valueFrom": {
-                      "secretKeyRef": {
-                        "key": "dynamics-odata-uri",
-                        "name": "${SECRET_RESOURCE_NAME}"
-                      }
-                    }
-                  },
-                  {
-                    "name": "BCEID_SERVICE_SVCID",
-                    "valueFrom": {
-                      "secretKeyRef": {
-                        "key": "bceid-service-svcid",
-                        "name": "${SECRET_RESOURCE_NAME}"
-                      }
-                    }
-                  },
-                  {
-                    "name": "BCEID_SERVICE_URL",
-                    "valueFrom": {
-                      "secretKeyRef": {
-                        "key": "bceid-service-url",
-                        "name": "${SECRET_RESOURCE_NAME}"
-                      }
-                    }
-                  },
-                  {
-                    "name": "BCEID_SERVICE_USER",
-                    "valueFrom": {
-                      "secretKeyRef": {
-                        "key": "bceid-service-user",
-                        "name": "${SECRET_RESOURCE_NAME}"
-                      }
-                    }
-                  },
-                  {
-                    "name": "BCEID_SERVICE_PASSWD",
+        },
+        {
+          "name": "BCEID_SERVICE_PASSWD",
                     "valueFrom": {
                       "secretKeyRef": {
                         "key": "bceid-service-passwd",
                         "name": "${SECRET_RESOURCE_NAME}"
                       }
                     }
-                  },
-                  {
-                    "name": "BCEP_SERVICE_URL",
+        },
+        {
+          "name": "BCEID_SERVICE_SVCID",
                     "valueFrom": {
                       "secretKeyRef": {
-                        "key": "bcep-service-url",
+                        "key": "bceid-service-svcid",
                         "name": "${SECRET_RESOURCE_NAME}"
                       }
                     }
-                  },
-                  {
-                    "name": "BCEP_MERCHANT_ID",
+        },
+        {
+          "name": "BCEID_SERVICE_URL",
                     "valueFrom": {
                       "secretKeyRef": {
-                        "key": "bcep-merchant-id",
+                        "key": "bceid-service-url",
                         "name": "${SECRET_RESOURCE_NAME}"
                       }
                     }
-                  },
-                  {
-                    "name": "BCEP_HASH_KEY",
+        },
+        {
+          "name": "BCEID_SERVICE_USER",
                     "valueFrom": {
                       "secretKeyRef": {
-                        "key": "bcep-hash-key",
+                        "key": "bceid-service-user",
                         "name": "${SECRET_RESOURCE_NAME}"
                       }
                     }
-                  },
-                  {
-                    "name": "BCEP_CONF_PATH",
+        },        
+        {
+          "name": "DYNAMICS_ODATA_URI",
                     "valueFrom": {
                       "secretKeyRef": {
-                        "key": "bcep-conf-path",
+                        "key": "dynamics-odata-uri",
                         "name": "${SECRET_RESOURCE_NAME}"
                       }
                     }
-                  },
-                  {
-                    "name": "SHAREPOINT_ODATA_URI",
+        },        
+        {
+          "name": "ENCRYPTION_KEY",
                     "valueFrom": {
                       "secretKeyRef": {
-                        "key": "sharepoint-odata-uri",
+                        "key": "encryption-key",
                         "name": "${SECRET_RESOURCE_NAME}"
                       }
                     }
-                  },
-                  {
-                    "name": "SHAREPOINT_NATIVE_BASE_URI",
+        },
+        {
+          "name": "KEY_RING_DIRECTORY",
+		  "value": "${KEY_RING_DIRECTORY}"
+        },                
+        {
+          "name": "SHAREPOINT_NATIVE_BASE_URI",
                     "valueFrom": {
                       "secretKeyRef": {
                         "key": "sharepoint-native-base-uri",
                         "name": "${SECRET_RESOURCE_NAME}"
                       }
                     }
-                  },
-                  {
-                    "name": "SITEMINDER_LOGOUT_URL",
+        },
+        {
+          "name": "SHAREPOINT_ODATA_URI",
+                    "valueFrom": {
+                      "secretKeyRef": {
+                        "key": "sharepoint-odata-uri",
+                        "name": "${SECRET_RESOURCE_NAME}"
+                      }
+                    }
+        },
+        {
+          "name": "SITEMINDER_LOGOUT_URL",
                     "value": "${SITEMINDER_LOGOUT_URL}"
-                  },
-                  {
-                    "name": "PDF_SERVICE_BASE_URI",
-                    "value": "${PDF_SERVICE_BASE_URI}"
-                  },
-                  {
-                    "name": "PDF_JWT_TOKEN",
-                    "value": "${PDF_JWT_TOKEN}"
-                  },
-                  {
-                    "name": "BCEP_CONF_PATH_WORKER",
-                    "value": "${BCEP_CONF_PATH_WORKER}"
-                  }
+        },
+        {
+          "name": "SPLUNK_COLLECTOR_URL"
+        },
+        {
+          "name": "SPLUNK_TOKEN"
+        }
+
                 ],
                 "resources": {
                   "limits": {
@@ -495,12 +334,19 @@
       "required": true,
       "value": "pill-press"
     },
+	{
+	  "name": "BASE_PATH",
+      "displayName": "BASE_PATH",
+      "description": "Base path",
+      "required": true,
+      "value": "/pillpressregistry"
+	},
     {
       "name": "IMAGE_NAMESPACE",
       "displayName": "Image Namespace",
       "description": "The namespace of the OpenShift project containing the imagestream for the application.",
       "required": true,
-      "value": "rqnyx8-dev"
+      "value": "rqnyx8-tools"
     },
     {
       "name": "TAG_NAME",
@@ -573,33 +419,6 @@
       "required": false
     },
     {
-      "description": "Sharepoint Certificate Password",
-      "displayName": "Sharepoint Certificate Password",
-      "name": "SHAREPOINT_CERTIFICATE_PASSWORD",
-      "required": false
-    },
-    {
-      "description": "Filename for BCGovTrial.pfx, e.g., /sharepointcert/BCGovTrial.pfx, if left blank a value will be defaulted.",
-      "displayName": "Sharepoint Certificate Filename",
-      "name": "SHAREPOINT_CERTIFICATE_FILENAME",
-      "required": false,
-      "value": "/sharepointcert/BCGovTrial.pfx"
-    },
-    {
-      "description": "Boolean that shows login, e.g., true, if left blank a value will be defaulted.",
-      "displayName": "Show login",
-      "name": "SHOW_LOGIN",
-      "required": true,
-      "value": "true"
-    },
-    {
-      "description": "Boolean that shows CARLA Lite, e.g., false, if left blank a value will be defaulted.",
-      "displayName": "Is lite version",
-      "name": "IS_LITE_VERSION",
-      "required": true,
-      "value": "false"
-    },
-    {
       "description": "Boolean that shows Dashboard Lite for CARLA lite, e.g., false, if left blank a value will be defaulted.",
       "displayName": "Dashboard lite",
       "name": "DASHBOARD_LITE",
@@ -625,27 +444,6 @@
       "description": "Siteminder logout URL, e.g., https://logon.gov.bc.ca/clp-cgi/logoff.cgi, if left blank a value will be defaulted. Note this url is for prod and should be changed for dev and test.",
       "required": true,
       "value": "https://logon.gov.bc.ca/clp-cgi/logoff.cgi"
-    },
-    {
-      "name": "PDF_SERVICE_BASE_URI",
-      "displayName": "URI to PDF Service",
-      "description": "URI to PDF Service, e.g., http://pdf-service:8080, if left blank a value will be defaulted.",
-      "required": true,
-      "value": "http://pdf-service:8080"
-    },
-    {
-      "name": "PDF_JWT_TOKEN",
-      "displayName": "JWT for PDF service",
-      "description": "JWT for PDF service.",
-      "required": true,
-      "value": ""
-    },
-    {
-      "name": "BCEP_CONF_PATH_WORKER",
-      "displayName": "Path to BCEP Conf",
-      "description": "Path to BCEP Conf, e.g., /worker-registration/payment-confirmation, if left blank a value will be defaulted.",
-      "required": true,
-      "value": "/worker-registration/payment-confirmation"
     },
     {
       "name": "KEY_RING_DIRECTORY",

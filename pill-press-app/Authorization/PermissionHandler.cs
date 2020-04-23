@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Hosting;
 
 namespace Gov.Jag.PillPressRegistry.Public.Authorization
 {
@@ -32,9 +33,9 @@ namespace Gov.Jag.PillPressRegistry.Public.Authorization
     public class PermissionHandler : AuthorizationHandler<PermissionRequirement>
     {
         private readonly HttpContext _httpContext;
-        private readonly IHostingEnvironment _hostingEnv;
+        private readonly IWebHostEnvironment _hostingEnv;
 
-        public PermissionHandler(IHttpContextAccessor httpContextAccessor, IHostingEnvironment hostingEnv)
+        public PermissionHandler(IHttpContextAccessor httpContextAccessor, IWebHostEnvironment hostingEnv)
         {
             _httpContext = httpContextAccessor.HttpContext;
             _hostingEnv = hostingEnv;

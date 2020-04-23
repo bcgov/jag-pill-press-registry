@@ -22,9 +22,9 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         private readonly IDynamicsClient _dynamicsClient;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ILogger _logger;
-        private readonly IHostingEnvironment _env;
+        private readonly IWebHostEnvironment _env;
 
-        public ContactController(IConfiguration configuration, IDynamicsClient dynamicsClient, IHttpContextAccessor httpContextAccessor, ILoggerFactory loggerFactory, IHostingEnvironment env)
+        public ContactController(IConfiguration configuration, IDynamicsClient dynamicsClient, IHttpContextAccessor httpContextAccessor, ILoggerFactory loggerFactory, IWebHostEnvironment env)
         {
             Configuration = configuration;
             _dynamicsClient = dynamicsClient;
