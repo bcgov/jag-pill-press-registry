@@ -10,7 +10,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
     using System.Linq;
 
     /// <summary>
-    /// bcgov_incident_businesscontact
+    /// Microsoft.Dynamics.CRM.bcgov_incident_businesscontact
     /// </summary>
     public partial class MicrosoftDynamicsCRMbcgovIncidentBusinesscontact
     {
@@ -27,7 +27,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// Initializes a new instance of the
         /// MicrosoftDynamicsCRMbcgovIncidentBusinesscontact class.
         /// </summary>
-        public MicrosoftDynamicsCRMbcgovIncidentBusinesscontact(string bcgovIncidentBusinesscontactid = default(string), long? versionnumber = default(long?), string bcgovBusinesscontactid = default(string), string incidentid = default(string))
+        public MicrosoftDynamicsCRMbcgovIncidentBusinesscontact(string bcgovIncidentBusinesscontactid = default(string), string versionnumber = default(string), string bcgovBusinesscontactid = default(string), string incidentid = default(string))
         {
             BcgovIncidentBusinesscontactid = bcgovIncidentBusinesscontactid;
             Versionnumber = versionnumber;
@@ -49,7 +49,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "versionnumber")]
-        public long? Versionnumber { get; set; }
+        public string Versionnumber { get; set; }
 
         /// <summary>
         /// </summary>

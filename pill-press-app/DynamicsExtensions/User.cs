@@ -1,4 +1,5 @@
 ﻿
+
 using Gov.Jag.PillPressRegistry.Interfaces.Models;
 using Gov.Jag.PillPressRegistry.Public.Authentication;
 using Gov.Jag.PillPressRegistry.Public.Models;
@@ -20,9 +21,9 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <param name="userId"></param>
         /// <param name="guid"></param>
         /// <returns></returns>
-        public static async Task<User> LoadUser(this IDynamicsClient _dynamicsClient, string userId, IHeaderDictionary Headers, ILogger _logger, string guid = null)
+        public static async Task<Public.Models.User> LoadUser(this IDynamicsClient _dynamicsClient, string userId, IHeaderDictionary Headers, ILogger _logger, string guid = null)
         {
-            User user = null;
+            Public.Models.User user = null;
             MicrosoftDynamicsCRMcontact contact = null;
             Guid userGuid;
 
@@ -161,14 +162,14 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <param name="context"></param>
         /// <param name="guid"></param>
         /// <returns></returns>
-        public static async Task<User> GetUserByGuid(this IDynamicsClient _dynamicsClient, string guid)
+        public static async Task<Public.Models.User> GetUserByGuid(this IDynamicsClient _dynamicsClient, string guid)
         {
             Guid id = new Guid(guid);
-            User user = null;
+            Public.Models.User user = null;
             var contact = _dynamicsClient.GetContactById(id);
             if (contact != null)
             {
-                user = new User();
+                user = new Public.Models.User();
                 user.FromContact(contact);
             }
 
@@ -183,14 +184,14 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <param name="context"></param>
         /// <param name="guid"></param>
         /// <returns></returns>
-        public static User GetUserBySmUserId(this IDynamicsClient _dynamicsClient, string guid)
+        public static Public.Models.User GetUserBySmUserId(this IDynamicsClient _dynamicsClient, string guid)
         {
             Guid id = new Guid(guid);
-            User user = null;
+            Public.Models.User user = null;
             var contact = _dynamicsClient.GetContactByExternalId(id.ToString());
             if (contact != null)
             {
-                user = new User();
+                user = new Public.Models.User();
                 user.FromContact(contact);
             }
 
