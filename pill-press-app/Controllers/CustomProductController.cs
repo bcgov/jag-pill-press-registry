@@ -24,12 +24,12 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         private readonly IDynamicsClient _dynamicsClient;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ILogger _logger;
-        private readonly IHostingEnvironment _env;
+        private readonly IWebHostEnvironment _env;
         private readonly IMemoryCache _cache;
 
         public static readonly string ENTITY_NAME = "bcgov_customproduct";
 
-        public CustomProductController(IConfiguration configuration, IDynamicsClient dynamicsClient, IHttpContextAccessor httpContextAccessor, ILoggerFactory loggerFactory, IHostingEnvironment env, IMemoryCache memoryCache)
+        public CustomProductController(IConfiguration configuration, IDynamicsClient dynamicsClient, IHttpContextAccessor httpContextAccessor, ILoggerFactory loggerFactory, IWebHostEnvironment env, IMemoryCache memoryCache)
         {
             Configuration = configuration;
             _dynamicsClient = dynamicsClient;

@@ -25,10 +25,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// </param>
             /// <param name='top'>
             /// </param>
-            /// <param name='skip'>
-            /// </param>
-            /// <param name='search'>
-            /// </param>
             /// <param name='filter'>
             /// </param>
             /// <param name='count'>
@@ -42,9 +38,9 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// <param name='expand'>
             /// Expand related entities
             /// </param>
-            public static InspectionsGetResponseModel Get(this IInspections operations, int? top = default(int?), int? skip = default(int?), string search = default(string), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>))
+            public static MicrosoftDynamicsCRMbcgovInspectionCollection Get(this IInspections operations, int? top = default(int?), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>))
             {
-                return operations.GetAsync(top, skip, search, filter, count, orderby, select, expand).GetAwaiter().GetResult();
+                return operations.GetAsync(top, filter, count, orderby, select, expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -54,10 +50,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// The operations group for this extension method.
             /// </param>
             /// <param name='top'>
-            /// </param>
-            /// <param name='skip'>
-            /// </param>
-            /// <param name='search'>
             /// </param>
             /// <param name='filter'>
             /// </param>
@@ -75,9 +67,9 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<InspectionsGetResponseModel> GetAsync(this IInspections operations, int? top = default(int?), int? skip = default(int?), string search = default(string), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<MicrosoftDynamicsCRMbcgovInspectionCollection> GetAsync(this IInspections operations, int? top = default(int?), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(top, skip, search, filter, count, orderby, select, expand, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(top, filter, count, orderby, select, expand, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -132,7 +124,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// The operations group for this extension method.
             /// </param>
             /// <param name='bcgovInspectionid'>
-            /// key: bcgov_inspectionid
+            /// key: bcgov_inspectionid of bcgov_inspection
             /// </param>
             /// <param name='select'>
             /// Select properties to be returned
@@ -152,7 +144,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// The operations group for this extension method.
             /// </param>
             /// <param name='bcgovInspectionid'>
-            /// key: bcgov_inspectionid
+            /// key: bcgov_inspectionid of bcgov_inspection
             /// </param>
             /// <param name='select'>
             /// Select properties to be returned
@@ -172,50 +164,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             }
 
             /// <summary>
-            /// Delete entity from bcgov_inspections
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='bcgovInspectionid'>
-            /// key: bcgov_inspectionid
-            /// </param>
-            /// <param name='ifMatch'>
-            /// ETag
-            /// </param>
-            public static void Delete(this IInspections operations, string bcgovInspectionid, string ifMatch = default(string))
-            {
-                operations.DeleteAsync(bcgovInspectionid, ifMatch).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Delete entity from bcgov_inspections
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='bcgovInspectionid'>
-            /// key: bcgov_inspectionid
-            /// </param>
-            /// <param name='ifMatch'>
-            /// ETag
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task DeleteAsync(this IInspections operations, string bcgovInspectionid, string ifMatch = default(string), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.DeleteWithHttpMessagesAsync(bcgovInspectionid, ifMatch, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
             /// Update entity in bcgov_inspections
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='bcgovInspectionid'>
-            /// key: bcgov_inspectionid
+            /// key: bcgov_inspectionid of bcgov_inspection
             /// </param>
             /// <param name='body'>
             /// New property values
@@ -232,7 +187,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             /// The operations group for this extension method.
             /// </param>
             /// <param name='bcgovInspectionid'>
-            /// key: bcgov_inspectionid
+            /// key: bcgov_inspectionid of bcgov_inspection
             /// </param>
             /// <param name='body'>
             /// New property values
@@ -243,6 +198,43 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             public static async Task UpdateAsync(this IInspections operations, string bcgovInspectionid, MicrosoftDynamicsCRMbcgovInspection body, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.UpdateWithHttpMessagesAsync(bcgovInspectionid, body, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Delete entity from bcgov_inspections
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='bcgovInspectionid'>
+            /// key: bcgov_inspectionid of bcgov_inspection
+            /// </param>
+            /// <param name='ifMatch'>
+            /// ETag
+            /// </param>
+            public static void Delete(this IInspections operations, string bcgovInspectionid, string ifMatch = default(string))
+            {
+                operations.DeleteAsync(bcgovInspectionid, ifMatch).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Delete entity from bcgov_inspections
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='bcgovInspectionid'>
+            /// key: bcgov_inspectionid of bcgov_inspection
+            /// </param>
+            /// <param name='ifMatch'>
+            /// ETag
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task DeleteAsync(this IInspections operations, string bcgovInspectionid, string ifMatch = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.DeleteWithHttpMessagesAsync(bcgovInspectionid, ifMatch, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
     }

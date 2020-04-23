@@ -10,7 +10,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
     using System.Linq;
 
     /// <summary>
-    /// bcgov_investigationstep_cecontact
+    /// Microsoft.Dynamics.CRM.bcgov_investigationstep_cecontact
     /// </summary>
     public partial class MicrosoftDynamicsCRMbcgovInvestigationstepCecontact
     {
@@ -27,7 +27,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// Initializes a new instance of the
         /// MicrosoftDynamicsCRMbcgovInvestigationstepCecontact class.
         /// </summary>
-        public MicrosoftDynamicsCRMbcgovInvestigationstepCecontact(long? versionnumber = default(long?), string bcgovCecontactid = default(string), string bcgovInvestigationstepCecontactid = default(string), string bcgovInvestigationstepid = default(string))
+        public MicrosoftDynamicsCRMbcgovInvestigationstepCecontact(string versionnumber = default(string), string bcgovCecontactid = default(string), string bcgovInvestigationstepCecontactid = default(string), string bcgovInvestigationstepid = default(string))
         {
             Versionnumber = versionnumber;
             BcgovCecontactid = bcgovCecontactid;
@@ -44,7 +44,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "versionnumber")]
-        public long? Versionnumber { get; set; }
+        public string Versionnumber { get; set; }
 
         /// <summary>
         /// </summary>
