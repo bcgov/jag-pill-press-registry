@@ -11,6 +11,7 @@ using Microsoft.Extensions.Options;
 using Gov.Jag.PillPressRegistry.Public.Models;
 using Gov.Jag.PillPressRegistry.Interfaces;
 using Gov.Jag.PillPressRegistry.Public.Utils;
+using Microsoft.Extensions.Hosting;
 
 namespace Gov.Jag.PillPressRegistry.Public.Authentication
 {
@@ -230,7 +231,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Authentication
                 HttpContext context = Request.HttpContext;
                 IDynamicsClient _dynamicsClient = (IDynamicsClient)context.RequestServices.GetService(typeof(IDynamicsClient));
 
-                IHostingEnvironment hostingEnv = (IHostingEnvironment)context.RequestServices.GetService(typeof(IHostingEnvironment));
+                IWebHostEnvironment hostingEnv = (IWebHostEnvironment)context.RequestServices.GetService(typeof(IWebHostEnvironment));
 
                 UserSettings userSettings = new UserSettings();
 

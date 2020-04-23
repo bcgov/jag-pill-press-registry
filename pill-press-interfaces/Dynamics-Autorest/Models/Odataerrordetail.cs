@@ -10,6 +10,9 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
     using Newtonsoft.Json;
     using System.Linq;
 
+    /// <summary>
+    /// odata.error.detail
+    /// </summary>
     public partial class Odataerrordetail
     {
         /// <summary>
