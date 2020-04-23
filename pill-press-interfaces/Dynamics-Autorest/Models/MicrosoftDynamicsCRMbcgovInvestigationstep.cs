@@ -12,7 +12,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
     using System.Linq;
 
     /// <summary>
-    /// bcgov_investigationstep
+    /// Microsoft.Dynamics.CRM.bcgov_investigationstep
     /// </summary>
     public partial class MicrosoftDynamicsCRMbcgovInvestigationstep
     {
@@ -29,33 +29,79 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// Initializes a new instance of the
         /// MicrosoftDynamicsCRMbcgovInvestigationstep class.
         /// </summary>
-        public MicrosoftDynamicsCRMbcgovInvestigationstep(string _owneridValue = default(string), string bcgovName = default(string), System.DateTimeOffset? createdon = default(System.DateTimeOffset?), int? utcconversiontimezonecode = default(int?), string bcgovInvestigationstepid = default(string), string _modifiedbyValue = default(string), string processid = default(string), string _stageidValue = default(string), int? statuscode = default(int?), int? statecode = default(int?), string _modifiedonbehalfbyValue = default(string), string _bcgovActregulationreferenceValue = default(string), int? timezoneruleversionnumber = default(int?), long? versionnumber = default(long?), string traversedpath = default(string), int? importsequencenumber = default(int?), System.DateTimeOffset? modifiedon = default(System.DateTimeOffset?), string _owningbusinessunitValue = default(string), System.DateTimeOffset? overriddencreatedon = default(System.DateTimeOffset?), string _createdonbehalfbyValue = default(string), string _owningteamValue = default(string), string _owninguserValue = default(string), string _createdbyValue = default(string), string bcgovSummary = default(string), System.DateTimeOffset? bcgovInvestigationstepdate = default(System.DateTimeOffset?), MicrosoftDynamicsCRMsystemuser createdbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser createdonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser owninguser = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMteam owningteam = default(MicrosoftDynamicsCRMteam), MicrosoftDynamicsCRMprincipal ownerid = default(MicrosoftDynamicsCRMprincipal), MicrosoftDynamicsCRMbusinessunit owningbusinessunit = default(MicrosoftDynamicsCRMbusinessunit), IList<MicrosoftDynamicsCRMactivitypointer> bcgovInvestigationstepActivityPointers = default(IList<MicrosoftDynamicsCRMactivitypointer>), IList<MicrosoftDynamicsCRMappointment> bcgovInvestigationstepAppointments = default(IList<MicrosoftDynamicsCRMappointment>), IList<MicrosoftDynamicsCRMemail> bcgovInvestigationstepEmails = default(IList<MicrosoftDynamicsCRMemail>), IList<MicrosoftDynamicsCRMfax> bcgovInvestigationstepFaxes = default(IList<MicrosoftDynamicsCRMfax>), IList<MicrosoftDynamicsCRMletter> bcgovInvestigationstepLetters = default(IList<MicrosoftDynamicsCRMletter>), IList<MicrosoftDynamicsCRMphonecall> bcgovInvestigationstepPhoneCalls = default(IList<MicrosoftDynamicsCRMphonecall>), IList<MicrosoftDynamicsCRMserviceappointment> bcgovInvestigationstepServiceAppointments = default(IList<MicrosoftDynamicsCRMserviceappointment>), IList<MicrosoftDynamicsCRMtask> bcgovInvestigationstepTasks = default(IList<MicrosoftDynamicsCRMtask>), IList<MicrosoftDynamicsCRMrecurringappointmentmaster> bcgovInvestigationstepRecurringAppointmentMasters = default(IList<MicrosoftDynamicsCRMrecurringappointmentmaster>), IList<MicrosoftDynamicsCRMsocialactivity> bcgovInvestigationstepSocialActivities = default(IList<MicrosoftDynamicsCRMsocialactivity>), IList<MicrosoftDynamicsCRMabsScheduledprocessexecution> bcgovInvestigationstepAbsScheduledprocessexecutions = default(IList<MicrosoftDynamicsCRMabsScheduledprocessexecution>), IList<MicrosoftDynamicsCRMsyncerror> bcgovInvestigationstepSyncErrors = default(IList<MicrosoftDynamicsCRMsyncerror>), IList<MicrosoftDynamicsCRMduplicaterecord> bcgovInvestigationstepDuplicateMatchingRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMduplicaterecord> bcgovInvestigationstepDuplicateBaseRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMsharepointdocumentlocation> bcgovInvestigationstepSharePointDocumentLocations = default(IList<MicrosoftDynamicsCRMsharepointdocumentlocation>), IList<MicrosoftDynamicsCRMannotation> bcgovInvestigationstepAnnotations = default(IList<MicrosoftDynamicsCRMannotation>), IList<MicrosoftDynamicsCRMasyncoperation> bcgovInvestigationstepAsyncOperations = default(IList<MicrosoftDynamicsCRMasyncoperation>), IList<MicrosoftDynamicsCRMbulkdeletefailure> bcgovInvestigationstepBulkDeleteFailures = default(IList<MicrosoftDynamicsCRMbulkdeletefailure>), MicrosoftDynamicsCRMprocessstage stageid = default(MicrosoftDynamicsCRMprocessstage), MicrosoftDynamicsCRMbcgovActregulationreference bcgovActRegulationreference = default(MicrosoftDynamicsCRMbcgovActregulationreference), IList<MicrosoftDynamicsCRMbcgovCecontact> bcgovInvestigationstepCecontact = default(IList<MicrosoftDynamicsCRMbcgovCecontact>))
+        /// <param name="_owneridValue">Owner Id</param>
+        /// <param name="bcgovName">The name of the custom entity.</param>
+        /// <param name="createdon">Date and time when the record was
+        /// created.</param>
+        /// <param name="modifiedon">Date and time when the record was
+        /// modified.</param>
+        /// <param name="utcconversiontimezonecode">Time zone code that was in
+        /// use when the record was created.</param>
+        /// <param name="bcgovInvestigationstepid">Unique identifier for entity
+        /// instances</param>
+        /// <param name="_modifiedbyValue">Unique identifier of the user who
+        /// modified the record.</param>
+        /// <param name="processid">Contains the id of the process associated
+        /// with the entity.</param>
+        /// <param name="_stageidValue">Contains the id of the stage where the
+        /// entity is located.</param>
+        /// <param name="timezoneruleversionnumber">For internal use
+        /// only.</param>
+        /// <param name="statuscode">Reason for the status of the Investigation
+        /// Step</param>
+        /// <param name="statecode">Status of the Investigation Step</param>
+        /// <param name="_modifiedonbehalfbyValue">Unique identifier of the
+        /// delegate user who modified the record.</param>
+        /// <param name="traversedpath">A comma separated list of string values
+        /// representing the unique identifiers of stages in a Business Process
+        /// Flow Instance in the order that they occur.</param>
+        /// <param name="importsequencenumber">Sequence number of the import
+        /// that created this record.</param>
+        /// <param name="_owningbusinessunitValue">Unique identifier for the
+        /// business unit that owns the record</param>
+        /// <param name="overriddencreatedon">Date and time that the record was
+        /// migrated.</param>
+        /// <param name="_createdonbehalfbyValue">Unique identifier of the
+        /// delegate user who created the record.</param>
+        /// <param name="_owningteamValue">Unique identifier for the team that
+        /// owns the record.</param>
+        /// <param name="_owninguserValue">Unique identifier for the user that
+        /// owns the record.</param>
+        /// <param name="_createdbyValue">Unique identifier of the user who
+        /// created the record.</param>
+        /// <param name="versionnumber">Version Number</param>
+        public MicrosoftDynamicsCRMbcgovInvestigationstep(string _owneridValue = default(string), string bcgovName = default(string), System.DateTimeOffset? createdon = default(System.DateTimeOffset?), string _bcgovInvestigationValue = default(string), System.DateTimeOffset? modifiedon = default(System.DateTimeOffset?), int? utcconversiontimezonecode = default(int?), string bcgovInvestigationstepid = default(string), string _modifiedbyValue = default(string), string processid = default(string), string _stageidValue = default(string), int? timezoneruleversionnumber = default(int?), string bcgovAssociatedevidence = default(string), int? statuscode = default(int?), int? statecode = default(int?), string _modifiedonbehalfbyValue = default(string), string _bcgovActregulationreferenceValue = default(string), string bcgovContactrole = default(string), string traversedpath = default(string), int? importsequencenumber = default(int?), string _owningbusinessunitValue = default(string), System.DateTimeOffset? overriddencreatedon = default(System.DateTimeOffset?), string _createdonbehalfbyValue = default(string), string _owningteamValue = default(string), string _owninguserValue = default(string), string _createdbyValue = default(string), string _bcgovIncludeininvestigationValue = default(string), bool? bcgovIncludeinreport = default(bool?), string bcgovSummary = default(string), System.DateTimeOffset? bcgovInvestigationstepdate = default(System.DateTimeOffset?), string versionnumber = default(string), MicrosoftDynamicsCRMsystemuser createdbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser createdonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser owninguser = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMteam owningteam = default(MicrosoftDynamicsCRMteam), MicrosoftDynamicsCRMprincipal ownerid = default(MicrosoftDynamicsCRMprincipal), MicrosoftDynamicsCRMbusinessunit owningbusinessunit = default(MicrosoftDynamicsCRMbusinessunit), IList<MicrosoftDynamicsCRMactivitypointer> bcgovInvestigationstepActivityPointers = default(IList<MicrosoftDynamicsCRMactivitypointer>), IList<MicrosoftDynamicsCRMappointment> bcgovInvestigationstepAppointments = default(IList<MicrosoftDynamicsCRMappointment>), IList<MicrosoftDynamicsCRMemail> bcgovInvestigationstepEmails = default(IList<MicrosoftDynamicsCRMemail>), IList<MicrosoftDynamicsCRMfax> bcgovInvestigationstepFaxes = default(IList<MicrosoftDynamicsCRMfax>), IList<MicrosoftDynamicsCRMletter> bcgovInvestigationstepLetters = default(IList<MicrosoftDynamicsCRMletter>), IList<MicrosoftDynamicsCRMphonecall> bcgovInvestigationstepPhoneCalls = default(IList<MicrosoftDynamicsCRMphonecall>), IList<MicrosoftDynamicsCRMserviceappointment> bcgovInvestigationstepServiceAppointments = default(IList<MicrosoftDynamicsCRMserviceappointment>), IList<MicrosoftDynamicsCRMtask> bcgovInvestigationstepTasks = default(IList<MicrosoftDynamicsCRMtask>), IList<MicrosoftDynamicsCRMrecurringappointmentmaster> bcgovInvestigationstepRecurringAppointmentMasters = default(IList<MicrosoftDynamicsCRMrecurringappointmentmaster>), IList<MicrosoftDynamicsCRMsocialactivity> bcgovInvestigationstepSocialActivities = default(IList<MicrosoftDynamicsCRMsocialactivity>), IList<MicrosoftDynamicsCRMabsScheduledprocessexecution> bcgovInvestigationstepAbsScheduledprocessexecutions = default(IList<MicrosoftDynamicsCRMabsScheduledprocessexecution>), IList<MicrosoftDynamicsCRMsyncerror> bcgovInvestigationstepSyncErrors = default(IList<MicrosoftDynamicsCRMsyncerror>), IList<MicrosoftDynamicsCRMduplicaterecord> bcgovInvestigationstepDuplicateMatchingRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMduplicaterecord> bcgovInvestigationstepDuplicateBaseRecord = default(IList<MicrosoftDynamicsCRMduplicaterecord>), IList<MicrosoftDynamicsCRMsharepointdocumentlocation> bcgovInvestigationstepSharePointDocumentLocations = default(IList<MicrosoftDynamicsCRMsharepointdocumentlocation>), IList<MicrosoftDynamicsCRMannotation> bcgovInvestigationstepAnnotations = default(IList<MicrosoftDynamicsCRMannotation>), IList<MicrosoftDynamicsCRMasyncoperation> bcgovInvestigationstepAsyncOperations = default(IList<MicrosoftDynamicsCRMasyncoperation>), IList<MicrosoftDynamicsCRMbulkdeletefailure> bcgovInvestigationstepBulkDeleteFailures = default(IList<MicrosoftDynamicsCRMbulkdeletefailure>), MicrosoftDynamicsCRMprocessstage stageid = default(MicrosoftDynamicsCRMprocessstage), MicrosoftDynamicsCRMbcgovActregulationreference bcgovActRegulationreference = default(MicrosoftDynamicsCRMbcgovActregulationreference), MicrosoftDynamicsCRMbcgovInvestigation bcgovInvestigation = default(MicrosoftDynamicsCRMbcgovInvestigation), MicrosoftDynamicsCRMbcgovInvestigation bcgovIncludeInInvestigation = default(MicrosoftDynamicsCRMbcgovInvestigation))
         {
             this._owneridValue = _owneridValue;
             BcgovName = bcgovName;
             Createdon = createdon;
+            this._bcgovInvestigationValue = _bcgovInvestigationValue;
+            Modifiedon = modifiedon;
             Utcconversiontimezonecode = utcconversiontimezonecode;
             BcgovInvestigationstepid = bcgovInvestigationstepid;
             this._modifiedbyValue = _modifiedbyValue;
             Processid = processid;
             this._stageidValue = _stageidValue;
+            Timezoneruleversionnumber = timezoneruleversionnumber;
+            BcgovAssociatedevidence = bcgovAssociatedevidence;
             Statuscode = statuscode;
             Statecode = statecode;
             this._modifiedonbehalfbyValue = _modifiedonbehalfbyValue;
             this._bcgovActregulationreferenceValue = _bcgovActregulationreferenceValue;
-            Timezoneruleversionnumber = timezoneruleversionnumber;
-            Versionnumber = versionnumber;
+            BcgovContactrole = bcgovContactrole;
             Traversedpath = traversedpath;
             Importsequencenumber = importsequencenumber;
-            Modifiedon = modifiedon;
             this._owningbusinessunitValue = _owningbusinessunitValue;
             Overriddencreatedon = overriddencreatedon;
             this._createdonbehalfbyValue = _createdonbehalfbyValue;
             this._owningteamValue = _owningteamValue;
             this._owninguserValue = _owninguserValue;
             this._createdbyValue = _createdbyValue;
+            this._bcgovIncludeininvestigationValue = _bcgovIncludeininvestigationValue;
+            BcgovIncludeinreport = bcgovIncludeinreport;
             BcgovSummary = bcgovSummary;
             BcgovInvestigationstepdate = bcgovInvestigationstepdate;
+            Versionnumber = versionnumber;
             Createdbyname = createdbyname;
             Createdonbehalfbyname = createdonbehalfbyname;
             Modifiedbyname = modifiedbyname;
@@ -84,7 +130,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
             BcgovInvestigationstepBulkDeleteFailures = bcgovInvestigationstepBulkDeleteFailures;
             Stageid = stageid;
             BcgovActRegulationreference = bcgovActRegulationreference;
-            BcgovInvestigationstepCecontact = bcgovInvestigationstepCecontact;
+            BcgovInvestigation = bcgovInvestigation;
+            BcgovIncludeInInvestigation = bcgovIncludeInInvestigation;
             CustomInit();
         }
 
@@ -94,56 +141,93 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets owner Id
         /// </summary>
         [JsonProperty(PropertyName = "_ownerid_value")]
         public string _owneridValue { get; set; }
 
         /// <summary>
+        /// Gets or sets the name of the custom entity.
         /// </summary>
         [JsonProperty(PropertyName = "bcgov_name")]
         public string BcgovName { get; set; }
 
         /// <summary>
+        /// Gets or sets date and time when the record was created.
         /// </summary>
         [JsonProperty(PropertyName = "createdon")]
         public System.DateTimeOffset? Createdon { get; set; }
 
         /// <summary>
         /// </summary>
+        [JsonProperty(PropertyName = "_bcgov_investigation_value")]
+        public string _bcgovInvestigationValue { get; set; }
+
+        /// <summary>
+        /// Gets or sets date and time when the record was modified.
+        /// </summary>
+        [JsonProperty(PropertyName = "modifiedon")]
+        public System.DateTimeOffset? Modifiedon { get; set; }
+
+        /// <summary>
+        /// Gets or sets time zone code that was in use when the record was
+        /// created.
+        /// </summary>
         [JsonProperty(PropertyName = "utcconversiontimezonecode")]
         public int? Utcconversiontimezonecode { get; set; }
 
         /// <summary>
+        /// Gets or sets unique identifier for entity instances
         /// </summary>
         [JsonProperty(PropertyName = "bcgov_investigationstepid")]
         public string BcgovInvestigationstepid { get; set; }
 
         /// <summary>
+        /// Gets or sets unique identifier of the user who modified the record.
         /// </summary>
         [JsonProperty(PropertyName = "_modifiedby_value")]
         public string _modifiedbyValue { get; set; }
 
         /// <summary>
+        /// Gets or sets contains the id of the process associated with the
+        /// entity.
         /// </summary>
         [JsonProperty(PropertyName = "processid")]
         public string Processid { get; set; }
 
         /// <summary>
+        /// Gets or sets contains the id of the stage where the entity is
+        /// located.
         /// </summary>
         [JsonProperty(PropertyName = "_stageid_value")]
         public string _stageidValue { get; set; }
 
         /// <summary>
+        /// Gets or sets for internal use only.
+        /// </summary>
+        [JsonProperty(PropertyName = "timezoneruleversionnumber")]
+        public int? Timezoneruleversionnumber { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_associatedevidence")]
+        public string BcgovAssociatedevidence { get; set; }
+
+        /// <summary>
+        /// Gets or sets reason for the status of the Investigation Step
         /// </summary>
         [JsonProperty(PropertyName = "statuscode")]
         public int? Statuscode { get; set; }
 
         /// <summary>
+        /// Gets or sets status of the Investigation Step
         /// </summary>
         [JsonProperty(PropertyName = "statecode")]
         public int? Statecode { get; set; }
 
         /// <summary>
+        /// Gets or sets unique identifier of the delegate user who modified
+        /// the record.
         /// </summary>
         [JsonProperty(PropertyName = "_modifiedonbehalfby_value")]
         public string _modifiedonbehalfbyValue { get; set; }
@@ -155,58 +239,71 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "timezoneruleversionnumber")]
-        public int? Timezoneruleversionnumber { get; set; }
+        [JsonProperty(PropertyName = "bcgov_contactrole")]
+        public string BcgovContactrole { get; set; }
 
         /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "versionnumber")]
-        public long? Versionnumber { get; set; }
-
-        /// <summary>
+        /// Gets or sets a comma separated list of string values representing
+        /// the unique identifiers of stages in a Business Process Flow
+        /// Instance in the order that they occur.
         /// </summary>
         [JsonProperty(PropertyName = "traversedpath")]
         public string Traversedpath { get; set; }
 
         /// <summary>
+        /// Gets or sets sequence number of the import that created this
+        /// record.
         /// </summary>
         [JsonProperty(PropertyName = "importsequencenumber")]
         public int? Importsequencenumber { get; set; }
 
         /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "modifiedon")]
-        public System.DateTimeOffset? Modifiedon { get; set; }
-
-        /// <summary>
+        /// Gets or sets unique identifier for the business unit that owns the
+        /// record
         /// </summary>
         [JsonProperty(PropertyName = "_owningbusinessunit_value")]
         public string _owningbusinessunitValue { get; set; }
 
         /// <summary>
+        /// Gets or sets date and time that the record was migrated.
         /// </summary>
         [JsonProperty(PropertyName = "overriddencreatedon")]
         public System.DateTimeOffset? Overriddencreatedon { get; set; }
 
         /// <summary>
+        /// Gets or sets unique identifier of the delegate user who created the
+        /// record.
         /// </summary>
         [JsonProperty(PropertyName = "_createdonbehalfby_value")]
         public string _createdonbehalfbyValue { get; set; }
 
         /// <summary>
+        /// Gets or sets unique identifier for the team that owns the record.
         /// </summary>
         [JsonProperty(PropertyName = "_owningteam_value")]
         public string _owningteamValue { get; set; }
 
         /// <summary>
+        /// Gets or sets unique identifier for the user that owns the record.
         /// </summary>
         [JsonProperty(PropertyName = "_owninguser_value")]
         public string _owninguserValue { get; set; }
 
         /// <summary>
+        /// Gets or sets unique identifier of the user who created the record.
         /// </summary>
         [JsonProperty(PropertyName = "_createdby_value")]
         public string _createdbyValue { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "_bcgov_includeininvestigation_value")]
+        public string _bcgovIncludeininvestigationValue { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_includeinreport")]
+        public bool? BcgovIncludeinreport { get; set; }
 
         /// <summary>
         /// </summary>
@@ -217,6 +314,12 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// </summary>
         [JsonProperty(PropertyName = "bcgov_investigationstepdate")]
         public System.DateTimeOffset? BcgovInvestigationstepdate { get; set; }
+
+        /// <summary>
+        /// Gets or sets version Number
+        /// </summary>
+        [JsonProperty(PropertyName = "versionnumber")]
+        public string Versionnumber { get; set; }
 
         /// <summary>
         /// </summary>
@@ -360,8 +463,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "bcgov_investigationstep_cecontact")]
-        public IList<MicrosoftDynamicsCRMbcgovCecontact> BcgovInvestigationstepCecontact { get; set; }
+        [JsonProperty(PropertyName = "bcgov_Investigation")]
+        public MicrosoftDynamicsCRMbcgovInvestigation BcgovInvestigation { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "bcgov_IncludeInInvestigation")]
+        public MicrosoftDynamicsCRMbcgovInvestigation BcgovIncludeInInvestigation { get; set; }
 
     }
 }

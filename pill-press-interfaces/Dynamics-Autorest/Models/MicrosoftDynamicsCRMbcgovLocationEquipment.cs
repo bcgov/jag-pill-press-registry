@@ -10,7 +10,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
     using System.Linq;
 
     /// <summary>
-    /// bcgov_location_equipment
+    /// Microsoft.Dynamics.CRM.bcgov_location_equipment
     /// </summary>
     public partial class MicrosoftDynamicsCRMbcgovLocationEquipment
     {
@@ -27,7 +27,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// Initializes a new instance of the
         /// MicrosoftDynamicsCRMbcgovLocationEquipment class.
         /// </summary>
-        public MicrosoftDynamicsCRMbcgovLocationEquipment(string bcgovEquipmentid = default(string), long? versionnumber = default(long?), string bcgovLocationid = default(string), string bcgovLocationEquipmentid = default(string))
+        public MicrosoftDynamicsCRMbcgovLocationEquipment(string bcgovEquipmentid = default(string), string versionnumber = default(string), string bcgovLocationid = default(string), string bcgovLocationEquipmentid = default(string))
         {
             BcgovEquipmentid = bcgovEquipmentid;
             Versionnumber = versionnumber;
@@ -49,7 +49,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "versionnumber")]
-        public long? Versionnumber { get; set; }
+        public string Versionnumber { get; set; }
 
         /// <summary>
         /// </summary>

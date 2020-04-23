@@ -12,7 +12,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
     using System.Linq;
 
     /// <summary>
-    /// EntityKeyMetadata
+    /// Microsoft.Dynamics.CRM.EntityKeyMetadata
     /// </summary>
     public partial class MicrosoftDynamicsCRMEntityKeyMetadata
     {
@@ -29,9 +29,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// Initializes a new instance of the
         /// MicrosoftDynamicsCRMEntityKeyMetadata class.
         /// </summary>
-        /// <param name="entityKeyIndexStatus">Possible values include:
-        /// 'Pending', 'InProgress', 'Active', 'Failed'</param>
-        public MicrosoftDynamicsCRMEntityKeyMetadata(MicrosoftDynamicsCRMLabel displayName = default(MicrosoftDynamicsCRMLabel), string logicalName = default(string), string schemaName = default(string), string entityLogicalName = default(string), IList<string> keyAttributes = default(IList<string>), MicrosoftDynamicsCRMBooleanManagedProperty isCustomizable = default(MicrosoftDynamicsCRMBooleanManagedProperty), bool? isManaged = default(bool?), string introducedVersion = default(string), string entityKeyIndexStatus = default(string), string asyncJob = default(string))
+        public MicrosoftDynamicsCRMEntityKeyMetadata(string displayName = default(string), string logicalName = default(string), string schemaName = default(string), string entityLogicalName = default(string), IList<string> keyAttributes = default(IList<string>), string isCustomizable = default(string), bool? isManaged = default(bool?), string introducedVersion = default(string), string entityKeyIndexStatus = default(string), string asyncJob = default(string))
         {
             DisplayName = displayName;
             LogicalName = logicalName;
@@ -54,7 +52,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "DisplayName")]
-        public MicrosoftDynamicsCRMLabel DisplayName { get; set; }
+        public string DisplayName { get; set; }
 
         /// <summary>
         /// </summary>
@@ -79,7 +77,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "IsCustomizable")]
-        public MicrosoftDynamicsCRMBooleanManagedProperty IsCustomizable { get; set; }
+        public string IsCustomizable { get; set; }
 
         /// <summary>
         /// </summary>
@@ -92,8 +90,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public string IntroducedVersion { get; set; }
 
         /// <summary>
-        /// Gets or sets possible values include: 'Pending', 'InProgress',
-        /// 'Active', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "EntityKeyIndexStatus")]
         public string EntityKeyIndexStatus { get; set; }
