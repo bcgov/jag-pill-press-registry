@@ -56,12 +56,12 @@ def buildAndVerify(buildConfigName) {
   openshiftBuild(
     bldCfg: buildConfigName,
     showBuildLogs: 'true',
-    waitTime: '900000'
+    waitTime: '1500000'
   )
   openshiftVerifyBuild(
     bldCfg: buildConfigName,
     showBuildLogs: 'true',
-    waitTime: '900000'
+    waitTime: '1500000'
   )
 }
 
