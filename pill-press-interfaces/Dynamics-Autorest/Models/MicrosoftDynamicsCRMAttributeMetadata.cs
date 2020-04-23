@@ -10,7 +10,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
     using System.Linq;
 
     /// <summary>
-    /// AttributeMetadata
+    /// Microsoft.Dynamics.CRM.AttributeMetadata
     /// </summary>
     public partial class MicrosoftDynamicsCRMAttributeMetadata
     {
@@ -27,12 +27,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// Initializes a new instance of the
         /// MicrosoftDynamicsCRMAttributeMetadata class.
         /// </summary>
-        /// <param name="attributeType">Possible values include: 'Boolean',
-        /// 'Customer', 'DateTime', 'Decimal', 'Double', 'Integer', 'Lookup',
-        /// 'Memo', 'Money', 'Owner', 'PartyList', 'Picklist', 'State',
-        /// 'Status', 'String', 'Uniqueidentifier', 'CalendarRules', 'Virtual',
-        /// 'BigInt', 'ManagedProperty', 'EntityName'</param>
-        public MicrosoftDynamicsCRMAttributeMetadata(string attributeOf = default(string), string attributeType = default(string), MicrosoftDynamicsCRMAttributeTypeDisplayName attributeTypeName = default(MicrosoftDynamicsCRMAttributeTypeDisplayName), int? columnNumber = default(int?), MicrosoftDynamicsCRMLabel description = default(MicrosoftDynamicsCRMLabel), MicrosoftDynamicsCRMLabel displayName = default(MicrosoftDynamicsCRMLabel), string deprecatedVersion = default(string), string introducedVersion = default(string), string entityLogicalName = default(string), MicrosoftDynamicsCRMBooleanManagedProperty isAuditEnabled = default(MicrosoftDynamicsCRMBooleanManagedProperty), bool? isCustomAttribute = default(bool?), bool? isPrimaryId = default(bool?), bool? isPrimaryName = default(bool?), bool? isValidForCreate = default(bool?), bool? isValidForRead = default(bool?), bool? isValidForUpdate = default(bool?), bool? canBeSecuredForRead = default(bool?), bool? canBeSecuredForCreate = default(bool?), bool? canBeSecuredForUpdate = default(bool?), bool? isSecured = default(bool?), bool? isRetrievable = default(bool?), bool? isFilterable = default(bool?), bool? isSearchable = default(bool?), bool? isManaged = default(bool?), MicrosoftDynamicsCRMBooleanManagedProperty isGlobalFilterEnabled = default(MicrosoftDynamicsCRMBooleanManagedProperty), MicrosoftDynamicsCRMBooleanManagedProperty isSortableEnabled = default(MicrosoftDynamicsCRMBooleanManagedProperty), string linkedAttributeId = default(string), string logicalName = default(string), MicrosoftDynamicsCRMBooleanManagedProperty isCustomizable = default(MicrosoftDynamicsCRMBooleanManagedProperty), MicrosoftDynamicsCRMBooleanManagedProperty isRenameable = default(MicrosoftDynamicsCRMBooleanManagedProperty), MicrosoftDynamicsCRMBooleanManagedProperty isValidForAdvancedFind = default(MicrosoftDynamicsCRMBooleanManagedProperty), MicrosoftDynamicsCRMAttributeRequiredLevelManagedProperty requiredLevel = default(MicrosoftDynamicsCRMAttributeRequiredLevelManagedProperty), MicrosoftDynamicsCRMBooleanManagedProperty canModifyAdditionalSettings = default(MicrosoftDynamicsCRMBooleanManagedProperty), string schemaName = default(string), bool? isLogical = default(bool?), string inheritsFrom = default(string), int? sourceType = default(int?))
+        public MicrosoftDynamicsCRMAttributeMetadata(string attributeOf = default(string), string attributeType = default(string), string attributeTypeName = default(string), int? columnNumber = default(int?), string description = default(string), string displayName = default(string), string deprecatedVersion = default(string), string introducedVersion = default(string), string entityLogicalName = default(string), string isAuditEnabled = default(string), bool? isCustomAttribute = default(bool?), bool? isPrimaryId = default(bool?), bool? isPrimaryName = default(bool?), bool? isValidForCreate = default(bool?), bool? isValidForRead = default(bool?), bool? isValidForUpdate = default(bool?), bool? canBeSecuredForRead = default(bool?), bool? canBeSecuredForCreate = default(bool?), bool? canBeSecuredForUpdate = default(bool?), bool? isSecured = default(bool?), bool? isRetrievable = default(bool?), bool? isFilterable = default(bool?), bool? isSearchable = default(bool?), bool? isManaged = default(bool?), string isGlobalFilterEnabled = default(string), string isSortableEnabled = default(string), string linkedAttributeId = default(string), string logicalName = default(string), string isCustomizable = default(string), string isRenameable = default(string), string isValidForAdvancedFind = default(string), string requiredLevel = default(string), string canModifyAdditionalSettings = default(string), string schemaName = default(string), bool? isLogical = default(bool?), string inheritsFrom = default(string), int? sourceType = default(int?))
         {
             AttributeOf = attributeOf;
             AttributeType = attributeType;
@@ -85,11 +80,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public string AttributeOf { get; set; }
 
         /// <summary>
-        /// Gets or sets possible values include: 'Boolean', 'Customer',
-        /// 'DateTime', 'Decimal', 'Double', 'Integer', 'Lookup', 'Memo',
-        /// 'Money', 'Owner', 'PartyList', 'Picklist', 'State', 'Status',
-        /// 'String', 'Uniqueidentifier', 'CalendarRules', 'Virtual', 'BigInt',
-        /// 'ManagedProperty', 'EntityName'
         /// </summary>
         [JsonProperty(PropertyName = "AttributeType")]
         public string AttributeType { get; set; }
@@ -97,7 +87,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "AttributeTypeName")]
-        public MicrosoftDynamicsCRMAttributeTypeDisplayName AttributeTypeName { get; set; }
+        public string AttributeTypeName { get; set; }
 
         /// <summary>
         /// </summary>
@@ -107,12 +97,12 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "Description")]
-        public MicrosoftDynamicsCRMLabel Description { get; set; }
+        public string Description { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "DisplayName")]
-        public MicrosoftDynamicsCRMLabel DisplayName { get; set; }
+        public string DisplayName { get; set; }
 
         /// <summary>
         /// </summary>
@@ -132,7 +122,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "IsAuditEnabled")]
-        public MicrosoftDynamicsCRMBooleanManagedProperty IsAuditEnabled { get; set; }
+        public string IsAuditEnabled { get; set; }
 
         /// <summary>
         /// </summary>
@@ -207,12 +197,12 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "IsGlobalFilterEnabled")]
-        public MicrosoftDynamicsCRMBooleanManagedProperty IsGlobalFilterEnabled { get; set; }
+        public string IsGlobalFilterEnabled { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "IsSortableEnabled")]
-        public MicrosoftDynamicsCRMBooleanManagedProperty IsSortableEnabled { get; set; }
+        public string IsSortableEnabled { get; set; }
 
         /// <summary>
         /// </summary>
@@ -227,27 +217,27 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "IsCustomizable")]
-        public MicrosoftDynamicsCRMBooleanManagedProperty IsCustomizable { get; set; }
+        public string IsCustomizable { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "IsRenameable")]
-        public MicrosoftDynamicsCRMBooleanManagedProperty IsRenameable { get; set; }
+        public string IsRenameable { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "IsValidForAdvancedFind")]
-        public MicrosoftDynamicsCRMBooleanManagedProperty IsValidForAdvancedFind { get; set; }
+        public string IsValidForAdvancedFind { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "RequiredLevel")]
-        public MicrosoftDynamicsCRMAttributeRequiredLevelManagedProperty RequiredLevel { get; set; }
+        public string RequiredLevel { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "CanModifyAdditionalSettings")]
-        public MicrosoftDynamicsCRMBooleanManagedProperty CanModifyAdditionalSettings { get; set; }
+        public string CanModifyAdditionalSettings { get; set; }
 
         /// <summary>
         /// </summary>

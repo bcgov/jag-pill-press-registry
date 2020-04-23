@@ -12,7 +12,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
     using System.Linq;
 
     /// <summary>
-    /// bcgov_inspectionprocessflow
+    /// Microsoft.Dynamics.CRM.bcgov_inspectionprocessflow
     /// </summary>
     public partial class MicrosoftDynamicsCRMbcgovInspectionprocessflow
     {
@@ -29,7 +29,49 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// Initializes a new instance of the
         /// MicrosoftDynamicsCRMbcgovInspectionprocessflow class.
         /// </summary>
-        public MicrosoftDynamicsCRMbcgovInspectionprocessflow(string _organizationidValue = default(string), string _createdonbehalfbyValue = default(string), string _createdbyValue = default(string), string businessprocessflowinstanceid = default(string), int? utcconversiontimezonecode = default(int?), string _modifiedonbehalfbyValue = default(string), int? importsequencenumber = default(int?), int? timezoneruleversionnumber = default(int?), string traversedpath = default(string), string bpfName = default(string), System.DateTimeOffset? completedon = default(System.DateTimeOffset?), string _processidValue = default(string), long? versionnumber = default(long?), int? statuscode = default(int?), System.DateTimeOffset? overriddencreatedon = default(System.DateTimeOffset?), System.DateTimeOffset? createdon = default(System.DateTimeOffset?), string _activestageidValue = default(string), string _bpfBcgovInspectionidValue = default(string), System.DateTimeOffset? modifiedon = default(System.DateTimeOffset?), System.DateTimeOffset? activestagestartedon = default(System.DateTimeOffset?), int? bpfDuration = default(int?), string _modifiedbyValue = default(string), int? statecode = default(int?), MicrosoftDynamicsCRMsystemuser createdbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser createdonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMorganization organizationid = default(MicrosoftDynamicsCRMorganization), MicrosoftDynamicsCRMprocessstage activestageidname = default(MicrosoftDynamicsCRMprocessstage), MicrosoftDynamicsCRMworkflow processidname = default(MicrosoftDynamicsCRMworkflow), IList<MicrosoftDynamicsCRMsyncerror> bcgovInspectionprocessflowSyncErrors = default(IList<MicrosoftDynamicsCRMsyncerror>), IList<MicrosoftDynamicsCRMasyncoperation> bcgovInspectionprocessflowAsyncOperations = default(IList<MicrosoftDynamicsCRMasyncoperation>), IList<MicrosoftDynamicsCRMworkflowlog> bcgovInspectionprocessflowWorkflowLogs = default(IList<MicrosoftDynamicsCRMworkflowlog>), IList<MicrosoftDynamicsCRMbulkdeletefailure> bcgovInspectionprocessflowBulkDeleteFailures = default(IList<MicrosoftDynamicsCRMbulkdeletefailure>), MicrosoftDynamicsCRMbcgovInspection bpfBcgovInspectionid = default(MicrosoftDynamicsCRMbcgovInspection))
+        /// <param name="_organizationidValue">Unique identifier for the
+        /// organization</param>
+        /// <param name="_createdonbehalfbyValue">Unique identifier of the
+        /// delegate user who created the record.</param>
+        /// <param name="_createdbyValue">Unique identifier of the user who
+        /// created the record.</param>
+        /// <param name="businessprocessflowinstanceid">Unique identifier for
+        /// entity instances</param>
+        /// <param name="utcconversiontimezonecode">Time zone code that was in
+        /// use when the record was created.</param>
+        /// <param name="_modifiedonbehalfbyValue">Unique identifier of the
+        /// delegate user who modified the record.</param>
+        /// <param name="importsequencenumber">Sequence number of the import
+        /// that created this record.</param>
+        /// <param name="timezoneruleversionnumber">For internal use
+        /// only.</param>
+        /// <param name="traversedpath">Comma delimited string of process stage
+        /// ids that represent visited stages of the Business Process Flow
+        /// instance.</param>
+        /// <param name="bpfName">Description</param>
+        /// <param name="completedon">Date and time when Business Process Flow
+        /// instance is completed.</param>
+        /// <param name="_processidValue">Unique identifier of the workflow
+        /// associated to the Business Process Flow instance.</param>
+        /// <param name="versionnumber">Version Number</param>
+        /// <param name="statuscode">Reason for the status of the Inspection:
+        /// Inspection Process Flow</param>
+        /// <param name="overriddencreatedon">Date and time that the record was
+        /// migrated.</param>
+        /// <param name="createdon">Date and time when the record was
+        /// created.</param>
+        /// <param name="_activestageidValue">Unique identifier of the active
+        /// stage for the Business Process Flow instance.</param>
+        /// <param name="modifiedon">Date and time when the record was
+        /// modified.</param>
+        /// <param name="activestagestartedon">Date and time when current
+        /// active stage is started</param>
+        /// <param name="bpfDuration">Duration of Business Process Flow</param>
+        /// <param name="_modifiedbyValue">Unique identifier of the user who
+        /// modified the record.</param>
+        /// <param name="statecode">Status of the Inspection: Inspection
+        /// Process Flow</param>
+        public MicrosoftDynamicsCRMbcgovInspectionprocessflow(string _organizationidValue = default(string), string _createdonbehalfbyValue = default(string), string _createdbyValue = default(string), string businessprocessflowinstanceid = default(string), int? utcconversiontimezonecode = default(int?), string _modifiedonbehalfbyValue = default(string), int? importsequencenumber = default(int?), int? timezoneruleversionnumber = default(int?), string traversedpath = default(string), string bpfName = default(string), System.DateTimeOffset? completedon = default(System.DateTimeOffset?), string _processidValue = default(string), string versionnumber = default(string), int? statuscode = default(int?), System.DateTimeOffset? overriddencreatedon = default(System.DateTimeOffset?), System.DateTimeOffset? createdon = default(System.DateTimeOffset?), string _activestageidValue = default(string), string _bpfBcgovInspectionidValue = default(string), System.DateTimeOffset? modifiedon = default(System.DateTimeOffset?), System.DateTimeOffset? activestagestartedon = default(System.DateTimeOffset?), int? bpfDuration = default(int?), string _modifiedbyValue = default(string), int? statecode = default(int?), MicrosoftDynamicsCRMsystemuser createdbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser createdonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMsystemuser modifiedonbehalfbyname = default(MicrosoftDynamicsCRMsystemuser), MicrosoftDynamicsCRMorganization organizationid = default(MicrosoftDynamicsCRMorganization), MicrosoftDynamicsCRMprocessstage activestageidname = default(MicrosoftDynamicsCRMprocessstage), MicrosoftDynamicsCRMworkflow processidname = default(MicrosoftDynamicsCRMworkflow), IList<MicrosoftDynamicsCRMsyncerror> bcgovInspectionprocessflowSyncErrors = default(IList<MicrosoftDynamicsCRMsyncerror>), IList<MicrosoftDynamicsCRMasyncoperation> bcgovInspectionprocessflowAsyncOperations = default(IList<MicrosoftDynamicsCRMasyncoperation>), IList<MicrosoftDynamicsCRMworkflowlog> bcgovInspectionprocessflowWorkflowLogs = default(IList<MicrosoftDynamicsCRMworkflowlog>), IList<MicrosoftDynamicsCRMbulkdeletefailure> bcgovInspectionprocessflowBulkDeleteFailures = default(IList<MicrosoftDynamicsCRMbulkdeletefailure>), MicrosoftDynamicsCRMbcgovInspection bpfBcgovInspectionid = default(MicrosoftDynamicsCRMbcgovInspection))
         {
             this._organizationidValue = _organizationidValue;
             this._createdonbehalfbyValue = _createdonbehalfbyValue;
@@ -75,86 +117,112 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets unique identifier for the organization
         /// </summary>
         [JsonProperty(PropertyName = "_organizationid_value")]
         public string _organizationidValue { get; set; }
 
         /// <summary>
+        /// Gets or sets unique identifier of the delegate user who created the
+        /// record.
         /// </summary>
         [JsonProperty(PropertyName = "_createdonbehalfby_value")]
         public string _createdonbehalfbyValue { get; set; }
 
         /// <summary>
+        /// Gets or sets unique identifier of the user who created the record.
         /// </summary>
         [JsonProperty(PropertyName = "_createdby_value")]
         public string _createdbyValue { get; set; }
 
         /// <summary>
+        /// Gets or sets unique identifier for entity instances
         /// </summary>
         [JsonProperty(PropertyName = "businessprocessflowinstanceid")]
         public string Businessprocessflowinstanceid { get; set; }
 
         /// <summary>
+        /// Gets or sets time zone code that was in use when the record was
+        /// created.
         /// </summary>
         [JsonProperty(PropertyName = "utcconversiontimezonecode")]
         public int? Utcconversiontimezonecode { get; set; }
 
         /// <summary>
+        /// Gets or sets unique identifier of the delegate user who modified
+        /// the record.
         /// </summary>
         [JsonProperty(PropertyName = "_modifiedonbehalfby_value")]
         public string _modifiedonbehalfbyValue { get; set; }
 
         /// <summary>
+        /// Gets or sets sequence number of the import that created this
+        /// record.
         /// </summary>
         [JsonProperty(PropertyName = "importsequencenumber")]
         public int? Importsequencenumber { get; set; }
 
         /// <summary>
+        /// Gets or sets for internal use only.
         /// </summary>
         [JsonProperty(PropertyName = "timezoneruleversionnumber")]
         public int? Timezoneruleversionnumber { get; set; }
 
         /// <summary>
+        /// Gets or sets comma delimited string of process stage ids that
+        /// represent visited stages of the Business Process Flow instance.
         /// </summary>
         [JsonProperty(PropertyName = "traversedpath")]
         public string Traversedpath { get; set; }
 
         /// <summary>
+        /// Gets or sets description
         /// </summary>
         [JsonProperty(PropertyName = "bpf_name")]
         public string BpfName { get; set; }
 
         /// <summary>
+        /// Gets or sets date and time when Business Process Flow instance is
+        /// completed.
         /// </summary>
         [JsonProperty(PropertyName = "completedon")]
         public System.DateTimeOffset? Completedon { get; set; }
 
         /// <summary>
+        /// Gets or sets unique identifier of the workflow associated to the
+        /// Business Process Flow instance.
         /// </summary>
         [JsonProperty(PropertyName = "_processid_value")]
         public string _processidValue { get; set; }
 
         /// <summary>
+        /// Gets or sets version Number
         /// </summary>
         [JsonProperty(PropertyName = "versionnumber")]
-        public long? Versionnumber { get; set; }
+        public string Versionnumber { get; set; }
 
         /// <summary>
+        /// Gets or sets reason for the status of the Inspection: Inspection
+        /// Process Flow
         /// </summary>
         [JsonProperty(PropertyName = "statuscode")]
         public int? Statuscode { get; set; }
 
         /// <summary>
+        /// Gets or sets date and time that the record was migrated.
         /// </summary>
         [JsonProperty(PropertyName = "overriddencreatedon")]
         public System.DateTimeOffset? Overriddencreatedon { get; set; }
 
         /// <summary>
+        /// Gets or sets date and time when the record was created.
         /// </summary>
         [JsonProperty(PropertyName = "createdon")]
         public System.DateTimeOffset? Createdon { get; set; }
 
         /// <summary>
+        /// Gets or sets unique identifier of the active stage for the Business
+        /// Process Flow instance.
         /// </summary>
         [JsonProperty(PropertyName = "_activestageid_value")]
         public string _activestageidValue { get; set; }
@@ -165,26 +233,31 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public string _bpfBcgovInspectionidValue { get; set; }
 
         /// <summary>
+        /// Gets or sets date and time when the record was modified.
         /// </summary>
         [JsonProperty(PropertyName = "modifiedon")]
         public System.DateTimeOffset? Modifiedon { get; set; }
 
         /// <summary>
+        /// Gets or sets date and time when current active stage is started
         /// </summary>
         [JsonProperty(PropertyName = "activestagestartedon")]
         public System.DateTimeOffset? Activestagestartedon { get; set; }
 
         /// <summary>
+        /// Gets or sets duration of Business Process Flow
         /// </summary>
         [JsonProperty(PropertyName = "bpf_duration")]
         public int? BpfDuration { get; set; }
 
         /// <summary>
+        /// Gets or sets unique identifier of the user who modified the record.
         /// </summary>
         [JsonProperty(PropertyName = "_modifiedby_value")]
         public string _modifiedbyValue { get; set; }
 
         /// <summary>
+        /// Gets or sets status of the Inspection: Inspection Process Flow
         /// </summary>
         [JsonProperty(PropertyName = "statecode")]
         public int? Statecode { get; set; }

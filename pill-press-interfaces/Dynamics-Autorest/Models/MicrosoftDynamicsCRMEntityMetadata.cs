@@ -12,7 +12,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
     using System.Linq;
 
     /// <summary>
-    /// EntityMetadata
+    /// Microsoft.Dynamics.CRM.EntityMetadata
     /// </summary>
     public partial class MicrosoftDynamicsCRMEntityMetadata
     {
@@ -29,10 +29,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// Initializes a new instance of the
         /// MicrosoftDynamicsCRMEntityMetadata class.
         /// </summary>
-        /// <param name="ownershipType">Possible values include: 'None',
-        /// 'UserOwned', 'TeamOwned', 'BusinessOwned', 'OrganizationOwned',
-        /// 'BusinessParented'</param>
-        public MicrosoftDynamicsCRMEntityMetadata(int? activityTypeMask = default(int?), bool? autoRouteToOwnerQueue = default(bool?), bool? canTriggerWorkflow = default(bool?), MicrosoftDynamicsCRMLabel description = default(MicrosoftDynamicsCRMLabel), MicrosoftDynamicsCRMLabel displayCollectionName = default(MicrosoftDynamicsCRMLabel), MicrosoftDynamicsCRMLabel displayName = default(MicrosoftDynamicsCRMLabel), bool? entityHelpUrlEnabled = default(bool?), string entityHelpUrl = default(string), bool? isDocumentManagementEnabled = default(bool?), bool? isOneNoteIntegrationEnabled = default(bool?), bool? isInteractionCentricEnabled = default(bool?), bool? isKnowledgeManagementEnabled = default(bool?), bool? isSLAEnabled = default(bool?), bool? isBPFEntity = default(bool?), bool? isDocumentRecommendationsEnabled = default(bool?), bool? autoCreateAccessTeams = default(bool?), bool? isActivity = default(bool?), bool? isActivityParty = default(bool?), MicrosoftDynamicsCRMBooleanManagedProperty isAuditEnabled = default(MicrosoftDynamicsCRMBooleanManagedProperty), bool? isAvailableOffline = default(bool?), bool? isChildEntity = default(bool?), bool? isAIRUpdated = default(bool?), MicrosoftDynamicsCRMBooleanManagedProperty isValidForQueue = default(MicrosoftDynamicsCRMBooleanManagedProperty), MicrosoftDynamicsCRMBooleanManagedProperty isConnectionsEnabled = default(MicrosoftDynamicsCRMBooleanManagedProperty), string iconLargeName = default(string), string iconMediumName = default(string), string iconSmallName = default(string), bool? isCustomEntity = default(bool?), bool? isBusinessProcessEnabled = default(bool?), MicrosoftDynamicsCRMBooleanManagedProperty isCustomizable = default(MicrosoftDynamicsCRMBooleanManagedProperty), MicrosoftDynamicsCRMBooleanManagedProperty isRenameable = default(MicrosoftDynamicsCRMBooleanManagedProperty), MicrosoftDynamicsCRMBooleanManagedProperty isMappable = default(MicrosoftDynamicsCRMBooleanManagedProperty), MicrosoftDynamicsCRMBooleanManagedProperty isDuplicateDetectionEnabled = default(MicrosoftDynamicsCRMBooleanManagedProperty), MicrosoftDynamicsCRMBooleanManagedProperty canCreateAttributes = default(MicrosoftDynamicsCRMBooleanManagedProperty), MicrosoftDynamicsCRMBooleanManagedProperty canCreateForms = default(MicrosoftDynamicsCRMBooleanManagedProperty), MicrosoftDynamicsCRMBooleanManagedProperty canCreateViews = default(MicrosoftDynamicsCRMBooleanManagedProperty), MicrosoftDynamicsCRMBooleanManagedProperty canCreateCharts = default(MicrosoftDynamicsCRMBooleanManagedProperty), MicrosoftDynamicsCRMBooleanManagedProperty canBeRelatedEntityInRelationship = default(MicrosoftDynamicsCRMBooleanManagedProperty), MicrosoftDynamicsCRMBooleanManagedProperty canBePrimaryEntityInRelationship = default(MicrosoftDynamicsCRMBooleanManagedProperty), MicrosoftDynamicsCRMBooleanManagedProperty canBeInManyToMany = default(MicrosoftDynamicsCRMBooleanManagedProperty), MicrosoftDynamicsCRMBooleanManagedProperty canEnableSyncToExternalSearchIndex = default(MicrosoftDynamicsCRMBooleanManagedProperty), bool? syncToExternalSearchIndex = default(bool?), MicrosoftDynamicsCRMBooleanManagedProperty canModifyAdditionalSettings = default(MicrosoftDynamicsCRMBooleanManagedProperty), MicrosoftDynamicsCRMBooleanManagedProperty canChangeHierarchicalRelationship = default(MicrosoftDynamicsCRMBooleanManagedProperty), bool? isOptimisticConcurrencyEnabled = default(bool?), bool? changeTrackingEnabled = default(bool?), MicrosoftDynamicsCRMBooleanManagedProperty canChangeTrackingBeEnabled = default(MicrosoftDynamicsCRMBooleanManagedProperty), bool? isImportable = default(bool?), bool? isIntersect = default(bool?), MicrosoftDynamicsCRMBooleanManagedProperty isMailMergeEnabled = default(MicrosoftDynamicsCRMBooleanManagedProperty), bool? isManaged = default(bool?), bool? isEnabledForCharts = default(bool?), bool? isEnabledForTrace = default(bool?), bool? isValidForAdvancedFind = default(bool?), MicrosoftDynamicsCRMBooleanManagedProperty isVisibleInMobile = default(MicrosoftDynamicsCRMBooleanManagedProperty), MicrosoftDynamicsCRMBooleanManagedProperty isVisibleInMobileClient = default(MicrosoftDynamicsCRMBooleanManagedProperty), MicrosoftDynamicsCRMBooleanManagedProperty isReadOnlyInMobileClient = default(MicrosoftDynamicsCRMBooleanManagedProperty), MicrosoftDynamicsCRMBooleanManagedProperty isOfflineInMobileClient = default(MicrosoftDynamicsCRMBooleanManagedProperty), int? daysSinceRecordLastModified = default(int?), string mobileOfflineFilters = default(string), bool? isReadingPaneEnabled = default(bool?), bool? isQuickCreateEnabled = default(bool?), string logicalName = default(string), int? objectTypeCode = default(int?), string ownershipType = default(string), string primaryNameAttribute = default(string), string primaryImageAttribute = default(string), string primaryIdAttribute = default(string), IList<MicrosoftDynamicsCRMSecurityPrivilegeMetadata> privileges = default(IList<MicrosoftDynamicsCRMSecurityPrivilegeMetadata>), string recurrenceBaseEntityLogicalName = default(string), string reportViewName = default(string), string schemaName = default(string), string introducedVersion = default(string), bool? isStateModelAware = default(bool?), bool? enforceStateTransitions = default(bool?), string entityColor = default(string), string logicalCollectionName = default(string), string collectionSchemaName = default(string), string entitySetName = default(string), bool? isEnabledForExternalChannels = default(bool?), bool? isPrivate = default(bool?), bool? usesBusinessDataLabelTable = default(bool?), bool? isLogicalEntity = default(bool?), bool? hasActivities = default(bool?), bool? hasNotes = default(bool?), bool? hasFeedback = default(bool?), IList<MicrosoftDynamicsCRMAttributeMetadata> attributes = default(IList<MicrosoftDynamicsCRMAttributeMetadata>), IList<MicrosoftDynamicsCRMManyToManyRelationshipMetadata> manyToManyRelationships = default(IList<MicrosoftDynamicsCRMManyToManyRelationshipMetadata>), IList<MicrosoftDynamicsCRMOneToManyRelationshipMetadata> manyToOneRelationships = default(IList<MicrosoftDynamicsCRMOneToManyRelationshipMetadata>), IList<MicrosoftDynamicsCRMOneToManyRelationshipMetadata> oneToManyRelationships = default(IList<MicrosoftDynamicsCRMOneToManyRelationshipMetadata>), IList<MicrosoftDynamicsCRMEntityKeyMetadata> keys = default(IList<MicrosoftDynamicsCRMEntityKeyMetadata>))
+        public MicrosoftDynamicsCRMEntityMetadata(int? activityTypeMask = default(int?), bool? autoRouteToOwnerQueue = default(bool?), bool? canTriggerWorkflow = default(bool?), string description = default(string), string displayCollectionName = default(string), string displayName = default(string), bool? entityHelpUrlEnabled = default(bool?), string entityHelpUrl = default(string), bool? isDocumentManagementEnabled = default(bool?), bool? isOneNoteIntegrationEnabled = default(bool?), bool? isInteractionCentricEnabled = default(bool?), bool? isKnowledgeManagementEnabled = default(bool?), bool? isSLAEnabled = default(bool?), bool? isBPFEntity = default(bool?), bool? isDocumentRecommendationsEnabled = default(bool?), bool? autoCreateAccessTeams = default(bool?), bool? isActivity = default(bool?), bool? isActivityParty = default(bool?), string isAuditEnabled = default(string), bool? isAvailableOffline = default(bool?), bool? isChildEntity = default(bool?), bool? isAIRUpdated = default(bool?), string isValidForQueue = default(string), string isConnectionsEnabled = default(string), string iconLargeName = default(string), string iconMediumName = default(string), string iconSmallName = default(string), bool? isCustomEntity = default(bool?), bool? isBusinessProcessEnabled = default(bool?), string isCustomizable = default(string), string isRenameable = default(string), string isMappable = default(string), string isDuplicateDetectionEnabled = default(string), string canCreateAttributes = default(string), string canCreateForms = default(string), string canCreateViews = default(string), string canCreateCharts = default(string), string canBeRelatedEntityInRelationship = default(string), string canBePrimaryEntityInRelationship = default(string), string canBeInManyToMany = default(string), string canEnableSyncToExternalSearchIndex = default(string), bool? syncToExternalSearchIndex = default(bool?), string canModifyAdditionalSettings = default(string), string canChangeHierarchicalRelationship = default(string), bool? isOptimisticConcurrencyEnabled = default(bool?), bool? changeTrackingEnabled = default(bool?), string canChangeTrackingBeEnabled = default(string), bool? isImportable = default(bool?), bool? isIntersect = default(bool?), string isMailMergeEnabled = default(string), bool? isManaged = default(bool?), bool? isEnabledForCharts = default(bool?), bool? isEnabledForTrace = default(bool?), bool? isValidForAdvancedFind = default(bool?), string isVisibleInMobile = default(string), string isVisibleInMobileClient = default(string), string isReadOnlyInMobileClient = default(string), string isOfflineInMobileClient = default(string), int? daysSinceRecordLastModified = default(int?), string mobileOfflineFilters = default(string), bool? isReadingPaneEnabled = default(bool?), bool? isQuickCreateEnabled = default(bool?), string logicalName = default(string), int? objectTypeCode = default(int?), string ownershipType = default(string), string primaryNameAttribute = default(string), string primaryImageAttribute = default(string), string primaryIdAttribute = default(string), IList<object> privileges = default(IList<object>), string recurrenceBaseEntityLogicalName = default(string), string reportViewName = default(string), string schemaName = default(string), string introducedVersion = default(string), bool? isStateModelAware = default(bool?), bool? enforceStateTransitions = default(bool?), string entityColor = default(string), string logicalCollectionName = default(string), string collectionSchemaName = default(string), string entitySetName = default(string), bool? isEnabledForExternalChannels = default(bool?), bool? isPrivate = default(bool?), bool? usesBusinessDataLabelTable = default(bool?), bool? isLogicalEntity = default(bool?), bool? hasActivities = default(bool?), bool? hasNotes = default(bool?), bool? hasFeedback = default(bool?), IList<MicrosoftDynamicsCRMAttributeMetadata> attributes = default(IList<MicrosoftDynamicsCRMAttributeMetadata>), IList<MicrosoftDynamicsCRMManyToManyRelationshipMetadata> manyToManyRelationships = default(IList<MicrosoftDynamicsCRMManyToManyRelationshipMetadata>), IList<MicrosoftDynamicsCRMOneToManyRelationshipMetadata> manyToOneRelationships = default(IList<MicrosoftDynamicsCRMOneToManyRelationshipMetadata>), IList<MicrosoftDynamicsCRMOneToManyRelationshipMetadata> oneToManyRelationships = default(IList<MicrosoftDynamicsCRMOneToManyRelationshipMetadata>), IList<MicrosoftDynamicsCRMEntityKeyMetadata> keys = default(IList<MicrosoftDynamicsCRMEntityKeyMetadata>))
         {
             ActivityTypeMask = activityTypeMask;
             AutoRouteToOwnerQueue = autoRouteToOwnerQueue;
@@ -151,17 +148,17 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "Description")]
-        public MicrosoftDynamicsCRMLabel Description { get; set; }
+        public string Description { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "DisplayCollectionName")]
-        public MicrosoftDynamicsCRMLabel DisplayCollectionName { get; set; }
+        public string DisplayCollectionName { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "DisplayName")]
-        public MicrosoftDynamicsCRMLabel DisplayName { get; set; }
+        public string DisplayName { get; set; }
 
         /// <summary>
         /// </summary>
@@ -226,7 +223,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "IsAuditEnabled")]
-        public MicrosoftDynamicsCRMBooleanManagedProperty IsAuditEnabled { get; set; }
+        public string IsAuditEnabled { get; set; }
 
         /// <summary>
         /// </summary>
@@ -246,12 +243,12 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "IsValidForQueue")]
-        public MicrosoftDynamicsCRMBooleanManagedProperty IsValidForQueue { get; set; }
+        public string IsValidForQueue { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "IsConnectionsEnabled")]
-        public MicrosoftDynamicsCRMBooleanManagedProperty IsConnectionsEnabled { get; set; }
+        public string IsConnectionsEnabled { get; set; }
 
         /// <summary>
         /// </summary>
@@ -281,62 +278,62 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "IsCustomizable")]
-        public MicrosoftDynamicsCRMBooleanManagedProperty IsCustomizable { get; set; }
+        public string IsCustomizable { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "IsRenameable")]
-        public MicrosoftDynamicsCRMBooleanManagedProperty IsRenameable { get; set; }
+        public string IsRenameable { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "IsMappable")]
-        public MicrosoftDynamicsCRMBooleanManagedProperty IsMappable { get; set; }
+        public string IsMappable { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "IsDuplicateDetectionEnabled")]
-        public MicrosoftDynamicsCRMBooleanManagedProperty IsDuplicateDetectionEnabled { get; set; }
+        public string IsDuplicateDetectionEnabled { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "CanCreateAttributes")]
-        public MicrosoftDynamicsCRMBooleanManagedProperty CanCreateAttributes { get; set; }
+        public string CanCreateAttributes { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "CanCreateForms")]
-        public MicrosoftDynamicsCRMBooleanManagedProperty CanCreateForms { get; set; }
+        public string CanCreateForms { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "CanCreateViews")]
-        public MicrosoftDynamicsCRMBooleanManagedProperty CanCreateViews { get; set; }
+        public string CanCreateViews { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "CanCreateCharts")]
-        public MicrosoftDynamicsCRMBooleanManagedProperty CanCreateCharts { get; set; }
+        public string CanCreateCharts { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "CanBeRelatedEntityInRelationship")]
-        public MicrosoftDynamicsCRMBooleanManagedProperty CanBeRelatedEntityInRelationship { get; set; }
+        public string CanBeRelatedEntityInRelationship { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "CanBePrimaryEntityInRelationship")]
-        public MicrosoftDynamicsCRMBooleanManagedProperty CanBePrimaryEntityInRelationship { get; set; }
+        public string CanBePrimaryEntityInRelationship { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "CanBeInManyToMany")]
-        public MicrosoftDynamicsCRMBooleanManagedProperty CanBeInManyToMany { get; set; }
+        public string CanBeInManyToMany { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "CanEnableSyncToExternalSearchIndex")]
-        public MicrosoftDynamicsCRMBooleanManagedProperty CanEnableSyncToExternalSearchIndex { get; set; }
+        public string CanEnableSyncToExternalSearchIndex { get; set; }
 
         /// <summary>
         /// </summary>
@@ -346,12 +343,12 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "CanModifyAdditionalSettings")]
-        public MicrosoftDynamicsCRMBooleanManagedProperty CanModifyAdditionalSettings { get; set; }
+        public string CanModifyAdditionalSettings { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "CanChangeHierarchicalRelationship")]
-        public MicrosoftDynamicsCRMBooleanManagedProperty CanChangeHierarchicalRelationship { get; set; }
+        public string CanChangeHierarchicalRelationship { get; set; }
 
         /// <summary>
         /// </summary>
@@ -366,7 +363,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "CanChangeTrackingBeEnabled")]
-        public MicrosoftDynamicsCRMBooleanManagedProperty CanChangeTrackingBeEnabled { get; set; }
+        public string CanChangeTrackingBeEnabled { get; set; }
 
         /// <summary>
         /// </summary>
@@ -381,7 +378,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "IsMailMergeEnabled")]
-        public MicrosoftDynamicsCRMBooleanManagedProperty IsMailMergeEnabled { get; set; }
+        public string IsMailMergeEnabled { get; set; }
 
         /// <summary>
         /// </summary>
@@ -406,22 +403,22 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "IsVisibleInMobile")]
-        public MicrosoftDynamicsCRMBooleanManagedProperty IsVisibleInMobile { get; set; }
+        public string IsVisibleInMobile { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "IsVisibleInMobileClient")]
-        public MicrosoftDynamicsCRMBooleanManagedProperty IsVisibleInMobileClient { get; set; }
+        public string IsVisibleInMobileClient { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "IsReadOnlyInMobileClient")]
-        public MicrosoftDynamicsCRMBooleanManagedProperty IsReadOnlyInMobileClient { get; set; }
+        public string IsReadOnlyInMobileClient { get; set; }
 
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "IsOfflineInMobileClient")]
-        public MicrosoftDynamicsCRMBooleanManagedProperty IsOfflineInMobileClient { get; set; }
+        public string IsOfflineInMobileClient { get; set; }
 
         /// <summary>
         /// </summary>
@@ -454,9 +451,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         public int? ObjectTypeCode { get; set; }
 
         /// <summary>
-        /// Gets or sets possible values include: 'None', 'UserOwned',
-        /// 'TeamOwned', 'BusinessOwned', 'OrganizationOwned',
-        /// 'BusinessParented'
         /// </summary>
         [JsonProperty(PropertyName = "OwnershipType")]
         public string OwnershipType { get; set; }
@@ -479,7 +473,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "Privileges")]
-        public IList<MicrosoftDynamicsCRMSecurityPrivilegeMetadata> Privileges { get; set; }
+        public IList<object> Privileges { get; set; }
 
         /// <summary>
         /// </summary>

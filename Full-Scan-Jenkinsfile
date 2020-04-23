@@ -1,5 +1,5 @@
 APP_NAME = "pill-press"
-PROJECT_NAMESPACE = "rqnyx8"
+PROJECT_NAMESPACE = "crraem"
 
 class AppEnvironment {
   String name

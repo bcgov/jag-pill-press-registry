@@ -26,10 +26,10 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         private readonly IDynamicsClient _dynamicsClient;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ILogger _logger;
-        private readonly IHostingEnvironment _env;
+        private readonly IWebHostEnvironment _env;
         private readonly SharePointFileManager _sharePointFileManager;
 
-        public ApplicationController(SharePointFileManager sharePointFileManager, IConfiguration configuration, IDynamicsClient dynamicsClient, IHttpContextAccessor httpContextAccessor, ILoggerFactory loggerFactory, IHostingEnvironment env)
+        public ApplicationController(SharePointFileManager sharePointFileManager, IConfiguration configuration, IDynamicsClient dynamicsClient, IHttpContextAccessor httpContextAccessor, ILoggerFactory loggerFactory, IWebHostEnvironment env)
         {
             Configuration = configuration;
             _dynamicsClient = dynamicsClient;
@@ -857,7 +857,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             {
                 try
                 {
-                    var folder = await _sharePointFileManager.CreateFolder(SharePointFileManager.ApplicationDocumentListTitle, folderName);
+                    await _sharePointFileManager.CreateFolder(SharePointFileManager.ApplicationDocumentListTitle, folderName);
                 }
                 catch (Exception e)
                 {
@@ -976,10 +976,18 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 try
                 {
                     byte[] fileContents = await _sharePointFileManager.DownloadFile(serverRelativeUrl);
-                    return new FileContentResult(fileContents, "application/octet-stream")
+                    string fileContentsString = System.Text.Encoding.Default.GetString(fileContents);
+                    if ((fileContentsString.Length > 0) & (fileContentsString.Contains("%PDF", StringComparison.InvariantCultureIgnoreCase)) )
                     {
-                        FileDownloadName = fileName
-                    };
+                        return new FileContentResult(fileContents, "application/octet-stream")
+                        {
+                            FileDownloadName = fileName
+                        };
+                    }
+                    else
+                    {
+                        return new NotFoundResult();
+                    }
                 }
                 catch (Exception e)
                 {
@@ -1014,7 +1022,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 try
                 {
                     byte[] fileContents = await _sharePointFileManager.DownloadFile(serverRelativeUrl);
-                    if (fileContents.Length > 0)
+                    string fileContentsString = System.Text.Encoding.Default.GetString(fileContents);
+                    if ((fileContents.Length > 0) & (fileContentsString.Contains("%PDF", StringComparison.InvariantCultureIgnoreCase)) )
                     {
                         fileExists = true;
                     }
@@ -1022,7 +1031,8 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                 }
                 catch (Exception e)
                 {
-                    _logger.LogWarning(LoggingEvents.HttpGet, "Certificate does NOT exist for Application Id: " + id);
+                    _logger.LogError(e.StackTrace);
+                    _logger.LogInformation(LoggingEvents.HttpGet, "Certificate does NOT exist for Application Id: " + id);
                     return new JsonResult(fileExists);
                 }
 

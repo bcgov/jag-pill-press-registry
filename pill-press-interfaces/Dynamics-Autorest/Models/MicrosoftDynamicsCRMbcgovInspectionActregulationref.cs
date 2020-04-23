@@ -10,7 +10,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
     using System.Linq;
 
     /// <summary>
-    /// bcgov_inspection_actregulationref
+    /// Microsoft.Dynamics.CRM.bcgov_inspection_actregulationref
     /// </summary>
     public partial class MicrosoftDynamicsCRMbcgovInspectionActregulationref
     {
@@ -27,7 +27,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// Initializes a new instance of the
         /// MicrosoftDynamicsCRMbcgovInspectionActregulationref class.
         /// </summary>
-        public MicrosoftDynamicsCRMbcgovInspectionActregulationref(long? versionnumber = default(long?), string bcgovActregulationreferenceid = default(string), string bcgovInspectionActregulationrefid = default(string), string bcgovInspectionid = default(string))
+        public MicrosoftDynamicsCRMbcgovInspectionActregulationref(string versionnumber = default(string), string bcgovActregulationreferenceid = default(string), string bcgovInspectionActregulationrefid = default(string), string bcgovInspectionid = default(string))
         {
             Versionnumber = versionnumber;
             BcgovActregulationreferenceid = bcgovActregulationreferenceid;
@@ -44,7 +44,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces.Models
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "versionnumber")]
-        public long? Versionnumber { get; set; }
+        public string Versionnumber { get; set; }
 
         /// <summary>
         /// </summary>

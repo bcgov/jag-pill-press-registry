@@ -23,10 +23,6 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// </summary>
         /// <param name='top'>
         /// </param>
-        /// <param name='skip'>
-        /// </param>
-        /// <param name='search'>
-        /// </param>
         /// <param name='filter'>
         /// </param>
         /// <param name='count'>
@@ -46,13 +42,13 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="OdataerrorException">
+        /// <exception cref="Microsoft.Rest.HttpOperationException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        Task<HttpOperationResponse<InvestigationstepcecontactsetGetResponseModel>> GetWithHttpMessagesAsync(int? top = default(int?), int? skip = default(int?), string search = default(string), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<MicrosoftDynamicsCRMbcgovInvestigationstepCecontactCollection>> GetWithHttpMessagesAsync(int? top = default(int?), string filter = default(string), bool? count = default(bool?), IList<string> orderby = default(IList<string>), IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Add new entity to bcgov_investigationstep_cecontactset
         /// </summary>
@@ -69,7 +65,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="OdataerrorException">
+        /// <exception cref="Microsoft.Rest.HttpOperationException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -83,7 +79,8 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// Get entity from bcgov_investigationstep_cecontactset by key
         /// </summary>
         /// <param name='bcgovInvestigationstepCecontactid'>
-        /// key: bcgov_investigationstep_cecontactid
+        /// key: bcgov_investigationstep_cecontactid of
+        /// bcgov_investigationstep_cecontact
         /// </param>
         /// <param name='select'>
         /// Select properties to be returned
@@ -97,7 +94,7 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="OdataerrorException">
+        /// <exception cref="Microsoft.Rest.HttpOperationException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -108,32 +105,11 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// </exception>
         Task<HttpOperationResponse<MicrosoftDynamicsCRMbcgovInvestigationstepCecontact>> GetByKeyWithHttpMessagesAsync(string bcgovInvestigationstepCecontactid, IList<string> select = default(IList<string>), IList<string> expand = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Delete entity from bcgov_investigationstep_cecontactset
-        /// </summary>
-        /// <param name='bcgovInvestigationstepCecontactid'>
-        /// key: bcgov_investigationstep_cecontactid
-        /// </param>
-        /// <param name='ifMatch'>
-        /// ETag
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="OdataerrorException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<HttpOperationResponse> DeleteWithHttpMessagesAsync(string bcgovInvestigationstepCecontactid, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
         /// Update entity in bcgov_investigationstep_cecontactset
         /// </summary>
         /// <param name='bcgovInvestigationstepCecontactid'>
-        /// key: bcgov_investigationstep_cecontactid
+        /// key: bcgov_investigationstep_cecontactid of
+        /// bcgov_investigationstep_cecontact
         /// </param>
         /// <param name='body'>
         /// New property values
@@ -144,12 +120,35 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="OdataerrorException">
+        /// <exception cref="Microsoft.Rest.HttpOperationException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
         Task<HttpOperationResponse> UpdateWithHttpMessagesAsync(string bcgovInvestigationstepCecontactid, MicrosoftDynamicsCRMbcgovInvestigationstepCecontact body, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Delete entity from bcgov_investigationstep_cecontactset
+        /// </summary>
+        /// <param name='bcgovInvestigationstepCecontactid'>
+        /// key: bcgov_investigationstep_cecontactid of
+        /// bcgov_investigationstep_cecontact
+        /// </param>
+        /// <param name='ifMatch'>
+        /// ETag
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.HttpOperationException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<HttpOperationResponse> DeleteWithHttpMessagesAsync(string bcgovInvestigationstepCecontactid, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
