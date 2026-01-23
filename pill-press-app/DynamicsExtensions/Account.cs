@@ -121,7 +121,10 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
             return result;
         }
 
-        public static string GetServerUrl(this MicrosoftDynamicsCRMaccount account, SharePointFileManager _sharePointFileManager)
+        public static string GetServerUrl(
+            this MicrosoftDynamicsCRMaccount account,
+            ISharePointFileManager _sharePointFileManager
+        )
         {
             string result = "";
             // use the account document location if it exists.
@@ -143,27 +146,47 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
 
                         if (!string.IsNullOrEmpty(_sharePointFileManager.WebName))
                         {
-                            serverRelativeUrl += "/sites/" + _sharePointFileManager.WebName;
+                            serverRelativeUrl += "/sites/" + _sharePointFileManager.WebName + "/";
+                            serverRelativeUrl += _sharePointFileManager.GetServerRelativeURL(
+                                SharePointConstants.AccountFolderDisplayName,
+                                location.Relativeurl
+                            );
                         }
-
-                        serverRelativeUrl += "/" + _sharePointFileManager.GetServerRelativeURL(SharePointFileManager.AccountDocumentListTitle, location.Relativeurl);
+                        else
+                        {
+                            // For cloud SharePoint, GetServerRelativeURL already includes the leading /
+                            serverRelativeUrl = _sharePointFileManager.GetServerRelativeURL(
+                                SharePointConstants.AccountFolderDisplayName,
+                                location.Relativeurl
+                            );
+                        }
 
                         result = serverRelativeUrl;
                     }
-                }                
+                }
             }
-            if(string.IsNullOrEmpty(result))
+            if (string.IsNullOrEmpty(result))
             {
                 string serverRelativeUrl = "";
-
-                if (!string.IsNullOrEmpty(_sharePointFileManager.WebName))
-                {
-                    serverRelativeUrl += "/sites/" + _sharePointFileManager.WebName;
-                }
                 string accountIdCleaned = account.Accountid.ToString().ToUpper().Replace("-", "");
                 string folderName = $"_{accountIdCleaned}";
 
-                serverRelativeUrl += "/" + _sharePointFileManager.GetServerRelativeURL(SharePointFileManager.AccountDocumentListTitle, folderName);
+                if (!string.IsNullOrEmpty(_sharePointFileManager.WebName))
+                {
+                    serverRelativeUrl += "/sites/" + _sharePointFileManager.WebName + "/";
+                    serverRelativeUrl += _sharePointFileManager.GetServerRelativeURL(
+                        SharePointConstants.AccountFolderDisplayName,
+                        folderName
+                    );
+                }
+                else
+                {
+                    // For cloud SharePoint, GetServerRelativeURL already includes the leading /
+                    serverRelativeUrl = _sharePointFileManager.GetServerRelativeURL(
+                        SharePointConstants.AccountFolderDisplayName,
+                        folderName
+                    );
+                }
 
                 result = serverRelativeUrl;
                 

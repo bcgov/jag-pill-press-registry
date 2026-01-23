@@ -23,11 +23,17 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
     {
         private readonly IConfiguration Configuration;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly SharePointFileManager _sharePointFileManager;
+        private readonly ISharePointFileManager _sharePointFileManager;
         private readonly ILogger _logger;
         private readonly IDynamicsClient _dynamicsClient;
 
-        public FileController(SharePointFileManager sharePointFileManager, IConfiguration configuration, IHttpContextAccessor httpContextAccessor, ILoggerFactory loggerFactory, IDynamicsClient dynamicsClient)
+        public FileController(
+            ISharePointFileManager sharePointFileManager,
+            IConfiguration configuration,
+            IHttpContextAccessor httpContextAccessor,
+            ILoggerFactory loggerFactory,
+            IDynamicsClient dynamicsClient
+        )
         {
             Configuration = configuration;
             _httpContextAccessor = httpContextAccessor;
@@ -336,7 +342,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
 
             string folderName = await GetFolderName(entityName, entityId, documentType); ;
             // Get the file details list in folder
-            List<FileDetailsList> fileDetailsList = null;
+            List<SharePointFileDetailsList> fileDetailsList = null;
             try
             {
                 fileDetailsList = await _sharePointFileManager.GetFileDetailsListInFolder(GetDocumentTemplateUrlPart(entityName), folderName, documentType);
@@ -353,7 +359,7 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
 
             if (fileDetailsList != null)
             {
-                foreach (FileDetailsList fileDetails in fileDetailsList)
+                foreach (SharePointFileDetailsList fileDetails in fileDetailsList)
                 {
                     ViewModels.FileSystemItem fileSystemItemVM = new ViewModels.FileSystemItem()
                     {
@@ -380,10 +386,10 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             switch (entityName.ToLower())
             {
                 case "incident":
-                    listTitle = SharePointFileManager.ApplicationDocumentListTitle;
+                    listTitle = SharePointConstants.ApplicationFolderDisplayName;
                     break;
                 case "contact":
-                    listTitle = SharePointFileManager.ContactDocumentListTitle;
+                    listTitle = SharePointConstants.ContactFolderDisplayName;
                     break;
                 default:
                     break;
@@ -397,10 +403,10 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             switch (entityName.ToLower())
             {
                 case "incident":
-                    listTitle = SharePointFileManager.ApplicationDocumentListTitle;
+                    listTitle = SharePointConstants.ApplicationFolderInternalName;
                     break;
                 case "contact":
-                    listTitle = SharePointFileManager.ContactDocumentListTitle;
+                    listTitle = SharePointConstants.ContactFolderInternalName;
                     break;
                 default:
                     break;
