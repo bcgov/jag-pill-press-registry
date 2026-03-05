@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.Rest;
 
 namespace Gov.Jag.PillPressRegistry.Interfaces
 {
-    using Microsoft.Rest;
-
     public class SharePointRestException : RestException
     {
-
         /// <summary>
         /// Gets information about the associated HTTP request.
         /// </summary>
@@ -19,32 +14,24 @@ namespace Gov.Jag.PillPressRegistry.Interfaces
         /// </summary>
         public HttpResponseMessageWrapper Response { get; set; }
 
-
         /// <summary>
-        /// Initializes a new instance of the OdataerrorException class.
+        /// Initializes a new instance of the HttpOperationException class.
         /// </summary>
-        public SharePointRestException()
-        {
-        }
+        public SharePointRestException() { }
 
         /// <summary>
-        /// Initializes a new instance of the OdataerrorException class.
+    /// Initializes a new instance of the HttpOperationException cSharePointConstants.cs(1,lass.
         /// </summary>
         /// <param name="message">The exception message.</param>
         public SharePointRestException(string message)
-            : this(message, null)
-        {
-        }
+            : this(message, null) { }
 
         /// <summary>
-        /// Initializes a new instance of the OdataerrorException class.
+        /// Initializes a new instance of the HttpOperationException class.
         /// </summary>
         /// <param name="message">The exception message.</param>
         /// <param name="innerException">Inner exception.</param>
         public SharePointRestException(string message, System.Exception innerException)
-            : base(message, innerException)
-        {
-        }
-
+            : base(message, innerException) { }
     }
 }
