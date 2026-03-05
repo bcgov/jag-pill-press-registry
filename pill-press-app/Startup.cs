@@ -172,11 +172,12 @@ namespace Gov.Jag.PillPressRegistry.Public
                 return client;
             });
 
-            // add SharePoint.
-
+            // Add SharePoint
             if (!string.IsNullOrEmpty(Configuration["SHAREPOINT_ODATA_URI"]))
             {
-                services.AddTransient<SharePointFileManager>(_ => new SharePointFileManager(Configuration));
+                services.AddTransient<ISharePointFileManager>(sp =>
+                    SharePointFileManager.Create(Configuration, sp.GetService<ILoggerFactory>())
+                );
             }
 
             // add BCeID Web Services
@@ -315,14 +316,22 @@ namespace Gov.Jag.PillPressRegistry.Public
 
                 // Fix for bad SSL issues 
 
+                // Get minimum log level from configuration, default to Warning
+                var logLevel = Serilog.Events.LogEventLevel.Warning;
+                var logLevelConfig = Configuration["Logging:LogLevel:Default"];
+                if (!string.IsNullOrEmpty(logLevelConfig) && Enum.TryParse<Serilog.Events.LogEventLevel>(logLevelConfig, out var parsedLevel))
+                {
+                    logLevel = parsedLevel;
+                }
 
                 Log.Logger = new LoggerConfiguration()
+                    .MinimumLevel.Is(logLevel)
                     .Enrich.FromLogContext()
                     .Enrich.WithExceptionDetails()
-                    .WriteTo.Console()
+                    .WriteTo.Console(outputTemplate: "[{Timestamp:yyyy-MM-dd HH:mm:ss} {Level:u3}] {Message:lj}{NewLine}{Exception}")
                     .WriteTo.EventCollector(splunkHost: Configuration["SPLUNK_COLLECTOR_URL"],
                        sourceType: "manual", eventCollectorToken: Configuration["SPLUNK_TOKEN"],
-                       restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Information,
+                       restrictedToMinimumLevel: logLevel,
 #pragma warning disable CA2000 // Dispose objects before losing scope
                        messageHandler: new HttpClientHandler()
                        {
@@ -339,10 +348,19 @@ namespace Gov.Jag.PillPressRegistry.Public
             }
             else
             {
+                // Get minimum log level from configuration, default to Warning
+                var logLevel = Serilog.Events.LogEventLevel.Warning;
+                var logLevelConfig = Configuration["Logging:LogLevel:Default"];
+                if (!string.IsNullOrEmpty(logLevelConfig) && Enum.TryParse<Serilog.Events.LogEventLevel>(logLevelConfig, out var parsedLevel))
+                {
+                    logLevel = parsedLevel;
+                }
+
                 Log.Logger = new LoggerConfiguration()
+                    .MinimumLevel.Is(logLevel)
                     .Enrich.FromLogContext()
                     .Enrich.WithExceptionDetails()
-                    .WriteTo.Console()
+                    .WriteTo.Console(outputTemplate: "[{Timestamp:yyyy-MM-dd HH:mm:ss} {Level:u3}] {Message:lj}{NewLine}{Exception}")
                     .CreateLogger();
             }
 

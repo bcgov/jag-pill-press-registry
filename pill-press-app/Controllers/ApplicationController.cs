@@ -27,9 +27,9 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ILogger _logger;
         private readonly IWebHostEnvironment _env;
-        private readonly SharePointFileManager _sharePointFileManager;
+        private readonly ISharePointFileManager _sharePointFileManager;
 
-        public ApplicationController(SharePointFileManager sharePointFileManager, IConfiguration configuration, IDynamicsClient dynamicsClient, IHttpContextAccessor httpContextAccessor, ILoggerFactory loggerFactory, IWebHostEnvironment env)
+        public ApplicationController(ISharePointFileManager sharePointFileManager, IConfiguration configuration, IDynamicsClient dynamicsClient, IHttpContextAccessor httpContextAccessor, ILoggerFactory loggerFactory, IWebHostEnvironment env)
         {
             Configuration = configuration;
             _dynamicsClient = dynamicsClient;
@@ -840,9 +840,14 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
 
             if (!string.IsNullOrEmpty(_sharePointFileManager.WebName))
             {
-                serverRelativeUrl += "/sites/" + _sharePointFileManager.WebName;
+                serverRelativeUrl += "/sites/" + _sharePointFileManager.WebName + "/";
+                serverRelativeUrl += _sharePointFileManager.GetServerRelativeURL(SharePointConstants.ApplicationFolderDisplayName, application.GetSharePointFolderName());
             }
-            serverRelativeUrl += _sharePointFileManager.GetServerRelativeURL(SharePointFileManager.ApplicationDocumentListTitle, application.GetSharePointFolderName());
+            else
+            {
+                // For cloud SharePoint, GetServerRelativeURL already includes the leading /
+                serverRelativeUrl = _sharePointFileManager.GetServerRelativeURL(SharePointConstants.ApplicationFolderDisplayName, application.GetSharePointFolderName());
+            }
 
             string folderName = application.GetSharePointFolderName();
 
@@ -852,17 +857,17 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
             string name = application.Title + " Application Files";
 
             // Create the folder
-            bool folderExists = await _sharePointFileManager.FolderExists(SharePointFileManager.ApplicationDocumentListTitle, folderName);
+            bool folderExists = await _sharePointFileManager.FolderExists(SharePointConstants.ApplicationFolderDisplayName, folderName);
             if (!folderExists)
             {
                 try
                 {
-                    await _sharePointFileManager.CreateFolder(SharePointFileManager.ApplicationDocumentListTitle, folderName);
+                    await _sharePointFileManager.CreateFolder(SharePointConstants.ApplicationFolderDisplayName, folderName);
                 }
                 catch (Exception e)
                 {
                     _logger.LogError("Error creating Sharepoint Folder");
-                    _logger.LogError($"List is: {SharePointFileManager.ApplicationDocumentListTitle}");
+                    _logger.LogError($"List is: {SharePointConstants.ApplicationFolderDisplayName}");
                     _logger.LogError($"FolderName is: {folderName}");
                     throw e;
                 }

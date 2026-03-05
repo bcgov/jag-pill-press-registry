@@ -27,19 +27,25 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
         private readonly BCeIDBusinessQuery _bceid;
         private readonly IConfiguration Configuration;
         private readonly IDynamicsClient _dynamicsClient;
-        private readonly SharePointFileManager _sharePointFileManager;
+        private readonly ISharePointFileManager _sharePointFileManager;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ILogger _logger;
 
-        public AccountController(SharePointFileManager sharePointFileManager, IConfiguration configuration, IHttpContextAccessor httpContextAccessor, BCeIDBusinessQuery bceid, ILoggerFactory loggerFactory, IDynamicsClient dynamicsClient)
+        public AccountController(
+            ISharePointFileManager sharePointFileManager,
+            IConfiguration configuration,
+            IHttpContextAccessor httpContextAccessor,
+            BCeIDBusinessQuery bceid,
+            ILoggerFactory loggerFactory,
+            IDynamicsClient dynamicsClient
+        )
         {
             Configuration = configuration;
             _bceid = bceid;
             _dynamicsClient = dynamicsClient;
-            _httpContextAccessor = httpContextAccessor;
-            //_sharePointFileManager = sharePointFileManager;
-            _logger = loggerFactory.CreateLogger(typeof(AccountController));
             _sharePointFileManager = sharePointFileManager;
+            _httpContextAccessor = httpContextAccessor;
+            _logger = loggerFactory.CreateLogger(typeof(AccountController));
         }
 
         /// GET account in Dynamics for the current user
@@ -916,17 +922,17 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
 
 
             // Create the folder
-            bool folderExists = await _sharePointFileManager.FolderExists(SharePointFileManager.AccountDocumentListTitle, folderName);
+            bool folderExists = await _sharePointFileManager.FolderExists(SharePointConstants.AccountFolderDisplayName, folderName);
             if (!folderExists)
             {
                 try
                 {
-                    await _sharePointFileManager.CreateFolder(SharePointFileManager.AccountDocumentListTitle, folderName);
+                    await _sharePointFileManager.CreateFolder(SharePointConstants.AccountFolderDisplayName, folderName);
                 }
                 catch (Exception e)
                 {
                     _logger.LogError("Error creating Sharepoint Folder");
-                    _logger.LogError($"List is: {SharePointFileManager.AccountDocumentListTitle}");
+                    _logger.LogError($"List is: {SharePointConstants.AccountFolderDisplayName}");
                     _logger.LogError($"FolderName is: {folderName}");
                     throw e;
                 }
@@ -1006,24 +1012,30 @@ namespace Gov.Jag.PillPressRegistry.Public.Controllers
                     mdcsdl = null;
                 }
 
+                if (mdcsdl != null)
+                {
+                    string sharePointLocationData = _dynamicsClient.GetEntityURI(
+                        "sharepointdocumentlocations",
+                        mdcsdl.Sharepointdocumentlocationid
+                    );
 
-                string sharePointLocationData = _dynamicsClient.GetEntityURI("sharepointdocumentlocations", mdcsdl.Sharepointdocumentlocationid);
-
-                OdataId oDataId = new OdataId()
-                {
-                    OdataIdProperty = sharePointLocationData
-                };
-                try
-                {
-                    _dynamicsClient.Accounts.AddReference(account.Accountid, "Account_SharepointDocumentLocation", oDataId);
-                }
-                catch (OdataerrorException odee)
-                {
-                    _logger.LogError("Error adding reference to SharepointDocumentLocation");
-                    _logger.LogError("Request:");
-                    _logger.LogError(odee.Request.Content);
-                    _logger.LogError("Response:");
-                    _logger.LogError(odee.Response.Content);
+                    OdataId oDataId = new OdataId() { OdataIdProperty = sharePointLocationData };
+                    try
+                    {
+                        _dynamicsClient.Accounts.AddReference(
+                            account.Accountid,
+                            "Account_SharepointDocumentLocation",
+                            oDataId
+                        );
+                    }
+                    catch (OdataerrorException odee)
+                    {
+                        _logger.LogError("Error adding reference to SharepointDocumentLocation");
+                        _logger.LogError("Request:");
+                        _logger.LogError(odee.Request.Content);
+                        _logger.LogError("Response:");
+                        _logger.LogError(odee.Response.Content);
+                    }
                 }
             }
         }
