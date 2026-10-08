@@ -7,24 +7,7 @@ import { Application } from '../../../models/application.model';
 import { FormBase } from '../../../shared/form-base';
 import { postalRegex } from '../../../business-profile/business-profile/business-profile.component';
 import { faSave, faTrashAlt } from '@fortawesome/free-regular-svg-icons';
-import * as _moment from 'moment';
-// tslint:disable-next-line:no-duplicate-imports
-import { defaultFormat as _rollupMoment } from 'moment';
-const moment = _rollupMoment || _moment;
 
-// See the Moment.js docs for the meaning of these formats:
-// https://momentjs.com/docs/#/displaying/format/
-export const MY_FORMATS = {
-  parse: {
-    dateInput: 'LL',
-  },
-  display: {
-    dateInput: 'YYYY-MM-DD',
-    monthYearLabel: 'MMM YYYY',
-    dateA11yLabel: 'YYYY-MM-DD',
-    monthYearA11yLabel: 'MMMM YYYY',
-  },
-};
 @Component({
   selector: 'app-equipment-change-form',
   templateUrl: './equipment-change-form.component.html',
@@ -114,7 +97,7 @@ export class EquipmentChangeFormComponent extends FormBase implements OnInit {
   }
 
   /**
-   * 
+   *
    * @param a
    * @param b
    */
@@ -184,7 +167,7 @@ export class EquipmentChangeFormComponent extends FormBase implements OnInit {
   }
 
   /**
-   * 
+   *
    * @param goToReview
    */
   save(goToReview: boolean) {

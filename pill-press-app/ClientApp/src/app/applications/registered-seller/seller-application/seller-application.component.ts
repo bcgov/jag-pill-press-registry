@@ -8,29 +8,9 @@ import { AccountDataService } from '../../../services/account-data.service';
 import { faExclamationCircle, faTrashAlt, faPencilAlt} from '@fortawesome/free-solid-svg-icons';
 import { faSave} from '@fortawesome/free-regular-svg-icons';
 
-import { MomentDateAdapter } from '@angular/material-moment-adapter';
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-import * as _moment from 'moment';
-// tslint:disable-next-line:no-duplicate-imports
-import { defaultFormat as _rollupMoment } from 'moment';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 import { BusinessContact } from '../../../models/business-contact.model';
 import { FormBase } from '../../../shared/form-base';
-const moment = _rollupMoment || _moment;
-
-// See the Moment.js docs for the meaning of these formats:
-// https://momentjs.com/docs/#/displaying/format/
-export const MY_FORMATS = {
-  parse: {
-    dateInput: 'LL',
-  },
-  display: {
-    dateInput: 'YYYY-MM-DD',
-    monthYearLabel: 'MMM YYYY',
-    dateA11yLabel: 'YYYY-MM-DD',
-    monthYearA11yLabel: 'MMMM YYYY',
-  },
-};
 
 @Component({
   selector: 'app-seller-application',
