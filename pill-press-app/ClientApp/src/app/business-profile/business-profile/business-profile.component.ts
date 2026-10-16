@@ -6,9 +6,8 @@ import { DynamicsContact } from '../../models/dynamics-contact.model';
 import { AppState } from '../../app-state/models/app-state';
 import * as CurrentUserActions from '../../app-state/actions/current-user.action';
 import { Store } from '@ngrx/store';
-import { Subscription, Observable, Subject, forkJoin } from 'rxjs';
-import { FormBuilder, FormGroup, Validators, FormArray, ValidatorFn, AbstractControl, FormControl } from '@angular/forms';
-import { PreviousAddressDataService } from '../../services/previous-address-data.service';
+import { Observable, Subject, forkJoin } from 'rxjs';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { COUNTRIES } from './country-list';
 
@@ -21,28 +20,20 @@ import {
   faEnvelope
 } from '@fortawesome/free-solid-svg-icons';
 
-import { MomentDateAdapter } from '@angular/material-moment-adapter';
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-import * as _moment from 'moment';
-// tslint:disable-next-line:no-duplicate-imports
-import { defaultFormat as _rollupMoment } from 'moment';
-import { zip } from 'rxjs/operators';
+import { MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { AccountDataService } from '../../services/account-data.service';
 import { DynamicsAccount } from '../../models/dynamics-account.model';
 import { FormBase } from '../../shared/form-base';
-const moment = _rollupMoment || _moment;
-
-// See the Moment.js docs for the meaning of these formats:
-// https://momentjs.com/docs/#/displaying/format/
+// NativeDateAdapter passes these to Intl.DateTimeFormat; the en-CA locale yields YYYY-MM-DD.
 export const MY_FORMATS = {
   parse: {
-    dateInput: 'LL',
+    dateInput: null,
   },
   display: {
-    dateInput: 'YYYY-MM-DD',
-    monthYearLabel: 'MMM YYYY',
-    dateA11yLabel: 'YYYY-MM-DD',
-    monthYearA11yLabel: 'MMMM YYYY',
+    dateInput: { year: 'numeric', month: '2-digit', day: '2-digit' },
+    monthYearLabel: { year: 'numeric', month: 'short' },
+    dateA11yLabel: { year: 'numeric', month: '2-digit', day: '2-digit' },
+    monthYearA11yLabel: { year: 'numeric', month: 'long' },
   },
 };
 
@@ -54,11 +45,7 @@ export const postalRegex = '(^\\d{5}([\-]\\d{4})?$)|(^[A-Za-z][0-9][A-Za-z]\\s?[
   templateUrl: './business-profile.component.html',
   styleUrls: ['./business-profile.component.scss'],
   providers: [
-    // `MomentDateAdapter` can be automatically provided by importing `MomentDateModule` in your
-    // application's root module. We provide it at the component level here, due to limitations of
-    // our example generation script.
-    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
-
+    { provide: MAT_DATE_LOCALE, useValue: 'en-CA' },
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
   ],
 })

@@ -10,24 +10,18 @@ import { faSave } from '@fortawesome/free-regular-svg-icons';
 import { faExclamationTriangle, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 
-import { MomentDateAdapter } from '@angular/material-moment-adapter';
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-import * as _moment from 'moment';
-// tslint:disable-next-line:no-duplicate-imports
-import { defaultFormat as _rollupMoment } from 'moment';
-const moment = _rollupMoment || _moment;
+import { MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 
-// See the Moment.js docs for the meaning of these formats:
-// https://momentjs.com/docs/#/displaying/format/
+// NativeDateAdapter passes these to Intl.DateTimeFormat; the en-CA locale yields YYYY-MM-DD.
 export const MY_FORMATS = {
   parse: {
-    dateInput: 'LL',
+    dateInput: null,
   },
   display: {
-    dateInput: 'YYYY-MM-DD',
-    monthYearLabel: 'MMM YYYY',
-    dateA11yLabel: 'YYYY-MM-DD',
-    monthYearA11yLabel: 'MMMM YYYY',
+    dateInput: { year: 'numeric', month: '2-digit', day: '2-digit' },
+    monthYearLabel: { year: 'numeric', month: 'short' },
+    dateA11yLabel: { year: 'numeric', month: '2-digit', day: '2-digit' },
+    monthYearA11yLabel: { year: 'numeric', month: 'long' },
   },
 };
 
@@ -38,11 +32,7 @@ export const MY_FORMATS = {
   templateUrl: './authorized-application.component.html',
   styleUrls: ['./authorized-application.component.scss'],
   providers: [
-    // `MomentDateAdapter` can be automatically provided by importing `MomentDateModule` in your
-    // application's root module. We provide it at the component level here, due to limitations of
-    // our example generation script.
-    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
-
+    { provide: MAT_DATE_LOCALE, useValue: 'en-CA' },
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
   ],
 })
